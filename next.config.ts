@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
-  outputFileTracingRoot: path.join(__dirname, "../..")
+  outputFileTracingRoot: path.resolve(__dirname)
 };
 
 export default nextConfig;
