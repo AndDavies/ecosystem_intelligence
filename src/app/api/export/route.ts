@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getUseCaseBySlug } from "@/lib/data/repository";
+import { buildCsv } from "@/lib/export/csv";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -27,20 +28,18 @@ export async function GET(request: Request) {
     "suggested_action_type",
     "why_it_matters"
   ];
-  const rows = useCase.topTargets.map((entry) =>
-    [
-      entry.capability.name,
-      entry.company.name,
-      entry.cluster.name,
-      entry.mapping.pathway,
-      entry.mapping.relevanceBand,
-      entry.mapping.defenceRelevance,
-      String(entry.mapping.rankingScore),
-      entry.mapping.suggestedActionType,
-      entry.mapping.whyItMatters.replaceAll(",", ";")
-    ].join(",")
-  );
-  const csv = [header.join(","), ...rows].join("\n");
+  const rows = useCase.topTargets.map((entry) => [
+    entry.capability.name,
+    entry.company.name,
+    entry.cluster.name,
+    entry.mapping.pathway,
+    entry.mapping.relevanceBand,
+    entry.mapping.defenceRelevance,
+    String(entry.mapping.rankingScore),
+    entry.mapping.suggestedActionType,
+    entry.mapping.whyItMatters
+  ]);
+  const csv = buildCsv(header, rows);
 
   return new NextResponse(csv, {
     headers: {

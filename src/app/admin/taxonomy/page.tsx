@@ -14,6 +14,11 @@ export default async function AdminTaxonomyPage() {
       <SectionHeading
         title="Taxonomy Admin"
         description="Minimal in-app taxonomy visibility for domains, Use Cases, and seeded cluster structure."
+        breadcrumbs={[
+          { label: "Home", href: "/app" },
+          { label: "Admin", href: "/admin/taxonomy" },
+          { label: "Taxonomy" }
+        ]}
       />
       <div className="grid gap-5 xl:grid-cols-3">
         <Card className="rounded-[32px]">

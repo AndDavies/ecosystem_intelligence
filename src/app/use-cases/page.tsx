@@ -15,6 +15,10 @@ export default async function UseCasesPage() {
       <SectionHeading
         title="Use Cases"
         description="The MVP discovery workflow starts here. Each Use Case acts as a structured lens into the ecosystem."
+        breadcrumbs={[
+          { label: "Home", href: "/app" },
+          { label: "Use Cases" }
+        ]}
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {useCases.map((useCase) => (

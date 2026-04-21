@@ -35,6 +35,13 @@ export default async function UseCaseDetailPage({
       <SectionHeading
         title={view.useCase.name}
         description={view.useCase.summary}
+        breadcrumbs={[
+          { label: "Home", href: "/app" },
+          { label: "Use Cases", href: "/use-cases" },
+          { label: view.useCase.name }
+        ]}
+        backHref="/use-cases"
+        backLabel="Back to Use Cases"
         actions={
           <div className="flex flex-wrap gap-2">
             <Button asChild variant="outline">
@@ -105,6 +112,7 @@ export default async function UseCaseDetailPage({
             <p className="text-sm text-[var(--muted-foreground)]">
               Start here if you need to decide what to do first.
             </p>
+            <DerivedReadLabel />
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -121,7 +129,7 @@ export default async function UseCaseDetailPage({
 	                      <div className="flex flex-wrap items-center gap-2">
 	                        <Badge tone={action.tone}>{action.verb}</Badge>
 	                        <Link
-	                          href={`/capabilities/${action.entry.capability.id}`}
+	                          href={`/capabilities/${action.entry.capability.id}?fromUseCase=${view.useCase.slug}`}
 	                          className="text-base font-semibold no-underline"
 	                        >
 	                          {action.entry.capability.name}
@@ -187,7 +195,7 @@ export default async function UseCaseDetailPage({
                               Capability
                             </div>
                             <Link
-                              href={`/capabilities/${entry.capability.id}`}
+                              href={`/capabilities/${entry.capability.id}?fromUseCase=${view.useCase.slug}`}
                               title="Capability = product, system, or solution"
                               className="block truncate text-2xl font-bold tracking-tight no-underline md:text-3xl"
                             >
@@ -207,7 +215,7 @@ export default async function UseCaseDetailPage({
                             Company
                           </div>
                           <Link
-                            href={`/companies/${entry.company.id}`}
+                            href={`/companies/${entry.company.id}?fromUseCase=${view.useCase.slug}&fromCapability=${entry.capability.id}`}
                             className="text-base font-medium text-slate-600 no-underline hover:text-[var(--link-hover)]"
                           >
                             {entry.company.name}
@@ -306,6 +314,7 @@ export default async function UseCaseDetailPage({
               <p className="text-sm text-[var(--muted-foreground)]">
                 A short read on what exists in this Use Case today.
               </p>
+              <DerivedReadLabel />
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
@@ -325,6 +334,7 @@ export default async function UseCaseDetailPage({
               <p className="text-sm text-[var(--muted-foreground)]">
                 Turn the current landscape into next-step decisions.
               </p>
+              <DerivedReadLabel />
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
@@ -344,6 +354,7 @@ export default async function UseCaseDetailPage({
             <p className="text-sm text-[var(--muted-foreground)]">
               Short rule-based gaps derived from maturity, cluster depth, and current capability mix.
             </p>
+            <DerivedReadLabel />
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
@@ -380,7 +391,7 @@ export default async function UseCaseDetailPage({
                     <Badge tone="secondary">{entry.count} capabilities</Badge>
                     {entry.topCapability ? (
                       <Link
-                        href={`/capabilities/${entry.topCapability.capability.id}`}
+                        href={`/capabilities/${entry.topCapability.capability.id}?fromUseCase=${view.useCase.slug}`}
                         className="text-sm font-medium no-underline"
                         title="Open top capability in this cluster"
                       >
@@ -438,7 +449,7 @@ export default async function UseCaseDetailPage({
           title="Filtered capability exploration"
           description="Use structured filters to narrow the view without losing the Use Case frame."
         />
-        <UseCaseCapabilityFilters capabilities={view.allCapabilities} />
+        <UseCaseCapabilityFilters capabilities={view.allCapabilities} useCaseSlug={view.useCase.slug} />
       </div>
 
       <div className="mt-6">
@@ -481,6 +492,14 @@ function InsightBullet({ children }: { children: React.ReactNode }) {
       <span className="mt-2 size-2 shrink-0 rounded-full bg-[var(--primary)]" />
       <span>{children}</span>
     </li>
+  );
+}
+
+function DerivedReadLabel() {
+  return (
+    <div className="inline-flex items-center rounded-full bg-[var(--muted)] px-3 py-1 text-xs font-medium text-[var(--muted-foreground)]">
+      Derived read: heuristic summary from current records, not a direct source-backed fact.
+    </div>
   );
 }
 

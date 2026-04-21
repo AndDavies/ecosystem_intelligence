@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { requireProfile } from "@/lib/auth";
 import { getHomeData, searchRecords } from "@/lib/data/repository";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatFieldLabel } from "@/lib/utils";
 
 export default async function AppHomePage() {
   const profile = await requireProfile();
@@ -29,7 +29,7 @@ export default async function AppHomePage() {
             <CardContent className="grid gap-5 md:grid-cols-3">
               <Metric label="Active Use Cases" value={String(home.useCases.length)} />
               <Metric label="Pending Reviews" value={String(home.pendingReviews.length)} />
-              <Metric label="Recent Audit Events" value={String(home.recentUpdates.length)} />
+              <Metric label="Queued AI Runs" value={String(home.queuedAiRuns.length)} />
             </CardContent>
           </Card>
           <Card className="rounded-[32px]">
@@ -99,6 +99,9 @@ export default async function AppHomePage() {
               {home.recentUpdates.map((event) => (
                 <div key={event.id} className="rounded-3xl border border-[var(--border)] bg-white/60 p-4">
                   <div className="text-sm font-medium">{event.summary}</div>
+                  <div className="mt-1 text-xs text-[var(--muted-foreground)]">
+                    {event.actorName} · {formatFieldLabel(event.entityType)}
+                  </div>
                   <div className="mt-2 flex items-center gap-2 text-xs text-[var(--muted-foreground)]">
                     <Clock3 className="size-3.5" />
                     {formatDate(event.createdAt)}
@@ -115,9 +118,9 @@ export default async function AppHomePage() {
               {home.pendingReviews.length ? (
                 home.pendingReviews.map((request) => (
                   <div key={request.id} className="rounded-3xl border border-[var(--border)] bg-white/60 p-4">
-                    <div className="text-sm font-medium">{request.entityType}</div>
+                    <div className="text-sm font-medium">{request.entityLabel}</div>
                     <div className="mt-1 text-sm text-[var(--muted-foreground)]">
-                      {request.changedFields.join(", ")}
+                      {request.changedFieldDetails.map((field) => field.label).join(", ")}
                     </div>
                   </div>
                 ))

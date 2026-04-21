@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { processQueuedEnrichmentRuns } from "@/lib/ai/worker";
 import { requireProfile } from "@/lib/auth";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
@@ -31,5 +32,20 @@ export async function triggerEnrichmentRun(entityType: string, entityId: string)
   });
 
   revalidatePath("/admin/enrichment");
+  revalidatePath("/app");
 
+}
+
+export async function processEnrichmentQueue() {
+  await requireProfile("admin");
+
+  if (!hasSupabaseEnv()) {
+    return;
+  }
+
+  await processQueuedEnrichmentRuns();
+
+  revalidatePath("/admin/enrichment");
+  revalidatePath("/app");
+  revalidatePath("/review");
 }

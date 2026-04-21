@@ -1,106 +1,340 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { z } from "zod";
 import { requireProfile } from "@/lib/auth";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 
-const lowImpactEditSchema = z.object({
-  entityType: z.string().min(1),
-  entityId: z.string().min(1),
-  fieldName: z.string().min(1),
-  value: z.string().min(1)
-});
+type SupportedEntityType = "capability" | "company" | "capability_use_case" | "use_case";
 
-const highImpactEditSchema = z.object({
-  entityType: z.string().min(1),
-  entityId: z.string().min(1),
-  changedFields: z.array(z.string()).min(1),
-  beforeValue: z.record(z.string(), z.unknown()),
-  afterValue: z.record(z.string(), z.unknown())
-});
+const entityConfig: Record<
+  SupportedEntityType,
+  {
+    table: "capabilities" | "companies" | "capability_use_cases" | "use_cases";
+    lowImpactFields: string[];
+    highImpactFields: string[];
+    nullableFields: string[];
+  }
+> = {
+  capability: {
+    table: "capabilities",
+    lowImpactFields: ["summary", "company_facing_context"],
+    highImpactFields: [],
+    nullableFields: ["company_facing_context"]
+  },
+  company: {
+    table: "companies",
+    lowImpactFields: [
+      "overview",
+      "market_context",
+      "website_url",
+      "public_contact_email",
+      "public_contact_phone"
+    ],
+    highImpactFields: [],
+    nullableFields: ["market_context", "website_url", "public_contact_email", "public_contact_phone"]
+  },
+  capability_use_case: {
+    table: "capability_use_cases",
+    lowImpactFields: ["why_it_matters", "action_note"],
+    highImpactFields: ["pathway", "relevance_band", "defence_relevance", "suggested_action_type"],
+    nullableFields: ["action_note"]
+  },
+  use_case: {
+    table: "use_cases",
+    lowImpactFields: [],
+    highImpactFields: [],
+    nullableFields: []
+  }
+};
 
-export async function saveLowImpactEdit(input: z.infer<typeof lowImpactEditSchema>) {
-  const payload = lowImpactEditSchema.parse(input);
-  const profile = await requireProfile("editor");
+function getEntityConfig(entityType: string) {
+  if (!(entityType in entityConfig)) {
+    throw new Error(`Unsupported entity type: ${entityType}`);
+  }
 
+  return entityConfig[entityType as SupportedEntityType];
+}
+
+function getStringValue(formData: FormData, key: string) {
+  const value = formData.get(key);
+  return typeof value === "string" ? value : "";
+}
+
+function normalizeFieldValue(entityType: SupportedEntityType, fieldName: string, rawValue: string) {
+  const config = getEntityConfig(entityType);
+  const value = rawValue.trim();
+
+  if (!value && config.nullableFields.includes(fieldName)) {
+    return null;
+  }
+
+  return value;
+}
+
+async function insertAuditEvent(input: {
+  actorId: string;
+  actorEmail: string;
+  actorName: string | null;
+  eventType: string;
+  entityType: string;
+  entityId: string;
+  summary: string;
+}) {
   if (!hasSupabaseEnv()) {
-    return {
-      success: true,
-      message: `Saved ${payload.fieldName} update in development mode.`
-    };
+    return;
   }
 
   const supabase = createAdminClient();
-
-  await supabase
-    .from(payload.entityType)
-    .update({
-      [payload.fieldName]: payload.value,
-      last_updated_at: new Date().toISOString()
-    })
-    .eq("id", payload.entityId);
-
   await supabase.from("audit_log").insert({
-    actor_id: profile.id,
-    actor_email: profile.email,
-    actor_name: profile.fullName,
-    event_type: "low_impact_edit",
-    entity_type: payload.entityType,
-    entity_id: payload.entityId,
-    summary: `Updated ${payload.fieldName}.`
+    actor_id: input.actorId,
+    actor_email: input.actorEmail,
+    actor_name: input.actorName,
+    event_type: input.eventType,
+    entity_type: input.entityType,
+    entity_id: input.entityId,
+    summary: input.summary
   });
-
-  revalidatePath("/app");
-  revalidatePath("/use-cases");
-
-  return { success: true };
 }
 
-export async function submitHighImpactChange(input: z.infer<typeof highImpactEditSchema>) {
-  const payload = highImpactEditSchema.parse(input);
-  const profile = await requireProfile("editor");
+function revalidateOperationalPaths(pagePath = "") {
+  revalidatePath("/app");
+  revalidatePath("/review");
+  revalidatePath("/use-cases");
+  revalidatePath("/use-cases/[slug]", "page");
+  revalidatePath("/capabilities/[id]", "page");
+  revalidatePath("/companies/[id]", "page");
+
+  if (pagePath.startsWith("/")) {
+    revalidatePath(pagePath);
+  }
+}
+
+async function applyLowImpactUpdate(input: {
+  entityType: SupportedEntityType;
+  entityId: string;
+  updates: Record<string, string | null>;
+  actor: Awaited<ReturnType<typeof requireProfile>>;
+  pagePath: string;
+}) {
+  const config = getEntityConfig(input.entityType);
+  const changedFields = Object.keys(input.updates);
+
+  if (!changedFields.length) {
+    return;
+  }
 
   if (!hasSupabaseEnv()) {
-    return {
-      success: true,
-      message: "Change request captured in development mode."
-    };
+    revalidateOperationalPaths(input.pagePath);
+    return;
+  }
+
+  const supabase = createAdminClient();
+  const updatePayload: Record<string, string | null> = {
+    ...input.updates
+  };
+
+  if (config.table === "capabilities" || config.table === "companies") {
+    updatePayload.last_updated_at = new Date().toISOString();
+  }
+
+  await supabase.from(config.table).update(updatePayload).eq("id", input.entityId);
+
+  await insertAuditEvent({
+    actorId: input.actor.id,
+    actorEmail: input.actor.email,
+    actorName: input.actor.fullName,
+    eventType: "low_impact_edit",
+    entityType: input.entityType,
+    entityId: input.entityId,
+    summary: `Updated ${changedFields.join(", ")}.`
+  });
+
+  revalidateOperationalPaths(input.pagePath);
+}
+
+async function createHighImpactRequest(input: {
+  entityType: SupportedEntityType;
+  entityId: string;
+  beforeValue: Record<string, unknown>;
+  afterValue: Record<string, unknown>;
+  actor: Awaited<ReturnType<typeof requireProfile>>;
+  pagePath: string;
+}) {
+  const changedFields = Object.keys(input.afterValue);
+
+  if (!changedFields.length) {
+    return;
+  }
+
+  if (!hasSupabaseEnv()) {
+    revalidateOperationalPaths(input.pagePath);
+    return;
   }
 
   const supabase = createAdminClient();
 
   await supabase.from("change_requests").insert({
-    entity_type: payload.entityType,
-    entity_id: payload.entityId,
-    changed_fields: payload.changedFields,
-    before_value: payload.beforeValue,
-    after_value: payload.afterValue,
-    requester_name: profile.fullName ?? profile.email,
-    requester_email: profile.email,
+    entity_type: input.entityType,
+    entity_id: input.entityId,
+    changed_fields: changedFields,
+    before_value: input.beforeValue,
+    after_value: input.afterValue,
+    requester_name: input.actor.fullName ?? input.actor.email,
+    requester_email: input.actor.email,
     status: "pending"
   });
 
-  await supabase.from("audit_log").insert({
-    actor_id: profile.id,
-    actor_email: profile.email,
-    actor_name: profile.fullName,
-    event_type: "high_impact_change_requested",
-    entity_type: payload.entityType,
-    entity_id: payload.entityId,
-    summary: `Submitted review request for ${payload.changedFields.join(", ")}.`
+  await insertAuditEvent({
+    actorId: input.actor.id,
+    actorEmail: input.actor.email,
+    actorName: input.actor.fullName,
+    eventType: "high_impact_change_requested",
+    entityType: input.entityType,
+    entityId: input.entityId,
+    summary: `Submitted review request for ${changedFields.join(", ")}.`
   });
 
-  revalidatePath("/review");
+  revalidateOperationalPaths(input.pagePath);
+}
 
-  return { success: true };
+export async function saveCapabilityDetails(formData: FormData) {
+  const profile = await requireProfile("editor");
+  const entityType: SupportedEntityType = "capability";
+  const entityId = getStringValue(formData, "entityId");
+  const pagePath = getStringValue(formData, "pagePath");
+
+  const fields = ["summary", "company_facing_context"] as const;
+  const updates = Object.fromEntries(
+    fields
+      .map((fieldName) => {
+        const nextValue = normalizeFieldValue(entityType, fieldName, getStringValue(formData, fieldName));
+        const currentValue = normalizeFieldValue(
+          entityType,
+          fieldName,
+          getStringValue(formData, `current_${fieldName}`)
+        );
+
+        if (nextValue === currentValue) {
+          return null;
+        }
+
+        return [fieldName, nextValue];
+      })
+      .filter((value): value is [string, string | null] => Boolean(value))
+  );
+
+  await applyLowImpactUpdate({
+    entityType,
+    entityId,
+    updates,
+    actor: profile,
+    pagePath
+  });
+}
+
+export async function saveCompanyDetails(formData: FormData) {
+  const profile = await requireProfile("editor");
+  const entityType: SupportedEntityType = "company";
+  const entityId = getStringValue(formData, "entityId");
+  const pagePath = getStringValue(formData, "pagePath");
+
+  const fields = [
+    "overview",
+    "market_context",
+    "website_url",
+    "public_contact_email",
+    "public_contact_phone"
+  ] as const;
+
+  const updates = Object.fromEntries(
+    fields
+      .map((fieldName) => {
+        const nextValue = normalizeFieldValue(entityType, fieldName, getStringValue(formData, fieldName));
+        const currentValue = normalizeFieldValue(
+          entityType,
+          fieldName,
+          getStringValue(formData, `current_${fieldName}`)
+        );
+
+        if (nextValue === currentValue) {
+          return null;
+        }
+
+        return [fieldName, nextValue];
+      })
+      .filter((value): value is [string, string | null] => Boolean(value))
+  );
+
+  await applyLowImpactUpdate({
+    entityType,
+    entityId,
+    updates,
+    actor: profile,
+    pagePath
+  });
+}
+
+export async function submitCapabilityMappingEdit(formData: FormData) {
+  const profile = await requireProfile("editor");
+  const entityType: SupportedEntityType = "capability_use_case";
+  const entityId = getStringValue(formData, "entityId");
+  const pagePath = getStringValue(formData, "pagePath");
+  const config = getEntityConfig(entityType);
+
+  const allFields = [...config.lowImpactFields, ...config.highImpactFields];
+  const lowImpactUpdates: Record<string, string | null> = {};
+  const highImpactBefore: Record<string, unknown> = {};
+  const highImpactAfter: Record<string, unknown> = {};
+
+  allFields.forEach((fieldName) => {
+    const nextValue = normalizeFieldValue(entityType, fieldName, getStringValue(formData, fieldName));
+    const currentValue = normalizeFieldValue(
+      entityType,
+      fieldName,
+      getStringValue(formData, `current_${fieldName}`)
+    );
+
+    if (nextValue === currentValue) {
+      return;
+    }
+
+    if (config.lowImpactFields.includes(fieldName)) {
+      lowImpactUpdates[fieldName] = nextValue;
+      return;
+    }
+
+    highImpactBefore[fieldName] = currentValue;
+    highImpactAfter[fieldName] = nextValue;
+  });
+
+  if (Object.keys(lowImpactUpdates).length) {
+    await applyLowImpactUpdate({
+      entityType,
+      entityId,
+      updates: lowImpactUpdates,
+      actor: profile,
+      pagePath
+    });
+  }
+
+  if (Object.keys(highImpactAfter).length) {
+    await createHighImpactRequest({
+      entityType,
+      entityId,
+      beforeValue: highImpactBefore,
+      afterValue: highImpactAfter,
+      actor: profile,
+      pagePath
+    });
+  }
 }
 
 export async function reviewChangeRequest(changeRequestId: string, decision: "approved" | "rejected") {
   const profile = await requireProfile("reviewer");
 
   if (!hasSupabaseEnv()) {
+    revalidateOperationalPaths("/review");
     return;
   }
 
@@ -115,11 +349,20 @@ export async function reviewChangeRequest(changeRequestId: string, decision: "ap
     return;
   }
 
-  if (decision === "approved") {
-    await supabase
-      .from(request.entity_type)
-      .update(request.after_value)
-      .eq("id", request.entity_id);
+  const entityType = request.entity_type as SupportedEntityType;
+  const config = entityType in entityConfig ? getEntityConfig(entityType) : null;
+  const isRefreshRequest = Array.isArray(request.changed_fields) && request.changed_fields.includes("refresh_requested");
+
+  if (decision === "approved" && config && !isRefreshRequest) {
+    const updatePayload =
+      config.table === "capabilities" || config.table === "companies"
+        ? {
+            ...(request.after_value as Record<string, unknown>),
+            last_updated_at: new Date().toISOString()
+          }
+        : (request.after_value as Record<string, unknown>);
+
+    await supabase.from(config.table).update(updatePayload).eq("id", request.entity_id);
   }
 
   await supabase
@@ -131,29 +374,29 @@ export async function reviewChangeRequest(changeRequestId: string, decision: "ap
     })
     .eq("id", changeRequestId);
 
-  await supabase.from("audit_log").insert({
-    actor_id: profile.id,
-    actor_email: profile.email,
-    actor_name: profile.fullName,
-    event_type: `change_request_${decision}`,
-    entity_type: request.entity_type,
-    entity_id: request.entity_id,
-    summary: `${decision === "approved" ? "Approved" : "Rejected"} high-impact change.`
+  await insertAuditEvent({
+    actorId: profile.id,
+    actorEmail: profile.email,
+    actorName: profile.fullName,
+    eventType: `change_request_${decision}`,
+    entityType: request.entity_type,
+    entityId: request.entity_id,
+    summary: `${decision === "approved" ? "Approved" : "Rejected"} change request.`
   });
 
-  revalidatePath("/review");
-  revalidatePath("/use-cases");
-
+  revalidateOperationalPaths("/review");
 }
 
 export async function requestRefresh(entityType: string, entityId: string) {
   const profile = await requireProfile("editor");
 
   if (!hasSupabaseEnv()) {
+    revalidateOperationalPaths("/review");
     return;
   }
 
   const supabase = createAdminClient();
+
   await supabase.from("change_requests").insert({
     entity_type: entityType,
     entity_id: entityId,
@@ -165,16 +408,15 @@ export async function requestRefresh(entityType: string, entityId: string) {
     status: "pending"
   });
 
-  await supabase.from("audit_log").insert({
-    actor_id: profile.id,
-    actor_email: profile.email,
-    actor_name: profile.fullName,
-    event_type: "refresh_requested",
-    entity_type: entityType,
-    entity_id: entityId,
+  await insertAuditEvent({
+    actorId: profile.id,
+    actorEmail: profile.email,
+    actorName: profile.fullName,
+    eventType: "refresh_requested",
+    entityType,
+    entityId,
     summary: "Requested manual refresh."
   });
 
-  revalidatePath("/review");
-
+  revalidateOperationalPaths("/review");
 }

@@ -9,6 +9,9 @@ import { toTitleCase } from "@/lib/utils";
 import type { CapabilityCardView } from "@/types/view-models";
 
 type FilterState = {
+  domain: string;
+  company: string;
+  cluster: string;
   pathway: string;
   geography: string;
   defenceRelevance: string;
@@ -16,6 +19,9 @@ type FilterState = {
 };
 
 const defaultState: FilterState = {
+  domain: "all",
+  company: "all",
+  cluster: "all",
   pathway: "all",
   geography: "all",
   defenceRelevance: "all",
@@ -23,14 +29,55 @@ const defaultState: FilterState = {
 };
 
 export function UseCaseCapabilityFilters({
-  capabilities
+  capabilities,
+  useCaseSlug
 }: {
   capabilities: CapabilityCardView[];
+  useCaseSlug: string;
 }) {
   const [filters, setFilters] = useState<FilterState>(defaultState);
+  const domainOptions = useMemo(
+    () => [
+      { value: "all", label: "All" },
+      ...Array.from(new Map(capabilities.map((entry) => [entry.domain.id, entry.domain.name])).entries()).map(
+        ([value, label]) => ({ value, label })
+      )
+    ],
+    [capabilities]
+  );
+  const companyOptions = useMemo(
+    () => [
+      { value: "all", label: "All" },
+      ...Array.from(new Map(capabilities.map((entry) => [entry.company.id, entry.company.name])).entries()).map(
+        ([value, label]) => ({ value, label })
+      )
+    ],
+    [capabilities]
+  );
+  const clusterOptions = useMemo(
+    () => [
+      { value: "all", label: "All" },
+      ...Array.from(new Map(capabilities.map((entry) => [entry.cluster.id, entry.cluster.name])).entries()).map(
+        ([value, label]) => ({ value, label })
+      )
+    ],
+    [capabilities]
+  );
 
   const filtered = useMemo(() => {
     return capabilities.filter((entry) => {
+      if (filters.domain !== "all" && entry.domain.id !== filters.domain) {
+        return false;
+      }
+
+      if (filters.company !== "all" && entry.company.id !== filters.company) {
+        return false;
+      }
+
+      if (filters.cluster !== "all" && entry.cluster.id !== filters.cluster) {
+        return false;
+      }
+
       if (filters.pathway !== "all" && entry.mapping.pathway !== filters.pathway) {
         return false;
       }
@@ -57,23 +104,50 @@ export function UseCaseCapabilityFilters({
   return (
     <div className="space-y-4">
       <Card className="rounded-[28px] border-dashed bg-white/45 shadow-none">
-        <CardContent className="grid gap-3 pt-6 md:grid-cols-4">
+        <CardContent className="grid gap-3 pt-6 md:grid-cols-2 xl:grid-cols-4">
+          <FilterGroup
+            label="Domain"
+            value={filters.domain}
+            options={domainOptions}
+            onChange={(value) => setFilters((current) => ({ ...current, domain: value }))}
+          />
+          <FilterGroup
+            label="Company"
+            value={filters.company}
+            options={companyOptions}
+            onChange={(value) => setFilters((current) => ({ ...current, company: value }))}
+          />
+          <FilterGroup
+            label="Cluster"
+            value={filters.cluster}
+            options={clusterOptions}
+            onChange={(value) => setFilters((current) => ({ ...current, cluster: value }))}
+          />
           <FilterGroup
             label="Pathway"
             value={filters.pathway}
-            options={["all", "build", "validate", "scale"]}
+            options={["all", "build", "validate", "scale"].map((option) => ({
+              value: option,
+              label: option === "all" ? "All" : toTitleCase(option)
+            }))}
             onChange={(value) => setFilters((current) => ({ ...current, pathway: value }))}
           />
           <FilterGroup
             label="Geography"
             value={filters.geography}
-            options={["all", "canada", "nato", "global"]}
+            options={["all", "canada", "nato", "global"].map((option) => ({
+              value: option,
+              label: option === "all" ? "All" : toTitleCase(option)
+            }))}
             onChange={(value) => setFilters((current) => ({ ...current, geography: value }))}
           />
           <FilterGroup
             label="Defence Relevance"
             value={filters.defenceRelevance}
-            options={["all", "high", "medium", "low"]}
+            options={["all", "high", "medium", "low"].map((option) => ({
+              value: option,
+              label: option === "all" ? "All" : toTitleCase(option)
+            }))}
             onChange={(value) =>
               setFilters((current) => ({ ...current, defenceRelevance: value }))
             }
@@ -81,7 +155,10 @@ export function UseCaseCapabilityFilters({
           <FilterGroup
             label="Use Case Relevance"
             value={filters.relevanceBand}
-            options={["all", "high", "medium", "low"]}
+            options={["all", "high", "medium", "low"].map((option) => ({
+              value: option,
+              label: option === "all" ? "All" : toTitleCase(option)
+            }))}
             onChange={(value) => setFilters((current) => ({ ...current, relevanceBand: value }))}
           />
         </CardContent>
@@ -96,7 +173,7 @@ export function UseCaseCapabilityFilters({
                     Capability
                   </div>
                   <Link
-                    href={`/capabilities/${entry.capability.id}`}
+                    href={`/capabilities/${entry.capability.id}?fromUseCase=${useCaseSlug}`}
                     title="Capability = product, system, or solution"
                     className="block truncate text-xl font-bold tracking-tight no-underline"
                   >
@@ -116,7 +193,7 @@ export function UseCaseCapabilityFilters({
                   Company
                 </div>
                 <Link
-                  href={`/companies/${entry.company.id}`}
+                  href={`/companies/${entry.company.id}?fromUseCase=${useCaseSlug}&fromCapability=${entry.capability.id}`}
                   className="text-sm font-medium text-slate-600 no-underline hover:text-[var(--link-hover)]"
                 >
                   {entry.company.name}
@@ -140,6 +217,9 @@ export function UseCaseCapabilityFilters({
                 </Badge>
                 <Badge tone="muted" className="px-3 py-1.5">
                   {entry.cluster.name}
+                </Badge>
+                <Badge tone="muted" className="px-3 py-1.5">
+                  {entry.domain.name}
                 </Badge>
               </div>
               <div className="flex flex-wrap gap-2 pt-1">
@@ -193,7 +273,7 @@ function FilterGroup({
 }: {
   label: string;
   value: string;
-  options: string[];
+  options: Array<{ value: string; label: string }>;
   onChange: (value: string) => void;
 }) {
   return (
@@ -207,8 +287,8 @@ function FilterGroup({
         className="h-11 w-full rounded-2xl border border-[var(--border)] bg-white/80 px-4 text-sm"
       >
         {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+          <option key={option.value} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>

@@ -2,6 +2,7 @@ import "server-only";
 
 import {
   auditEvents,
+  aiRuns as mockAiRuns,
   capabilities as mockCapabilities,
   capabilityUseCases as mockCapabilityUseCases,
   changeRequests as mockChangeRequests,
@@ -19,6 +20,7 @@ import {
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 import { createClient } from "@/lib/supabase/server";
 import type {
+  AiRun,
   AuditEvent,
   Capability,
   CapabilityUseCase,
@@ -40,12 +42,17 @@ import type {
   CitationView,
   CompanyProfileView,
   DatasetState,
+  ReviewQueueItemView,
   ReviewQueueView,
   UseCaseView
 } from "@/types/view-models";
+import { formatFieldLabel, formatValueForDisplay } from "@/lib/utils";
+import { isAiGeneratedRequest, resolveAiRunForRequest } from "@/lib/review/provenance";
 
 function getMockDataset(): DatasetState {
   return {
+    auditEvents,
+    aiRuns: mockAiRuns,
     domains: mockDomains,
     useCases: mockUseCases,
     clusters: mockClusters,
@@ -66,6 +73,8 @@ async function getSupabaseDataset(): Promise<DatasetState> {
   const supabase = await createClient();
 
   const [
+    auditLog,
+    aiRuns,
     domains,
     useCases,
     clusters,
@@ -80,6 +89,8 @@ async function getSupabaseDataset(): Promise<DatasetState> {
     useCaseObservations,
     changeRequests
   ] = await Promise.all([
+    supabase.from("audit_log").select("*").order("created_at", { ascending: false }),
+    supabase.from("ai_runs").select("*").order("created_at", { ascending: false }),
     supabase.from("domains").select("*"),
     supabase.from("use_cases").select("*"),
     supabase.from("clusters").select("*"),
@@ -96,6 +107,8 @@ async function getSupabaseDataset(): Promise<DatasetState> {
   ]);
 
   return {
+    auditEvents: (auditLog.data ?? []).map(normalizeAuditEvent),
+    aiRuns: (aiRuns.data ?? []).map(normalizeAiRun),
     domains: (domains.data ?? []).map(normalizeDomain),
     useCases: (useCases.data ?? []).map(normalizeUseCase),
     clusters: (clusters.data ?? []).map(normalizeCluster),
@@ -278,6 +291,31 @@ function normalizeChangeRequest(row: Record<string, unknown>): ChangeRequest {
   };
 }
 
+function normalizeAuditEvent(row: Record<string, unknown>): AuditEvent {
+  return {
+    id: String(row.id),
+    actorName: row.actor_name ? String(row.actor_name) : "Unknown actor",
+    actorEmail: String(row.actor_email),
+    eventType: String(row.event_type),
+    entityType: String(row.entity_type),
+    entityId: String(row.entity_id),
+    summary: String(row.summary),
+    createdAt: String(row.created_at)
+  };
+}
+
+function normalizeAiRun(row: Record<string, unknown>): AiRun {
+  return {
+    id: String(row.id),
+    entityType: String(row.entity_type),
+    entityId: String(row.entity_id),
+    status: String(row.status) as AiRun["status"],
+    promptVersion: String(row.prompt_version),
+    resultSummary: row.result_summary ? String(row.result_summary) : null,
+    createdAt: String(row.created_at)
+  };
+}
+
 export async function getDataset() {
   if (!hasSupabaseEnv()) {
     return getMockDataset();
@@ -290,9 +328,9 @@ function buildCitationMap(state: DatasetState) {
   const evidenceById = new Map(state.evidenceSnippets.map((item) => [item.id, item]));
   const sourceById = new Map(state.sources.map((item) => [item.id, item]));
 
-  return (entityId: string) => {
+  return (entityType: string, entityId: string) => {
     return state.fieldCitations
-      .filter((citation) => citation.entityId === entityId)
+      .filter((citation) => citation.entityType === entityType && citation.entityId === entityId)
       .map((citation): CitationView | null => {
         const snippet = evidenceById.get(citation.evidenceSnippetId);
         const source = snippet ? sourceById.get(snippet.sourceId) : null;
@@ -316,6 +354,7 @@ function buildCitationMap(state: DatasetState) {
 
 export async function getHomeData() {
   const state = await getDataset();
+  const pendingReviews = buildReviewQueueItems(state).filter((item) => item.status === "pending");
 
   const topUseCases = state.useCases
     .filter((item) => item.active)
@@ -327,13 +366,14 @@ export async function getHomeData() {
       };
     });
 
-  const recentUpdates = auditEvents.slice(0, 5);
-  const pendingReviews = state.changeRequests.filter((item) => item.status === "pending");
+  const recentUpdates = state.auditEvents.slice(0, 5);
+  const queuedAiRuns = state.aiRuns.filter((item) => item.status === "queued" || item.status === "running");
 
   return {
     useCases: topUseCases,
     pendingReviews,
-    recentUpdates
+    recentUpdates,
+    queuedAiRuns
   };
 }
 
@@ -372,20 +412,22 @@ export async function getUseCaseBySlug(slug: string): Promise<UseCaseView | null
     const company = capability
       ? state.companies.find((item) => item.id === capability.companyId)
       : undefined;
+    const domain = capability ? state.domains.find((item) => item.id === capability.domainId) : undefined;
     const cluster = state.clusters.find((item) => item.id === mapping.clusterId);
     const signals = state.signals.filter((item) => item.capabilityId === mapping.capabilityId);
 
-    if (!capability || !company || !cluster) {
+    if (!capability || !company || !domain || !cluster) {
       return null;
     }
 
     return {
       capability,
       company,
+      domain,
       mapping,
       cluster,
       signals,
-      citations: citationLookup(mapping.id)
+      citations: citationLookup("capability_use_case", mapping.id)
     };
   });
 
@@ -437,6 +479,9 @@ export async function getCapabilityById(id: string): Promise<CapabilityProfileVi
   }
 
   const citationLookup = buildCitationMap(state);
+  const signals = state.signals
+    .filter((item) => item.capabilityId === capability.id)
+    .sort((left, right) => new Date(right.observedAt).getTime() - new Date(left.observedAt).getTime());
 
   return {
     capability,
@@ -455,17 +500,15 @@ export async function getCapabilityById(id: string): Promise<CapabilityProfileVi
           ...mapping,
           useCase,
           cluster,
-          citations: citationLookup(mapping.id)
+          citations: citationLookup("capability_use_case", mapping.id)
         };
       })
-      .filter((value): value is NonNullable<typeof value> => Boolean(value)),
-    signals: state.signals.filter((item) => item.capabilityId === capability.id),
-    citations: [
-      ...citationLookup(capability.id),
-      ...citationLookup(
-        state.capabilityUseCases.find((item) => item.capabilityId === capability.id)?.id ?? ""
-      )
-    ],
+      .filter((value): value is NonNullable<typeof value> => Boolean(value))
+      .sort((left, right) => right.rankingScore - left.rankingScore),
+    signals,
+    citations: citationLookup("capability", capability.id),
+    companyCitations: citationLookup("company", company.id),
+    latestSignal: signals[0] ?? null,
     contacts: state.contacts.filter((item) => item.companyId === company.id)
   };
 }
@@ -479,12 +522,57 @@ export async function getCompanyById(id: string): Promise<CompanyProfileView | n
   }
 
   const citationLookup = buildCitationMap(state);
+  const companyCapabilities = state.capabilities
+    .filter((item) => item.companyId === company.id)
+    .map((capability) => {
+      const mappings = state.capabilityUseCases
+        .filter((item) => item.capabilityId === capability.id)
+        .map((mapping) => {
+          const useCase = state.useCases.find((item) => item.id === mapping.useCaseId);
+          const cluster = state.clusters.find((item) => item.id === mapping.clusterId);
+
+          if (!useCase || !cluster) {
+            return null;
+          }
+
+          return {
+            ...mapping,
+            useCase,
+            cluster,
+            citations: citationLookup("capability_use_case", mapping.id)
+          };
+        })
+        .filter((value): value is NonNullable<typeof value> => Boolean(value))
+        .sort((left, right) => right.rankingScore - left.rankingScore);
+
+      const signals = state.signals
+        .filter((item) => item.capabilityId === capability.id)
+        .sort((left, right) => new Date(right.observedAt).getTime() - new Date(left.observedAt).getTime());
+
+      return {
+        capability,
+        mappings,
+        signals,
+        citations: citationLookup("capability", capability.id),
+        latestSignal: signals[0] ?? null
+      };
+    })
+    .sort((left, right) => {
+      const leftScore = left.mappings[0]?.rankingScore ?? 0;
+      const rightScore = right.mappings[0]?.rankingScore ?? 0;
+      return rightScore - leftScore;
+    });
+
+  const companySignals = companyCapabilities
+    .flatMap((item) => item.signals)
+    .sort((left, right) => new Date(right.observedAt).getTime() - new Date(left.observedAt).getTime());
 
   return {
     company,
-    capabilities: state.capabilities.filter((item) => item.companyId === company.id),
+    capabilities: companyCapabilities,
     contacts: state.contacts.filter((item) => item.companyId === company.id),
-    citations: citationLookup(company.id)
+    citations: citationLookup("company", company.id),
+    signals: companySignals
   };
 }
 
@@ -516,12 +604,125 @@ export async function searchRecords(query: string) {
 export async function getReviewQueue(): Promise<ReviewQueueView> {
   const state = await getDataset();
   return {
-    pending: state.changeRequests.filter((item) => item.status === "pending")
+    pending: buildReviewQueueItems(state).filter((item) => item.status === "pending")
   };
 }
 
+function buildReviewQueueItems(state: DatasetState): ReviewQueueItemView[] {
+  const companiesById = new Map(state.companies.map((item) => [item.id, item]));
+  const capabilitiesById = new Map(state.capabilities.map((item) => [item.id, item]));
+  const useCasesById = new Map(state.useCases.map((item) => [item.id, item]));
+  const clustersById = new Map(state.clusters.map((item) => [item.id, item]));
+  const citationLookup = buildCitationMap(state);
+
+  return state.changeRequests
+    .sort((left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime())
+    .map((request) => {
+      let entityLabel = request.entityId;
+      let entityHref: string | null = null;
+      let entityContext: string | null = null;
+      let relatedMapping: CapabilityUseCase | undefined;
+      let supportingCitations: CitationView[] = [];
+
+      if (request.entityType === "capability") {
+        const capability = capabilitiesById.get(request.entityId);
+        const company = capability ? companiesById.get(capability.companyId) : null;
+        entityLabel = capability?.name ?? entityLabel;
+        entityHref = capability ? `/capabilities/${capability.id}` : null;
+        entityContext = company ? company.name : null;
+        supportingCitations = citationLookup("capability", request.entityId).slice(0, 3);
+      }
+
+      if (request.entityType === "company") {
+        const company = companiesById.get(request.entityId);
+        entityLabel = company?.name ?? entityLabel;
+        entityHref = company ? `/companies/${company.id}` : null;
+        entityContext = company?.headquarters ?? null;
+        supportingCitations = citationLookup("company", request.entityId).slice(0, 3);
+      }
+
+      if (request.entityType === "capability_use_case") {
+        const mapping = state.capabilityUseCases.find((item) => item.id === request.entityId);
+        relatedMapping = mapping;
+        const capability = mapping ? capabilitiesById.get(mapping.capabilityId) : null;
+        const useCase = mapping ? useCasesById.get(mapping.useCaseId) : null;
+        const cluster = mapping ? clustersById.get(mapping.clusterId) : null;
+        const company = capability ? companiesById.get(capability.companyId) : null;
+        entityLabel = capability && useCase ? `${capability.name} → ${useCase.name}` : entityLabel;
+        entityHref = capability ? `/capabilities/${capability.id}` : null;
+        entityContext = [company?.name, cluster?.name].filter(Boolean).join(" · ") || null;
+        supportingCitations = dedupeCitations([
+          ...citationLookup("capability_use_case", request.entityId),
+          ...(capability ? citationLookup("capability", capability.id) : [])
+        ]).slice(0, 4);
+      }
+
+      if (request.entityType === "use_case") {
+        const useCase = useCasesById.get(request.entityId);
+        entityLabel = useCase?.name ?? entityLabel;
+        entityHref = useCase ? `/use-cases/${useCase.slug}` : null;
+      }
+
+      const changeFields = request.changedFields.length
+        ? request.changedFields
+        : Array.from(new Set([...Object.keys(request.beforeValue), ...Object.keys(request.afterValue)]));
+
+      const originType = isAiGeneratedRequest(request) ? "ai" : "human";
+      const aiRun = originType === "ai"
+        ? resolveAiRunForRequest({
+            request,
+            aiRuns: state.aiRuns,
+            mapping: relatedMapping
+          })
+        : null;
+      const aiSourceLabel =
+        request.entityType === "capability_use_case" && relatedMapping
+          ? useCasesById.get(relatedMapping.useCaseId)?.name ?? entityLabel
+          : entityLabel;
+
+      return {
+        ...request,
+        entityLabel,
+        entityHref,
+        entityContext,
+        isRefreshRequest: changeFields.includes("refresh_requested"),
+        originType,
+        originLabel: originType === "ai" ? "AI suggestion" : "Human edit",
+        originSummary:
+          originType === "ai"
+            ? aiRun
+              ? `Derived by the enrichment worker from the ${aiSourceLabel} run and routed into review before any live update.`
+              : "Derived by the enrichment worker and routed into review before any live update."
+            : `Submitted by ${request.requesterName} and routed into review before publication.`,
+        aiRunContext: aiRun
+          ? {
+              createdAt: aiRun.createdAt,
+              promptVersion: aiRun.promptVersion,
+              status: aiRun.status,
+              resultSummary: aiRun.resultSummary,
+              sourceLabel: aiSourceLabel
+            }
+          : null,
+        supportingCitations,
+        changedFieldDetails: changeFields.map((fieldName) => ({
+          fieldName,
+          label: formatFieldLabel(fieldName),
+          beforeValue:
+            fieldName === "refresh_requested"
+              ? "Not requested"
+              : formatValueForDisplay(request.beforeValue[fieldName]),
+          afterValue:
+            fieldName === "refresh_requested"
+              ? "Requested"
+              : formatValueForDisplay(request.afterValue[fieldName])
+        }))
+      };
+    });
+}
+
 export async function getRecentAuditEvents(): Promise<AuditEvent[]> {
-  return auditEvents.slice(0, 8);
+  const state = await getDataset();
+  return state.auditEvents.slice(0, 8);
 }
 
 export async function getAdminTaxonomy() {
@@ -535,17 +736,40 @@ export async function getAdminTaxonomy() {
 
 export async function getAdminEnrichmentState() {
   const state = await getDataset();
-  const pendingRefreshes = state.changeRequests.filter((item) =>
-    item.changedFields.includes("refresh_requested")
+  const pendingRefreshes = buildReviewQueueItems(state).filter((item) => item.isRefreshRequest && item.status === "pending");
+  const pendingAiSuggestions = buildReviewQueueItems(state).filter(
+    (item) => item.originType === "ai" && item.status === "pending"
   );
 
   return {
+    useCases: state.useCases.filter((item) => item.active),
     pendingRefreshes,
-    queuedRuns: []
+    pendingAiSuggestions,
+    queuedRuns: state.aiRuns
   };
 }
 
 export async function getSessionProfileSummary(): Promise<Profile | null> {
   const { getCurrentProfile } = await import("@/lib/auth");
   return getCurrentProfile();
+}
+
+function dedupeCitations(citations: CitationView[]) {
+  const seen = new Set<string>();
+
+  return citations.filter((citation) => {
+    const key = [
+      citation.fieldName,
+      citation.sourceTitle,
+      citation.sourceUrl,
+      citation.excerpt
+    ].join("::");
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
 }
