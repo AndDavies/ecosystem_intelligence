@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Clock3, Download, FolderSync } from "lucide-react";
+import { ArrowRight, BookOpen, Clock3, Download, FolderSync } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { GlobalSearch } from "@/components/search/global-search";
@@ -47,6 +47,12 @@ export default async function AppHomePage() {
                 <Link href="/api/export?type=use-case-targets&useCaseSlug=arctic-domain-awareness">
                   Export Top Targets CSV
                   <Download className="size-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="w-full justify-between">
+                <Link href="/help">
+                  Open Help Center
+                  <BookOpen className="size-4" />
                 </Link>
               </Button>
               {profile.role === "admin" ? (

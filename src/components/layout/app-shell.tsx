@@ -35,6 +35,9 @@ export function AppShell({ children, profile }: AppShellProps) {
             <Link href="/use-cases" className="rounded-full px-3 py-2 text-sm text-[var(--foreground)] no-underline hover:bg-white/60 hover:text-[var(--primary)]">
               Use Cases
             </Link>
+            <Link href="/help" className="rounded-full px-3 py-2 text-sm text-[var(--foreground)] no-underline hover:bg-white/60 hover:text-[var(--primary)]">
+              Help
+            </Link>
             <Link href="/app#search" className="rounded-full px-3 py-2 text-sm text-[var(--foreground)] no-underline hover:bg-white/60 hover:text-[var(--primary)]">
               <span className="inline-flex items-center gap-2">
                 <Search className="size-4" />

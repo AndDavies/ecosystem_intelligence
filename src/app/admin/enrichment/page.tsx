@@ -25,11 +25,16 @@ export default async function AdminEnrichmentPage() {
           { label: "Enrichment" }
         ]}
         actions={
-          <form action={processEnrichmentQueue}>
-            <Button type="submit" variant="outline">
-              Process queued runs
-            </Button>
-          </form>
+          <div className="flex flex-wrap gap-2">
+            <Link href="/help/trust-and-review" className="inline-flex items-center text-sm font-medium">
+              Help on AI review flow
+            </Link>
+            <form action={processEnrichmentQueue}>
+              <Button type="submit" variant="outline">
+                Process queued runs
+              </Button>
+            </form>
+          </div>
         }
       />
       <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">

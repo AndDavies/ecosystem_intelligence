@@ -23,6 +23,11 @@ export default async function ReviewPage() {
           { label: "Home", href: "/app" },
           { label: "Review" }
         ]}
+        actions={
+          <Link href="/help/trust-and-review" className="text-sm font-medium">
+            Review guide
+          </Link>
+        }
       />
       <div className="space-y-4">
         {queue.pending.map((request) => (

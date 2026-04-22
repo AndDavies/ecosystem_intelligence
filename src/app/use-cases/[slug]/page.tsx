@@ -99,6 +99,15 @@ export default async function UseCaseDetailPage({
               <li>4. Click into capabilities for details and supporting evidence.</li>
             </ol>
           </details>
+          <div className="flex flex-wrap gap-2 text-sm">
+            <Link href="/help/use-case-discovery" className="font-medium">
+              Read the discovery guide
+            </Link>
+            <span className="text-[var(--muted-foreground)]">or</span>
+            <Link href="/help/first-walkthrough" className="font-medium">
+              follow the 10-minute walkthrough
+            </Link>
+          </div>
         </CardContent>
       </Card>
 
