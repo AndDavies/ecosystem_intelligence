@@ -2,74 +2,19 @@
 
 import { revalidatePath } from "next/cache";
 import { requireProfile } from "@/lib/auth";
+import {
+  buildImpactChanges,
+  entityConfig,
+  getEntityConfig,
+  normalizeFieldValue,
+  type SupportedEntityType
+} from "@/lib/review/change-routing";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
-
-type SupportedEntityType = "capability" | "company" | "capability_use_case" | "use_case";
-
-const entityConfig: Record<
-  SupportedEntityType,
-  {
-    table: "capabilities" | "companies" | "capability_use_cases" | "use_cases";
-    lowImpactFields: string[];
-    highImpactFields: string[];
-    nullableFields: string[];
-  }
-> = {
-  capability: {
-    table: "capabilities",
-    lowImpactFields: ["summary", "company_facing_context"],
-    highImpactFields: [],
-    nullableFields: ["company_facing_context"]
-  },
-  company: {
-    table: "companies",
-    lowImpactFields: [
-      "overview",
-      "market_context",
-      "website_url",
-      "public_contact_email",
-      "public_contact_phone"
-    ],
-    highImpactFields: [],
-    nullableFields: ["market_context", "website_url", "public_contact_email", "public_contact_phone"]
-  },
-  capability_use_case: {
-    table: "capability_use_cases",
-    lowImpactFields: ["why_it_matters", "action_note"],
-    highImpactFields: ["pathway", "relevance_band", "defence_relevance", "suggested_action_type"],
-    nullableFields: ["action_note"]
-  },
-  use_case: {
-    table: "use_cases",
-    lowImpactFields: [],
-    highImpactFields: [],
-    nullableFields: []
-  }
-};
-
-function getEntityConfig(entityType: string) {
-  if (!(entityType in entityConfig)) {
-    throw new Error(`Unsupported entity type: ${entityType}`);
-  }
-
-  return entityConfig[entityType as SupportedEntityType];
-}
 
 function getStringValue(formData: FormData, key: string) {
   const value = formData.get(key);
   return typeof value === "string" ? value : "";
-}
-
-function normalizeFieldValue(entityType: SupportedEntityType, fieldName: string, rawValue: string) {
-  const config = getEntityConfig(entityType);
-  const value = rawValue.trim();
-
-  if (!value && config.nullableFields.includes(fieldName)) {
-    return null;
-  }
-
-  return value;
 }
 
 async function insertAuditEvent(input: {
@@ -281,31 +226,17 @@ export async function submitCapabilityMappingEdit(formData: FormData) {
   const entityId = getStringValue(formData, "entityId");
   const pagePath = getStringValue(formData, "pagePath");
   const config = getEntityConfig(entityType);
-
   const allFields = [...config.lowImpactFields, ...config.highImpactFields];
-  const lowImpactUpdates: Record<string, string | null> = {};
-  const highImpactBefore: Record<string, unknown> = {};
-  const highImpactAfter: Record<string, unknown> = {};
-
-  allFields.forEach((fieldName) => {
-    const nextValue = normalizeFieldValue(entityType, fieldName, getStringValue(formData, fieldName));
-    const currentValue = normalizeFieldValue(
-      entityType,
-      fieldName,
-      getStringValue(formData, `current_${fieldName}`)
-    );
-
-    if (nextValue === currentValue) {
-      return;
-    }
-
-    if (config.lowImpactFields.includes(fieldName)) {
-      lowImpactUpdates[fieldName] = nextValue;
-      return;
-    }
-
-    highImpactBefore[fieldName] = currentValue;
-    highImpactAfter[fieldName] = nextValue;
+  const nextValues = Object.fromEntries(
+    allFields.map((fieldName) => [fieldName, getStringValue(formData, fieldName)])
+  );
+  const currentValues = Object.fromEntries(
+    allFields.map((fieldName) => [fieldName, getStringValue(formData, `current_${fieldName}`)])
+  );
+  const { lowImpactUpdates, highImpactBefore, highImpactAfter } = buildImpactChanges({
+    entityType,
+    nextValues,
+    currentValues
   });
 
   if (Object.keys(lowImpactUpdates).length) {

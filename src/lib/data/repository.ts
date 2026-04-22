@@ -48,6 +48,7 @@ import type {
 } from "@/types/view-models";
 import { formatFieldLabel, formatValueForDisplay } from "@/lib/utils";
 import { isAiGeneratedRequest, resolveAiRunForRequest } from "@/lib/review/provenance";
+import { summarizeFreshness } from "@/lib/freshness";
 
 function getMockDataset(): DatasetState {
   return {
@@ -355,14 +356,38 @@ function buildCitationMap(state: DatasetState) {
 export async function getHomeData() {
   const state = await getDataset();
   const pendingReviews = buildReviewQueueItems(state).filter((item) => item.status === "pending");
+  const pendingAiSuggestions = pendingReviews.filter((item) => item.originType === "ai");
 
   const topUseCases = state.useCases
     .filter((item) => item.active)
     .map((useCase) => {
-      const targetCount = state.capabilityUseCases.filter((item) => item.useCaseId === useCase.id).length;
+      const mappings = state.capabilityUseCases.filter((item) => item.useCaseId === useCase.id);
+      const targetCount = mappings.length;
+      const mappedCapabilities = mappings
+        .map((mapping) => {
+          const capability = state.capabilities.find((item) => item.id === mapping.capabilityId);
+
+          if (!capability) {
+            return null;
+          }
+
+          return {
+            mapping,
+            capability
+          };
+        })
+        .filter((value): value is NonNullable<typeof value> => Boolean(value));
+
       return {
         ...useCase,
-        targetCount
+        targetCount,
+        freshness: summarizeFreshness(
+          mappedCapabilities.map((entry) => ({
+            lastUpdatedAt: entry.capability.lastUpdatedAt,
+            lastSignalAt: entry.mapping.lastSignalAt,
+            staleAfterDays: entry.mapping.staleAfterDays
+          }))
+        )
       };
     });
 
@@ -372,6 +397,7 @@ export async function getHomeData() {
   return {
     useCases: topUseCases,
     pendingReviews,
+    pendingAiSuggestions,
     recentUpdates,
     queuedAiRuns
   };
@@ -383,12 +409,35 @@ export async function getUseCasesIndex() {
   return state.useCases
     .filter((item) => item.active)
     .map((useCase) => {
-      const capabilityCount = state.capabilityUseCases.filter((mapping) => mapping.useCaseId === useCase.id).length;
+      const mappings = state.capabilityUseCases.filter((mapping) => mapping.useCaseId === useCase.id);
+      const capabilityCount = mappings.length;
       const domains = state.domains.filter((domain) => useCase.domainIds.includes(domain.id));
+      const mappedCapabilities = mappings
+        .map((mapping) => {
+          const capability = state.capabilities.find((item) => item.id === mapping.capabilityId);
+
+          if (!capability) {
+            return null;
+          }
+
+          return {
+            mapping,
+            capability
+          };
+        })
+        .filter((value): value is NonNullable<typeof value> => Boolean(value));
+
       return {
         ...useCase,
         capabilityCount,
-        domains
+        domains,
+        freshness: summarizeFreshness(
+          mappedCapabilities.map((entry) => ({
+            lastUpdatedAt: entry.capability.lastUpdatedAt,
+            lastSignalAt: entry.mapping.lastSignalAt,
+            staleAfterDays: entry.mapping.staleAfterDays
+          }))
+        )
       };
     });
 }

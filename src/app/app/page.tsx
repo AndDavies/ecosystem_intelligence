@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, Clock3, Download, FolderSync } from "lucide-react
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { GlobalSearch } from "@/components/search/global-search";
+import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,9 +27,10 @@ export default async function AppHomePage() {
                 Faster ecosystem understanding, evidence-backed target identification.
               </CardTitle>
             </CardHeader>
-            <CardContent className="grid gap-5 md:grid-cols-3">
+            <CardContent className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               <Metric label="Active Use Cases" value={String(home.useCases.length)} />
               <Metric label="Pending Reviews" value={String(home.pendingReviews.length)} />
+              <Metric label="Pending AI Suggestions" value={String(home.pendingAiSuggestions.length)} />
               <Metric label="Queued AI Runs" value={String(home.queuedAiRuns.length)} />
             </CardContent>
           </Card>
@@ -82,6 +84,12 @@ export default async function AppHomePage() {
                       {useCase.summary}
                     </div>
                   </div>
+                  <div className="flex flex-wrap gap-2">
+                    <FreshnessBadge freshness={useCase.freshness} />
+                    {useCase.freshness.lastActivityAt ? (
+                      <Badge tone="muted">Last activity {formatDate(useCase.freshness.lastActivityAt)}</Badge>
+                    ) : null}
+                  </div>
                   <div className="flex items-center justify-between">
                     <Badge>{useCase.targetCount} mapped capabilities</Badge>
                     <Link href={`/use-cases/${useCase.slug}`} className="text-sm font-medium text-[var(--primary)]">
@@ -124,7 +132,12 @@ export default async function AppHomePage() {
               {home.pendingReviews.length ? (
                 home.pendingReviews.map((request) => (
                   <div key={request.id} className="rounded-3xl border border-[var(--border)] bg-white/60 p-4">
-                    <div className="text-sm font-medium">{request.entityLabel}</div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <div className="text-sm font-medium">{request.entityLabel}</div>
+                      <Badge tone={request.originType === "ai" ? "info" : "muted"}>
+                        {request.originLabel}
+                      </Badge>
+                    </div>
                     <div className="mt-1 text-sm text-[var(--muted-foreground)]">
                       {request.changedFieldDetails.map((field) => field.label).join(", ")}
                     </div>

@@ -32,13 +32,66 @@ function parseValue(value: string) {
   return trimmed;
 }
 
+export function parseCsvContent(content: string) {
+  const rows: string[][] = [];
+  let currentRow: string[] = [];
+  let currentCell = "";
+  let inQuotes = false;
+
+  for (let index = 0; index < content.length; index += 1) {
+    const char = content[index];
+    const nextChar = content[index + 1];
+
+    if (char === '"') {
+      if (inQuotes && nextChar === '"') {
+        currentCell += '"';
+        index += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+
+    if (char === "," && !inQuotes) {
+      currentRow.push(currentCell);
+      currentCell = "";
+      continue;
+    }
+
+    if ((char === "\n" || char === "\r") && !inQuotes) {
+      if (char === "\r" && nextChar === "\n") {
+        index += 1;
+      }
+
+      currentRow.push(currentCell);
+      currentCell = "";
+
+      if (currentRow.some((cell) => cell.length > 0)) {
+        rows.push(currentRow);
+      }
+
+      currentRow = [];
+      continue;
+    }
+
+    currentCell += char;
+  }
+
+  currentRow.push(currentCell);
+
+  if (currentRow.some((cell) => cell.length > 0)) {
+    rows.push(currentRow);
+  }
+
+  return rows;
+}
+
 export async function readCsv(fileName: string): Promise<SeedRow[]> {
   const content = await readFile(path.join(seedDir, fileName), "utf8");
-  const [headerLine, ...lines] = content.trim().split("\n");
-  const headers = headerLine.split(",").map((item) => item.trim());
+  const [headerRow, ...rows] = parseCsvContent(content.trim());
+  const headers = headerRow.map((item) => item.trim());
 
-  return lines.map((line) => {
-    const cells = line.split(",").map((item) => item.trim());
+  return rows.map((cells) => {
     return headers.reduce<SeedRow>((accumulator, header, index) => {
       accumulator[header] = parseValue(cells[index] ?? "");
       return accumulator;

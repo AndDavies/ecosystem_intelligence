@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { getFreshnessState } from "@/lib/freshness";
 import { toTitleCase } from "@/lib/utils";
 import type { CapabilityCardView } from "@/types/view-models";
 
@@ -167,74 +169,89 @@ export function UseCaseCapabilityFilters({
         {filtered.map((entry) => (
           <Card key={entry.mapping.id} className="rounded-[30px] border border-[var(--border)] bg-white/78 shadow-[0_10px_30px_rgba(20,34,24,0.05)] transition hover:-translate-y-0.5 hover:border-[var(--primary)]/24 hover:shadow-[0_14px_34px_rgba(20,34,24,0.08)]">
             <CardContent className="space-y-5 pt-7">
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0">
-                  <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
-                    Capability
-                  </div>
-                  <Link
-                    href={`/capabilities/${entry.capability.id}?fromUseCase=${useCaseSlug}`}
-                    title="Capability = product, system, or solution"
-                    className="block truncate text-xl font-bold tracking-tight no-underline"
-                  >
-                    {entry.capability.name}
-                  </Link>
-                </div>
-                <Badge
-                  tone={getPathwayTone(entry.mapping.pathway)}
-                  className="shrink-0 px-3 py-1.5 capitalize"
-                  title={getPathwayDescription(entry.mapping.pathway)}
-                >
-                  {entry.mapping.pathway}
-                </Badge>
-              </div>
-              <div>
-                <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
-                  Company
-                </div>
-                <Link
-                  href={`/companies/${entry.company.id}?fromUseCase=${useCaseSlug}&fromCapability=${entry.capability.id}`}
-                  className="text-sm font-medium text-slate-600 no-underline hover:text-[var(--link-hover)]"
-                >
-                  {entry.company.name}
-                </Link>
-              </div>
-              <p className="truncate text-sm text-[var(--foreground)]">{entry.capability.summary}</p>
-              <div className="grid gap-2 md:grid-cols-[auto_1fr] md:items-center">
-                <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
-                  Why it matters
-                </div>
-                <div className="truncate text-sm text-[var(--muted-foreground)]">
-                  {entry.mapping.whyItMatters}
-                </div>
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <Badge tone="secondary" className="px-3 py-1.5">
-                  {toTitleCase(entry.mapping.suggestedActionType)}
-                </Badge>
-                <Badge tone="muted" className="px-3 py-1.5">
-                  {entry.mapping.relevanceBand} relevance
-                </Badge>
-                <Badge tone="muted" className="px-3 py-1.5">
-                  {entry.cluster.name}
-                </Badge>
-                <Badge tone="muted" className="px-3 py-1.5">
-                  {entry.domain.name}
-                </Badge>
-              </div>
-              <div className="flex flex-wrap gap-2 pt-1">
-                {entry.citations.map((citation) => (
-                  <a
-                    key={`${entry.mapping.id}-${citation.fieldName}-${citation.sourceUrl}`}
-                    href={citation.sourceUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full border border-[var(--border)] px-3 py-1 text-xs text-[var(--muted-foreground)] hover:bg-white"
-                  >
-                    {citation.publisher}
-                  </a>
-                ))}
-              </div>
+              {(() => {
+                const freshness = getFreshnessState({
+                  lastUpdatedAt: entry.capability.lastUpdatedAt,
+                  lastSignalAt: entry.mapping.lastSignalAt,
+                  staleAfterDays: entry.mapping.staleAfterDays
+                });
+
+                return (
+                  <>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="min-w-0">
+                        <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                          Capability
+                        </div>
+                        <Link
+                          href={`/capabilities/${entry.capability.id}?fromUseCase=${useCaseSlug}`}
+                          title="Capability = product, system, or solution"
+                          className="block truncate text-xl font-bold tracking-tight no-underline"
+                        >
+                          {entry.capability.name}
+                        </Link>
+                      </div>
+                      <Badge
+                        tone={getPathwayTone(entry.mapping.pathway)}
+                        className="shrink-0 px-3 py-1.5 capitalize"
+                        title={getPathwayDescription(entry.mapping.pathway)}
+                      >
+                        {entry.mapping.pathway}
+                      </Badge>
+                    </div>
+                    <div>
+                      <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                        Company
+                      </div>
+                      <Link
+                        href={`/companies/${entry.company.id}?fromUseCase=${useCaseSlug}&fromCapability=${entry.capability.id}`}
+                        className="text-sm font-medium text-slate-600 no-underline hover:text-[var(--link-hover)]"
+                      >
+                        {entry.company.name}
+                      </Link>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <FreshnessBadge freshness={freshness} />
+                    </div>
+                    <p className="truncate text-sm text-[var(--foreground)]">{entry.capability.summary}</p>
+                    <div className="grid gap-2 md:grid-cols-[auto_1fr] md:items-center">
+                      <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                        Why it matters
+                      </div>
+                      <div className="truncate text-sm text-[var(--muted-foreground)]">
+                        {entry.mapping.whyItMatters}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Badge tone="secondary" className="px-3 py-1.5">
+                        {toTitleCase(entry.mapping.suggestedActionType)}
+                      </Badge>
+                      <Badge tone="muted" className="px-3 py-1.5">
+                        {entry.mapping.relevanceBand} relevance
+                      </Badge>
+                      <Badge tone="muted" className="px-3 py-1.5">
+                        {entry.cluster.name}
+                      </Badge>
+                      <Badge tone="muted" className="px-3 py-1.5">
+                        {entry.domain.name}
+                      </Badge>
+                    </div>
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {entry.citations.map((citation) => (
+                        <a
+                          key={`${entry.mapping.id}-${citation.fieldName}-${citation.sourceUrl}`}
+                          href={citation.sourceUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-full border border-[var(--border)] px-3 py-1 text-xs text-[var(--muted-foreground)] hover:bg-white"
+                        >
+                          {citation.publisher}
+                        </a>
+                      ))}
+                    </div>
+                  </>
+                );
+              })()}
             </CardContent>
           </Card>
         ))}

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
+import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { requireProfile } from "@/lib/auth";
 import { getUseCasesIndex } from "@/lib/data/repository";
+import { formatDate } from "@/lib/utils";
 
 export default async function UseCasesPage() {
   const profile = await requireProfile();
@@ -34,6 +36,12 @@ export default async function UseCasesPage() {
               <div>
                 <div className="text-xl font-semibold">{useCase.name}</div>
                 <p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">{useCase.summary}</p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <FreshnessBadge freshness={useCase.freshness} />
+                {useCase.freshness.lastActivityAt ? (
+                  <Badge tone="muted">Last activity {formatDate(useCase.freshness.lastActivityAt)}</Badge>
+                ) : null}
               </div>
               <div className="flex items-center justify-between">
                 <Badge>{useCase.capabilityCount} capabilities</Badge>

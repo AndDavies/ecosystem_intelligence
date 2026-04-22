@@ -4,12 +4,14 @@ import { Activity, Building2, RefreshCw } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { MappingInlineEditPanel, CapabilityInlineEditPanel } from "@/components/operations/inline-edit-panels";
+import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { requestRefresh } from "@/lib/actions/review";
 import { requireProfile } from "@/lib/auth";
 import { getCapabilityById } from "@/lib/data/repository";
+import { getFreshnessState } from "@/lib/freshness";
 import { formatDate, formatFieldLabel, toTitleCase } from "@/lib/utils";
 import type { CitationView } from "@/types/view-models";
 
@@ -31,6 +33,11 @@ export default async function CapabilityPage({
 
   const capabilityProvenance = groupCitationsByField(view.citations);
   const companyProvenance = groupCitationsByField(view.companyCitations);
+  const capabilityFreshness = getFreshnessState({
+    lastUpdatedAt: view.capability.lastUpdatedAt,
+    lastSignalAt: view.latestSignal?.observedAt ?? view.mappings[0]?.lastSignalAt ?? null,
+    staleAfterDays: view.mappings[0]?.staleAfterDays ?? 180
+  });
   const canEdit = profile.role !== "viewer";
   const useCaseContext = resolvedSearchParams.fromUseCase
     ? view.mappings.find((mapping) => mapping.useCase.slug === resolvedSearchParams.fromUseCase)?.useCase
@@ -74,9 +81,11 @@ export default async function CapabilityPage({
               <div className="flex flex-wrap gap-2">
                 <Badge>{view.capability.capabilityType}</Badge>
                 <Badge tone="secondary">{view.company.name}</Badge>
+                <FreshnessBadge freshness={capabilityFreshness} />
                 {view.latestSignal ? (
                   <Badge tone="muted">Last signal {formatDate(view.latestSignal.observedAt)}</Badge>
                 ) : null}
+                <Badge tone="muted">Capability updated {formatDate(view.capability.lastUpdatedAt)}</Badge>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="rounded-3xl border border-[var(--border)] bg-white/60 p-5">
@@ -108,6 +117,20 @@ export default async function CapabilityPage({
                     Open company profile
                   </Link>
                 </div>
+                <div className="rounded-3xl border border-[var(--border)] bg-white/60 p-5 md:col-span-2">
+                  <div className="text-sm font-medium">Freshness and trust</div>
+                  <p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">
+                    {capabilityFreshness.detail}
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {view.latestSignal ? (
+                      <Badge tone="muted">Latest signal {formatDate(view.latestSignal.observedAt)}</Badge>
+                    ) : (
+                      <Badge tone="danger">No recent signal attached</Badge>
+                    )}
+                    <Badge tone="muted">Company updated {formatDate(view.company.lastUpdatedAt)}</Badge>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -124,6 +147,15 @@ export default async function CapabilityPage({
             <CardContent className="space-y-4">
               {view.mappings.map((mapping) => (
                 <div key={mapping.id} className="space-y-4 rounded-3xl border border-[var(--border)] bg-white/60 p-5">
+                  {(() => {
+                    const mappingFreshness = getFreshnessState({
+                      lastUpdatedAt: view.capability.lastUpdatedAt,
+                      lastSignalAt: mapping.lastSignalAt,
+                      staleAfterDays: mapping.staleAfterDays
+                    });
+
+                    return (
+                      <>
                   <div className="flex flex-col gap-3 md:flex-row md:justify-between">
                     <div>
                       <Link href={`/use-cases/${mapping.useCase.slug}`} className="text-base font-semibold">
@@ -136,6 +168,7 @@ export default async function CapabilityPage({
                       <Badge tone="secondary">{mapping.relevanceBand} relevance</Badge>
                       <Badge tone="muted">{mapping.defenceRelevance} defence fit</Badge>
                       <Badge tone="secondary">Score {mapping.rankingScore}</Badge>
+                      <FreshnessBadge freshness={mappingFreshness} />
                     </div>
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
@@ -159,6 +192,9 @@ export default async function CapabilityPage({
                     emptyMessage="No mapping-level citations are attached yet."
                   />
                   <MappingInlineEditPanel mapping={mapping} capabilityId={view.capability.id} canEdit={canEdit} />
+                      </>
+                    );
+                  })()}
                 </div>
               ))}
             </CardContent>

@@ -5,12 +5,14 @@ import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { MaturityChart } from "@/components/use-cases/maturity-chart";
 import { UseCaseCapabilityFilters } from "@/components/use-cases/filters";
+import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { requestRefresh } from "@/lib/actions/review";
 import { requireProfile } from "@/lib/auth";
 import { getUseCaseBySlug } from "@/lib/data/repository";
+import { getFreshnessState, summarizeFreshness } from "@/lib/freshness";
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
 import type { Pathway } from "@/types/domain";
 import type { CapabilityCardView, UseCaseView } from "@/types/view-models";
@@ -29,6 +31,13 @@ export default async function UseCaseDetailPage({
   }
 
   const insightLayer = buildUseCaseInsight(view);
+  const freshnessSummary = summarizeFreshness(
+    view.allCapabilities.map((entry) => ({
+      lastUpdatedAt: entry.capability.lastUpdatedAt,
+      lastSignalAt: entry.mapping.lastSignalAt,
+      staleAfterDays: entry.mapping.staleAfterDays
+    }))
+  );
 
   return (
     <AppShell profile={profile}>
@@ -67,6 +76,10 @@ export default async function UseCaseDetailPage({
             {domain.name}
           </Badge>
         ))}
+        <FreshnessBadge freshness={freshnessSummary} />
+        {freshnessSummary.lastActivityAt ? (
+          <Badge tone="muted">Last activity {formatDate(freshnessSummary.lastActivityAt)}</Badge>
+        ) : null}
       </div>
       <Card className="mb-5 rounded-[32px] border-[var(--primary)]/10 bg-[linear-gradient(180deg,rgba(31,80,51,0.08),rgba(255,255,255,0.85))]">
         <CardContent className="space-y-5 pt-6">
@@ -180,6 +193,11 @@ export default async function UseCaseDetailPage({
 	                {(() => {
 	                  const targetRead = getTargetRead(entry, index, view.topTargets, view);
 	                  const isPrimaryFocus = index < 3;
+                    const freshness = getFreshnessState({
+                      lastUpdatedAt: entry.capability.lastUpdatedAt,
+                      lastSignalAt: entry.mapping.lastSignalAt,
+                      staleAfterDays: entry.mapping.staleAfterDays
+                    });
 
 	                  return (
 	                    <>
@@ -196,6 +214,7 @@ export default async function UseCaseDetailPage({
                         <Badge tone={targetRead.tone} className="px-3 py-1.5">
                           {targetRead.label}
                         </Badge>
+                        <FreshnessBadge freshness={freshness} />
                       </div>
                       <div className="space-y-4">
                         <div className="flex items-start justify-between gap-4">

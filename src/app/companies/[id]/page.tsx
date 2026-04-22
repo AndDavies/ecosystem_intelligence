@@ -4,12 +4,14 @@ import { ArrowUpRight, RefreshCw } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { CompanyInlineEditPanel } from "@/components/operations/inline-edit-panels";
+import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { requestRefresh } from "@/lib/actions/review";
 import { requireProfile } from "@/lib/auth";
 import { getCompanyById } from "@/lib/data/repository";
+import { getFreshnessState, summarizeFreshness } from "@/lib/freshness";
 import { formatDate, formatFieldLabel, toTitleCase } from "@/lib/utils";
 import type { CitationView } from "@/types/view-models";
 
@@ -30,6 +32,18 @@ export default async function CompanyPage({
   }
 
   const provenance = groupCitationsByField(view.citations);
+  const companyFreshness = getFreshnessState({
+    lastUpdatedAt: view.company.lastUpdatedAt,
+    lastSignalAt: view.signals[0]?.observedAt ?? null,
+    staleAfterDays: 180
+  });
+  const portfolioFreshness = summarizeFreshness(
+    view.capabilities.map((entry) => ({
+      lastUpdatedAt: entry.capability.lastUpdatedAt,
+      lastSignalAt: entry.latestSignal?.observedAt ?? entry.mappings[0]?.lastSignalAt ?? null,
+      staleAfterDays: entry.mappings[0]?.staleAfterDays ?? 180
+    }))
+  );
   const canEdit = profile.role !== "viewer";
   const useCaseContext = resolvedSearchParams.fromUseCase
     ? view.capabilities
@@ -94,6 +108,7 @@ export default async function CompanyPage({
               <div className="flex flex-wrap gap-2">
                 <Badge>{view.company.headquarters}</Badge>
                 <Badge tone="secondary">{view.company.geography}</Badge>
+                <FreshnessBadge freshness={companyFreshness} />
                 {view.company.websiteUrl ? (
                   <a
                     href={view.company.websiteUrl}
@@ -120,6 +135,10 @@ export default async function CompanyPage({
                       ? `${view.capabilities.length} visible capabilities are currently tracked for this company, with ${view.signals.length} recent signal${view.signals.length === 1 ? "" : "s"} supporting the current profile.`
                       : "No visible capabilities are attached to this company yet."}
                   </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <FreshnessBadge freshness={portfolioFreshness} />
+                    <Badge tone="muted">Company updated {formatDate(view.company.lastUpdatedAt)}</Badge>
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -137,6 +156,15 @@ export default async function CompanyPage({
             <CardContent className="space-y-4">
               {view.capabilities.map((entry) => (
                 <div key={entry.capability.id} className="space-y-4 rounded-3xl border border-[var(--border)] bg-white/60 p-5">
+                  {(() => {
+                    const capabilityFreshness = getFreshnessState({
+                      lastUpdatedAt: entry.capability.lastUpdatedAt,
+                      lastSignalAt: entry.latestSignal?.observedAt ?? entry.mappings[0]?.lastSignalAt ?? null,
+                      staleAfterDays: entry.mappings[0]?.staleAfterDays ?? 180
+                    });
+
+                    return (
+                      <>
                   <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                     <div>
                       <Link
@@ -151,6 +179,7 @@ export default async function CompanyPage({
                     </div>
                     <div className="flex flex-wrap gap-2">
                       <Badge>{entry.capability.capabilityType}</Badge>
+                      <FreshnessBadge freshness={capabilityFreshness} />
                       {entry.latestSignal ? (
                         <Badge tone="muted">Last signal {formatDate(entry.latestSignal.observedAt)}</Badge>
                       ) : null}
@@ -178,6 +207,9 @@ export default async function CompanyPage({
                       ))}
                     </div>
                   ) : null}
+                      </>
+                    );
+                  })()}
                 </div>
               ))}
             </CardContent>
