@@ -5,7 +5,7 @@ export function Badge({
   tone = "default",
   ...props
 }: React.HTMLAttributes<HTMLSpanElement> & {
-  tone?: "default" | "secondary" | "muted" | "danger" | "info" | "success";
+  tone?: "default" | "secondary" | "muted" | "danger" | "info" | "success" | "outline" | "surface";
 }) {
   return (
     <span
@@ -17,6 +17,8 @@ export function Badge({
         tone === "danger" && "bg-[var(--danger)]/12 text-[var(--danger)]",
         tone === "info" && "bg-sky-100 text-sky-700",
         tone === "success" && "bg-emerald-100 text-emerald-700",
+        tone === "outline" && "border border-[var(--border)] bg-white/80 text-[var(--foreground)]",
+        tone === "surface" && "bg-white/75 text-[var(--foreground)] shadow-[0_10px_20px_rgba(20,34,24,0.04)]",
         className
       )}
       {...props}

@@ -17,29 +17,29 @@ export default async function LandingPage() {
   return (
     <main className="page-shell">
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-5 py-6 md:px-8 lg:flex-row lg:items-stretch lg:gap-6">
-        <section className="flex flex-1 flex-col justify-between rounded-[36px] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,250,241,0.7))] p-8 shadow-[0_30px_80px_rgba(20,34,24,0.08)] md:p-12">
+        <section className="flex flex-1 flex-col justify-between rounded-[40px] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,250,241,0.72))] p-8 shadow-[var(--shadow-strong)] md:p-12">
           <div className="space-y-8">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-[var(--primary)]/10 px-4 py-2 text-sm font-medium text-[var(--primary)]">
+            <div className="workspace-kicker">
               <Shield className="size-4" />
               Internal access only
             </div>
             <div className="space-y-5">
-              <h1 className="max-w-3xl text-4xl font-semibold tracking-tight md:text-6xl">
+              <h1 className="font-display max-w-3xl text-4xl font-semibold tracking-tight md:text-6xl">
                 Capability-first ecosystem intelligence for business development teams.
               </h1>
-              <div className="inline-flex w-fit rounded-full border border-[var(--border)] bg-white/70 px-4 py-2 text-sm font-medium">
-                Explore defence and dual-use capabilities by Use Case, maturity, and relevance.
+              <div className="inline-flex w-fit rounded-full border border-[var(--border)] bg-white/75 px-4 py-2 text-sm font-medium shadow-[0_10px_24px_rgba(20,34,24,0.05)]">
+                Explore defence and dual-use capabilities by Use Case, Domain, Company, maturity, and relevance.
               </div>
               <p className="max-w-2xl text-lg leading-8 text-[var(--muted-foreground)]">
-                Explore curated Use Cases, assess maturity distribution, identify engagement targets,
+                Move between mission-led, domain-led, and company-led discovery, identify engagement targets,
                 and trace every meaningful field back to visible evidence.
               </p>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               <LandingFeature
                 icon={<Radar className="size-5" />}
-                title="Use Case entry"
-                description="Navigate the ecosystem through curated mission and problem spaces."
+                title="Multiple entry paths"
+                description="Navigate through curated Use Cases, technical Domains, or known Companies."
               />
               <LandingFeature
                 icon={<KeyRound className="size-5" />}
@@ -59,7 +59,7 @@ export default async function LandingPage() {
           </div>
         </section>
         <section className="mt-6 flex w-full max-w-xl lg:mt-0">
-          <Card className="w-full rounded-[36px]">
+          <Card variant="strong" className="w-full rounded-[36px]">
             <CardHeader className="space-y-3">
               <CardTitle className="text-2xl">Internal access</CardTitle>
               <CardDescription>
@@ -72,15 +72,15 @@ export default async function LandingPage() {
                   <Button asChild className="w-full">
                     <Link href="/sign-in">Sign in</Link>
                   </Button>
-                  <Button asChild variant="outline" className="w-full">
+                  <Button asChild variant="surface" className="w-full">
                     <Link href="/create-user">Create user</Link>
                   </Button>
                   <p className="text-xs text-[var(--muted-foreground)]">
-                    Sign in to enter directly into the Use Case-led workspace.
+                    Sign in to enter directly into the balanced discovery workspace.
                   </p>
                 </div>
               ) : (
-                <div className="space-y-4 rounded-3xl border border-[var(--border)] bg-white/65 p-5">
+                <div className="space-y-4 rounded-3xl border border-[var(--border)] bg-white/68 p-5">
                   <div className="text-sm font-medium">Development mode</div>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Supabase environment variables are not configured yet, so the app will fall back to

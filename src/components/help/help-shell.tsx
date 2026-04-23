@@ -35,14 +35,16 @@ export function HelpShell({
       <SectionHeading
         title={title}
         description={description}
+        eyebrow="Help center"
         breadcrumbs={breadcrumbs}
         backHref="/app"
         backLabel="Back to Home"
       />
       <div className="grid gap-5 lg:grid-cols-[0.78fr_1.22fr]">
         <aside className="space-y-5">
-          <Card className="rounded-[32px]">
-            <CardHeader>
+          <Card variant="rail" className="rounded-[32px]">
+            <CardHeader className="space-y-3">
+              <div className="workspace-kicker">Navigation</div>
               <CardTitle>Help Topics</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -59,7 +61,7 @@ export function HelpShell({
             </CardContent>
           </Card>
 
-          <Card className="rounded-[32px] border-sky-100 bg-sky-50/70">
+          <Card variant="strong" className="rounded-[32px] border-sky-100 bg-sky-50/70">
             <CardContent className="space-y-3 pt-6">
               <div className="text-sm font-semibold text-sky-950">Trust boundary</div>
               <p className="text-sm leading-6 text-sky-900">
@@ -93,10 +95,10 @@ function NavLink({
     <Link
       href={href}
       className={cn(
-        "block rounded-3xl border px-4 py-3 no-underline transition",
+        "block rounded-[26px] border px-4 py-3 no-underline transition",
         active
-          ? "border-[var(--primary)]/20 bg-[var(--primary)]/8"
-          : "border-[var(--border)] bg-white/60 hover:border-[var(--primary)]/20 hover:bg-white"
+          ? "border-[var(--primary)]/24 bg-[var(--primary)]/8 shadow-[0_12px_26px_rgba(20,34,24,0.05)]"
+          : "border-[var(--border)] bg-white/68 hover:border-[var(--primary)]/20 hover:bg-white"
       )}
     >
       <div className="font-medium text-[var(--foreground)]">{label}</div>

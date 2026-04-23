@@ -11,41 +11,43 @@ export default async function HelpPage() {
   const profile = await requireProfile();
 
   return (
-    <HelpShell
-      profile={profile}
-      title="Start Here"
-      description="Use this help center to understand the product, learn the workflow, and work confidently inside the current MVP."
-    >
+      <HelpShell
+        profile={profile}
+        title="Start Here"
+        description="Use this help center to understand the product, learn the workflow, and work confidently inside the current MVP."
+      >
       <div className="space-y-5">
-        <Card className="rounded-[32px] border-[var(--primary)]/12 bg-[linear-gradient(180deg,rgba(31,80,51,0.08),rgba(255,255,255,0.98))]">
+        <Card variant="hero" className="rounded-[36px]">
           <CardContent className="space-y-5 pt-6">
-            <Badge tone="secondary">Internal help center</Badge>
+            <Badge tone="outline">Internal help center</Badge>
             <div className="space-y-3">
-              <div className="text-2xl font-semibold tracking-tight">
-                Explore defence and dual-use capabilities through a Use Case-led workflow.
+              <div className="font-display text-3xl font-semibold tracking-tight">
+                Explore defence and dual-use capabilities through use case, domain, and company entry paths.
               </div>
               <p className="max-w-4xl text-sm leading-7 text-[var(--muted-foreground)]">
                 This product helps internal users understand capability landscapes, identify higher-priority targets,
-                inspect evidence, and maintain a defensible record through review and provenance.
+                inspect evidence, and maintain a defensible record through review and provenance no matter which browse path they start from.
               </p>
             </div>
           </CardContent>
         </Card>
 
         <div className="grid gap-5 xl:grid-cols-2">
-          <Card className="rounded-[32px]">
-            <CardHeader>
+          <Card variant="strong" className="rounded-[32px]">
+            <CardHeader className="space-y-3">
+              <div className="workspace-kicker">What you can do</div>
               <CardTitle>What you can do here</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-sm text-[var(--muted-foreground)]">
-              <p>Start from a Use Case instead of a company list.</p>
+              <p>Start from a Use Case, a Domain, or a Company depending on the question.</p>
               <p>Review top targets, filters, clusters, maturity, and evidence.</p>
-              <p>Open capability and company profiles for decision context.</p>
+              <p>Open capability, domain, and company profiles for decision context.</p>
               <p>Edit records, request refresh, or review higher-impact changes when your role allows it.</p>
             </CardContent>
           </Card>
-          <Card className="rounded-[32px]">
-            <CardHeader>
+          <Card variant="strong" className="rounded-[32px]">
+            <CardHeader className="space-y-3">
+              <div className="workspace-kicker">Guardrails</div>
               <CardTitle>What this product is not</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-sm text-[var(--muted-foreground)]">
@@ -57,17 +59,18 @@ export default async function HelpPage() {
           </Card>
         </div>
 
-        <Card className="rounded-[32px]">
-          <CardHeader>
+        <Card variant="rail" className="rounded-[32px]">
+          <CardHeader className="space-y-3">
+            <div className="workspace-kicker">First walkthrough</div>
             <CardTitle>3-step quick start</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {[
-              "Open a Use Case and read Recommended Actions plus Top Engagement Targets first.",
-              "Use filters, clusters, and maturity to narrow the landscape without losing context.",
-              "Open a capability, inspect evidence and signals, then open the company profile if you need broader context."
+              "Choose a Use Case for mission-led discovery, a Domain for technical exploration, or a Company for organization-led research.",
+              "Use filters, clusters, freshness, and linked pages to narrow the landscape without losing context.",
+              "Open a capability, inspect evidence and signals, then move into the company or domain profile if you need broader context."
             ].map((step, index) => (
-              <div key={step} className="flex items-start gap-3 rounded-3xl border border-[var(--border)] bg-white/60 px-4 py-4">
+              <div key={step} className="workspace-subtle flex items-start gap-3 rounded-[26px] px-4 py-4">
                 <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-semibold text-white">
                   {index + 1}
                 </div>
@@ -80,10 +83,12 @@ export default async function HelpPage() {
         <div className="grid gap-5 xl:grid-cols-2">
           <HelpDiagram
             title="App Navigation Map"
-            description="The current MVP is designed around Use Case-led entry, drill-down, review, and admin enrichment."
+            description="The current MVP supports balanced discovery across Use Cases, Domains, Companies, review, and admin enrichment."
             steps={[
               "Home / App",
               "Use Cases",
+              "Domains",
+              "Companies",
               "Use Case Detail",
               "Capability Detail",
               "Company Detail",
@@ -91,8 +96,9 @@ export default async function HelpPage() {
               "Admin Enrichment"
             ]}
           />
-          <Card className="rounded-[32px]">
-            <CardHeader>
+          <Card variant="strong" className="rounded-[32px]">
+            <CardHeader className="space-y-3">
+              <div className="workspace-kicker">Core topics</div>
               <CardTitle>Core Help Topics</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
@@ -100,7 +106,7 @@ export default async function HelpPage() {
                 <Link
                   key={page.slug}
                   href={`/help/${page.slug}`}
-                  className="block rounded-3xl border border-[var(--border)] bg-white/60 p-4 no-underline transition hover:border-[var(--primary)]/20 hover:bg-white"
+                  className="block rounded-[26px] border border-[var(--border)] bg-white/68 p-4 no-underline transition hover:border-[var(--primary)]/20 hover:bg-white"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div>

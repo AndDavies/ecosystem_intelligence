@@ -33,12 +33,12 @@ export const helpPages: HelpPageDefinition[] = [
     title: "Core Concepts And Definitions",
     summary: "Shared vocabulary for the terms that matter most in the app.",
     purpose:
-      "Use this page when you need a quick definition of how the product thinks about Use Cases, capabilities, pathways, evidence, and review.",
+      "Use this page when you need a quick definition of how the product thinks about domains, Use Cases, capabilities, pathways, evidence, and review.",
     keyTerms: [
       {
         term: "Use Case",
         definition:
-          "A mission area or problem space that acts as the main entry point for discovery."
+          "A mission area or problem space that acts as one of the main entry points for discovery."
       },
       {
         term: "Capability",
@@ -123,8 +123,8 @@ export const helpPages: HelpPageDefinition[] = [
       {
         title: "Walkthrough steps",
         bullets: [
-          "Open the app home page and select a Use Case from the curated list.",
-          "Start with Recommended Actions and Top Engagement Targets to understand what deserves attention first.",
+          "Open the app home page and choose a Use Case, Domain, or Company based on the question you are trying to answer.",
+          "Start with Recommended Actions and Top Engagement Targets when you enter through a Use Case to understand what deserves attention first.",
           "Scan clusters and maturity distribution to understand what exists across the landscape.",
           "Apply filters to narrow by domain, company, pathway, geography, or defence relevance.",
           "Open a capability to inspect its why-it-matters narrative, recent signals, and mapping evidence.",
@@ -148,7 +148,7 @@ export const helpPages: HelpPageDefinition[] = [
         description:
           "The intended discovery path moves from mission context to capability evidence, then to company context and action.",
         steps: [
-          "Select Use Case",
+          "Choose Use Case, Domain, Or Company",
           "Review Targets And Clusters",
           "Apply Filters",
           "Open Capability",
@@ -184,9 +184,9 @@ export const helpPages: HelpPageDefinition[] = [
     ],
     sections: [
       {
-        title: "Why discovery starts with Use Cases",
+        title: "Why Use Cases remain valuable",
         body:
-          "Use Cases keep the workflow aligned to a mission need or strategic problem space. This is why the product leads with mission areas rather than company search alone."
+          "Use Cases keep discovery aligned to a mission need or strategic problem space, but users can also start from Domains or Companies when the question begins there."
       },
       {
         title: "How to read the page",
@@ -218,6 +218,8 @@ export const helpPages: HelpPageDefinition[] = [
         steps: [
           "Home / App",
           "Use Cases",
+          "Domains",
+          "Companies",
           "Use Case Detail",
           "Capability Detail",
           "Company Detail",

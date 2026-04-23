@@ -40,15 +40,21 @@ import type {
 import type {
   CapabilityProfileView,
   CitationView,
+  CompanyIndexCardView,
   CompanyProfileView,
   DatasetState,
+  DomainCardView,
+  DomainDetailView,
+  SearchResultsView,
   ReviewQueueItemView,
   ReviewQueueView,
+  UseCaseBrowseCardView,
   UseCaseView
 } from "@/types/view-models";
 import { formatFieldLabel, formatValueForDisplay } from "@/lib/utils";
 import { isAiGeneratedRequest, resolveAiRunForRequest } from "@/lib/review/provenance";
-import { summarizeFreshness } from "@/lib/freshness";
+import { getFreshnessState, summarizeFreshness } from "@/lib/freshness";
+import { mergeUniqueById, rankSearchResults } from "@/lib/search";
 
 function getMockDataset(): DatasetState {
   return {
@@ -325,6 +331,46 @@ export async function getDataset() {
   return getSupabaseDataset();
 }
 
+type UseCaseSearchRow = {
+  id: string;
+  name: string;
+  slug: string;
+  summary: string;
+  domain_ids?: string[];
+  domainIds?: string[];
+  domainNames?: string[];
+};
+
+type CapabilitySearchRow = {
+  id: string;
+  name: string;
+  summary: string;
+  domain_id?: string;
+  domainId?: string;
+  domainName?: string | null;
+  company_id?: string;
+  companyId?: string;
+  companyName?: string | null;
+};
+
+type DomainSearchRow = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  useCaseCount?: number;
+  companyCount?: number;
+};
+
+type CompanySearchRow = {
+  id: string;
+  name: string;
+  overview: string;
+  headquarters: string;
+  domainNames?: string[];
+  useCaseCount?: number;
+};
+
 function buildCitationMap(state: DatasetState) {
   const evidenceById = new Map(state.evidenceSnippets.map((item) => [item.id, item]));
   const sourceById = new Map(state.sources.map((item) => [item.id, item]));
@@ -353,49 +399,174 @@ function buildCitationMap(state: DatasetState) {
   };
 }
 
+function uniqueById<T extends { id: string }>(items: Array<T | null | undefined>) {
+  const seen = new Map<string, T>();
+
+  items.forEach((item) => {
+    if (item && !seen.has(item.id)) {
+      seen.set(item.id, item);
+    }
+  });
+
+  return Array.from(seen.values());
+}
+
+function sortByDateDesc(values: Array<string | null | undefined>) {
+  return values
+    .filter((value): value is string => Boolean(value))
+    .sort((left, right) => new Date(right).getTime() - new Date(left).getTime());
+}
+
+function getSortedMappingsForCapability(state: DatasetState, capabilityId: string) {
+  return state.capabilityUseCases
+    .filter((item) => item.capabilityId === capabilityId)
+    .sort((left, right) => right.rankingScore - left.rankingScore);
+}
+
+function getSortedSignalsForCapability(state: DatasetState, capabilityId: string) {
+  return state.signals
+    .filter((item) => item.capabilityId === capabilityId)
+    .sort((left, right) => new Date(right.observedAt).getTime() - new Date(left.observedAt).getTime());
+}
+
+function getCapabilityFreshnessInput(state: DatasetState, capability: Capability) {
+  const mappings = getSortedMappingsForCapability(state, capability.id);
+  const signals = getSortedSignalsForCapability(state, capability.id);
+  const lastSignalAt =
+    sortByDateDesc([
+      signals[0]?.observedAt ?? null,
+      ...mappings.map((mapping) => mapping.lastSignalAt)
+    ])[0] ?? null;
+
+  return {
+    lastUpdatedAt: capability.lastUpdatedAt,
+    lastSignalAt,
+    staleAfterDays: mappings[0]?.staleAfterDays ?? 180
+  };
+}
+
+function getTopUseCasesForMappings(state: DatasetState, mappings: CapabilityUseCase[]) {
+  const bestScoreByUseCase = new Map<string, number>();
+
+  mappings.forEach((mapping) => {
+    const current = bestScoreByUseCase.get(mapping.useCaseId) ?? Number.NEGATIVE_INFINITY;
+    if (mapping.rankingScore > current) {
+      bestScoreByUseCase.set(mapping.useCaseId, mapping.rankingScore);
+    }
+  });
+
+  return uniqueById(
+    mappings.map((mapping) => state.useCases.find((item) => item.id === mapping.useCaseId) ?? null)
+  ).sort(
+    (left, right) =>
+      (bestScoreByUseCase.get(right.id) ?? 0) - (bestScoreByUseCase.get(left.id) ?? 0) ||
+      left.name.localeCompare(right.name)
+  );
+}
+
+function buildUseCaseBrowseCards(state: DatasetState): UseCaseBrowseCardView[] {
+  return state.useCases
+    .filter((item) => item.active)
+    .map((useCase) => {
+      const mappings = state.capabilityUseCases.filter((mapping) => mapping.useCaseId === useCase.id);
+      const domains = state.domains.filter((domain) => useCase.domainIds.includes(domain.id));
+      const capabilities = uniqueById(
+        mappings.map((mapping) => state.capabilities.find((item) => item.id === mapping.capabilityId) ?? null)
+      );
+
+      return {
+        ...useCase,
+        domains,
+        capabilityCount: capabilities.length,
+        freshness: summarizeFreshness(capabilities.map((capability) => getCapabilityFreshnessInput(state, capability)))
+      };
+    })
+    .sort(
+      (left, right) =>
+        right.capabilityCount - left.capabilityCount || left.name.localeCompare(right.name)
+    );
+}
+
+function buildDomainCards(state: DatasetState): DomainCardView[] {
+  const useCaseCards = buildUseCaseBrowseCards(state);
+
+  return state.domains
+    .map((domain) => {
+      const capabilities = state.capabilities.filter((item) => item.domainId === domain.id);
+      const companies = uniqueById(
+        capabilities.map((capability) => state.companies.find((item) => item.id === capability.companyId) ?? null)
+      );
+      const useCases = useCaseCards
+        .filter((useCase) => useCase.domainIds.includes(domain.id))
+        .map((useCase) => ({
+          id: useCase.id,
+          slug: useCase.slug,
+          name: useCase.name,
+          summary: useCase.summary,
+          active: useCase.active,
+          domainIds: useCase.domainIds
+        }));
+
+      return {
+        domain,
+        useCases,
+        useCaseCount: useCases.length,
+        companyCount: companies.length,
+        capabilityCount: capabilities.length,
+        freshness: summarizeFreshness(capabilities.map((capability) => getCapabilityFreshnessInput(state, capability)))
+      };
+    })
+    .sort(
+      (left, right) =>
+        right.capabilityCount - left.capabilityCount ||
+        right.useCaseCount - left.useCaseCount ||
+        left.domain.name.localeCompare(right.domain.name)
+    );
+}
+
+function buildCompanyIndexCards(state: DatasetState): CompanyIndexCardView[] {
+  return state.companies
+    .map((company) => {
+      const capabilities = state.capabilities.filter((item) => item.companyId === company.id);
+      const mappings = state.capabilityUseCases.filter((item) =>
+        capabilities.some((capability) => capability.id === item.capabilityId)
+      );
+      const domains = uniqueById(
+        capabilities.map((capability) => state.domains.find((item) => item.id === capability.domainId) ?? null)
+      ).sort((left, right) => left.name.localeCompare(right.name));
+      const topUseCases = getTopUseCasesForMappings(state, mappings).slice(0, 3);
+
+      return {
+        company,
+        domains,
+        topUseCases,
+        capabilityCount: capabilities.length,
+        useCaseCount: uniqueById(
+          mappings.map((mapping) => state.useCases.find((item) => item.id === mapping.useCaseId) ?? null)
+        ).length,
+        strongestMappingScore: mappings.length ? Math.max(...mappings.map((mapping) => mapping.rankingScore)) : 0,
+        freshness: summarizeFreshness(capabilities.map((capability) => getCapabilityFreshnessInput(state, capability)))
+      };
+    })
+    .sort(
+      (left, right) =>
+        right.strongestMappingScore - left.strongestMappingScore ||
+        right.capabilityCount - left.capabilityCount ||
+        left.company.name.localeCompare(right.company.name)
+    );
+}
+
 export async function getHomeData() {
   const state = await getDataset();
   const pendingReviews = buildReviewQueueItems(state).filter((item) => item.status === "pending");
   const pendingAiSuggestions = pendingReviews.filter((item) => item.originType === "ai");
-
-  const topUseCases = state.useCases
-    .filter((item) => item.active)
-    .map((useCase) => {
-      const mappings = state.capabilityUseCases.filter((item) => item.useCaseId === useCase.id);
-      const targetCount = mappings.length;
-      const mappedCapabilities = mappings
-        .map((mapping) => {
-          const capability = state.capabilities.find((item) => item.id === mapping.capabilityId);
-
-          if (!capability) {
-            return null;
-          }
-
-          return {
-            mapping,
-            capability
-          };
-        })
-        .filter((value): value is NonNullable<typeof value> => Boolean(value));
-
-      return {
-        ...useCase,
-        targetCount,
-        freshness: summarizeFreshness(
-          mappedCapabilities.map((entry) => ({
-            lastUpdatedAt: entry.capability.lastUpdatedAt,
-            lastSignalAt: entry.mapping.lastSignalAt,
-            staleAfterDays: entry.mapping.staleAfterDays
-          }))
-        )
-      };
-    });
-
   const recentUpdates = state.auditEvents.slice(0, 5);
   const queuedAiRuns = state.aiRuns.filter((item) => item.status === "queued" || item.status === "running");
 
   return {
-    useCases: topUseCases,
+    useCases: buildUseCaseBrowseCards(state),
+    domains: buildDomainCards(state),
+    companies: buildCompanyIndexCards(state),
     pendingReviews,
     pendingAiSuggestions,
     recentUpdates,
@@ -405,41 +576,17 @@ export async function getHomeData() {
 
 export async function getUseCasesIndex() {
   const state = await getDataset();
+  return buildUseCaseBrowseCards(state);
+}
 
-  return state.useCases
-    .filter((item) => item.active)
-    .map((useCase) => {
-      const mappings = state.capabilityUseCases.filter((mapping) => mapping.useCaseId === useCase.id);
-      const capabilityCount = mappings.length;
-      const domains = state.domains.filter((domain) => useCase.domainIds.includes(domain.id));
-      const mappedCapabilities = mappings
-        .map((mapping) => {
-          const capability = state.capabilities.find((item) => item.id === mapping.capabilityId);
+export async function getDomainsIndex() {
+  const state = await getDataset();
+  return buildDomainCards(state);
+}
 
-          if (!capability) {
-            return null;
-          }
-
-          return {
-            mapping,
-            capability
-          };
-        })
-        .filter((value): value is NonNullable<typeof value> => Boolean(value));
-
-      return {
-        ...useCase,
-        capabilityCount,
-        domains,
-        freshness: summarizeFreshness(
-          mappedCapabilities.map((entry) => ({
-            lastUpdatedAt: entry.capability.lastUpdatedAt,
-            lastSignalAt: entry.mapping.lastSignalAt,
-            staleAfterDays: entry.mapping.staleAfterDays
-          }))
-        )
-      };
-    });
+export async function getCompaniesIndex() {
+  const state = await getDataset();
+  return buildCompanyIndexCards(state);
 }
 
 export async function getUseCaseBySlug(slug: string): Promise<UseCaseView | null> {
@@ -513,6 +660,80 @@ export async function getUseCaseBySlug(slug: string): Promise<UseCaseView | null
   };
 }
 
+export async function getDomainBySlug(slug: string): Promise<DomainDetailView | null> {
+  const state = await getDataset();
+  const domain = state.domains.find((item) => item.slug === slug);
+
+  if (!domain) {
+    return null;
+  }
+
+  const useCases = buildUseCaseBrowseCards(state).filter((item) => item.domainIds.includes(domain.id));
+  const companies = buildCompanyIndexCards(state).filter((item) =>
+    item.domains.some((companyDomain) => companyDomain.id === domain.id)
+  );
+  const capabilities = state.capabilities
+    .filter((item) => item.domainId === domain.id)
+    .map((capability) => {
+      const company = state.companies.find((item) => item.id === capability.companyId);
+      const mappings = getSortedMappingsForCapability(state, capability.id);
+      const latestSignal = getSortedSignalsForCapability(state, capability.id)[0] ?? null;
+
+      if (!company) {
+        return null;
+      }
+
+      return {
+        capability,
+        company,
+        useCases: getTopUseCasesForMappings(state, mappings),
+        latestSignal,
+        freshness: getFreshnessState(getCapabilityFreshnessInput(state, capability)),
+        strongestMappingScore: mappings.length ? Math.max(...mappings.map((mapping) => mapping.rankingScore)) : 0
+      };
+    })
+    .filter((value): value is NonNullable<typeof value> => Boolean(value))
+    .sort(
+      (left, right) =>
+        right.strongestMappingScore - left.strongestMappingScore ||
+        left.capability.name.localeCompare(right.capability.name)
+    );
+  const clusters = state.clusters
+    .filter((cluster) => cluster.domainId === domain.id)
+    .map((cluster) => {
+      const clusterCapabilities = capabilities.filter((item) =>
+        state.capabilityUseCases.some(
+          (mapping) => mapping.capabilityId === item.capability.id && mapping.clusterId === cluster.id
+        )
+      );
+
+      return {
+        cluster,
+        count: clusterCapabilities.length,
+        topCapability: clusterCapabilities[0]
+          ? {
+              id: clusterCapabilities[0].capability.id,
+              name: clusterCapabilities[0].capability.name,
+              companyName: clusterCapabilities[0].company.name
+            }
+          : null
+      };
+    })
+    .filter((item) => item.count > 0);
+
+  return {
+    domain,
+    freshness: summarizeFreshness(capabilities.map((item) => getCapabilityFreshnessInput(state, item.capability))),
+    useCaseCount: useCases.length,
+    companyCount: companies.length,
+    capabilityCount: capabilities.length,
+    useCases,
+    companies,
+    capabilities,
+    clusters
+  };
+}
+
 export async function getCapabilityById(id: string): Promise<CapabilityProfileView | null> {
   const state = await getDataset();
   const capability = state.capabilities.find((item) => item.id === id);
@@ -522,8 +743,9 @@ export async function getCapabilityById(id: string): Promise<CapabilityProfileVi
   }
 
   const company = state.companies.find((item) => item.id === capability.companyId);
+  const domain = state.domains.find((item) => item.id === capability.domainId);
 
-  if (!company) {
+  if (!company || !domain) {
     return null;
   }
 
@@ -535,6 +757,7 @@ export async function getCapabilityById(id: string): Promise<CapabilityProfileVi
   return {
     capability,
     company,
+    domain,
     mappings: state.capabilityUseCases
       .filter((item) => item.capabilityId === capability.id)
       .map((mapping) => {
@@ -574,6 +797,7 @@ export async function getCompanyById(id: string): Promise<CompanyProfileView | n
   const companyCapabilities = state.capabilities
     .filter((item) => item.companyId === company.id)
     .map((capability) => {
+      const domain = state.domains.find((item) => item.id === capability.domainId);
       const mappings = state.capabilityUseCases
         .filter((item) => item.capabilityId === capability.id)
         .map((mapping) => {
@@ -598,14 +822,20 @@ export async function getCompanyById(id: string): Promise<CompanyProfileView | n
         .filter((item) => item.capabilityId === capability.id)
         .sort((left, right) => new Date(right.observedAt).getTime() - new Date(left.observedAt).getTime());
 
+      if (!domain) {
+        return null;
+      }
+
       return {
         capability,
+        domain,
         mappings,
         signals,
         citations: citationLookup("capability", capability.id),
         latestSignal: signals[0] ?? null
       };
     })
+    .filter((value): value is NonNullable<typeof value> => Boolean(value))
     .sort((left, right) => {
       const leftScore = left.mappings[0]?.rankingScore ?? 0;
       const rightScore = right.mappings[0]?.rankingScore ?? 0;
@@ -618,6 +848,7 @@ export async function getCompanyById(id: string): Promise<CompanyProfileView | n
 
   return {
     company,
+    domains: uniqueById(companyCapabilities.map((item) => item.domain)),
     capabilities: companyCapabilities,
     contacts: state.contacts.filter((item) => item.companyId === company.id),
     citations: citationLookup("company", company.id),
@@ -625,29 +856,324 @@ export async function getCompanyById(id: string): Promise<CompanyProfileView | n
   };
 }
 
-export async function searchRecords(query: string) {
-  const state = await getDataset();
-  const normalized = query.trim().toLowerCase();
+function emptySearchResults(): SearchResultsView {
+  return {
+    domains: [],
+    useCases: [],
+    capabilities: [],
+    companies: []
+  };
+}
 
-  if (!normalized) {
-    return {
-      useCases: [],
-      capabilities: [],
-      companies: []
-    };
-  }
+function mapDomainSearchResults(items: DomainSearchRow[], query: string): SearchResultsView["domains"] {
+  return rankSearchResults(items, query, [
+    { label: "Domain name", weight: 4, value: (item) => item.name },
+    { label: "Domain description", weight: 1, value: (item) => item.description }
+  ])
+    .slice(0, 6)
+    .map(({ item, matchContext }) => ({
+      id: item.id,
+      name: item.name,
+      slug: item.slug,
+      description: item.description,
+      useCaseCount: item.useCaseCount ?? 0,
+      companyCount: item.companyCount ?? 0,
+      matchContext
+    }));
+}
 
-  const includesQuery = (value: string) => value.toLowerCase().includes(normalized);
+function mapUseCaseSearchResults(items: UseCaseSearchRow[], query: string): SearchResultsView["useCases"] {
+  return rankSearchResults(items, query, [
+    { label: "Use Case name", weight: 4, value: (item) => item.name },
+    { label: "Use Case summary", weight: 1, value: (item) => item.summary },
+    { label: "Domain", weight: 2, value: (item) => (item.domainNames ?? []).join(" ") }
+  ])
+    .slice(0, 6)
+    .map(({ item, matchContext }) => ({
+      id: item.id,
+      name: item.name,
+      slug: item.slug,
+      summary: item.summary,
+      domainNames: item.domainNames ?? [],
+      matchContext
+    }));
+}
+
+function mapCapabilitySearchResults(
+  items: CapabilitySearchRow[],
+  query: string
+): SearchResultsView["capabilities"] {
+  return rankSearchResults(items, query, [
+    { label: "Capability name", weight: 4, value: (item) => item.name },
+    { label: "Capability summary", weight: 1, value: (item) => item.summary },
+    { label: "Company", weight: 2, value: (item) => item.companyName },
+    { label: "Domain", weight: 2, value: (item) => item.domainName }
+  ])
+    .slice(0, 6)
+    .map(({ item, matchContext }) => ({
+      id: item.id,
+      name: item.name,
+      summary: item.summary,
+      companyName: item.companyName ?? null,
+      domainName: item.domainName ?? null,
+      matchContext
+    }));
+}
+
+function mapCompanySearchResults(items: CompanySearchRow[], query: string): SearchResultsView["companies"] {
+  return rankSearchResults(items, query, [
+    { label: "Company name", weight: 4, value: (item) => item.name },
+    { label: "Company overview", weight: 1, value: (item) => item.overview },
+    { label: "Headquarters", weight: 2, value: (item) => item.headquarters },
+    { label: "Domain", weight: 2, value: (item) => (item.domainNames ?? []).join(" ") }
+  ])
+    .slice(0, 6)
+    .map(({ item, matchContext }) => ({
+      id: item.id,
+      name: item.name,
+      overview: item.overview,
+      headquarters: item.headquarters,
+      domainNames: item.domainNames ?? [],
+      useCaseCount: item.useCaseCount ?? 0,
+      matchContext
+    }));
+}
+
+function buildSearchResultsFromState(state: DatasetState, query: string): SearchResultsView {
+  const companiesById = new Map(state.companies.map((item) => [item.id, item]));
+  const domainsById = new Map(state.domains.map((item) => [item.id, item]));
+  const companyCards = new Map(buildCompanyIndexCards(state).map((item) => [item.company.id, item]));
+  const domainCards = buildDomainCards(state);
 
   return {
-    useCases: state.useCases.filter((item) => includesQuery(item.name) || includesQuery(item.summary)),
-    capabilities: state.capabilities.filter(
-      (item) => includesQuery(item.name) || includesQuery(item.summary)
+    domains: mapDomainSearchResults(
+      domainCards.map((item) => ({
+        id: item.domain.id,
+        name: item.domain.name,
+        slug: item.domain.slug,
+        description: item.domain.description,
+        useCaseCount: item.useCaseCount,
+        companyCount: item.companyCount
+      })),
+      query
     ),
-    companies: state.companies.filter(
-      (item) => includesQuery(item.name) || includesQuery(item.overview)
+    useCases: mapUseCaseSearchResults(
+      state.useCases.map((item) => ({
+        id: item.id,
+        name: item.name,
+        slug: item.slug,
+        summary: item.summary,
+        domainNames: item.domainIds
+          .map((domainId) => domainsById.get(domainId)?.name ?? null)
+          .filter((value): value is string => Boolean(value))
+      })),
+      query
+    ),
+    capabilities: mapCapabilitySearchResults(
+      state.capabilities.map((item) => ({
+        id: item.id,
+        name: item.name,
+        summary: item.summary,
+        domainId: item.domainId,
+        domainName: domainsById.get(item.domainId)?.name ?? null,
+        companyId: item.companyId,
+        companyName: companiesById.get(item.companyId)?.name ?? null
+      })),
+      query
+    ),
+    companies: mapCompanySearchResults(
+      state.companies.map((item) => ({
+        id: item.id,
+        name: item.name,
+        overview: item.overview,
+        headquarters: item.headquarters,
+        domainNames: companyCards.get(item.id)?.domains.map((domain) => domain.name) ?? [],
+        useCaseCount: companyCards.get(item.id)?.useCaseCount ?? 0
+      })),
+      query
     )
   };
+}
+
+async function searchRecordsWithSupabase(query: string): Promise<SearchResultsView> {
+  const supabase = await createClient();
+  const pattern = `%${query}%`;
+
+  const [
+    domainsByName,
+    domainsByDescription,
+    useCasesByName,
+    useCasesBySummary,
+    capabilitiesByName,
+    capabilitiesBySummary,
+    companiesByName,
+    companiesByOverview
+  ] = await Promise.all([
+    supabase.from("domains").select("id, name, slug, description").ilike("name", pattern).limit(8),
+    supabase.from("domains").select("id, name, slug, description").ilike("description", pattern).limit(8),
+    supabase.from("use_cases").select("id, name, slug, summary, domain_ids").ilike("name", pattern).limit(8),
+    supabase.from("use_cases").select("id, name, slug, summary, domain_ids").ilike("summary", pattern).limit(8),
+    supabase
+      .from("capabilities")
+      .select("id, name, summary, company_id, domain_id")
+      .ilike("name", pattern)
+      .limit(8),
+    supabase
+      .from("capabilities")
+      .select("id, name, summary, company_id, domain_id")
+      .ilike("summary", pattern)
+      .limit(8),
+    supabase.from("companies").select("id, name, overview, headquarters").ilike("name", pattern).limit(8),
+    supabase
+      .from("companies")
+      .select("id, name, overview, headquarters")
+      .ilike("overview", pattern)
+      .limit(8)
+  ]);
+
+  const domainRows = mergeUniqueById(
+    (domainsByName.data ?? []) as DomainSearchRow[],
+    (domainsByDescription.data ?? []) as DomainSearchRow[]
+  );
+  const useCaseRows = mergeUniqueById(
+    (useCasesByName.data ?? []) as UseCaseSearchRow[],
+    (useCasesBySummary.data ?? []) as UseCaseSearchRow[]
+  );
+  const capabilityRows = mergeUniqueById(
+    (capabilitiesByName.data ?? []) as CapabilitySearchRow[],
+    (capabilitiesBySummary.data ?? []) as CapabilitySearchRow[]
+  );
+  const companyRows = mergeUniqueById(
+    (companiesByName.data ?? []) as CompanySearchRow[],
+    (companiesByOverview.data ?? []) as CompanySearchRow[]
+  );
+  const capabilityCompanyIds = Array.from(
+    new Set(capabilityRows.map((item) => item.company_id ?? item.companyId).filter(Boolean))
+  ) as string[];
+  const allResolvedDomainIds = Array.from(
+    new Set(
+      [
+        ...useCaseRows.flatMap((item) => item.domain_ids ?? item.domainIds ?? []),
+        ...capabilityRows.map((item) => item.domain_id ?? item.domainId).filter(Boolean)
+      ].filter(Boolean)
+    )
+  ) as string[];
+  const [
+    capabilityCompanies,
+    resolvedDomains,
+    matchedCompanyCapabilities
+  ] = await Promise.all([
+    capabilityCompanyIds.length
+      ? supabase.from("companies").select("id, name").in("id", capabilityCompanyIds)
+      : Promise.resolve({ data: [] as Array<{ id: string; name: string }> }),
+    allResolvedDomainIds.length
+      ? supabase.from("domains").select("id, name").in("id", allResolvedDomainIds)
+      : Promise.resolve({ data: [] as Array<{ id: string; name: string }> }),
+    companyRows.length
+      ? supabase
+          .from("capabilities")
+          .select("id, company_id, domain_id")
+          .in(
+            "company_id",
+            companyRows.map((item) => item.id)
+          )
+      : Promise.resolve({ data: [] as Array<{ id: string; company_id: string; domain_id: string }> })
+  ]);
+  const matchedCompanyCapabilityRows = (matchedCompanyCapabilities.data ?? []) as Array<{
+    id: string;
+    company_id: string;
+    domain_id: string;
+  }>;
+  const { data: matchedCompanyMappings } = matchedCompanyCapabilityRows.length
+    ? await supabase
+        .from("capability_use_cases")
+        .select("capability_id, use_case_id")
+        .in(
+          "capability_id",
+          matchedCompanyCapabilityRows.map((item) => item.id)
+        )
+    : { data: [] as Array<{ capability_id: string; use_case_id: string }> };
+  const companyNamesById = new Map((capabilityCompanies.data ?? []).map((item) => [item.id, item.name]));
+  const domainNamesById = new Map((resolvedDomains.data ?? []).map((item) => [item.id, item.name]));
+  const matchedCompanyCapabilitiesByCompany = new Map<string, typeof matchedCompanyCapabilityRows>();
+  matchedCompanyCapabilityRows.forEach((row) => {
+    const existing = matchedCompanyCapabilitiesByCompany.get(row.company_id) ?? [];
+    existing.push(row);
+    matchedCompanyCapabilitiesByCompany.set(row.company_id, existing);
+  });
+  const matchedUseCaseIdsByCompany = new Map<string, Set<string>>();
+  (matchedCompanyMappings ?? []).forEach((mapping) => {
+    const companyCapability = matchedCompanyCapabilityRows.find((item) => item.id === mapping.capability_id);
+    if (!companyCapability) {
+      return;
+    }
+    const existing = matchedUseCaseIdsByCompany.get(companyCapability.company_id) ?? new Set<string>();
+    existing.add(mapping.use_case_id);
+    matchedUseCaseIdsByCompany.set(companyCapability.company_id, existing);
+  });
+
+  return {
+    domains: mapDomainSearchResults(
+      domainRows.map((item) => ({
+        ...item,
+        useCaseCount:
+          item.useCaseCount ??
+          useCaseRows.filter((useCase) => (useCase.domain_ids ?? useCase.domainIds ?? []).includes(item.id)).length,
+        companyCount:
+          item.companyCount ??
+          companyRows.filter((company) =>
+            (matchedCompanyCapabilitiesByCompany.get(company.id) ?? []).some(
+              (capability) => capability.domain_id === item.id
+            )
+          ).length
+      })),
+      query
+    ),
+    useCases: mapUseCaseSearchResults(
+      useCaseRows.map((item) => ({
+        ...item,
+        domainNames: (item.domain_ids ?? item.domainIds ?? [])
+          .map((domainId) => domainNamesById.get(domainId) ?? null)
+          .filter((value): value is string => Boolean(value))
+      })),
+      query
+    ),
+    capabilities: mapCapabilitySearchResults(
+      capabilityRows.map((item) => ({
+        ...item,
+        domainName: domainNamesById.get(item.domain_id ?? item.domainId ?? "") ?? null,
+        companyName: companyNamesById.get(item.company_id ?? item.companyId ?? "") ?? null
+      })),
+      query
+    ),
+    companies: mapCompanySearchResults(
+      companyRows.map((item) => ({
+        ...item,
+        domainNames: uniqueById(
+          (matchedCompanyCapabilitiesByCompany.get(item.id) ?? []).map((capability) => ({
+            id: capability.domain_id,
+            name: domainNamesById.get(capability.domain_id) ?? capability.domain_id
+          }))
+        ).map((domain) => domain.name),
+        useCaseCount: matchedUseCaseIdsByCompany.get(item.id)?.size ?? 0
+      })),
+      query
+    )
+  };
+}
+
+export async function searchRecords(query: string): Promise<SearchResultsView> {
+  const normalized = query.trim();
+
+  if (!normalized) {
+    return emptySearchResults();
+  }
+
+  if (!hasSupabaseEnv()) {
+    return buildSearchResultsFromState(getMockDataset(), normalized);
+  }
+
+  return searchRecordsWithSupabase(normalized);
 }
 
 export async function getReviewQueue(): Promise<ReviewQueueView> {

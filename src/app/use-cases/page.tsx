@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
+import { DiscoveryCard } from "@/components/workspace/workspace-primitives";
 import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { requireProfile } from "@/lib/auth";
 import { getUseCasesIndex } from "@/lib/data/repository";
+import { resolveUseCaseConfig } from "@/lib/use-case-config";
 import { formatDate } from "@/lib/utils";
 
 export default async function UseCasesPage() {
@@ -16,42 +17,47 @@ export default async function UseCasesPage() {
     <AppShell profile={profile}>
       <SectionHeading
         title="Use Cases"
-        description="The MVP discovery workflow starts here. Each Use Case acts as a structured lens into the ecosystem."
+        description="Use Cases remain a strong mission-led entry path into the ecosystem when the question starts with an operational need or workflow."
+        eyebrow="Mission-led discovery"
         breadcrumbs={[
           { label: "Home", href: "/app" },
           { label: "Use Cases" }
         ]}
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {useCases.map((useCase) => (
-          <Card key={useCase.id} className="rounded-[30px]">
-            <CardContent className="space-y-4 pt-6">
-              <div className="flex flex-wrap gap-2">
-                {useCase.domains.map((domain) => (
-                  <Badge key={domain.id} tone="secondary">
-                    {domain.name}
-                  </Badge>
-                ))}
-              </div>
-              <div>
-                <div className="text-xl font-semibold">{useCase.name}</div>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">{useCase.summary}</p>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <FreshnessBadge freshness={useCase.freshness} />
-                {useCase.freshness.lastActivityAt ? (
-                  <Badge tone="muted">Last activity {formatDate(useCase.freshness.lastActivityAt)}</Badge>
-                ) : null}
-              </div>
-              <div className="flex items-center justify-between">
-                <Badge>{useCase.capabilityCount} capabilities</Badge>
-                <Link href={`/use-cases/${useCase.slug}`} className="text-sm font-medium text-[var(--primary)]">
-                  Explore
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        {useCases.map((useCase) => {
+          const useCaseConfig = resolveUseCaseConfig(useCase, useCase.domains);
+
+          return (
+            <DiscoveryCard
+              key={useCase.id}
+              eyebrow={useCaseConfig.cardBadge}
+              title={useCase.name}
+              description={useCase.summary}
+              href={`/use-cases/${useCase.slug}`}
+              actionLabel="Explore Use Case"
+              badges={
+                <>
+                  {useCaseConfig.featured ? <Badge tone="info">Featured</Badge> : null}
+                  {useCase.domains.map((domain) => (
+                    <Badge key={domain.id} tone="outline">
+                      {domain.name}
+                    </Badge>
+                  ))}
+                </>
+              }
+              footer={
+                <>
+                  <FreshnessBadge freshness={useCase.freshness} />
+                  {useCase.freshness.lastActivityAt ? (
+                    <Badge tone="muted">Last activity {formatDate(useCase.freshness.lastActivityAt)}</Badge>
+                  ) : null}
+                  <Badge tone="surface">{useCase.capabilityCount} capabilities</Badge>
+                </>
+              }
+            />
+          );
+        })}
       </div>
     </AppShell>
   );

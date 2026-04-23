@@ -264,6 +264,25 @@ const baseCapabilityUseCases: CapabilityUseCase[] = [
     actionabilityScore: 5,
     lastSignalAt: "2026-02-20",
     staleAfterDays: 180
+  },
+  {
+    id: "cuc-5",
+    capabilityId: "capability-1",
+    useCaseId: "use-case-2",
+    clusterId: "cluster-1",
+    pathway: "validate",
+    relevanceBand: "medium",
+    defenceRelevance: "medium",
+    suggestedActionType: "connect_to_end_user_validation",
+    actionNote: "Relevant where fixed-node coverage needs to be tied into a broader relay architecture.",
+    whyItMatters:
+      "Adds a validated sensing endpoint that can strengthen distributed monitoring coverage when paired with relay and fusion layers.",
+    rankingScore: 0,
+    reviewerOverrideDelta: 0,
+    evidenceStrength: 5,
+    actionabilityScore: 5,
+    lastSignalAt: "2026-03-15",
+    staleAfterDays: 180
   }
 ];
 
@@ -391,6 +410,20 @@ export const fieldCitations: FieldCitation[] = [
     entityId: "cuc-3",
     fieldName: "why_it_matters",
     evidenceSnippetId: "snippet-3"
+  },
+  {
+    id: "citation-4",
+    entityType: "capability_use_case",
+    entityId: "cuc-4",
+    fieldName: "why_it_matters",
+    evidenceSnippetId: "snippet-2"
+  },
+  {
+    id: "citation-5",
+    entityType: "capability_use_case",
+    entityId: "cuc-5",
+    fieldName: "why_it_matters",
+    evidenceSnippetId: "snippet-1"
   }
 ];
 
@@ -408,6 +441,13 @@ export const useCaseObservations: UseCaseObservation[] = [
     title: "Canadian players have a signal advantage in Arctic relevance",
     note: "Canada-based capabilities are better positioned for early trial engagement due to geography and operating context.",
     lastUpdatedAt: "2026-04-11"
+  },
+  {
+    id: "observation-3",
+    useCaseId: "use-case-2",
+    title: "Relay and fusion depth is stronger than sensing endpoint breadth",
+    note: "The current dataset shows stronger maturity in relay and data-fusion layers than in the underlying endpoint coverage layer.",
+    lastUpdatedAt: "2026-04-13"
   }
 ];
 

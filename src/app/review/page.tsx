@@ -2,9 +2,10 @@ import Link from "next/link";
 import { Check, Clock3, GitCompareArrows, WandSparkles, X } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
+import { SnapshotStrip, WorkspaceEmptyState } from "@/components/workspace/workspace-primitives";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { requireProfile } from "@/lib/auth";
 import { getReviewQueue } from "@/lib/data/repository";
 import { reviewChangeRequest } from "@/lib/actions/review";
@@ -13,12 +14,15 @@ import { formatDate, formatFieldLabel } from "@/lib/utils";
 export default async function ReviewPage() {
   const profile = await requireProfile("reviewer");
   const queue = await getReviewQueue();
+  const aiPending = queue.pending.filter((request) => request.originType === "ai").length;
+  const refreshRequests = queue.pending.filter((request) => request.isRefreshRequest).length;
 
   return (
     <AppShell profile={profile}>
       <SectionHeading
         title="Review Queue"
         description="High-impact changes route here before they become live in the validated dataset."
+        eyebrow="Governance workspace"
         breadcrumbs={[
           { label: "Home", href: "/app" },
           { label: "Review" }
@@ -29,9 +33,44 @@ export default async function ReviewPage() {
           </Link>
         }
       />
+      <Card variant="hero" className="mb-5 rounded-[36px]">
+        <CardHeader className="space-y-3">
+          <div className="workspace-kicker">Trust boundary</div>
+          <CardTitle>Review higher-impact edits without losing the record context behind the change.</CardTitle>
+          <p className="max-w-3xl text-sm leading-7 text-[var(--muted-foreground)]">
+            Proposed edits, AI runs, evidence, and before-versus-after comparisons stay together so approval remains evidence-backed rather than opaque.
+          </p>
+        </CardHeader>
+        <CardContent>
+          <SnapshotStrip
+            items={[
+              {
+                label: "Pending requests",
+                value: String(queue.pending.length),
+                detail: "Changes waiting for reviewer action."
+              },
+              {
+                label: "AI-suggested",
+                value: String(aiPending),
+                detail: "Requests originating from enrichment or derived runs."
+              },
+              {
+                label: "Refresh requests",
+                value: String(refreshRequests),
+                detail: "Requests asking for refreshed records instead of direct field diffs."
+              },
+              {
+                label: "Human-submitted",
+                value: String(queue.pending.length - aiPending),
+                detail: "Direct edits or user-originated changes."
+              }
+            ]}
+          />
+        </CardContent>
+      </Card>
       <div className="space-y-4">
         {queue.pending.map((request) => (
-          <Card key={request.id} className="rounded-[32px]">
+          <Card key={request.id} variant="strong" className="rounded-[32px]">
             <CardContent className="space-y-5 pt-6">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div className="space-y-2">
@@ -82,7 +121,7 @@ export default async function ReviewPage() {
                 ))}
               </div>
 
-              <div className="rounded-3xl border border-[var(--border)] bg-white/60 p-4">
+              <div className="workspace-subtle rounded-[26px] p-4">
                 <div className="text-sm font-semibold">Origin and provenance</div>
                 <div className="mt-2 text-sm text-[var(--muted-foreground)]">
                   {request.originSummary}
@@ -111,7 +150,7 @@ export default async function ReviewPage() {
 
               <div className="space-y-3">
                 {request.changedFieldDetails.map((field) => (
-                  <div key={`${request.id}-${field.fieldName}-diff`} className="rounded-3xl border border-[var(--border)] bg-white/60 p-4">
+                  <div key={`${request.id}-${field.fieldName}-diff`} className="workspace-subtle rounded-[26px] p-4">
                     <div className="text-sm font-semibold">{field.label}</div>
                     <div className="mt-3 grid gap-3 lg:grid-cols-2">
                       <DiffColumn title="Before" value={field.beforeValue} />
@@ -121,7 +160,7 @@ export default async function ReviewPage() {
                 ))}
               </div>
 
-              <div className="rounded-3xl border border-[var(--border)] bg-white/60 p-4">
+              <div className="workspace-subtle rounded-[26px] p-4">
                 <div className="text-sm font-semibold">Supporting evidence</div>
                 {request.supportingCitations.length ? (
                   <div className="mt-3 space-y-3">
@@ -172,11 +211,7 @@ export default async function ReviewPage() {
           </Card>
         ))}
         {!queue.pending.length ? (
-          <Card className="rounded-[32px]">
-            <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
-              No pending requests right now.
-            </CardContent>
-          </Card>
+          <WorkspaceEmptyState message="No pending requests right now." />
         ) : null}
       </div>
     </AppShell>
@@ -185,7 +220,7 @@ export default async function ReviewPage() {
 
 function DiffColumn({ title, value }: { title: string; value: string }) {
   return (
-    <div className="rounded-3xl border border-[var(--border)] bg-white/70 p-4">
+    <div className="rounded-[24px] border border-[var(--border)] bg-white/80 p-4">
       <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
         {title}
       </div>

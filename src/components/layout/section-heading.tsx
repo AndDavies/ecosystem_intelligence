@@ -10,7 +10,9 @@ export function SectionHeading({
   className,
   breadcrumbs,
   backHref,
-  backLabel
+  backLabel,
+  eyebrow,
+  meta
 }: {
   title: string;
   description?: string;
@@ -22,10 +24,12 @@ export function SectionHeading({
   }>;
   backHref?: string;
   backLabel?: string;
+  eyebrow?: string;
+  meta?: React.ReactNode;
 }) {
   return (
-    <div className={cn("mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between", className)}>
-      <div className="space-y-2">
+    <div className={cn("mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between", className)}>
+      <div className="space-y-3">
         {backHref && backLabel ? (
           <Link
             href={backHref}
@@ -36,10 +40,14 @@ export function SectionHeading({
           </Link>
         ) : null}
         {breadcrumbs?.length ? <PageBreadcrumbs items={breadcrumbs} /> : null}
-        <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
-        {description ? <p className="max-w-3xl text-sm text-[var(--muted-foreground)]">{description}</p> : null}
+        {eyebrow ? <div className="workspace-kicker">{eyebrow}</div> : null}
+        <div className="space-y-2">
+          <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">{title}</h2>
+          {description ? <p className="max-w-3xl text-sm leading-7 text-[var(--muted-foreground)] md:text-[15px]">{description}</p> : null}
+        </div>
+        {meta ? <div className="flex flex-wrap gap-2">{meta}</div> : null}
       </div>
-      {actions ? <div>{actions}</div> : null}
+      {actions ? <div className="shrink-0">{actions}</div> : null}
     </div>
   );
 }

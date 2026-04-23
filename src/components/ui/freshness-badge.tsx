@@ -6,15 +6,17 @@ type FreshnessBadgeState = Pick<FreshnessState, "label" | "tone" | "detail">;
 
 export function FreshnessBadge({
   freshness,
-  showIcon = true
+  showIcon = true,
+  className
 }: {
   freshness: FreshnessBadgeState;
   showIcon?: boolean;
+  className?: string;
 }) {
   const Icon = getFreshnessIcon(freshness.tone);
 
   return (
-    <Badge tone={freshness.tone} title={freshness.detail}>
+    <Badge tone={freshness.tone} title={freshness.detail} className={className}>
       {showIcon ? <Icon className="mr-1.5 size-3" /> : null}
       {freshness.label}
     </Badge>

@@ -45,6 +45,9 @@ async function insertAuditEvent(input: {
 function revalidateOperationalPaths(pagePath = "") {
   revalidatePath("/app");
   revalidatePath("/review");
+  revalidatePath("/domains");
+  revalidatePath("/domains/[slug]", "page");
+  revalidatePath("/companies");
   revalidatePath("/use-cases");
   revalidatePath("/use-cases/[slug]", "page");
   revalidatePath("/capabilities/[id]", "page");

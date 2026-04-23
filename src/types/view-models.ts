@@ -15,6 +15,17 @@ import type {
   UseCase,
   UseCaseObservation
 } from "@/types/domain";
+import type { FreshnessState, FreshnessTone } from "@/lib/freshness";
+
+export interface FreshnessSummaryView {
+  label: string;
+  tone: FreshnessTone;
+  detail: string;
+  lastActivityAt: string | null;
+  staleCount: number;
+  watchCount: number;
+  freshCount: number;
+}
 
 export interface CitationView {
   fieldName: string;
@@ -52,9 +63,62 @@ export interface UseCaseView {
   }>;
 }
 
+export interface UseCaseBrowseCardView extends UseCase {
+  domains: Domain[];
+  capabilityCount: number;
+  freshness: FreshnessSummaryView;
+}
+
+export interface DomainCardView {
+  domain: Domain;
+  useCases: UseCase[];
+  useCaseCount: number;
+  companyCount: number;
+  capabilityCount: number;
+  freshness: FreshnessSummaryView;
+}
+
+export interface CompanyIndexCardView {
+  company: Company;
+  domains: Domain[];
+  topUseCases: UseCase[];
+  capabilityCount: number;
+  useCaseCount: number;
+  strongestMappingScore: number;
+  freshness: FreshnessSummaryView;
+}
+
+export interface DomainDetailView {
+  domain: Domain;
+  freshness: FreshnessSummaryView;
+  useCaseCount: number;
+  companyCount: number;
+  capabilityCount: number;
+  useCases: UseCaseBrowseCardView[];
+  companies: CompanyIndexCardView[];
+  capabilities: Array<{
+    capability: Capability;
+    company: Company;
+    useCases: UseCase[];
+    latestSignal: Signal | null;
+    freshness: FreshnessState;
+    strongestMappingScore: number;
+  }>;
+  clusters: Array<{
+    cluster: Cluster;
+    count: number;
+    topCapability: {
+      id: string;
+      name: string;
+      companyName: string;
+    } | null;
+  }>;
+}
+
 export interface CapabilityProfileView {
   capability: Capability;
   company: Company;
+  domain: Domain;
   mappings: Array<
     CapabilityUseCase & {
       useCase: UseCase;
@@ -71,6 +135,7 @@ export interface CapabilityProfileView {
 
 export interface CompanyCapabilityContextView {
   capability: Capability;
+  domain: Domain;
   mappings: Array<
     CapabilityUseCase & {
       useCase: UseCase;
@@ -85,6 +150,7 @@ export interface CompanyCapabilityContextView {
 
 export interface CompanyProfileView {
   company: Company;
+  domains: Domain[];
   capabilities: CompanyCapabilityContextView[];
   contacts: Contact[];
   citations: CitationView[];
@@ -117,6 +183,51 @@ export interface ReviewQueueItemView extends ChangeRequest {
 
 export interface ReviewQueueView {
   pending: ReviewQueueItemView[];
+}
+
+export interface DomainSearchResult {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  useCaseCount: number;
+  companyCount: number;
+  matchContext: string;
+}
+
+export interface UseCaseSearchResult {
+  id: string;
+  name: string;
+  slug: string;
+  summary: string;
+  domainNames: string[];
+  matchContext: string;
+}
+
+export interface CapabilitySearchResult {
+  id: string;
+  name: string;
+  summary: string;
+  companyName: string | null;
+  domainName: string | null;
+  matchContext: string;
+}
+
+export interface CompanySearchResult {
+  id: string;
+  name: string;
+  overview: string;
+  headquarters: string;
+  domainNames: string[];
+  useCaseCount: number;
+  matchContext: string;
+}
+
+export interface SearchResultsView {
+  domains: DomainSearchResult[];
+  useCases: UseCaseSearchResult[];
+  capabilities: CapabilitySearchResult[];
+  companies: CompanySearchResult[];
 }
 
 export interface DatasetState {
