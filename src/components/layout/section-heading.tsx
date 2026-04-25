@@ -28,7 +28,7 @@ export function SectionHeading({
   meta?: React.ReactNode;
 }) {
   return (
-    <div className={cn("mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between", className)}>
+    <div className={cn("mb-6 flex flex-col gap-4 border-b border-[var(--border)] pb-5 lg:flex-row lg:items-end lg:justify-between", className)}>
       <div className="space-y-3">
         {backHref && backLabel ? (
           <Link
@@ -42,7 +42,7 @@ export function SectionHeading({
         {breadcrumbs?.length ? <PageBreadcrumbs items={breadcrumbs} /> : null}
         {eyebrow ? <div className="workspace-kicker">{eyebrow}</div> : null}
         <div className="space-y-2">
-          <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">{title}</h2>
+          <h2 className="font-display text-3xl font-semibold tracking-[0.01em] md:text-4xl">{title}</h2>
           {description ? <p className="max-w-3xl text-sm leading-7 text-[var(--muted-foreground)] md:text-[15px]">{description}</p> : null}
         </div>
         {meta ? <div className="flex flex-wrap gap-2">{meta}</div> : null}

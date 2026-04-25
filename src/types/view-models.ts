@@ -11,6 +11,8 @@ import type {
   EvidenceSnippet,
   FieldCitation,
   Signal,
+  Shortlist,
+  ShortlistItem,
   Source,
   UseCase,
   UseCaseObservation
@@ -49,6 +51,7 @@ export interface CapabilityCardView {
 export interface UseCaseView {
   useCase: UseCase;
   domains: Domain[];
+  citations: CitationView[];
   observations: UseCaseObservation[];
   topTargets: CapabilityCardView[];
   allCapabilities: CapabilityCardView[];
@@ -61,6 +64,45 @@ export interface UseCaseView {
     pathway: CapabilityUseCase["pathway"];
     count: number;
   }>;
+}
+
+export interface BriefingTargetView {
+  entry: CapabilityCardView;
+  rank: number;
+  targetRead: {
+    label: string;
+    tone: "success" | "info" | "muted";
+    whyPrioritize: string;
+    priorityNow: string;
+    whyNotOthers: string;
+    strength: string;
+    limitation: string;
+    actionDirective: string;
+    context: string;
+  };
+  freshness: FreshnessState;
+  evidencePosture: {
+    label: string;
+    tone: "success" | "info" | "muted" | "danger";
+    detail: string;
+    citationCount: number;
+  };
+  suggestedStatus: ShortlistItem["status"];
+}
+
+export interface CoverageGapView {
+  label: string;
+  detail: string;
+  tone: "info" | "muted" | "danger";
+  category: "maturity" | "cluster" | "geography" | "evidence" | "freshness";
+}
+
+export interface UseCaseBriefingView {
+  useCase: UseCaseView;
+  targets: BriefingTargetView[];
+  coverageGaps: CoverageGapView[];
+  briefingSummary: string[];
+  shortlists: ShortlistIndexCardView[];
 }
 
 export interface UseCaseBrowseCardView extends UseCase {
@@ -157,6 +199,26 @@ export interface CompanyProfileView {
   signals: Signal[];
 }
 
+export interface ShortlistIndexCardView {
+  shortlist: Shortlist;
+  useCase: UseCase | null;
+  itemCount: number;
+  statusCounts: Record<ShortlistItem["status"], number>;
+  updatedAt: string;
+}
+
+export interface ShortlistDetailView {
+  shortlist: Shortlist;
+  useCase: UseCase | null;
+  items: Array<{
+    item: ShortlistItem;
+    capability: Capability | null;
+    company: Company | null;
+    domain: Domain | null;
+    mappings: Array<CapabilityUseCase & { useCase: UseCase; cluster: Cluster }>;
+  }>;
+}
+
 export interface ReviewQueueItemView extends ChangeRequest {
   entityLabel: string;
   entityHref: string | null;
@@ -200,6 +262,11 @@ export interface UseCaseSearchResult {
   name: string;
   slug: string;
   summary: string;
+  priorityTier: UseCase["priorityTier"];
+  useCaseKind: UseCase["useCaseKind"];
+  partnerFrames: string[];
+  policyAnchors: string[];
+  missionOutcome: string;
   domainNames: string[];
   matchContext: string;
 }
@@ -246,4 +313,6 @@ export interface DatasetState {
   fieldCitations: FieldCitation[];
   useCaseObservations: UseCaseObservation[];
   changeRequests: ChangeRequest[];
+  shortlists: Shortlist[];
+  shortlistItems: ShortlistItem[];
 }

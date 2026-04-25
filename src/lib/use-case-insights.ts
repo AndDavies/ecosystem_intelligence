@@ -201,7 +201,7 @@ export function getTargetRead(
       whyNotOthers: getWhyNotOthers(entry, capabilityType, insightCopy),
       strength: getStrength(entry, capabilityType),
       limitation: getLimitation(entry, capabilityType, insightCopy),
-      actionDirective: getActionDirective(entry, capabilityType),
+      actionDirective: getActionDirective(entry, capabilityType, view),
       context:
         scaleEntriesBefore <= 3
           ? "One of the clearest near-term engagement priorities in this Use Case."
@@ -225,7 +225,7 @@ export function getTargetRead(
         "Most competing mid-stage capabilities either solve narrower problems or have a less obvious next validation step.",
       strength: getStrength(entry, capabilityType),
       limitation: getLimitation(entry, capabilityType, insightCopy),
-      actionDirective: getActionDirective(entry, capabilityType),
+      actionDirective: getActionDirective(entry, capabilityType, view),
       context: `Relevant now, but it still needs ${insightCopy.validationLabel} before wider ${insightCopy.deploymentLabel}.`
     };
   }
@@ -243,7 +243,7 @@ export function getTargetRead(
       `Higher-ranked options already have clearer validation or ${insightCopy.deploymentLabel} evidence, so this remains a monitor rather than an active priority.`,
     strength: getStrength(entry, capabilityType),
     limitation: getLimitation(entry, capabilityType, insightCopy),
-    actionDirective: getActionDirective(entry, capabilityType),
+    actionDirective: getActionDirective(entry, capabilityType, view),
     context: "Useful to track, but still too early to treat as a near-term engagement priority."
   };
 }
@@ -469,48 +469,76 @@ function getLimitation(
   return `Needs integration into a broader ${insightCopy.architectureLabel} to deliver full value.`;
 }
 
-function getActionDirective(entry: CapabilityCardView, capabilityType: string) {
+function getActionDirective(entry: CapabilityCardView, capabilityType: string, view?: UseCaseView) {
+  const missionEffect = getMissionEffect(view);
+
   if (entry.mapping.pathway === "scale") {
     if (
       capabilityType.includes("analytics") ||
       capabilityType.includes("software") ||
       capabilityType.includes("data")
     ) {
-      return `Engage ${entry.capability.name} for near-term operator evaluation on live workflows or source feeds.`;
+      return `Engage ${entry.capability.name} for near-term operator evaluation on live workflows or source feeds tied to ${missionEffect}.`;
     }
 
     if (capabilityType.includes("radar")) {
-      return `Engage ${entry.capability.name} for near-term deployment assessment at high-priority monitoring corridors.`;
+      return `Engage ${entry.capability.name} for near-term deployment assessment at high-priority monitoring corridors tied to ${missionEffect}.`;
     }
 
     if (capabilityType.includes("satellite")) {
-      return `Engage ${entry.capability.name} for route-risk support with planning and operations teams.`;
+      return `Engage ${entry.capability.name} for route-risk support with planning and operations teams tied to ${missionEffect}.`;
     }
 
     if (capabilityType.includes("rf")) {
-      return `Engage ${entry.capability.name} for contested-monitoring trials where passive sensing matters.`;
+      return `Engage ${entry.capability.name} for contested-monitoring trials where passive sensing matters to ${missionEffect}.`;
     }
 
-    return `Engage ${entry.capability.name} for near-term deployment validation with operators.`;
+    return `Engage ${entry.capability.name} for near-term deployment validation with operators tied to ${missionEffect}.`;
   }
 
   if (entry.mapping.pathway === "validate") {
     if (capabilityType.includes("relay") || capabilityType.includes("communications")) {
-      return `Validate ${entry.capability.name} through field trials that stress remote connectivity and sustainment.`;
+      return `Validate ${entry.capability.name} through field trials that stress remote connectivity and sustainment for ${missionEffect}.`;
     }
 
     if (capabilityType.includes("analytics") || capabilityType.includes("software")) {
-      return `Validate ${entry.capability.name} with operators before treating it as a deployment-ready software layer.`;
+      return `Validate ${entry.capability.name} with operators before treating it as a deployment-ready layer for ${missionEffect}.`;
     }
 
     if (entry.cluster.id === "cluster-3") {
-      return `Validate ${entry.capability.name} in trials that test access, endurance, and low-support operations.`;
+      return `Validate ${entry.capability.name} in trials that test access, endurance, and low-support operations for ${missionEffect}.`;
     }
 
-    return `Validate ${entry.capability.name} through operator trials before committing near-term engagement.`;
+    return `Validate ${entry.capability.name} through operator trials before committing near-term engagement for ${missionEffect}.`;
   }
 
-  return `Monitor ${entry.capability.name} while field evidence and deployment fit mature.`;
+  return `Monitor ${entry.capability.name} while field evidence and deployment fit mature against ${missionEffect}.`;
+}
+
+function getMissionEffect(view?: UseCaseView) {
+  const text = `${view?.useCase.requiredDecision ?? ""} ${view?.useCase.missionOutcome ?? ""}`.toLowerCase();
+
+  if (/(detect|track|warning|aware|surveillance)/.test(text)) {
+    return "detect-and-warn decisions";
+  }
+
+  if (/(sustain|logistics|readiness|availability|stockout)/.test(text)) {
+    return "sustainment readiness";
+  }
+
+  if (/(cyber|protect|assure|mission assurance|critical infrastructure)/.test(text)) {
+    return "mission assurance";
+  }
+
+  if (/(interoper|data|exchange|command|control|decide)/.test(text)) {
+    return "interoperable decision support";
+  }
+
+  if (/(patrol|autonomous|uncrewed|field)/.test(text)) {
+    return "field validation and patrol availability";
+  }
+
+  return "the stated mission outcome";
 }
 
 function capitalize(value: string) {

@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
+    "ingest:validate": "tsx scripts/validate-ingestion-candidates.ts",
+    "ingest:review": "tsx scripts/review-ingestion-candidates.ts review",
+    "ingest:promote": "tsx scripts/review-ingestion-candidates.ts promote",
     "seed:validate": "tsx scripts/validate-seed.ts",
     "seed:import": "tsx scripts/import-seed.ts"
   },

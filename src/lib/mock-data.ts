@@ -13,6 +13,8 @@ import type {
   FieldCitation,
   Profile,
   Signal,
+  Shortlist,
+  ShortlistItem,
   Source,
   UseCase,
   UseCaseObservation
@@ -52,18 +54,42 @@ export const useCases: UseCase[] = [
     slug: "arctic-domain-awareness",
     name: "Arctic Domain Awareness",
     summary:
-      "Understand sensing, autonomy, and analysis capabilities relevant to harsh-environment monitoring and response.",
+      "Enable northern watch teams to detect, fuse, and hand off Arctic and northern-approaches threats across sparse infrastructure.",
     active: true,
-    domainIds: ["domain-1", "domain-2", "domain-3"]
+    domainIds: ["domain-1", "domain-2", "domain-3"],
+    priorityTier: "p1",
+    useCaseKind: "mission",
+    partnerFrames: ["CAF/DND", "NORAD", "NATO"],
+    policyAnchors: ["Our North, Strong and Free", "Canada Arctic Foreign Policy", "DND 2026-27 Departmental Plan"],
+    operationalOwner: "Arctic and continental defence operators",
+    missionContext: "Arctic and northern approaches where sensing, communications, and response windows are constrained.",
+    requiredDecision: "Decide which sensing, autonomy, relay, and fusion capabilities should be validated first for persistent northern warning.",
+    interoperabilityBoundary: "CAF/DND, NORAD, allied Arctic, and northern community coordination using public-source alignment only.",
+    missionOutcome: "Reduce time to detect, understand, and task responses to activity in Arctic and northern approaches.",
+    procurementPathway: "Validate through northern testbeds, then assess procurement relevance for Scale-stage systems.",
+    realismNote:
+      "Public-source priority alignment only; this does not represent classified NORAD or NATO capability target guidance."
   },
   {
     id: "use-case-2",
     slug: "distributed-sensor-networks",
     name: "Distributed Sensor Networks",
     summary:
-      "Map networked sensing, data relay, and distributed monitoring capabilities across fixed and mobile platforms.",
+      "Enable operators to maintain a usable remote operating picture when sensing nodes, relays, and local decision layers are spread across austere sites.",
     active: true,
-    domainIds: ["domain-1", "domain-3"]
+    domainIds: ["domain-1", "domain-3"],
+    priorityTier: "p1",
+    useCaseKind: "enabling",
+    partnerFrames: ["CAF/DND", "NORAD", "NATO"],
+    policyAnchors: ["DND 2026-27 Departmental Plan", "Our North, Strong and Free"],
+    operationalOwner: "Joint sensing and network integration teams",
+    missionContext: "Sparse domestic, continental, and allied operating areas where fixed infrastructure cannot provide continuous coverage.",
+    requiredDecision: "Decide which sensing, relay, and fusion combinations can produce a resilient operating picture.",
+    interoperabilityBoundary: "Sensor, relay, and command workflows that must remain interoperable with CAF/DND and allied architectures.",
+    missionOutcome: "Improve distributed detection and tasking continuity when remote nodes are degraded or intermittently connected.",
+    procurementPathway: "Prioritize integration validation before procurement-facing scaling.",
+    realismNote:
+      "Treated as an enabling Use Case because it supports multiple mission lanes rather than acting as the final mission effect."
   }
 ];
 
@@ -362,6 +388,22 @@ export const sources: Source[] = [
     url: "https://example.com/aegir/payload",
     publisher: "Aegir Robotics",
     publishedAt: "2025-12-11"
+  },
+  {
+    id: "source-policy-1",
+    sourceType: "government_policy",
+    title: "Our North, Strong and Free",
+    url: "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/north-strong-free-2024.html",
+    publisher: "Department of National Defence",
+    publishedAt: "2024-05-03"
+  },
+  {
+    id: "source-policy-2",
+    sourceType: "departmental_plan",
+    title: "2026-27 Departmental Plan",
+    url: "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html",
+    publisher: "Department of National Defence",
+    publishedAt: "2026-03-01"
   }
 ];
 
@@ -386,6 +428,20 @@ export const evidenceSnippets: EvidenceSnippet[] = [
     capabilityId: "capability-3",
     excerpt:
       "The new payload interface lets operators swap ISR packages without redesigning the vehicle core."
+  },
+  {
+    id: "snippet-policy-1",
+    sourceId: "source-policy-1",
+    capabilityId: null,
+    excerpt:
+      "Canada's defence policy centers Arctic sovereignty, continental defence, digital modernization, and faster capability delivery."
+  },
+  {
+    id: "snippet-policy-2",
+    sourceId: "source-policy-2",
+    capabilityId: null,
+    excerpt:
+      "The departmental plan links NORAD modernization, Arctic surveillance, readiness, exercises, and procurement acceleration to current priorities."
   }
 ];
 
@@ -424,6 +480,20 @@ export const fieldCitations: FieldCitation[] = [
     entityId: "cuc-5",
     fieldName: "why_it_matters",
     evidenceSnippetId: "snippet-1"
+  },
+  {
+    id: "citation-policy-1",
+    entityType: "use_case",
+    entityId: "use-case-1",
+    fieldName: "policy_anchors",
+    evidenceSnippetId: "snippet-policy-1"
+  },
+  {
+    id: "citation-policy-2",
+    entityType: "use_case",
+    entityId: "use-case-2",
+    fieldName: "policy_anchors",
+    evidenceSnippetId: "snippet-policy-2"
   }
 ];
 
@@ -517,3 +587,6 @@ export const aiRuns: AiRun[] = [
     createdAt: "2026-04-18T08:30:00.000Z"
   }
 ];
+
+export const shortlists: Shortlist[] = [];
+export const shortlistItems: ShortlistItem[] = [];

@@ -4,7 +4,13 @@ import {
   getCompaniesIndex,
   getDomainBySlug,
   getDomainsIndex,
-  getHomeData
+  getHomeData,
+  getShortlistById,
+  getShortlistsIndex,
+  getUseCaseBriefingBySlug,
+  getUseCaseBySlug,
+  getUseCasesIndex,
+  searchRecords
 } from "@/lib/data/repository";
 
 describe("balanced discovery browse loaders", () => {
@@ -40,5 +46,42 @@ describe("balanced discovery browse loaders", () => {
     expect(home.useCases.length).toBeGreaterThan(0);
     expect(home.domains.length).toBeGreaterThan(0);
     expect(home.companies.length).toBeGreaterThan(0);
+    expect(home.useCases[0]?.missionOutcome).toBeTruthy();
+  });
+
+  it("returns use-case realism metadata and citations", async () => {
+    const useCases = await getUseCasesIndex();
+    const arctic = useCases.find((item) => item.slug === "arctic-domain-awareness");
+    const view = await getUseCaseBySlug("arctic-domain-awareness");
+
+    expect(arctic?.priorityTier).toBe("p1");
+    expect(arctic?.partnerFrames).toContain("CAF/DND");
+    expect(arctic?.missionOutcome).toMatch(/detect/i);
+    expect(view?.citations.some((item) => item.sourceTitle === "Our North, Strong and Free")).toBe(true);
+  });
+
+  it("searches use-case realism context", async () => {
+    const results = await searchRecords("NORAD");
+    const arctic = results.useCases.find((item) => item.slug === "arctic-domain-awareness");
+
+    expect(arctic?.partnerFrames).toContain("NORAD");
+    expect(arctic?.priorityTier).toBe("p1");
+  });
+
+  it("returns a BD briefing view with targets, evidence posture, and coverage gaps", async () => {
+    const briefing = await getUseCaseBriefingBySlug("arctic-domain-awareness");
+
+    expect(briefing?.targets.length).toBeGreaterThan(0);
+    expect(briefing?.targets[0]?.targetRead.priorityNow).toBeTruthy();
+    expect(briefing?.targets[0]?.evidencePosture.label).toBeTruthy();
+    expect(briefing?.coverageGaps.length).toBeGreaterThan(0);
+    expect(briefing?.coverageGaps[0]?.category).toMatch(/maturity|cluster|geography|evidence|freshness/);
+  });
+
+  it("returns empty shortlist views in mock mode", async () => {
+    const shortlists = await getShortlistsIndex();
+
+    expect(shortlists).toEqual([]);
+    expect(await getShortlistById("missing-shortlist")).toBeNull();
   });
 });

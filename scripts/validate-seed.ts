@@ -9,6 +9,10 @@ function assert(condition: boolean, message: string) {
   }
 }
 
+function asArray(value: unknown): unknown[] {
+  return Array.isArray(value) ? value : [];
+}
+
 async function main() {
   const data = await loadSeedData();
 
@@ -21,10 +25,28 @@ async function main() {
   const snippetIds = new Set(data.evidenceSnippets.map((item) => String(item.id)));
 
   data.useCases.forEach((useCase) => {
-    const domainRefs = (useCase["domain_ids"] as string[]) ?? [];
+    const domainRefs = asArray(useCase["domain_ids"]);
     domainRefs.forEach((domainId) =>
-      assert(domainIds.has(domainId), `Use case ${useCase.id} references missing domain ${domainId}`)
+      assert(domainIds.has(String(domainId)), `Use case ${useCase.id} references missing domain ${domainId}`)
     );
+
+    if (useCase.active) {
+      assert(["p1", "p2", "p3"].includes(String(useCase["priority_tier"])), `Use case ${useCase.id} has invalid priority tier`);
+      assert(
+        ["mission", "enabling"].includes(String(useCase["use_case_kind"])),
+        `Use case ${useCase.id} has invalid kind`
+      );
+      assert(asArray(useCase["partner_frames"]).length > 0, `Use case ${useCase.id} needs partner frames`);
+      assert(asArray(useCase["policy_anchors"]).length > 0, `Use case ${useCase.id} needs policy anchors`);
+      assert(String(useCase["operational_owner"] ?? "").length > 0, `Use case ${useCase.id} needs an owner`);
+      assert(String(useCase["mission_context"] ?? "").length > 0, `Use case ${useCase.id} needs mission context`);
+      assert(String(useCase["required_decision"] ?? "").length > 0, `Use case ${useCase.id} needs a required decision`);
+      assert(String(useCase["mission_outcome"] ?? "").length > 0, `Use case ${useCase.id} needs a mission outcome`);
+      assert(
+        String(useCase["procurement_pathway"] ?? "").length > 0,
+        `Use case ${useCase.id} needs a procurement pathway`
+      );
+    }
   });
 
   data.clusters.forEach((cluster) =>
@@ -83,12 +105,46 @@ async function main() {
     }
   });
 
-  data.fieldCitations.forEach((citation) =>
+  data.fieldCitations.forEach((citation) => {
     assert(
       snippetIds.has(String(citation["evidence_snippet_id"])),
       `Citation ${citation.id} references missing evidence snippet ${citation["evidence_snippet_id"]}`
-    )
-  );
+    );
+
+    const entityType = String(citation["entity_type"]);
+    const entityId = String(citation["entity_id"]);
+    if (entityType === "use_case") {
+      assert(useCaseIds.has(entityId), `Citation ${citation.id} references missing use case ${entityId}`);
+    } else if (entityType === "capability") {
+      assert(capabilityIds.has(entityId), `Citation ${citation.id} references missing capability ${entityId}`);
+    } else if (entityType === "company") {
+      assert(companyIds.has(entityId), `Citation ${citation.id} references missing company ${entityId}`);
+    } else if (entityType === "capability_use_case") {
+      assert(
+        data.capabilityUseCases.some((mapping) => String(mapping.id) === entityId),
+        `Citation ${citation.id} references missing mapping ${entityId}`
+      );
+    } else if (entityType === "use_case_observation") {
+      assert(
+        data.observations.some((observation) => String(observation.id) === entityId),
+        `Citation ${citation.id} references missing observation ${entityId}`
+      );
+    }
+  });
+
+  data.useCases
+    .filter((useCase) => Boolean(useCase.active))
+    .forEach((useCase) => {
+      assert(
+        data.fieldCitations.some(
+          (citation) =>
+            citation["entity_type"] === "use_case" &&
+            citation["entity_id"] === useCase.id &&
+            citation["field_name"] === "policy_anchors"
+        ),
+        `Use case ${useCase.id} needs a policy anchor citation`
+      );
+    });
 
   data.observations.forEach((observation) =>
     assert(

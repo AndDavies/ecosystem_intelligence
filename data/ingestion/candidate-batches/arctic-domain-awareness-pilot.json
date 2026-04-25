@@ -1,0 +1,660 @@
+{
+  "batchId": "pilot-arctic-domain-awareness-2026-04-24",
+  "title": "Arctic Domain Awareness Real-Data Pilot",
+  "status": "candidate",
+  "createdAt": "2026-04-24T00:00:00.000Z",
+  "researchScope": {
+    "description": "Small public-source pilot for Arctic domain awareness, underwater ISR, autonomous patrol, and edge mission software. This batch is reviewable candidate data only and is not approved seed data.",
+    "useCaseIds": ["use-case-1", "use-case-3", "use-case-4", "use-case-5"],
+    "domainIds": ["domain-1", "domain-2", "domain-4"]
+  },
+  "guardrailNotes": [
+    "Public-source alignment only; this batch does not imply classified CAF, DND, NORAD, NATO, or procurement targeting.",
+    "Company and capability records use canonical public URLs and paraphrased evidence snippets.",
+    "Candidate records are intentionally staged outside supabase/seed until a human reviewer approves import."
+  ],
+  "companies": [
+    {
+      "id": "pilot-company-kraken-robotics",
+      "slug": "kraken-robotics",
+      "name": "Kraken Robotics",
+      "overview": "Canadian subsea technology company with synthetic aperture sonar, underwater imaging, subsea power, and robotic systems relevant to underwater awareness and autonomous maritime operations.",
+      "geography": "canada",
+      "headquarters": "St. John's Newfoundland and Labrador Canada",
+      "market_context": "Useful candidate for underwater ISR and Arctic maritime awareness where high-resolution seabed or subsea detection data supports operator decisions.",
+      "website_url": "https://www.krakenrobotics.com/",
+      "public_contact_email": null,
+      "public_contact_phone": null,
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "high",
+      "research_rationale": "Official product and company release pages describe synthetic aperture sonar and subsea systems with defence and maritime security relevance."
+    },
+    {
+      "id": "pilot-company-mda-space",
+      "slug": "mda-space",
+      "name": "MDA Space",
+      "overview": "Canadian space and mission systems company with Earth observation, radar, space robotics, satellite operations, and maritime awareness capabilities.",
+      "geography": "canada",
+      "headquarters": "Brampton Ontario Canada",
+      "market_context": "Relevant to Arctic domain awareness where persistent all-weather overhead observation and maritime monitoring support sparse northern coverage.",
+      "website_url": "https://mda.space/",
+      "public_contact_email": null,
+      "public_contact_phone": null,
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "high",
+      "research_rationale": "Official MDA pages and public contract reporting support the Earth observation and maritime awareness connection."
+    },
+    {
+      "id": "pilot-company-cellula-robotics",
+      "slug": "cellula-robotics",
+      "name": "Cellula Robotics",
+      "overview": "Canadian underwater robotics company developing long-endurance autonomous underwater vehicles and related subsea autonomy systems.",
+      "geography": "canada",
+      "headquarters": "Burnaby British Columbia Canada",
+      "market_context": "Relevant to underwater ISR and autonomous patrol where endurance and autonomous subsea operation are mission constraints.",
+      "website_url": "https://cellula.com/",
+      "public_contact_email": null,
+      "public_contact_phone": null,
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "moderate",
+      "research_rationale": "Official product pages support long-endurance AUV capability, but mission fit still needs operator validation."
+    },
+    {
+      "id": "pilot-company-kongsberg-geospatial",
+      "slug": "kongsberg-geospatial",
+      "name": "Kongsberg Geospatial",
+      "overview": "Ottawa-based geospatial software company providing airspace visualization, unmanned systems awareness, and mission display software for complex operations.",
+      "geography": "canada",
+      "headquarters": "Ottawa Ontario Canada",
+      "market_context": "Relevant to autonomous patrol and edge data processing where operators need fused situational awareness for uncrewed systems and degraded-connectivity missions.",
+      "website_url": "https://www.kongsberggeospatial.com/",
+      "public_contact_email": null,
+      "public_contact_phone": null,
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "high",
+      "research_rationale": "Official product pages describe IRIS Terminal and related unmanned systems visualization functions."
+    },
+    {
+      "id": "pilot-company-geospectrum-technologies",
+      "slug": "geospectrum-technologies",
+      "name": "GeoSpectrum Technologies",
+      "overview": "Nova Scotia underwater acoustics company offering sonar, acoustic sensors, and defence surveillance systems for surface and subsea applications.",
+      "geography": "canada",
+      "headquarters": "Dartmouth Nova Scotia Canada",
+      "market_context": "Relevant to underwater ISR and maritime surveillance where compact active-passive sonar can support ships, ships of opportunity, and uncrewed surface platforms.",
+      "website_url": "https://geospectrum.ca/",
+      "public_contact_email": null,
+      "public_contact_phone": null,
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "high",
+      "research_rationale": "Official GeoSpectrum TRAPS page describes active-passive sonar capability for defence and surveillance use."
+    },
+    {
+      "id": "pilot-company-open-ocean-robotics",
+      "slug": "open-ocean-robotics",
+      "name": "Open Ocean Robotics",
+      "overview": "Canadian marine robotics company developing autonomous uncrewed surface vehicles and maritime data services for persistent ocean monitoring.",
+      "geography": "canada",
+      "headquarters": "Victoria British Columbia Canada",
+      "market_context": "Relevant to maritime domain awareness where persistent uncrewed surface collection can extend coverage without staffed vessels.",
+      "website_url": "https://www.openoceanrobotics.com/",
+      "public_contact_email": null,
+      "public_contact_phone": null,
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "moderate",
+      "research_rationale": "Official company pages and industry reporting support maritime awareness relevance, but operational maturity should be validated before procurement-facing treatment."
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "pilot-capability-kraken-katfish-sas",
+      "company_id": "pilot-company-kraken-robotics",
+      "slug": "kraken-katfish-sas",
+      "name": "KATFISH Towed Synthetic Aperture Sonar",
+      "capability_type": "Towed Synthetic Aperture Sonar",
+      "domain_id": "domain-2",
+      "summary": "Actively stabilized towed synthetic aperture sonar system for high-resolution underwater survey, seabed imaging, and subsea object detection.",
+      "company_facing_context": "Best reviewed for underwater ISR, route survey, seabed change detection, and mine or subsea infrastructure awareness use cases.",
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "high",
+      "research_rationale": "Official product documentation describes resolution, area coverage, and real-time SAS data characteristics."
+    },
+    {
+      "id": "pilot-capability-mda-chorus-sar",
+      "company_id": "pilot-company-mda-space",
+      "slug": "mda-chorus-sar",
+      "name": "MDA CHORUS Synthetic Aperture Radar Constellation",
+      "capability_type": "Earth Observation SAR Constellation",
+      "domain_id": "domain-2",
+      "summary": "Next-generation C-band and X-band synthetic aperture radar constellation intended to provide all-weather day-night Earth observation data.",
+      "company_facing_context": "Best reviewed as an overhead sensing layer for Arctic awareness, maritime monitoring, and distributed sensor fusion.",
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "high",
+      "research_rationale": "Official CHORUS page describes the SAR constellation design and public reporting connects MDA services to maritime awareness."
+    },
+    {
+      "id": "pilot-capability-cellula-envoy-auv",
+      "company_id": "pilot-company-cellula-robotics",
+      "slug": "cellula-envoy-auv",
+      "name": "Envoy Long-Endurance Autonomous Underwater Vehicle",
+      "capability_type": "Autonomous Underwater Vehicle",
+      "domain_id": "domain-1",
+      "summary": "Long-endurance fuel-cell autonomous underwater vehicle designed for persistent subsea missions and extended underwater operation.",
+      "company_facing_context": "Best reviewed for undersea route reconnaissance, subsea infrastructure monitoring, and extended underwater patrol validation.",
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "moderate",
+      "research_rationale": "Official product page supports endurance and AUV framing, while defence mission suitability still needs validation evidence."
+    },
+    {
+      "id": "pilot-capability-kongsberg-iris-terminal",
+      "company_id": "pilot-company-kongsberg-geospatial",
+      "slug": "kongsberg-iris-terminal",
+      "name": "IRIS Terminal Airspace Visualization",
+      "capability_type": "Mission Visualization Software",
+      "domain_id": "domain-4",
+      "summary": "Airspace visualization and situational awareness software that combines sensor, telemetry, and air traffic inputs for uncrewed operations.",
+      "company_facing_context": "Best reviewed for uncrewed system deconfliction, BVLOS test ranges, and local mission visualization in complex operations.",
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "high",
+      "research_rationale": "Official product page describes sensor and telemetry fusion for airspace management and unmanned operations."
+    },
+    {
+      "id": "pilot-capability-geospectrum-traps",
+      "company_id": "pilot-company-geospectrum-technologies",
+      "slug": "geospectrum-traps-sonar",
+      "name": "TRAPS Towed Reelable Active Passive Sonar",
+      "capability_type": "Active Passive Towed Sonar",
+      "domain_id": "domain-2",
+      "summary": "Compact active-passive variable-depth sonar system for underwater target detection, classification, tracking, and localization.",
+      "company_facing_context": "Best reviewed for surface-ship and uncrewed-surface underwater surveillance roles in maritime approaches.",
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "high",
+      "research_rationale": "Official TRAPS page describes active-passive sonar functions and platform applicability."
+    },
+    {
+      "id": "pilot-capability-open-ocean-robotics-usv",
+      "company_id": "pilot-company-open-ocean-robotics",
+      "slug": "open-ocean-robotics-usv-maritime-awareness",
+      "name": "Autonomous USV Maritime Awareness Platform",
+      "capability_type": "Autonomous Surface Vehicle",
+      "domain_id": "domain-1",
+      "summary": "Autonomous uncrewed surface vessel platform for persistent maritime security, ocean data collection, and remote maritime awareness.",
+      "company_facing_context": "Best reviewed as a persistent surface collection node that can complement overhead, acoustic, and mission software layers.",
+      "last_updated_at": "2026-04-24T00:00:00.000Z",
+      "confidence": "moderate",
+      "research_rationale": "Official and industry sources support maritime awareness relevance, but defence operating fit should remain validation-led."
+    }
+  ],
+  "capabilityUseCases": [
+    {
+      "id": "pilot-cuc-kraken-katfish-underwater-isr",
+      "capability_id": "pilot-capability-kraken-katfish-sas",
+      "use_case_id": "use-case-3",
+      "cluster_id": "cluster-1",
+      "pathway": "scale",
+      "relevance_band": "high",
+      "defence_relevance": "high",
+      "suggested_action_type": "assess_procurement_relevance",
+      "action_note": "Assess where high-resolution towed SAS can support undersea awareness or seabed survey needs without implying a specific procurement target.",
+      "why_it_matters": "High-resolution towed SAS can help operators characterize underwater areas where persistent undersea awareness and seabed context are operationally valuable.",
+      "reviewer_override_delta": 0,
+      "evidence_strength": 5,
+      "actionability_score": 5,
+      "last_signal_at": "2025-12-02T00:00:00.000Z",
+      "stale_after_days": 180,
+      "confidence": "high",
+      "research_rationale": "Product evidence and recent order evidence make this a strong candidate for review in underwater ISR."
+    },
+    {
+      "id": "pilot-cuc-kraken-katfish-arctic-awareness",
+      "capability_id": "pilot-capability-kraken-katfish-sas",
+      "use_case_id": "use-case-1",
+      "cluster_id": "cluster-1",
+      "pathway": "validate",
+      "relevance_band": "medium",
+      "defence_relevance": "high",
+      "suggested_action_type": "connect_to_end_user_validation",
+      "action_note": "Validate Arctic operating assumptions before treating towed SAS as a northern awareness solution.",
+      "why_it_matters": "The capability could support Arctic maritime awareness where undersea survey and detection gaps need source-backed validation in northern conditions.",
+      "reviewer_override_delta": 0,
+      "evidence_strength": 3,
+      "actionability_score": 5,
+      "last_signal_at": "2025-12-02T00:00:00.000Z",
+      "stale_after_days": 180,
+      "confidence": "moderate",
+      "research_rationale": "Technology fit is strong, but Arctic-specific employment should stay validation-led until field evidence is added."
+    },
+    {
+      "id": "pilot-cuc-mda-chorus-arctic-awareness",
+      "capability_id": "pilot-capability-mda-chorus-sar",
+      "use_case_id": "use-case-1",
+      "cluster_id": "cluster-2",
+      "pathway": "scale",
+      "relevance_band": "high",
+      "defence_relevance": "high",
+      "suggested_action_type": "introduce_to_integrator",
+      "action_note": "Review as an overhead sensing layer for fusion with maritime, acoustic, and local operator data.",
+      "why_it_matters": "All-weather SAR observation can strengthen Arctic awareness by adding persistent overhead context where weather and distance limit other collection methods.",
+      "reviewer_override_delta": 0,
+      "evidence_strength": 5,
+      "actionability_score": 5,
+      "last_signal_at": null,
+      "stale_after_days": 180,
+      "confidence": "high",
+      "research_rationale": "Official SAR constellation evidence and public maritime awareness contract context make this a strong Arctic awareness candidate."
+    },
+    {
+      "id": "pilot-cuc-cellula-envoy-underwater-isr",
+      "capability_id": "pilot-capability-cellula-envoy-auv",
+      "use_case_id": "use-case-3",
+      "cluster_id": "cluster-3",
+      "pathway": "validate",
+      "relevance_band": "high",
+      "defence_relevance": "medium",
+      "suggested_action_type": "connect_to_end_user_validation",
+      "action_note": "Validate endurance, communications, recovery, and payload integration assumptions with relevant underwater operators.",
+      "why_it_matters": "A long-endurance AUV can extend underwater survey and patrol reach, but mission value depends on validated payloads, recovery concepts, and operating conditions.",
+      "reviewer_override_delta": 0,
+      "evidence_strength": 3,
+      "actionability_score": 5,
+      "last_signal_at": null,
+      "stale_after_days": 180,
+      "confidence": "moderate",
+      "research_rationale": "The AUV evidence is credible, but defence relevance should remain medium until more mission-specific evidence is collected."
+    },
+    {
+      "id": "pilot-cuc-kongsberg-iris-autonomous-patrol",
+      "capability_id": "pilot-capability-kongsberg-iris-terminal",
+      "use_case_id": "use-case-4",
+      "cluster_id": "cluster-5",
+      "pathway": "scale",
+      "relevance_band": "high",
+      "defence_relevance": "medium",
+      "suggested_action_type": "explore_testbed_inclusion",
+      "action_note": "Evaluate as a test-range or field-trial visualization layer for uncrewed patrol operations.",
+      "why_it_matters": "Autonomous patrol trials need reliable local awareness and deconfliction, especially when multiple telemetry and sensor feeds must be interpreted together.",
+      "reviewer_override_delta": 0,
+      "evidence_strength": 5,
+      "actionability_score": 5,
+      "last_signal_at": null,
+      "stale_after_days": 180,
+      "confidence": "high",
+      "research_rationale": "Official product evidence clearly supports uncrewed system visualization and BVLOS awareness."
+    },
+    {
+      "id": "pilot-cuc-kongsberg-iris-edge-data",
+      "capability_id": "pilot-capability-kongsberg-iris-terminal",
+      "use_case_id": "use-case-5",
+      "cluster_id": "cluster-5",
+      "pathway": "scale",
+      "relevance_band": "medium",
+      "defence_relevance": "medium",
+      "suggested_action_type": "introduce_to_integrator",
+      "action_note": "Review as a mission display layer that could complement edge fusion rather than replace broader C2 integration.",
+      "why_it_matters": "A common visualization layer can reduce operator burden when telemetry, sensor, and airspace context would otherwise be split across separate tools.",
+      "reviewer_override_delta": 0,
+      "evidence_strength": 5,
+      "actionability_score": 5,
+      "last_signal_at": null,
+      "stale_after_days": 180,
+      "confidence": "moderate",
+      "research_rationale": "Fit to edge data processing is plausible but should be reviewed as an integration support capability, not a full data platform."
+    },
+    {
+      "id": "pilot-cuc-geospectrum-traps-underwater-isr",
+      "capability_id": "pilot-capability-geospectrum-traps",
+      "use_case_id": "use-case-3",
+      "cluster_id": "cluster-1",
+      "pathway": "scale",
+      "relevance_band": "high",
+      "defence_relevance": "high",
+      "suggested_action_type": "assess_procurement_relevance",
+      "action_note": "Assess platform fit for ships of opportunity, patrol vessels, or uncrewed surface platforms.",
+      "why_it_matters": "Compact active-passive sonar can add underwater target detection and tracking to platforms that need persistent awareness without large dedicated sonar suites.",
+      "reviewer_override_delta": 0,
+      "evidence_strength": 5,
+      "actionability_score": 5,
+      "last_signal_at": null,
+      "stale_after_days": 180,
+      "confidence": "high",
+      "research_rationale": "Official TRAPS evidence directly supports underwater surveillance and target localization."
+    },
+    {
+      "id": "pilot-cuc-open-ocean-usv-arctic-awareness",
+      "capability_id": "pilot-capability-open-ocean-robotics-usv",
+      "use_case_id": "use-case-1",
+      "cluster_id": "cluster-3",
+      "pathway": "validate",
+      "relevance_band": "medium",
+      "defence_relevance": "medium",
+      "suggested_action_type": "explore_testbed_inclusion",
+      "action_note": "Validate endurance, payload, communications, and cold-weather operating assumptions before elevating to a top Arctic target.",
+      "why_it_matters": "Persistent uncrewed surface collection could extend maritime awareness in sparse regions, but Arctic-specific reliability and payload integration need validation.",
+      "reviewer_override_delta": 0,
+      "evidence_strength": 3,
+      "actionability_score": 5,
+      "last_signal_at": null,
+      "stale_after_days": 180,
+      "confidence": "moderate",
+      "research_rationale": "The maritime awareness fit is source-backed, while Arctic operating realism remains a validation question."
+    }
+  ],
+  "signals": [
+    {
+      "id": "pilot-signal-kraken-sas-orders-2025",
+      "capability_id": "pilot-capability-kraken-katfish-sas",
+      "signal_type": "contract",
+      "title": "Synthetic aperture sonar and subsea battery orders announced",
+      "description": "Kraken announced purchase orders covering synthetic aperture sonar products and subsea batteries, including defence and commercial customers.",
+      "observed_at": "2025-12-02T00:00:00.000Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "pilot-source-kraken-katfish",
+      "source_type": "company_website",
+      "title": "KATFISH Towed SAS",
+      "url": "https://www.krakenrobotics.com/products/katfish",
+      "publisher": "Kraken Robotics",
+      "published_at": null
+    },
+    {
+      "id": "pilot-source-kraken-sas-orders",
+      "source_type": "company_news",
+      "title": "Kraken Robotics Announces Orders For Synthetic Aperture Sonar And Subsea Batteries",
+      "url": "https://www.krakenrobotics.com/news-releases/kraken-robotics-announces-12-million-in-orders-for-synthetic-aperture-sonar-and-subsea-batteries/",
+      "publisher": "Kraken Robotics",
+      "published_at": "2025-12-02T00:00:00.000Z"
+    },
+    {
+      "id": "pilot-source-mda-chorus",
+      "source_type": "company_website",
+      "title": "MDA CHORUS",
+      "url": "https://mda.space/chorus/",
+      "publisher": "MDA Space",
+      "published_at": null
+    },
+    {
+      "id": "pilot-source-mda-maritime-awareness-contract",
+      "source_type": "industry_news",
+      "title": "Government Of Canada Extends MDA Space Contract Providing Continuous Space-Based Maritime Awareness And Security",
+      "url": "https://www.prnewswire.com/news-releases/government-of-canada-extends-mda-space-contract-providing-continuous-space-based-maritime-awareness-and-security-302493532.html",
+      "publisher": "PR Newswire",
+      "published_at": null
+    },
+    {
+      "id": "pilot-source-cellula-envoy",
+      "source_type": "company_website",
+      "title": "Envoy AUV",
+      "url": "https://cellula.com/envoy-auv/",
+      "publisher": "Cellula Robotics",
+      "published_at": null
+    },
+    {
+      "id": "pilot-source-kongsberg-iris",
+      "source_type": "company_website",
+      "title": "IRIS Terminal",
+      "url": "https://www.kongsberggeospatial.com/products/iris-terminal",
+      "publisher": "Kongsberg Geospatial",
+      "published_at": null
+    },
+    {
+      "id": "pilot-source-geospectrum-traps",
+      "source_type": "company_website",
+      "title": "TRAPS Towed Reelable Active Passive Sonar",
+      "url": "https://geospectrum.ca/catalog/defence/surface-systems/traps-towed-reelable-active-passive-sonar/",
+      "publisher": "GeoSpectrum Technologies",
+      "published_at": null
+    },
+    {
+      "id": "pilot-source-open-ocean-robotics",
+      "source_type": "company_website",
+      "title": "Open Ocean Robotics",
+      "url": "https://www.openoceanrobotics.com/",
+      "publisher": "Open Ocean Robotics",
+      "published_at": null
+    },
+    {
+      "id": "pilot-source-open-ocean-security-system",
+      "source_type": "industry_news",
+      "title": "GSTS And Open Ocean Robotics Unveil NextGen Autonomous Maritime Security System",
+      "url": "https://oceannews.com/news/defense/gsts-and-open-ocean-robotics-unveil-nextgen-autonomous-maritime-security-system/",
+      "publisher": "Ocean News and Technology",
+      "published_at": null
+    }
+  ],
+  "evidenceSnippets": [
+    {
+      "id": "pilot-snippet-kraken-company",
+      "source_id": "pilot-source-kraken-sas-orders",
+      "capability_id": null,
+      "excerpt": "Kraken describes itself as a Canadian subsea intelligence company with sonar, underwater imaging, subsea power, and robotic systems."
+    },
+    {
+      "id": "pilot-snippet-kraken-katfish-capability",
+      "source_id": "pilot-source-kraken-katfish",
+      "capability_id": "pilot-capability-kraken-katfish-sas",
+      "excerpt": "The KATFISH product page describes an actively stabilized towed synthetic aperture sonar system for high-resolution underwater data collection."
+    },
+    {
+      "id": "pilot-snippet-kraken-orders",
+      "source_id": "pilot-source-kraken-sas-orders",
+      "capability_id": "pilot-capability-kraken-katfish-sas",
+      "excerpt": "Kraken reported purchase orders for synthetic aperture sonar and subsea battery products from defence and commercial customers."
+    },
+    {
+      "id": "pilot-snippet-mda-company",
+      "source_id": "pilot-source-mda-chorus",
+      "capability_id": null,
+      "excerpt": "MDA Space presents Earth observation and radar satellite capability as part of its space mission systems portfolio."
+    },
+    {
+      "id": "pilot-snippet-mda-chorus-capability",
+      "source_id": "pilot-source-mda-chorus",
+      "capability_id": "pilot-capability-mda-chorus-sar",
+      "excerpt": "MDA CHORUS is described as a next-generation Earth observation constellation using C-band and X-band synthetic aperture radar."
+    },
+    {
+      "id": "pilot-snippet-mda-maritime-awareness",
+      "source_id": "pilot-source-mda-maritime-awareness-contract",
+      "capability_id": "pilot-capability-mda-chorus-sar",
+      "excerpt": "Public contract reporting connects MDA Space services and future CHORUS data use to continuous space-based maritime awareness."
+    },
+    {
+      "id": "pilot-snippet-cellula-company",
+      "source_id": "pilot-source-cellula-envoy",
+      "capability_id": null,
+      "excerpt": "Cellula Robotics presents underwater robotic vehicle capability through its Envoy autonomous underwater vehicle product page."
+    },
+    {
+      "id": "pilot-snippet-cellula-envoy-capability",
+      "source_id": "pilot-source-cellula-envoy",
+      "capability_id": "pilot-capability-cellula-envoy-auv",
+      "excerpt": "The Envoy AUV page describes a long-endurance underwater vehicle powered by a fuel cell for extended subsea operation."
+    },
+    {
+      "id": "pilot-snippet-kongsberg-company",
+      "source_id": "pilot-source-kongsberg-iris",
+      "capability_id": null,
+      "excerpt": "Kongsberg Geospatial positions IRIS Terminal around airspace visualization and support for unmanned systems operations."
+    },
+    {
+      "id": "pilot-snippet-kongsberg-iris-capability",
+      "source_id": "pilot-source-kongsberg-iris",
+      "capability_id": "pilot-capability-kongsberg-iris-terminal",
+      "excerpt": "IRIS Terminal is described as software combining sensor, feed, and telemetry inputs for professional drone and airspace managers."
+    },
+    {
+      "id": "pilot-snippet-geospectrum-company",
+      "source_id": "pilot-source-geospectrum-traps",
+      "capability_id": null,
+      "excerpt": "GeoSpectrum presents underwater acoustic and sonar products for defence and surveillance surface system applications."
+    },
+    {
+      "id": "pilot-snippet-geospectrum-traps-capability",
+      "source_id": "pilot-source-geospectrum-traps",
+      "capability_id": "pilot-capability-geospectrum-traps",
+      "excerpt": "TRAPS is described as an active-passive sonar system for detection, classification, tracking, and localization of underwater targets."
+    },
+    {
+      "id": "pilot-snippet-open-ocean-company",
+      "source_id": "pilot-source-open-ocean-robotics",
+      "capability_id": null,
+      "excerpt": "Open Ocean Robotics describes autonomous uncrewed surface vehicles for maritime security and ocean data collection."
+    },
+    {
+      "id": "pilot-snippet-open-ocean-capability",
+      "source_id": "pilot-source-open-ocean-robotics",
+      "capability_id": "pilot-capability-open-ocean-robotics-usv",
+      "excerpt": "The company frames its uncrewed vessels as persistent autonomous platforms for ocean monitoring and maritime awareness."
+    },
+    {
+      "id": "pilot-snippet-open-ocean-security-system",
+      "source_id": "pilot-source-open-ocean-security-system",
+      "capability_id": "pilot-capability-open-ocean-robotics-usv",
+      "excerpt": "Industry reporting describes Open Ocean Robotics involvement in an autonomous maritime security system demonstration with GSTS."
+    }
+  ],
+  "fieldCitations": [
+    {
+      "id": "pilot-citation-kraken-company-overview",
+      "entity_type": "company",
+      "entity_id": "pilot-company-kraken-robotics",
+      "field_name": "overview",
+      "evidence_snippet_id": "pilot-snippet-kraken-company"
+    },
+    {
+      "id": "pilot-citation-kraken-capability-summary",
+      "entity_type": "capability",
+      "entity_id": "pilot-capability-kraken-katfish-sas",
+      "field_name": "summary",
+      "evidence_snippet_id": "pilot-snippet-kraken-katfish-capability"
+    },
+    {
+      "id": "pilot-citation-kraken-underwater-why",
+      "entity_type": "capability_use_case",
+      "entity_id": "pilot-cuc-kraken-katfish-underwater-isr",
+      "field_name": "why_it_matters",
+      "evidence_snippet_id": "pilot-snippet-kraken-katfish-capability"
+    },
+    {
+      "id": "pilot-citation-kraken-arctic-why",
+      "entity_type": "capability_use_case",
+      "entity_id": "pilot-cuc-kraken-katfish-arctic-awareness",
+      "field_name": "why_it_matters",
+      "evidence_snippet_id": "pilot-snippet-kraken-orders"
+    },
+    {
+      "id": "pilot-citation-mda-company-overview",
+      "entity_type": "company",
+      "entity_id": "pilot-company-mda-space",
+      "field_name": "overview",
+      "evidence_snippet_id": "pilot-snippet-mda-company"
+    },
+    {
+      "id": "pilot-citation-mda-capability-summary",
+      "entity_type": "capability",
+      "entity_id": "pilot-capability-mda-chorus-sar",
+      "field_name": "summary",
+      "evidence_snippet_id": "pilot-snippet-mda-chorus-capability"
+    },
+    {
+      "id": "pilot-citation-mda-arctic-why",
+      "entity_type": "capability_use_case",
+      "entity_id": "pilot-cuc-mda-chorus-arctic-awareness",
+      "field_name": "why_it_matters",
+      "evidence_snippet_id": "pilot-snippet-mda-maritime-awareness"
+    },
+    {
+      "id": "pilot-citation-cellula-company-overview",
+      "entity_type": "company",
+      "entity_id": "pilot-company-cellula-robotics",
+      "field_name": "overview",
+      "evidence_snippet_id": "pilot-snippet-cellula-company"
+    },
+    {
+      "id": "pilot-citation-cellula-capability-summary",
+      "entity_type": "capability",
+      "entity_id": "pilot-capability-cellula-envoy-auv",
+      "field_name": "summary",
+      "evidence_snippet_id": "pilot-snippet-cellula-envoy-capability"
+    },
+    {
+      "id": "pilot-citation-cellula-underwater-why",
+      "entity_type": "capability_use_case",
+      "entity_id": "pilot-cuc-cellula-envoy-underwater-isr",
+      "field_name": "why_it_matters",
+      "evidence_snippet_id": "pilot-snippet-cellula-envoy-capability"
+    },
+    {
+      "id": "pilot-citation-kongsberg-company-overview",
+      "entity_type": "company",
+      "entity_id": "pilot-company-kongsberg-geospatial",
+      "field_name": "overview",
+      "evidence_snippet_id": "pilot-snippet-kongsberg-company"
+    },
+    {
+      "id": "pilot-citation-kongsberg-capability-summary",
+      "entity_type": "capability",
+      "entity_id": "pilot-capability-kongsberg-iris-terminal",
+      "field_name": "summary",
+      "evidence_snippet_id": "pilot-snippet-kongsberg-iris-capability"
+    },
+    {
+      "id": "pilot-citation-kongsberg-autonomous-why",
+      "entity_type": "capability_use_case",
+      "entity_id": "pilot-cuc-kongsberg-iris-autonomous-patrol",
+      "field_name": "why_it_matters",
+      "evidence_snippet_id": "pilot-snippet-kongsberg-iris-capability"
+    },
+    {
+      "id": "pilot-citation-kongsberg-edge-why",
+      "entity_type": "capability_use_case",
+      "entity_id": "pilot-cuc-kongsberg-iris-edge-data",
+      "field_name": "why_it_matters",
+      "evidence_snippet_id": "pilot-snippet-kongsberg-iris-capability"
+    },
+    {
+      "id": "pilot-citation-geospectrum-company-overview",
+      "entity_type": "company",
+      "entity_id": "pilot-company-geospectrum-technologies",
+      "field_name": "overview",
+      "evidence_snippet_id": "pilot-snippet-geospectrum-company"
+    },
+    {
+      "id": "pilot-citation-geospectrum-capability-summary",
+      "entity_type": "capability",
+      "entity_id": "pilot-capability-geospectrum-traps",
+      "field_name": "summary",
+      "evidence_snippet_id": "pilot-snippet-geospectrum-traps-capability"
+    },
+    {
+      "id": "pilot-citation-geospectrum-underwater-why",
+      "entity_type": "capability_use_case",
+      "entity_id": "pilot-cuc-geospectrum-traps-underwater-isr",
+      "field_name": "why_it_matters",
+      "evidence_snippet_id": "pilot-snippet-geospectrum-traps-capability"
+    },
+    {
+      "id": "pilot-citation-open-ocean-company-overview",
+      "entity_type": "company",
+      "entity_id": "pilot-company-open-ocean-robotics",
+      "field_name": "overview",
+      "evidence_snippet_id": "pilot-snippet-open-ocean-company"
+    },
+    {
+      "id": "pilot-citation-open-ocean-capability-summary",
+      "entity_type": "capability",
+      "entity_id": "pilot-capability-open-ocean-robotics-usv",
+      "field_name": "summary",
+      "evidence_snippet_id": "pilot-snippet-open-ocean-capability"
+    },
+    {
+      "id": "pilot-citation-open-ocean-arctic-why",
+      "entity_type": "capability_use_case",
+      "entity_id": "pilot-cuc-open-ocean-usv-arctic-awareness",
+      "field_name": "why_it_matters",
+      "evidence_snippet_id": "pilot-snippet-open-ocean-security-system"
+    }
+  ]
+}

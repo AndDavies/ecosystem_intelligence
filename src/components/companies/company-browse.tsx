@@ -124,7 +124,54 @@ export function CompanyBrowse({ companies }: { companies: CompanyIndexCardView[]
         </CardContent>
       </Card>
 
-      <div className="grid gap-4 xl:grid-cols-2">
+      <div className="hidden overflow-hidden rounded-[28px] border border-[var(--border)] bg-white shadow-[0_18px_55px_rgba(20,34,24,0.07)] xl:block">
+        <div className="grid grid-cols-[minmax(14rem,1.45fr)_minmax(10rem,0.95fr)_minmax(12rem,1fr)_7rem_7rem_9rem_4rem] gap-4 border-b border-[var(--border)] bg-[var(--card-muted)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+          <div>Company</div>
+          <div>Domain Coverage</div>
+          <div>Top Use Cases</div>
+          <div>Caps.</div>
+          <div>Score</div>
+          <div>Freshness</div>
+          <div className="text-right">Open</div>
+        </div>
+        <div className="divide-y divide-[var(--border)]">
+          {filteredCompanies.map((item) => (
+            <Link
+              key={item.company.id}
+              href={`/companies/${item.company.id}`}
+              className="grid grid-cols-[minmax(14rem,1.45fr)_minmax(10rem,0.95fr)_minmax(12rem,1fr)_7rem_7rem_9rem_4rem] items-center gap-4 px-5 py-4 text-sm no-underline transition hover:bg-[var(--card-muted)]"
+            >
+              <div className="min-w-0">
+                <div className="truncate font-semibold text-[var(--foreground)]">{item.company.name}</div>
+                <div className="mt-1 truncate text-xs text-[var(--muted-foreground)]">
+                  {item.company.headquarters} · {formatGeography(item.company.geography)}
+                </div>
+              </div>
+              <div className="flex min-w-0 flex-wrap gap-1.5">
+                {item.domains.slice(0, 2).map((domain) => (
+                  <Badge key={`${item.company.id}-${domain.id}-table`} tone="outline">
+                    {domain.name}
+                  </Badge>
+                ))}
+                {item.domains.length > 2 ? <Badge tone="muted">+{item.domains.length - 2}</Badge> : null}
+              </div>
+              <div className="min-w-0 text-xs leading-5 text-[var(--muted-foreground)]">
+                {item.topUseCases.length
+                  ? item.topUseCases.map((useCase) => useCase.name).join(", ")
+                  : "No linked use cases"}
+              </div>
+              <div className="font-semibold text-[var(--foreground)]">{item.capabilityCount}</div>
+              <div className="font-semibold text-[var(--foreground)]">{formatScore(item.strongestMappingScore)}</div>
+              <div>
+                <FreshnessBadge freshness={item.freshness} />
+              </div>
+              <div className="text-right font-semibold text-[var(--primary)]">Open</div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid gap-4 xl:hidden">
         {filteredCompanies.map((item) => (
           <DiscoveryCard
             key={item.company.id}
@@ -176,4 +223,12 @@ function formatGeography(value: CompanyIndexCardView["company"]["geography"]) {
   }
 
   return "Global";
+}
+
+function formatScore(value: number) {
+  if (value <= 1) {
+    return `${Math.round(value * 100)}%`;
+  }
+
+  return `${Math.round(value)}%`;
 }

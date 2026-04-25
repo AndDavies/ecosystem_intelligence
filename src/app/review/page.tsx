@@ -1,5 +1,7 @@
+import path from "node:path";
 import Link from "next/link";
-import { Check, Clock3, GitCompareArrows, WandSparkles, X } from "lucide-react";
+import type { ReactNode } from "react";
+import { Check, Clock3, DatabaseZap, FileCheck2, GitCompareArrows, WandSparkles, X } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { SnapshotStrip, WorkspaceEmptyState } from "@/components/workspace/workspace-primitives";
@@ -8,14 +10,40 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { requireProfile } from "@/lib/auth";
 import { getReviewQueue } from "@/lib/data/repository";
-import { reviewChangeRequest } from "@/lib/actions/review";
+import { promoteIngestionCandidate, reviewChangeRequest } from "@/lib/actions/review";
 import { formatDate, formatFieldLabel } from "@/lib/utils";
+import {
+  formatCandidateValidationReport,
+  loadCandidateBatches,
+  validateCandidateBatch,
+  type CandidateBatch,
+  type CandidateValidationResult
+} from "../../../scripts/ingestion-candidates";
+import { loadSeedData } from "../../../scripts/seed-utils";
+
+async function getIngestionCandidateReviews() {
+  const seedData = await loadSeedData();
+  const batches = await loadCandidateBatches();
+
+  return Promise.all(
+    batches.map(async ({ batch, filePath }) => ({
+      batch,
+      filePath,
+      relativePath: path.relative(process.cwd(), filePath),
+      result: await validateCandidateBatch(batch, filePath, seedData)
+    }))
+  );
+}
 
 export default async function ReviewPage() {
   const profile = await requireProfile("reviewer");
   const queue = await getReviewQueue();
+  const candidateReviews = await getIngestionCandidateReviews();
   const aiPending = queue.pending.filter((request) => request.originType === "ai").length;
   const refreshRequests = queue.pending.filter((request) => request.isRefreshRequest).length;
+  const readyCandidates = candidateReviews.filter(
+    (candidate) => !candidate.result.promoted && candidate.result.errors.length === 0
+  ).length;
 
   return (
     <AppShell profile={profile}>
@@ -63,11 +91,40 @@ export default async function ReviewPage() {
                 label: "Human-submitted",
                 value: String(queue.pending.length - aiPending),
                 detail: "Direct edits or user-originated changes."
+              },
+              {
+                label: "Ingestion batches",
+                value: String(candidateReviews.length),
+                detail: "Research candidate batches staged for review."
+              },
+              {
+                label: "Ready to promote",
+                value: String(readyCandidates),
+                detail: "Candidate batches passing guardrails and awaiting approval."
               }
             ]}
           />
         </CardContent>
       </Card>
+
+      <Card variant="strong" className="mb-5 rounded-[32px]">
+        <CardHeader className="space-y-3">
+          <div className="workspace-kicker">Research ingestion</div>
+          <CardTitle>Review candidate batches before they become validated seed data.</CardTitle>
+          <p className="max-w-3xl text-sm leading-7 text-[var(--muted-foreground)]">
+            Candidate records stay staged until a reviewer promotes them. Promotion validates the batch, upserts rows into Supabase when configured, appends the seed CSVs, and writes a promotion log.
+          </p>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {candidateReviews.map((candidate) => (
+            <CandidateReviewCard key={candidate.batch.batchId} candidate={candidate} />
+          ))}
+          {!candidateReviews.length ? (
+            <WorkspaceEmptyState message="No staged ingestion candidate batches are available." />
+          ) : null}
+        </CardContent>
+      </Card>
+
       <div className="space-y-4">
         {queue.pending.map((request) => (
           <Card key={request.id} variant="strong" className="rounded-[32px]">
@@ -215,6 +272,223 @@ export default async function ReviewPage() {
         ) : null}
       </div>
     </AppShell>
+  );
+}
+
+function CandidateReviewCard({
+  candidate
+}: {
+  candidate: {
+    batch: CandidateBatch;
+    filePath: string;
+    relativePath: string;
+    result: CandidateValidationResult;
+  };
+}) {
+  const { batch, result } = candidate;
+  const isBlocked = result.errors.length > 0;
+  const isPromoted = result.promoted;
+
+  return (
+    <div className="workspace-subtle rounded-[28px] p-4">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="text-lg font-semibold">{batch.title}</div>
+            <Badge tone={isPromoted ? "success" : isBlocked ? "danger" : "info"}>
+              {isPromoted ? "Promoted" : isBlocked ? "Blocked" : "Ready for review"}
+            </Badge>
+            <Badge tone="muted">{batch.status}</Badge>
+          </div>
+          <p className="max-w-4xl text-sm leading-7 text-[var(--muted-foreground)]">
+            {batch.researchScope.description}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Badge tone="secondary">{result.counts.companies} companies</Badge>
+            <Badge tone="secondary">{result.counts.capabilities} capabilities</Badge>
+            <Badge tone="secondary">{result.counts.mappings} mappings</Badge>
+            <Badge tone="secondary">{result.counts.sources} sources</Badge>
+            <Badge tone="secondary">{result.counts.fieldCitations} citations</Badge>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <form action={promoteIngestionCandidate}>
+            <input type="hidden" name="candidateFilePath" value={candidate.relativePath} />
+            <Button type="submit" disabled={isBlocked || isPromoted}>
+              <DatabaseZap className="size-4" />
+              {isPromoted ? "Already promoted" : "Promote batch"}
+            </Button>
+          </form>
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-3 lg:grid-cols-3">
+        <MiniPanel title="Validation">
+          <div className="flex flex-wrap gap-2">
+            <Badge tone={result.errors.length ? "danger" : "success"}>{result.errors.length} errors</Badge>
+            <Badge tone={result.warnings.length ? "info" : "muted"}>{result.warnings.length} warnings</Badge>
+          </div>
+          {isPromoted ? (
+            <div className="mt-2 text-xs text-[var(--muted-foreground)]">
+              Promotion log: {path.relative(process.cwd(), result.promotionPath)}
+            </div>
+          ) : null}
+        </MiniPanel>
+        <MiniPanel title="Use Cases">
+          <div className="flex flex-wrap gap-2">
+            {result.touchedUseCases.map((useCaseId) => (
+              <Badge key={useCaseId} tone="secondary">
+                {useCaseId}
+              </Badge>
+            ))}
+          </div>
+        </MiniPanel>
+        <MiniPanel title="Domains">
+          <div className="flex flex-wrap gap-2">
+            {result.touchedDomains.map((domainId) => (
+              <Badge key={domainId} tone="secondary">
+                {domainId}
+              </Badge>
+            ))}
+          </div>
+        </MiniPanel>
+      </div>
+
+      <details className="mt-4 rounded-[24px] border border-[var(--border)] bg-white/75 p-4">
+        <summary className="cursor-pointer text-sm font-semibold">
+          Open in-app review packet
+        </summary>
+        <div className="mt-4 space-y-5">
+          <div>
+            <div className="mb-2 flex items-center gap-2 text-sm font-semibold">
+              <FileCheck2 className="size-4" />
+              Reviewer checklist
+            </div>
+            <ul className="space-y-2 text-sm text-[var(--muted-foreground)]">
+              <li>Company records are real organizations and are not duplicates of existing seed records.</li>
+              <li>Capability summaries are public-source grounded and do not imply classified alignment.</li>
+              <li>Use-case mappings are realistic and not stretched to fill the catalog.</li>
+              <li>High relevance or high defence relevance mappings have enough evidence to justify confidence.</li>
+              <li>Source URLs are canonical and useful for public-source traceability.</li>
+            </ul>
+          </div>
+
+          {(result.errors.length > 0 || result.warnings.length > 0) ? (
+            <pre className="overflow-x-auto rounded-[24px] border border-[var(--border)] bg-white p-4 text-xs leading-6 text-[var(--foreground)]">
+              {formatCandidateValidationReport([result])}
+            </pre>
+          ) : null}
+
+          <ReviewTable
+            title="Companies"
+            headers={["Company", "Geography", "Confidence", "Rationale"]}
+            rows={batch.companies.map((company) => [
+              company.name,
+              company.geography,
+              company.confidence,
+              company.research_rationale
+            ])}
+          />
+          <ReviewTable
+            title="Capabilities"
+            headers={["Capability", "Company", "Domain", "Confidence"]}
+            rows={batch.capabilities.map((capability) => {
+              const company = batch.companies.find((item) => item.id === capability.company_id);
+
+              return [
+                capability.name,
+                company?.name ?? capability.company_id,
+                capability.domain_id,
+                capability.confidence
+              ];
+            })}
+          />
+          <ReviewTable
+            title="Use-Case Mappings"
+            headers={["Capability", "Use case", "Pathway", "Relevance", "Defence", "Why it matters"]}
+            rows={batch.capabilityUseCases.map((mapping) => {
+              const capability = batch.capabilities.find((item) => item.id === mapping.capability_id);
+
+              return [
+                capability?.name ?? mapping.capability_id,
+                mapping.use_case_id,
+                mapping.pathway,
+                mapping.relevance_band,
+                mapping.defence_relevance,
+                mapping.why_it_matters
+              ];
+            })}
+          />
+          <ReviewTable
+            title="Sources"
+            headers={["Source", "Publisher", "Type", "URL"]}
+            rows={batch.sources.map((source) => [
+              source.title,
+              source.publisher,
+              source.source_type,
+              source.url
+            ])}
+          />
+        </div>
+      </details>
+    </div>
+  );
+}
+
+function MiniPanel({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="rounded-[24px] border border-[var(--border)] bg-white/75 p-4">
+      <div className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+        {title}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function ReviewTable({
+  title,
+  headers,
+  rows
+}: {
+  title: string;
+  headers: string[];
+  rows: string[][];
+}) {
+  return (
+    <div>
+      <div className="mb-2 text-sm font-semibold">{title}</div>
+      <div className="overflow-x-auto rounded-[24px] border border-[var(--border)] bg-white/80">
+        <table className="min-w-full divide-y divide-[var(--border)] text-left text-sm">
+          <thead className="bg-[var(--secondary)]/45 text-xs uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+            <tr>
+              {headers.map((header) => (
+                <th key={header} className="px-4 py-3 font-semibold">
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[var(--border)]">
+            {rows.map((row, rowIndex) => (
+              <tr key={`${title}-${rowIndex}`}>
+                {row.map((cell, cellIndex) => (
+                  <td key={`${title}-${rowIndex}-${cellIndex}`} className="max-w-[520px] px-4 py-3 align-top text-[var(--foreground)]">
+                    {cell.startsWith("https://") ? (
+                      <a href={cell} target="_blank" rel="noreferrer">
+                        {cell}
+                      </a>
+                    ) : (
+                      cell
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
 

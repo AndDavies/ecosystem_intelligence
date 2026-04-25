@@ -1,11 +1,10 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import {
   ArrowRight,
-  BookOpen,
   Building2,
-  Clock3,
   FolderSync,
-  Layers3,
+  ListChecks,
   Search,
   ShieldCheck
 } from "lucide-react";
@@ -29,134 +28,186 @@ export default async function AppHomePage() {
 
   return (
     <AppShell profile={profile}>
-      <div className="space-y-8">
-        <section className="grid gap-5 xl:grid-cols-[1.45fr_0.9fr]">
-          <Card variant="hero" className="rounded-[36px]">
-            <CardHeader className="space-y-4">
+      <div className="space-y-7">
+        <SectionHeading
+          title="Dashboard"
+          description="A compact operating surface for mission areas, companies, lists, evidence posture, and records that need attention."
+          eyebrow="BD intelligence workspace"
+          actions={
+            <div className="flex flex-wrap gap-2">
+              <Button asChild>
+                <Link href="/use-cases">
+                  Explore Use Cases
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/companies">
+                  Browse Companies
+                  <Building2 className="size-4" />
+                </Link>
+              </Button>
+            </div>
+          }
+        />
+
+        <SnapshotStrip
+          items={[
+            {
+              label: "Use Cases",
+              value: String(home.useCases.length),
+              detail: "Mission-led entry paths.",
+              href: "/use-cases",
+              hrefLabel: "Open"
+            },
+            {
+              label: "Domains",
+              value: String(home.domains.length),
+              detail: "Technical landscape areas.",
+              href: "/domains",
+              hrefLabel: "Open"
+            },
+            {
+              label: "Companies",
+              value: String(home.companies.length),
+              detail: "Tracked organizations.",
+              href: "/companies",
+              hrefLabel: "Open"
+            },
+            {
+              label: "Pending Reviews",
+              value: String(home.pendingReviews.length),
+              detail: "Changes requiring attention.",
+              href: "/review",
+              hrefLabel: "Review"
+            }
+          ]}
+        />
+
+        <section className="grid gap-5 xl:grid-cols-[1.25fr_0.75fr]">
+          <Card variant="strong" className="rounded-[28px]">
+            <CardHeader className="pb-4">
               <div className="workspace-kicker">
                 <ShieldCheck className="size-3.5" />
-                Discovery workspace
+                Mission control
               </div>
-              <CardTitle className="max-w-4xl text-4xl md:text-5xl">
-                Start from the question you need to answer, then move into records with trust and evidence still visible.
-              </CardTitle>
-              <p className="max-w-3xl text-base leading-7 text-[var(--muted-foreground)]">
-                Use the workspace to move between mission-led discovery, technical landscapes, and known companies
-                without losing review posture, freshness, or the capability context behind each recommendation.
-              </p>
+              <CardTitle>Start with the same controls BD users expect: search, browse, lists, and briefings.</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <SnapshotStrip
-                items={[
-                  {
-                    label: "Active Use Cases",
-                    value: String(home.useCases.length),
-                    detail: "Mission-led entry paths for ecosystem discovery."
-                  },
-                  {
-                    label: "Tracked Domains",
-                    value: String(home.domains.length),
-                    detail: "Technical areas that organize the wider landscape."
-                  },
-                  {
-                    label: "Tracked Companies",
-                    value: String(home.companies.length),
-                    detail: "Organizations with portfolio, signal, and evidence context."
-                  },
-                  {
-                    label: "Pending Reviews",
-                    value: String(home.pendingReviews.length),
-                    detail: "High-impact changes waiting for reviewer approval."
-                  }
-                ]}
-              />
-              <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-                <Button asChild className="w-full justify-between">
-                  <Link href="/use-cases">
-                    Explore Use Cases
-                    <ArrowRight className="size-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="surface" className="w-full justify-between">
-                  <Link href="/domains">
-                    Explore Domains
-                    <Layers3 className="size-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="surface" className="w-full justify-between">
-                  <Link href="/companies">
-                    Explore Companies
-                    <Building2 className="size-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="surface" className="w-full justify-between">
-                  <Link href="/app#search">
-                    Open Search
-                    <Search className="size-4" />
-                  </Link>
-                </Button>
-              </div>
+            <CardContent className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              <DashboardAction href="/app#search" label="Search records" detail="Find companies, capabilities, domains, and use cases." icon={<Search className="size-4" />} />
+              <DashboardAction href="/use-cases" label="Mission areas" detail="Open use-case led landscapes and target lists." icon={<FolderSync className="size-4" />} />
+              <DashboardAction href="/companies" label="Companies" detail="Browse organizations with domains and evidence posture." icon={<Building2 className="size-4" />} />
+              <DashboardAction href="/shortlists" label="Lists" detail="Return to saved BD working lists and next steps." icon={<ListChecks className="size-4" />} />
             </CardContent>
           </Card>
 
-          <div className="grid gap-5">
-            <Card variant="rail" className="rounded-[34px]">
-              <CardHeader className="space-y-3">
-                <div className="workspace-kicker">How to work here</div>
-                <CardTitle>Use the workspace like a decision surface, not a static directory.</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {[
-                  "Choose the entry path that best matches the question you are trying to answer.",
-                  "Use search, freshness, and linked records to narrow attention without losing context.",
-                  "Open the underlying capability or company record when you need evidence, signals, or governance detail."
-                ].map((step, index) => (
-                  <div key={step} className="workspace-subtle rounded-[26px] px-4 py-4">
-                    <div className="flex items-start gap-3">
-                      <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-semibold text-white">
-                        {index + 1}
+          <DiscoveryCard
+            eyebrow="Demo path"
+            title="Arctic Domain Awareness briefing"
+            description="A guided path from mission context to target comparison, evidence, gaps, and a saved shortlist."
+            href="/use-cases/arctic-domain-awareness/briefing"
+            actionLabel="Open briefing"
+            className="rounded-[28px]"
+            badges={
+              <>
+                <Badge tone="success">Validation-ready</Badge>
+                <Badge tone="outline">{home.shortlists.length} saved lists</Badge>
+              </>
+            }
+            footer={
+              <Button asChild variant="outline" className="justify-between">
+                <Link href="/shortlists">
+                  Open Lists
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+            }
+          />
+        </section>
+
+        <section className="grid gap-5 xl:grid-cols-[0.85fr_1.15fr]">
+          <Card variant="strong" className="rounded-[28px]">
+            <CardHeader>
+              <div className="workspace-kicker">Saved lists</div>
+              <CardTitle>Working lists</CardTitle>
+              <p className="text-sm leading-6 text-[var(--muted-foreground)]">
+                Shortlists preserve the recommendation, rationale, owner, and next step without turning the product into a CRM.
+              </p>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {home.shortlists.length ? (
+                home.shortlists.slice(0, 3).map((item) => (
+                  <Link
+                    key={item.shortlist.id}
+                    href={`/shortlists/${item.shortlist.id}`}
+                    className="block rounded-2xl border border-[var(--border)] bg-[var(--card-muted)] px-4 py-3 no-underline hover:bg-white"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <div className="font-semibold text-[var(--foreground)]">{item.shortlist.name}</div>
+                        <div className="mt-1 text-xs text-[var(--muted-foreground)]">
+                          {item.useCase?.name ?? "General list"} · updated {formatDate(item.updatedAt)}
+                        </div>
                       </div>
-                      <div className="pt-1 text-sm leading-6 text-[var(--foreground)]">{step}</div>
+                      <Badge tone="surface">{item.itemCount} targets</Badge>
+                    </div>
+                  </Link>
+                ))
+              ) : (
+                <div className="rounded-2xl border border-dashed border-[var(--border)] bg-[var(--card-muted)] p-4 text-sm text-[var(--muted-foreground)]">
+                  No lists yet. Add targets from a Use Case briefing to create the first working list.
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card variant="strong" className="rounded-[28px]">
+            <CardHeader>
+              <div className="workspace-kicker">Attention queue</div>
+              <CardTitle>What changed or needs review</CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-4 lg:grid-cols-2">
+              <div className="space-y-3">
+                <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                  Recent updates
+                </div>
+                {home.recentUpdates.slice(0, 3).map((event) => (
+                  <div key={event.id} className="rounded-2xl border border-[var(--border)] bg-[var(--card-muted)] p-4">
+                    <div className="text-sm font-semibold leading-6">{event.summary}</div>
+                    <div className="mt-1 text-xs text-[var(--muted-foreground)]">
+                      {event.actorName} · {formatFieldLabel(event.entityType)} · {formatDate(event.createdAt)}
                     </div>
                   </div>
                 ))}
-              </CardContent>
-            </Card>
-
-            <DiscoveryCard
-              eyebrow="Workspace actions"
-              title="Jump into help, enrichment, or governance without leaving the app shell."
-              description="Support routes stay available, but the center of gravity remains discovery and evidence-backed records."
-              href="/help"
-              actionLabel="Open Help Center"
-              badges={
-                <>
-                  <Badge tone="outline">
-                    <BookOpen className="mr-1.5 size-3" />
-                    Help
-                  </Badge>
-                  {profile.role === "admin" ? (
-                    <Badge tone="outline">
-                      <FolderSync className="mr-1.5 size-3" />
-                      Admin enrichment
-                    </Badge>
-                  ) : null}
-                </>
-              }
-              footer={
-                <>
-                  {profile.role === "admin" ? (
-                    <Button asChild variant="outline" className="justify-between">
-                      <Link href="/admin/enrichment">
-                        Manage Enrichment
-                        <FolderSync className="size-4" />
-                      </Link>
-                    </Button>
-                  ) : null}
-                </>
-              }
-            />
-          </div>
+              </div>
+              <div className="space-y-3">
+                <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                  Pending reviews
+                </div>
+                {home.pendingReviews.length ? (
+                  home.pendingReviews.slice(0, 3).map((request) => (
+                    <Link
+                      key={request.id}
+                      href="/review"
+                      className="block rounded-2xl border border-[var(--border)] bg-[var(--card-muted)] p-4 no-underline hover:bg-white"
+                    >
+                      <div className="flex flex-wrap items-center gap-2">
+                        <div className="text-sm font-semibold text-[var(--foreground)]">{request.entityLabel}</div>
+                        <Badge tone={request.originType === "ai" ? "info" : "muted"}>{request.originLabel}</Badge>
+                      </div>
+                      <div className="mt-1 text-xs text-[var(--muted-foreground)]">
+                        {request.changedFieldDetails.map((field) => field.label).join(", ")}
+                      </div>
+                    </Link>
+                  ))
+                ) : (
+                  <div className="rounded-2xl border border-dashed border-[var(--border)] bg-[var(--card-muted)] p-4 text-sm text-[var(--muted-foreground)]">
+                    No pending high-impact changes.
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
         </section>
 
         <GlobalSearch initialResults={initialSearchResults} />
@@ -222,57 +273,35 @@ export default async function AppHomePage() {
           </div>
         </section>
 
-        <section className="grid gap-5 lg:grid-cols-[1fr_1fr]">
-          <Card variant="strong" className="rounded-[32px]">
-            <CardHeader className="space-y-3">
-              <div className="workspace-kicker">Recent activity</div>
-              <CardTitle>Recent updates</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {home.recentUpdates.map((event) => (
-                <div key={event.id} className="workspace-subtle rounded-[26px] p-4">
-                  <div className="text-sm font-medium leading-6">{event.summary}</div>
-                  <div className="mt-1 text-xs text-[var(--muted-foreground)]">
-                    {event.actorName} · {formatFieldLabel(event.entityType)}
-                  </div>
-                  <div className="mt-2 flex items-center gap-2 text-xs text-[var(--muted-foreground)]">
-                    <Clock3 className="size-3.5" />
-                    {formatDate(event.createdAt)}
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-          <Card variant="strong" className="rounded-[32px]">
-            <CardHeader className="space-y-3">
-              <div className="workspace-kicker">Governance view</div>
-              <CardTitle>Pending review queue</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {home.pendingReviews.length ? (
-                home.pendingReviews.map((request) => (
-                  <div key={request.id} className="workspace-subtle rounded-[26px] p-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <div className="text-sm font-medium">{request.entityLabel}</div>
-                      <Badge tone={request.originType === "ai" ? "info" : "muted"}>
-                        {request.originLabel}
-                      </Badge>
-                    </div>
-                    <div className="mt-1 text-sm text-[var(--muted-foreground)]">
-                      {request.changedFieldDetails.map((field) => field.label).join(", ")}
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="workspace-subtle rounded-[26px] p-4 text-sm text-[var(--muted-foreground)]">
-                  No pending high-impact changes.
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </section>
       </div>
     </AppShell>
+  );
+}
+
+function DashboardAction({
+  href,
+  label,
+  detail,
+  icon
+}: {
+  href: string;
+  label: string;
+  detail: string;
+  icon: ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group rounded-2xl border border-[var(--border)] bg-[var(--card-muted)] p-4 no-underline transition hover:border-[var(--primary)]/25 hover:bg-white hover:shadow-[0_12px_30px_rgba(20,34,24,0.06)]"
+    >
+      <div className="flex items-center gap-2 text-sm font-semibold text-[var(--foreground)]">
+        <span className="flex size-8 items-center justify-center rounded-xl bg-[var(--primary)]/10 text-[var(--primary)] transition group-hover:bg-[var(--primary)] group-hover:text-white">
+          {icon}
+        </span>
+        {label}
+      </div>
+      <p className="mt-2 text-xs leading-5 text-[var(--muted-foreground)]">{detail}</p>
+    </Link>
   );
 }
 

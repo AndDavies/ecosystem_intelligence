@@ -66,5 +66,10 @@ describe("search helpers", () => {
     const company = companyResults.companies.find((item) => item.id === "company-2");
     expect(company?.domainNames).toContain("Cyber & Data");
     expect(company?.useCaseCount).toBeGreaterThan(0);
+
+    const useCaseResults = await searchRecords("NORAD");
+    const arctic = useCaseResults.useCases.find((item) => item.slug === "arctic-domain-awareness");
+    expect(arctic?.partnerFrames).toContain("NORAD");
+    expect(arctic?.missionOutcome).toMatch(/detect/i);
   });
 });

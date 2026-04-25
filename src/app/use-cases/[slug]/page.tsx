@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ChevronDown, Download, RefreshCw, Sparkles, Target } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
+import { AddToShortlistForm } from "@/components/shortlists/add-to-shortlist-form";
 import { MaturityChart } from "@/components/use-cases/maturity-chart";
 import { UseCaseCapabilityFilters } from "@/components/use-cases/filters";
 import { SnapshotStrip } from "@/components/workspace/workspace-primitives";
@@ -12,25 +13,29 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { requestRefresh } from "@/lib/actions/review";
 import { requireProfile } from "@/lib/auth";
-import { getUseCaseBySlug } from "@/lib/data/repository";
+import { getUseCaseBriefingBySlug } from "@/lib/data/repository";
 import { getFreshnessState, summarizeFreshness } from "@/lib/freshness";
 import { resolveUseCaseConfig } from "@/lib/use-case-config";
 import { buildUseCaseInsight, getTargetRead } from "@/lib/use-case-insights";
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
 
 export default async function UseCaseDetailPage({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ shortlistSetup?: string; shortlistItem?: string }>;
 }) {
   const profile = await requireProfile();
   const { slug } = await params;
-  const view = await getUseCaseBySlug(slug);
+  const query = await searchParams;
+  const briefing = await getUseCaseBriefingBySlug(slug);
 
-  if (!view) {
+  if (!briefing) {
     notFound();
   }
 
+  const view = briefing.useCase;
   const useCaseConfig = resolveUseCaseConfig(view.useCase, view.domains);
   const insightLayer = buildUseCaseInsight(view, useCaseConfig.insightCopy);
   const freshnessSummary = summarizeFreshness(
@@ -70,6 +75,12 @@ export default async function UseCaseDetailPage({
         actions={
           <div className="flex flex-wrap gap-2">
             <Button asChild variant="outline">
+              <Link href={`/use-cases/${view.useCase.slug}/briefing`}>
+                <Target className="mr-2 size-4" />
+                Open Briefing
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
               <Link href={`/api/export?type=use-case-targets&useCaseSlug=${view.useCase.slug}`}>
                 <Download className="mr-2 size-4" />
                 Export CSV
@@ -86,6 +97,22 @@ export default async function UseCaseDetailPage({
           </div>
         }
       />
+      {query.shortlistSetup === "missing-schema" ? (
+        <Card variant="muted" className="mb-6 rounded-[28px]">
+          <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
+            Shortlist persistence needs the latest Supabase migration. Apply `003_shortlists.sql`, then retry adding the target.
+          </CardContent>
+        </Card>
+      ) : null}
+      {query.shortlistItem ? (
+        <NoticeCard
+          message={
+            query.shortlistItem === "updated"
+              ? "Target was already on this shortlist, so its rationale and next step were updated."
+              : "Target added to the shortlist. Open Shortlists when you are ready to assign owner, due date, and follow-up."
+          }
+        />
+      ) : null}
       <div className="mb-6 grid gap-5 xl:grid-cols-[1.12fr_0.88fr]">
         <Card variant="hero" className="rounded-[36px]">
           <CardContent className="space-y-5 pt-6">
@@ -169,6 +196,105 @@ export default async function UseCaseDetailPage({
         </Card>
       </div>
 
+      <div className="mb-6 grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
+        <Card variant="strong" className="rounded-[32px]">
+          <CardHeader className="space-y-2">
+            <div className="workspace-kicker">Mission brief</div>
+            <CardTitle>What this Use Case is actually for</CardTitle>
+            <p className="text-sm leading-6 text-[var(--muted-foreground)]">
+              Use Cases are treated as public-priority mission or enabling lanes, not generic technology themes.
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex flex-wrap gap-2">
+              <Badge tone={view.useCase.priorityTier === "p1" ? "success" : "info"}>
+                {view.useCase.priorityTier.toUpperCase()}
+              </Badge>
+              <Badge tone={view.useCase.useCaseKind === "mission" ? "secondary" : "surface"}>
+                {toTitleCase(view.useCase.useCaseKind)}
+              </Badge>
+              <Badge tone="outline">Owner: {view.useCase.operationalOwner}</Badge>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2">
+              <RealismBlock title="Mission context" body={view.useCase.missionContext} />
+              <RealismBlock title="Required decision" body={view.useCase.requiredDecision} />
+              <RealismBlock title="Interoperability boundary" body={view.useCase.interoperabilityBoundary} />
+              <RealismBlock title="Mission outcome" body={view.useCase.missionOutcome} />
+            </div>
+            <RealismBlock title="Procurement pathway" body={view.useCase.procurementPathway} />
+          </CardContent>
+        </Card>
+
+        <Card variant="rail" className="rounded-[32px]">
+          <CardHeader className="space-y-2">
+            <div className="workspace-kicker">Policy alignment</div>
+            <CardTitle>Public-source confidence</CardTitle>
+            <p className="text-sm leading-6 text-[var(--muted-foreground)]">
+              This alignment is based on public CAF/DND, Government of Canada, and NATO source material, not classified
+              country targets or internal planning guidance.
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <div className="space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                Partner frames
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {view.useCase.partnerFrames.map((frame) => (
+                  <Badge key={frame} tone="outline">
+                    {frame}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                Policy anchors
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {view.useCase.policyAnchors.map((anchor) => (
+                  <Badge key={anchor} tone="surface">
+                    {anchor}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-[24px] border border-[var(--border)] bg-white/65 p-4">
+              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                Realism note
+              </div>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground)]">{view.useCase.realismNote}</p>
+            </div>
+            <div className="space-y-2">
+              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                Official source support
+              </div>
+              {view.citations.length ? (
+                <div className="space-y-2">
+                  {view.citations.map((citation) => (
+                    <a
+                      key={`${citation.fieldName}-${citation.sourceUrl}`}
+                      href={citation.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="block rounded-[22px] border border-[var(--border)] bg-white/70 px-4 py-3 text-sm no-underline hover:bg-white"
+                    >
+                      <div className="font-medium">{citation.sourceTitle}</div>
+                      <div className="mt-1 text-xs text-[var(--muted-foreground)]">
+                        {citation.publisher}
+                        {citation.publishedAt ? ` · ${formatDate(citation.publishedAt)}` : ""}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <EmptyState message="No official policy citations are attached to this Use Case yet." />
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       <div className="grid gap-5">
         <Card variant="feature" className="rounded-[32px]">
           <CardHeader className="space-y-2">
@@ -225,160 +351,236 @@ export default async function UseCaseDetailPage({
         </CardHeader>
         <CardContent className="space-y-4">
           {view.topTargets.length ? (
-            view.topTargets.map((entry, index) => (
-              <div
-                key={entry.mapping.id}
-                className={cn(
-                  "rounded-[32px] p-7 transition hover:-translate-y-0.5",
-                  index < 3
-                    ? "border border-[var(--primary)]/15 bg-[var(--card-strong)] shadow-[0_14px_40px_rgba(20,34,24,0.08)] hover:border-[var(--primary)]/30 hover:shadow-[0_18px_48px_rgba(20,34,24,0.12)]"
-                    : "border border-[var(--border)] bg-white/75 shadow-none hover:border-[var(--primary)]/16 hover:bg-white"
-                )}
-              >
-                {(() => {
-                  const targetRead = getTargetRead(
-                    entry,
-                    index,
-                    view.topTargets,
-                    view,
-                    useCaseConfig.insightCopy
-                  );
-                  const isPrimaryFocus = index < 3;
+            <>
+              <div className="hidden overflow-hidden rounded-[28px] border border-[var(--border)] bg-white shadow-[0_16px_48px_rgba(20,34,24,0.06)] xl:block">
+                <div className="grid grid-cols-[4rem_minmax(13rem,1.2fr)_minmax(10rem,0.9fr)_6.5rem_7rem_9rem_minmax(13rem,1fr)] gap-4 border-b border-[var(--border)] bg-[var(--card-muted)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                  <div>Rank</div>
+                  <div>Target</div>
+                  <div>Company</div>
+                  <div>Pathway</div>
+                  <div>Score</div>
+                  <div>Freshness</div>
+                  <div>Why now</div>
+                </div>
+                <div className="divide-y divide-[var(--border)]">
+                  {view.topTargets.map((entry, index) => {
+                    const targetRead = getTargetRead(
+                      entry,
+                      index,
+                      view.topTargets,
+                      view,
+                      useCaseConfig.insightCopy
+                    );
                     const freshness = getFreshnessState({
                       lastUpdatedAt: entry.capability.lastUpdatedAt,
                       lastSignalAt: entry.mapping.lastSignalAt,
                       staleAfterDays: entry.mapping.staleAfterDays
                     });
 
-                  return (
-                    <>
-                      <div className="mb-4 flex flex-wrap items-center gap-2">
-                        <div className="inline-flex items-center gap-2 rounded-full bg-[var(--primary)]/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--primary)]">
-                          <Target className="size-3.5" />
-                          Top Target #{index + 1}
+                    return (
+                      <Link
+                        key={`${entry.mapping.id}-scan`}
+                        href={`/capabilities/${entry.capability.id}?fromUseCase=${view.useCase.slug}`}
+                        className="grid grid-cols-[4rem_minmax(13rem,1.2fr)_minmax(10rem,0.9fr)_6.5rem_7rem_9rem_minmax(13rem,1fr)] items-center gap-4 px-5 py-4 text-sm no-underline transition hover:bg-[var(--card-muted)]"
+                      >
+                        <div className="font-bold text-[var(--foreground)]">#{index + 1}</div>
+                        <div className="min-w-0">
+                          <div className="truncate font-semibold text-[var(--foreground)]">{entry.capability.name}</div>
+                          <div className="mt-1 truncate text-xs text-[var(--muted-foreground)]">{entry.cluster.name}</div>
                         </div>
-                        {index < 3 ? (
-                          <Badge tone="default" className="px-3 py-1.5">
-                            {useCaseConfig.detail.primaryFocusLabel}
-                          </Badge>
-                        ) : null}
-                        <Badge tone={targetRead.tone} className="px-3 py-1.5">
-                          {targetRead.label}
-                        </Badge>
-                        <FreshnessBadge freshness={freshness} />
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="min-w-0">
-                            <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
-                              Capability
-                            </div>
-                            <Link
-                              href={`/capabilities/${entry.capability.id}?fromUseCase=${view.useCase.slug}`}
-                              title="Capability = product, system, or solution"
-                              className="block truncate text-2xl font-bold tracking-tight no-underline md:text-3xl"
-                            >
-                              {entry.capability.name}
-                            </Link>
-                          </div>
+                        <div className="truncate text-xs font-medium text-[var(--muted-foreground)]">
+                          {entry.company.name}
+                        </div>
+                        <div>
                           <Badge
                             tone={getPathwayTone(entry.mapping.pathway)}
-                            className="px-4 py-2 text-sm capitalize"
+                            className="capitalize"
                             title={getPathwayDescription(entry.mapping.pathway)}
                           >
                             {entry.mapping.pathway}
                           </Badge>
                         </div>
+                        <div className="font-semibold text-[var(--foreground)]">{entry.mapping.rankingScore}</div>
                         <div>
-                          <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
-                            Company
-                          </div>
-                          <Link
-                            href={`/companies/${entry.company.id}?fromUseCase=${view.useCase.slug}&fromCapability=${entry.capability.id}`}
-                            className="text-base font-medium text-slate-600 no-underline hover:text-[var(--link-hover)]"
-                          >
-                            {entry.company.name}
-                          </Link>
+                          <FreshnessBadge freshness={freshness} />
                         </div>
-                        <p className="truncate text-sm text-[var(--foreground)]">
-                          {entry.capability.summary}
-                        </p>
-                        {isPrimaryFocus ? (
-                          <>
-                            <div className="grid gap-3 lg:grid-cols-2">
-                              <DecisionDetailBlock
-                                title="Why This Is a Priority Now"
-                                body={targetRead.priorityNow}
-                              />
-                              <DecisionDetailBlock
-                                title="Why Not Others"
-                                body={targetRead.whyNotOthers}
-                              />
-                            </div>
-                            <div className="grid gap-3 md:grid-cols-2">
-                              <TradeoffBlock title="Strength" body={targetRead.strength} />
-                              <TradeoffBlock title="Limitation" body={targetRead.limitation} />
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            <div className="grid gap-2 md:grid-cols-[auto_1fr] md:items-center">
-                              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
-                                Why prioritize
-                              </div>
-                              <div className="truncate text-sm text-[var(--foreground)]">
-                                {truncateText(targetRead.whyPrioritize, 105)}
-                              </div>
-                            </div>
-                            <div className="grid gap-2 md:grid-cols-[auto_1fr] md:items-center">
-                              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
-                                Engagement read
-                              </div>
-                              <div className="truncate text-sm text-[var(--foreground)]">
-                                {truncateText(targetRead.context, 115)}
-                              </div>
-                            </div>
-                          </>
-                        )}
-                        <div className="grid gap-2 md:grid-cols-[auto_1fr] md:items-center">
-                          <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
-                            Why it matters
-                          </div>
-                          <div className="truncate text-sm text-[var(--muted-foreground)]">
-                            {truncateText(entry.mapping.whyItMatters, 115)}
-                          </div>
+                        <div className="truncate text-xs leading-5 text-[var(--muted-foreground)]">
+                          {targetRead.priorityNow}
                         </div>
-                        <div className="flex flex-wrap items-center gap-2">
-                          <Badge tone="secondary" className="px-3 py-1.5">
-                            <Sparkles className="mr-1.5 size-3" />
-                            {toTitleCase(entry.mapping.suggestedActionType)}
-                          </Badge>
-                          <Badge tone="muted" className="px-3 py-1.5">
-                            {entry.mapping.relevanceBand} relevance
-                          </Badge>
-                          <Badge tone="muted" className="px-3 py-1.5">
-                            {entry.cluster.name}
-                          </Badge>
-                        </div>
-                      </div>
-                      <div className="mt-6 flex flex-wrap gap-2">
-                        {entry.citations.map((citation) => (
-                          <a
-                            key={`${entry.mapping.id}-${citation.sourceUrl}`}
-                            href={citation.sourceUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="rounded-full border border-[var(--border)] bg-white px-3 py-1 text-xs text-[var(--muted-foreground)] hover:bg-[var(--card)]"
-                          >
-                            {citation.publisher} • {formatDate(citation.publishedAt)}
-                          </a>
-                        ))}
-                      </div>
-                    </>
-                  );
-                })()}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-            ))
+
+              {view.topTargets.map((entry, index) => (
+                <div
+                  key={entry.mapping.id}
+                  className={cn(
+                    "rounded-[32px] p-7 transition hover:-translate-y-0.5",
+                    index < 3
+                      ? "border border-[var(--primary)]/15 bg-[var(--card-strong)] shadow-[0_14px_40px_rgba(20,34,24,0.08)] hover:border-[var(--primary)]/30 hover:shadow-[0_18px_48px_rgba(20,34,24,0.12)]"
+                      : "border border-[var(--border)] bg-white/75 shadow-none hover:border-[var(--primary)]/16 hover:bg-white"
+                  )}
+                >
+                  {(() => {
+                    const targetRead = getTargetRead(
+                      entry,
+                      index,
+                      view.topTargets,
+                      view,
+                      useCaseConfig.insightCopy
+                    );
+                    const isPrimaryFocus = index < 3;
+                    const freshness = getFreshnessState({
+                      lastUpdatedAt: entry.capability.lastUpdatedAt,
+                      lastSignalAt: entry.mapping.lastSignalAt,
+                      staleAfterDays: entry.mapping.staleAfterDays
+                    });
+
+                    return (
+                      <>
+                        <div className="mb-4 flex flex-wrap items-center gap-2">
+                          <div className="inline-flex items-center gap-2 rounded-full bg-[var(--primary)]/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--primary)]">
+                            <Target className="size-3.5" />
+                            Top Target #{index + 1}
+                          </div>
+                          {index < 3 ? (
+                            <Badge tone="default" className="px-3 py-1.5">
+                              {useCaseConfig.detail.primaryFocusLabel}
+                            </Badge>
+                          ) : null}
+                          <Badge tone={targetRead.tone} className="px-3 py-1.5">
+                            {targetRead.label}
+                          </Badge>
+                          <FreshnessBadge freshness={freshness} />
+                        </div>
+                        <div className="space-y-4">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="min-w-0">
+                              <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                                Capability
+                              </div>
+                              <Link
+                                href={`/capabilities/${entry.capability.id}?fromUseCase=${view.useCase.slug}`}
+                                title="Capability = product, system, or solution"
+                                className="block truncate text-2xl font-bold tracking-tight no-underline md:text-3xl"
+                              >
+                                {entry.capability.name}
+                              </Link>
+                            </div>
+                            <Badge
+                              tone={getPathwayTone(entry.mapping.pathway)}
+                              className="px-4 py-2 text-sm capitalize"
+                              title={getPathwayDescription(entry.mapping.pathway)}
+                            >
+                              {entry.mapping.pathway}
+                            </Badge>
+                          </div>
+                          <div>
+                            <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                              Company
+                            </div>
+                            <Link
+                              href={`/companies/${entry.company.id}?fromUseCase=${view.useCase.slug}&fromCapability=${entry.capability.id}`}
+                              className="text-base font-medium text-slate-600 no-underline hover:text-[var(--link-hover)]"
+                            >
+                              {entry.company.name}
+                            </Link>
+                          </div>
+                          <p className="truncate text-sm text-[var(--foreground)]">
+                            {entry.capability.summary}
+                          </p>
+                          {isPrimaryFocus ? (
+                            <>
+                              <div className="grid gap-3 lg:grid-cols-2">
+                                <DecisionDetailBlock
+                                  title="Why This Is a Priority Now"
+                                  body={targetRead.priorityNow}
+                                />
+                                <DecisionDetailBlock
+                                  title="Why Not Others"
+                                  body={targetRead.whyNotOthers}
+                                />
+                              </div>
+                              <div className="grid gap-3 md:grid-cols-2">
+                                <TradeoffBlock title="Strength" body={targetRead.strength} />
+                                <TradeoffBlock title="Limitation" body={targetRead.limitation} />
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div className="grid gap-2 md:grid-cols-[auto_1fr] md:items-center">
+                                <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                                  Why prioritize
+                                </div>
+                                <div className="truncate text-sm text-[var(--foreground)]">
+                                  {truncateText(targetRead.whyPrioritize, 105)}
+                                </div>
+                              </div>
+                              <div className="grid gap-2 md:grid-cols-[auto_1fr] md:items-center">
+                                <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                                  Engagement read
+                                </div>
+                                <div className="truncate text-sm text-[var(--foreground)]">
+                                  {truncateText(targetRead.context, 115)}
+                                </div>
+                              </div>
+                            </>
+                          )}
+                          <div className="grid gap-2 md:grid-cols-[auto_1fr] md:items-center">
+                            <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                              Why it matters
+                            </div>
+                            <div className="truncate text-sm text-[var(--muted-foreground)]">
+                              {truncateText(entry.mapping.whyItMatters, 115)}
+                            </div>
+                          </div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <Badge tone="secondary" className="px-3 py-1.5">
+                              <Sparkles className="mr-1.5 size-3" />
+                              {toTitleCase(entry.mapping.suggestedActionType)}
+                            </Badge>
+                            <Badge tone="muted" className="px-3 py-1.5">
+                              {entry.mapping.relevanceBand} relevance
+                            </Badge>
+                            <Badge tone="muted" className="px-3 py-1.5">
+                              {entry.cluster.name}
+                            </Badge>
+                          </div>
+                        </div>
+                        <div className="mt-6 flex flex-wrap gap-2">
+                          {entry.citations.map((citation) => (
+                            <a
+                              key={`${entry.mapping.id}-${citation.sourceUrl}`}
+                              href={citation.sourceUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="rounded-full border border-[var(--border)] bg-white px-3 py-1 text-xs text-[var(--muted-foreground)] hover:bg-[var(--card)]"
+                            >
+                              {citation.publisher} • {formatDate(citation.publishedAt)}
+                            </a>
+                          ))}
+                        </div>
+                        <div className="mt-4">
+                          <AddToShortlistForm
+                            shortlists={briefing.shortlists}
+                            useCaseId={view.useCase.id}
+                            useCaseName={view.useCase.name}
+                            pagePath={`/use-cases/${view.useCase.slug}`}
+                            capabilityId={entry.capability.id}
+                            companyId={entry.company.id}
+                            status={entry.mapping.pathway === "scale" ? "engage" : entry.mapping.pathway === "validate" ? "validate" : "watch"}
+                            rationale={targetRead.priorityNow}
+                            nextStep={targetRead.actionDirective}
+                          />
+                        </div>
+                      </>
+                    );
+                  })()}
+                </div>
+              ))}
+            </>
           ) : (
             <EmptyState message="No engagement targets are available for this Use Case yet." />
           )}
@@ -582,7 +784,26 @@ function DerivedReadLabel() {
   );
 }
 
+function NoticeCard({ message }: { message: string }) {
+  return (
+    <Card variant="muted" className="mb-6 rounded-[28px] border-[var(--primary)]/18">
+      <CardContent className="pt-6 text-sm font-medium text-[var(--foreground)]">{message}</CardContent>
+    </Card>
+  );
+}
+
 function DecisionDetailBlock({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-[24px] border border-[var(--border)] bg-white/70 p-4">
+      <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+        {title}
+      </div>
+      <p className="mt-2 text-sm leading-6 text-[var(--foreground)]">{body}</p>
+    </div>
+  );
+}
+
+function RealismBlock({ title, body }: { title: string; body: string }) {
   return (
     <div className="rounded-[24px] border border-[var(--border)] bg-white/70 p-4">
       <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">

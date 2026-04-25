@@ -22,11 +22,12 @@ export default async function HelpPage() {
             <Badge tone="outline">Internal help center</Badge>
             <div className="space-y-3">
               <div className="font-display text-3xl font-semibold tracking-tight">
-                Explore defence and dual-use capabilities through use case, domain, and company entry paths.
+                Explore defence and dual-use capabilities through mission-real use case, domain, and company entry paths.
               </div>
               <p className="max-w-4xl text-sm leading-7 text-[var(--muted-foreground)]">
                 This product helps internal users understand capability landscapes, identify higher-priority targets,
-                inspect evidence, and maintain a defensible record through review and provenance no matter which browse path they start from.
+                inspect evidence, and keep each Use Case tied to public CAF/DND, Government of Canada, and NATO
+                priorities without pretending public sources are classified requirements.
               </p>
             </div>
           </CardContent>
@@ -40,7 +41,10 @@ export default async function HelpPage() {
             </CardHeader>
             <CardContent className="space-y-2 text-sm text-[var(--muted-foreground)]">
               <p>Start from a Use Case, a Domain, or a Company depending on the question.</p>
+              <p>Use Mission Brief and Policy Alignment to understand why a Use Case exists.</p>
+              <p>Open a Use Case Briefing when you need a meeting-ready target comparison.</p>
               <p>Review top targets, filters, clusters, maturity, and evidence.</p>
+              <p>Save selected targets to shared shortlists with rationale and next steps.</p>
               <p>Open capability, domain, and company profiles for decision context.</p>
               <p>Edit records, request refresh, or review higher-impact changes when your role allows it.</p>
             </CardContent>
@@ -54,6 +58,7 @@ export default async function HelpPage() {
               <p>It is not a generic company database.</p>
               <p>It is not a CRM replacement or outreach tool.</p>
               <p>It is not a fully autonomous intelligence engine.</p>
+              <p>It is not a substitute for classified planning guidance or country-specific NATO targets.</p>
               <p>It does not treat AI-derived suggestions as live truth without review.</p>
             </CardContent>
           </Card>
@@ -62,13 +67,14 @@ export default async function HelpPage() {
         <Card variant="rail" className="rounded-[32px]">
           <CardHeader className="space-y-3">
             <div className="workspace-kicker">First walkthrough</div>
-            <CardTitle>3-step quick start</CardTitle>
+            <CardTitle>4-step quick start</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {[
-              "Choose a Use Case for mission-led discovery, a Domain for technical exploration, or a Company for organization-led research.",
-              "Use filters, clusters, freshness, and linked pages to narrow the landscape without losing context.",
-              "Open a capability, inspect evidence and signals, then move into the company or domain profile if you need broader context."
+              "Start from the Dashboard, persistent search, or left navigation depending on whether you know the mission, company, or record.",
+              "Use table-style scans on Companies and Use Case targets before opening detailed cards or profiles.",
+              "Open the briefing view to compare top targets, understand tradeoffs, and name visible gaps.",
+              "Save selected targets to a shortlist with status, owner, next step, due date, and rationale."
             ].map((step, index) => (
               <div key={step} className="workspace-subtle flex items-start gap-3 rounded-[26px] px-4 py-4">
                 <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-semibold text-white">
@@ -89,7 +95,9 @@ export default async function HelpPage() {
               "Use Cases",
               "Domains",
               "Companies",
+              "Shortlists",
               "Use Case Detail",
+              "Use Case Briefing",
               "Capability Detail",
               "Company Detail",
               "Review Queue",

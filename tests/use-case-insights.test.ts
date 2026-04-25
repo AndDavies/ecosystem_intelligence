@@ -17,7 +17,18 @@ function buildView(): UseCaseView {
     name: "Cold Weather Monitoring",
     summary: "Monitor distributed operations in difficult environments.",
     active: true,
-    domainIds: [domain.id]
+    domainIds: [domain.id],
+    priorityTier: "p2" as const,
+    useCaseKind: "mission" as const,
+    partnerFrames: ["CAF/DND"],
+    policyAnchors: ["Test policy anchor"],
+    operationalOwner: "Test operators",
+    missionContext: "Cold-weather remote monitoring.",
+    requiredDecision: "Decide which systems can improve detection and tasking.",
+    interoperabilityBoundary: "Test interoperability boundary.",
+    missionOutcome: "Improve detection and warning decisions in remote environments.",
+    procurementPathway: "Validate before procurement-facing engagement.",
+    realismNote: "Public-source test fixture."
   };
 
   const clusters = [
@@ -214,6 +225,7 @@ function buildView(): UseCaseView {
   return {
     useCase,
     domains: [domain],
+    citations: [],
     observations: [],
     topTargets: entries,
     allCapabilities: entries,

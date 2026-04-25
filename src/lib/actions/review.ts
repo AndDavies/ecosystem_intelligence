@@ -1,5 +1,6 @@
 "use server";
 
+import path from "node:path";
 import { revalidatePath } from "next/cache";
 import { requireProfile } from "@/lib/auth";
 import {
@@ -11,6 +12,13 @@ import {
 } from "@/lib/review/change-routing";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
+import {
+  candidateBatchDir,
+  loadCandidateBatch,
+  promoteCandidateBatch,
+  type CandidatePromotionTableRows
+} from "../../../scripts/ingestion-candidates";
+import { loadSeedData } from "../../../scripts/seed-utils";
 
 function getStringValue(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -316,6 +324,67 @@ export async function reviewChangeRequest(changeRequestId: string, decision: "ap
     entityType: request.entity_type,
     entityId: request.entity_id,
     summary: `${decision === "approved" ? "Approved" : "Rejected"} change request.`
+  });
+
+  revalidateOperationalPaths("/review");
+}
+
+function resolveCandidateBatchPath(candidateFilePath: string) {
+  const root = path.resolve(candidateBatchDir);
+  const resolved = path.resolve(process.cwd(), candidateFilePath);
+
+  if (resolved !== root && !resolved.startsWith(`${root}${path.sep}`)) {
+    throw new Error("Candidate batch must live inside data/ingestion/candidate-batches.");
+  }
+
+  return resolved;
+}
+
+async function upsertPromotedCandidateRows(tables: CandidatePromotionTableRows[]) {
+  if (!hasSupabaseEnv()) {
+    return;
+  }
+
+  const supabase = createAdminClient();
+
+  for (const table of tables) {
+    if (!table.rows.length) {
+      continue;
+    }
+
+    const { error } = await supabase.from(table.tableName).upsert(table.rows, {
+      onConflict: "id"
+    });
+
+    if (error) {
+      throw error;
+    }
+  }
+}
+
+export async function promoteIngestionCandidate(formData: FormData) {
+  const profile = await requireProfile("reviewer");
+  const candidateFilePath = getStringValue(formData, "candidateFilePath");
+  const resolvedPath = resolveCandidateBatchPath(candidateFilePath);
+  const batch = await loadCandidateBatch(resolvedPath);
+  const reviewerName = profile.fullName ?? profile.email;
+
+  const promotion = await promoteCandidateBatch({
+    batch,
+    filePath: resolvedPath,
+    reviewer: reviewerName,
+    seedData: await loadSeedData(),
+    beforeWrite: upsertPromotedCandidateRows
+  });
+
+  await insertAuditEvent({
+    actorId: profile.id,
+    actorEmail: profile.email,
+    actorName: profile.fullName,
+    eventType: "ingestion_candidate_promoted",
+    entityType: "ingestion_candidate",
+    entityId: batch.batchId,
+    summary: `Promoted ${promotion.result.counts.companies} companies, ${promotion.result.counts.capabilities} capabilities, and ${promotion.result.counts.mappings} mappings from ${batch.title}.`
   });
 
   revalidateOperationalPaths("/review");

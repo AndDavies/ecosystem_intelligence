@@ -42,10 +42,35 @@ export default async function AdminTaxonomyPage() {
             {taxonomy.useCases.map((useCase) => (
               <div key={useCase.id} className="rounded-3xl border border-[var(--border)] bg-white/60 p-4">
                 <div className="font-semibold">{useCase.name}</div>
+                <p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">
+                  {useCase.missionOutcome}
+                </p>
                 <div className="mt-2 flex flex-wrap gap-2">
+                  <Badge tone={useCase.priorityTier === "p1" ? "success" : "info"}>
+                    {useCase.priorityTier.toUpperCase()}
+                  </Badge>
+                  <Badge tone={useCase.useCaseKind === "mission" ? "secondary" : "surface"}>
+                    {useCase.useCaseKind}
+                  </Badge>
                   {useCase.domainIds.map((id) => (
-                    <Badge key={id}>{id}</Badge>
+                    <Badge key={id} tone="outline">
+                      {id}
+                    </Badge>
                   ))}
+                </div>
+                <div className="mt-3 space-y-2 text-xs text-[var(--muted-foreground)]">
+                  <div>
+                    <span className="font-semibold text-[var(--foreground)]">Owner:</span>{" "}
+                    {useCase.operationalOwner}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-[var(--foreground)]">Decision:</span>{" "}
+                    {useCase.requiredDecision}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-[var(--foreground)]">Policy:</span>{" "}
+                    {useCase.policyAnchors.join(" · ")}
+                  </div>
                 </div>
               </div>
             ))}

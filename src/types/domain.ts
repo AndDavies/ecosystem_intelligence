@@ -3,6 +3,9 @@ export type Pathway = "build" | "validate" | "scale";
 export type RelevanceBand = "low" | "medium" | "high";
 export type DefenceRelevance = "low" | "medium" | "high";
 export type ChangeStatus = "pending" | "approved" | "rejected";
+export type UseCasePriorityTier = "p1" | "p2" | "p3";
+export type UseCaseKind = "mission" | "enabling";
+export type ShortlistItemStatus = "watch" | "validate" | "engage" | "hold";
 export type SignalType =
   | "funding"
   | "contract"
@@ -41,6 +44,17 @@ export interface UseCase {
   summary: string;
   active: boolean;
   domainIds: string[];
+  priorityTier: UseCasePriorityTier;
+  useCaseKind: UseCaseKind;
+  partnerFrames: string[];
+  policyAnchors: string[];
+  operationalOwner: string;
+  missionContext: string;
+  requiredDecision: string;
+  interoperabilityBoundary: string;
+  missionOutcome: string;
+  procurementPathway: string;
+  realismNote: string;
 }
 
 export interface Cluster {
@@ -132,7 +146,7 @@ export interface EvidenceSnippet {
 
 export interface FieldCitation {
   id: string;
-  entityType: "capability" | "company" | "capability_use_case" | "use_case_observation";
+  entityType: "capability" | "company" | "capability_use_case" | "use_case" | "use_case_observation";
   entityId: string;
   fieldName: string;
   evidenceSnippetId: string;
@@ -180,4 +194,30 @@ export interface AiRun {
   promptVersion: string;
   resultSummary: string | null;
   createdAt: string;
+}
+
+export interface Shortlist {
+  id: string;
+  name: string;
+  useCaseId: string;
+  description: string | null;
+  creatorId: string | null;
+  creatorEmail: string;
+  creatorName: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ShortlistItem {
+  id: string;
+  shortlistId: string;
+  capabilityId: string | null;
+  companyId: string | null;
+  status: ShortlistItemStatus;
+  owner: string | null;
+  nextStep: string | null;
+  dueDate: string | null;
+  rationale: string | null;
+  createdAt: string;
+  updatedAt: string;
 }

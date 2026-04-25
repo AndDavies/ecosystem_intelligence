@@ -12,6 +12,8 @@ import {
   domains as mockDomains,
   evidenceSnippets as mockEvidenceSnippets,
   fieldCitations as mockFieldCitations,
+  shortlistItems as mockShortlistItems,
+  shortlists as mockShortlists,
   signals as mockSignals,
   sources as mockSources,
   useCaseObservations as mockUseCaseObservations,
@@ -33,6 +35,8 @@ import type {
   FieldCitation,
   Profile,
   Signal,
+  Shortlist,
+  ShortlistItem,
   Source,
   UseCase,
   UseCaseObservation
@@ -42,12 +46,16 @@ import type {
   CitationView,
   CompanyIndexCardView,
   CompanyProfileView,
+  CoverageGapView,
   DatasetState,
   DomainCardView,
   DomainDetailView,
+  ShortlistDetailView,
+  ShortlistIndexCardView,
   SearchResultsView,
   ReviewQueueItemView,
   ReviewQueueView,
+  UseCaseBriefingView,
   UseCaseBrowseCardView,
   UseCaseView
 } from "@/types/view-models";
@@ -55,6 +63,7 @@ import { formatFieldLabel, formatValueForDisplay } from "@/lib/utils";
 import { isAiGeneratedRequest, resolveAiRunForRequest } from "@/lib/review/provenance";
 import { getFreshnessState, summarizeFreshness } from "@/lib/freshness";
 import { mergeUniqueById, rankSearchResults } from "@/lib/search";
+import { buildUseCaseInsight, getTargetRead } from "@/lib/use-case-insights";
 
 function getMockDataset(): DatasetState {
   return {
@@ -72,7 +81,9 @@ function getMockDataset(): DatasetState {
     evidenceSnippets: mockEvidenceSnippets,
     fieldCitations: mockFieldCitations,
     useCaseObservations: mockUseCaseObservations,
-    changeRequests: mockChangeRequests
+    changeRequests: mockChangeRequests,
+    shortlists: mockShortlists,
+    shortlistItems: mockShortlistItems
   };
 }
 
@@ -94,7 +105,9 @@ async function getSupabaseDataset(): Promise<DatasetState> {
     evidenceSnippets,
     fieldCitations,
     useCaseObservations,
-    changeRequests
+    changeRequests,
+    shortlists,
+    shortlistItems
   ] = await Promise.all([
     supabase.from("audit_log").select("*").order("created_at", { ascending: false }),
     supabase.from("ai_runs").select("*").order("created_at", { ascending: false }),
@@ -110,7 +123,9 @@ async function getSupabaseDataset(): Promise<DatasetState> {
     supabase.from("evidence_snippets").select("*"),
     supabase.from("field_citations").select("*"),
     supabase.from("use_case_observations").select("*"),
-    supabase.from("change_requests").select("*")
+    supabase.from("change_requests").select("*"),
+    supabase.from("shortlists").select("*").order("updated_at", { ascending: false }),
+    supabase.from("shortlist_items").select("*").order("updated_at", { ascending: false })
   ]);
 
   return {
@@ -128,7 +143,9 @@ async function getSupabaseDataset(): Promise<DatasetState> {
     evidenceSnippets: (evidenceSnippets.data ?? []).map(normalizeEvidenceSnippet),
     fieldCitations: (fieldCitations.data ?? []).map(normalizeFieldCitation),
     useCaseObservations: (useCaseObservations.data ?? []).map(normalizeUseCaseObservation),
-    changeRequests: (changeRequests.data ?? []).map(normalizeChangeRequest)
+    changeRequests: (changeRequests.data ?? []).map(normalizeChangeRequest),
+    shortlists: (shortlists.data ?? []).map(normalizeShortlist),
+    shortlistItems: (shortlistItems.data ?? []).map(normalizeShortlistItem)
   };
 }
 
@@ -141,6 +158,21 @@ function normalizeDomain(row: Record<string, unknown>): Domain {
   };
 }
 
+function normalizeStringArray(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value.map(String).filter(Boolean);
+  }
+
+  if (typeof value === "string") {
+    return value
+      .split("|")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
 function normalizeUseCase(row: Record<string, unknown>): UseCase {
   return {
     id: String(row.id),
@@ -148,7 +180,36 @@ function normalizeUseCase(row: Record<string, unknown>): UseCase {
     name: String(row.name),
     summary: String(row.summary),
     active: Boolean(row.active),
-    domainIds: Array.isArray(row.domain_ids) ? row.domain_ids.map(String) : []
+    domainIds: normalizeStringArray(row.domain_ids ?? row.domainIds),
+    priorityTier: String(row.priority_tier ?? row.priorityTier ?? "p3") as UseCase["priorityTier"],
+    useCaseKind: String(row.use_case_kind ?? row.useCaseKind ?? "mission") as UseCase["useCaseKind"],
+    partnerFrames: normalizeStringArray(row.partner_frames ?? row.partnerFrames),
+    policyAnchors: normalizeStringArray(row.policy_anchors ?? row.policyAnchors),
+    operationalOwner: String(row.operational_owner ?? row.operationalOwner ?? "Internal mission owner"),
+    missionContext: String(
+      row.mission_context ?? row.missionContext ?? "Public-priority aligned mission context pending refinement."
+    ),
+    requiredDecision: String(
+      row.required_decision ??
+        row.requiredDecision ??
+        "Determine whether mapped capabilities merit engagement, validation, monitoring, or procurement-facing review."
+    ),
+    interoperabilityBoundary: String(
+      row.interoperability_boundary ??
+        row.interoperabilityBoundary ??
+        "Public-source interoperability boundary pending refinement."
+    ),
+    missionOutcome: String(
+      row.mission_outcome ?? row.missionOutcome ?? "Improve mission decision quality using public-source capability intelligence."
+    ),
+    procurementPathway: String(
+      row.procurement_pathway ??
+        row.procurementPathway ??
+        "Monitor or validate before procurement-facing engagement."
+    ),
+    realismNote: String(
+      row.realism_note ?? row.realismNote ?? "Public-source alignment only; not a classified requirement or target."
+    )
   };
 }
 
@@ -323,6 +384,36 @@ function normalizeAiRun(row: Record<string, unknown>): AiRun {
   };
 }
 
+function normalizeShortlist(row: Record<string, unknown>): Shortlist {
+  return {
+    id: String(row.id),
+    name: String(row.name),
+    useCaseId: String(row.use_case_id),
+    description: row.description ? String(row.description) : null,
+    creatorId: row.creator_id ? String(row.creator_id) : null,
+    creatorEmail: String(row.creator_email),
+    creatorName: row.creator_name ? String(row.creator_name) : null,
+    createdAt: String(row.created_at),
+    updatedAt: String(row.updated_at)
+  };
+}
+
+function normalizeShortlistItem(row: Record<string, unknown>): ShortlistItem {
+  return {
+    id: String(row.id),
+    shortlistId: String(row.shortlist_id),
+    capabilityId: row.capability_id ? String(row.capability_id) : null,
+    companyId: row.company_id ? String(row.company_id) : null,
+    status: String(row.status ?? "watch") as ShortlistItem["status"],
+    owner: row.owner ? String(row.owner) : null,
+    nextStep: row.next_step ? String(row.next_step) : null,
+    dueDate: row.due_date ? String(row.due_date) : null,
+    rationale: row.rationale ? String(row.rationale) : null,
+    createdAt: String(row.created_at),
+    updatedAt: String(row.updated_at)
+  };
+}
+
 export async function getDataset() {
   if (!hasSupabaseEnv()) {
     return getMockDataset();
@@ -339,6 +430,28 @@ type UseCaseSearchRow = {
   domain_ids?: string[];
   domainIds?: string[];
   domainNames?: string[];
+  priority_tier?: string;
+  priorityTier?: UseCase["priorityTier"];
+  use_case_kind?: string;
+  useCaseKind?: UseCase["useCaseKind"];
+  partner_frames?: string[];
+  partnerFrames?: string[];
+  policy_anchors?: string[];
+  policyAnchors?: string[];
+  operational_owner?: string;
+  operationalOwner?: string;
+  mission_context?: string;
+  missionContext?: string;
+  required_decision?: string;
+  requiredDecision?: string;
+  interoperability_boundary?: string;
+  interoperabilityBoundary?: string;
+  mission_outcome?: string;
+  missionOutcome?: string;
+  procurement_pathway?: string;
+  procurementPathway?: string;
+  realism_note?: string;
+  realismNote?: string;
 };
 
 type CapabilitySearchRow = {
@@ -498,14 +611,7 @@ function buildDomainCards(state: DatasetState): DomainCardView[] {
       );
       const useCases = useCaseCards
         .filter((useCase) => useCase.domainIds.includes(domain.id))
-        .map((useCase) => ({
-          id: useCase.id,
-          slug: useCase.slug,
-          name: useCase.name,
-          summary: useCase.summary,
-          active: useCase.active,
-          domainIds: useCase.domainIds
-        }));
+        .map((useCase) => useCase);
 
       return {
         domain,
@@ -556,6 +662,153 @@ function buildCompanyIndexCards(state: DatasetState): CompanyIndexCardView[] {
     );
 }
 
+function getEmptyStatusCounts(): Record<ShortlistItem["status"], number> {
+  return {
+    watch: 0,
+    validate: 0,
+    engage: 0,
+    hold: 0
+  };
+}
+
+function buildShortlistIndexCards(state: DatasetState, useCaseId?: string): ShortlistIndexCardView[] {
+  return state.shortlists
+    .filter((shortlist) => !useCaseId || shortlist.useCaseId === useCaseId)
+    .map((shortlist) => {
+      const items = state.shortlistItems.filter((item) => item.shortlistId === shortlist.id);
+      const statusCounts = getEmptyStatusCounts();
+
+      items.forEach((item) => {
+        statusCounts[item.status] += 1;
+      });
+
+      return {
+        shortlist,
+        useCase: state.useCases.find((item) => item.id === shortlist.useCaseId) ?? null,
+        itemCount: items.length,
+        statusCounts,
+        updatedAt: sortByDateDesc([shortlist.updatedAt, ...items.map((item) => item.updatedAt)])[0] ?? shortlist.updatedAt
+      };
+    })
+    .sort(
+      (left, right) =>
+        new Date(right.updatedAt).getTime() - new Date(left.updatedAt).getTime() ||
+        left.shortlist.name.localeCompare(right.shortlist.name)
+    );
+}
+
+function getEvidencePosture(entry: { citations: CitationView[]; mapping: CapabilityUseCase }) {
+  if (entry.citations.length >= 2 || entry.mapping.evidenceStrength === 5) {
+    return {
+      label: "Strong evidence",
+      tone: "success" as const,
+      detail: `${entry.citations.length} linked citations and evidence strength ${entry.mapping.evidenceStrength}.`,
+      citationCount: entry.citations.length
+    };
+  }
+
+  if (entry.citations.length >= 1 || entry.mapping.evidenceStrength === 3) {
+    return {
+      label: "Moderate evidence",
+      tone: "info" as const,
+      detail: `${entry.citations.length} linked citations and evidence strength ${entry.mapping.evidenceStrength}; suitable for validation, not final certainty.`,
+      citationCount: entry.citations.length
+    };
+  }
+
+  return {
+    label: "Needs evidence",
+    tone: "danger" as const,
+    detail: "No linked citations or only weak evidence; treat as a research lead before engagement.",
+    citationCount: entry.citations.length
+  };
+}
+
+function getSuggestedShortlistStatus(mapping: CapabilityUseCase): ShortlistItem["status"] {
+  if (mapping.pathway === "scale") {
+    return "engage";
+  }
+
+  if (mapping.pathway === "validate") {
+    return "validate";
+  }
+
+  return "watch";
+}
+
+function buildCoverageGaps(view: UseCaseView): CoverageGapView[] {
+  const gaps: CoverageGapView[] = [];
+  const totalCapabilities = view.allCapabilities.length || 1;
+  const scaleCount = view.maturityDistribution.find((item) => item.pathway === "scale")?.count ?? 0;
+  const weakEvidenceCount = view.allCapabilities.filter(
+    (entry) => entry.mapping.evidenceStrength === 1 || entry.citations.length === 0
+  ).length;
+  const staleCount = view.allCapabilities.filter((entry) => {
+    const freshness = getFreshnessState({
+      lastUpdatedAt: entry.capability.lastUpdatedAt,
+      lastSignalAt: entry.mapping.lastSignalAt,
+      staleAfterDays: entry.mapping.staleAfterDays
+    });
+
+    return freshness.tone === "danger";
+  }).length;
+  const companyGeography = new Map(view.allCapabilities.map((entry) => [entry.company.id, entry.company.geography]));
+  const geographyCounts = Array.from(companyGeography.values()).reduce<Record<string, number>>((accumulator, geography) => {
+    accumulator[geography] = (accumulator[geography] ?? 0) + 1;
+    return accumulator;
+  }, {});
+  const geographyEntries = Object.entries(geographyCounts).sort((left, right) => right[1] - left[1]);
+  const leadingGeography = geographyEntries[0] ?? null;
+  const thinnestCluster = [...view.clusters].sort((left, right) => left.count - right.count)[0] ?? null;
+
+  if (scaleCount <= Math.max(2, Math.floor(totalCapabilities * 0.2))) {
+    gaps.push({
+      label: "Limited Scale-stage depth",
+      detail: `Only ${scaleCount} of ${totalCapabilities} mapped capabilities are Scale-stage, so near-term engagement options remain narrow.`,
+      tone: "danger",
+      category: "maturity"
+    });
+  }
+
+  if (thinnestCluster && thinnestCluster.count <= 2) {
+    gaps.push({
+      label: `Thin ${thinnestCluster.cluster.name} coverage`,
+      detail: `${thinnestCluster.cluster.name} has ${thinnestCluster.count} mapped capabilities, which limits comparison depth inside this part of the mission stack.`,
+      tone: "info",
+      category: "cluster"
+    });
+  }
+
+  if (leadingGeography && companyGeography.size > 2 && leadingGeography[1] / companyGeography.size >= 0.65) {
+    gaps.push({
+      label: "Geography concentration",
+      detail: `${leadingGeography[1]} of ${companyGeography.size} companies are concentrated in ${leadingGeography[0]}, so compare allied or domestic alternatives before treating the landscape as balanced.`,
+      tone: "info",
+      category: "geography"
+    });
+  }
+
+  if (weakEvidenceCount > 0) {
+    gaps.push({
+      label: "Weak or missing evidence coverage",
+      detail: `${weakEvidenceCount} mapped capabilities have weak evidence strength or no linked citations, so their ranking should be validated before a briefing claim.`,
+      tone: weakEvidenceCount >= Math.ceil(totalCapabilities * 0.35) ? "danger" : "info",
+      category: "evidence"
+    });
+  }
+
+  if (staleCount > 0) {
+    gaps.push({
+      label: "Stale records need review",
+      detail: `${staleCount} mapped capabilities are stale enough to need source refresh before confident engagement.`,
+      tone: "muted",
+      category: "freshness"
+    });
+  }
+
+  return gaps.slice(0, 5);
+}
+
 export async function getHomeData() {
   const state = await getDataset();
   const pendingReviews = buildReviewQueueItems(state).filter((item) => item.status === "pending");
@@ -567,6 +820,7 @@ export async function getHomeData() {
     useCases: buildUseCaseBrowseCards(state),
     domains: buildDomainCards(state),
     companies: buildCompanyIndexCards(state),
+    shortlists: buildShortlistIndexCards(state),
     pendingReviews,
     pendingAiSuggestions,
     recentUpdates,
@@ -652,11 +906,106 @@ export async function getUseCaseBySlug(slug: string): Promise<UseCaseView | null
   return {
     useCase,
     domains,
+    citations: citationLookup("use_case", useCase.id),
     observations: state.useCaseObservations.filter((item) => item.useCaseId === useCase.id),
     topTargets: compactCapabilities.slice(0, 10),
     allCapabilities: compactCapabilities,
     clusters: clusterViews,
     maturityDistribution
+  };
+}
+
+export async function getUseCaseBriefingBySlug(slug: string): Promise<UseCaseBriefingView | null> {
+  const [state, useCase] = await Promise.all([getDataset(), getUseCaseBySlug(slug)]);
+
+  if (!useCase) {
+    return null;
+  }
+
+  const insightLayer = buildUseCaseInsight(useCase);
+  const targets = useCase.topTargets.slice(0, 5).map((entry, index) => ({
+    entry,
+    rank: index + 1,
+    targetRead: getTargetRead(entry, index, useCase.topTargets, useCase),
+    freshness: getFreshnessState({
+      lastUpdatedAt: entry.capability.lastUpdatedAt,
+      lastSignalAt: entry.mapping.lastSignalAt,
+      staleAfterDays: entry.mapping.staleAfterDays
+    }),
+    evidencePosture: getEvidencePosture(entry),
+    suggestedStatus: getSuggestedShortlistStatus(entry.mapping)
+  }));
+
+  return {
+    useCase,
+    targets,
+    coverageGaps: buildCoverageGaps(useCase),
+    briefingSummary: [...insightLayer.ecosystemSummary, ...insightLayer.whatThisMeans].slice(0, 5),
+    shortlists: buildShortlistIndexCards(state, useCase.useCase.id)
+  };
+}
+
+export async function getShortlistsIndex(): Promise<ShortlistIndexCardView[]> {
+  const state = await getDataset();
+  return buildShortlistIndexCards(state);
+}
+
+export async function getShortlistById(id: string): Promise<ShortlistDetailView | null> {
+  const state = await getDataset();
+  const shortlist = state.shortlists.find((item) => item.id === id);
+
+  if (!shortlist) {
+    return null;
+  }
+
+  return {
+    shortlist,
+    useCase: state.useCases.find((item) => item.id === shortlist.useCaseId) ?? null,
+    items: state.shortlistItems
+      .filter((item) => item.shortlistId === shortlist.id)
+      .map((item) => {
+        const capability = item.capabilityId
+          ? state.capabilities.find((capabilityItem) => capabilityItem.id === item.capabilityId) ?? null
+          : null;
+        const company =
+          (item.companyId ? state.companies.find((companyItem) => companyItem.id === item.companyId) : null) ??
+          (capability ? state.companies.find((companyItem) => companyItem.id === capability.companyId) ?? null : null);
+        const domain = capability ? state.domains.find((domainItem) => domainItem.id === capability.domainId) ?? null : null;
+        const mappings = capability
+          ? state.capabilityUseCases
+              .filter((mapping) => mapping.capabilityId === capability.id)
+              .map((mapping) => {
+                const useCase = state.useCases.find((useCaseItem) => useCaseItem.id === mapping.useCaseId);
+                const cluster = state.clusters.find((clusterItem) => clusterItem.id === mapping.clusterId);
+
+                if (!useCase || !cluster) {
+                  return null;
+                }
+
+                return {
+                  ...mapping,
+                  useCase,
+                  cluster
+                };
+              })
+              .filter((value): value is CapabilityUseCase & { useCase: UseCase; cluster: Cluster } => Boolean(value))
+          : [];
+
+        return {
+          item,
+          capability,
+          company,
+          domain,
+          mappings
+        };
+      })
+      .sort(
+        (left, right) =>
+          new Date(right.item.updatedAt).getTime() - new Date(left.item.updatedAt).getTime() ||
+          (left.capability?.name ?? left.company?.name ?? "").localeCompare(
+            right.capability?.name ?? right.company?.name ?? ""
+          )
+      )
   };
 }
 
@@ -886,7 +1235,10 @@ function mapUseCaseSearchResults(items: UseCaseSearchRow[], query: string): Sear
   return rankSearchResults(items, query, [
     { label: "Use Case name", weight: 4, value: (item) => item.name },
     { label: "Use Case summary", weight: 1, value: (item) => item.summary },
-    { label: "Domain", weight: 2, value: (item) => (item.domainNames ?? []).join(" ") }
+    { label: "Domain", weight: 2, value: (item) => (item.domainNames ?? []).join(" ") },
+    { label: "Partner frame", weight: 2, value: (item) => normalizeStringArray(item.partner_frames ?? item.partnerFrames).join(" ") },
+    { label: "Policy anchor", weight: 2, value: (item) => normalizeStringArray(item.policy_anchors ?? item.policyAnchors).join(" ") },
+    { label: "Mission outcome", weight: 1, value: (item) => item.mission_outcome ?? item.missionOutcome }
   ])
     .slice(0, 6)
     .map(({ item, matchContext }) => ({
@@ -894,9 +1246,18 @@ function mapUseCaseSearchResults(items: UseCaseSearchRow[], query: string): Sear
       name: item.name,
       slug: item.slug,
       summary: item.summary,
+      priorityTier: String(item.priority_tier ?? item.priorityTier ?? "p3") as UseCase["priorityTier"],
+      useCaseKind: String(item.use_case_kind ?? item.useCaseKind ?? "mission") as UseCase["useCaseKind"],
+      partnerFrames: normalizeStringArray(item.partner_frames ?? item.partnerFrames),
+      policyAnchors: normalizeStringArray(item.policy_anchors ?? item.policyAnchors),
+      missionOutcome: String(item.mission_outcome ?? item.missionOutcome ?? ""),
       domainNames: item.domainNames ?? [],
       matchContext
     }));
+}
+
+function asUseCaseSearchRows(data: unknown): UseCaseSearchRow[] {
+  return (Array.isArray(data) ? data : []) as UseCaseSearchRow[];
 }
 
 function mapCapabilitySearchResults(
@@ -959,10 +1320,7 @@ function buildSearchResultsFromState(state: DatasetState, query: string): Search
     ),
     useCases: mapUseCaseSearchResults(
       state.useCases.map((item) => ({
-        id: item.id,
-        name: item.name,
-        slug: item.slug,
-        summary: item.summary,
+        ...item,
         domainNames: item.domainIds
           .map((domainId) => domainsById.get(domainId)?.name ?? null)
           .filter((value): value is string => Boolean(value))
@@ -998,12 +1356,36 @@ function buildSearchResultsFromState(state: DatasetState, query: string): Search
 async function searchRecordsWithSupabase(query: string): Promise<SearchResultsView> {
   const supabase = await createClient();
   const pattern = `%${query}%`;
+  const useCaseSelect = [
+    "id",
+    "name",
+    "slug",
+    "summary",
+    "domain_ids",
+    "priority_tier",
+    "use_case_kind",
+    "partner_frames",
+    "policy_anchors",
+    "operational_owner",
+    "mission_context",
+    "required_decision",
+    "interoperability_boundary",
+    "mission_outcome",
+    "procurement_pathway",
+    "realism_note"
+  ].join(", ");
 
   const [
     domainsByName,
     domainsByDescription,
     useCasesByName,
     useCasesBySummary,
+    useCasesByMissionContext,
+    useCasesByMissionOutcome,
+    useCasesByPartnerFrame,
+    useCasesByPolicyAnchor,
+    useCasesByRequiredDecision,
+    useCasesByInteroperabilityBoundary,
     capabilitiesByName,
     capabilitiesBySummary,
     companiesByName,
@@ -1011,8 +1393,14 @@ async function searchRecordsWithSupabase(query: string): Promise<SearchResultsVi
   ] = await Promise.all([
     supabase.from("domains").select("id, name, slug, description").ilike("name", pattern).limit(8),
     supabase.from("domains").select("id, name, slug, description").ilike("description", pattern).limit(8),
-    supabase.from("use_cases").select("id, name, slug, summary, domain_ids").ilike("name", pattern).limit(8),
-    supabase.from("use_cases").select("id, name, slug, summary, domain_ids").ilike("summary", pattern).limit(8),
+    supabase.from("use_cases").select(useCaseSelect).ilike("name", pattern).limit(8),
+    supabase.from("use_cases").select(useCaseSelect).ilike("summary", pattern).limit(8),
+    supabase.from("use_cases").select(useCaseSelect).ilike("mission_context", pattern).limit(8),
+    supabase.from("use_cases").select(useCaseSelect).ilike("mission_outcome", pattern).limit(8),
+    supabase.from("use_cases").select(useCaseSelect).contains("partner_frames", [query]).limit(8),
+    supabase.from("use_cases").select(useCaseSelect).contains("policy_anchors", [query]).limit(8),
+    supabase.from("use_cases").select(useCaseSelect).ilike("required_decision", pattern).limit(8),
+    supabase.from("use_cases").select(useCaseSelect).ilike("interoperability_boundary", pattern).limit(8),
     supabase
       .from("capabilities")
       .select("id, name, summary, company_id, domain_id")
@@ -1036,8 +1424,14 @@ async function searchRecordsWithSupabase(query: string): Promise<SearchResultsVi
     (domainsByDescription.data ?? []) as DomainSearchRow[]
   );
   const useCaseRows = mergeUniqueById(
-    (useCasesByName.data ?? []) as UseCaseSearchRow[],
-    (useCasesBySummary.data ?? []) as UseCaseSearchRow[]
+    asUseCaseSearchRows(useCasesByName.data),
+    asUseCaseSearchRows(useCasesBySummary.data),
+    asUseCaseSearchRows(useCasesByMissionContext.data),
+    asUseCaseSearchRows(useCasesByMissionOutcome.data),
+    asUseCaseSearchRows(useCasesByPartnerFrame.data),
+    asUseCaseSearchRows(useCasesByPolicyAnchor.data),
+    asUseCaseSearchRows(useCasesByRequiredDecision.data),
+    asUseCaseSearchRows(useCasesByInteroperabilityBoundary.data)
   );
   const capabilityRows = mergeUniqueById(
     (capabilitiesByName.data ?? []) as CapabilitySearchRow[],

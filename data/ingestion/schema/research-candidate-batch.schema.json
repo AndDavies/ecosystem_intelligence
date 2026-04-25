@@ -1,0 +1,447 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ecosystem-intelligence.local/schemas/research-candidate-batch.schema.json",
+  "title": "Ecosystem Intelligence Research Candidate Batch",
+  "description": "Staged research-agent output for human review before promotion into Supabase seed data.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "batchId",
+    "title",
+    "status",
+    "createdAt",
+    "researchScope",
+    "guardrailNotes",
+    "companies",
+    "capabilities",
+    "capabilityUseCases",
+    "signals",
+    "sources",
+    "evidenceSnippets",
+    "fieldCitations"
+  ],
+  "properties": {
+    "batchId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 8
+    },
+    "status": {
+      "const": "candidate"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "researchScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "useCaseIds", "domainIds"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 40
+        },
+        "useCaseIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "domainIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "guardrailNotes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 20
+      }
+    },
+    "companies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/company"
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/capability"
+      }
+    },
+    "capabilityUseCases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/capabilityUseCase"
+      }
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/signal"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "evidenceSnippets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/evidenceSnippet"
+      }
+    },
+    "fieldCitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/fieldCitation"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]+$"
+    },
+    "nullableString": {
+      "type": ["string", "null"]
+    },
+    "confidence": {
+      "enum": ["high", "moderate", "needs_validation"]
+    },
+    "company": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "slug",
+        "name",
+        "overview",
+        "geography",
+        "headquarters",
+        "market_context",
+        "website_url",
+        "public_contact_email",
+        "public_contact_phone",
+        "last_updated_at",
+        "confidence",
+        "research_rationale"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "slug": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "overview": {
+          "type": "string",
+          "minLength": 40
+        },
+        "geography": {
+          "enum": ["canada", "nato", "global"]
+        },
+        "headquarters": {
+          "type": "string",
+          "minLength": 6
+        },
+        "market_context": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "website_url": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "public_contact_email": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "public_contact_phone": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "last_updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "research_rationale": {
+          "type": "string",
+          "minLength": 40
+        }
+      }
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "company_id",
+        "slug",
+        "name",
+        "capability_type",
+        "domain_id",
+        "summary",
+        "company_facing_context",
+        "last_updated_at",
+        "confidence",
+        "research_rationale"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "company_id": {
+          "$ref": "#/$defs/id"
+        },
+        "slug": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "capability_type": {
+          "type": "string",
+          "minLength": 4
+        },
+        "domain_id": {
+          "$ref": "#/$defs/id"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 40
+        },
+        "company_facing_context": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "last_updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "research_rationale": {
+          "type": "string",
+          "minLength": 40
+        }
+      }
+    },
+    "capabilityUseCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "capability_id",
+        "use_case_id",
+        "cluster_id",
+        "pathway",
+        "relevance_band",
+        "defence_relevance",
+        "suggested_action_type",
+        "action_note",
+        "why_it_matters",
+        "reviewer_override_delta",
+        "evidence_strength",
+        "actionability_score",
+        "last_signal_at",
+        "stale_after_days",
+        "confidence",
+        "research_rationale"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "capability_id": {
+          "$ref": "#/$defs/id"
+        },
+        "use_case_id": {
+          "$ref": "#/$defs/id"
+        },
+        "cluster_id": {
+          "$ref": "#/$defs/id"
+        },
+        "pathway": {
+          "enum": ["build", "validate", "scale"]
+        },
+        "relevance_band": {
+          "enum": ["low", "medium", "high"]
+        },
+        "defence_relevance": {
+          "enum": ["low", "medium", "high"]
+        },
+        "suggested_action_type": {
+          "enum": [
+            "connect_to_end_user_validation",
+            "explore_testbed_inclusion",
+            "assess_funding_fit",
+            "introduce_to_integrator",
+            "monitor_for_later_stage_engagement",
+            "assess_procurement_relevance"
+          ]
+        },
+        "action_note": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "why_it_matters": {
+          "type": "string",
+          "minLength": 40
+        },
+        "reviewer_override_delta": {
+          "type": "integer",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "evidence_strength": {
+          "enum": [1, 3, 5]
+        },
+        "actionability_score": {
+          "enum": [0, 5]
+        },
+        "last_signal_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "stale_after_days": {
+          "type": "integer",
+          "minimum": 30
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "research_rationale": {
+          "type": "string",
+          "minLength": 40
+        }
+      }
+    },
+    "signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "capability_id", "signal_type", "title", "description", "observed_at"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "capability_id": {
+          "$ref": "#/$defs/id"
+        },
+        "signal_type": {
+          "enum": ["funding", "contract", "pilot", "partnership", "strategic_hiring", "accelerator", "technical_milestone"]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 8
+        },
+        "description": {
+          "type": "string",
+          "minLength": 40
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "source_type", "title", "url", "publisher", "published_at"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_type": {
+          "enum": ["company_website", "company_news", "government_program", "government_policy", "industry_news", "official_report"]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 8
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 2
+        },
+        "published_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        }
+      }
+    },
+    "evidenceSnippet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "source_id", "capability_id", "excerpt"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "capability_id": {
+          "type": ["string", "null"]
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 40
+        }
+      }
+    },
+    "fieldCitation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "entity_type", "entity_id", "field_name", "evidence_snippet_id"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "entity_type": {
+          "enum": ["company", "capability", "capability_use_case", "use_case", "use_case_observation"]
+        },
+        "entity_id": {
+          "$ref": "#/$defs/id"
+        },
+        "field_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_snippet_id": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    }
+  }
+}

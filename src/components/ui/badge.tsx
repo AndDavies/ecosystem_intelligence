@@ -10,15 +10,15 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full px-3 py-1 text-xs font-medium",
-        tone === "default" && "bg-[var(--primary)]/12 text-[var(--primary)]",
-        tone === "secondary" && "bg-[var(--secondary)]/22 text-[var(--secondary-foreground)]",
+        "inline-flex items-center rounded-[2px] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em]",
+        tone === "default" && "bg-[var(--primary)] text-white",
+        tone === "secondary" && "bg-[var(--secondary)] text-white",
         tone === "muted" && "bg-[var(--muted)] text-[var(--muted-foreground)]",
         tone === "danger" && "bg-[var(--danger)]/12 text-[var(--danger)]",
-        tone === "info" && "bg-sky-100 text-sky-700",
-        tone === "success" && "bg-emerald-100 text-emerald-700",
-        tone === "outline" && "border border-[var(--border)] bg-white/80 text-[var(--foreground)]",
-        tone === "surface" && "bg-white/75 text-[var(--foreground)] shadow-[0_10px_20px_rgba(20,34,24,0.04)]",
+        tone === "info" && "bg-[#dff3fb] text-[#124a5c]",
+        tone === "success" && "bg-[#dff4ef] text-[#0c5f50]",
+        tone === "outline" && "border border-[var(--border)] bg-white text-[var(--foreground)]",
+        tone === "surface" && "bg-white text-[var(--foreground)] shadow-[0_8px_18px_rgba(5,22,27,0.05)]",
         className
       )}
       {...props}

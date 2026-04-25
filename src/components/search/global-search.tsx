@@ -86,7 +86,14 @@ export function GlobalSearch({ initialResults }: GlobalSearchProps) {
             items={(results?.useCases ?? []).map((item) => ({
               href: `/use-cases/${item.slug}`,
               label: item.name,
-              meta: [...item.domainNames, item.matchContext].filter(Boolean).join(" · "),
+              meta: [
+                item.priorityTier.toUpperCase(),
+                item.useCaseKind,
+                ...item.partnerFrames,
+                item.matchContext
+              ]
+                .filter(Boolean)
+                .join(" · "),
               description: item.summary
             }))}
           />
