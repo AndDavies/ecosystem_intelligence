@@ -63,6 +63,7 @@ import { formatFieldLabel, formatValueForDisplay } from "@/lib/utils";
 import { isAiGeneratedRequest, resolveAiRunForRequest } from "@/lib/review/provenance";
 import { getFreshnessState, summarizeFreshness } from "@/lib/freshness";
 import { mergeUniqueById, rankSearchResults } from "@/lib/search";
+import { resolveUseCaseConfig } from "@/lib/use-case-config";
 import { buildUseCaseInsight, getTargetRead } from "@/lib/use-case-insights";
 
 function getMockDataset(): DatasetState {
@@ -937,11 +938,12 @@ export async function getUseCaseBriefingBySlug(slug: string): Promise<UseCaseBri
     return null;
   }
 
-  const insightLayer = buildUseCaseInsight(useCase);
+  const useCaseConfig = resolveUseCaseConfig(useCase.useCase, useCase.domains);
+  const insightLayer = buildUseCaseInsight(useCase, useCaseConfig.insightCopy);
   const targets = useCase.topTargets.slice(0, 5).map((entry, index) => ({
     entry,
     rank: index + 1,
-    targetRead: getTargetRead(entry, index, useCase.topTargets, useCase),
+    targetRead: getTargetRead(entry, index, useCase.topTargets, useCase, useCaseConfig.insightCopy),
     freshness: getFreshnessState({
       lastUpdatedAt: entry.capability.lastUpdatedAt,
       lastSignalAt: entry.mapping.lastSignalAt,

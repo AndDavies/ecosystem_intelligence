@@ -13,6 +13,7 @@
     "ingest:promote": "tsx scripts/review-ingestion-candidates.ts promote",
     "leads:validate": "tsx scripts/validate-source-leads.ts",
     "data:readiness": "tsx scripts/data-readiness.ts",
+    "db:reconcile:validate": "tsx scripts/validate-remote-reconciliation.ts",
     "seed:validate": "tsx scripts/validate-seed.ts",
     "seed:import": "tsx scripts/import-seed.ts"
   },
