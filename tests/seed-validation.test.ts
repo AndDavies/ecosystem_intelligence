@@ -32,4 +32,22 @@ describe("seed data", () => {
       ).toBe(true);
     });
   });
+
+  it("tracks operational data stage and source confidence on research-backed records", async () => {
+    const data = await loadSeedData();
+    const validatedCompanies = data.companies.filter((item) => item.data_stage === "validated");
+    const scaffoldCompanies = data.companies.filter((item) => item.data_stage === "scaffold");
+    const validatedCapabilities = data.capabilities.filter((item) => item.data_stage === "validated");
+    const validatedMappings = data.capabilityUseCases.filter((item) => item.data_stage === "validated");
+
+    expect(validatedCompanies.length).toBeGreaterThan(0);
+    expect(scaffoldCompanies.length).toBeGreaterThan(0);
+    expect(validatedCapabilities.length).toBeGreaterThan(0);
+    expect(validatedMappings.length).toBeGreaterThan(0);
+    validatedCompanies.forEach((company) => {
+      expect(company.website_url).not.toContain("example.com");
+      expect(company.source_batch_id).toBe("pilot-arctic-domain-awareness-2026-04-24");
+      expect(["high", "moderate"]).toContain(company.source_confidence);
+    });
+  });
 });

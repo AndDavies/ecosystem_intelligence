@@ -204,6 +204,9 @@ export interface ShortlistIndexCardView {
   useCase: UseCase | null;
   itemCount: number;
   statusCounts: Record<ShortlistItem["status"], number>;
+  ownerCount: number;
+  dueItemCount: number;
+  nextStepCount: number;
   updatedAt: string;
 }
 

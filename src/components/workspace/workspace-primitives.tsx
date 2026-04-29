@@ -25,19 +25,19 @@ export function SnapshotStrip({
   className?: string;
 }) {
   return (
-    <div className={cn("grid gap-3 md:grid-cols-2 xl:grid-cols-4", className)}>
+    <div className={cn("grid gap-2 md:grid-cols-2", className ?? "xl:grid-cols-4")}>
       {items.map((item) => (
         <Card key={`${item.label}-${String(item.value)}`} variant="inset" className="rounded-[28px]">
-          <CardContent className="space-y-3 pt-5">
+          <CardContent className="space-y-2 p-4">
             <div className="flex flex-wrap items-center gap-2">
               <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
                 {item.label}
               </div>
               {item.tone ? <Badge tone={item.tone}>{item.tone === "default" ? "Live" : item.tone}</Badge> : null}
             </div>
-            <div className="text-xl font-semibold text-[var(--foreground)]">{item.value}</div>
+            <div className="text-lg font-semibold text-[var(--foreground)]">{item.value}</div>
             {item.detail ? (
-              <div className="text-sm leading-6 text-[var(--muted-foreground)]">{item.detail}</div>
+              <div className="text-xs leading-5 text-[var(--muted-foreground)]">{item.detail}</div>
             ) : null}
             {item.href && item.hrefLabel ? (
               <Link href={item.href} className="inline-flex items-center gap-2 text-sm font-medium no-underline">
@@ -73,17 +73,17 @@ export function DiscoveryCard({
 }) {
   return (
     <Card variant="strong" className={cn("rounded-[30px]", className)}>
-      <CardContent className="space-y-4 pt-6">
+      <CardContent className="space-y-3 p-4">
         {eyebrow ? <div className="workspace-kicker">{eyebrow}</div> : null}
-        {badges ? <div className="flex flex-wrap gap-2">{badges}</div> : null}
+        {badges ? <div className="flex flex-wrap gap-1.5">{badges}</div> : null}
         <div className="space-y-2">
-          <div className="text-xl font-semibold">{title}</div>
+          <div className="text-base font-semibold">{title}</div>
           {description ? (
-            <div className="text-sm leading-6 text-[var(--muted-foreground)]">{description}</div>
+            <div className="text-sm leading-5 text-[var(--muted-foreground)]">{description}</div>
           ) : null}
         </div>
-        {footer ? <div className="flex flex-wrap gap-2">{footer}</div> : null}
-        <div className="pt-1">
+        {footer ? <div className="flex flex-wrap gap-1.5">{footer}</div> : null}
+        <div>
           <Button asChild variant="subtle" className="justify-between">
             <Link href={href}>
               {actionLabel}

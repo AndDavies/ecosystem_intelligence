@@ -17,6 +17,7 @@ export function GlobalSearch({ initialResults }: GlobalSearchProps) {
   const [results, setResults] = useState(initialResults);
   const deferredQuery = useDeferredValue(query);
   const trimmedQuery = deferredQuery.trim();
+  const showResults = trimmedQuery.length >= 2;
 
   useEffect(() => {
     if (!trimmedQuery || trimmedQuery.length < 2) {
@@ -37,92 +38,91 @@ export function GlobalSearch({ initialResults }: GlobalSearchProps) {
   }, [trimmedQuery, initialResults]);
 
   return (
-    <Card id="search" variant="hero" className="rounded-[36px]">
-      <CardHeader className="space-y-3">
-        <div className="workspace-kicker">Global search</div>
-        <CardTitle>Global Search</CardTitle>
-        <p className="max-w-3xl text-sm leading-6 text-[var(--muted-foreground)]">
-          Move across domains, use cases, capabilities, and companies from one search surface while keeping the surrounding context legible.
-        </p>
+    <Card id="search" variant="strong" className="rounded-[36px]">
+      <CardHeader className="space-y-2 pb-4">
+        <div className="workspace-kicker">Search</div>
+        <CardTitle>Find a record</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-5">
+      <CardContent className="space-y-4">
         <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center">
           <div className="relative">
             <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-[var(--muted-foreground)]" />
             <Input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search domains, use cases, capabilities, or companies"
-              className="h-14 rounded-[24px] border-[var(--border-strong)] bg-white/90 pl-11 text-[15px]"
+              placeholder="Search companies, capabilities, mission areas, or technical domains"
+              className="h-12 rounded-[24px] border-[var(--border-strong)] bg-white/90 pl-11 text-[15px]"
             />
           </div>
           <div className="flex flex-wrap gap-2 xl:justify-end">
-            <BrowseShortcut href="/use-cases" label="Browse Use Cases" />
-            <BrowseShortcut href="/domains" label="Browse Domains" />
-            <BrowseShortcut href="/companies" label="Browse Companies" />
+            <BrowseShortcut href="/use-cases" label="Mission Areas" />
+            <BrowseShortcut href="/domains" label="Technical Domains" />
+            <BrowseShortcut href="/companies" label="Companies" />
           </div>
         </div>
 
-        {trimmedQuery && trimmedQuery.length < 2 ? (
+        {trimmedQuery && !showResults ? (
           <div className="text-sm text-[var(--muted-foreground)]">
             Type at least 2 characters to search across records.
           </div>
         ) : null}
 
-        <div className="grid gap-4 xl:grid-cols-4">
-          <SearchColumn
-            title="Domains"
-            items={(results?.domains ?? []).map((item) => ({
-              href: `/domains/${item.slug}`,
-              label: item.name,
-              meta: [item.matchContext, `${item.useCaseCount} use cases`, `${item.companyCount} companies`]
-                .filter(Boolean)
-                .join(" · "),
-              description: item.description ?? undefined
-            }))}
-          />
-          <SearchColumn
-            title="Use Cases"
-            items={(results?.useCases ?? []).map((item) => ({
-              href: `/use-cases/${item.slug}`,
-              label: item.name,
-              meta: [
-                item.priorityTier.toUpperCase(),
-                item.useCaseKind,
-                ...item.partnerFrames,
-                item.matchContext
-              ]
-                .filter(Boolean)
-                .join(" · "),
-              description: item.summary
-            }))}
-          />
-          <SearchColumn
-            title="Capabilities"
-            items={(results?.capabilities ?? []).map((item) => ({
-              href: `/capabilities/${item.id}`,
-              label: item.name,
-              meta: [item.companyName, item.domainName, item.matchContext].filter(Boolean).join(" · "),
-              description: item.summary
-            }))}
-          />
-          <SearchColumn
-            title="Companies"
-            items={(results?.companies ?? []).map((item) => ({
-              href: `/companies/${item.id}`,
-              label: item.name,
-              meta: [
-                item.headquarters,
-                item.domainNames.join(" · "),
-                `${item.useCaseCount} use cases`,
-                item.matchContext
-              ]
-                .filter(Boolean)
-                .join(" · "),
-              description: item.overview
-            }))}
-          />
-        </div>
+        {showResults ? (
+          <div className="grid gap-3 xl:grid-cols-4">
+            <SearchColumn
+              title="Technical Domains"
+              items={(results?.domains ?? []).map((item) => ({
+                href: `/domains/${item.slug}`,
+                label: item.name,
+                meta: [item.matchContext, `${item.useCaseCount} use cases`, `${item.companyCount} companies`]
+                  .filter(Boolean)
+                  .join(" · "),
+                description: item.description ?? undefined
+              }))}
+            />
+            <SearchColumn
+              title="Mission Areas"
+              items={(results?.useCases ?? []).map((item) => ({
+                href: `/use-cases/${item.slug}`,
+                label: item.name,
+                meta: [
+                  item.priorityTier.toUpperCase(),
+                  item.useCaseKind,
+                  ...item.partnerFrames,
+                  item.matchContext
+                ]
+                  .filter(Boolean)
+                  .join(" · "),
+                description: item.summary
+              }))}
+            />
+            <SearchColumn
+              title="Capabilities"
+              items={(results?.capabilities ?? []).map((item) => ({
+                href: `/capabilities/${item.id}`,
+                label: item.name,
+                meta: [item.companyName, item.domainName, item.matchContext].filter(Boolean).join(" · "),
+                description: item.summary
+              }))}
+            />
+            <SearchColumn
+              title="Companies"
+              items={(results?.companies ?? []).map((item) => ({
+                href: `/companies/${item.id}`,
+                label: item.name,
+                meta: [
+                  item.headquarters,
+                  item.domainNames.join(" · "),
+                  `${item.useCaseCount} use cases`,
+                  item.matchContext
+                ]
+                  .filter(Boolean)
+                  .join(" · "),
+                description: item.overview
+              }))}
+            />
+          </div>
+        ) : null}
       </CardContent>
     </Card>
   );
@@ -136,7 +136,7 @@ function SearchColumn({
   items: Array<{ href: string; label: string; meta?: string; description?: string }>;
 }) {
   return (
-    <div className="rounded-[28px] border border-[var(--border)] bg-white/72 p-4 shadow-[0_14px_36px_rgba(20,34,24,0.05)]">
+    <div className="rounded-[28px] border border-[var(--border)] bg-white/72 p-3 shadow-[0_10px_24px_rgba(20,34,24,0.04)]">
       <div className="mb-3 flex items-center justify-between gap-3">
         <div className="text-sm font-semibold">{title}</div>
         <Badge tone="surface">{items.length}</Badge>
@@ -147,7 +147,7 @@ function SearchColumn({
             <Link
               key={`${title}-${item.href}`}
               href={item.href}
-              className="block rounded-[22px] border border-transparent px-3 py-3 no-underline transition hover:border-[var(--primary)]/16 hover:bg-white"
+              className="block rounded-[22px] border border-transparent px-3 py-2 no-underline transition hover:border-[var(--primary)]/16 hover:bg-white"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="text-sm font-medium text-[var(--foreground)]">{item.label}</div>

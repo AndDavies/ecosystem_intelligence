@@ -55,7 +55,11 @@ export const candidatePromotionTables = [
       "website_url",
       "public_contact_email",
       "public_contact_phone",
-      "last_updated_at"
+      "last_updated_at",
+      "data_stage",
+      "source_confidence",
+      "research_rationale",
+      "source_batch_id"
     ]
   },
   {
@@ -71,7 +75,11 @@ export const candidatePromotionTables = [
       "domain_id",
       "summary",
       "company_facing_context",
-      "last_updated_at"
+      "last_updated_at",
+      "data_stage",
+      "source_confidence",
+      "research_rationale",
+      "source_batch_id"
     ]
   },
   {
@@ -93,7 +101,11 @@ export const candidatePromotionTables = [
       "evidence_strength",
       "actionability_score",
       "last_signal_at",
-      "stale_after_days"
+      "stale_after_days",
+      "data_stage",
+      "source_confidence",
+      "research_rationale",
+      "source_batch_id"
     ]
   },
   {
@@ -991,8 +1003,24 @@ export function formatCandidateRowsAsCsv(
   return rows.map((row) => headers.map((header) => serializeCsvValue(row[header])).join(",")).join("\n");
 }
 
-function projectCandidateRowToHeaders(row: Record<string, unknown>, headers: readonly string[]) {
-  return Object.fromEntries(headers.map((header) => [header, row[header] ?? null]));
+function projectCandidateRowToHeaders(
+  row: Record<string, unknown>,
+  headers: readonly string[],
+  batch: CandidateBatch,
+  tableName: (typeof candidatePromotionTables)[number]["tableName"]
+) {
+  const rowWithOperationalMetadata =
+    tableName === "companies" || tableName === "capabilities" || tableName === "capability_use_cases"
+      ? {
+          ...row,
+          data_stage: "validated",
+          source_confidence: row.confidence ?? "needs_validation",
+          research_rationale: row.research_rationale ?? null,
+          source_batch_id: batch.batchId
+        }
+      : row;
+
+  return Object.fromEntries(headers.map((header) => [header, rowWithOperationalMetadata[header] ?? null]));
 }
 
 async function fileExists(filePath: string) {
@@ -1022,7 +1050,7 @@ export function getCandidatePromotionTables(batch: CandidateBatch): CandidatePro
     fileName: table.fileName,
     headers: table.headers,
     rows: serializeCandidateRowsForSeed(batch, table.batchKey).map((row) =>
-      projectCandidateRowToHeaders(row, table.headers)
+      projectCandidateRowToHeaders(row, table.headers, batch, table.tableName)
     )
   }));
 }

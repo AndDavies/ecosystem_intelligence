@@ -46,7 +46,7 @@ export function AddToShortlistForm({
             htmlFor={controlId}
             className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]"
           >
-            Save target
+            Save to working list
           </label>
           <select
             id={controlId}
@@ -61,18 +61,18 @@ export function AddToShortlistForm({
                 </option>
               ))
             ) : (
-              <option value="">Create BD validation shortlist</option>
+              <option value="">Create BD validation working list</option>
             )}
           </select>
           <p className="text-xs leading-5 text-[var(--muted-foreground)]">
             {shortlists.length
               ? "Adds this target with its suggested status, rationale, and next step."
-              : "No shortlist exists yet, so this will create one and save the target."}
+              : "No working list exists yet, so this will create one and save the target."}
           </p>
         </div>
         <PendingButton type="submit" className="shrink-0 shadow-[0_10px_24px_rgba(31,80,51,0.18)]" pendingLabel="Adding...">
           <PlusCircle className="size-4" />
-          Add to shortlist
+          Add to working list
         </PendingButton>
       </div>
     </form>

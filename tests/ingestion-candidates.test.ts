@@ -91,11 +91,15 @@ describe("ingestion candidate validation", () => {
     const mappingRows = tables.find((table) => table.tableName === "capability_use_cases")?.rows ?? [];
 
     expect(companyRows[0]).toHaveProperty("overview");
+    expect(companyRows[0]).toMatchObject({
+      data_stage: "validated",
+      source_confidence: "high",
+      source_batch_id: "pilot-arctic-domain-awareness-2026-04-24"
+    });
     expect(companyRows[0]).not.toHaveProperty("confidence");
-    expect(companyRows[0]).not.toHaveProperty("research_rationale");
+    expect(capabilityRows[0]).toHaveProperty("research_rationale");
     expect(capabilityRows[0]).not.toHaveProperty("confidence");
-    expect(capabilityRows[0]).not.toHaveProperty("research_rationale");
+    expect(mappingRows[0]).toHaveProperty("source_confidence");
     expect(mappingRows[0]).not.toHaveProperty("confidence");
-    expect(mappingRows[0]).not.toHaveProperty("research_rationale");
   });
 });

@@ -75,6 +75,33 @@ export function calculateRankingScore(input: {
   );
 }
 
+export function explainRankingDrivers(input: {
+  relevanceBand: RelevanceBand;
+  pathway: Pathway;
+  defenceRelevance: DefenceRelevance;
+  geography: keyof typeof geographyScores;
+  lastSignalAt: string | null;
+  evidenceStrength: number;
+  actionabilityScore: number;
+  reviewerOverrideDelta: number;
+}) {
+  const drivers = [
+    `${input.relevanceBand} mission fit`,
+    `${input.pathway} pathway`,
+    `${input.defenceRelevance} defence fit`,
+    `${formatGeographyDriver(input.geography)} geography`,
+    calculateSignalRecencyScore(input.lastSignalAt) >= 6 ? "recent signal" : "limited recent signal",
+    input.evidenceStrength >= 5 ? "stronger evidence" : input.evidenceStrength >= 3 ? "some evidence" : "thin evidence",
+    input.actionabilityScore >= 5 ? "clear next step" : "needs action shaping"
+  ];
+
+  if (input.reviewerOverrideDelta) {
+    drivers.push("reviewer adjustment");
+  }
+
+  return drivers;
+}
+
 export function hydrateRankingScore<
   T extends CapabilityUseCase & { company: { geography: "canada" | "nato" | "global" } }
 >(record: T) {
@@ -91,4 +118,16 @@ export function hydrateRankingScore<
       reviewerOverrideDelta: record.reviewerOverrideDelta
     })
   };
+}
+
+function formatGeographyDriver(value: keyof typeof geographyScores) {
+  if (value === "canada") {
+    return "Canadian";
+  }
+
+  if (value === "nato") {
+    return "NATO";
+  }
+
+  return "global";
 }

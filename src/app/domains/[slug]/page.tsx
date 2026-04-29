@@ -29,18 +29,18 @@ export default async function DomainDetailPage({
       <SectionHeading
         title={view.domain.name}
         description={view.domain.description ?? "No domain description yet."}
-        eyebrow="Domain landscape"
+        eyebrow="Technical domain landscape"
         breadcrumbs={[
           { label: "Home", href: "/app" },
-          { label: "Domains", href: "/domains" },
+          { label: "Technical Domains", href: "/domains" },
           { label: view.domain.name }
         ]}
         backHref="/domains"
-        backLabel="Back to Domains"
+        backLabel="Back to Technical Domains"
         meta={
           <>
             <FreshnessBadge freshness={view.freshness} />
-            <Badge tone="muted">{view.useCaseCount} linked use cases</Badge>
+            <Badge tone="muted">{view.useCaseCount} linked mission areas</Badge>
             <Badge tone="muted">{view.companyCount} companies</Badge>
             <Badge tone="surface">{view.capabilityCount} capabilities</Badge>
           </>
@@ -55,16 +55,16 @@ export default async function DomainDetailPage({
           </div>
           <CardTitle>What does the current landscape look like in this technical area?</CardTitle>
           <p className="max-w-3xl text-sm leading-7 text-[var(--muted-foreground)]">
-            Use this page to move from the technical domain into linked use cases, companies, and capabilities without losing the surrounding trust context.
+            Use this page to move from the technical domain into linked mission areas, companies, and capabilities without losing the surrounding trust context.
           </p>
         </CardHeader>
         <CardContent className="space-y-6">
           <SnapshotStrip
             items={[
               {
-                label: "Linked use cases",
+                label: "Linked mission areas",
                 value: String(view.useCaseCount),
-                detail: view.useCases[0] ? `Lead route: ${view.useCases[0].name}` : "No use cases linked yet."
+                detail: view.useCases[0] ? `Lead route: ${view.useCases[0].name}` : "No mission areas linked yet."
               },
               {
                 label: "Tracked companies",
@@ -91,7 +91,7 @@ export default async function DomainDetailPage({
           <Card variant="strong" className="rounded-[32px]">
             <CardHeader className="space-y-3">
               <div className="workspace-kicker">Mission links</div>
-              <CardTitle>Linked use cases</CardTitle>
+              <CardTitle>Linked mission areas</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {view.useCases.map((useCase) => (
@@ -102,7 +102,7 @@ export default async function DomainDetailPage({
                       <p className="mt-1 text-sm text-[var(--muted-foreground)]">{useCase.summary}</p>
                     </div>
                     <Link href={`/use-cases/${useCase.slug}`} className="text-sm font-medium text-[var(--primary)]">
-                      Open
+                      Open as mission question
                     </Link>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -111,7 +111,7 @@ export default async function DomainDetailPage({
                   </div>
                 </div>
               ))}
-              {!view.useCases.length ? <WorkspaceEmptyState message="No linked use cases are available for this domain yet." /> : null}
+              {!view.useCases.length ? <WorkspaceEmptyState message="No linked mission areas are available for this domain yet." /> : null}
             </CardContent>
           </Card>
 
@@ -198,7 +198,7 @@ export default async function DomainDetailPage({
           <Card variant="rail" className="rounded-[32px]">
             <CardHeader className="space-y-3">
               <div className="workspace-kicker">Structure</div>
-              <CardTitle>Cluster summary</CardTitle>
+              <CardTitle>Capability clusters</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {view.clusters.map((item) => (

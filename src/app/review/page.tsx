@@ -1,7 +1,7 @@
 import path from "node:path";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { Check, Clock3, DatabaseZap, FileCheck2, GitCompareArrows, WandSparkles, X } from "lucide-react";
+import { ArrowRight, Check, Clock3, DatabaseZap, FileCheck2, GitCompareArrows, WandSparkles, X } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { SnapshotStrip, WorkspaceEmptyState } from "@/components/workspace/workspace-primitives";
@@ -44,6 +44,8 @@ export default async function ReviewPage() {
   const readyCandidates = candidateReviews.filter(
     (candidate) => !candidate.result.promoted && candidate.result.errors.length === 0
   ).length;
+  const firstPendingRequest = queue.pending[0] ?? null;
+  const firstCandidate = candidateReviews.find((candidate) => !candidate.result.promoted) ?? candidateReviews[0] ?? null;
 
   return (
     <AppShell profile={profile}>
@@ -61,6 +63,49 @@ export default async function ReviewPage() {
           </Link>
         }
       />
+
+      <Card variant="strong" className="mb-5 rounded-[32px]">
+        <CardHeader className="space-y-2">
+          <div className="workspace-kicker">Review lane</div>
+          <CardTitle>Work the queue in the order that protects decision quality.</CardTitle>
+          <p className="max-w-3xl text-sm leading-6 text-[var(--muted-foreground)]">
+            Clear record-level changes before relying on a target in a meeting, then inspect staged ingestion batches before they expand the validated dataset.
+          </p>
+        </CardHeader>
+        <CardContent className="grid gap-3 lg:grid-cols-2">
+          <ReviewLaneCard
+            priority="1"
+            eyebrow={firstPendingRequest ? "Record change" : "Record queue"}
+            title={firstPendingRequest ? firstPendingRequest.entityLabel : "No record changes waiting"}
+            detail={
+              firstPendingRequest
+                ? `${firstPendingRequest.originLabel} request from ${firstPendingRequest.requesterName}; ${firstPendingRequest.changedFieldDetails
+                    .map((field) => field.label)
+                    .join(", ")} needs a reviewer decision.`
+                : "No high-impact field changes are waiting for approval."
+            }
+            href={firstPendingRequest ? `#request-${firstPendingRequest.id}` : "#record-queue"}
+            actionLabel={firstPendingRequest ? "Review request" : "Check queue"}
+            tone={firstPendingRequest ? "info" : "success"}
+          />
+          <ReviewLaneCard
+            priority="2"
+            eyebrow="Ingestion batch"
+            title={firstCandidate ? firstCandidate.batch.title : "No staged batches"}
+            detail={
+              firstCandidate
+                ? firstCandidate.result.promoted
+                  ? "Latest candidate batch has already been promoted; keep the packet visible for audit traceability."
+                  : `${firstCandidate.result.errors.length} errors and ${firstCandidate.result.warnings.length} warnings across ${firstCandidate.result.counts.companies} companies and ${firstCandidate.result.counts.capabilities} capabilities.`
+                : "No staged research candidate batches are available."
+            }
+            href="#candidate-batches"
+            actionLabel="Open batch"
+            tone={firstCandidate?.result.promoted ? "success" : firstCandidate?.result.errors.length ? "danger" : "info"}
+          />
+        </CardContent>
+      </Card>
+
       <Card variant="hero" className="mb-5 rounded-[36px]">
         <CardHeader className="space-y-3">
           <div className="workspace-kicker">Trust boundary</div>
@@ -108,6 +153,7 @@ export default async function ReviewPage() {
       </Card>
 
       <Card variant="strong" className="mb-5 rounded-[32px]">
+        <div id="candidate-batches" />
         <CardHeader className="space-y-3">
           <div className="workspace-kicker">Research ingestion</div>
           <CardTitle>Review candidate batches before they become validated seed data.</CardTitle>
@@ -126,8 +172,9 @@ export default async function ReviewPage() {
       </Card>
 
       <div className="space-y-4">
+        <div id="record-queue" />
         {queue.pending.map((request) => (
-          <Card key={request.id} variant="strong" className="rounded-[32px]">
+          <Card key={request.id} id={`request-${request.id}`} variant="strong" className="scroll-mt-24 rounded-[32px]">
             <CardContent className="space-y-5 pt-6">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div className="space-y-2">
@@ -432,6 +479,48 @@ function CandidateReviewCard({
         </div>
       </details>
     </div>
+  );
+}
+
+function ReviewLaneCard({
+  priority,
+  eyebrow,
+  title,
+  detail,
+  href,
+  actionLabel,
+  tone
+}: {
+  priority: string;
+  eyebrow: string;
+  title: string;
+  detail: string;
+  href: string;
+  actionLabel: string;
+  tone: "success" | "info" | "danger";
+}) {
+  return (
+    <Link
+      href={href}
+      className="group block rounded-[26px] border border-[var(--border)] bg-[var(--card-muted)] p-4 no-underline transition hover:border-[var(--primary)]/24 hover:bg-white hover:shadow-[0_14px_34px_rgba(5,22,27,0.07)]"
+    >
+      <div className="flex h-full flex-col justify-between gap-4">
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge tone={tone}>No. {priority}</Badge>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+              {eyebrow}
+            </span>
+          </div>
+          <div className="text-base font-semibold leading-6 text-[var(--foreground)]">{title}</div>
+          <p className="text-sm leading-6 text-[var(--muted-foreground)]">{detail}</p>
+        </div>
+        <span className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)]">
+          {actionLabel}
+          <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
+        </span>
+      </div>
+    </Link>
   );
 }
 

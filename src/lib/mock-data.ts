@@ -129,7 +129,11 @@ export const companies: Company[] = [
     websiteUrl: "https://example.com/northshore",
     publicContactEmail: "hello@northshore.example.com",
     publicContactPhone: "+1-555-000-1000",
-    lastUpdatedAt: "2026-04-08"
+    lastUpdatedAt: "2026-04-08",
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock record used for UI validation only.",
+    sourceBatchId: null
   },
   {
     id: "company-2",
@@ -142,7 +146,11 @@ export const companies: Company[] = [
     websiteUrl: "https://example.com/polarmesh",
     publicContactEmail: "bd@polarmesh.example.com",
     publicContactPhone: "+354-555-0100",
-    lastUpdatedAt: "2026-04-06"
+    lastUpdatedAt: "2026-04-06",
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock record used for UI validation only.",
+    sourceBatchId: null
   },
   {
     id: "company-3",
@@ -155,7 +163,11 @@ export const companies: Company[] = [
     websiteUrl: "https://example.com/aegir",
     publicContactEmail: "contact@aegir.example.com",
     publicContactPhone: "+47-555-0200",
-    lastUpdatedAt: "2026-04-10"
+    lastUpdatedAt: "2026-04-10",
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock record used for UI validation only.",
+    sourceBatchId: null
   }
 ];
 
@@ -188,7 +200,11 @@ export const capabilities: Capability[] = [
     domainId: "domain-1",
     summary: "Cold-weather passive acoustic array designed for persistent maritime listening posts.",
     companyFacingContext: "Pairs with Northshore's mobile relay nodes for regional monitoring.",
-    lastUpdatedAt: "2026-04-08"
+    lastUpdatedAt: "2026-04-08",
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock record used for UI validation only.",
+    sourceBatchId: null
   },
   {
     id: "capability-2",
@@ -199,7 +215,11 @@ export const capabilities: Capability[] = [
     domainId: "domain-3",
     summary: "Distributed edge data fabric that fuses sensor feeds into a resilient operating picture.",
     companyFacingContext: "Useful when mission owners need low-bandwidth awareness across sparse nodes.",
-    lastUpdatedAt: "2026-04-06"
+    lastUpdatedAt: "2026-04-06",
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock record used for UI validation only.",
+    sourceBatchId: null
   },
   {
     id: "capability-3",
@@ -210,7 +230,11 @@ export const capabilities: Capability[] = [
     domainId: "domain-2",
     summary: "Medium-endurance autonomous underwater platform with modular ISR payload support.",
     companyFacingContext: "Supports trial deployment in austere maritime environments.",
-    lastUpdatedAt: "2026-04-10"
+    lastUpdatedAt: "2026-04-10",
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock record used for UI validation only.",
+    sourceBatchId: null
   }
 ];
 
@@ -232,7 +256,11 @@ const baseCapabilityUseCases: CapabilityUseCase[] = [
     evidenceStrength: 5,
     actionabilityScore: 5,
     lastSignalAt: "2026-03-15",
-    staleAfterDays: 180
+    staleAfterDays: 180,
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock mapping used for UI validation only.",
+    sourceBatchId: null
   },
   {
     id: "cuc-2",
@@ -251,7 +279,11 @@ const baseCapabilityUseCases: CapabilityUseCase[] = [
     evidenceStrength: 5,
     actionabilityScore: 5,
     lastSignalAt: "2026-02-20",
-    staleAfterDays: 180
+    staleAfterDays: 180,
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock mapping used for UI validation only.",
+    sourceBatchId: null
   },
   {
     id: "cuc-3",
@@ -270,7 +302,11 @@ const baseCapabilityUseCases: CapabilityUseCase[] = [
     evidenceStrength: 3,
     actionabilityScore: 5,
     lastSignalAt: "2025-12-11",
-    staleAfterDays: 180
+    staleAfterDays: 180,
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock mapping used for UI validation only.",
+    sourceBatchId: null
   },
   {
     id: "cuc-4",
@@ -289,7 +325,11 @@ const baseCapabilityUseCases: CapabilityUseCase[] = [
     evidenceStrength: 5,
     actionabilityScore: 5,
     lastSignalAt: "2026-02-20",
-    staleAfterDays: 180
+    staleAfterDays: 180,
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock mapping used for UI validation only.",
+    sourceBatchId: null
   },
   {
     id: "cuc-5",
@@ -308,7 +348,11 @@ const baseCapabilityUseCases: CapabilityUseCase[] = [
     evidenceStrength: 5,
     actionabilityScore: 5,
     lastSignalAt: "2026-03-15",
-    staleAfterDays: 180
+    staleAfterDays: 180,
+    dataStage: "scaffold",
+    sourceConfidence: "needs_validation",
+    researchRationale: "Mock mapping used for UI validation only.",
+    sourceBatchId: null
   }
 ];
 

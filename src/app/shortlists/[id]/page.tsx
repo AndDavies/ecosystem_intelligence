@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Trash2 } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
+import { SnapshotStrip } from "@/components/workspace/workspace-primitives";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,19 +32,25 @@ export default async function ShortlistDetailPage({
     notFound();
   }
 
+  const statusCounts = getStatusCounts(view.items.map(({ item }) => item.status));
+  const ownerCount = view.items.filter(({ item }) => Boolean(item.owner?.trim())).length;
+  const dueItemCount = view.items.filter(({ item }) => Boolean(item.dueDate)).length;
+  const nextStepCount = view.items.filter(({ item }) => Boolean(item.nextStep?.trim())).length;
+  const activeCount = statusCounts.validate + statusCounts.engage;
+
   return (
     <AppShell profile={profile}>
       <SectionHeading
         title={view.shortlist.name}
         description={view.shortlist.description ?? "Shared BD validation working list."}
-        eyebrow="Shortlist"
+        eyebrow="Working list"
         breadcrumbs={[
           { label: "Home", href: "/app" },
-          { label: "Shortlists", href: "/shortlists" },
+          { label: "Working Lists", href: "/shortlists" },
           { label: view.shortlist.name }
         ]}
         backHref="/shortlists"
-        backLabel="Back to Shortlists"
+        backLabel="Back to Working Lists"
         meta={
           <>
             {view.useCase ? <Badge tone="outline">{view.useCase.name}</Badge> : null}
@@ -70,7 +77,7 @@ export default async function ShortlistDetailPage({
                 confirmMessage={`Delete "${view.shortlist.name}" and all saved targets?`}
               >
                 <Trash2 className="size-4" />
-                Delete shortlist
+                Delete working list
               </PendingButton>
             </form>
           </div>
@@ -80,18 +87,62 @@ export default async function ShortlistDetailPage({
       {query.mock ? (
         <Card variant="muted" className="mb-6 rounded-[28px]">
           <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
-            Persistent shortlist writes require Supabase mode. Mock mode does not save item edits.
+            Persistent working-list writes require Supabase mode. Mock mode does not save item edits.
           </CardContent>
         </Card>
       ) : null}
 
       {query.shortlistCreated ? (
-        <NoticeCard message="Shortlist created. Add targets from the briefing page, or update follow-up details here." />
+        <NoticeCard message="Working list created. Add targets from the briefing page, or update follow-up details here." />
       ) : null}
 
       {query.shortlistItem ? (
         <NoticeCard message={getShortlistItemNotice(query.shortlistItem)} />
       ) : null}
+
+      <div className="mb-6 grid gap-5 xl:grid-cols-[1fr_0.85fr]">
+        <SnapshotStrip
+          items={[
+            {
+              label: "Targets",
+              value: String(view.items.length),
+              detail: "Saved capabilities or companies."
+            },
+            {
+              label: "Validate / Engage",
+              value: String(activeCount),
+              detail: "Targets with active follow-up stance."
+            },
+            {
+              label: "Owner Coverage",
+              value: `${ownerCount}/${view.items.length || 0}`,
+              detail: "Targets with a named owner."
+            },
+            {
+              label: "Due Items",
+              value: String(dueItemCount),
+              detail: "Targets with a due date captured."
+            }
+          ]}
+          className="xl:grid-cols-2"
+        />
+        <Card variant="rail" className="rounded-[32px]">
+          <CardHeader className="space-y-2">
+            <div className="workspace-kicker">Handoff read</div>
+            <CardTitle>What another user should know first</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm leading-6 text-[var(--muted-foreground)]">
+            <p>{buildDetailHandoffRead(view.useCase?.name, view.items.length, activeCount, ownerCount, nextStepCount)}</p>
+            <div className="flex flex-wrap gap-2">
+              {statuses.map((status) => (
+                <Badge key={status} tone={getStatusTone(status)}>
+                  {statusCounts[status]} {toTitleCase(status)}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
 
       <div className="grid gap-5">
         {view.items.length ? (
@@ -222,18 +273,54 @@ function NoticeCard({ message }: { message: string }) {
 
 function getShortlistItemNotice(value: string) {
   if (value === "saved") {
-    return "Shortlist item saved. Status, owner, next step, due date, and rationale are up to date.";
+    return "Working-list item saved. Status, owner, next step, due date, and rationale are up to date.";
   }
 
   if (value === "removed") {
-    return "Target removed from this shortlist.";
+    return "Target removed from this working list.";
   }
 
   if (value === "updated") {
-    return "Target was already on this shortlist, so its rationale and next step were updated.";
+    return "Target was already on this working list, so its rationale and next step were updated.";
   }
 
-  return "Target added to the shortlist.";
+  return "Target added to the working list.";
+}
+
+function getStatusCounts(values: ShortlistItemStatus[]) {
+  return values.reduce(
+    (counts, status) => {
+      counts[status] += 1;
+      return counts;
+    },
+    {
+      watch: 0,
+      validate: 0,
+      engage: 0,
+      hold: 0
+    } satisfies Record<ShortlistItemStatus, number>
+  );
+}
+
+function buildDetailHandoffRead(
+  useCaseName: string | undefined,
+  itemCount: number,
+  activeCount: number,
+  ownerCount: number,
+  nextStepCount: number
+) {
+  if (!itemCount) {
+    return "No targets are saved yet. Start from the linked briefing and add the targets worth validating.";
+  }
+
+  const ownerText =
+    ownerCount === itemCount ? "all targets have owners" : `${itemCount - ownerCount} target${itemCount - ownerCount === 1 ? "" : "s"} still need owners`;
+  const nextStepText =
+    nextStepCount === itemCount
+      ? "all targets have next steps"
+      : `${itemCount - nextStepCount} target${itemCount - nextStepCount === 1 ? "" : "s"} still need next steps`;
+
+  return `${useCaseName ?? "This working list"} carries ${itemCount} saved target${itemCount === 1 ? "" : "s"}, including ${activeCount} in Validate or Engage. For handoff, ${ownerText} and ${nextStepText}.`;
 }
 
 function getStatusTone(status: ShortlistItemStatus) {

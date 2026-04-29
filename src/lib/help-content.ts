@@ -33,12 +33,17 @@ export const helpPages: HelpPageDefinition[] = [
     title: "Core Concepts And Definitions",
     summary: "Shared vocabulary for the terms that matter most in the app.",
     purpose:
-      "Use this page when you need a quick definition of how the product thinks about domains, Use Cases, capabilities, pathways, evidence, and review.",
+      "Use this page when you need a quick definition of how the product thinks about Mission Areas / Use Cases, Technical Domains, Clusters, Capabilities, Companies, Evidence, Derived Reads, and Working Lists.",
     keyTerms: [
       {
-        term: "Use Case",
+        term: "Mission Area / Use Case",
         definition:
           "A mission or enabling lane that starts from an operational decision, public policy anchor, partner frame, and intended mission outcome."
+      },
+      {
+        term: "Technical Domain",
+        definition:
+          "A technical landscape such as sensing, autonomy, data, communications, maritime systems, or infrastructure. Use this entry path when the technology area is known before the mission question."
       },
       {
         term: "Mission Use Case",
@@ -68,7 +73,12 @@ export const helpPages: HelpPageDefinition[] = [
       {
         term: "Cluster",
         definition:
-          "A stable grouping that helps users understand the capability landscape by type."
+          "A stable subgroup that helps users understand related capabilities inside a technical domain or mission area."
+      },
+      {
+        term: "Evidence",
+        definition:
+          "Visible source support, citations, snippets, freshness, and confidence posture attached to records or recommendations."
       },
       {
         term: "Pathway",
@@ -76,16 +86,21 @@ export const helpPages: HelpPageDefinition[] = [
           "The simplified maturity model used in the MVP: Build, Validate, or Scale."
       },
       {
-        term: "Derived read",
+        term: "Derived Read",
         definition:
           "A heuristic or AI-assisted interpretation that helps decision-making but is not the same as a source-backed fact."
+      },
+      {
+        term: "Working List",
+        definition:
+          "A saved shortlist of engagement targets with lightweight status, owner, next step, due date, and rationale."
       }
     ],
     sections: [
       {
-        title: "Capability-first thinking",
+        title: "Primary workflow",
         body:
-          "The product is designed to help users understand capabilities first, then use the company profile to add market, relationship, and contact context."
+          "The strategic wedge is mission problem to top targets to why now to evidence and confidence to gaps and tradeoffs to saved working list."
       },
       {
         title: "Realism checks",
@@ -113,6 +128,7 @@ export const helpPages: HelpPageDefinition[] = [
       }
     ],
     watchFor: [
+      "Do not confuse a Mission Area with a Technical Domain. Mission Areas answer a decision question; Technical Domains describe the landscape.",
       "Do not confuse a company with a capability. A single company may have several capabilities at different maturity levels.",
       "Do not treat policy alignment as proof that a specific buyer has validated the capability.",
       "Treat derived reads as decision support, not as direct evidence.",
@@ -147,15 +163,15 @@ export const helpPages: HelpPageDefinition[] = [
       {
         title: "Walkthrough steps",
         bullets: [
-          "Open the app Dashboard and use the left navigation, persistent search, or mission-control actions based on the question you are trying to answer.",
-          "Start with Recommended Actions and Top Engagement Targets when you enter through a Use Case to understand what deserves attention first.",
+          "Open Start Here and choose the entry path that matches your question: mission problem, technology area, known organization, or follow-up.",
+          "Start with Recommended Actions and Top Engagement Targets when you enter through a Mission Area / Use Case to understand what deserves attention first.",
           "Use the desktop target table for a fast comparison before opening the richer target cards.",
           "Use the Companies table when the question starts from a known organization or market landscape.",
           "Scan clusters and maturity distribution to understand what exists across the landscape.",
-          "Apply filters to narrow by domain, company, pathway, geography, or defence relevance.",
+          "Apply filters to narrow by technical domain, company, pathway, geography, or defence relevance.",
           "Open a capability to inspect its why-it-matters narrative, recent signals, and mapping evidence.",
           "Open the briefing view when you need to explain the top targets, tradeoffs, and gaps in a meeting-ready format.",
-          "Save the best candidates to a shortlist with status, owner, next step, and rationale.",
+          "Save the best candidates to a working list with status, owner, next step, due date, and rationale.",
           "Open the company profile to understand broader context, contacts, and adjacent capabilities."
         ]
       },
@@ -182,7 +198,7 @@ export const helpPages: HelpPageDefinition[] = [
           "Open Capability",
           "Check Evidence And Signals",
           "Open Briefing",
-          "Save Shortlist",
+          "Save Working List",
           "Open Company For Context",
           "Decide: Engage, Validate, Monitor"
         ]
@@ -214,9 +230,9 @@ export const helpPages: HelpPageDefinition[] = [
     ],
     sections: [
       {
-        title: "Why Use Cases remain valuable",
+        title: "Why Mission Areas remain valuable",
         body:
-          "Use Cases keep discovery aligned to a public-priority mission or enabling need, but users can also start from Domains or Companies when the question begins there."
+      "Mission Areas / Use Cases keep discovery aligned to a public-priority mission or enabling need, but users can also start from Technical Domains or Companies when the question begins there."
       },
       {
         title: "How to read the page",
@@ -224,7 +240,7 @@ export const helpPages: HelpPageDefinition[] = [
           "Start with Mission Brief to understand the owner, decision, context, outcome, and procurement path.",
           "Check Policy Alignment to see which public sources support the priority claim.",
           "Start with Recommended Actions for a fast directional read.",
-          "On desktop, use the target table to compare rank, company, pathway, score, freshness, and why-now context.",
+          "On desktop, use the target table to compare rank, company, pathway, rank signal, freshness, and why-now context.",
           "Use Top Engagement Targets to identify who deserves immediate attention.",
           "Use clusters to understand what types of capabilities exist.",
           "Use maturity distribution to understand whether the space is mostly early, mid, or late stage.",
@@ -255,13 +271,13 @@ export const helpPages: HelpPageDefinition[] = [
         description:
           "This is the core route sequence for the current MVP workflow.",
         steps: [
-          "Home / App",
-          "Use Cases",
-          "Domains",
+          "Start Here",
+          "Mission Areas",
+          "Technical Domains",
           "Companies",
           "Use Case Detail",
           "Use Case Briefing",
-          "Shortlists",
+          "Working Lists",
           "Capability Detail",
           "Company Detail",
           "Review Queue",
@@ -273,7 +289,7 @@ export const helpPages: HelpPageDefinition[] = [
   {
     slug: "bd-validation-workflow",
     title: "BD Validation Workflow",
-    summary: "How to move from a mission question to a defensible target shortlist.",
+    summary: "How to move from a mission question to a defensible target working list.",
     purpose:
       "Use this page when you are preparing a BD, engagement, or leadership conversation and need to explain who to engage first, why now, what is uncertain, and what should happen next.",
     keyTerms: [
@@ -283,7 +299,7 @@ export const helpPages: HelpPageDefinition[] = [
           "A meeting-ready page that condenses the mission brief, top targets, why-this reasoning, evidence posture, freshness, and ecosystem gaps."
       },
       {
-        term: "Shortlist",
+        term: "Working List",
         definition:
           "A shared working list of selected companies or capabilities with lightweight status, owner, next step, due date, and rationale."
       },
@@ -311,7 +327,7 @@ export const helpPages: HelpPageDefinition[] = [
           "Use the Use Case detail page to explain the mission brief, policy alignment, top targets, and evidence posture.",
           "Open the Use Case Briefing page to compare the top 3-5 targets without opening every record.",
           "Call out which parts are source-backed fact, derived analysis, and suggested next step.",
-          "Save one or more targets to a shortlist and add owner, status, next step, due date, and rationale.",
+          "Save one or more targets to a working list and add owner, status, next step, due date, and rationale.",
           "Close by reviewing the gaps so the conversation includes uncertainty, not just recommendation."
         ]
       },
@@ -325,7 +341,7 @@ export const helpPages: HelpPageDefinition[] = [
         ]
       },
       {
-        title: "How shortlists should be used",
+        title: "How working lists should be used",
         bullets: [
           "Use Watch when a target is relevant but not ready for action.",
           "Use Validate when the next step is evidence, fit, or stakeholder confirmation.",
@@ -340,18 +356,29 @@ export const helpPages: HelpPageDefinition[] = [
           "Can they explain the top targets faster than with their current workflow?",
           "Do the why-this and why-not-others reads feel useful or too generic?",
           "Does visible evidence and uncertainty increase trust?",
-          "Does the shortlist preserve enough institutional memory to be worth maintaining?",
+          "Does the working list preserve enough institutional memory to be worth maintaining?",
           "What downstream action should be supported next: outreach prep, challenge design, leadership brief, supplier discovery, or monitoring?"
+        ]
+      },
+      {
+        title: "Timed Arctic validation task",
+        bullets: [
+          "Give the user 10 minutes and ask them to start from Start Here without a guided tour.",
+          "Task 1: open Arctic Domain Awareness and explain what mission decision the page supports.",
+          "Task 2: open the briefing and compare the top 3 targets using why-now, evidence posture, main risk, and next step.",
+          "Task 3: name one visible gap or caveat they would disclose in a BD conversation.",
+          "Task 4: save at least one target to a Working List and add a plausible status, owner, next step, due date, and rationale.",
+          "Debrief: ask whether the app made the engagement recommendation faster, clearer, and more defensible than their current workflow."
         ]
       }
     ],
     watchFor: [
       "Do not present derived analysis as source-backed fact.",
-      "Do not treat a shortlist as a CRM pipeline; it is a lightweight decision memory layer.",
+      "Do not treat a working list as a CRM pipeline; it is a lightweight decision memory layer.",
       "Do not hide weak evidence, stale records, or coverage gaps to make the demo feel cleaner.",
-      "Do not broaden to more Use Cases until the first validation path proves that users value the recommendation workflow."
+      "Do not broaden to more active mission areas until the first validation path proves that users value the recommendation workflow."
     ],
-    related: ["use-case-discovery", "first-walkthrough", "concepts", "trust-and-review"],
+    related: ["use-case-discovery", "first-walkthrough", "concepts", "trust-and-review", "research-ingestion-readiness"],
     diagrams: [
       {
         title: "BD Validation Path",
@@ -363,12 +390,74 @@ export const helpPages: HelpPageDefinition[] = [
           "Open Briefing",
           "Compare Top Targets",
           "Inspect Evidence And Gaps",
-          "Save Shortlist",
+          "Save Working List",
           "Assign Next Step",
           "Capture Feedback"
         ]
       }
     ]
+  },
+  {
+    slug: "research-ingestion-readiness",
+    title: "Research Ingestion Readiness",
+    summary: "How staged research batches become trusted app data.",
+    purpose:
+      "Use this page before running a research agent or converting research output into companies, capabilities, mappings, and evidence.",
+    keyTerms: [
+      {
+        term: "Source Lead",
+        definition:
+          "A pre-ingestion lead that identifies a real organization, capability, source URL, likely Mission Areas, and follow-up questions before database records are created."
+      },
+      {
+        term: "Candidate Batch",
+        definition:
+          "A staged JSON package of companies, capabilities, mappings, sources, evidence snippets, and field citations awaiting human review."
+      },
+      {
+        term: "Data Stage",
+        definition:
+          "The operational status on companies, capabilities, and mappings: scaffold, candidate, validated, or deprecated."
+      },
+      {
+        term: "Source Confidence",
+        definition:
+          "The research confidence label attached to promoted records: high, moderate, or needs validation."
+      }
+    ],
+    sections: [
+      {
+        title: "Research sequence",
+        bullets: [
+          "Start with a source-lead batch when exploring a Mission Area.",
+          "Run `pnpm leads:validate` before converting leads into candidate records.",
+          "Convert approved leads into a candidate batch only after source quality and taxonomy fit are clear.",
+          "Run `pnpm ingest:validate` and create a review packet before promotion.",
+          "Promote only after human review, then run `pnpm data:readiness` to see whether Mission Area parity improved."
+        ]
+      },
+      {
+        title: "What must be real before promotion",
+        bullets: [
+          "Company records should point to real organizations and canonical public sources, not placeholder websites.",
+          "Capability records should describe concrete products, systems, services, or technical solutions.",
+          "Use-case mappings must explain why the capability matters for the Mission Area and include a field citation.",
+          "High-relevance, high-defence mappings need enough evidence to support the stronger claim."
+        ]
+      },
+      {
+        title: "How to read readiness",
+        body:
+          "The readiness report compares validated companies, validated capabilities, top-target depth, and scaffold debt by Mission Area. Use it to decide which staged research batch should run next."
+      }
+    ],
+    watchFor: [
+      "Do not let a research agent write directly to Supabase or seed CSVs.",
+      "Do not convert every source lead into a candidate record; weak leads should remain backlog or be rejected.",
+      "Do not keep `company-*`, `capability-*`, or `example.com` records in BD-facing paths once a Mission Area is being validated.",
+      "Do not mistake source confidence for buyer validation or classified target guidance."
+    ],
+    related: ["concepts", "bd-validation-workflow", "trust-and-review"]
   },
   {
     slug: "trust-and-review",
@@ -421,7 +510,7 @@ export const helpPages: HelpPageDefinition[] = [
       "AI-derived content should always be checked against visible evidence and citations.",
       "If a record is missing citations, treat it as lower-confidence until evidence is attached."
     ],
-    related: ["concepts", "first-walkthrough", "use-case-discovery", "bd-validation-workflow"],
+    related: ["concepts", "first-walkthrough", "use-case-discovery", "bd-validation-workflow", "research-ingestion-readiness"],
     diagrams: [
       {
         title: "Edit And Review Flow",

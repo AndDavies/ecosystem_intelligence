@@ -13,6 +13,38 @@ function asArray(value: unknown): unknown[] {
   return Array.isArray(value) ? value : [];
 }
 
+function asString(value: unknown) {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+const dataStages = ["scaffold", "candidate", "validated", "deprecated"];
+const sourceConfidences = ["high", "moderate", "needs_validation"];
+
+function assertOperationalMetadata(
+  label: string,
+  record: Record<string, unknown>,
+  options: { requiresRealUrl?: boolean } = {}
+) {
+  const dataStage = asString(record["data_stage"]);
+  const sourceConfidence = asString(record["source_confidence"]);
+  const researchRationale = asString(record["research_rationale"]);
+
+  assert(dataStages.includes(dataStage), `${label} ${record.id} has invalid data_stage`);
+  assert(sourceConfidences.includes(sourceConfidence), `${label} ${record.id} has invalid source_confidence`);
+  assert(researchRationale.length >= 40, `${label} ${record.id} needs a research rationale`);
+
+  if (dataStage === "validated") {
+    assert(sourceConfidence !== "needs_validation", `${label} ${record.id} is validated but still needs validation`);
+    assert(asString(record["source_batch_id"]).length > 0, `${label} ${record.id} needs source_batch_id`);
+
+    if (options.requiresRealUrl) {
+      const websiteUrl = asString(record["website_url"]);
+      assert(websiteUrl.startsWith("https://"), `${label} ${record.id} needs an https website_url`);
+      assert(!websiteUrl.includes("example.com"), `${label} ${record.id} cannot be validated with example.com`);
+    }
+  }
+}
+
 async function main() {
   const data = await loadSeedData();
 
@@ -63,12 +95,17 @@ async function main() {
     )
   );
 
-  data.capabilities.forEach((capability) =>
+  data.companies.forEach((company) => {
+    assertOperationalMetadata("Company", company, { requiresRealUrl: true });
+  });
+
+  data.capabilities.forEach((capability) => {
     assert(
       companyIds.has(String(capability["company_id"])),
       `Capability ${capability.id} references missing company ${capability["company_id"]}`
-    )
-  );
+    );
+    assertOperationalMetadata("Capability", capability);
+  });
 
   data.capabilityUseCases.forEach((mapping) => {
     assert(
@@ -83,6 +120,7 @@ async function main() {
       clusterIds.has(String(mapping["cluster_id"])),
       `Mapping ${mapping.id} references missing cluster ${mapping["cluster_id"]}`
     );
+    assertOperationalMetadata("Mapping", mapping);
   });
 
   data.signals.forEach((signal) =>

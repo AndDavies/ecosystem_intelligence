@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ListChecks, PlusCircle, Trash2 } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
+import { SnapshotStrip } from "@/components/workspace/workspace-primitives";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,6 +13,7 @@ import { createShortlist, deleteShortlist } from "@/lib/actions/shortlists";
 import { requireProfile } from "@/lib/auth";
 import { getShortlistsIndex, getUseCasesIndex } from "@/lib/data/repository";
 import { formatDate, toTitleCase } from "@/lib/utils";
+import type { ShortlistIndexCardView } from "@/types/view-models";
 
 export default async function ShortlistsPage({
   searchParams
@@ -21,25 +23,31 @@ export default async function ShortlistsPage({
   const profile = await requireProfile();
   const [shortlists, useCases] = await Promise.all([getShortlistsIndex(), getUseCasesIndex()]);
   const params = await searchParams;
+  const totalTargets = shortlists.reduce((sum, item) => sum + item.itemCount, 0);
+  const activeTargets = shortlists.reduce(
+    (sum, item) => sum + item.statusCounts.validate + item.statusCounts.engage,
+    0
+  );
+  const ownerCoverage = shortlists.reduce((sum, item) => sum + item.ownerCount, 0);
 
   return (
     <AppShell profile={profile}>
       <SectionHeading
-        title="Shortlists"
-        description="Shared working lists for BD validation targets, follow-up rationale, and next steps."
+        title="Working Lists"
+        description="Shared engagement memory for shortlisted targets, follow-up rationale, and next steps."
         eyebrow="Working memory"
         breadcrumbs={[
           { label: "Home", href: "/app" },
-          { label: "Shortlists" }
+          { label: "Working Lists" }
         ]}
         backHref="/app"
-        backLabel="Back to Home"
+        backLabel="Back to Start Here"
       />
 
       {params.mock ? (
         <Card variant="muted" className="mb-6 rounded-[28px]">
           <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
-            Persistent shortlist writes require Supabase mode. Mock mode keeps this page empty by design.
+            Persistent working-list writes require Supabase mode. Mock mode keeps this page empty by design.
           </CardContent>
         </Card>
       ) : null}
@@ -47,20 +55,46 @@ export default async function ShortlistsPage({
       {params.shortlistSetup === "missing-schema" ? (
         <Card variant="muted" className="mb-6 rounded-[28px]">
           <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
-            Shortlist persistence needs the latest Supabase migration. Apply `003_shortlists.sql`, then retry creating the shortlist.
+            Working-list persistence needs the latest Supabase migration. Apply `003_shortlists.sql`, then retry creating the list.
           </CardContent>
         </Card>
       ) : null}
 
       {params.shortlistDeleted ? (
-        <NoticeCard message="Shortlist deleted. The working list and saved targets were removed." />
+        <NoticeCard message="Working list deleted. The list and saved targets were removed." />
       ) : null}
+
+      <SnapshotStrip
+        className="mb-6"
+        items={[
+          {
+            label: "Working Lists",
+            value: String(shortlists.length),
+            detail: "Saved engagement memory across mission areas."
+          },
+          {
+            label: "Saved Targets",
+            value: String(totalTargets),
+            detail: "Capabilities or companies carried forward."
+          },
+          {
+            label: "Validate / Engage",
+            value: String(activeTargets),
+            detail: "Targets with an active follow-up stance."
+          },
+          {
+            label: "Owner Coverage",
+            value: `${ownerCoverage}/${totalTargets || 0}`,
+            detail: "Targets with a named owner."
+          }
+        ]}
+      />
 
       <Card variant="hero" className="mb-6 rounded-[34px]">
         <CardHeader className="space-y-3">
           <div className="workspace-kicker">
             <PlusCircle className="size-3.5" />
-            Add new shortlist
+            Add new working list
           </div>
           <CardTitle>Create a working list before or during a BD conversation.</CardTitle>
           <p className="text-sm leading-6 text-[var(--muted-foreground)]">
@@ -70,7 +104,7 @@ export default async function ShortlistsPage({
         <CardContent>
           <form action={createShortlist} className="grid gap-3 lg:grid-cols-[0.9fr_1.1fr_auto] lg:items-end">
             <label className="space-y-1.5 text-sm font-medium">
-              <span>Use Case</span>
+              <span>Mission Area / Use Case</span>
               <select
                 name="useCaseId"
                 defaultValue={useCases.find((useCase) => useCase.slug === "arctic-domain-awareness")?.id ?? useCases[0]?.id}
@@ -85,11 +119,11 @@ export default async function ShortlistsPage({
             </label>
             <label className="space-y-1.5 text-sm font-medium">
               <span>Name</span>
-              <Input name="name" placeholder="Arctic Domain Awareness BD shortlist" />
+              <Input name="name" placeholder="Arctic Domain Awareness BD working list" />
             </label>
             <PendingButton type="submit" pendingLabel="Creating..." className="h-11">
               <PlusCircle className="size-4" />
-              Create shortlist
+              Create working list
             </PendingButton>
             <label className="space-y-1.5 text-sm font-medium lg:col-span-3">
               <span>Description</span>
@@ -119,6 +153,9 @@ export default async function ShortlistsPage({
               <CardContent className="space-y-5">
                 <div className="flex flex-wrap gap-2">
                   <Badge tone="outline">{item.itemCount} targets</Badge>
+                  <Badge tone="surface">{item.ownerCount}/{item.itemCount || 0} owned</Badge>
+                  <Badge tone="surface">{item.nextStepCount}/{item.itemCount || 0} next steps</Badge>
+                  <Badge tone="surface">{item.dueItemCount}/{item.itemCount || 0} due dates</Badge>
                   {Object.entries(item.statusCounts)
                     .filter(([, count]) => count > 0)
                     .map(([status, count]) => (
@@ -128,10 +165,14 @@ export default async function ShortlistsPage({
                     ))}
                   <Badge tone="muted">Updated {formatDate(item.updatedAt)}</Badge>
                 </div>
+                <div className="rounded-[24px] border border-[var(--border)] bg-[var(--card-muted)] p-4 text-sm leading-6 text-[var(--muted-foreground)]">
+                  <span className="font-semibold text-[var(--foreground)]">Handoff read: </span>
+                  {buildHandoffRead(item)}
+                </div>
                 <div className="flex flex-col gap-2 sm:flex-row">
                   <Button asChild className="flex-1 justify-between">
                     <Link href={`/shortlists/${item.shortlist.id}`}>
-                      Open shortlist
+                      Open working list
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>
@@ -156,7 +197,7 @@ export default async function ShortlistsPage({
       ) : (
         <Card variant="hero" className="rounded-[34px]">
           <CardHeader>
-            <CardTitle>No shortlists yet</CardTitle>
+            <CardTitle>No working lists yet</CardTitle>
             <p className="text-sm leading-6 text-[var(--muted-foreground)]">
               Open a Use Case briefing, compare the top targets, and save the organizations worth carrying into follow-up.
             </p>
@@ -181,6 +222,24 @@ function NoticeCard({ message }: { message: string }) {
       <CardContent className="pt-6 text-sm font-medium text-[var(--foreground)]">{message}</CardContent>
     </Card>
   );
+}
+
+function buildHandoffRead(item: ShortlistIndexCardView) {
+  if (!item.itemCount) {
+    return "This list is ready to receive targets from a mission-area briefing.";
+  }
+
+  const activeCount = item.statusCounts.validate + item.statusCounts.engage;
+  const ownerText =
+    item.ownerCount === item.itemCount
+      ? "every target has an owner"
+      : `${item.ownerCount} of ${item.itemCount} targets have owners`;
+  const nextStepText =
+    item.nextStepCount === item.itemCount
+      ? "next steps are captured"
+      : `${item.itemCount - item.nextStepCount} still need next steps`;
+
+  return `${item.useCase?.name ?? "This working list"} has ${activeCount} active validation or engagement target${activeCount === 1 ? "" : "s"}; ${ownerText}, and ${nextStepText}.`;
 }
 
 function getStatusTone(status: string) {

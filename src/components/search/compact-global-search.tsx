@@ -7,8 +7,8 @@ import { Input } from "@/components/ui/input";
 import type { SearchResultsView } from "@/types/view-models";
 
 const resultSections = [
-  { key: "domains", label: "Domains" },
-  { key: "useCases", label: "Use Cases" },
+  { key: "domains", label: "Technical Domains" },
+  { key: "useCases", label: "Mission Areas" },
   { key: "capabilities", label: "Capabilities" },
   { key: "companies", label: "Companies" }
 ] as const;
@@ -47,7 +47,7 @@ export function CompactGlobalSearch() {
         onChange={(event) => setQuery(event.target.value)}
         onFocus={() => setIsFocused(true)}
         onBlur={() => window.setTimeout(() => setIsFocused(false), 140)}
-        placeholder="Search companies, capabilities, mission areas, or domains"
+        placeholder="Search companies, capabilities, mission areas, or technical domains"
         className="h-11 rounded-2xl border-[var(--border-strong)] bg-white pl-11 text-sm shadow-[0_8px_24px_rgba(20,34,24,0.04)]"
       />
       {shouldShowResults ? (
@@ -101,13 +101,16 @@ export function CompactGlobalSearch() {
           </div>
           <div className="mt-3 flex flex-wrap gap-2 border-t border-[var(--border)] pt-3 text-xs">
             <Link href="/use-cases" className="rounded-full bg-[var(--muted)] px-3 py-1.5 font-medium no-underline">
-              Browse mission areas
+              Mission areas
+            </Link>
+            <Link href="/domains" className="rounded-full bg-[var(--muted)] px-3 py-1.5 font-medium no-underline">
+              Technical domains
             </Link>
             <Link href="/companies" className="rounded-full bg-[var(--muted)] px-3 py-1.5 font-medium no-underline">
-              Browse companies
+              Companies
             </Link>
             <Link href="/shortlists" className="rounded-full bg-[var(--muted)] px-3 py-1.5 font-medium no-underline">
-              Open lists
+              Working lists
             </Link>
           </div>
         </div>

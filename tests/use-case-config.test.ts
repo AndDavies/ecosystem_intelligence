@@ -18,12 +18,13 @@ describe("use-case configuration", () => {
 
   it("falls back to generic defaults for unknown use cases", () => {
     const config = resolveUseCaseConfig({
-      slug: "autonomous-patrol",
-      name: "Autonomous Patrol"
+      slug: "future-mission-area",
+      name: "Future Mission Area"
     });
 
     expect(config.cardBadge).toBe("Strategic lens");
     expect(config.detail.decisionGuideTitle).toBe("Recommended Actions");
+    expect(config.detail.orientation.exampleQuestion).toBe("Who should we engage first for Future Mission Area, and why now?");
     expect(config.homeActionLabel).toBe("Export Top Targets CSV");
   });
 

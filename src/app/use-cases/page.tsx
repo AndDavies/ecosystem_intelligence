@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { SectionHeading } from "@/components/layout/section-heading";
-import { DiscoveryCard } from "@/components/workspace/workspace-primitives";
 import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,62 +24,89 @@ export default async function UseCasesPage() {
   return (
     <AppShell profile={profile}>
       <SectionHeading
-        title="Use Cases"
-        description="Use Cases now start from public-priority mission effects: who needs to decide, in which operating context, and what capability pathway can make the outcome more real."
+        title="Mission Areas / Use Cases"
+        description="Start here when the question is a mission problem, enabling need, or engagement decision."
         eyebrow="Mission-led discovery"
         breadcrumbs={[
           { label: "Home", href: "/app" },
-          { label: "Use Cases" }
+          { label: "Mission Areas" }
         ]}
       />
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {useCases.map((useCase) => {
-          const useCaseConfig = resolveUseCaseConfig(useCase, useCase.domains);
+      <Card variant="strong" className="rounded-[32px]">
+        <CardContent className="p-0">
+          <div className="hidden grid-cols-[minmax(18rem,1.5fr)_8rem_minmax(12rem,1fr)_8rem_10rem_5rem] gap-4 border-b border-[var(--border)] bg-[var(--card-muted)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)] xl:grid">
+            <div>Mission Area</div>
+            <div>Type</div>
+            <div>Technical Domains</div>
+            <div>Coverage</div>
+            <div>Freshness</div>
+            <div className="text-right">Open</div>
+          </div>
+          <div className="divide-y divide-[var(--border)]">
+            {useCases.map((useCase) => {
+              const useCaseConfig = resolveUseCaseConfig(useCase, useCase.domains);
 
-          return (
-            <DiscoveryCard
-              key={useCase.id}
-              eyebrow={useCaseConfig.cardBadge}
-              title={useCase.name}
-              description={useCase.summary}
-              href={`/use-cases/${useCase.slug}`}
-              actionLabel="Explore Use Case"
-              badges={
-                <>
-                  {useCaseConfig.featured ? <Badge tone="info">Featured</Badge> : null}
-                  {useCase.domains.map((domain) => (
-                    <Badge key={domain.id} tone="outline">
-                      {domain.name}
+              return (
+                <Link
+                  key={useCase.id}
+                  href={`/use-cases/${useCase.slug}`}
+                  className="block px-4 py-4 no-underline transition hover:bg-[var(--card-muted)] xl:grid xl:grid-cols-[minmax(18rem,1.5fr)_8rem_minmax(12rem,1fr)_8rem_10rem_5rem] xl:items-center xl:gap-4"
+                >
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <div className="font-semibold text-[var(--foreground)]">{useCase.name}</div>
+                      {useCaseConfig.featured ? <Badge tone="info">Featured</Badge> : null}
+                    </div>
+                    <div className="mt-1 line-clamp-2 text-sm leading-5 text-[var(--muted-foreground)]">
+                      <span className="font-medium text-[var(--foreground)]">Use this when: </span>
+                      {useCaseConfig.detail.orientation.useThisWhen}
+                    </div>
+                    <div className="mt-1 line-clamp-1 text-xs leading-5 text-[var(--muted-foreground)]">
+                      Example: {useCaseConfig.detail.orientation.exampleQuestion}
+                    </div>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-1.5 xl:mt-0">
+                    <Badge tone={useCase.priorityTier === "p1" ? "success" : "info"}>
+                      {useCase.priorityTier.toUpperCase()}
                     </Badge>
-                  ))}
-                </>
-              }
-              footer={
-                <>
-                  <Badge tone={useCase.priorityTier === "p1" ? "success" : "info"}>
-                    {useCase.priorityTier.toUpperCase()}
-                  </Badge>
-                  <Badge tone={useCase.useCaseKind === "mission" ? "secondary" : "surface"}>
-                    {useCase.useCaseKind === "mission" ? "Mission" : "Enabling"}
-                  </Badge>
-                  <FreshnessBadge freshness={useCase.freshness} />
-                  {useCase.freshness.lastActivityAt ? (
-                    <Badge tone="muted">Last activity {formatDate(useCase.freshness.lastActivityAt)}</Badge>
-                  ) : null}
-                  <Badge tone="surface">{useCase.capabilityCount} capabilities</Badge>
-                </>
-              }
-            />
-          );
-        })}
-      </div>
+                    <Badge tone={useCase.useCaseKind === "mission" ? "secondary" : "surface"}>
+                      {useCase.useCaseKind === "mission" ? "Mission" : "Enabling"}
+                    </Badge>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-1.5 xl:mt-0">
+                    {useCase.domains.slice(0, 2).map((domain) => (
+                      <Badge key={domain.id} tone="outline">
+                        {domain.name}
+                      </Badge>
+                    ))}
+                    {useCase.domains.length > 2 ? <Badge tone="muted">+{useCase.domains.length - 2}</Badge> : null}
+                  </div>
+                  <div className="mt-3 text-sm font-semibold text-[var(--foreground)] xl:mt-0">
+                    {useCase.capabilityCount} capabilities
+                  </div>
+                  <div className="mt-3 flex flex-wrap items-center gap-1.5 xl:mt-0">
+                    <FreshnessBadge freshness={useCase.freshness} />
+                    {useCase.freshness.lastActivityAt ? (
+                      <span className="text-xs text-[var(--muted-foreground)]">{formatDate(useCase.freshness.lastActivityAt)}</span>
+                    ) : null}
+                  </div>
+                  <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--primary)] xl:mt-0 xl:justify-end">
+                    Open
+                    <ArrowRight className="size-4" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
       <Card variant="rail" className="mt-6 rounded-[32px]">
         <CardHeader className="space-y-2">
           <div className="workspace-kicker">Coverage discipline</div>
           <CardTitle>Priority areas intentionally held as gaps</CardTitle>
           <p className="text-sm leading-6 text-[var(--muted-foreground)]">
             These are valid CAF/DND, Government of Canada, and NATO priority themes, but the current dataset does not yet
-            have enough credible capability and company coverage to promote them as active Use Cases.
+            have enough credible capability and company coverage to promote them as active mission areas.
           </p>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-2">

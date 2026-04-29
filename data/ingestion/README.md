@@ -12,6 +12,8 @@ Research-agent output should land here before it is promoted into `supabase/seed
 
 Candidate batches live in `data/ingestion/candidate-batches/*.json`.
 
+Source-lead batches live in `data/ingestion/source-leads/*.json`.
+
 Each batch must remain a `candidate` and include:
 
 - canonical company, capability, mapping, source, evidence snippet, and field citation records
@@ -19,6 +21,22 @@ Each batch must remain a `candidate` and include:
 - canonical `https` source URLs, not browser citation tokens or copied report markers
 - paraphrased evidence snippets, not long copied source text
 - citations for every company overview, capability summary, and mapping `why_it_matters`
+- operational metadata is preserved during promotion as `data_stage`, `source_confidence`, `research_rationale`, and `source_batch_id`
+
+## Source Lead Validation
+
+Run:
+
+```bash
+pnpm leads:validate
+```
+
+Source leads are the preferred first output from a research agent. They are not promoted and do not create database records. Use them to review:
+
+- whether the organization is real and relevant
+- whether the source URL is canonical and durable
+- which Mission Areas and Technical Domains the lead may support
+- what follow-up research is required before candidate creation
 
 ## Validation
 
@@ -38,6 +56,27 @@ The validator checks candidate data against the current seed taxonomy and fails 
 - cluster/domain mismatches
 - weak evidence on high-relevance, high-defence mappings
 - invalid dates, enums, or stale-review windows
+
+## Data Readiness
+
+Run:
+
+```bash
+pnpm data:readiness
+```
+
+Optionally write a dated report:
+
+```bash
+pnpm data:readiness -- --write
+```
+
+The readiness report shows:
+
+- validated versus scaffold companies, capabilities, and mappings
+- scaffold debt by Mission Area
+- whether each Mission Area has enough real companies, real capabilities, and top targets to support staged research
+- the recommended order for source-lead and candidate batches
 
 ## Review
 

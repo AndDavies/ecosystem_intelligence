@@ -235,7 +235,11 @@ function normalizeCompany(row: Record<string, unknown>): Company {
     websiteUrl: row.website_url ? String(row.website_url) : null,
     publicContactEmail: row.public_contact_email ? String(row.public_contact_email) : null,
     publicContactPhone: row.public_contact_phone ? String(row.public_contact_phone) : null,
-    lastUpdatedAt: String(row.last_updated_at)
+    lastUpdatedAt: String(row.last_updated_at),
+    dataStage: String(row.data_stage ?? "scaffold") as Company["dataStage"],
+    sourceConfidence: String(row.source_confidence ?? "needs_validation") as Company["sourceConfidence"],
+    researchRationale: row.research_rationale ? String(row.research_rationale) : null,
+    sourceBatchId: row.source_batch_id ? String(row.source_batch_id) : null
   };
 }
 
@@ -260,7 +264,11 @@ function normalizeCapability(row: Record<string, unknown>): Capability {
     domainId: String(row.domain_id),
     summary: String(row.summary),
     companyFacingContext: row.company_facing_context ? String(row.company_facing_context) : null,
-    lastUpdatedAt: String(row.last_updated_at)
+    lastUpdatedAt: String(row.last_updated_at),
+    dataStage: String(row.data_stage ?? "scaffold") as Capability["dataStage"],
+    sourceConfidence: String(row.source_confidence ?? "needs_validation") as Capability["sourceConfidence"],
+    researchRationale: row.research_rationale ? String(row.research_rationale) : null,
+    sourceBatchId: row.source_batch_id ? String(row.source_batch_id) : null
   };
 }
 
@@ -281,7 +289,11 @@ function normalizeCapabilityUseCase(row: Record<string, unknown>): CapabilityUse
     evidenceStrength: Number(row.evidence_strength ?? 1) as CapabilityUseCase["evidenceStrength"],
     actionabilityScore: Number(row.actionability_score ?? 0) as CapabilityUseCase["actionabilityScore"],
     lastSignalAt: row.last_signal_at ? String(row.last_signal_at) : null,
-    staleAfterDays: Number(row.stale_after_days ?? 180)
+    staleAfterDays: Number(row.stale_after_days ?? 180),
+    dataStage: String(row.data_stage ?? "scaffold") as CapabilityUseCase["dataStage"],
+    sourceConfidence: String(row.source_confidence ?? "needs_validation") as CapabilityUseCase["sourceConfidence"],
+    researchRationale: row.research_rationale ? String(row.research_rationale) : null,
+    sourceBatchId: row.source_batch_id ? String(row.source_batch_id) : null
   };
 }
 
@@ -687,6 +699,9 @@ function buildShortlistIndexCards(state: DatasetState, useCaseId?: string): Shor
         useCase: state.useCases.find((item) => item.id === shortlist.useCaseId) ?? null,
         itemCount: items.length,
         statusCounts,
+        ownerCount: items.filter((item) => Boolean(item.owner?.trim())).length,
+        dueItemCount: items.filter((item) => Boolean(item.dueDate)).length,
+        nextStepCount: items.filter((item) => Boolean(item.nextStep?.trim())).length,
         updatedAt: sortByDateDesc([shortlist.updatedAt, ...items.map((item) => item.updatedAt)])[0] ?? shortlist.updatedAt
       };
     })

@@ -11,6 +11,8 @@
     "ingest:validate": "tsx scripts/validate-ingestion-candidates.ts",
     "ingest:review": "tsx scripts/review-ingestion-candidates.ts review",
     "ingest:promote": "tsx scripts/review-ingestion-candidates.ts promote",
+    "leads:validate": "tsx scripts/validate-source-leads.ts",
+    "data:readiness": "tsx scripts/data-readiness.ts",
     "seed:validate": "tsx scripts/validate-seed.ts",
     "seed:import": "tsx scripts/import-seed.ts"
   },

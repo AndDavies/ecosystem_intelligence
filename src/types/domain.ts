@@ -6,6 +6,8 @@ export type ChangeStatus = "pending" | "approved" | "rejected";
 export type UseCasePriorityTier = "p1" | "p2" | "p3";
 export type UseCaseKind = "mission" | "enabling";
 export type ShortlistItemStatus = "watch" | "validate" | "engage" | "hold";
+export type DataStage = "scaffold" | "candidate" | "validated" | "deprecated";
+export type SourceConfidence = "high" | "moderate" | "needs_validation";
 export type SignalType =
   | "funding"
   | "contract"
@@ -77,6 +79,10 @@ export interface Company {
   publicContactEmail: string | null;
   publicContactPhone: string | null;
   lastUpdatedAt: string;
+  dataStage: DataStage;
+  sourceConfidence: SourceConfidence;
+  researchRationale: string | null;
+  sourceBatchId: string | null;
 }
 
 export interface Contact {
@@ -98,6 +104,10 @@ export interface Capability {
   summary: string;
   companyFacingContext: string | null;
   lastUpdatedAt: string;
+  dataStage: DataStage;
+  sourceConfidence: SourceConfidence;
+  researchRationale: string | null;
+  sourceBatchId: string | null;
 }
 
 export interface CapabilityUseCase {
@@ -117,6 +127,10 @@ export interface CapabilityUseCase {
   actionabilityScore: 0 | 5;
   lastSignalAt: string | null;
   staleAfterDays: number;
+  dataStage: DataStage;
+  sourceConfidence: SourceConfidence;
+  researchRationale: string | null;
+  sourceBatchId: string | null;
 }
 
 export interface Signal {

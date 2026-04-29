@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronDown, Download, RefreshCw, Sparkles, Target } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
+import { RankExplainer } from "@/components/intelligence/rank-explainer";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { AddToShortlistForm } from "@/components/shortlists/add-to-shortlist-form";
 import { MaturityChart } from "@/components/use-cases/maturity-chart";
@@ -15,6 +16,7 @@ import { requestRefresh } from "@/lib/actions/review";
 import { requireProfile } from "@/lib/auth";
 import { getUseCaseBriefingBySlug } from "@/lib/data/repository";
 import { getFreshnessState, summarizeFreshness } from "@/lib/freshness";
+import { explainRankingDrivers } from "@/lib/scoring";
 import { resolveUseCaseConfig } from "@/lib/use-case-config";
 import { buildUseCaseInsight, getTargetRead } from "@/lib/use-case-insights";
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
@@ -51,14 +53,14 @@ export default async function UseCaseDetailPage({
       <SectionHeading
         title={view.useCase.name}
         description={view.useCase.summary}
-        eyebrow="Use case workspace"
+        eyebrow="Mission area workspace"
         breadcrumbs={[
           { label: "Home", href: "/app" },
-          { label: "Use Cases", href: "/use-cases" },
+          { label: "Mission Areas", href: "/use-cases" },
           { label: view.useCase.name }
         ]}
         backHref="/use-cases"
-        backLabel="Back to Use Cases"
+        backLabel="Back to Mission Areas"
         meta={
           <>
             {view.domains.map((domain) => (
@@ -100,7 +102,7 @@ export default async function UseCaseDetailPage({
       {query.shortlistSetup === "missing-schema" ? (
         <Card variant="muted" className="mb-6 rounded-[28px]">
           <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
-            Shortlist persistence needs the latest Supabase migration. Apply `003_shortlists.sql`, then retry adding the target.
+            Working-list persistence needs the latest Supabase migration. Apply `003_shortlists.sql`, then retry adding the target.
           </CardContent>
         </Card>
       ) : null}
@@ -108,8 +110,8 @@ export default async function UseCaseDetailPage({
         <NoticeCard
           message={
             query.shortlistItem === "updated"
-              ? "Target was already on this shortlist, so its rationale and next step were updated."
-              : "Target added to the shortlist. Open Shortlists when you are ready to assign owner, due date, and follow-up."
+              ? "Target was already on this working list, so its rationale and next step were updated."
+              : "Target added to the working list. Open Working Lists when you are ready to assign owner, due date, and follow-up."
           }
         />
       ) : null}
@@ -130,6 +132,21 @@ export default async function UseCaseDetailPage({
               </div>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground)]">
                 {useCaseConfig.detail.capabilityDefinition}
+              </p>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2">
+              <OrientationBlock title="Use this when" body={useCaseConfig.detail.orientation.useThisWhen} />
+              <OrientationBlock title="Decision this supports" body={useCaseConfig.detail.orientation.decisionSupported} />
+              <OrientationBlock title="Best output" body={useCaseConfig.detail.orientation.bestOutput} />
+              <OrientationBlock title="Not for" body={useCaseConfig.detail.orientation.notFor} />
+              <OrientationBlock title="Primary technical domains" body={useCaseConfig.detail.orientation.primaryDomains} />
+            </div>
+            <div className="rounded-[28px] border border-[var(--primary)]/16 bg-white/75 px-5 py-4">
+              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                Example question
+              </div>
+              <p className="mt-2 text-sm font-medium leading-6 text-[var(--foreground)]">
+                {useCaseConfig.detail.orientation.exampleQuestion}
               </p>
             </div>
             <details className="group rounded-[28px] border border-[var(--border)] bg-white/70 px-5 py-4">
@@ -153,7 +170,7 @@ export default async function UseCaseDetailPage({
             <div className="workspace-kicker">Trust and coverage</div>
             <CardTitle>What supports the current mission read</CardTitle>
             <p className="text-sm leading-6 text-[var(--muted-foreground)]">
-              This page keeps the heuristic summary, freshness posture, and target coverage visible before you drill into individual capability records.
+                This page keeps the heuristic summary, freshness posture, and target coverage visible before you drill into individual capability records.
             </p>
             <DerivedReadLabel />
           </CardHeader>
@@ -202,7 +219,7 @@ export default async function UseCaseDetailPage({
             <div className="workspace-kicker">Mission brief</div>
             <CardTitle>What this Use Case is actually for</CardTitle>
             <p className="text-sm leading-6 text-[var(--muted-foreground)]">
-              Use Cases are treated as public-priority mission or enabling lanes, not generic technology themes.
+              Mission areas / use cases are treated as public-priority mission or enabling lanes, not generic technology themes.
             </p>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -295,49 +312,45 @@ export default async function UseCaseDetailPage({
         </Card>
       </div>
 
-      <div className="grid gap-5">
-        <Card variant="feature" className="rounded-[32px]">
-          <CardHeader className="space-y-2">
-            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)]">
-              Decision guide
-            </div>
-            <CardTitle>{useCaseConfig.detail.decisionGuideTitle}</CardTitle>
-            <p className="text-sm text-[var(--muted-foreground)]">
-              {useCaseConfig.detail.decisionGuideDescription}
-            </p>
-            <DerivedReadLabel />
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {insightLayer.recommendedActions.map((action, index) => (
-                <div
-                  key={`${action.entry.mapping.id}-${action.verb}`}
-                  className="rounded-[28px] border border-[var(--primary)]/12 bg-white/85 px-5 py-4"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-semibold text-white">
-                      {index + 1}
-                    </div>
-                    <div className="min-w-0 space-y-1.5">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <Badge tone={action.tone}>{action.verb}</Badge>
-                        <Link
-                          href={`/capabilities/${action.entry.capability.id}?fromUseCase=${view.useCase.slug}`}
-                          className="text-base font-semibold no-underline"
-                        >
-                          {action.entry.capability.name}
-                        </Link>
-                      </div>
-                      <p className="text-sm font-medium text-[var(--foreground)]">{action.directive}</p>
-                      <p className="text-sm text-[var(--muted-foreground)]">{action.context}</p>
-                    </div>
-                  </div>
+      <SupportingDetails
+        title={useCaseConfig.detail.decisionGuideTitle}
+        eyebrow="Decision guide"
+        className="mt-1"
+      >
+        <div className="mb-4 space-y-2">
+          <p className="text-sm leading-6 text-[var(--muted-foreground)]">
+            {useCaseConfig.detail.decisionGuideDescription}
+          </p>
+          <DerivedReadLabel />
+        </div>
+        <div className="space-y-3">
+          {insightLayer.recommendedActions.map((action, index) => (
+            <div
+              key={`${action.entry.mapping.id}-${action.verb}`}
+              className="rounded-[24px] border border-[var(--primary)]/12 bg-white/85 px-4 py-3"
+            >
+              <div className="flex items-start gap-3">
+                <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-xs font-semibold text-white">
+                  {index + 1}
                 </div>
-              ))}
+                <div className="min-w-0 space-y-1.5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Badge tone={action.tone}>{action.verb}</Badge>
+                    <Link
+                      href={`/capabilities/${action.entry.capability.id}?fromUseCase=${view.useCase.slug}`}
+                      className="text-sm font-semibold no-underline"
+                    >
+                      {action.entry.capability.name}
+                    </Link>
+                  </div>
+                  <p className="text-sm font-medium text-[var(--foreground)]">{action.directive}</p>
+                  <p className="text-sm text-[var(--muted-foreground)]">{action.context}</p>
+                </div>
+              </div>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          ))}
+        </div>
+      </SupportingDetails>
 
       <Card variant="strong" className="mt-6 rounded-[36px]">
         <CardHeader className="space-y-2">
@@ -346,7 +359,7 @@ export default async function UseCaseDetailPage({
           </div>
           <CardTitle className="text-2xl md:text-3xl">{useCaseConfig.detail.topTargetsTitle}</CardTitle>
           <p className="text-sm text-[var(--muted-foreground)]">
-            {useCaseConfig.detail.topTargetsDescription}
+            {useCaseConfig.detail.topTargetsDescription} Rank signal is a relative fit signal, not a probability.
           </p>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -358,7 +371,7 @@ export default async function UseCaseDetailPage({
                   <div>Target</div>
                   <div>Company</div>
                   <div>Pathway</div>
-                  <div>Score</div>
+                  <div>Rank Signal</div>
                   <div>Freshness</div>
                   <div>Why now</div>
                 </div>
@@ -417,7 +430,7 @@ export default async function UseCaseDetailPage({
                 <div
                   key={entry.mapping.id}
                   className={cn(
-                    "rounded-[32px] p-7 transition hover:-translate-y-0.5",
+                    "rounded-[28px] p-5 transition hover:-translate-y-0.5 md:p-6",
                     index < 3
                       ? "border border-[var(--primary)]/15 bg-[var(--card-strong)] shadow-[0_14px_40px_rgba(20,34,24,0.08)] hover:border-[var(--primary)]/30 hover:shadow-[0_18px_48px_rgba(20,34,24,0.12)]"
                       : "border border-[var(--border)] bg-white/75 shadow-none hover:border-[var(--primary)]/16 hover:bg-white"
@@ -464,7 +477,7 @@ export default async function UseCaseDetailPage({
                               <Link
                                 href={`/capabilities/${entry.capability.id}?fromUseCase=${view.useCase.slug}`}
                                 title="Capability = product, system, or solution"
-                                className="block truncate text-2xl font-bold tracking-tight no-underline md:text-3xl"
+                                className="block truncate text-xl font-bold tracking-tight no-underline md:text-2xl"
                               >
                                 {entry.capability.name}
                               </Link>
@@ -536,6 +549,18 @@ export default async function UseCaseDetailPage({
                               {truncateText(entry.mapping.whyItMatters, 115)}
                             </div>
                           </div>
+                          <RankExplainer
+                            drivers={explainRankingDrivers({
+                              relevanceBand: entry.mapping.relevanceBand,
+                              pathway: entry.mapping.pathway,
+                              defenceRelevance: entry.mapping.defenceRelevance,
+                              geography: entry.company.geography,
+                              lastSignalAt: entry.mapping.lastSignalAt,
+                              evidenceStrength: entry.mapping.evidenceStrength,
+                              actionabilityScore: entry.mapping.actionabilityScore,
+                              reviewerOverrideDelta: entry.mapping.reviewerOverrideDelta
+                            })}
+                          />
                           <div className="flex flex-wrap items-center gap-2">
                             <Badge tone="secondary" className="px-3 py-1.5">
                               <Sparkles className="mr-1.5 size-3" />
@@ -543,6 +568,9 @@ export default async function UseCaseDetailPage({
                             </Badge>
                             <Badge tone="muted" className="px-3 py-1.5">
                               {entry.mapping.relevanceBand} relevance
+                            </Badge>
+                            <Badge tone="muted" className="px-3 py-1.5" title="Relative fit signal, not a probability.">
+                              Rank signal {entry.mapping.rankingScore}
                             </Badge>
                             <Badge tone="muted" className="px-3 py-1.5">
                               {entry.cluster.name}
@@ -587,8 +615,8 @@ export default async function UseCaseDetailPage({
         </CardContent>
       </Card>
 
-      <div className="mt-6">
-        <div className="grid gap-5">
+      <SupportingDetails title="Ecosystem context" eyebrow="Supporting analysis" className="mt-5">
+        <div className="grid gap-4 xl:grid-cols-2">
           <Card className="rounded-[32px] border-[var(--border)] bg-white/85">
             <CardHeader className="space-y-2">
               <CardTitle>{useCaseConfig.detail.summaryTitle}</CardTitle>
@@ -626,12 +654,11 @@ export default async function UseCaseDetailPage({
             </CardContent>
           </Card>
         </div>
-      </div>
+      </SupportingDetails>
 
-      <div className="mt-6">
+      <SupportingDetails title={useCaseConfig.detail.gapsTitle} eyebrow="Coverage gaps" className="mt-4">
         <Card variant="strong" className="rounded-[32px]">
           <CardHeader className="space-y-2">
-            <CardTitle>{useCaseConfig.detail.gapsTitle}</CardTitle>
             <p className="text-sm text-[var(--muted-foreground)]">
               {useCaseConfig.detail.gapsDescription}
             </p>
@@ -645,98 +672,98 @@ export default async function UseCaseDetailPage({
             </ul>
           </CardContent>
         </Card>
-      </div>
+      </SupportingDetails>
 
-      <div className="mt-6 grid gap-5 xl:grid-cols-[1.2fr_0.8fr]">
-        <Card variant="strong" className="rounded-[32px]">
-          <CardHeader className="space-y-2">
-            <CardTitle>{useCaseConfig.detail.clustersTitle}</CardTitle>
-            <p className="text-sm text-[var(--muted-foreground)]">
-              {useCaseConfig.detail.clustersDescription}
-            </p>
-          </CardHeader>
-          <CardContent className="grid gap-4 md:grid-cols-2">
-            {view.clusters.length ? (
-              view.clusters.map((entry) => (
-                <div
-                  key={entry.cluster.id}
-                  className="rounded-[28px] border border-[var(--border)] bg-white/70 p-5 transition hover:border-[var(--primary)]/20 hover:shadow-[0_12px_30px_rgba(20,34,24,0.06)]"
-                >
-                  <div className="space-y-2">
-                    <div className="text-base font-semibold">{entry.cluster.name}</div>
-                    <p className="text-sm leading-6 text-[var(--muted-foreground)]">
-                      {entry.cluster.summary}
-                    </p>
+      <SupportingDetails title="Clusters and maturity" eyebrow="Technical coverage" className="mt-4">
+        <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
+          <Card variant="strong" className="rounded-[32px]">
+            <CardHeader className="space-y-2">
+              <CardTitle>{useCaseConfig.detail.clustersTitle}</CardTitle>
+              <p className="text-sm text-[var(--muted-foreground)]">
+                {useCaseConfig.detail.clustersDescription}
+              </p>
+            </CardHeader>
+            <CardContent className="grid gap-4 md:grid-cols-2">
+              {view.clusters.length ? (
+                view.clusters.map((entry) => (
+                  <div
+                    key={entry.cluster.id}
+                    className="rounded-[28px] border border-[var(--border)] bg-white/70 p-5 transition hover:border-[var(--primary)]/20 hover:shadow-[0_12px_30px_rgba(20,34,24,0.06)]"
+                  >
+                    <div className="space-y-2">
+                      <div className="text-base font-semibold">{entry.cluster.name}</div>
+                      <p className="text-sm leading-6 text-[var(--muted-foreground)]">
+                        {entry.cluster.summary}
+                      </p>
+                    </div>
+                    <div className="mt-4 flex items-center justify-between gap-3">
+                      <Badge tone="secondary">{entry.count} capabilities</Badge>
+                      {entry.topCapability ? (
+                        <Link
+                          href={`/capabilities/${entry.topCapability.capability.id}?fromUseCase=${view.useCase.slug}`}
+                          className="text-sm font-medium no-underline"
+                          title="Open top capability in this cluster"
+                        >
+                          {entry.topCapability.capability.name}
+                        </Link>
+                      ) : null}
+                    </div>
                   </div>
-                  <div className="mt-4 flex items-center justify-between gap-3">
-                    <Badge tone="secondary">{entry.count} capabilities</Badge>
-                    {entry.topCapability ? (
-                      <Link
-                        href={`/capabilities/${entry.topCapability.capability.id}?fromUseCase=${view.useCase.slug}`}
-                        className="text-sm font-medium no-underline"
-                        title="Open top capability in this cluster"
-                      >
-                        {entry.topCapability.capability.name}
-                      </Link>
-                    ) : null}
+                ))
+              ) : (
+                <EmptyState message="No capability clusters are available for this Use Case yet." />
+              )}
+            </CardContent>
+          </Card>
+          <Card variant="rail" className="rounded-[32px]">
+            <CardHeader className="space-y-2">
+              <CardTitle>Maturity Distribution</CardTitle>
+              <p className="text-sm text-[var(--muted-foreground)]">
+                A quick read on where capabilities sit across Build, Validate, and Scale.
+              </p>
+            </CardHeader>
+            <CardContent className="space-y-5">
+              <MaturityChart data={view.maturityDistribution} />
+              <div className="space-y-3 rounded-3xl border border-[var(--border)] bg-white/60 p-4">
+                <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+                  Pathways
+                </div>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-start gap-3">
+                    <Badge tone="muted" className="mt-0.5 capitalize" title={getPathwayDescription("build")}>
+                      Build
+                    </Badge>
+                    <span className="text-[var(--muted-foreground)]">Early-stage development or concept.</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Badge tone="info" className="mt-0.5 capitalize" title={getPathwayDescription("validate")}>
+                      Validate
+                    </Badge>
+                    <span className="text-[var(--muted-foreground)]">Tested or piloted and needs real-world validation.</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Badge tone="success" className="mt-0.5 capitalize" title={getPathwayDescription("scale")}>
+                      Scale
+                    </Badge>
+                    <span className="text-[var(--muted-foreground)]">Ready for deployment, procurement, or commercialization.</span>
                   </div>
                 </div>
-              ))
-            ) : (
-              <EmptyState message="No capability clusters are available for this Use Case yet." />
-            )}
-          </CardContent>
-        </Card>
-        <Card variant="rail" className="rounded-[32px]">
-          <CardHeader className="space-y-2">
-            <CardTitle>Maturity Distribution</CardTitle>
-            <p className="text-sm text-[var(--muted-foreground)]">
-              A quick read on where capabilities sit across Build, Validate, and Scale.
-            </p>
-          </CardHeader>
-          <CardContent className="space-y-5">
-            <MaturityChart data={view.maturityDistribution} />
-            <div className="space-y-3 rounded-3xl border border-[var(--border)] bg-white/60 p-4">
-              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
-                Pathways
               </div>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-start gap-3">
-                  <Badge tone="muted" className="mt-0.5 capitalize" title={getPathwayDescription("build")}>
-                    Build
-                  </Badge>
-                  <span className="text-[var(--muted-foreground)]">Early-stage development or concept.</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Badge tone="info" className="mt-0.5 capitalize" title={getPathwayDescription("validate")}>
-                    Validate
-                  </Badge>
-                  <span className="text-[var(--muted-foreground)]">Tested or piloted and needs real-world validation.</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Badge tone="success" className="mt-0.5 capitalize" title={getPathwayDescription("scale")}>
-                    Scale
-                  </Badge>
-                  <span className="text-[var(--muted-foreground)]">Ready for deployment, procurement, or commercialization.</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+            </CardContent>
+          </Card>
+        </div>
+      </SupportingDetails>
 
-      <div className="mt-6">
-        <SectionHeading
-          title={useCaseConfig.detail.filtersTitle}
-          description={useCaseConfig.detail.filtersDescription}
-        />
+      <SupportingDetails title={useCaseConfig.detail.filtersTitle} eyebrow="Capability list" className="mt-4">
+        <p className="mb-4 text-sm leading-6 text-[var(--muted-foreground)]">
+          {useCaseConfig.detail.filtersDescription}
+        </p>
         <UseCaseCapabilityFilters capabilities={view.allCapabilities} useCaseSlug={view.useCase.slug} />
-      </div>
+      </SupportingDetails>
 
-      <div className="mt-6">
+      <SupportingDetails title={useCaseConfig.detail.observationsTitle} eyebrow="Record notes" className="mt-4">
         <Card variant="strong" className="rounded-[32px]">
           <CardHeader className="space-y-2">
-            <CardTitle>{useCaseConfig.detail.observationsTitle}</CardTitle>
             <p className="text-sm text-[var(--muted-foreground)]">
               {useCaseConfig.detail.observationsDescription}
             </p>
@@ -754,7 +781,7 @@ export default async function UseCaseDetailPage({
             )}
           </CardContent>
         </Card>
-      </div>
+      </SupportingDetails>
     </AppShell>
   );
 }
@@ -792,7 +819,53 @@ function NoticeCard({ message }: { message: string }) {
   );
 }
 
+function SupportingDetails({
+  title,
+  eyebrow,
+  children,
+  className,
+  defaultOpen = false
+}: {
+  title: string;
+  eyebrow: string;
+  children: React.ReactNode;
+  className?: string;
+  defaultOpen?: boolean;
+}) {
+  return (
+    <details
+      open={defaultOpen}
+      className={cn(
+        "group rounded-[28px] border border-[var(--border)] bg-white/75 shadow-[0_10px_30px_rgba(20,34,24,0.045)]",
+        className
+      )}
+    >
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left">
+        <span className="min-w-0">
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted-foreground)]">
+            {eyebrow}
+          </span>
+          <span className="mt-1 block truncate text-sm font-semibold text-[var(--foreground)]">{title}</span>
+        </span>
+        <ChevronDown className="size-4 shrink-0 text-[var(--muted-foreground)] transition group-open:rotate-180" />
+      </summary>
+      <div className="border-t border-[var(--border)] p-4 md:p-5">{children}</div>
+    </details>
+  );
+}
+
 function DecisionDetailBlock({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-[24px] border border-[var(--border)] bg-white/70 p-4">
+      <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
+        {title}
+      </div>
+      <p className="mt-2 text-sm leading-6 text-[var(--foreground)]">{body}</p>
+    </div>
+  );
+}
+
+function OrientationBlock({ title, body }: { title: string; body: string }) {
   return (
     <div className="rounded-[24px] border border-[var(--border)] bg-white/70 p-4">
       <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
