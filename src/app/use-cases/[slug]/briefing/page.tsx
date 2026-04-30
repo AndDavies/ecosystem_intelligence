@@ -6,12 +6,21 @@ import { RankExplainer } from "@/components/intelligence/rank-explainer";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { AddToShortlistForm } from "@/components/shortlists/add-to-shortlist-form";
 import { SnapshotStrip } from "@/components/workspace/workspace-primitives";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Input } from "@/components/ui/input";
 import { PendingButton } from "@/components/ui/pending-button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
 import { createShortlist } from "@/lib/actions/shortlists";
 import { requireProfile } from "@/lib/auth";
@@ -309,49 +318,45 @@ function BriefingBlock({ title, body }: { title: string; body: string }) {
 
 function TargetDetailDisclosure({ target }: { target: BriefingTargetView }) {
   return (
-    <details className="group rounded-[24px] border border-[var(--border)] bg-white/62 p-4">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-[var(--foreground)]">
-        <span>Evidence, tradeoffs, and why-not-others</span>
-        <span className="text-xs uppercase tracking-[0.14em] text-[var(--muted-foreground)] group-open:hidden">
-          Show detail
-        </span>
-        <span className="hidden text-xs uppercase tracking-[0.14em] text-[var(--muted-foreground)] group-open:inline">
-          Hide detail
-        </span>
-      </summary>
-      <div className="mt-4 space-y-3">
-        <div className="grid gap-3 lg:grid-cols-3">
-          <BriefingBlock title="Why not others" body={target.targetRead.whyNotOthers} />
-          <BriefingBlock title="Strength" body={target.targetRead.strength} />
-          <BriefingBlock title="Limitation" body={target.targetRead.limitation} />
-        </div>
-        <div className="rounded-[24px] border border-[var(--border)] bg-white/72 p-4">
-          <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
-            Evidence posture
+    <Accordion type="single" collapsible className="rounded-[24px] border border-[var(--border)] bg-white/62 px-4">
+      <AccordionItem value="target-context" className="border-0">
+        <AccordionTrigger className="py-4 text-sm font-semibold no-underline hover:no-underline">
+          Evidence, tradeoffs, and why-not-others
+        </AccordionTrigger>
+        <AccordionContent className="space-y-3 pb-4">
+          <div className="grid gap-3 lg:grid-cols-3">
+            <BriefingBlock title="Why not others" body={target.targetRead.whyNotOthers} />
+            <BriefingBlock title="Strength" body={target.targetRead.strength} />
+            <BriefingBlock title="Limitation" body={target.targetRead.limitation} />
           </div>
-          <p className="mt-2 text-sm leading-6 text-[var(--foreground)]">{target.evidencePosture.detail}</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {target.entry.citations.length ? (
-              target.entry.citations.map((citation) => (
-                <a
-                  key={`${target.entry.mapping.id}-${citation.sourceUrl}`}
-                  href={citation.sourceUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full border border-[var(--border)] bg-white px-3 py-1 text-xs text-[var(--muted-foreground)] no-underline hover:bg-[var(--card)]"
-                >
-                  {citation.publisher}
-                  {citation.publishedAt ? ` · ${formatDate(citation.publishedAt)}` : ""}
-                </a>
-              ))
-            ) : (
-              <Badge tone="muted">No linked citations</Badge>
-            )}
+          <div className="rounded-[24px] border border-[var(--border)] bg-white/72 p-4">
+            <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+              Evidence posture
+            </div>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground)]">{target.evidencePosture.detail}</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {target.entry.citations.length ? (
+                target.entry.citations.map((citation) => (
+                  <a
+                    key={`${target.entry.mapping.id}-${citation.sourceUrl}`}
+                    href={citation.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full border border-[var(--border)] bg-white px-3 py-1 text-xs text-[var(--muted-foreground)] no-underline hover:bg-[var(--card)]"
+                  >
+                    {citation.publisher}
+                    {citation.publishedAt ? ` · ${formatDate(citation.publishedAt)}` : ""}
+                  </a>
+                ))
+              ) : (
+                <Badge tone="muted">No linked citations</Badge>
+              )}
+            </div>
           </div>
-        </div>
-        <DerivedReadLabel />
-      </div>
-    </details>
+          <DerivedReadLabel />
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 }
 
@@ -364,47 +369,71 @@ function TargetComparisonTable({
 }) {
   return (
     <div className="overflow-hidden rounded-[28px] border border-[var(--border)] bg-white shadow-[0_16px_48px_rgba(20,34,24,0.06)]">
-      <div className="hidden grid-cols-[4rem_minmax(14rem,1.2fr)_7rem_minmax(12rem,1fr)_8rem_minmax(10rem,0.9fr)_minmax(10rem,0.9fr)] gap-4 border-b border-[var(--border)] bg-[var(--card-muted)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)] xl:grid">
-        <div>Rank</div>
-        <div>Company / Capability</div>
-        <div>Stance</div>
-        <div>Why Now</div>
-        <div>Evidence</div>
-        <div>Main Risk</div>
-        <div>Next Step</div>
-      </div>
-      <div className="divide-y divide-[var(--border)]">
-        {briefing.targets.map((target) => (
-          <Link
-            key={`${target.entry.mapping.id}-comparison`}
-            href={`/capabilities/${target.entry.capability.id}?fromUseCase=${useCaseSlug}`}
-            className="block px-5 py-4 no-underline transition hover:bg-[var(--card-muted)] xl:grid xl:grid-cols-[4rem_minmax(14rem,1.2fr)_7rem_minmax(12rem,1fr)_8rem_minmax(10rem,0.9fr)_minmax(10rem,0.9fr)] xl:items-center xl:gap-4"
-          >
-            <div className="font-bold text-[var(--foreground)]">#{target.rank}</div>
-            <div className="mt-2 min-w-0 xl:mt-0">
-              <div className="truncate font-semibold text-[var(--foreground)]">{target.entry.company.name}</div>
-              <div className="mt-1 truncate text-xs text-[var(--muted-foreground)]">
-                {target.entry.capability.name}
-              </div>
-            </div>
-            <div className="mt-2 xl:mt-0">
-              <Badge tone={target.targetRead.tone}>{toTitleCase(target.suggestedStatus)}</Badge>
-            </div>
-            <div className="mt-2 text-xs leading-5 text-[var(--muted-foreground)] xl:mt-0">
-              {shorten(target.targetRead.priorityNow, 120)}
-            </div>
-            <div className="mt-2 xl:mt-0">
-              <Badge tone={target.evidencePosture.tone}>{target.evidencePosture.label}</Badge>
-            </div>
-            <div className="mt-2 text-xs leading-5 text-[var(--muted-foreground)] xl:mt-0">
-              {shorten(target.targetRead.limitation, 105)}
-            </div>
-            <div className="mt-2 text-xs font-medium leading-5 text-[var(--foreground)] xl:mt-0">
-              {shorten(target.targetRead.actionDirective, 105)}
-            </div>
-          </Link>
-        ))}
-      </div>
+      <Table>
+        <TableHeader className="hidden bg-[var(--card-muted)] xl:table-header-group">
+          <TableRow>
+            <TableHead className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+              Rank
+            </TableHead>
+            <TableHead className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+              Company / Capability
+            </TableHead>
+            <TableHead className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+              Stance
+            </TableHead>
+            <TableHead className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+              Why Now
+            </TableHead>
+            <TableHead className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+              Evidence
+            </TableHead>
+            <TableHead className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+              Main Risk
+            </TableHead>
+            <TableHead className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+              Next Step
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {briefing.targets.map((target) => (
+            <TableRow
+              key={`${target.entry.mapping.id}-comparison`}
+              className="block px-5 py-4 hover:bg-[var(--card-muted)] xl:table-row xl:px-0 xl:py-0"
+            >
+              <TableCell className="block p-0 font-bold text-[var(--foreground)] xl:table-cell xl:px-5 xl:py-4">
+                #{target.rank}
+              </TableCell>
+              <TableCell className="block p-0 pt-2 xl:table-cell xl:px-5 xl:py-4">
+                <Link
+                  href={`/capabilities/${target.entry.capability.id}?fromUseCase=${useCaseSlug}`}
+                  className="block min-w-0 no-underline"
+                >
+                  <div className="truncate font-semibold text-[var(--foreground)]">{target.entry.company.name}</div>
+                  <div className="mt-1 truncate text-xs text-[var(--muted-foreground)]">
+                    {target.entry.capability.name}
+                  </div>
+                </Link>
+              </TableCell>
+              <TableCell className="block p-0 pt-2 xl:table-cell xl:px-5 xl:py-4">
+                <Badge tone={target.targetRead.tone}>{toTitleCase(target.suggestedStatus)}</Badge>
+              </TableCell>
+              <TableCell className="block p-0 pt-2 whitespace-normal text-xs leading-5 text-[var(--muted-foreground)] xl:table-cell xl:px-5 xl:py-4">
+                {shorten(target.targetRead.priorityNow, 120)}
+              </TableCell>
+              <TableCell className="block p-0 pt-2 xl:table-cell xl:px-5 xl:py-4">
+                <Badge tone={target.evidencePosture.tone}>{target.evidencePosture.label}</Badge>
+              </TableCell>
+              <TableCell className="block p-0 pt-2 whitespace-normal text-xs leading-5 text-[var(--muted-foreground)] xl:table-cell xl:px-5 xl:py-4">
+                {shorten(target.targetRead.limitation, 105)}
+              </TableCell>
+              <TableCell className="block p-0 pt-2 whitespace-normal text-xs font-medium leading-5 text-[var(--foreground)] xl:table-cell xl:px-5 xl:py-4">
+                {shorten(target.targetRead.actionDirective, 105)}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 }

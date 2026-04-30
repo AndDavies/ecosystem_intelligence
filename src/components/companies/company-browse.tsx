@@ -8,6 +8,22 @@ import { FreshnessBadge } from "@/components/ui/freshness-badge";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "@/components/ui/table";
 import type { CompanyIndexCardView } from "@/types/view-models";
 
 const defaultDomainFilter = "all";
@@ -94,82 +110,123 @@ export function CompanyBrowse({ companies }: { companies: CompanyIndexCardView[]
               <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
                 Domain
               </span>
-              <select
+              <Select
                 value={domainFilter}
-                onChange={(event) => setDomainFilter(event.target.value)}
-                className="h-11 w-full rounded-2xl border border-[var(--border)] bg-white/80 px-4 text-sm"
+                onValueChange={setDomainFilter}
               >
-                {domainOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger className="h-11 w-full rounded-[3px] border-[var(--border)] bg-white/80 px-4 text-sm">
+                  <SelectValue placeholder="All domains" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {domainOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </label>
             <label className="space-y-2">
               <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
                 Geography
               </span>
-              <select
+              <Select
                 value={geographyFilter}
-                onChange={(event) => setGeographyFilter(event.target.value)}
-                className="h-11 w-full rounded-2xl border border-[var(--border)] bg-white/80 px-4 text-sm"
+                onValueChange={setGeographyFilter}
               >
-                <option value={defaultGeographyFilter}>All geographies</option>
-                <option value="canada">Canada</option>
-                <option value="nato">NATO</option>
-                <option value="global">Global</option>
-              </select>
+                <SelectTrigger className="h-11 w-full rounded-[3px] border-[var(--border)] bg-white/80 px-4 text-sm">
+                  <SelectValue placeholder="All geographies" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value={defaultGeographyFilter}>All geographies</SelectItem>
+                    <SelectItem value="canada">Canada</SelectItem>
+                    <SelectItem value="nato">NATO</SelectItem>
+                    <SelectItem value="global">Global</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </label>
           </div>
         </CardContent>
       </Card>
 
       <div className="hidden overflow-hidden rounded-[28px] border border-[var(--border)] bg-white shadow-[0_12px_38px_rgba(20,34,24,0.05)] xl:block">
-        <div className="grid grid-cols-[minmax(14rem,1.45fr)_minmax(10rem,0.95fr)_minmax(12rem,1fr)_7rem_7rem_9rem_4rem] gap-4 border-b border-[var(--border)] bg-[var(--card-muted)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
-          <div>Company</div>
-          <div>Domain Coverage</div>
-          <div>Top Mission Areas</div>
-          <div>Caps.</div>
-          <div>Rank Signal</div>
-          <div>Freshness</div>
-          <div className="text-right">Open</div>
-        </div>
-        <div className="divide-y divide-[var(--border)]">
+        <Table>
+          <TableHeader className="bg-[var(--card-muted)]">
+            <TableRow>
+              <TableHead className="w-[24%] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                Company
+              </TableHead>
+              <TableHead className="w-[17%] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                Domain Coverage
+              </TableHead>
+              <TableHead className="w-[22%] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                Top Mission Areas
+              </TableHead>
+              <TableHead className="px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                Caps.
+              </TableHead>
+              <TableHead className="px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                Rank Signal
+              </TableHead>
+              <TableHead className="px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                Freshness
+              </TableHead>
+              <TableHead className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
+                Open
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
           {filteredCompanies.map((item) => (
-            <Link
+            <TableRow
               key={item.company.id}
-              href={`/companies/${item.company.id}`}
-              className="grid grid-cols-[minmax(14rem,1.45fr)_minmax(10rem,0.95fr)_minmax(12rem,1fr)_7rem_7rem_9rem_4rem] items-center gap-4 px-4 py-3 text-sm no-underline transition hover:bg-[var(--card-muted)]"
+              className="hover:bg-[var(--card-muted)]"
             >
-              <div className="min-w-0">
-                <div className="truncate font-semibold text-[var(--foreground)]">{item.company.name}</div>
-                <div className="mt-1 truncate text-xs text-[var(--muted-foreground)]">
-                  {item.company.headquarters} · {formatGeography(item.company.geography)}
+              <TableCell className="px-4 py-3">
+                <Link href={`/companies/${item.company.id}`} className="block min-w-0 no-underline">
+                  <div className="truncate font-semibold text-[var(--foreground)]">{item.company.name}</div>
+                  <div className="mt-1 truncate text-xs text-[var(--muted-foreground)]">
+                    {item.company.headquarters} · {formatGeography(item.company.geography)}
+                  </div>
+                </Link>
+              </TableCell>
+              <TableCell className="px-4 py-3 whitespace-normal">
+                <div className="flex min-w-0 flex-wrap gap-1.5">
+                  {item.domains.slice(0, 2).map((domain) => (
+                    <Badge key={`${item.company.id}-${domain.id}-table`} tone="outline">
+                      {domain.name}
+                    </Badge>
+                  ))}
+                  {item.domains.length > 2 ? <Badge tone="muted">+{item.domains.length - 2}</Badge> : null}
                 </div>
-              </div>
-              <div className="flex min-w-0 flex-wrap gap-1.5">
-                {item.domains.slice(0, 2).map((domain) => (
-                  <Badge key={`${item.company.id}-${domain.id}-table`} tone="outline">
-                    {domain.name}
-                  </Badge>
-                ))}
-                {item.domains.length > 2 ? <Badge tone="muted">+{item.domains.length - 2}</Badge> : null}
-              </div>
-              <div className="min-w-0 text-xs leading-5 text-[var(--muted-foreground)]">
-                {item.topUseCases.length
-                  ? item.topUseCases.map((useCase) => useCase.name).join(", ")
-                  : "No linked use cases"}
-              </div>
-              <div className="font-semibold text-[var(--foreground)]">{item.capabilityCount}</div>
-              <div className="font-semibold text-[var(--foreground)]">{formatScore(item.strongestMappingScore)}</div>
-              <div>
+              </TableCell>
+              <TableCell className="px-4 py-3 whitespace-normal text-xs leading-5 text-[var(--muted-foreground)]">
+                  {item.topUseCases.length
+                    ? item.topUseCases.map((useCase) => useCase.name).join(", ")
+                    : "No linked use cases"}
+              </TableCell>
+              <TableCell className="px-4 py-3 font-semibold text-[var(--foreground)]">
+                {item.capabilityCount}
+              </TableCell>
+              <TableCell className="px-4 py-3 font-semibold text-[var(--foreground)]">
+                {formatScore(item.strongestMappingScore)}
+              </TableCell>
+              <TableCell className="px-4 py-3">
                 <FreshnessBadge freshness={item.freshness} />
-              </div>
-              <div className="text-right font-semibold text-[var(--primary)]">Open</div>
-            </Link>
+              </TableCell>
+              <TableCell className="px-4 py-3 text-right">
+                <Link href={`/companies/${item.company.id}`} className="font-semibold text-[var(--primary)] no-underline">
+                  Open
+                </Link>
+              </TableCell>
+            </TableRow>
           ))}
-        </div>
+          </TableBody>
+        </Table>
       </div>
 
       <div className="grid gap-3 xl:hidden">

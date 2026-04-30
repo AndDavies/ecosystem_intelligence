@@ -1,9 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import { useDeferredValue, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { ArrowRight, Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import {
+  Command,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator
+} from "@/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import type { SearchResultsView } from "@/types/view-models";
 
 const resultSections = [
@@ -13,13 +21,31 @@ const resultSections = [
   { key: "companies", label: "Companies" }
 ] as const;
 
+const browseShortcuts = [
+  { label: "Mission areas", href: "/use-cases" },
+  { label: "Technical domains", href: "/domains" },
+  { label: "Companies", href: "/companies" },
+  { label: "Working lists", href: "/shortlists" }
+];
+
+type CompactSearchItem = {
+  id?: string;
+  slug?: string;
+  name: string;
+  summary?: string;
+  overview?: string;
+  description?: string | null;
+  matchContext?: string;
+};
+
 export function CompactGlobalSearch() {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResultsView | null>(null);
-  const [isFocused, setIsFocused] = useState(false);
+  const [open, setOpen] = useState(false);
   const deferredQuery = useDeferredValue(query);
   const trimmedQuery = deferredQuery.trim();
-  const shouldShowResults = isFocused && trimmedQuery.length >= 2;
+  const shouldSearch = trimmedQuery.length >= 2;
 
   useEffect(() => {
     if (trimmedQuery.length < 2) {
@@ -39,83 +65,117 @@ export function CompactGlobalSearch() {
     return () => controller.abort();
   }, [trimmedQuery]);
 
-  return (
-    <div className="relative w-full max-w-3xl">
-      <Search className="pointer-events-none absolute left-4 top-1/2 z-10 size-4 -translate-y-1/2 text-[var(--muted-foreground)]" />
-      <Input
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => window.setTimeout(() => setIsFocused(false), 140)}
-        placeholder="Search companies, capabilities, mission areas, or technical domains"
-        className="h-11 rounded-2xl border-[var(--border-strong)] bg-white pl-11 text-sm shadow-[0_8px_24px_rgba(20,34,24,0.04)]"
-      />
-      {shouldShowResults ? (
-        <div className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 max-h-[70vh] overflow-auto rounded-3xl border border-[var(--border)] bg-white p-3 shadow-[0_24px_80px_rgba(20,34,24,0.16)]">
-          <div className="grid gap-3 lg:grid-cols-2">
-            {resultSections.map((section) => {
-              const items = ((results?.[section.key] ?? []) as Array<{
-                id?: string;
-                slug?: string;
-                name: string;
-                summary?: string;
-                overview?: string;
-                description?: string | null;
-                matchContext?: string;
-              }>).slice(0, 3);
+  const openHref = (href: string) => {
+    setOpen(false);
+    router.push(href);
+  };
 
-              return (
-                <div key={section.key} className="rounded-2xl border border-[var(--border)] bg-[var(--card-muted)] p-3">
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
-                      {section.label}
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          className="flex h-11 w-full max-w-3xl items-center gap-3 rounded-[3px] border border-[var(--border-strong)] bg-white px-4 text-left text-sm shadow-[0_8px_24px_rgba(20,34,24,0.04)] transition hover:border-[var(--primary)]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+        >
+          <Search className="size-4 shrink-0 text-[var(--muted-foreground)]" />
+          <span className={query ? "truncate text-[var(--foreground)]" : "truncate text-[var(--muted-foreground)]"}>
+            {query || "Search companies, capabilities, mission areas, or technical domains"}
+          </span>
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        align="start"
+        sideOffset={8}
+        className="w-[min(42rem,calc(100vw-2rem))] rounded-[4px] border-[var(--border)] bg-white p-0 shadow-[0_24px_80px_rgba(20,34,24,0.16)]"
+      >
+        <Command shouldFilter={false} className="rounded-[4px] bg-white">
+          <CommandInput
+            autoFocus
+            value={query}
+            onValueChange={setQuery}
+            placeholder="Search companies, capabilities, mission areas, or technical domains"
+          />
+          <CommandList className="max-h-[62vh]">
+            {!shouldSearch ? (
+              <CommandGroup heading="Browse shortcuts">
+                {browseShortcuts.map((shortcut) => (
+                  <CommandItem
+                    key={shortcut.href}
+                    value={shortcut.label}
+                    onSelect={() => openHref(shortcut.href)}
+                  >
+                    <span>{shortcut.label}</span>
+                    <ArrowRight className="ml-auto size-3.5 text-[var(--muted-foreground)]" />
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            ) : (
+              <SearchResultGroups
+                results={results}
+                onOpen={openHref}
+              />
+            )}
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+function SearchResultGroups({
+  results,
+  onOpen
+}: {
+  results: SearchResultsView | null;
+  onOpen: (href: string) => void;
+}) {
+  const totalMatches = resultSections.reduce(
+    (count, section) => count + ((results?.[section.key] ?? []) as CompactSearchItem[]).length,
+    0
+  );
+
+  if (results && totalMatches === 0) {
+    return (
+      <div className="px-3 py-8 text-center text-sm text-[var(--muted-foreground)]">
+        No matches yet. Try a company, capability, mission area, or domain.
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {resultSections.map((section, index) => {
+        const items = ((results?.[section.key] ?? []) as CompactSearchItem[]).slice(0, 3);
+
+        return (
+          <div key={section.key}>
+            {index > 0 ? <CommandSeparator /> : null}
+            <CommandGroup heading={`${section.label} (${items.length})`}>
+              {items.length ? (
+                items.map((item) => (
+                  <CommandItem
+                    key={`${section.key}-${item.id ?? item.slug}`}
+                    value={`${section.label} ${item.name}`}
+                    onSelect={() => onOpen(getResultHref(section.key, item))}
+                    className="items-start py-2"
+                  >
+                    <div className="min-w-0">
+                      <div className="truncate font-semibold text-[var(--foreground)]">{item.name}</div>
+                      <div className="mt-0.5 line-clamp-1 text-xs text-[var(--muted-foreground)]">
+                        {item.matchContext ?? item.summary ?? item.overview ?? item.description ?? "Open record"}
+                      </div>
                     </div>
-                    <div className="text-xs text-[var(--muted-foreground)]">{items.length}</div>
-                  </div>
-                  <div className="space-y-1">
-                    {items.length ? (
-                      items.map((item) => (
-                        <Link
-                          key={`${section.key}-${item.id ?? item.slug}`}
-                          href={getResultHref(section.key, item)}
-                          className="block rounded-xl px-3 py-2 no-underline hover:bg-white"
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="min-w-0">
-                              <div className="truncate text-sm font-semibold text-[var(--foreground)]">{item.name}</div>
-                              <div className="mt-0.5 truncate text-xs text-[var(--muted-foreground)]">
-                                {item.matchContext ?? item.summary ?? item.overview ?? item.description ?? "Open record"}
-                              </div>
-                            </div>
-                            <ArrowRight className="mt-0.5 size-3.5 shrink-0 text-[var(--muted-foreground)]" />
-                          </div>
-                        </Link>
-                      ))
-                    ) : (
-                      <div className="px-3 py-2 text-xs text-[var(--muted-foreground)]">No matches.</div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+                    <ArrowRight className="ml-auto mt-0.5 size-3.5 shrink-0 text-[var(--muted-foreground)]" />
+                  </CommandItem>
+                ))
+              ) : (
+                <div className="px-2 py-1.5 text-xs text-[var(--muted-foreground)]">No matches.</div>
+              )}
+            </CommandGroup>
           </div>
-          <div className="mt-3 flex flex-wrap gap-2 border-t border-[var(--border)] pt-3 text-xs">
-            <Link href="/use-cases" className="rounded-full bg-[var(--muted)] px-3 py-1.5 font-medium no-underline">
-              Mission areas
-            </Link>
-            <Link href="/domains" className="rounded-full bg-[var(--muted)] px-3 py-1.5 font-medium no-underline">
-              Technical domains
-            </Link>
-            <Link href="/companies" className="rounded-full bg-[var(--muted)] px-3 py-1.5 font-medium no-underline">
-              Companies
-            </Link>
-            <Link href="/shortlists" className="rounded-full bg-[var(--muted)] px-3 py-1.5 font-medium no-underline">
-              Working lists
-            </Link>
-          </div>
-        </div>
-      ) : null}
-    </div>
+        );
+      })}
+    </>
   );
 }
 

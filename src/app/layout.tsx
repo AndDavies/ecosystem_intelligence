@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Barlow } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
+const barlow = Barlow({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-montserrat"
-});
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "600", "700"],
-  variable: "--font-open-sans"
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-barlow"
 });
 
 export const metadata: Metadata = {
@@ -26,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable} ${montserrat.variable}`}>{children}</body>
+      <body className={barlow.variable}>{children}</body>
     </html>
   );
 }
