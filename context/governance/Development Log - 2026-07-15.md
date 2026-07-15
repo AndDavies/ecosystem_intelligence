@@ -25,6 +25,12 @@ The product front door changed from an internal command-centre workspace to a fr
 - Added organization, capability, regional, and collection PDF exports.
 - Added magic-link authentication, owner-only collections, and staged profile claims/corrections.
 - Added private source/PDF intake, candidate review, and coverage dashboards.
+- Simplified the dossier schema so identity and one-to-one profile fields live
+  in one `organizations` row, with an explicit `entity_kind` and a small
+  `profile_data` object for type-specific details.
+- Added an RLS-preserving `organization_dossiers` view that presents normalized
+  locations, capabilities, programs, funding, relationships, media, alignments,
+  and citations as one predictable read payload for pages and exports.
 
 ## Trust decisions
 
@@ -34,6 +40,9 @@ The product front door changed from an internal command-centre workspace to a fr
 - Empty regions and demand pages use explicit coverage states.
 - Confidential emails and local research PDFs remain private inputs unless publicly corroborated and approved.
 
-## External dependency still pending
+## Hosted database status
 
-The new hosted Supabase project was not created because the connector requires explicit confirmation of the billing organization and estimated cost. Local development remains unblocked through the validated seed repository.
+The new free-plan Supabase project exists and is connected locally. The
+foundation and security-hardening migrations were approved, applied, and
+verified with all public tables protected by RLS and no security-advisor
+findings. The validated six-record seed remains local and has not been imported.

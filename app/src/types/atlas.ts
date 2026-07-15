@@ -2,6 +2,14 @@ export type AtlasConfidence = "high" | "moderate" | "needs_review";
 export type AtlasFreshness = "current" | "review_due" | "stale";
 export type AtlasPublicationStatus = "draft" | "published" | "archived";
 export type AtlasAlignmentType = "public_source_alignment" | "derived";
+export type AtlasEntityKind =
+  | "company"
+  | "accelerator"
+  | "incubator"
+  | "research_test_centre"
+  | "investor_funder"
+  | "ecosystem_organization"
+  | "government_innovation_office";
 
 export interface AtlasCitation {
   id: string;
@@ -110,6 +118,7 @@ export interface AtlasOrganization {
   legalName: string | null;
   description: string;
   websiteUrl: string | null;
+  entityKind: AtlasEntityKind;
   categories: string[];
   sourceConfidence: AtlasConfidence;
   freshnessStatus: AtlasFreshness;
@@ -124,6 +133,7 @@ export interface AtlasOrganization {
   disclosedFinancingSummary: string | null;
   defencePosture: string | null;
   dualUsePosture: string | null;
+  profileData: Record<string, unknown>;
   capabilities: AtlasCapability[];
   programs: AtlasProgramParticipation[];
   fundingEvents: AtlasFundingEvent[];

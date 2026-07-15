@@ -121,7 +121,7 @@ values
   );
 
 insert into public.organizations (
-  id, slug, name, description, website_url, organization_categories,
+  id, slug, name, description, website_url, entity_kind, organization_categories,
   publication_status, source_confidence, freshness_status,
   last_reviewed_at, published_at
 )
@@ -132,6 +132,7 @@ values
     'Kraken Robotics',
     'Canadian subsea technology company with synthetic aperture sonar, underwater imaging, subsea power, and robotic systems relevant to underwater awareness and autonomous maritime operations.',
     'https://www.krakenrobotics.com/',
+    'company',
     array['commercial_company', 'defence_supplier', 'dual_use'],
     'published', 'high', 'current',
     '2026-04-24T00:00:00Z', '2026-04-24T00:00:00Z'
@@ -142,6 +143,7 @@ values
     'MDA Space',
     'Canadian space and mission systems company with Earth observation, radar, space robotics, satellite operations, and maritime awareness capabilities.',
     'https://mda.space/',
+    'company',
     array['commercial_company', 'space_company', 'dual_use'],
     'published', 'high', 'current',
     '2026-04-24T00:00:00Z', '2026-04-24T00:00:00Z'
@@ -152,6 +154,7 @@ values
     'Cellula Robotics',
     'Canadian underwater robotics company developing long-endurance autonomous underwater vehicles and related subsea autonomy systems.',
     'https://cellula.com/',
+    'company',
     array['commercial_company', 'autonomous_systems', 'dual_use'],
     'published', 'moderate', 'current',
     '2026-04-24T00:00:00Z', '2026-04-24T00:00:00Z'
@@ -162,6 +165,7 @@ values
     'Kongsberg Geospatial',
     'Ottawa-based geospatial software company providing airspace visualization, uncrewed systems awareness, and mission display software for complex operations.',
     'https://www.kongsberggeospatial.com/',
+    'company',
     array['commercial_company', 'software_company', 'dual_use'],
     'published', 'high', 'current',
     '2026-04-24T00:00:00Z', '2026-04-24T00:00:00Z'
@@ -172,6 +176,7 @@ values
     'GeoSpectrum Technologies',
     'Nova Scotia underwater acoustics company offering sonar, acoustic sensors, and defence surveillance systems for surface and subsea applications.',
     'https://geospectrum.ca/',
+    'company',
     array['commercial_company', 'defence_supplier', 'dual_use'],
     'published', 'high', 'current',
     '2026-04-24T00:00:00Z', '2026-04-24T00:00:00Z'
@@ -182,6 +187,7 @@ values
     'Open Ocean Robotics',
     'Canadian marine robotics company developing autonomous uncrewed surface vehicles and maritime data services for persistent ocean monitoring.',
     'https://www.openoceanrobotics.com/',
+    'company',
     array['commercial_company', 'autonomous_systems', 'dual_use'],
     'published', 'moderate', 'current',
     '2026-04-24T00:00:00Z', '2026-04-24T00:00:00Z'

@@ -45,6 +45,7 @@ Editor authorization is read from controlled Supabase `app_metadata.role`, never
 ## Database
 
 - Clean migration: `supabase/migrations/20260715170638_public_atlas_foundation.sql`
+- Security hardening: `supabase/migrations/20260715203357_public_atlas_security_hardening.sql`
 - Clean validated seed: `supabase/seed.sql`
 - Prior internal schema and CSVs: `supabase/legacy/`
 

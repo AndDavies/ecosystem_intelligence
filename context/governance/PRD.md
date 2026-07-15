@@ -106,8 +106,12 @@ It must never invent an organization or fact. Ambiguous questions return suggest
 
 ### Ecosystem records
 
-- `organizations`
-- `organization_company_profiles`
+- `organizations` — one canonical row per company, accelerator, incubator,
+  research/test centre, investor/funder, ecosystem organization, or government
+  innovation office; includes common profile fields and a small validated
+  `profile_data` object for type-specific details
+- `organization_dossiers` — read-only RLS-preserving view that assembles one
+  standard dossier payload for detail pages, PDFs, exports, and the editor
 - `locations`
 - `organization_locations`
 - `capabilities`

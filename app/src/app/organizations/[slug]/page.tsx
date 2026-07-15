@@ -57,7 +57,8 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             <dl className="grid gap-4 text-sm">
               <ProfileItem label="Headquarters" value={organization.primaryLocation?.name} icon={<MapPin className="size-4" />} />
               <ProfileItem label="Map precision" value={organization.primaryLocation ? toTitleCase(organization.primaryLocation.geographicConfidence) : null} />
-              <ProfileItem label="Organization types" value={organization.categories.map(toTitleCase).join(", ")} />
+              <ProfileItem label="Entity type" value={toTitleCase(organization.entityKind)} />
+              <ProfileItem label="Categories" value={organization.categories.map(toTitleCase).join(", ")} />
               <ProfileItem label="Company stage" value={organization.companyStage} />
               <ProfileItem label="Employee range" value={organization.employeeRange} />
               <ProfileItem label="Commercial status" value={organization.commercialStatus} />

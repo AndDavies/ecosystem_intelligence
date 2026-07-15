@@ -133,7 +133,8 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
               <Text style={styles.eyebrow}>Profile at a glance</Text>
               <ProfileRow label="Headquarters" value={organization.primaryLocation?.name} />
               <ProfileRow label="Map precision" value={organization.primaryLocation?.geographicConfidence.replaceAll("_", " ")} />
-              <ProfileRow label="Organization types" value={organization.categories.map((item) => item.replaceAll("_", " ")).join(", ")} />
+              <ProfileRow label="Entity type" value={organization.entityKind.replaceAll("_", " ")} />
+              <ProfileRow label="Categories" value={organization.categories.map((item) => item.replaceAll("_", " ")).join(", ")} />
               <ProfileRow label="Company stage" value={organization.companyStage} />
               <ProfileRow label="Employee range" value={organization.employeeRange} />
               <ProfileRow label="Source confidence" value={organization.sourceConfidence} />
@@ -262,6 +263,7 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
                 <View style={styles.paleCard}>
                   <Text style={styles.eyebrow}>{subtitle}</Text>
                   <ProfileRow label="Organization" value={organization.name} />
+                  <ProfileRow label="Entity type" value={organization.entityKind.replaceAll("_", " ")} />
                   <ProfileRow label="Headquarters" value={organization.primaryLocation?.name} />
                   <ProfileRow label="Source confidence" value={selectedCapability?.sourceConfidence ?? organization.sourceConfidence} />
                   <ProfileRow label="Map precision" value={organization.primaryLocation?.geographicConfidence.replaceAll("_", " ")} />

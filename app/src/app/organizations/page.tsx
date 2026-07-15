@@ -51,7 +51,8 @@ export default async function OrganizationsPage() {
                 </Link>
               </div>
               <div className="mt-4 flex flex-wrap gap-1.5">
-                {organization.categories.slice(0, 3).map((category) => (
+                <span className="rounded bg-[#eff4ff] px-2 py-1 text-[10px] font-semibold text-[#175cd3] ring-1 ring-[#b2ccff]">{toTitleCase(organization.entityKind)}</span>
+                {organization.categories.slice(0, 2).map((category) => (
                   <span key={category} className="rounded bg-[#f8fafc] px-2 py-1 text-[10px] font-medium text-[#475467] ring-1 ring-[#e4e7ec]">{toTitleCase(category)}</span>
                 ))}
               </div>

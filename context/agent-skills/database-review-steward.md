@@ -29,7 +29,7 @@ Do not use this skill to:
 - Source-lead or candidate-batch artifact
 - Local ingestion schemas
 - Local seed taxonomy
-- Supabase MCP project `voqelrboikemyuvhzlsd`
+- Supabase MCP project `facoactpdckkhciamflk`
 - Validation command output
 - Human approval status
 

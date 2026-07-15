@@ -9,6 +9,7 @@ import type {
   AtlasDemandMatch,
   AtlasDemandRequirement,
   AtlasDemandSource,
+  AtlasEntityKind,
   AtlasLocation,
   AtlasMissionArea,
   AtlasMissionMatch,
@@ -38,6 +39,28 @@ function asNumber(value: unknown) {
 
 function asStringArray(value: unknown) {
   return Array.isArray(value) ? value.map(String).filter(Boolean) : [];
+}
+
+function asObject(value: unknown): Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+
+function asEntityKind(value: unknown): AtlasEntityKind {
+  const kind = asString(value);
+  if (
+    kind === "company" ||
+    kind === "accelerator" ||
+    kind === "incubator" ||
+    kind === "research_test_centre" ||
+    kind === "investor_funder" ||
+    kind === "ecosystem_organization" ||
+    kind === "government_innovation_office"
+  ) {
+    return kind;
+  }
+  return "company";
 }
 
 function asConfidence(value: unknown): AtlasConfidence {
@@ -82,7 +105,6 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
 
   const [
     organizationsResult,
-    companyProfilesResult,
     locationsResult,
     organizationLocationsResult,
     capabilitiesResult,
@@ -103,7 +125,6 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
     citationsResult
   ] = await Promise.all([
     supabase.from("organizations").select("*").eq("publication_status", "published"),
-    supabase.from("organization_company_profiles").select("*"),
     supabase.from("locations").select("*"),
     supabase.from("organization_locations").select("*").eq("publication_status", "published"),
     supabase.from("capabilities").select("*").eq("publication_status", "published"),
@@ -134,7 +155,6 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
 
   [
     [organizationsResult, "published organizations"],
-    [companyProfilesResult, "organization company profiles"],
     [locationsResult, "published locations"],
     [organizationLocationsResult, "organization location links"],
     [capabilitiesResult, "published capabilities"],
@@ -156,9 +176,6 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
   ].forEach(([result, label]) => assertQuery(result as { error: { message?: string } | null }, String(label)));
 
   const organizationRows = asRows(organizationsResult.data);
-  const profileByOrganization = new Map(
-    asRows(companyProfilesResult.data).map((row) => [asString(row.organization_id), row])
-  );
   const locationById = byId(asRows(locationsResult.data));
   const locationLinksByOrganization = groupBy(asRows(organizationLocationsResult.data), "organization_id");
   const capabilityRows = asRows(capabilitiesResult.data);
@@ -319,7 +336,6 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
 
   const organizations: AtlasOrganization[] = organizationRows.map((row) => {
     const id = asString(row.id);
-    const profile = profileByOrganization.get(id);
     const locationLinks = locationLinksByOrganization.get(id) ?? [];
     const mappedLocations = locationLinks
       .map((link) => {
@@ -354,6 +370,7 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
       legalName: asNullableString(row.legal_name),
       description: asString(row.description),
       websiteUrl: asNullableString(row.website_url),
+      entityKind: asEntityKind(row.entity_kind),
       categories: asStringArray(row.organization_categories),
       sourceConfidence: asConfidence(row.source_confidence),
       freshnessStatus: ["current", "review_due", "stale"].includes(asString(row.freshness_status))
@@ -362,14 +379,15 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
       lastReviewedAt: asNullableString(row.last_reviewed_at),
       primaryLocation,
       locations: mappedLocations.map((value) => value.location),
-      foundedYear: profile ? asNumber(profile.founded_year) : null,
-      employeeRange: profile ? asNullableString(profile.employee_range) : null,
-      companyStage: profile ? asNullableString(profile.company_stage) : null,
-      ownership: profile ? asNullableString(profile.ownership) : null,
-      commercialStatus: profile ? asNullableString(profile.commercial_status) : null,
-      disclosedFinancingSummary: profile ? asNullableString(profile.disclosed_financing_summary) : null,
-      defencePosture: profile ? asNullableString(profile.defence_posture) : null,
-      dualUsePosture: profile ? asNullableString(profile.dual_use_posture) : null,
+      foundedYear: asNumber(row.founded_year),
+      employeeRange: asNullableString(row.employee_range),
+      companyStage: asNullableString(row.company_stage),
+      ownership: asNullableString(row.ownership),
+      commercialStatus: asNullableString(row.commercial_status),
+      disclosedFinancingSummary: asNullableString(row.disclosed_financing_summary),
+      defencePosture: asNullableString(row.defence_posture),
+      dualUsePosture: asNullableString(row.dual_use_posture),
+      profileData: asObject(row.profile_data),
       capabilities,
       programs,
       fundingEvents: (fundingByOrganization.get(id) ?? []).map((funding) => ({

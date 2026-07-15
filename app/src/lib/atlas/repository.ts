@@ -199,6 +199,7 @@ function matchesQuery(organization: AtlasOrganization, rawQuery: string) {
     organization.name,
     organization.description,
     organization.primaryLocation?.name ?? "",
+    organization.entityKind,
     ...organization.categories,
     ...organization.capabilities.flatMap((capability) => [
       capability.name,
@@ -279,7 +280,9 @@ export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResu
     )
     .filter(
       (organization) =>
-        !query.type || organization.categories.some((category) => normalize(category) === normalize(query.type ?? ""))
+        !query.type ||
+        normalize(organization.entityKind) === normalize(query.type) ||
+        organization.categories.some((category) => normalize(category) === normalize(query.type ?? ""))
     )
     .filter(
       (organization) =>
@@ -337,7 +340,7 @@ export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResu
   const regionValues = snapshot.organizations
     .map((organization) => organization.primaryLocation?.regionSlug)
     .filter((value): value is string => Boolean(value));
-  const typeValues = snapshot.organizations.flatMap((organization) => organization.categories);
+  const typeValues = snapshot.organizations.flatMap((organization) => [organization.entityKind, ...organization.categories]);
   const domainValues = snapshot.organizations.flatMap((organization) =>
     organization.capabilities.flatMap((capability) => capability.technicalDomains.map((domain) => domain.slug))
   );

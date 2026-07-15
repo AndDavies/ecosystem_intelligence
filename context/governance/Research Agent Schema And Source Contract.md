@@ -62,7 +62,7 @@ Agents may propose changes for these records, but promotion remains human-contro
 
 | Group | Tables |
 | --- | --- |
-| Identity | `organizations`, `organization_company_profiles` |
+| Identity | `organizations` (one canonical row per organization, including common profile fields and type-specific `profile_data`) |
 | Geography | `locations`, `organization_locations` |
 | Capability | `capabilities`, `technical_domains`, `capability_domains` |
 | Mission landscape | `mission_areas`, `capability_mission_matches`, `ecosystem_clusters`, `capability_clusters` |
@@ -70,6 +70,11 @@ Agents may propose changes for these records, but promotion remains human-contro
 | Participation | `programs`, `program_participations`, `funding_events`, `organization_relationships` |
 | Media | `media_assets` |
 | Evidence | `sources`, `evidence_snippets`, `field_citations` |
+
+`organization_dossiers` is a read-only, security-invoker view that assembles
+each organization and its reviewed child records into one dossier payload. It
+is for screens, PDFs, exports, and unified editing; agents still propose changes
+through `candidate_changes` and never write through the view.
 
 ## Required organization candidate fields
 

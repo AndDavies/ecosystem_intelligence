@@ -1,9 +1,9 @@
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { PGlite } from "@electric-sql/pglite";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
-const migrationPath = path.resolve("supabase/migrations/20260715170638_public_atlas_foundation.sql");
+const migrationDirectory = path.resolve("supabase/migrations");
 const seedPath = path.resolve("supabase/seed.sql");
 
 let db: PGlite;
@@ -24,6 +24,10 @@ beforeAll(async () => {
     create role authenticated nologin;
     create role service_role nologin bypassrls;
 
+    create function public.rls_auto_enable() returns boolean
+    language sql security definer as $$ select true $$;
+    grant execute on function public.rls_auto_enable() to public, anon, authenticated, service_role;
+
     create schema auth;
     create table auth.users (id uuid primary key);
     create function auth.uid() returns uuid language sql stable as $$ select null::uuid $$;
@@ -42,18 +46,23 @@ beforeAll(async () => {
     create table storage.objects (
       id uuid primary key,
       bucket_id text not null references storage.buckets(id) on delete cascade,
-      owner_id uuid
+      owner_id text
     );
     alter table storage.objects enable row level security;
     grant usage on schema storage to anon, authenticated, service_role;
     grant select, insert, update, delete on storage.objects to anon, authenticated, service_role;
     grant select, insert, update, delete on storage.buckets to service_role;
   `);
-  const migration = (await readFile(migrationPath, "utf8")).replace(
-    "create extension if not exists pgcrypto;",
-    "-- pgcrypto is provided by hosted Supabase; PGlite uses the bootstrap UUID function above."
-  );
-  await db.exec(migration);
+  const migrationFiles = (await readdir(migrationDirectory))
+    .filter((fileName) => fileName.endsWith(".sql"))
+    .sort();
+  for (const fileName of migrationFiles) {
+    const migration = (await readFile(path.join(migrationDirectory, fileName), "utf8")).replace(
+      "create extension if not exists pgcrypto;",
+      "-- pgcrypto is provided by hosted Supabase; PGlite uses the bootstrap UUID function above."
+    );
+    await db.exec(migration);
+  }
   await db.exec(await readFile(seedPath, "utf8"));
 }, 30_000);
 
@@ -94,6 +103,51 @@ describe("public atlas database foundation", () => {
     expect(result.rows[0]?.synthetic_count).toBe(0);
   });
 
+  it("keeps the editable profile on one organization row", async () => {
+    const result = await db.query<{
+      entity_kind: string;
+      profile_data_type: string;
+      legacy_profile_table: string | null;
+    }>(`
+      select
+        organization_record.entity_kind,
+        jsonb_typeof(organization_record.profile_data) as profile_data_type,
+        to_regclass('public.organization_company_profiles')::text as legacy_profile_table
+      from public.organizations organization_record
+      where organization_record.slug = 'kraken-robotics'
+    `);
+    expect(result.rows[0]).toEqual({
+      entity_kind: "company",
+      profile_data_type: "object",
+      legacy_profile_table: null
+    });
+  });
+
+  it("assembles one RLS-preserving dossier row for pages and exports", async () => {
+    const result = await db.query<{
+      capabilities: number;
+      locations: number;
+      citations: number;
+    }>(`
+      select
+        jsonb_array_length(capabilities)::int as capabilities,
+        jsonb_array_length(locations)::int as locations,
+        jsonb_array_length(citations)::int as citations
+      from public.organization_dossiers
+      where slug = 'kraken-robotics'
+    `);
+    expect(result.rows[0]).toEqual({ capabilities: 1, locations: 1, citations: 4 });
+
+    const security = await db.query<{ reloptions: string[] | null }>(`
+      select relation.reloptions
+      from pg_class relation
+      join pg_namespace namespace on namespace.oid = relation.relnamespace
+      where namespace.nspname = 'public'
+        and relation.relname = 'organization_dossiers'
+    `);
+    expect(security.rows[0]?.reloptions).toContain("security_invoker=true");
+  });
+
   it("publishes only organizations with public canonical evidence", async () => {
     const result = await db.query<{ unsupported: number }>(`
       select count(*)::int as unsupported
@@ -128,10 +182,36 @@ describe("public atlas database foundation", () => {
     expect(result.rows[0]?.unprotected).toBe(0);
   });
 
+  it("prevents public bucket listing and direct auto-RLS helper execution", async () => {
+    const result = await db.query<{
+      broad_public_media_policies: number;
+      anon_can_execute_rls_helper: boolean;
+      authenticated_can_execute_rls_helper: boolean;
+    }>(`
+      select
+        (
+          select count(*)::int
+          from pg_policies
+          where schemaname = 'storage'
+            and tablename = 'objects'
+            and policyname = 'public atlas media is readable'
+        ) as broad_public_media_policies,
+        has_function_privilege('anon', 'public.rls_auto_enable()', 'execute') as anon_can_execute_rls_helper,
+        has_function_privilege('authenticated', 'public.rls_auto_enable()', 'execute') as authenticated_can_execute_rls_helper
+    `);
+    expect(result.rows[0]).toEqual({
+      broad_public_media_policies: 0,
+      anon_can_execute_rls_helper: false,
+      authenticated_can_execute_rls_helper: false
+    });
+  });
+
   it("allows anonymous access to published records but not editorial candidates", async () => {
     await db.exec("set role anon");
     const publicResult = await db.query<{ count: number }>("select count(*)::int as count from public.organizations");
     expect(publicResult.rows[0]?.count).toBe(6);
+    const dossierResult = await db.query<{ count: number }>("select count(*)::int as count from public.organization_dossiers");
+    expect(dossierResult.rows[0]?.count).toBe(6);
     await expect(db.query("select * from public.candidate_changes")).rejects.toThrow();
     await db.exec("reset role");
   });
