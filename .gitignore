@@ -7,10 +7,15 @@ coverage
 dist
 .DS_Store
 *.tsbuildinfo
-supabase/.temp
+app/supabase/.temp
 .playwright-cli/
 output/
-launch-video/
+content/launch-video/
 AGENTS.md
-skills/
-Governance Files/
+
+# Keep raw and permissioned research local. Publish only reviewed derivatives.
+research/*.pdf
+research/*.jpeg
+research/*.jpg
+research/*.png
+research/raw/

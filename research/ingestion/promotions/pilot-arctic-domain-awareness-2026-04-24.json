@@ -1,0 +1,54 @@
+{
+  "batchId": "pilot-arctic-domain-awareness-2026-04-24",
+  "title": "Arctic Domain Awareness Real-Data Pilot",
+  "candidateFile": "research/ingestion/candidate-batches/arctic-domain-awareness-pilot.json",
+  "reviewer": "Andrew Davies",
+  "promotedAt": "2026-04-25T15:50:59.825Z",
+  "counts": {
+    "companies": 6,
+    "capabilities": 6,
+    "mappings": 8,
+    "signals": 1,
+    "sources": 9,
+    "evidenceSnippets": 15,
+    "fieldCitations": 20
+  },
+  "warnings": [],
+  "promotedTables": [
+    {
+      "tableName": "companies",
+      "fileName": "app/supabase/seed/companies.csv",
+      "rows": 6
+    },
+    {
+      "tableName": "capabilities",
+      "fileName": "app/supabase/seed/capabilities.csv",
+      "rows": 6
+    },
+    {
+      "tableName": "capability_use_cases",
+      "fileName": "app/supabase/seed/capability_use_cases.csv",
+      "rows": 8
+    },
+    {
+      "tableName": "signals",
+      "fileName": "app/supabase/seed/signals.csv",
+      "rows": 1
+    },
+    {
+      "tableName": "sources",
+      "fileName": "app/supabase/seed/sources.csv",
+      "rows": 9
+    },
+    {
+      "tableName": "evidence_snippets",
+      "fileName": "app/supabase/seed/evidence_snippets.csv",
+      "rows": 15
+    },
+    {
+      "tableName": "field_citations",
+      "fileName": "app/supabase/seed/field_citations.csv",
+      "rows": 20
+    }
+  ]
+}
