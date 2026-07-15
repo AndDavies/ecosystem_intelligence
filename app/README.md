@@ -17,9 +17,14 @@ Commands can also be run directly from this directory.
 
 ## Runtime modes
 
-- `ATLAS_DATA_SOURCE=validated_seed` uses the six reviewed fallback records and is the safe local default.
-- `ATLAS_DATA_SOURCE=supabase` requires the clean hosted schema, public URL, and publishable key. Missing configuration is an error rather than a silent fallback.
+- `ATLAS_DATA_SOURCE=supabase` is the hosted production mode and requires the clean schema, public URL, and publishable key. Missing configuration is an error rather than a silent fallback.
+- `ATLAS_DATA_SOURCE=validated_seed` uses the same six reviewed records without a database and remains available for isolated local development.
 - `LEGACY_DATA_SOURCE=supabase` is reserved for the prior internal workspace while it remains readable.
+
+The public map uses `NEXT_PUBLIC_MAPTILER_KEY` when provided. Set
+`NEXT_PUBLIC_MAPTILER_MAP_ID` to a MapTiler map ID; it defaults to the quiet
+`dataviz-light` basemap. The browser key must be restricted to the production
+and preview origins in MapTiler.
 
 Copy `.env.example` to `.env.local` and keep all service credentials server-side.
 
@@ -48,5 +53,8 @@ Editor authorization is read from controlled Supabase `app_metadata.role`, never
 - Security hardening: `supabase/migrations/20260715203357_public_atlas_security_hardening.sql`
 - Clean validated seed: `supabase/seed.sql`
 - Prior internal schema and CSVs: `supabase/legacy/`
+
+The six verified public records have been imported into the hosted project.
+The SQL seed remains the reproducible migration fixture and local fallback.
 
 The migration uses explicit Data API grants, RLS on every exposed table, owner-only collections/submissions, staff-only editorial policies, and separate public/private storage buckets.

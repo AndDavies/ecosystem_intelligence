@@ -266,7 +266,7 @@ function buildAppliedFilters(snapshot: AtlasSnapshot, query: AtlasQuery) {
 export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResult> {
   const snapshot = await getAtlasSnapshot();
   const page = Math.max(1, query.page ?? 1);
-  const pageSize = Math.min(100, Math.max(1, query.pageSize ?? 25));
+  const pageSize = Math.min(1000, Math.max(1, query.pageSize ?? 25));
 
   const filtered = snapshot.organizations
     .filter((organization) => !query.query || matchesQuery(organization, query.query))

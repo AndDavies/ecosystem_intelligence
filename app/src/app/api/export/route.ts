@@ -31,7 +31,7 @@ export async function GET(request: Request) {
     // organization-type filter. New links use `export` and preserve `type`.
     if (!searchParams.has("export")) queryParams.delete("type");
     const query = atlasQueryFromSearchParams(queryParams);
-    const result = await queryAtlas({ ...query, page: 1, pageSize: 100 });
+    const result = await queryAtlas({ ...query, page: 1, pageSize: 1000 });
     const header = [
       "stable_id",
       "organization_name",

@@ -19,7 +19,8 @@ export function formatDate(value: string | null | undefined) {
   return new Intl.DateTimeFormat("en-CA", {
     year: "numeric",
     month: "short",
-    day: "numeric"
+    day: "numeric",
+    timeZone: "UTC"
   }).format(date);
 }
 

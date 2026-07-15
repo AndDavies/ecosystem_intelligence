@@ -11,7 +11,7 @@ The repository was stabilized around four high-level areas:
 
 ## Product shift
 
-The product front door changed from an internal command-centre workspace to a free Canadian defence and dual-use public atlas. The selected visual direction is Option 3: shallow national map plus an evidence-first table with expandable rows and progressive disclosure.
+The product front door changed from an internal command-centre workspace to a free Canadian defence and dual-use public atlas. The selected visual direction is Option 3, refined into a map-first atlas with an optional, viewport-bounded accessible table and progressive disclosure.
 
 ## Implemented
 
@@ -31,6 +31,15 @@ The product front door changed from an internal command-centre workspace to a fr
 - Added an RLS-preserving `organization_dossiers` view that presents normalized
   locations, capabilities, programs, funding, relationships, media, alignments,
   and citations as one predictable read payload for pages and exports.
+- Made the map the default discovery surface and changed the accessible table
+  into a replacement view containing only organizations inside the last visible
+  map bounds; bounded CSV exports use the same extent.
+- Switched MapLibre and the Leaflet fallback to the quiet MapTiler
+  `dataviz-light` map ID when a protected browser key is configured.
+- Added an editorially labelled placeholder-logo state without storing fake
+  media records.
+- Added a reviewed 12-organization Underwater ISR source-lead batch. These leads
+  remain outside the public dataset until human approval and candidate review.
 
 ## Trust decisions
 
@@ -42,7 +51,9 @@ The product front door changed from an internal command-centre workspace to a fr
 
 ## Hosted database status
 
-The new free-plan Supabase project exists and is connected locally. The
-foundation and security-hardening migrations were approved, applied, and
-verified with all public tables protected by RLS and no security-advisor
-findings. The validated six-record seed remains local and has not been imported.
+The new free-plan Supabase project exists and is connected locally and in
+Vercel. The foundation and security-hardening migrations were approved,
+applied, and verified with all public tables protected by RLS and no
+security-advisor findings. The six verified organizations, their reviewed
+capabilities, public sources, field citations, and NATO demand requirements
+were imported. Production and Preview use `ATLAS_DATA_SOURCE=supabase`.

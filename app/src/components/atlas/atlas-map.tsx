@@ -5,7 +5,8 @@ import "leaflet/dist/leaflet.css";
 
 import maplibregl, { type GeoJSONSource, type Map as MapLibreMap } from "maplibre-gl";
 import { useEffect, useRef } from "react";
-import type { AtlasOrganization } from "@/types/atlas";
+import { organizationIdsInBounds } from "@/lib/atlas/viewport";
+import type { AtlasBounds, AtlasOrganization } from "@/types/atlas";
 
 const sourceId = "published-organizations";
 const canadaBounds = {
@@ -25,8 +26,9 @@ function organizationCoordinates(organizations: AtlasOrganization[]) {
 
 function mapStyle(): maplibregl.StyleSpecification | string {
   const mapTilerKey = process.env.NEXT_PUBLIC_MAPTILER_KEY?.trim();
+  const mapTilerMapId = process.env.NEXT_PUBLIC_MAPTILER_MAP_ID?.trim() || "dataviz-light";
   if (mapTilerKey) {
-    return `https://api.maptiler.com/maps/streets-v2/style.json?key=${encodeURIComponent(mapTilerKey)}`;
+    return `https://api.maptiler.com/maps/${encodeURIComponent(mapTilerMapId)}/style.json?key=${encodeURIComponent(mapTilerKey)}`;
   }
 
   return {
@@ -94,11 +96,15 @@ function supportsMapLibre() {
 export function AtlasMap({
   organizations,
   selectedOrganizationId,
-  onSelect
+  onSelect,
+  onViewportChange,
+  active = true
 }: {
   organizations: AtlasOrganization[];
   selectedOrganizationId: string | null;
   onSelect: (organizationId: string) => void;
+  onViewportChange: (viewport: { bounds: AtlasBounds; organizationIds: string[] }) => void;
+  active?: boolean;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
@@ -106,11 +112,36 @@ export function AtlasMap({
   const leafletLayerRef = useRef<import("leaflet").LayerGroup | null>(null);
   const leafletModuleRef = useRef<typeof import("leaflet") | null>(null);
   const onSelectRef = useRef(onSelect);
+  const onViewportChangeRef = useRef(onViewportChange);
   const organizationsRef = useRef(organizations);
   const selectedIdRef = useRef(selectedOrganizationId);
 
   organizationsRef.current = organizations;
   selectedIdRef.current = selectedOrganizationId;
+
+  function publishLeafletViewport() {
+    const map = leafletMapRef.current;
+    if (!map) return;
+    const current = map.getBounds();
+    const bounds = {
+      west: current.getWest(),
+      south: current.getSouth(),
+      east: current.getEast(),
+      north: current.getNorth()
+    };
+    onViewportChangeRef.current({ bounds, organizationIds: organizationIdsInBounds(organizationsRef.current, bounds) });
+  }
+
+  function publishMapLibreViewport(map: MapLibreMap) {
+    const current = map.getBounds();
+    const bounds = {
+      west: current.getWest(),
+      south: current.getSouth(),
+      east: current.getEast(),
+      north: current.getNorth()
+    };
+    onViewportChangeRef.current({ bounds, organizationIds: organizationIdsInBounds(organizationsRef.current, bounds) });
+  }
 
   function drawLeafletPoints() {
     const L = leafletModuleRef.current;
@@ -182,6 +213,10 @@ export function AtlasMap({
   }, [onSelect]);
 
   useEffect(() => {
+    onViewportChangeRef.current = onViewportChange;
+  }, [onViewportChange]);
+
+  useEffect(() => {
     if (!containerRef.current || mapRef.current || leafletMapRef.current) return;
     let cancelled = false;
 
@@ -197,13 +232,23 @@ export function AtlasMap({
         minZoom: 2,
         maxZoom: 14
       });
-      module.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-        maxZoom: 19
-      }).addTo(map);
+      const mapTilerKey = process.env.NEXT_PUBLIC_MAPTILER_KEY?.trim();
+      const mapTilerMapId = process.env.NEXT_PUBLIC_MAPTILER_MAP_ID?.trim() || "dataviz-light";
+      module
+        .tileLayer(
+          mapTilerKey
+            ? `https://api.maptiler.com/maps/${encodeURIComponent(mapTilerMapId)}/256/{z}/{x}/{y}.png?key=${encodeURIComponent(mapTilerKey)}`
+            : "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+          {
+            attribution: mapTilerKey ? "© MapTiler © OpenStreetMap contributors" : "© OpenStreetMap contributors",
+            maxZoom: 19
+          }
+        )
+        .addTo(map);
       module.control.zoom({ position: "bottomright" }).addTo(map);
       leafletMapRef.current = map;
       leafletLayerRef.current = module.layerGroup().addTo(map);
+      map.on("moveend", publishLeafletViewport);
       drawLeafletPoints();
       frameLeafletResults();
     }
@@ -321,7 +366,10 @@ export function AtlasMap({
           map.getCanvas().style.cursor = "";
         });
       });
+
+      publishMapLibreViewport(map);
     });
+    map.on("moveend", () => publishMapLibreViewport(map));
 
     mapRef.current = map;
     return () => {
@@ -346,6 +394,12 @@ export function AtlasMap({
     source?.setData(featureCollection(organizations));
     frameMapLibreResults(map);
   }, [organizations]);
+
+  useEffect(() => {
+    if (!active) return;
+    mapRef.current?.resize();
+    leafletMapRef.current?.invalidateSize({ animate: false });
+  }, [active]);
 
   useEffect(() => {
     drawLeafletPoints();

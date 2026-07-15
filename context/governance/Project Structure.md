@@ -19,7 +19,9 @@ The repository root is a workspace map rather than an application directory. Pro
 - Treat `research/ingestion/` as file-based review staging and `app/supabase/seed.sql` as the clean promoted public seed.
 - Keep prior internal-workspace migrations and CSV seed material under `app/supabase/legacy/`; they are readable reference data, not inputs to the public atlas.
 - Put application-specific types and repositories under `app/src/types/atlas.ts` and `app/src/lib/atlas/`.
-- Use `ATLAS_DATA_SOURCE=validated_seed` until a migrated and verified hosted project is ready. Set it to `supabase` explicitly to switch repositories; the app must not silently fall back when hosted data is requested.
+- Use `ATLAS_DATA_SOURCE=supabase` for the migrated and verified hosted project.
+  `validated_seed` remains an explicit local fallback; the app must not silently
+  fall back when hosted data is requested.
 - Put durable product decisions in `context/governance/`, not in source-code comments or research reports.
 - Put project-local agent role instructions in `context/agent-skills/`.
 - Keep runtime imagery in `app/public/`; keep campaign or production media in `content/`.

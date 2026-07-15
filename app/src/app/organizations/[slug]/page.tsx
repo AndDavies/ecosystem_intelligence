@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookmarkPlus, Download, ExternalLink, FileCheck2, MapPin, ShieldCheck } from "lucide-react";
+import { BookmarkPlus, Building2, Download, ExternalLink, FileCheck2, MapPin, ShieldCheck } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
@@ -54,6 +54,15 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
       <div className="grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
         <aside className="space-y-5">
           <PublicCard title="Profile at a glance" eyebrow="Published identity">
+            <div className="mb-5 flex items-center gap-3 rounded-lg border border-[#d0d5dd] bg-[#f8fafc] p-3">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-md bg-white text-[#0756d9] ring-1 ring-[#d0d5dd]" role="img" aria-label={`${organization.name} logo placeholder`}>
+                <Building2 className="size-6" aria-hidden="true" />
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-[#344054]">{organization.name}</p>
+                <p className="mt-0.5 text-[11px] text-[#667085]">Logo pending rights and editorial approval</p>
+              </div>
+            </div>
             <dl className="grid gap-4 text-sm">
               <ProfileItem label="Headquarters" value={organization.primaryLocation?.name} icon={<MapPin className="size-4" />} />
               <ProfileItem label="Map precision" value={organization.primaryLocation ? toTitleCase(organization.primaryLocation.geographicConfidence) : null} />

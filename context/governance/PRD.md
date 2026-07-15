@@ -58,7 +58,11 @@ Unsupported values remain null and are omitted in the UI. The product must never
 
 ### Map and table are equivalent
 
-Every map result has an accessible list/table equivalent. Filters, counts, selections, exports, and URL state remain synchronized.
+Every map result has an accessible list/table equivalent. The map is the
+default atlas surface; selecting the accessible table replaces the map rather
+than placing a large national table permanently below it. The table contains
+only organizations inside the last visible map bounds. Filters, visible-result
+counts, exports, and URL state remain synchronized.
 
 ### Human publication boundary
 
@@ -82,16 +86,18 @@ Automated research can create leads and candidate changes. Only an explicit huma
 
 ## Discovery experience
 
-The selected visual direction is a bright public intelligence atlas with a shallow national map above a dense evidence table.
+The selected visual direction is a bright public intelligence atlas with a
+map-first discovery surface and a user-selected accessible evidence table.
 
 The first view must:
 
 - make the search field and current filters obvious
 - show published counts rather than market-size claims
 - keep the map useful for orientation without making it the only navigation surface
+- let a user switch to a bounded table containing only the entities that were visible in the map viewport
 - let a user expand a table row to see the current rationale, evidence links, confidence, and map precision
 - progressively disclose demand and evidence detail after a relevant filter or selection
-- work on mobile through a map/table toggle with the table as the complete accessible result set
+- work on mobile through the same map/table toggle, with the table as the complete accessible result set for the current viewport
 
 Natural-language discovery may only:
 

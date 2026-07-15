@@ -23,7 +23,10 @@ export default async function PublicAtlasPage({
   });
 
   const query = atlasQueryFromSearchParams(params);
-  const [snapshot, result] = await Promise.all([getAtlasSnapshot(), queryAtlas(query)]);
+  const [snapshot, result] = await Promise.all([
+    getAtlasSnapshot(),
+    queryAtlas({ ...query, page: 1, pageSize: 1000 })
+  ]);
 
   return (
     <main className="atlas-page min-h-screen bg-[#f7f9fc] text-[#101828]">
