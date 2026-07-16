@@ -56,14 +56,22 @@ beforeAll(async () => {
   const migrationFiles = (await readdir(migrationDirectory))
     .filter((fileName) => fileName.endsWith(".sql"))
     .sort();
-  for (const fileName of migrationFiles) {
+  const applyMigration = async (fileName: string) => {
     const migration = (await readFile(path.join(migrationDirectory, fileName), "utf8")).replace(
       "create extension if not exists pgcrypto;",
       "-- pgcrypto is provided by hosted Supabase; PGlite uses the bootstrap UUID function above."
     );
     await db.exec(migration);
+  };
+  const foundationMigrations = migrationFiles.filter((fileName) => !fileName.includes("promote_") && !fileName.includes("promotion_audit"));
+  const reviewedDataMigrations = migrationFiles.filter((fileName) => !foundationMigrations.includes(fileName));
+  for (const fileName of foundationMigrations) {
+    await applyMigration(fileName);
   }
   await db.exec(await readFile(seedPath, "utf8"));
+  for (const fileName of reviewedDataMigrations) {
+    await applyMigration(fileName);
+  }
 }, 30_000);
 
 afterAll(async () => {
@@ -85,8 +93,8 @@ describe("public atlas database foundation", () => {
         (select count(*)::int from public.capability_demand_matches) as demand_matches
     `);
     expect(result.rows[0]).toEqual({
-      organizations: 6,
-      capabilities: 6,
+      organizations: 18,
+      capabilities: 18,
       demand_requirements: 5,
       demand_matches: 0
     });
@@ -209,9 +217,9 @@ describe("public atlas database foundation", () => {
   it("allows anonymous access to published records but not editorial candidates", async () => {
     await db.exec("set role anon");
     const publicResult = await db.query<{ count: number }>("select count(*)::int as count from public.organizations");
-    expect(publicResult.rows[0]?.count).toBe(6);
+    expect(publicResult.rows[0]?.count).toBe(18);
     const dossierResult = await db.query<{ count: number }>("select count(*)::int as count from public.organization_dossiers");
-    expect(dossierResult.rows[0]?.count).toBe(6);
+    expect(dossierResult.rows[0]?.count).toBe(18);
     await expect(db.query("select * from public.candidate_changes")).rejects.toThrow();
     await db.exec("reset role");
   });

@@ -11,6 +11,8 @@
     "ingest:validate": "tsx scripts/validate-ingestion-candidates.ts",
     "ingest:review": "tsx scripts/review-ingestion-candidates.ts review",
     "ingest:promote": "tsx scripts/review-ingestion-candidates.ts promote",
+    "atlas:validate": "tsx scripts/review-atlas-candidates.ts validate",
+    "atlas:review": "tsx scripts/review-atlas-candidates.ts review",
     "leads:validate": "tsx scripts/validate-source-leads.ts",
     "data:readiness": "tsx scripts/data-readiness.ts",
     "db:reconcile:validate": "tsx scripts/validate-remote-reconciliation.ts",

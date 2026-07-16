@@ -441,7 +441,7 @@ export async function loadCandidateBatch(filePath: string): Promise<CandidateBat
 
 export async function loadCandidateBatches(directory = candidateBatchDir) {
   const entries = await readdir(directory);
-  const jsonFiles = entries.filter((entry) => entry.endsWith(".json")).sort();
+  const jsonFiles = entries.filter((entry) => entry.endsWith(".json") && !entry.endsWith(".atlas.json")).sort();
 
   return Promise.all(
     jsonFiles.map(async (fileName) => ({

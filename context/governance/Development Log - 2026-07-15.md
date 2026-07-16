@@ -46,9 +46,12 @@ The product front door changed from an internal command-centre workspace to a fr
   `dataviz-light` map ID when a protected browser key is configured.
 - Added an editorially labelled placeholder-logo state without storing fake
   media records.
-- Added a reviewed 12-organization Underwater ISR source-lead batch. These leads
-  were approved for candidate conversion and remain outside the public dataset
-  until the candidate review packet and an explicit promotion approval pass.
+- Added a canonical public-atlas candidate schema, validator, review-packet
+  generator, and guarded SQL migration generator. This replaces the retired
+  CSV-era promotion path for new atlas research batches.
+- Converted and promoted the approved 12-organization Underwater ISR batch with
+  one canonical organization, location, reviewed capability, public source,
+  evidence snippet, mission alignment, and field-level citations per record.
 
 ## Trust decisions
 
@@ -65,4 +68,6 @@ Vercel. The foundation and security-hardening migrations were approved,
 applied, and verified with all public tables protected by RLS and no
 security-advisor findings. The six verified organizations, their reviewed
 capabilities, public sources, field citations, and NATO demand requirements
-were imported. Production and Preview use `ATLAS_DATA_SOURCE=supabase`.
+were imported. The first reviewed expansion batch raises the live total to 18
+published organizations and 18 published capabilities. Production and Preview
+use `ATLAS_DATA_SOURCE=supabase`.
