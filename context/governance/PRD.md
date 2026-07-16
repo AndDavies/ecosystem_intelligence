@@ -1,7 +1,7 @@
 # Canadian Ecosystem Intelligence Public Atlas
 
 Status: active product requirements  
-Last updated: 2026-07-15
+Last updated: 2026-07-16
 
 ## Product summary
 
@@ -12,6 +12,21 @@ The primary journey is:
 > Region -> ecosystem cluster -> capability -> organization dossier -> demand alignment -> saved collection or export
 
 The product combines public mapping, PitchBook-style dossiers, public NATO and Canadian demand overlays, and a review-first research pipeline. Agents can stage research but cannot publish it.
+
+## Invitation-only design-partner preview
+
+Before the broader public beta, the product supports a deliberately narrower COVE design-partner preview. This is a workflow-validation release, not the national-coverage milestone.
+
+- The preview contains 18 verified organizations and capabilities.
+- Every public surface labels the dataset as limited verified coverage.
+- The demand overlay remains accessible but is removed from primary navigation and labelled as an early preview while it has no reviewed matches.
+- Participants can submit general product feedback without authentication; corrections to canonical records still require authentication and editorial review.
+- A delayed, dismissible, consented update prompt captures voluntary pilot interest without gating the atlas.
+- Private pilot interaction events measure search, filters, marker selection, dossier opening, evidence viewing, exports, signup, and feedback without storing raw search text or raw IP addresses.
+- The preview is excluded from search indexing while invitation-only testing is active.
+- COVE-inspired ocean, navy, cyan, and structured editorial cues are used without copying COVE assets or implying endorsement.
+
+The preview graduation question is whether ecosystem and BD operators can use the atlas for a real discovery task and identify the missing data or workflow needed for repeated use. The 150-250 record requirement remains the gate for public beta, not for this design-partner test.
 
 ## Primary users
 
@@ -89,6 +104,7 @@ Automated research can create leads and candidate changes. Only an explicit huma
 | `/collections` | Authenticated private collections |
 | `/collections/[id]` | Saved organization and capability shortlist with lookbook export |
 | `/submit` | Authenticated profile claim, correction, or organization suggestion |
+| `/privacy` | Pilot participation, consent, feedback, and measurement notice |
 | `/admin/*` | Private source intake, review queue, and coverage operations |
 
 ## Discovery experience
@@ -166,6 +182,12 @@ It must never invent an organization or fact. Ambiguous questions return suggest
 - `saved_collections`
 - `saved_collection_items`
 
+### Private design-partner learning
+
+- `pilot_update_signups` — affirmative update consent ledger
+- `pilot_feedback` — unauthenticated product feedback staged privately for review
+- `pilot_events` — bounded, privacy-light workflow events for the invitation preview
+
 ## Source and privacy policy
 
 Every source is classified as `public`, `permissioned`, or `internal`.
@@ -228,7 +250,7 @@ Unknown fields must be omitted cleanly. PDFs must keep citations clickable and l
 
 ## Initial dataset contract
 
-The clean public seed contains only six previously validated organizations and their reviewed evidence:
+The clean public seed began with six previously validated organizations and their reviewed evidence:
 
 - Kraken Robotics
 - MDA Space
@@ -237,7 +259,7 @@ The clean public seed contains only six previously validated organizations and t
 - GeoSpectrum Technologies
 - Open Ocean Robotics
 
-The fifteen scaffold organizations and all placeholder rows are excluded from public migration. The first five NATO problem families are published as demand statements, with zero matches until evidence-backed mappings pass review.
+The first reviewed Underwater ISR expansion added 12 source-backed organizations and capabilities through the canonical review workflow, bringing the design-partner preview to 18 published organizations and 18 published capabilities. The fifteen scaffold organizations and all placeholder rows remain excluded. The first five NATO problem families are published as demand statements, with zero matches until evidence-backed mappings pass review.
 
 ## Acceptance criteria
 
@@ -266,14 +288,21 @@ Implemented locally as of 2026-07-15:
 - reviewed public submissions
 - private source/PDF intake, candidate review, and coverage screens
 
-Still required before hosted beta:
+Implemented for the invitation-only preview as of 2026-07-16:
 
-- user confirmation of Supabase organization and estimated cost
-- create, migrate, seed, and validate the new hosted Supabase project
-- configure a domain-restricted MapTiler key and production redirect URLs
+- private consented update signup, general feedback, and bounded event capture
+- RLS-enabled pilot tables with no anonymous or authenticated Data API privileges
+- delayed update prompt, persistent feedback access, privacy notice, and no-index posture
+- COVE-adjacent public visual system using restrained navy, ocean teal, and cyan cues
+- mobile map/list protection against collapsed hidden-map bounds
+- Vercel aggregate page analytics and sampled Speed Insights with query strings redacted
+- explicit limited-coverage and early-demand-preview framing
+
+Still required before broader public beta:
+
 - build the 150-250 record dataset through the review-first research workflow
 - guided testing with 10-15 ecosystem operators
-- privacy and accessibility review
+- full accessibility, privacy, and public-launch review
 
 ## Explicitly deferred
 

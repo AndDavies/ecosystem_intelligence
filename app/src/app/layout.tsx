@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow, Inter } from "next/font/google";
+import { PilotExperience } from "@/components/atlas/pilot-experience";
+import { PreviewInsights } from "@/components/atlas/preview-insights";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -14,11 +16,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ecosystem-intelligence.vercel.app"),
   title: {
-    default: "Ecosystem Intelligence Public Atlas",
+    default: "Ecosystem Intelligence Design Partner Preview",
     template: "%s | Ecosystem Intelligence"
   },
-  description: "A public, evidence-backed atlas of Canada's defence and dual-use ecosystem."
+  description: "An invitation-only, evidence-backed preview of Canada's defence and dual-use ecosystem.",
+  robots: {
+    index: false,
+    follow: false
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "Ecosystem Intelligence Design Partner Preview",
+    description: "Explore verified Canadian defence and dual-use organizations, capabilities, and public evidence."
+  }
 };
 
 export default function RootLayout({
@@ -28,7 +41,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className={`${barlow.variable} ${inter.variable}`}>{children}</body>
+      <body suppressHydrationWarning className={`${barlow.variable} ${inter.variable}`}>
+        {children}
+        <PilotExperience />
+        <PreviewInsights />
+      </body>
     </html>
   );
 }

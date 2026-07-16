@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css";
 
 import maplibregl, { type GeoJSONSource, type Map as MapLibreMap } from "maplibre-gl";
 import { useEffect, useRef } from "react";
-import { organizationIdsInBounds } from "@/lib/atlas/viewport";
+import { isUsableAtlasBounds, organizationIdsInBounds } from "@/lib/atlas/viewport";
 import type { AtlasBounds, AtlasOrganization } from "@/types/atlas";
 
 const sourceId = "published-organizations";
@@ -122,7 +122,8 @@ export function AtlasMap({
 
   function publishLeafletViewport() {
     const map = leafletMapRef.current;
-    if (!map) return;
+    const container = containerRef.current;
+    if (!map || !container || container.clientWidth < 2 || container.clientHeight < 2) return;
     const current = map.getBounds();
     const bounds = {
       west: current.getWest(),
@@ -130,10 +131,13 @@ export function AtlasMap({
       east: current.getEast(),
       north: current.getNorth()
     };
+    if (!isUsableAtlasBounds(bounds)) return;
     onViewportChangeRef.current({ bounds, organizationIds: organizationIdsInBounds(organizationsRef.current, bounds) });
   }
 
   function publishMapLibreViewport(map: MapLibreMap) {
+    const container = containerRef.current;
+    if (!container || container.clientWidth < 2 || container.clientHeight < 2) return;
     const current = map.getBounds();
     const bounds = {
       west: current.getWest(),
@@ -141,6 +145,7 @@ export function AtlasMap({
       east: current.getEast(),
       north: current.getNorth()
     };
+    if (!isUsableAtlasBounds(bounds)) return;
     onViewportChangeRef.current({ bounds, organizationIds: organizationIdsInBounds(organizationsRef.current, bounds) });
   }
 
@@ -175,7 +180,7 @@ export function AtlasMap({
         radius: selected ? 10 : 8,
         color: "#ffffff",
         weight: 3,
-        fillColor: selected ? "#f79009" : "#0756d9",
+        fillColor: selected ? "#f79009" : "#007f98",
         fillOpacity: 0.96
       })
         .bindTooltip(tooltip, { direction: "top" })
@@ -331,7 +336,7 @@ export function AtlasMap({
         source: sourceId,
         filter: ["has", "point_count"],
         paint: {
-          "circle-color": "#0756d9",
+          "circle-color": "#007f98",
           "circle-radius": ["step", ["get", "point_count"], 18, 10, 22, 50, 28],
           "circle-stroke-color": "#ffffff",
           "circle-stroke-width": 3,
@@ -358,7 +363,7 @@ export function AtlasMap({
         source: sourceId,
         filter: ["!", ["has", "point_count"]],
         paint: {
-          "circle-color": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], "#f79009", "#0756d9"],
+          "circle-color": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], "#f79009", "#007f98"],
           "circle-radius": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], 10, 8],
           "circle-stroke-color": "#ffffff",
           "circle-stroke-width": 3
@@ -455,8 +460,11 @@ export function AtlasMap({
     const container = containerRef.current;
     if (!container || typeof ResizeObserver === "undefined") return;
     const observer = new ResizeObserver(() => {
+      if (container.clientWidth < 2 || container.clientHeight < 2) return;
       mapRef.current?.resize();
       leafletMapRef.current?.invalidateSize({ animate: false });
+      if (mapRef.current) scheduleMapLibreViewport(mapRef.current, 0);
+      if (leafletMapRef.current) scheduleLeafletViewport(0);
     });
     observer.observe(container);
     return () => observer.disconnect();
@@ -470,7 +478,7 @@ export function AtlasMap({
       "case",
       ["==", ["get", "id"], selectedOrganizationId ?? ""],
       "#f79009",
-      "#0756d9"
+      "#007f98"
     ]);
     map.setPaintProperty("organization-points", "circle-radius", [
       "case",
@@ -497,7 +505,7 @@ export function AtlasMap({
   return (
     <div
       ref={containerRef}
-      className="h-full min-h-[290px] w-full bg-[#dcefff] sm:min-h-[330px] lg:min-h-[350px]"
+      className="h-full min-h-[290px] w-full bg-[#dcebed] sm:min-h-[330px] lg:min-h-[350px]"
       role="region"
       aria-label={`Map showing ${organizations.length} published organizations. The synchronized results list provides the same organizations without requiring the map.`}
     />

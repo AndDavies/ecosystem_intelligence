@@ -45,7 +45,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ id:
               <article key={item.id} className="grid gap-3 py-4 first:pt-0 last:pb-0 sm:grid-cols-[1fr_auto] sm:items-center">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#667085]">{type}</p>
-                  <Link href={href} className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-[#0756d9] no-underline hover:underline">{title}<ExternalLink className="size-3.5" /></Link>
+                  <Link href={href} className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-[#007f98] no-underline hover:underline">{title}<ExternalLink className="size-3.5" /></Link>
                   <p className="mt-1 line-clamp-2 text-xs leading-5 text-[#667085]">{item.note || detail}</p>
                 </div>
                 <form action={removeSavedCollectionItem.bind(null, collection.id, item.id)}>

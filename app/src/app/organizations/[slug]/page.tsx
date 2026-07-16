@@ -44,7 +44,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             <Download className="size-4" /> Export dossier
           </Link>
           {organization.websiteUrl ? (
-            <a href={organization.websiteUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white no-underline hover:bg-[#0649b9] hover:no-underline">
+            <a href={organization.websiteUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-md bg-[#007f98] px-4 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
               Visit website <ExternalLink className="size-4" />
             </a>
           ) : null}
@@ -55,7 +55,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
         <aside className="space-y-5">
           <PublicCard title="Profile at a glance" eyebrow="Published identity">
             <div className="mb-5 flex items-center gap-3 rounded-lg border border-[#d0d5dd] bg-[#f8fafc] p-3">
-              <span className="flex size-12 shrink-0 items-center justify-center rounded-md bg-white text-[#0756d9] ring-1 ring-[#d0d5dd]" role="img" aria-label={`${organization.name} logo placeholder`}>
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-md bg-white text-[#007f98] ring-1 ring-[#d0d5dd]" role="img" aria-label={`${organization.name} logo placeholder`}>
                 <Building2 className="size-6" aria-hidden="true" />
               </span>
               <div>
@@ -87,7 +87,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
 
           <Link href={`/submit?submissionType=correction&targetType=organization&targetId=${organization.id}&returnTo=${encodeURIComponent(`/organizations/${organization.slug}`)}`} className="flex items-center justify-between rounded-lg border border-[#d0d5dd] bg-white px-5 py-4 text-sm font-semibold text-[#344054] no-underline hover:border-[#98a2b3] hover:no-underline">
             Suggest a correction
-            <FileCheck2 className="size-4 text-[#0756d9]" />
+            <FileCheck2 className="size-4 text-[#007f98]" />
           </Link>
         </aside>
 
@@ -99,11 +99,11 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <h3 className="text-base font-bold text-[#101828]">
-                        <Link href={`/capabilities/${capability.slug}`} className="no-underline hover:text-[#0756d9] hover:no-underline">{capability.name}</Link>
+                        <Link href={`/capabilities/${capability.slug}`} className="no-underline hover:text-[#007f98] hover:no-underline">{capability.name}</Link>
                       </h3>
                       {capability.capabilityType ? <p className="mt-1 text-xs text-[#667085]">{capability.capabilityType}</p> : null}
                     </div>
-                    <span className="w-fit rounded bg-[#eaf2ff] px-2 py-1 text-[10px] font-semibold text-[#0756d9]">{capability.sourceConfidence === "high" ? "High confidence" : "Moderate confidence"}</span>
+                    <span className="w-fit rounded bg-[#e7f8fa] px-2 py-1 text-[10px] font-semibold text-[#007f98]">{capability.sourceConfidence === "high" ? "High confidence" : "Moderate confidence"}</span>
                   </div>
                   <p className="mt-3 text-sm leading-6 text-[#475467]">{capability.summary}</p>
                   <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -138,8 +138,8 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             {organization.capabilities.some((capability) => capability.demandMatches.length) ? (
               <div className="space-y-3">
                 {organization.capabilities.flatMap((capability) => capability.demandMatches.map((match) => (
-                  <article key={match.id} className="rounded-md border border-[#b2ccff] bg-[#eff6ff] p-4">
-                    <Link href={`/demand/${match.demandSlug}`} className="text-sm font-bold text-[#0756d9] no-underline hover:underline">{match.demandTitle}</Link>
+                  <article key={match.id} className="rounded-md border border-[#9bd8e2] bg-[#e7f8fa] p-4">
+                    <Link href={`/demand/${match.demandSlug}`} className="text-sm font-bold text-[#007f98] no-underline hover:underline">{match.demandTitle}</Link>
                     <p className="mt-2 text-xs leading-5 text-[#344054]">{match.alignmentSummary}</p>
                   </article>
                 )))}
@@ -171,7 +171,7 @@ function TagList({ label, values }: { label: string; values: string[] }) {
     <div>
       <h4 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#667085]">{label}</h4>
       <ul className="mt-2 space-y-1.5 text-xs leading-5 text-[#475467]">
-        {values.map((value) => <li key={value} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#0756d9]" />{value}</li>)}
+        {values.map((value) => <li key={value} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#007f98]" />{value}</li>)}
       </ul>
     </div>
   );

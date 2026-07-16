@@ -435,7 +435,7 @@ function PublicCapabilityPage({
           <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline">
             <Download className="size-4" /> Export dossier
           </Link>
-          <Link href={`/organizations/${organization.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white no-underline hover:bg-[#0649b9] hover:no-underline">
+          <Link href={`/organizations/${organization.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md bg-[#007f98] px-4 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
             Organization profile <ExternalLink className="size-4" />
           </Link>
         </>
@@ -483,8 +483,8 @@ function PublicCapabilityPage({
             {capability.demandMatches.length ? (
               <div className="space-y-3">
                 {capability.demandMatches.map((match) => (
-                  <article key={match.id} className="rounded-md border border-[#b2ccff] bg-[#eff6ff] p-4">
-                    <Link href={`/demand/${match.demandSlug}`} className="text-sm font-bold text-[#0756d9] no-underline hover:underline">{match.demandTitle}</Link>
+                  <article key={match.id} className="rounded-md border border-[#9bd8e2] bg-[#e7f8fa] p-4">
+                    <Link href={`/demand/${match.demandSlug}`} className="text-sm font-bold text-[#007f98] no-underline hover:underline">{match.demandTitle}</Link>
                     <p className="mt-2 text-xs leading-5 text-[#344054]">{match.alignmentSummary}</p>
                     <p className="mt-2 text-[10px] text-[#667085]">Public-source alignment only; not eligibility or endorsement.</p>
                   </article>
@@ -498,7 +498,7 @@ function PublicCapabilityPage({
           <PublicCard title="Organization" eyebrow="Associated company">
             <p className="text-base font-bold text-[#101828]">{organization.name}</p>
             <p className="mt-2 text-xs leading-5 text-[#667085]">{organization.description}</p>
-            <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex text-xs font-semibold text-[#0756d9] no-underline hover:underline">Open full organization dossier</Link>
+            <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex text-xs font-semibold text-[#007f98] no-underline hover:underline">Open full organization dossier</Link>
           </PublicCard>
           <PublicCard title="Evidence register" eyebrow={`${new Set(citations.map((citation) => citation.sourceUrl)).size} public sources`}>
             <EvidenceList citations={citations} />
@@ -522,7 +522,7 @@ function CapabilityList({ label, values, empty }: { label: string; values: strin
       <h3 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#667085]">{label}</h3>
       {values.length ? (
         <ul className="mt-2 space-y-1.5 text-xs leading-5 text-[#475467]">
-          {values.map((value) => <li key={value} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#0756d9]" />{value}</li>)}
+          {values.map((value) => <li key={value} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#007f98]" />{value}</li>)}
         </ul>
       ) : <p className="mt-2 text-xs leading-5 text-[#667085]">{empty ?? "No reviewed values are published."}</p>}
     </div>

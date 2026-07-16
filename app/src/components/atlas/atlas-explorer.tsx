@@ -21,7 +21,9 @@ import {
 } from "lucide-react";
 import { FormEvent, useMemo, useRef, useState } from "react";
 import { AtlasMap } from "@/components/atlas/atlas-map";
+import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
+import { openPilotFeedback, trackPilotEvent } from "@/lib/pilot/client";
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
 import type {
   AtlasCapability,
@@ -197,6 +199,11 @@ export function AtlasExplorer({
       if (!response.ok) throw new Error("The question could not be interpreted.");
       const nextDiscovery = (await response.json()) as AtlasDiscoveryResult;
       setDiscovery(nextDiscovery);
+      trackPilotEvent("atlas_search", {
+        filter_count: Object.values(nextDiscovery.filters).filter(Boolean).length,
+        result_count: nextDiscovery.organizationIds.length,
+        interpretation: nextDiscovery.interpretation
+      });
       await load(nextDiscovery.filters);
     } catch (discoveryError) {
       setError(discoveryError instanceof Error ? discoveryError.message : "The question could not be interpreted.");
@@ -206,6 +213,8 @@ export function AtlasExplorer({
 
   function updateSelection(id: string, revealInTable = false) {
     setSelectedId(id);
+    const organization = result.organizations.find((item) => item.id === id);
+    trackPilotEvent("marker_select", { organization: organization?.slug ?? "unknown" });
     if (!revealInTable) return;
     window.requestAnimationFrame(() => {
       const container = tableScrollRef.current;
@@ -226,20 +235,30 @@ export function AtlasExplorer({
 
   return (
     <div className="atlas-frame pb-8 pt-4 sm:pt-5">
+      <section className="mb-4 overflow-hidden rounded-xl border border-[#1c3555] bg-[#05052b] text-white shadow-[0_14px_36px_rgba(5,5,43,0.16)]">
+        <div className="grid gap-5 px-5 py-5 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#62d9e8]">Invitation-only design partner preview</p>
+            <h1 className="mt-2 text-xl font-bold tracking-[-0.025em] sm:text-2xl">Explore verified Canadian defence and dual-use capabilities.</h1>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-white/72">This limited 18-organization dataset is designed to test discovery, evidence, lookbooks, and exports—not to represent complete national coverage.</p>
+          </div>
+          <button type="button" onClick={openPilotFeedback} className="inline-flex h-10 items-center justify-center rounded-md border border-[#62d9e8]/60 bg-[#62d9e8] px-4 text-xs font-semibold text-[#05052b] hover:bg-[#8fe7f1]">Tell us what is missing</button>
+        </div>
+      </section>
       <form onSubmit={submitDiscovery} role="search" aria-label="Ask the Canadian public atlas">
         <div className="relative">
           <Search className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-[#475467]" aria-hidden="true" />
           <input
             value={question}
             onChange={(event) => setQuestion(event.target.value)}
-            className="h-[50px] w-full rounded-lg border border-[#cbd5e1] bg-white pl-12 pr-28 text-[15px] text-[#101828] shadow-[0_1px_2px_rgba(16,24,40,0.04)] outline-none placeholder:text-[#667085] focus:border-[#0756d9] focus:ring-4 focus:ring-[#0756d9]/10 sm:text-base"
+            className="h-[50px] w-full rounded-lg border border-[#cbd5e1] bg-white pl-12 pr-28 text-[15px] text-[#101828] shadow-[0_1px_2px_rgba(16,24,40,0.04)] outline-none placeholder:text-[#667085] focus:border-[#007f98] focus:ring-4 focus:ring-[#007f98]/10 sm:text-base"
             placeholder="Ask by region, capability, or mission — e.g. underwater sensing in Atlantic Canada"
             aria-label="Natural-language atlas question"
             maxLength={500}
           />
           <button
             type="submit"
-            className="absolute right-1.5 top-1/2 flex h-9 -translate-y-1/2 items-center gap-2 rounded-md bg-[#0756d9] px-4 text-sm font-semibold text-white hover:bg-[#0649b9] disabled:opacity-60"
+            className="absolute right-1.5 top-1/2 flex h-9 -translate-y-1/2 items-center gap-2 rounded-md bg-[#007f98] px-4 text-sm font-semibold text-white hover:bg-[#00677d] disabled:opacity-60"
             disabled={loading}
           >
             {loading ? <LoaderCircle className="size-4 animate-spin" /> : null}
@@ -271,7 +290,7 @@ export function AtlasExplorer({
           <button
             type="button"
             onClick={() => setFilterPanelOpen((value) => !value)}
-            className="inline-flex h-9 items-center gap-2 rounded-md px-2.5 text-xs font-semibold text-[#0756d9] hover:bg-[#eff6ff]"
+            className="inline-flex h-9 items-center gap-2 rounded-md px-2.5 text-xs font-semibold text-[#007f98] hover:bg-[#e7f8fa]"
             aria-expanded={filterPanelOpen}
           >
             <SlidersHorizontal className="size-4" />
@@ -292,30 +311,30 @@ export function AtlasExplorer({
               label="Region"
               value={filters.region ?? ""}
               options={regions.map((region) => ({ value: region.slug, label: `${region.name} (${region.organizationCount})` }))}
-              onChange={(value) => void load({ ...filters, region: value || undefined })}
+              onChange={(value) => { trackPilotEvent("filter_apply", { filter: "region", value: value || "all" }); void load({ ...filters, region: value || undefined }); }}
             />
             <FilterSelect
               label="Technical domain"
               value={filters.domain ?? ""}
               options={technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name }))}
-              onChange={(value) => void load({ ...filters, domain: value || undefined })}
+              onChange={(value) => { trackPilotEvent("filter_apply", { filter: "domain", value: value || "all" }); void load({ ...filters, domain: value || undefined }); }}
             />
             <FilterSelect
               label="Mission area"
               value={filters.mission ?? ""}
               options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))}
-              onChange={(value) => void load({ ...filters, mission: value || undefined })}
+              onChange={(value) => { trackPilotEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }}
             />
             <FilterSelect
               label="Public demand"
               value={filters.demand ?? ""}
               options={demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title }))}
-              onChange={(value) => void load({ ...filters, demand: value || undefined })}
+              onChange={(value) => { trackPilotEvent("filter_apply", { filter: "demand", value: value || "all" }); void load({ ...filters, demand: value || undefined }); }}
             />
           </div>
           <div className="mt-4 flex items-center justify-between border-t border-[#eaecf0] pt-3">
             <span className="text-xs text-[#667085]">Filters update the map, result count, table, URL, and export together.</span>
-            <button type="button" className="text-xs font-semibold text-[#0756d9] hover:underline" onClick={() => void load({}, { updateQuestion: true })}>
+            <button type="button" className="text-xs font-semibold text-[#007f98] hover:underline" onClick={() => void load({}, { updateQuestion: true })}>
               Clear all
             </button>
           </div>
@@ -385,7 +404,7 @@ export function AtlasExplorer({
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <Link href={exportHref} className="inline-flex items-center gap-2 text-xs font-semibold text-[#0756d9] no-underline hover:underline">
+              <Link href={exportHref} className="inline-flex items-center gap-2 text-xs font-semibold text-[#007f98] no-underline hover:underline">
                 <Download className="size-4" />
                 Export visible results
               </Link>
@@ -463,7 +482,7 @@ export function AtlasExplorer({
               <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[#667085]">
                 Return to the map and pan or zoom out. Results intentionally include only organizations inside the visible bounds.
               </p>
-              <button type="button" className="mt-5 text-sm font-semibold text-[#0756d9] hover:underline lg:hidden" onClick={() => setViewMode("map")}>
+              <button type="button" className="mt-5 text-sm font-semibold text-[#007f98] hover:underline lg:hidden" onClick={() => setViewMode("map")}>
                 Return to map
               </button>
             </div>
@@ -471,10 +490,7 @@ export function AtlasExplorer({
         </div>
       </section>
 
-      <footer className="flex flex-col gap-2 px-0 py-5 text-xs text-[#667085] sm:flex-row sm:items-center sm:justify-between">
-        <span>Snapshot generated {formatDate(generatedAt)}. Published public sources only.</span>
-        <Link href="/help/concepts" className="font-medium text-[#0756d9] no-underline hover:underline">About evidence and derived reads</Link>
-      </footer>
+      <PublicAtlasFooter generatedLabel={`Snapshot generated ${formatDate(generatedAt)}. Published public sources only; limited verified coverage for workflow testing.`} />
     </div>
   );
 }
@@ -508,7 +524,7 @@ function LookbookPeek({
       aria-live="polite"
     >
       <div className="flex items-start gap-3">
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#eff6ff] text-[#0756d9] ring-1 ring-[#b2ccff]" aria-hidden="true">
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#e7f8fa] text-[#007f98] ring-1 ring-[#9bd8e2]" aria-hidden="true">
           <Building2 className="size-5" />
         </span>
         <div className="min-w-0 flex-1">
@@ -520,7 +536,7 @@ function LookbookPeek({
         <button
           type="button"
           onClick={onClose}
-          className="flex size-8 shrink-0 items-center justify-center rounded-md text-[#667085] hover:bg-[#f2f4f7] hover:text-[#101828] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0756d9]"
+          className="flex size-8 shrink-0 items-center justify-center rounded-md text-[#667085] hover:bg-[#f2f4f7] hover:text-[#101828] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#007f98]"
           aria-label={`Close ${organization.name} preview`}
         >
           <X className="size-4" />
@@ -543,14 +559,14 @@ function LookbookPeek({
         <span className="rounded bg-[#f2f4f7] px-2 py-1 text-[#475467]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
         <span className={cn(
           "rounded px-2 py-1",
-          organization.freshnessStatus === "current" ? "bg-[#eaf2ff] text-[#0756d9]" : "bg-[#fff1d6] text-[#7a2e0e]"
+          organization.freshnessStatus === "current" ? "bg-[#e7f8fa] text-[#007f98]" : "bg-[#fff1d6] text-[#7a2e0e]"
         )}>{freshness}</span>
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-2">
         <Link
           href={`/organizations/${organization.slug}`}
-          className="col-span-2 inline-flex h-9 items-center justify-center gap-2 rounded-md bg-[#0756d9] px-3 text-xs font-semibold text-white no-underline hover:bg-[#0649b9] hover:no-underline"
+          className="col-span-2 inline-flex h-9 items-center justify-center gap-2 rounded-md bg-[#007f98] px-3 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline"
         >
           Open lookbook
           <ArrowRight className="size-3.5" />
@@ -598,7 +614,7 @@ function FilterSelect({
         <select
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="h-10 w-full appearance-none rounded-md border border-[#d0d5dd] bg-white px-3 pr-9 text-sm font-normal text-[#101828] outline-none focus:border-[#0756d9] focus:ring-4 focus:ring-[#0756d9]/10"
+          className="h-10 w-full appearance-none rounded-md border border-[#d0d5dd] bg-white px-3 pr-9 text-sm font-normal text-[#101828] outline-none focus:border-[#007f98] focus:ring-4 focus:ring-[#007f98]/10"
         >
           <option value="">All {label.toLowerCase()}s</option>
           {options.map((option) => (
@@ -632,7 +648,7 @@ function MobileOrganizationCard({
   const confidence = alignment?.confidence ?? capability?.sourceConfidence ?? organization.sourceConfidence;
 
   return (
-    <li className={cn("bg-white", selected && "bg-[#f8fbff]")}>
+    <li className={cn("bg-white", selected && "bg-[#f0fafb]")}>
       <button
         type="button"
         className="w-full px-4 py-4 text-left"
@@ -641,9 +657,9 @@ function MobileOrganizationCard({
         aria-label={`${expanded ? "Collapse" : "Expand"} ${organization.name}`}
       >
         <span className="flex items-start gap-3">
-          {expanded ? <ChevronDown className="mt-0.5 size-4 shrink-0 text-[#0756d9]" /> : <ChevronRight className="mt-0.5 size-4 shrink-0 text-[#475467]" />}
+          {expanded ? <ChevronDown className="mt-0.5 size-4 shrink-0 text-[#007f98]" /> : <ChevronRight className="mt-0.5 size-4 shrink-0 text-[#475467]" />}
           <span className="min-w-0 flex-1">
-            <span className="block text-sm font-bold text-[#0756d9]">{organization.name}</span>
+            <span className="block text-sm font-bold text-[#007f98]">{organization.name}</span>
             <span className="mt-1 block text-xs leading-5 text-[#344054]">{capability?.name ?? "No reviewed capability"}</span>
             <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#667085]">
               <span>{location?.provinceTerritory ?? "Location under review"}</span>
@@ -655,7 +671,7 @@ function MobileOrganizationCard({
       </button>
 
       {expanded ? (
-        <div className="border-t border-[#bfd3f6] bg-[#f8fbff] px-4 py-4">
+        <div className="border-t border-[#b8dfe5] bg-[#f0fafb] px-4 py-4">
           <h3 className="text-xs font-bold text-[#101828]">{alignment ? "Why this capability fits" : "Reviewed capability summary"}</h3>
           <p className="mt-2 text-xs leading-5 text-[#344054]">{alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
 
@@ -667,7 +683,7 @@ function MobileOrganizationCard({
             </div>
           ) : null}
 
-          <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[#d6e2f5] pt-4 text-xs">
+          <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[#cce7eb] pt-4 text-xs">
             <div>
               <span className="block text-[10px] text-[#667085]">Confidence</span>
               <span className={cn(
@@ -682,12 +698,12 @@ function MobileOrganizationCard({
           </div>
 
           {evidence[0] ? (
-            <a href={evidence[0].sourceUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-start gap-1 text-xs font-semibold text-[#0756d9] no-underline hover:underline">
+            <a href={evidence[0].sourceUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-start gap-1 text-xs font-semibold text-[#007f98] no-underline hover:underline">
               <span>Open public-source evidence</span>
               <ExternalLink className="mt-0.5 size-3 shrink-0" />
             </a>
           ) : null}
-          <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[#0756d9] px-3 text-xs font-semibold text-white no-underline hover:bg-[#0649b9] hover:no-underline">
+          <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[#007f98] px-3 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
             View organization dossier
             <ExternalLink className="size-3.5" />
           </Link>
@@ -726,9 +742,9 @@ function OrganizationRows({
       <tr
         ref={rowRef}
         className={cn(
-          "cursor-pointer border-b border-[#eaecf0] bg-white text-xs text-[#344054] outline-none hover:bg-[#f8fbff] focus-visible:bg-[#f8fbff] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0756d9]",
-          selected && "bg-[#f8fbff]",
-          expanded && "border-x border-x-[#2e72e8] border-t border-t-[#2e72e8]"
+          "cursor-pointer border-b border-[#eaecf0] bg-white text-xs text-[#344054] outline-none hover:bg-[#f0fafb] focus-visible:bg-[#f0fafb] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#007f98]",
+          selected && "bg-[#f0fafb]",
+          expanded && "border-x border-x-[#008fa8] border-t border-t-[#008fa8]"
         )}
         onClick={onSelect}
         onKeyDown={(event) => {
@@ -742,7 +758,7 @@ function OrganizationRows({
         <td className="px-3 py-3 align-middle">
           <button
             type="button"
-            className="flex size-6 items-center justify-center rounded text-[#344054] hover:bg-[#eaf2ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0756d9]"
+            className="flex size-6 items-center justify-center rounded text-[#344054] hover:bg-[#e7f8fa] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#007f98]"
             aria-expanded={expanded}
             aria-label={`${expanded ? "Collapse" : "Expand"} ${organization.name}`}
             onClick={(event) => {
@@ -753,14 +769,14 @@ function OrganizationRows({
             {expanded ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}
           </button>
         </td>
-        <th scope="row" className="px-2 py-3 text-[13px] font-semibold text-[#0756d9]">{organization.name}</th>
+        <th scope="row" className="px-2 py-3 text-[13px] font-semibold text-[#007f98]">{organization.name}</th>
         <td className="max-w-[280px] px-3 py-3 leading-4">{capability?.name ?? "No reviewed capability"}</td>
         <td className="px-3 py-3">{location?.provinceTerritory ?? "Location under review"}</td>
         <td className="px-3 py-3">
           {alignment ? (
             <span className={cn(
               "inline-flex rounded px-2 py-1 text-[10px] font-semibold",
-              alignment.matchType === "public_source_alignment" ? "bg-[#eaf2ff] text-[#0756d9]" : "bg-[#fff1d6] text-[#7a2e0e]"
+              alignment.matchType === "public_source_alignment" ? "bg-[#e7f8fa] text-[#007f98]" : "bg-[#fff1d6] text-[#7a2e0e]"
             )}>
               {alignment.matchType === "public_source_alignment" ? "Public-source alignment" : "Reviewed derived fit"}
             </span>
@@ -768,14 +784,14 @@ function OrganizationRows({
             <span className="inline-flex rounded bg-[#f2f4f7] px-2 py-1 text-[10px] font-semibold text-[#475467]">Capability profile</span>
           )}
         </td>
-        <td className="px-3 py-3 font-medium text-[#0756d9]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</td>
+        <td className="px-3 py-3 font-medium text-[#007f98]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</td>
         <td className="whitespace-nowrap px-3 py-3">{formatDate(capability?.lastReviewedAt ?? organization.lastReviewedAt)}</td>
       </tr>
       {expanded ? (
-        <tr className="border-x border-b border-[#2e72e8] bg-[#f8fbff]">
+        <tr className="border-x border-b border-[#008fa8] bg-[#f0fafb]">
           <td colSpan={7} className="p-0">
             <div className="grid gap-0 px-4 py-4 lg:grid-cols-[1.1fr_0.9fr_0.78fr]">
-              <section className="pr-5 lg:border-r lg:border-[#bfd3f6]" aria-labelledby={`why-${organization.id}`}>
+              <section className="pr-5 lg:border-r lg:border-[#b8dfe5]" aria-labelledby={`why-${organization.id}`}>
                 <h3 id={`why-${organization.id}`} className="text-xs font-bold text-[#101828]">
                   {alignment ? "Why this capability fits the selected context" : "Reviewed capability summary"}
                 </h3>
@@ -789,12 +805,12 @@ function OrganizationRows({
                 ) : null}
               </section>
 
-              <section className="border-t border-[#bfd3f6] py-4 lg:border-r lg:border-t-0 lg:px-5 lg:py-0" aria-labelledby={`evidence-${organization.id}`}>
+              <section className="border-t border-[#b8dfe5] py-4 lg:border-r lg:border-t-0 lg:px-5 lg:py-0" aria-labelledby={`evidence-${organization.id}`}>
                 <h3 id={`evidence-${organization.id}`} className="text-xs font-bold text-[#101828]">Public-source evidence</h3>
                 <ul className="mt-2 space-y-2">
                   {evidence.slice(0, 3).map((citation) => (
                     <li key={citation.id} className="text-xs leading-5">
-                      <a href={citation.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-start gap-1 font-medium text-[#0756d9] no-underline hover:underline">
+                      <a href={citation.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-start gap-1 font-medium text-[#007f98] no-underline hover:underline">
                         <span>{citation.sourceTitle}</span>
                         <ExternalLink className="mt-0.5 size-3 shrink-0" />
                       </a>
@@ -804,7 +820,7 @@ function OrganizationRows({
                 </ul>
               </section>
 
-              <section className="border-t border-[#bfd3f6] pt-4 lg:border-t-0 lg:pl-5 lg:pt-0" aria-labelledby={`posture-${organization.id}`}>
+              <section className="border-t border-[#b8dfe5] pt-4 lg:border-t-0 lg:pl-5 lg:pt-0" aria-labelledby={`posture-${organization.id}`}>
                 <h3 id={`posture-${organization.id}`} className="text-xs font-bold text-[#101828]">Review posture</h3>
                 <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 text-xs lg:grid-cols-1">
                   <div>
@@ -819,7 +835,7 @@ function OrganizationRows({
                     <dd className="mt-1 font-medium text-[#344054]">{location ? toTitleCase(location.geographicConfidence) : "Unknown"}</dd>
                   </div>
                 </dl>
-                <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex h-9 w-full items-center justify-center gap-2 rounded-md bg-[#0756d9] px-3 text-xs font-semibold text-white no-underline hover:bg-[#0649b9] hover:no-underline">
+                <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex h-9 w-full items-center justify-center gap-2 rounded-md bg-[#007f98] px-3 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
                   View organization dossier
                   <ExternalLink className="size-3.5" />
                 </Link>

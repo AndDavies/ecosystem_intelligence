@@ -5,7 +5,7 @@ import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
 import { getAtlasSnapshot, queryAtlas } from "@/lib/atlas/repository";
 
 export const metadata: Metadata = {
-  title: "Canadian Defence & Dual-Use Ecosystem Atlas",
+  title: "Design Partner Preview",
   description:
     "Explore verified Canadian defence and dual-use organizations, capabilities, regions, public evidence, and reviewed mission alignment."
 };
@@ -29,7 +29,7 @@ export default async function PublicAtlasPage({
   ]);
 
   return (
-    <main className="atlas-page min-h-screen bg-[#f7f9fc] text-[#101828]">
+    <main className="atlas-page min-h-screen bg-[#eef7f8] text-[#101828]">
       <PublicAtlasHeader />
       <AtlasExplorer
         initialResult={result}

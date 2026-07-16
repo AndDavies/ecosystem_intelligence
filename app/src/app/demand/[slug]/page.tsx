@@ -25,7 +25,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
       backHref="/demand"
       backLabel="All demand signals"
       actions={
-        <a href={demand.source.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white no-underline hover:bg-[#0649b9] hover:no-underline">
+        <a href={demand.source.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-md bg-[#007f98] px-4 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
           View authoritative source <ExternalLink className="size-4" />
         </a>
       }
@@ -47,10 +47,10 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
                   <article key={match.id} className="py-4 first:pt-0 last:pb-0">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                       <div>
-                        <Link href={`/organizations/${organization.slug}`} className="text-sm font-bold text-[#0756d9] no-underline hover:underline">{organization.name}</Link>
+                        <Link href={`/organizations/${organization.slug}`} className="text-sm font-bold text-[#007f98] no-underline hover:underline">{organization.name}</Link>
                         <Link href={`/capabilities/${capability.slug}`} className="mt-1 block text-xs font-semibold text-[#344054] no-underline hover:underline">{capability.name}</Link>
                       </div>
-                      <span className="w-fit rounded bg-[#eaf2ff] px-2 py-1 text-[10px] font-semibold text-[#0756d9]">{match.confidence} confidence</span>
+                      <span className="w-fit rounded bg-[#e7f8fa] px-2 py-1 text-[10px] font-semibold text-[#007f98]">{match.confidence} confidence</span>
                     </div>
                     <p className="mt-2 text-xs leading-5 text-[#475467]">{match.alignmentSummary}</p>
                   </article>

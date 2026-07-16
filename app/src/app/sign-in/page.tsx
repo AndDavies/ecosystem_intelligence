@@ -27,8 +27,8 @@ export default async function SignInPage({
       <PublicAtlasHeader />
       <div className="mx-auto grid min-h-[calc(100vh-62px)] max-w-5xl items-center gap-6 px-4 py-10 lg:grid-cols-[0.9fr_1.1fr]">
         <section className="p-3 sm:p-8">
-          <span className="flex size-11 items-center justify-center rounded-lg bg-[#eaf2ff] text-[#0756d9]"><LockKeyhole className="size-5" /></span>
-          <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.13em] text-[#0756d9]">Optional public account</p>
+          <span className="flex size-11 items-center justify-center rounded-lg bg-[#e7f8fa] text-[#007f98]"><LockKeyhole className="size-5" /></span>
+          <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.13em] text-[#007f98]">Optional public account</p>
           <h1 className="mt-2 text-3xl font-bold tracking-[-0.035em] sm:text-4xl">Save work without gating the atlas.</h1>
           <p className="mt-4 max-w-md text-sm leading-6 text-[#667085]">Browsing, searching, dossiers, PDF generation, and CSV exports remain public. Sign in only to save collections, claim a profile, or suggest a correction.</p>
           <ul className="mt-6 space-y-3 text-sm text-[#475467]">
@@ -36,11 +36,11 @@ export default async function SignInPage({
               <li key={item} className="flex items-center gap-2"><CheckCircle2 className="size-4 text-[#079455]" />{item}</li>
             ))}
           </ul>
-          <Link href="/" className="mt-7 inline-flex text-xs font-semibold text-[#0756d9] no-underline hover:underline">Continue browsing without signing in</Link>
+          <Link href="/" className="mt-7 inline-flex text-xs font-semibold text-[#007f98] no-underline hover:underline">Continue browsing without signing in</Link>
         </section>
 
         <section className="rounded-xl border border-[#d0d5dd] bg-white p-6 shadow-[0_12px_34px_rgba(16,24,40,0.08)] sm:p-8">
-          <div className="flex size-10 items-center justify-center rounded-md bg-[#0756d9] text-white"><Mail className="size-5" /></div>
+          <div className="flex size-10 items-center justify-center rounded-md bg-[#007f98] text-white"><Mail className="size-5" /></div>
           <h2 className="mt-5 text-xl font-bold tracking-[-0.02em]">Email magic link</h2>
           <p className="mt-2 text-sm leading-6 text-[#667085]">We will send a one-time secure link to your inbox.</p>
 
@@ -52,9 +52,9 @@ export default async function SignInPage({
             <input type="hidden" name="next" value={next} />
             <label className="grid gap-1.5 text-xs font-semibold text-[#344054]" htmlFor="email">
               Email address
-              <input id="email" name="email" type="email" required placeholder="you@organization.ca" className="h-11 rounded-md border border-[#d0d5dd] px-3 text-sm font-normal outline-none placeholder:text-[#98a2b3] focus:border-[#0756d9] focus:ring-4 focus:ring-[#0756d9]/10" disabled={!configured} />
+              <input id="email" name="email" type="email" required placeholder="you@organization.ca" className="h-11 rounded-md border border-[#d0d5dd] px-3 text-sm font-normal outline-none placeholder:text-[#98a2b3] focus:border-[#007f98] focus:ring-4 focus:ring-[#007f98]/10" disabled={!configured} />
             </label>
-            <button type="submit" className="inline-flex h-11 w-full items-center justify-center rounded-md bg-[#0756d9] px-4 text-sm font-semibold text-white hover:bg-[#0649b9] disabled:cursor-not-allowed disabled:opacity-50" disabled={!configured}>
+            <button type="submit" className="inline-flex h-11 w-full items-center justify-center rounded-md bg-[#007f98] px-4 text-sm font-semibold text-white hover:bg-[#00677d] disabled:cursor-not-allowed disabled:opacity-50" disabled={!configured}>
               Email me a sign-in link
             </button>
           </form>

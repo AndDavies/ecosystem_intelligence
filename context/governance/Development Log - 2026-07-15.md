@@ -71,3 +71,15 @@ capabilities, public sources, field citations, and NATO demand requirements
 were imported. The first reviewed expansion batch raises the live total to 18
 published organizations and 18 published capabilities. Production and Preview
 use `ATLAS_DATA_SOURCE=supabase`.
+
+## Invitation-only COVE design-partner preview - 2026-07-16
+
+- Reframed the current 18-record release as an invitation-only workflow-validation preview rather than the 150-250 record public beta.
+- Applied restrained COVE-adjacent visual cues: a deep navy public header, ocean teal and cyan accents, editorial rules, and light marine data surfaces without using COVE assets or claiming endorsement.
+- Removed the empty demand workflow from primary navigation while retaining a clearly labelled early-preview route and its public-source caveats.
+- Added a delayed, dismissible, affirmative-consent update prompt and a persistent unauthenticated product-feedback workflow.
+- Added `pilot_update_signups`, `pilot_feedback`, and `pilot_events` as private, RLS-enabled tables with no `anon` or `authenticated` Data API privileges. Validated server routes write with server-only credentials.
+- Added bounded event capture for search, filter, marker, dossier, evidence, export, signup, and feedback actions without storing raw search text or raw IP addresses.
+- Added a pilot privacy page, no-index metadata and robots posture, aggregate Vercel Web Analytics, and sampled Speed Insights with URL query strings removed before collection.
+- Fixed the mobile map/list failure by rejecting collapsed map bounds while the hidden map has zero layout dimensions and preserving the last usable visible-result set.
+- Added validation tests for affirmative consent, feedback normalization, bounded event vocabulary, and collapsed map bounds.

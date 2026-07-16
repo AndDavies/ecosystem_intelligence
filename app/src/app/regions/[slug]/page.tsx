@@ -24,7 +24,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
       actions={
         <>
           {result.organizations.length ? <Link href={`/api/export?type=region-report&slug=${result.region.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline"><Download className="size-4" />Export report</Link> : null}
-          <Link href={`/?region=${result.region.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white no-underline hover:bg-[#0649b9] hover:no-underline">
+          <Link href={`/?region=${result.region.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md bg-[#007f98] px-4 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
             Explore on atlas <ArrowRight className="size-4" />
           </Link>
         </>
@@ -43,11 +43,11 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
               {result.organizations.map((organization) => (
                 <article key={organization.id} className="flex flex-col gap-3 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <Link href={`/organizations/${organization.slug}`} className="text-sm font-bold text-[#0756d9] no-underline hover:underline">{organization.name}</Link>
+                    <Link href={`/organizations/${organization.slug}`} className="text-sm font-bold text-[#007f98] no-underline hover:underline">{organization.name}</Link>
                     <p className="mt-1 text-xs text-[#667085]">{organization.primaryLocation?.name ?? "Location under review"}</p>
                     <p className="mt-2 line-clamp-2 max-w-2xl text-xs leading-5 text-[#475467]">{organization.description}</p>
                   </div>
-                  <Link href={`/organizations/${organization.slug}`} className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-[#0756d9] no-underline hover:underline">Dossier <ArrowRight className="size-3.5" /></Link>
+                  <Link href={`/organizations/${organization.slug}`} className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-[#007f98] no-underline hover:underline">Dossier <ArrowRight className="size-3.5" /></Link>
                 </article>
               ))}
             </div>
@@ -62,7 +62,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
                   <article key={cluster.id} className="rounded-md border border-[#d0d5dd] bg-[#f8fafc] p-4">
                     <h3 className="text-sm font-bold text-[#344054]">{cluster.name}</h3>
                     <p className="mt-1 text-xs leading-5 text-[#667085]">{cluster.summary}</p>
-                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#0756d9]">{cluster.capabilityIds.length} mapped capabilities · {cluster.clusterBasis}</p>
+                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#007f98]">{cluster.capabilityIds.length} mapped capabilities · {cluster.clusterBasis}</p>
                   </article>
                 ))}
               </div>
@@ -80,7 +80,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
 function MetricCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: number }) {
   return (
     <div className="rounded-lg border border-[#d0d5dd] bg-white p-5 shadow-[0_1px_3px_rgba(16,24,40,0.04)]">
-      <div className="flex items-center justify-between text-[#0756d9]">{icon}<span className="text-2xl font-bold tracking-[-0.04em] text-[#101828]">{value}</span></div>
+      <div className="flex items-center justify-between text-[#007f98]">{icon}<span className="text-2xl font-bold tracking-[-0.04em] text-[#101828]">{value}</span></div>
       <p className="mt-3 text-xs font-semibold text-[#667085]">{label}</p>
     </div>
   );
