@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import {
+  ArrowRight,
+  BookmarkPlus,
+  Building2,
   ChevronDown,
   ChevronRight,
   CircleAlert,
@@ -16,7 +19,7 @@ import {
   SlidersHorizontal,
   X
 } from "lucide-react";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useMemo, useRef, useState } from "react";
 import { AtlasMap } from "@/components/atlas/atlas-map";
 import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
@@ -114,31 +117,42 @@ export function AtlasExplorer({
   const [filters, setFilters] = useState<AtlasQuery>(initialFilters);
   const [result, setResult] = useState(initialResult);
   const [question, setQuestion] = useState(initialFilters.query ?? "");
-  const [selectedId, setSelectedId] = useState<string | null>(initialResult.organizations[0]?.id ?? null);
-  const [expandedId, setExpandedId] = useState<string | null>(initialResult.organizations[0]?.id ?? null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("map");
   const [viewport, setViewport] = useState<{ bounds: AtlasBounds; organizationIds: string[] } | null>(null);
   const [loading, setLoading] = useState(false);
   const [discovery, setDiscovery] = useState<AtlasDiscoveryResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const tableScrollRef = useRef<HTMLDivElement | null>(null);
+  const rowRefs = useRef(new Map<string, HTMLTableRowElement>());
 
   const exportHref = useMemo(() => {
     const params = atlasQueryToSearchParams({
       ...filters,
-      bounds: viewMode === "table" ? viewport?.bounds : undefined,
+      bounds: viewport?.bounds,
       page: 1,
       pageSize: 1000
     });
     params.set("export", "atlas-results");
     return `/api/export?${params.toString()}`;
-  }, [filters, viewMode, viewport]);
+  }, [filters, viewport]);
 
   const visibleOrganizations = useMemo(() => {
     if (!viewport) return result.organizations;
     const visibleIds = new Set(viewport.organizationIds);
     return result.organizations.filter((organization) => visibleIds.has(organization.id));
   }, [result.organizations, viewport]);
+
+  const selectedOrganization = useMemo(
+    () => result.organizations.find((organization) => organization.id === selectedId) ?? null,
+    [result.organizations, selectedId]
+  );
+  const selectedCapability = useMemo(
+    () => (selectedOrganization ? relevantCapability(selectedOrganization, filters) : null),
+    [filters, selectedOrganization]
+  );
 
   async function load(nextFilters: AtlasQuery, options: { updateQuestion?: boolean } = {}) {
     setLoading(true);
@@ -151,9 +165,8 @@ export function AtlasExplorer({
       setResult(nextResult);
       setFilters({ ...nextFilters, page: 1 });
       setViewport(null);
-      const firstId = nextResult.organizations[0]?.id ?? null;
-      setSelectedId(firstId);
-      setExpandedId(firstId);
+      setSelectedId(null);
+      setExpandedId(null);
       if (options.updateQuestion) setQuestion(nextFilters.query ?? "");
       const browserParams = atlasQueryToSearchParams(nextFilters);
       window.history.replaceState(null, "", browserParams.size ? `/?${browserParams.toString()}` : "/");
@@ -191,9 +204,20 @@ export function AtlasExplorer({
     }
   }
 
-  function updateSelection(id: string) {
+  function updateSelection(id: string, revealInTable = false) {
     setSelectedId(id);
-    setExpandedId(id);
+    if (!revealInTable) return;
+    window.requestAnimationFrame(() => {
+      const container = tableScrollRef.current;
+      const row = rowRefs.current.get(id);
+      if (!container || !row) return;
+      container.scrollTo({ top: Math.max(0, row.offsetTop - 44), behavior: "smooth" });
+    });
+  }
+
+  function updateViewport(nextViewport: { bounds: AtlasBounds; organizationIds: string[] }) {
+    setViewport(nextViewport);
+    setSelectedId((current) => current && !nextViewport.organizationIds.includes(current) ? null : current);
   }
 
   const caveat = filters.demand
@@ -312,151 +336,139 @@ export function AtlasExplorer({
       ) : null}
 
       <section className="mt-4 overflow-hidden rounded-lg border border-[#d0d5dd] bg-white shadow-[0_2px_8px_rgba(16,24,40,0.04)]">
-        <div className={cn("relative h-[330px] border-b border-[#d0d5dd] sm:h-[350px]", viewMode === "table" && "hidden")}>
+        <div className={cn("relative h-[350px] border-b border-[#d0d5dd] sm:h-[390px] lg:h-[410px]", viewMode === "table" && "hidden lg:block")}>
           <AtlasMap
             organizations={result.organizations}
             selectedOrganizationId={selectedId}
-            onSelect={updateSelection}
-            onViewportChange={setViewport}
-            active={viewMode === "map"}
+            onSelect={(id) => updateSelection(id, true)}
+            onViewportChange={updateViewport}
           />
-          <div className="absolute right-3 top-3 z-[1000] flex overflow-hidden rounded-md border border-white/80 bg-white p-0.5 shadow-[0_8px_24px_rgba(16,24,40,0.16)] sm:right-4 sm:top-4">
+
+          <div className="pointer-events-none absolute left-3 top-3 z-[1000] rounded-md border border-white/80 bg-white/95 px-3 py-2 text-xs font-semibold text-[#344054] shadow-[0_6px_20px_rgba(16,24,40,0.14)] backdrop-blur sm:left-4 sm:top-4">
+            {viewport ? `${visibleOrganizations.length} ${visibleOrganizations.length === 1 ? "organization" : "organizations"} in view` : "Updating map results…"}
+          </div>
+
+          <div className="absolute right-3 top-3 z-[1000] flex overflow-hidden rounded-md border border-white/80 bg-white p-0.5 shadow-[0_8px_24px_rgba(16,24,40,0.16)] lg:hidden">
             <button
               type="button"
-              className={cn(
-                "inline-flex h-9 items-center gap-2 rounded px-3 text-xs font-semibold sm:text-sm",
-                viewMode === "map" ? "bg-[#0756d9] text-white" : "text-[#344054] hover:bg-[#f2f4f7]"
-              )}
-              onClick={() => setViewMode("map")}
-              aria-pressed={viewMode === "map"}
-              aria-label="Show map"
-            >
-              <MapIcon className="size-4" />
-              Map
-            </button>
-            <button
-              type="button"
-              className={cn(
-                "inline-flex h-9 items-center gap-2 rounded px-3 text-xs font-semibold sm:text-sm",
-                viewMode === "table" ? "bg-[#0756d9] text-white" : "text-[#344054] hover:bg-[#f2f4f7]"
-              )}
+              className="inline-flex h-9 items-center gap-2 rounded px-3 text-xs font-semibold text-[#344054] hover:bg-[#f2f4f7]"
               onClick={() => setViewMode("table")}
-              aria-pressed={viewMode === "table"}
               aria-label="Show accessible results list"
             >
               <List className="size-4" />
-              <span className="lg:hidden">List</span>
-              <span className="hidden lg:inline">Accessible table</span>
+              List
             </button>
           </div>
+
+          {selectedOrganization ? (
+            <LookbookPeek
+              organization={selectedOrganization}
+              capability={selectedCapability}
+              filters={filters}
+              onClose={() => setSelectedId(null)}
+            />
+          ) : null}
         </div>
 
-        {viewMode === "table" ? (
-          <>
-            <div className="flex flex-col gap-3 border-b border-[#d0d5dd] bg-[#f8fafc] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <h1 className="text-base font-bold tracking-[-0.01em] text-[#101828]">Organizations in the current map view</h1>
-                  <span className="text-xs text-[#667085]">
-                    {visibleOrganizations.length} {visibleOrganizations.length === 1 ? "organization" : "organizations"}
-                  </span>
-                </div>
-                <p className="mt-1 text-xs text-[#667085]">Return to the map to pan or zoom, then reopen this table to update the visible results.</p>
+        <div className={cn(viewMode === "map" && "hidden lg:block")}>
+          <div className="flex flex-col gap-3 border-b border-[#d0d5dd] bg-[#f8fafc] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h2 className="text-base font-bold tracking-[-0.01em] text-[#101828]">Organizations in this map view</h2>
+                <span className="text-xs text-[#667085]">
+                  {visibleOrganizations.length} {visibleOrganizations.length === 1 ? "organization" : "organizations"}
+                </span>
               </div>
-              <div className="flex flex-wrap items-center gap-3">
-                <Link href={exportHref} className="inline-flex items-center gap-2 text-xs font-semibold text-[#0756d9] no-underline hover:underline">
-                  <Download className="size-4" />
-                  Export visible results
-                </Link>
-                <div className="flex overflow-hidden rounded-md border border-[#d0d5dd] bg-white p-0.5 shadow-sm">
-                  <button
-                    type="button"
-                    className="inline-flex h-9 items-center gap-2 rounded px-3 text-xs font-semibold text-[#344054] hover:bg-[#f2f4f7] sm:text-sm"
-                    onClick={() => setViewMode("map")}
-                    aria-pressed={false}
-                    aria-label="Show map"
-                  >
-                    <MapIcon className="size-4" />
-                    Map
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex h-9 items-center gap-2 rounded bg-[#0756d9] px-3 text-xs font-semibold text-white sm:text-sm"
-                    aria-pressed="true"
-                    aria-label="Show accessible results list"
-                  >
-                    <List className="size-4" />
-                    <span className="sm:hidden">List</span>
-                    <span className="hidden sm:inline">Accessible table</span>
-                  </button>
-                </div>
-              </div>
+              <p className="mt-1 text-xs text-[#667085]">
+                <span className="hidden lg:inline">Pan or zoom the map to update these results. Select a row to locate it on the map.</span>
+                <span className="lg:hidden">Only organizations represented inside the last visible map area are included.</span>
+              </p>
             </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link href={exportHref} className="inline-flex items-center gap-2 text-xs font-semibold text-[#0756d9] no-underline hover:underline">
+                <Download className="size-4" />
+                Export visible results
+              </Link>
+              <button
+                type="button"
+                className="inline-flex h-9 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-3 text-xs font-semibold text-[#344054] shadow-sm hover:bg-[#f2f4f7] lg:hidden"
+                onClick={() => setViewMode("map")}
+                aria-label="Return to map"
+              >
+                <MapIcon className="size-4" />
+                Map
+              </button>
+            </div>
+          </div>
 
-            {visibleOrganizations.length ? (
-              <>
-                <ul className="divide-y divide-[#eaecf0] lg:hidden" aria-label="Organizations in the current map view">
-                  {visibleOrganizations.map((organization) => (
-                    <MobileOrganizationCard
-                      key={organization.id}
-                      organization={organization}
-                      capability={relevantCapability(organization, filters)}
-                      filters={filters}
-                      expanded={expandedId === organization.id}
-                      selected={selectedId === organization.id}
-                      onToggle={() => {
-                        setSelectedId(organization.id);
-                        setExpandedId((current) => (current === organization.id ? null : organization.id));
-                      }}
-                    />
-                  ))}
-                </ul>
-                <div className="hidden overflow-x-auto lg:block">
-                  <table className="w-full min-w-[960px] border-collapse text-left" aria-label="Organizations in the current map view">
-                    <thead>
-                      <tr className="border-b border-[#eaecf0] bg-[#fcfcfd] text-[11px] font-semibold text-[#475467]">
-                        <th scope="col" className="w-10 px-3 py-2.5"><span className="sr-only">Expand</span></th>
-                        <th scope="col" className="px-2 py-2.5">Organization</th>
-                        <th scope="col" className="px-3 py-2.5">Capability</th>
-                        <th scope="col" className="px-3 py-2.5">Region</th>
-                        <th scope="col" className="px-3 py-2.5">Reviewed fit</th>
-                        <th scope="col" className="px-3 py-2.5">Evidence</th>
-                        <th scope="col" className="px-3 py-2.5">Freshness</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {visibleOrganizations.map((organization) => (
-                        <OrganizationRows
-                          key={organization.id}
-                          organization={organization}
-                          capability={relevantCapability(organization, filters)}
-                          filters={filters}
-                          expanded={expandedId === organization.id}
-                          selected={selectedId === organization.id}
-                          onToggle={() => {
-                            setSelectedId(organization.id);
-                            setExpandedId((current) => (current === organization.id ? null : organization.id));
-                          }}
-                        />
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </>
-            ) : (
-              <div className="px-6 py-14 text-center">
-                <Filter className="mx-auto size-7 text-[#98a2b3]" />
-                <h2 className="mt-4 text-base font-semibold text-[#101828]">No organizations are visible in this map area</h2>
-                <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[#667085]">
-                  Return to the map and pan or zoom out. The table intentionally includes only markers inside the last visible bounds.
-                </p>
-                <button type="button" className="mt-5 text-sm font-semibold text-[#0756d9] hover:underline" onClick={() => setViewMode("map")}>
-                  Return to map
-                </button>
+          {visibleOrganizations.length ? (
+            <>
+              <ul className="divide-y divide-[#eaecf0] lg:hidden" aria-label="Organizations in the current map view">
+                {visibleOrganizations.map((organization) => (
+                  <MobileOrganizationCard
+                    key={organization.id}
+                    organization={organization}
+                    capability={relevantCapability(organization, filters)}
+                    filters={filters}
+                    expanded={expandedId === organization.id}
+                    selected={selectedId === organization.id}
+                    onToggle={() => {
+                      setSelectedId(organization.id);
+                      setExpandedId((current) => (current === organization.id ? null : organization.id));
+                    }}
+                  />
+                ))}
+              </ul>
+              <div ref={tableScrollRef} className="hidden max-h-[540px] overflow-auto lg:block">
+                <table className="w-full min-w-[960px] border-collapse text-left" aria-label="Organizations in the current map view">
+                  <thead className="sticky top-0 z-10">
+                    <tr className="border-b border-[#eaecf0] bg-[#fcfcfd] text-[11px] font-semibold text-[#475467] shadow-[0_1px_0_#eaecf0]">
+                      <th scope="col" className="w-10 px-3 py-2.5"><span className="sr-only">Expand</span></th>
+                      <th scope="col" className="px-2 py-2.5">Organization</th>
+                      <th scope="col" className="px-3 py-2.5">Capability</th>
+                      <th scope="col" className="px-3 py-2.5">Region</th>
+                      <th scope="col" className="px-3 py-2.5">Reviewed fit</th>
+                      <th scope="col" className="px-3 py-2.5">Evidence</th>
+                      <th scope="col" className="px-3 py-2.5">Freshness</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {visibleOrganizations.map((organization) => (
+                      <OrganizationRows
+                        key={organization.id}
+                        organization={organization}
+                        capability={relevantCapability(organization, filters)}
+                        filters={filters}
+                        expanded={expandedId === organization.id}
+                        selected={selectedId === organization.id}
+                        rowRef={(node) => {
+                          if (node) rowRefs.current.set(organization.id, node);
+                          else rowRefs.current.delete(organization.id);
+                        }}
+                        onSelect={() => updateSelection(organization.id)}
+                        onToggleExpanded={() => {
+                          setSelectedId(organization.id);
+                          setExpandedId((current) => (current === organization.id ? null : organization.id));
+                        }}
+                      />
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            )}
-          </>
-        ) : null}
+            </>
+          ) : (
+            <div className="px-6 py-14 text-center">
+              <Filter className="mx-auto size-7 text-[#98a2b3]" />
+              <h2 className="mt-4 text-base font-semibold text-[#101828]">No organizations are visible in this map area</h2>
+              <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[#667085]">
+                Return to the map and pan or zoom out. Results intentionally include only organizations inside the visible bounds.
+              </p>
+              <button type="button" className="mt-5 text-sm font-semibold text-[#0756d9] hover:underline lg:hidden" onClick={() => setViewMode("map")}>
+                Return to map
+              </button>
+            </div>
+          )}
+        </div>
       </section>
 
       <footer className="flex flex-col gap-2 px-0 py-5 text-xs text-[#667085] sm:flex-row sm:items-center sm:justify-between">
@@ -464,6 +476,107 @@ export function AtlasExplorer({
         <Link href="/help/concepts" className="font-medium text-[#0756d9] no-underline hover:underline">About evidence and derived reads</Link>
       </footer>
     </div>
+  );
+}
+
+function LookbookPeek({
+  organization,
+  capability,
+  filters,
+  onClose
+}: {
+  organization: AtlasOrganization;
+  capability: AtlasCapability | null;
+  filters: AtlasQuery;
+  onClose: () => void;
+}) {
+  const evidence = rowEvidence(organization, capability);
+  const alignment = selectedAlignment(capability, filters);
+  const confidence = alignment?.confidence ?? capability?.sourceConfidence ?? organization.sourceConfidence;
+  const summary = alignment?.alignmentSummary ?? capability?.summary ?? organization.description;
+  const location = organization.primaryLocation;
+  const freshness = organization.freshnessStatus === "current"
+    ? "Current"
+    : organization.freshnessStatus === "review_due"
+      ? "Review due"
+      : "Stale";
+
+  return (
+    <aside
+      className="absolute inset-x-3 bottom-3 z-[1001] max-h-[276px] overflow-y-auto rounded-lg border border-white/90 bg-white/97 p-4 shadow-[0_18px_44px_rgba(16,24,40,0.24)] backdrop-blur sm:inset-x-auto sm:right-4 sm:top-4 sm:bottom-auto sm:max-h-[378px] sm:w-[350px]"
+      aria-label={`Selected organization: ${organization.name}`}
+      aria-live="polite"
+    >
+      <div className="flex items-start gap-3">
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#eff6ff] text-[#0756d9] ring-1 ring-[#b2ccff]" aria-hidden="true">
+          <Building2 className="size-5" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-bold text-[#101828]">{organization.name}</p>
+          <p className="mt-0.5 truncate text-[11px] text-[#667085]">
+            {toTitleCase(organization.entityKind)}{location ? ` · ${location.name}` : ""}
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          className="flex size-8 shrink-0 items-center justify-center rounded-md text-[#667085] hover:bg-[#f2f4f7] hover:text-[#101828] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0756d9]"
+          aria-label={`Close ${organization.name} preview`}
+        >
+          <X className="size-4" />
+        </button>
+      </div>
+
+      <div className="mt-3 rounded-md border border-[#e4e7ec] bg-[#f8fafc] p-3">
+        <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#667085]">
+          {alignment ? "Reviewed alignment" : "Reviewed capability"}
+        </p>
+        <p className="mt-1 text-xs font-semibold leading-5 text-[#344054]">{capability?.name ?? "Organization profile"}</p>
+        <p className="mt-1 line-clamp-3 text-[11px] leading-[1.1rem] text-[#667085]">{summary}</p>
+      </div>
+
+      <div className="mt-3 flex flex-wrap gap-1.5 text-[10px] font-semibold">
+        <span className={cn(
+          "rounded px-2 py-1",
+          confidence === "high" ? "bg-[#dcfae6] text-[#067647]" : confidence === "moderate" ? "bg-[#fff1d6] text-[#7a2e0e]" : "bg-[#fee4e2] text-[#b42318]"
+        )}>{confidenceLabel(confidence)} confidence</span>
+        <span className="rounded bg-[#f2f4f7] px-2 py-1 text-[#475467]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
+        <span className={cn(
+          "rounded px-2 py-1",
+          organization.freshnessStatus === "current" ? "bg-[#eaf2ff] text-[#0756d9]" : "bg-[#fff1d6] text-[#7a2e0e]"
+        )}>{freshness}</span>
+      </div>
+
+      <div className="mt-4 grid grid-cols-2 gap-2">
+        <Link
+          href={`/organizations/${organization.slug}`}
+          className="col-span-2 inline-flex h-9 items-center justify-center gap-2 rounded-md bg-[#0756d9] px-3 text-xs font-semibold text-white no-underline hover:bg-[#0649b9] hover:no-underline"
+        >
+          Open lookbook
+          <ArrowRight className="size-3.5" />
+        </Link>
+        <Link
+          href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent("/")}`}
+          className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border border-[#d0d5dd] bg-white px-2 text-[11px] font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline"
+        >
+          <BookmarkPlus className="size-3.5" />
+          Save
+        </Link>
+        {evidence[0] ? (
+          <a
+            href={evidence[0].sourceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border border-[#d0d5dd] bg-white px-2 text-[11px] font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline"
+          >
+            Evidence
+            <ExternalLink className="size-3.5" />
+          </a>
+        ) : (
+          <span className="inline-flex h-9 items-center justify-center rounded-md bg-[#f2f4f7] px-2 text-[11px] font-semibold text-[#98a2b3]">No public link</span>
+        )}
+      </div>
+    </aside>
   );
 }
 
@@ -590,14 +703,18 @@ function OrganizationRows({
   filters,
   expanded,
   selected,
-  onToggle
+  rowRef,
+  onSelect,
+  onToggleExpanded
 }: {
   organization: AtlasOrganization;
   capability: AtlasCapability | null;
   filters: AtlasQuery;
   expanded: boolean;
   selected: boolean;
-  onToggle: () => void;
+  rowRef: (node: HTMLTableRowElement | null) => void;
+  onSelect: () => void;
+  onToggleExpanded: () => void;
 }) {
   const evidence = rowEvidence(organization, capability);
   const alignment = selectedAlignment(capability, filters);
@@ -607,15 +724,32 @@ function OrganizationRows({
   return (
     <>
       <tr
+        ref={rowRef}
         className={cn(
-          "cursor-pointer border-b border-[#eaecf0] bg-white text-xs text-[#344054] hover:bg-[#f8fbff]",
+          "cursor-pointer border-b border-[#eaecf0] bg-white text-xs text-[#344054] outline-none hover:bg-[#f8fbff] focus-visible:bg-[#f8fbff] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0756d9]",
           selected && "bg-[#f8fbff]",
           expanded && "border-x border-x-[#2e72e8] border-t border-t-[#2e72e8]"
         )}
-        onClick={onToggle}
+        onClick={onSelect}
+        onKeyDown={(event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          onSelect();
+        }}
+        tabIndex={0}
+        aria-selected={selected}
       >
         <td className="px-3 py-3 align-middle">
-          <button type="button" className="flex size-6 items-center justify-center rounded text-[#344054] hover:bg-[#eaf2ff]" aria-expanded={expanded} aria-label={`${expanded ? "Collapse" : "Expand"} ${organization.name}`}>
+          <button
+            type="button"
+            className="flex size-6 items-center justify-center rounded text-[#344054] hover:bg-[#eaf2ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0756d9]"
+            aria-expanded={expanded}
+            aria-label={`${expanded ? "Collapse" : "Expand"} ${organization.name}`}
+            onClick={(event) => {
+              event.stopPropagation();
+              onToggleExpanded();
+            }}
+          >
             {expanded ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}
           </button>
         </td>

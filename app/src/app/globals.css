@@ -106,6 +106,29 @@ body {
   font-size: 9px;
 }
 
+.atlas-page .atlas-marker-label .maplibregl-popup-content {
+  min-width: 150px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #344054;
+  font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.16);
+}
+
+.atlas-page .atlas-marker-label .maplibregl-popup-content strong,
+.atlas-page .atlas-marker-label .maplibregl-popup-content span {
+  display: block;
+}
+
+.atlas-page .atlas-marker-label .maplibregl-popup-content span {
+  margin-top: 2px;
+  color: #667085;
+  text-transform: capitalize;
+}
+
 .atlas-page .leaflet-control-attribution {
   color: #667085;
   font-size: 9px;
@@ -134,33 +157,35 @@ body {
   }
 }
 
-a {
-  color: inherit;
-  cursor: pointer;
-  text-decoration: none;
-  text-underline-offset: 0.18em;
-  transition:
-    color 160ms ease,
-    text-decoration-color 160ms ease,
-    box-shadow 160ms ease,
-    border-color 160ms ease,
-    transform 160ms ease;
-}
+@layer base {
+  a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    text-underline-offset: 0.18em;
+    transition:
+      color 160ms ease,
+      text-decoration-color 160ms ease,
+      box-shadow 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
 
-a:not([class]) {
-  color: var(--link);
-}
+  a:not([class]) {
+    color: var(--link);
+  }
 
-a:hover {
-  text-decoration: underline;
-}
+  a:hover {
+    text-decoration: underline;
+  }
 
-a:not([class]):hover {
-  color: var(--link-hover);
-}
+  a:not([class]):hover {
+    color: var(--link-hover);
+  }
 
-a.no-underline:hover {
-  text-decoration: none;
+  a.no-underline:hover {
+    text-decoration: none;
+  }
 }
 
 button,

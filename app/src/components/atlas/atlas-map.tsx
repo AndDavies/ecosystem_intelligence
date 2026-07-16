@@ -76,7 +76,8 @@ function featureCollection(organizations: AtlasOrganization[]) {
             id: organization.id,
             slug: organization.slug,
             name: organization.name,
-            location: location.name
+            location: location.name,
+            entityKind: organization.entityKind
           }
         }
       ];
@@ -97,20 +98,20 @@ export function AtlasMap({
   organizations,
   selectedOrganizationId,
   onSelect,
-  onViewportChange,
-  active = true
+  onViewportChange
 }: {
   organizations: AtlasOrganization[];
   selectedOrganizationId: string | null;
   onSelect: (organizationId: string) => void;
   onViewportChange: (viewport: { bounds: AtlasBounds; organizationIds: string[] }) => void;
-  active?: boolean;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const leafletMapRef = useRef<import("leaflet").Map | null>(null);
   const leafletLayerRef = useRef<import("leaflet").LayerGroup | null>(null);
   const leafletModuleRef = useRef<typeof import("leaflet") | null>(null);
+  const hoverPopupRef = useRef<maplibregl.Popup | null>(null);
+  const viewportTimerRef = useRef<number | null>(null);
   const onSelectRef = useRef(onSelect);
   const onViewportChangeRef = useRef(onViewportChange);
   const organizationsRef = useRef(organizations);
@@ -143,6 +144,16 @@ export function AtlasMap({
     onViewportChangeRef.current({ bounds, organizationIds: organizationIdsInBounds(organizationsRef.current, bounds) });
   }
 
+  function scheduleLeafletViewport(delay = 180) {
+    if (viewportTimerRef.current !== null) window.clearTimeout(viewportTimerRef.current);
+    viewportTimerRef.current = window.setTimeout(() => publishLeafletViewport(), delay);
+  }
+
+  function scheduleMapLibreViewport(map: MapLibreMap, delay = 180) {
+    if (viewportTimerRef.current !== null) window.clearTimeout(viewportTimerRef.current);
+    viewportTimerRef.current = window.setTimeout(() => publishMapLibreViewport(map), delay);
+  }
+
   function drawLeafletPoints() {
     const L = leafletModuleRef.current;
     const layer = leafletLayerRef.current;
@@ -152,6 +163,14 @@ export function AtlasMap({
       const location = organization.primaryLocation;
       if (location?.latitude === null || location?.latitude === undefined || location.longitude === null || location.longitude === undefined) return;
       const selected = selectedIdRef.current === organization.id;
+      const tooltip = document.createElement("div");
+      const tooltipName = document.createElement("strong");
+      const tooltipMeta = document.createElement("span");
+      tooltipName.textContent = organization.name;
+      tooltipMeta.textContent = `${organization.entityKind.replaceAll("_", " ")} · ${location.name}`;
+      tooltipMeta.className = "block text-[11px] capitalize";
+      tooltip.append(tooltipName, tooltipMeta);
+
       L.circleMarker([location.latitude, location.longitude], {
         radius: selected ? 10 : 8,
         color: "#ffffff",
@@ -159,7 +178,7 @@ export function AtlasMap({
         fillColor: selected ? "#f79009" : "#0756d9",
         fillOpacity: 0.96
       })
-        .bindTooltip(`<strong>${organization.name}</strong><br>${location.name}`, { direction: "top" })
+        .bindTooltip(tooltip, { direction: "top" })
         .on("click", () => onSelectRef.current(organization.id))
         .addTo(layer);
     });
@@ -248,15 +267,17 @@ export function AtlasMap({
       module.control.zoom({ position: "bottomright" }).addTo(map);
       leafletMapRef.current = map;
       leafletLayerRef.current = module.layerGroup().addTo(map);
-      map.on("moveend", publishLeafletViewport);
+      map.on("moveend", () => scheduleLeafletViewport());
       drawLeafletPoints();
       frameLeafletResults();
+      window.requestAnimationFrame(() => scheduleLeafletViewport(0));
     }
 
     if (!supportsMapLibre()) {
       void initializeLeafletFallback();
       return () => {
         cancelled = true;
+        if (viewportTimerRef.current !== null) window.clearTimeout(viewportTimerRef.current);
         leafletMapRef.current?.remove();
         leafletMapRef.current = null;
         leafletLayerRef.current = null;
@@ -283,6 +304,7 @@ export function AtlasMap({
       void initializeLeafletFallback();
       return () => {
         cancelled = true;
+        if (viewportTimerRef.current !== null) window.clearTimeout(viewportTimerRef.current);
         leafletMapRef.current?.remove();
         leafletMapRef.current = null;
         leafletLayerRef.current = null;
@@ -355,25 +377,58 @@ export function AtlasMap({
 
       map.on("click", "organization-points", (event) => {
         const id = String(event.features?.[0]?.properties?.id ?? "");
-        if (id) onSelectRef.current(id);
+        if (!id) return;
+        hoverPopupRef.current?.remove();
+        hoverPopupRef.current = null;
+        onSelectRef.current(id);
       });
 
-      ["organization-clusters", "organization-points"].forEach((layer) => {
-        map.on("mouseenter", layer, () => {
-          map.getCanvas().style.cursor = "pointer";
-        });
-        map.on("mouseleave", layer, () => {
-          map.getCanvas().style.cursor = "";
-        });
+      map.on("mouseenter", "organization-points", (event) => {
+        map.getCanvas().style.cursor = "pointer";
+        const feature = event.features?.[0];
+        if (feature?.geometry.type !== "Point") return;
+        const name = String(feature.properties?.name ?? "Organization");
+        const entityKind = String(feature.properties?.entityKind ?? "organization").replaceAll("_", " ");
+        const location = String(feature.properties?.location ?? "Location under review");
+        const label = document.createElement("div");
+        const labelName = document.createElement("strong");
+        const labelMeta = document.createElement("span");
+        labelName.textContent = name;
+        labelMeta.textContent = `${entityKind} · ${location}`;
+        label.append(labelName, labelMeta);
+        hoverPopupRef.current?.remove();
+        hoverPopupRef.current = new maplibregl.Popup({
+          closeButton: false,
+          closeOnClick: false,
+          offset: 14,
+          className: "atlas-marker-label"
+        })
+          .setLngLat(feature.geometry.coordinates as [number, number])
+          .setDOMContent(label)
+          .addTo(map);
+      });
+      map.on("mouseleave", "organization-points", () => {
+        map.getCanvas().style.cursor = "";
+        hoverPopupRef.current?.remove();
+        hoverPopupRef.current = null;
+      });
+      map.on("mouseenter", "organization-clusters", () => {
+        map.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", "organization-clusters", () => {
+        map.getCanvas().style.cursor = "";
       });
 
-      publishMapLibreViewport(map);
+      map.once("idle", () => publishMapLibreViewport(map));
     });
-    map.on("moveend", () => publishMapLibreViewport(map));
+    map.on("moveend", () => scheduleMapLibreViewport(map));
 
     mapRef.current = map;
     return () => {
       cancelled = true;
+      if (viewportTimerRef.current !== null) window.clearTimeout(viewportTimerRef.current);
+      hoverPopupRef.current?.remove();
+      hoverPopupRef.current = null;
       map.remove();
       mapRef.current = null;
       leafletMapRef.current?.remove();
@@ -393,13 +448,19 @@ export function AtlasMap({
     const source = map.getSource(sourceId) as GeoJSONSource | undefined;
     source?.setData(featureCollection(organizations));
     frameMapLibreResults(map);
+    map.once("idle", () => publishMapLibreViewport(map));
   }, [organizations]);
 
   useEffect(() => {
-    if (!active) return;
-    mapRef.current?.resize();
-    leafletMapRef.current?.invalidateSize({ animate: false });
-  }, [active]);
+    const container = containerRef.current;
+    if (!container || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(() => {
+      mapRef.current?.resize();
+      leafletMapRef.current?.invalidateSize({ animate: false });
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     drawLeafletPoints();
@@ -417,6 +478,20 @@ export function AtlasMap({
       10,
       8
     ]);
+
+    if (!selectedOrganizationId) return;
+    const selected = organizationsRef.current.find((organization) => organization.id === selectedOrganizationId);
+    const location = selected?.primaryLocation;
+    if (location?.longitude === null || location?.longitude === undefined || location.latitude === null || location.latitude === undefined) return;
+    map.easeTo({ center: [location.longitude, location.latitude], duration: 300 });
+  }, [selectedOrganizationId]);
+
+  useEffect(() => {
+    if (!selectedOrganizationId) return;
+    const selected = organizationsRef.current.find((organization) => organization.id === selectedOrganizationId);
+    const location = selected?.primaryLocation;
+    if (location?.longitude === null || location?.longitude === undefined || location.latitude === null || location.latitude === undefined) return;
+    leafletMapRef.current?.panTo([location.latitude, location.longitude], { animate: true, duration: 0.3 });
   }, [selectedOrganizationId]);
 
   return (
@@ -424,7 +499,7 @@ export function AtlasMap({
       ref={containerRef}
       className="h-full min-h-[290px] w-full bg-[#dcefff] sm:min-h-[330px] lg:min-h-[350px]"
       role="region"
-      aria-label={`Map showing ${organizations.length} published organizations. Use the accessible table for complete results.`}
+      aria-label={`Map showing ${organizations.length} published organizations. The synchronized results list provides the same organizations without requiring the map.`}
     />
   );
 }

@@ -59,10 +59,17 @@ Unsupported values remain null and are omitted in the UI. The product must never
 ### Map and table are equivalent
 
 Every map result has an accessible list/table equivalent. The map is the
-default atlas surface; selecting the accessible table replaces the map rather
-than placing a large national table permanently below it. The table contains
-only organizations inside the last visible map bounds. Filters, visible-result
-counts, exports, and URL state remain synchronized.
+default atlas surface. On desktop and tablet, a bounded evidence table remains
+visible directly below the map so spatial orientation and comparable records
+can be used together. On mobile, the same information uses a map/list toggle.
+The table contains only organizations inside the visible map bounds, including
+organizations represented by a visible cluster. Filters, visible-result counts,
+exports, selection state, and URL state remain synchronized.
+
+Selecting a marker or table row opens one compact organization preview with a
+reviewed capability, evidence count, confidence, freshness, and explicit actions
+to open the full dossier, save it, or inspect evidence. Marker selection never
+publishes, infers, or invents additional facts.
 
 ### Human publication boundary
 
@@ -87,17 +94,18 @@ Automated research can create leads and candidate changes. Only an explicit huma
 ## Discovery experience
 
 The selected visual direction is a bright public intelligence atlas with a
-map-first discovery surface and a user-selected accessible evidence table.
+map-first discovery surface and a synchronized accessible evidence table.
 
 The first view must:
 
 - make the search field and current filters obvious
 - show published counts rather than market-size claims
 - keep the map useful for orientation without making it the only navigation surface
-- let a user switch to a bounded table containing only the entities that were visible in the map viewport
+- keep a bounded table visible below the map on desktop and tablet, containing only entities represented inside the map viewport
+- synchronize marker selection, table-row selection, and a compact lookbook preview
 - let a user expand a table row to see the current rationale, evidence links, confidence, and map precision
 - progressively disclose demand and evidence detail after a relevant filter or selection
-- work on mobile through the same map/table toggle, with the table as the complete accessible result set for the current viewport
+- work on mobile through a map/list toggle, with the list as the complete accessible result set for the current viewport
 
 Natural-language discovery may only:
 
