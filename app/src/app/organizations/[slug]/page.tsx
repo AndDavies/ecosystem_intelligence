@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { BookmarkPlus, Building2, Download, ExternalLink, FileCheck2, MapPin, ShieldCheck } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
-import { assessmentConfidenceLabel, evidenceStrengthLabel, locationAccuracyLabel } from "@/lib/atlas/presentation";
+import { assessmentConfidenceLabel, evidenceStrengthLabel, locationAccuracyLabel, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
 import { formatDate, toTitleCase } from "@/lib/utils";
 
@@ -148,7 +148,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             ) : <EmptyCoverage title="Demand relevance not assessed yet" detail="No public-demand assessment has been published for this organization. This is a coverage gap, not a negative assessment." />}
           </PublicCard>
 
-          <PublicCard title="Sources" eyebrow={`${new Set(citations.map((citation) => citation.sourceUrl)).size} public sources`}>
+          <PublicCard title="Sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
             <EvidenceList citations={citations} />
           </PublicCard>
         </div>

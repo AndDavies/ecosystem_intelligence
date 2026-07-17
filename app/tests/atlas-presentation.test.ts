@@ -4,7 +4,8 @@ import {
   alignmentTypeLabel,
   assessmentConfidenceLabel,
   evidenceStrengthLabel,
-  locationAccuracyLabel
+  locationAccuracyLabel,
+  publicSourceCountLabel
 } from "@/lib/atlas/presentation";
 
 describe("public atlas terminology", () => {
@@ -25,5 +26,10 @@ describe("public atlas terminology", () => {
   it("names the subject of mission and demand assessments", () => {
     expect(alignmentSubject({ missionArea: { name: "Underwater ISR" } } as never)).toBe("Underwater ISR");
     expect(alignmentSubject({ demandTitle: "Contested logistics" } as never)).toBe("Contested logistics");
+  });
+
+  it("formats public source counts", () => {
+    expect(publicSourceCountLabel(1)).toBe("1 public source");
+    expect(publicSourceCountLabel(2)).toBe("2 public sources");
   });
 });

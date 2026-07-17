@@ -32,3 +32,7 @@ export function locationAccuracyLabel(confidence: AtlasLocation["geographicConfi
   if (confidence === "regional") return "Region-level";
   return "Not verified";
 }
+
+export function publicSourceCountLabel(count: number) {
+  return `${count} public ${count === 1 ? "source" : "sources"}`;
+}

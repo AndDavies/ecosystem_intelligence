@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { requestRefresh } from "@/lib/actions/review";
-import { assessmentConfidenceLabel, evidenceStrengthLabel } from "@/lib/atlas/presentation";
+import { assessmentConfidenceLabel, evidenceStrengthLabel, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { requireProfile } from "@/lib/auth";
 import { getCapabilityById } from "@/lib/data/repository";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
@@ -501,7 +501,7 @@ function PublicCapabilityPage({
             <p className="mt-2 text-xs leading-5 text-[#667085]">{organization.description}</p>
             <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex text-xs font-semibold text-[#007f98] no-underline hover:underline">View organization profile</Link>
           </PublicCard>
-          <PublicCard title="Sources" eyebrow={`${new Set(citations.map((citation) => citation.sourceUrl)).size} public sources`}>
+          <PublicCard title="Sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
             <EvidenceList citations={citations} />
           </PublicCard>
           <PublicCard title="Data quality" eyebrow="Profile verification">
