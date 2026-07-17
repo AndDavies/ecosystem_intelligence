@@ -6,11 +6,10 @@ import { privateJson, requestFingerprint } from "@/lib/pilot/server";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  if (!hasSupabaseAdminEnv()) return privateJson({ error: "Public-beta feedback is not configured." }, { status: 503 });
-
   const parsed = pilotFeedbackSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return privateJson({ error: "Please describe what you tried and what was missing." }, { status: 400 });
   if (parsed.data.website) return privateJson({ ok: true }, { status: 202 });
+  if (!hasSupabaseAdminEnv()) return privateJson({ error: "Public-beta feedback is not configured." }, { status: 503 });
 
   const supabase = createAdminClient();
   const fingerprint = requestFingerprint(request);

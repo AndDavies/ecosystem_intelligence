@@ -7,11 +7,10 @@ import { privateJson, requestFingerprint } from "@/lib/pilot/server";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  if (!hasSupabaseAdminEnv()) return privateJson({ error: "Update signup is not configured." }, { status: 503 });
-
   const parsed = pilotSignupSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return privateJson({ error: "Please provide a valid email address and consent." }, { status: 400 });
   if (parsed.data.website) return privateJson({ ok: true }, { status: 202 });
+  if (!hasSupabaseAdminEnv()) return privateJson({ error: "Update signup is not configured." }, { status: 503 });
 
   const supabase = createAdminClient();
   const { error } = await supabase.from("pilot_update_signups").upsert({

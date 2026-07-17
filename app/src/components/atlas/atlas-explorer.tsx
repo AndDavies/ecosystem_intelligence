@@ -57,7 +57,7 @@ const AtlasMap = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex min-h-[520px] items-center justify-center rounded-[28px] bg-[#eaf3f3] text-sm font-semibold text-[#385466]">
+      <div className="flex h-full min-h-[350px] w-full items-center justify-center bg-[#eaf3f3] text-sm font-semibold text-[#385466]">
         Loading the interactive map…
       </div>
     )
