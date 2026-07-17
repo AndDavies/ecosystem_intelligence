@@ -1,15 +1,12 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { CheckCircle2, LockKeyhole } from "lucide-react";
+import { CheckCircle2, LockKeyhole, Mail } from "lucide-react";
+import { AuthSubmitButton } from "@/components/auth/auth-submit-button";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
-import { signInWithGoogle } from "@/lib/actions/auth";
+import { sendEmailSignInLink, signInWithGoogle } from "@/lib/actions/auth";
 import { getAtlasUser } from "@/lib/atlas/auth";
+import { safeAuthNextPath } from "@/lib/auth-utils";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
-
-function safeNext(value: string | undefined) {
-  if (!value || !value.startsWith("/") || value.startsWith("//")) return "/collections";
-  return value;
-}
 
 export const metadata = {
   title: "Sign in",
@@ -19,10 +16,10 @@ export const metadata = {
 export default async function SignInPage({
   searchParams
 }: {
-  searchParams: Promise<{ error?: string; next?: string }>;
+  searchParams: Promise<{ error?: string; next?: string; success?: string }>;
 }) {
   const params = await searchParams;
-  const next = safeNext(params.next);
+  const next = safeAuthNextPath(params.next);
   const user = await getAtlasUser();
   if (user) redirect(next);
   const configured = hasSupabasePublicEnv();
@@ -45,19 +42,37 @@ export default async function SignInPage({
         </section>
 
         <section className="rounded-xl border border-[#d0d5dd] bg-white p-6 shadow-[0_12px_34px_rgba(16,24,40,0.08)] sm:p-8">
-          <div className="flex size-10 items-center justify-center rounded-md bg-white ring-1 ring-[#d0d5dd]" aria-hidden="true">
-            <span className="text-lg font-bold text-[#4285f4]">G</span>
+          <div className="flex size-10 items-center justify-center rounded-md bg-[#e7f8fa] text-[#007f98]" aria-hidden="true">
+            <LockKeyhole className="size-5" />
           </div>
-          <h2 className="mt-5 text-xl font-bold tracking-[-0.02em]">Continue with Google</h2>
-          <p className="mt-2 text-sm leading-6 text-[#667085]">Google provides your verified email. Ecosystem Intelligence never receives your Google password.</p>
+          <h2 className="mt-5 text-xl font-bold tracking-[-0.02em]">Sign in or create an account</h2>
+          <p className="mt-2 text-sm leading-6 text-[#667085]">Use Google or any personal or work email. No password is required.</p>
           {params.error ? <div className="mt-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{params.error}</div> : null}
+          {params.success ? <div className="mt-5 rounded-md border border-[#a6f4c5] bg-[#ecfdf3] px-3 py-2 text-sm text-[#027a48]">{params.success}</div> : null}
           {!configured ? <div className="mt-5 rounded-md border border-[#fedf89] bg-[#fffaeb] px-3 py-2 text-sm leading-5 text-[#7a2e0e]">Hosted sign-in is temporarily unavailable. Public browsing remains fully usable.</div> : null}
+
           <form action={signInWithGoogle} className="mt-6">
             <input type="hidden" name="next" value={next} />
-            <button type="submit" className="inline-flex h-11 w-full items-center justify-center gap-3 rounded-md border border-[#b8c8ce] bg-white px-4 text-sm font-semibold text-[#1d2939] hover:bg-[#f8fafc] disabled:cursor-not-allowed disabled:opacity-50" disabled={!configured}>
-              <span className="text-base font-bold text-[#4285f4]">G</span>
+            <AuthSubmitButton pendingLabel="Redirecting to Google…" disabled={!configured} className="border border-[#b8c8ce] bg-white text-[#1d2939] hover:bg-[#f8fafc]">
+              <span className="text-base font-bold text-[#4285f4]" aria-hidden="true">G</span>
               Continue with Google
-            </button>
+            </AuthSubmitButton>
+          </form>
+
+          <div className="my-5 flex items-center gap-3" aria-hidden="true"><span className="h-px flex-1 bg-[#eaecf0]" /><span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#98a2b3]">or</span><span className="h-px flex-1 bg-[#eaecf0]" /></div>
+
+          <form action={sendEmailSignInLink} className="space-y-4">
+            <input type="hidden" name="next" value={next} />
+            <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">
+              Email address
+              <div className="relative">
+                <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#98a2b3]" aria-hidden="true" />
+                <input name="email" required type="email" autoComplete="email" maxLength={320} placeholder="you@company.ca" className="h-11 w-full rounded-md border border-[#d0d5dd] pl-10 pr-3 text-sm font-normal outline-none focus:border-[#007f98] focus:ring-4 focus:ring-[#007f98]/10" />
+              </div>
+            </label>
+            <AuthSubmitButton pendingLabel="Sending secure link…" disabled={!configured} className="bg-[#101047] text-white hover:bg-[#191967]">
+              Email me a secure sign-in link
+            </AuthSubmitButton>
           </form>
           <p className="mt-4 text-center text-[11px] leading-5 text-[#667085]">By continuing, you agree to the <Link href="/terms" className="underline">Terms</Link> and acknowledge the <Link href="/privacy" className="underline">Privacy notice</Link>.</p>
         </section>

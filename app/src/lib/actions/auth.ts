@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { safeAuthNextPath } from "@/lib/auth-utils";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 import { createClient } from "@/lib/supabase/server";
@@ -17,8 +18,8 @@ const createUserSchema = signInSchema.extend({
   confirmPassword: z.string().min(8)
 });
 
-const magicLinkSchema = z.object({
-  email: z.string().email(),
+const emailLinkSchema = z.object({
+  email: z.string().trim().toLowerCase().email().max(320),
   next: z.string().trim().optional()
 });
 
@@ -26,17 +27,12 @@ function redirectWithMessage(path: string, key: "error" | "success", message: st
   redirect(`${path}${path.includes("?") ? "&" : "?"}${key}=${encodeURIComponent(message)}`);
 }
 
-function safeNextPath(value: string | undefined) {
-  if (!value || !value.startsWith("/") || value.startsWith("//")) return "/collections";
-  return value;
-}
-
 export async function signInWithGoogle(formData: FormData) {
   if (!hasSupabasePublicEnv()) {
     redirectWithMessage("/sign-in", "error", "Hosted sign-in has not been configured yet.");
   }
 
-  const next = safeNextPath(String(formData.get("next") ?? "").trim() || undefined);
+  const next = safeAuthNextPath(String(formData.get("next") ?? "").trim() || undefined);
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
   const supabase = await createClient({ writeCookies: true });
   const { data, error } = await supabase.auth.signInWithOAuth({
@@ -54,12 +50,12 @@ export async function signInWithGoogle(formData: FormData) {
   redirect(data.url!);
 }
 
-export async function sendMagicLink(formData: FormData) {
+export async function sendEmailSignInLink(formData: FormData) {
   if (!hasSupabasePublicEnv()) {
     redirectWithMessage("/sign-in", "error", "Hosted sign-in has not been configured yet.");
   }
 
-  const parsed = magicLinkSchema.safeParse({
+  const parsed = emailLinkSchema.safeParse({
     email: String(formData.get("email") ?? "").trim(),
     next: String(formData.get("next") ?? "").trim() || undefined
   });
@@ -68,24 +64,25 @@ export async function sendMagicLink(formData: FormData) {
     redirectWithMessage("/sign-in", "error", "Enter a valid email address.");
   }
 
-  const next = safeNextPath(parsed.data!.next);
+  const next = safeAuthNextPath(parsed.data!.next);
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
   const supabase = await createClient({ writeCookies: true });
   const { error } = await supabase.auth.signInWithOtp({
     email: parsed.data!.email,
     options: {
+      shouldCreateUser: true,
       emailRedirectTo: `${baseUrl}/auth/callback?next=${encodeURIComponent(next)}`
     }
   });
 
   if (error) {
-    redirectWithMessage("/sign-in", "error", error.message);
+    redirectWithMessage(`/sign-in?next=${encodeURIComponent(next)}`, "error", "We could not send a sign-in link. Wait a moment and try again.");
   }
 
   redirectWithMessage(
     `/sign-in?next=${encodeURIComponent(next)}`,
     "success",
-    "Check your email for a secure sign-in link."
+    "Check your email for a secure sign-in link. Open it in this browser to continue."
   );
 }
 
@@ -184,7 +181,7 @@ export async function createUserWithPassword(formData: FormData) {
 export async function signOut() {
   if (hasSupabaseEnv()) {
     const supabase = await createClient({ writeCookies: true });
-    await supabase.auth.signOut();
+    await supabase.auth.signOut({ scope: "local" });
   }
 
   redirect("/");

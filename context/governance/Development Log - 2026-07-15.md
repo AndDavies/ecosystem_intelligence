@@ -117,3 +117,14 @@ use `ATLAS_DATA_SOURCE=supabase`.
   `last verified`, and `sources` across public pages and PDF exports.
 - Kept the change presentation-only: no database migration, matching behavior,
   query behavior, publication status, or review workflow changed.
+
+## Account and administrator hardening - 2026-07-17
+
+- Added passwordless email sign-in alongside Google OAuth so personal and work email users can create the same type of private account without a password.
+- Added explicit pending states and progress labels to Google, email-link, sign-out, and deletion actions.
+- Made public navigation session-aware: signed-out users see `Sign in`, signed-in users see `Account`, and a reserved checking state prevents misleading flashes.
+- Added `/account` with verified identity methods, Working Lists, connection-request status, contribution status, sign-out, and transparent private-data deletion.
+- Account deletion requires a recent sign-in and exact-email confirmation, revokes sessions first, removes owner-bound private records, can unsubscribe the email, and retains only published records and anonymized audit history.
+- Protected the sole administrator account from self-service deletion and restricted every admin page, server action, API, and atlas editorial RLS policy to Andrew's immutable Supabase user ID, exact email, and controlled `app_metadata.role = admin`.
+- Kept admin navigation internal to `/admin`; no public account or header link exposes it.
+- Enabled the Supabase email provider. The free-tier default mailer prevents template customization without custom SMTP, so the beta uses secure email links; the code-entry variant remains deferred until a verified sender/SMTP is configured.

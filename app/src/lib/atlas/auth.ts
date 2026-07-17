@@ -1,8 +1,10 @@
 import "server-only";
 
+import { notFound } from "next/navigation";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
+import { isAtlasAdminOwner } from "@/lib/atlas/admin-owner";
 
 export type AtlasRole = "member" | "editor" | "reviewer" | "admin";
 
@@ -27,9 +29,14 @@ export async function requireAtlasUser(next = "/collections") {
   return user;
 }
 
-export async function requireAtlasStaff(minimum: Exclude<AtlasRole, "member"> = "editor") {
+export async function requireAdminOwner() {
   const user = await requireAtlasUser("/admin");
-  const order: AtlasRole[] = ["member", "editor", "reviewer", "admin"];
-  if (order.indexOf(user.role) < order.indexOf(minimum)) redirect("/?forbidden=staff");
+  if (!isAtlasAdminOwner(user)) notFound();
   return user;
 }
+
+export async function requireAtlasStaff(_minimum: Exclude<AtlasRole, "member"> = "editor") {
+  return requireAdminOwner();
+}
+
+export { ATLAS_ADMIN_OWNER_EMAIL, ATLAS_ADMIN_OWNER_ID, isAtlasAdminOwner } from "@/lib/atlas/admin-owner";

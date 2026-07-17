@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user?.email) return NextResponse.json({ error: "Google sign-in is required." }, { status: 401 });
+  if (!user?.email) return NextResponse.json({ error: "Sign-in is required." }, { status: 401 });
 
   const parsed = connectionRequestSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Complete every required field." }, { status: 400 });

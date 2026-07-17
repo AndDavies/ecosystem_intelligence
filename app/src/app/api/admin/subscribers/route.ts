@@ -1,4 +1,4 @@
-import { getAtlasUser } from "@/lib/atlas/auth";
+import { requireAdminOwner } from "@/lib/atlas/auth";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
@@ -8,8 +8,11 @@ function csvCell(value: unknown) {
 }
 
 export async function GET() {
-  const user = await getAtlasUser();
-  if (!user || !["editor", "reviewer", "admin"].includes(user.role)) return new Response("Forbidden", { status: 403 });
+  try {
+    await requireAdminOwner();
+  } catch {
+    return new Response("Forbidden", { status: 403 });
+  }
   const { data, error } = await createAdminClient().from("pilot_update_signups").select("email, status, consent_version, consent_text, source, cohort, landing_path, created_at, updated_at").order("created_at", { ascending: false });
   if (error) return new Response("Export unavailable", { status: 500 });
   const headers = ["email", "status", "consent_version", "consent_text", "source", "cohort", "landing_path", "created_at", "updated_at"];

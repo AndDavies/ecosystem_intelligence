@@ -24,14 +24,14 @@ export default async function CollectionsPage({
   return (
     <PublicPageShell
       eyebrow="Private workspace"
-      title="Saved collections"
+      title="Working Lists"
       description="Build private, reusable shortlists from published organizations and capabilities. Public records remain unchanged."
       actions={<span className="inline-flex h-9 items-center gap-2 rounded-md bg-[#f2f4f7] px-3 text-xs font-semibold text-[#475467]"><FolderLock className="size-4" />Private to {user.email}</span>}
     >
       {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">The collection action could not be completed. Check the fields and try again.</div> : null}
 
       {addType && addId ? (
-        <PublicCard title="Save published record" eyebrow="Choose a collection" className="mb-5 border-[#9bd8e2] bg-[#e7f8fa]">
+        <PublicCard title="Save published record" eyebrow="Choose a Working List" className="mb-5 border-[#9bd8e2] bg-[#e7f8fa]">
           {collections?.length ? (
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {collections.map((collection) => (
@@ -46,12 +46,12 @@ export default async function CollectionsPage({
                 </form>
               ))}
             </div>
-          ) : <p className="text-sm text-[#667085]">Create your first collection below, then return to the dossier to save it.</p>}
+          ) : <p className="text-sm text-[#667085]">Create your first Working List below, then return to the profile to save it.</p>}
         </PublicCard>
       ) : null}
 
       <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-        <PublicCard title="Your collections" eyebrow={`${collections?.length ?? 0} private lists`}>
+        <PublicCard title="Your Working Lists" eyebrow={`${collections?.length ?? 0} private lists`}>
           {collections?.length ? (
             <div className="divide-y divide-[#eaecf0]">
               {collections.map((collection) => (
@@ -61,14 +61,14 @@ export default async function CollectionsPage({
                 </Link>
               ))}
             </div>
-          ) : <div className="rounded-md border border-dashed border-[#b8c2d1] bg-[#f8fafc] px-5 py-8 text-center"><FolderLock className="mx-auto size-6 text-[#98a2b3]" /><p className="mt-3 text-sm font-semibold text-[#344054]">No collections yet</p><p className="mt-1 text-xs text-[#667085]">Create one to build a private shortlist.</p></div>}
+          ) : <div className="rounded-md border border-dashed border-[#b8c2d1] bg-[#f8fafc] px-5 py-8 text-center"><FolderLock className="mx-auto size-6 text-[#98a2b3]" /><p className="mt-3 text-sm font-semibold text-[#344054]">No Working Lists yet</p><p className="mt-1 text-xs text-[#667085]">Create one to build a private shortlist.</p></div>}
         </PublicCard>
 
-        <PublicCard title="Create collection" eyebrow="Private by default">
+        <PublicCard title="Create Working List" eyebrow="Private by default">
           <form action={createSavedCollection} className="space-y-4">
             <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Name<input name="name" required minLength={2} maxLength={100} placeholder="Atlantic undersea shortlist" className="h-10 rounded-md border border-[#d0d5dd] px-3 text-sm font-normal outline-none focus:border-[#007f98] focus:ring-4 focus:ring-[#007f98]/10" /></label>
-            <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Description<textarea name="description" maxLength={500} rows={4} placeholder="What this collection supports" className="rounded-md border border-[#d0d5dd] px-3 py-2 text-sm font-normal outline-none focus:border-[#007f98] focus:ring-4 focus:ring-[#007f98]/10" /></label>
-            <button type="submit" className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[#007f98] px-4 text-sm font-semibold text-white hover:bg-[#00677d]"><Plus className="size-4" />Create collection</button>
+            <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Description<textarea name="description" maxLength={500} rows={4} placeholder="What this Working List supports" className="rounded-md border border-[#d0d5dd] px-3 py-2 text-sm font-normal outline-none focus:border-[#007f98] focus:ring-4 focus:ring-[#007f98]/10" /></label>
+            <button type="submit" className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[#007f98] px-4 text-sm font-semibold text-white hover:bg-[#00677d]"><Plus className="size-4" />Create Working List</button>
           </form>
         </PublicCard>
       </div>

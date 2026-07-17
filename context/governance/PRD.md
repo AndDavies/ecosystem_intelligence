@@ -5,11 +5,11 @@ Last updated: 2026-07-17
 
 ## Product summary
 
-Ecosystem Intelligence is a free, English-language public atlas for mapping Canada's defence and dual-use ecosystem. It helps ecosystem operators move from a region or mission problem to relevant organizations, review the public evidence behind each profile, understand current coverage gaps, and preserve useful records in a private collection.
+Ecosystem Intelligence is a free, English-language public atlas for mapping Canada's defence and dual-use ecosystem. It helps ecosystem operators move from a region or mission problem to relevant organizations, review the public evidence behind each profile, understand current coverage gaps, and preserve useful records in a private Working List.
 
 The primary journey is:
 
-> Region -> ecosystem cluster -> capability -> organization dossier -> demand alignment -> saved collection or export
+> Region -> ecosystem cluster -> capability -> organization dossier -> demand alignment -> Working List or export
 
 The product combines public mapping, PitchBook-style dossiers, public NATO and Canadian demand overlays, and a review-first research pipeline. Agents can stage research but cannot publish it.
 
@@ -18,7 +18,7 @@ The product combines public mapping, PitchBook-style dossiers, public NATO and C
 The active release is an independent, English-only Canadian Public Beta created and stewarded by Andrew Davies.
 
 - Public browsing, evidence, profiles, and exports remain free.
-- Google sign-in is used only for private Working Lists, contributions, and connection requests.
+- Google OAuth and passwordless email sign-in are used only for private Working Lists, contributions, connection requests, and account management.
 - Public feedback, consent-backed updates, and contact remain available without authentication.
 - The publication floor is 30 verified organizations, the operating target is 36, and no jurisdiction is padded.
 - The initial Vercel URL is indexable; private workflows remain blocked from search.
@@ -99,7 +99,8 @@ Automated research can create leads and candidate changes. Only an explicit huma
 | `/capabilities/[slug]` | Capability dossier with features, applications, maturity, alignment, and evidence |
 | `/demand` | Public demand statement index |
 | `/demand/[slug]` | Requirement detail, desired end state, matches, gaps, caveats, and authoritative source |
-| `/collections` | Authenticated private collections |
+| `/account` | Authenticated identity, Working Lists, connection and contribution status, sign-out, and private-data controls |
+| `/collections` | Authenticated private Working Lists |
 | `/collections/[id]` | Saved organization and capability shortlist with lookbook export |
 | `/submit` | Authenticated profile claim, correction, or organization suggestion |
 | `/connect/[slug]` | Authenticated, private request for a human-vetted introduction |
@@ -209,9 +210,10 @@ Every source is classified as `public`, `permissioned`, or `internal`.
 
 - Every exposed table has RLS enabled.
 - Anonymous users receive explicit `select` grants and can read only published rows allowed by policy.
-- Authenticated members can manage only their own private collections and submissions.
-- Editor, reviewer, and admin authorization comes only from controlled `app_metadata.role`.
-- Staff policies use the shared authenticated Postgres role plus RLS; user-editable metadata cannot grant staff access.
+- Authenticated members can manage only their own private Working Lists, submissions, and connection requests.
+- The sole public-beta administrator is fail-closed against Andrew's immutable Supabase user ID, exact email, and controlled `app_metadata.role = admin` across pages, server actions, APIs, and RLS.
+- User-editable metadata cannot grant administrator access, and no public navigation exposes an admin link.
+- Member account deletion revokes active sessions, requires a recent sign-in and exact-email confirmation, and removes owned private data through existing foreign-key rules. The administrator account cannot self-delete.
 - Service credentials remain server-side.
 - New tables receive no implicit Data API privileges; grants are explicit in migrations.
 
@@ -289,7 +291,8 @@ Implemented locally as of 2026-07-15:
 - public organizations, capabilities, regions, and NATO demand routes
 - constrained discovery and public API routes
 - PDF and CSV exports
-- Google OAuth with Supabase PKCE for public sign-in
+- Google OAuth with Supabase PKCE and passwordless email links for public sign-in
+- auth-aware public navigation and an owner-only account workspace with status history, sign-out feedback, and account deletion
 - owner-only collections and lookbook export
 - reviewed public submissions
 - private source/PDF intake, candidate review, and coverage screens
@@ -308,7 +311,7 @@ Implemented for the Canadian Public Beta as of 2026-07-17:
 Still required before the Monday public release:
 
 - reach and explicitly approve the 30-record verified publication floor
-- complete fresh-account Google OAuth and administrator-access checks
+- complete fresh-account Google OAuth, passwordless email-link, account-deletion, and administrator-access checks
 - register the Vercel URL with Google Search Console and Bing Webmaster Tools
 - full accessibility, privacy, and public-launch review
 

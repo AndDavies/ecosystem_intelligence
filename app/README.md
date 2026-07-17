@@ -35,7 +35,8 @@ Copy `.env.example` to `.env.local` and keep all service credentials server-side
 - `/capabilities/[slug]`
 - `/regions/[slug]`
 - `/demand` and `/demand/[slug]`
-- `/collections` for authenticated private lists
+- `/account` for authenticated identity, workflow status, and private-data controls
+- `/collections` for authenticated private Working Lists
 - `/submit` for reviewed public contributions
 - `/connect/[slug]` for authenticated private connection requests
 - `/about`, `/methodology`, `/contact`, `/privacy`, and `/terms`
@@ -48,12 +49,13 @@ Copy `.env.example` to `.env.local` and keep all service credentials server-side
 - `/admin/coverage`
 - `/admin/insights`
 
-Editor authorization is read from controlled Supabase `app_metadata.role`, never user-editable metadata.
+The public sign-in surface supports Google OAuth and passwordless email links. Administrator authorization additionally requires Andrew's exact immutable Supabase user ID, exact email, and controlled `app_metadata.role`; user-editable metadata cannot grant access. No admin link appears in public navigation.
 
 ## Database
 
 - Clean migration: `supabase/migrations/20260715170638_public_atlas_foundation.sql`
 - Security hardening: `supabase/migrations/20260715203357_public_atlas_security_hardening.sql`
+- Sole-admin restriction: `supabase/migrations/20260717170141_restrict_atlas_admin_owner.sql`
 - Clean validated seed: `supabase/seed.sql`
 - Prior internal schema and CSVs: `supabase/legacy/`
 

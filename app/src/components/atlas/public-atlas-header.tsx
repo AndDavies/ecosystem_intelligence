@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, Menu, Waves, X } from "lucide-react";
-import { useState } from "react";
+import { Bell, Menu, UserRound, Waves, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { openPilotUpdates } from "@/lib/pilot/client";
 
@@ -17,6 +17,31 @@ const navigation = [
 export function PublicAtlasHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [authState, setAuthState] = useState<"checking" | "signed-in" | "signed-out">("checking");
+
+  useEffect(() => {
+    let active = true;
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => {
+      controller.abort();
+      if (active) setAuthState("signed-out");
+    }, 5000);
+    void fetch("/api/auth-state", { cache: "no-store", credentials: "same-origin", signal: controller.signal })
+      .then((response) => response.ok ? response.json() as Promise<{ signedIn?: boolean }> : null)
+      .then((result) => {
+        if (active) setAuthState(result?.signedIn ? "signed-in" : "signed-out");
+      })
+      .catch(() => {
+        if (active) setAuthState("signed-out");
+      })
+      .finally(() => window.clearTimeout(timeout));
+
+    return () => {
+      active = false;
+      controller.abort();
+      window.clearTimeout(timeout);
+    };
+  }, [pathname]);
 
   return (
     <header className="atlas-header">
@@ -60,12 +85,17 @@ export function PublicAtlasHeader() {
             <Bell className="size-4" />
             Get updates
           </button>
-          <Link
-            href="/sign-in"
-            className="hidden h-9 items-center justify-center rounded-md border border-white/30 px-4 text-sm font-semibold text-white no-underline hover:border-white/60 hover:bg-white/10 hover:no-underline sm:inline-flex"
-          >
-            Sign in
-          </Link>
+          {authState === "checking" ? (
+            <span className="hidden h-9 w-[94px] items-center justify-center rounded-md border border-white/15 bg-white/5 text-white/45 sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
+          ) : (
+            <Link
+              href={authState === "signed-in" ? "/account" : "/sign-in"}
+              className="hidden h-9 items-center justify-center gap-2 rounded-md border border-white/30 px-4 text-sm font-semibold text-white no-underline hover:border-white/60 hover:bg-white/10 hover:no-underline sm:inline-flex"
+            >
+              {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
+              {authState === "signed-in" ? "Account" : "Sign in"}
+            </Link>
+          )}
           <button
             type="button"
             className="flex size-10 items-center justify-center rounded-md border border-white/25 bg-white/10 text-white lg:hidden"
@@ -98,9 +128,14 @@ export function PublicAtlasHeader() {
               );
             })}
             <button type="button" onClick={() => { openPilotUpdates(); setOpen(false); }} className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-[#62d9e8] px-3 py-2.5 text-center text-sm font-semibold text-[#05052b]"><Bell className="size-4" />Get updates</button>
-            <Link href="/sign-in" className="rounded-md border border-white/25 px-3 py-2.5 text-center text-sm font-semibold text-white no-underline hover:bg-white/10 hover:no-underline">
-              Sign in
-            </Link>
+            {authState === "checking" ? (
+              <span className="rounded-md border border-white/15 px-3 py-2.5 text-center text-sm font-semibold text-white/45">Checking account…</span>
+            ) : (
+              <Link href={authState === "signed-in" ? "/account" : "/sign-in"} onClick={() => setOpen(false)} className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 px-3 py-2.5 text-center text-sm font-semibold text-white no-underline hover:bg-white/10 hover:no-underline">
+                {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
+                {authState === "signed-in" ? "Account" : "Sign in"}
+              </Link>
+            )}
           </div>
         </nav>
       ) : null}

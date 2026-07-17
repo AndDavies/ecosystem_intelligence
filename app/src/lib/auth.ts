@@ -3,6 +3,7 @@ import type { Role } from "@/types/domain";
 import { mockProfile } from "@/lib/mock-data";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 import { createClient } from "@/lib/supabase/server";
+import { requireAdminOwner } from "@/lib/atlas/auth";
 
 const roleOrder: Role[] = ["viewer", "editor", "reviewer", "admin"];
 
@@ -48,6 +49,16 @@ export async function getCurrentProfile() {
 }
 
 export async function requireProfile(minimumRole: Role = "viewer") {
+  if (minimumRole === "admin") {
+    const owner = await requireAdminOwner();
+    return {
+      id: owner.id,
+      email: owner.email,
+      fullName: "Andrew Davies",
+      role: "admin" as const
+    };
+  }
+
   const profile = await getCurrentProfile();
 
   if (!profile) {

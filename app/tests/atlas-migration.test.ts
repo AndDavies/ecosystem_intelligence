@@ -190,6 +190,20 @@ describe("public atlas database foundation", () => {
     expect(result.rows[0]?.unprotected).toBe(0);
   });
 
+  it("restricts editorial RLS policies to the exact administrator identity", async () => {
+    const result = await db.query<{ definition: string }>(`
+      select pg_get_functiondef(function_record.oid) as definition
+      from pg_proc function_record
+      join pg_namespace namespace on namespace.oid = function_record.pronamespace
+      where namespace.nspname = 'private'
+        and function_record.proname = 'is_atlas_staff'
+    `);
+    const definition = result.rows[0]?.definition ?? "";
+    expect(definition).toContain("b443c433-2a78-4ca7-8a19-a8f40b140049");
+    expect(definition).toContain("m.andrew.davies@gmail.com");
+    expect(definition).toContain("app_metadata");
+  });
+
   it("keeps submitted searches private and connects semantic events without public grants", async () => {
     const result = await db.query<{
       search_rls: boolean;
