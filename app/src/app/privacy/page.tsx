@@ -1,35 +1,18 @@
 import { Database, Eye, MailCheck, ShieldCheck } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 
-export const metadata = {
-  title: "Preview privacy",
-  description: "How the Ecosystem Intelligence design-partner preview handles signup, feedback, and product-learning data."
-};
+export const metadata = { title: "Privacy", description: "How Ecosystem Intelligence handles accounts, contributions, connections, messages, feedback, analytics, and retention." };
 
 export default function PrivacyPage() {
   return (
-    <PublicPageShell
-      eyebrow="Preview governance"
-      title="Privacy and participation"
-      description="This invitation-only preview collects only the information needed to operate the pilot, understand product use, and respond to voluntary feedback."
-    >
+    <PublicPageShell eyebrow="Public-beta governance" title="Privacy and participation" description="Ecosystem Intelligence collects only the information needed to operate private workflows, improve discovery, and respond to voluntary contact.">
       <div className="grid gap-5 lg:grid-cols-2">
-        <PublicCard title="Update signup" eyebrow="Affirmative consent">
-          <div className="flex items-start gap-3"><MailCheck className="mt-0.5 size-5 shrink-0 text-[#007f98]" /><p className="text-sm leading-6 text-[#475467]">If you opt in, the preview stores your email address, the consent language and version you accepted, the signup source, and the invitation cohort. Updates will identify the sender and include a simple unsubscribe mechanism.</p></div>
-        </PublicCard>
-        <PublicCard title="Design-partner feedback" eyebrow="Voluntary contribution">
-          <div className="flex items-start gap-3"><Database className="mt-0.5 size-5 shrink-0 text-[#007f98]" /><p className="text-sm leading-6 text-[#475467]">The feedback form stores what you were trying to do, what worked, what was missing, the page you were viewing, and an optional follow-up email. Feedback is private and does not update published ecosystem records.</p></div>
-        </PublicCard>
-        <PublicCard title="Product learning" eyebrow="Privacy-light measurement">
-          <div className="flex items-start gap-3"><Eye className="mt-0.5 size-5 shrink-0 text-[#007f98]" /><p className="text-sm leading-6 text-[#475467]">The pilot records submitted search terms and a small set of meaningful workflow events, including page views, filters, result or marker selection, dossier opening, evidence viewing, exports, signup, and feedback. It does not record keystrokes, mouse movement, arbitrary form contents, or session replay. A random per-tab identifier connects these steps without identifying a person. Raw IP addresses are not stored; a server-side one-way request fingerprint is used only for rate limiting and aggregate pilot analysis. Vercel Web Analytics and Speed Insights provide aggregate traffic and performance information.</p></div>
-        </PublicCard>
-        <PublicCard title="Trust boundary" eyebrow="What this preview is not">
-          <div className="flex items-start gap-3"><ShieldCheck className="mt-0.5 size-5 shrink-0 text-[#007f98]" /><p className="text-sm leading-6 text-[#475467]">This preview is being tested with COVE design partners. It is not a complete directory, a COVE endorsement, a procurement service, or a representation of classified demand. Public records remain evidence-backed and editorially reviewed.</p></div>
-        </PublicCard>
+        <PublicCard title="Google sign-in and private work" eyebrow="User-controlled actions"><ShieldCheck className="mb-3 size-5 text-[#007f98]" /><p className="text-sm leading-6 text-[#475467]">Google provides a verified email and basic profile information for sign-in. The service does not receive your Google password. Saved Working Lists, contributions, and connection requests are private to you and authorized reviewers.</p></PublicCard>
+        <PublicCard title="Updates and contact" eyebrow="Affirmative consent"><MailCheck className="mb-3 size-5 text-[#007f98]" /><p className="text-sm leading-6 text-[#475467]">Update signup stores your email, the consent language and version, source, and status. Contact messages store the details you enter and a one-way request fingerprint used for rate limiting. Campaigns will not begin until a verified sender and compliant unsubscribe process exist.</p></PublicCard>
+        <PublicCard title="Product learning" eyebrow="Meaningful actions only"><Eye className="mb-3 size-5 text-[#007f98]" /><p className="text-sm leading-6 text-[#475467]">Vercel provides aggregate traffic and performance analytics. Private product telemetry records searches, filters, zero results, selections, profiles, sources, exports, saves, contributions, connections, subscriptions, and feedback. It does not use session replay, keystroke capture, mouse tracking, advertising profiles, or stored raw IP addresses.</p></PublicCard>
+        <PublicCard title="Retention and review" eyebrow="Limited and private"><Database className="mb-3 size-5 text-[#007f98]" /><p className="text-sm leading-6 text-[#475467]">Raw search text expires after 90 days and detailed workflow events after 30 days. Feedback, contact, consent, submissions, and connection requests remain private for review, follow-up, governance, and audit until no longer needed. Published records use approved public evidence only.</p></PublicCard>
       </div>
-      <PublicCard title="Retention and removal" eyebrow="Pilot controls" className="mt-5">
-        <p className="text-sm leading-6 text-[#475467]">Submitted search terms are marked to expire after 90 days and are purged during active preview use. Other pilot records are retained for the duration of design-partner testing and product follow-up. You can request correction or removal through the feedback control. Update emails will provide direct sender contact information and an unsubscribe link.</p>
-      </PublicCard>
+      <PublicCard title="Your choices" eyebrow="Access, correction, and removal" className="mt-5"><p className="text-sm leading-6 text-[#475467]">You can decline Google sign-in and browse publicly, dismiss the update prompt for 30 days, submit a correction, withdraw from future updates, or request access, correction, or removal through the <a href="/contact" className="font-semibold text-[#007f98] underline">contact form</a>. Last updated July 17, 2026.</p></PublicCard>
     </PublicPageShell>
   );
 }

@@ -37,6 +37,8 @@ Copy `.env.example` to `.env.local` and keep all service credentials server-side
 - `/demand` and `/demand/[slug]`
 - `/collections` for authenticated private lists
 - `/submit` for reviewed public contributions
+- `/connect/[slug]` for authenticated private connection requests
+- `/about`, `/methodology`, `/contact`, `/privacy`, and `/terms`
 
 ## Editorial routes
 
@@ -44,6 +46,7 @@ Copy `.env.example` to `.env.local` and keep all service credentials server-side
 - `/admin/intake`
 - `/admin/review`
 - `/admin/coverage`
+- `/admin/insights`
 
 Editor authorization is read from controlled Supabase `app_metadata.role`, never user-editable metadata.
 
@@ -54,7 +57,7 @@ Editor authorization is read from controlled Supabase `app_metadata.role`, never
 - Clean validated seed: `supabase/seed.sql`
 - Prior internal schema and CSVs: `supabase/legacy/`
 
-The six verified public records have been imported into the hosted project.
+The hosted project currently contains the reviewed public corpus. A public release requires at least 30 verified records and explicit promotion approval.
 The SQL seed remains the reproducible migration fixture and local fallback.
 
 The migration uses explicit Data API grants, RLS on every exposed table, owner-only collections/submissions, staff-only editorial policies, and separate public/private storage buckets.

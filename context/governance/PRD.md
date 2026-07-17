@@ -1,7 +1,7 @@
 # Canadian Ecosystem Intelligence Public Atlas
 
 Status: active product requirements  
-Last updated: 2026-07-16
+Last updated: 2026-07-17
 
 ## Product summary
 
@@ -13,20 +13,17 @@ The primary journey is:
 
 The product combines public mapping, PitchBook-style dossiers, public NATO and Canadian demand overlays, and a review-first research pipeline. Agents can stage research but cannot publish it.
 
-## Invitation-only design-partner preview
+## Canadian Public Beta
 
-Before the broader public beta, the product supports a deliberately narrower COVE design-partner preview. This is a workflow-validation release, not the national-coverage milestone.
+The active release is an independent, English-only Canadian Public Beta created and stewarded by Andrew Davies.
 
-- The preview contains 18 verified organizations and capabilities.
-- Every public surface labels the dataset as limited verified coverage.
-- The demand overlay remains accessible but is removed from primary navigation and labelled as an early preview while it has no reviewed matches.
-- Participants can submit general product feedback without authentication; corrections to canonical records still require authentication and editorial review.
-- A delayed, dismissible, consented update prompt captures voluntary pilot interest without gating the atlas.
-- Private pilot interaction events measure search, filters, marker selection, dossier opening, evidence viewing, exports, signup, and feedback without storing raw search text or raw IP addresses.
-- The preview is excluded from search indexing while invitation-only testing is active.
-- COVE-inspired ocean, navy, cyan, and structured editorial cues are used without copying COVE assets or implying endorsement.
-
-The preview graduation question is whether ecosystem and BD operators can use the atlas for a real discovery task and identify the missing data or workflow needed for repeated use. The 150-250 record requirement remains the gate for public beta, not for this design-partner test.
+- Public browsing, evidence, profiles, and exports remain free.
+- Google sign-in is used only for private Working Lists, contributions, and connection requests.
+- Public feedback, consent-backed updates, and contact remain available without authentication.
+- The publication floor is 30 verified organizations, the operating target is 36, and no jurisdiction is padded.
+- The initial Vercel URL is indexable; private workflows remain blocked from search.
+- The product is not an official government, military, procurement, or industry-association directory.
+- Introduction requests are privately reviewed and manually brokered; no personal contact details or automatic introductions are exposed.
 
 ## Primary users
 
@@ -105,8 +102,13 @@ Automated research can create leads and candidate changes. Only an explicit huma
 | `/collections` | Authenticated private collections |
 | `/collections/[id]` | Saved organization and capability shortlist with lookbook export |
 | `/submit` | Authenticated profile claim, correction, or organization suggestion |
-| `/privacy` | Pilot participation, consent, feedback, and measurement notice |
-| `/admin/*` | Private source intake, review queue, and coverage operations |
+| `/connect/[slug]` | Authenticated, private request for a human-vetted introduction |
+| `/about` | Independent founder story, purpose, and trust boundary |
+| `/methodology` | Evidence, confidence, freshness, assessment, and review method |
+| `/contact` | Rate-limited private contact for general, privacy, media, and partnership messages |
+| `/privacy` | Accounts, contributions, connections, consent, analytics, and retention notice |
+| `/terms` | Public-beta use, contribution, connection, and disclaimer terms |
+| `/admin/*` | Private source intake, review, public-beta insights, participation, and coverage operations |
 
 ## Discovery experience
 
@@ -183,11 +185,14 @@ It must never invent an organization or fact. Ambiguous questions return suggest
 - `saved_collections`
 - `saved_collection_items`
 
-### Private design-partner learning
+### Private public-beta learning and participation
 
 - `pilot_update_signups` — affirmative update consent ledger
 - `pilot_feedback` — unauthenticated product feedback staged privately for review
-- `pilot_events` — bounded, privacy-light workflow events for the invitation preview
+- `pilot_searches` — private raw search terms and interpreted filters retained for 90 days
+- `pilot_events` — bounded, privacy-light workflow events retained for 30 days
+- `connection_requests` — authenticated private introduction requests and review status
+- `contact_messages` — private, rate-limited contact inbox
 
 ## Source and privacy policy
 
@@ -260,7 +265,7 @@ The clean public seed began with six previously validated organizations and thei
 - GeoSpectrum Technologies
 - Open Ocean Robotics
 
-The first reviewed Underwater ISR expansion added 12 source-backed organizations and capabilities through the canonical review workflow, bringing the design-partner preview to 18 published organizations and 18 published capabilities. The fifteen scaffold organizations and all placeholder rows remain excluded. The first five NATO problem families are published as demand statements, with zero matches until evidence-backed mappings pass review.
+The first reviewed Underwater ISR expansion added 12 source-backed organizations and capabilities through the canonical review workflow, bringing the live atlas to 18 published organizations and 18 published capabilities. The fifteen scaffold organizations and all placeholder rows remain excluded. A national expansion must add at least 12 more verified records before public release, with an operating target of 36 and representation across at least eight provinces or territories and four technical domains. The first five NATO problem families are published as demand statements, with zero matches until evidence-backed mappings pass review.
 
 ## Acceptance criteria
 
@@ -273,7 +278,7 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
 - Duplicate submissions, missing coordinates, unavailable images, stale sources, failed agents, and empty regions have safe states.
 - Public discovery meets WCAG AA keyboard, contrast, and non-map navigation requirements.
 - Target performance is p75 LCP under 2.5 seconds on broadband, filter feedback under 300 ms after data load, and responsive clusters for at least 1,000 points.
-- Beta requires 150-250 verified records, zero scaffold records, complete RLS tests, passing automated/browser tests, and privacy review.
+- Public Beta requires at least 30 verified records, zero scaffold records, complete RLS tests, passing automated/browser tests, and privacy review. The longer-term corpus target remains 150-250 verified records.
 
 ## Delivery status
 
@@ -284,31 +289,33 @@ Implemented locally as of 2026-07-15:
 - public organizations, capabilities, regions, and NATO demand routes
 - constrained discovery and public API routes
 - PDF and CSV exports
-- magic-link authentication flow
+- Google OAuth with Supabase PKCE for public sign-in
 - owner-only collections and lookbook export
 - reviewed public submissions
 - private source/PDF intake, candidate review, and coverage screens
 
-Implemented for the invitation-only preview as of 2026-07-16:
+Implemented for the Canadian Public Beta as of 2026-07-17:
 
 - private consented update signup, general feedback, and bounded event capture
 - RLS-enabled pilot tables with no anonymous or authenticated Data API privileges
-- delayed update prompt, persistent feedback access, privacy notice, and no-index posture
-- COVE-adjacent public visual system using restrained navy, ocean teal, and cyan cues
+- delayed update prompt, persistent feedback access, public privacy and terms notices
+- independent Ecosystem Intelligence identity using restrained navy, ocean teal, and cyan cues
 - mobile map/list protection against collapsed hidden-map bounds
 - Vercel aggregate page analytics and sampled Speed Insights with query strings redacted
-- explicit limited-coverage and early-demand-preview framing
+- indexable canonical public pages, sitemap, structured data, and explicit coverage framing
+- private connection requests, contact inbox, contribution review, subscribers, searches, funnel insights, and workflow status administration
 
-Still required before broader public beta:
+Still required before the Monday public release:
 
-- build the 150-250 record dataset through the review-first research workflow
-- guided testing with 10-15 ecosystem operators
+- reach and explicitly approve the 30-record verified publication floor
+- complete fresh-account Google OAuth and administrator-access checks
+- register the Vercel URL with Google Search Console and Bing Webmaster Tools
 - full accessibility, privacy, and public-launch review
 
 ## Explicitly deferred
 
 - monetization or paid tiers
-- French content and UI, beyond localization-ready structure
+- French content, UI, routes, locale switching, and localization scaffolding
 - CRM synchronization or relationship-history ingestion
 - tender feeds as a primary workflow
 - direct self-service publication

@@ -3,7 +3,7 @@
 import { Analytics, type BeforeSendEvent } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-export function PreviewInsights() {
+export function PublicBetaInsights() {
   return (
     <>
       <Analytics
@@ -19,4 +19,3 @@ export function PreviewInsights() {
     </>
   );
 }
-

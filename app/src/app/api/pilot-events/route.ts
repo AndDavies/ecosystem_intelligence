@@ -9,11 +9,12 @@ export async function POST(request: Request) {
   if (!hasSupabaseAdminEnv()) return privateJson({ ok: true }, { status: 202 });
 
   const parsed = pilotEventSchema.safeParse(await request.json().catch(() => null));
-  if (!parsed.success) return privateJson({ error: "Invalid preview event." }, { status: 400 });
+  if (!parsed.success) return privateJson({ error: "Invalid public-beta event." }, { status: 400 });
 
   const supabase = createAdminClient();
   const fingerprint = requestFingerprint(request);
   const oneMinuteAgo = new Date(Date.now() - 60 * 1000).toISOString();
+  await supabase.from("pilot_events").delete().lte("expires_at", new Date().toISOString());
   const { count } = await supabase
     .from("pilot_events")
     .select("id", { count: "exact", head: true })
@@ -29,7 +30,8 @@ export async function POST(request: Request) {
     cohort: parsed.data.cohort,
     session_id: parsed.data.sessionId,
     search_id: parsed.data.searchId,
-    metadata: parsed.data.metadata
+    metadata: parsed.data.metadata,
+    expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
   });
 
   if (error) return privateJson({ error: "Event could not be recorded." }, { status: 500 });

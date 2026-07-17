@@ -74,10 +74,10 @@ were imported. The first reviewed expansion batch raises the live total to 18
 published organizations and 18 published capabilities. Production and Preview
 use `ATLAS_DATA_SOURCE=supabase`.
 
-## Invitation-only COVE design-partner preview - 2026-07-16
+## Former invitation preview - 2026-07-16 (historical)
 
-- Reframed the current 18-record release as an invitation-only workflow-validation preview rather than the 150-250 record public beta.
-- Applied restrained COVE-adjacent visual cues: a deep navy public header, ocean teal and cyan accents, editorial rules, and light marine data surfaces without using COVE assets or claiming endorsement.
+- Reframed the 18-record release as a narrow workflow-validation preview before the independent public beta.
+- Applied restrained marine visual cues: a deep navy public header, ocean teal and cyan accents, editorial rules, and light data surfaces without using third-party assets or implying endorsement.
 - Removed the empty demand workflow from primary navigation while retaining a clearly labelled early-preview route and its public-source caveats.
 - Added a delayed, dismissible, affirmative-consent update prompt and a persistent unauthenticated product-feedback workflow.
 - Added `pilot_update_signups`, `pilot_feedback`, and `pilot_events` as private, RLS-enabled tables with no `anon` or `authenticated` Data API privileges. Validated server routes write with server-only credentials.
@@ -93,6 +93,16 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Added random per-tab session identifiers and search attribution for semantic page, filter, result, marker, dossier, evidence, export, signup, and feedback events. Keystrokes, arbitrary clicks, mouse movement, and session replay remain out of scope.
 - Fixed the mobile map/list failure by rejecting collapsed map bounds while the hidden map has zero layout dimensions and preserving the last usable visible-result set.
 - Added validation tests for affirmative consent, feedback normalization, bounded event vocabulary, and collapsed map bounds.
+
+## Independent Canadian Public Beta - 2026-07-17
+
+- Replaced invitation and partner-specific public language with an independent Canadian Public Beta created and stewarded by Andrew Davies.
+- Replaced public magic-link sign-in with Google OAuth through the existing Supabase PKCE callback.
+- Added private connection requests, a rate-limited contact inbox, and a unified public-beta administration surface for subscribers, feedback, contact, searches, contributions, workflow events, and introductions.
+- Enabled indexing for canonical public pages, added a public-only sitemap, structured data, social metadata, and explicit blocking for private workflows.
+- Separated the five-minute public atlas cache from cookie-bound authentication and retained 90-day searches and 30-day workflow events.
+- Added About, Methodology, Contact, Terms, and revised Privacy pages with public-source and non-endorsement boundaries.
+- Set the release corpus floor at 30 verified organizations, with 36 as the operating target; promotion remains explicitly human-approved.
 
 ## Public terminology simplification - 2026-07-17
 

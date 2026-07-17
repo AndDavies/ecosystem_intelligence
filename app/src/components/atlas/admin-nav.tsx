@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { BarChart3, ClipboardCheck, FileInput, LayoutDashboard } from "lucide-react";
+import { BarChart3, ClipboardCheck, FileInput, LayoutDashboard, MessagesSquare } from "lucide-react";
 
 const items = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
   { href: "/admin/intake", label: "Source intake", icon: FileInput },
   { href: "/admin/review", label: "Review queue", icon: ClipboardCheck },
+  { href: "/admin/insights", label: "Public beta", icon: MessagesSquare },
   { href: "/admin/coverage", label: "Coverage", icon: BarChart3 }
 ];
 

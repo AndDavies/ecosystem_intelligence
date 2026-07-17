@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const safePath = z.string().trim().min(1).max(500).refine((value) => value.startsWith("/"), {
-  message: "Path must be relative to the preview site."
+  message: "Path must be relative to the public beta site."
 });
 
 const optionalShortText = z.union([z.literal(""), z.string().trim().max(120)]).optional().transform((value) => value || null);
@@ -41,7 +41,6 @@ export const pilotDiscoveryRequestSchema = z.object({
 });
 
 export const pilotEventNames = [
-  "page_view",
   "atlas_search",
   "filter_apply",
   "marker_select",
@@ -49,7 +48,10 @@ export const pilotEventNames = [
   "dossier_open",
   "evidence_open",
   "export",
-  "signup",
+  "save",
+  "submission",
+  "connection",
+  "subscription",
   "feedback"
 ] as const;
 

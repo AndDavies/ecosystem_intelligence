@@ -7,7 +7,7 @@ import { privateJson, requestFingerprint } from "@/lib/pilot/server";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  if (!hasSupabaseAdminEnv()) return privateJson({ error: "Preview signup is not configured." }, { status: 503 });
+  if (!hasSupabaseAdminEnv()) return privateJson({ error: "Update signup is not configured." }, { status: 503 });
 
   const parsed = pilotSignupSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return privateJson({ error: "Please provide a valid email address and consent." }, { status: 400 });
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
   await supabase.from("pilot_events").insert({
     request_hash: requestFingerprint(request),
-    event_name: "signup",
+    event_name: "subscription",
     context_path: parsed.data.landingPath,
     cohort: parsed.data.cohort,
     session_id: parsed.data.sessionId,
@@ -37,5 +37,5 @@ export async function POST(request: Request) {
     metadata: { source: parsed.data.source }
   });
 
-  return NextResponse.json({ ok: true, message: "You are on the design-partner update list." }, { status: 202, headers: { "Cache-Control": "private, no-store" } });
+  return NextResponse.json({ ok: true, message: "You are on the Ecosystem Intelligence update list." }, { status: 202, headers: { "Cache-Control": "private, no-store" } });
 }

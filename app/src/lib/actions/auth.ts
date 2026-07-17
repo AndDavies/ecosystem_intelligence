@@ -31,6 +31,29 @@ function safeNextPath(value: string | undefined) {
   return value;
 }
 
+export async function signInWithGoogle(formData: FormData) {
+  if (!hasSupabasePublicEnv()) {
+    redirectWithMessage("/sign-in", "error", "Hosted sign-in has not been configured yet.");
+  }
+
+  const next = safeNextPath(String(formData.get("next") ?? "").trim() || undefined);
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+  const supabase = await createClient({ writeCookies: true });
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: `${baseUrl}/auth/callback?next=${encodeURIComponent(next)}`,
+      scopes: "openid email profile"
+    }
+  });
+
+  if (error || !data.url) {
+    redirectWithMessage("/sign-in", "error", error?.message ?? "Google sign-in could not be started.");
+  }
+
+  redirect(data.url!);
+}
+
 export async function sendMagicLink(formData: FormData) {
   if (!hasSupabasePublicEnv()) {
     redirectWithMessage("/sign-in", "error", "Hosted sign-in has not been configured yet.");

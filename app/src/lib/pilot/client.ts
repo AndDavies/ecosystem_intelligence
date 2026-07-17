@@ -60,7 +60,7 @@ export function trackPilotEvent(
   attribution: { searchId?: string | null } = {}
 ) {
   if (typeof window === "undefined") return;
-  void fetch("/api/pilot-events", {
+  void fetch("/api/beta-events", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({

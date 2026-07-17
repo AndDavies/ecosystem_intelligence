@@ -10,7 +10,7 @@ import { getAtlasDemandBySlug } from "@/lib/atlas/repository";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const demand = await getAtlasDemandBySlug(slug);
-  return demand ? { title: demand.title, description: demand.problemStatement } : { title: "Demand statement not found" };
+  return demand ? { title: demand.title, description: demand.problemStatement, alternates: { canonical: `/demand/${demand.slug}` }, openGraph: { title: demand.title, description: demand.problemStatement, url: `/demand/${demand.slug}` } } : { title: "Demand statement not found" };
 }
 
 export default async function DemandPage({ params }: { params: Promise<{ slug: string }> }) {

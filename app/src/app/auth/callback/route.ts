@@ -18,7 +18,13 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = await createClient({ writeCookies: true });
-    await supabase.auth.exchangeCodeForSession(code);
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) {
+      const signInUrl = new URL("/sign-in", request.url);
+      signInUrl.searchParams.set("error", "Google sign-in could not be completed. Please try again.");
+      signInUrl.searchParams.set("next", next);
+      return NextResponse.redirect(signInUrl);
+    }
   }
 
   return NextResponse.redirect(new URL(next, request.url));

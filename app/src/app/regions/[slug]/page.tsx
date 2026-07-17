@@ -8,7 +8,7 @@ import { getAtlasRegionBySlug } from "@/lib/atlas/repository";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const result = await getAtlasRegionBySlug(slug);
-  return result ? { title: `${result.region.name} Ecosystem`, description: result.region.description } : { title: "Region not found" };
+  return result ? { title: `${result.region.name} Ecosystem`, description: result.region.description, alternates: { canonical: `/regions/${result.region.slug}` }, openGraph: { title: `${result.region.name} Defence and Dual-Use Ecosystem`, description: result.region.description, url: `/regions/${result.region.slug}` } } : { title: "Region not found" };
 }
 
 export default async function RegionPage({ params }: { params: Promise<{ slug: string }> }) {

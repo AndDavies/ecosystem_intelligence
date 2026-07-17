@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookmarkPlus, Building2, Download, ExternalLink, FileCheck2, MapPin, ShieldCheck } from "lucide-react";
+import { BookmarkPlus, Building2, Download, ExternalLink, FileCheck2, Handshake, MapPin, ShieldCheck } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
+import { JsonLd } from "@/components/seo/json-ld";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { assessmentConfidenceLabel, evidenceStrengthLabel, locationAccuracyLabel, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
 import { formatDate, toTitleCase } from "@/lib/utils";
+import { absoluteUrl } from "@/lib/site";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const organization = await getAtlasOrganizationBySlug(slug);
   if (!organization) return { title: "Organization not found" };
-  return { title: organization.name, description: organization.description };
+  return { title: organization.name, description: organization.description, alternates: { canonical: `/organizations/${organization.slug}` }, openGraph: { title: organization.name, description: organization.description, url: `/organizations/${organization.slug}`, type: "profile" } };
 }
 
 export default async function OrganizationDossierPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -41,6 +43,9 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
           <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(`/organizations/${organization.slug}`)}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline">
             <BookmarkPlus className="size-4" /> Save
           </Link>
+          <Link href={`/connect/${organization.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[#9bd8e2] bg-[#e7f8fa] px-4 text-xs font-semibold text-[#007f98] no-underline hover:bg-[#d4f2f5] hover:no-underline">
+            <Handshake className="size-4" /> Connect
+          </Link>
           <Link href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline">
             <Download className="size-4" /> Export profile
           </Link>
@@ -52,6 +57,10 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
         </>
       }
     >
+      <JsonLd data={[
+        { "@context": "https://schema.org", "@type": "Organization", name: organization.name, legalName: organization.legalName ?? undefined, url: absoluteUrl(`/organizations/${organization.slug}`), sameAs: organization.websiteUrl ? [organization.websiteUrl] : undefined, description: organization.description, address: organization.primaryLocation ? { "@type": "PostalAddress", addressLocality: organization.primaryLocation.city ?? undefined, addressRegion: organization.primaryLocation.provinceTerritory ?? undefined, addressCountry: "CA" } : undefined },
+        { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Atlas", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }] }
+      ]} />
       <div className="grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
         <aside className="space-y-5">
           <PublicCard title="Profile at a glance" eyebrow="Published identity">

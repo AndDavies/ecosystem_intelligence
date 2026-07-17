@@ -19,8 +19,8 @@ import {
   SlidersHorizontal,
   X
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import { FormEvent, useMemo, useRef, useState } from "react";
-import { AtlasMap } from "@/components/atlas/atlas-map";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
 import {
@@ -51,6 +51,18 @@ import type {
   AtlasRegion,
   AtlasTechnicalDomain
 } from "@/types/atlas";
+
+const AtlasMap = dynamic(
+  () => import("@/components/atlas/atlas-map").then((module) => module.AtlasMap),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex min-h-[520px] items-center justify-center rounded-[28px] bg-[#eaf3f3] text-sm font-semibold text-[#385466]">
+        Loading the interactive map…
+      </div>
+    )
+  }
+);
 
 type ViewMode = "map" | "table";
 
@@ -263,9 +275,9 @@ export function AtlasExplorer({
       <section className="mb-4 overflow-hidden rounded-xl border border-[#1c3555] bg-[#05052b] text-white shadow-[0_14px_36px_rgba(5,5,43,0.16)]">
         <div className="grid gap-5 px-5 py-5 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#62d9e8]">Invitation-only design partner preview</p>
-            <h1 className="mt-2 text-xl font-bold tracking-[-0.025em] sm:text-2xl">Explore verified Canadian defence and dual-use capabilities.</h1>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-white/72">This limited 18-organization dataset is designed to test discovery, evidence, lookbooks, and exports—not to represent complete national coverage.</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#62d9e8]">Canadian Public Beta</p>
+            <h1 className="mt-2 text-xl font-bold tracking-[-0.025em] sm:text-2xl">Discover Canada’s defence and dual-use ecosystem.</h1>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-white/72">Explore {result.total} reviewed organizations, their capabilities, public evidence, and collaboration paths. Coverage is growing nationally, and thin areas remain visible rather than padded.</p>
           </div>
           <button type="button" onClick={openPilotFeedback} className="inline-flex h-10 items-center justify-center rounded-md border border-[#62d9e8]/60 bg-[#62d9e8] px-4 text-xs font-semibold text-[#05052b] hover:bg-[#8fe7f1]">Tell us what is missing</button>
         </div>
@@ -531,7 +543,7 @@ export function AtlasExplorer({
         </div>
       </section>
 
-      <PublicAtlasFooter generatedLabel={`Snapshot generated ${formatDate(generatedAt)}. Published public sources only; limited verified coverage for workflow testing.`} />
+      <PublicAtlasFooter generatedLabel={`Snapshot generated ${formatDate(generatedAt)}. Reviewed public sources only; coverage gaps remain explicit.`} />
     </div>
   );
 }

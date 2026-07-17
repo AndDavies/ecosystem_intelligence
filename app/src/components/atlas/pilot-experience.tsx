@@ -11,14 +11,14 @@ import {
   trackPilotEvent
 } from "@/lib/pilot/client";
 
-const consentText = "I agree to receive occasional Ecosystem Intelligence design-partner updates. I can unsubscribe at any time.";
-const consentVersion = "preview-2026-07";
+const consentText = "I agree to receive occasional Ecosystem Intelligence public-beta updates. I can unsubscribe at any time.";
+const consentVersion = "public-beta-2026-07";
 const dismissedKey = "ecosystem-intelligence-updates-dismissed-at";
 const subscribedKey = "ecosystem-intelligence-updates-subscribed";
-const dismissForMs = 14 * 24 * 60 * 60 * 1000;
+const dismissForMs = 30 * 24 * 60 * 60 * 1000;
 
-function pathIsPublicPreview(pathname: string) {
-  return pathname === "/" || ["/regions", "/organizations", "/capabilities", "/demand", "/privacy"].some((prefix) => pathname.startsWith(prefix));
+function pathIsPublicBeta(pathname: string) {
+  return pathname === "/" || ["/regions", "/organizations", "/capabilities", "/demand", "/about", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
 }
 
 export function PilotExperience() {
@@ -32,16 +32,8 @@ export function PilotExperience() {
   const interactionCount = useRef(0);
   const automaticPromptSuppressed = useRef(false);
   const feedbackGoalRef = useRef<HTMLTextAreaElement | null>(null);
-  const lastPageView = useRef<string | null>(null);
-
   useEffect(() => {
-    if (!pathIsPublicPreview(pathname) || lastPageView.current === pathname) return;
-    lastPageView.current = pathname;
-    trackPilotEvent("page_view");
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!pathIsPublicPreview(pathname)) return;
+    if (!pathIsPublicBeta(pathname)) return;
     currentPilotCohort();
 
     const openUpdates = () => setUpdatesOpen(true);
@@ -110,7 +102,7 @@ export function PilotExperience() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [feedbackOpen]);
 
-  if (!pathIsPublicPreview(pathname)) return null;
+  if (!pathIsPublicBeta(pathname)) return null;
 
   function dismissUpdates() {
     automaticPromptSuppressed.current = true;
@@ -128,7 +120,7 @@ export function PilotExperience() {
     const form = new FormData(formElement);
     setSignupState("loading");
     setSignupError("");
-    const response = await fetch("/api/pilot-signup", {
+    const response = await fetch("/api/beta-signup", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
@@ -136,7 +128,7 @@ export function PilotExperience() {
         consent: form.get("consent") === "on",
         consentText,
         consentVersion,
-        source: "pilot_prompt",
+        source: "public_beta_prompt",
         cohort: currentPilotCohort(),
         sessionId: currentPilotSessionId(),
         searchId: currentPilotSearchId(),
@@ -166,7 +158,7 @@ export function PilotExperience() {
     const form = new FormData(formElement);
     setFeedbackState("loading");
     setFeedbackError("");
-    const response = await fetch("/api/pilot-feedback", {
+    const response = await fetch("/api/beta-feedback", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
@@ -215,8 +207,8 @@ export function PilotExperience() {
           <div className="flex items-start gap-3">
             <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#e7f8fa] text-[#007f98]"><Bell className="size-5" /></span>
             <div className="min-w-0 flex-1">
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#007f98]">Design partner preview</p>
-              <h2 id="pilot-updates-title" className="mt-1 text-lg font-bold tracking-[-0.02em] text-[#05052b]">Help shape the next release.</h2>
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#007f98]">Public Beta</p>
+              <h2 id="pilot-updates-title" className="mt-1 text-lg font-bold tracking-[-0.02em] text-[#05052b]">Follow the atlas as it grows.</h2>
             </div>
             <button type="button" onClick={dismissUpdates} className="flex size-8 items-center justify-center rounded-md text-[#667085] hover:bg-[#f2f4f7]" aria-label="Dismiss update signup"><X className="size-4" /></button>
           </div>
@@ -224,11 +216,11 @@ export function PilotExperience() {
           {signupState === "success" ? (
             <div className="mt-5 rounded-lg border border-[#9ee2c0] bg-[#edfcf4] p-4 text-sm leading-6 text-[#05603a]">
               <CheckCircle2 className="mb-2 size-5" />
-              You are on the update list. Thank you for helping shape the preview.
+              You are on the update list. We will only send occasional product and coverage updates.
             </div>
           ) : (
             <>
-              <p className="mt-3 text-sm leading-6 text-[#475467]">Get occasional pilot updates when verified coverage and new workflows are ready to test.</p>
+              <p className="mt-3 text-sm leading-6 text-[#475467]">Get occasional updates when verified coverage, connections, and new workflows are ready.</p>
               <form onSubmit={submitSignup} className="mt-4 space-y-3">
                 {signupError ? <div role="alert" className="rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-xs text-[#b42318]">{signupError}</div> : null}
                 <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">
@@ -242,7 +234,7 @@ export function PilotExperience() {
                 <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
                 <button type="submit" disabled={signupState === "loading"} className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[#007f98] px-4 text-sm font-semibold text-white hover:bg-[#00677d] disabled:opacity-60">
                   {signupState === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Waves className="size-4" />}
-                  Get pilot updates
+                  Get updates
                 </button>
               </form>
             </>
@@ -256,9 +248,9 @@ export function PilotExperience() {
             <div className="flex items-start gap-3">
               <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#e7f8fa] text-[#007f98]"><MessageSquareText className="size-5" /></span>
               <div className="min-w-0 flex-1">
-                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#007f98]">COVE design-partner feedback</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#007f98]">Public-beta feedback</p>
                 <h2 id="pilot-feedback-title" className="mt-1 text-xl font-bold tracking-[-0.025em] text-[#05052b]">Tell us what would make this useful.</h2>
-                <p className="mt-2 text-sm leading-6 text-[#667085]">The most valuable feedback is what did not work, what is missing, and what you need in day-to-day BD work.</p>
+                <p className="mt-2 text-sm leading-6 text-[#667085]">Tell us what worked, what was missing, or what would make the atlas more useful in real work.</p>
               </div>
               <button type="button" onClick={() => setFeedbackOpen(false)} className="flex size-8 items-center justify-center rounded-md text-[#667085] hover:bg-[#f2f4f7]" aria-label="Close feedback form"><X className="size-4" /></button>
             </div>

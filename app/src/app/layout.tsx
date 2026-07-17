@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Barlow, Inter } from "next/font/google";
 import { PilotExperience } from "@/components/atlas/pilot-experience";
-import { PreviewInsights } from "@/components/atlas/preview-insights";
+import { PublicBetaInsights } from "@/components/atlas/public-beta-insights";
+import { JsonLd } from "@/components/seo/json-ld";
+import { siteDescription, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -18,20 +20,24 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ecosystem-intelligence.vercel.app"),
   title: {
-    default: "Ecosystem Intelligence Design Partner Preview",
+    default: "Ecosystem Intelligence | Canadian Defence and Dual-Use Atlas",
     template: "%s | Ecosystem Intelligence"
   },
-  description: "An invitation-only, evidence-backed preview of Canada's defence and dual-use ecosystem.",
+  description: "An independent, evidence-backed public atlas of Canada's defence and dual-use organizations, capabilities, and collaboration opportunities.",
   robots: {
-    index: false,
-    follow: false
+    index: true,
+    follow: true
   },
   openGraph: {
     type: "website",
     url: "/",
-    title: "Ecosystem Intelligence Design Partner Preview",
-    description: "Explore verified Canadian defence and dual-use organizations, capabilities, and public evidence."
-  }
+    title: "Ecosystem Intelligence Canadian Public Beta",
+    description: "Explore verified Canadian defence and dual-use organizations, capabilities, and public evidence.",
+    siteName: "Ecosystem Intelligence",
+    locale: "en_CA",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Ecosystem Intelligence Canadian Public Beta" }]
+  },
+  twitter: { card: "summary_large_image", title: "Ecosystem Intelligence Canadian Public Beta", description: "Explore verified Canadian defence and dual-use organizations, capabilities, and public evidence.", images: ["/opengraph-image"] }
 };
 
 export default function RootLayout({
@@ -40,11 +46,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-CA" suppressHydrationWarning>
       <body suppressHydrationWarning className={`${barlow.variable} ${inter.variable}`}>
+        <JsonLd data={[
+          { "@context": "https://schema.org", "@type": "WebSite", name: siteName, url: siteUrl, description: siteDescription, inLanguage: "en-CA", potentialAction: { "@type": "SearchAction", target: `${siteUrl}/?q={search_term_string}`, "query-input": "required name=search_term_string" } },
+          { "@context": "https://schema.org", "@type": "Dataset", name: "Canadian Defence and Dual-Use Ecosystem Atlas", description: siteDescription, url: siteUrl, creator: { "@type": "Person", name: "Andrew Davies" }, spatialCoverage: { "@type": "Country", name: "Canada" }, inLanguage: "en-CA", isAccessibleForFree: true, license: `${siteUrl}/terms`, keywords: ["Canada", "defence", "dual-use", "ecosystem", "capabilities", "innovation"] }
+        ]} />
         {children}
         <PilotExperience />
-        <PreviewInsights />
+        <PublicBetaInsights />
       </body>
     </html>
   );

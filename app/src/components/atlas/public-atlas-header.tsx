@@ -10,7 +10,8 @@ import { openPilotUpdates } from "@/lib/pilot/client";
 const navigation = [
   { href: "/", label: "Atlas", match: (pathname: string) => pathname === "/" },
   { href: "/regions/canada", label: "Regions", match: (pathname: string) => pathname.startsWith("/regions") },
-  { href: "/organizations", label: "Organizations", match: (pathname: string) => pathname.startsWith("/organizations") }
+  { href: "/organizations", label: "Organizations", match: (pathname: string) => pathname.startsWith("/organizations") },
+  { href: "/about", label: "About", match: (pathname: string) => pathname.startsWith("/about") || pathname.startsWith("/methodology") }
 ];
 
 export function PublicAtlasHeader() {
@@ -26,7 +27,7 @@ export function PublicAtlasHeader() {
           </span>
           <span className="min-w-0 leading-tight">
             <span className="block truncate text-[14px] font-bold tracking-[-0.01em] text-white sm:text-[17px]">Ecosystem Intelligence</span>
-            <span className="mt-0.5 block text-[9px] font-bold uppercase tracking-[0.16em] text-[#62d9e8] sm:text-[10px]">Invitation preview</span>
+            <span className="mt-0.5 block text-[9px] font-bold uppercase tracking-[0.16em] text-[#62d9e8] sm:text-[10px]">Canadian Public Beta</span>
           </span>
         </Link>
 
@@ -105,8 +106,8 @@ export function PublicAtlasHeader() {
       ) : null}
       <div className="border-t border-white/10 bg-[#101047]">
         <div className="atlas-frame flex min-h-8 items-center justify-between gap-3 py-1 text-[9px] font-bold uppercase tracking-[0.13em] text-white/72 sm:text-[10px]">
-          <span>Design-partner testing · limited verified coverage</span>
-          <span className="hidden text-[#62d9e8] sm:inline">Prepared for COVE community feedback · 18 organizations</span>
+          <span>Independent, evidence-backed Canadian ecosystem atlas</span>
+          <span className="hidden text-[#62d9e8] sm:inline">Public sources · transparent gaps · human review</span>
         </div>
       </div>
     </header>

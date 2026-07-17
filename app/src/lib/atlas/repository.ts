@@ -1,6 +1,7 @@
 import "server-only";
 
 import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import {
   atlasClusters,
   atlasDemandRequirements,
@@ -126,6 +127,12 @@ function getValidatedSeedSnapshot(): AtlasSnapshot {
   };
 }
 
+const getCachedSupabaseSnapshot = unstable_cache(
+  async () => loadAtlasSnapshotFromSupabase(),
+  ["ecosystem-intelligence-public-atlas-snapshot-v1"],
+  { revalidate: 300, tags: ["atlas-public"] }
+);
+
 export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
   const requestedSource = process.env.ATLAS_DATA_SOURCE?.trim().toLowerCase() ?? "validated_seed";
 
@@ -139,7 +146,7 @@ export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
     );
   }
 
-  const snapshot = await loadAtlasSnapshotFromSupabase();
+  const snapshot = await getCachedSupabaseSnapshot();
   return {
     ...snapshot,
     regions: buildRegions(snapshot)
