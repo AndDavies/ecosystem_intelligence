@@ -21,6 +21,7 @@ export function atlasQueryFromSearchParams(searchParams: URLSearchParams): Atlas
     query: read("q"),
     bounds: parseBounds(searchParams.get("bounds")),
     region: read("region"),
+    metro: read("metro"),
     type: read("type"),
     capability: read("capability"),
     domain: read("domain"),
@@ -40,6 +41,7 @@ export function atlasQueryToSearchParams(query: AtlasQuery) {
   };
   set("q", query.query);
   set("region", query.region);
+  set("metro", query.metro);
   set("type", query.type);
   set("capability", query.capability);
   set("domain", query.domain);

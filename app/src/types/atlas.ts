@@ -211,6 +211,7 @@ export interface AtlasQuery {
   query?: string;
   bounds?: AtlasBounds;
   region?: string;
+  metro?: string;
   type?: string;
   capability?: string;
   domain?: string;
@@ -239,6 +240,7 @@ export interface AtlasQueryResult {
 
 export interface AtlasDiscoveryResult {
   query: string;
+  searchId?: string | null;
   interpretation: "matched" | "ambiguous" | "no_match";
   filters: AtlasQuery;
   filterChips: Array<{ key: string; label: string; value: string }>;

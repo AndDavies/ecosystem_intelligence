@@ -81,5 +81,13 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Added `pilot_update_signups`, `pilot_feedback`, and `pilot_events` as private, RLS-enabled tables with no `anon` or `authenticated` Data API privileges. Validated server routes write with server-only credentials.
 - Added bounded event capture for search, filter, marker, dossier, evidence, export, signup, and feedback actions without storing raw search text or raw IP addresses.
 - Added a pilot privacy page, no-index metadata and robots posture, aggregate Vercel Web Analytics, and sampled Speed Insights with URL query strings removed before collection.
+
+## Search learning and HRM geography - 2026-07-17
+
+- Added deterministic Halifax Regional Municipality geography resolution so `Halifax`, `HRM`, and `Dartmouth` can resolve to the same metro area while continuing to filter published records only.
+- Split genuine search failures from map-bounds empty states and added clear-search and missing-record actions.
+- Replaced the initial no-query-text telemetry posture with a disclosed, private `pilot_searches` ledger after design-partner testing showed that zero-result counts alone could not explain search failures.
+- Submitted search terms are isolated from generic events, marked for 90-day expiry, written only through server routes, and unavailable to `anon` and `authenticated` Data API roles.
+- Added random per-tab session identifiers and search attribution for semantic page, filter, result, marker, dossier, evidence, export, signup, and feedback events. Keystrokes, arbitrary clicks, mouse movement, and session replay remain out of scope.
 - Fixed the mobile map/list failure by rejecting collapsed map bounds while the hidden map has zero layout dimensions and preserving the last usable visible-result set.
 - Added validation tests for affirmative consent, feedback normalization, bounded event vocabulary, and collapsed map bounds.

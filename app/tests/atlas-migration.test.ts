@@ -190,6 +190,44 @@ describe("public atlas database foundation", () => {
     expect(result.rows[0]?.unprotected).toBe(0);
   });
 
+  it("keeps submitted searches private and connects semantic events without public grants", async () => {
+    const result = await db.query<{
+      search_rls: boolean;
+      anon_search_access: boolean;
+      authenticated_search_access: boolean;
+      session_column: string | null;
+      search_column: string | null;
+    }>(`
+      select
+        (
+          select relation.relrowsecurity
+          from pg_class relation
+          join pg_namespace namespace on namespace.oid = relation.relnamespace
+          where namespace.nspname = 'public' and relation.relname = 'pilot_searches'
+        ) as search_rls,
+        has_table_privilege('anon', 'public.pilot_searches', 'select') as anon_search_access,
+        has_table_privilege('authenticated', 'public.pilot_searches', 'select') as authenticated_search_access,
+        (
+          select data_type
+          from information_schema.columns
+          where table_schema = 'public' and table_name = 'pilot_events' and column_name = 'session_id'
+        ) as session_column,
+        (
+          select data_type
+          from information_schema.columns
+          where table_schema = 'public' and table_name = 'pilot_events' and column_name = 'search_id'
+        ) as search_column
+    `);
+
+    expect(result.rows[0]).toEqual({
+      search_rls: true,
+      anon_search_access: false,
+      authenticated_search_access: false,
+      session_column: "uuid",
+      search_column: "uuid"
+    });
+  });
+
   it("prevents public bucket listing and direct auto-RLS helper execution", async () => {
     const result = await db.query<{
       broad_public_media_policies: number;

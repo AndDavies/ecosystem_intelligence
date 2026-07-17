@@ -41,9 +41,10 @@ export async function POST(request: Request) {
     event_name: "feedback",
     context_path: parsed.data.contextPath,
     cohort: parsed.data.cohort,
+    session_id: parsed.data.sessionId,
+    search_id: parsed.data.searchId,
     metadata: { contact_provided: Boolean(parsed.data.contactEmail) }
   });
 
   return privateJson({ ok: true, message: "Thank you. Your feedback is ready for review." }, { status: 202 });
 }
-

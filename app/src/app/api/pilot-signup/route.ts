@@ -32,9 +32,10 @@ export async function POST(request: Request) {
     event_name: "signup",
     context_path: parsed.data.landingPath,
     cohort: parsed.data.cohort,
+    session_id: parsed.data.sessionId,
+    search_id: parsed.data.searchId,
     metadata: { source: parsed.data.source }
   });
 
   return NextResponse.json({ ok: true, message: "You are on the design-partner update list." }, { status: 202, headers: { "Cache-Control": "private, no-store" } });
 }
-

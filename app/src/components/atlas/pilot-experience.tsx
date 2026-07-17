@@ -4,7 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bell, CheckCircle2, LoaderCircle, MessageSquareText, Send, Waves, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { currentPilotCohort, trackPilotEvent } from "@/lib/pilot/client";
+import {
+  currentPilotCohort,
+  currentPilotSearchId,
+  currentPilotSessionId,
+  trackPilotEvent
+} from "@/lib/pilot/client";
 
 const consentText = "I agree to receive occasional Ecosystem Intelligence design-partner updates. I can unsubscribe at any time.";
 const consentVersion = "preview-2026-07";
@@ -27,6 +32,13 @@ export function PilotExperience() {
   const interactionCount = useRef(0);
   const automaticPromptSuppressed = useRef(false);
   const feedbackGoalRef = useRef<HTMLTextAreaElement | null>(null);
+  const lastPageView = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!pathIsPublicPreview(pathname) || lastPageView.current === pathname) return;
+    lastPageView.current = pathname;
+    trackPilotEvent("page_view");
+  }, [pathname]);
 
   useEffect(() => {
     if (!pathIsPublicPreview(pathname)) return;
@@ -126,6 +138,8 @@ export function PilotExperience() {
         consentVersion,
         source: "pilot_prompt",
         cohort: currentPilotCohort(),
+        sessionId: currentPilotSessionId(),
+        searchId: currentPilotSearchId(),
         landingPath: window.location.pathname,
         website: String(form.get("website") ?? "")
       })
@@ -162,6 +176,8 @@ export function PilotExperience() {
         contactEmail: String(form.get("contactEmail") ?? ""),
         contextPath: window.location.pathname,
         cohort: currentPilotCohort(),
+        sessionId: currentPilotSessionId(),
+        searchId: currentPilotSearchId(),
         website: String(form.get("website") ?? "")
       })
     });

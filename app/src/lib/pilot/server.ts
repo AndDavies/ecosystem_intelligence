@@ -7,9 +7,12 @@ export function requestFingerprint(request: Request) {
   return createHmac("sha256", secret).update(`${forwardedFor}|${userAgent}`).digest("hex");
 }
 
+export function normalizePilotSearchQuery(value: string) {
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
 export function privateJson(body: unknown, init?: ResponseInit) {
   const response = Response.json(body, init);
   response.headers.set("Cache-Control", "private, no-store");
   return response;
 }
-

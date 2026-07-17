@@ -8,6 +8,7 @@ import {
   atlasOrganizations,
   atlasTechnicalDomains
 } from "@/lib/atlas/validated-data";
+import { getAtlasMetroArea, inferAtlasMetroArea, organizationMatchesMetro } from "@/lib/atlas/geography";
 import { loadAtlasSnapshotFromSupabase } from "@/lib/atlas/supabase-repository";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 import type {
@@ -248,6 +249,7 @@ function buildAppliedFilters(snapshot: AtlasSnapshot, query: AtlasQuery) {
 
   add("query", "Search", query.query);
   add("region", "Region", snapshot.regions.find((item) => item.slug === query.region)?.name ?? query.region);
+  add("metro", "Metro area", getAtlasMetroArea(query.metro)?.name ?? query.metro);
   add("type", "Organization type", query.type ? titleCase(query.type) : undefined);
   add("capability", "Capability", query.capability);
   add("domain", "Technical domain", snapshot.technicalDomains.find((item) => item.slug === query.domain)?.name ?? query.domain);
@@ -278,6 +280,7 @@ export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResu
         organization.primaryLocation?.regionSlug === query.region ||
         normalize(organization.primaryLocation?.provinceTerritory ?? "") === normalize(query.region)
     )
+    .filter((organization) => !query.metro || organizationMatchesMetro(organization, query.metro))
     .filter(
       (organization) =>
         !query.type ||
@@ -442,6 +445,9 @@ function inferFilters(snapshot: AtlasSnapshot, rawQuery: string): AtlasQuery {
   const text = normalize(rawQuery);
   const filters: AtlasQuery = {};
 
+  const metro = inferAtlasMetroArea(rawQuery);
+  if (metro) filters.metro = metro.slug;
+
   const region = snapshot.regions.find((item) => {
     if (item.slug === "canada") return false;
     return (
@@ -492,7 +498,7 @@ function inferFilters(snapshot: AtlasSnapshot, rawQuery: string): AtlasQuery {
     }
   }
 
-  if (!filters.region && !filters.domain && !filters.mission && !filters.demand) {
+  if (!filters.region && !filters.metro && !filters.domain && !filters.mission && !filters.demand) {
     filters.query = rawQuery;
   }
 
@@ -533,7 +539,7 @@ export async function discoverAtlas(rawQuery: string): Promise<AtlasDiscoveryRes
       })
       .map((capability) => capability.id)
   );
-  const hasConstrainedTaxonomy = Boolean(filters.region || filters.domain || filters.mission || filters.demand);
+  const hasConstrainedTaxonomy = Boolean(filters.region || filters.metro || filters.domain || filters.mission || filters.demand);
   const interpretation = result.total > 0 ? "matched" : hasConstrainedTaxonomy ? "no_match" : "ambiguous";
 
   return {

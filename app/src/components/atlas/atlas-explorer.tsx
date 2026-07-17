@@ -22,8 +22,15 @@ import {
 import { FormEvent, useMemo, useRef, useState } from "react";
 import { AtlasMap } from "@/components/atlas/atlas-map";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
+import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
 import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
-import { openPilotFeedback, trackPilotEvent } from "@/lib/pilot/client";
+import {
+  currentPilotCohort,
+  currentPilotSessionId,
+  openPilotFeedback,
+  rememberPilotSearchId,
+  trackPilotEvent
+} from "@/lib/pilot/client";
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
 import type {
   AtlasCapability,
@@ -97,6 +104,7 @@ function filterWithout(filters: AtlasQuery, key: string): AtlasQuery {
   if (key === "bounds") delete next.bounds;
   if (key === "query") delete next.query;
   if (key === "region") delete next.region;
+  if (key === "metro") delete next.metro;
   if (key === "type") delete next.type;
   if (key === "capability") delete next.capability;
   if (key === "domain") delete next.domain;
@@ -155,6 +163,10 @@ export function AtlasExplorer({
     () => (selectedOrganization ? relevantCapability(selectedOrganization, filters) : null),
     [filters, selectedOrganization]
   );
+  const emptyState = getAtlasEmptyState({
+    totalResults: result.total,
+    submittedQuery: discovery?.query ?? filters.query
+  });
 
   async function load(nextFilters: AtlasQuery, options: { updateQuestion?: boolean } = {}) {
     setLoading(true);
@@ -184,6 +196,7 @@ export function AtlasExplorer({
     const query = question.trim();
     if (!query) {
       setDiscovery(null);
+      rememberPilotSearchId(null);
       await load({});
       return;
     }
@@ -194,16 +207,23 @@ export function AtlasExplorer({
       const response = await fetch("/api/discover", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ query })
+        body: JSON.stringify({
+          query,
+          contextPath: window.location.pathname,
+          cohort: currentPilotCohort(),
+          sessionId: currentPilotSessionId()
+        })
       });
       if (!response.ok) throw new Error("The question could not be interpreted.");
       const nextDiscovery = (await response.json()) as AtlasDiscoveryResult;
       setDiscovery(nextDiscovery);
+      rememberPilotSearchId(nextDiscovery.searchId);
       trackPilotEvent("atlas_search", {
         filter_count: Object.values(nextDiscovery.filters).filter(Boolean).length,
         result_count: nextDiscovery.organizationIds.length,
-        interpretation: nextDiscovery.interpretation
-      });
+        interpretation: nextDiscovery.interpretation,
+        zero_result: nextDiscovery.organizationIds.length === 0
+      }, { searchId: nextDiscovery.searchId });
       await load(nextDiscovery.filters);
     } catch (discoveryError) {
       setError(discoveryError instanceof Error ? discoveryError.message : "The question could not be interpreted.");
@@ -211,10 +231,13 @@ export function AtlasExplorer({
     }
   }
 
-  function updateSelection(id: string, revealInTable = false) {
+  function updateSelection(id: string, revealInTable = false, source: "map" | "result" = "result") {
     setSelectedId(id);
     const organization = result.organizations.find((item) => item.id === id);
-    trackPilotEvent("marker_select", { organization: organization?.slug ?? "unknown" });
+    trackPilotEvent(source === "map" ? "marker_select" : "result_select", {
+      organization: organization?.slug ?? "unknown",
+      source
+    });
     if (!revealInTable) return;
     window.requestAnimationFrame(() => {
       const container = tableScrollRef.current;
@@ -274,7 +297,10 @@ export function AtlasExplorer({
             <button
               key={`${filter.key}-${filter.value}`}
               type="button"
-              onClick={() => void load(filterWithout(filters, filter.key), { updateQuestion: filter.key === "query" })}
+              onClick={() => {
+                if (filter.key === "query" || filter.key === "metro") rememberPilotSearchId(null);
+                void load(filterWithout(filters, filter.key), { updateQuestion: filter.key === "query" || filter.key === "metro" });
+              }}
               className="inline-flex h-9 items-center gap-2 rounded-md border border-[#cbd5e1] bg-[#f8fafc] px-3 text-xs font-medium text-[#344054] hover:border-[#98a2b3] hover:bg-white"
               aria-label={`Remove ${filter.label}: ${filter.value}`}
             >
@@ -334,7 +360,7 @@ export function AtlasExplorer({
           </div>
           <div className="mt-4 flex items-center justify-between border-t border-[#eaecf0] pt-3">
             <span className="text-xs text-[#667085]">Filters update the map, result count, table, URL, and export together.</span>
-            <button type="button" className="text-xs font-semibold text-[#007f98] hover:underline" onClick={() => void load({}, { updateQuestion: true })}>
+            <button type="button" className="text-xs font-semibold text-[#007f98] hover:underline" onClick={() => { rememberPilotSearchId(null); setDiscovery(null); void load({}, { updateQuestion: true }); }}>
               Clear all
             </button>
           </div>
@@ -350,7 +376,7 @@ export function AtlasExplorer({
 
       {discovery?.interpretation === "no_match" ? (
         <div className="mt-3 rounded-md border border-[#fedf89] bg-[#fffaeb] px-3 py-2 text-sm text-[#7a2e0e]">
-          No reviewed records match every interpreted filter. The empty state is intentional; try removing one filter or inspect the related demand page.
+          No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing.
         </div>
       ) : null}
 
@@ -359,7 +385,7 @@ export function AtlasExplorer({
           <AtlasMap
             organizations={result.organizations}
             selectedOrganizationId={selectedId}
-            onSelect={(id) => updateSelection(id, true)}
+            onSelect={(id) => updateSelection(id, true, "map")}
             onViewportChange={updateViewport}
           />
 
@@ -434,6 +460,7 @@ export function AtlasExplorer({
                     onToggle={() => {
                       setSelectedId(organization.id);
                       setExpandedId((current) => (current === organization.id ? null : organization.id));
+                      trackPilotEvent("result_select", { organization: organization.slug, source: "mobile_list" });
                     }}
                   />
                 ))}
@@ -464,10 +491,11 @@ export function AtlasExplorer({
                           if (node) rowRefs.current.set(organization.id, node);
                           else rowRefs.current.delete(organization.id);
                         }}
-                        onSelect={() => updateSelection(organization.id)}
+                        onSelect={() => updateSelection(organization.id, false, "result")}
                         onToggleExpanded={() => {
                           setSelectedId(organization.id);
                           setExpandedId((current) => (current === organization.id ? null : organization.id));
+                          trackPilotEvent("result_select", { organization: organization.slug, source: "table_expand" });
                         }}
                       />
                     ))}
@@ -476,15 +504,26 @@ export function AtlasExplorer({
               </div>
             </>
           ) : (
-            <div className="px-6 py-14 text-center">
+            <div className="px-6 py-14 text-center" aria-live="polite">
               <Filter className="mx-auto size-7 text-[#98a2b3]" />
-              <h2 className="mt-4 text-base font-semibold text-[#101828]">No organizations are visible in this map area</h2>
+              <h2 className="mt-4 text-base font-semibold text-[#101828]">{emptyState.title}</h2>
               <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[#667085]">
-                Return to the map and pan or zoom out. Results intentionally include only organizations inside the visible bounds.
+                {emptyState.description}
               </p>
-              <button type="button" className="mt-5 text-sm font-semibold text-[#007f98] hover:underline lg:hidden" onClick={() => setViewMode("map")}>
-                Return to map
-              </button>
+              {emptyState.kind === "search" ? (
+                <div className="mt-5 flex flex-wrap items-center justify-center gap-4">
+                  <button type="button" className="text-sm font-semibold text-[#007f98] hover:underline" onClick={() => { rememberPilotSearchId(null); setDiscovery(null); void load({}, { updateQuestion: true }); }}>
+                    Clear search
+                  </button>
+                  <button type="button" className="text-sm font-semibold text-[#007f98] hover:underline" onClick={openPilotFeedback}>
+                    Tell us what is missing
+                  </button>
+                </div>
+              ) : (
+                <button type="button" className="mt-5 text-sm font-semibold text-[#007f98] hover:underline lg:hidden" onClick={() => setViewMode("map")}>
+                  Return to map
+                </button>
+              )}
             </div>
           )}
         </div>

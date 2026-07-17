@@ -27,10 +27,11 @@ export async function POST(request: Request) {
     event_name: parsed.data.eventName,
     context_path: parsed.data.contextPath,
     cohort: parsed.data.cohort,
+    session_id: parsed.data.sessionId,
+    search_id: parsed.data.searchId,
     metadata: parsed.data.metadata
   });
 
   if (error) return privateJson({ error: "Event could not be recorded." }, { status: 500 });
   return privateJson({ ok: true }, { status: 202 });
 }
-
