@@ -96,7 +96,7 @@ function groupBy(rows: Row[], key: string) {
 
 function assertQuery(result: { error: { message?: string } | null }, label: string) {
   if (result.error) {
-    throw new Error(`Failed to load ${label}: ${result.error.message ?? "unknown Supabase error"}`);
+    throw new Error(`Failed to load ${label}: ${result.error.message ?? "unknown database error"}`);
   }
 }
 

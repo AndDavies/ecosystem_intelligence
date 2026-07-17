@@ -3,7 +3,7 @@
 - Status: approved
 - Approved: 2026-07-16T12:00:00.000Z
 - Reviewer: Andrew Davies
-- Mission area: underwater-isr
+- Scope: underwater-isr
 - Records: 12
 
 | Organization | Headquarters | Capability | Confidence | Evidence |
@@ -21,9 +21,10 @@
 | AML Oceanographic | Victoria, British Columbia | Swappable oceanographic sensors and profilers | moderate | [source](https://amloceanographic.ca/) |
 | Sensor Technology Ltd. | Collingwood, Ontario | Custom underwater acoustic sensors and systems | high | [source](https://sensortechcanada.com/) |
 
-## Promotion guardrails
+## Publication guardrails
 
 - Public claims are limited to the linked first-party source.
-- Mission alignment is a reviewed derived read, not procurement eligibility or endorsement.
+- Mission alignment is an analyst assessment, not procurement eligibility or endorsement.
 - Unknown maturity, financing, employment, and contact fields remain null.
-- Coordinates are labelled city centroids.
+- Coordinates are labelled city-level.
+- Candidate batches must be staged, reviewed, and explicitly published through separate controls.

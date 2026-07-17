@@ -5,7 +5,7 @@ export function createAdminClient() {
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!url || !key) {
-    throw new Error("Supabase service role credentials are not configured.");
+    throw new Error("Hosted database credentials are not configured.");
   }
 
   return createClient(url, key, {

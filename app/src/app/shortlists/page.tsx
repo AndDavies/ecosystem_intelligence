@@ -47,7 +47,7 @@ export default async function ShortlistsPage({
       {params.mock ? (
         <Card variant="muted" className="mb-6 rounded-[28px]">
           <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
-            Persistent working-list writes require Supabase mode. Mock mode keeps this page empty by design.
+            Persistent working-list writes require the hosted database. Preview mode keeps this page empty by design.
           </CardContent>
         </Card>
       ) : null}
@@ -55,7 +55,7 @@ export default async function ShortlistsPage({
       {params.shortlistSetup === "missing-schema" ? (
         <Card variant="muted" className="mb-6 rounded-[28px]">
           <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
-            Working-list persistence needs the latest Supabase migration. Apply `003_shortlists.sql`, then retry creating the list.
+            Working-list persistence needs the latest database update. Apply `003_shortlists.sql`, then retry creating the list.
           </CardContent>
         </Card>
       ) : null}

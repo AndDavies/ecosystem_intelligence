@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock3, Database, FileSearch } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock3, Database, Send } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
@@ -9,11 +9,11 @@ import { createClient } from "@/lib/supabase/server";
 export default async function AdminOverviewPage() {
   const user = await requireAtlasStaff("editor");
   const supabase = await createClient();
-  const [snapshot, candidates, submissions, runs] = await Promise.all([
+  const [snapshot, candidates, approved, submissions] = await Promise.all([
     getAtlasSnapshot(),
     supabase.from("candidate_changes").select("id", { count: "exact", head: true }).eq("status", "pending"),
-    supabase.from("submissions").select("id", { count: "exact", head: true }).in("status", ["pending", "in_review"]),
-    supabase.from("research_runs").select("id", { count: "exact", head: true }).in("status", ["queued", "running"])
+    supabase.from("candidate_changes").select("id", { count: "exact", head: true }).eq("status", "approved"),
+    supabase.from("submissions").select("id", { count: "exact", head: true }).in("status", ["pending", "in_review"])
   ]);
 
   return (
@@ -22,12 +22,13 @@ export default async function AdminOverviewPage() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <AdminMetric icon={<Database className="size-5" />} label="Published organizations" value={snapshot.organizations.length} />
         <AdminMetric icon={<Clock3 className="size-5" />} label="Pending candidates" value={candidates.count ?? 0} />
-        <AdminMetric icon={<FileSearch className="size-5" />} label="Public submissions" value={submissions.count ?? 0} />
-        <AdminMetric icon={<CheckCircle2 className="size-5" />} label="Active research runs" value={runs.count ?? 0} />
+        <AdminMetric icon={<CheckCircle2 className="size-5" />} label="Ready to publish" value={approved.count ?? 0} />
+        <AdminMetric icon={<Send className="size-5" />} label="Public submissions" value={submissions.count ?? 0} />
       </div>
-      <div className="mt-5 grid gap-5 lg:grid-cols-3">
+      <div className="mt-5 grid gap-5 lg:grid-cols-4">
         <AdminLink title="Stage a source or PDF" detail="Create a private extraction candidate with visibility and provenance intact." href="/admin/intake" />
         <AdminLink title="Review candidate changes" detail="Compare proposed and current records, then accept, reject, edit, merge, or defer." href="/admin/review" />
+        <AdminLink title="Publish approved records" detail="Run the final validation and deliberately promote selected records into the public atlas." href="/admin/publish" />
         <AdminLink title="Inspect coverage gaps" detail="Measure published coverage by region, domain, mission, and demand statement." href="/admin/coverage" />
       </div>
       <PublicCard title="Publication boundary" eyebrow="Human approval required" className="mt-5">

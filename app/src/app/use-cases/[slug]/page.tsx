@@ -102,7 +102,7 @@ export default async function UseCaseDetailPage({
       {query.shortlistSetup === "missing-schema" ? (
         <Card variant="muted" className="mb-6 rounded-[28px]">
           <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
-            Working-list persistence needs the latest Supabase migration. Apply `003_shortlists.sql`, then retry adding the target.
+            Working-list persistence needs the latest database update. Apply `003_shortlists.sql`, then retry adding the target.
           </CardContent>
         </Card>
       ) : null}

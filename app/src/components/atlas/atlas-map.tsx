@@ -162,11 +162,58 @@ export function AtlasMap({
   function drawLeafletPoints() {
     const L = leafletModuleRef.current;
     const layer = leafletLayerRef.current;
-    if (!L || !layer) return;
+    const map = leafletMapRef.current;
+    if (!L || !layer || !map) return;
     layer.clearLayers();
-    organizationsRef.current.forEach((organization) => {
+    const points = organizationsRef.current.flatMap((organization) => {
       const location = organization.primaryLocation;
-      if (location?.latitude === null || location?.latitude === undefined || location.longitude === null || location.longitude === undefined) return;
+      if (location?.latitude === null || location?.latitude === undefined || location.longitude === null || location.longitude === undefined) return [];
+      return [{ organization, location, projected: map.project([location.latitude, location.longitude], map.getZoom()) }];
+    });
+    const groups: Array<typeof points> = [];
+    for (const point of points) {
+      const nearby = groups.find((group) => {
+        const centre = group.reduce((total, item) => total.add(item.projected), L.point(0, 0)).divideBy(group.length);
+        return centre.distanceTo(point.projected) <= 64;
+      });
+      if (nearby) nearby.push(point);
+      else groups.push([point]);
+    }
+
+    groups.forEach((group) => {
+      if (group.length > 1) {
+        const bounds = L.latLngBounds(group.map(({ location }) => [location.latitude!, location.longitude!] as [number, number]));
+        const centre = bounds.getCenter();
+        const label = document.createElement("div");
+        const count = document.createElement("strong");
+        const instruction = document.createElement("span");
+        count.textContent = `${group.length} organizations`;
+        instruction.textContent = "Click to zoom in";
+        instruction.className = "block text-[11px]";
+        label.append(count, instruction);
+        L.marker(centre, {
+          icon: L.divIcon({
+            className: "atlas-leaflet-cluster-icon",
+            html: `<span>${group.length}</span>`,
+            iconSize: [42, 42],
+            iconAnchor: [21, 21]
+          }),
+          keyboard: true,
+          title: `${group.length} organizations. Click to zoom in.`
+        })
+          .bindTooltip(label, { direction: "top" })
+          .on("click", () => {
+            if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
+              map.setView(centre, Math.min(map.getZoom() + 2, 12), { animate: true });
+            } else {
+              map.fitBounds(bounds, { padding: [54, 54], maxZoom: Math.min(map.getZoom() + 3, 12), animate: true });
+            }
+          })
+          .addTo(layer);
+        return;
+      }
+
+      const { organization, location } = group[0];
       const selected = selectedIdRef.current === organization.id;
       const tooltip = document.createElement("div");
       const tooltipName = document.createElement("strong");
@@ -176,7 +223,7 @@ export function AtlasMap({
       tooltipMeta.className = "block text-[11px] capitalize";
       tooltip.append(tooltipName, tooltipMeta);
 
-      L.circleMarker([location.latitude, location.longitude], {
+      L.circleMarker([location.latitude!, location.longitude!], {
         radius: selected ? 10 : 8,
         color: "#ffffff",
         weight: 3,
@@ -273,6 +320,7 @@ export function AtlasMap({
       leafletMapRef.current = map;
       leafletLayerRef.current = module.layerGroup().addTo(map);
       map.on("moveend", () => scheduleLeafletViewport());
+      map.on("zoomend", drawLeafletPoints);
       drawLeafletPoints();
       frameLeafletResults();
       window.requestAnimationFrame(() => scheduleLeafletViewport(0));
@@ -326,8 +374,8 @@ export function AtlasMap({
         type: "geojson",
         data: featureCollection(organizationsRef.current),
         cluster: true,
-        clusterMaxZoom: 9,
-        clusterRadius: 46
+        clusterMaxZoom: 10,
+        clusterRadius: 64
       });
 
       map.addLayer({
@@ -417,11 +465,32 @@ export function AtlasMap({
         hoverPopupRef.current?.remove();
         hoverPopupRef.current = null;
       });
-      map.on("mouseenter", "organization-clusters", () => {
+      map.on("mouseenter", "organization-clusters", (event) => {
         map.getCanvas().style.cursor = "pointer";
+        const feature = event.features?.[0];
+        if (feature?.geometry.type !== "Point") return;
+        const pointCount = Number(feature.properties?.point_count ?? 0);
+        const label = document.createElement("div");
+        const labelCount = document.createElement("strong");
+        const labelInstruction = document.createElement("span");
+        labelCount.textContent = `${pointCount} organizations`;
+        labelInstruction.textContent = "Click to zoom in";
+        label.append(labelCount, labelInstruction);
+        hoverPopupRef.current?.remove();
+        hoverPopupRef.current = new maplibregl.Popup({
+          closeButton: false,
+          closeOnClick: false,
+          offset: 22,
+          className: "atlas-marker-label"
+        })
+          .setLngLat(feature.geometry.coordinates as [number, number])
+          .setDOMContent(label)
+          .addTo(map);
       });
       map.on("mouseleave", "organization-clusters", () => {
         map.getCanvas().style.cursor = "";
+        hoverPopupRef.current?.remove();
+        hoverPopupRef.current = null;
       });
 
       map.once("idle", () => publishMapLibreViewport(map));
@@ -507,7 +576,7 @@ export function AtlasMap({
       ref={containerRef}
       className="h-full min-h-[290px] w-full bg-[#dcebed] sm:min-h-[330px] lg:min-h-[350px]"
       role="region"
-      aria-label={`Map showing ${organizations.length} published organizations. The synchronized results list provides the same organizations without requiring the map.`}
+      aria-label={`Map showing ${organizations.length} published organizations. Numbered groups can be selected to zoom in and separate nearby organizations. The synchronized results list provides the same organizations without requiring the map.`}
     />
   );
 }

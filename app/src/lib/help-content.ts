@@ -453,7 +453,7 @@ export const helpPages: HelpPageDefinition[] = [
       }
     ],
     watchFor: [
-      "Do not let a research agent write directly to Supabase or seed CSVs.",
+      "Do not let a research agent write directly to the production database or seed files.",
       "Do not convert every source lead into a candidate record; weak leads should remain backlog or be rejected.",
       "Do not keep `company-*`, `capability-*`, or `example.com` records in BD-facing paths once a Mission Area is being validated.",
       "Do not mistake source confidence for buyer validation or classified target guidance."
@@ -562,7 +562,7 @@ export const helpPages: HelpPageDefinition[] = [
       "Use social media and YouTube as discovery paths that lead back to stronger source URLs.",
       "Use existing taxonomy IDs when building company, capability, use-case, domain, and cluster records.",
       "Use validation output as the quality gate before promotion.",
-      "Use Supabase MCP for inspection when authenticated, and treat auth errors as setup work."
+      "Use the authenticated database inspection connection when available, and treat access errors as setup work."
     ],
     related: ["research-ingestion-readiness", "trust-and-review", "concepts", "bd-validation-workflow"],
     diagrams: [

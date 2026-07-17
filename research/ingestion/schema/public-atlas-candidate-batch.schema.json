@@ -3,14 +3,15 @@
   "$id": "public-atlas-candidate-batch.schema.json",
   "title": "Public Atlas Candidate Batch",
   "type": "object",
-  "required": ["batchId", "title", "status", "createdAt", "approvedAt", "reviewedBy", "missionAreaSlug", "records"],
+  "required": ["batchId", "title", "status", "createdAt", "records"],
   "properties": {
     "batchId": { "type": "string", "minLength": 1 },
     "title": { "type": "string", "minLength": 1 },
-    "status": { "const": "approved" },
+    "status": { "enum": ["candidate", "approved"] },
     "createdAt": { "type": "string", "format": "date-time" },
     "approvedAt": { "type": "string", "format": "date-time" },
     "reviewedBy": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "minLength": 1 },
     "missionAreaSlug": { "type": "string", "minLength": 1 },
     "records": {
       "type": "array",
@@ -30,13 +31,29 @@
           "confidence": { "enum": ["high", "moderate"] },
           "capability": {
             "type": "object",
-            "required": ["slug", "name", "summary", "type", "features", "applications", "tags", "technicalDomainSlug", "alignmentSummary"],
+            "required": ["slug", "name", "summary", "type", "features", "applications", "tags", "technicalDomainSlug"],
             "properties": {
               "slug": { "type": "string" }, "name": { "type": "string" }, "summary": { "type": "string" }, "type": { "type": "string" },
               "features": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
               "applications": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
               "tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-              "technicalDomainSlug": { "type": "string" }, "clusterSlug": { "type": ["string", "null"] }, "alignmentSummary": { "type": "string" }
+              "technicalDomainSlug": { "type": "string" },
+              "additionalTechnicalDomainSlugs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+              "clusterSlug": { "type": ["string", "null"] },
+              "alignmentSummary": { "type": "string" },
+              "missionMatches": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["missionAreaSlug", "alignmentSummary", "confidence"],
+                  "properties": {
+                    "missionAreaSlug": { "type": "string", "minLength": 1 },
+                    "alignmentSummary": { "type": "string", "minLength": 40 },
+                    "confidence": { "enum": ["high", "moderate"] }
+                  }
+                }
+              }
             },
             "additionalProperties": false
           },
@@ -54,5 +71,12 @@
       }
     }
   },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "approved" } } },
+      "then": { "required": ["approvedAt", "reviewedBy"] },
+      "else": { "required": ["scope"] }
+    }
+  ],
   "additionalProperties": false
 }

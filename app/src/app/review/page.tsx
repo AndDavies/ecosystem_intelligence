@@ -159,7 +159,7 @@ export default async function ReviewPage() {
           <div className="workspace-kicker">Research ingestion</div>
           <CardTitle>Review candidate batches before they become validated seed data.</CardTitle>
           <p className="max-w-3xl text-sm leading-7 text-[var(--muted-foreground)]">
-            Candidate records stay staged until a reviewer promotes them. Promotion validates the batch, upserts rows into Supabase when configured, appends the seed CSVs, and writes a promotion log.
+            Candidate records stay staged until a reviewer promotes them. Promotion validates the batch, updates the hosted database when configured, appends the seed files, and writes a promotion log.
           </p>
         </CardHeader>
         <CardContent className="space-y-4">

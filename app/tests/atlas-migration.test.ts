@@ -275,4 +275,53 @@ describe("public atlas database foundation", () => {
     await expect(db.query("select * from public.candidate_changes")).rejects.toThrow();
     await db.exec("reset role");
   });
+
+  it("keeps candidate publication behind a restricted, transaction-safe checkpoint", async () => {
+    const result = await db.query<{
+      is_security_definer: boolean;
+      public_can_execute: boolean;
+      anon_can_execute: boolean;
+      authenticated_can_execute: boolean;
+      publication_domains: number;
+      published_column: string | null;
+    }>(`
+      select
+        (
+          select function_record.prosecdef
+          from pg_proc function_record
+          join pg_namespace namespace on namespace.oid = function_record.pronamespace
+          where namespace.nspname = 'public'
+            and function_record.proname = 'publish_approved_organization_candidates'
+        ) as is_security_definer,
+        has_function_privilege('public', 'public.publish_approved_organization_candidates(uuid[], uuid)', 'execute') as public_can_execute,
+        has_function_privilege('anon', 'public.publish_approved_organization_candidates(uuid[], uuid)', 'execute') as anon_can_execute,
+        has_function_privilege('authenticated', 'public.publish_approved_organization_candidates(uuid[], uuid)', 'execute') as authenticated_can_execute,
+        (
+          select count(*)::int
+          from public.technical_domains
+          where slug in (
+            'aerospace-and-mobility',
+            'communications-and-cyber',
+            'test-training-and-sustainment',
+            'advanced-manufacturing-and-integration'
+          ) and publication_status = 'published'
+        ) as publication_domains,
+        (
+          select data_type
+          from information_schema.columns
+          where table_schema = 'public'
+            and table_name = 'candidate_changes'
+            and column_name = 'published_at'
+        ) as published_column
+    `);
+
+    expect(result.rows[0]).toEqual({
+      is_security_definer: false,
+      public_can_execute: false,
+      anon_can_execute: false,
+      authenticated_can_execute: true,
+      publication_domains: 4,
+      published_column: "timestamp with time zone"
+    });
+  });
 });

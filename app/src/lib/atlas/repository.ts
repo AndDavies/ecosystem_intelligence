@@ -142,7 +142,7 @@ export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
 
   if (!hasSupabasePublicEnv()) {
     throw new Error(
-      "ATLAS_DATA_SOURCE is set to supabase, but NEXT_PUBLIC_SUPABASE_URL and a publishable key are not configured."
+      "The hosted atlas data source is selected, but its database connection is not configured."
     );
   }
 

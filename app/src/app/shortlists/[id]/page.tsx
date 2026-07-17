@@ -87,7 +87,7 @@ export default async function ShortlistDetailPage({
       {query.mock ? (
         <Card variant="muted" className="mb-6 rounded-[28px]">
           <CardContent className="pt-6 text-sm text-[var(--muted-foreground)]">
-            Persistent working-list writes require Supabase mode. Mock mode does not save item edits.
+            Persistent working-list writes require the hosted database. Preview mode does not save item edits.
           </CardContent>
         </Card>
       ) : null}

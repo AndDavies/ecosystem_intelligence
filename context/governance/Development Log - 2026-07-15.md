@@ -128,3 +128,14 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Protected the sole administrator account from self-service deletion and restricted every admin page, server action, API, and atlas editorial RLS policy to Andrew's immutable Supabase user ID, exact email, and controlled `app_metadata.role = admin`.
 - Kept admin navigation internal to `/admin`; no public account or header link exposes it.
 - Enabled the Supabase email provider. The free-tier default mailer prevents template customization without custom SMTP, so the beta uses secure email links; the code-entry variant remains deferred until a verified sender/SMTP is configured.
+
+## Review-to-publication workflow and map clustering - 2026-07-17
+
+- Added 12 source-backed national-expansion organization dossiers covering aerospace, space, communications, cyber, advanced manufacturing, test, training, and sustainment.
+- Validated the batch and staged all 12 dossiers in the private review queue with clear duplicate checks. The live public atlas remains at 18 organizations; no expansion dossier has been approved or published.
+- Replaced raw candidate JSON as the primary review experience with structured organization, capability, location, domain, cluster, evidence, and source fields.
+- Added per-field edits, duplicate merge resolution, editorial acceptance, and a separate publication checkpoint with selected-record controls and an exact typed confirmation.
+- Added a transaction-safe publication function that creates the canonical organization dossier, evidence, citations, domain links, cluster links, and reviewed mission alignments together or publishes nothing.
+- Added four high-level technical domains required by the expansion batch: Aerospace & Mobility; Communications & Cyber; Test, Training & Sustainment; and Advanced Manufacturing & Integration.
+- Increased primary map clustering and implemented matching numbered clusters in the Leaflet fallback. Selecting a numbered cluster zooms to its member organizations and progressively separates their markers.
+- Removed database-vendor wording from user-visible application copy and replaced it with plain system, database, authentication, and access-control terminology.

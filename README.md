@@ -4,7 +4,7 @@ This workspace separates the runnable product from the evidence and context that
 
 ## Project map
 
-- `app/` — Next.js application, tests, scripts, Supabase migrations, and seed data.
+- `app/` — Next.js application, tests, scripts, hosted-database migrations, and seed data.
 - `research/` — source books, research playbooks, staged ingestion batches, review packets, and research analysis.
 - `context/` — product governance, plans, handoffs, and project-local agent guidance.
 - `content/` — outward-facing collateral and media projects.

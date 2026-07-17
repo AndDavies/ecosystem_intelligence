@@ -206,12 +206,12 @@ Every source is classified as `public`, `permissioned`, or `internal`.
 - Raw uploads, internal correspondence, extraction output, and drafts remain in private storage.
 - Only approved media with recorded source, permission, attribution, and licence may be served publicly.
 
-## Supabase security contract
+## Hosted database security contract
 
 - Every exposed table has RLS enabled.
 - Anonymous users receive explicit `select` grants and can read only published rows allowed by policy.
 - Authenticated members can manage only their own private Working Lists, submissions, and connection requests.
-- The sole public-beta administrator is fail-closed against Andrew's immutable Supabase user ID, exact email, and controlled `app_metadata.role = admin` across pages, server actions, APIs, and RLS.
+- The sole public-beta administrator is fail-closed against Andrew's immutable identity ID, exact email, and controlled `app_metadata.role = admin` across pages, server actions, APIs, and row-level policies.
 - User-editable metadata cannot grant administrator access, and no public navigation exposes an admin link.
 - Member account deletion revokes active sessions, requires a recent sign-in and exact-email confirmation, and removes owned private data through existing foreign-key rules. The administrator account cannot self-delete.
 - Service credentials remain server-side.
@@ -291,7 +291,7 @@ Implemented locally as of 2026-07-15:
 - public organizations, capabilities, regions, and NATO demand routes
 - constrained discovery and public API routes
 - PDF and CSV exports
-- Google OAuth with Supabase PKCE and passwordless email links for public sign-in
+- Google OAuth with PKCE and passwordless email links for public sign-in
 - auth-aware public navigation and an owner-only account workspace with status history, sign-out feedback, and account deletion
 - owner-only collections and lookbook export
 - reviewed public submissions
@@ -307,6 +307,9 @@ Implemented for the Canadian Public Beta as of 2026-07-17:
 - Vercel aggregate page analytics and sampled Speed Insights with query strings redacted
 - indexable canonical public pages, sitemap, structured data, and explicit coverage framing
 - private connection requests, contact inbox, contribution review, subscribers, searches, funnel insights, and workflow status administration
+- numbered map clusters that expand on selection in both the primary map and its browser fallback
+- a structured organization review queue with per-field editing, duplicate resolution, approval, and a separate all-or-nothing publication checkpoint
+- 12 verified national-expansion dossiers staged privately; public publication remains pending Andrew's explicit review and confirmation
 
 Still required before the Monday public release:
 

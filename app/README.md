@@ -2,7 +2,7 @@
 
 This directory is the runnable Next.js public atlas and private editorial workspace.
 
-It contains the Next.js source, public assets, automated tests, operational scripts, and Supabase migrations and seed data. Research inputs and review artifacts live in `../research/`.
+It contains the Next.js source, public assets, automated tests, operational scripts, and hosted-database migrations and seed data. Research inputs and review artifacts live in `../research/`.
 
 From the project root:
 
@@ -49,7 +49,7 @@ Copy `.env.example` to `.env.local` and keep all service credentials server-side
 - `/admin/coverage`
 - `/admin/insights`
 
-The public sign-in surface supports Google OAuth and passwordless email links. Administrator authorization additionally requires Andrew's exact immutable Supabase user ID, exact email, and controlled `app_metadata.role`; user-editable metadata cannot grant access. No admin link appears in public navigation.
+The public sign-in surface supports Google OAuth and passwordless email links. Administrator authorization additionally requires Andrew's exact immutable identity ID, exact email, and controlled `app_metadata.role`; user-editable metadata cannot grant access. No admin link appears in public navigation.
 
 ## Database
 

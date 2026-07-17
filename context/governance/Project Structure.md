@@ -8,7 +8,7 @@ The repository root is a workspace map rather than an application directory. Pro
 
 | Area | Owns | Does not own |
 | --- | --- | --- |
-| `app/` | Next.js source, public/private routes, runtime configuration, tests, scripts, clean Supabase migration, validated seed | Research source books, review packets, product planning |
+| `app/` | Next.js source, public/private routes, runtime configuration, tests, scripts, clean hosted-database migration, validated seed | Research source books, review packets, product planning |
 | `research/` | Source discovery, staged evidence, ingestion schemas, review artifacts, analysis | Runtime code or promoted seed data |
 | `context/` | PRD, plans, audits, handoffs, agent role guidance | Candidate data or application implementation |
 | `content/` | Launch collateral, media, and future copy or demo assets | Product UI assets required at runtime |

@@ -78,7 +78,7 @@ export default async function AccountPage({
             <div className="min-w-0"><p className="break-all text-sm font-bold text-[#101828]">{user.email}</p><p className="mt-1 text-xs text-[#667085]">Sign-in methods: {providers.length ? providers.map((provider) => provider === "email" ? "Email link" : "Google").join(" and ") : "Verified email"}</p></div>
           </div>
           <div className="mt-5 rounded-md border border-[#d0d5dd] bg-[#f8fafc] px-3 py-3 text-xs leading-5 text-[#667085]">
-            Your public browsing is not attached to this profile. Private actions are protected by Supabase authentication and row-level access controls.
+            Your public browsing is not attached to this profile. Private actions are protected by secure authentication and record-level access controls.
           </div>
         </PublicCard>
 
@@ -103,7 +103,7 @@ export default async function AccountPage({
 
       <PublicCard title="Delete account and private data" eyebrow="Data control" className="mt-5 border-[#fda29b]">
         {isAdmin ? (
-          <div className="flex gap-3 rounded-md bg-[#fffaeb] p-4 text-sm leading-6 text-[#7a2e0e]"><ShieldCheck className="mt-0.5 size-5 shrink-0" aria-hidden="true" /><p>This account is the sole administrator and is protected from self-service deletion. Transfer administration and review the audit history before removing it directly in Supabase.</p></div>
+          <div className="flex gap-3 rounded-md bg-[#fffaeb] p-4 text-sm leading-6 text-[#7a2e0e]"><ShieldCheck className="mt-0.5 size-5 shrink-0" aria-hidden="true" /><p>This account is the sole administrator and is protected from self-service deletion. Transfer administration and review the audit history before removing it directly from the identity system.</p></div>
         ) : (
           <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-end">
             <div><p className="text-sm leading-6 text-[#475467]">Deletion permanently removes your account, Working Lists, saved items, connection requests, and contributions. Published organization records and anonymized audit history are retained. This cannot be undone.</p><p className="mt-2 text-xs text-[#667085]">If your last sign-in was more than 15 minutes ago, you will be asked to sign in again before deletion.</p></div>
