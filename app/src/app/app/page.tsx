@@ -160,7 +160,7 @@ export default async function AppHomePage() {
             </CardHeader>
             <CardContent className="space-y-3">
               <NextAction
-                eyebrow={primaryReview ? "Review first" : "Review posture"}
+                eyebrow={primaryReview ? "Review first" : "Data quality"}
                 title={primaryReview ? primaryReview.entityLabel : "No high-impact changes pending"}
                 detail={
                   primaryReview

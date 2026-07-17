@@ -7,7 +7,7 @@ import { getAtlasSnapshot, queryAtlas } from "@/lib/atlas/repository";
 export const metadata: Metadata = {
   title: "Design Partner Preview",
   description:
-    "Explore verified Canadian defence and dual-use organizations, capabilities, regions, public evidence, and reviewed mission alignment."
+    "Explore verified Canadian defence and dual-use organizations, capabilities, regions, public sources, and analyst-assessed mission relevance."
 };
 
 export default async function PublicAtlasPage({

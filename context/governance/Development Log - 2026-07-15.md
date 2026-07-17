@@ -55,8 +55,10 @@ The product front door changed from an internal command-centre workspace to a fr
 
 ## Trust decisions
 
-- City-centroid coordinates are labelled as such.
-- Existing mission mappings are labelled reviewed derived reads.
+- City-centroid coordinates are labelled `City-level` in public profiles while
+  the stored geographic-confidence value remains unchanged.
+- Existing mission mappings are labelled analyst assessments in public pages
+  while retaining their reviewed derived status internally.
 - The five NATO problem families are public with zero capability matches until new mappings pass review.
 - Empty regions and demand pages use explicit coverage states.
 - Confidential emails and local research PDFs remain private inputs unless publicly corroborated and approved.
@@ -91,3 +93,17 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Added random per-tab session identifiers and search attribution for semantic page, filter, result, marker, dossier, evidence, export, signup, and feedback events. Keystrokes, arbitrary clicks, mouse movement, and session replay remain out of scope.
 - Fixed the mobile map/list failure by rejecting collapsed map bounds while the hidden map has zero layout dimensions and preserving the last usable visible-result set.
 - Added validation tests for affirmative consent, feedback normalization, bounded event vocabulary, and collapsed map bounds.
+
+## Public terminology simplification - 2026-07-17
+
+- Replaced public editorial-workflow language such as `reviewed derived fit`,
+  `derived read`, and `review posture` with `analyst assessment`, `assessment
+  confidence`, and `data quality`.
+- Separated public evidence strength from assessment confidence without changing
+  the underlying confidence fields, match logic, filters, schemas, or records.
+- Standardized the web experience on `organization profile` and `capability
+  profile`, reserving `lookbook` for generated multi-record reports.
+- Replaced GIS and maintenance jargon with `location accuracy`, `city-level`,
+  `last verified`, and `sources` across public pages and PDF exports.
+- Kept the change presentation-only: no database migration, matching behavior,
+  query behavior, publication status, or review workflow changed.

@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { requestRefresh } from "@/lib/actions/review";
+import { assessmentConfidenceLabel, evidenceStrengthLabel } from "@/lib/atlas/presentation";
 import { requireProfile } from "@/lib/auth";
 import { getCapabilityById } from "@/lib/data/repository";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
@@ -433,7 +434,7 @@ function PublicCapabilityPage({
             <BookmarkPlus className="size-4" /> Save
           </Link>
           <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline">
-            <Download className="size-4" /> Export dossier
+            <Download className="size-4" /> Export profile
           </Link>
           <Link href={`/organizations/${organization.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md bg-[#007f98] px-4 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
             Organization profile <ExternalLink className="size-4" />
@@ -443,11 +444,11 @@ function PublicCapabilityPage({
     >
       <div className="grid gap-5 lg:grid-cols-[1.22fr_0.78fr]">
         <div className="space-y-5">
-          <PublicCard title="Capability profile" eyebrow={capability.capabilityType ?? "Reviewed offering"}>
+          <PublicCard title="Capability profile" eyebrow={capability.capabilityType ?? "Verified capability"}>
             <div className="grid gap-5 sm:grid-cols-2">
               <CapabilityList label="Core features" values={capability.coreFeatures} />
               <CapabilityList label="Defence applications" values={capability.defenceApplications} />
-              <CapabilityList label="Novelty" values={capability.novelty} empty="No reviewed novelty claims are published." />
+              <CapabilityList label="Novelty" values={capability.novelty} empty="No verified novelty claims are published." />
               <div>
                 <h3 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#667085]">Maturity</h3>
                 <dl className="mt-2 space-y-2 text-xs text-[#475467]">
@@ -463,23 +464,23 @@ function PublicCapabilityPage({
             </div>
           </PublicCard>
 
-          <PublicCard title="Mission alignment" eyebrow="Reviewed derived reads">
+          <PublicCard title="Mission relevance" eyebrow="Analyst assessments">
             {capability.missionMatches.length ? (
               <div className="space-y-3">
                 {capability.missionMatches.map((match) => (
                   <article key={match.id} className="rounded-md border border-[#fedf89] bg-[#fffaeb] p-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <Link href={`/?mission=${match.missionArea.slug}`} className="text-sm font-bold text-[#7a2e0e] no-underline hover:underline">{match.missionArea.name}</Link>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#93370d]">Derived · {match.confidence} confidence</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#93370d]">{assessmentConfidenceLabel(match.confidence)} assessment confidence</span>
                     </div>
                     <p className="mt-2 text-xs leading-5 text-[#7a2e0e]">{match.alignmentSummary}</p>
                   </article>
                 ))}
               </div>
-            ) : <EmptyCoverage title="No reviewed mission fit" detail="A source-backed capability can be published before an analyst approves any mission alignment." />}
+            ) : <EmptyCoverage title="Mission relevance not assessed yet" detail="This verified capability does not yet include an analyst assessment against a mission area." />}
           </PublicCard>
 
-          <PublicCard title="Demand alignment" eyebrow="Public demand signals">
+          <PublicCard title="Demand relevance" eyebrow="Public demand signals">
             {capability.demandMatches.length ? (
               <div className="space-y-3">
                 {capability.demandMatches.map((match) => (
@@ -490,7 +491,7 @@ function PublicCapabilityPage({
                   </article>
                 ))}
               </div>
-            ) : <EmptyCoverage title="No reviewed public-demand match" detail="The current dataset does not contain an approved demand mapping for this capability." />}
+            ) : <EmptyCoverage title="Demand relevance not assessed yet" detail="No public-demand assessment has been published for this capability." />}
           </PublicCard>
         </div>
 
@@ -498,15 +499,15 @@ function PublicCapabilityPage({
           <PublicCard title="Organization" eyebrow="Associated company">
             <p className="text-base font-bold text-[#101828]">{organization.name}</p>
             <p className="mt-2 text-xs leading-5 text-[#667085]">{organization.description}</p>
-            <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex text-xs font-semibold text-[#007f98] no-underline hover:underline">Open full organization dossier</Link>
+            <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex text-xs font-semibold text-[#007f98] no-underline hover:underline">View organization profile</Link>
           </PublicCard>
-          <PublicCard title="Evidence register" eyebrow={`${new Set(citations.map((citation) => citation.sourceUrl)).size} public sources`}>
+          <PublicCard title="Sources" eyebrow={`${new Set(citations.map((citation) => citation.sourceUrl)).size} public sources`}>
             <EvidenceList citations={citations} />
           </PublicCard>
-          <PublicCard title="Review posture" eyebrow="Publication status">
+          <PublicCard title="Data quality" eyebrow="Profile verification">
             <dl className="grid gap-3 text-xs">
-              <div><dt className="text-[#667085]">Source confidence</dt><dd className="mt-1 font-semibold capitalize text-[#344054]">{capability.sourceConfidence}</dd></div>
-              <div><dt className="text-[#667085]">Last reviewed</dt><dd className="mt-1 font-semibold text-[#344054]">{formatDate(capability.lastReviewedAt)}</dd></div>
+              <div><dt className="text-[#667085]">Evidence strength</dt><dd className="mt-1 font-semibold text-[#344054]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
+              <div><dt className="text-[#667085]">Last verified</dt><dd className="mt-1 font-semibold text-[#344054]">{formatDate(capability.lastReviewedAt)}</dd></div>
               <div><dt className="text-[#667085]">Technical domains</dt><dd className="mt-1 font-semibold text-[#344054]">{capability.technicalDomains.map((domain) => domain.name).join(", ") || "Not yet mapped"}</dd></div>
             </dl>
           </PublicCard>
@@ -524,7 +525,7 @@ function CapabilityList({ label, values, empty }: { label: string; values: strin
         <ul className="mt-2 space-y-1.5 text-xs leading-5 text-[#475467]">
           {values.map((value) => <li key={value} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#007f98]" />{value}</li>)}
         </ul>
-      ) : <p className="mt-2 text-xs leading-5 text-[#667085]">{empty ?? "No reviewed values are published."}</p>}
+      ) : <p className="mt-2 text-xs leading-5 text-[#667085]">{empty ?? "No verified values are published."}</p>}
     </div>
   );
 }

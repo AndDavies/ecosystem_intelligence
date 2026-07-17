@@ -311,7 +311,7 @@ export default async function CompanyPage({
           <Card variant="rail" className="rounded-[32px]">
             <CardHeader className="space-y-3">
               <div className="workspace-kicker">Trust summary</div>
-              <CardTitle>Current portfolio trust posture</CardTitle>
+              <CardTitle>Current portfolio data quality</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <ContextPanel title="Company freshness" body={companyFreshness.detail} />

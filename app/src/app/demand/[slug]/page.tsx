@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ExternalLink, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { assessmentConfidenceLabel } from "@/lib/atlas/presentation";
 import { getAtlasDemandBySlug } from "@/lib/atlas/repository";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -40,7 +41,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
           <PublicCard title="Desired end state" eyebrow="Public problem framing">
             <p className="text-sm leading-6 text-[#475467]">{demand.desiredEndState}</p>
           </PublicCard>
-          <PublicCard title="Reviewed capability landscape" eyebrow={`${demand.matches.length} published matches`}>
+          <PublicCard title="Capability matches" eyebrow={`${demand.matches.length} published assessments`}>
             {demand.matches.length ? (
               <div className="divide-y divide-[#eaecf0]">
                 {demand.matches.map(({ organization, capability, match }) => (
@@ -50,19 +51,19 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
                         <Link href={`/organizations/${organization.slug}`} className="text-sm font-bold text-[#007f98] no-underline hover:underline">{organization.name}</Link>
                         <Link href={`/capabilities/${capability.slug}`} className="mt-1 block text-xs font-semibold text-[#344054] no-underline hover:underline">{capability.name}</Link>
                       </div>
-                      <span className="w-fit rounded bg-[#e7f8fa] px-2 py-1 text-[10px] font-semibold text-[#007f98]">{match.confidence} confidence</span>
+                      <span className="w-fit rounded bg-[#e7f8fa] px-2 py-1 text-[10px] font-semibold text-[#007f98]">{assessmentConfidenceLabel(match.confidence)} assessment confidence</span>
                     </div>
                     <p className="mt-2 text-xs leading-5 text-[#475467]">{match.alignmentSummary}</p>
                   </article>
                 ))}
               </div>
-            ) : <EmptyCoverage title="No reviewed matches yet" detail="The public demand statement is preserved as a research target. Capabilities will not appear here until an analyst reviews the alignment and its evidence." />}
+            ) : <EmptyCoverage title="Demand relevance not assessed yet" detail="The public demand statement is preserved as a research target. Capabilities will not appear here until an analyst assesses the published evidence." />}
           </PublicCard>
-          <PublicCard title="Known gaps and caveats" eyebrow="Coverage posture">
+          <PublicCard title="Known gaps and caveats" eyebrow="Coverage status">
             <ul className="space-y-2 text-xs leading-5 text-[#475467]">
-              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#f79009]" />An empty match set indicates incomplete reviewed coverage, not a lack of relevant Canadian capability.</li>
+              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#f79009]" />An empty match set indicates incomplete assessment coverage, not a lack of relevant Canadian capability.</li>
               <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#f79009]" />Public statements do not establish procurement timing, budgets, eligibility, or endorsement.</li>
-              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#f79009]" />Every future match must remain individually reviewable and source-linked.</li>
+              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[#f79009]" />Every future assessment must remain source-linked and open to editorial review.</li>
             </ul>
           </PublicCard>
         </div>
@@ -76,7 +77,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
             </dl>
             <p className="mt-4 text-xs leading-5 text-[#667085]">{demand.source.summary}</p>
           </PublicCard>
-          <PublicCard title="Evidence register" eyebrow="Authoritative citation">
+          <PublicCard title="Sources" eyebrow="Authoritative citation">
             <EvidenceList citations={demand.citations} />
           </PublicCard>
         </aside>

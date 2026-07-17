@@ -32,7 +32,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
     >
       <div className="grid gap-4 sm:grid-cols-3">
         <MetricCard icon={<Building2 className="size-5" />} label="Published organizations" value={result.region.organizationCount} />
-        <MetricCard icon={<Layers3 className="size-5" />} label="Reviewed capabilities" value={result.region.capabilityCount} />
+        <MetricCard icon={<Layers3 className="size-5" />} label="Verified capabilities" value={result.region.capabilityCount} />
         <MetricCard icon={<MapPin className="size-5" />} label="Visible clusters" value={result.region.clusterCount} />
       </div>
 
@@ -47,7 +47,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
                     <p className="mt-1 text-xs text-[#667085]">{organization.primaryLocation?.name ?? "Location under review"}</p>
                     <p className="mt-2 line-clamp-2 max-w-2xl text-xs leading-5 text-[#475467]">{organization.description}</p>
                   </div>
-                  <Link href={`/organizations/${organization.slug}`} className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-[#007f98] no-underline hover:underline">Dossier <ArrowRight className="size-3.5" /></Link>
+                  <Link href={`/organizations/${organization.slug}`} className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-[#007f98] no-underline hover:underline">Profile <ArrowRight className="size-3.5" /></Link>
                 </article>
               ))}
             </div>
@@ -55,7 +55,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         </PublicCard>
 
         <div className="space-y-5">
-          <PublicCard title="Ecosystem clusters" eyebrow="Reviewed groupings">
+          <PublicCard title="Ecosystem clusters" eyebrow="Curated groupings">
             {result.clusters.length ? (
               <div className="space-y-3">
                 {result.clusters.map((cluster) => (
@@ -66,9 +66,9 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
                   </article>
                 ))}
               </div>
-            ) : <EmptyCoverage title="No reviewed clusters" detail="Cluster coverage is not inferred from a thin sample. It will be added after the regional capability base supports it." />}
+            ) : <EmptyCoverage title="Clusters not mapped yet" detail="Cluster coverage is not inferred from a thin sample. It will be added after the regional capability base supports it." />}
           </PublicCard>
-          <PublicCard title="Coverage note" eyebrow="Research posture">
+          <PublicCard title="Coverage note" eyebrow="Research status">
             <p className="text-xs leading-5 text-[#667085]">Counts reflect the current published dataset, not the total size of the real ecosystem. Unknown and thin coverage remain explicit to support gap-driven research.</p>
           </PublicCard>
         </div>

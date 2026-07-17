@@ -806,7 +806,7 @@ function InsightBullet({ children }: { children: React.ReactNode }) {
 function DerivedReadLabel() {
   return (
     <div className="inline-flex items-center rounded-full bg-[var(--muted)] px-3 py-1 text-xs font-medium text-[var(--muted-foreground)]">
-      Derived read: heuristic summary from current records, not a direct source-backed fact.
+      Analyst assessment: a reviewed interpretation of current records, not a direct source-backed fact.
     </div>
   );
 }

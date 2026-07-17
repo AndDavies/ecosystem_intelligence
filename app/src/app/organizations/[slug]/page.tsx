@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { BookmarkPlus, Building2, Download, ExternalLink, FileCheck2, MapPin, ShieldCheck } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { assessmentConfidenceLabel, evidenceStrengthLabel, locationAccuracyLabel } from "@/lib/atlas/presentation";
 import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
 import { formatDate, toTitleCase } from "@/lib/utils";
 
@@ -30,7 +31,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
 
   return (
     <PublicPageShell
-      eyebrow="Organization dossier"
+      eyebrow="Organization profile"
       title={organization.name}
       description={organization.description}
       backHref="/organizations"
@@ -41,7 +42,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             <BookmarkPlus className="size-4" /> Save
           </Link>
           <Link href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline">
-            <Download className="size-4" /> Export dossier
+            <Download className="size-4" /> Export profile
           </Link>
           {organization.websiteUrl ? (
             <a href={organization.websiteUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-md bg-[#007f98] px-4 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
@@ -65,8 +66,8 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             </div>
             <dl className="grid gap-4 text-sm">
               <ProfileItem label="Headquarters" value={organization.primaryLocation?.name} icon={<MapPin className="size-4" />} />
-              <ProfileItem label="Map precision" value={organization.primaryLocation ? toTitleCase(organization.primaryLocation.geographicConfidence) : null} />
-              <ProfileItem label="Entity type" value={toTitleCase(organization.entityKind)} />
+              <ProfileItem label="Location accuracy" value={organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null} />
+              <ProfileItem label="Organization type" value={toTitleCase(organization.entityKind)} />
               <ProfileItem label="Categories" value={organization.categories.map(toTitleCase).join(", ")} />
               <ProfileItem label="Company stage" value={organization.companyStage} />
               <ProfileItem label="Employee range" value={organization.employeeRange} />
@@ -74,15 +75,15 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             </dl>
           </PublicCard>
 
-          <PublicCard title="Trust posture" eyebrow="Editorial review">
+          <PublicCard title="Data quality" eyebrow="Profile verification">
             <div className="flex items-center gap-3">
               <span className="flex size-9 items-center justify-center rounded-md bg-[#dcfae6] text-[#067647]"><ShieldCheck className="size-5" /></span>
               <div>
-                <p className="text-sm font-semibold text-[#101828]">{organization.sourceConfidence === "high" ? "High" : "Moderate"} source confidence</p>
-                <p className="text-xs text-[#667085]">Last reviewed {formatDate(organization.lastReviewedAt)}</p>
+                <p className="text-sm font-semibold text-[#101828]">{evidenceStrengthLabel(organization.sourceConfidence)} evidence</p>
+                <p className="text-xs text-[#667085]">Last verified {formatDate(organization.lastReviewedAt)}</p>
               </div>
             </div>
-            <p className="mt-4 text-xs leading-5 text-[#667085]">Unknown fields remain unpublished. Mission and demand alignment are labelled separately from source-backed facts.</p>
+            <p className="mt-4 text-xs leading-5 text-[#667085]">Unknown fields remain unpublished. Mission and demand relevance are shown as analyst assessments, separate from verified profile information.</p>
           </PublicCard>
 
           <Link href={`/submit?submissionType=correction&targetType=organization&targetId=${organization.id}&returnTo=${encodeURIComponent(`/organizations/${organization.slug}`)}`} className="flex items-center justify-between rounded-lg border border-[#d0d5dd] bg-white px-5 py-4 text-sm font-semibold text-[#344054] no-underline hover:border-[#98a2b3] hover:no-underline">
@@ -92,7 +93,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
         </aside>
 
         <div className="space-y-5">
-          <PublicCard title="Capabilities" eyebrow={`${organization.capabilities.length} reviewed ${organization.capabilities.length === 1 ? "offering" : "offerings"}`}>
+          <PublicCard title="Capabilities" eyebrow={`${organization.capabilities.length} verified ${organization.capabilities.length === 1 ? "capability" : "capabilities"}`}>
             <div className="space-y-5">
               {organization.capabilities.map((capability) => (
                 <article key={capability.id} className="rounded-lg border border-[#d0d5dd] p-4 sm:p-5">
@@ -103,7 +104,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                       </h3>
                       {capability.capabilityType ? <p className="mt-1 text-xs text-[#667085]">{capability.capabilityType}</p> : null}
                     </div>
-                    <span className="w-fit rounded bg-[#e7f8fa] px-2 py-1 text-[10px] font-semibold text-[#007f98]">{capability.sourceConfidence === "high" ? "High confidence" : "Moderate confidence"}</span>
+                    <span className="w-fit rounded bg-[#e7f8fa] px-2 py-1 text-[10px] font-semibold text-[#007f98]">{evidenceStrengthLabel(capability.sourceConfidence)} evidence</span>
                   </div>
                   <p className="mt-3 text-sm leading-6 text-[#475467]">{capability.summary}</p>
                   <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -118,23 +119,23 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             </div>
           </PublicCard>
 
-          <PublicCard title="Reviewed mission alignment" eyebrow="Derived reads">
+          <PublicCard title="Mission relevance" eyebrow="Analyst assessments">
             {organization.capabilities.some((capability) => capability.missionMatches.length) ? (
               <div className="space-y-3">
                 {organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => (
                   <article key={match.id} className="rounded-md border border-[#fedf89] bg-[#fffaeb] p-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <Link href={`/?mission=${match.missionArea.slug}`} className="text-sm font-bold text-[#7a2e0e] no-underline hover:underline">{match.missionArea.name}</Link>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#93370d]">Reviewed derived fit · {match.confidence}</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#93370d]">{assessmentConfidenceLabel(match.confidence)} assessment confidence</span>
                     </div>
                     <p className="mt-2 text-xs leading-5 text-[#7a2e0e]">{match.alignmentSummary}</p>
                   </article>
                 )))}
               </div>
-            ) : <EmptyCoverage title="No reviewed mission alignment" detail="This organization remains public because its identity and capability evidence passed review; mission fit has not yet been approved." />}
+            ) : <EmptyCoverage title="Mission relevance not assessed yet" detail="This verified organization profile does not yet include an analyst assessment against a mission area." />}
           </PublicCard>
 
-          <PublicCard title="Demand alignment" eyebrow="Public demand overlays">
+          <PublicCard title="Demand relevance" eyebrow="Public demand signals">
             {organization.capabilities.some((capability) => capability.demandMatches.length) ? (
               <div className="space-y-3">
                 {organization.capabilities.flatMap((capability) => capability.demandMatches.map((match) => (
@@ -144,10 +145,10 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                   </article>
                 )))}
               </div>
-            ) : <EmptyCoverage title="No reviewed public-demand match" detail="No NATO demand alignment has been approved for this organization. This is a coverage state, not a negative assessment." />}
+            ) : <EmptyCoverage title="Demand relevance not assessed yet" detail="No public-demand assessment has been published for this organization. This is a coverage gap, not a negative assessment." />}
           </PublicCard>
 
-          <PublicCard title="Evidence register" eyebrow={`${new Set(citations.map((citation) => citation.sourceUrl)).size} public sources`}>
+          <PublicCard title="Sources" eyebrow={`${new Set(citations.map((citation) => citation.sourceUrl)).size} public sources`}>
             <EvidenceList citations={citations} />
           </PublicCard>
         </div>

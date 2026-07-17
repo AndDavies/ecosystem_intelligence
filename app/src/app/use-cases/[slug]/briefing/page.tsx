@@ -475,7 +475,7 @@ function shorten(value: string, maxLength: number) {
 function DerivedReadLabel() {
   return (
     <div className="inline-flex items-center rounded-full bg-[var(--muted)] px-3 py-1 text-xs font-medium text-[var(--muted-foreground)]">
-      Derived read: current-record analysis, not a direct source quote.
+      Analyst assessment based on current records; not a direct source quote.
     </div>
   );
 }

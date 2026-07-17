@@ -57,7 +57,7 @@ Secondary users:
 
 ### Public by default, private where necessary
 
-Anonymous users can browse, search, view dossiers, and export published intelligence. Authentication is reserved for private collections, profile claims, corrections, and editorial operations.
+Anonymous users can browse, search, view profiles, and export published intelligence. Authentication is reserved for private collections, profile claims, corrections, and editorial operations.
 
 ### Evidence before volume
 
@@ -65,7 +65,7 @@ The atlas must not pad thin regions with synthetic organizations. Every public o
 
 ### Facts and analysis remain separate
 
-Source-backed facts, reviewed derived reads, and public-demand alignments must be visibly distinct. A public-demand match is not procurement eligibility, endorsement, or classified demand.
+Verified information, analyst assessments, and public-demand relevance must be visibly distinct. A public-demand assessment is not procurement eligibility, endorsement, or classified demand.
 
 ### Unknown means unknown
 
@@ -82,8 +82,9 @@ organizations represented by a visible cluster. Filters, visible-result counts,
 exports, selection state, and URL state remain synchronized.
 
 Selecting a marker or table row opens one compact organization preview with a
-reviewed capability, evidence count, confidence, freshness, and explicit actions
-to open the full dossier, save it, or inspect evidence. Marker selection never
+verified capability, source count, evidence strength or assessment confidence,
+last-verified status, and explicit actions to open the full profile, save it, or
+inspect sources. Marker selection never
 publishes, infers, or invents additional facts.
 
 ### Human publication boundary
@@ -238,15 +239,15 @@ Failure, rate-limit, weak-source, and duplicate states produce review notes rath
 Public exports:
 
 - filtered CSV with stable IDs
-- individual organization PDF dossier
-- individual capability PDF dossier
+- individual organization PDF profile
+- individual capability PDF profile
 - regional PDF report
 
 Authenticated export:
 
 - saved-collection PDF lookbook
 
-Unknown fields must be omitted cleanly. PDFs must keep citations clickable and label derived reads.
+Unknown fields must be omitted cleanly. PDFs must keep citations clickable and label analyst assessments.
 
 ## Initial dataset contract
 

@@ -34,7 +34,7 @@ export const helpPages: HelpPageDefinition[] = [
     title: "Core Concepts And Definitions",
     summary: "Shared vocabulary for the terms that matter most in the app.",
     purpose:
-      "Use this page when you need a quick definition of how the product thinks about Mission Areas / Use Cases, Technical Domains, Clusters, Capabilities, Companies, Evidence, Derived Reads, and Working Lists.",
+      "Use this page when you need a quick definition of how the product thinks about Mission Areas / Use Cases, Technical Domains, Clusters, Capabilities, Companies, Evidence, Analyst Assessments, and Working Lists.",
     keyTerms: [
       {
         term: "Mission Area / Use Case",
@@ -79,7 +79,7 @@ export const helpPages: HelpPageDefinition[] = [
       {
         term: "Evidence",
         definition:
-          "Visible source support, citations, snippets, freshness, and confidence posture attached to records or recommendations."
+          "Published source support, citations, excerpts, last-verified dates, and evidence strength attached to records or assessments."
       },
       {
         term: "Pathway",
@@ -87,9 +87,9 @@ export const helpPages: HelpPageDefinition[] = [
           "The simplified maturity model used in the MVP: Build, Validate, or Scale."
       },
       {
-        term: "Derived Read",
+        term: "Analyst Assessment",
         definition:
-          "A heuristic or AI-assisted interpretation that helps decision-making but is not the same as a source-backed fact."
+          "A reviewed interpretation based on published information that supports decision-making but is not itself a source-backed fact."
       },
       {
         term: "Working List",
@@ -132,7 +132,7 @@ export const helpPages: HelpPageDefinition[] = [
       "Do not confuse a Mission Area with a Technical Domain. Mission Areas answer a decision question; Technical Domains describe the landscape.",
       "Do not confuse a company with a capability. A single company may have several capabilities at different maturity levels.",
       "Do not treat policy alignment as proof that a specific buyer has validated the capability.",
-      "Treat derived reads as decision support, not as direct evidence.",
+      "Treat analyst assessments as decision support, not as direct evidence.",
       "Use pathways conservatively; if maturity is uncertain, it should not be treated as Scale."
     ],
     related: ["first-walkthrough", "use-case-discovery", "bd-validation-workflow", "trust-and-review"]

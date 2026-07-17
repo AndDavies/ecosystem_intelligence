@@ -23,6 +23,13 @@ import { FormEvent, useMemo, useRef, useState } from "react";
 import { AtlasMap } from "@/components/atlas/atlas-map";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
+import {
+  alignmentSubject,
+  alignmentTypeLabel,
+  assessmentConfidenceLabel,
+  evidenceStrengthLabel,
+  locationAccuracyLabel
+} from "@/lib/atlas/presentation";
 import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
 import {
   currentPilotCohort,
@@ -92,11 +99,6 @@ function selectedAlignment(capability: AtlasCapability | null, filters: AtlasQue
   if (filters.demand) return capability.demandMatches.find((match) => match.demandSlug === filters.demand) ?? null;
   if (filters.mission) return capability.missionMatches.find((match) => match.missionArea.slug === filters.mission) ?? null;
   return capability.missionMatches[0] ?? capability.demandMatches[0] ?? null;
-}
-
-function confidenceLabel(value: AtlasOrganization["sourceConfidence"]) {
-  if (value === "needs_review") return "Needs review";
-  return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 function filterWithout(filters: AtlasQuery, key: string): AtlasQuery {
@@ -253,8 +255,8 @@ export function AtlasExplorer({
   }
 
   const caveat = filters.demand
-    ? "Demand matches are reviewed public-source alignments. They are not eligibility, endorsement, or procurement notices."
-    : "Mission-fit notes are reviewed derived reads. Open a row to inspect their public evidence and caveats.";
+    ? "Demand relevance is assessed from published sources. It is not eligibility, endorsement, or procurement guidance."
+    : "Mission relevance is an analyst assessment based on published sources. Open a row to inspect the rationale and sources.";
 
   return (
     <div className="atlas-frame pb-8 pt-4 sm:pt-5">
@@ -473,9 +475,9 @@ export function AtlasExplorer({
                       <th scope="col" className="px-2 py-2.5">Organization</th>
                       <th scope="col" className="px-3 py-2.5">Capability</th>
                       <th scope="col" className="px-3 py-2.5">Region</th>
-                      <th scope="col" className="px-3 py-2.5">Reviewed fit</th>
-                      <th scope="col" className="px-3 py-2.5">Evidence</th>
-                      <th scope="col" className="px-3 py-2.5">Freshness</th>
+                      <th scope="col" className="px-3 py-2.5">Assessment</th>
+                      <th scope="col" className="px-3 py-2.5">Sources</th>
+                      <th scope="col" className="px-3 py-2.5">Last verified</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -550,11 +552,11 @@ function LookbookPeek({
   const confidence = alignment?.confidence ?? capability?.sourceConfidence ?? organization.sourceConfidence;
   const summary = alignment?.alignmentSummary ?? capability?.summary ?? organization.description;
   const location = organization.primaryLocation;
-  const freshness = organization.freshnessStatus === "current"
-    ? "Current"
+  const verificationStatus = organization.freshnessStatus === "current"
+    ? `Last verified ${formatDate(organization.lastReviewedAt)}`
     : organization.freshnessStatus === "review_due"
       ? "Review due"
-      : "Stale";
+      : "Out of date";
 
   return (
     <aside
@@ -584,7 +586,7 @@ function LookbookPeek({
 
       <div className="mt-3 rounded-md border border-[#e4e7ec] bg-[#f8fafc] p-3">
         <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#667085]">
-          {alignment ? "Reviewed alignment" : "Reviewed capability"}
+          {alignment ? alignmentTypeLabel(alignment.matchType) : "Verified capability"}
         </p>
         <p className="mt-1 text-xs font-semibold leading-5 text-[#344054]">{capability?.name ?? "Organization profile"}</p>
         <p className="mt-1 line-clamp-3 text-[11px] leading-[1.1rem] text-[#667085]">{summary}</p>
@@ -594,12 +596,12 @@ function LookbookPeek({
         <span className={cn(
           "rounded px-2 py-1",
           confidence === "high" ? "bg-[#dcfae6] text-[#067647]" : confidence === "moderate" ? "bg-[#fff1d6] text-[#7a2e0e]" : "bg-[#fee4e2] text-[#b42318]"
-        )}>{confidenceLabel(confidence)} confidence</span>
+        )}>{alignment ? `${assessmentConfidenceLabel(confidence)} assessment confidence` : `${evidenceStrengthLabel(confidence)} evidence`}</span>
         <span className="rounded bg-[#f2f4f7] px-2 py-1 text-[#475467]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
         <span className={cn(
           "rounded px-2 py-1",
           organization.freshnessStatus === "current" ? "bg-[#e7f8fa] text-[#007f98]" : "bg-[#fff1d6] text-[#7a2e0e]"
-        )}>{freshness}</span>
+        )}>{verificationStatus}</span>
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-2">
@@ -607,7 +609,7 @@ function LookbookPeek({
           href={`/organizations/${organization.slug}`}
           className="col-span-2 inline-flex h-9 items-center justify-center gap-2 rounded-md bg-[#007f98] px-3 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline"
         >
-          Open lookbook
+          View profile
           <ArrowRight className="size-3.5" />
         </Link>
         <Link
@@ -624,7 +626,7 @@ function LookbookPeek({
             rel="noreferrer"
             className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border border-[#d0d5dd] bg-white px-2 text-[11px] font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline"
           >
-            Evidence
+            Source
             <ExternalLink className="size-3.5" />
           </a>
         ) : (
@@ -699,11 +701,11 @@ function MobileOrganizationCard({
           {expanded ? <ChevronDown className="mt-0.5 size-4 shrink-0 text-[#007f98]" /> : <ChevronRight className="mt-0.5 size-4 shrink-0 text-[#475467]" />}
           <span className="min-w-0 flex-1">
             <span className="block text-sm font-bold text-[#007f98]">{organization.name}</span>
-            <span className="mt-1 block text-xs leading-5 text-[#344054]">{capability?.name ?? "No reviewed capability"}</span>
+            <span className="mt-1 block text-xs leading-5 text-[#344054]">{capability?.name ?? "Capability not yet verified"}</span>
             <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#667085]">
               <span>{location?.provinceTerritory ?? "Location under review"}</span>
               <span>{evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
-              <span>Reviewed {formatDate(capability?.lastReviewedAt ?? organization.lastReviewedAt)}</span>
+              <span>Last verified {formatDate(capability?.lastReviewedAt ?? organization.lastReviewedAt)}</span>
             </span>
           </span>
         </span>
@@ -711,7 +713,7 @@ function MobileOrganizationCard({
 
       {expanded ? (
         <div className="border-t border-[#b8dfe5] bg-[#f0fafb] px-4 py-4">
-          <h3 className="text-xs font-bold text-[#101828]">{alignment ? "Why this capability fits" : "Reviewed capability summary"}</h3>
+          <h3 className="text-xs font-bold text-[#101828]">{alignment ? `Why it matches ${alignmentSubject(alignment)}` : "Verified capability summary"}</h3>
           <p className="mt-2 text-xs leading-5 text-[#344054]">{alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
 
           {capability?.defenceApplications.length ? (
@@ -724,26 +726,26 @@ function MobileOrganizationCard({
 
           <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[#cce7eb] pt-4 text-xs">
             <div>
-              <span className="block text-[10px] text-[#667085]">Confidence</span>
+              <span className="block text-[10px] text-[#667085]">{alignment ? "Assessment confidence" : "Evidence strength"}</span>
               <span className={cn(
                 "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
                 confidence === "high" ? "bg-[#dcfae6] text-[#067647]" : confidence === "moderate" ? "bg-[#fff1d6] text-[#7a2e0e]" : "bg-[#fee4e2] text-[#b42318]"
-              )}>{confidenceLabel(confidence)}</span>
+              )}>{alignment ? assessmentConfidenceLabel(confidence) : evidenceStrengthLabel(confidence)}</span>
             </div>
             <div>
-              <span className="block text-[10px] text-[#667085]">Map precision</span>
-              <span className="mt-1 block font-medium text-[#344054]">{location ? toTitleCase(location.geographicConfidence) : "Unknown"}</span>
+              <span className="block text-[10px] text-[#667085]">Location accuracy</span>
+              <span className="mt-1 block font-medium text-[#344054]">{location ? locationAccuracyLabel(location.geographicConfidence) : "Not verified"}</span>
             </div>
           </div>
 
           {evidence[0] ? (
             <a href={evidence[0].sourceUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-start gap-1 text-xs font-semibold text-[#007f98] no-underline hover:underline">
-              <span>Open public-source evidence</span>
+              <span>Open source</span>
               <ExternalLink className="mt-0.5 size-3 shrink-0" />
             </a>
           ) : null}
           <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[#007f98] px-3 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
-            View organization dossier
+            View organization profile
             <ExternalLink className="size-3.5" />
           </Link>
         </div>
@@ -809,7 +811,7 @@ function OrganizationRows({
           </button>
         </td>
         <th scope="row" className="px-2 py-3 text-[13px] font-semibold text-[#007f98]">{organization.name}</th>
-        <td className="max-w-[280px] px-3 py-3 leading-4">{capability?.name ?? "No reviewed capability"}</td>
+        <td className="max-w-[280px] px-3 py-3 leading-4">{capability?.name ?? "Capability not yet verified"}</td>
         <td className="px-3 py-3">{location?.provinceTerritory ?? "Location under review"}</td>
         <td className="px-3 py-3">
           {alignment ? (
@@ -817,10 +819,10 @@ function OrganizationRows({
               "inline-flex rounded px-2 py-1 text-[10px] font-semibold",
               alignment.matchType === "public_source_alignment" ? "bg-[#e7f8fa] text-[#007f98]" : "bg-[#fff1d6] text-[#7a2e0e]"
             )}>
-              {alignment.matchType === "public_source_alignment" ? "Public-source alignment" : "Reviewed derived fit"}
+              {alignmentTypeLabel(alignment.matchType)}
             </span>
           ) : (
-            <span className="inline-flex rounded bg-[#f2f4f7] px-2 py-1 text-[10px] font-semibold text-[#475467]">Capability profile</span>
+            <span className="inline-flex rounded bg-[#f2f4f7] px-2 py-1 text-[10px] font-semibold text-[#475467]">Verified profile</span>
           )}
         </td>
         <td className="px-3 py-3 font-medium text-[#007f98]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</td>
@@ -832,7 +834,7 @@ function OrganizationRows({
             <div className="grid gap-0 px-4 py-4 lg:grid-cols-[1.1fr_0.9fr_0.78fr]">
               <section className="pr-5 lg:border-r lg:border-[#b8dfe5]" aria-labelledby={`why-${organization.id}`}>
                 <h3 id={`why-${organization.id}`} className="text-xs font-bold text-[#101828]">
-                  {alignment ? "Why this capability fits the selected context" : "Reviewed capability summary"}
+                  {alignment ? `Why it matches ${alignmentSubject(alignment)}` : "Verified capability summary"}
                 </h3>
                 <p className="mt-2 text-xs leading-5 text-[#344054]">{alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
                 {capability?.defenceApplications.length ? (
@@ -845,7 +847,7 @@ function OrganizationRows({
               </section>
 
               <section className="border-t border-[#b8dfe5] py-4 lg:border-r lg:border-t-0 lg:px-5 lg:py-0" aria-labelledby={`evidence-${organization.id}`}>
-                <h3 id={`evidence-${organization.id}`} className="text-xs font-bold text-[#101828]">Public-source evidence</h3>
+                <h3 id={`evidence-${organization.id}`} className="text-xs font-bold text-[#101828]">Sources</h3>
                 <ul className="mt-2 space-y-2">
                   {evidence.slice(0, 3).map((citation) => (
                     <li key={citation.id} className="text-xs leading-5">
@@ -860,22 +862,22 @@ function OrganizationRows({
               </section>
 
               <section className="border-t border-[#b8dfe5] pt-4 lg:border-t-0 lg:pl-5 lg:pt-0" aria-labelledby={`posture-${organization.id}`}>
-                <h3 id={`posture-${organization.id}`} className="text-xs font-bold text-[#101828]">Review posture</h3>
+                <h3 id={`posture-${organization.id}`} className="text-xs font-bold text-[#101828]">Data quality</h3>
                 <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 text-xs lg:grid-cols-1">
                   <div>
-                    <dt className="text-[10px] text-[#667085]">Confidence</dt>
+                    <dt className="text-[10px] text-[#667085]">{alignment ? "Assessment confidence" : "Evidence strength"}</dt>
                     <dd className={cn(
                       "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
                       confidence === "high" ? "bg-[#dcfae6] text-[#067647]" : confidence === "moderate" ? "bg-[#fff1d6] text-[#7a2e0e]" : "bg-[#fee4e2] text-[#b42318]"
-                    )}>{confidenceLabel(confidence)}</dd>
+                    )}>{alignment ? assessmentConfidenceLabel(confidence) : evidenceStrengthLabel(confidence)}</dd>
                   </div>
                   <div>
-                    <dt className="text-[10px] text-[#667085]">Map precision</dt>
-                    <dd className="mt-1 font-medium text-[#344054]">{location ? toTitleCase(location.geographicConfidence) : "Unknown"}</dd>
+                    <dt className="text-[10px] text-[#667085]">Location accuracy</dt>
+                    <dd className="mt-1 font-medium text-[#344054]">{location ? locationAccuracyLabel(location.geographicConfidence) : "Not verified"}</dd>
                   </div>
                 </dl>
                 <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex h-9 w-full items-center justify-center gap-2 rounded-md bg-[#007f98] px-3 text-xs font-semibold text-white no-underline hover:bg-[#00677d] hover:no-underline">
-                  View organization dossier
+                  View organization profile
                   <ExternalLink className="size-3.5" />
                 </Link>
               </section>

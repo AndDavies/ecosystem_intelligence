@@ -173,7 +173,7 @@ export async function GET(request: Request) {
       "## Gaps And Caveats",
       ...briefing.coverageGaps.map((gap) => `- ${gap.label}: ${gap.detail}`),
       "",
-      "_Derived read: current-record analysis, not a direct source quote._"
+      "_Analyst assessment based on current published records; not a direct source quote._"
     ].join("\n");
 
     return new NextResponse(markdown, {
