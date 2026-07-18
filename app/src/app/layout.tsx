@@ -53,6 +53,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-CA" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://api.maptiler.com" crossOrigin="anonymous" />
+      </head>
       <body suppressHydrationWarning className={`${barlow.variable} ${inter.variable}`}>
         <JsonLd data={[
           { "@context": "https://schema.org", "@type": "WebSite", name: siteName, url: siteUrl, description: siteDescription, inLanguage: "en-CA", potentialAction: { "@type": "SearchAction", target: `${siteUrl}/?q={search_term_string}`, "query-input": "required name=search_term_string" } },

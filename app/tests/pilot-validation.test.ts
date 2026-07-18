@@ -15,7 +15,7 @@ describe("public-beta validation", () => {
     const parsed = pilotSignupSchema.parse({
       email: " Test@Example.ca ",
       consent: true,
-      consentText: "I agree to receive occasional Ecosystem Intelligence public-beta updates.",
+      consentText: "I agree to receive occasional True North Map public-beta updates.",
       consentVersion: "public-beta-2026-07",
       source: "public_beta_prompt",
       cohort: "launch-week",
@@ -34,7 +34,7 @@ describe("public-beta validation", () => {
     const parsed = pilotSignupSchema.safeParse({
       email: "test@example.ca",
       consent: false,
-      consentText: "I agree to receive occasional Ecosystem Intelligence public-beta updates.",
+      consentText: "I agree to receive occasional True North Map public-beta updates.",
       consentVersion: "public-beta-2026-07",
       source: "public_beta_prompt",
       landingPath: "/"

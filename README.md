@@ -1,6 +1,6 @@
-# Ecosystem Intelligence
+# True North Map / Ecosystem Intelligence
 
-This workspace separates the runnable product from the evidence and context that support it.
+This workspace powers [True North Map](https://truenorthmap.ca), the independent public brand for the Ecosystem Intelligence project. It separates the runnable product from the evidence and context that support it.
 
 ## Project map
 

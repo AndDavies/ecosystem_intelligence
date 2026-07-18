@@ -20,8 +20,8 @@ The active release is an independent, English-only Canadian Public Beta created 
 - Public browsing, evidence, profiles, and exports remain free.
 - Google OAuth and passwordless email sign-in are used only for private Working Lists, contributions, connection requests, and account management.
 - Public feedback, consent-backed updates, and contact remain available without authentication.
-- The publication floor is 30 verified organizations, the operating target is 36, and no jurisdiction is padded.
-- The initial Vercel URL is indexable; private workflows remain blocked from search.
+- The launch corpus is frozen at 30 verified organizations; no jurisdiction is padded to imply coverage.
+- `https://truenorthmap.ca` is the canonical indexable production URL; the former Vercel URL redirects to it and private workflows remain blocked from search.
 - The product is not an official government, military, procurement, or industry-association directory.
 - Introduction requests are privately reviewed and manually brokered; no personal contact details or automatic introductions are exposed.
 
@@ -281,7 +281,7 @@ The clean public seed began with six previously validated organizations and thei
 - GeoSpectrum Technologies
 - Open Ocean Robotics
 
-The first reviewed Underwater ISR expansion added 12 source-backed organizations and capabilities through the canonical review workflow, bringing the atlas to 18 records. A second 12-organization national expansion was field reviewed, approved with substantive rationale, and promoted atomically on July 17, 2026, bringing the live atlas to 30 published organizations and 30 published capabilities. The fifteen scaffold organizations and all placeholder rows remain excluded. The minimum public-release corpus is now met; 36 remains the operating target, with representation across at least eight provinces or territories and four technical domains. The first five NATO problem families are published as demand statements, with zero matches until evidence-backed mappings pass review.
+The first reviewed Underwater ISR expansion added 12 source-backed organizations and capabilities through the canonical review workflow, bringing the atlas to 18 records. A second 12-organization national expansion was field reviewed, approved with substantive rationale, and promoted atomically on July 17, 2026, bringing the live atlas to 30 published organizations and 30 published capabilities. The fifteen scaffold organizations and all placeholder rows remain excluded. The public-beta corpus is frozen at 30: it spans nine provinces or territories and more than four technical domains without padding thin regions. The first five NATO problem families are published as demand statements, with zero matches until evidence-backed mappings pass review.
 
 ## Acceptance criteria
 
@@ -298,7 +298,7 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
 
 ## Delivery status
 
-Release-candidate implementation as of 2026-07-18:
+Release-ready implementation verified on 2026-07-18:
 
 - clean schema, explicit grants, RLS, storage policy, validated seed, migration
   tests, and server-only credentials
@@ -329,28 +329,36 @@ Release-candidate implementation as of 2026-07-18:
 - structured candidate review, substantive rationale, duplicate resolution,
   one-button atomic publication, direct published-record editing, audit history,
   stable slugs, and cache invalidation
-- Vercel Analytics and Speed Insights plus bounded semantic workflow events,
-  private 90-day searches, and private 30-day detailed events
+- Vercel Web Analytics plus bounded semantic workflow events, private 90-day
+  searches, and private 30-day detailed events; paid Speed Insights is deferred
+  and Lighthouse is the release performance check
 - indexable public routes, public-only sitemap, canonical metadata, Open Graph,
   JSON-LD, and private-route blocking
 - deterministic Halifax/HRM/Dartmouth discovery and a null-cohort validation fix
   for ordinary non-campaign searches
 
-Still required before the Monday public release:
+Verified before the Monday public release:
 
-- connect `truenorthmap.ca` to the production deployment and verify DNS,
-  redirects, canonical metadata, social metadata, and authentication callbacks
-- complete production fresh-account Google OAuth, passwordless email-link,
-  account-deletion, sign-out, session-aware navigation, and owner-only
-  administrator checks
-- complete production RLS, privacy, secret-boundary, corpus, and evidence audits
-- complete final desktop, mobile, keyboard, map/list, search, export,
-  contribution, connection, feedback, subscription, and admin smoke tests
-- rerun the full automated release suite from the final clean repository state
-- finalize launch collateral and outreach copy
-- register the Vercel URL with Google Search Console and Bing Webmaster Tools
-- perform the final production deployment and Monday 07:30 fresh-browser smoke
-  test before the 08:00 release decision
+- `truenorthmap.ca`, `www`, and the former Vercel URL resolve to the canonical
+  production deployment; canonical metadata, social metadata, MapTiler, and
+  both authentication callbacks use the production domain
+- fresh-account Google OAuth, passwordless email-link sign-in, safe returns,
+  account deletion, sign-out, session-aware navigation, and owner-only
+  administrator access pass in production
+- RLS, explicit Data API grants, privacy boundaries, service-secret placement,
+  corpus integrity, evidence labels, and the zero-scaffold condition pass
+- desktop, mobile, keyboard, reduced-motion, map/list, search, export,
+  contribution, connection, feedback, subscription, and administration journeys
+  pass production smoke tests
+- the full automated release suite passes from the restored repository state
+- launch copy, screenshots, Open Graph art, and the short demonstration video
+  are ready under `content/launch/`
+- Google Search Console and Bing Webmaster Tools are verified and have received
+  the canonical sitemap
+
+Time-bound work remaining is limited to Monday's 06:30 readiness review, final
+deployment confirmation, 07:30 fresh-browser smoke test, 08:00 release decision,
+and Andrew's scheduled publishing and outreach actions.
 
 ## Explicitly deferred
 

@@ -21,7 +21,7 @@ import {
   X
 } from "lucide-react";
 import dynamic from "next/dynamic";
-import { FormEvent, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
 import {
@@ -145,13 +145,20 @@ export function AtlasExplorer({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
-  const [viewMode, setViewMode] = useState<ViewMode>("map");
+  const [viewMode, setViewMode] = useState<ViewMode>("table");
+  const [mapEnabled, setMapEnabled] = useState(false);
   const [viewport, setViewport] = useState<{ bounds: AtlasBounds; organizationIds: string[] } | null>(null);
   const [loading, setLoading] = useState(false);
   const [discovery, setDiscovery] = useState<AtlasDiscoveryResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const tableScrollRef = useRef<HTMLDivElement | null>(null);
   const rowRefs = useRef(new Map<string, HTMLTableRowElement>());
+
+  useEffect(() => {
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
+    setMapEnabled(true);
+    setViewMode("map");
+  }, []);
 
   const exportHref = useMemo(() => {
     const params = atlasQueryToSearchParams({
@@ -333,12 +340,18 @@ export function AtlasExplorer({
           {discovery?.interpretation === "no_match" ? <div className="mt-3 rounded-xl border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-3 py-2 text-sm text-[var(--atlas-amber)]">No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing.</div> : null}
         </div>
         <div className={cn("relative h-[350px] border-b border-[var(--atlas-border)] sm:h-[390px] lg:h-[410px]", viewMode === "table" && "hidden lg:block")}>
-          <AtlasMap
-            organizations={result.organizations}
-            selectedOrganizationId={selectedId}
-            onSelect={(id) => updateSelection(id, true, "map")}
-            onViewportChange={updateViewport}
-          />
+          {mapEnabled ? (
+            <AtlasMap
+              organizations={result.organizations}
+              selectedOrganizationId={selectedId}
+              onSelect={(id) => updateSelection(id, true, "map")}
+              onViewportChange={updateViewport}
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-[var(--atlas-surface-muted)] text-sm font-semibold text-[var(--atlas-muted)]">
+              Preparing the interactive map…
+            </div>
+          )}
 
           <div className="pointer-events-none absolute left-3 top-3 z-[1000] rounded-xl border border-white/80 bg-white/95 px-3 py-2 text-xs font-semibold text-[var(--atlas-ink-soft)] shadow-[var(--atlas-shadow-soft)] backdrop-blur sm:left-4 sm:top-4">
             {viewport ? `${visibleOrganizations.length} ${visibleOrganizations.length === 1 ? "organization" : "organizations"} in view` : "Updating map results…"}
@@ -377,7 +390,7 @@ export function AtlasExplorer({
               </div>
               <p className="mt-1 text-xs text-[var(--atlas-muted)]">
                 <span className="hidden lg:inline">Pan or zoom the map to update these results. Select a row to locate it on the map.</span>
-                <span className="lg:hidden">Only organizations represented inside the last visible map area are included.</span>
+                <span className="lg:hidden">{viewport ? "Only organizations inside the last visible map area are included." : "Showing published organizations. Open the map to narrow this list by view."}</span>
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
@@ -388,7 +401,10 @@ export function AtlasExplorer({
               <button
                 type="button"
                 className="inline-flex h-9 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-ink-soft)] shadow-sm hover:bg-[var(--atlas-surface-muted)] lg:hidden"
-                onClick={() => setViewMode("map")}
+                onClick={() => {
+                  setMapEnabled(true);
+                  setViewMode("map");
+                }}
                 aria-label="Return to map"
               >
                 <MapIcon className="size-4" />
