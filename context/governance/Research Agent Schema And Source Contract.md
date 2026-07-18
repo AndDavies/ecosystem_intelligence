@@ -5,7 +5,7 @@ Status: active public-atlas contract
 
 ## Purpose
 
-This contract governs autonomous and manual research for the Canadian Ecosystem Intelligence Public Atlas.
+This contract governs autonomous and manual research for True North Map, the Canadian Ecosystem Intelligence Public Atlas.
 
 Research agents may discover sources, measure gaps, and draft review candidates. They must not write directly to canonical published tables or public storage.
 

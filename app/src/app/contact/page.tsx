@@ -3,7 +3,7 @@ import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shel
 
 export const metadata = {
   title: "Contact",
-  description: "Contact Ecosystem Intelligence about partnerships, media, privacy, or the Canadian defence and dual-use ecosystem."
+  description: "Contact True North Map about partnerships, media, privacy, or the Canadian defence and dual-use ecosystem."
 };
 
 export default function ContactPage() {

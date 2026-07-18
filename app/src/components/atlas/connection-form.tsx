@@ -49,7 +49,7 @@ export function ConnectionForm({ organizationId, organizationName, defaultName }
         <select name="intent" defaultValue="partnership" className="form-control"><option value="partnership">Partnership</option><option value="supplier_customer">Supplier or customer discussion</option><option value="pilot_testing">Pilot or testing</option><option value="program_support">Program support</option><option value="investment">Investment</option><option value="other">Other</option></select>
       </Field>
       <Field label="What do you need, and what can you offer?"><textarea name="message" required minLength={20} maxLength={2000} rows={7} className="form-control h-auto py-3" placeholder="Share enough context to assess whether an introduction would be useful to both sides." /></Field>
-      <p className="text-[11px] leading-5 text-[var(--atlas-muted)]">Ecosystem Intelligence facilitates discovery and potential introductions. It does not endorse either party, share private contact details publicly, or replace due diligence. See the <Link href="/terms" className="underline">Terms</Link>.</p>
+      <p className="text-[11px] leading-5 text-[var(--atlas-muted)]">True North Map facilitates discovery and potential introductions. It does not endorse either party, share private contact details publicly, or replace due diligence. See the <Link href="/terms" className="underline">Terms</Link>.</p>
       <button type="submit" disabled={state === "loading"} className="atlas-primary-button h-11 gap-2 px-5 text-sm disabled:opacity-60 sm:w-fit">{state === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Send className="size-4" />}Request connection</button>
     </form>
   );

@@ -46,12 +46,12 @@ export function PublicAtlasHeader() {
   return (
     <header className="atlas-header">
       <div className="atlas-frame flex h-[72px] items-center justify-between gap-5">
-        <Link href="/" className="flex min-w-0 items-center gap-3 no-underline" aria-label="Ecosystem Intelligence Public Atlas home">
+        <Link href="/" className="flex min-w-0 items-center gap-3 no-underline" aria-label="True North Map home">
           <span className="flex size-10 shrink-0 items-center justify-center rounded-[14px] border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)] shadow-[0_8px_20px_rgba(30,35,32,0.07)]">
             <Network className="size-5" aria-hidden="true" />
           </span>
           <span className="flex min-w-0 items-center gap-2.5 leading-tight">
-            <span className="block truncate text-[14px] font-bold tracking-[-0.02em] text-[var(--atlas-ink)] sm:text-[17px]">Ecosystem Intelligence</span>
+            <span className="block truncate text-[14px] font-bold tracking-[-0.02em] text-[var(--atlas-ink)] sm:text-[17px]">True North Map</span>
             <span className="hidden rounded-full border border-[var(--atlas-border)] bg-white px-2 py-1 text-[10px] font-semibold text-[var(--atlas-muted)] sm:inline-flex">Public Beta</span>
           </span>
         </Link>

@@ -2,7 +2,7 @@ import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shel
 
 export const metadata = {
   title: "Methodology",
-  description: "How Ecosystem Intelligence verifies Canadian organizations, capabilities, evidence, freshness, and public-source assessments."
+  description: "How True North Map verifies Canadian organizations, capabilities, evidence, freshness, and public-source assessments."
 };
 
 const steps = [
@@ -15,7 +15,7 @@ const steps = [
 
 export default function MethodologyPage() {
   return (
-    <PublicPageShell eyebrow="Evidence and editorial governance" title="Useful intelligence should be inspectable." description="Ecosystem Intelligence separates verified public facts from analyst interpretation and keeps every public change reviewable.">
+    <PublicPageShell eyebrow="Evidence and editorial governance" title="Useful intelligence should be inspectable." description="True North Map separates verified public facts from analyst interpretation and keeps every public change reviewable.">
       <div className="grid gap-4 lg:grid-cols-2">{steps.map(([number, title, detail]) => <PublicCard key={number} title={title} eyebrow={`Step ${number}`}><p className="text-sm leading-6 text-[var(--atlas-muted)]">{detail}</p></PublicCard>)}</div>
       <PublicCard title="How to read public demand relevance" eyebrow="Important caveat" className="mt-5"><p className="text-sm leading-6 text-[var(--atlas-muted)]">A demand match means a reviewed public-source alignment between a published capability and a public requirement. It does not establish procurement eligibility, customer interest, government endorsement, classified demand, or a formal business opportunity. Users must conduct their own diligence.</p></PublicCard>
       <PublicCard title="Minimum publication standard" eyebrow="Record gate" className="mt-5"><ul className="grid gap-2 text-sm leading-6 text-[var(--atlas-muted)] sm:grid-cols-2"><li>Canonical identity and website</li><li>Organization type and reviewed location</li><li>At least one durable public source</li><li>Freshness and evidence confidence</li><li>One reviewed capability for commercial organizations</li><li>Field-level citations for substantive claims</li><li>No placeholders or invented metrics</li><li>Explicit human promotion decision</li></ul></PublicCard>

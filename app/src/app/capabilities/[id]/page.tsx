@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Activity, BookmarkPlus, Building2, Download, ExternalLink, FileCheck2, RefreshCw, ShieldCheck } from "lucide-react";
@@ -19,6 +20,26 @@ import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
 import { getFreshnessState } from "@/lib/freshness";
 import { formatDate, formatFieldLabel, toTitleCase } from "@/lib/utils";
 import type { CitationView } from "@/types/view-models";
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const publicCapability = await getAtlasCapabilityBySlug(id);
+
+  if (!publicCapability) {
+    return { title: "Capability workspace", robots: { index: false, follow: false } };
+  }
+
+  return {
+    title: publicCapability.capability.name,
+    description: publicCapability.capability.summary,
+    alternates: { canonical: `/capabilities/${publicCapability.capability.slug}` },
+    openGraph: {
+      title: publicCapability.capability.name,
+      description: publicCapability.capability.summary,
+      url: `/capabilities/${publicCapability.capability.slug}`
+    }
+  };
+}
 
 export default async function CapabilityPage(props: {
   params: Promise<{ id: string }>;

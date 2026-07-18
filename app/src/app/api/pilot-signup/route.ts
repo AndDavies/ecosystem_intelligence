@@ -13,6 +13,19 @@ export async function POST(request: Request) {
   if (!hasSupabaseAdminEnv()) return privateJson({ error: "Update signup is not configured." }, { status: 503 });
 
   const supabase = createAdminClient();
+  const requestHash = requestFingerprint(request);
+  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+  const { count } = await supabase
+    .from("pilot_events")
+    .select("id", { count: "exact", head: true })
+    .eq("request_hash", requestHash)
+    .eq("event_name", "subscription")
+    .gte("created_at", oneHourAgo);
+
+  if ((count ?? 0) >= 5) {
+    return privateJson({ error: "Signup limit reached. Please try again later." }, { status: 429 });
+  }
+
   const { error } = await supabase.from("pilot_update_signups").upsert({
     email: parsed.data.email,
     consented: true,
@@ -27,7 +40,7 @@ export async function POST(request: Request) {
   if (error) return privateJson({ error: "Your signup could not be saved. Please try again." }, { status: 500 });
 
   await supabase.from("pilot_events").insert({
-    request_hash: requestFingerprint(request),
+    request_hash: requestHash,
     event_name: "subscription",
     context_path: parsed.data.landingPath,
     cohort: parsed.data.cohort,
@@ -36,5 +49,5 @@ export async function POST(request: Request) {
     metadata: { source: parsed.data.source }
   });
 
-  return NextResponse.json({ ok: true, message: "You are on the Ecosystem Intelligence update list." }, { status: 202, headers: { "Cache-Control": "private, no-store" } });
+  return NextResponse.json({ ok: true, message: "You are on the True North Map update list." }, { status: 202, headers: { "Cache-Control": "private, no-store" } });
 }

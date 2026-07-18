@@ -41,7 +41,7 @@ export function ContactForm() {
         <Field label="Organization (optional)"><input name="organizationName" maxLength={180} autoComplete="organization" className="form-control" /></Field>
         <Field label="Topic"><select name="category" className="form-control" defaultValue="general"><option value="general">General</option><option value="partnership">Partnership</option><option value="media">Media</option><option value="privacy">Privacy</option></select></Field>
       </div>
-      <Field label="Message"><textarea name="message" required minLength={20} maxLength={4000} rows={7} className="form-control h-auto py-3" placeholder="How can Ecosystem Intelligence help?" /></Field>
+      <Field label="Message"><textarea name="message" required minLength={20} maxLength={4000} rows={7} className="form-control h-auto py-3" placeholder="How can True North Map help?" /></Field>
       <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
       <button type="submit" disabled={state === "loading"} className="atlas-primary-button h-11 gap-2 px-5 text-sm disabled:opacity-60 sm:w-fit">{state === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Send className="size-4" />}Send message</button>
     </form>

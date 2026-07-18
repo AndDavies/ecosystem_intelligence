@@ -11,7 +11,7 @@ import {
   trackPilotEvent
 } from "@/lib/pilot/client";
 
-const consentText = "I agree to receive occasional Ecosystem Intelligence public-beta updates. I can unsubscribe at any time.";
+const consentText = "I agree to receive occasional True North Map public-beta updates. I can unsubscribe at any time.";
 const consentVersion = "public-beta-2026-07";
 const dismissedKey = "ecosystem-intelligence-updates-dismissed-at";
 const subscribedKey = "ecosystem-intelligence-updates-subscribed";

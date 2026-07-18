@@ -62,7 +62,7 @@ export function AppShell({ children, profile }: AppShellProps) {
               </div>
               <div>
                 <div className="font-display text-xs font-semibold uppercase tracking-[0.08em] text-white">
-                  Ecosystem Intelligence
+                  True North Map
                 </div>
                 <div className="mt-0.5 text-[11px] text-white/55">BD workspace</div>
               </div>
@@ -128,7 +128,7 @@ export function AppShell({ children, profile }: AppShellProps) {
                     href="/app"
                     className="truncate font-display text-sm font-semibold uppercase tracking-[0.06em] text-white no-underline hover:text-white"
                   >
-                    Ecosystem Intelligence
+                    True North Map
                   </Link>
                 </div>
                 <Badge tone="surface" className="shrink-0">{profile.role}</Badge>

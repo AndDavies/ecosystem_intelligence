@@ -17,5 +17,5 @@ export async function GET() {
   if (error) return new Response("Export unavailable", { status: 500 });
   const headers = ["email", "status", "consent_version", "consent_text", "source", "cohort", "landing_path", "created_at", "updated_at"];
   const csv = [headers.join(","), ...(data ?? []).map((row) => headers.map((key) => csvCell(row[key as keyof typeof row])).join(","))].join("\n");
-  return new Response(csv, { headers: { "Content-Type": "text/csv; charset=utf-8", "Content-Disposition": "attachment; filename=ecosystem-intelligence-subscribers.csv", "Cache-Control": "private, no-store" } });
+  return new Response(csv, { headers: { "Content-Type": "text/csv; charset=utf-8", "Content-Disposition": "attachment; filename=true-north-map-subscribers.csv", "Cache-Control": "private, no-store" } });
 }

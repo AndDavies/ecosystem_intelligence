@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { isAtlasAdminOwner } from "@/lib/atlas/admin-owner";
-import { isRecentSignIn, safeAuthNextPath } from "@/lib/auth-utils";
+import { getAuthBaseUrl, isRecentSignIn, safeAuthNextPath } from "@/lib/auth-utils";
 
 describe("public account safeguards", () => {
   it("accepts only the exact administrator identity and controlled role", () => {
@@ -13,6 +13,14 @@ describe("public account safeguards", () => {
     expect(safeAuthNextPath("/account?reauth=delete")).toBe("/account?reauth=delete");
     expect(safeAuthNextPath("https://example.com")).toBe("/collections");
     expect(safeAuthNextPath("//example.com")).toBe("/collections");
+  });
+
+  it("uses the canonical domain for production authentication callbacks", () => {
+    expect(getAuthBaseUrl("https://truenorthmap.ca/", "production")).toBe("https://truenorthmap.ca");
+    expect(getAuthBaseUrl(undefined, "production")).toBe("https://truenorthmap.ca");
+    expect(getAuthBaseUrl("javascript:alert(1)", "production")).toBe("https://truenorthmap.ca");
+    expect(getAuthBaseUrl("http://truenorthmap.ca", "production")).toBe("https://truenorthmap.ca");
+    expect(getAuthBaseUrl(undefined, "development")).toBe("http://localhost:3000");
   });
 
   it("requires a recent sign-in for deletion", () => {

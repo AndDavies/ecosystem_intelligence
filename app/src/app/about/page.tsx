@@ -4,12 +4,12 @@ import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shel
 
 export const metadata = {
   title: "About",
-  description: "Why Andrew Davies created Ecosystem Intelligence to make Canadian defence and dual-use capability easier to discover and connect."
+  description: "Why Andrew Davies created True North Map to make Canadian defence and dual-use capability easier to discover and connect."
 };
 
 export default function AboutPage() {
   return (
-    <PublicPageShell eyebrow="Independent project by Andrew Davies" title="Canada’s capability is stronger than it is visible." description="Ecosystem Intelligence is a free, evidence-backed discovery and connection layer for Canada’s defence and dual-use ecosystem.">
+    <PublicPageShell eyebrow="Independent project by Andrew Davies" title="Canada’s capability is stronger than it is visible." description="True North Map is a free, evidence-backed discovery and connection layer for Canada’s defence and dual-use ecosystem.">
       <div className="grid gap-5 lg:grid-cols-3">
         <PublicCard title="The catalyst" eyebrow="Why this exists"><Compass className="mb-4 size-6 text-[var(--atlas-primary)]" /><p className="text-sm leading-6 text-[var(--atlas-muted)]">Work across defence, marine technology, and innovation repeatedly revealed strong Canadian capabilities hidden across fragmented regional, program, and industry networks. The problem was rarely an absence of capability. It was finding it, understanding it, and reaching the right people.</p></PublicCard>
         <PublicCard title="The public resource" eyebrow="What it does"><Network className="mb-4 size-6 text-[var(--atlas-primary)]" /><p className="text-sm leading-6 text-[var(--atlas-muted)]">The atlas organizes reviewed organizations, capabilities, locations, public demand signals, and citations into a common national view. Users can search, build Working Lists, submit improvements, and request a human-vetted connection.</p></PublicCard>

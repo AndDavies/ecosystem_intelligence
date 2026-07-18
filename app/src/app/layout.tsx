@@ -18,26 +18,32 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ecosystem-intelligence.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Ecosystem Intelligence | Canadian Defence and Dual-Use Atlas",
-    template: "%s | Ecosystem Intelligence"
+    default: "True North Map | Canadian Defence and Dual-Use Atlas",
+    template: "%s | True North Map"
   },
   description: "An independent, evidence-backed public atlas of Canada's defence and dual-use organizations, capabilities, and collaboration opportunities.",
   robots: {
     index: true,
     follow: true
   },
+  verification: {
+    google: "lgHswkDeliNxwounG2mgqN4fvBF9uICrYoCfZnW1Gi0",
+    other: {
+      "msvalidate.01": "2763A74976C4E9AFA3E6FCB7FA1B15D1"
+    }
+  },
   openGraph: {
     type: "website",
     url: "/",
-    title: "Ecosystem Intelligence Canadian Public Beta",
+    title: "True North Map Canadian Public Beta",
     description: "Explore verified Canadian defence and dual-use organizations, capabilities, and public evidence.",
-    siteName: "Ecosystem Intelligence",
+    siteName,
     locale: "en_CA",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Ecosystem Intelligence Canadian Public Beta" }]
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "True North Map Canadian Public Beta" }]
   },
-  twitter: { card: "summary_large_image", title: "Ecosystem Intelligence Canadian Public Beta", description: "Explore verified Canadian defence and dual-use organizations, capabilities, and public evidence.", images: ["/opengraph-image"] }
+  twitter: { card: "summary_large_image", title: "True North Map Canadian Public Beta", description: "Explore verified Canadian defence and dual-use organizations, capabilities, and public evidence.", images: ["/opengraph-image"] }
 };
 
 export default function RootLayout({

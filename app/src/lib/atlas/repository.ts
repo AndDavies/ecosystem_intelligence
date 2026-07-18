@@ -9,6 +9,7 @@ import {
   atlasOrganizations,
   atlasTechnicalDomains
 } from "@/lib/atlas/validated-data";
+import { resolveAtlasDataSource } from "@/lib/atlas/data-source";
 import { getAtlasMetroArea, inferAtlasMetroArea, organizationMatchesMetro } from "@/lib/atlas/geography";
 import { loadAtlasSnapshotFromSupabase } from "@/lib/atlas/supabase-repository";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
@@ -134,7 +135,7 @@ const getCachedSupabaseSnapshot = unstable_cache(
 );
 
 export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
-  const requestedSource = process.env.ATLAS_DATA_SOURCE?.trim().toLowerCase() ?? "validated_seed";
+  const requestedSource = resolveAtlasDataSource(process.env.ATLAS_DATA_SOURCE);
 
   if (requestedSource !== "supabase") {
     return getValidatedSeedSnapshot();

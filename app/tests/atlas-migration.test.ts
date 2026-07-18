@@ -242,6 +242,30 @@ describe("public atlas database foundation", () => {
     });
   });
 
+  it("denies structural table privileges to public Data API roles", async () => {
+    const result = await db.query<{
+      anon_structural_privileges: number;
+      authenticated_structural_privileges: number;
+    }>(`
+      select
+        count(*) filter (
+          where grantee = 'anon'
+            and privilege_type in ('TRUNCATE', 'REFERENCES', 'TRIGGER')
+        )::int as anon_structural_privileges,
+        count(*) filter (
+          where grantee = 'authenticated'
+            and privilege_type in ('TRUNCATE', 'REFERENCES', 'TRIGGER')
+        )::int as authenticated_structural_privileges
+      from information_schema.role_table_grants
+      where table_schema = 'public'
+    `);
+
+    expect(result.rows[0]).toEqual({
+      anon_structural_privileges: 0,
+      authenticated_structural_privileges: 0
+    });
+  });
+
   it("prevents public bucket listing and direct auto-RLS helper execution", async () => {
     const result = await db.query<{
       broad_public_media_policies: number;

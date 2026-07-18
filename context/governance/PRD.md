@@ -1,11 +1,11 @@
-# Canadian Ecosystem Intelligence Public Atlas
+# True North Map - Canadian Defence and Dual-Use Ecosystem Atlas
 
 Status: active product requirements  
-Last updated: 2026-07-17
+Last updated: 2026-07-18
 
 ## Product summary
 
-Ecosystem Intelligence is a free, English-language public atlas for mapping Canada's defence and dual-use ecosystem. It helps ecosystem operators move from a region or mission problem to relevant organizations, review the public evidence behind each profile, understand current coverage gaps, and preserve useful records in a private Working List.
+True North Map is the public brand for this free, English-language ecosystem intelligence and mapping service at `https://truenorthmap.ca`. It maps Canada's defence and dual-use ecosystem and helps users move from a region or mission problem to relevant organizations, review the public evidence behind each profile, understand current coverage gaps, and preserve useful records in a private Working List.
 
 The primary journey is:
 
@@ -15,7 +15,7 @@ The product combines public mapping, PitchBook-style dossiers, public NATO and C
 
 ## Canadian Public Beta
 
-The active release is an independent, English-only Canadian Public Beta created and stewarded by Andrew Davies.
+The active release is an independent, English-only Canadian Public Beta created and stewarded by Andrew Davies under the True North Map brand at `truenorthmap.ca`.
 
 - Public browsing, evidence, profiles, and exports remain free.
 - Google OAuth and passwordless email sign-in are used only for private Working Lists, contributions, connection requests, and account management.
@@ -298,39 +298,59 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
 
 ## Delivery status
 
-Implemented locally as of 2026-07-15:
+Release-candidate implementation as of 2026-07-18:
 
-- clean schema, explicit grants, RLS, storage policy, validated seed, and migration tests
-- Option 3 national atlas and evidence table
-- public organizations, capabilities, regions, and NATO demand routes
-- constrained discovery and public API routes
-- PDF and CSV exports
-- Google OAuth with PKCE and passwordless email links for public sign-in
-- auth-aware public navigation and an owner-only account workspace with status history, sign-out feedback, and account deletion
-- owner-only collections and lookbook export
-- reviewed public submissions
-- private source/PDF intake, candidate review, and coverage screens
-
-Implemented for the Canadian Public Beta as of 2026-07-17:
-
-- private consented update signup, general feedback, and bounded event capture
-- RLS-enabled pilot tables with no anonymous or authenticated Data API privileges
-- delayed update prompt, persistent feedback access, public privacy and terms notices
-- independent Ecosystem Intelligence identity using restrained navy, ocean teal, and cyan cues
-- mobile map/list protection against collapsed hidden-map bounds
-- Vercel aggregate page analytics and sampled Speed Insights with query strings redacted
-- indexable canonical public pages, sitemap, structured data, and explicit coverage framing
-- private connection requests, contact inbox, contribution review, subscribers, searches, funnel insights, and workflow status administration
-- numbered map clusters that expand on selection in both the primary map and its browser fallback
-- a structured organization review queue with per-field editing, duplicate resolution, approval, and a separate all-or-nothing publication checkpoint
-- 12 verified national-expansion dossiers staged privately; public publication remains pending Andrew's explicit review and confirmation
+- clean schema, explicit grants, RLS, storage policy, validated seed, migration
+  tests, and server-only credentials
+- 30 published organizations and 30 published capabilities; the verified release
+  floor is met and scaffold records remain excluded
+- independent Field Atlas visual system using a warm neutral canvas, spruce
+  primary actions, coral selection, violet analyst-assessment states, and
+  rounded public surfaces
+- national atlas with constrained discovery, structured filters, synchronized
+  URL state, numbered map clusters, viewport-bounded evidence table, compact
+  organization preview, and visible-result export
+- public organization, capability, region, demand, About, Methodology, Contact,
+  Privacy, and Terms routes
+- individual, regional, filtered CSV, and private collection lookbook exports
+- Google OAuth with PKCE and passwordless email links for personal or work-email
+  sign-in
+- session-aware public navigation, account workspace, visible pending states,
+  sign-out, recent-reauthentication account deletion, and protection against
+  administrator self-deletion
+- owner-only Working Lists, contributions, connection requests, and status views
+- owner-only administration with no public link and fail-closed identity, email,
+  role, server-action, API, and RLS checks
+- consented update signup, public feedback, contact, reviewed contribution, and
+  manually brokered connection workflows
+- private subscribers, searches, events, feedback, contact, contribution,
+  connection, coverage, candidate-review, publication, and organization-editing
+  administration
+- structured candidate review, substantive rationale, duplicate resolution,
+  one-button atomic publication, direct published-record editing, audit history,
+  stable slugs, and cache invalidation
+- Vercel Analytics and Speed Insights plus bounded semantic workflow events,
+  private 90-day searches, and private 30-day detailed events
+- indexable public routes, public-only sitemap, canonical metadata, Open Graph,
+  JSON-LD, and private-route blocking
+- deterministic Halifax/HRM/Dartmouth discovery and a null-cohort validation fix
+  for ordinary non-campaign searches
 
 Still required before the Monday public release:
 
-- reach and explicitly approve the 30-record verified publication floor
-- complete fresh-account Google OAuth, passwordless email-link, account-deletion, and administrator-access checks
+- connect `truenorthmap.ca` to the production deployment and verify DNS,
+  redirects, canonical metadata, social metadata, and authentication callbacks
+- complete production fresh-account Google OAuth, passwordless email-link,
+  account-deletion, sign-out, session-aware navigation, and owner-only
+  administrator checks
+- complete production RLS, privacy, secret-boundary, corpus, and evidence audits
+- complete final desktop, mobile, keyboard, map/list, search, export,
+  contribution, connection, feedback, subscription, and admin smoke tests
+- rerun the full automated release suite from the final clean repository state
+- finalize launch collateral and outreach copy
 - register the Vercel URL with Google Search Console and Bing Webmaster Tools
-- full accessibility, privacy, and public-launch review
+- perform the final production deployment and Monday 07:30 fresh-browser smoke
+  test before the 08:00 release decision
 
 ## Explicitly deferred
 

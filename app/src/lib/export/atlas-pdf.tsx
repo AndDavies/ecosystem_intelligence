@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 function Footer() {
   return (
     <View style={styles.footer} fixed>
-      <Text>Ecosystem Intelligence Public Atlas · Public sources only</Text>
+      <Text>True North Map · Public sources only</Text>
       <Text render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} />
     </View>
   );
@@ -93,9 +93,9 @@ function Sources({ organization, capability }: { organization: AtlasOrganization
 
 function OrganizationPdf({ organization }: { organization: AtlasOrganization }) {
   return (
-    <Document title={`${organization.name} public profile`} author="Ecosystem Intelligence">
+    <Document title={`${organization.name} public profile`} author="True North Map">
       <Page size="LETTER" style={styles.page}>
-        <Text style={styles.brand}>Ecosystem Intelligence / Public Atlas</Text>
+        <Text style={styles.brand}>True North Map / Public Atlas</Text>
         <Text style={styles.title}>{organization.name}</Text>
         <Text style={styles.description}>{organization.description}</Text>
         <View style={styles.divider} />
@@ -155,9 +155,9 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
 
 function CapabilityPdf({ organization, capability }: { organization: AtlasOrganization; capability: AtlasCapability }) {
   return (
-    <Document title={`${capability.name} public profile`} author="Ecosystem Intelligence">
+    <Document title={`${capability.name} public profile`} author="True North Map">
       <Page size="LETTER" style={styles.page}>
-        <Text style={styles.brand}>Ecosystem Intelligence / Capability Profile</Text>
+        <Text style={styles.brand}>True North Map / Capability Profile</Text>
         <Text style={styles.title}>{capability.name}</Text>
         <Text style={styles.meta}>{organization.name}{capability.capabilityType ? ` · ${capability.capabilityType}` : ""}</Text>
         <Text style={styles.description}>{capability.summary}</Text>
@@ -226,12 +226,12 @@ export interface LookbookEntry {
 
 function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: string; entries: LookbookEntry[] }) {
   return (
-    <Document title={title} author="Ecosystem Intelligence">
+    <Document title={title} author="True North Map">
       {entries.map(({ organization, capability, note }, index) => {
         const selectedCapability = capability ?? organization.capabilities[0];
         return (
           <Page key={`${organization.id}-${capability?.id ?? "organization"}-${index}`} size="LETTER" style={styles.page}>
-            <Text style={styles.brand}>Ecosystem Intelligence / Public Lookbook</Text>
+            <Text style={styles.brand}>True North Map / Public Lookbook</Text>
             <Text style={styles.meta}>{title} · {index + 1} of {entries.length}</Text>
             <Text style={styles.title}>{capability?.name ?? organization.name}</Text>
             {capability ? <Text style={styles.meta}>{organization.name} · {capability.capabilityType ?? "Verified capability"}</Text> : null}

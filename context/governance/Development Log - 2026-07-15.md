@@ -155,3 +155,38 @@ use `ATLAS_DATA_SOURCE=supabase`.
   record complete before/after audit data, and refresh the public atlas cache.
   Existing citations remain visible and source replacement still uses the
   review-first workflow.
+
+## Field Atlas visual refresh and release control - 2026-07-18
+
+- Replaced the former navy/ocean public presentation with an independent Field
+  Atlas system: warm neutral canvas, white surfaces, spruce primary actions,
+  coral selection, violet analyst-assessment states, and rounded shells, cards,
+  drawers, controls, and chips.
+- Consolidated the atlas search, filters, caveat, map, viewport count, compact
+  organization preview, and synchronized table into one calmer map-led workspace.
+- Changed map clusters to graphite, standard markers to spruce, and selected
+  markers to coral while retaining cluster expansion and non-map equivalence.
+- Reworked organization profiles into editorial intelligence briefs with a
+  narrower sticky facts rail, clearer Connect/Save/Export/website hierarchy,
+  capability sections, and source links attached directly to analyst assessments.
+- Carried the public visual system through supporting pages, authentication,
+  contributions, connections, contact, feedback, update signup, icon, and Open
+  Graph output.
+- Fixed ordinary natural-language discovery requests that supplied a null
+  campaign cohort; `Halifax` now resolves correctly without campaign context and
+  the validation regression is covered by a test.
+- Updated the July 18 public-beta release plan to treat the product as a release
+  candidate. The remaining work is production verification, privacy/RLS review,
+  repository-path reconciliation, launch collateral, indexing registration,
+  final deployment, and Monday release operations rather than new feature work.
+
+## True North Map working brand and research-path restoration - 2026-07-18
+
+- Restored the canonical `research/` directory so the tracked ingestion history,
+  source book, schemas, audits, and validators again resolve through the paths
+  used by the project contract.
+- Adopted `True North Map` as the working public brand for the Ecosystem
+  Intelligence system and `truenorthmap.ca` as its canonical public domain.
+- Updated public navigation, metadata, Open Graph output, legal and methodology
+  copy, signup messaging, downloadable reports, and current governance while
+  preserving historical research references and stable internal storage keys.
