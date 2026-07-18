@@ -49,8 +49,8 @@ function GoogleAnalytics() {
   useEffect(() => {
     if (!measurementId || consent !== "accepted" || !eligible) return;
     window.dataLayer = window.dataLayer ?? [];
-    window.gtag = window.gtag ?? function gtag(...args: unknown[]) {
-      window.dataLayer?.push(args);
+    window.gtag = window.gtag ?? function gtag() {
+      window.dataLayer?.push(arguments);
     };
     window.gtag("consent", "default", {
       analytics_storage: "granted",
