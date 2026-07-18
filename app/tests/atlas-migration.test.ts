@@ -324,4 +324,53 @@ describe("public atlas database foundation", () => {
       published_column: "timestamp with time zone"
     });
   });
+
+  it("keeps published dossier editing RLS-preserving and administrator-only", async () => {
+    const result = await db.query<{
+      is_security_definer: boolean;
+      public_can_execute: boolean;
+      anon_can_execute: boolean;
+      authenticated_can_execute: boolean;
+      audit_event_insert_policy: number;
+    }>(`
+      select
+        (
+          select function_record.prosecdef
+          from pg_proc function_record
+          join pg_namespace namespace on namespace.oid = function_record.pronamespace
+          where namespace.nspname = 'public'
+            and function_record.proname = 'update_published_organization_dossier'
+        ) as is_security_definer,
+        has_function_privilege(
+          'public',
+          'public.update_published_organization_dossier(uuid, uuid, uuid, uuid, jsonb, text)',
+          'execute'
+        ) as public_can_execute,
+        has_function_privilege(
+          'anon',
+          'public.update_published_organization_dossier(uuid, uuid, uuid, uuid, jsonb, text)',
+          'execute'
+        ) as anon_can_execute,
+        has_function_privilege(
+          'authenticated',
+          'public.update_published_organization_dossier(uuid, uuid, uuid, uuid, jsonb, text)',
+          'execute'
+        ) as authenticated_can_execute,
+        (
+          select count(*)::int
+          from pg_policies
+          where schemaname = 'public'
+            and tablename = 'audit_events'
+            and cmd = 'INSERT'
+        ) as audit_event_insert_policy
+    `);
+
+    expect(result.rows[0]).toEqual({
+      is_security_definer: false,
+      public_can_execute: false,
+      anon_can_execute: false,
+      authenticated_can_execute: true,
+      audit_event_insert_policy: 1
+    });
+  });
 });

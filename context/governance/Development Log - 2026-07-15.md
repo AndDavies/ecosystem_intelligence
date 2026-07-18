@@ -70,8 +70,8 @@ Vercel. The foundation and security-hardening migrations were approved,
 applied, and verified with all public tables protected by RLS and no
 security-advisor findings. The six verified organizations, their reviewed
 capabilities, public sources, field citations, and NATO demand requirements
-were imported. The first reviewed expansion batch raises the live total to 18
-published organizations and 18 published capabilities. Production and Preview
+were imported. The first two reviewed expansion batches raise the live total to
+30 published organizations and 30 published capabilities. Production and Preview
 use `ATLAS_DATA_SOURCE=supabase`.
 
 ## Former invitation preview - 2026-07-16 (historical)
@@ -132,10 +132,26 @@ use `ATLAS_DATA_SOURCE=supabase`.
 ## Review-to-publication workflow and map clustering - 2026-07-17
 
 - Added 12 source-backed national-expansion organization dossiers covering aerospace, space, communications, cyber, advanced manufacturing, test, training, and sustainment.
-- Validated the batch and staged all 12 dossiers in the private review queue with clear duplicate checks. The live public atlas remains at 18 organizations; no expansion dossier has been approved or published.
+- Validated the batch, staged all 12 dossiers in the private review queue with clear duplicate checks, recorded substantive approval rationales, and published the batch atomically. The live public atlas now contains 30 organizations and 30 capabilities.
 - Replaced raw candidate JSON as the primary review experience with structured organization, capability, location, domain, cluster, evidence, and source fields.
-- Added per-field edits, duplicate merge resolution, editorial acceptance, and a separate publication checkpoint with selected-record controls and an exact typed confirmation.
+- Added per-field edits, duplicate merge resolution, editorial acceptance, and a separate publication checkpoint.
 - Added a transaction-safe publication function that creates the canonical organization dossier, evidence, citations, domain links, cluster links, and reviewed mission alignments together or publishes nothing.
 - Added four high-level technical domains required by the expansion batch: Aerospace & Mobility; Communications & Cyber; Test, Training & Sustainment; and Advanced Manufacturing & Integration.
 - Increased primary map clustering and implemented matching numbered clusters in the Leaflet fallback. Selecting a numbered cluster zooms to its member organizations and progressively separates their markers.
 - Removed database-vendor wording from user-visible application copy and replaced it with plain system, database, authentication, and access-control terminology.
+
+## Published-record maintenance - 2026-07-18
+
+- Reduced the final publication checkpoint to one explicit button that publishes
+  every approved record shown on the page. The transaction-safe validation,
+  reviewer authorization, audit event, and all-or-nothing boundary remain in
+  place; selection controls and typed confirmation were removed.
+- Added a private published-organization manager with search, public-profile
+  preview, and direct edit routes.
+- Added a unified published-dossier editor for organization identity, business
+  profile, primary map location, capability detail, technical domains, cluster,
+  evidence confidence, freshness, and editorial rationale.
+- Published edits preserve organization and capability slugs, save atomically,
+  record complete before/after audit data, and refresh the public atlas cache.
+  Existing citations remain visible and source replacement still uses the
+  review-first workflow.

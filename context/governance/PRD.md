@@ -228,6 +228,20 @@ Supported entry paths:
 
 Every path creates reviewable candidates with field evidence, duplicate checks, confidence, and source visibility.
 
+The private editorial workspace separates two maintenance modes:
+
+- staged research moves from field review to an approved checkpoint, then all
+  currently approved records are published through one explicit, atomic button
+  action
+- existing published organizations can be edited through a unified canonical
+  dossier form covering organization identity, primary location, business
+  profile, capability detail, technical domains, and cluster assignment
+
+Published-record edits preserve stable slugs, require an editorial rationale,
+retain the existing evidence boundary, record before/after values in the audit
+log, and invalidate the public atlas cache immediately. New or replacement
+evidence continues through the review-first candidate workflow.
+
 The weekly research loop is:
 
 1. calculate coverage by region x organization type x capability x demand requirement
@@ -267,7 +281,7 @@ The clean public seed began with six previously validated organizations and thei
 - GeoSpectrum Technologies
 - Open Ocean Robotics
 
-The first reviewed Underwater ISR expansion added 12 source-backed organizations and capabilities through the canonical review workflow, bringing the live atlas to 18 published organizations and 18 published capabilities. The fifteen scaffold organizations and all placeholder rows remain excluded. A national expansion must add at least 12 more verified records before public release, with an operating target of 36 and representation across at least eight provinces or territories and four technical domains. The first five NATO problem families are published as demand statements, with zero matches until evidence-backed mappings pass review.
+The first reviewed Underwater ISR expansion added 12 source-backed organizations and capabilities through the canonical review workflow, bringing the atlas to 18 records. A second 12-organization national expansion was field reviewed, approved with substantive rationale, and promoted atomically on July 17, 2026, bringing the live atlas to 30 published organizations and 30 published capabilities. The fifteen scaffold organizations and all placeholder rows remain excluded. The minimum public-release corpus is now met; 36 remains the operating target, with representation across at least eight provinces or territories and four technical domains. The first five NATO problem families are published as demand statements, with zero matches until evidence-backed mappings pass review.
 
 ## Acceptance criteria
 

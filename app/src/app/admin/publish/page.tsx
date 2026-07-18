@@ -1,6 +1,7 @@
 import { AlertTriangle, CheckCircle2, ExternalLink } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PendingButton } from "@/components/ui/pending-button";
 import { publishApprovedCandidates } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseAtlasOrganizationCandidate } from "@/lib/atlas/candidate-schema";
@@ -16,7 +17,7 @@ type ApprovedRow = {
 };
 
 const errorMessages: Record<string, string> = {
-  confirmation: "Select at least one record and type the exact confirmation shown below.",
+  selection: "No approved records were available to publish. Refresh the checkpoint and try again.",
   "publication-failed": "Publication was stopped. No selected record was published. Recheck the approved records and try again."
 };
 
@@ -36,7 +37,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
     .filter((item) => item.parsed.success);
 
   return (
-    <PublicPageShell eyebrow="Editorial operations" title="Publication checkpoint" description="This is the final public-data change. Select only fully reviewed records; publication runs as one transaction and stops entirely if any selected record fails validation." backHref="/admin" backLabel="Atlas operations">
+    <PublicPageShell eyebrow="Editorial operations" title="Publication checkpoint" description="Review the approved list, then publish it with one explicit action. Publication runs as one transaction and stops entirely if any record fails validation." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
       {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{errorMessages[params.error] ?? "Publication could not be completed."}</div> : null}
       {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">Published {params.success} reviewed organization {params.success === "1" ? "dossier" : "dossiers"} and refreshed the public atlas.</div> : null}
@@ -52,26 +53,24 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
               const record = parsed.data;
               const duplicateCheck = candidate.duplicate_check as { status?: string } | null;
               return (
-                <label key={candidate.id} className="grid cursor-pointer gap-3 rounded-lg border border-[#d0d5dd] bg-white p-4 hover:border-[#98a2b3] md:grid-cols-[auto_1fr_auto] md:items-start">
-                  <input type="checkbox" name="candidateId" value={candidate.id} defaultChecked className="mt-1 size-4 accent-[#0756d9]" />
-                  <span>
+                <div key={candidate.id} className="grid gap-3 rounded-lg border border-[#d0d5dd] bg-white p-4 md:grid-cols-[1fr_auto] md:items-start">
+                  <input type="hidden" name="candidateId" value={candidate.id} />
+                  <div>
                     <span className="block text-sm font-bold text-[#101828]">{record.name}</span>
                     <span className="mt-1 block text-xs leading-5 text-[#667085]">{record.city}, {record.provinceTerritory} · {record.capability.name}</span>
                     <span className="mt-2 block text-xs leading-5 text-[#475467]">{record.description}</span>
                     <a href={record.source.url} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[#0756d9]">Review source <ExternalLink className="size-3" /></a>
-                  </span>
+                  </div>
                   <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#067647]"><CheckCircle2 className="size-4" />{candidate.confidence} confidence · {duplicateCheck?.status === "clear" ? "duplicate check clear" : "duplicate resolved"}</span>
-                </label>
+                </div>
               );
             })}
           </div>
-          <div className="mt-5 rounded-lg border border-[#d0d5dd] bg-[#f8fafc] p-5">
-            <label className="grid max-w-xl gap-2 text-sm font-semibold text-[#344054]">
-              Type <code className="w-fit rounded bg-white px-2 py-1 text-[#b42318]">PUBLISH {rows.length}</code> to publish all currently selected records
-              <input name="confirmation" required autoComplete="off" className="h-11 rounded-md border border-[#98a2b3] bg-white px-3 text-sm font-normal outline-none focus:border-[#0756d9]" />
-            </label>
-            <p className="mt-2 text-xs leading-5 text-[#667085]">If you deselect records, change the number to match the selected count. The system rejects any mismatch.</p>
-            <button className="mt-4 h-11 rounded-md bg-[#b42318] px-5 text-sm font-semibold text-white hover:bg-[#912018]">Publish selected records</button>
+          <div className="mt-5 flex flex-col gap-3 rounded-lg border border-[#d0d5dd] bg-[#f8fafc] p-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-2xl text-xs leading-5 text-[#667085]">This publishes every approved record shown above. Validation and audit logging still run before the transaction completes.</p>
+            <PendingButton type="submit" pendingLabel="Publishing…" className="h-11 shrink-0 bg-[#b42318] px-5 text-sm font-semibold text-white hover:bg-[#912018]">
+              Publish {rows.length} approved {rows.length === 1 ? "record" : "records"}
+            </PendingButton>
           </div>
         </form>
       ) : <EmptyCoverage title="No records are ready to publish" detail="Accept fully reviewed organization candidates in the review queue. They will then appear here for a separate publication decision." />}
