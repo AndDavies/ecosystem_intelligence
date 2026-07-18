@@ -102,6 +102,8 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Enabled indexing for canonical public pages, added a public-only sitemap, structured data, social metadata, and explicit blocking for private workflows.
 - Separated the five-minute public atlas cache from cookie-bound authentication and retained 90-day searches and 30-day workflow events.
 - Added About, Methodology, Contact, Terms, and revised Privacy pages with public-source and non-endorsement boundaries.
+- Created the True North Map GA4 property and production stream, linked it to the verified Search Console property, disabled advertising personalization, kept Google Signals and user-provided data collection off, and limited event retention to two months.
+- Added opt-in Google Analytics measurement for sanitized public routes only, with persistent preferences, withdrawal, private-route exclusions, and no raw URL search parameters.
 - Set the release corpus floor at 30 verified organizations, with 36 as the operating target; promotion remains explicitly human-approved.
 
 ## Public terminology simplification - 2026-07-17

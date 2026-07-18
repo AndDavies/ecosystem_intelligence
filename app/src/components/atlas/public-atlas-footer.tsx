@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Bell, MessageSquareText } from "lucide-react";
 import { openPilotFeedback, openPilotUpdates } from "@/lib/pilot/client";
+import { AnalyticsPreferencesButton } from "@/components/atlas/public-beta-insights";
 
 export function PublicAtlasFooter({ generatedLabel }: { generatedLabel?: string }) {
   return (
@@ -15,6 +16,7 @@ export function PublicAtlasFooter({ generatedLabel }: { generatedLabel?: string 
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <button type="button" onClick={openPilotFeedback} className="inline-flex items-center gap-1.5 font-semibold text-[var(--atlas-primary)] hover:underline"><MessageSquareText className="size-3.5" />Give feedback</button>
           <button type="button" onClick={openPilotUpdates} className="inline-flex items-center gap-1.5 font-semibold text-[var(--atlas-primary)] hover:underline"><Bell className="size-3.5" />Get updates</button>
+          <AnalyticsPreferencesButton className="font-semibold text-[var(--atlas-muted)] hover:text-[var(--atlas-primary)] hover:underline" />
           <Link href="/privacy" className="font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:underline">Privacy</Link>
           <Link href="/methodology" className="font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:underline">Methodology</Link>
           <Link href="/contact" className="font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:underline">Contact</Link>
