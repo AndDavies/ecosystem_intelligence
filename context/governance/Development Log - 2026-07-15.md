@@ -190,3 +190,31 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Updated public navigation, metadata, Open Graph output, legal and methodology
   copy, signup messaging, downloadable reports, and current governance while
   preserving historical research references and stable internal storage keys.
+
+## Public-beta release verification - 2026-07-18
+
+- Connected and verified `truenorthmap.ca` as the canonical production domain;
+  `www.truenorthmap.ca` and the former Vercel production URL redirect to it.
+- Updated Supabase and Google authentication origins, callback URLs, provider
+  settings, and safe return paths for the canonical domain. Google OAuth and
+  passwordless email links both pass fresh-account production tests.
+- Verified the 30-organization corpus, zero-scaffold condition, explicit Data API
+  grants, RLS, owner-only private data, Andrew-only administration, retention,
+  account deletion, and public evidence boundaries.
+- Registered the domain with Google Search Console and Bing Webmaster Tools,
+  submitted the canonical sitemap, and requested indexing for priority pages.
+- Enabled Vercel Web Analytics without purchasing the separate paid Speed
+  Insights add-on; the deployed analytics scripts return successfully.
+- Changed mobile discovery to an accessible results-first view and deferred the
+  MapLibre/MapTiler payload until the user opens the map. Desktop retains the
+  synchronized map and results layout.
+- Improved assessment-label contrast and preconnected the MapTiler origin.
+  Lighthouse now reports mobile 96/100/100/100 and desktop 100/100/100/100 for
+  performance, accessibility, best practices, and SEO.
+- Completed the full release suite: 24 test files and 83 tests, lint, two
+  source-lead batches, seed validation, candidate ingestion validation, and a
+  41-route production build all pass.
+- Finalized the public launch package under `content/launch/`, including channel
+  copy, four screenshots, an Open Graph image, and a 21-second demonstration.
+- Froze the launch corpus at 30. Monday work is limited to the scheduled final
+  readiness check, smoke test, release decision, and Andrew-led promotion.

@@ -1,35 +1,52 @@
 # True North Map Canadian Public Beta Release Plan
 
-Status: release candidate; go with conditions
+Status: release-ready; go
 Plan updated: Saturday, July 18, 2026
 Release target: Monday, July 20, 2026 at 08:00 Atlantic
 Release URL: `https://truenorthmap.ca/`
 Creator and steward: Andrew Davies
+Shareable PDF: [True North Map - Canadian Public Beta Release Plan](https://drive.google.com/file/d/1NL0I35kokG4c1XwzJGXVLAa6nZnjRgpP/view?usp=drivesdk)
 
 ## Executive release decision
 
-True North Map is close enough to release on Monday. The product no
-longer needs another feature-development cycle before launch.
+True North Map is ready for its Monday public-beta release. The production
+application, database, authentication, governance, launch assets, and discovery
+workflows have passed the release gates. No further feature-development cycle is
+required before launch.
 
-The public corpus has reached the 30-record verified publication floor. The
-atlas, organization profiles, connection workflow, public contributions,
-private administration, analytics, authentication, account controls, exports,
-SEO foundation, and independent visual identity are implemented.
+The corpus is deliberately frozen at 30 verified organizations and 30 reviewed
+capabilities. The atlas, evidence-backed profiles, connection workflow, public
+contributions, private administration, Web Analytics, authentication, account
+controls, exports, technical SEO, and independent True North Map identity are
+implemented at `https://truenorthmap.ca/`.
 
-The remaining critical path is verification and release operations:
+The remaining work is operational and time-bound:
 
-1. verify the restored `research/` workspace and rerun the final data validation
-   commands
-2. complete production authentication, account-deletion, administrator, RLS,
-   and privacy checks
-3. complete desktop, mobile, keyboard, search, export, submission, connection,
-   and analytics smoke tests against the final production deployment
-4. finalize the launch story, screenshots/video, outreach list, and channel copy
-5. register the public URL with Google Search Console and Bing Webmaster Tools
+1. run the Monday 06:30 database and release-commit check
+2. confirm the production alias and logs at 07:00
+3. perform one fresh desktop/mobile smoke test at 07:30
+4. make the 08:00 go decision and publish Andrew's founder announcement
+5. execute the prepared stakeholder and community outreach sequence
 
-Monday remains achievable if no critical privacy, authorization, data-integrity,
-or core-discovery defect is found. New features and corpus expansion beyond 30
-are frozen until after launch.
+New features and corpus expansion beyond 30 remain frozen until launch feedback
+identifies the highest-value next change.
+
+## Verification snapshot — July 18
+
+| Release signal | Verified result |
+| --- | --- |
+| Canonical production | `truenorthmap.ca` serves the latest `main` deployment; `www` and the former Vercel URL redirect to it |
+| Corpus | 30 published organizations, 30 reviewed capabilities, zero scaffold records |
+| Coverage | Nine provinces or territories and more than four technical domains, with thin areas stated rather than padded |
+| Authentication | Google OAuth and passwordless email links pass; safe returns, progress states, sign-out, private account views, and deletion pass |
+| Administration | Andrew-only, unlinked, fail-closed; non-administrator access denied |
+| Database privacy | RLS, explicit grants, private-table denial, owner-only rows, retention, and service-secret boundaries pass |
+| Product QA | Desktop, mobile, keyboard, reduced motion, map/list, search, evidence, exports, contributions, connections, and admin journeys pass |
+| Automated suite | 24 test files and 83 tests; lint; two source-lead batches; seed; candidate ingestion; and 41-route production build all pass |
+| Performance | Mobile Lighthouse: 96/100/100/100; desktop: 100/100/100/100 for performance/accessibility/best practices/SEO |
+| Observability | Vercel Web Analytics scripts return 200; production browser and Vercel error logs are clean |
+| Search registration | Google Search Console and Bing Webmaster Tools verified; sitemap submitted; priority pages requested for indexing |
+| Launch collateral | Founder post, direct outreach, organization message, Build Canada note, BetaKit pitch, Show HN/Reddit variants, four screenshots, Open Graph card, and 21-second demo ready |
 
 ## Release story
 
@@ -94,7 +111,7 @@ branding, language model, and procurement platform are not being reproduced.
 | Editorial workflow | Structured candidate review, per-field editing, duplicate handling, substantive rationale, one-button atomic publication, and audit log |
 | Published maintenance | Searchable organization manager and unified organization/capability editor with stable slugs, rationale, audit history, and cache refresh |
 | Administration | Subscribers, searches, events, feedback, contact, contributions, connection requests, coverage, candidate review, publication, and organization editing |
-| Analytics | Vercel Analytics and Speed Insights plus bounded semantic events, private raw searches, and no replay, keystroke, mouse, advertising, or raw-IP collection |
+| Analytics | Vercel Web Analytics plus bounded semantic events, private raw searches, and no replay, keystroke, mouse, advertising, or raw-IP collection; Lighthouse is the release performance check |
 | Search repair | Halifax, HRM, and Dartmouth resolve to Halifax Regional Municipality; absent campaign-cohort values no longer invalidate discovery requests |
 | SEO/AEO foundation | `en-CA`, crawlable public routes, private-route blocking, sitemap, canonical metadata, Open Graph, and structured data |
 | Legal/trust pages | About, Methodology, Contact, Privacy, and Terms |
@@ -104,13 +121,14 @@ branding, language model, and procurement platform are not being reproduced.
 
 These do not block Monday:
 
-- 30 verified organizations rather than the operating target of 36
+- the corpus is intentionally frozen at 30 verified organizations for launch
 - uneven regional coverage where evidence is thin
 - five public NATO demand families with no capability matches until mappings
   pass editorial review
 - generic organization icons where approved logos are unavailable
-- DNS, redirects, and authentication callbacks for `truenorthmap.ca` still need production verification
 - Supabase’s default passwordless-email sender rather than branded SMTP
+- Vercel's paid Speed Insights add-on is not purchased; Lighthouse and Web
+  Analytics provide the release performance and usage checks
 - manual introduction brokerage rather than automated contact exchange
 - English-only presentation
 - no monetization, CRM synchronization, tender feed, or autonomous publication
@@ -122,7 +140,7 @@ promotion records have been restored to the canonical `research/` directory.
 The established four-folder contract remains intact and final validation should
 run from this restored path.
 
-## Remaining launch gates
+## Completed launch gates
 
 ### Gate 1 — Repository and release integrity
 
@@ -130,13 +148,14 @@ Owner: Andrew decision; Codex execution
 Deadline: Saturday, 18:00 Atlantic
 
 - [x] Restore and verify the canonical `research/` directory.
-- [ ] Confirm the release branch is `main` and its remote is
+- [x] Confirm the release branch is `main` and its remote is
       `AndDavies/ecosystem_intelligence`.
-- [ ] Confirm the working tree contains only intentional release changes.
-- [ ] Confirm no raw PDFs, colleague emails, local media, `.env` files,
+- [x] Confirm the working tree contains only intentional release changes.
+- [x] Confirm no raw PDFs, colleague emails, local media, `.env` files,
       credentials, or node modules are entering GitHub.
-- [ ] Rerun all data validators from the final path.
-- [ ] Tag or record the final release commit before the Monday deployment.
+- [x] Rerun all data validators from the final path.
+- [x] Record final release application commit `f385d4f` and production deployment
+      `dpl_7niF4ZYyEwTxdsnAvTvxBpanvu8w` before Monday.
 
 Pass condition: clean, reproducible repository; no lost research; all required
 commands can find their source and schema files.
@@ -148,21 +167,21 @@ Deadline: Sunday, 13:00 Atlantic
 
 Test with a fresh browser and at least one non-administrator account:
 
-- [ ] Google sign-in succeeds from `/sign-in`.
-- [ ] Google cancellation or denial returns a clear, safe state.
-- [ ] Passwordless email-link sign-in succeeds with a work or non-Google email.
-- [ ] Safe `returnTo` paths return the user to collections, contribution, or
+- [x] Google sign-in succeeds from `/sign-in`.
+- [x] Google cancellation or denial returns a clear, safe state.
+- [x] Passwordless email-link sign-in succeeds with a work or non-Google email.
+- [x] Safe `returnTo` paths return the user to collections, contribution, or
       connection workflows.
-- [ ] Both sign-in methods show visible progress and prevent duplicate submits.
-- [ ] Signed-out navigation says `Sign in`; signed-in navigation says `Account`.
-- [ ] `/account` shows the correct user’s private Working Lists, requests, and
+- [x] Both sign-in methods show visible progress and prevent duplicate submits.
+- [x] Signed-out navigation says `Sign in`; signed-in navigation says `Account`.
+- [x] `/account` shows the correct user’s private Working Lists, requests, and
       contributions only.
-- [ ] Sign-out clears the session and updates navigation.
-- [ ] A non-admin test account can complete recent reauthentication and delete
+- [x] Sign-out clears the session and updates navigation.
+- [x] A non-admin test account can complete recent reauthentication and delete
       its account/private data after exact-email confirmation.
-- [ ] Andrew’s administrator account cannot self-delete.
-- [ ] Andrew can open `/admin`; all other accounts receive fail-closed denial.
-- [ ] No public page, account page, sitemap, or navigation exposes an admin link.
+- [x] Andrew’s administrator account cannot self-delete.
+- [x] Andrew can open `/admin`; all other accounts receive fail-closed denial.
+- [x] No public page, account page, sitemap, or navigation exposes an admin link.
 
 Pass condition: both sign-in paths and deletion work in production; no user can
 see another user’s private state or gain administrator access.
@@ -172,23 +191,23 @@ see another user’s private state or gain administrator access.
 Owner: Codex verification; Andrew approval
 Deadline: Sunday, 15:00 Atlantic
 
-- [ ] Confirm production contains exactly the intended 30 published records and
+- [x] Confirm production contains exactly the intended 30 published records and
       zero scaffold/placeholder organizations.
-- [ ] Confirm every commercial organization has a reviewed capability and
+- [x] Confirm every commercial organization has a reviewed capability and
       durable public source.
-- [ ] Confirm anonymous users can read published records only.
-- [ ] Confirm anonymous and ordinary authenticated clients cannot read raw
+- [x] Confirm anonymous users can read published records only.
+- [x] Confirm anonymous and ordinary authenticated clients cannot read raw
       searches, events, feedback, subscribers, contacts, connection requests,
       submissions, drafts, raw files, or audit history.
-- [ ] Confirm users can access only their own collections, submissions,
+- [x] Confirm users can access only their own collections, submissions,
       connections, and account data.
-- [ ] Confirm service credentials and the Google secret exist only in protected
+- [x] Confirm service credentials and the Google secret exist only in protected
       server/provider configuration.
-- [ ] Confirm raw searches retain a 90-day expiry and detailed events a 30-day
+- [x] Confirm raw searches retain a 90-day expiry and detailed events a 30-day
       expiry.
-- [ ] Review Privacy and Terms against the actual Google/email authentication,
+- [x] Review Privacy and Terms against the actual Google/email authentication,
       subscriptions, analytics, connections, contact, and deletion behaviour.
-- [ ] Spot-check substantive public claims and assessment labels for source
+- [x] Spot-check substantive public claims and assessment labels for source
       links and non-endorsement caveats.
 
 Pass condition: zero private-data exposure, zero scaffold records, and no
@@ -201,32 +220,34 @@ Deadline: Sunday, 18:00 Atlantic
 
 Required public journeys:
 
-- [ ] Canada-wide atlas loads without console or server errors.
-- [ ] Numbered clusters zoom and separate correctly.
-- [ ] Panning and zooming update the table to the organizations visible on the
+- [x] Canada-wide atlas loads without console or server errors.
+- [x] Numbered clusters zoom and separate correctly.
+- [x] Panning and zooming update the table to the organizations visible on the
       map, including entities represented by a cluster.
-- [ ] Map, result count, selection, filters, URL, and CSV export stay synchronized.
-- [ ] `Halifax`, `HRM`, and `Dartmouth` return the intended metro result.
-- [ ] A zero-result search provides broadening and feedback paths.
-- [ ] Marker and row selection open a compact profile preview.
-- [ ] Organization and capability profiles show evidence and omit unknown data.
-- [ ] Individual PDF, collection lookbook, regional PDF, and filtered CSV export.
-- [ ] Save to Working List, claim/correction/new organization, connection,
+- [x] Map, result count, selection, filters, URL, and CSV export stay synchronized.
+- [x] `Halifax`, `HRM`, and `Dartmouth` return the intended metro result.
+- [x] A zero-result search provides broadening and feedback paths.
+- [x] Marker and row selection open a compact profile preview.
+- [x] Organization and capability profiles show evidence and omit unknown data.
+- [x] Individual PDF, collection lookbook, regional PDF, and filtered CSV export.
+- [x] Save to Working List, claim/correction/new organization, connection,
       contact, feedback, and update-subscription workflows.
-- [ ] Admin review, one-button publication preview, and published-record edit.
+- [x] Admin review, one-button publication preview, and published-record edit.
 
 Required presentation and accessibility checks:
 
-- [ ] Desktop and mobile layouts.
-- [ ] Keyboard navigation, visible focus, and logical heading order.
-- [ ] Map/list equivalence and a usable non-map path.
-- [ ] Colour contrast and reduced-motion behaviour.
-- [ ] Missing coordinates, missing media, thin regions, stale evidence, failed
+- [x] Desktop and mobile layouts.
+- [x] Keyboard navigation, visible focus, and logical heading order.
+- [x] Map/list equivalence and a usable non-map path.
+- [x] Colour contrast and reduced-motion behaviour.
+- [x] Missing coordinates, missing media, thin regions, stale evidence, failed
       API calls, and unavailable sources have safe states.
-- [ ] Core pages return correct canonicals, Open Graph data, and JSON-LD.
-- [ ] Sitemap contains public canonical routes only; robots/noindex block private
+- [x] Core pages return correct canonicals, Open Graph data, and JSON-LD.
+- [x] Sitemap contains public canonical routes only; robots/noindex block private
       routes.
-- [ ] Vercel Speed Insights shows no material regression on the final build.
+- [x] Lighthouse shows no material regression on the final build: mobile
+      96/100/100/100 and desktop 100/100/100/100. Paid Speed Insights remains
+      deliberately unpurchased.
 
 Pass condition: no critical or high-severity defect in the public discovery,
 profile, authentication, contribution, connection, export, or admin workflows.
@@ -247,6 +268,11 @@ pnpm ingest:validate
 pnpm build
 ```
 
+Verified result: all six commands exit successfully; 24 test files and 83 tests
+pass, both source-lead batches validate with zero errors or warnings, the seed
+validates, the candidate batch validates with zero errors or warnings, and the
+production build generates 41 routes.
+
 Pass condition: every command exits successfully. Do not treat the earlier
 passing run as final if the research hierarchy changes afterward.
 
@@ -255,13 +281,14 @@ passing run as final if the research hierarchy changes afterward.
 Owner: Andrew for account-bound registration; Codex for verification
 Deadline: Monday, 07:30 Atlantic or within 24 hours of release
 
-- [ ] Register `https://truenorthmap.ca/` with Google Search Console.
-- [ ] Submit `/sitemap.xml` and request indexing for `/`, `/organizations`,
+- [x] Register `https://truenorthmap.ca/` with Google Search Console.
+- [x] Submit `/sitemap.xml` and request indexing for `/`, `/organizations`,
       `/about`, and `/methodology`.
-- [ ] Register the site with Bing Webmaster Tools and submit the sitemap.
-- [ ] Confirm Vercel Analytics and Speed Insights receive production traffic.
-- [ ] Confirm semantic searches/events appear privately in admin insights.
-- [ ] Confirm production errors and failed functions can be observed in Vercel.
+- [x] Register the site with Bing Webmaster Tools and submit the sitemap.
+- [x] Confirm Vercel Web Analytics scripts receive production traffic; both
+      deployed analytics endpoints return 200.
+- [x] Confirm semantic searches/events appear privately in admin insights.
+- [x] Confirm production errors and failed functions can be observed in Vercel.
 
 Search-engine registration is important but is not a reason to miss 08:00 if
 the public technical SEO is correct and the registration accounts are the only
@@ -274,25 +301,25 @@ Deadline: Sunday, 17:00 Atlantic
 
 Required:
 
-- [ ] Founder-led LinkedIn post with one clear atlas link.
-- [ ] One short demonstration video or screen recording showing search, map,
+- [x] Founder-led LinkedIn post with one clear atlas link.
+- [x] One short demonstration video or screen recording showing search, map,
       cluster, profile, evidence, and Connect.
-- [ ] Three clean screenshots: national atlas, organization profile, and
+- [x] Three clean screenshots: national atlas, organization profile, and
       evidence/connection interaction.
-- [ ] Current Open Graph card verified through the deployed route.
-- [ ] Direct-outreach email or message for 15–25 ecosystem contacts.
-- [ ] Short organization-inclusion message for companies already in the atlas.
-- [ ] Build Canada community submission/message.
-- [ ] BetaKit pitch with release facts, why it matters, traction/context, and
+- [x] Current Open Graph card verified through the deployed route.
+- [x] Direct-outreach email or message for 15–25 ecosystem contacts.
+- [x] Short organization-inclusion message for companies already in the atlas.
+- [x] Build Canada community submission/message.
+- [x] BetaKit pitch with release facts, why it matters, traction/context, and
       license-safe assets.
-- [ ] Show HN title/body and Reddit maker-story variants.
-- [ ] One UTM convention for launch links, for example:
+- [x] Show HN title/body and Reddit maker-story variants.
+- [x] One UTM convention for launch links, for example:
       `utm_source`, `utm_medium`, `utm_campaign=public_beta_2026_07`.
 
-A local launch-video draft exists under `content/launch-video/`, but that folder
-is intentionally ignored. Select and preserve the final release asset outside
-the application repository or deliberately add only an approved export through
-the appropriate collateral path.
+The approved 21-second H.264 release cut is tracked at
+`content/launch/true-north-map-public-beta-demo.mp4`. Its six clean source frames,
+four release screenshots, and Open Graph image are retained under
+`content/launch/` with no private workflow content.
 
 ## Promotion sequence
 
@@ -338,29 +365,37 @@ or cold direct-message campaigns.
 
 ### Saturday, July 18
 
-Primary objective: achieve a coherent release candidate.
+Primary objective achieved: release-ready production build.
 
-- Resolve the research-folder/repository state.
-- Freeze feature development and the corpus at 30.
-- Reconcile Privacy, Terms, About, Methodology, and authentication copy.
-- Prepare the authentication and RLS test accounts/checklist.
-- Finalize launch post, outreach message, screenshots, and demo-video selection.
-- Confirm the production environment-variable inventory without exposing values.
-- End the day with a clean release candidate and no unexplained files.
+- [x] Research hierarchy, repository remote, `main` branch, and tracked release
+  boundaries verified.
+- [x] Feature development and the corpus frozen at 30.
+- [x] Privacy, Terms, About, Methodology, brand, domain, and authentication copy
+  reconciled.
+- [x] Google and passwordless-email authentication, RLS, account deletion,
+  administrator isolation, and private workflows verified with fresh test data;
+  test identities and records removed afterward.
+- [x] Launch post, outreach copy, screenshots, Open Graph image, and demo video
+  finalized under `content/launch/`.
+- [x] Production environment-variable inventory and provider callbacks verified
+  without exposing protected values.
+- [x] Release code pushed to `main`, deployed, and verified at the canonical
+  domain with a clean production browser and error-log check.
 
 ### Sunday, July 19
 
-Primary objective: prove the release candidate.
+The technical proof work was completed ahead of schedule on Saturday. Sunday is
+a stability buffer, not a feature day.
 
-- 08:00–13:00: fresh-account Google, passwordless email, account, deletion, and
-  administrator-access testing.
-- 13:00–15:00: RLS, privacy, corpus, evidence, and secret-boundary review.
-- 15:00–18:00: production desktop/mobile/browser and accessibility smoke tests.
-- 16:00: send the BetaKit advance pitch if the launch package is ready.
-- 18:00–19:00: fix only launch-gate defects.
-- 19:00: run the full automated release suite.
-- 20:00: code freeze and go/no-go review.
-- 20:30: prepare final release commit/deployment instructions and Monday posts.
+- Keep the corpus, schema, authentication, and public workflows frozen.
+- Review the founder announcement and channel copy once in Andrew's voice.
+- Assemble the final 15–25 person direct-outreach list outside the repository.
+- Optionally send the prepared BetaKit advance pitch.
+- Recheck current posting rules for Build Canada, Show HN, and the chosen Reddit
+  communities; do not publish the community wave early.
+- Repair only a newly observed critical launch-gate defect.
+- Confirm no unexpected production error, database change, or secret/config
+  drift at 20:00 Atlantic.
 
 ### Monday, July 20
 
@@ -415,7 +450,8 @@ warehouse or asking every user for feedback.
 Use:
 
 - Vercel Analytics for aggregate traffic and route use
-- Speed Insights for real-user performance
+- Lighthouse for reproducible release performance and Vercel Web Analytics for
+  aggregate production usage
 - semantic events for search, filter, marker/result selection, profile, source,
   export, save, contribution, connection, subscription, and feedback
 - private 90-day raw search records to understand intent and zero-result gaps
@@ -469,7 +505,8 @@ connection flows, and evidence corrections before new feature work.
 - choose one evidence-backed improvement theme from search, profile depth,
   comparison, connection, or contribution data
 - prepare a small reviewed corpus expansion rather than a broad volume push
-- verify the custom domain and decide whether a compliant sender/SMTP is now worth adding
+- decide whether a compliant branded sender/SMTP is worth adding after observing
+  actual passwordless-email and subscriber volume
 - publish a short transparent update on coverage growth and what changed
 
 ## Explicitly deferred
