@@ -144,7 +144,7 @@ For `r/BuyCanadian`, shorten this to two paragraphs and post only in the current
 
 ## Demonstration run-of-show
 
-Target length: 45–60 seconds. Use captions and no voiceover is required.
+Prepared release cut: `content/launch/true-north-map-public-beta-demo.mp4` (21 seconds, 1920 × 1080, H.264). It uses clean production screens and no private request content. A narrated 45–60 second version can follow after launch if useful.
 
 1. Open on the national atlas and the 30-record coverage statement.
 2. Search `Halifax`; show the visible filter/result response.
@@ -156,11 +156,18 @@ Target length: 45–60 seconds. Use captions and no voiceover is required.
 
 ## Screenshot checklist
 
+Prepared production assets:
+
+- `content/launch/screenshots/true-north-map-national-atlas.png`
+- `content/launch/screenshots/true-north-map-organization-profile.png`
+- `content/launch/screenshots/true-north-map-evidence.png`
+- `content/launch/screenshots/true-north-map-open-graph.png`
+
 - National atlas: desktop, Canada-wide extent, numbered clusters, search and visible-result table.
 - Organization profile: title, location/type, capability, evidence cue, and primary actions visible without private information.
 - Evidence/connection: source section or compact profile beside the connection entry point, with no real request content visible.
 
-Export clean 1600 × 1000 PNGs and a 1200 × 630 Open Graph preview. Do not include administrator screens, email addresses, browser extensions, personal bookmarks, or unrelated tabs.
+The three product screenshots are clean 1905 × 866 production captures; the Open Graph image is 1200 × 630. Do not include administrator screens, email addresses, browser extensions, personal bookmarks, or unrelated tabs.
 
 ## Release-day channel controls
 

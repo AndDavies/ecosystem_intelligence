@@ -80,7 +80,7 @@ export function PublicAtlasHeader() {
           <button
             type="button"
             onClick={openPilotUpdates}
-            className="atlas-secondary-button hidden h-10 items-center gap-2 px-4 text-sm sm:inline-flex"
+            className="atlas-secondary-button !hidden h-10 items-center gap-2 px-4 text-sm sm:!inline-flex"
           >
             <Bell className="size-4" />
             Get updates
@@ -90,7 +90,7 @@ export function PublicAtlasHeader() {
           ) : (
             <Link
               href={authState === "signed-in" ? "/account" : "/sign-in"}
-              className="atlas-secondary-button hidden h-10 items-center justify-center gap-2 px-4 text-sm sm:inline-flex"
+              className="atlas-secondary-button !hidden h-10 items-center justify-center gap-2 px-4 text-sm sm:!inline-flex"
             >
               {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
               {authState === "signed-in" ? "Account" : "Sign in"}

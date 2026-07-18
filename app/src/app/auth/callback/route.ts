@@ -13,8 +13,16 @@ export async function GET(request: Request) {
   }
 
   const requestUrl = new URL(request.url);
+  const providerError = requestUrl.searchParams.get("error");
   const code = requestUrl.searchParams.get("code");
   const next = safeNext(requestUrl.searchParams.get("next"));
+
+  if (providerError) {
+    const signInUrl = new URL("/sign-in", request.url);
+    signInUrl.searchParams.set("error", "Google sign-in was cancelled or could not be completed. You can try again or use a secure email link.");
+    signInUrl.searchParams.set("next", next);
+    return NextResponse.redirect(signInUrl);
+  }
 
   if (code) {
     const supabase = await createClient({ writeCookies: true });

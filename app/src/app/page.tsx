@@ -7,7 +7,7 @@ import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
 import { getAtlasSnapshot, queryAtlas } from "@/lib/atlas/repository";
 
 export const metadata: Metadata = {
-  title: "Canadian Public Beta",
+  title: "True North Map | Canadian Defence and Dual-Use Atlas",
   description:
     "Explore reviewed Canadian defence and dual-use organizations, capabilities, regions, public sources, and clearly labelled analyst assessments."
 };
