@@ -36,20 +36,20 @@ export default async function CollectionPage({ params }: { params: Promise<{ id:
       description={collection.description || "A private shortlist of published ecosystem records."}
       backHref="/collections"
       backLabel="All Working Lists"
-      actions={<Link href={`/api/export?type=collection-lookbook&id=${collection.id}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#344054] no-underline hover:bg-[#f8fafc] hover:no-underline"><Download className="size-4" />Export lookbook</Link>}
+      actions={<Link href={`/api/export?type=collection-lookbook&id=${collection.id}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-4 text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:no-underline"><Download className="size-4" />Export lookbook</Link>}
     >
       <PublicCard title="Saved records" eyebrow={`${resolved.length} ${resolved.length === 1 ? "item" : "items"}`}>
         {resolved.length ? (
-          <div className="divide-y divide-[#eaecf0]">
+          <div className="divide-y divide-[var(--atlas-border)]">
             {resolved.map(({ item, title, detail, href, type }) => (
               <article key={item.id} className="grid gap-3 py-4 first:pt-0 last:pb-0 sm:grid-cols-[1fr_auto] sm:items-center">
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#667085]">{type}</p>
-                  <Link href={href} className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-[#007f98] no-underline hover:underline">{title}<ExternalLink className="size-3.5" /></Link>
-                  <p className="mt-1 line-clamp-2 text-xs leading-5 text-[#667085]">{item.note || detail}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{type}</p>
+                  <Link href={href} className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--atlas-primary)] no-underline hover:underline">{title}<ExternalLink className="size-3.5" /></Link>
+                  <p className="mt-1 line-clamp-2 text-xs leading-5 text-[var(--atlas-muted)]">{item.note || detail}</p>
                 </div>
                 <form action={removeSavedCollectionItem.bind(null, collection.id, item.id)}>
-                  <button type="submit" className="inline-flex h-9 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-3 text-xs font-semibold text-[#475467] hover:border-[#fda29b] hover:text-[#b42318]"><Trash2 className="size-3.5" />Remove</button>
+                  <button type="submit" className="inline-flex h-9 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-muted)] hover:border-[var(--atlas-danger)] hover:text-[var(--atlas-danger)]"><Trash2 className="size-3.5" />Remove</button>
                 </form>
               </article>
             ))}

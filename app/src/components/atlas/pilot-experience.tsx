@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, CheckCircle2, LoaderCircle, MessageSquareText, Send, Waves, X } from "lucide-react";
+import { Bell, CheckCircle2, LoaderCircle, MessageSquareText, Send, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import {
   currentPilotCohort,
@@ -191,9 +191,9 @@ export function PilotExperience() {
           setUpdatesOpen(false);
           setFeedbackOpen(true);
         }}
-        className="fixed bottom-4 left-4 z-[1200] inline-flex h-11 items-center gap-2 rounded-full border border-white/20 bg-[#05052b] px-4 text-xs font-semibold text-white shadow-[0_12px_32px_rgba(5,5,43,0.28)] transition hover:-translate-y-0.5 hover:bg-[#101047] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#43c5d8]/35"
+        className="fixed bottom-4 left-4 z-[1200] inline-flex h-11 items-center gap-2 rounded-full border border-[var(--atlas-primary)] bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white shadow-[var(--atlas-shadow-float)] transition hover:-translate-y-0.5 hover:bg-[var(--atlas-primary-hover)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(31,90,67,0.22)]"
       >
-        <MessageSquareText className="size-4 text-[#62d9e8]" />
+        <MessageSquareText className="size-4" />
         Give feedback
       </button>
 
@@ -202,38 +202,38 @@ export function PilotExperience() {
           role="dialog"
           aria-modal="false"
           aria-labelledby="pilot-updates-title"
-          className="fixed inset-x-3 bottom-3 z-[1250] max-h-[calc(100vh-1.5rem)] overflow-y-auto rounded-xl border border-[#b8dfe5] bg-white p-5 shadow-[0_24px_70px_rgba(5,5,43,0.26)] sm:inset-x-auto sm:bottom-4 sm:right-4 sm:w-[390px]"
+          className="fixed inset-x-3 bottom-3 z-[1250] max-h-[calc(100vh-1.5rem)] overflow-y-auto rounded-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] sm:inset-x-auto sm:bottom-4 sm:right-4 sm:w-[390px]"
         >
           <div className="flex items-start gap-3">
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#e7f8fa] text-[#007f98]"><Bell className="size-5" /></span>
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><Bell className="size-5" /></span>
             <div className="min-w-0 flex-1">
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#007f98]">Public Beta</p>
-              <h2 id="pilot-updates-title" className="mt-1 text-lg font-bold tracking-[-0.02em] text-[#05052b]">Follow the atlas as it grows.</h2>
+              <p className="atlas-eyebrow">Public Beta</p>
+              <h2 id="pilot-updates-title" className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">Follow the atlas as it grows.</h2>
             </div>
-            <button type="button" onClick={dismissUpdates} className="flex size-8 items-center justify-center rounded-md text-[#667085] hover:bg-[#f2f4f7]" aria-label="Dismiss update signup"><X className="size-4" /></button>
+            <button type="button" onClick={dismissUpdates} className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss update signup"><X className="size-4" /></button>
           </div>
 
           {signupState === "success" ? (
-            <div className="mt-5 rounded-lg border border-[#9ee2c0] bg-[#edfcf4] p-4 text-sm leading-6 text-[#05603a]">
+            <div className="mt-5 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-4 text-sm leading-6 text-[var(--atlas-primary)]">
               <CheckCircle2 className="mb-2 size-5" />
               You are on the update list. We will only send occasional product and coverage updates.
             </div>
           ) : (
             <>
-              <p className="mt-3 text-sm leading-6 text-[#475467]">Get occasional updates when verified coverage, connections, and new workflows are ready.</p>
+              <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">Get occasional updates when verified coverage, connections, and new workflows are ready.</p>
               <form onSubmit={submitSignup} className="mt-4 space-y-3">
-                {signupError ? <div role="alert" className="rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-xs text-[#b42318]">{signupError}</div> : null}
-                <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">
+                {signupError ? <div role="alert" className="rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-xs text-[var(--atlas-danger)]">{signupError}</div> : null}
+                <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">
                   Email address
-                  <input name="email" type="email" required autoComplete="email" placeholder="you@organization.ca" className="h-11 rounded-md border border-[#b8c8ce] px-3 text-sm font-normal outline-none focus:border-[#008fa8] focus:ring-4 focus:ring-[#43c5d8]/20" />
+                  <input name="email" type="email" required autoComplete="email" placeholder="you@organization.ca" className="h-11 rounded-xl border border-[var(--atlas-border-strong)] px-3 text-sm font-normal outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]" />
                 </label>
-                <label className="flex items-start gap-2.5 text-[11px] leading-5 text-[#475467]">
-                  <input name="consent" type="checkbox" required className="mt-1 size-4 accent-[#007f98]" />
-                  <span>{consentText} <Link href="/privacy" className="font-semibold text-[#007f98] underline">Privacy details</Link></span>
+                <label className="flex items-start gap-2.5 text-[11px] leading-5 text-[var(--atlas-muted)]">
+                  <input name="consent" type="checkbox" required className="mt-1 size-4 accent-[var(--atlas-primary)]" />
+                  <span>{consentText} <Link href="/privacy" className="font-semibold text-[var(--atlas-primary)] underline">Privacy details</Link></span>
                 </label>
                 <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
-                <button type="submit" disabled={signupState === "loading"} className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[#007f98] px-4 text-sm font-semibold text-white hover:bg-[#00677d] disabled:opacity-60">
-                  {signupState === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Waves className="size-4" />}
+                <button type="submit" disabled={signupState === "loading"} className="atlas-primary-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60">
+                  {signupState === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Bell className="size-4" />}
                   Get updates
                 </button>
               </form>
@@ -243,35 +243,35 @@ export function PilotExperience() {
       ) : null}
 
       {feedbackOpen ? (
-        <div className="fixed inset-0 z-[1300] flex items-end justify-center bg-[#05052b]/55 p-0 backdrop-blur-[2px] sm:items-center sm:p-4" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setFeedbackOpen(false); }}>
-          <section role="dialog" aria-modal="true" aria-labelledby="pilot-feedback-title" className="max-h-[92vh] w-full overflow-y-auto rounded-t-2xl border border-[#b8dfe5] bg-white p-5 shadow-[0_28px_80px_rgba(5,5,43,0.3)] sm:max-w-xl sm:rounded-xl sm:p-6">
+        <div className="fixed inset-0 z-[1300] flex items-end justify-center bg-[var(--atlas-ink)]/55 p-0 backdrop-blur-[2px] sm:items-center sm:p-4" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setFeedbackOpen(false); }}>
+          <section role="dialog" aria-modal="true" aria-labelledby="pilot-feedback-title" className="max-h-[92vh] w-full overflow-y-auto rounded-t-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] sm:max-w-xl sm:rounded-2xl sm:p-6">
             <div className="flex items-start gap-3">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#e7f8fa] text-[#007f98]"><MessageSquareText className="size-5" /></span>
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><MessageSquareText className="size-5" /></span>
               <div className="min-w-0 flex-1">
-                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#007f98]">Public-beta feedback</p>
-                <h2 id="pilot-feedback-title" className="mt-1 text-xl font-bold tracking-[-0.025em] text-[#05052b]">Tell us what would make this useful.</h2>
-                <p className="mt-2 text-sm leading-6 text-[#667085]">Tell us what worked, what was missing, or what would make the atlas more useful in real work.</p>
+                <p className="atlas-eyebrow">Public-beta feedback</p>
+                <h2 id="pilot-feedback-title" className="mt-1 text-xl font-bold tracking-[-0.025em] text-[var(--atlas-ink)]">Tell us what would make this useful.</h2>
+                <p className="mt-2 text-sm leading-6 text-[var(--atlas-muted)]">Tell us what worked, what was missing, or what would make the atlas more useful in real work.</p>
               </div>
-              <button type="button" onClick={() => setFeedbackOpen(false)} className="flex size-8 items-center justify-center rounded-md text-[#667085] hover:bg-[#f2f4f7]" aria-label="Close feedback form"><X className="size-4" /></button>
+              <button type="button" onClick={() => setFeedbackOpen(false)} className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Close feedback form"><X className="size-4" /></button>
             </div>
 
             {feedbackState === "success" ? (
-              <div className="mt-6 rounded-lg border border-[#9ee2c0] bg-[#edfcf4] p-5 text-center text-sm leading-6 text-[#05603a]">
+              <div className="mt-6 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-5 text-center text-sm leading-6 text-[var(--atlas-primary)]">
                 <CheckCircle2 className="mx-auto mb-3 size-7" />
                 Thank you. Your feedback is queued for the product review.
-                <button type="button" onClick={() => setFeedbackOpen(false)} className="mt-4 block w-full text-xs font-semibold text-[#05603a] underline">Return to the atlas</button>
+                <button type="button" onClick={() => setFeedbackOpen(false)} className="mt-4 block w-full text-xs font-semibold text-[var(--atlas-primary)] underline">Return to the atlas</button>
               </div>
             ) : (
               <form onSubmit={submitFeedback} className="mt-5 space-y-4">
-                {feedbackError ? <div role="alert" className="rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{feedbackError}</div> : null}
-                <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">What were you trying to accomplish?<textarea ref={feedbackGoalRef} name="goal" required minLength={3} maxLength={1200} rows={3} placeholder="For example: find three Atlantic companies relevant to an underwater ISR opportunity." className="rounded-md border border-[#b8c8ce] px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[#008fa8] focus:ring-4 focus:ring-[#43c5d8]/20" /></label>
-                <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">What worked well?<textarea name="worked" maxLength={2000} rows={3} placeholder="Which pages, evidence, filters, or exports helped?" className="rounded-md border border-[#b8c8ce] px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[#008fa8] focus:ring-4 focus:ring-[#43c5d8]/20" /></label>
-                <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">What did not work, or what was missing?<textarea name="missing" required minLength={3} maxLength={3000} rows={4} placeholder="Missing organizations, information, workflows, comparisons, or day-to-day needs are all useful." className="rounded-md border border-[#b8c8ce] px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[#008fa8] focus:ring-4 focus:ring-[#43c5d8]/20" /></label>
-                <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Email for follow-up <span className="font-normal text-[#667085]">(optional)</span><input name="contactEmail" type="email" maxLength={320} autoComplete="email" placeholder="you@organization.ca" className="h-11 rounded-md border border-[#b8c8ce] px-3 text-sm font-normal outline-none focus:border-[#008fa8] focus:ring-4 focus:ring-[#43c5d8]/20" /></label>
+                {feedbackError ? <div role="alert" className="rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]">{feedbackError}</div> : null}
+                <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">What were you trying to accomplish?<textarea ref={feedbackGoalRef} name="goal" required minLength={3} maxLength={1200} rows={3} placeholder="For example: find three Atlantic companies relevant to an underwater ISR opportunity." className="rounded-xl border border-[var(--atlas-border-strong)] px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]" /></label>
+                <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">What worked well?<textarea name="worked" maxLength={2000} rows={3} placeholder="Which pages, evidence, filters, or exports helped?" className="rounded-xl border border-[var(--atlas-border-strong)] px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]" /></label>
+                <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">What did not work, or what was missing?<textarea name="missing" required minLength={3} maxLength={3000} rows={4} placeholder="Missing organizations, information, workflows, comparisons, or day-to-day needs are all useful." className="rounded-xl border border-[var(--atlas-border-strong)] px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]" /></label>
+                <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">Email for follow-up <span className="font-normal text-[var(--atlas-muted)]">(optional)</span><input name="contactEmail" type="email" maxLength={320} autoComplete="email" placeholder="you@organization.ca" className="h-11 rounded-xl border border-[var(--atlas-border-strong)] px-3 text-sm font-normal outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]" /></label>
                 <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
-                <div className="flex flex-col-reverse gap-2 border-t border-[#e4e7ec] pt-4 sm:flex-row sm:justify-end">
-                  <button type="button" onClick={() => setFeedbackOpen(false)} className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-sm font-semibold text-[#344054] hover:bg-[#f8fafc]">Cancel</button>
-                  <button type="submit" disabled={feedbackState === "loading"} className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[#007f98] px-4 text-sm font-semibold text-white hover:bg-[#00677d] disabled:opacity-60">
+                <div className="flex flex-col-reverse gap-2 border-t border-[var(--atlas-border)] pt-4 sm:flex-row sm:justify-end">
+                  <button type="button" onClick={() => setFeedbackOpen(false)} className="atlas-secondary-button h-10 px-4 text-sm">Cancel</button>
+                  <button type="submit" disabled={feedbackState === "loading"} className="atlas-primary-button h-10 gap-2 px-4 text-sm disabled:opacity-60">
                     {feedbackState === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Send className="size-4" />}
                     Send feedback
                   </button>

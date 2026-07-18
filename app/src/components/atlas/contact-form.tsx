@@ -28,11 +28,11 @@ export function ContactForm() {
     setState("success");
   }
 
-  if (state === "success") return <div className="rounded-lg border border-[#9ee2c0] bg-[#edfcf4] p-5 text-sm leading-6 text-[#05603a]"><CheckCircle2 className="mb-2 size-5" />Your message has been received. Andrew will review it privately.</div>;
+  if (state === "success") return <div className="rounded-2xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-5 text-sm leading-6 text-[var(--atlas-primary)]"><CheckCircle2 className="mb-2 size-5" />Your message has been received. Andrew will review it privately.</div>;
 
   return (
     <form onSubmit={submit} className="grid gap-4">
-      {error ? <div role="alert" className="rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{error}</div> : null}
+      {error ? <div role="alert" className="rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]">{error}</div> : null}
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Name"><input name="senderName" required minLength={2} maxLength={120} autoComplete="name" className="form-control" /></Field>
         <Field label="Email"><input name="senderEmail" type="email" required maxLength={320} autoComplete="email" className="form-control" /></Field>
@@ -43,11 +43,11 @@ export function ContactForm() {
       </div>
       <Field label="Message"><textarea name="message" required minLength={20} maxLength={4000} rows={7} className="form-control h-auto py-3" placeholder="How can Ecosystem Intelligence help?" /></Field>
       <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
-      <button type="submit" disabled={state === "loading"} className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-[#007f98] px-5 text-sm font-semibold text-white hover:bg-[#00677d] disabled:opacity-60 sm:w-fit">{state === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Send className="size-4" />}Send message</button>
+      <button type="submit" disabled={state === "loading"} className="atlas-primary-button h-11 gap-2 px-5 text-sm disabled:opacity-60 sm:w-fit">{state === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Send className="size-4" />}Send message</button>
     </form>
   );
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">{label}{children}</label>;
+  return <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">{label}{children}</label>;
 }

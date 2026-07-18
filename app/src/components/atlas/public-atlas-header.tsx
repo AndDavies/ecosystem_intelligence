@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, Menu, UserRound, Waves, X } from "lucide-react";
+import { Bell, Menu, Network, UserRound, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { openPilotUpdates } from "@/lib/pilot/client";
@@ -45,14 +45,14 @@ export function PublicAtlasHeader() {
 
   return (
     <header className="atlas-header">
-      <div className="atlas-frame flex h-[68px] items-center justify-between gap-5">
+      <div className="atlas-frame flex h-[72px] items-center justify-between gap-5">
         <Link href="/" className="flex min-w-0 items-center gap-3 no-underline" aria-label="Ecosystem Intelligence Public Atlas home">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#62d9e8]/50 bg-[#101047] text-[#62d9e8] shadow-[0_8px_24px_rgba(0,0,0,0.22)]">
-            <Waves className="size-5" aria-hidden="true" />
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-[14px] border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)] shadow-[0_8px_20px_rgba(30,35,32,0.07)]">
+            <Network className="size-5" aria-hidden="true" />
           </span>
-          <span className="min-w-0 leading-tight">
-            <span className="block truncate text-[14px] font-bold tracking-[-0.01em] text-white sm:text-[17px]">Ecosystem Intelligence</span>
-            <span className="mt-0.5 block text-[9px] font-bold uppercase tracking-[0.16em] text-[#62d9e8] sm:text-[10px]">Canadian Public Beta</span>
+          <span className="flex min-w-0 items-center gap-2.5 leading-tight">
+            <span className="block truncate text-[14px] font-bold tracking-[-0.02em] text-[var(--atlas-ink)] sm:text-[17px]">Ecosystem Intelligence</span>
+            <span className="hidden rounded-full border border-[var(--atlas-border)] bg-white px-2 py-1 text-[10px] font-semibold text-[var(--atlas-muted)] sm:inline-flex">Public Beta</span>
           </span>
         </Link>
 
@@ -64,13 +64,13 @@ export function PublicAtlasHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex items-center px-1 text-[15px] font-medium text-white/78 no-underline hover:text-white hover:no-underline",
-                  active && "text-white"
+                  "relative flex items-center px-1 text-[15px] font-medium text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-ink)] hover:no-underline",
+                  active && "text-[var(--atlas-ink)]"
                 )}
                 aria-current={active ? "page" : undefined}
               >
                 {item.label}
-                {active ? <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[#62d9e8]" /> : null}
+                {active ? <span className="absolute inset-x-0 bottom-0 h-[3px] rounded-t-full bg-[var(--atlas-coral)]" /> : null}
               </Link>
             );
           })}
@@ -80,17 +80,17 @@ export function PublicAtlasHeader() {
           <button
             type="button"
             onClick={openPilotUpdates}
-            className="hidden h-9 items-center gap-2 rounded-md bg-[#62d9e8] px-4 text-sm font-semibold text-[#05052b] hover:bg-[#8fe7f1] sm:inline-flex"
+            className="atlas-secondary-button hidden h-10 items-center gap-2 px-4 text-sm sm:inline-flex"
           >
             <Bell className="size-4" />
             Get updates
           </button>
           {authState === "checking" ? (
-            <span className="hidden h-9 w-[94px] items-center justify-center rounded-md border border-white/15 bg-white/5 text-white/45 sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
+            <span className="hidden h-10 w-[94px] items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white/70 text-[var(--atlas-muted)] sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
           ) : (
             <Link
               href={authState === "signed-in" ? "/account" : "/sign-in"}
-              className="hidden h-9 items-center justify-center gap-2 rounded-md border border-white/30 px-4 text-sm font-semibold text-white no-underline hover:border-white/60 hover:bg-white/10 hover:no-underline sm:inline-flex"
+              className="atlas-secondary-button hidden h-10 items-center justify-center gap-2 px-4 text-sm sm:inline-flex"
             >
               {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
               {authState === "signed-in" ? "Account" : "Sign in"}
@@ -98,7 +98,7 @@ export function PublicAtlasHeader() {
           )}
           <button
             type="button"
-            className="flex size-10 items-center justify-center rounded-md border border-white/25 bg-white/10 text-white lg:hidden"
+            className="flex size-10 items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] lg:hidden"
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
@@ -109,7 +109,7 @@ export function PublicAtlasHeader() {
       </div>
 
       {open ? (
-        <nav className="border-t border-white/12 bg-[#05052b] px-4 py-3 lg:hidden" aria-label="Mobile public atlas navigation">
+        <nav className="border-t border-[var(--atlas-border)] bg-[var(--atlas-canvas)] px-4 py-3 shadow-[0_16px_30px_rgba(30,35,32,0.09)] lg:hidden" aria-label="Mobile public atlas navigation">
           <div className="atlas-frame grid gap-1">
             {navigation.map((item) => {
               const active = item.match(pathname);
@@ -118,8 +118,8 @@ export function PublicAtlasHeader() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-md px-3 py-2.5 text-sm font-medium text-white/78 no-underline hover:bg-white/10 hover:text-white hover:no-underline",
-                    active && "bg-white/10 text-[#62d9e8]"
+                    "rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline",
+                    active && "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"
                   )}
                   onClick={() => setOpen(false)}
                 >
@@ -127,11 +127,11 @@ export function PublicAtlasHeader() {
                 </Link>
               );
             })}
-            <button type="button" onClick={() => { openPilotUpdates(); setOpen(false); }} className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-[#62d9e8] px-3 py-2.5 text-center text-sm font-semibold text-[#05052b]"><Bell className="size-4" />Get updates</button>
+            <button type="button" onClick={() => { openPilotUpdates(); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" />Get updates</button>
             {authState === "checking" ? (
-              <span className="rounded-md border border-white/15 px-3 py-2.5 text-center text-sm font-semibold text-white/45">Checking account…</span>
+              <span className="rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 text-center text-sm font-semibold text-[var(--atlas-muted)]">Checking account…</span>
             ) : (
-              <Link href={authState === "signed-in" ? "/account" : "/sign-in"} onClick={() => setOpen(false)} className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 px-3 py-2.5 text-center text-sm font-semibold text-white no-underline hover:bg-white/10 hover:no-underline">
+              <Link href={authState === "signed-in" ? "/account" : "/sign-in"} onClick={() => setOpen(false)} className="atlas-secondary-button inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm">
                 {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
                 {authState === "signed-in" ? "Account" : "Sign in"}
               </Link>
@@ -139,12 +139,6 @@ export function PublicAtlasHeader() {
           </div>
         </nav>
       ) : null}
-      <div className="border-t border-white/10 bg-[#101047]">
-        <div className="atlas-frame flex min-h-8 items-center justify-between gap-3 py-1 text-[9px] font-bold uppercase tracking-[0.13em] text-white/72 sm:text-[10px]">
-          <span>Independent, evidence-backed Canadian ecosystem atlas</span>
-          <span className="hidden text-[#62d9e8] sm:inline">Public sources · transparent gaps · human review</span>
-        </div>
-      </div>
     </header>
   );
 }

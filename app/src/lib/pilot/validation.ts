@@ -4,7 +4,7 @@ const safePath = z.string().trim().min(1).max(500).refine((value) => value.start
   message: "Path must be relative to the public beta site."
 });
 
-const optionalShortText = z.union([z.literal(""), z.string().trim().max(120)]).optional().transform((value) => value || null);
+const optionalShortText = z.union([z.literal(""), z.string().trim().max(120)]).nullish().transform((value) => value || null);
 const optionalEmail = z.union([z.literal(""), z.string().trim().email().max(320)]).optional().transform((value) => value ? value.toLowerCase() : null);
 const optionalUuid = z.union([z.literal(""), z.string().uuid()]).nullish().transform((value) => value || null);
 

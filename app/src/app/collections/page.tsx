@@ -26,12 +26,12 @@ export default async function CollectionsPage({
       eyebrow="Private workspace"
       title="Working Lists"
       description="Build private, reusable shortlists from published organizations and capabilities. Public records remain unchanged."
-      actions={<span className="inline-flex h-9 items-center gap-2 rounded-md bg-[#f2f4f7] px-3 text-xs font-semibold text-[#475467]"><FolderLock className="size-4" />Private to {user.email}</span>}
+      actions={<span className="inline-flex h-9 items-center gap-2 rounded-md bg-[var(--atlas-surface-muted)] px-3 text-xs font-semibold text-[var(--atlas-muted)]"><FolderLock className="size-4" />Private to {user.email}</span>}
     >
-      {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">The collection action could not be completed. Check the fields and try again.</div> : null}
+      {params.error ? <div className="mb-5 rounded-md border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]">The collection action could not be completed. Check the fields and try again.</div> : null}
 
       {addType && addId ? (
-        <PublicCard title="Save published record" eyebrow="Choose a Working List" className="mb-5 border-[#9bd8e2] bg-[#e7f8fa]">
+        <PublicCard title="Save published record" eyebrow="Choose a Working List" className="mb-5 border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)]">
           {collections?.length ? (
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {collections.map((collection) => (
@@ -40,35 +40,35 @@ export default async function CollectionsPage({
                   <input type="hidden" name="entityType" value={addType} />
                   <input type="hidden" name="entityId" value={addId} />
                   <input type="hidden" name="returnTo" value={params.returnTo ?? `/collections/${collection.id}`} />
-                  <button type="submit" className="flex w-full items-center justify-between rounded-md border border-[#9bd8e2] bg-white px-4 py-3 text-left text-sm font-semibold text-[#344054] hover:border-[#007f98]">
-                    {collection.name}<Save className="size-4 text-[#007f98]" />
+                  <button type="submit" className="flex w-full items-center justify-between rounded-md border border-[var(--atlas-primary-border)] bg-white px-4 py-3 text-left text-sm font-semibold text-[var(--atlas-ink-soft)] hover:border-[var(--atlas-primary)]">
+                    {collection.name}<Save className="size-4 text-[var(--atlas-primary)]" />
                   </button>
                 </form>
               ))}
             </div>
-          ) : <p className="text-sm text-[#667085]">Create your first Working List below, then return to the profile to save it.</p>}
+          ) : <p className="text-sm text-[var(--atlas-muted)]">Create your first Working List below, then return to the profile to save it.</p>}
         </PublicCard>
       ) : null}
 
       <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
         <PublicCard title="Your Working Lists" eyebrow={`${collections?.length ?? 0} private lists`}>
           {collections?.length ? (
-            <div className="divide-y divide-[#eaecf0]">
+            <div className="divide-y divide-[var(--atlas-border)]">
               {collections.map((collection) => (
                 <Link key={collection.id} href={`/collections/${collection.id}`} className="flex items-center justify-between gap-4 py-4 text-sm no-underline first:pt-0 last:pb-0 hover:no-underline">
-                  <div><p className="font-bold text-[#101828]">{collection.name}</p><p className="mt-1 text-xs text-[#667085]">{collection.description || "No description"}</p></div>
-                  <span className="text-xs font-semibold text-[#007f98]">Open</span>
+                  <div><p className="font-bold text-[var(--atlas-ink)]">{collection.name}</p><p className="mt-1 text-xs text-[var(--atlas-muted)]">{collection.description || "No description"}</p></div>
+                  <span className="text-xs font-semibold text-[var(--atlas-primary)]">Open</span>
                 </Link>
               ))}
             </div>
-          ) : <div className="rounded-md border border-dashed border-[#b8c2d1] bg-[#f8fafc] px-5 py-8 text-center"><FolderLock className="mx-auto size-6 text-[#98a2b3]" /><p className="mt-3 text-sm font-semibold text-[#344054]">No Working Lists yet</p><p className="mt-1 text-xs text-[#667085]">Create one to build a private shortlist.</p></div>}
+          ) : <div className="rounded-md border border-dashed border-[var(--atlas-border-strong)] bg-[var(--atlas-surface-muted)] px-5 py-8 text-center"><FolderLock className="mx-auto size-6 text-[var(--atlas-muted)]" /><p className="mt-3 text-sm font-semibold text-[var(--atlas-ink-soft)]">No Working Lists yet</p><p className="mt-1 text-xs text-[var(--atlas-muted)]">Create one to build a private shortlist.</p></div>}
         </PublicCard>
 
         <PublicCard title="Create Working List" eyebrow="Private by default">
           <form action={createSavedCollection} className="space-y-4">
-            <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Name<input name="name" required minLength={2} maxLength={100} placeholder="Atlantic undersea shortlist" className="h-10 rounded-md border border-[#d0d5dd] px-3 text-sm font-normal outline-none focus:border-[#007f98] focus:ring-4 focus:ring-[#007f98]/10" /></label>
-            <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Description<textarea name="description" maxLength={500} rows={4} placeholder="What this Working List supports" className="rounded-md border border-[#d0d5dd] px-3 py-2 text-sm font-normal outline-none focus:border-[#007f98] focus:ring-4 focus:ring-[#007f98]/10" /></label>
-            <button type="submit" className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[#007f98] px-4 text-sm font-semibold text-white hover:bg-[#00677d]"><Plus className="size-4" />Create Working List</button>
+            <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">Name<input name="name" required minLength={2} maxLength={100} placeholder="Atlantic undersea shortlist" className="h-10 rounded-md border border-[var(--atlas-border)] px-3 text-sm font-normal outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[var(--atlas-primary)]/10" /></label>
+            <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">Description<textarea name="description" maxLength={500} rows={4} placeholder="What this Working List supports" className="rounded-md border border-[var(--atlas-border)] px-3 py-2 text-sm font-normal outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[var(--atlas-primary)]/10" /></label>
+            <button type="submit" className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[var(--atlas-primary)] px-4 text-sm font-semibold text-white hover:bg-[var(--atlas-primary-hover)]"><Plus className="size-4" />Create Working List</button>
           </form>
         </PublicCard>
       </div>

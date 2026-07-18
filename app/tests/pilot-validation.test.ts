@@ -74,4 +74,16 @@ describe("public-beta validation", () => {
     expect(parsed.query).toBe("Halifax   underwater");
     expect(normalizePilotSearchQuery(parsed.query)).toBe("halifax underwater");
   });
+
+  it("accepts a browser request without a campaign cohort", () => {
+    const parsed = pilotDiscoveryRequestSchema.parse({
+      query: "Halifax",
+      contextPath: "/",
+      cohort: null,
+      sessionId: null
+    });
+
+    expect(parsed.cohort).toBeNull();
+    expect(parsed.sessionId).toBeNull();
+  });
 });

@@ -9,6 +9,12 @@ import { isUsableAtlasBounds, organizationIdsInBounds } from "@/lib/atlas/viewpo
 import type { AtlasBounds, AtlasOrganization } from "@/types/atlas";
 
 const sourceId = "published-organizations";
+const mapColors = {
+  cluster: "#1e2320",
+  marker: "#1f5a43",
+  selected: "#d65f4c",
+  outline: "#ffffff"
+};
 const canadaBounds = {
   southWest: [40, -141] as [number, number],
   northEast: [75, -50] as [number, number]
@@ -47,10 +53,11 @@ function mapStyle(): maplibregl.StyleSpecification | string {
         type: "raster",
         source: "openStreetMap",
         paint: {
-          "raster-saturation": -0.72,
-          "raster-brightness-min": 0.2,
-          "raster-brightness-max": 0.98,
-          "raster-contrast": -0.06
+          "raster-saturation": -0.9,
+          "raster-brightness-min": 0.42,
+          "raster-brightness-max": 1,
+          "raster-contrast": -0.14,
+          "raster-opacity": 0.82
         }
       }
     ]
@@ -225,9 +232,9 @@ export function AtlasMap({
 
       L.circleMarker([location.latitude!, location.longitude!], {
         radius: selected ? 10 : 8,
-        color: "#ffffff",
+        color: mapColors.outline,
         weight: 3,
-        fillColor: selected ? "#f79009" : "#007f98",
+        fillColor: selected ? mapColors.selected : mapColors.marker,
         fillOpacity: 0.96
       })
         .bindTooltip(tooltip, { direction: "top" })
@@ -384,9 +391,9 @@ export function AtlasMap({
         source: sourceId,
         filter: ["has", "point_count"],
         paint: {
-          "circle-color": "#007f98",
+          "circle-color": mapColors.cluster,
           "circle-radius": ["step", ["get", "point_count"], 18, 10, 22, 50, 28],
-          "circle-stroke-color": "#ffffff",
+          "circle-stroke-color": mapColors.outline,
           "circle-stroke-width": 3,
           "circle-opacity": 0.94
         }
@@ -411,9 +418,9 @@ export function AtlasMap({
         source: sourceId,
         filter: ["!", ["has", "point_count"]],
         paint: {
-          "circle-color": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], "#f79009", "#007f98"],
+          "circle-color": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], mapColors.selected, mapColors.marker],
           "circle-radius": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], 10, 8],
-          "circle-stroke-color": "#ffffff",
+          "circle-stroke-color": mapColors.outline,
           "circle-stroke-width": 3
         }
       });
@@ -546,8 +553,8 @@ export function AtlasMap({
     map.setPaintProperty("organization-points", "circle-color", [
       "case",
       ["==", ["get", "id"], selectedOrganizationId ?? ""],
-      "#f79009",
-      "#007f98"
+      mapColors.selected,
+      mapColors.marker
     ]);
     map.setPaintProperty("organization-points", "circle-radius", [
       "case",
@@ -574,9 +581,9 @@ export function AtlasMap({
   return (
     <div
       ref={containerRef}
-      className="h-full min-h-[290px] w-full bg-[#dcebed] sm:min-h-[330px] lg:min-h-[350px]"
+      className="h-full min-h-[290px] w-full bg-[var(--atlas-surface-muted)] sm:min-h-[330px] lg:min-h-[350px]"
       role="region"
-      aria-label={`Map showing ${organizations.length} published organizations. Numbered groups can be selected to zoom in and separate nearby organizations. The synchronized results list provides the same organizations without requiring the map.`}
+      aria-label={`Map showing ${organizations.length} published ${organizations.length === 1 ? "organization" : "organizations"}. Numbered groups can be selected to zoom in and separate nearby organizations. The synchronized results list provides the same organizations without requiring the map.`}
     />
   );
 }
