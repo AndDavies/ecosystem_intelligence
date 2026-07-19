@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { getAuthBaseUrl, safeAuthNextPath } from "@/lib/auth-utils";
+import { getAuthBaseUrl, googleOAuthQueryParams, safeAuthNextPath } from "@/lib/auth-utils";
 import { hasSupabaseEnv, hasSupabasePublicEnv } from "@/lib/supabase/env";
 import { createClient } from "@/lib/supabase/server";
 
@@ -27,7 +27,8 @@ export async function signInWithGoogle(formData: FormData) {
     provider: "google",
     options: {
       redirectTo: `${baseUrl}/auth/callback?next=${encodeURIComponent(next)}`,
-      scopes: "openid email profile"
+      scopes: "openid email profile",
+      queryParams: googleOAuthQueryParams
     }
   });
 

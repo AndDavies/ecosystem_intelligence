@@ -1,5 +1,9 @@
 import { siteUrl } from "@/lib/site";
 
+export const googleOAuthQueryParams = {
+  prompt: "select_account"
+} as const;
+
 export function safeAuthNextPath(value: string | undefined, fallback = "/collections") {
   if (!value || !value.startsWith("/") || value.startsWith("//")) return fallback;
   return value;

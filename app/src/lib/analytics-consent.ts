@@ -8,14 +8,23 @@ const privatePathPrefixes = [
   "/admin",
   "/auth",
   "/collections",
+  "/connect",
   "/sign-in",
-  "/submissions"
+  "/submit"
 ];
 
 export function isAnalyticsEligiblePath(pathname: string) {
   return !privatePathPrefixes.some(
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`)
   );
+}
+
+export function sanitizeAnalyticsUrl(value: string) {
+  const url = new URL(value);
+  if (!isAnalyticsEligiblePath(url.pathname)) return null;
+  url.search = "";
+  url.hash = "";
+  return url.toString();
 }
 
 export function openAnalyticsPreferences() {

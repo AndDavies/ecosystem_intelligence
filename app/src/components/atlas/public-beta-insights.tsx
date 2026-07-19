@@ -11,6 +11,7 @@ import {
   analyticsPreferencesEvent,
   isAnalyticsEligiblePath,
   openAnalyticsPreferences,
+  sanitizeAnalyticsUrl,
   type AnalyticsConsent
 } from "@/lib/analytics-consent";
 
@@ -127,18 +128,20 @@ export function AnalyticsPreferencesButton({ className = "" }: { className?: str
 }
 
 export function PublicBetaInsights() {
+  const pathname = usePathname();
+  const eligible = isAnalyticsEligiblePath(pathname);
+
   return (
     <>
-      <Analytics
-        beforeSend={(event: BeforeSendEvent) => {
-          if (event.url.includes("/admin")) return null;
-          const url = new URL(event.url);
-          url.search = "";
-          url.hash = "";
-          return { ...event, url: url.toString() };
-        }}
-      />
-      <SpeedInsights sampleRate={0.5} />
+      {eligible ? (
+        <Analytics
+          beforeSend={(event: BeforeSendEvent) => {
+            const url = sanitizeAnalyticsUrl(event.url);
+            return url ? { ...event, url } : null;
+          }}
+        />
+      ) : null}
+      {eligible ? <SpeedInsights sampleRate={0.5} /> : null}
       <GoogleAnalytics />
     </>
   );

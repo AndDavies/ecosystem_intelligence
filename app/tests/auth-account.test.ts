@@ -1,8 +1,17 @@
 import { describe, expect, it } from "vitest";
 import { isAtlasAdminOwner } from "@/lib/atlas/admin-owner";
-import { getAuthBaseUrl, isRecentSignIn, safeAuthNextPath } from "@/lib/auth-utils";
+import {
+  getAuthBaseUrl,
+  googleOAuthQueryParams,
+  isRecentSignIn,
+  safeAuthNextPath
+} from "@/lib/auth-utils";
 
 describe("public account safeguards", () => {
+  it("asks Google to show the account chooser for every sign-in", () => {
+    expect(googleOAuthQueryParams).toEqual({ prompt: "select_account" });
+  });
+
   it("accepts only the exact administrator identity and controlled role", () => {
     expect(isAtlasAdminOwner({ id: "b443c433-2a78-4ca7-8a19-a8f40b140049", email: "M.Andrew.Davies@gmail.com", role: "admin" })).toBe(true);
     expect(isAtlasAdminOwner({ id: "b443c433-2a78-4ca7-8a19-a8f40b140049", email: "m.andrew.davies@gmail.com", role: "reviewer" })).toBe(false);
