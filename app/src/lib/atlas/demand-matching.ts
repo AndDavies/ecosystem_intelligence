@@ -43,6 +43,7 @@ const concepts = [
 ] as const;
 
 const mandatoryTitleAnchors = new Set(["maritime", "arctic", "cyber", "energy", "logistics", "aerospace", "land", "fires", "medical", "materials", "protection"]);
+const specificSingleAnchors = new Set(["maritime", "arctic", "logistics", "land", "fires", "medical"]);
 
 export function suggestDemandMatches(
   organizations: OrganizationInput[],
@@ -68,7 +69,8 @@ export function suggestDemandMatches(
       const titleConcepts = findConcepts(demand.title);
       const requiredAnchors = [...titleConcepts].filter((key) => mandatoryTitleAnchors.has(key));
       const shared = [...capabilityConcepts].filter((key) => demandConcepts.has(key));
-      if (shared.length < 2 || !requiredAnchors.length || requiredAnchors.some((key) => !capabilityConcepts.has(key))) return [];
+      const specificSingleAnchor = requiredAnchors.length === 1 && specificSingleAnchors.has(requiredAnchors[0]);
+      if ((shared.length < 2 && !specificSingleAnchor) || !requiredAnchors.length || requiredAnchors.some((key) => !capabilityConcepts.has(key))) return [];
       const matchedConcepts = shared.map((key) => concepts.find((concept) => concept.key === key)?.label ?? key);
       const conceptPhrase = naturalList(matchedConcepts.slice(0, 3));
       const alignmentSummary = `${capability.name} may help teams working on ${demand.title} by contributing to ${conceptPhrase}.`;

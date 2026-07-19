@@ -60,6 +60,31 @@ describe("review-first demand matching", () => {
     expect(suggestDemandMatches([organization], [droneDemand])).toHaveLength(0);
   });
 
+  it("can surface a specific single-anchor lane such as logistics", () => {
+    const logisticsOrganization = {
+      ...organization,
+      capabilities: [{
+        ...organization.capabilities[0],
+        id: "20000000-0000-4000-8000-000000000004",
+        name: "Fleet sustainment",
+        summary: "Maintenance, repair, overhaul, and predictive support for military fleet readiness.",
+        coreFeatures: ["Depot maintenance"],
+        defenceApplications: ["Fleet sustainment"],
+        technicalTags: ["mro", "sustainment"],
+        technicalDomains: []
+      }]
+    } as unknown as AtlasOrganization;
+    const logisticsDemand = {
+      ...demand,
+      id: "40000000-0000-4000-8000-000000000004",
+      slug: "logistics-and-sustainment",
+      title: "Efficient logistics and sustainment",
+      problemStatement: "Military operations need resilient logistics networks and reliable resupply.",
+      desiredEndState: "Improve delivery, mobility, and readiness."
+    };
+    expect(suggestDemandMatches([logisticsOrganization], [logisticsDemand])).toHaveLength(1);
+  });
+
   it("keeps generation private and publication behind an explicit reviewer RPC", async () => {
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
     const review = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
