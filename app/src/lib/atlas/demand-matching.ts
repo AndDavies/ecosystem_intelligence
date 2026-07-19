@@ -33,7 +33,7 @@ const concepts = [
   { key: "communications", label: "resilient communications and command", terms: ["communications", "communication", "network", "connectivity", "command and control", "c2", "radio", "satellite", "data link", "coordination", "interoperability", "electromagnetic"] },
   { key: "cyber", label: "cyber and digital operations", terms: ["cyber", "software", "digital", "artificial intelligence", "machine learning", "data analytics", "ai-enabled"] },
   { key: "energy", label: "energy and power resilience", terms: ["energy", "power", "battery", "charging", "fuel", "electrical", "grid"] },
-  { key: "logistics", label: "logistics and sustainment", terms: ["logistics", "sustainment", "supply", "maintenance", "repair", "transport", "resupply"] },
+  { key: "logistics", label: "logistics and sustainment", terms: ["logistics", "sustainment", "supply", "maintenance", "repair", "resupply"] },
   { key: "aerospace", label: "aerospace operations", terms: ["air", "aerospace", "aircraft", "aviation", "flight", "airborne", "helicopter", "vertical lift", "drone", "uav", "uas"] },
   { key: "land", label: "land operations", terms: ["land", "land force", "land forces", "ground force", "ground forces", "soldier", "army", "terrain", "battlefield", "artillery", "indirect fire"] },
   { key: "fires", label: "targeting and precision effects", terms: ["strike", "target acquisition", "targeting", "range finding", "range-finding", "laser ranging", "fire control", "indirect fire", "missile", "weapon", "lethality"] },

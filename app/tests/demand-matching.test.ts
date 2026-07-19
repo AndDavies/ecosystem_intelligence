@@ -83,6 +83,20 @@ describe("review-first demand matching", () => {
       desiredEndState: "Improve delivery, mobility, and readiness."
     };
     expect(suggestDemandMatches([logisticsOrganization], [logisticsDemand])).toHaveLength(1);
+
+    const certificationOnly = {
+      ...logisticsOrganization,
+      capabilities: [{
+        ...logisticsOrganization.capabilities[0],
+        id: "20000000-0000-4000-8000-000000000005",
+        name: "Airborne certification engineering",
+        summary: "Safety-critical aircraft engineering with Transport Canada design approval.",
+        coreFeatures: ["Software certification"],
+        defenceApplications: ["Avionics assurance"],
+        technicalTags: ["certification"]
+      }]
+    } as unknown as AtlasOrganization;
+    expect(suggestDemandMatches([certificationOnly], [logisticsDemand])).toHaveLength(0);
   });
 
   it("keeps generation private and publication behind an explicit reviewer RPC", async () => {
