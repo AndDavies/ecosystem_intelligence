@@ -6,6 +6,10 @@ import { evidenceStrengthLabel } from "@/lib/atlas/presentation";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { formatDate, toTitleCase } from "@/lib/utils";
 
+// Keep the directory in sync with publication without depending on a cached
+// full-route render from before the latest reviewed records were promoted.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Published Organizations",
   description: "Browse verified organizations in Canada's defence and dual-use ecosystem."

@@ -417,7 +417,9 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
       publishedOn: asNullableString(row.published_on),
       classificationLabel: asString(row.classification_label, "PUBLIC"),
       summary: asString(row.summary),
-      sourceUrl
+      sourceUrl,
+      sourceKind: asNullableString(row.source_kind),
+      commitmentLevel: asNullableString(row.commitment_level)
     });
   });
 

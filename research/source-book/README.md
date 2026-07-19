@@ -12,6 +12,22 @@ Global Source Book expansion is intentionally uncapped. Keep adding useful durab
 - `newsletter-subscriptions.csv`: optional manual signup and verification tracker for source newsletters and mailing lists.
 - `source-search-playbook.md`: plain-language search tactics, source rules, and notes about how to use the source book.
 
+## Known-source fields
+
+The first twelve fields preserve the original source-book contract. The autonomous pipeline adds these planning and recursion fields:
+
+- `expected_organization_yield`: rough yield expectation such as low, moderate, or high
+- `geography`: geographic coverage
+- `organization_kinds`: pipe-separated controlled organization kinds
+- `issuer_coverage`: public-demand issuer coverage when applicable
+- `refresh_cadence`: sensible revisit frequency
+- `canonical_domain_owner`: owner of the durable web domain
+- `last_successful_discovery`: last date the source produced a useful lead
+- `access_limitations`: paywall, robots, authentication, rate-limit, or extraction notes
+- `recursive_follow_up_urls`: pipe-separated durable next-hop sources
+
+Source Book expansion has a 30-minute sub-limit inside each 90-minute run, but no row quota. Prefer useful canonical sources and unresolved search trails over artificially filling a target count.
+
 ## Workflow
 
 1. Add or update reusable sources in `known-sources.csv`.
@@ -19,7 +35,8 @@ Global Source Book expansion is intentionally uncapped. Keep adding useful durab
 3. Record whether each source has newsletters, mailing lists, RSS feeds, alerts, briefings, social feeds, YouTube channels, or other recurring feeds.
 4. Use `newsletter-subscriptions.csv` only when a human manually signs up or explicitly asks for signup tracking.
 5. Use those sources during Source Discovery Scout runs.
-6. Save actual discovered company/capability leads to `research/ingestion/source-leads/*.json` only when the task explicitly moves from source-book expansion to lead creation.
-7. Convert only reviewed source leads into candidate batches in `research/ingestion/candidate-batches/*.json`.
+6. Save newly discovered organization, demand, program, or relationship leads to `research/ingestion/source-leads-v2/*.json` for autonomous v2 runs.
+7. Convert qualified leads into typed private bundles in `research/ingestion/candidate-batches-v2/*.json`; human review remains mandatory before publication.
+8. Preserve the legacy `source-leads/` and `candidate-batches/` folders for the frozen public-beta corpus and existing promotion tooling.
 
 The source book is not the database. It is the reusable map of where to look.

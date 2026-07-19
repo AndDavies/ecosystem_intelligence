@@ -1,0 +1,217 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-19T10:19:44.998Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-canadian-army-demand-2026-07-19",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [],
+      "missionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "technicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr"
+      ],
+      "demandIssuerTypes": [
+        "military_service",
+        "public_program"
+      ]
+    },
+    "selected_gap": {
+      "coverageView": "demand",
+      "dimension": "canadian-army-uncrewed-systems-demand",
+      "reason": "The reviewed corpus needs a concrete Canadian military-service demand signal to prove that demand research is not limited to NATO sources.",
+      "score": 910
+    },
+    "status": "completed",
+    "started_at": "2026-07-19T10:15:00.000Z",
+    "completed_at": "2026-07-19T10:25:00.000Z",
+    "agent_version": "tnm-autonomous-research-v1.1",
+    "source_queries": [
+      "site:canada.ca DND IDEaS challenge 2026 defence innovation problem statement Canadian Armed Forces",
+      "site:canada.ca Canadian Army innovation challenge public operational requirements"
+    ],
+    "counters": {
+      "sourcesChecked": 3,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "One official Canadian Army demand signal was validated and prepared for direct Admin Review intake."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-canadian-army-true-north-precision-2026",
+      "research_run_ref": "tnm-canadian-army-demand-2026-07-19",
+      "candidate_kind": "demand_signal_bundle",
+      "schema_version": "demand_signal_bundle_v1",
+      "source_lead_ids": [
+        "lead-canadian-army-true-north-precision-2026"
+      ],
+      "target_entity_type": "demand_source",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "demand_signal_bundle_v1",
+        "candidateKind": "demand_signal_bundle",
+        "candidateId": "candidate-canadian-army-true-north-precision-2026",
+        "sourceLeadIds": [
+          "lead-canadian-army-true-north-precision-2026"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "This candidate is worthy of inclusion review because it adds a concrete, programmatically funded Canadian Army demand signal rather than another NATO-only source. The official National Defence article states the operational gap, intended battlefield outcomes, IDEaS sponsorship, and available development funding; verify the issuer roles, scope, and conservative mission mapping before acceptance.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-19T10:23:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No source URL, demand-source slug, requirement slug, or pending candidate match was found in the live review and published corpus."
+        },
+        "sources": [
+          {
+            "id": "source-canadian-army-true-north-precision-2026",
+            "title": "Canadian Army launches MINERVA's first innovation challenge at 4 Canadian Division Support Base Petawawa",
+            "url": "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2026/05/canadian-army-launches-minerva-first-innovation-challenge-at-4-canadian-division-support-base-petawawa.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-05-21T00:00:00.000Z",
+            "accessedAt": "2026-07-19T10:10:00.000Z",
+            "locator": "A field demonstration to showcase the CA's real-world operational needs to industry",
+            "summary": "The official National Defence article describes the Canadian Army's True North Precision innovation challenge, its operational problem, desired outcomes, IDEaS sponsorship, and up to $2.1 million in development funding."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-true-north-precision-summary",
+            "sourceId": "source-canadian-army-true-north-precision-2026",
+            "fieldPath": "demandSource.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official article identifies the Canadian Army's True North Precision challenge as an IDEaS-backed effort to improve target acquisition using low-cost small drones, with up to $2.1 million in development funding.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-true-north-precision-problem",
+            "sourceId": "source-canadian-army-true-north-precision-2026",
+            "fieldPath": "requirements.low-cost-drone-laser-ranging-for-indirect-fire.problemStatement",
+            "claimClass": "source_backed",
+            "excerpt": "The official article explains that affordable small uncrewed aircraft often lack the geolocation accuracy needed for effective sensor-to-shooter integration and indirect-fire coordination.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-true-north-precision-end-state",
+            "sourceId": "source-canadian-army-true-north-precision-2026",
+            "fieldPath": "requirements.low-cost-drone-laser-ranging-for-indirect-fire.desiredEndState",
+            "claimClass": "source_backed",
+            "excerpt": "The article says proposed solutions are intended to improve battlefield awareness, decision making, soldier survivability, sensor-to-shooter integration, and resilience in harsh environmental conditions.",
+            "confidence": "high"
+          }
+        ],
+        "issuers": [
+          {
+            "slug": "canadian-army",
+            "name": "Canadian Army",
+            "issuerType": "military_service",
+            "jurisdiction": "Canada",
+            "parentIssuerSlug": "canadian-armed-forces",
+            "role": "issuer"
+          },
+          {
+            "slug": "ideas",
+            "name": "Innovation for Defence Excellence and Security",
+            "issuerType": "public_program",
+            "jurisdiction": "Canada",
+            "parentIssuerSlug": "national-defence",
+            "role": "sponsor"
+          }
+        ],
+        "demandSource": {
+          "slug": "canadian-army-true-north-precision-2026",
+          "title": "True North Precision: Low cost drones with laser ranging",
+          "sourceKind": "innovation_challenge",
+          "commitmentLevel": "programmatic",
+          "classificationLabel": "PUBLIC",
+          "summary": "A Canadian Army and IDEaS innovation challenge seeking low-cost small-drone laser-ranging approaches to improve target acquisition, indirect-fire coordination, battlefield awareness, and resilience, with up to $2.1 million in development funding.",
+          "publishedOn": "2026-05-21"
+        },
+        "requirements": [
+          {
+            "slug": "low-cost-drone-laser-ranging-for-indirect-fire",
+            "title": "Low-cost drone laser ranging for indirect fire",
+            "problemStatement": "Affordable small uncrewed aerial systems are accessible to frontline units but often lack the geolocation accuracy required for effective target acquisition, sensor-to-shooter integration, and indirect-fire coordination.",
+            "desiredEndState": "Low-cost small-drone targeting and range-finding approaches should improve situational awareness, decision making, soldier survivability, indirect-fire integration, and operational resilience in harsh environmental conditions.",
+            "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+            "missionAreaSlugs": [
+              "autonomous-patrol-and-monitoring"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr"
+            ]
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-true-north-precision-summary",
+          "sourceId": "source-canadian-army-true-north-precision-2026",
+          "fieldPath": "demandSource.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official article identifies the Canadian Army's True North Precision challenge as an IDEaS-backed effort to improve target acquisition using low-cost small drones, with up to $2.1 million in development funding.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-true-north-precision-problem",
+          "sourceId": "source-canadian-army-true-north-precision-2026",
+          "fieldPath": "requirements.low-cost-drone-laser-ranging-for-indirect-fire.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "The official article explains that affordable small uncrewed aircraft often lack the geolocation accuracy needed for effective sensor-to-shooter integration and indirect-fire coordination.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-true-north-precision-end-state",
+          "sourceId": "source-canadian-army-true-north-precision-2026",
+          "fieldPath": "requirements.low-cost-drone-laser-ranging-for-indirect-fire.desiredEndState",
+          "claimClass": "source_backed",
+          "excerpt": "The article says proposed solutions are intended to improve battlefield awareness, decision making, soldier survivability, sensor-to-shooter integration, and resilience in harsh environmental conditions.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-19T10:23:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No source URL, demand-source slug, requirement slug, or pending candidate match was found in the live review and published corpus."
+      },
+      "reviewer_rationale": "This candidate is worthy of inclusion review because it adds a concrete, programmatically funded Canadian Army demand signal rather than another NATO-only source. The official National Defence article states the operational gap, intended battlefield outcomes, IDEaS sponsorship, and available development funding; verify the issuer roles, scope, and conservative mission mapping before acceptance.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-19T10:19:44.998Z"
+    }
+  ]
+}

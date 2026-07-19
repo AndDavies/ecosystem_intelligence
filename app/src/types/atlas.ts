@@ -149,6 +149,8 @@ export interface AtlasDemandSource {
   classificationLabel: string;
   summary: string;
   sourceUrl: string;
+  sourceKind?: string | null;
+  commitmentLevel?: string | null;
 }
 
 export interface AtlasDemandRequirement {

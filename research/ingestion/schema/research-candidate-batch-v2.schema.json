@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://truenorthmap.ca/schemas/research-candidate-batch-v2.schema.json",
+  "title": "True North Map Typed Research Candidate Batch",
+  "description": "Private review-ready candidate bundles. The deterministic Zod schema in app/src/lib/research/pipeline-schema.ts is the executable contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "batchId", "runId", "title", "status", "createdAt", "selectedGap", "sourceLeadBatchPath", "guardrailNotes", "candidates", "deferred"],
+  "properties": {
+    "schemaVersion": { "const": "research_candidate_batch_v2" },
+    "batchId": { "$ref": "#/$defs/slug" },
+    "runId": { "$ref": "#/$defs/slug" },
+    "title": { "type": "string", "minLength": 8 },
+    "status": { "const": "candidate" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "selectedGap": { "type": "object", "required": ["coverageView", "dimension", "reason", "score"] },
+    "sourceLeadBatchPath": { "type": "string", "minLength": 5 },
+    "guardrailNotes": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 20 } },
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "items": { "oneOf": [{ "$ref": "#/$defs/organizationBundle" }, { "$ref": "#/$defs/demandBundle" }, { "$ref": "#/$defs/programRelationshipBundle" }] }
+    },
+    "deferred": { "type": "array", "items": { "type": "object", "required": ["leadId", "reason", "followUp"] } }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "httpsUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "confidence": { "enum": ["high", "moderate", "needs_review"] },
+    "source": { "type": "object", "required": ["id", "title", "url", "publisher", "sourceKind", "publishedAt", "accessedAt", "locator", "summary"] },
+    "fieldEvidence": { "type": "object", "required": ["id", "sourceId", "fieldPath", "claimClass", "excerpt", "confidence"] },
+    "duplicateCheck": { "type": "object", "required": ["status", "checkedAt", "methods", "matches", "note"], "properties": { "status": { "enum": ["clear", "possible_match", "exact_duplicate"] } } },
+    "publicationLocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["city", "provinceTerritory", "countryCode", "latitude", "longitude", "geographicConfidence"],
+      "properties": {
+        "city": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "provinceTerritory": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "countryCode": { "const": "CA" },
+        "latitude": { "type": "number", "minimum": 40, "maximum": 84 },
+        "longitude": { "type": "number", "minimum": -142, "maximum": -52 },
+        "geographicConfidence": { "enum": ["exact", "city_centroid", "regional"] }
+      }
+    },
+    "candidateCommon": {
+      "type": "object",
+      "required": ["candidateId", "sourceLeadIds", "confidence", "reviewStatus", "reviewerRationale", "duplicateCheck", "sources", "fieldEvidence"],
+      "properties": {
+        "candidateId": { "$ref": "#/$defs/slug" },
+        "sourceLeadIds": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/slug" } },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "reviewStatus": { "const": "candidate_pending" },
+        "reviewerRationale": { "type": "string", "minLength": 80, "maxLength": 2000 },
+        "duplicateCheck": { "$ref": "#/$defs/duplicateCheck" },
+        "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/source" } },
+        "fieldEvidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/fieldEvidence" } }
+      }
+    },
+    "organizationBundle": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateCommon" },
+        {
+          "type": "object",
+          "required": ["schemaVersion", "candidateKind", "organization", "capabilities", "programs", "relationships"],
+          "properties": {
+            "schemaVersion": { "const": "organization_bundle_v2" },
+            "candidateKind": { "const": "organization_bundle" },
+            "organization": { "type": "object", "required": ["slug", "name", "legalName", "aliases", "description", "websiteUrl", "entityKind", "categories", "primaryLocation", "profileData"], "properties": { "primaryLocation": { "$ref": "#/$defs/publicationLocation" } } },
+            "capabilities": { "type": "array" },
+            "programs": { "type": "array" },
+            "relationships": { "type": "array" }
+          }
+        }
+      ]
+    },
+    "demandBundle": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateCommon" },
+        { "type": "object", "required": ["schemaVersion", "candidateKind", "issuers", "demandSource", "requirements"], "properties": { "schemaVersion": { "const": "demand_signal_bundle_v1" }, "candidateKind": { "const": "demand_signal_bundle" }, "issuers": { "type": "array", "minItems": 1 }, "demandSource": { "type": "object" }, "requirements": { "type": "array", "minItems": 1 } } }
+      ]
+    },
+    "programRelationshipBundle": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateCommon" },
+        { "type": "object", "required": ["schemaVersion", "candidateKind", "operatorOrganizationSlug", "program", "participations"], "properties": { "schemaVersion": { "const": "program_relationship_bundle_v1" }, "candidateKind": { "const": "program_relationship_bundle" }, "operatorOrganizationSlug": { "$ref": "#/$defs/slug" }, "program": { "type": "object" }, "participations": { "type": "array", "minItems": 1 } } }
+      ]
+    }
+  }
+}

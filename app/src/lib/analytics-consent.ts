@@ -8,7 +8,6 @@ const privatePathPrefixes = [
   "/admin",
   "/auth",
   "/collections",
-  "/review",
   "/sign-in",
   "/submissions"
 ];

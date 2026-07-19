@@ -7,6 +7,8 @@ import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/p
 import { assessmentConfidenceLabel } from "@/lib/atlas/presentation";
 import { getAtlasDemandBySlug } from "@/lib/atlas/repository";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const demand = await getAtlasDemandBySlug(slug);
@@ -20,7 +22,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
 
   return (
     <PublicPageShell
-      eyebrow={`Public demand family ${String(demand.displayOrder).padStart(2, "0")}`}
+      eyebrow={`Public demand signal · ${demand.source.publisher}`}
       title={demand.title}
       description={demand.problemStatement}
       backHref="/demand"
@@ -72,6 +74,8 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
           <PublicCard title="Source record" eyebrow={demand.source.classificationLabel}>
             <dl className="grid gap-3 text-xs">
               <div><dt className="text-[var(--atlas-muted)]">Publisher</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{demand.source.publisher}</dd></div>
+              {demand.source.sourceKind ? <div><dt className="text-[var(--atlas-muted)]">Signal type</dt><dd className="mt-1 font-semibold capitalize text-[var(--atlas-ink-soft)]">{demand.source.sourceKind.replaceAll("_", " ")}</dd></div> : null}
+              {demand.source.commitmentLevel ? <div><dt className="text-[var(--atlas-muted)]">Commitment</dt><dd className="mt-1 font-semibold capitalize text-[var(--atlas-ink-soft)]">{demand.source.commitmentLevel.replaceAll("_", " ")}</dd></div> : null}
               <div><dt className="text-[var(--atlas-muted)]">Document</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{demand.source.title}</dd></div>
               <div><dt className="text-[var(--atlas-muted)]">Published</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{demand.source.publishedOn ?? "Date not published"}</dd></div>
             </dl>

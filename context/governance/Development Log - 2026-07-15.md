@@ -220,3 +220,76 @@ use `ATLAS_DATA_SOURCE=supabase`.
   copy, four screenshots, an Open Graph image, and a 21-second demonstration.
 - Froze the launch corpus at 30. Monday work is limited to the scheduled final
   readiness check, smoke test, release decision, and Andrew-led promotion.
+
+## Autonomous ecosystem research and ingestion pipeline - 2026-07-18
+
+- Added a bounded gap-selection coordinator with typed run manifests, coverage
+  reporting, source-lead and candidate validation, reviewer packet generation,
+  and non-publishable staging exports.
+- Added five Codex repository skills for coordination, source discovery,
+  role-specific candidate construction, evidence mapping, and review stewardship.
+- Added distinct organization contracts for companies, accelerators, incubators,
+  research and test centres, investors and funders, ecosystem organizations,
+  and government innovation offices.
+- Added hierarchical demand issuers and source commitment metadata so NATO,
+  federal, departmental, CAF, service, procurement, and innovation demand can be
+  represented separately from organization supply.
+- Expanded the Global Source Book contract with yield, geography, actor type,
+  issuer, cadence, domain-owner, discovery, access, and recursive-trail fields.
+- Completed two file-only shadow cycles. The first staged Mission Control,
+  L-SPARK, COVE, and Build Ventures candidates; the second filled the research
+  and test-centre gap with C-CORE. Both generated review packets and private
+  staging exports with zero validation errors.
+- Added a weekly local Codex schedule contract for Monday morning operation. It
+  stops at human review and does not expand the frozen public-beta corpus.
+- Connected successful research smoke runs directly to the existing Admin
+  Review workflow through idempotent trusted intake. Removed any implied
+  research-run review step; run rows are audit metadata only. Added typed
+  organization review and human publication support for all five test candidates.
+- Made generated reviewer rationale mandatory for every typed candidate and
+  persisted it as a first-class Admin Review queue field. Updated the manual
+  skills and weekly automation so a run is incomplete until every validated
+  candidate and its rationale are visible in the existing review workflow.
+- Added structured demand-signal review cards and atomic human publication for
+  approved public-demand sources, issuers, requirements, sources, evidence, and
+  citations through the same Review to Publish checkpoint used by organizations.
+- Completed a third validated live research cycle using the Canadian Army and
+  IDEaS True North Precision innovation challenge. It is pending in Admin Review
+  beside the five organization candidates and was not auto-published.
+
+## Research publication visibility and typed workflow - 2026-07-19
+
+- Verified that the reviewer correctly published all six research candidates:
+  five canonical organizations and one Canadian Army public-demand source.
+- Found the post-publication break in the public presentation rather than the
+  Supabase transaction: the static `/demand` index retained its pre-publication
+  five-record render while the new demand detail page and all organization pages
+  were already live.
+- Made organization and demand indexes explicitly dynamic, generalized the
+  demand presentation beyond NATO, and exposed demand source kind and commitment
+  metadata in the public UI.
+- Added organization-versus-demand counts to Admin Overview, Review, and Publish,
+  plus a Recent publications confirmation section with direct links to every
+  newly live record. A successful publish no longer requires a redeploy.
+
+## Legacy workspace retirement - 2026-07-19
+
+- Removed the obsolete authenticated workspace at `/app` together with the old
+  company, domain, use-case, shortlist, help, review, taxonomy, and enrichment
+  route families. The public True North Map atlas and current private admin
+  workspace are now the only application surfaces.
+- Kept canonical redirects for the five useful historical entry points while
+  allowing unsupported nested legacy records to return a normal not-found state.
+- Removed the old search endpoint and use-case export modes. Moved the active
+  public-beta telemetry handlers to their canonical `/api/beta-*` routes.
+- Made `/capabilities/[slug]` public-only. Unknown slugs now return 404 instead
+  of opening the former authenticated capability workspace.
+- Removed the legacy repository, mock data, scoring, freshness, use-case,
+  shortlist, enrichment, review, help, and AppShell component stacks and their
+  exclusive tests and UI primitives.
+- Replaced the legacy seed-model readiness report with live public-atlas
+  coverage. Research coverage now recognizes already-published candidates and
+  reports the current 35-organization, 31-capability, six-demand-requirement
+  corpus without double-counting reviewed artifacts.
+- Matched the four local autonomous-research migration filenames to the versions
+  already recorded by the production project, preventing accidental DDL replay.

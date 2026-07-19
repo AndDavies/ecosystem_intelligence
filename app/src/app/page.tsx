@@ -6,6 +6,8 @@ import { absoluteUrl } from "@/lib/site";
 import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
 import { getAtlasSnapshot, queryAtlas } from "@/lib/atlas/repository";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "True North Map | Canadian Defence and Dual-Use Atlas",
   description:

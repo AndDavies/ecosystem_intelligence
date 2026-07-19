@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-research-test-gap-2026-07-18",
+  "runId": "tnm-research-test-gap-2026-07-18",
+  "createdAt": "2026-07-18T20:51:14.000Z",
+  "scope": {
+    "description": "Gap-targeted Canadian shadow cycle for a research and test centre with a durable official technical mandate and source-backed geographic identity.",
+    "targetMissionAreaSlugs": ["arctic-domain-awareness", "underwater-isr"],
+    "targetTechnicalDomainSlugs": ["sensing-and-isr", "space-and-earth-observation"],
+    "targetOrganizationKinds": ["research_test_centre"],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "c-core-research-centre-lead",
+      "source": {
+        "id": "c-core-official-profile-source",
+        "title": "C-CORE Smart Solutions for Challenging Environments",
+        "url": "https://c-core.ca/",
+        "publisher": "C-CORE",
+        "sourceKind": "research_centre_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-18T20:51:14.000Z",
+        "locator": "Homepage Smart solutions for challenging environments section",
+        "summary": "C-CORE describes a research-based organization applying ocean and ice engineering, geotechnical engineering, and remote-sensing expertise to operational risk, safety, security, and aerospace or defence challenges."
+      },
+      "discoveryPath": ["https://c-core.ca/"],
+      "possibleMissionAreaSlugs": ["arctic-domain-awareness", "underwater-isr"],
+      "possibleTechnicalDomainSlugs": ["sensing-and-isr", "space-and-earth-observation"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official homepage technical expertise and headquarters paragraphs",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://c-core.ca/",
+        "websiteDomain": "c-core.ca",
+        "stableSlug": "c-core",
+        "legalName": null,
+        "aliases": ["CCORE"]
+      },
+      "followUpQuestions": [
+        "Which current defence or Arctic projects have durable public evidence?",
+        "Which facilities and test services can be described at product-level specificity?"
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "C-CORE",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": ["research_lab", "ocean_technology", "university_affiliated"],
+      "websiteUrl": "https://c-core.ca/",
+      "aliases": ["CCORE"],
+      "location": {
+        "city": "St. John's",
+        "provinceTerritory": "Newfoundland and Labrador",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "The official profile names three integrated technical disciplines, a staff of scientists and engineers, research-based advisory and technology work, headquarters in St. John's, and collaboration with Memorial University."
+    }
+  ]
+}

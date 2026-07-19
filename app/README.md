@@ -55,10 +55,10 @@ The public sign-in surface supports Google OAuth and passwordless email links. A
 
 ## Database
 
-- Clean migration: `supabase/migrations/20260715170638_public_atlas_foundation.sql`
-- Security hardening: `supabase/migrations/20260715203357_public_atlas_security_hardening.sql`
+- Clean migration: `supabase/migrations/20260715203250_public_atlas_foundation.sql`
+- Security hardening: `supabase/migrations/20260715203449_public_atlas_security_hardening.sql`
 - Sole-admin restriction: `supabase/migrations/20260717170141_restrict_atlas_admin_owner.sql`
-- Data API structural-privilege hardening: `supabase/migrations/20260718124506_restrict_public_api_table_privileges.sql`
+- Data API structural-privilege hardening: `supabase/migrations/20260718124550_restrict_public_api_table_privileges.sql`
 - Clean validated seed: `supabase/seed.sql`
 - Prior internal schema and CSVs: `supabase/legacy/`
 

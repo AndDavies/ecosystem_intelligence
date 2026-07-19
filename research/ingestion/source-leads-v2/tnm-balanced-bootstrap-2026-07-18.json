@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-balanced-bootstrap-2026-07-18",
+  "runId": "tnm-balanced-bootstrap-2026-07-18",
+  "createdAt": "2026-07-18T20:45:33.000Z",
+  "scope": {
+    "description": "Balanced Canadian bootstrap batch that exercises the distinct evidence contracts for a company, accelerator, incubator, and investor without changing the frozen public corpus.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation"
+    ],
+    "targetOrganizationKinds": [
+      "company",
+      "accelerator",
+      "incubator",
+      "investor_funder"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "mission-control-spacefarer-ai-lead",
+      "source": {
+        "id": "mission-control-spacefarer-ai-source",
+        "title": "Spacefarer AI - Enabling Onboard Intelligence",
+        "url": "https://missioncontrolspace.com/products/spacefarer-ai/",
+        "publisher": "Mission Control",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-18T20:45:33.000Z",
+        "locator": "Spacefarer AI product page sections Enabling Onboard Intelligence and One Platform",
+        "summary": "Mission Control describes Spacefarer AI as a platform for building, testing, and deploying neural networks across flight processors with demonstrated use in Earth orbit and on the lunar surface."
+      },
+      "discoveryPath": [
+        "https://missioncontrolspace.com/products/",
+        "https://missioncontrolspace.com/products/spacefarer-ai/",
+        "https://missioncontrolspace.com/about/facilities/moonyard/"
+      ],
+      "possibleMissionAreaSlugs": ["edge-data-processing", "autonomous-patrol-and-monitoring"],
+      "possibleTechnicalDomainSlugs": ["mission-software-and-data", "space-and-earth-observation"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Product page capability statements and Moonyard facility page location details",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://missioncontrolspace.com/",
+        "websiteDomain": "missioncontrolspace.com",
+        "stableSlug": "mission-control",
+        "legalName": null,
+        "aliases": ["Mission Control Intelligence", "MCI"]
+      },
+      "followUpQuestions": [
+        "Which current customer programs may be named publicly?",
+        "What export-control or controlled-goods limitations apply to specific deployments?"
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Mission Control",
+      "proposedKind": "company",
+      "proposedCategories": ["commercial_company", "dual_use"],
+      "websiteUrl": "https://missioncontrolspace.com/",
+      "aliases": ["Mission Control Intelligence", "MCI"],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Spacefarer AI",
+      "roleSpecificEvidence": "The official product page identifies a concrete commercial software platform with flight heritage, deployment tools, supported hardware choices, real-time insight, and customer support across integration and operations."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "l-spark-accelerator-lead",
+      "source": {
+        "id": "l-spark-accelerator-source",
+        "title": "About the L-SPARK Accelerator",
+        "url": "https://www.l-spark.com/our-accelerator/about-the-accelerator/",
+        "publisher": "L-SPARK",
+        "sourceKind": "accelerator_cohort_directory",
+        "publishedAt": null,
+        "accessedAt": "2026-07-18T20:45:33.000Z",
+        "locator": "Who is L-SPARK and What makes L-SPARK unique sections",
+        "summary": "L-SPARK identifies itself as a Canadian B2B SaaS accelerator that provides Canadian companies with mentorship, strategic resources, and a low-volume cohort program focused on scaling growth."
+      },
+      "discoveryPath": [
+        "https://www.l-spark.com/our-accelerator/about-the-accelerator/",
+        "https://www.l-spark.com/blog/telus-and-l-spark-launch-sovereign-ai-accelerator-to-propel-canadian-startups-onto-the-world-stage/"
+      ],
+      "possibleMissionAreaSlugs": ["edge-data-processing"],
+      "possibleTechnicalDomainSlugs": ["mission-software-and-data"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Accelerator profile plus April 2026 TELUS Sovereign AI Accelerator announcement",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.l-spark.com/",
+        "websiteDomain": "l-spark.com",
+        "stableSlug": "l-spark",
+        "legalName": null,
+        "aliases": ["L-SPARK Accelerator"]
+      },
+      "followUpQuestions": [
+        "Which Sovereign AI Accelerator companies will be publicly named?",
+        "Does the program publish durable cohort and graduation directories?"
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "L-SPARK",
+      "proposedKind": "accelerator",
+      "proposedCategories": ["cluster_operator"],
+      "websiteUrl": "https://www.l-spark.com/",
+      "aliases": ["L-SPARK Accelerator"],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "The official accelerator page documents a repeatable cohort model with six to eight companies, dedicated mentorship, founder resources, investor introductions, and support for Canadian B2B software companies."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "cove-start-up-yard-lead",
+      "source": {
+        "id": "cove-start-up-yard-source",
+        "title": "COVE Start-Up Yard Incubation Facility",
+        "url": "https://coveocean.com/programs/cove-start-up-yard/",
+        "publisher": "COVE",
+        "sourceKind": "incubator_program_directory",
+        "publishedAt": null,
+        "accessedAt": "2026-07-18T20:45:33.000Z",
+        "locator": "Start-Up Yard introduction and program offering paragraphs",
+        "summary": "COVE describes Start-Up Yard as its incubation facility for early-stage ocean-technology companies, providing programs, workspace, services, funding access, shared equipment, expertise, and mentoring."
+      },
+      "discoveryPath": [
+        "https://coveocean.com/programs-services/",
+        "https://coveocean.com/programs/cove-start-up-yard/"
+      ],
+      "possibleMissionAreaSlugs": ["underwater-isr", "autonomous-patrol-and-monitoring"],
+      "possibleTechnicalDomainSlugs": ["sensing-and-isr", "autonomous-systems"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official COVE Start-Up Yard program page",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://coveocean.com/",
+        "websiteDomain": "coveocean.com",
+        "stableSlug": "cove",
+        "legalName": null,
+        "aliases": ["Centre for Ocean Ventures and Entrepreneurship"]
+      },
+      "followUpQuestions": [
+        "Which current resident companies have durable public capability pages?",
+        "Which programs explicitly support defence or dual-use commercialization?"
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "COVE",
+      "proposedKind": "incubator",
+      "proposedCategories": ["ocean_technology", "cluster_operator"],
+      "websiteUrl": "https://coveocean.com/",
+      "aliases": ["Centre for Ocean Ventures and Entrepreneurship"],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "The official page expressly identifies an incubation facility and lists the operational support offered to early-stage ocean-technology companies rather than merely describing COVE as a general ecosystem brand."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "build-ventures-investor-lead",
+      "source": {
+        "id": "build-ventures-about-source",
+        "title": "About Build Ventures",
+        "url": "https://www.buildventures.ca/about",
+        "publisher": "Build Ventures",
+        "sourceKind": "investor_portfolio",
+        "publishedAt": null,
+        "accessedAt": "2026-07-18T20:45:33.000Z",
+        "locator": "About page opening mandate and portfolio sections",
+        "summary": "Build Ventures states that it is based in Halifax and focuses on early-stage technology companies across Atlantic Canada, with public portfolio and fund evidence available on its own site."
+      },
+      "discoveryPath": [
+        "https://www.buildventures.ca/",
+        "https://www.buildventures.ca/about",
+        "https://www.buildventures.ca/post/fundii"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official mandate page and Build Ventures Fund II announcement",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.buildventures.ca/",
+        "websiteDomain": "buildventures.ca",
+        "stableSlug": "build-ventures",
+        "legalName": null,
+        "aliases": ["Build Ventures Fund"]
+      },
+      "followUpQuestions": [
+        "Which current portfolio companies align with strategic-technology mission areas?",
+        "Does the firm publish current investment stage and cheque-size guidance?"
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Build Ventures",
+      "proposedKind": "investor_funder",
+      "proposedCategories": ["venture_capital"],
+      "websiteUrl": "https://www.buildventures.ca/",
+      "aliases": ["Build Ventures Fund"],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Build Ventures publishes a geographic and stage mandate for Atlantic Canadian technology companies and an official Fund II announcement naming both fund size and a specific portfolio investment."
+    }
+  ]
+}

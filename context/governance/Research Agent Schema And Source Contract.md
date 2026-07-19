@@ -196,6 +196,14 @@ File-backed research batches must preserve the same information and validate aga
 
 Rate limits, weak sources, extraction failures, unresolved duplicates, and missing coordinates produce review notes. They never produce partially published records.
 
+### Implemented coordinator contract
+
+The weekly loop is implemented by `app/scripts/autonomous-research.ts` and the repository skills in `.agents/skills/`. Each run is bounded by a `research_run_v1` manifest and produces typed `source_lead_batch_v2` and `research_candidate_batch_v2` artifacts before a reviewer packet and direct private `candidate_changes` intake. Every typed candidate requires a generated reviewer rationale that explains the inclusion case, evidence strength, and reviewer verification focus. The `research_runs` row is audit metadata only and is not a separate review step.
+
+The executable schema distinguishes organization, demand-signal, and program-relationship bundles. It also enforces conditional organization evidence so accelerators, incubators, investors, research centres, and ecosystem bodies are not forced into company-capability records.
+
+The database migrations add organization aliases, hierarchical demand issuers, source-to-issuer roles, commitment metadata, durable reviewer rationales, richer run/candidate audit fields, idempotent trusted review intake, and typed human publication support for organization and public-demand candidates. Autonomous authority ends after private candidate intake; approval and all canonical-table writes remain human controlled.
+
 ## Public contributions
 
 Profile claims, corrections, and suggested organizations create rows in `submissions` owned by the authenticated submitter.

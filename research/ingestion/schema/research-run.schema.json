@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://truenorthmap.ca/schemas/research-run.schema.json",
+  "title": "True North Map Research Run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "runId", "agentVersion", "trigger", "mode", "scope", "selectedGap", "status", "startedAt", "completedAt", "limits", "sourceQueries", "counters", "validation", "errors", "stopReason", "outputs"],
+  "properties": {
+    "schemaVersion": { "const": "research_run_v1" },
+    "runId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "agentVersion": { "type": "string", "minLength": 1 },
+    "trigger": { "enum": ["manual", "weekly"] },
+    "mode": { "enum": ["bootstrap", "gap_targeted"] },
+    "scope": { "type": "object" },
+    "selectedGap": { "type": "object", "required": ["coverageView", "dimension", "reason", "score"] },
+    "status": { "enum": ["queued", "running", "completed", "failed", "stopped"] },
+    "startedAt": { "type": "string", "format": "date-time" },
+    "completedAt": { "type": ["string", "null"], "format": "date-time" },
+    "limits": { "type": "object", "required": ["totalMinutes", "sourceBookMinutes", "maxQualifiedLeads", "maxCandidates"] },
+    "sourceQueries": { "type": "array", "items": { "type": "string" } },
+    "counters": { "type": "object", "required": ["sourcesChecked", "leadsQualified", "leadsDeferred", "candidatesCreated", "duplicatesBlocked"] },
+    "validation": { "type": "object", "required": ["passed", "errors", "warnings"] },
+    "errors": { "type": "array", "items": { "type": "string" } },
+    "stopReason": { "type": ["string", "null"] },
+    "outputs": { "type": "object", "required": ["sourceLeadBatch", "candidateBatch", "reviewPacket", "stagingExport"] }
+  }
+}

@@ -1,6 +1,39 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { calculateRankingScore } from "../src/lib/scoring";
+
+const relevanceScores = { high: 30, medium: 20, low: 10 } as const;
+const pathwayScores = { scale: 20, validate: 12, build: 6 } as const;
+const defenceScores = { high: 20, medium: 10, low: 0 } as const;
+const geographyScores = { canada: 10, nato: 6, global: 3 } as const;
+
+function signalRecencyScore(lastSignalAt: string | null) {
+  if (!lastSignalAt) return 0;
+  const days = Math.floor((Date.now() - new Date(lastSignalAt).getTime()) / (1000 * 60 * 60 * 24));
+  if (days <= 90) return 10;
+  if (days <= 180) return 6;
+  if (days <= 365) return 3;
+  return 0;
+}
+
+function calculateLegacySeedRanking(input: {
+  relevanceBand: keyof typeof relevanceScores;
+  pathway: keyof typeof pathwayScores;
+  defenceRelevance: keyof typeof defenceScores;
+  geography: keyof typeof geographyScores;
+  lastSignalAt: string | null;
+  evidenceStrength: number;
+  actionabilityScore: number;
+  reviewerOverrideDelta: number;
+}) {
+  return relevanceScores[input.relevanceBand]
+    + pathwayScores[input.pathway]
+    + defenceScores[input.defenceRelevance]
+    + geographyScores[input.geography]
+    + signalRecencyScore(input.lastSignalAt)
+    + input.evidenceStrength
+    + input.actionabilityScore
+    + input.reviewerOverrideDelta;
+}
 
 export const seedDir = path.join(process.cwd(), "supabase", "legacy", "seed");
 export type SeedValue = string | number | boolean | null | string[];
@@ -142,7 +175,7 @@ export async function loadSeedData() {
 
       return {
         ...record,
-        ranking_score: calculateRankingScore({
+        ranking_score: calculateLegacySeedRanking({
           relevanceBand: record.relevance_band as "low" | "medium" | "high",
           pathway: record.pathway as "build" | "validate" | "scale",
           defenceRelevance: record.defence_relevance as "low" | "medium" | "high",

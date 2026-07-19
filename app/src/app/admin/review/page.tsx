@@ -2,7 +2,8 @@ import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { editAtlasCandidate, mergeAtlasCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, type AtlasOrganizationCandidate } from "@/lib/atlas/candidate-schema";
+import { parseAtlasOrganizationCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, type AtlasOrganizationCandidate } from "@/lib/atlas/candidate-schema";
+import type { DemandSignalBundleV1, OrganizationBundleV2 } from "@/lib/research/pipeline-schema";
 import { createClient } from "@/lib/supabase/server";
 
 type CandidateRow = {
@@ -13,6 +14,7 @@ type CandidateRow = {
   before_record: unknown;
   field_evidence: unknown;
   duplicate_check: unknown;
+  reviewer_rationale: string | null;
   confidence: string;
   status: string;
   created_at: string;
@@ -34,25 +36,42 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
   const params = await searchParams;
   const supabase = await createClient();
   const [{ data: candidates }, { data: domains }, { data: clusters }, { data: missionAreas }] = await Promise.all([
-    supabase.from("candidate_changes").select("id, candidate_kind, target_entity_type, proposed_record, before_record, field_evidence, duplicate_check, confidence, status, created_at").eq("status", "pending").order("created_at").limit(50),
+    supabase.from("candidate_changes").select("id, candidate_kind, target_entity_type, proposed_record, before_record, field_evidence, duplicate_check, reviewer_rationale, confidence, status, created_at").eq("status", "pending").order("created_at").limit(50),
     supabase.from("technical_domains").select("slug, name").eq("publication_status", "published").order("name"),
     supabase.from("ecosystem_clusters").select("slug, name").eq("publication_status", "published").order("name"),
     supabase.from("mission_areas").select("slug, name").eq("publication_status", "published").order("name")
   ]);
+  const candidateRows = (candidates ?? []) as CandidateRow[];
+  const organizationCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "organization_bundle").length;
+  const demandCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "demand_signal_bundle").length;
 
   return (
     <PublicPageShell eyebrow="Editorial operations" title="Review queue" description="Inspect and edit staged research. Accepting a candidate moves it to the publication checkpoint; it does not make the record public." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
       {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{errorMessages[params.error] ?? "The review action could not be completed."}</div> : null}
       {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">Candidate {params.success === "merged" ? "merged into its canonical organization" : "updated"}. Publication remains unchanged.</div> : null}
-      {candidates?.length ? (
+      {candidateRows.length ? (
         <div className="space-y-5">
-          {(candidates as CandidateRow[]).map((candidate) => {
-            const parsed = candidate.candidate_kind === "organization_bundle"
+          <div className="grid gap-3 sm:grid-cols-2">
+            <QueueTypeSummary label="Organization candidates" value={organizationCandidateCount} detail="Companies, accelerators, incubators, investors, research centres, and ecosystem organizations." tone="organization" />
+            <QueueTypeSummary label="Demand-signal candidates" value={demandCandidateCount} detail="Public problem statements from governments, armed forces, programs, procurement bodies, and allies." tone="demand" />
+          </div>
+          {candidateRows.map((candidate) => {
+            const legacy = candidate.candidate_kind === "organization_bundle"
               ? parseAtlasOrganizationCandidate(candidate.proposed_record)
               : null;
-            return parsed?.success ? (
-              <OrganizationCandidateCard key={candidate.id} candidate={candidate} record={parsed.data} domains={domains ?? []} clusters={clusters ?? []} missionAreas={missionAreas ?? []} />
+            const typed = candidate.candidate_kind === "organization_bundle"
+              ? parseOrganizationBundleV2(candidate.proposed_record)
+              : null;
+            const demand = candidate.candidate_kind === "demand_signal_bundle"
+              ? parseDemandSignalCandidate(candidate.proposed_record)
+              : null;
+            return legacy?.success ? (
+              <OrganizationCandidateCard key={candidate.id} candidate={candidate} record={legacy.data} domains={domains ?? []} clusters={clusters ?? []} missionAreas={missionAreas ?? []} />
+            ) : typed?.success ? (
+              <TypedOrganizationCandidateCard key={candidate.id} candidate={candidate} record={typed.data} domains={domains ?? []} missionAreas={missionAreas ?? []} />
+            ) : demand?.success ? (
+              <DemandSignalCandidateCard key={candidate.id} candidate={candidate} record={demand.data} />
             ) : (
               <GenericCandidateCard key={candidate.id} candidate={candidate} />
             );
@@ -82,7 +101,7 @@ function OrganizationCandidateCard({
   const areaClass = "rounded-md border border-[#d0d5dd] bg-white px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[#0756d9]";
 
   return (
-    <PublicCard title={record.name} eyebrow={`${candidate.confidence} evidence confidence · ${record.capability.name}`}>
+    <PublicCard title={record.name} eyebrow={`Organization candidate · ${candidate.confidence} evidence confidence · ${record.capability.name}`}>
       <div className="grid gap-4 md:grid-cols-3">
         <ReviewFact label="Location" value={`${record.city}, ${record.provinceTerritory}`} />
         <ReviewFact label="Primary domain" value={domains.find((domain) => domain.slug === record.capability.technicalDomainSlug)?.name ?? record.capability.technicalDomainSlug} />
@@ -188,6 +207,124 @@ function OrganizationCandidateCard({
   );
 }
 
+function TypedOrganizationCandidateCard({
+  candidate,
+  record,
+  domains,
+  missionAreas
+}: {
+  candidate: CandidateRow;
+  record: OrganizationBundleV2;
+  domains: Array<{ slug: string; name: string }>;
+  missionAreas: Array<{ slug: string; name: string }>;
+}) {
+  const duplicateCheck = candidate.duplicate_check as { status?: string } | null;
+  const location = record.organization.primaryLocation;
+  const locationLabel = [location.city, location.provinceTerritory, location.countryCode].filter(Boolean).join(", ");
+  const areaClass = "rounded-md border border-[#d0d5dd] bg-white px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[#0756d9]";
+  const roleLabel = record.organization.entityKind.replaceAll("_", " ");
+
+  return (
+    <PublicCard title={record.organization.name} eyebrow={`Organization candidate · ${candidate.confidence} evidence confidence · ${roleLabel}`}>
+      <div className="grid gap-4 md:grid-cols-3">
+        <ReviewFact label="Organization type" value={roleLabel} />
+        <ReviewFact label="Location" value={locationLabel || "Canada · location not yet resolved"} />
+        <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "clear" ? "No likely duplicate found" : "Resolution required"} tone={duplicateCheck?.status === "clear" ? "success" : "warning"} />
+      </div>
+      <p className="mt-4 text-sm leading-6 text-[#475467]">{record.organization.description}</p>
+      <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
+
+      {record.capabilities.map((capability) => (
+        <div key={capability.slug} className="mt-4 rounded-md border border-[#d0d5dd] bg-[#f8fafc] p-4">
+          <h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[#344054]">Capability candidate</h3>
+          <p className="mt-2 text-sm font-semibold text-[#101828]">{capability.name}</p>
+          <p className="mt-1 text-xs leading-5 text-[#667085]">{capability.summary}</p>
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#667085]">{capability.technicalDomainSlugs.map((slug) => domains.find((domain) => domain.slug === slug)?.name ?? slug).join(" · ")}</p>
+          {capability.missionMatches.length ? <div className="mt-3 space-y-2 border-t border-[#eaecf0] pt-3">{capability.missionMatches.map((match) => <div key={match.missionAreaSlug}><p className="text-xs font-bold text-[#101828]">{missionAreas.find((mission) => mission.slug === match.missionAreaSlug)?.name ?? match.missionAreaSlug} · {match.confidence}</p><p className="mt-1 text-xs leading-5 text-[#475467]">{match.alignmentSummary}</p></div>)}</div> : null}
+        </div>
+      ))}
+
+      {record.programs.map((program) => (
+        <div key={program.slug} className="mt-4 rounded-md border border-[#d0d5dd] bg-[#f8fafc] p-4">
+          <h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[#344054]">Program candidate</h3>
+          <a href={program.websiteUrl} target="_blank" rel="noreferrer" className="mt-2 block text-sm font-semibold text-[#0756d9]">{program.name}</a>
+          <p className="mt-1 text-xs leading-5 text-[#667085]">{program.summary}</p>
+        </div>
+      ))}
+
+      {record.relationships.map((relationship, index) => (
+        <div key={`${relationship.relatedOrganizationName}-${index}`} className="mt-4 rounded-md border border-[#d0d5dd] bg-[#f8fafc] p-4">
+          <h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[#344054]">Relationship candidate</h3>
+          <p className="mt-2 text-sm font-semibold text-[#101828]">{relationship.relatedOrganizationName} · {relationship.relationshipType.replaceAll("_", " ")}</p>
+          <p className="mt-1 text-xs leading-5 text-[#667085]">{relationship.publicSummary}</p>
+        </div>
+      ))}
+
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        {record.sources.map((source) => <a key={source.id} href={source.url} target="_blank" rel="noreferrer" className="block rounded-md border border-[#b8dfe5] bg-[#f5fcfd] p-4 no-underline hover:border-[#007f98] hover:no-underline"><span className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#007f98]">Public evidence</span><strong className="mt-1 block text-sm text-[#101828]">{source.title}</strong><span className="mt-1 block text-xs leading-5 text-[#667085]">{source.publisher} · {source.locator}</span></a>)}
+      </div>
+
+      <details className="mt-4 rounded-md border border-[#d0d5dd] bg-[#fcfcfd] p-4 text-xs">
+        <summary className="cursor-pointer font-semibold text-[#344054]">Field-level evidence ({record.fieldEvidence.length})</summary>
+        <div className="mt-3 space-y-3">{record.fieldEvidence.map((evidence) => <div key={evidence.id}><p className="font-semibold text-[#344054]">{evidence.fieldPath} · {evidence.confidence}</p><p className="mt-1 leading-5 text-[#667085]">{evidence.excerpt}</p></div>)}</div>
+      </details>
+
+      <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
+        <input type="hidden" name="candidateId" value={candidate.id} />
+        <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale} className={areaClass} /></label>
+        <button name="decision" value="defer" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</button>
+        <button name="decision" value="reject" className="h-10 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</button>
+        <button name="decision" value="accept" disabled={duplicateCheck?.status !== "clear"} className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#98a2b3]">Accept for publication</button>
+      </form>
+    </PublicCard>
+  );
+}
+
+function DemandSignalCandidateCard({ candidate, record }: { candidate: CandidateRow; record: DemandSignalBundleV1 }) {
+  const duplicateCheck = candidate.duplicate_check as { status?: string } | null;
+  const areaClass = "rounded-md border border-[#d0d5dd] bg-white px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[#0756d9]";
+
+  return (
+    <PublicCard title={record.demandSource.title} eyebrow={`Demand-signal candidate · ${candidate.confidence} evidence confidence`}>
+      <div className="grid gap-4 md:grid-cols-3">
+        <ReviewFact label="Issuer" value={record.issuers.map((issuer) => `${issuer.name} (${issuer.role.replaceAll("_", " ")})`).join(" · ")} />
+        <ReviewFact label="Signal" value={`${record.demandSource.sourceKind.replaceAll("_", " ")} · ${record.demandSource.commitmentLevel}`} />
+        <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "clear" ? "No likely duplicate found" : "Resolution required"} tone={duplicateCheck?.status === "clear" ? "success" : "warning"} />
+      </div>
+      <p className="mt-4 text-sm leading-6 text-[#475467]">{record.demandSource.summary}</p>
+      <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
+
+      <div className="mt-4 space-y-3">
+        {record.requirements.map((requirement) => (
+          <section key={requirement.slug} className="rounded-md border border-[#d0d5dd] bg-[#f8fafc] p-4">
+            <h3 className="text-sm font-semibold text-[#101828]">{requirement.title}</h3>
+            <p className="mt-2 text-xs leading-5 text-[#475467]"><strong>Public problem:</strong> {requirement.problemStatement}</p>
+            <p className="mt-2 text-xs leading-5 text-[#475467]"><strong>Desired end state:</strong> {requirement.desiredEndState}</p>
+            <p className="mt-3 text-[11px] leading-5 text-[#7a2e0e]">{requirement.publicCaveat}</p>
+          </section>
+        ))}
+      </div>
+
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        {record.sources.map((source) => <a key={source.id} href={source.url} target="_blank" rel="noreferrer" className="block rounded-md border border-[#b8dfe5] bg-[#f5fcfd] p-4 no-underline hover:border-[#007f98] hover:no-underline"><span className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#007f98]">Official demand evidence</span><strong className="mt-1 block text-sm text-[#101828]">{source.title}</strong><span className="mt-1 block text-xs leading-5 text-[#667085]">{source.publisher} · {source.locator}</span></a>)}
+      </div>
+
+      <details className="mt-4 rounded-md border border-[#d0d5dd] bg-[#fcfcfd] p-4 text-xs">
+        <summary className="cursor-pointer font-semibold text-[#344054]">Field-level evidence ({record.fieldEvidence.length})</summary>
+        <div className="mt-3 space-y-3">{record.fieldEvidence.map((evidence) => <div key={evidence.id}><p className="font-semibold text-[#344054]">{evidence.fieldPath} · {evidence.confidence}</p><p className="mt-1 leading-5 text-[#667085]">{evidence.excerpt}</p></div>)}</div>
+      </details>
+
+      <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
+        <input type="hidden" name="candidateId" value={candidate.id} />
+        <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale} className={areaClass} /></label>
+        <button name="decision" value="defer" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</button>
+        <button name="decision" value="reject" className="h-10 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</button>
+        <button name="decision" value="accept" disabled={duplicateCheck?.status !== "clear"} className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#98a2b3]">Accept for publication</button>
+      </form>
+    </PublicCard>
+  );
+}
+
 function GenericCandidateCard({ candidate }: { candidate: CandidateRow }) {
   return (
     <PublicCard title={candidate.candidate_kind.replaceAll("_", " ")} eyebrow={`${candidate.confidence} confidence · ${candidate.target_entity_type ?? "new candidate"}`}>
@@ -196,15 +333,27 @@ function GenericCandidateCard({ candidate }: { candidate: CandidateRow }) {
         <JsonPanel label="Proposed record" value={candidate.proposed_record} />
       </div>
       <details className="mt-4 rounded-md border border-[#d0d5dd] bg-[#f8fafc] p-3 text-xs"><summary className="cursor-pointer font-semibold text-[#344054]">Evidence and duplicate checks</summary><pre className="mt-3 overflow-auto whitespace-pre-wrap text-[11px] leading-5 text-[#475467]">{JSON.stringify({ fieldEvidence: candidate.field_evidence, duplicateCheck: candidate.duplicate_check }, null, 2)}</pre></details>
+      {candidate.reviewer_rationale ? <ReviewerRationale rationale={candidate.reviewer_rationale} /> : null}
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
-        <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={2} className="rounded-md border border-[#d0d5dd] px-3 py-2 text-sm font-normal outline-none focus:border-[#0756d9]" /></label>
+        <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? undefined} className="rounded-md border border-[#d0d5dd] px-3 py-2 text-sm font-normal outline-none focus:border-[#0756d9]" /></label>
         <button name="decision" value="defer" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</button>
         <button name="decision" value="reject" className="h-10 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</button>
         <button name="decision" value="accept" className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white">Accept candidate</button>
       </form>
     </PublicCard>
   );
+}
+
+function ReviewerRationale({ rationale }: { rationale: string }) {
+  return <aside className="mt-4 rounded-md border border-[#b2ccff] bg-[#f5f8ff] p-4"><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#1849a9]">Generated reviewer rationale</p><p className="mt-2 text-xs leading-5 text-[#344054]">{rationale}</p></aside>;
+}
+
+function QueueTypeSummary({ label, value, detail, tone }: { label: string; value: number; detail: string; tone: "organization" | "demand" }) {
+  const toneClasses = tone === "organization"
+    ? "border-[#b2ccff] bg-[#f5f8ff] text-[#1849a9]"
+    : "border-[#b8dfe5] bg-[#f5fcfd] text-[#007f98]";
+  return <div className={`rounded-lg border p-4 ${toneClasses}`}><div className="flex items-center justify-between gap-3"><p className="text-xs font-bold uppercase tracking-[0.08em]">{label}</p><strong className="text-2xl">{value}</strong></div><p className="mt-2 text-xs leading-5 text-[#475467]">{detail}</p></div>;
 }
 
 function EditField({ label, children }: { label: string; children: React.ReactNode }) {

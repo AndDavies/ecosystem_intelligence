@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock3, Database, Send } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock3, Database, RadioTower, Send } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
@@ -15,12 +15,14 @@ export default async function AdminOverviewPage() {
     supabase.from("candidate_changes").select("id", { count: "exact", head: true }).eq("status", "approved"),
     supabase.from("submissions").select("id", { count: "exact", head: true }).in("status", ["pending", "in_review"])
   ]);
+  const publishedDemandSignals = new Set(snapshot.demandRequirements.map((demand) => demand.source.id)).size;
 
   return (
     <PublicPageShell eyebrow="Private editorial workspace" title="Atlas operations" description="Stage research, review field-level candidates, and monitor coverage without granting agents autonomous publication." actions={<span className="rounded bg-[#f2f4f7] px-3 py-2 text-xs font-semibold text-[#475467]">{user.role} · {user.email}</span>}>
       <AdminNav />
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <AdminMetric icon={<Database className="size-5" />} label="Published organizations" value={snapshot.organizations.length} />
+        <AdminMetric icon={<RadioTower className="size-5" />} label="Published demand signals" value={publishedDemandSignals} />
         <AdminMetric icon={<Clock3 className="size-5" />} label="Pending candidates" value={candidates.count ?? 0} />
         <AdminMetric icon={<CheckCircle2 className="size-5" />} label="Ready to publish" value={approved.count ?? 0} />
         <AdminMetric icon={<Send className="size-5" />} label="Public submissions" value={submissions.count ?? 0} />
@@ -33,7 +35,7 @@ export default async function AdminOverviewPage() {
         <AdminLink title="Inspect coverage gaps" detail="Measure published coverage by region, domain, mission, and demand statement." href="/admin/coverage" />
       </div>
       <PublicCard title="Publication boundary" eyebrow="Human approval required" className="mt-5">
-        <p className="text-sm leading-6 text-[#475467]">An accepted candidate is still not public. Promotion into canonical published tables remains a separate, explicit reviewer action with validation and audit logging.</p>
+        <p className="text-sm leading-6 text-[#475467]">An accepted candidate is still not public. Promotion into canonical organization or demand tables remains a separate, explicit reviewer action with validation and audit logging. Once publication succeeds, no redeploy is required.</p>
       </PublicCard>
     </PublicPageShell>
   );

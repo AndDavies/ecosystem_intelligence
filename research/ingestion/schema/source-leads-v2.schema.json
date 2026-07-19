@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://truenorthmap.ca/schemas/source-leads-v2.schema.json",
+  "title": "True North Map Typed Source Lead Batch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "leadBatchId", "runId", "createdAt", "scope", "leads"],
+  "properties": {
+    "schemaVersion": { "const": "source_lead_batch_v2" },
+    "leadBatchId": { "$ref": "#/$defs/slug" },
+    "runId": { "$ref": "#/$defs/slug" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "targetMissionAreaSlugs", "targetTechnicalDomainSlugs", "targetOrganizationKinds", "targetDemandIssuerTypes"],
+      "properties": {
+        "description": { "type": "string", "minLength": 40 },
+        "targetMissionAreaSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" }, "uniqueItems": true },
+        "targetTechnicalDomainSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" }, "uniqueItems": true },
+        "targetOrganizationKinds": { "type": "array", "items": { "$ref": "#/$defs/organizationKind" }, "uniqueItems": true },
+        "targetDemandIssuerTypes": { "type": "array", "items": { "$ref": "#/$defs/issuerType" }, "uniqueItems": true }
+      }
+    },
+    "leads": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 25,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/organizationLead" },
+          { "$ref": "#/$defs/demandLead" },
+          { "$ref": "#/$defs/programLead" },
+          { "$ref": "#/$defs/relationshipLead" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "httpsUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "confidence": { "enum": ["high", "moderate", "needs_review"] },
+    "organizationKind": { "enum": ["company", "accelerator", "incubator", "research_test_centre", "investor_funder", "ecosystem_organization", "government_innovation_office"] },
+    "organizationCategory": { "enum": ["commercial_company", "defence_supplier", "dual_use", "venture_capital", "corporate_venture", "public_funder", "dual_use_accelerator", "ocean_technology", "university_affiliated", "test_range", "research_lab", "cluster_operator", "industry_association", "government_program_operator"] },
+    "issuerType": { "enum": ["alliance", "federal_government", "department", "armed_forces", "military_service", "procurement_authority", "research_innovation_agency", "public_program"] },
+    "sourceKind": { "enum": ["official_company_product", "official_company_news", "accelerator_cohort_directory", "incubator_program_directory", "investor_portfolio", "research_centre_profile", "official_organization_profile", "government_service_page", "innovation_program", "procurement_notice", "award_or_contract", "official_policy", "official_report", "association_directory", "event_directory", "reputable_industry_publication"] },
+    "demandSourceKind": { "enum": ["strategic_policy", "capability_plan", "innovation_challenge", "funding_program", "procurement_notice", "award_or_contract", "official_problem_statement"] },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "url", "publisher", "sourceKind", "publishedAt", "accessedAt", "locator", "summary"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "title": { "type": "string", "minLength": 8 },
+        "url": { "$ref": "#/$defs/httpsUrl" },
+        "publisher": { "type": "string", "minLength": 2 },
+        "sourceKind": { "$ref": "#/$defs/sourceKind" },
+        "publishedAt": { "type": ["string", "null"], "format": "date-time" },
+        "accessedAt": { "type": "string", "format": "date-time" },
+        "locator": { "type": "string", "minLength": 2 },
+        "summary": { "type": "string", "minLength": 40 }
+      }
+    },
+    "fingerprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonicalUrl", "websiteDomain", "stableSlug", "legalName", "aliases"],
+      "properties": {
+        "canonicalUrl": { "$ref": "#/$defs/httpsUrl" },
+        "websiteDomain": { "type": ["string", "null"] },
+        "stableSlug": { "$ref": "#/$defs/slug" },
+        "legalName": { "type": ["string", "null"] },
+        "aliases": { "type": "array", "items": { "type": "string", "minLength": 2 } }
+      }
+    },
+    "common": {
+      "type": "object",
+      "required": ["id", "source", "discoveryPath", "possibleMissionAreaSlugs", "possibleTechnicalDomainSlugs", "sourceConfidence", "alignmentConfidence", "evidenceLocator", "duplicateFingerprint", "followUpQuestions", "disposition", "doNotIngestReason"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "source": { "$ref": "#/$defs/source" },
+        "discoveryPath": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/httpsUrl" } },
+        "possibleMissionAreaSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" }, "uniqueItems": true },
+        "possibleTechnicalDomainSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" }, "uniqueItems": true },
+        "sourceConfidence": { "$ref": "#/$defs/confidence" },
+        "alignmentConfidence": { "$ref": "#/$defs/confidence" },
+        "evidenceLocator": { "type": "string", "minLength": 2 },
+        "duplicateFingerprint": { "$ref": "#/$defs/fingerprint" },
+        "followUpQuestions": { "type": "array", "items": { "type": "string", "minLength": 5 } },
+        "disposition": { "enum": ["qualified", "deferred", "rejected"] },
+        "doNotIngestReason": { "type": ["string", "null"], "minLength": 20 }
+      }
+    },
+    "organizationLead": {
+      "allOf": [
+        { "$ref": "#/$defs/common" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["leadType", "id", "source", "discoveryPath", "possibleMissionAreaSlugs", "possibleTechnicalDomainSlugs", "sourceConfidence", "alignmentConfidence", "evidenceLocator", "duplicateFingerprint", "followUpQuestions", "disposition", "doNotIngestReason", "organizationName", "proposedKind", "proposedCategories", "websiteUrl", "aliases", "location", "candidateCapabilityName", "roleSpecificEvidence"],
+          "properties": {
+            "leadType": { "const": "organization_lead" },
+            "id": { "$ref": "#/$defs/slug" }, "source": { "$ref": "#/$defs/source" }, "discoveryPath": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/httpsUrl" } }, "possibleMissionAreaSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" } }, "possibleTechnicalDomainSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" } }, "sourceConfidence": { "$ref": "#/$defs/confidence" }, "alignmentConfidence": { "$ref": "#/$defs/confidence" }, "evidenceLocator": { "type": "string" }, "duplicateFingerprint": { "$ref": "#/$defs/fingerprint" }, "followUpQuestions": { "type": "array", "items": { "type": "string" } }, "disposition": { "enum": ["qualified", "deferred", "rejected"] }, "doNotIngestReason": { "type": ["string", "null"] },
+            "organizationName": { "type": "string", "minLength": 2 }, "proposedKind": { "$ref": "#/$defs/organizationKind" }, "proposedCategories": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/organizationCategory" } }, "websiteUrl": { "$ref": "#/$defs/httpsUrl" }, "aliases": { "type": "array", "items": { "type": "string" } }, "location": { "type": "object", "required": ["city", "provinceTerritory", "countryCode"], "properties": { "city": { "type": ["string", "null"] }, "provinceTerritory": { "type": ["string", "null"] }, "countryCode": { "type": "string", "minLength": 2, "maxLength": 2 } } }, "candidateCapabilityName": { "type": ["string", "null"] }, "roleSpecificEvidence": { "type": "string", "minLength": 40 }
+          }
+        }
+      ]
+    },
+    "demandLead": { "allOf": [{ "$ref": "#/$defs/common" }, { "type": "object", "required": ["leadType", "title", "issuerNames", "demandSourceKind", "commitmentLevel", "candidateRequirements"], "properties": { "leadType": { "const": "demand_signal_lead" }, "title": { "type": "string", "minLength": 8 }, "issuerNames": { "type": "array", "minItems": 1, "items": { "type": "string" } }, "demandSourceKind": { "$ref": "#/$defs/demandSourceKind" }, "commitmentLevel": { "enum": ["directional", "programmatic", "procurement"] }, "candidateRequirements": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 30 } } } }] },
+    "programLead": { "allOf": [{ "$ref": "#/$defs/common" }, { "type": "object", "required": ["leadType", "programName", "operatorName", "programType", "dates", "participationEvidence"], "properties": { "leadType": { "const": "program_lead" }, "programName": { "type": "string" }, "operatorName": { "type": "string" }, "programType": { "type": "string" }, "dates": { "type": "object", "required": ["startsOn", "endsOn"], "properties": { "startsOn": { "type": ["string", "null"], "format": "date" }, "endsOn": { "type": ["string", "null"], "format": "date" } } }, "participationEvidence": { "type": "string", "minLength": 40 } } }] },
+    "relationshipLead": { "allOf": [{ "$ref": "#/$defs/common" }, { "type": "object", "required": ["leadType", "subjectName", "objectName", "relationshipType", "publicSummary"], "properties": { "leadType": { "const": "relationship_lead" }, "subjectName": { "type": "string" }, "objectName": { "type": "string" }, "relationshipType": { "type": "string" }, "publicSummary": { "type": "string", "minLength": 40 } } }] }
+  }
+}

@@ -4,7 +4,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
+import { parseAtlasOrganizationCandidate, parseDemandSignalCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
 import { createClient } from "@/lib/supabase/server";
 
 const intakeSchema = z.object({
@@ -134,12 +134,15 @@ export async function reviewAtlasCandidate(formData: FormData) {
   if (!candidate || candidate.status === "published" || candidate.status === "superseded") {
     redirect("/admin/review?error=invalid-review");
   }
-  if (parsed.data.decision === "accept" && candidate.candidate_kind === "organization_bundle") {
-    if (!parseAtlasOrganizationCandidate(candidate.proposed_record).success) {
+  if (parsed.data.decision === "accept" && ["organization_bundle", "demand_signal_bundle"].includes(candidate.candidate_kind)) {
+    const validCandidate = candidate.candidate_kind === "organization_bundle"
+      ? parseReviewableOrganizationCandidate(candidate.proposed_record)
+      : parseDemandSignalCandidate(candidate.proposed_record).success;
+    if (!validCandidate) {
       redirect("/admin/review?error=invalid-candidate");
     }
     const duplicateCheck = candidate.duplicate_check as { status?: string } | null;
-    if (duplicateCheck?.status === "possible_match") {
+    if (!["clear", "merged"].includes(duplicateCheck?.status ?? "")) {
       redirect("/admin/review?error=duplicate-unresolved");
     }
   }
@@ -342,7 +345,7 @@ export async function publishApprovedCandidates(formData: FormData) {
   });
   if (!parsed.success) redirect("/admin/publish?error=selection");
   const supabase = await createClient({ writeCookies: true });
-  const { error } = await supabase.rpc("publish_approved_organization_candidates", {
+  const { error } = await supabase.rpc("publish_reviewed_research_candidates", {
     p_candidate_ids: parsed.data.candidateIds,
     p_reviewer_id: user.id
   });
@@ -351,6 +354,10 @@ export async function publishApprovedCandidates(formData: FormData) {
   revalidateReviewPaths();
   revalidatePath("/");
   revalidatePath("/organizations");
+  revalidatePath("/organizations/[slug]", "page");
+  revalidatePath("/demand");
+  revalidatePath("/demand/[slug]", "page");
+  revalidatePath("/sitemap.xml");
   redirect(`/admin/publish?success=${parsed.data.candidateIds.length}`);
 }
 

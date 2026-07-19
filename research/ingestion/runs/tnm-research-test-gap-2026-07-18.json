@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-research-test-gap-2026-07-18",
+  "agentVersion": "tnm-research-pipeline/1.0.0",
+  "trigger": "manual",
+  "mode": "gap_targeted",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "research_test_centre"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:research_test_centre",
+    "reason": "No published or pending research test centre organization is represented in the local coverage view.",
+    "score": 900
+  },
+  "status": "completed",
+  "startedAt": "2026-07-18T20:50:26.435Z",
+  "completedAt": "2026-07-18T20:52:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10
+  },
+  "sourceQueries": [
+    "Canadian research test centre Arctic remote sensing official",
+    "site:c-core.ca official C-CORE remote sensing ocean ice technical expertise"
+  ],
+  "counters": {
+    "sourcesChecked": 4,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Stopped after one high-confidence research and test centre candidate filled the selected coverage gap and passed the evidence contract.",
+  "outputs": {
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-research-test-gap-2026-07-18.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-research-test-gap-2026-07-18.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-research-test-gap-2026-07-18.md",
+    "stagingExport": "research/ingestion/staging/tnm-research-test-gap-2026-07-18.json"
+  }
+}

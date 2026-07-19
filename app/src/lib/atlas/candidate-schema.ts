@@ -1,4 +1,10 @@
 import { z } from "zod";
+import {
+  demandSignalBundleV1Schema,
+  organizationBundleV2Schema,
+  type DemandSignalBundleV1,
+  type OrganizationBundleV2
+} from "@/lib/research/pipeline-schema";
 
 const missionMatchSchema = z.object({
   missionAreaSlug: z.string().trim().min(1),
@@ -41,9 +47,27 @@ export const atlasOrganizationCandidateSchema = z.object({
 });
 
 export type AtlasOrganizationCandidate = z.infer<typeof atlasOrganizationCandidateSchema>;
+export type ReviewableOrganizationCandidate = AtlasOrganizationCandidate | OrganizationBundleV2;
+export type ReviewableDemandSignalCandidate = DemandSignalBundleV1;
 
 export function parseAtlasOrganizationCandidate(value: unknown) {
   return atlasOrganizationCandidateSchema.safeParse(value);
+}
+
+export function parseOrganizationBundleV2(value: unknown) {
+  return organizationBundleV2Schema.safeParse(value);
+}
+
+export function parseDemandSignalCandidate(value: unknown) {
+  return demandSignalBundleV1Schema.safeParse(value);
+}
+
+export function parseReviewableOrganizationCandidate(value: unknown) {
+  const legacy = parseAtlasOrganizationCandidate(value);
+  if (legacy.success) return { version: "v1" as const, data: legacy.data };
+  const typed = parseOrganizationBundleV2(value);
+  if (typed.success) return { version: "v2" as const, data: typed.data };
+  return null;
 }
 
 export function splitCandidateList(value: FormDataEntryValue | null) {

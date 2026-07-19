@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-research-test-gap-2026-07-18",
+  "runId": "tnm-research-test-gap-2026-07-18",
+  "title": "True North Map research and test centre gap candidate",
+  "status": "candidate",
+  "createdAt": "2026-07-18T20:51:14.000Z",
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:research_test_centre",
+    "reason": "No published or pending research test centre organization is represented in the local coverage view.",
+    "score": 900
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-research-test-gap-2026-07-18.json",
+  "guardrailNotes": [
+    "C-CORE remains a private candidate pending human review; the shadow cycle does not insert a database row or expand the frozen public corpus.",
+    "Possible mission relevance is an analyst-derived interpretation of public technical expertise and is not evidence of classified or confirmed government demand."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-c-core",
+      "sourceLeadIds": ["c-core-research-centre-lead"],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "C-CORE is a strong inclusion candidate because it fills a research-and-test-centre gap with public evidence of applied ocean, ice, geotechnical, and remote-sensing work in challenging environments. Review the technical mandate, organization type, and cited service evidence before accepting it.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-18T20:51:14.000Z",
+        "methods": ["canonical_url", "website_domain", "slug", "legal_name", "alias", "fuzzy_name"],
+        "matches": [],
+        "note": "No canonical URL, website-domain, slug, legal-name, alias, or normalized-name match was found in published or pending organization records."
+      },
+      "sources": [
+        {
+          "id": "c-core-profile-source",
+          "title": "C-CORE Smart Solutions for Challenging Environments",
+          "url": "https://c-core.ca/",
+          "publisher": "C-CORE",
+          "sourceKind": "research_centre_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-18T20:51:14.000Z",
+          "locator": "Homepage Smart solutions for challenging environments section",
+          "summary": "The official profile describes C-CORE's research-based technical work across ocean and ice engineering, geotechnical engineering, remote sensing, safety, security, and aerospace or defence challenges."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "c-core-description-evidence",
+          "sourceId": "c-core-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "C-CORE publicly describes research-based advisory and technology solutions for remote or challenging environments using ocean and ice engineering, geotechnical engineering, and remote sensing.",
+          "confidence": "high"
+        },
+        {
+          "id": "c-core-technical-mandate-evidence",
+          "sourceId": "c-core-profile-source",
+          "fieldPath": "organization.profileData.technicalMandate",
+          "claimClass": "source_backed",
+          "excerpt": "Its stated technical mandate integrates ocean and ice engineering, geotechnical engineering, and remote-sensing applications and systems development to address real-world operational challenges.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "c-core",
+        "name": "C-CORE",
+        "legalName": null,
+        "aliases": ["CCORE"],
+        "description": "Newfoundland and Labrador research and technology organization providing advisory services and applied solutions for remote or challenging environments across ocean, ice, geotechnical, and remote-sensing fields.",
+        "websiteUrl": "https://c-core.ca/",
+        "entityKind": "research_test_centre",
+        "categories": ["research_lab", "ocean_technology", "university_affiliated"],
+        "primaryLocation": {
+          "city": "St. John's",
+          "provinceTerritory": "Newfoundland and Labrador",
+          "countryCode": "CA",
+          "latitude": 47.5615,
+          "longitude": -52.7126,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "technicalMandate": "Apply integrated ocean and ice engineering, geotechnical engineering, and remote-sensing research and technology to operational risk, safety, security, and challenging-environment problems.",
+          "institutionalRelationship": "C-CORE reports a collaborative relationship with Memorial University and access to university facilities and academic expertise."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": []
+    }
+  ],
+  "deferred": []
+}

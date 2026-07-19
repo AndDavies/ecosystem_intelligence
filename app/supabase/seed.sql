@@ -404,6 +404,22 @@ values (
   'published'
 );
 
+insert into public.demand_source_issuers (
+  demand_source_id,
+  demand_issuer_id,
+  issuer_role,
+  publication_status
+)
+select
+  '70000000-0000-4000-8000-000000000001',
+  issuer.id,
+  'issuer',
+  'published'
+from public.demand_issuers issuer
+where issuer.slug = 'nato'
+on conflict (demand_source_id, demand_issuer_id, issuer_role) do update
+set publication_status = excluded.publication_status;
+
 insert into public.demand_requirements (
   id, demand_source_id, slug, title, problem_statement, desired_end_state,
   public_caveat, display_order, publication_status

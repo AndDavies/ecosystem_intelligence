@@ -131,6 +131,76 @@ describe("public atlas database foundation", () => {
     });
   });
 
+  it("models public demand issuers separately from demand sources", async () => {
+    const result = await db.query<{
+      issuers: number;
+      nato_links: number;
+      source_kind: string;
+      commitment_level: string;
+    }>(`
+      select
+        (select count(*)::int from public.demand_issuers) as issuers,
+        (
+          select count(*)::int
+          from public.demand_source_issuers link
+          join public.demand_issuers issuer on issuer.id = link.demand_issuer_id
+          join public.demand_sources source_record on source_record.id = link.demand_source_id
+          where issuer.slug = 'nato'
+            and source_record.slug = 'nato-aggregated-demand-signal-2026'
+            and link.issuer_role = 'issuer'
+        ) as nato_links,
+        (
+          select source_kind
+          from public.demand_sources
+          where slug = 'nato-aggregated-demand-signal-2026'
+        ) as source_kind,
+        (
+          select commitment_level
+          from public.demand_sources
+          where slug = 'nato-aggregated-demand-signal-2026'
+        ) as commitment_level
+    `);
+    expect(result.rows[0]).toEqual({
+      issuers: 10,
+      nato_links: 1,
+      source_kind: "official_problem_statement",
+      commitment_level: "directional"
+    });
+  });
+
+  it("stores reproducible run metadata without changing the publication boundary", async () => {
+    const result = await db.query<{
+      source_queries: string;
+      counters: string;
+      validation_results: string;
+      schema_version: string;
+    }>(`
+      select
+        (
+          select data_type from information_schema.columns
+          where table_schema = 'public' and table_name = 'research_runs' and column_name = 'source_queries'
+        ) as source_queries,
+        (
+          select data_type from information_schema.columns
+          where table_schema = 'public' and table_name = 'research_runs' and column_name = 'counters'
+        ) as counters,
+        (
+          select data_type from information_schema.columns
+          where table_schema = 'public' and table_name = 'research_runs' and column_name = 'validation_results'
+        ) as validation_results,
+        (
+          select data_type from information_schema.columns
+          where table_schema = 'public' and table_name = 'candidate_changes' and column_name = 'schema_version'
+        ) as schema_version
+    `);
+    expect(result.rows[0]).toEqual({
+      source_queries: "jsonb",
+      counters: "jsonb",
+      validation_results: "jsonb",
+      schema_version: "text"
+    });
+  });
+
   it("assembles one RLS-preserving dossier row for pages and exports", async () => {
     const result = await db.query<{
       capabilities: number;
@@ -349,6 +419,48 @@ describe("public atlas database foundation", () => {
     });
   });
 
+  it("limits direct research intake to the trusted worker and keeps typed publication human-only", async () => {
+    const result = await db.query<{
+      anon_intake: boolean;
+      authenticated_intake: boolean;
+      service_intake: boolean;
+      anon_publish: boolean;
+      authenticated_publish: boolean;
+      anon_research_publish: boolean;
+      authenticated_research_publish: boolean;
+      client_candidate_id: string | null;
+      reviewer_rationale: string | null;
+    }>(`
+      select
+        has_function_privilege('anon', 'public.stage_research_candidates_for_review(jsonb, jsonb)', 'execute') as anon_intake,
+        has_function_privilege('authenticated', 'public.stage_research_candidates_for_review(jsonb, jsonb)', 'execute') as authenticated_intake,
+        has_function_privilege('service_role', 'public.stage_research_candidates_for_review(jsonb, jsonb)', 'execute') as service_intake,
+        has_function_privilege('anon', 'public.publish_reviewed_organization_candidates(uuid[], uuid)', 'execute') as anon_publish,
+        has_function_privilege('authenticated', 'public.publish_reviewed_organization_candidates(uuid[], uuid)', 'execute') as authenticated_publish,
+        has_function_privilege('anon', 'public.publish_reviewed_research_candidates(uuid[], uuid)', 'execute') as anon_research_publish,
+        has_function_privilege('authenticated', 'public.publish_reviewed_research_candidates(uuid[], uuid)', 'execute') as authenticated_research_publish,
+        (
+          select data_type from information_schema.columns
+          where table_schema = 'public' and table_name = 'candidate_changes' and column_name = 'client_candidate_id'
+        ) as client_candidate_id,
+        (
+          select data_type from information_schema.columns
+          where table_schema = 'public' and table_name = 'candidate_changes' and column_name = 'reviewer_rationale'
+        ) as reviewer_rationale
+    `);
+    expect(result.rows[0]).toEqual({
+      anon_intake: false,
+      authenticated_intake: false,
+      service_intake: true,
+      anon_publish: false,
+      authenticated_publish: true,
+      anon_research_publish: false,
+      authenticated_research_publish: true,
+      client_candidate_id: "text",
+      reviewer_rationale: "text"
+    });
+  });
+
   it("keeps published dossier editing RLS-preserving and administrator-only", async () => {
     const result = await db.query<{
       is_security_definer: boolean;
@@ -396,5 +508,269 @@ describe("public atlas database foundation", () => {
       authenticated_can_execute: true,
       audit_event_insert_policy: 1
     });
+  });
+
+  it("stages a completed research result directly into Review and publishes typed organizations only after approval", async () => {
+    const staging = JSON.parse(await readFile(path.resolve("../research/ingestion/staging/tnm-balanced-bootstrap-2026-07-18.json"))) as {
+      researchRun: Record<string, unknown>;
+      candidateChanges: Array<Record<string, unknown>>;
+    };
+    const staged = await db.query<{ staged_count: number; skipped_count: number }>(
+      "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(staging.researchRun), JSON.stringify(staging.candidateChanges)]
+    );
+    expect(staged.rows[0]).toEqual({ staged_count: 4, skipped_count: 0 });
+
+    const pending = await db.query<{ count: number }>(`
+      select count(*)::int as count
+      from public.candidate_changes
+      where status = 'pending'
+        and schema_version = 'organization_bundle_v2'
+        and client_candidate_id in (
+          'candidate-mission-control', 'candidate-l-spark', 'candidate-cove', 'candidate-build-ventures'
+        )
+    `);
+    expect(pending.rows[0]?.count).toBe(4);
+
+    const retried = await db.query<{ staged_count: number; skipped_count: number }>(
+      "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(staging.researchRun), JSON.stringify(staging.candidateChanges)]
+    );
+    expect(retried.rows[0]).toEqual({ staged_count: 4, skipped_count: 0 });
+
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    await db.exec(`
+      insert into auth.users (id) values ('${administratorId}') on conflict (id) do nothing;
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${administratorId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+      $$;
+      update public.candidate_changes
+      set status = 'approved'
+      where client_candidate_id in (
+        'candidate-mission-control', 'candidate-l-spark', 'candidate-cove', 'candidate-build-ventures'
+      );
+    `);
+
+    const published = await db.query<{ candidate_id: string; organization_slug: string }>(`
+      select candidate_id::text, organization_slug
+      from public.publish_reviewed_organization_candidates(
+        array(
+          select id from public.candidate_changes
+          where client_candidate_id in (
+            'candidate-mission-control', 'candidate-l-spark', 'candidate-cove', 'candidate-build-ventures'
+          )
+        ),
+        '${administratorId}'::uuid
+      )
+      order by organization_slug
+    `);
+    expect(published.rows.map((row) => row.organization_slug)).toEqual([
+      "build-ventures",
+      "cove",
+      "l-spark",
+      "mission-control"
+    ]);
+
+    const result = await db.query<{
+      organizations: number;
+      mappable_organizations: number;
+      capabilities: number;
+      programs: number;
+      relationships: number;
+      pending_candidates: number;
+    }>(`
+      select
+        (select count(*)::int from public.organizations where slug in ('mission-control', 'l-spark', 'cove', 'build-ventures')) as organizations,
+        (
+          select count(*)::int
+          from public.organizations organization_record
+          join public.organization_locations location_link
+            on location_link.organization_id = organization_record.id
+           and location_link.is_primary
+           and location_link.publication_status = 'published'
+          join public.locations location_record on location_record.id = location_link.location_id
+          where organization_record.slug in ('mission-control', 'l-spark', 'cove', 'build-ventures')
+            and organization_record.publication_status = 'published'
+            and location_record.latitude is not null
+            and location_record.longitude is not null
+        ) as mappable_organizations,
+        (select count(*)::int from public.capabilities where slug = 'spacefarer-ai') as capabilities,
+        (select count(*)::int from public.programs where slug in ('telus-sovereign-ai-accelerator', 'cove-start-up-yard')) as programs,
+        (select count(*)::int from public.organization_relationships relationship_record join public.organizations organization_record on organization_record.id = relationship_record.organization_id where organization_record.slug = 'build-ventures') as relationships,
+        (select count(*)::int from public.candidate_changes where client_candidate_id in ('candidate-mission-control', 'candidate-l-spark', 'candidate-cove', 'candidate-build-ventures') and status <> 'published') as pending_candidates
+    `);
+    expect(result.rows[0]).toEqual({
+      organizations: 4,
+      mappable_organizations: 4,
+      capabilities: 1,
+      programs: 2,
+      relationships: 1,
+      pending_candidates: 0
+    });
+  });
+
+  it("prevents published organization locations from becoming unmappable", async () => {
+    await expect(db.exec(`
+      update public.locations location_record
+      set latitude = null
+      from public.organization_locations location_link
+      join public.organizations organization_record
+        on organization_record.id = location_link.organization_id
+      where location_record.id = location_link.location_id
+        and location_link.is_primary
+        and organization_record.slug = 'mission-control'
+    `)).rejects.toThrow(/mappable primary location/i);
+  });
+
+  it("stages generated reviewer rationale and publishes an approved Canadian public-demand signal", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    const reviewerRationale = "This Canadian Army public problem statement is worthy of inclusion because it adds a non-NATO demand signal with a concrete operational need and desired end state. Verify issuer attribution, commitment level, and field evidence before publication.";
+    const proposedRecord = {
+      schemaVersion: "demand_signal_bundle_v1",
+      candidateKind: "demand_signal_bundle",
+      candidateId: "candidate-canadian-army-contested-logistics",
+      sourceLeadIds: ["lead-canadian-army-contested-logistics"],
+      confidence: "high",
+      reviewStatus: "candidate_pending",
+      reviewerRationale,
+      duplicateCheck: {
+        status: "clear",
+        checkedAt: "2026-07-19T10:00:00.000Z",
+        methods: ["canonical_url", "website_domain", "slug", "legal_name", "alias", "fuzzy_name"],
+        matches: [],
+        note: "No matching demand source or pending candidate was found in the current corpus."
+      },
+      sources: [{
+        id: "canadian-army-logistics-source",
+        title: "Canadian Army public contested logistics problem statement",
+        url: "https://www.canada.ca/en/army/services/innovation/contested-logistics-test.html",
+        publisher: "Canadian Army",
+        sourceKind: "government_service_page",
+        publishedAt: "2026-06-15T00:00:00.000Z",
+        accessedAt: "2026-07-19T10:00:00.000Z",
+        locator: "Operational problem and desired outcome",
+        summary: "The official Canadian Army page describes a public logistics challenge and the outcome sought for operations in contested environments."
+      }],
+      fieldEvidence: [{
+        id: "canadian-army-demand-summary-evidence",
+        sourceId: "canadian-army-logistics-source",
+        fieldPath: "demandSource.summary",
+        claimClass: "source_backed",
+        excerpt: "The official page frames resilient logistics in contested environments as a public operational challenge for the Canadian Army.",
+        confidence: "high"
+      }, {
+        id: "canadian-army-logistics-problem-evidence",
+        sourceId: "canadian-army-logistics-source",
+        fieldPath: "requirements.resilient-contested-logistics.problemStatement",
+        claimClass: "source_backed",
+        excerpt: "The public problem statement describes the need to sustain distributed forces when transport, communications, and supply routes are disrupted.",
+        confidence: "high"
+      }],
+      issuers: [{
+        slug: "canadian-army",
+        name: "Canadian Army",
+        issuerType: "military_service",
+        jurisdiction: "Canada",
+        parentIssuerSlug: "canadian-armed-forces",
+        role: "issuer"
+      }],
+      demandSource: {
+        slug: "canadian-army-contested-logistics-test-2026",
+        title: "Canadian Army public contested logistics problem statement",
+        sourceKind: "official_problem_statement",
+        commitmentLevel: "directional",
+        classificationLabel: "PUBLIC",
+        summary: "An official Canadian Army source describing a public operational problem and a desired logistics outcome without implying procurement eligibility.",
+        publishedOn: "2026-06-15"
+      },
+      requirements: [{
+        slug: "resilient-contested-logistics",
+        title: "Resilient logistics in contested environments",
+        problemStatement: "Distributed forces need to sustain operations when transport corridors, communications, and conventional supply routes are disrupted or denied.",
+        desiredEndState: "Publicly proposed approaches should improve resilient, adaptive, and observable logistics for distributed operations under contested conditions.",
+        publicCaveat: "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+        missionAreaSlugs: [],
+        technicalDomainSlugs: []
+      }]
+    };
+    const researchRun = {
+      client_run_id: "test-canadian-demand-run",
+      run_type: "manual",
+      scope: { geography: "canada_first", coverage_view: "demand" },
+      selected_gap: { coverageView: "demand", dimension: "canadian-army", reason: "Test a non-NATO demand signal through the complete reviewed workflow.", score: 100 },
+      started_at: "2026-07-19T10:00:00.000Z",
+      completed_at: "2026-07-19T10:10:00.000Z",
+      agent_version: "test",
+      source_queries: ["Canadian Army public operational problem statement"],
+      counters: { candidatesCreated: 1 },
+      validation_results: { passed: true },
+      stop_reason: "Validated demand candidate staged for review."
+    };
+    const candidateChange = {
+      client_candidate_id: proposedRecord.candidateId,
+      candidate_kind: proposedRecord.candidateKind,
+      schema_version: proposedRecord.schemaVersion,
+      source_lead_ids: proposedRecord.sourceLeadIds,
+      target_entity_type: "demand_source",
+      target_entity_id: null,
+      proposed_record: proposedRecord,
+      before_record: null,
+      field_evidence: proposedRecord.fieldEvidence,
+      duplicate_check: proposedRecord.duplicateCheck,
+      confidence: proposedRecord.confidence,
+      status: "pending",
+      staged_at: "2026-07-19T10:10:00.000Z"
+    };
+
+    const staged = await db.query<{ staged_count: number; skipped_count: number }>(
+      "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(researchRun), JSON.stringify([candidateChange])]
+    );
+    expect(staged.rows[0]).toEqual({ staged_count: 1, skipped_count: 0 });
+
+    const pending = await db.query<{ reviewer_rationale: string; proposed_rationale: string }>(`
+      select reviewer_rationale, proposed_record->>'reviewerRationale' as proposed_rationale
+      from public.candidate_changes
+      where client_candidate_id = 'candidate-canadian-army-contested-logistics'
+    `);
+    expect(pending.rows[0]).toEqual({ reviewer_rationale: reviewerRationale, proposed_rationale: reviewerRationale });
+
+    await db.exec(`
+      insert into auth.users (id) values ('${administratorId}') on conflict (id) do nothing;
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${administratorId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+      $$;
+      update public.candidate_changes
+      set status = 'approved'
+      where client_candidate_id = 'candidate-canadian-army-contested-logistics';
+    `);
+
+    const published = await db.query<{ entity_type: string; entity_slug: string }>(`
+      select entity_type, entity_slug
+      from public.publish_reviewed_research_candidates(
+        array(
+          select id from public.candidate_changes
+          where client_candidate_id = 'candidate-canadian-army-contested-logistics'
+        ),
+        '${administratorId}'::uuid
+      )
+    `);
+    expect(published.rows[0]).toEqual({ entity_type: "demand_source", entity_slug: "canadian-army-contested-logistics-test-2026" });
+
+    const result = await db.query<{ sources: number; requirements: number; issuers: number; citations: number; published_candidates: number }>(`
+      select
+        (select count(*)::int from public.demand_sources where slug = 'canadian-army-contested-logistics-test-2026' and publication_status = 'published') as sources,
+        (select count(*)::int from public.demand_requirements where slug = 'resilient-contested-logistics' and publication_status = 'published') as requirements,
+        (select count(*)::int from public.demand_source_issuers link join public.demand_sources source_record on source_record.id = link.demand_source_id where source_record.slug = 'canadian-army-contested-logistics-test-2026' and link.publication_status = 'published') as issuers,
+        (select count(*)::int from public.field_citations citation join public.demand_requirements requirement on requirement.id = citation.entity_id where citation.entity_type = 'demand_requirement' and requirement.slug = 'resilient-contested-logistics') as citations,
+        (select count(*)::int from public.candidate_changes where client_candidate_id = 'candidate-canadian-army-contested-logistics' and status = 'published') as published_candidates
+    `);
+    expect(result.rows[0]).toEqual({ sources: 1, requirements: 1, issuers: 1, citations: 1, published_candidates: 1 });
   });
 });

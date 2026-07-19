@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-canadian-army-demand-2026-07-19",
+  "agentVersion": "tnm-autonomous-research-v1.1",
+  "trigger": "manual",
+  "mode": "gap_targeted",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [
+      "autonomous-patrol-and-monitoring"
+    ],
+    "technicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr"
+    ],
+    "demandIssuerTypes": [
+      "military_service",
+      "public_program"
+    ]
+  },
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "canadian-army-uncrewed-systems-demand",
+    "reason": "The reviewed corpus needs a concrete Canadian military-service demand signal to prove that demand research is not limited to NATO sources.",
+    "score": 910
+  },
+  "status": "completed",
+  "startedAt": "2026-07-19T10:15:00.000Z",
+  "completedAt": "2026-07-19T10:25:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10
+  },
+  "sourceQueries": [
+    "site:canada.ca DND IDEaS challenge 2026 defence innovation problem statement Canadian Armed Forces",
+    "site:canada.ca Canadian Army innovation challenge public operational requirements"
+  ],
+  "counters": {
+    "sourcesChecked": 3,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "One official Canadian Army demand signal was validated and prepared for direct Admin Review intake.",
+  "outputs": {
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-canadian-army-demand-2026-07-19.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-canadian-army-demand-2026-07-19.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-canadian-army-demand-2026-07-19.md",
+    "stagingExport": "research/ingestion/staging/tnm-canadian-army-demand-2026-07-19.json"
+  }
+}

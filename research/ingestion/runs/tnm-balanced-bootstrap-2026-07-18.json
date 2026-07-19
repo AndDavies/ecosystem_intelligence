@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-balanced-bootstrap-2026-07-18",
+  "agentVersion": "tnm-research-pipeline/1.0.0",
+  "trigger": "manual",
+  "mode": "bootstrap",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company",
+      "accelerator",
+      "incubator",
+      "investor_funder"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "balanced-company-accelerator-incubator-investor-bootstrap",
+    "reason": "The first autonomous run must exercise company, accelerator, incubator, and investor or funder validation paths without expanding the frozen public corpus.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-18T20:42:21.664Z",
+  "completedAt": "2026-07-18T20:55:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10
+  },
+  "sourceQueries": [
+    "Canadian space artificial intelligence flight software company official product",
+    "site:missioncontrolspace.com Spacefarer AI Ottawa official",
+    "Canadian B2B SaaS accelerator sovereign AI official program",
+    "site:l-spark.com TELUS Sovereign AI Accelerator official",
+    "Canadian ocean technology incubation facility official program",
+    "site:coveocean.com COVE Start-Up Yard incubation facility",
+    "Atlantic Canada early stage technology investor official portfolio",
+    "site:buildventures.ca Fund II ProcedureFlow official"
+  ],
+  "counters": {
+    "sourcesChecked": 12,
+    "leadsQualified": 4,
+    "leadsDeferred": 0,
+    "candidatesCreated": 4,
+    "duplicatesBlocked": 0
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Completed the balanced bootstrap after one source-backed candidate for each required organization kind passed evidence and duplicate gates.",
+  "outputs": {
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-balanced-bootstrap-2026-07-18.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-balanced-bootstrap-2026-07-18.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-balanced-bootstrap-2026-07-18.md",
+    "stagingExport": "research/ingestion/staging/tnm-balanced-bootstrap-2026-07-18.json"
+  }
+}

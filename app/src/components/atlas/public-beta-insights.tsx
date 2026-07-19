@@ -131,7 +131,7 @@ export function PublicBetaInsights() {
     <>
       <Analytics
         beforeSend={(event: BeforeSendEvent) => {
-          if (event.url.includes("/admin") || event.url.includes("/review")) return null;
+          if (event.url.includes("/admin")) return null;
           const url = new URL(event.url);
           url.search = "";
           url.hash = "";
