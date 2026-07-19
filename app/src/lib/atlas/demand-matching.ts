@@ -30,20 +30,20 @@ const concepts = [
   { key: "arctic", label: "Arctic and northern operations", terms: ["arctic", "northern", "polar", "ice", "cold weather", "high north"] },
   { key: "sensing", label: "detection and situational awareness", terms: ["sensor", "sensing", "detect", "detection", "monitor", "monitoring", "surveillance", "situational awareness", "isr", "radar", "imaging"] },
   { key: "autonomy", label: "autonomous and uncrewed systems", terms: ["autonomous", "autonomy", "uncrewed", "unmanned", "robotic", "remotely operated", "drone", "uav", "uas"] },
-  { key: "communications", label: "resilient communications and command", terms: ["communications", "communication", "network", "connectivity", "command and control", "c2", "radio", "satellite", "data link"] },
+  { key: "communications", label: "resilient communications and command", terms: ["communications", "communication", "network", "connectivity", "command and control", "c2", "radio", "satellite", "data link", "coordination", "interoperability", "electromagnetic"] },
   { key: "cyber", label: "cyber and digital operations", terms: ["cyber", "software", "digital", "artificial intelligence", "machine learning", "data analytics", "ai-enabled"] },
   { key: "energy", label: "energy and power resilience", terms: ["energy", "power", "battery", "charging", "fuel", "electrical", "grid"] },
   { key: "logistics", label: "logistics and sustainment", terms: ["logistics", "sustainment", "supply", "maintenance", "repair", "transport", "resupply"] },
-  { key: "aerospace", label: "aerospace operations", terms: ["aerospace", "aircraft", "aviation", "flight", "airborne", "helicopter", "vertical lift", "drone", "uav", "uas"] },
-  { key: "land", label: "land operations", terms: ["land force", "land forces", "ground force", "ground forces", "soldier", "army", "terrain", "battlefield", "artillery", "indirect fire"] },
+  { key: "aerospace", label: "aerospace operations", terms: ["air", "aerospace", "aircraft", "aviation", "flight", "airborne", "helicopter", "vertical lift", "drone", "uav", "uas"] },
+  { key: "land", label: "land operations", terms: ["land", "land force", "land forces", "ground force", "ground forces", "soldier", "army", "terrain", "battlefield", "artillery", "indirect fire"] },
   { key: "fires", label: "targeting and precision effects", terms: ["strike", "target acquisition", "targeting", "range finding", "range-finding", "laser ranging", "fire control", "indirect fire", "missile", "weapon", "lethality"] },
   { key: "medical", label: "medical treatment and evacuation", terms: ["medical", "casualty", "patient", "trauma", "evacuation", "diagnostic", "intensive care", "cbrn treatment"] },
   { key: "materials", label: "advanced materials and manufacturing", terms: ["manufacturing", "material", "composite", "additive", "production", "fabrication", "industrial"] },
-  { key: "protection", label: "protection and survivability", terms: ["protect", "protection", "survivability", "armour", "armor", "countermeasure", "resilience", "threat"] }
+  { key: "protection", label: "protection and survivability", terms: ["protect", "protection", "survivability", "armour", "armor", "countermeasure", "resilience", "threat", "defend", "defending", "defence", "defense"] }
 ] as const;
 
 const mandatoryTitleAnchors = new Set(["maritime", "arctic", "cyber", "energy", "logistics", "aerospace", "land", "fires", "medical", "materials", "protection"]);
-const specificSingleAnchors = new Set(["maritime", "arctic", "logistics", "land", "fires", "medical"]);
+const specificSingleAnchors = new Set(["logistics", "medical"]);
 
 export function suggestDemandMatches(
   organizations: OrganizationInput[],
@@ -58,8 +58,7 @@ export function suggestDemandMatches(
       ...capability.coreFeatures,
       ...capability.defenceApplications,
       ...capability.novelty,
-      ...capability.technicalTags,
-      ...capability.technicalDomains.flatMap((domain) => [domain.name, domain.summary])
+      ...capability.technicalTags
     ].filter(Boolean).join(" ");
     const capabilityConcepts = findConcepts(capabilityText);
 
