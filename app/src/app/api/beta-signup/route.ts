@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
-import { pilotSignupSchema } from "@/lib/pilot/validation";
-import { privateJson, requestFingerprint } from "@/lib/pilot/server";
+import { betaSignupSchema } from "@/lib/product-insights/validation";
+import { privateJson, requestFingerprint } from "@/lib/product-insights/server";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  const parsed = pilotSignupSchema.safeParse(await request.json().catch(() => null));
+  const parsed = betaSignupSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return privateJson({ error: "Please provide a valid email address and consent." }, { status: 400 });
   if (parsed.data.website) return privateJson({ ok: true }, { status: 202 });
   if (!hasSupabaseAdminEnv()) return privateJson({ error: "Update signup is not configured." }, { status: 503 });

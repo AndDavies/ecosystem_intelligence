@@ -4,7 +4,9 @@ True North Map is the public brand for the Canadian defence and dual-use ecosyst
 
 This directory is the runnable Next.js public atlas and private editorial workspace.
 
-It contains the Next.js source, public assets, automated tests, operational scripts, and hosted-database migrations and seed data. Research inputs and review artifacts live in `../research/`.
+It contains the Next.js source, public assets, automated tests, current research operations, and hosted-database migrations. Research inputs and review artifacts live in `../research/`.
+
+`src/app/` is the framework-defined Next.js App Router. It owns routes, layouts, metadata, and API handlers; it is not the retired `/app` product route.
 
 From the project root:
 
@@ -17,11 +19,9 @@ pnpm build
 
 Commands can also be run directly from this directory.
 
-## Runtime modes
+## Runtime data
 
-- `ATLAS_DATA_SOURCE=supabase` is the hosted production mode and requires the clean schema, public URL, and publishable key. Missing configuration is an error rather than a silent fallback.
-- `ATLAS_DATA_SOURCE=validated_seed` uses the same six reviewed records without a database and remains available for isolated local development.
-- `LEGACY_DATA_SOURCE=supabase` is reserved for the prior internal workspace while it remains readable.
+Supabase project `facoactpdckkhciamflk` is the sole runtime source for published organizations, technologies, taxonomy, public demand, evidence, and private workflows. Missing database configuration is a hard error; the application never falls back to bundled organizations or an alternate schema.
 
 The public map uses `NEXT_PUBLIC_MAPTILER_KEY` when provided. Set
 `NEXT_PUBLIC_MAPTILER_MAP_ID` to a MapTiler map ID; it defaults to the quiet
@@ -59,10 +59,8 @@ The public sign-in surface supports Google OAuth and passwordless email links. A
 - Security hardening: `supabase/migrations/20260715203449_public_atlas_security_hardening.sql`
 - Sole-admin restriction: `supabase/migrations/20260717170141_restrict_atlas_admin_owner.sql`
 - Data API structural-privilege hardening: `supabase/migrations/20260718124550_restrict_public_api_table_privileges.sql`
-- Clean validated seed: `supabase/seed.sql`
-- Prior internal schema and CSVs: `supabase/legacy/`
+- Test-only application fixtures: `tests/fixtures/`
 
-The hosted project currently contains the reviewed public corpus. A public release requires at least 30 verified records and explicit promotion approval.
-The SQL seed remains the reproducible migration fixture and local fallback.
+The hosted production project contains the reviewed public corpus and is the sole runtime, research-readiness, taxonomy, and publication source. There is no local publication seed or application fallback.
 
 The migration uses explicit Data API grants, RLS on every exposed table, owner-only collections/submissions, staff-only editorial policies, and separate public/private storage buckets.

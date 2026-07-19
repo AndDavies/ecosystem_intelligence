@@ -21,14 +21,13 @@ pnpm research:smoke -- --run <run-path> --leads <lead-path> --candidates <candid
 If the local service-role credential is unavailable, rerun the same command with `--file-only`, then use the Supabase connector only to call `public.stage_research_candidates_for_review` with that validated staging export. Do not substitute direct table writes.
 
 5. Confirm the command reports that at least one candidate is available in Admin Review. Verify each current-run queue row has the expected candidate kind and generated reviewer rationale. Inspect the generated reviewer packet and private staging export used by the trusted intake.
-6. Run legacy validators to protect existing contracts:
+6. Run the current project release contract:
 
 ```bash
-pnpm leads:validate
-pnpm ingest:validate
-pnpm atlas:validate
-pnpm seed:validate
+pnpm release:validate
 ```
+
+The release contract validates typed v2 artifacts and live production coverage. A local seed, CSV-era candidate batch, or remembered taxonomy is never an acceptable fallback.
 
 7. Report readiness, warnings, deferred items, and exact output paths. Stop before review decisions or publication.
 

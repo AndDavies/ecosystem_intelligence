@@ -12,12 +12,6 @@ import {
   type ResearchRun,
   type SourceLeadBatchV2
 } from "../src/lib/research/pipeline-schema";
-import {
-  atlasDemandRequirements,
-  atlasMissionAreas,
-  atlasOrganizations,
-  atlasTechnicalDomains
-} from "../src/lib/atlas/validated-data";
 import { loadScriptEnv } from "./load-env";
 
 loadScriptEnv();
@@ -50,6 +44,8 @@ interface ResearchCoverageOrganization extends ExistingIdentity {
 
 interface ResearchCoverageSnapshot {
   organizations: ResearchCoverageOrganization[];
+  missionAreas: Array<{ slug: string; name: string }>;
+  technicalDomains: Array<{ slug: string; name: string }>;
   demandRequirements: Array<{ slug: string; sourceSlug: string; matchCount: number }>;
   issuerCounts: Record<string, number>;
   candidateStatuses: Record<string, string>;
@@ -91,39 +87,14 @@ function relative(filePath: string) {
 
 let researchCoveragePromise: Promise<ResearchCoverageSnapshot> | null = null;
 
-function validatedSeedCoverage(): ResearchCoverageSnapshot {
-  const issuerCounts = Object.fromEntries(demandIssuerTypeValues.map((issuerType) => [issuerType, 0])) as Record<string, number>;
-  if (atlasDemandRequirements.length > 0) issuerCounts.alliance = 1;
-
-  return {
-    organizations: atlasOrganizations.map((organization) => ({
-      id: organization.id,
-      name: organization.name,
-      slug: organization.slug,
-      websiteDomain: urlDomain(organization.websiteUrl),
-      source: "validated atlas",
-      entityKind: organization.entityKind,
-      capabilityCount: organization.capabilities.length,
-      missionAreaSlugs: organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => match.missionArea.slug)),
-      technicalDomainSlugs: organization.capabilities.flatMap((capability) => capability.technicalDomains.map((domain) => domain.slug)),
-      publishedAt: organization.lastReviewedAt
-    })),
-    demandRequirements: atlasDemandRequirements.map((requirement) => ({
-      slug: requirement.slug,
-      sourceSlug: requirement.source.slug,
-      matchCount: requirement.matches.length
-    })),
-    issuerCounts,
-    candidateStatuses: {}
-  };
-}
-
 async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
   if (researchCoveragePromise) return researchCoveragePromise;
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !key) return validatedSeedCoverage();
+  if (!url || !key) {
+    throw new Error("Production database credentials are required for research coverage and taxonomy validation.");
+  }
 
   researchCoveragePromise = (async () => {
     const client = createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
@@ -147,9 +118,9 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
     ] = await Promise.all([
       client.from("organizations").select("id, name, slug, website_url, entity_kind, published_at").eq("publication_status", "published"),
       client.from("capabilities").select("id, organization_id").eq("publication_status", "published"),
-      client.from("mission_areas").select("id, slug").eq("publication_status", "published"),
+      client.from("mission_areas").select("id, slug, name").eq("publication_status", "published"),
       client.from("capability_mission_matches").select("capability_id, mission_area_id").eq("publication_status", "published"),
-      client.from("technical_domains").select("id, slug").eq("publication_status", "published"),
+      client.from("technical_domains").select("id, slug, name").eq("publication_status", "published"),
       client.from("capability_domains").select("capability_id, technical_domain_id").eq("publication_status", "published"),
       client.from("demand_sources").select("id, slug").eq("publication_status", "published"),
       client.from("demand_requirements").select("id, slug, demand_source_id").eq("publication_status", "published"),
@@ -182,8 +153,10 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
     const organizations = (organizationsResult.data ?? []) as Array<{ id: string; name: string; slug: string; website_url: string | null; entity_kind: (typeof organizationKindValues)[number]; published_at: string | null }>;
     const capabilities = (capabilitiesResult.data ?? []) as Array<{ id: string; organization_id: string }>;
     const capabilityOrganization = new Map(capabilities.map((capability) => [capability.id, capability.organization_id]));
-    const missionSlugById = new Map(((missionAreasResult.data ?? []) as Array<{ id: string; slug: string }>).map((mission) => [mission.id, mission.slug]));
-    const domainSlugById = new Map(((technicalDomainsResult.data ?? []) as Array<{ id: string; slug: string }>).map((domain) => [domain.id, domain.slug]));
+    const missionAreas = (missionAreasResult.data ?? []) as Array<{ id: string; slug: string; name: string }>;
+    const technicalDomains = (technicalDomainsResult.data ?? []) as Array<{ id: string; slug: string; name: string }>;
+    const missionSlugById = new Map(missionAreas.map((mission) => [mission.id, mission.slug]));
+    const domainSlugById = new Map(technicalDomains.map((domain) => [domain.id, domain.slug]));
     const missionSlugsByOrganization = new Map<string, string[]>();
     const domainSlugsByOrganization = new Map<string, string[]>();
 
@@ -218,6 +191,8 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
     }
 
     return {
+      missionAreas: missionAreas.map(({ slug, name }) => ({ slug, name })),
+      technicalDomains: technicalDomains.map(({ slug, name }) => ({ slug, name })),
       organizations: organizations.map((organization) => ({
         id: organization.id,
         name: organization.name,
@@ -293,26 +268,6 @@ async function collectExistingIdentities(options: { excludePath?: string; exclud
 
   for (const organization of (await loadResearchCoverage()).organizations) add(organization);
 
-  const legacyDir = path.join(ingestionRoot, "candidate-batches");
-  for (const filePath of await listJsonFiles(legacyDir)) {
-    if (!filePath.endsWith(".atlas.json") || filePath === options.excludePath) continue;
-    const batch = asRecord(await readJson<unknown>(filePath));
-    const records = Array.isArray(batch.records) ? batch.records : [];
-    for (const value of records) {
-      const record = asRecord(value);
-      const slug = asString(record.slug);
-      const name = asString(record.name);
-      if (!slug || !name) continue;
-      add({
-        id: `${path.basename(filePath)}:${slug}`,
-        name,
-        slug,
-        websiteDomain: urlDomain(asString(record.websiteUrl)),
-        source: relative(filePath)
-      });
-    }
-  }
-
   for (const filePath of await listJsonFiles(candidateDir)) {
     if (filePath === options.excludePath) continue;
     const parsed = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(filePath));
@@ -339,10 +294,10 @@ async function buildCoverage() {
   for (const organization of atlas.organizations) publishedKinds[organization.entityKind] += 1;
 
   const pendingKinds = Object.fromEntries(organizationKindValues.map((kind) => [kind, 0])) as Record<string, number>;
-  const publishedMissionCounts = Object.fromEntries(atlasMissionAreas.map((mission) => [mission.slug, 0])) as Record<string, number>;
-  const pendingMissionCounts = Object.fromEntries(atlasMissionAreas.map((mission) => [mission.slug, 0])) as Record<string, number>;
-  const publishedDomainCounts = Object.fromEntries(atlasTechnicalDomains.map((domain) => [domain.slug, 0])) as Record<string, number>;
-  const pendingDomainCounts = Object.fromEntries(atlasTechnicalDomains.map((domain) => [domain.slug, 0])) as Record<string, number>;
+  const publishedMissionCounts = Object.fromEntries(atlas.missionAreas.map((mission) => [mission.slug, 0])) as Record<string, number>;
+  const pendingMissionCounts = Object.fromEntries(atlas.missionAreas.map((mission) => [mission.slug, 0])) as Record<string, number>;
+  const publishedDomainCounts = Object.fromEntries(atlas.technicalDomains.map((domain) => [domain.slug, 0])) as Record<string, number>;
+  const pendingDomainCounts = Object.fromEntries(atlas.technicalDomains.map((domain) => [domain.slug, 0])) as Record<string, number>;
   const publishedIssuerCounts = Object.fromEntries(demandIssuerTypeValues.map((issuerType) => [issuerType, 0])) as Record<string, number>;
   const pendingIssuerCounts = Object.fromEntries(demandIssuerTypeValues.map((issuerType) => [issuerType, 0])) as Record<string, number>;
 
@@ -387,10 +342,10 @@ async function buildCoverage() {
   const sourceBookPath = path.join(researchRoot, "source-book", "known-sources.csv");
   const sourceBookRows = (await readFile(sourceBookPath, "utf8")).trim().split(/\r?\n/).length - 1;
   const missingKinds = organizationKindValues.filter((kind) => publishedKinds[kind] + pendingKinds[kind] === 0);
-  const missingMissionAreas = atlasMissionAreas
+  const missingMissionAreas = atlas.missionAreas
     .filter((mission) => publishedMissionCounts[mission.slug] + pendingMissionCounts[mission.slug] === 0)
     .map((mission) => mission.slug);
-  const missingTechnicalDomains = atlasTechnicalDomains
+  const missingTechnicalDomains = atlas.technicalDomains
     .filter((domain) => publishedDomainCounts[domain.slug] + pendingDomainCounts[domain.slug] === 0)
     .map((domain) => domain.slug);
   const missingIssuerTypes = demandIssuerTypeValues.filter((issuerType) => publishedIssuerCounts[issuerType] + pendingIssuerCounts[issuerType] === 0);
@@ -417,7 +372,9 @@ async function buildCoverage() {
     publishedIssuerCounts,
     pendingIssuerCounts,
     missingIssuerTypes,
-    unmatchedDemandRequirements
+    unmatchedDemandRequirements,
+    missionAreas: atlas.missionAreas,
+    technicalDomains: atlas.technicalDomains
   };
 }
 
@@ -426,7 +383,7 @@ function selectGap(coverage: Awaited<ReturnType<typeof buildCoverage>>, bootstra
     return {
       coverageView: "ecosystem_support" as const,
       dimension: "balanced-company-accelerator-incubator-investor-bootstrap",
-      reason: "The first autonomous run must exercise company, accelerator, incubator, and investor or funder validation paths without expanding the frozen public corpus.",
+      reason: "The bootstrap mode exercises company, accelerator, incubator, and investor or funder validation paths while keeping publication under explicit human control.",
       score: 1000
     };
   }
@@ -481,7 +438,7 @@ function selectGap(coverage: Awaited<ReturnType<typeof buildCoverage>>, bootstra
     };
   }
 
-  const lowestMission = [...atlasMissionAreas].sort((left, right) => {
+  const lowestMission = [...coverage.missionAreas].sort((left, right) => {
     const leftCount = coverage.publishedMissionCounts[left.slug] + coverage.pendingMissionCounts[left.slug];
     const rightCount = coverage.publishedMissionCounts[right.slug] + coverage.pendingMissionCounts[right.slug];
     return leftCount - rightCount || left.slug.localeCompare(right.slug);
@@ -512,11 +469,11 @@ function formatCoverage(coverage: Awaited<ReturnType<typeof buildCoverage>>) {
     "",
     "| Supply mission lane | Published matches | Pending matches |",
     "| --- | ---: | ---: |",
-    ...atlasMissionAreas.map((mission) => `| ${mission.slug} | ${coverage.publishedMissionCounts[mission.slug]} | ${coverage.pendingMissionCounts[mission.slug]} |`),
+    ...coverage.missionAreas.map((mission) => `| ${mission.slug} | ${coverage.publishedMissionCounts[mission.slug]} | ${coverage.pendingMissionCounts[mission.slug]} |`),
     "",
     "| Technical domain | Published capabilities | Pending capabilities |",
     "| --- | ---: | ---: |",
-    ...atlasTechnicalDomains.map((domain) => `| ${domain.slug} | ${coverage.publishedDomainCounts[domain.slug]} | ${coverage.pendingDomainCounts[domain.slug]} |`),
+    ...coverage.technicalDomains.map((domain) => `| ${domain.slug} | ${coverage.publishedDomainCounts[domain.slug]} | ${coverage.pendingDomainCounts[domain.slug]} |`),
     "",
     "| Public-demand issuer type | Published sources | Pending sources |",
     "| --- | ---: | ---: |",
@@ -556,8 +513,8 @@ async function prepareRun(args: string[]) {
     scope: {
       geography: "canada_first",
       organizationKinds: [...organizationKinds],
-      missionAreaSlugs: atlasMissionAreas.map((mission) => mission.slug),
-      technicalDomainSlugs: atlasTechnicalDomains.map((domain) => domain.slug),
+      missionAreaSlugs: coverage.missionAreas.map((mission) => mission.slug),
+      technicalDomainSlugs: coverage.technicalDomains.map((domain) => domain.slug),
       demandIssuerTypes
     },
     selectedGap,
@@ -645,9 +602,9 @@ async function validateSourceLeadFile(filePath: string): Promise<ValidationRepor
   const batch = parsed.data;
   const errors: string[] = [];
   const warnings: string[] = [];
-  const missionSlugs = new Set(atlasMissionAreas.map((mission) => mission.slug));
-  const domainSlugs = new Set(atlasTechnicalDomains.map((domain) => domain.slug));
   const coverage = await loadResearchCoverage();
+  const missionSlugs = new Set(coverage.missionAreas.map((mission) => mission.slug));
+  const domainSlugs = new Set(coverage.technicalDomains.map((domain) => domain.slug));
   const existing = await collectExistingIdentities({ excludeRunId: batch.runId });
   const publishedLeadIds = new Set<string>();
   for (const candidatePath of await listJsonFiles(candidateDir)) {
@@ -744,9 +701,9 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
   const batch = parsed.data;
   const errors: string[] = [];
   const warnings: string[] = [];
-  const missionSlugs = new Set(atlasMissionAreas.map((mission) => mission.slug));
-  const domainSlugs = new Set(atlasTechnicalDomains.map((domain) => domain.slug));
   const coverage = await loadResearchCoverage();
+  const missionSlugs = new Set(coverage.missionAreas.map((mission) => mission.slug));
+  const domainSlugs = new Set(coverage.technicalDomains.map((domain) => domain.slug));
   const existing = await collectExistingIdentities({ excludePath: filePath });
   addDuplicateValueErrors(batch.candidates.map((candidate) => candidate.candidateId), "Candidate id", errors);
   validateCandidateEvidence(batch, errors);

@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 
-const protectedRoutes = ["/account", "/admin", "/collections", "/submit"];
+const protectedRoutes = ["/account", "/admin", "/collections", "/connect", "/submit"];
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;

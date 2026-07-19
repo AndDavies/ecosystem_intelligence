@@ -9,6 +9,8 @@ This workspace powers [True North Map](https://truenorthmap.ca), the independent
 - `context/` — product governance, plans, handoffs, and project-local agent guidance.
 - `content/` — outward-facing collateral and media projects.
 
+Inside the deployable product, `app/src/app/` is the standard Next.js App Router directory: the outer `app/` is the product package, `src/` contains source code, and the inner `app/` defines routes and APIs. It is not the retired `/app` URL.
+
 ## Common commands
 
 Run product commands from the project root; they are forwarded to `app/`:
@@ -19,6 +21,7 @@ pnpm test
 pnpm lint
 pnpm build
 pnpm data:readiness
+pnpm release:validate
 ```
 
 See `app/README.md` for application development and `research/README.md` for the evidence workflow.

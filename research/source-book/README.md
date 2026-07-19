@@ -37,6 +37,6 @@ Source Book expansion has a 30-minute sub-limit inside each 90-minute run, but n
 5. Use those sources during Source Discovery Scout runs.
 6. Save newly discovered organization, demand, program, or relationship leads to `research/ingestion/source-leads-v2/*.json` for autonomous v2 runs.
 7. Convert qualified leads into typed private bundles in `research/ingestion/candidate-batches-v2/*.json`; human review remains mandatory before publication.
-8. Preserve the legacy `source-leads/` and `candidate-batches/` folders for the frozen public-beta corpus and existing promotion tooling.
+8. Move approved leads only through the current v2 candidate and private Admin Review workflow; do not recreate retired file-based promotion paths.
 
 The source book is not the database. It is the reusable map of where to look.

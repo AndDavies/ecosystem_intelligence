@@ -5,12 +5,13 @@ description: Run a bounded, review-first True North Map ecosystem research cycle
 
 # True North Map Autonomous Research
 
-Run one reproducible coordinator cycle. Research is not organization-only: select the highest-priority gap across supply, ecosystem support, or public demand. Keep the public corpus frozen and stop after every completed cycle has placed at least one typed candidate with a generated reviewer rationale in Admin Review.
+Run one reproducible coordinator cycle. Research is not organization-only: select the highest-priority gap across supply, ecosystem support, or public demand. Read coverage and taxonomy only from the production database, then stop after every completed cycle has placed at least one typed candidate with a generated reviewer rationale in Admin Review.
 
 ## Workflow
 
 1. Work from the repository root and read `AGENTS.md`.
 2. Run `pnpm data:readiness` and `pnpm research:coverage`.
+   Both commands must reach the production database. Missing credentials or failed reads are hard stops; never substitute bundled records or remembered taxonomy.
 3. Create a run with `pnpm research:prepare -- --trigger manual` or `--trigger weekly`. Add `--mode bootstrap` only for an explicitly requested balanced bootstrap.
 4. Read the generated brief in `research/ingestion/briefs/`.
 5. Apply `$tnm-source-discovery`, `$tnm-candidate-builder`, `$tnm-evidence-mapper`, and `$tnm-review-steward` in that order. Read each skill before doing its work.

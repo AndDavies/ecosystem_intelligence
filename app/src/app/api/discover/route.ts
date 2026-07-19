@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 import { discoverAtlas } from "@/lib/atlas/repository";
-import { normalizePilotSearchQuery, requestFingerprint } from "@/lib/pilot/server";
-import { pilotDiscoveryRequestSchema } from "@/lib/pilot/validation";
+import { normalizeBetaSearchQuery, requestFingerprint } from "@/lib/product-insights/server";
+import { betaDiscoveryRequestSchema } from "@/lib/product-insights/validation";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
 import type { AtlasDiscoveryResult } from "@/types/atlas";
 
 async function recordPilotSearch(
   request: Request,
-  input: ReturnType<typeof pilotDiscoveryRequestSchema.parse>,
+  input: ReturnType<typeof betaDiscoveryRequestSchema.parse>,
   discovery: AtlasDiscoveryResult
 ) {
   if (!hasSupabaseAdminEnv()) return null;
@@ -36,7 +36,7 @@ async function recordPilotSearch(
       request_hash: fingerprint,
       session_id: input.sessionId,
       query_text: input.query,
-      normalized_query: normalizePilotSearchQuery(input.query),
+      normalized_query: normalizeBetaSearchQuery(input.query),
       interpretation: discovery.interpretation,
       resolved_filters: discovery.filters,
       result_count: discovery.organizationIds.length,
@@ -52,7 +52,7 @@ async function recordPilotSearch(
 }
 
 export async function POST(request: Request) {
-  const parsed = pilotDiscoveryRequestSchema.safeParse(await request.json().catch(() => null));
+  const parsed = betaDiscoveryRequestSchema.safeParse(await request.json().catch(() => null));
 
   if (!parsed.success) {
     return NextResponse.json(

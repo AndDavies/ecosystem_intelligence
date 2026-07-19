@@ -8,8 +8,8 @@ import {
   currentPilotCohort,
   currentPilotSearchId,
   currentPilotSessionId,
-  trackPilotEvent
-} from "@/lib/pilot/client";
+  trackBetaEvent
+} from "@/lib/product-insights/client";
 
 const consentText = "I agree to receive occasional True North Map public-beta updates. I can unsubscribe at any time.";
 const consentVersion = "public-beta-2026-07";
@@ -21,7 +21,7 @@ function pathIsPublicBeta(pathname: string) {
   return pathname === "/" || ["/regions", "/organizations", "/capabilities", "/demand", "/about", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
 }
 
-export function PilotExperience() {
+export function PublicBetaExperience() {
   const pathname = usePathname();
   const [updatesOpen, setUpdatesOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
@@ -64,9 +64,9 @@ export function PilotExperience() {
       const target = event.target instanceof Element ? event.target.closest("a, button") : null;
       if (!target) return;
       const anchor = target instanceof HTMLAnchorElement ? target : target.closest("a");
-      if (anchor?.href.includes("/api/export")) trackPilotEvent("export", { type: "download" });
-      else if (anchor?.target === "_blank" && anchor.href.startsWith("http")) trackPilotEvent("evidence_open", { destination_host: new URL(anchor.href).hostname });
-      if (automaticPromptSuppressed.current || target.closest("[data-pilot-ui]")) return;
+      if (anchor?.href.includes("/api/export")) trackBetaEvent("export", { type: "download" });
+      else if (anchor?.target === "_blank" && anchor.href.startsWith("http")) trackBetaEvent("evidence_open", { destination_host: new URL(anchor.href).hostname });
+      if (automaticPromptSuppressed.current || target.closest("[data-beta-ui]")) return;
       interactionCount.current += 1;
       if (interactionCount.current >= 2) setUpdatesOpen(true);
     };
@@ -89,7 +89,7 @@ export function PilotExperience() {
     } catch {
       // Duplicate protection is best-effort only.
     }
-    trackPilotEvent("dossier_open", { slug: pathname.split("/").pop() ?? "unknown" });
+    trackBetaEvent("dossier_open", { slug: pathname.split("/").pop() ?? "unknown" });
   }, [pathname]);
 
   useEffect(() => {
@@ -184,7 +184,7 @@ export function PilotExperience() {
   }
 
   return (
-    <div data-pilot-ui>
+    <div data-beta-ui>
       <button
         type="button"
         onClick={() => {

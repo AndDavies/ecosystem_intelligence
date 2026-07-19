@@ -8,11 +8,6 @@
     "start": "pnpm --dir app start",
     "lint": "pnpm --dir app lint",
     "test": "pnpm --dir app test",
-    "ingest:validate": "pnpm --dir app ingest:validate",
-    "ingest:review": "pnpm --dir app ingest:review",
-    "ingest:promote": "pnpm --dir app ingest:promote",
-    "atlas:validate": "pnpm --dir app atlas:validate",
-    "atlas:review": "pnpm --dir app atlas:review",
     "research:prepare": "pnpm --dir app research:prepare",
     "research:coverage": "pnpm --dir app research:coverage",
     "research:validate": "pnpm --dir app research:validate",
@@ -20,10 +15,7 @@
     "research:stage": "pnpm --dir app research:stage",
     "research:import": "pnpm --dir app research:import",
     "research:smoke": "pnpm --dir app research:smoke",
-    "leads:validate": "pnpm --dir app leads:validate",
     "data:readiness": "pnpm --dir app data:readiness",
-    "db:reconcile:validate": "pnpm --dir app db:reconcile:validate",
-    "seed:validate": "pnpm --dir app seed:validate",
-    "seed:import": "pnpm --dir app seed:import"
+    "release:validate": "pnpm test && pnpm lint && pnpm research:validate && pnpm research:coverage && pnpm build"
   }
 }

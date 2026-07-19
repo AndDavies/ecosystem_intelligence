@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow, Inter } from "next/font/google";
-import { PilotExperience } from "@/components/atlas/pilot-experience";
+import { PublicBetaExperience } from "@/components/atlas/public-beta-experience";
 import { PublicBetaInsights } from "@/components/atlas/public-beta-insights";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
@@ -62,7 +62,7 @@ export default function RootLayout({
           { "@context": "https://schema.org", "@type": "Dataset", name: "Canadian Defence and Dual-Use Ecosystem Map", description: siteDescription, url: siteUrl, creator: { "@type": "Person", name: "Andrew Davies" }, spatialCoverage: { "@type": "Country", name: "Canada" }, inLanguage: "en-CA", isAccessibleForFree: true, license: `${siteUrl}/terms`, keywords: ["Canada", "defence", "dual-use", "ecosystem", "technology", "innovation"] }
         ]} />
         {children}
-        <PilotExperience />
+        <PublicBetaExperience />
         <PublicBetaInsights />
       </body>
     </html>

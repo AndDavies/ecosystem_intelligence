@@ -236,12 +236,7 @@ Before a reviewed batch is eligible for promotion, run:
 
 ```bash
 pnpm data:readiness
-pnpm leads:validate
-pnpm seed:validate
-pnpm ingest:validate
-pnpm test
-pnpm lint
-pnpm build
+pnpm release:validate
 ```
 
 The public migration test additionally verifies:

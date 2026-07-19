@@ -2,14 +2,6 @@ import "server-only";
 
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
-import {
-  atlasClusters,
-  atlasDemandRequirements,
-  atlasMissionAreas,
-  atlasOrganizations,
-  atlasTechnicalDomains
-} from "@/lib/atlas/validated-data";
-import { resolveAtlasDataSource } from "@/lib/atlas/data-source";
 import { getAtlasMetroArea, inferAtlasMetroArea, organizationMatchesMetro } from "@/lib/atlas/geography";
 import { loadAtlasSnapshotFromSupabase } from "@/lib/atlas/supabase-repository";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
@@ -111,23 +103,6 @@ function buildRegions(snapshot: Omit<AtlasSnapshot, "regions">): AtlasRegion[] {
   });
 }
 
-function getValidatedSeedSnapshot(): AtlasSnapshot {
-  const base = {
-    organizations: atlasOrganizations,
-    demandRequirements: atlasDemandRequirements,
-    technicalDomains: atlasTechnicalDomains,
-    missionAreas: atlasMissionAreas,
-    clusters: atlasClusters,
-    generatedAt: new Date().toISOString(),
-    dataSource: "validated_seed" as const
-  };
-
-  return {
-    ...base,
-    regions: buildRegions(base)
-  };
-}
-
 const getCachedSupabaseSnapshot = unstable_cache(
   async () => loadAtlasSnapshotFromSupabase(),
   ["ecosystem-intelligence-public-atlas-snapshot-v1"],
@@ -135,15 +110,9 @@ const getCachedSupabaseSnapshot = unstable_cache(
 );
 
 export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
-  const requestedSource = resolveAtlasDataSource(process.env.ATLAS_DATA_SOURCE);
-
-  if (requestedSource !== "supabase") {
-    return getValidatedSeedSnapshot();
-  }
-
   if (!hasSupabasePublicEnv()) {
     throw new Error(
-      "The hosted atlas data source is selected, but its database connection is not configured."
+      "The production database connection is not configured. True North Map does not fall back to bundled records."
     );
   }
 
@@ -273,8 +242,7 @@ function buildAppliedFilters(snapshot: AtlasSnapshot, query: AtlasQuery) {
   return filters;
 }
 
-export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResult> {
-  const snapshot = await getAtlasSnapshot();
+export function queryAtlasSnapshot(snapshot: AtlasSnapshot, query: AtlasQuery = {}): AtlasQueryResult {
   const page = Math.max(1, query.page ?? 1);
   const pageSize = Math.min(1000, Math.max(1, query.pageSize ?? 25));
 
@@ -390,6 +358,10 @@ export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResu
       )
     }
   };
+}
+
+export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResult> {
+  return queryAtlasSnapshot(await getAtlasSnapshot(), query);
 }
 
 export async function getAtlasOrganizationBySlug(slug: string) {
@@ -527,9 +499,8 @@ function inferFilters(snapshot: AtlasSnapshot, rawQuery: string): AtlasQuery {
   return filters;
 }
 
-export async function discoverAtlas(rawQuery: string): Promise<AtlasDiscoveryResult> {
+export function discoverAtlasSnapshot(snapshot: AtlasSnapshot, rawQuery: string): AtlasDiscoveryResult {
   const query = rawQuery.trim();
-  const snapshot = await getAtlasSnapshot();
 
   if (!query) {
     return {
@@ -550,7 +521,7 @@ export async function discoverAtlas(rawQuery: string): Promise<AtlasDiscoveryRes
   }
 
   const filters = inferFilters(snapshot, query);
-  const result = await queryAtlas({ ...filters, pageSize: 100 });
+  const result = queryAtlasSnapshot(snapshot, { ...filters, pageSize: 100 });
   const capabilityIds = result.organizations.flatMap((organization) =>
     organization.capabilities
       .filter((capability) => {
@@ -585,4 +556,8 @@ export async function discoverAtlas(rawQuery: string): Promise<AtlasDiscoveryRes
             "Review the published demand page for currently unmapped gaps"
           ]
   };
+}
+
+export async function discoverAtlas(rawQuery: string): Promise<AtlasDiscoveryResult> {
+  return discoverAtlasSnapshot(await getAtlasSnapshot(), rawQuery);
 }

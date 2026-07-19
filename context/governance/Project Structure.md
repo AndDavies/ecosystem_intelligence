@@ -8,7 +8,7 @@ The repository root is a workspace map rather than an application directory. Pro
 
 | Area | Owns | Does not own |
 | --- | --- | --- |
-| `app/` | Next.js source, public/private routes, runtime configuration, tests, scripts, clean hosted-database migration, validated seed | Research source books, review packets, product planning |
+| `app/` | Next.js source, public/private routes, runtime configuration, tests, current research scripts, and production-database migrations | Research source books, review packets, product planning, alternate runtime datasets |
 | `research/` | Source discovery, staged evidence, ingestion schemas, review artifacts, analysis | Runtime code or promoted seed data |
 | `context/` | PRD, plans, audits, handoffs, agent role guidance | Candidate data or application implementation |
 | `content/` | Launch collateral, media, and future copy or demo assets | Product UI assets required at runtime |
@@ -16,12 +16,11 @@ The repository root is a workspace map rather than an application directory. Pro
 ## Working conventions
 
 - Run standard commands from the repository root. The root `package.json` forwards them to `app/`.
-- Treat `research/ingestion/` as file-based review staging and `app/supabase/seed.sql` as the clean promoted public seed.
-- Keep prior internal-workspace migrations and CSV seed material under `app/supabase/legacy/`; they are readable reference data, not inputs to the public atlas.
+- Treat `research/ingestion/` as typed v2 private review staging and Supabase project `facoactpdckkhciamflk` as the sole canonical dataset.
+- Treat `app/supabase/seed.sql` only as a reproducible migration/test fixture. It is not a runtime source or promotion target.
+- Do not retain alternate schemas, CSV-era seed stores, or legacy ingestion commands inside the deployable application.
 - Put application-specific types and repositories under `app/src/types/atlas.ts` and `app/src/lib/atlas/`.
-- Use `ATLAS_DATA_SOURCE=supabase` for the migrated and verified hosted project.
-  `validated_seed` remains an explicit local fallback; the app must not silently
-  fall back when hosted data is requested.
+- Require production database configuration for application startup, research coverage, taxonomy validation, duplicate checks, and release validation. Missing or failed database access is a hard stop.
 - Put durable product decisions in `context/governance/`, not in source-code comments or research reports.
 - Put project-local agent role instructions in `context/agent-skills/`.
 - Keep runtime imagery in `app/public/`; keep campaign or production media in `content/`.

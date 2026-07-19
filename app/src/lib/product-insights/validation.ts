@@ -8,7 +8,7 @@ const optionalShortText = z.union([z.literal(""), z.string().trim().max(120)]).n
 const optionalEmail = z.union([z.literal(""), z.string().trim().email().max(320)]).optional().transform((value) => value ? value.toLowerCase() : null);
 const optionalUuid = z.union([z.literal(""), z.string().uuid()]).nullish().transform((value) => value || null);
 
-export const pilotSignupSchema = z.object({
+export const betaSignupSchema = z.object({
   email: z.string().trim().email().max(320).transform((value) => value.toLowerCase()),
   consent: z.literal(true),
   consentText: z.string().trim().min(20).max(1000),
@@ -21,7 +21,7 @@ export const pilotSignupSchema = z.object({
   website: z.string().max(200).optional().default("")
 });
 
-export const pilotFeedbackSchema = z.object({
+export const betaFeedbackSchema = z.object({
   goal: z.string().trim().min(3).max(1200),
   worked: z.union([z.literal(""), z.string().trim().max(2000)]).optional().transform((value) => value || null),
   missing: z.string().trim().min(3).max(3000),
@@ -33,14 +33,14 @@ export const pilotFeedbackSchema = z.object({
   website: z.string().max(200).optional().default("")
 });
 
-export const pilotDiscoveryRequestSchema = z.object({
+export const betaDiscoveryRequestSchema = z.object({
   query: z.string().trim().min(1).max(500),
   contextPath: safePath.optional().default("/"),
   cohort: optionalShortText,
   sessionId: optionalUuid
 });
 
-export const pilotEventNames = [
+export const betaEventNames = [
   "atlas_search",
   "filter_apply",
   "marker_select",
@@ -55,12 +55,12 @@ export const pilotEventNames = [
   "feedback"
 ] as const;
 
-export type PilotEventName = (typeof pilotEventNames)[number];
+export type BetaEventName = (typeof betaEventNames)[number];
 
 const pilotMetadataValue = z.union([z.string().max(255), z.number().finite(), z.boolean(), z.null()]);
 
-export const pilotEventSchema = z.object({
-  eventName: z.enum(pilotEventNames),
+export const betaEventSchema = z.object({
+  eventName: z.enum(betaEventNames),
   contextPath: safePath,
   cohort: optionalShortText,
   sessionId: optionalUuid,

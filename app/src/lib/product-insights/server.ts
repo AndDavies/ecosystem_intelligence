@@ -1,3 +1,5 @@
+import "server-only";
+
 import { createHmac } from "node:crypto";
 
 export function requestFingerprint(request: Request) {
@@ -7,7 +9,7 @@ export function requestFingerprint(request: Request) {
   return createHmac("sha256", secret).update(`${forwardedFor}|${userAgent}`).digest("hex");
 }
 
-export function normalizePilotSearchQuery(value: string) {
+export function normalizeBetaSearchQuery(value: string) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 

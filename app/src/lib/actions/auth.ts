@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { getAuthBaseUrl, googleOAuthQueryParams, safeAuthNextPath } from "@/lib/auth-utils";
-import { hasSupabaseEnv, hasSupabasePublicEnv } from "@/lib/supabase/env";
+import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 import { createClient } from "@/lib/supabase/server";
 
 const emailLinkSchema = z.object({
@@ -76,7 +76,7 @@ export async function sendEmailSignInLink(formData: FormData) {
 }
 
 export async function signOut() {
-  if (hasSupabaseEnv()) {
+  if (hasSupabasePublicEnv()) {
     const supabase = await createClient({ writeCookies: true });
     await supabase.auth.signOut({ scope: "local" });
   }

@@ -199,7 +199,7 @@ export interface AtlasSnapshot {
   clusters: AtlasCluster[];
   regions: AtlasRegion[];
   generatedAt: string;
-  dataSource: "validated_seed" | "supabase";
+  dataSource: "supabase";
 }
 
 export interface AtlasBounds {

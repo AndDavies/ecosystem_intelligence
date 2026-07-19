@@ -3,7 +3,8 @@ import { describe, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 
 import { getAtlasMetroArea, inferAtlasMetroArea } from "@/lib/atlas/geography";
-import { discoverAtlas, queryAtlas } from "@/lib/atlas/repository";
+import { discoverAtlasSnapshot, queryAtlasSnapshot } from "@/lib/atlas/repository";
+import { atlasTestSnapshot } from "./fixtures/atlas-snapshot";
 
 describe("atlas metro geography", () => {
   it("resolves Halifax, HRM, and Dartmouth to one reviewed metro area", () => {
@@ -14,7 +15,7 @@ describe("atlas metro geography", () => {
   });
 
   it("returns Dartmouth-based organizations for a Halifax discovery query", async () => {
-    const discovery = await discoverAtlas("Halifax");
+    const discovery = discoverAtlasSnapshot(atlasTestSnapshot, "Halifax");
 
     expect(discovery.interpretation).toBe("matched");
     expect(discovery.filters).toEqual({ metro: "halifax-regional-municipality" });
@@ -27,8 +28,8 @@ describe("atlas metro geography", () => {
   });
 
   it("combines HRM geography with capability-oriented discovery", async () => {
-    const discovery = await discoverAtlas("HRM underwater");
-    const result = await queryAtlas({ metro: "halifax-regional-municipality", mission: "underwater-isr" });
+    const discovery = discoverAtlasSnapshot(atlasTestSnapshot, "HRM underwater");
+    const result = queryAtlasSnapshot(atlasTestSnapshot, { metro: "halifax-regional-municipality", mission: "underwater-isr" });
 
     expect(discovery.filters).toMatchObject({
       metro: "halifax-regional-municipality",

@@ -313,18 +313,12 @@ Deadline: Sunday, 19:00 Atlantic
 Run from the final, clean repository state:
 
 ```bash
-pnpm test
-pnpm lint
-pnpm leads:validate
-pnpm seed:validate
-pnpm ingest:validate
-pnpm build
+pnpm release:validate
 ```
 
-Verified result: all six commands exit successfully; 24 test files and 83 tests
-pass, both source-lead batches validate with zero errors or warnings, the seed
-validates, the candidate batch validates with zero errors or warnings, and the
-production build generates 41 routes.
+Pass condition: the unified gate exits successfully against the current code,
+research contracts, production-database coverage, and production build. Counts
+from earlier runs are historical evidence and must not replace a fresh result.
 
 Pass condition: every command exits successfully. Do not treat the earlier
 passing run as final if the research hierarchy changes afterward.

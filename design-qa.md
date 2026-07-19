@@ -1,4 +1,6 @@
-# Field Atlas design QA
+# Field Atlas design QA (historical snapshot)
+
+This file records the 2026-07-17 validation run. Current release instructions live in `AGENTS.md` and use `pnpm release:validate`.
 
 Date: 2026-07-17
 

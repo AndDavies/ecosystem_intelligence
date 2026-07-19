@@ -1,10 +1,10 @@
 "use client";
 
-import type { PilotEventName } from "@/lib/pilot/validation";
+import type { BetaEventName } from "@/lib/product-insights/validation";
 
-const cohortKey = "ecosystem-intelligence-pilot-cohort";
-const sessionKey = "ecosystem-intelligence-pilot-session";
-const searchKey = "ecosystem-intelligence-pilot-search";
+const cohortKey = "true-north-map-beta-cohort";
+const sessionKey = "true-north-map-beta-session";
+const searchKey = "true-north-map-beta-search";
 
 function validUuid(value: string | null) {
   return Boolean(value && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value));
@@ -44,7 +44,7 @@ export function currentPilotSearchId() {
   }
 }
 
-export function rememberPilotSearchId(searchId: string | null | undefined) {
+export function rememberBetaSearchId(searchId: string | null | undefined) {
   if (typeof window === "undefined") return;
   try {
     if (validUuid(searchId ?? null)) window.sessionStorage.setItem(searchKey, searchId as string);
@@ -54,8 +54,8 @@ export function rememberPilotSearchId(searchId: string | null | undefined) {
   }
 }
 
-export function trackPilotEvent(
-  eventName: PilotEventName,
+export function trackBetaEvent(
+  eventName: BetaEventName,
   metadata: Record<string, string | number | boolean | null> = {},
   attribution: { searchId?: string | null } = {}
 ) {
@@ -75,10 +75,10 @@ export function trackPilotEvent(
   }).catch(() => undefined);
 }
 
-export function openPilotUpdates() {
+export function openBetaUpdates() {
   if (typeof window !== "undefined") window.dispatchEvent(new Event("pilot:open-updates"));
 }
 
-export function openPilotFeedback() {
+export function openBetaFeedback() {
   if (typeof window !== "undefined") window.dispatchEvent(new Event("pilot:open-feedback"));
 }

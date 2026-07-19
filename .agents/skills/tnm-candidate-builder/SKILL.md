@@ -10,7 +10,7 @@ Build the record shape appropriate to the actor or demand source. Do not force n
 ## Workflow
 
 1. Read the qualified lead batch and executable schema in `app/src/lib/research/pipeline-schema.ts`.
-2. Recheck identity against published, legacy pending, and v2 pending records.
+2. Recheck identity against published organizations and typed pending candidates in the production database.
 3. Choose exactly one candidate bundle:
    - `organization_bundle_v2`
    - `demand_signal_bundle_v1`

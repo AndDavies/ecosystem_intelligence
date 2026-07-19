@@ -324,11 +324,7 @@ Next implementation and validation order:
 Before sharing with any BD users, run:
 
 ```bash
-pnpm test
-pnpm lint
-pnpm build
-pnpm seed:validate
-pnpm ingest:validate
+pnpm release:validate
 ```
 
 All should pass.

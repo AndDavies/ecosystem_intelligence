@@ -1,14 +1,14 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
-import { pilotEventSchema } from "@/lib/pilot/validation";
-import { privateJson, requestFingerprint } from "@/lib/pilot/server";
+import { betaEventSchema } from "@/lib/product-insights/validation";
+import { privateJson, requestFingerprint } from "@/lib/product-insights/server";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   if (!hasSupabaseAdminEnv()) return privateJson({ ok: true }, { status: 202 });
 
-  const parsed = pilotEventSchema.safeParse(await request.json().catch(() => null));
+  const parsed = betaEventSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return privateJson({ error: "Invalid public-beta event." }, { status: 400 });
 
   const supabase = createAdminClient();

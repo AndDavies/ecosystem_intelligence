@@ -4,7 +4,7 @@ import { PGlite } from "@electric-sql/pglite";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 const migrationDirectory = path.resolve("supabase/migrations");
-const seedPath = path.resolve("supabase/seed.sql");
+const foundationFixturePath = path.resolve("tests/fixtures/database-foundation.sql");
 
 let db: PGlite;
 
@@ -68,7 +68,7 @@ beforeAll(async () => {
   for (const fileName of foundationMigrations) {
     await applyMigration(fileName);
   }
-  await db.exec(await readFile(seedPath, "utf8"));
+  await db.exec(await readFile(foundationFixturePath, "utf8"));
   for (const fileName of reviewedDataMigrations) {
     await applyMigration(fileName);
   }
@@ -79,7 +79,7 @@ afterAll(async () => {
 });
 
 describe("public atlas database foundation", () => {
-  it("applies the complete migration and validated seed", async () => {
+  it("applies the complete migration chain against the isolated database fixture", async () => {
     const result = await db.query<{
       organizations: number;
       capabilities: number;

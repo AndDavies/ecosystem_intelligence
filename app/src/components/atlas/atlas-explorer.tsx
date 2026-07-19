@@ -35,10 +35,10 @@ import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
 import {
   currentPilotCohort,
   currentPilotSessionId,
-  openPilotFeedback,
-  rememberPilotSearchId,
-  trackPilotEvent
-} from "@/lib/pilot/client";
+  openBetaFeedback,
+  rememberBetaSearchId,
+  trackBetaEvent
+} from "@/lib/product-insights/client";
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
 import type {
   AtlasCapability,
@@ -228,7 +228,7 @@ export function AtlasExplorer({
     const query = question.trim();
     if (!query) {
       setDiscovery(null);
-      rememberPilotSearchId(null);
+      rememberBetaSearchId(null);
       await load({});
       return;
     }
@@ -249,8 +249,8 @@ export function AtlasExplorer({
       if (!response.ok) throw new Error("The question could not be interpreted.");
       const nextDiscovery = (await response.json()) as AtlasDiscoveryResult;
       setDiscovery(nextDiscovery);
-      rememberPilotSearchId(nextDiscovery.searchId);
-      trackPilotEvent("atlas_search", {
+      rememberBetaSearchId(nextDiscovery.searchId);
+      trackBetaEvent("atlas_search", {
         filter_count: Object.values(nextDiscovery.filters).filter(Boolean).length,
         result_count: nextDiscovery.organizationIds.length,
         interpretation: nextDiscovery.interpretation,
@@ -266,7 +266,7 @@ export function AtlasExplorer({
   function updateSelection(id: string, revealInTable = false, source: "map" | "result" = "result") {
     setSelectedId(id);
     const organization = result.organizations.find((item) => item.id === id);
-    trackPilotEvent(source === "map" ? "marker_select" : "result_select", {
+    trackBetaEvent(source === "map" ? "marker_select" : "result_select", {
       organization: organization?.slug ?? "unknown",
       source
     });
@@ -297,7 +297,7 @@ export function AtlasExplorer({
           <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:text-base sm:leading-7">Find Canadian organizations, technology, and public demand in one place. Search by place, need, or technology, compare the supporting sources, then build a Working List for the conversation ahead.</p>
           <p className="mt-4 flex items-center gap-2 text-xs font-medium text-[var(--atlas-muted)]"><ShieldCheck className="size-4 text-[var(--atlas-primary)]" />Reviewed public sources · transparent gaps · human review</p>
         </div>
-        <button type="button" onClick={openPilotFeedback} className="atlas-secondary-button h-11 w-fit px-4 text-xs">Tell us what is missing</button>
+        <button type="button" onClick={openBetaFeedback} className="atlas-secondary-button h-11 w-fit px-4 text-xs">Tell us what is missing</button>
       </section>
 
       <section className="overflow-hidden rounded-[24px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
@@ -324,7 +324,7 @@ export function AtlasExplorer({
           <div className="mt-3 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex min-h-9 flex-wrap items-center gap-2">
               {result.appliedFilters.map((filter) => (
-                <button key={`${filter.key}-${filter.value}`} type="button" onClick={() => { if (filter.key === "query" || filter.key === "metro") rememberPilotSearchId(null); void load(filterWithout(filters, filter.key), { updateQuestion: filter.key === "query" || filter.key === "metro" }); }} className="inline-flex h-9 items-center gap-2 rounded-full border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-3 text-xs font-medium text-[var(--atlas-primary)] hover:border-[var(--atlas-primary)]" aria-label={`Remove ${filter.label}: ${filter.value}`}>
+                <button key={`${filter.key}-${filter.value}`} type="button" onClick={() => { if (filter.key === "query" || filter.key === "metro") rememberBetaSearchId(null); void load(filterWithout(filters, filter.key), { updateQuestion: filter.key === "query" || filter.key === "metro" }); }} className="inline-flex h-9 items-center gap-2 rounded-full border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-3 text-xs font-medium text-[var(--atlas-primary)] hover:border-[var(--atlas-primary)]" aria-label={`Remove ${filter.label}: ${filter.value}`}>
                   <span>{filter.label}: {filter.value}</span><X className="size-3.5" />
                 </button>
               ))}
@@ -337,13 +337,13 @@ export function AtlasExplorer({
           {filterPanelOpen ? (
             <section className="mt-3 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4" aria-label="Ecosystem map filters">
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                <FilterSelect label="Region" value={filters.region ?? ""} options={regions.map((region) => ({ value: region.slug, label: `${region.name} (${region.organizationCount})` }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "region", value: value || "all" }); void load({ ...filters, region: value || undefined }); }} />
-                <FilterSelect label="Organization type" value={filters.type ?? ""} options={result.facets.organizationTypes.filter((type) => publicOrganizationTypes.has(type.value)).map((type) => ({ value: type.value, label: `${type.label} (${type.count})` }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "type", value: value || "all" }); void load({ ...filters, type: value || undefined }); }} />
-                <FilterSelect label="Technology area" value={filters.domain ?? ""} options={technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "domain", value: value || "all" }); void load({ ...filters, domain: value || undefined }); }} />
-                <FilterSelect label="Mission or use case" value={filters.mission ?? ""} options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }} />
-                <FilterSelect label="Public demand" value={filters.demand ?? ""} options={demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "demand", value: value || "all" }); void load({ ...filters, demand: value || undefined }); }} />
+                <FilterSelect label="Region" value={filters.region ?? ""} options={regions.map((region) => ({ value: region.slug, label: `${region.name} (${region.organizationCount})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "region", value: value || "all" }); void load({ ...filters, region: value || undefined }); }} />
+                <FilterSelect label="Organization type" value={filters.type ?? ""} options={result.facets.organizationTypes.filter((type) => publicOrganizationTypes.has(type.value)).map((type) => ({ value: type.value, label: `${type.label} (${type.count})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "type", value: value || "all" }); void load({ ...filters, type: value || undefined }); }} />
+                <FilterSelect label="Technology area" value={filters.domain ?? ""} options={technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "domain", value: value || "all" }); void load({ ...filters, domain: value || undefined }); }} />
+                <FilterSelect label="Mission or use case" value={filters.mission ?? ""} options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }} />
+                <FilterSelect label="Public demand" value={filters.demand ?? ""} options={demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "demand", value: value || "all" }); void load({ ...filters, demand: value || undefined }); }} />
               </div>
-              <div className="mt-4 flex items-center justify-between border-t border-[var(--atlas-border)] pt-3"><span className="text-xs text-[var(--atlas-muted)]">Filters update the map, results, URL, and export together.</span><button type="button" className="text-xs font-semibold text-[var(--atlas-primary)] hover:underline" onClick={() => { rememberPilotSearchId(null); setDiscovery(null); void load({}, { updateQuestion: true }); }}>Clear all</button></div>
+              <div className="mt-4 flex items-center justify-between border-t border-[var(--atlas-border)] pt-3"><span className="text-xs text-[var(--atlas-muted)]">Filters update the map, results, URL, and export together.</span><button type="button" className="text-xs font-semibold text-[var(--atlas-primary)] hover:underline" onClick={() => { rememberBetaSearchId(null); setDiscovery(null); void load({}, { updateQuestion: true }); }}>Clear all</button></div>
             </section>
           ) : null}
 
@@ -438,7 +438,7 @@ export function AtlasExplorer({
                     onToggle={() => {
                       setSelectedId(organization.id);
                       setExpandedId((current) => (current === organization.id ? null : organization.id));
-                      trackPilotEvent("result_select", { organization: organization.slug, source: "mobile_list" });
+                      trackBetaEvent("result_select", { organization: organization.slug, source: "mobile_list" });
                     }}
                   />
                 ))}
@@ -473,7 +473,7 @@ export function AtlasExplorer({
                         onToggleExpanded={() => {
                           setSelectedId(organization.id);
                           setExpandedId((current) => (current === organization.id ? null : organization.id));
-                          trackPilotEvent("result_select", { organization: organization.slug, source: "table_expand" });
+                          trackBetaEvent("result_select", { organization: organization.slug, source: "table_expand" });
                         }}
                       />
                     ))}
@@ -490,10 +490,10 @@ export function AtlasExplorer({
               </p>
               {emptyState.kind === "search" ? (
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-4">
-                  <button type="button" className="text-sm font-semibold text-[var(--atlas-primary)] hover:underline" onClick={() => { rememberPilotSearchId(null); setDiscovery(null); void load({}, { updateQuestion: true }); }}>
+                  <button type="button" className="text-sm font-semibold text-[var(--atlas-primary)] hover:underline" onClick={() => { rememberBetaSearchId(null); setDiscovery(null); void load({}, { updateQuestion: true }); }}>
                     Clear search
                   </button>
-                  <button type="button" className="text-sm font-semibold text-[var(--atlas-primary)] hover:underline" onClick={openPilotFeedback}>
+                  <button type="button" className="text-sm font-semibold text-[var(--atlas-primary)] hover:underline" onClick={openBetaFeedback}>
                     Tell us what is missing
                   </button>
                 </div>

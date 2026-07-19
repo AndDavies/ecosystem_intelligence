@@ -1,6 +1,6 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
-import { privateJson, requestFingerprint } from "@/lib/pilot/server";
+import { privateJson, requestFingerprint } from "@/lib/product-insights/server";
 import { contactMessageSchema } from "@/lib/beta/validation";
 
 export const dynamic = "force-dynamic";

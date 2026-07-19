@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
-import { trackPilotEvent } from "@/lib/pilot/client";
+import { trackBetaEvent } from "@/lib/product-insights/client";
 
 export function ConnectionForm({ organizationId, organizationName, defaultName }: { organizationId: string; organizationName: string; defaultName: string }) {
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -32,7 +32,7 @@ export function ConnectionForm({ organizationId, organizationName, defaultName }
       setState("error");
       return;
     }
-    trackPilotEvent("connection", { organization_id: organizationId });
+    trackBetaEvent("connection", { organization_id: organizationId });
     setState("success");
   }
 

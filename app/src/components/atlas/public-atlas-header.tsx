@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Bell, Menu, Network, UserRound, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { openPilotUpdates } from "@/lib/pilot/client";
+import { openBetaUpdates } from "@/lib/product-insights/client";
 
 const navigation = [
   { href: "/", label: "Ecosystem Map", match: (pathname: string) => pathname === "/" },
@@ -79,7 +79,7 @@ export function PublicAtlasHeader() {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={openPilotUpdates}
+            onClick={openBetaUpdates}
             className="atlas-secondary-button !hidden h-10 items-center gap-2 px-4 text-sm sm:!inline-flex"
           >
             <Bell className="size-4" />
@@ -127,7 +127,7 @@ export function PublicAtlasHeader() {
                 </Link>
               );
             })}
-            <button type="button" onClick={() => { openPilotUpdates(); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" />Get updates</button>
+            <button type="button" onClick={() => { openBetaUpdates(); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" />Get updates</button>
             {authState === "checking" ? (
               <span className="rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 text-center text-sm font-semibold text-[var(--atlas-muted)]">Checking account…</span>
             ) : (
