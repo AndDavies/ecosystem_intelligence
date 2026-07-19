@@ -9,9 +9,9 @@ import { getAtlasSnapshot, queryAtlas } from "@/lib/atlas/repository";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "True North Map | Canadian Defence and Dual-Use Atlas",
+  title: "True North Map | Canada’s Defence and Dual-Use Ecosystem Map",
   description:
-    "Explore reviewed Canadian defence and dual-use organizations, capabilities, regions, public sources, and clearly labelled analyst assessments."
+    "Find Canadian defence and dual-use teams and technology, see where they fit, and inspect the public evidence behind every profile."
 };
 
 export default async function PublicAtlasPage({

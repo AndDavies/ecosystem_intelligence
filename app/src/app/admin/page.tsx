@@ -27,11 +27,12 @@ export default async function AdminOverviewPage() {
         <AdminMetric icon={<CheckCircle2 className="size-5" />} label="Ready to publish" value={approved.count ?? 0} />
         <AdminMetric icon={<Send className="size-5" />} label="Public submissions" value={submissions.count ?? 0} />
       </div>
-      <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+      <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         <AdminLink title="Stage a source or PDF" detail="Create a private extraction candidate with visibility and provenance intact." href="/admin/intake" />
         <AdminLink title="Review candidate changes" detail="Compare proposed and current records, then accept, reject, edit, merge, or defer." href="/admin/review" />
         <AdminLink title="Publish approved records" detail="Run final validation and publish every approved record with one explicit action." href="/admin/publish" />
         <AdminLink title="Manage organizations" detail="Edit a published organization, its primary location, and its capability profile." href="/admin/organizations" />
+        <AdminLink title="Find potential demand matches" detail="Compare reviewed technologies with public problem statements, then publish only the connections you can defend." href="/admin/demand-matches" />
         <AdminLink title="Inspect coverage gaps" detail="Measure published coverage by region, domain, mission, and demand statement." href="/admin/coverage" />
       </div>
       <PublicCard title="Publication boundary" eyebrow="Human approval required" className="mt-5">

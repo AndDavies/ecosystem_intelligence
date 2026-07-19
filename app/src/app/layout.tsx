@@ -20,10 +20,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "True North Map | Canadian Defence and Dual-Use Atlas",
+    default: "True North Map | Canada’s Defence and Dual-Use Ecosystem Map",
     template: "%s | True North Map"
   },
-  description: "An independent, evidence-backed public atlas of Canada's defence and dual-use organizations, capabilities, and collaboration opportunities.",
+  description: siteDescription,
   robots: {
     index: true,
     follow: true
@@ -38,12 +38,12 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     title: "True North Map Canadian Public Beta",
-    description: "Explore verified Canadian defence and dual-use organizations, capabilities, and public evidence.",
+    description: "Find Canadian teams and technology, see where they fit, and inspect the public evidence behind every profile.",
     siteName,
     locale: "en_CA",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "True North Map Canadian Public Beta" }]
   },
-  twitter: { card: "summary_large_image", title: "True North Map Canadian Public Beta", description: "Explore verified Canadian defence and dual-use organizations, capabilities, and public evidence.", images: ["/opengraph-image"] }
+  twitter: { card: "summary_large_image", title: "True North Map Canadian Public Beta", description: "Find Canadian teams and technology, see where they fit, and inspect the public evidence behind every profile.", images: ["/opengraph-image"] }
 };
 
 export default function RootLayout({
@@ -59,7 +59,7 @@ export default function RootLayout({
       <body suppressHydrationWarning className={`${barlow.variable} ${inter.variable}`}>
         <JsonLd data={[
           { "@context": "https://schema.org", "@type": "WebSite", name: siteName, url: siteUrl, description: siteDescription, inLanguage: "en-CA", potentialAction: { "@type": "SearchAction", target: `${siteUrl}/?q={search_term_string}`, "query-input": "required name=search_term_string" } },
-          { "@context": "https://schema.org", "@type": "Dataset", name: "Canadian Defence and Dual-Use Ecosystem Atlas", description: siteDescription, url: siteUrl, creator: { "@type": "Person", name: "Andrew Davies" }, spatialCoverage: { "@type": "Country", name: "Canada" }, inLanguage: "en-CA", isAccessibleForFree: true, license: `${siteUrl}/terms`, keywords: ["Canada", "defence", "dual-use", "ecosystem", "capabilities", "innovation"] }
+          { "@context": "https://schema.org", "@type": "Dataset", name: "Canadian Defence and Dual-Use Ecosystem Map", description: siteDescription, url: siteUrl, creator: { "@type": "Person", name: "Andrew Davies" }, spatialCoverage: { "@type": "Country", name: "Canada" }, inLanguage: "en-CA", isAccessibleForFree: true, license: `${siteUrl}/terms`, keywords: ["Canada", "defence", "dual-use", "ecosystem", "technology", "innovation"] }
         ]} />
         {children}
         <PilotExperience />

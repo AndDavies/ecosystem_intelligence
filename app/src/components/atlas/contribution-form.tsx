@@ -54,7 +54,7 @@ export function ContributionForm({
       <div className="rounded-2xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-6 text-center">
         <CheckCircle2 className="mx-auto size-8 text-[var(--atlas-primary)]" />
         <h2 className="mt-4 text-lg font-bold text-[var(--atlas-ink)]">Submitted for editorial review</h2>
-        <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[var(--atlas-muted)]">The public atlas was not changed. An editor can compare your evidence with the current record and record a review decision.</p>
+        <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[var(--atlas-muted)]">The public map was not changed. An editor can compare your evidence with the current profile and make a review decision.</p>
         <Link href={returnTo} className="atlas-primary-button mt-5 h-10 px-4 text-sm">Return to published record</Link>
       </div>
     );

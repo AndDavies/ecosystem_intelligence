@@ -293,3 +293,39 @@ use `ATLAS_DATA_SOURCE=supabase`.
   corpus without double-counting reviewed artifacts.
 - Matched the four local autonomous-research migration filenames to the versions
   already recorded by the production project, preventing accidental DDL replay.
+
+## Decision-led profile and demand workflow - 2026-07-19
+
+- Added organization-type discovery for companies, investors and funders,
+  accelerators, incubators, research and test centres, ecosystem organizations,
+  and government innovation offices. Natural-language interpretation, visible
+  filter chips, structured filtering, URL state, map results, and exports now use
+  the same canonical organization type.
+- Reworked organization and technology profiles around the customer decision:
+  clear breadcrumbs, “Company snapshot,” entity-appropriate technology or
+  offering headings, “Where It Fits,” evidence and sources, Working List and
+  introduction actions, and one compact research-gap state instead of empty
+  mission and demand panels.
+- Added official public contact paths to the canonical organization
+  `profile_data` object rather than a second table. The Andrew-only editor can
+  maintain an official contact page, public email, organization phone, and
+  LinkedIn page through a narrow security-invoker RPC with explicit grants,
+  rationale, before/after audit history, and immediate public-cache refresh.
+- Replaced opaque editor labels with “Main technology area,” “Regional ecosystem
+  group,” “Technology source support,” and “Review status.” The editor exposes
+  the stored taxonomy summaries and click-to-open guidance without changing the
+  canonical schema.
+- Added a deterministic, private technology-to-demand comparison workspace.
+  Stronger concept overlaps become `needs_review` candidates only. Existing
+  pairs are excluded, no suggestion can auto-publish, and each public connection
+  requires Andrew to inspect both records and select “Publish match” with a
+  substantive rationale. Published matches remain labelled as derived, inherit
+  the existing technology and demand citations, and are fully audited.
+- Shifted public copy from system architecture to user consequence. “Ecosystem
+  Map,” “technology or offering,” “Where It Fits,” and “source support” now carry
+  across search, directories, profiles, public demand pages, trust content,
+  metadata, social art, and downloadable PDFs. Internal route and database names
+  remain unchanged.
+- Updated the active corpus contract to the live 35 organizations and 31
+  technologies or offerings. Future records remain evidence-backed and
+  human-published but are no longer held to a fixed numeric freeze.

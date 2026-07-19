@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { openPilotUpdates } from "@/lib/pilot/client";
 
 const navigation = [
-  { href: "/", label: "Atlas", match: (pathname: string) => pathname === "/" },
+  { href: "/", label: "Ecosystem Map", match: (pathname: string) => pathname === "/" },
   { href: "/regions/canada", label: "Regions", match: (pathname: string) => pathname.startsWith("/regions") },
   { href: "/organizations", label: "Organizations", match: (pathname: string) => pathname.startsWith("/organizations") },
   { href: "/about", label: "About", match: (pathname: string) => pathname.startsWith("/about") || pathname.startsWith("/methodology") }
@@ -56,7 +56,7 @@ export function PublicAtlasHeader() {
           </span>
         </Link>
 
-        <nav className="hidden h-full items-stretch gap-8 lg:flex" aria-label="Public atlas navigation">
+        <nav className="hidden h-full items-stretch gap-8 lg:flex" aria-label="Public ecosystem map navigation">
           {navigation.map((item) => {
             const active = item.match(pathname);
             return (
@@ -109,7 +109,7 @@ export function PublicAtlasHeader() {
       </div>
 
       {open ? (
-        <nav className="border-t border-[var(--atlas-border)] bg-[var(--atlas-canvas)] px-4 py-3 shadow-[0_16px_30px_rgba(30,35,32,0.09)] lg:hidden" aria-label="Mobile public atlas navigation">
+        <nav className="border-t border-[var(--atlas-border)] bg-[var(--atlas-canvas)] px-4 py-3 shadow-[0_16px_30px_rgba(30,35,32,0.09)] lg:hidden" aria-label="Mobile public ecosystem map navigation">
           <div className="atlas-frame grid gap-1">
             {navigation.map((item) => {
               const active = item.match(pathname);

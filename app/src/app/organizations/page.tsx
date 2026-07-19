@@ -11,8 +11,8 @@ import { formatDate, toTitleCase } from "@/lib/utils";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Published Organizations",
-  description: "Browse verified organizations in Canada's defence and dual-use ecosystem."
+  title: "Canadian Defence and Dual-Use Organizations",
+  description: "Find Canadian defence and dual-use organizations, see what they build, and inspect the public evidence behind each profile."
 };
 
 export default async function OrganizationsPage() {
@@ -20,9 +20,9 @@ export default async function OrganizationsPage() {
 
   return (
     <PublicPageShell
-      eyebrow="Published directory"
+      eyebrow="Find the right Canadian team"
       title="Organizations"
-      description={`${snapshot.organizations.length} verified organizations are currently public. Coverage gaps are shown as gaps; synthetic entries and unsupported profile fields are excluded.`}
+      description={`Explore ${snapshot.organizations.length} reviewed organizations, see what they build, and decide who deserves a closer look. Gaps stay visible; unsupported details stay out.`}
       actions={<Link href="/submit?submissionType=new_organization&targetType=organization&returnTo=%2Forganizations" className="inline-flex h-10 items-center rounded-md border border-[var(--atlas-primary)] bg-white px-4 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline">Suggest an organization</Link>}
     >
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -35,7 +35,7 @@ export default async function OrganizationsPage() {
                   <Building2 className="size-5" />
                 </span>
                 <span className="rounded bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-muted)]">
-                  {evidenceStrengthLabel(organization.sourceConfidence)} evidence
+                  {evidenceStrengthLabel(organization.sourceConfidence)} source support
                 </span>
               </div>
               <h2 className="mt-5 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">
@@ -45,14 +45,14 @@ export default async function OrganizationsPage() {
               <p className="mt-4 line-clamp-3 text-sm leading-6 text-[var(--atlas-muted)]">{organization.description}</p>
               {capability ? (
                 <div className="mt-5 border-t border-[var(--atlas-border)] pt-4">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Featured capability</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">What they build</p>
                   <p className="mt-1 text-sm font-semibold text-[var(--atlas-ink-soft)]">{capability.name}</p>
                 </div>
               ) : null}
               <div className="mt-auto flex items-center justify-between pt-5 text-xs">
                 <span className="text-[var(--atlas-muted)]">Last verified {formatDate(organization.lastReviewedAt)}</span>
                 <Link href={`/organizations/${organization.slug}`} className="inline-flex items-center gap-1 font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
-                  View profile <ArrowRight className="size-3.5" />
+                  Explore profile <ArrowRight className="size-3.5" />
                 </Link>
               </div>
               <div className="mt-4 flex flex-wrap gap-1.5">

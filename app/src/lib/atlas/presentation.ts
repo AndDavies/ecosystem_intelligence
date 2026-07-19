@@ -2,9 +2,17 @@ import type {
   AtlasAlignmentType,
   AtlasConfidence,
   AtlasDemandMatch,
+  AtlasEntityKind,
   AtlasLocation,
   AtlasMissionMatch
 } from "@/types/atlas";
+
+export interface AtlasPublicContact {
+  contactPageUrl: string | null;
+  publicEmail: string | null;
+  publicPhone: string | null;
+  linkedInUrl: string | null;
+}
 
 export function assessmentConfidenceLabel(confidence: AtlasConfidence) {
   if (confidence === "high") return "High";
@@ -19,7 +27,7 @@ export function evidenceStrengthLabel(confidence: AtlasConfidence) {
 }
 
 export function alignmentTypeLabel(matchType: AtlasAlignmentType) {
-  return matchType === "public_source_alignment" ? "Source-backed match" : "Analyst assessment";
+  return matchType === "public_source_alignment" ? "Connected by a public source" : "Reviewed connection";
 }
 
 export function alignmentSubject(match: AtlasMissionMatch | AtlasDemandMatch) {
@@ -35,4 +43,57 @@ export function locationAccuracyLabel(confidence: AtlasLocation["geographicConfi
 
 export function publicSourceCountLabel(count: number) {
   return `${count} public ${count === 1 ? "source" : "sources"}`;
+}
+
+export function organizationOfferingTitle(entityKind: AtlasEntityKind, name: string) {
+  if (entityKind === "company") return `${name}’s Tech`;
+  if (entityKind === "research_test_centre") return "Facilities & Expertise";
+  if (entityKind === "accelerator" || entityKind === "incubator") return "Programs & Support";
+  if (entityKind === "investor_funder") return "Investment Focus";
+  return `What ${name} Offers`;
+}
+
+export function organizationSnapshotTitle(entityKind: AtlasEntityKind) {
+  return entityKind === "company" ? "Company snapshot" : "Organization snapshot";
+}
+
+export function organizationWebsiteLabel(entityKind: AtlasEntityKind) {
+  return entityKind === "company" ? "Visit company website" : "Visit organization website";
+}
+
+export function publicContactFromProfileData(profileData: Record<string, unknown>): AtlasPublicContact {
+  const candidate = asRecord(profileData.publicContact);
+
+  return {
+    contactPageUrl: safeHttpsUrl(candidate.contactPageUrl),
+    publicEmail: safeEmail(candidate.publicEmail),
+    publicPhone: safeText(candidate.publicPhone, 80),
+    linkedInUrl: safeHttpsUrl(candidate.linkedInUrl)
+  };
+}
+
+function asRecord(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
+}
+
+function safeHttpsUrl(value: unknown) {
+  if (typeof value !== "string") return null;
+  try {
+    const url = new URL(value.trim());
+    return url.protocol === "https:" ? url.toString() : null;
+  } catch {
+    return null;
+  }
+}
+
+function safeEmail(value: unknown) {
+  if (typeof value !== "string") return null;
+  const email = value.trim();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : null;
+}
+
+function safeText(value: unknown, maxLength: number) {
+  if (typeof value !== "string") return null;
+  const text = value.trim();
+  return text && text.length <= maxLength ? text : null;
 }

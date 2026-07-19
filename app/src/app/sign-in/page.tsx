@@ -32,7 +32,7 @@ export default async function SignInPage({
           <span className="flex size-11 items-center justify-center rounded-lg bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><LockKeyhole className="size-5" /></span>
           <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.13em] text-[var(--atlas-primary)]">Optional account</p>
           <h1 className="mt-2 text-3xl font-bold tracking-[-0.035em] sm:text-4xl">Keep your research together.</h1>
-          <p className="mt-4 max-w-md text-sm leading-6 text-[var(--atlas-muted)]">The atlas, organization profiles, evidence, and exports remain public. Sign in only for private actions.</p>
+          <p className="mt-4 max-w-md text-sm leading-6 text-[var(--atlas-muted)]">The ecosystem map, organization profiles, evidence, and exports remain public. Sign in only when you want to save or contribute.</p>
           <ul className="mt-6 space-y-3 text-sm text-[var(--atlas-muted)]">
             {["Save private Working Lists", "Claim or correct an organization", "Request a human-vetted introduction"].map((item) => (
               <li key={item} className="flex items-center gap-2"><CheckCircle2 className="size-4 text-[var(--atlas-primary)]" />{item}</li>

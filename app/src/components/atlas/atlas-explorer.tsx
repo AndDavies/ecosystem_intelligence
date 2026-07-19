@@ -53,6 +53,16 @@ import type {
   AtlasTechnicalDomain
 } from "@/types/atlas";
 
+const publicOrganizationTypes = new Set([
+  "company",
+  "accelerator",
+  "incubator",
+  "research_test_centre",
+  "investor_funder",
+  "ecosystem_organization",
+  "government_innovation_office"
+]);
+
 const AtlasMap = dynamic(
   () => import("@/components/atlas/atlas-map").then((module) => module.AtlasMap),
   {
@@ -196,7 +206,7 @@ export function AtlasExplorer({
     try {
       const params = atlasQueryToSearchParams({ ...nextFilters, bounds: undefined, page: 1, pageSize: 1000 });
       const response = await fetch(`/api/atlas?${params.toString()}`, { headers: { Accept: "application/json" } });
-      if (!response.ok) throw new Error("The published atlas could not be refreshed.");
+      if (!response.ok) throw new Error("The ecosystem map could not be refreshed.");
       const nextResult = (await response.json()) as AtlasQueryResult;
       setResult(nextResult);
       setFilters({ ...nextFilters, page: 1 });
@@ -207,7 +217,7 @@ export function AtlasExplorer({
       const browserParams = atlasQueryToSearchParams(nextFilters);
       window.history.replaceState(null, "", browserParams.size ? `/?${browserParams.toString()}` : "/");
     } catch (loadError) {
-      setError(loadError instanceof Error ? loadError.message : "The published atlas could not be refreshed.");
+      setError(loadError instanceof Error ? loadError.message : "The ecosystem map could not be refreshed.");
     } finally {
       setLoading(false);
     }
@@ -275,16 +285,16 @@ export function AtlasExplorer({
   }
 
   const caveat = filters.demand
-    ? "Demand relevance is assessed from published sources. It is not eligibility, endorsement, or procurement guidance."
-    : "Mission relevance is an analyst assessment based on published sources. Open a row to inspect the rationale and sources.";
+    ? "Public-demand fit is reviewed from published sources. It is not eligibility, endorsement, or procurement guidance."
+    : "Where a technology fits is a reviewed assessment. Open a result to see the reason and the supporting sources.";
 
   return (
     <div className="atlas-frame pb-8 pt-8 sm:pt-11">
       <section className="mb-7 grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
         <div className="max-w-4xl">
           <span className="inline-flex rounded-full border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--atlas-primary)]">Canadian Public Beta</span>
-          <h1 className="mt-4 max-w-4xl text-[32px] font-bold leading-[1.08] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-[44px]">Discover Canada’s defence and dual-use ecosystem.</h1>
-          <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:text-base sm:leading-7">Explore {result.total} reviewed {result.total === 1 ? "organization, its" : "organizations, their"} capabilities, public evidence, and collaboration paths. Coverage is growing nationally, and thin areas remain visible rather than padded.</p>
+          <h1 className="mt-4 max-w-4xl text-[32px] font-bold leading-[1.08] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-[44px]">See who is building what—and who may be worth speaking with next.</h1>
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:text-base sm:leading-7">Find Canadian organizations, technology, and public demand in one place. Search by place, need, or technology, compare the supporting sources, then build a Working List for the conversation ahead.</p>
           <p className="mt-4 flex items-center gap-2 text-xs font-medium text-[var(--atlas-muted)]"><ShieldCheck className="size-4 text-[var(--atlas-primary)]" />Reviewed public sources · transparent gaps · human review</p>
         </div>
         <button type="button" onClick={openPilotFeedback} className="atlas-secondary-button h-11 w-fit px-4 text-xs">Tell us what is missing</button>
@@ -292,20 +302,20 @@ export function AtlasExplorer({
 
       <section className="overflow-hidden rounded-[24px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
         <div className="border-b border-[var(--atlas-border)] bg-white p-3 sm:p-4">
-          <form onSubmit={submitDiscovery} role="search" aria-label="Ask the Canadian public atlas">
+          <form onSubmit={submitDiscovery} role="search" aria-label="Search the Canadian ecosystem map">
             <div className="relative">
               <Search className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-[var(--atlas-muted)]" aria-hidden="true" />
               <input
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
                 className="h-14 w-full rounded-[18px] border border-[var(--atlas-border-strong)] bg-[var(--atlas-surface-muted)] pl-12 pr-28 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-primary)] focus:bg-white focus:ring-4 focus:ring-[rgba(31,90,67,0.1)] sm:text-base"
-                placeholder="Ask by region, capability, or mission — e.g. underwater sensing in Atlantic Canada"
-                aria-label="Natural-language atlas question"
+                placeholder="Search by place, technology, or need — e.g. underwater sensing in Atlantic Canada"
+                aria-label="Search the ecosystem map in natural language"
                 maxLength={500}
               />
               <button type="submit" className="atlas-primary-button absolute right-1.5 top-1/2 h-11 -translate-y-1/2 gap-2 px-4 text-sm disabled:opacity-60" disabled={loading}>
                 {loading ? <LoaderCircle className="size-4 animate-spin" /> : null}
-                <span className="hidden sm:inline">Search atlas</span>
+                <span className="hidden sm:inline">Search the map</span>
                 <span className="sm:hidden">Search</span>
               </button>
             </div>
@@ -325,11 +335,12 @@ export function AtlasExplorer({
           </div>
 
           {filterPanelOpen ? (
-            <section className="mt-3 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4" aria-label="Atlas filters">
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <section className="mt-3 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4" aria-label="Ecosystem map filters">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
                 <FilterSelect label="Region" value={filters.region ?? ""} options={regions.map((region) => ({ value: region.slug, label: `${region.name} (${region.organizationCount})` }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "region", value: value || "all" }); void load({ ...filters, region: value || undefined }); }} />
-                <FilterSelect label="Technical domain" value={filters.domain ?? ""} options={technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "domain", value: value || "all" }); void load({ ...filters, domain: value || undefined }); }} />
-                <FilterSelect label="Mission area" value={filters.mission ?? ""} options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }} />
+                <FilterSelect label="Organization type" value={filters.type ?? ""} options={result.facets.organizationTypes.filter((type) => publicOrganizationTypes.has(type.value)).map((type) => ({ value: type.value, label: `${type.label} (${type.count})` }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "type", value: value || "all" }); void load({ ...filters, type: value || undefined }); }} />
+                <FilterSelect label="Technology area" value={filters.domain ?? ""} options={technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "domain", value: value || "all" }); void load({ ...filters, domain: value || undefined }); }} />
+                <FilterSelect label="Mission or use case" value={filters.mission ?? ""} options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }} />
                 <FilterSelect label="Public demand" value={filters.demand ?? ""} options={demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title }))} onChange={(value) => { trackPilotEvent("filter_apply", { filter: "demand", value: value || "all" }); void load({ ...filters, demand: value || undefined }); }} />
               </div>
               <div className="mt-4 flex items-center justify-between border-t border-[var(--atlas-border)] pt-3"><span className="text-xs text-[var(--atlas-muted)]">Filters update the map, results, URL, and export together.</span><button type="button" className="text-xs font-semibold text-[var(--atlas-primary)] hover:underline" onClick={() => { rememberPilotSearchId(null); setDiscovery(null); void load({}, { updateQuestion: true }); }}>Clear all</button></div>
@@ -438,9 +449,9 @@ export function AtlasExplorer({
                     <tr className="border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] text-[11px] font-semibold text-[var(--atlas-muted)] shadow-[0_1px_0_var(--atlas-border)]">
                       <th scope="col" className="w-10 px-3 py-2.5"><span className="sr-only">Expand</span></th>
                       <th scope="col" className="px-2 py-2.5">Organization</th>
-                      <th scope="col" className="px-3 py-2.5">Capability</th>
+                      <th scope="col" className="px-3 py-2.5">Technology or offering</th>
                       <th scope="col" className="px-3 py-2.5">Region</th>
-                      <th scope="col" className="px-3 py-2.5">Assessment</th>
+                      <th scope="col" className="px-3 py-2.5">Where it fits</th>
                       <th scope="col" className="px-3 py-2.5">Sources</th>
                       <th scope="col" className="px-3 py-2.5">Last verified</th>
                     </tr>
@@ -551,7 +562,7 @@ function LookbookPeek({
 
       <div className="mt-3 rounded-xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-3">
         <p className="text-[11px] font-semibold text-[var(--atlas-violet)]">
-          {alignment ? alignmentTypeLabel(alignment.matchType) : "Verified capability"}
+          {alignment ? alignmentTypeLabel(alignment.matchType) : "Reviewed technology"}
         </p>
         <p className="mt-1 text-xs font-semibold leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Organization profile"}</p>
         <p className="mt-1 line-clamp-3 text-[11px] leading-[1.1rem] text-[var(--atlas-muted)]">{summary}</p>
@@ -561,7 +572,7 @@ function LookbookPeek({
         <span className={cn(
           "rounded-full px-2.5 py-1",
           confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
-        )}>{alignment ? `${assessmentConfidenceLabel(confidence)} assessment confidence` : `${evidenceStrengthLabel(confidence)} evidence`}</span>
+        )}>{alignment ? `${assessmentConfidenceLabel(confidence)} fit confidence` : `${evidenceStrengthLabel(confidence)} source support`}</span>
         <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
         <span className={cn(
           "rounded-full px-2.5 py-1",
@@ -582,7 +593,7 @@ function LookbookPeek({
           className="atlas-secondary-button h-10 gap-1.5 px-2 text-[11px]"
         >
           <BookmarkPlus className="size-3.5" />
-          Save
+          Add to Working List
         </Link>
         {evidence[0] ? (
           <a
@@ -666,7 +677,7 @@ function MobileOrganizationCard({
           {expanded ? <ChevronDown className="mt-0.5 size-4 shrink-0 text-[var(--atlas-primary)]" /> : <ChevronRight className="mt-0.5 size-4 shrink-0 text-[var(--atlas-muted)]" />}
           <span className="min-w-0 flex-1">
             <span className="block text-sm font-bold text-[var(--atlas-primary)]">{organization.name}</span>
-            <span className="mt-1 block text-xs leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Capability not yet verified"}</span>
+            <span className="mt-1 block text-xs leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Technology not yet reviewed"}</span>
             <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[var(--atlas-muted)]">
               <span>{location?.provinceTerritory ?? "Location under review"}</span>
               <span>{evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
@@ -678,7 +689,7 @@ function MobileOrganizationCard({
 
       {expanded ? (
         <div className="border-t border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-4">
-          <h3 className="text-xs font-bold text-[var(--atlas-ink)]">{alignment ? `Why it matches ${alignmentSubject(alignment)}` : "Verified capability summary"}</h3>
+          <h3 className="text-xs font-bold text-[var(--atlas-ink)]">{alignment ? `Why it may fit ${alignmentSubject(alignment)}` : "What it does"}</h3>
           <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
 
           {capability?.defenceApplications.length ? (
@@ -691,7 +702,7 @@ function MobileOrganizationCard({
 
           <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[var(--atlas-border)] pt-4 text-xs">
             <div>
-              <span className="block text-[10px] text-[var(--atlas-muted)]">{alignment ? "Assessment confidence" : "Evidence strength"}</span>
+              <span className="block text-[10px] text-[var(--atlas-muted)]">{alignment ? "Fit confidence" : "Source support"}</span>
               <span className={cn(
                 "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
                 confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
@@ -710,7 +721,7 @@ function MobileOrganizationCard({
             </a>
           ) : null}
           <Link href={`/organizations/${organization.slug}`} className="atlas-primary-button mt-4 h-10 w-full gap-2 px-3 text-xs">
-            View organization profile
+            Explore the organization
             <ExternalLink className="size-3.5" />
           </Link>
         </div>
@@ -776,7 +787,7 @@ function OrganizationRows({
           </button>
         </td>
         <th scope="row" className="px-2 py-3 text-[13px] font-semibold text-[var(--atlas-primary)]">{organization.name}</th>
-        <td className="max-w-[280px] px-3 py-3 leading-4">{capability?.name ?? "Capability not yet verified"}</td>
+        <td className="max-w-[280px] px-3 py-3 leading-4">{capability?.name ?? "Technology not yet reviewed"}</td>
         <td className="px-3 py-3">{location?.provinceTerritory ?? "Location under review"}</td>
         <td className="px-3 py-3">
           {alignment ? (
@@ -787,7 +798,7 @@ function OrganizationRows({
               {alignmentTypeLabel(alignment.matchType)}
             </span>
           ) : (
-            <span className="inline-flex rounded bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-muted)]">Verified profile</span>
+            <span className="inline-flex rounded bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-muted)]">Reviewed profile</span>
           )}
         </td>
         <td className="px-3 py-3 font-medium text-[var(--atlas-primary)]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</td>
@@ -799,7 +810,7 @@ function OrganizationRows({
             <div className="grid gap-0 px-4 py-4 lg:grid-cols-[1.1fr_0.9fr_0.78fr]">
               <section className="pr-5 lg:border-r lg:border-[var(--atlas-primary-border)]" aria-labelledby={`why-${organization.id}`}>
                 <h3 id={`why-${organization.id}`} className="text-xs font-bold text-[var(--atlas-ink)]">
-                  {alignment ? `Why it matches ${alignmentSubject(alignment)}` : "Verified capability summary"}
+                  {alignment ? `Why it may fit ${alignmentSubject(alignment)}` : "What it does"}
                 </h3>
                 <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
                 {capability?.defenceApplications.length ? (
@@ -827,10 +838,10 @@ function OrganizationRows({
               </section>
 
               <section className="border-t border-[var(--atlas-primary-border)] pt-4 lg:border-t-0 lg:pl-5 lg:pt-0" aria-labelledby={`posture-${organization.id}`}>
-                <h3 id={`posture-${organization.id}`} className="text-xs font-bold text-[var(--atlas-ink)]">Data quality</h3>
+                <h3 id={`posture-${organization.id}`} className="text-xs font-bold text-[var(--atlas-ink)]">What supports this</h3>
                 <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 text-xs lg:grid-cols-1">
                   <div>
-                    <dt className="text-[10px] text-[var(--atlas-muted)]">{alignment ? "Assessment confidence" : "Evidence strength"}</dt>
+                    <dt className="text-[10px] text-[var(--atlas-muted)]">{alignment ? "Fit confidence" : "Source support"}</dt>
                     <dd className={cn(
                       "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
                       confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
@@ -842,7 +853,7 @@ function OrganizationRows({
                   </div>
                 </dl>
                 <Link href={`/organizations/${organization.slug}`} className="atlas-primary-button mt-4 h-9 w-full gap-2 px-3 text-xs">
-                  View organization profile
+                  Explore the organization
                   <ExternalLink className="size-3.5" />
                 </Link>
               </section>

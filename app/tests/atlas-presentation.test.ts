@@ -1,35 +1,51 @@
 import { describe, expect, it } from "vitest";
 import {
-  alignmentSubject,
-  alignmentTypeLabel,
-  assessmentConfidenceLabel,
-  evidenceStrengthLabel,
-  locationAccuracyLabel,
-  publicSourceCountLabel
+  organizationOfferingTitle,
+  organizationSnapshotTitle,
+  organizationWebsiteLabel,
+  publicContactFromProfileData
 } from "@/lib/atlas/presentation";
 
-describe("public atlas terminology", () => {
-  it("separates evidence strength from assessment confidence", () => {
-    expect(evidenceStrengthLabel("high")).toBe("Strong");
-    expect(evidenceStrengthLabel("needs_review")).toBe("Limited");
-    expect(assessmentConfidenceLabel("high")).toBe("High");
-    expect(assessmentConfidenceLabel("needs_review")).toBe("Needs review");
+describe("public profile language", () => {
+  it("names a company's reviewed offering as its technology", () => {
+    expect(organizationOfferingTitle("company", "Bell Textron Canada")).toBe("Bell Textron Canada’s Tech");
+    expect(organizationSnapshotTitle("company")).toBe("Company snapshot");
+    expect(organizationWebsiteLabel("company")).toBe("Visit company website");
   });
 
-  it("uses plain-language assessment and location labels", () => {
-    expect(alignmentTypeLabel("derived")).toBe("Analyst assessment");
-    expect(alignmentTypeLabel("public_source_alignment")).toBe("Source-backed match");
-    expect(locationAccuracyLabel("city_centroid")).toBe("City-level");
-    expect(locationAccuracyLabel("unverified")).toBe("Not verified");
+  it("uses language suited to non-company organizations", () => {
+    expect(organizationOfferingTitle("research_test_centre", "DRDC Atlantic")).toBe("Facilities & Expertise");
+    expect(organizationOfferingTitle("accelerator", "North Forge")).toBe("Programs & Support");
+    expect(organizationOfferingTitle("investor_funder", "Fund")).toBe("Investment Focus");
+    expect(organizationOfferingTitle("ecosystem_organization", "Network")).toBe("What Network Offers");
+  });
+});
+
+describe("public contact presentation", () => {
+  it("reads only valid public contact fields", () => {
+    expect(publicContactFromProfileData({
+      publicContact: {
+        contactPageUrl: "https://example.ca/contact",
+        publicEmail: "hello@example.ca",
+        publicPhone: "+1 902 555 0100",
+        linkedInUrl: "https://www.linkedin.com/company/example"
+      }
+    })).toEqual({
+      contactPageUrl: "https://example.ca/contact",
+      publicEmail: "hello@example.ca",
+      publicPhone: "+1 902 555 0100",
+      linkedInUrl: "https://www.linkedin.com/company/example"
+    });
   });
 
-  it("names the subject of mission and demand assessments", () => {
-    expect(alignmentSubject({ missionArea: { name: "Underwater ISR" } } as never)).toBe("Underwater ISR");
-    expect(alignmentSubject({ demandTitle: "Contested logistics" } as never)).toBe("Contested logistics");
-  });
-
-  it("formats public source counts", () => {
-    expect(publicSourceCountLabel(1)).toBe("1 public source");
-    expect(publicSourceCountLabel(2)).toBe("2 public sources");
+  it("drops malformed, private, and unsafe values", () => {
+    expect(publicContactFromProfileData({
+      publicContact: {
+        contactPageUrl: "javascript:alert(1)",
+        publicEmail: "not-an-email",
+        publicPhone: "x".repeat(81),
+        linkedInUrl: "http://linkedin.com/company/example"
+      }
+    })).toEqual({ contactPageUrl: null, publicEmail: null, publicPhone: null, linkedInUrl: null });
   });
 });

@@ -3,9 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookmarkPlus, Download, ExternalLink } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
-import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { JsonLd } from "@/components/seo/json-ld";
+import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { assessmentConfidenceLabel, evidenceStrengthLabel, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
+import { absoluteUrl } from "@/lib/site";
 import { formatDate, toTitleCase } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -13,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const publicCapability = await getAtlasCapabilityBySlug(slug);
 
   if (!publicCapability) {
-    return { title: "Capability not found", robots: { index: false, follow: false } };
+    return { title: "Technology not found", robots: { index: false, follow: false } };
   }
 
   return {
@@ -56,35 +58,44 @@ function PublicCapabilityPage({
     ...capability.missionMatches.flatMap((match) => match.citations),
     ...capability.demandMatches.flatMap((match) => match.citations)
   ];
+  const hasPublishedAlignment = capability.missionMatches.length > 0 || capability.demandMatches.length > 0;
 
   return (
     <PublicPageShell
-      eyebrow="Capability dossier"
+      eyebrow="Technology profile"
       title={capability.name}
       description={capability.summary}
-      backHref={`/organizations/${organization.slug}`}
-      backLabel={`Back to ${organization.name}`}
+      breadcrumbs={[
+        { label: "Ecosystem Map", href: "/" },
+        { label: "Organizations", href: "/organizations" },
+        { label: organization.name, href: `/organizations/${organization.slug}` },
+        { label: capability.name }
+      ]}
       actions={
         <>
-          <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(`/capabilities/${capability.slug}`)}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-4 text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:no-underline">
-            <BookmarkPlus className="size-4" /> Save
+          <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(`/capabilities/${capability.slug}`)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+            <BookmarkPlus className="size-4" /> Add to Working List
           </Link>
-          <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-4 text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:no-underline">
-            <Download className="size-4" /> Export profile
+          <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+            <Download className="size-4" /> Download profile
           </Link>
-          <Link href={`/organizations/${organization.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white no-underline hover:bg-[var(--atlas-primary-hover)] hover:no-underline">
-            Organization profile <ExternalLink className="size-4" />
+          <Link href={`/organizations/${organization.slug}`} className="atlas-primary-button h-10 gap-2 px-4 text-xs">
+            Meet {organization.name} <ExternalLink className="size-4" />
           </Link>
         </>
       }
     >
+      <JsonLd data={[
+        { "@context": "https://schema.org", "@type": "Product", name: capability.name, description: capability.summary, brand: { "@type": "Organization", name: organization.name, url: absoluteUrl(`/organizations/${organization.slug}`) }, url: absoluteUrl(`/capabilities/${capability.slug}`) },
+        { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(`/capabilities/${capability.slug}`) }] }
+      ]} />
       <div className="grid gap-5 lg:grid-cols-[1.22fr_0.78fr]">
         <div className="space-y-5">
-          <PublicCard title="Capability profile" eyebrow={capability.capabilityType ?? "Verified capability"}>
+          <PublicCard title="Technology overview" eyebrow={capability.capabilityType ?? "What it does"}>
             <div className="grid gap-5 sm:grid-cols-2">
               <CapabilityList label="Core features" values={capability.coreFeatures} />
-              <CapabilityList label="Defence applications" values={capability.defenceApplications} />
-              <CapabilityList label="Novelty" values={capability.novelty} empty="No verified novelty claims are published." />
+              <CapabilityList label="Defence and security uses" values={capability.defenceApplications} />
+              <CapabilityList label="What sets it apart" values={capability.novelty} empty="No source-supported differentiators are published yet." />
               <div>
                 <h3 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Maturity</h3>
                 <dl className="mt-2 space-y-2 text-xs text-[var(--atlas-muted)]">
@@ -100,7 +111,7 @@ function PublicCapabilityPage({
             </div>
           </PublicCard>
 
-          <PublicCard title="Mission relevance" eyebrow="Analyst assessments">
+          {hasPublishedAlignment ? <PublicCard title="Where It Fits" eyebrow="See the clearest reason to engage">
             {capability.missionMatches.length ? (
               <div className="space-y-3">
                 {capability.missionMatches.map((match) => (
@@ -113,12 +124,9 @@ function PublicCapabilityPage({
                   </article>
                 ))}
               </div>
-            ) : <EmptyCoverage title="Mission relevance not assessed yet" detail="This verified capability does not yet include an analyst assessment against a mission area." />}
-          </PublicCard>
-
-          <PublicCard title="Demand relevance" eyebrow="Public demand signals">
+            ) : null}
             {capability.demandMatches.length ? (
-              <div className="space-y-3">
+              <div className={capability.missionMatches.length ? "mt-3 space-y-3" : "space-y-3"}>
                 {capability.demandMatches.map((match) => (
                   <article key={match.id} className="rounded-md border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-4">
                     <Link href={`/demand/${match.demandSlug}`} className="text-sm font-bold text-[var(--atlas-primary)] no-underline hover:underline">{match.demandTitle}</Link>
@@ -127,24 +135,31 @@ function PublicCapabilityPage({
                   </article>
                 ))}
               </div>
-            ) : <EmptyCoverage title="Demand relevance not assessed yet" detail="No public-demand assessment has been published for this capability." />}
-          </PublicCard>
+            ) : null}
+            <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">These connections are interpretations based on public sources. They are not procurement eligibility, endorsement, or classified demand.</p>
+          </PublicCard> : null}
         </div>
 
         <aside className="space-y-5">
-          <PublicCard title="Organization" eyebrow="Associated company">
+          <PublicCard title={organization.name} eyebrow="Who is building it">
             <p className="text-base font-bold text-[var(--atlas-ink)]">{organization.name}</p>
             <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">{organization.description}</p>
-            <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">View organization profile</Link>
+            <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">Explore the organization</Link>
           </PublicCard>
-          <PublicCard title="Sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
+          <PublicCard title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
             <EvidenceList citations={citations} />
+            {!hasPublishedAlignment ? (
+              <div className="mt-5 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
+                <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">No reviewed mission or public-demand match is published yet.</p>
+                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">That is an open research gap, not a negative assessment. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public demand signals</Link>.</p>
+              </div>
+            ) : null}
           </PublicCard>
-          <PublicCard title="Data quality" eyebrow="Profile verification">
+          <PublicCard title="How well this is supported" eyebrow="What supports this profile">
             <dl className="grid gap-3 text-xs">
-              <div><dt className="text-[var(--atlas-muted)]">Evidence strength</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
+              <div><dt className="text-[var(--atlas-muted)]">Source support</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
               <div><dt className="text-[var(--atlas-muted)]">Last verified</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{formatDate(capability.lastReviewedAt)}</dd></div>
-              <div><dt className="text-[var(--atlas-muted)]">Technical domains</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{capability.technicalDomains.map((domain) => domain.name).join(", ") || "Not yet mapped"}</dd></div>
+              <div><dt className="text-[var(--atlas-muted)]">Technology areas</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{capability.technicalDomains.map((domain) => domain.name).join(", ") || "Not yet mapped"}</dd></div>
             </dl>
           </PublicCard>
         </aside>

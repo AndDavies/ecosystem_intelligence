@@ -1,7 +1,7 @@
-# True North Map - Canadian Defence and Dual-Use Ecosystem Atlas
+# True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
 Status: active product requirements  
-Last updated: 2026-07-18
+Last updated: 2026-07-19
 
 ## Product summary
 
@@ -9,9 +9,9 @@ True North Map is the public brand for this free, English-language ecosystem int
 
 The primary journey is:
 
-> Region -> ecosystem cluster -> capability -> organization dossier -> demand alignment -> Working List or export
+> Place or public need -> relevant organizations -> technology or offering -> Where It Fits -> Working List or export
 
-The product combines public mapping, PitchBook-style dossiers, public NATO and Canadian demand overlays, and a review-first research pipeline. Agents can stage research but cannot publish it.
+The product combines public mapping, decision-useful organization profiles, public Canadian and allied demand signals, and a review-first research pipeline. Agents and deterministic comparisons can stage research suggestions but cannot publish them.
 
 ## Canadian Public Beta
 
@@ -20,7 +20,7 @@ The active release is an independent, English-only Canadian Public Beta created 
 - Public browsing, evidence, profiles, and exports remain free.
 - Google OAuth and passwordless email sign-in are used only for private Working Lists, contributions, connection requests, and account management.
 - Public feedback, consent-backed updates, and contact remain available without authentication.
-- The launch corpus is frozen at 30 verified organizations; no jurisdiction is padded to imply coverage.
+- The current corpus contains 35 reviewed organizations and 31 reviewed technologies or offerings. Expansion remains evidence-backed and review-first; no jurisdiction is padded to imply coverage.
 - `https://truenorthmap.ca` is the canonical indexable production URL; the former Vercel URL redirects to it and private workflows remain blocked from search.
 - The product is not an official government, military, procurement, or industry-association directory.
 - Introduction requests are privately reviewed and manually brokered; no personal contact details or automatic introductions are exposed.
@@ -42,9 +42,9 @@ Secondary users:
 
 ## Jobs to be done
 
-1. Understand who operates in a Canadian region or capability landscape.
-2. Find source-backed organizations and capabilities without learning a specialist query language.
-3. Inspect why a capability may fit a mission or public demand statement and challenge that interpretation.
+1. Understand who operates in a Canadian region or technology landscape.
+2. Find source-backed organizations and technologies without learning a specialist query language.
+3. Inspect why a technology may fit a mission or public demand statement and challenge that interpretation.
 4. See where coverage is thin, stale, weak, or not yet reviewed.
 5. Export a dossier, regional report, filtered dataset, or saved lookbook.
 6. Claim, correct, or suggest a public profile without enabling direct self-publication.
@@ -58,11 +58,11 @@ Anonymous users can browse, search, view profiles, and export published intellig
 
 ### Evidence before volume
 
-The atlas must not pad thin regions with synthetic organizations. Every public organization needs a canonical public source, and every commercial organization needs at least one reviewed capability.
+The map must not pad thin regions with synthetic organizations. Every public organization needs a canonical public source, and every commercial organization needs at least one reviewed technology or offering.
 
 ### Facts and analysis remain separate
 
-Verified information, analyst assessments, and public-demand relevance must be visibly distinct. A public-demand assessment is not procurement eligibility, endorsement, or classified demand.
+Source-backed profile facts and reviewed “Where It Fits” assessments must be visibly distinct. A public-demand assessment is not procurement eligibility, endorsement, or classified demand.
 
 ### Unknown means unknown
 
@@ -92,11 +92,11 @@ Automated research can create leads and candidate changes. Only an explicit huma
 
 | Route | Purpose |
 | --- | --- |
-| `/` | National atlas with natural-language discovery, structured filters, synchronized map, and evidence table |
+| `/` | National ecosystem map with natural-language discovery, structured filters, synchronized map, and evidence table |
 | `/regions/[slug]` | Regional counts, published organizations, reviewed clusters, and explicit gaps |
 | `/organizations` | Published organization directory |
-| `/organizations/[slug]` | Organization dossier with capabilities, mission reads, demand matches, and evidence |
-| `/capabilities/[slug]` | Capability dossier with features, applications, maturity, alignment, and evidence |
+| `/organizations/[slug]` | Organization profile with technology or offerings, public contact paths, “Where It Fits,” and evidence |
+| `/capabilities/[slug]` | Technology profile with features, uses, maturity, “Where It Fits,” and evidence |
 | `/demand` | Public demand statement index |
 | `/demand/[slug]` | Requirement detail, desired end state, matches, gaps, caveats, and authoritative source |
 | `/account` | Authenticated identity, Working Lists, connection and contribution status, sign-out, and private-data controls |
@@ -109,11 +109,11 @@ Automated research can create leads and candidate changes. Only an explicit huma
 | `/contact` | Rate-limited private contact for general, privacy, media, and partnership messages |
 | `/privacy` | Accounts, contributions, connections, consent, analytics, and retention notice |
 | `/terms` | Public-beta use, contribution, connection, and disclaimer terms |
-| `/admin/*` | Private source intake, review, public-beta insights, participation, and coverage operations |
+| `/admin/*` | Private source intake, review, public-beta insights, demand matching, organization editing, and coverage operations |
 
 ## Discovery experience
 
-The selected visual direction is a bright public intelligence atlas with a
+The selected visual direction is a bright public ecosystem map with a
 map-first discovery surface and a synchronized accessible evidence table.
 
 The first view must:
@@ -145,7 +145,9 @@ It must never invent an organization or fact. Ambiguous questions return suggest
   innovation office; includes common profile fields and a small validated
   `profile_data` object for type-specific details
 - `organization_dossiers` — read-only RLS-preserving view that assembles one
-  standard dossier payload for detail pages, PDFs, exports, and the editor
+  standard profile payload for detail pages, PDFs, exports, and the editor;
+  official public contact URLs, email, phone, and LinkedIn may be kept inside
+  the small `profile_data.publicContact` object rather than a second entity table
 - `locations`
 - `organization_locations`
 - `capabilities`
@@ -239,8 +241,19 @@ The private editorial workspace separates two maintenance modes:
 
 Published-record edits preserve stable slugs, require an editorial rationale,
 retain the existing evidence boundary, record before/after values in the audit
-log, and invalidate the public atlas cache immediately. New or replacement
+log, and invalidate the public map cache immediately. Official public contact
+paths have their own narrow, audited editor and are omitted unless a public
+source supports them. New or replacement
 evidence continues through the review-first candidate workflow.
+
+The private demand-matching workspace compares reviewed technology profiles
+with published demand statements using deterministic mission-concept overlap.
+It stages only `needs_review` suggestions, excludes existing pairs, and never
+publishes automatically. The reviewer opens both public records, decides whether
+the connection is useful and defensible, and may publish one derived match with
+an explicit rationale. Publication copies the existing technology and demand
+citations, labels the connection as a reviewed assessment, and records the full
+audit trail.
 
 The weekly research loop is:
 
@@ -281,12 +294,12 @@ The clean public seed began with six previously validated organizations and thei
 - GeoSpectrum Technologies
 - Open Ocean Robotics
 
-The first reviewed Underwater ISR expansion added 12 source-backed organizations and capabilities through the canonical review workflow, bringing the atlas to 18 records. A second 12-organization national expansion was field reviewed, approved with substantive rationale, and promoted atomically on July 17, 2026, bringing the live atlas to 30 published organizations and 30 published capabilities. The fifteen scaffold organizations and all placeholder rows remain excluded. The public-beta corpus is frozen at 30: it spans nine provinces or territories and more than four technical domains without padding thin regions. The first five NATO problem families are published as demand statements, with zero matches until evidence-backed mappings pass review.
+The first reviewed Underwater ISR expansion added 12 source-backed organizations and technologies through the canonical review workflow, bringing the map to 18 records. A second 12-organization national expansion was field reviewed, approved with substantive rationale, and promoted atomically on July 17, 2026, bringing the live map to 30 organizations and 30 technologies. Five further typed research candidates and one Canadian public-demand source were subsequently reviewed and published. The live corpus now contains 35 organizations, 31 technologies or offerings, and six public demand requirements. The fifteen scaffold organizations and all placeholder rows remain excluded. Future expansion remains source-backed and review-first rather than numerically frozen or padded.
 
 ## Acceptance criteria
 
 - Anonymous browsing never exposes drafts, raw documents, private evidence, submissions, or collections.
-- A first-time user can move from region to dossier and export in under five minutes.
+- A first-time user can move from place or need to an organization profile and export in under five minutes.
 - Map, table, filters, count, selection, export, and URL state remain synchronized.
 - Natural-language search returns only existing published IDs and evidence.
 - Every demand match is labelled, cited, reviewable, and caveated.
@@ -294,7 +307,7 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
 - Duplicate submissions, missing coordinates, unavailable images, stale sources, failed agents, and empty regions have safe states.
 - Public discovery meets WCAG AA keyboard, contrast, and non-map navigation requirements.
 - Target performance is p75 LCP under 2.5 seconds on broadband, filter feedback under 300 ms after data load, and responsive clusters for at least 1,000 points.
-- Public Beta requires at least 30 verified records, zero scaffold records, complete RLS tests, passing automated/browser tests, and privacy review. The longer-term corpus target remains 150-250 verified records.
+- Public Beta requires at least 30 reviewed records, zero scaffold records, complete RLS tests, passing automated/browser tests, and privacy review. Corpus expansion proceeds separately through the evidence and human-publication workflow.
 
 ## Delivery status
 
@@ -302,15 +315,15 @@ Release-ready implementation verified on 2026-07-18:
 
 - clean schema, explicit grants, RLS, storage policy, validated seed, migration
   tests, and server-only credentials
-- 30 published organizations and 30 published capabilities; the verified release
-  floor is met and scaffold records remain excluded
+- 35 published organizations and 31 published technologies or offerings; the
+  verified release floor is met and scaffold records remain excluded
 - independent Field Atlas visual system using a warm neutral canvas, spruce
   primary actions, coral selection, violet analyst-assessment states, and
   rounded public surfaces
-- national atlas with constrained discovery, structured filters, synchronized
+- national ecosystem map with constrained discovery, organization-type filters, synchronized
   URL state, numbered map clusters, viewport-bounded evidence table, compact
   organization preview, and visible-result export
-- public organization, capability, region, demand, About, Methodology, Contact,
+- public organization, technology, region, demand, About, Methodology, Contact,
   Privacy, and Terms routes
 - individual, regional, filtered CSV, and private collection lookbook exports
 - Google OAuth with PKCE and passwordless email links for personal or work-email
@@ -324,8 +337,8 @@ Release-ready implementation verified on 2026-07-18:
 - consented update signup, public feedback, contact, reviewed contribution, and
   manually brokered connection workflows
 - private subscribers, searches, events, feedback, contact, contribution,
-  connection, coverage, candidate-review, publication, and organization-editing
-  administration
+  connection, coverage, candidate-review, publication, organization editing,
+  official public-contact editing, and review-first demand-matching administration
 - structured candidate review, substantive rationale, duplicate resolution,
   one-button atomic publication, direct published-record editing, audit history,
   stable slugs, and cache invalidation
@@ -335,7 +348,9 @@ Release-ready implementation verified on 2026-07-18:
 - indexable public routes, public-only sitemap, canonical metadata, Open Graph,
   JSON-LD, and private-route blocking
 - deterministic Halifax/HRM/Dartmouth discovery and a null-cohort validation fix
-  for ordinary non-campaign searches
+  for ordinary non-campaign searches, plus organization-type language for
+  company, investor, accelerator, incubator, research-centre, ecosystem, and
+  government-office discovery
 
 Verified before the Monday public release:
 

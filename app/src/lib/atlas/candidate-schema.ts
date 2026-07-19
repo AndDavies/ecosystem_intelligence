@@ -5,6 +5,8 @@ import {
   type DemandSignalBundleV1,
   type OrganizationBundleV2
 } from "@/lib/research/pipeline-schema";
+export { demandMatchCandidateSchema, type DemandMatchCandidate } from "@/lib/atlas/demand-matching";
+import { demandMatchCandidateSchema } from "@/lib/atlas/demand-matching";
 
 const missionMatchSchema = z.object({
   missionAreaSlug: z.string().trim().min(1),
@@ -60,6 +62,10 @@ export function parseOrganizationBundleV2(value: unknown) {
 
 export function parseDemandSignalCandidate(value: unknown) {
   return demandSignalBundleV1Schema.safeParse(value);
+}
+
+export function parseDemandMatchCandidate(value: unknown) {
+  return demandMatchCandidateSchema.safeParse(value);
 }
 
 export function parseReviewableOrganizationCandidate(value: unknown) {

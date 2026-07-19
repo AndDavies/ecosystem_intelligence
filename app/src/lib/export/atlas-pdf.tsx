@@ -1,6 +1,6 @@
 import React from "react";
 import { Document, Link, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
-import { assessmentConfidenceLabel, evidenceStrengthLabel, locationAccuracyLabel } from "@/lib/atlas/presentation";
+import { assessmentConfidenceLabel, evidenceStrengthLabel, locationAccuracyLabel, organizationOfferingTitle, organizationSnapshotTitle } from "@/lib/atlas/presentation";
 import type { AtlasCapability, AtlasOrganization } from "@/types/atlas";
 
 const colors = {
@@ -95,7 +95,7 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
   return (
     <Document title={`${organization.name} public profile`} author="True North Map">
       <Page size="LETTER" style={styles.page}>
-        <Text style={styles.brand}>True North Map / Public Atlas</Text>
+        <Text style={styles.brand}>True North Map / Organization Profile</Text>
         <Text style={styles.title}>{organization.name}</Text>
         <Text style={styles.description}>{organization.description}</Text>
         <View style={styles.divider} />
@@ -103,22 +103,22 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
         <View style={styles.grid}>
           <View style={styles.main}>
             <View style={styles.section}>
-              <Text style={styles.eyebrow}>Verified capabilities</Text>
-              <Text style={styles.sectionTitle}>Capabilities</Text>
+              <Text style={styles.eyebrow}>What they build</Text>
+              <Text style={styles.sectionTitle}>{organizationOfferingTitle(organization.entityKind, organization.name)}</Text>
               {organization.capabilities.map((capability) => (
                 <View key={capability.id} style={styles.card} wrap={false}>
                   <Text style={styles.capabilityTitle}>{capability.name}</Text>
                   {capability.capabilityType ? <Text style={styles.meta}>{capability.capabilityType}</Text> : null}
                   <Text style={styles.body}>{capability.summary}</Text>
                   {capability.coreFeatures.length ? <><Text style={styles.label}>Core features</Text><BulletList values={capability.coreFeatures} /></> : null}
-                  {capability.defenceApplications.length ? <><Text style={styles.label}>Defence applications</Text><BulletList values={capability.defenceApplications} /></> : null}
+                  {capability.defenceApplications.length ? <><Text style={styles.label}>Defence and security uses</Text><BulletList values={capability.defenceApplications} /></> : null}
                 </View>
               ))}
             </View>
 
             <View style={styles.section}>
-              <Text style={styles.eyebrow}>Analyst assessments</Text>
-              <Text style={styles.sectionTitle}>Mission relevance</Text>
+              <Text style={styles.eyebrow}>Potential mission and demand connections</Text>
+              <Text style={styles.sectionTitle}>Where It Fits</Text>
               {organization.capabilities.flatMap((capability) => capability.missionMatches).map((match) => (
                 <View key={match.id} style={styles.derivedCard} wrap={false}>
                   <Text style={{ fontFamily: "Helvetica-Bold" }}>{match.missionArea.name}</Text>
@@ -131,17 +131,17 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
 
           <View style={styles.rail}>
             <View style={styles.paleCard}>
-              <Text style={styles.eyebrow}>Profile at a glance</Text>
+              <Text style={styles.eyebrow}>{organizationSnapshotTitle(organization.entityKind)}</Text>
               <ProfileRow label="Headquarters" value={organization.primaryLocation?.name} />
               <ProfileRow label="Location accuracy" value={organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null} />
               <ProfileRow label="Organization type" value={organization.entityKind.replaceAll("_", " ")} />
               <ProfileRow label="Categories" value={organization.categories.map((item) => item.replaceAll("_", " ")).join(", ")} />
               <ProfileRow label="Company stage" value={organization.companyStage} />
               <ProfileRow label="Employee range" value={organization.employeeRange} />
-              <ProfileRow label="Evidence strength" value={evidenceStrengthLabel(organization.sourceConfidence)} />
+              <ProfileRow label="Source support" value={evidenceStrengthLabel(organization.sourceConfidence)} />
             </View>
             {organization.websiteUrl ? <Link src={organization.websiteUrl} style={styles.sourceLink}>Official website</Link> : null}
-            <Text style={styles.caveat}>Unknown fields are intentionally omitted. Mission and demand relevance are shown as analyst assessments, separate from verified profile information.</Text>
+            <Text style={styles.caveat}>Unknown fields are intentionally omitted. “Where It Fits” entries are interpretations based on public sources, not procurement eligibility or endorsement.</Text>
             <View style={{ marginTop: 12 }}>
               <Sources organization={organization} />
             </View>
@@ -157,7 +157,7 @@ function CapabilityPdf({ organization, capability }: { organization: AtlasOrgani
   return (
     <Document title={`${capability.name} public profile`} author="True North Map">
       <Page size="LETTER" style={styles.page}>
-        <Text style={styles.brand}>True North Map / Capability Profile</Text>
+        <Text style={styles.brand}>True North Map / Technology Profile</Text>
         <Text style={styles.title}>{capability.name}</Text>
         <Text style={styles.meta}>{organization.name}{capability.capabilityType ? ` · ${capability.capabilityType}` : ""}</Text>
         <Text style={styles.description}>{capability.summary}</Text>
@@ -165,14 +165,14 @@ function CapabilityPdf({ organization, capability }: { organization: AtlasOrgani
         <View style={styles.grid}>
           <View style={styles.main}>
             <View style={styles.card}>
-              <Text style={styles.sectionTitle}>Capability profile</Text>
+              <Text style={styles.sectionTitle}>Technology overview</Text>
               {capability.coreFeatures.length ? <><Text style={styles.label}>Core features</Text><BulletList values={capability.coreFeatures} /></> : null}
-              {capability.defenceApplications.length ? <><Text style={styles.label}>Defence applications</Text><BulletList values={capability.defenceApplications} /></> : null}
-              {capability.novelty.length ? <><Text style={styles.label}>Novelty</Text><BulletList values={capability.novelty} /></> : null}
+              {capability.defenceApplications.length ? <><Text style={styles.label}>Defence and security uses</Text><BulletList values={capability.defenceApplications} /></> : null}
+              {capability.novelty.length ? <><Text style={styles.label}>What sets it apart</Text><BulletList values={capability.novelty} /></> : null}
             </View>
             <View style={styles.section}>
-              <Text style={styles.eyebrow}>Analyst assessments</Text>
-              <Text style={styles.sectionTitle}>Mission relevance</Text>
+              <Text style={styles.eyebrow}>Potential mission and demand connections</Text>
+              <Text style={styles.sectionTitle}>Where It Fits</Text>
               {capability.missionMatches.map((match) => (
                 <View key={match.id} style={styles.derivedCard} wrap={false}>
                   <Text style={{ fontFamily: "Helvetica-Bold" }}>{match.missionArea.name}</Text>
@@ -180,18 +180,18 @@ function CapabilityPdf({ organization, capability }: { organization: AtlasOrgani
                   <Text style={{ marginTop: 4, fontSize: 7.5 }}>{assessmentConfidenceLabel(match.confidence)} assessment confidence</Text>
                 </View>
               ))}
-              {!capability.missionMatches.length ? <Text style={styles.body}>Mission relevance has not been assessed yet.</Text> : null}
+              {!capability.missionMatches.length ? <Text style={styles.body}>No mission or public-need connection has been published yet. Treat this as a research gap, not a negative signal.</Text> : null}
             </View>
           </View>
           <View style={styles.rail}>
             <View style={styles.paleCard}>
-              <Text style={styles.eyebrow}>Data quality</Text>
+              <Text style={styles.eyebrow}>What supports this</Text>
               <ProfileRow label="Organization" value={organization.name} />
-              <ProfileRow label="Evidence strength" value={evidenceStrengthLabel(capability.sourceConfidence)} />
+              <ProfileRow label="Source support" value={evidenceStrengthLabel(capability.sourceConfidence)} />
               <ProfileRow label="TRL" value={capability.technologyReadinessLevel} />
               <ProfileRow label="Maturity" value={capability.maturity} />
               <ProfileRow label="Commercial availability" value={capability.commercialAvailability} />
-              <ProfileRow label="Technical domains" value={capability.technicalDomains.map((domain) => domain.name).join(", ")} />
+              <ProfileRow label="Technology areas" value={capability.technicalDomains.map((domain) => domain.name).join(", ")} />
             </View>
             <Text style={styles.caveat}>Public-source profile. Demand mappings, when present, are not eligibility, endorsement, or procurement notices.</Text>
             <View style={{ marginTop: 12 }}>
@@ -234,7 +234,7 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
             <Text style={styles.brand}>True North Map / Public Lookbook</Text>
             <Text style={styles.meta}>{title} · {index + 1} of {entries.length}</Text>
             <Text style={styles.title}>{capability?.name ?? organization.name}</Text>
-            {capability ? <Text style={styles.meta}>{organization.name} · {capability.capabilityType ?? "Verified capability"}</Text> : null}
+            {capability ? <Text style={styles.meta}>{organization.name} · {capability.capabilityType ?? "Reviewed technology"}</Text> : null}
             <Text style={styles.description}>{capability?.summary ?? organization.description}</Text>
             {note ? <View style={styles.derivedCard}><Text style={{ fontFamily: "Helvetica-Bold" }}>Collection note</Text><Text style={{ marginTop: 4 }}>{note}</Text></View> : null}
             <View style={styles.divider} />
@@ -244,19 +244,19 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
                   <View style={styles.card}>
                     <Text style={styles.sectionTitle}>{selectedCapability.name}</Text>
                     {selectedCapability.coreFeatures.length ? <><Text style={styles.label}>Core features</Text><BulletList values={selectedCapability.coreFeatures} /></> : null}
-                    {selectedCapability.defenceApplications.length ? <><Text style={styles.label}>Defence applications</Text><BulletList values={selectedCapability.defenceApplications} /></> : null}
+                    {selectedCapability.defenceApplications.length ? <><Text style={styles.label}>Defence and security uses</Text><BulletList values={selectedCapability.defenceApplications} /></> : null}
                   </View>
                 ) : null}
                 <View style={styles.section}>
-                  <Text style={styles.eyebrow}>Analyst assessments</Text>
-                  <Text style={styles.sectionTitle}>Mission relevance</Text>
+                  <Text style={styles.eyebrow}>Potential mission and demand connections</Text>
+                  <Text style={styles.sectionTitle}>Where It Fits</Text>
                   {(selectedCapability?.missionMatches ?? []).map((match) => (
                     <View key={match.id} style={styles.derivedCard} wrap={false}>
                       <Text style={{ fontFamily: "Helvetica-Bold" }}>{match.missionArea.name}</Text>
                       <Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text>
                     </View>
                   ))}
-                  {!selectedCapability?.missionMatches.length ? <Text style={styles.body}>Mission relevance has not been assessed yet.</Text> : null}
+                  {!selectedCapability?.missionMatches.length ? <Text style={styles.body}>No reviewed mission or public-demand match is published yet.</Text> : null}
                 </View>
                 <Sources organization={organization} capability={selectedCapability} />
               </View>
@@ -266,7 +266,7 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
                   <ProfileRow label="Organization" value={organization.name} />
                   <ProfileRow label="Organization type" value={organization.entityKind.replaceAll("_", " ")} />
                   <ProfileRow label="Headquarters" value={organization.primaryLocation?.name} />
-                  <ProfileRow label="Evidence strength" value={evidenceStrengthLabel(selectedCapability?.sourceConfidence ?? organization.sourceConfidence)} />
+                  <ProfileRow label="Source support" value={evidenceStrengthLabel(selectedCapability?.sourceConfidence ?? organization.sourceConfidence)} />
                   <ProfileRow label="Location accuracy" value={organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null} />
                 </View>
                 <Text style={styles.caveat}>Public-source profile. Unknown fields are omitted; analyst assessments are labelled.</Text>
@@ -285,5 +285,5 @@ export async function renderCollectionLookbookPdf(title: string, entries: Lookbo
 }
 
 export async function renderRegionReportPdf(title: string, entries: LookbookEntry[]) {
-  return renderToBuffer(<LookbookPdf title={`${title} Ecosystem Report`} subtitle="Regional public atlas" entries={entries} />);
+  return renderToBuffer(<LookbookPdf title={`${title} Ecosystem Report`} subtitle="Regional ecosystem map" entries={entries} />);
 }

@@ -1,21 +1,66 @@
 # True North Map Canadian Public Beta Release Plan
 
-Status: release-ready; go
-Plan updated: Saturday, July 18, 2026
+Status: release candidate; final validation and production deployment in progress
+Plan updated: Sunday, July 19, 2026
 Release target: Monday, July 20, 2026 at 08:00 Atlantic
 Release URL: `https://truenorthmap.ca/`
 Creator and steward: Andrew Davies
 Shareable PDF: [True North Map - Canadian Public Beta Release Plan](https://drive.google.com/file/d/1NL0I35kokG4c1XwzJGXVLAa6nZnjRgpP/view?usp=drivesdk)
 
+## Authoritative Sunday implementation update — July 19
+
+This section supersedes the older frozen-corpus and “no further feature work”
+statements retained later in this document as the July 18 verification snapshot.
+The public corpus now contains 35 reviewed organizations, 31 reviewed
+technologies or offerings, and six public demand requirements. Corpus work
+remains separate from release readiness and may continue through the existing
+evidence-backed, human-publication workflow.
+
+Completed Sunday product work:
+
+- [x] Organization-type search and filters for companies, investors/funders,
+      accelerators, incubators, research/test centres, ecosystem organizations,
+      and government innovation offices.
+- [x] Decision-led organization and technology profiles with visible
+      breadcrumbs, entity-appropriate technology headings, public contact
+      paths, “Where It Fits,” clearer calls to action, and compact empty states.
+- [x] Andrew-only official public-contact editing inside the canonical
+      organization profile, with validation, explicit Data API grants, rationale,
+      audit history, and public-cache refresh.
+- [x] Plain-language admin guidance for technology areas, regional ecosystem
+      groups, source support, and review status.
+- [x] A private deterministic technology-to-demand comparison workflow. It
+      stages `needs_review` suggestions only and requires one explicit human
+      “Publish match” action with rationale; no autonomous publication exists.
+- [x] Site-wide customer-language pass across discovery, profiles, demand,
+      methodology, metadata, social art, and PDF exports. The public product is
+      consistently “Ecosystem Map”; internal schema and route names remain stable.
+- [x] Both narrow production database migrations applied and verified as
+      security-invoker functions with anonymous execute denied and authenticated
+      execute granted behind Andrew-only staff checks.
+
+Remaining release gate:
+
+- [x] Run the complete automated suite from the final tree: 21 test files and
+      89 tests, lint, source leads, seed, candidate ingestion, and the 28-page
+      production build all pass.
+- [x] Audit the live database for scaffold/test data, source coverage, RLS, and
+      private candidate posture.
+- [ ] Commit and push the intentional release files to `main` while excluding
+      unrelated local artifacts.
+- [ ] Verify the Vercel production deployment and complete fresh desktop/mobile
+      browser journeys for discovery, profile, evidence/export, sign-in, and
+      Andrew-only administration.
+- [ ] Andrew completes the three acceptance walkthroughs supplied at handoff.
+
 ## Executive release decision
 
-True North Map is ready for its Monday public-beta release. The production
-application, database, authentication, governance, launch assets, and discovery
-workflows have passed the release gates. No further feature-development cycle is
-required before launch.
+True North Map has passed its final local application and live database gates.
+Production deployment and browser acceptance are the remaining technical steps;
+no further feature-development cycle is required before launch.
 
-The corpus is deliberately frozen at 30 verified organizations and 30 reviewed
-capabilities. The atlas, evidence-backed profiles, connection workflow, public
+The live corpus contains 35 verified organizations and 31 reviewed technologies
+or offerings. The ecosystem map, evidence-backed profiles, connection workflow, public
 contributions, private administration, Web Analytics, authentication, account
 controls, exports, technical SEO, and independent True North Map identity are
 implemented at `https://truenorthmap.ca/`.
@@ -28,8 +73,9 @@ The remaining work is operational and time-bound:
 4. make the 08:00 go decision and publish Andrew's founder announcement
 5. execute the prepared stakeholder and community outreach sequence
 
-New features and corpus expansion beyond 30 remain frozen until launch feedback
-identifies the highest-value next change.
+Further product features remain frozen until launch feedback identifies the
+highest-value next change. Corpus work may continue only through the existing
+source-backed, human-publication workflow.
 
 ## Verification snapshot — July 18
 
@@ -53,9 +99,9 @@ identifies the highest-value next change.
 Primary message:
 
 > Canada’s defence and dual-use capability is stronger than it is visible.
-> True North Map is an independent public atlas built to make Canadian
-> organizations, capabilities, evidence, and collaboration opportunities easier
-> to discover and connect.
+> True North Map is an independent public ecosystem map that helps people find
+> Canadian organizations, see what they build, examine the supporting sources,
+> and identify who may be worth speaking with next.
 
 Supporting story:
 
@@ -63,7 +109,7 @@ Supporting story:
   find across fragmented regional, industry, program, and innovation networks.
 - True North Map creates a free public discovery layer grounded in
   reviewed sources rather than opaque claims or synthetic records.
-- The beta launches with 30 verified organizations and capabilities, visible
+- The beta launches with 35 verified organizations and 31 technologies or offerings, visible
   evidence, explicit gaps, and paths to contribute or request an introduction.
 - The purpose is practical sovereign-industry visibility: help Canadians find
   one another, understand what exists, and create better collaboration paths.
@@ -78,7 +124,7 @@ The Monday beta is:
 - free for public browsing, searching, profiles, evidence, PDF generation, and
   CSV export
 - published under the True North Map brand at `truenorthmap.ca`
-- built around 30 verified organizations and 30 reviewed capabilities
+- built around 35 verified organizations and 31 reviewed technologies or offerings
 - open to public feedback, contact, and update subscriptions
 - protected by authentication only for private Working Lists, contributions,
   connection requests, account management, and administration
@@ -98,7 +144,7 @@ branding, language model, and procurement platform are not being reproduced.
 | --- | --- |
 | Public identity | Independent Canadian Public Beta, founder story, public trust boundaries, and no partner-branded presentation |
 | Visual system | Field Atlas treatment: warm neutral canvas, spruce primary actions, coral selection, violet analyst assessments, rounded surfaces and controls |
-| Corpus | 30 published organizations and 30 published capabilities; 15 scaffold records excluded |
+| Corpus | 35 published organizations and 31 published technologies or offerings; scaffold records excluded |
 | Atlas | Natural-language search, structured filters, MapTiler/MapLibre map, numbered clusters, synchronized viewport-bounded results, URL state, and visible-result export |
 | Organization profiles | Editorial organization profiles with capabilities, evidence, mission relevance, demand relevance, sources, Save, Connect, Export, website, and correction actions |
 | Authentication | Google OAuth with Supabase PKCE plus passwordless email links for personal or work email addresses |
@@ -121,7 +167,7 @@ branding, language model, and procurement platform are not being reproduced.
 
 These do not block Monday:
 
-- the corpus is intentionally frozen at 30 verified organizations for launch
+- uneven coverage is explicit; expansion remains source-backed and human-reviewed
 - uneven regional coverage where evidence is thin
 - five public NATO demand families with no capability matches until mappings
   pass editorial review
@@ -369,7 +415,7 @@ Primary objective achieved: release-ready production build.
 
 - [x] Research hierarchy, repository remote, `main` branch, and tracked release
   boundaries verified.
-- [x] Feature development and the corpus frozen at 30.
+- [x] Feature development frozen; corpus changes remain review-first.
 - [x] Privacy, Terms, About, Methodology, brand, domain, and authentication copy
   reconciled.
 - [x] Google and passwordless-email authentication, RLS, account deletion,
@@ -419,7 +465,7 @@ a stability buffer, not a feature day.
 ### Release at 08:00 when
 
 - final repository and production deployment are identifiable and reproducible
-- at least 30 verified organizations and capabilities remain published
+- at least 30 verified organizations and reviewed technologies remain published
 - both sign-in methods work, or Google works and any email issue is clearly
   disabled rather than silently broken
 - administrator access is owner-only and private user rows remain owner-only

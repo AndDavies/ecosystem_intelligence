@@ -25,14 +25,14 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         <>
           {result.organizations.length ? <Link href={`/api/export?type=region-report&slug=${result.region.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-4 text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:no-underline"><Download className="size-4" />Export report</Link> : null}
           <Link href={`/?region=${result.region.slug}`} className="inline-flex h-10 items-center gap-2 rounded-md bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white no-underline hover:bg-[var(--atlas-primary-hover)] hover:no-underline">
-            Explore on atlas <ArrowRight className="size-4" />
+            Explore on the map <ArrowRight className="size-4" />
           </Link>
         </>
       }
     >
       <div className="grid gap-4 sm:grid-cols-3">
         <MetricCard icon={<Building2 className="size-5" />} label="Published organizations" value={result.region.organizationCount} />
-        <MetricCard icon={<Layers3 className="size-5" />} label="Verified capabilities" value={result.region.capabilityCount} />
+        <MetricCard icon={<Layers3 className="size-5" />} label="Reviewed technologies and offerings" value={result.region.capabilityCount} />
         <MetricCard icon={<MapPin className="size-5" />} label="Visible clusters" value={result.region.clusterCount} />
       </div>
 
@@ -62,13 +62,13 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
                   <article key={cluster.id} className="rounded-md border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4">
                     <h3 className="text-sm font-bold text-[var(--atlas-ink-soft)]">{cluster.name}</h3>
                     <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">{cluster.summary}</p>
-                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--atlas-primary)]">{cluster.capabilityIds.length} mapped capabilities · {cluster.clusterBasis}</p>
+                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--atlas-primary)]">{cluster.capabilityIds.length} mapped technologies and offerings · {cluster.clusterBasis}</p>
                   </article>
                 ))}
               </div>
-            ) : <EmptyCoverage title="Clusters not mapped yet" detail="Cluster coverage is not inferred from a thin sample. It will be added after the regional capability base supports it." />}
+            ) : <EmptyCoverage title="Clusters not mapped yet" detail="We do not infer a cluster from a thin sample. It will appear once the regional technology base supports a useful grouping." />}
           </PublicCard>
-          <PublicCard title="Coverage note" eyebrow="Research status">
+          <PublicCard title="Coverage note" eyebrow="What is covered">
             <p className="text-xs leading-5 text-[var(--atlas-muted)]">Counts reflect the current published dataset, not the total size of the real ecosystem. Unknown and thin coverage remain explicit to support gap-driven research.</p>
           </PublicCard>
         </div>

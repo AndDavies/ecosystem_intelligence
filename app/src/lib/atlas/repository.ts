@@ -453,6 +453,20 @@ function inferFilters(snapshot: AtlasSnapshot, rawQuery: string): AtlasQuery {
   const text = normalize(rawQuery);
   const filters: AtlasQuery = {};
 
+  const organizationTypeAliases: Array<{ type: AtlasQuery["type"]; aliases: string[] }> = [
+    { type: "investor_funder", aliases: ["venture capital", "venture capitalist", "vc", "investor", "investors", "funder", "funders"] },
+    { type: "research_test_centre", aliases: ["research centre", "research centres", "research center", "research centers", "test centre", "test centres", "test center", "test centers", "testing centre", "testing centres", "testing center", "testing centers"] },
+    { type: "government_innovation_office", aliases: ["government innovation office", "innovation office"] },
+    { type: "ecosystem_organization", aliases: ["ecosystem organization", "ecosystem organizations", "ecosystem organisation", "ecosystem organisations", "industry association", "industry associations", "cluster organization", "cluster organizations", "cluster organisation", "cluster organisations"] },
+    { type: "accelerator", aliases: ["accelerator", "accelerators"] },
+    { type: "incubator", aliases: ["incubator", "incubators"] },
+    { type: "company", aliases: ["company", "companies", "startup", "startups", "prime contractor", "prime contractors", "defence prime", "defense prime"] }
+  ];
+  const organizationType = organizationTypeAliases.find(({ aliases }) =>
+    aliases.some((alias) => new RegExp(`\\b${alias.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")}\\b`).test(text))
+  );
+  if (organizationType?.type) filters.type = organizationType.type;
+
   const metro = inferAtlasMetroArea(rawQuery);
   if (metro) filters.metro = metro.slug;
 
@@ -506,7 +520,7 @@ function inferFilters(snapshot: AtlasSnapshot, rawQuery: string): AtlasQuery {
     }
   }
 
-  if (!filters.region && !filters.metro && !filters.domain && !filters.mission && !filters.demand) {
+  if (!filters.region && !filters.metro && !filters.type && !filters.domain && !filters.mission && !filters.demand) {
     filters.query = rawQuery;
   }
 
@@ -547,7 +561,7 @@ export async function discoverAtlas(rawQuery: string): Promise<AtlasDiscoveryRes
       })
       .map((capability) => capability.id)
   );
-  const hasConstrainedTaxonomy = Boolean(filters.region || filters.metro || filters.domain || filters.mission || filters.demand);
+  const hasConstrainedTaxonomy = Boolean(filters.region || filters.metro || filters.type || filters.domain || filters.mission || filters.demand);
   const interpretation = result.total > 0 ? "matched" : hasConstrainedTaxonomy ? "no_match" : "ambiguous";
 
   return {

@@ -4,7 +4,9 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, parseDemandSignalCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
+import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandSignalCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
+import { suggestDemandMatches } from "@/lib/atlas/demand-matching";
+import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { createClient } from "@/lib/supabase/server";
 
 const intakeSchema = z.object({
@@ -115,6 +117,99 @@ function revalidateReviewPaths() {
   revalidatePath("/admin");
   revalidatePath("/admin/review");
   revalidatePath("/admin/publish");
+}
+
+export async function stageDemandMatchSuggestions() {
+  const user = await requireAtlasStaff("reviewer");
+  const supabase = await createClient({ writeCookies: true });
+  const [snapshot, candidateResult] = await Promise.all([
+    getAtlasSnapshot(),
+    supabase
+      .from("candidate_changes")
+      .select("proposed_record")
+      .eq("candidate_kind", "demand_match_bundle")
+      .in("status", ["pending", "approved", "published"])
+  ]);
+  const existingPairs = new Set<string>();
+  snapshot.demandRequirements.forEach((requirement) => requirement.matches.forEach(({ capability }) => existingPairs.add(`${capability.id}:${requirement.id}`)));
+  (candidateResult.data ?? []).forEach((row) => {
+    const parsed = parseDemandMatchCandidate(row.proposed_record);
+    if (parsed.success) existingPairs.add(`${parsed.data.capabilityId}:${parsed.data.demandRequirementId}`);
+  });
+  const suggestions = suggestDemandMatches(snapshot.organizations, snapshot.demandRequirements, existingPairs).slice(0, 20);
+  if (!suggestions.length) redirect("/admin/demand-matches?status=no-new-suggestions");
+
+  const now = new Date().toISOString();
+  const { data: run, error: runError } = await supabase
+    .from("research_runs")
+    .insert({
+      run_type: "targeted",
+      scope: { workflow: "demand_match_suggestions", maximum_candidates: 20 },
+      selected_gap: { published_match_count: snapshot.demandRequirements.reduce((count, requirement) => count + requirement.matches.length, 0) },
+      status: "completed",
+      started_at: now,
+      completed_at: now,
+      created_by: user.id
+    })
+    .select("id")
+    .single();
+  if (runError || !run) redirect("/admin/demand-matches?error=stage-failed");
+
+  const { error } = await supabase.from("candidate_changes").insert(suggestions.map((suggestion) => ({
+    research_run_id: run.id,
+    candidate_kind: "demand_match_bundle",
+    target_entity_type: "capability_demand_match",
+    proposed_record: suggestion,
+    field_evidence: suggestion.matchedConcepts.map((concept) => ({ field: "matchedConcepts", value: concept, source: "reviewed capability and public demand text" })),
+    duplicate_check: { status: "clear", checkedAt: now, key: `${suggestion.capabilityId}:${suggestion.demandRequirementId}` },
+    confidence: "needs_review",
+    reviewer_rationale: suggestion.reviewerRationale,
+    status: "pending"
+  })));
+  if (error) redirect("/admin/demand-matches?error=stage-failed");
+  await supabase.from("audit_events").insert({
+    actor_id: user.id,
+    actor_role: user.role,
+    event_type: "demand_match_suggestions_staged",
+    entity_type: "research_run",
+    entity_id: run.id,
+    summary: `Staged ${suggestions.length} private technology-to-demand suggestions for review.`,
+    metadata: { candidate_count: suggestions.length, publication_changed: false }
+  });
+  revalidateReviewPaths();
+  revalidatePath("/admin/demand-matches");
+  redirect(`/admin/demand-matches?success=${suggestions.length}`);
+}
+
+const publishDemandMatchSchema = z.object({
+  candidateId: z.string().uuid(),
+  rationale: z.string().trim().min(20).max(2000)
+});
+
+export async function publishDemandMatchCandidate(formData: FormData) {
+  const user = await requireAtlasStaff("reviewer");
+  const parsed = publishDemandMatchSchema.safeParse({
+    candidateId: String(formData.get("candidateId") ?? ""),
+    rationale: String(formData.get("rationale") ?? "")
+  });
+  if (!parsed.success) redirect("/admin/review?error=invalid-demand-match");
+  const supabase = await createClient({ writeCookies: true });
+  const { error } = await supabase.rpc("publish_reviewed_demand_match_candidate", {
+    p_candidate_id: parsed.data.candidateId,
+    p_reviewer_id: user.id,
+    p_reviewer_rationale: parsed.data.rationale
+  });
+  if (error) redirect("/admin/review?error=demand-match-publication-failed");
+
+  revalidateTag("atlas-public");
+  revalidateReviewPaths();
+  revalidatePath("/");
+  revalidatePath("/organizations/[slug]", "page");
+  revalidatePath("/capabilities/[slug]", "page");
+  revalidatePath("/demand");
+  revalidatePath("/demand/[slug]", "page");
+  revalidatePath("/admin/demand-matches");
+  redirect("/admin/review?success=demand-match-published");
 }
 
 export async function reviewAtlasCandidate(formData: FormData) {
@@ -403,6 +498,55 @@ const publishedOrganizationEditSchema = z.object({
   technicalDomainSlug: z.string().trim().min(1).max(240),
   clusterSlug: optionalText(240)
 });
+
+const publishedOrganizationContactSchema = z.object({
+  organizationId: z.string().uuid(),
+  contactPageUrl: z.union([z.literal(""), z.string().url().startsWith("https://")]),
+  publicEmail: z.union([z.literal(""), z.string().email()]),
+  publicPhone: z.string().trim().max(80),
+  linkedInUrl: z.union([z.literal(""), z.string().url().startsWith("https://")]),
+  rationale: z.string().trim().min(3).max(2000)
+});
+
+export async function editPublishedOrganizationContact(formData: FormData) {
+  const user = await requireAtlasStaff("editor");
+  const rawOrganizationId = String(formData.get("organizationId") ?? "");
+  const safeOrganizationId = z.string().uuid().safeParse(rawOrganizationId);
+  const returnPath = safeOrganizationId.success
+    ? `/admin/organizations/${safeOrganizationId.data}/edit`
+    : "/admin/organizations";
+  const parsed = publishedOrganizationContactSchema.safeParse({
+    organizationId: rawOrganizationId,
+    contactPageUrl: String(formData.get("contactPageUrl") ?? "").trim(),
+    publicEmail: String(formData.get("publicEmail") ?? "").trim(),
+    publicPhone: String(formData.get("publicPhone") ?? "").trim(),
+    linkedInUrl: String(formData.get("linkedInUrl") ?? "").trim(),
+    rationale: String(formData.get("contactRationale") ?? "")
+  });
+  if (!parsed.success) redirect(`${returnPath}?error=invalid-contact`);
+
+  const publicContact = {
+    contactPageUrl: parsed.data.contactPageUrl || null,
+    publicEmail: parsed.data.publicEmail || null,
+    publicPhone: parsed.data.publicPhone || null,
+    linkedInUrl: parsed.data.linkedInUrl || null
+  };
+  const supabase = await createClient({ writeCookies: true });
+  const { data: organizationSlug, error } = await supabase.rpc("update_published_organization_public_contact", {
+    p_organization_id: parsed.data.organizationId,
+    p_reviewer_id: user.id,
+    p_public_contact: publicContact,
+    p_rationale: parsed.data.rationale
+  });
+  if (error || typeof organizationSlug !== "string") redirect(`${returnPath}?error=contact-update-failed`);
+
+  revalidateTag("atlas-public");
+  revalidatePath("/");
+  revalidatePath("/organizations");
+  revalidatePath(`/organizations/${organizationSlug}`);
+  revalidatePath(returnPath);
+  redirect(`${returnPath}?success=contact-updated`);
+}
 
 export async function editPublishedOrganization(formData: FormData) {
   const user = await requireAtlasStaff("editor");

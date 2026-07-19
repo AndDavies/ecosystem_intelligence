@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Public Demand Signals",
-  description: "Review public Canadian, allied, and NATO demand statements, mapped capabilities, evidence, and explicit coverage gaps."
+  description: "See the public problems Canadian and allied organizations are trying to solve, then explore reviewed Canadian technologies that may fit."
 };
 
 export default async function DemandIndexPage() {
@@ -21,14 +21,14 @@ export default async function DemandIndexPage() {
 
   return (
     <PublicPageShell
-      eyebrow="Early workflow preview"
-      title="Public demand overlay"
-      description="This emerging workflow separates public problem statements from procurement opportunities. Capability matches appear only after an analyst assesses the published evidence."
+      eyebrow="Start with the problem"
+      title="Public demand signals"
+      description="See the problems governments and allies have made public, then explore Canadian technologies connected through a reviewed assessment. Public signals are context—not procurement opportunities."
     >
       {totalMatches === 0 ? (
         <div className="mb-5 flex items-start gap-3 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-4 py-4 text-sm leading-6 text-[var(--atlas-primary)]">
           <CircleDashed className="mt-0.5 size-5 shrink-0" />
-          <div><p className="font-semibold">Published demand is live; capability matching remains an early workflow.</p><p className="mt-1 text-xs leading-5">{demandSourceCount} public {demandSourceCount === 1 ? "source is" : "sources are"} represented through {snapshot.demandRequirements.length} reviewed problem {snapshot.demandRequirements.length === 1 ? "statement" : "statements"}. No organization matches have been assessed yet.</p></div>
+          <div><p className="font-semibold">The public problems are visible; reviewed technology matches are still being built.</p><p className="mt-1 text-xs leading-5">{demandSourceCount} public {demandSourceCount === 1 ? "source is" : "sources are"} represented through {snapshot.demandRequirements.length} reviewed problem {snapshot.demandRequirements.length === 1 ? "statement" : "statements"}. No organization matches have been published yet.</p></div>
         </div>
       ) : null}
       <div className="mb-5 flex items-start gap-3 rounded-lg border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
@@ -46,8 +46,8 @@ export default async function DemandIndexPage() {
             <h2 className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">{demand.title}</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{demand.problemStatement}</p>
             <div className="mt-auto pt-5">
-              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matches.length} capability assessments</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment under review"}</span></div>
-              <Link href={`/demand/${demand.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">Open demand signal <ArrowRight className="size-3.5" /></Link>
+              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matches.length} reviewed technology {demand.matches.length === 1 ? "match" : "matches"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment under review"}</span></div>
+              <Link href={`/demand/${demand.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">See the problem and potential fits <ArrowRight className="size-3.5" /></Link>
             </div>
           </PublicCard>
         ))}

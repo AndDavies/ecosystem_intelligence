@@ -208,7 +208,7 @@ export function PilotExperience() {
             <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><Bell className="size-5" /></span>
             <div className="min-w-0 flex-1">
               <p className="atlas-eyebrow">Public Beta</p>
-              <h2 id="pilot-updates-title" className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">Follow the atlas as it grows.</h2>
+              <h2 id="pilot-updates-title" className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">Follow the map as it grows.</h2>
             </div>
             <button type="button" onClick={dismissUpdates} className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss update signup"><X className="size-4" /></button>
           </div>
@@ -250,7 +250,7 @@ export function PilotExperience() {
               <div className="min-w-0 flex-1">
                 <p className="atlas-eyebrow">Public-beta feedback</p>
                 <h2 id="pilot-feedback-title" className="mt-1 text-xl font-bold tracking-[-0.025em] text-[var(--atlas-ink)]">Tell us what would make this useful.</h2>
-                <p className="mt-2 text-sm leading-6 text-[var(--atlas-muted)]">Tell us what worked, what was missing, or what would make the atlas more useful in real work.</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--atlas-muted)]">Tell us what helped, what was missing, or what would make the map more useful in real work.</p>
               </div>
               <button type="button" onClick={() => setFeedbackOpen(false)} className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Close feedback form"><X className="size-4" /></button>
             </div>
@@ -259,7 +259,7 @@ export function PilotExperience() {
               <div className="mt-6 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-5 text-center text-sm leading-6 text-[var(--atlas-primary)]">
                 <CheckCircle2 className="mx-auto mb-3 size-7" />
                 Thank you. Your feedback is queued for the product review.
-                <button type="button" onClick={() => setFeedbackOpen(false)} className="mt-4 block w-full text-xs font-semibold text-[var(--atlas-primary)] underline">Return to the atlas</button>
+                <button type="button" onClick={() => setFeedbackOpen(false)} className="mt-4 block w-full text-xs font-semibold text-[var(--atlas-primary)] underline">Return to the ecosystem map</button>
               </div>
             ) : (
               <form onSubmit={submitFeedback} className="mt-5 space-y-4">

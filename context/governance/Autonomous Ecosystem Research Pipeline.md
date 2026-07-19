@@ -9,7 +9,7 @@ Canonical domain: `https://truenorthmap.ca`
 
 True North Map now has a bounded Codex-native research system that can run manually or on a weekly schedule. It measures coverage, selects one gap, expands durable sources, creates typed source leads, produces role-appropriate private candidates, applies deterministic evidence and duplicate gates, and sends successful candidates directly into the existing private Admin Review workflow.
 
-The system never treats review intake as publication. The public-beta corpus remains frozen at the 35 organizations and 31 capabilities currently published; any later expansion requires a human to accept an organization or public-demand candidate in Review and use the explicit Publish checkpoint. `research_runs` is hidden audit metadata, not another queue or approval step. A completed run must place every validated candidate directly into `candidate_changes` with a generated reviewer rationale; file-only artifacts are not a successful terminal state.
+The system never treats review intake as publication. The public-beta corpus currently contains 35 organizations and 31 technologies or offerings; any expansion requires a human to accept an organization or public-demand candidate in Review and use the explicit Publish checkpoint. `research_runs` is hidden audit metadata, not another queue or approval step. A completed run must place every validated candidate directly into `candidate_changes` with a generated reviewer rationale; file-only artifacts are not a successful terminal state.
 
 ## Coordinator flow
 

@@ -1,8 +1,8 @@
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
-import { editAtlasCandidate, mergeAtlasCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
+import { editAtlasCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, type AtlasOrganizationCandidate } from "@/lib/atlas/candidate-schema";
+import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
 import type { DemandSignalBundleV1, OrganizationBundleV2 } from "@/lib/research/pipeline-schema";
 import { createClient } from "@/lib/supabase/server";
 
@@ -28,7 +28,9 @@ const errorMessages: Record<string, string> = {
   "edit-failed": "The edited candidate could not be saved.",
   "invalid-merge": "Select a valid canonical organization before merging.",
   "merge-failed": "The duplicate resolution could not be saved.",
-  "review-failed": "The review decision could not be recorded."
+  "review-failed": "The review decision could not be recorded.",
+  "invalid-demand-match": "Explain why this technology-to-demand match is useful and defensible before publishing it.",
+  "demand-match-publication-failed": "The match was not published. Refresh the queue and confirm that the technology, public demand statement, and candidate are still current."
 };
 
 export default async function AdminReviewPage({ searchParams }: { searchParams: Promise<{ error?: string; success?: string }> }) {
@@ -44,17 +46,19 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
   const candidateRows = (candidates ?? []) as CandidateRow[];
   const organizationCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "organization_bundle").length;
   const demandCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "demand_signal_bundle").length;
+  const demandMatchCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "demand_match_bundle").length;
 
   return (
     <PublicPageShell eyebrow="Editorial operations" title="Review queue" description="Inspect and edit staged research. Accepting a candidate moves it to the publication checkpoint; it does not make the record public." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
       {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{errorMessages[params.error] ?? "The review action could not be completed."}</div> : null}
-      {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">Candidate {params.success === "merged" ? "merged into its canonical organization" : "updated"}. Publication remains unchanged.</div> : null}
+      {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">{params.success === "demand-match-published" ? "Technology-to-demand match published and public profiles refreshed." : `Candidate ${params.success === "merged" ? "merged into its canonical organization" : "updated"}. Publication remains unchanged.`}</div> : null}
       {candidateRows.length ? (
         <div className="space-y-5">
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-3">
             <QueueTypeSummary label="Organization candidates" value={organizationCandidateCount} detail="Companies, accelerators, incubators, investors, research centres, and ecosystem organizations." tone="organization" />
             <QueueTypeSummary label="Demand-signal candidates" value={demandCandidateCount} detail="Public problem statements from governments, armed forces, programs, procurement bodies, and allies." tone="demand" />
+            <QueueTypeSummary label="Potential matches" value={demandMatchCandidateCount} detail="Private suggestions connecting reviewed technologies to public demand statements. Each requires an explicit publication decision." tone="match" />
           </div>
           {candidateRows.map((candidate) => {
             const legacy = candidate.candidate_kind === "organization_bundle"
@@ -66,12 +70,17 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
             const demand = candidate.candidate_kind === "demand_signal_bundle"
               ? parseDemandSignalCandidate(candidate.proposed_record)
               : null;
+            const demandMatch = candidate.candidate_kind === "demand_match_bundle"
+              ? parseDemandMatchCandidate(candidate.proposed_record)
+              : null;
             return legacy?.success ? (
               <OrganizationCandidateCard key={candidate.id} candidate={candidate} record={legacy.data} domains={domains ?? []} clusters={clusters ?? []} missionAreas={missionAreas ?? []} />
             ) : typed?.success ? (
               <TypedOrganizationCandidateCard key={candidate.id} candidate={candidate} record={typed.data} domains={domains ?? []} missionAreas={missionAreas ?? []} />
             ) : demand?.success ? (
               <DemandSignalCandidateCard key={candidate.id} candidate={candidate} record={demand.data} />
+            ) : demandMatch?.success ? (
+              <DemandMatchCandidateCard key={candidate.id} candidate={candidate} record={demandMatch.data} />
             ) : (
               <GenericCandidateCard key={candidate.id} candidate={candidate} />
             );
@@ -79,6 +88,44 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
         </div>
       ) : <EmptyCoverage title="Review queue is clear" detail="New source extractions, research candidates, and public submissions appear here after they are staged." />}
     </PublicPageShell>
+  );
+}
+
+function DemandMatchCandidateCard({ candidate, record }: { candidate: CandidateRow; record: DemandMatchCandidate }) {
+  const areaClass = "rounded-md border border-[#d0d5dd] bg-white px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[#0756d9]";
+  return (
+    <PublicCard title={`${record.organizationName} → ${record.demandTitle}`} eyebrow="Potential technology-to-demand match · private until you publish it">
+      <div className="grid gap-4 md:grid-cols-3">
+        <ReviewFact label="Technology" value={record.capabilityName} />
+        <ReviewFact label="Public demand statement" value={record.demandTitle} />
+        <ReviewFact label="Current status" value="Needs human review" tone="warning" />
+      </div>
+      <div className="mt-4 rounded-md border border-[#b8dfe5] bg-[#f5fcfd] p-4">
+        <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#007f98]">What the system noticed</p>
+        <p className="mt-2 text-sm leading-6 text-[#344054]">{record.alignmentSummary}</p>
+        <div className="mt-3 flex flex-wrap gap-2">{record.matchedConcepts.map((concept) => <span key={concept} className="rounded-full border border-[#b8dfe5] bg-white px-2.5 py-1 text-[10px] font-semibold text-[#007f98]">{concept}</span>)}</div>
+      </div>
+      <p className="mt-4 text-xs leading-5 text-[#667085]">{record.rationale}</p>
+      <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
+      <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold">
+        <a href={`/capabilities/${record.capabilitySlug}`} target="_blank" className="text-[#0756d9]">Review technology profile</a>
+        <a href={`/demand/${record.demandSlug}`} target="_blank" className="text-[#0756d9]">Review public demand statement</a>
+      </div>
+      <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
+        <form action={publishDemandMatchCandidate} className="contents">
+          <input type="hidden" name="candidateId" value={candidate.id} />
+          <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Why this match should be public<textarea name="rationale" required minLength={20} maxLength={2000} rows={3} className={areaClass} placeholder="Explain the source-backed, decision-useful connection and any caveat a user should understand." /></label>
+          <button className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white">Publish match</button>
+        </form>
+        <form action={reviewAtlasCandidate} className="contents">
+          <input type="hidden" name="candidateId" value={candidate.id} />
+          <input type="hidden" name="rationale" value="Potential relationship requires more source review before any public assessment." />
+          <button name="decision" value="defer" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</button>
+          <button name="decision" value="reject" className="h-10 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</button>
+        </form>
+      </div>
+      <p className="mt-3 text-[11px] leading-5 text-[#7a2e0e]">Publishing labels this as our reviewed interpretation. It does not imply procurement eligibility, endorsement, or classified demand.</p>
+    </PublicCard>
   );
 }
 
@@ -349,10 +396,10 @@ function ReviewerRationale({ rationale }: { rationale: string }) {
   return <aside className="mt-4 rounded-md border border-[#b2ccff] bg-[#f5f8ff] p-4"><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#1849a9]">Generated reviewer rationale</p><p className="mt-2 text-xs leading-5 text-[#344054]">{rationale}</p></aside>;
 }
 
-function QueueTypeSummary({ label, value, detail, tone }: { label: string; value: number; detail: string; tone: "organization" | "demand" }) {
+function QueueTypeSummary({ label, value, detail, tone }: { label: string; value: number; detail: string; tone: "organization" | "demand" | "match" }) {
   const toneClasses = tone === "organization"
     ? "border-[#b2ccff] bg-[#f5f8ff] text-[#1849a9]"
-    : "border-[#b8dfe5] bg-[#f5fcfd] text-[#007f98]";
+    : tone === "demand" ? "border-[#b8dfe5] bg-[#f5fcfd] text-[#007f98]" : "border-[#fec84b] bg-[#fffaeb] text-[#93370d]";
   return <div className={`rounded-lg border p-4 ${toneClasses}`}><div className="flex items-center justify-between gap-3"><p className="text-xs font-bold uppercase tracking-[0.08em]">{label}</p><strong className="text-2xl">{value}</strong></div><p className="mt-2 text-xs leading-5 text-[#475467]">{detail}</p></div>;
 }
 

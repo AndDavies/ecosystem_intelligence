@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronRight } from "lucide-react";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 
@@ -8,7 +8,8 @@ export function PublicPageShell({
   title,
   description,
   backHref = "/",
-  backLabel = "Back to atlas",
+  backLabel = "Back to ecosystem map",
+  breadcrumbs,
   actions,
   children
 }: {
@@ -17,6 +18,7 @@ export function PublicPageShell({
   description?: string;
   backHref?: string;
   backLabel?: string;
+  breadcrumbs?: Array<{ label: string; href?: string }>;
   actions?: React.ReactNode;
   children: React.ReactNode;
 }) {
@@ -24,10 +26,29 @@ export function PublicPageShell({
     <main className="atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)]">
       <PublicAtlasHeader />
       <div className="atlas-frame py-7 sm:py-10">
-        <Link href={backHref} className="inline-flex items-center gap-2 rounded-full px-1 py-1 text-xs font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline">
-          <ArrowLeft className="size-4" />
-          {backLabel}
-        </Link>
+        {breadcrumbs?.length ? (
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center gap-1.5 text-xs font-semibold">
+              {breadcrumbs.map((breadcrumb, index) => (
+                <li key={`${breadcrumb.label}-${index}`} className="flex items-center gap-1.5">
+                  {index ? <ChevronRight className="size-3.5 text-[var(--atlas-muted)]" aria-hidden="true" /> : null}
+                  {breadcrumb.href ? (
+                    <Link href={breadcrumb.href} className="rounded-md px-1 py-1 text-[var(--atlas-primary)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline">
+                      {breadcrumb.label}
+                    </Link>
+                  ) : (
+                    <span aria-current="page" className="px-1 py-1 text-[var(--atlas-muted)]">{breadcrumb.label}</span>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
+        ) : (
+          <Link href={backHref} className="inline-flex items-center gap-2 rounded-full px-1 py-1 text-xs font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline">
+            <ArrowLeft className="size-4" />
+            {backLabel}
+          </Link>
+        )}
         <header className="mt-6 flex flex-col gap-6 pb-7 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-4xl">
             <p className="atlas-eyebrow">{eyebrow}</p>
