@@ -150,8 +150,8 @@ function PublicCapabilityPage({
             <EvidenceList citations={citations} />
             {!hasPublishedAlignment ? (
               <div className="mt-5 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
-                <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">No reviewed mission or public-demand match is published yet.</p>
-                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">That is an open research gap, not a negative assessment. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public demand signals</Link>.</p>
+                <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">We have not connected this technology to a mission or public need yet.</p>
+                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public demand signals</Link>.</p>
               </div>
             ) : null}
           </PublicCard>

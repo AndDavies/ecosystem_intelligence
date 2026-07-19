@@ -157,6 +157,8 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
 }
 
 function CapabilityPdf({ organization, capability }: { organization: AtlasOrganization; capability: AtlasCapability }) {
+  const alignments = [...capability.missionMatches, ...capability.demandMatches];
+
   return (
     <Document title={`${capability.name} public profile`} author="True North Map">
       <Page size="LETTER" style={styles.page}>
@@ -176,14 +178,14 @@ function CapabilityPdf({ organization, capability }: { organization: AtlasOrgani
             <View style={styles.section}>
               <Text style={styles.eyebrow}>Potential mission and demand connections</Text>
               <Text style={styles.sectionTitle}>Where It Fits</Text>
-              {capability.missionMatches.map((match) => (
+              {alignments.map((match) => (
                 <View key={match.id} style={styles.derivedCard} wrap={false}>
-                  <Text style={{ fontFamily: "Helvetica-Bold" }}>{match.missionArea.name}</Text>
+                  <Text style={{ fontFamily: "Helvetica-Bold" }}>{"missionArea" in match ? match.missionArea.name : match.demandTitle}</Text>
                   <Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text>
                   <Text style={{ marginTop: 4, fontSize: 7.5 }}>{assessmentConfidenceLabel(match.confidence)} assessment confidence</Text>
                 </View>
               ))}
-              {!capability.missionMatches.length ? <Text style={styles.body}>No mission or public-need connection has been published yet. Treat this as a research gap, not a negative signal.</Text> : null}
+              {!alignments.length ? <Text style={styles.body}>No mission or public-need connection has been published yet. Treat this as a research gap, not a negative signal.</Text> : null}
             </View>
           </View>
           <View style={styles.rail}>
@@ -232,6 +234,7 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
     <Document title={title} author="True North Map">
       {entries.map(({ organization, capability, note }, index) => {
         const selectedCapability = capability ?? organization.capabilities[0];
+        const alignments = selectedCapability ? [...selectedCapability.missionMatches, ...selectedCapability.demandMatches] : [];
         return (
           <Page key={`${organization.id}-${capability?.id ?? "organization"}-${index}`} size="LETTER" style={styles.page}>
             <Text style={styles.brand}>True North Map / Public Lookbook</Text>
@@ -250,17 +253,22 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
                     {selectedCapability.defenceApplications.length ? <><Text style={styles.label}>Defence and security uses</Text><BulletList values={selectedCapability.defenceApplications} /></> : null}
                   </View>
                 ) : null}
-                <View style={styles.section}>
+                {selectedCapability ? <View style={styles.section}>
                   <Text style={styles.eyebrow}>Potential mission and demand connections</Text>
                   <Text style={styles.sectionTitle}>Where It Fits</Text>
-                  {(selectedCapability?.missionMatches ?? []).map((match) => (
+                  {alignments.map((match) => (
                     <View key={match.id} style={styles.derivedCard} wrap={false}>
-                      <Text style={{ fontFamily: "Helvetica-Bold" }}>{match.missionArea.name}</Text>
+                      <Text style={{ fontFamily: "Helvetica-Bold" }}>{"missionArea" in match ? match.missionArea.name : match.demandTitle}</Text>
                       <Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text>
                     </View>
                   ))}
-                  {!selectedCapability?.missionMatches.length ? <Text style={styles.body}>No reviewed mission or public-demand match is published yet.</Text> : null}
-                </View>
+                  {!alignments.length ? <Text style={styles.body}>No mission or public-need connection has been published yet. Treat this as a research gap, not a negative signal.</Text> : null}
+                </View> : (
+                  <View style={styles.card}>
+                    <Text style={styles.sectionTitle}>{organizationOfferingTitle(organization.entityKind, organization.name)}</Text>
+                    <Text style={styles.body}>{organizationOfferingGap(organization.entityKind, organization.name)} Use the official website for current details.</Text>
+                  </View>
+                )}
                 <Sources organization={organization} capability={selectedCapability} />
               </View>
               <View style={styles.rail}>

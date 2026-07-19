@@ -26,6 +26,7 @@ describe("customer-facing product language", () => {
     expect(combined).not.toContain("Capability dossier");
     expect(combined).not.toContain("Evidence strength");
     expect(combined).not.toContain("reviewed analyst assessments");
+    expect(combined).not.toContain("No reviewed mission or public-demand match");
     expect(organization).toContain("Coverage still growing");
     expect(organization).toContain("Suggest a source");
   });
