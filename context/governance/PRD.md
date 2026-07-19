@@ -109,7 +109,7 @@ Automated research can create leads and candidate changes. Only an explicit huma
 | `/contact` | Rate-limited private contact for general, privacy, media, and partnership messages |
 | `/privacy` | Accounts, contributions, connections, consent, analytics, and retention notice |
 | `/terms` | Public-beta use, contribution, connection, and disclaimer terms |
-| `/admin/*` | Private source intake, review, public-beta insights, demand matching, organization editing, and coverage operations |
+| `/admin/*` | Private source intake, review, publication, public-beta insights, organization and demand-signal editing, demand matching, and coverage operations |
 
 ## Discovery experience
 
@@ -190,10 +190,10 @@ It must never invent an organization or fact. Ambiguous questions return suggest
 
 ### Private public-beta learning and participation
 
-- `pilot_update_signups` — affirmative update consent ledger
-- `pilot_feedback` — unauthenticated product feedback staged privately for review
-- `pilot_searches` — private raw search terms and interpreted filters retained for 90 days
-- `pilot_events` — bounded, privacy-light workflow events retained for 30 days
+- `pilot_update_signups` — historical physical table name for the affirmative public-beta update consent ledger
+- `pilot_feedback` — historical physical table name for unauthenticated public-beta feedback staged privately for review
+- `pilot_searches` — historical physical table name for private raw search terms and interpreted filters retained for 90 days
+- `pilot_events` — historical physical table name for bounded, privacy-light public-beta workflow events retained for 30 days
 - `connection_requests` — authenticated private introduction requests and review status
 - `contact_messages` — private, rate-limited contact inbox
 
@@ -294,7 +294,7 @@ The clean public seed began with six previously validated organizations and thei
 - GeoSpectrum Technologies
 - Open Ocean Robotics
 
-The first reviewed Underwater ISR expansion added 12 source-backed organizations and technologies through the canonical review workflow, bringing the map to 18 records. A second 12-organization national expansion was field reviewed, approved with substantive rationale, and promoted atomically on July 17, 2026, bringing the live map to 30 organizations and 30 technologies. Five further typed research candidates and one Canadian public-demand source were subsequently reviewed and published. The live corpus now contains 35 organizations, 31 technologies or offerings, and six public demand requirements. The fifteen scaffold organizations and all placeholder rows remain excluded. Future expansion remains source-backed and review-first rather than numerically frozen or padded.
+The first reviewed Underwater ISR expansion added 12 source-backed organizations and technologies through the canonical review workflow, bringing the map to 18 records. A second 12-organization national expansion was field reviewed, approved with substantive rationale, and promoted atomically on July 17, 2026, bringing the live map to 30 organizations and 30 technologies. Five further typed research candidates and one Canadian public-demand source were subsequently reviewed and published. The live corpus now contains 35 organizations, 31 technologies or offerings, six public demand requirements, and seven reviewed technology-to-demand matches with dual-source citations. The fifteen scaffold organizations and all placeholder rows remain excluded. Future expansion remains source-backed and review-first rather than numerically frozen or padded.
 
 ## Acceptance criteria
 
@@ -317,6 +317,9 @@ Release-ready implementation verified on 2026-07-18:
   tests, and server-only credentials
 - 35 published organizations and 31 published technologies or offerings; the
   verified release floor is met and scaffold records remain excluded
+- two authoritative demand sources containing six public problem statements,
+  plus seven reviewed technology-to-demand matches with specific rationales and
+  evidence inherited from both sides of each relationship
 - independent Field Atlas visual system using a warm neutral canvas, spruce
   primary actions, coral selection, violet analyst-assessment states, and
   rounded public surfaces

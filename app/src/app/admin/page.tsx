@@ -18,7 +18,7 @@ export default async function AdminOverviewPage() {
   const publishedDemandSignals = new Set(snapshot.demandRequirements.map((demand) => demand.source.id)).size;
 
   return (
-    <PublicPageShell eyebrow="Private editorial workspace" title="Atlas operations" description="Stage research, review field-level candidates, and monitor coverage without granting agents autonomous publication." actions={<span className="rounded bg-[#f2f4f7] px-3 py-2 text-xs font-semibold text-[#475467]">{user.role} · {user.email}</span>}>
+    <PublicPageShell eyebrow="Private editorial workspace" title="True North Map operations" description="Stage research, review field-level candidates, maintain published intelligence, and monitor coverage without granting agents autonomous publication." actions={<span className="rounded bg-[#f2f4f7] px-3 py-2 text-xs font-semibold text-[#475467]">{user.role} · {user.email}</span>}>
       <AdminNav />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <AdminMetric icon={<Database className="size-5" />} label="Published organizations" value={snapshot.organizations.length} />
@@ -32,6 +32,7 @@ export default async function AdminOverviewPage() {
         <AdminLink title="Review candidate changes" detail="Compare proposed and current records, then accept, reject, edit, merge, or defer." href="/admin/review" />
         <AdminLink title="Publish approved records" detail="Run final validation and publish every approved record with one explicit action." href="/admin/publish" />
         <AdminLink title="Manage organizations" detail="Edit a published organization, its primary location, and its capability profile." href="/admin/organizations" />
+        <AdminLink title="Manage demand signals" detail="Add or update public problem statements while preserving every linked technology match." href="/admin/demand-signals" />
         <AdminLink title="Find potential demand matches" detail="Compare reviewed technologies with public problem statements, then publish only the connections you can defend." href="/admin/demand-matches" />
         <AdminLink title="Inspect coverage gaps" detail="Measure published coverage by region, domain, mission, and demand statement." href="/admin/coverage" />
       </div>

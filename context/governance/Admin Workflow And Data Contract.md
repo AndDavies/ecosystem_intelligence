@@ -1,0 +1,50 @@
+# Admin Workflow And Data Contract
+
+This document is the current operating contract for the private True North Map administration routes. The detailed route-by-route manual is [True North Map Admin Manual](../../output/pdf/True_North_Map_Admin_Manual.pdf).
+
+## Access
+
+- Every `/admin/*` page is private, `noindex`, absent from public navigation, and fail-closed to Andrew Davies's immutable user ID, exact email, and controlled `app_metadata.role = admin`.
+- Admin server actions repeat the role check. Service credentials remain server-only.
+
+## Current Live State
+
+- 35 published organizations.
+- 31 published technologies.
+- Two public demand sources containing six public problem statements.
+- Seven reviewed, published technology-to-demand matches.
+- Every published demand match has moderate confidence, approved review status, a specific reviewer rationale, and citations inherited from both the technology and the demand requirement.
+
+## Routes
+
+| Route | Purpose | Public write behaviour |
+| --- | --- | --- |
+| `/admin` | Live operations overview | Read-only |
+| `/admin/intake` | Stage a URL or private document | Private research run and candidate only |
+| `/admin/review` | Inspect, edit, merge, accept, reject, defer, or publish a demand match | Acceptance stays private; demand-match Publish is immediate |
+| `/admin/publish` | Publish approved organization and demand-signal candidates | Transactional public publication |
+| `/admin/organizations` | Find canonical public records | Read-only list |
+| `/admin/organizations/[id]/edit` | Maintain one published organization dossier | Immediate transactional public update |
+| `/admin/demand-signals` | Add or maintain official public demand sources and requirements | Immediate transactional public update |
+| `/admin/demand-matches` | Stage plausible technology-to-demand suggestions | Private candidates only |
+| `/admin/insights` | Progress bounded beta workflows and inspect discovery behaviour | Private workflow updates only |
+| `/admin/coverage` | Inspect live gaps by region, technology, mission, and public demand | Read-only |
+
+## Relationship Safety
+
+- Published organization maintenance preserves organization, capability, and location identifiers. Existing mission and demand matches continue to point to the same capability.
+- Demand-signal maintenance updates existing `sources`, `demand_sources`, `demand_source_issuers`, and `demand_requirements` rows transactionally. The selected issuing authority remains explicit. Existing requirement IDs and slugs remain stable, so `capability_demand_matches` and `field_citations` do not detach.
+- Adding a demand requirement creates a new stable row. It does not generate or publish matches automatically.
+- Material writes record the administrator, rationale, and timestamp in `audit_events` or `review_decisions`.
+
+## Publication Rules
+
+1. Verify the canonical public source.
+2. Keep facts separate from derived interpretation.
+3. Translate features into a concrete user outcome without strengthening the underlying claim.
+4. Resolve duplicates before acceptance.
+5. State uncertainty and public-source caveats.
+6. Use the explicit publication control appropriate to the record type.
+7. Open the public page after publication and verify evidence and relationships.
+
+The production Supabase project remains the sole source of truth. Local fixtures, remembered taxonomy, candidate files, and research-agent output cannot substitute for live database validation or human publication.

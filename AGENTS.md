@@ -4,7 +4,7 @@ This file is the operating contract for agent work in the `Ecosystem Intelligenc
 
 ## Project Mission
 
-`Ecosystem Intelligence` is the project and system category. Its public brand is `True North Map` at `https://truenorthmap.ca`: a simple, evidence-backed business intelligence, ecosystem-mapping, and engagement-management service for defence and strategic-tech teams. Supabase project `facoactpdckkhciamflk` is the sole canonical runtime, taxonomy, coverage, duplicate-check, and publication data source. The public beta requires at least 30 verified organizations; expansion is governed by evidence quality and explicit human review rather than a fixed release number.
+`Ecosystem Intelligence` is the project and system category. Its public brand is `True North Map` at `https://truenorthmap.ca`: a simple, evidence-backed business intelligence, ecosystem-mapping, and engagement-management service for defence and strategic-tech teams. Supabase project `facoactpdckkhciamflk` is the sole canonical runtime, taxonomy, coverage, duplicate-check, and publication data source. The live public beta contains 35 reviewed organizations, 31 reviewed technologies, six public problem statements, and seven reviewed public demand matches. Expansion is governed by evidence quality and explicit human review rather than a fixed release number.
 
 The strategic wedge is:
 
@@ -170,11 +170,13 @@ Browser QA should cover:
 - `/collections`
 - `/account`
 - `/admin/review`
+- `/admin/demand-signals`
 - `/admin/demand-matches`
 - `/admin/organizations/[id]/edit`
 
 ## Change Log
 
+- `2026-07-19`: Added relationship-safe public Demand Signals administration, enriched the complete live beta corpus with evidence-bounded outcome language, and published seven individually reviewed demand matches with dual-source citations and reviewer rationales.
 - `2026-07-19`: Made the production database the sole runtime and research source, removed the bundled and CSV-era data paths, retired v1 ingestion tooling, and consolidated validation around the typed v2 review-first pipeline.
 - `2026-07-19`: Added decision-led public profiles, plain-language discovery and editor terminology, official public-contact editing, and a private review-first technology-to-demand matching workflow; replaced the fixed corpus freeze with evidence-backed human-approved expansion.
 - `2026-07-19`: Retired the authenticated legacy workspace routes and their old data/action stack, made capability dossiers public-only, removed legacy search and export modes, and aligned active QA with the True North Map surface.
