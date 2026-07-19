@@ -146,9 +146,8 @@ export async function stageDemandMatchSuggestions() {
       run_type: "targeted",
       scope: { workflow: "demand_match_suggestions", maximum_candidates: 20 },
       selected_gap: { published_match_count: snapshot.demandRequirements.reduce((count, requirement) => count + requirement.matches.length, 0) },
-      status: "completed",
+      status: "running",
       started_at: now,
-      completed_at: now,
       created_by: user.id
     })
     .select("id")
@@ -166,7 +165,19 @@ export async function stageDemandMatchSuggestions() {
     reviewer_rationale: suggestion.reviewerRationale,
     status: "pending"
   })));
-  if (error) redirect("/admin/demand-matches?error=stage-failed");
+  if (error) {
+    await supabase.from("research_runs").update({
+      status: "failed",
+      completed_at: new Date().toISOString(),
+      failure_note: "Candidate staging failed before any public record changed."
+    }).eq("id", run.id);
+    redirect("/admin/demand-matches?error=stage-failed");
+  }
+  await supabase.from("research_runs").update({
+    status: "completed",
+    completed_at: new Date().toISOString(),
+    counters: { candidate_count: suggestions.length }
+  }).eq("id", run.id);
   await supabase.from("audit_events").insert({
     actor_id: user.id,
     actor_role: user.role,

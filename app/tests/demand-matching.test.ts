@@ -52,6 +52,7 @@ describe("review-first demand matching", () => {
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
     const review = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
     const migration = await readFile(path.resolve("supabase/migrations/20260719174445_reviewable_demand_match_workflow.sql"), "utf8");
+    const candidateKindMigration = await readFile(path.resolve("supabase/migrations/20260719183500_allow_demand_match_candidates.sql"), "utf8");
     expect(action).toContain('candidate_kind: "demand_match_bundle"');
     expect(action).toContain('status: "pending"');
     expect(review).toContain("Publish match");
@@ -60,5 +61,9 @@ describe("review-first demand matching", () => {
     expect(migration).toContain("'approved',");
     expect(migration).toContain("'published',");
     expect(migration).toContain("grant execute on function public.publish_reviewed_demand_match_candidate");
+    expect(candidateKindMigration).toContain("'demand_match_bundle'::text");
+    expect(candidateKindMigration).toContain("'demand_match_bundle_v1'::text");
+    expect(action).toContain('status: "running"');
+    expect(action).toContain('status: "failed"');
   });
 });
