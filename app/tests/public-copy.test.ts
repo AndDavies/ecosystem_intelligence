@@ -33,11 +33,15 @@ describe("customer-facing product language", () => {
 
   it("carries the same language into downloadable profiles", async () => {
     const pdf = await readFile(path.resolve("src/lib/export/atlas-pdf.tsx"), "utf8");
+    const exportRoute = await readFile(path.resolve("src/app/api/export/route.ts"), "utf8");
     expect(pdf).toContain("Technology Profile");
     expect(pdf).toContain("Where It Fits");
     expect(pdf).toContain("Source support");
     expect(pdf).not.toContain("Mission relevance");
     expect(pdf).not.toContain("Capability Profile");
     expect(pdf).not.toContain("Reviewed assessments");
+    expect(exportRoute).toContain("true-north-map-results.csv");
+    expect(exportRoute).toContain("Published technology not found.");
+    expect(exportRoute).not.toContain("canadian-ecosystem-atlas-results.csv");
   });
 });

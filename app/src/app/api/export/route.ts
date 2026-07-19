@@ -81,7 +81,7 @@ export async function GET(request: Request) {
     return new NextResponse(buildCsv(header, rows), {
       headers: {
         "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": "attachment; filename=canadian-ecosystem-atlas-results.csv"
+        "Content-Disposition": "attachment; filename=\"true-north-map-results.csv\""
       }
     });
   }
@@ -96,8 +96,8 @@ export async function GET(request: Request) {
   if (type === "capability-dossier") {
     const slug = searchParams.get("slug");
     const result = slug ? await getAtlasCapabilityBySlug(slug) : null;
-    if (!result) return NextResponse.json({ error: "Published capability not found." }, { status: 404 });
-    return pdfResponse(await renderCapabilityDossierPdf(result.organization, result.capability), `${result.capability.slug}-public-dossier.pdf`);
+    if (!result) return NextResponse.json({ error: "Published technology not found." }, { status: 404 });
+    return pdfResponse(await renderCapabilityDossierPdf(result.organization, result.capability), `${result.capability.slug}-technology-profile.pdf`);
   }
 
   if (type === "region-report") {
