@@ -1,6 +1,6 @@
 # True North Map Canadian Public Beta Release Plan
 
-Status: release candidate; final validation and production deployment in progress
+Status: production release candidate; Andrew acceptance walkthroughs remain
 Plan updated: Sunday, July 19, 2026
 Release target: Monday, July 20, 2026 at 08:00 Atlantic
 Release URL: `https://truenorthmap.ca/`
@@ -35,22 +35,29 @@ Completed Sunday product work:
 - [x] Site-wide customer-language pass across discovery, profiles, demand,
       methodology, metadata, social art, and PDF exports. The public product is
       consistently “Ecosystem Map”; internal schema and route names remain stable.
-- [x] Both narrow production database migrations applied and verified as
+- [x] Three narrow production database migrations applied and verified: public
+      contact editing, reviewed demand-match publication, and typed private
+      demand-candidate staging.
+      The two RPCs are
       security-invoker functions with anonymous execute denied and authenticated
       execute granted behind Andrew-only staff checks.
+- [x] Seven evidence-anchored technology-to-demand suggestions staged privately
+      for Andrew’s review; no demand match was published during QA.
 
 Remaining release gate:
 
 - [x] Run the complete automated suite from the final tree: 21 test files and
-      89 tests, lint, source leads, seed, candidate ingestion, and the 28-page
+      91 tests, lint, source leads, seed, candidate ingestion, and the 28-page
       production build all pass.
 - [x] Audit the live database for scaffold/test data, source coverage, RLS, and
       private candidate posture.
-- [ ] Commit and push the intentional release files to `main` while excluding
+- [x] Commit and push the intentional release files to `main` while excluding
       unrelated local artifacts.
-- [ ] Verify the Vercel production deployment and complete fresh desktop/mobile
-      browser journeys for discovery, profile, evidence/export, sign-in, and
+- [x] Verify the Vercel production deployment and complete fresh desktop browser
+      journeys for discovery, profile, evidence/export, account state, and
       Andrew-only administration.
+- [ ] Andrew completes the supplied mobile check as part of the three acceptance
+      walkthroughs.
 - [ ] Andrew completes the three acceptance walkthroughs supplied at handoff.
 
 ## Executive release decision
