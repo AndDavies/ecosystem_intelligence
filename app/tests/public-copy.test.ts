@@ -26,6 +26,8 @@ describe("customer-facing product language", () => {
     expect(combined).not.toContain("Capability dossier");
     expect(combined).not.toContain("Evidence strength");
     expect(combined).not.toContain("reviewed analyst assessments");
+    expect(organization).toContain("Coverage still growing");
+    expect(organization).toContain("Suggest a source");
   });
 
   it("carries the same language into downloadable profiles", async () => {

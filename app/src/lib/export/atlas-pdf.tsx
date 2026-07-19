@@ -1,6 +1,6 @@
 import React from "react";
 import { Document, Link, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
-import { assessmentConfidenceLabel, evidenceStrengthLabel, locationAccuracyLabel, organizationOfferingTitle, organizationSnapshotTitle } from "@/lib/atlas/presentation";
+import { assessmentConfidenceLabel, evidenceStrengthLabel, locationAccuracyLabel, organizationOfferingGap, organizationOfferingTitle, organizationSnapshotTitle } from "@/lib/atlas/presentation";
 import type { AtlasCapability, AtlasOrganization } from "@/types/atlas";
 
 const colors = {
@@ -92,6 +92,8 @@ function Sources({ organization, capability }: { organization: AtlasOrganization
 }
 
 function OrganizationPdf({ organization }: { organization: AtlasOrganization }) {
+  const alignments = organization.capabilities.flatMap((capability) => [...capability.missionMatches, ...capability.demandMatches]);
+
   return (
     <Document title={`${organization.name} public profile`} author="True North Map">
       <Page size="LETTER" style={styles.page}>
@@ -103,7 +105,7 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
         <View style={styles.grid}>
           <View style={styles.main}>
             <View style={styles.section}>
-              <Text style={styles.eyebrow}>What they build</Text>
+              <Text style={styles.eyebrow}>{organization.entityKind === "company" ? "What they build" : "What they offer"}</Text>
               <Text style={styles.sectionTitle}>{organizationOfferingTitle(organization.entityKind, organization.name)}</Text>
               {organization.capabilities.map((capability) => (
                 <View key={capability.id} style={styles.card} wrap={false}>
@@ -114,19 +116,20 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
                   {capability.defenceApplications.length ? <><Text style={styles.label}>Defence and security uses</Text><BulletList values={capability.defenceApplications} /></> : null}
                 </View>
               ))}
+              {!organization.capabilities.length ? <Text style={styles.body}>{organizationOfferingGap(organization.entityKind, organization.name)} Use the official website for current details.</Text> : null}
             </View>
 
-            <View style={styles.section}>
+            {alignments.length ? <View style={styles.section}>
               <Text style={styles.eyebrow}>Potential mission and demand connections</Text>
               <Text style={styles.sectionTitle}>Where It Fits</Text>
-              {organization.capabilities.flatMap((capability) => capability.missionMatches).map((match) => (
+              {alignments.map((match) => (
                 <View key={match.id} style={styles.derivedCard} wrap={false}>
-                  <Text style={{ fontFamily: "Helvetica-Bold" }}>{match.missionArea.name}</Text>
+                  <Text style={{ fontFamily: "Helvetica-Bold" }}>{"missionArea" in match ? match.missionArea.name : match.demandTitle}</Text>
                   <Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text>
                   <Text style={{ marginTop: 4, fontSize: 7.5 }}>{assessmentConfidenceLabel(match.confidence)} assessment confidence</Text>
                 </View>
               ))}
-            </View>
+            </View> : null}
           </View>
 
           <View style={styles.rail}>

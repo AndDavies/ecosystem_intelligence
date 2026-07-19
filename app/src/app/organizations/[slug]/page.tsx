@@ -9,6 +9,7 @@ import {
   assessmentConfidenceLabel,
   evidenceStrengthLabel,
   locationAccuracyLabel,
+  organizationOfferingGap,
   organizationOfferingTitle,
   organizationSnapshotTitle,
   organizationWebsiteLabel,
@@ -133,8 +134,8 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
         </aside>
 
         <div className="space-y-5">
-          <PublicCard title={offeringTitle} eyebrow={`${organization.capabilities.length} reviewed ${organization.capabilities.length === 1 ? "technology or offering" : "technologies and offerings"}`}>
-            <div className="divide-y divide-[var(--atlas-border)]">
+          <PublicCard title={offeringTitle} eyebrow={organization.capabilities.length ? `${organization.capabilities.length} reviewed ${organization.capabilities.length === 1 ? "technology or offering" : "technologies and offerings"}` : "Coverage still growing"}>
+            {organization.capabilities.length ? <div className="divide-y divide-[var(--atlas-border)]">
               {organization.capabilities.map((capability) => (
                 <article key={capability.id} className="py-5 first:pt-0 last:pb-0">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
@@ -159,7 +160,16 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                   </Link>
                 </article>
               ))}
-            </div>
+            </div> : (
+              <div className="rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-4">
+                <p className="text-sm font-semibold leading-6 text-[var(--atlas-ink-soft)]">{organizationOfferingGap(organization.entityKind, organization.name)}</p>
+                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Use the official website for current details, or help us add a source-backed summary.</p>
+                <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold">
+                  {organization.websiteUrl ? <a href={organization.websiteUrl} target="_blank" rel="noreferrer" className="text-[var(--atlas-primary)] no-underline hover:underline">Visit the official website</a> : null}
+                  <Link href={`/submit?submissionType=correction&targetType=organization&targetId=${organization.id}&returnTo=${encodeURIComponent(`/organizations/${organization.slug}`)}`} className="text-[var(--atlas-primary)] no-underline hover:underline">Suggest a source</Link>
+                </div>
+              </div>
+            )}
           </PublicCard>
 
           {hasPublishedAlignment ? <PublicCard title="Where It Fits" eyebrow="See which missions and public needs this technology may help address">
@@ -193,7 +203,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
 
           <PublicCard title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
             <EvidenceList citations={citations} />
-            {!hasPublishedAlignment ? (
+            {!hasPublishedAlignment && organization.capabilities.length ? (
               <div className="mt-5 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
                 <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">We have not connected this technology to a mission or public need yet.</p>
                 <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public demand signals</Link>.</p>

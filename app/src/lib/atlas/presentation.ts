@@ -53,6 +53,14 @@ export function organizationOfferingTitle(entityKind: AtlasEntityKind, name: str
   return `What ${name} Offers`;
 }
 
+export function organizationOfferingGap(entityKind: AtlasEntityKind, name: string) {
+  if (entityKind === "company") return `We have not published a reviewed technology profile for ${name} yet.`;
+  if (entityKind === "research_test_centre") return "We have not published a reviewed summary of this centre’s facilities or technical expertise yet.";
+  if (entityKind === "accelerator" || entityKind === "incubator") return "We have not published a reviewed summary of this organization’s programs or support yet.";
+  if (entityKind === "investor_funder") return "We have not published a reviewed summary of this investor’s focus or criteria yet.";
+  return "We have not published a reviewed summary of what this organization offers yet.";
+}
+
 export function organizationSnapshotTitle(entityKind: AtlasEntityKind) {
   return entityKind === "company" ? "Company snapshot" : "Organization snapshot";
 }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  organizationOfferingGap,
   organizationOfferingTitle,
   organizationSnapshotTitle,
   organizationWebsiteLabel,
@@ -17,6 +18,7 @@ describe("public profile language", () => {
     expect(organizationOfferingTitle("research_test_centre", "DRDC Atlantic")).toBe("Facilities & Expertise");
     expect(organizationOfferingTitle("accelerator", "North Forge")).toBe("Programs & Support");
     expect(organizationOfferingTitle("investor_funder", "Fund")).toBe("Investment Focus");
+    expect(organizationOfferingGap("investor_funder", "Fund")).toContain("investor’s focus or criteria");
     expect(organizationOfferingTitle("ecosystem_organization", "Network")).toBe("What Network Offers");
   });
 });

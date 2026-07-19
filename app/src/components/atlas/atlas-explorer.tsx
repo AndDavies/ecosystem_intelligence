@@ -285,8 +285,8 @@ export function AtlasExplorer({
   }
 
   const caveat = filters.demand
-    ? "Public-demand fit is reviewed from published sources. It is not eligibility, endorsement, or procurement guidance."
-    : "Where a technology fits is a reviewed assessment. Open a result to see the reason and the supporting sources.";
+    ? "Potential demand connections are interpretations based on published sources—not eligibility, endorsement, or procurement guidance."
+    : "Open a result to see what an organization offers, where it may fit, and which public sources support the profile.";
 
   return (
     <div className="atlas-frame pb-8 pt-8 sm:pt-11">
