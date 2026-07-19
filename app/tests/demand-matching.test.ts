@@ -48,6 +48,18 @@ describe("review-first demand matching", () => {
     expect(suggestDemandMatches([organization], [demand], new Set([`${organization.capabilities[0].id}:${demand.id}`]))).toHaveLength(0);
   });
 
+  it("requires the technology to share the demand title's mission anchors", () => {
+    const droneDemand = {
+      ...demand,
+      id: "40000000-0000-4000-8000-000000000003",
+      slug: "drone-laser-ranging",
+      title: "Low-cost drone laser ranging for indirect fire",
+      problemStatement: "Small uncrewed aircraft need better target detection and situational awareness.",
+      desiredEndState: "Improve targeting, protection, and operational resilience."
+    };
+    expect(suggestDemandMatches([organization], [droneDemand])).toHaveLength(0);
+  });
+
   it("keeps generation private and publication behind an explicit reviewer RPC", async () => {
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
     const review = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");

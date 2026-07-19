@@ -34,10 +34,15 @@ const concepts = [
   { key: "cyber", label: "cyber and digital operations", terms: ["cyber", "software", "digital", "artificial intelligence", "machine learning", "data analytics", "ai-enabled"] },
   { key: "energy", label: "energy and power resilience", terms: ["energy", "power", "battery", "charging", "fuel", "electrical", "grid"] },
   { key: "logistics", label: "logistics and sustainment", terms: ["logistics", "sustainment", "supply", "maintenance", "repair", "transport", "resupply"] },
-  { key: "aerospace", label: "aerospace operations", terms: ["aerospace", "aircraft", "aviation", "flight", "airborne", "helicopter", "vertical lift"] },
+  { key: "aerospace", label: "aerospace operations", terms: ["aerospace", "aircraft", "aviation", "flight", "airborne", "helicopter", "vertical lift", "drone", "uav", "uas"] },
+  { key: "land", label: "land operations", terms: ["land force", "land forces", "ground force", "ground forces", "soldier", "army", "terrain", "battlefield", "artillery", "indirect fire"] },
+  { key: "fires", label: "targeting and precision effects", terms: ["strike", "target acquisition", "targeting", "range finding", "range-finding", "laser ranging", "fire control", "indirect fire", "missile", "weapon", "lethality"] },
+  { key: "medical", label: "medical treatment and evacuation", terms: ["medical", "casualty", "patient", "trauma", "evacuation", "diagnostic", "intensive care", "cbrn treatment"] },
   { key: "materials", label: "advanced materials and manufacturing", terms: ["manufacturing", "material", "composite", "additive", "production", "fabrication", "industrial"] },
   { key: "protection", label: "protection and survivability", terms: ["protect", "protection", "survivability", "armour", "armor", "countermeasure", "resilience", "threat"] }
 ] as const;
+
+const mandatoryTitleAnchors = new Set(["maritime", "arctic", "cyber", "energy", "logistics", "aerospace", "land", "fires", "medical", "materials", "protection"]);
 
 export function suggestDemandMatches(
   organizations: OrganizationInput[],
@@ -60,8 +65,10 @@ export function suggestDemandMatches(
     return demandRequirements.flatMap((demand): DemandMatchCandidate[] => {
       if (existingPairs.has(`${capability.id}:${demand.id}`)) return [];
       const demandConcepts = findConcepts(`${demand.title} ${demand.problemStatement} ${demand.desiredEndState}`);
+      const titleConcepts = findConcepts(demand.title);
+      const requiredAnchors = [...titleConcepts].filter((key) => mandatoryTitleAnchors.has(key));
       const shared = [...capabilityConcepts].filter((key) => demandConcepts.has(key));
-      if (shared.length < 2) return [];
+      if (shared.length < 2 || !requiredAnchors.length || requiredAnchors.some((key) => !capabilityConcepts.has(key))) return [];
       const matchedConcepts = shared.map((key) => concepts.find((concept) => concept.key === key)?.label ?? key);
       const conceptPhrase = naturalList(matchedConcepts.slice(0, 3));
       const alignmentSummary = `${capability.name} may help teams working on ${demand.title} by contributing to ${conceptPhrase}.`;
