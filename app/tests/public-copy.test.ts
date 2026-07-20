@@ -6,8 +6,7 @@ describe("customer-facing product language", () => {
   it("leads the ecosystem map with the decision a user can make", async () => {
     const explorer = await readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8");
     const header = await readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8");
-    expect(explorer).toContain("Canada is building more");
-    expect(explorer).toContain("than most people can see.");
+    expect(explorer).toContain('<span className="atlas-headline-highlight">Canada is building</span> more than most people can see.');
     expect(explorer).not.toContain("\u2014");
     expect(explorer).toContain("Discover the companies, technologies, and public needs shaping Canada’s defence and dual-use ecosystem.");
     expect(explorer).toContain("Follow the evidence, find the fit, and start the right conversation.");
@@ -15,6 +14,13 @@ describe("customer-facing product language", () => {
     expect(explorer).toContain("Technology or offering");
     expect(header).toContain('label: "Ecosystem Map"');
     expect(explorer).not.toContain("Search atlas");
+  });
+
+  it("uses the True North Map shield and signal-colour maple leaf as the favicon", async () => {
+    const icon = await readFile(path.resolve("src/app/icon.svg"), "utf8");
+    expect(icon).toContain("shield with maple leaf");
+    expect(icon).toContain('fill="#242827"');
+    expect(icon).toContain('fill="#f5e900"');
   });
 
   it("uses one clear profile and assessment vocabulary", async () => {

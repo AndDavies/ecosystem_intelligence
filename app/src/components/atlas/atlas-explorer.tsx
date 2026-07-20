@@ -305,7 +305,7 @@ export function AtlasExplorer({
       <section className="mb-6 grid gap-5 sm:mb-8 sm:gap-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(390px,0.82fr)] lg:items-end">
         <div className="max-w-4xl">
           <span className="inline-flex rounded-full bg-[var(--atlas-ink)] px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.11em] text-white">Canadian Public Beta</span>
-          <h1 className="mt-4 max-w-4xl text-[36px] font-extrabold leading-[0.97] tracking-[-0.062em] text-[var(--atlas-ink)] sm:mt-5 sm:text-[52px] lg:text-[58px]"><span className="atlas-headline-highlight">Canada is building more</span> than most people can see.</h1>
+          <h1 className="mt-4 max-w-4xl text-[36px] font-extrabold leading-[0.97] tracking-[-0.062em] text-[var(--atlas-ink)] sm:mt-5 sm:text-[52px] lg:text-[58px]"><span className="atlas-headline-highlight">Canada is building</span> more than most people can see.</h1>
           <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:mt-5 sm:text-base sm:leading-7">Discover the companies, technologies, and public needs shaping Canada’s defence and dual-use ecosystem. Follow the evidence, find the fit, and start the right conversation.</p>
         </div>
         <div className="space-y-4">
