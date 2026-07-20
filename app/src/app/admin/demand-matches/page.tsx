@@ -24,7 +24,7 @@ export default async function DemandMatchWorkspacePage({
   const technologyCount = snapshot.organizations.reduce((count, organization) => count + organization.capabilities.length, 0);
 
   return (
-    <PublicPageShell eyebrow="Private editorial workspace" title="Find potential demand matches" description="Surface plausible connections between reviewed technologies and public demand statements, then decide which ones are useful enough to publish." backHref="/admin" backLabel="Admin home">
+    <PublicPageShell variant="admin" eyebrow="Private editorial workspace" title="Find potential demand matches" description="Surface plausible connections between reviewed technologies and public demand statements, then decide which ones are useful enough to publish." backHref="/admin" backLabel="Admin home">
       <AdminNav />
       {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">Staged {params.success} private suggestions. Review each connection before publishing it.</div> : null}
       {params.status === "no-new-suggestions" ? <div className="mb-5 rounded-md border border-[#b2ccff] bg-[#f5f8ff] px-3 py-2 text-sm text-[#1849a9]">No new high-signal suggestions were found. Existing and previously reviewed pairs were excluded.</div> : null}
@@ -37,7 +37,7 @@ export default async function DemandMatchWorkspacePage({
       </div>
 
       <PublicCard title="See where a conversation may be worth starting" eyebrow="Private suggestion run" className="mt-5">
-        <p className="max-w-3xl text-sm leading-6 text-[#475467]">The comparison looks for concrete mission concepts shared by a reviewed technology profile and a public problem statement. It excludes existing pairs and only stages stronger overlaps. The output is a research prompt—not a public claim.</p>
+        <p className="max-w-3xl text-sm leading-6 text-[#475467]">The comparison looks for concrete mission concepts shared by a reviewed technology profile and a public problem statement. It excludes existing pairs and only stages stronger overlaps. The output is a research prompt, not a public claim.</p>
         <div className="mt-5 flex flex-col gap-3 rounded-lg border border-[#d0d5dd] bg-[#f8fafc] p-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-[#101828]">{pending.count ?? 0} suggestions waiting in the review queue</p>

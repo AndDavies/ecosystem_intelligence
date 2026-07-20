@@ -7,7 +7,7 @@ export default async function AdminIntakePage({ searchParams }: { searchParams: 
   await requireAtlasStaff("editor");
   const params = await searchParams;
   return (
-    <PublicPageShell eyebrow="Editorial operations" title="Source and PDF intake" description="Uploads remain private. This form stages extraction work and never publishes claims directly." backHref="/admin" backLabel="Atlas operations">
+    <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Source and PDF intake" description="Uploads remain private. This form stages extraction work and never publishes claims directly." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
       {params.success ? <div className="mb-5 rounded-md border border-[#abefc6] bg-[#ecfdf3] px-3 py-2 text-sm text-[#067647]">Source staged in the review queue.</div> : null}
       {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">The source could not be staged. Provide a valid URL or file and try again.</div> : null}

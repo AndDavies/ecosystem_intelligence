@@ -1,56 +1,85 @@
-# Field Atlas design QA (historical snapshot)
+# Candidate 5 Design QA
 
-This file records the 2026-07-17 validation run. Current release instructions live in `AGENTS.md` and use `pnpm release:validate`.
+## Build under review
 
-Date: 2026-07-17
+- Branch: `codex/candidate-5-redesign`
+- Baseline commit: `a7d19181c572333e038a3420ce9f410ecb901d35`
+- Rollback tag: `pre-candidate-5-redesign-2026-07-20`
+- Local URL: `http://localhost:3000/`
+- Scope: presentation and interaction styling only. No API, analytics, database, publication, authentication, or research-pipeline contract changes.
 
-## Scope
+## Visual source of truth
 
-- National atlas at `/`
-- Representative organization dossier at `/organizations/geospectrum-technologies`
-- Shared public header, page shell, feedback, update signup, forms, and public supporting routes
+- Candidate 5 reference: `/Users/andrewdavies/.codex/visualizations/2026/07/19/019f79b8-46cb-7093-b081-69702dfcc6de/candidate-round-4/shortlist/05-signal-yellow-soft-ledger.png`
+- Figma draft: `IRbQj1gK1rbKfoXIXChlDO` was checked but did not contain an inspectable design frame. The approved Candidate 5 PNG therefore remained the visual source of truth.
 
-## Visual direction
+## Comparison evidence
 
-- Warm canvas and white surfaces in place of the former ocean-brand palette
-- Spruce for primary actions and verified states
-- Coral for selection and active navigation
-- Violet for analyst assessment content
-- Rounded 24 px application shells, 16 px cards, and 12 px controls
-- Map-first discovery with graphite clusters, spruce markers, and coral selection
+- Desktop implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/12-home-desktop-final.png`
+- Desktop reference and implementation side by side: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/13-source-vs-final.png`
+- Selected organization state: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/15-home-selected-final.png`
+- Mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/14-home-mobile-final.png`
+- Organization dossier: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/05-organization-desktop-settled.png`
+- Public demand page: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/11-demand-desktop.png`
+- Charcoal and highlighted-headline implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/16-charcoal-highlight-final.png`
+- Highlight reference and implementation comparison: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/17-highlight-reference-vs-final.png`
+- Charcoal and highlighted-headline mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/18-charcoal-highlight-mobile.png`
+- Final marketing-copy desktop implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/19-marketing-copy-desktop.png`
+- Final marketing-copy mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/20-marketing-copy-mobile.png`
 
-## Comparison captures
+Desktop comparisons used a 1448 by 1086 target frame. Responsive checks used 768 by 1024 and 390 by 844 viewports.
 
-Local captures are stored in:
+## Review history
 
-`/Users/andrewdavies/.codex/visualizations/2026/07/17/ecosystem-intelligence-field-atlas-build`
+### Pass 1
 
-- `01-baseline-atlas.png`
-- `02-baseline-dossier.png`
-- `03-after-atlas-iteration1.png`
-- `04-after-dossier-iteration1.png`
+- The desktop hero was optically too large for the longer live headline and pushed the atlas too far below the initial viewport.
+- The mobile search control fell below the first viewport, weakening the primary discovery action.
 
-## Scorecard
+### Corrections
 
-| Route | Baseline | Final | Notes |
-| --- | ---: | ---: | --- |
-| Atlas | 6.9/10 | 8.7/10 | Clearer hierarchy, calmer map, integrated control deck, synchronized table, stronger visual identity |
-| Dossier | 7.0/10 | 8.8/10 | Editorial hierarchy, clearer action priority, compact identity rail, assessment/evidence pairing |
+- Reduced the large-screen display scale while preserving the approved high-contrast hierarchy.
+- Compressed the mobile hero, snapshot, and trust-note spacing so the search field and action appear within the initial 844-pixel mobile viewport.
+- Kept the live product copy, corpus counts, current public-source caveat, full accessible results table, and Lookbook preview rather than replacing them with the shorter mock content.
+- Replaced pure black presentation values with a consistent `#242827` charcoal and matching translucent shadows and borders.
+- Highlighted the outcome-led opening phrase with signal yellow on desktop and mobile, and removed em dashes from static interface copy.
+- Replaced the launch headline and supporting copy with the approved Canada-first positioning, kept the credibility strip intact, and renamed the primary discovery action to `Explore the map`.
 
-## Functional QA
+## Final QA findings
 
-- Filter panel opens and exposes all four filter dimensions.
-- Selecting Atlantic Canada synchronizes the map, result count, URL state, table, and export URL.
-- Expanding a result opens both the map preview and evidence-backed detail row.
-- `Halifax` natural-language discovery resolves to Halifax Regional Municipality and a published organization.
-- Dossier Connect, Save, Export, website, correction, capability, mission, and source links are present.
-- Reduced-motion handling is included for the public experience.
+### Fidelity
 
-## Release checks
+- Layout: the charcoal-and-white ledger composition, signal-yellow active states, stacked wordmark, metric card, map/results split, and public-evidence rail match Candidate 5's design language.
+- Typography: the display hierarchy, tight tracking, compact labels, and body copy density remain legible across desktop, tablet, and mobile.
+- Color: charcoal, warm white, signal yellow, and evidence green are consistently tokenized. Yellow is used for headline emphasis, selection, and navigation rather than body text.
+- Surfaces: rounded corners are preserved, shadows remain restrained, and administrative screens use the quieter white/charcoal variant requested for operational work.
+- Icons: visible controls use the existing Lucide icon family; no placeholder artwork, custom SVG, or CSS illustration was introduced.
 
-- `pnpm test`: passed, 23 files and 79 tests.
-- `pnpm lint`: passed.
-- `pnpm leads:validate`: passed with zero errors and zero warnings.
-- `pnpm seed:validate`: passed.
-- `pnpm ingest:validate`: passed with zero errors and zero warnings.
-- `pnpm build`: passed.
+### Responsiveness and interaction
+
+- Desktop keeps the synchronized map and results rail together and preserves the complete accessible table beneath.
+- Mobile retains explicit Map and List modes. At 390 pixels there is no horizontal overflow and the primary search action remains in the first viewport.
+- Selecting Kraken Robotics highlights the results rail, updates the map preview, and marks the corresponding table row without changing the underlying selection workflow.
+- Search, filters, map/list controls, dossier links, CSV export, feedback, update signup, navigation, and authentication redirects were exercised locally.
+
+### Accessibility
+
+- Public navigation, search, filters, map/list controls, results, table, feedback, and update prompts retain semantic links, buttons, labels, headings, and table structure.
+- Keyboard focus uses a high-contrast signal-yellow outline.
+- Mobile controls retain practical tap targets; text and controls do not clip or overlap at the tested viewports.
+- The accessible table remains the non-map equivalent for all visible organizations.
+
+### Intentional differences from the reference
+
+- Live product copy and verified corpus metrics are longer than the visual mock, so the hero wraps differently.
+- The implementation preserves the production Lookbook preview, dynamic clustered map, viewport-synchronized results, full table, and evidence-backed source links.
+- These differences preserve True North Map's existing information architecture and functionality while applying the approved visual system.
+
+## Severity summary
+
+- P0 blockers: none.
+- P1 major issues: none.
+- P2 material fidelity or usability issues: none.
+- P3 minor issues: none required before local stakeholder review.
+
+final result: passed

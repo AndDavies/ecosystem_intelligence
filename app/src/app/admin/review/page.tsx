@@ -49,7 +49,7 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
   const demandMatchCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "demand_match_bundle").length;
 
   return (
-    <PublicPageShell eyebrow="Editorial operations" title="Review queue" description="Inspect and edit staged research. Accepting a candidate moves it to the publication checkpoint; it does not make the record public." backHref="/admin" backLabel="Atlas operations">
+    <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Review queue" description="Inspect and edit staged research. Accepting a candidate moves it to the publication checkpoint; it does not make the record public." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
       {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{errorMessages[params.error] ?? "The review action could not be completed."}</div> : null}
       {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">{params.success === "demand-match-published" ? "Technology-to-demand match published and public profiles refreshed." : `Candidate ${params.success === "merged" ? "merged into its canonical organization" : "updated"}. Publication remains unchanged.`}</div> : null}
@@ -152,7 +152,7 @@ function OrganizationCandidateCard({
       <div className="grid gap-4 md:grid-cols-3">
         <ReviewFact label="Location" value={`${record.city}, ${record.provinceTerritory}`} />
         <ReviewFact label="Primary domain" value={domains.find((domain) => domain.slug === record.capability.technicalDomainSlug)?.name ?? record.capability.technicalDomainSlug} />
-        <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "possible_match" ? "Possible match—resolution required" : "No likely duplicate found"} tone={duplicateCheck?.status === "possible_match" ? "warning" : "success"} />
+        <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "possible_match" ? "Possible match; resolution required" : "No likely duplicate found"} tone={duplicateCheck?.status === "possible_match" ? "warning" : "success"} />
       </div>
       <p className="mt-4 text-sm leading-6 text-[#475467]">{record.description}</p>
       <div className="mt-4 rounded-md border border-[#d0d5dd] bg-[#f8fafc] p-4">

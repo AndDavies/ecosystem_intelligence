@@ -15,10 +15,10 @@ const items = [
 
 export function AdminNav() {
   return (
-    <nav className="mb-5 flex gap-2 overflow-x-auto pb-1" aria-label="Editorial workspace">
+    <nav className="mb-6 flex gap-2 overflow-x-auto rounded-2xl border border-[var(--atlas-border)] bg-white p-2 shadow-[var(--atlas-shadow-soft)]" aria-label="Editorial workspace">
       {items.map((item) => (
-        <Link key={item.href} href={item.href} className="inline-flex h-9 shrink-0 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-3 text-xs font-semibold text-[#344054] no-underline hover:border-[#98a2b3] hover:bg-[#f8fafc] hover:no-underline">
-          <item.icon className="size-4 text-[#007f98]" />{item.label}
+        <Link key={item.href} href={item.href} className="inline-flex h-10 shrink-0 items-center gap-2 rounded-xl border border-transparent px-3 text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:border-[var(--atlas-border)] hover:bg-[var(--atlas-signal-soft)] hover:text-[var(--atlas-ink)] hover:no-underline">
+          <item.icon className="size-4 text-[var(--atlas-ink)]" />{item.label}
         </Link>
       ))}
     </nav>

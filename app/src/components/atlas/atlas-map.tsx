@@ -10,9 +10,9 @@ import type { AtlasBounds, AtlasOrganization } from "@/types/atlas";
 
 const sourceId = "published-organizations";
 const mapColors = {
-  cluster: "#1e2320",
-  marker: "#1f5a43",
-  selected: "#d65f4c",
+  cluster: "#242827",
+  marker: "#126147",
+  selected: "#f5e900",
   outline: "#ffffff"
 };
 const canadaBounds = {
@@ -232,8 +232,8 @@ export function AtlasMap({
 
       L.circleMarker([location.latitude!, location.longitude!], {
         radius: selected ? 10 : 8,
-        color: mapColors.outline,
-        weight: 3,
+        color: selected ? mapColors.cluster : mapColors.outline,
+        weight: selected ? 4 : 3,
         fillColor: selected ? mapColors.selected : mapColors.marker,
         fillOpacity: 0.96
       })
@@ -420,8 +420,8 @@ export function AtlasMap({
         paint: {
           "circle-color": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], mapColors.selected, mapColors.marker],
           "circle-radius": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], 10, 8],
-          "circle-stroke-color": mapColors.outline,
-          "circle-stroke-width": 3
+          "circle-stroke-color": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], mapColors.cluster, mapColors.outline],
+          "circle-stroke-width": ["case", ["==", ["get", "id"], selectedIdRef.current ?? ""], 4, 3]
         }
       });
 
@@ -561,6 +561,18 @@ export function AtlasMap({
       ["==", ["get", "id"], selectedOrganizationId ?? ""],
       10,
       8
+    ]);
+    map.setPaintProperty("organization-points", "circle-stroke-color", [
+      "case",
+      ["==", ["get", "id"], selectedOrganizationId ?? ""],
+      mapColors.cluster,
+      mapColors.outline
+    ]);
+    map.setPaintProperty("organization-points", "circle-stroke-width", [
+      "case",
+      ["==", ["get", "id"], selectedOrganizationId ?? ""],
+      4,
+      3
     ]);
 
     if (!selectedOrganizationId) return;
