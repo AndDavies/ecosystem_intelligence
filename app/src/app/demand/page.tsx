@@ -23,7 +23,7 @@ export default async function DemandIndexPage() {
     <PublicPageShell
       eyebrow="Start with the problem"
       title="Public demand signals"
-      description="See the problems governments and allies have made public, then explore Canadian technologies connected through a reviewed assessment. Public signals are context—not procurement opportunities."
+      description="See the problems governments and allies have made public, then explore Canadian technologies connected through a reviewed assessment. Public signals provide context; they are not procurement opportunities."
     >
       {totalMatches === 0 ? (
         <div className="mb-5 flex items-start gap-3 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-4 py-4 text-sm leading-6 text-[var(--atlas-primary)]">

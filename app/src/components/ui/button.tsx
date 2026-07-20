@@ -9,11 +9,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[var(--primary)] !text-[var(--primary-foreground)] hover:bg-[#0b3441] hover:!text-[var(--primary-foreground)]",
+          "bg-[var(--primary)] !text-[var(--primary-foreground)] hover:bg-[var(--atlas-primary-hover)] hover:!text-[var(--primary-foreground)]",
         secondary:
           "bg-[var(--secondary)] !text-[var(--secondary-foreground)] hover:bg-[#1a7896] hover:!text-[var(--secondary-foreground)]",
         ghost:
-          "bg-transparent !text-[var(--foreground)] hover:bg-black/5 hover:!text-[var(--foreground)]",
+          "bg-transparent !text-[var(--foreground)] hover:bg-[rgba(36,40,39,0.05)] hover:!text-[var(--foreground)]",
         outline:
           "border border-[var(--border-strong)] bg-white !text-[var(--foreground)] hover:border-[var(--primary)] hover:bg-[var(--card-muted)] hover:!text-[var(--foreground)]",
         subtle:

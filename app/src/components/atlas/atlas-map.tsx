@@ -10,7 +10,7 @@ import type { AtlasBounds, AtlasOrganization } from "@/types/atlas";
 
 const sourceId = "published-organizations";
 const mapColors = {
-  cluster: "#0b0c0c",
+  cluster: "#242827",
   marker: "#126147",
   selected: "#f5e900",
   outline: "#ffffff"

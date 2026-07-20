@@ -249,7 +249,7 @@ function TagList({ label, values }: { label: string; values: string[] }) {
 function AssessmentSources({ citations }: { citations: Array<{ id: string; sourceUrl: string; sourceTitle: string }> }) {
   if (!citations.length) return null;
   return (
-    <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 border-t border-black/10 pt-3 text-[11px]">
+    <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 border-t border-[rgba(36,40,39,0.1)] pt-3 text-[11px]">
       <span className="font-medium text-[var(--atlas-muted)]">Supporting sources</span>
       {citations.slice(0, 2).map((citation) => (
         <a key={citation.id} href={citation.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-semibold text-[var(--atlas-primary)] no-underline hover:underline">

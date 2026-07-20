@@ -47,7 +47,7 @@ export function PublicAtlasHeader() {
     <header className="atlas-header">
       <div className="atlas-frame flex h-[74px] items-center justify-between gap-5 lg:h-[84px]">
         <Link href="/" className="flex min-w-0 items-center no-underline" aria-label="True North Map home">
-          <span className="relative flex h-12 min-w-[142px] items-center rounded-[16px] bg-[var(--atlas-ink)] px-4 text-white shadow-[0_12px_28px_rgba(11,12,12,0.16)] sm:h-[58px] sm:min-w-[164px] sm:px-5">
+          <span className="relative flex h-12 min-w-[142px] items-center rounded-[16px] bg-[var(--atlas-ink)] px-4 text-white shadow-[0_12px_28px_rgba(36,40,39,0.16)] sm:h-[58px] sm:min-w-[164px] sm:px-5">
             <span className="text-[13px] font-extrabold uppercase leading-[0.95rem] tracking-[0.11em] sm:text-[14px] sm:leading-[1rem]">
               <span className="block">True North</span>
               <span className="block">Map</span>
@@ -109,7 +109,7 @@ export function PublicAtlasHeader() {
       </div>
 
       {open ? (
-        <nav className="border-t border-[var(--atlas-border)] bg-white px-4 py-3 shadow-[0_16px_30px_rgba(11,12,12,0.09)] lg:hidden" aria-label="Mobile public ecosystem map navigation">
+        <nav className="border-t border-[var(--atlas-border)] bg-white px-4 py-3 shadow-[0_16px_30px_rgba(36,40,39,0.09)] lg:hidden" aria-label="Mobile public ecosystem map navigation">
           <div className="atlas-frame grid gap-1">
             {navigation.map((item) => {
               const active = item.match(pathname);

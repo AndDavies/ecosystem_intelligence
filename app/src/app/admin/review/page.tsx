@@ -152,7 +152,7 @@ function OrganizationCandidateCard({
       <div className="grid gap-4 md:grid-cols-3">
         <ReviewFact label="Location" value={`${record.city}, ${record.provinceTerritory}`} />
         <ReviewFact label="Primary domain" value={domains.find((domain) => domain.slug === record.capability.technicalDomainSlug)?.name ?? record.capability.technicalDomainSlug} />
-        <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "possible_match" ? "Possible match—resolution required" : "No likely duplicate found"} tone={duplicateCheck?.status === "possible_match" ? "warning" : "success"} />
+        <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "possible_match" ? "Possible match; resolution required" : "No likely duplicate found"} tone={duplicateCheck?.status === "possible_match" ? "warning" : "success"} />
       </div>
       <p className="mt-4 text-sm leading-6 text-[#475467]">{record.description}</p>
       <div className="mt-4 rounded-md border border-[#d0d5dd] bg-[#f8fafc] p-4">

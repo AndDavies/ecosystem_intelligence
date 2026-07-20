@@ -6,7 +6,9 @@ describe("customer-facing product language", () => {
   it("leads the ecosystem map with the decision a user can make", async () => {
     const explorer = await readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8");
     const header = await readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8");
-    expect(explorer).toContain("See who is building what—and who may be worth speaking with next.");
+    expect(explorer).toContain("See who is building what");
+    expect(explorer).toContain("and who may be worth speaking with next.");
+    expect(explorer).not.toContain("\u2014");
     expect(explorer).toContain("Find Canadian organizations, technology, and public demand in one place.");
     expect(explorer).toContain("Search the map");
     expect(explorer).toContain("Technology or offering");

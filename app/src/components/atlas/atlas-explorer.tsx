@@ -297,7 +297,7 @@ export function AtlasExplorer({
   }
 
   const caveat = filters.demand
-    ? "Potential demand connections are interpretations based on published sources—not eligibility, endorsement, or procurement guidance."
+    ? "Potential demand connections are interpretations based on published sources, not eligibility, endorsement, or procurement guidance."
     : "Open a result to see what an organization offers, where it may fit, and which public sources support the profile.";
 
   return (
@@ -305,7 +305,7 @@ export function AtlasExplorer({
       <section className="mb-6 grid gap-5 sm:mb-8 sm:gap-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(390px,0.82fr)] lg:items-end">
         <div className="max-w-4xl">
           <span className="inline-flex rounded-full bg-[var(--atlas-ink)] px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.11em] text-white">Canadian Public Beta</span>
-          <h1 className="mt-4 max-w-4xl text-[36px] font-extrabold leading-[0.97] tracking-[-0.062em] text-[var(--atlas-ink)] sm:mt-5 sm:text-[52px] lg:text-[58px]">See who is building what—and who may be worth speaking with next.</h1>
+          <h1 className="mt-4 max-w-4xl text-[36px] font-extrabold leading-[0.97] tracking-[-0.062em] text-[var(--atlas-ink)] sm:mt-5 sm:text-[52px] lg:text-[58px]"><span className="atlas-headline-highlight">See who is building what</span> and who may be worth speaking with next.</h1>
           <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:mt-5 sm:text-base sm:leading-7">Find Canadian organizations, technology, and public demand in one place. Search by place, need, or technology, compare the supporting sources, then build a Working List for the conversation ahead.</p>
         </div>
         <div className="space-y-4">
@@ -336,7 +336,7 @@ export function AtlasExplorer({
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
                 className="h-14 w-full rounded-[18px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-28 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:h-16 sm:text-base"
-                placeholder="Search by place, technology, or need — e.g. underwater sensing in Atlantic Canada"
+                placeholder="Search by place, technology, or need, for example underwater sensing in Atlantic Canada"
                 aria-label="Search the ecosystem map in natural language"
                 maxLength={500}
               />
@@ -590,14 +590,14 @@ function ResultsRail({
             const selected = organization.id === selectedId;
             return (
               <li key={organization.id} className={cn("grid grid-cols-[44px_minmax(0,1fr)_44px] border-b border-white/15", selected ? "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "text-white")}>
-                <span className={cn("m-3 flex size-8 items-center justify-center rounded-full border text-sm font-bold", selected ? "border-black/35" : "border-white/30 text-white/80")}>{index + 1}</span>
+                <span className={cn("m-3 flex size-8 items-center justify-center rounded-full border text-sm font-bold", selected ? "border-[rgba(36,40,39,0.35)]" : "border-white/30 text-white/80")}>{index + 1}</span>
                 <button type="button" onClick={() => onSelect(organization.id)} className="min-w-0 py-4 text-left">
                   <span className="block truncate text-sm font-extrabold tracking-[-0.015em]">{organization.name}</span>
-                  <span className={cn("mt-1 block truncate text-[11px]", selected ? "text-black/65" : "text-white/60")}>{organization.primaryLocation?.name ?? "Location under review"}</span>
-                  <span className={cn("mt-1.5 block line-clamp-2 text-[11px] leading-4", selected ? "text-black/80" : "text-white/80")}>{capability?.name ?? "Technology not yet reviewed"}</span>
-                  <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-black/25 bg-black text-white" : "border-white/25 text-white/80")}>{evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · {evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
+                  <span className={cn("mt-1 block truncate text-[11px]", selected ? "text-[rgba(36,40,39,0.65)]" : "text-white/60")}>{organization.primaryLocation?.name ?? "Location under review"}</span>
+                  <span className={cn("mt-1.5 block line-clamp-2 text-[11px] leading-4", selected ? "text-[rgba(36,40,39,0.8)]" : "text-white/80")}>{capability?.name ?? "Technology not yet reviewed"}</span>
+                  <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-[rgba(36,40,39,0.25)] bg-[var(--atlas-ink)] text-white" : "border-white/25 text-white/80")}>{evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · {evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
                 </button>
-                <Link href={`/organizations/${organization.slug}`} className={cn("flex items-center justify-center no-underline hover:no-underline", selected ? "text-black" : "text-white/80 hover:text-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
+                <Link href={`/organizations/${organization.slug}`} className={cn("flex items-center justify-center no-underline hover:no-underline", selected ? "text-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
                   <ChevronRight className="size-5" />
                 </Link>
               </li>

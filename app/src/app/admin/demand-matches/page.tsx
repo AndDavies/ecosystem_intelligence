@@ -37,7 +37,7 @@ export default async function DemandMatchWorkspacePage({
       </div>
 
       <PublicCard title="See where a conversation may be worth starting" eyebrow="Private suggestion run" className="mt-5">
-        <p className="max-w-3xl text-sm leading-6 text-[#475467]">The comparison looks for concrete mission concepts shared by a reviewed technology profile and a public problem statement. It excludes existing pairs and only stages stronger overlaps. The output is a research prompt—not a public claim.</p>
+        <p className="max-w-3xl text-sm leading-6 text-[#475467]">The comparison looks for concrete mission concepts shared by a reviewed technology profile and a public problem statement. It excludes existing pairs and only stages stronger overlaps. The output is a research prompt, not a public claim.</p>
         <div className="mt-5 flex flex-col gap-3 rounded-lg border border-[#d0d5dd] bg-[#f8fafc] p-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-[#101828]">{pending.count ?? 0} suggestions waiting in the review queue</p>

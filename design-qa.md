@@ -21,6 +21,9 @@
 - Mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/14-home-mobile-final.png`
 - Organization dossier: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/05-organization-desktop-settled.png`
 - Public demand page: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/11-demand-desktop.png`
+- Charcoal and highlighted-headline implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/16-charcoal-highlight-final.png`
+- Highlight reference and implementation comparison: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/17-highlight-reference-vs-final.png`
+- Charcoal and highlighted-headline mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/18-charcoal-highlight-mobile.png`
 
 Desktop comparisons used a 1448 by 1086 target frame. Responsive checks used 768 by 1024 and 390 by 844 viewports.
 
@@ -36,14 +39,16 @@ Desktop comparisons used a 1448 by 1086 target frame. Responsive checks used 768
 - Reduced the large-screen display scale while preserving the approved high-contrast hierarchy.
 - Compressed the mobile hero, snapshot, and trust-note spacing so the search field and action appear within the initial 844-pixel mobile viewport.
 - Kept the live product copy, corpus counts, current public-source caveat, full accessible results table, and Lookbook preview rather than replacing them with the shorter mock content.
+- Replaced pure black presentation values with a consistent `#242827` charcoal and matching translucent shadows and borders.
+- Highlighted the outcome-led opening phrase with signal yellow on desktop and mobile, and removed em dashes from static interface copy.
 
 ## Final QA findings
 
 ### Fidelity
 
-- Layout: the black-and-white ledger composition, signal-yellow active states, stacked wordmark, metric card, map/results split, and public-evidence rail match Candidate 5's design language.
+- Layout: the charcoal-and-white ledger composition, signal-yellow active states, stacked wordmark, metric card, map/results split, and public-evidence rail match Candidate 5's design language.
 - Typography: the display hierarchy, tight tracking, compact labels, and body copy density remain legible across desktop, tablet, and mobile.
-- Color: near-black, warm white, signal yellow, and evidence green are consistently tokenized. Yellow is used for selection and navigation emphasis rather than body text.
+- Color: charcoal, warm white, signal yellow, and evidence green are consistently tokenized. Yellow is used for headline emphasis, selection, and navigation rather than body text.
 - Surfaces: rounded corners are preserved, shadows remain restrained, and administrative screens use the quieter white/charcoal variant requested for operational work.
 - Icons: visible controls use the existing Lucide icon family; no placeholder artwork, custom SVG, or CSS illustration was introduced.
 
