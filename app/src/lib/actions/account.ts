@@ -6,6 +6,7 @@ import { isAtlasAdminOwner, requireAtlasUser } from "@/lib/atlas/auth";
 import { isRecentSignIn } from "@/lib/auth-utils";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
+import { unsubscribeMailerLiteSubscriber } from "@/lib/email/mailerlite";
 
 const deleteAccountSchema = z.object({
   confirmationEmail: z.string().trim().toLowerCase().email(),
@@ -37,10 +38,30 @@ export async function deleteAccount(formData: FormData) {
 
   const admin = createAdminClient();
   if (parsed.data.unsubscribe) {
+    const { data: signup } = await admin
+      .from("pilot_update_signups")
+      .select("mailing_provider_subscriber_id")
+      .eq("email", atlasUser.email.toLowerCase())
+      .maybeSingle();
     await admin
       .from("pilot_update_signups")
       .update({ status: "unsubscribed", updated_at: new Date().toISOString() })
       .eq("email", atlasUser.email.toLowerCase());
+    if (signup?.mailing_provider_subscriber_id) {
+      try {
+        await unsubscribeMailerLiteSubscriber(signup.mailing_provider_subscriber_id);
+        await admin.from("pilot_update_signups").update({
+          mailing_provider_status: "unsubscribed",
+          mailing_provider_synced_at: new Date().toISOString(),
+          mailing_provider_error: null
+        }).eq("email", atlasUser.email.toLowerCase());
+      } catch (providerError) {
+        await admin.from("pilot_update_signups").update({
+          mailing_provider_status: "sync_failed",
+          mailing_provider_error: providerError instanceof Error ? providerError.message.slice(0, 1000) : "MailerLite unsubscribe synchronization failed."
+        }).eq("email", atlasUser.email.toLowerCase());
+      }
+    }
   }
 
   const { error: signOutError } = await supabase.auth.signOut({ scope: "global" });
