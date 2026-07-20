@@ -31,7 +31,7 @@ export default async function AdminDemandSignalsPage({ searchParams }: { searchP
   }));
 
   return (
-    <PublicPageShell eyebrow="Private editorial workspace" title="Manage demand signals" description="Keep public problem statements accurate, useful, and connected to every reviewed technology match." backHref="/admin" backLabel="Admin home">
+    <PublicPageShell variant="admin" eyebrow="Private editorial workspace" title="Manage demand signals" description="Keep public problem statements accurate, useful, and connected to every reviewed technology match." backHref="/admin" backLabel="Admin home">
       <AdminNav />
       {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">Demand signal {params.success}. Public pages and linked technology profiles were refreshed.</div> : null}
       {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">The demand signal was not saved. Check every required field and try again.</div> : null}

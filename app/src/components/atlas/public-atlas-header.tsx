@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, Menu, Network, UserRound, X } from "lucide-react";
+import { Bell, ChevronUp, Menu, UserRound, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { openBetaUpdates } from "@/lib/product-insights/client";
@@ -45,18 +45,18 @@ export function PublicAtlasHeader() {
 
   return (
     <header className="atlas-header">
-      <div className="atlas-frame flex h-[72px] items-center justify-between gap-5">
-        <Link href="/" className="flex min-w-0 items-center gap-3 no-underline" aria-label="True North Map home">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-[14px] border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)] shadow-[0_8px_20px_rgba(30,35,32,0.07)]">
-            <Network className="size-5" aria-hidden="true" />
-          </span>
-          <span className="flex min-w-0 items-center gap-2.5 leading-tight">
-            <span className="block truncate text-[14px] font-bold tracking-[-0.02em] text-[var(--atlas-ink)] sm:text-[17px]">True North Map</span>
-            <span className="hidden rounded-full border border-[var(--atlas-border)] bg-white px-2 py-1 text-[10px] font-semibold text-[var(--atlas-muted)] sm:inline-flex">Public Beta</span>
+      <div className="atlas-frame flex h-[74px] items-center justify-between gap-5 lg:h-[84px]">
+        <Link href="/" className="flex min-w-0 items-center no-underline" aria-label="True North Map home">
+          <span className="relative flex h-12 min-w-[142px] items-center rounded-[16px] bg-[var(--atlas-ink)] px-4 text-white shadow-[0_12px_28px_rgba(11,12,12,0.16)] sm:h-[58px] sm:min-w-[164px] sm:px-5">
+            <span className="text-[13px] font-extrabold uppercase leading-[0.95rem] tracking-[0.11em] sm:text-[14px] sm:leading-[1rem]">
+              <span className="block">True North</span>
+              <span className="block">Map</span>
+            </span>
+            <ChevronUp className="absolute right-4 top-3 size-5 stroke-[3] text-[var(--atlas-signal)] sm:right-5 sm:top-4" aria-hidden="true" />
           </span>
         </Link>
 
-        <nav className="hidden h-full items-stretch gap-8 lg:flex" aria-label="Public ecosystem map navigation">
+        <nav className="hidden h-full items-center gap-3 lg:flex" aria-label="Public ecosystem map navigation">
           {navigation.map((item) => {
             const active = item.match(pathname);
             return (
@@ -64,13 +64,13 @@ export function PublicAtlasHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex items-center px-1 text-[15px] font-medium text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-ink)] hover:no-underline",
-                  active && "text-[var(--atlas-ink)]"
+                  "relative flex h-11 items-center rounded-[15px] px-5 text-[14px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline",
+                  active && "bg-[var(--atlas-ink)] text-white hover:bg-[var(--atlas-ink)] hover:text-white"
                 )}
                 aria-current={active ? "page" : undefined}
               >
                 {item.label}
-                {active ? <span className="absolute inset-x-0 bottom-0 h-[3px] rounded-t-full bg-[var(--atlas-coral)]" /> : null}
+                {active ? <span className="absolute inset-x-5 -bottom-[8px] h-[4px] rounded-full bg-[var(--atlas-signal)]" /> : null}
               </Link>
             );
           })}
@@ -80,17 +80,17 @@ export function PublicAtlasHeader() {
           <button
             type="button"
             onClick={openBetaUpdates}
-            className="atlas-secondary-button !hidden h-10 items-center gap-2 px-4 text-sm sm:!inline-flex"
+            className="atlas-secondary-button !hidden h-11 items-center gap-2 px-4 text-sm sm:!inline-flex"
           >
             <Bell className="size-4" />
             Get updates
           </button>
           {authState === "checking" ? (
-            <span className="hidden h-10 w-[94px] items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white/70 text-[var(--atlas-muted)] sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
+            <span className="hidden h-11 w-[94px] items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white/70 text-[var(--atlas-muted)] sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
           ) : (
             <Link
               href={authState === "signed-in" ? "/account" : "/sign-in"}
-              className="atlas-secondary-button !hidden h-10 items-center justify-center gap-2 px-4 text-sm sm:!inline-flex"
+              className="atlas-secondary-button !hidden h-11 items-center justify-center gap-2 px-4 text-sm sm:!inline-flex"
             >
               {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
               {authState === "signed-in" ? "Account" : "Sign in"}
@@ -98,7 +98,7 @@ export function PublicAtlasHeader() {
           )}
           <button
             type="button"
-            className="flex size-10 items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] lg:hidden"
+            className="flex size-11 items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] lg:hidden"
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
@@ -109,7 +109,7 @@ export function PublicAtlasHeader() {
       </div>
 
       {open ? (
-        <nav className="border-t border-[var(--atlas-border)] bg-[var(--atlas-canvas)] px-4 py-3 shadow-[0_16px_30px_rgba(30,35,32,0.09)] lg:hidden" aria-label="Mobile public ecosystem map navigation">
+        <nav className="border-t border-[var(--atlas-border)] bg-white px-4 py-3 shadow-[0_16px_30px_rgba(11,12,12,0.09)] lg:hidden" aria-label="Mobile public ecosystem map navigation">
           <div className="atlas-frame grid gap-1">
             {navigation.map((item) => {
               const active = item.match(pathname);
@@ -119,7 +119,7 @@ export function PublicAtlasHeader() {
                   href={item.href}
                   className={cn(
                     "rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline",
-                    active && "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"
+                    active && "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]"
                   )}
                   onClick={() => setOpen(false)}
                 >

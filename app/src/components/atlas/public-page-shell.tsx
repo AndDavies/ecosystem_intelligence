@@ -11,6 +11,7 @@ export function PublicPageShell({
   backLabel = "Back to ecosystem map",
   breadcrumbs,
   actions,
+  variant = "public",
   children
 }: {
   eyebrow: string;
@@ -20,12 +21,13 @@ export function PublicPageShell({
   backLabel?: string;
   breadcrumbs?: Array<{ label: string; href?: string }>;
   actions?: React.ReactNode;
+  variant?: "public" | "admin";
   children: React.ReactNode;
 }) {
   return (
-    <main className="atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)]">
+    <main className={`atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)] ${variant === "admin" ? "atlas-admin-shell" : ""}`}>
       <PublicAtlasHeader />
-      <div className="atlas-frame py-7 sm:py-10">
+      <div className="atlas-frame py-8 sm:py-12">
         {breadcrumbs?.length ? (
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-1.5 text-xs font-semibold">
@@ -49,10 +51,10 @@ export function PublicPageShell({
             {backLabel}
           </Link>
         )}
-        <header className="mt-6 flex flex-col gap-6 pb-7 lg:flex-row lg:items-end lg:justify-between">
+        <header className="mt-7 flex flex-col gap-7 border-b border-[var(--atlas-border)] pb-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-4xl">
             <p className="atlas-eyebrow">{eyebrow}</p>
-            <h1 className="mt-2 text-3xl font-bold leading-[1.08] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-[42px]">{title}</h1>
+            <h1 className="mt-3 text-3xl font-extrabold leading-[1.04] tracking-[-0.052em] text-[var(--atlas-ink)] sm:text-[46px] lg:text-[52px]">{title}</h1>
             {description ? <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:text-base sm:leading-7">{description}</p> : null}
           </div>
           {actions ? <div className="flex shrink-0 flex-wrap gap-2">{actions}</div> : null}
@@ -76,10 +78,10 @@ export function PublicCard({
   className?: string;
 }) {
   return (
-    <section className={`atlas-surface p-5 sm:p-6 ${className}`}>
+    <section className={`atlas-surface p-5 sm:p-7 ${className}`}>
       {eyebrow ? <p className="atlas-eyebrow">{eyebrow}</p> : null}
-      {title ? <h2 className="mt-1.5 text-lg font-bold tracking-[-0.025em] text-[var(--atlas-ink)]">{title}</h2> : null}
-      <div className={title || eyebrow ? "mt-4" : ""}>{children}</div>
+      {title ? <h2 className="mt-2 text-xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">{title}</h2> : null}
+      <div className={title || eyebrow ? "mt-5" : ""}>{children}</div>
     </section>
   );
 }

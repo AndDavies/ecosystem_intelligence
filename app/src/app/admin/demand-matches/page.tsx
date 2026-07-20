@@ -24,7 +24,7 @@ export default async function DemandMatchWorkspacePage({
   const technologyCount = snapshot.organizations.reduce((count, organization) => count + organization.capabilities.length, 0);
 
   return (
-    <PublicPageShell eyebrow="Private editorial workspace" title="Find potential demand matches" description="Surface plausible connections between reviewed technologies and public demand statements, then decide which ones are useful enough to publish." backHref="/admin" backLabel="Admin home">
+    <PublicPageShell variant="admin" eyebrow="Private editorial workspace" title="Find potential demand matches" description="Surface plausible connections between reviewed technologies and public demand statements, then decide which ones are useful enough to publish." backHref="/admin" backLabel="Admin home">
       <AdminNav />
       {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">Staged {params.success} private suggestions. Review each connection before publishing it.</div> : null}
       {params.status === "no-new-suggestions" ? <div className="mb-5 rounded-md border border-[#b2ccff] bg-[#f5f8ff] px-3 py-2 text-sm text-[#1849a9]">No new high-signal suggestions were found. Existing and previously reviewed pairs were excluded.</div> : null}

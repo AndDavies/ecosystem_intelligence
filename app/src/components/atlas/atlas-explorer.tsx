@@ -10,6 +10,7 @@ import {
   CircleAlert,
   Download,
   ExternalLink,
+  FileCheck2,
   Filter,
   Info,
   List,
@@ -187,6 +188,17 @@ export function AtlasExplorer({
     return result.organizations.filter((organization) => visibleIds.has(organization.id));
   }, [result.organizations, viewport]);
 
+  const snapshotMetrics = useMemo(() => {
+    const capabilities = new Set(initialResult.organizations.flatMap((organization) => organization.capabilities.map((capability) => capability.id)));
+    const sources = new Set(initialResult.organizations.flatMap((organization) => rowEvidence(organization, organization.capabilities[0] ?? null).map((citation) => citation.sourceUrl)));
+    return { organizations: initialResult.total, capabilities: capabilities.size, sources: sources.size };
+  }, [initialResult]);
+
+  const visibleEvidence = useMemo(() => {
+    const citations = visibleOrganizations.flatMap((organization) => rowEvidence(organization, relevantCapability(organization, filters)));
+    return Array.from(new Map(citations.map((citation) => [citation.sourceUrl, citation])).values());
+  }, [filters, visibleOrganizations]);
+
   const selectedOrganization = useMemo(
     () => result.organizations.find((organization) => organization.id === selectedId) ?? null,
     [result.organizations, selectedId]
@@ -289,34 +301,50 @@ export function AtlasExplorer({
     : "Open a result to see what an organization offers, where it may fit, and which public sources support the profile.";
 
   return (
-    <div className="atlas-frame pb-8 pt-8 sm:pt-11">
-      <section className="mb-7 grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+    <div className="atlas-frame pb-8 pt-6 sm:pt-12">
+      <section className="mb-6 grid gap-5 sm:mb-8 sm:gap-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(390px,0.82fr)] lg:items-end">
         <div className="max-w-4xl">
-          <span className="inline-flex rounded-full border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--atlas-primary)]">Canadian Public Beta</span>
-          <h1 className="mt-4 max-w-4xl text-[32px] font-bold leading-[1.08] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-[44px]">See who is building what—and who may be worth speaking with next.</h1>
-          <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:text-base sm:leading-7">Find Canadian organizations, technology, and public demand in one place. Search by place, need, or technology, compare the supporting sources, then build a Working List for the conversation ahead.</p>
-          <p className="mt-4 flex items-center gap-2 text-xs font-medium text-[var(--atlas-muted)]"><ShieldCheck className="size-4 text-[var(--atlas-primary)]" />Reviewed public sources · transparent gaps · human review</p>
+          <span className="inline-flex rounded-full bg-[var(--atlas-ink)] px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.11em] text-white">Canadian Public Beta</span>
+          <h1 className="mt-4 max-w-4xl text-[36px] font-extrabold leading-[0.97] tracking-[-0.062em] text-[var(--atlas-ink)] sm:mt-5 sm:text-[52px] lg:text-[58px]">See who is building what—and who may be worth speaking with next.</h1>
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:mt-5 sm:text-base sm:leading-7">Find Canadian organizations, technology, and public demand in one place. Search by place, need, or technology, compare the supporting sources, then build a Working List for the conversation ahead.</p>
         </div>
-        <button type="button" onClick={openBetaFeedback} className="atlas-secondary-button h-11 w-fit px-4 text-xs">Tell us what is missing</button>
+        <div className="space-y-4">
+          <div className="rounded-[22px] border border-[var(--atlas-border)] bg-white p-4 shadow-[var(--atlas-shadow-soft)] sm:p-5">
+            <dl className="grid grid-cols-3 divide-x divide-[var(--atlas-border)]">
+              <SnapshotMetric value={snapshotMetrics.organizations} label="reviewed organizations" />
+              <SnapshotMetric value={snapshotMetrics.capabilities} label="reviewed technologies" />
+              <SnapshotMetric value={snapshotMetrics.sources} label="public sources" />
+            </dl>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--atlas-border)] pt-4">
+              <span className="atlas-signal-pill">Updated {formatDate(generatedAt)}</span>
+              <button type="button" onClick={openBetaFeedback} className="hidden text-xs font-bold text-[var(--atlas-ink)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 sm:inline-flex">Tell us what is missing</button>
+            </div>
+          </div>
+          <p className="flex items-start gap-3 rounded-[18px] border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-3 text-xs leading-5 text-[var(--atlas-muted)] sm:p-4">
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--atlas-violet-soft)] text-[var(--atlas-violet)]"><ShieldCheck className="size-4" /></span>
+            <span><strong className="block text-[var(--atlas-ink-soft)]">Reviewed public sources · transparent gaps · human review</strong><span className="hidden sm:inline">Open a result to inspect what supports the profile and where interpretation begins.</span></span>
+          </p>
+        </div>
       </section>
 
-      <section className="overflow-hidden rounded-[24px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
-        <div className="border-b border-[var(--atlas-border)] bg-white p-3 sm:p-4">
+      <section className="overflow-hidden rounded-[26px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <div className="border-b border-[var(--atlas-border)] bg-white p-3 sm:p-5">
           <form onSubmit={submitDiscovery} role="search" aria-label="Search the Canadian ecosystem map">
             <div className="relative">
               <Search className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-[var(--atlas-muted)]" aria-hidden="true" />
               <input
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
-                className="h-14 w-full rounded-[18px] border border-[var(--atlas-border-strong)] bg-[var(--atlas-surface-muted)] pl-12 pr-28 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-primary)] focus:bg-white focus:ring-4 focus:ring-[rgba(31,90,67,0.1)] sm:text-base"
+                className="h-14 w-full rounded-[18px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-28 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:h-16 sm:text-base"
                 placeholder="Search by place, technology, or need — e.g. underwater sensing in Atlantic Canada"
                 aria-label="Search the ecosystem map in natural language"
                 maxLength={500}
               />
-              <button type="submit" className="atlas-primary-button absolute right-1.5 top-1/2 h-11 -translate-y-1/2 gap-2 px-4 text-sm disabled:opacity-60" disabled={loading}>
+              <button type="submit" className="atlas-primary-button absolute right-1.5 top-1/2 h-11 -translate-y-1/2 gap-2 px-4 text-sm disabled:opacity-60 sm:h-[52px] sm:px-5" disabled={loading}>
                 {loading ? <LoaderCircle className="size-4 animate-spin" /> : null}
                 <span className="hidden sm:inline">Search the map</span>
                 <span className="sm:hidden">Search</span>
+                {!loading ? <ArrowRight className="hidden size-4 text-[var(--atlas-signal)] sm:block" /> : null}
               </button>
             </div>
           </form>
@@ -328,8 +356,10 @@ export function AtlasExplorer({
                   <span>{filter.label}: {filter.value}</span><X className="size-3.5" />
                 </button>
               ))}
-              {result.appliedFilters.length === 0 ? <span className="inline-flex h-9 items-center rounded-full border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-3 text-xs font-medium text-[var(--atlas-muted)]">Canada-wide view</span> : null}
-              <button type="button" onClick={() => setFilterPanelOpen((value) => !value)} className="atlas-tertiary-button h-9 gap-2 px-3 text-xs" aria-expanded={filterPanelOpen}><SlidersHorizontal className="size-4" />Filters</button>
+              {result.appliedFilters.length === 0 ? <span className="inline-flex h-9 items-center rounded-xl border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-ink-soft)]">Canada-wide view</span> : null}
+              <button type="button" onClick={() => setFilterPanelOpen((value) => !value)} className="atlas-secondary-button h-9 gap-2 px-3 text-xs" aria-expanded={filterPanelOpen}><SlidersHorizontal className="size-4" />Filters</button>
+              <button type="button" onClick={() => { setMapEnabled(true); setViewMode("map"); }} className={cn("inline-flex h-9 items-center gap-2 rounded-xl border px-3 text-xs font-bold", viewMode === "map" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")}><MapIcon className="size-4" />Map</button>
+              <button type="button" onClick={() => { if (window.matchMedia("(min-width: 1024px)").matches) document.getElementById("atlas-results")?.scrollIntoView({ behavior: "smooth", block: "start" }); else setViewMode("table"); }} className={cn("inline-flex h-9 items-center gap-2 rounded-xl border px-3 text-xs font-bold", viewMode === "table" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")}><List className="size-4" />Table</button>
             </div>
             <p className="flex max-w-[470px] items-start gap-2 text-xs leading-5 text-[var(--atlas-muted)] lg:justify-end lg:text-right"><Info className="mt-0.5 size-4 shrink-0 text-[var(--atlas-violet)]" aria-hidden="true" /><span>{caveat}</span></p>
           </div>
@@ -350,47 +380,55 @@ export function AtlasExplorer({
           {error ? <div className="mt-3 flex items-start gap-2 rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]" role="alert"><CircleAlert className="mt-0.5 size-4 shrink-0" />{error}</div> : null}
           {discovery?.interpretation === "no_match" ? <div className="mt-3 rounded-xl border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-3 py-2 text-sm text-[var(--atlas-amber)]">No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing.</div> : null}
         </div>
-        <div className={cn("relative h-[350px] border-b border-[var(--atlas-border)] sm:h-[390px] lg:h-[410px]", viewMode === "table" && "hidden lg:block")}>
-          {mapEnabled ? (
-            <AtlasMap
-              organizations={result.organizations}
-              selectedOrganizationId={selectedId}
-              onSelect={(id) => updateSelection(id, true, "map")}
-              onViewportChange={updateViewport}
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center bg-[var(--atlas-surface-muted)] text-sm font-semibold text-[var(--atlas-muted)]">
-              Preparing the interactive map…
+        <div className={cn("border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-3 lg:p-3", viewMode === "table" && "hidden lg:grid")}>
+          <div className="relative h-[350px] overflow-hidden sm:h-[410px] lg:h-[510px] lg:rounded-[22px] lg:border lg:border-[var(--atlas-border)]">
+            {mapEnabled ? (
+              <AtlasMap
+                organizations={result.organizations}
+                selectedOrganizationId={selectedId}
+                onSelect={(id) => updateSelection(id, true, "map")}
+                onViewportChange={updateViewport}
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center bg-[var(--atlas-surface-muted)] text-sm font-semibold text-[var(--atlas-muted)]">
+                Preparing the interactive map…
+              </div>
+            )}
+
+            <div className="pointer-events-none absolute left-3 top-3 z-[1000] rounded-xl border border-white/80 bg-white/95 px-3 py-2 text-xs font-bold text-[var(--atlas-ink)] shadow-[var(--atlas-shadow-soft)] backdrop-blur sm:left-4 sm:top-4">
+              {viewport ? `${visibleOrganizations.length} ${visibleOrganizations.length === 1 ? "organization" : "organizations"} in view` : "Updating map results…"}
             </div>
-          )}
 
-          <div className="pointer-events-none absolute left-3 top-3 z-[1000] rounded-xl border border-white/80 bg-white/95 px-3 py-2 text-xs font-semibold text-[var(--atlas-ink-soft)] shadow-[var(--atlas-shadow-soft)] backdrop-blur sm:left-4 sm:top-4">
-            {viewport ? `${visibleOrganizations.length} ${visibleOrganizations.length === 1 ? "organization" : "organizations"} in view` : "Updating map results…"}
+            <div className="absolute right-3 top-3 z-[1000] flex overflow-hidden rounded-xl border border-white/80 bg-white p-0.5 shadow-[var(--atlas-shadow-soft)] lg:hidden">
+              <button
+                type="button"
+                className="inline-flex h-9 items-center gap-2 rounded px-3 text-xs font-semibold text-[var(--atlas-ink-soft)] hover:bg-[var(--atlas-signal-soft)]"
+                onClick={() => setViewMode("table")}
+                aria-label="Show accessible results list"
+              >
+                <List className="size-4" />
+                List
+              </button>
+            </div>
+
+            {selectedOrganization ? (
+              <LookbookPeek
+                organization={selectedOrganization}
+                capability={selectedCapability}
+                filters={filters}
+                onClose={() => setSelectedId(null)}
+              />
+            ) : null}
           </div>
-
-          <div className="absolute right-3 top-3 z-[1000] flex overflow-hidden rounded-xl border border-white/80 bg-white p-0.5 shadow-[var(--atlas-shadow-soft)] lg:hidden">
-            <button
-              type="button"
-              className="inline-flex h-9 items-center gap-2 rounded px-3 text-xs font-semibold text-[var(--atlas-ink-soft)] hover:bg-[var(--atlas-surface-muted)]"
-              onClick={() => setViewMode("table")}
-              aria-label="Show accessible results list"
-            >
-              <List className="size-4" />
-              List
-            </button>
-          </div>
-
-          {selectedOrganization ? (
-            <LookbookPeek
-              organization={selectedOrganization}
-              capability={selectedCapability}
-              filters={filters}
-              onClose={() => setSelectedId(null)}
-            />
-          ) : null}
+          <ResultsRail
+            organizations={visibleOrganizations}
+            filters={filters}
+            selectedId={selectedId}
+            onSelect={(id) => updateSelection(id, true, "result")}
+          />
         </div>
 
-        <div className={cn(viewMode === "map" && "hidden lg:block")}>
+        <div id="atlas-results" className={cn("scroll-mt-24", viewMode === "map" && "hidden lg:block")}>
           <div className="flex flex-col gap-3 border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -507,8 +545,95 @@ export function AtlasExplorer({
         </div>
       </section>
 
+      <PublicEvidenceLedger citations={visibleEvidence} />
+
       <PublicAtlasFooter generatedLabel={`Snapshot generated ${formatDate(generatedAt)}. Reviewed public sources only; coverage gaps remain explicit.`} />
     </div>
+  );
+}
+
+function SnapshotMetric({ value, label }: { value: number; label: string }) {
+  return (
+    <div className="px-3 first:pl-0 last:pr-0 sm:px-5">
+      <dt className="sr-only">{label}</dt>
+      <dd>
+        <span className="block text-2xl font-extrabold leading-none tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-3xl">{value}</span>
+        <span className="mt-2 block text-[10px] font-medium leading-4 text-[var(--atlas-muted)] sm:text-[11px]">{label}</span>
+      </dd>
+    </div>
+  );
+}
+
+function ResultsRail({
+  organizations,
+  filters,
+  selectedId,
+  onSelect
+}: {
+  organizations: AtlasOrganization[];
+  filters: AtlasQuery;
+  selectedId: string | null;
+  onSelect: (id: string) => void;
+}) {
+  return (
+    <aside className="atlas-dark-panel hidden h-[510px] overflow-hidden lg:flex lg:flex-col" aria-label="Organizations in the current map view">
+      <div className="border-b border-white/15 px-5 py-5">
+        <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-white/60">Organizations in view</p>
+        <p className="mt-2 text-lg font-extrabold tracking-[-0.025em] text-[var(--atlas-signal)]">{organizations.length} reviewed {organizations.length === 1 ? "organization" : "organizations"}</p>
+        <p className="mt-1 text-[11px] text-white/55">Pan or zoom the map to refine this list.</p>
+      </div>
+      {organizations.length ? (
+        <ol className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+          {organizations.map((organization, index) => {
+            const capability = relevantCapability(organization, filters);
+            const evidence = rowEvidence(organization, capability);
+            const selected = organization.id === selectedId;
+            return (
+              <li key={organization.id} className={cn("grid grid-cols-[44px_minmax(0,1fr)_44px] border-b border-white/15", selected ? "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "text-white")}>
+                <span className={cn("m-3 flex size-8 items-center justify-center rounded-full border text-sm font-bold", selected ? "border-black/35" : "border-white/30 text-white/80")}>{index + 1}</span>
+                <button type="button" onClick={() => onSelect(organization.id)} className="min-w-0 py-4 text-left">
+                  <span className="block truncate text-sm font-extrabold tracking-[-0.015em]">{organization.name}</span>
+                  <span className={cn("mt-1 block truncate text-[11px]", selected ? "text-black/65" : "text-white/60")}>{organization.primaryLocation?.name ?? "Location under review"}</span>
+                  <span className={cn("mt-1.5 block line-clamp-2 text-[11px] leading-4", selected ? "text-black/80" : "text-white/80")}>{capability?.name ?? "Technology not yet reviewed"}</span>
+                  <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-black/25 bg-black text-white" : "border-white/25 text-white/80")}>{evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · {evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
+                </button>
+                <Link href={`/organizations/${organization.slug}`} className={cn("flex items-center justify-center no-underline hover:no-underline", selected ? "text-black" : "text-white/80 hover:text-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
+                  <ChevronRight className="size-5" />
+                </Link>
+              </li>
+            );
+          })}
+        </ol>
+      ) : (
+        <div className="flex flex-1 items-center justify-center px-8 text-center text-sm leading-6 text-white/60">No published organizations are visible in this map area.</div>
+      )}
+    </aside>
+  );
+}
+
+function PublicEvidenceLedger({ citations }: { citations: ReturnType<typeof rowEvidence> }) {
+  if (!citations.length) return null;
+  return (
+    <section className="mt-4 grid overflow-hidden rounded-[24px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)] lg:grid-cols-[170px_minmax(0,1fr)]" aria-labelledby="public-evidence-title">
+      <div className="flex min-h-24 items-center bg-[var(--atlas-ink)] px-5 py-5 text-white">
+        <div>
+          <p id="public-evidence-title" className="text-[15px] font-extrabold uppercase leading-5 tracking-[0.04em]">Public<br />evidence</p>
+          <p className="mt-2 text-[10px] text-white/55">For this map view</p>
+        </div>
+      </div>
+      <div className="grid divide-y divide-[var(--atlas-border)] sm:grid-cols-2 sm:divide-x sm:divide-y-0 xl:grid-cols-4">
+        {citations.slice(0, 4).map((citation) => (
+          <a key={citation.sourceUrl} href={citation.sourceUrl} target="_blank" rel="noreferrer" className="group flex min-w-0 gap-3 px-5 py-5 no-underline hover:bg-[var(--atlas-signal-soft)] hover:no-underline">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)]"><FileCheck2 className="size-4" /></span>
+            <span className="min-w-0">
+              <strong className="block truncate text-xs text-[var(--atlas-ink)]">{citation.publisher}</strong>
+              <span className="mt-1 block line-clamp-2 text-[11px] leading-4 text-[var(--atlas-muted)]">{citation.sourceTitle}</span>
+              <span className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold text-[var(--atlas-ink)]">Open source <ExternalLink className="size-3" /></span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
   );
 }
 

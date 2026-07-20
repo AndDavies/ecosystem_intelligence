@@ -28,7 +28,7 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
   const zeroSearches = searches.data?.filter((item) => item.zero_result).length ?? 0;
 
   return (
-    <PublicPageShell eyebrow="Private administration" title="Public-beta operations" description="Review participation, learn from discovery behaviour, and progress private workflows without turning the product into a CRM." actions={<span className="rounded bg-[#f2f4f7] px-3 py-2 text-xs font-semibold text-[#475467]">{user.role} · {user.email}</span>}>
+    <PublicPageShell variant="admin" eyebrow="Private administration" title="Public-beta operations" description="Review participation, learn from discovery behaviour, and progress private workflows without turning the product into a CRM." actions={<span className="rounded bg-[#f2f4f7] px-3 py-2 text-xs font-semibold text-[#475467]">{user.role} · {user.email}</span>}>
       <AdminNav />
       {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">That review update could not be saved.</div> : null}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">

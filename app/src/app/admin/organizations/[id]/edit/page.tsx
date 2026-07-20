@@ -114,7 +114,7 @@ export default async function EditPublishedOrganizationPage({
   const location = (dossier.locations ?? []).find((item) => item.is_primary) ?? dossier.locations?.[0];
   if (!capability || !location) {
     return (
-      <PublicPageShell eyebrow="Published record maintenance" title={dossier.name} description="This record cannot use the unified editor until it has a published capability and primary location." backHref="/admin/organizations" backLabel="Published organizations">
+      <PublicPageShell variant="admin" eyebrow="Published record maintenance" title={dossier.name} description="This record cannot use the unified editor until it has a published capability and primary location." backHref="/admin/organizations" backLabel="Published organizations">
         <AdminNav />
         <EmptyCoverage title="Canonical record is incomplete" detail="Add the missing linked location or capability through the database review workflow, then return to this editor." />
       </PublicPageShell>
@@ -140,7 +140,7 @@ export default async function EditPublishedOrganizationPage({
   const areaClass = "form-control h-auto py-3 leading-6";
 
   return (
-    <PublicPageShell eyebrow="Published record maintenance" title={`Edit ${dossier.name}`} description="Update the information people use to understand this organization and decide whether to engage. Stable profile links are preserved and every change is recorded." backHref="/admin/organizations" backLabel="Published organizations" actions={<Link href={`/organizations/${dossier.slug}`} target="_blank" className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-3 text-xs font-semibold text-[#344054] no-underline">View public profile <ExternalLink className="size-3.5" /></Link>}>
+    <PublicPageShell variant="admin" eyebrow="Published record maintenance" title={`Edit ${dossier.name}`} description="Update the information people use to understand this organization and decide whether to engage. Stable profile links are preserved and every change is recorded." backHref="/admin/organizations" backLabel="Published organizations" actions={<Link href={`/organizations/${dossier.slug}`} target="_blank" className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-3 text-xs font-semibold text-[#344054] no-underline">View public profile <ExternalLink className="size-3.5" /></Link>}>
       <AdminNav />
       {query.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{errorMessages[query.error] ?? "The organization could not be updated."}</div> : null}
       {query.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">{query.success === "contact-updated" ? "Public contact details updated." : "Published record updated and public map refreshed."}</div> : null}

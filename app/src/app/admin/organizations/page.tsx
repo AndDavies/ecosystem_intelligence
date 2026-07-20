@@ -21,7 +21,7 @@ export default async function AdminOrganizationsPage({ searchParams }: { searchP
   });
 
   return (
-    <PublicPageShell eyebrow="Editorial operations" title="Published organizations" description="Edit canonical organization, primary-location, and capability details without creating a new research candidate. Every save is immediately public and audit logged." backHref="/admin" backLabel="Atlas operations">
+    <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Published organizations" description="Edit canonical organization, primary-location, and capability details without creating a new research candidate. Every save is immediately public and audit logged." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
       <form className="mb-5 flex max-w-xl gap-2" method="get">
         <label className="relative flex-1">
