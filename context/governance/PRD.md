@@ -1,7 +1,7 @@
 # True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
 Status: active product requirements  
-Last updated: 2026-07-19
+Last updated: 2026-07-20
 
 ## Product summary
 
@@ -43,7 +43,7 @@ Secondary users:
 ## Jobs to be done
 
 1. Understand who operates in a Canadian region or technology landscape.
-2. Find source-backed organizations and technologies without learning a specialist query language.
+2. Describe a need in plain language and find source-backed organizations and technologies without learning a specialist query language.
 3. Inspect why a technology may fit a mission or public demand statement and challenge that interpretation.
 4. See where coverage is thin, stale, weak, or not yet reviewed.
 5. Export a dossier, regional report, filtered dataset, or saved lookbook.
@@ -133,8 +133,11 @@ Natural-language discovery may only:
 - query published records
 - summarize evidence returned by those records
 - expose every applied filter as a removable chip
+- rank up to five known organizations as strong, plausible, or adjacent fits
+- show source support separately from derived fit and link every reason to an approved public citation
+- expose an exact match, closest-supported result, or coverage gap without manufacturing certainty
 
-It must never invent an organization or fact. Ambiguous questions return suggested filters.
+It must never invent an organization or fact. Ask True North uses the OpenAI Responses API with strict structured output, no web tools, no saved model response, a server-validated known-ID boundary, and the canonical published Supabase snapshot. Anonymous visitors receive three questions per rolling 24 hours and signed-in users receive 20. Follow-up context is temporary browser state only. Quota, timeout, refusal, missing-key, and invalid-output states fall back to deterministic discovery rather than failing the map. Ambiguous questions return suggested filters.
 
 ## Canonical data model
 
@@ -192,7 +195,7 @@ It must never invent an organization or fact. Ambiguous questions return suggest
 
 - `pilot_update_signups` — historical physical table name for the affirmative public-beta update consent ledger
 - `pilot_feedback` — historical physical table name for unauthenticated public-beta feedback staged privately for review
-- `pilot_searches` — historical physical table name for private raw search terms and interpreted filters retained for 90 days
+- `pilot_searches` — historical physical table name for private raw search terms, interpreted filters, assistant outcome, latency, and token measures retained for 90 days
 - `pilot_events` — historical physical table name for bounded, privacy-light public-beta workflow events retained for 30 days
 - `connection_requests` — authenticated private introduction requests and review status
 - `contact_messages` — private, rate-limited contact inbox

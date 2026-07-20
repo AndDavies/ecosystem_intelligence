@@ -11,6 +11,8 @@ describe("customer-facing product language", () => {
     expect(explorer).toContain("Discover the companies, technologies, and public needs shaping Canada’s defence and dual-use ecosystem.");
     expect(explorer).toContain("Follow the evidence, find the fit, and start the right conversation.");
     expect(explorer).toContain("Explore the map");
+    expect(explorer).toContain("Ask True North");
+    expect(explorer).toContain("Do not enter classified, confidential, proprietary, or personal information.");
     expect(explorer).toContain("Technology or offering");
     expect(header).toContain('label: "Ecosystem Map"');
     expect(explorer).not.toContain("Search atlas");

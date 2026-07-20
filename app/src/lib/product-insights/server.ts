@@ -9,6 +9,12 @@ export function requestFingerprint(request: Request) {
   return createHmac("sha256", secret).update(`${forwardedFor}|${userAgent}`).digest("hex");
 }
 
+export function assistantSubjectFingerprint(request: Request, userId?: string | null) {
+  if (!userId) return requestFingerprint(request);
+  const secret = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "local-preview";
+  return createHmac("sha256", secret).update(`assistant-user|${userId}`).digest("hex");
+}
+
 export function normalizeBetaSearchQuery(value: string) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
 }

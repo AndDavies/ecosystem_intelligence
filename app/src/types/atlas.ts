@@ -251,4 +251,48 @@ export interface AtlasDiscoveryResult {
   evidenceLinks: Array<{ title: string; url: string; publisher: string }>;
   summary: string | null;
   suggestions: string[];
+  assistant?: AtlasAssistantAnswer | null;
+  organizations?: AtlasOrganization[];
+  quota?: AtlasAssistantQuota;
+  fallbackReason?: AtlasAssistantFallbackReason;
+}
+
+export type AtlasAssistantOutcome = "exact_match" | "closest_supported" | "coverage_gap";
+export type AtlasAssistantFitLevel = "strong" | "plausible" | "adjacent";
+export type AtlasAssistantEvidenceLevel = "strong" | "moderate" | "limited";
+export type AtlasAssistantFallbackReason = "quota" | "unavailable" | "timeout" | "refusal" | "invalid_output";
+
+export interface AtlasAssistantSupportPoint {
+  text: string;
+  citationIds: string[];
+}
+
+export interface AtlasAssistantMatch {
+  organizationId: string;
+  capabilityId: string | null;
+  fitLevel: AtlasAssistantFitLevel;
+  evidenceLevel: AtlasAssistantEvidenceLevel;
+  supportPoints: AtlasAssistantSupportPoint[];
+  limitations: string[];
+}
+
+export interface AtlasAssistantAnswer {
+  outcome: AtlasAssistantOutcome;
+  interpretedNeed: string;
+  summary: string;
+  matches: AtlasAssistantMatch[];
+  gaps: string[];
+  followUpSuggestions: string[];
+}
+
+export interface AtlasAssistantPriorTurn {
+  query: string;
+  organizationIds: string[];
+}
+
+export interface AtlasAssistantQuota {
+  signedIn: boolean;
+  limit: 3 | 20;
+  used: number;
+  remaining: number;
 }

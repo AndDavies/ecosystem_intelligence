@@ -37,7 +37,11 @@ export const betaDiscoveryRequestSchema = z.object({
   query: z.string().trim().min(1).max(500),
   contextPath: safePath.optional().default("/"),
   cohort: optionalShortText,
-  sessionId: optionalUuid
+  sessionId: optionalUuid,
+  priorTurns: z.array(z.object({
+    query: z.string().trim().min(1).max(500),
+    organizationIds: z.array(z.string().trim().min(1).max(120)).max(5)
+  })).max(3).optional().default([])
 });
 
 export const betaEventNames = [

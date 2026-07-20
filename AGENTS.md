@@ -176,6 +176,7 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-20`: Marked the public beta release fallback at `beta-release-2026-07-20-pre-ask-true-north` and added Ask True North as a constrained published-corpus discovery layer. It uses known records and citations only, separates derived fit from source support, falls back safely, and does not change the research, review, or publication contracts.
 - `2026-07-19`: Added relationship-safe public Demand Signals administration, enriched the complete live beta corpus with evidence-bounded outcome language, and published seven individually reviewed demand matches with dual-source citations and reviewer rationales.
 - `2026-07-19`: Made the production database the sole runtime and research source, removed the bundled and CSV-era data paths, retired v1 ingestion tooling, and consolidated validation around the typed v2 review-first pipeline.
 - `2026-07-19`: Added decision-led public profiles, plain-language discovery and editor terminology, official public-contact editing, and a private review-first technology-to-demand matching workflow; replaced the fixed corpus freeze with evidence-backed human-approved expansion.

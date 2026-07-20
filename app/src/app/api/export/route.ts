@@ -24,12 +24,25 @@ export async function GET(request: Request) {
 
   if (type === "atlas-results") {
     const queryParams = new URLSearchParams(searchParams);
+    const requestedOrganizationIds = (queryParams.get("organizationIds") ?? "")
+      .split(",")
+      .map((value) => value.trim())
+      .filter(Boolean)
+      .slice(0, 100);
     queryParams.delete("export");
+    queryParams.delete("organizationIds");
     // Older links used `type=atlas-results`, which collided with the public
     // organization-type filter. New links use `export` and preserve `type`.
     if (!searchParams.has("export")) queryParams.delete("type");
     const query = atlasQueryFromSearchParams(queryParams);
-    const result = await queryAtlas({ ...query, page: 1, pageSize: 1000 });
+    const organizations = requestedOrganizationIds.length
+      ? (() => {
+          const order = new Map(requestedOrganizationIds.map((id, index) => [id, index]));
+          return getAtlasSnapshot().then((snapshot) => snapshot.organizations
+            .filter((organization) => order.has(organization.id))
+            .sort((left, right) => (order.get(left.id) ?? 0) - (order.get(right.id) ?? 0)));
+        })()
+      : queryAtlas({ ...query, page: 1, pageSize: 1000 }).then((result) => result.organizations);
     const header = [
       "stable_id",
       "organization_name",
@@ -49,7 +62,7 @@ export async function GET(request: Request) {
       "mission_areas",
       "public_source_count"
     ];
-    const rows = result.organizations.map((organization) => {
+    const rows = (await organizations).map((organization) => {
       const citations = [
         ...organization.citations,
         ...organization.capabilities.flatMap((capability) => [

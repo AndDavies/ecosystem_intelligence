@@ -329,3 +329,20 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Updated the active corpus contract to the live 35 organizations and 31
   technologies or offerings. Future records remain evidence-backed and
   human-published but are no longer held to a fixed numeric freeze.
+
+## Ask True North constrained discovery - 2026-07-20
+
+- Recorded the public beta fallback point as the Git tag
+  `beta-release-2026-07-20-pre-ask-true-north` before implementation.
+- Upgraded the existing map question into Ask True North, a constrained
+  OpenAI Responses API assessment over the canonical published snapshot.
+- Kept the research and publication boundary unchanged. New records enter AI
+  discovery only after the existing explicit human publication step and cache
+  invalidation; there is no embedding index or second corpus to maintain.
+- Added strict structured output, known organization, technology, and citation
+  validation, fit-versus-evidence labels, exact, closest, and gap outcomes,
+  public-source links, limitations, temporary follow-ups, safe fallbacks, and
+  anonymous versus signed-in daily quotas.
+- Reused the private 90-day search ledger for question, outcome, latency, and
+  token measures. No model response is stored, no web tool is enabled, and no
+  private drafts or research candidates enter the model context.

@@ -88,4 +88,17 @@ describe("public-beta validation", () => {
     expect(parsed.cohort).toBeNull();
     expect(parsed.sessionId).toBeNull();
   });
+
+  it("keeps assistant follow-up context temporary and bounded", () => {
+    expect(betaDiscoveryRequestSchema.safeParse({
+      query: "Which of those are in Ontario?",
+      contextPath: "/",
+      priorTurns: Array.from({ length: 3 }, (_, index) => ({ query: `Question ${index}`, organizationIds: [String(index)] }))
+    }).success).toBe(true);
+    expect(betaDiscoveryRequestSchema.safeParse({
+      query: "Which of those are in Ontario?",
+      contextPath: "/",
+      priorTurns: Array.from({ length: 4 }, (_, index) => ({ query: `Question ${index}`, organizationIds: [String(index)] }))
+    }).success).toBe(false);
+  });
 });

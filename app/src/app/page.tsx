@@ -39,6 +39,18 @@ export default async function PublicAtlasPage({
       <AtlasExplorer
         initialResult={result}
         initialFilters={query}
+        snapshotMetrics={{
+          organizations: snapshot.organizations.length,
+          capabilities: new Set(snapshot.organizations.flatMap((organization) => organization.capabilities.map((capability) => capability.id))).size,
+          sources: new Set(snapshot.organizations.flatMap((organization) => [
+            ...organization.citations,
+            ...organization.capabilities.flatMap((capability) => [
+              ...capability.citations,
+              ...capability.missionMatches.flatMap((match) => match.citations),
+              ...capability.demandMatches.flatMap((match) => match.citations)
+            ])
+          ]).map((citation) => citation.sourceUrl)).size
+        }}
         regions={snapshot.regions}
         technicalDomains={snapshot.technicalDomains}
         missionAreas={snapshot.missionAreas}

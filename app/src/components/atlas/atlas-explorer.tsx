@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { AssistantAnswer, AssistantFallback } from "@/components/atlas/assistant-answer";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
 import {
@@ -43,6 +44,7 @@ import {
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
 import type {
   AtlasCapability,
+  AtlasAssistantPriorTurn,
   AtlasBounds,
   AtlasDemandRequirement,
   AtlasDiscoveryResult,
@@ -81,6 +83,7 @@ type ViewMode = "map" | "table";
 interface AtlasExplorerProps {
   initialResult: AtlasQueryResult;
   initialFilters: AtlasQuery;
+  snapshotMetrics: { organizations: number; capabilities: number; sources: number };
   regions: AtlasRegion[];
   technicalDomains: AtlasTechnicalDomain[];
   missionAreas: AtlasMissionArea[];
@@ -144,6 +147,7 @@ function filterWithout(filters: AtlasQuery, key: string): AtlasQuery {
 export function AtlasExplorer({
   initialResult,
   initialFilters,
+  snapshotMetrics,
   regions,
   technicalDomains,
   missionAreas,
@@ -161,6 +165,7 @@ export function AtlasExplorer({
   const [viewport, setViewport] = useState<{ bounds: AtlasBounds; organizationIds: string[] } | null>(null);
   const [loading, setLoading] = useState(false);
   const [discovery, setDiscovery] = useState<AtlasDiscoveryResult | null>(null);
+  const [assistantTurns, setAssistantTurns] = useState<AtlasAssistantPriorTurn[]>([]);
   const [error, setError] = useState<string | null>(null);
   const tableScrollRef = useRef<HTMLDivElement | null>(null);
   const rowRefs = useRef(new Map<string, HTMLTableRowElement>());
@@ -178,21 +183,22 @@ export function AtlasExplorer({
       page: 1,
       pageSize: 1000
     });
+    if (discovery?.assistant) {
+      const visibleIds = viewport ? new Set(viewport.organizationIds) : null;
+      const organizationIds = result.organizations
+        .filter((organization) => !visibleIds || visibleIds.has(organization.id))
+        .map((organization) => organization.id);
+      params.set("organizationIds", organizationIds.join(","));
+    }
     params.set("export", "atlas-results");
     return `/api/export?${params.toString()}`;
-  }, [filters, viewport]);
+  }, [discovery?.assistant, filters, result.organizations, viewport]);
 
   const visibleOrganizations = useMemo(() => {
     if (!viewport) return result.organizations;
     const visibleIds = new Set(viewport.organizationIds);
     return result.organizations.filter((organization) => visibleIds.has(organization.id));
   }, [result.organizations, viewport]);
-
-  const snapshotMetrics = useMemo(() => {
-    const capabilities = new Set(initialResult.organizations.flatMap((organization) => organization.capabilities.map((capability) => capability.id)));
-    const sources = new Set(initialResult.organizations.flatMap((organization) => rowEvidence(organization, organization.capabilities[0] ?? null).map((citation) => citation.sourceUrl)));
-    return { organizations: initialResult.total, capabilities: capabilities.size, sources: sources.size };
-  }, [initialResult]);
 
   const visibleEvidence = useMemo(() => {
     const citations = visibleOrganizations.flatMap((organization) => rowEvidence(organization, relevantCapability(organization, filters)));
@@ -212,9 +218,13 @@ export function AtlasExplorer({
     submittedQuery: discovery?.query ?? filters.query
   });
 
-  async function load(nextFilters: AtlasQuery, options: { updateQuestion?: boolean } = {}) {
+  async function load(nextFilters: AtlasQuery, options: { updateQuestion?: boolean; preserveDiscovery?: boolean } = {}) {
     setLoading(true);
     setError(null);
+    if (!options.preserveDiscovery) {
+      setDiscovery(null);
+      setAssistantTurns([]);
+    }
     try {
       const params = atlasQueryToSearchParams({ ...nextFilters, bounds: undefined, page: 1, pageSize: 1000 });
       const response = await fetch(`/api/atlas?${params.toString()}`, { headers: { Accept: "application/json" } });
@@ -235,16 +245,17 @@ export function AtlasExplorer({
     }
   }
 
-  async function submitDiscovery(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const query = question.trim();
+  async function runDiscovery(rawQuery: string) {
+    const query = rawQuery.trim();
     if (!query) {
       setDiscovery(null);
+      setAssistantTurns([]);
       rememberBetaSearchId(null);
       await load({});
       return;
     }
 
+    setQuestion(query);
     setLoading(true);
     setError(null);
     try {
@@ -255,7 +266,8 @@ export function AtlasExplorer({
           query,
           contextPath: window.location.pathname,
           cohort: currentPilotCohort(),
-          sessionId: currentPilotSessionId()
+          sessionId: currentPilotSessionId(),
+          priorTurns: assistantTurns
         })
       });
       if (!response.ok) throw new Error("The question could not be interpreted.");
@@ -266,13 +278,53 @@ export function AtlasExplorer({
         filter_count: Object.values(nextDiscovery.filters).filter(Boolean).length,
         result_count: nextDiscovery.organizationIds.length,
         interpretation: nextDiscovery.interpretation,
+        mode: nextDiscovery.assistant ? "assistant" : "deterministic_fallback",
+        outcome: nextDiscovery.assistant?.outcome ?? nextDiscovery.fallbackReason ?? "none",
         zero_result: nextDiscovery.organizationIds.length === 0
       }, { searchId: nextDiscovery.searchId });
-      await load(nextDiscovery.filters);
+      if (nextDiscovery.assistant && nextDiscovery.organizations) {
+        setResult({
+          ...initialResult,
+          organizations: nextDiscovery.organizations,
+          total: nextDiscovery.organizations.length,
+          page: 1,
+          pageSize: 1000,
+          appliedFilters: nextDiscovery.filterChips
+        });
+        setFilters({ query });
+        setViewport(null);
+        setSelectedId(null);
+        setExpandedId(null);
+        setAssistantTurns((turns) => [...turns, { query, organizationIds: nextDiscovery.organizationIds }].slice(-3));
+        window.history.replaceState(null, "", "/");
+        setLoading(false);
+      } else {
+        await load(nextDiscovery.filters, { preserveDiscovery: true });
+      }
     } catch (discoveryError) {
       setError(discoveryError instanceof Error ? discoveryError.message : "The question could not be interpreted.");
       setLoading(false);
     }
+  }
+
+  async function submitDiscovery(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await runDiscovery(question);
+  }
+
+  function startNewQuestion() {
+    setQuestion("");
+    setDiscovery(null);
+    setAssistantTurns([]);
+    rememberBetaSearchId(null);
+    void load({}, { updateQuestion: true });
+  }
+
+  function selectAssistantOrganization(id: string) {
+    setMapEnabled(true);
+    setViewMode("map");
+    updateSelection(id, true, "result");
+    window.requestAnimationFrame(() => document.getElementById("ecosystem-map")?.scrollIntoView({ behavior: "smooth", block: "center" }));
   }
 
   function updateSelection(id: string, revealInTable = false, source: "map" | "result" = "result") {
@@ -329,24 +381,29 @@ export function AtlasExplorer({
 
       <section className="overflow-hidden rounded-[26px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
         <div className="border-b border-[var(--atlas-border)] bg-white p-3 sm:p-5">
+          <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+            <div><p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Ask True North</p><p className="mt-1 text-sm text-[var(--atlas-muted)]">Describe what you need. See the best-supported fits, the evidence behind them, and what remains unknown.</p></div>
+            {discovery?.quota ? <p className="text-[11px] font-semibold text-[var(--atlas-muted)]">{discovery.quota.remaining} of {discovery.quota.limit} questions remaining today</p> : null}
+          </div>
           <form onSubmit={submitDiscovery} role="search" aria-label="Search the Canadian ecosystem map">
-            <div className="relative">
-              <Search className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-[var(--atlas-muted)]" aria-hidden="true" />
+            <div className="relative grid gap-2 sm:block">
+              <Search className="pointer-events-none absolute left-4 top-7 size-5 -translate-y-1/2 text-[var(--atlas-muted)] sm:top-1/2" aria-hidden="true" />
               <input
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
-                className="h-14 w-full rounded-[18px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-40 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:h-16 sm:text-base"
-                placeholder="Search by place, technology, or need, for example underwater sensing in Atlantic Canada"
+                className="h-14 w-full rounded-[18px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-4 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:h-16 sm:pr-40 sm:text-base"
+                placeholder="What are you trying to build, source, or understand?"
                 aria-label="Search the ecosystem map in natural language"
                 maxLength={500}
               />
-              <button type="submit" className="atlas-primary-button absolute right-1.5 top-1/2 h-11 -translate-y-1/2 gap-2 px-4 text-sm disabled:opacity-60 sm:h-[52px] sm:px-5" disabled={loading}>
+              <button type="submit" className="atlas-primary-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60 sm:absolute sm:right-1.5 sm:top-1/2 sm:h-[52px] sm:w-auto sm:-translate-y-1/2 sm:px-5" disabled={loading}>
                 {loading ? <LoaderCircle className="size-4 animate-spin" /> : null}
                 <span>Explore the map</span>
                 {!loading ? <ArrowRight className="hidden size-4 text-[var(--atlas-signal)] sm:block" /> : null}
               </button>
             </div>
           </form>
+          <p className="mt-2 text-[11px] leading-5 text-[var(--atlas-muted)]">Uses reviewed public records only. Do not enter classified, confidential, proprietary, or personal information.</p>
 
           <div className="mt-3 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex min-h-9 flex-wrap items-center gap-2">
@@ -377,9 +434,11 @@ export function AtlasExplorer({
           ) : null}
 
           {error ? <div className="mt-3 flex items-start gap-2 rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]" role="alert"><CircleAlert className="mt-0.5 size-4 shrink-0" />{error}</div> : null}
-          {discovery?.interpretation === "no_match" ? <div className="mt-3 rounded-xl border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-3 py-2 text-sm text-[var(--atlas-amber)]">No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing.</div> : null}
+          {discovery?.fallbackReason ? <AssistantFallback reason={discovery.fallbackReason} quota={discovery.quota} /> : null}
+          {discovery?.interpretation === "no_match" && !discovery.assistant ? <div className="mt-3 rounded-xl border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-3 py-2 text-sm text-[var(--atlas-amber)]">No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing.</div> : null}
         </div>
-        <div className={cn("border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-3 lg:p-3", viewMode === "table" && "hidden lg:grid")}>
+        {discovery?.assistant ? <div className="bg-[var(--atlas-surface-muted)] px-3 pb-3 sm:px-5 sm:pb-5"><AssistantAnswer discovery={discovery} onSelectOrganization={selectAssistantOrganization} onAskSuggestion={(suggestion) => void runDiscovery(suggestion)} onStartNewQuestion={startNewQuestion} /></div> : null}
+        <div id="ecosystem-map" className={cn("scroll-mt-24 border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-3 lg:p-3", viewMode === "table" && "hidden lg:grid")}>
           <div className="relative h-[350px] overflow-hidden sm:h-[410px] lg:h-[510px] lg:rounded-[22px] lg:border lg:border-[var(--atlas-border)]">
             {mapEnabled ? (
               <AtlasMap
