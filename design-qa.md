@@ -24,6 +24,8 @@
 - Charcoal and highlighted-headline implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/16-charcoal-highlight-final.png`
 - Highlight reference and implementation comparison: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/17-highlight-reference-vs-final.png`
 - Charcoal and highlighted-headline mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/18-charcoal-highlight-mobile.png`
+- Final marketing-copy desktop implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/19-marketing-copy-desktop.png`
+- Final marketing-copy mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/20-marketing-copy-mobile.png`
 
 Desktop comparisons used a 1448 by 1086 target frame. Responsive checks used 768 by 1024 and 390 by 844 viewports.
 
@@ -41,6 +43,7 @@ Desktop comparisons used a 1448 by 1086 target frame. Responsive checks used 768
 - Kept the live product copy, corpus counts, current public-source caveat, full accessible results table, and Lookbook preview rather than replacing them with the shorter mock content.
 - Replaced pure black presentation values with a consistent `#242827` charcoal and matching translucent shadows and borders.
 - Highlighted the outcome-led opening phrase with signal yellow on desktop and mobile, and removed em dashes from static interface copy.
+- Replaced the launch headline and supporting copy with the approved Canada-first positioning, kept the credibility strip intact, and renamed the primary discovery action to `Explore the map`.
 
 ## Final QA findings
 

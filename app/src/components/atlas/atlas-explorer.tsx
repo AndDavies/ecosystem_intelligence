@@ -305,8 +305,8 @@ export function AtlasExplorer({
       <section className="mb-6 grid gap-5 sm:mb-8 sm:gap-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(390px,0.82fr)] lg:items-end">
         <div className="max-w-4xl">
           <span className="inline-flex rounded-full bg-[var(--atlas-ink)] px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.11em] text-white">Canadian Public Beta</span>
-          <h1 className="mt-4 max-w-4xl text-[36px] font-extrabold leading-[0.97] tracking-[-0.062em] text-[var(--atlas-ink)] sm:mt-5 sm:text-[52px] lg:text-[58px]"><span className="atlas-headline-highlight">See who is building what</span> and who may be worth speaking with next.</h1>
-          <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:mt-5 sm:text-base sm:leading-7">Find Canadian organizations, technology, and public demand in one place. Search by place, need, or technology, compare the supporting sources, then build a Working List for the conversation ahead.</p>
+          <h1 className="mt-4 max-w-4xl text-[36px] font-extrabold leading-[0.97] tracking-[-0.062em] text-[var(--atlas-ink)] sm:mt-5 sm:text-[52px] lg:text-[58px]"><span className="atlas-headline-highlight">Canada is building more</span> than most people can see.</h1>
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:mt-5 sm:text-base sm:leading-7">Discover the companies, technologies, and public needs shaping Canada’s defence and dual-use ecosystem. Follow the evidence, find the fit, and start the right conversation.</p>
         </div>
         <div className="space-y-4">
           <div className="rounded-[22px] border border-[var(--atlas-border)] bg-white p-4 shadow-[var(--atlas-shadow-soft)] sm:p-5">
@@ -335,15 +335,14 @@ export function AtlasExplorer({
               <input
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
-                className="h-14 w-full rounded-[18px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-28 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:h-16 sm:text-base"
+                className="h-14 w-full rounded-[18px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-40 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:h-16 sm:text-base"
                 placeholder="Search by place, technology, or need, for example underwater sensing in Atlantic Canada"
                 aria-label="Search the ecosystem map in natural language"
                 maxLength={500}
               />
               <button type="submit" className="atlas-primary-button absolute right-1.5 top-1/2 h-11 -translate-y-1/2 gap-2 px-4 text-sm disabled:opacity-60 sm:h-[52px] sm:px-5" disabled={loading}>
                 {loading ? <LoaderCircle className="size-4 animate-spin" /> : null}
-                <span className="hidden sm:inline">Search the map</span>
-                <span className="sm:hidden">Search</span>
+                <span>Explore the map</span>
                 {!loading ? <ArrowRight className="hidden size-4 text-[var(--atlas-signal)] sm:block" /> : null}
               </button>
             </div>
