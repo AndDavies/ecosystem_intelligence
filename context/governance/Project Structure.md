@@ -13,6 +13,8 @@ The repository root is a workspace map rather than an application directory. Pro
 | `context/` | PRD, plans, audits, handoffs, agent role guidance | Candidate data or application implementation |
 | `content/` | Launch collateral, media, and future copy or demo assets | Product UI assets required at runtime |
 
+The private defence synthesis layer is intentionally outside the repository at `Andrew's Vault/True North Map Defence Wiki`. The repository owns packet contracts and read-only exporters; the private sibling root owns raw packets, evergreen markdown, and compiler reports. Neither is a runtime data source for the public application.
+
 ## Working conventions
 
 - Run standard commands from the repository root. The root `package.json` forwards them to `app/`.
@@ -25,3 +27,4 @@ The repository root is a workspace map rather than an application directory. Pro
 - Put project-local agent role instructions in `context/agent-skills/`.
 - Keep runtime imagery in `app/public/`; keep campaign or production media in `content/`.
 - Avoid adding another top-level folder unless it represents a genuinely new operating concern.
+- Keep public wiki publication deferred until a reviewed Supabase candidate workflow is separately designed and approved.

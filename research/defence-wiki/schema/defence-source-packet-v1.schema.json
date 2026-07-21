@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://truenorthmap.ca/schemas/defence-source-packet-v1.schema.json",
+  "title": "DefenceSourcePacketV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "packetId", "sourceSystem", "sourceRecordIds", "sourceKind", "title",
+    "publisher", "sourceFamily", "authorityTier", "canonicalUrl", "publishedAt", "capturedAt",
+    "relevantExcerpt", "summary", "selectionReasons", "defenceRelevanceReason", "canadaRelevanceReason",
+    "concepts", "entities", "geography", "labels", "sourceConfidence", "evidenceRole", "freshness",
+    "claimRisk", "visibility", "reusePolicy", "needsVerification", "relatedTrueNorthIds", "contentHash",
+    "generatedAt"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "defence-source-packet-v1" },
+    "packetId": { "type": "string", "minLength": 3 },
+    "sourceSystem": { "enum": ["crashboard", "true_north_map", "manual"] },
+    "sourceRecordIds": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "sourceKind": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "publisher": { "type": "string", "minLength": 1 },
+    "sourceFamily": { "type": "string", "minLength": 1 },
+    "authorityTier": { "enum": ["primary", "specialist", "aggregator", "community", "unknown"] },
+    "canonicalUrl": { "type": ["string", "null"], "format": "uri" },
+    "publishedAt": { "type": ["string", "null"], "format": "date-time" },
+    "capturedAt": { "type": ["string", "null"], "format": "date-time" },
+    "relevantExcerpt": { "type": "string", "maxLength": 2400 },
+    "summary": { "type": ["string", "null"], "maxLength": 1600 },
+    "selectionReasons": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "enum": ["defence_event", "defence_concept", "defence_label", "source_book_fit", "published_evidence", "manual_include"] }
+    },
+    "defenceRelevanceReason": { "type": "string", "minLength": 1 },
+    "canadaRelevanceReason": { "type": ["string", "null"] },
+    "concepts": { "type": "array", "items": { "type": "string" } },
+    "entities": { "type": "array", "items": { "type": "string" } },
+    "geography": { "type": "array", "items": { "type": "string" } },
+    "labels": { "type": "array", "items": { "type": "string" } },
+    "sourceConfidence": { "enum": ["high", "moderate", "needs_review"] },
+    "evidenceRole": { "enum": ["primary", "supporting", "contradicting", "discovery_lead", "context", "research_lead"] },
+    "freshness": { "enum": ["current", "review_due", "stale", "unknown"] },
+    "claimRisk": { "enum": ["durable", "mixed", "time_sensitive", "needs_verification"] },
+    "visibility": { "enum": ["public", "permissioned", "internal"] },
+    "reusePolicy": { "enum": ["public_reference", "citation_only", "internal_only"] },
+    "needsVerification": { "type": "boolean" },
+    "relatedTrueNorthIds": { "type": "array", "items": { "type": "string" } },
+    "contentHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "generatedAt": { "type": "string", "format": "date-time" }
+  }
+}

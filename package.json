@@ -16,6 +16,14 @@
     "research:stage": "pnpm --dir app research:stage",
     "research:import": "pnpm --dir app research:import",
     "research:smoke": "pnpm --dir app research:smoke",
+    "wiki:sources:inventory": "pnpm --dir app wiki:sources:inventory",
+    "wiki:sources:export": "pnpm --dir app wiki:sources:export",
+    "wiki:packets:validate": "pnpm --dir app wiki:packets:validate",
+    "wiki:audit": "python3 research/scripts/run_defence_wiki_tool.py audit",
+    "wiki:compile:plan": "python3 research/scripts/run_defence_wiki_tool.py batch-plan",
+    "wiki:lint": "python3 research/scripts/run_defence_wiki_tool.py lint",
+    "wiki:query": "python3 research/scripts/run_defence_wiki_tool.py query",
+    "wiki:learning-report": "python3 research/scripts/run_defence_wiki_tool.py learning-report",
     "data:readiness": "pnpm --dir app data:readiness",
     "release:validate": "pnpm test && pnpm lint && pnpm research:validate && pnpm research:coverage && pnpm build"
   }

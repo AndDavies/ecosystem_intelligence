@@ -185,6 +185,8 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-21`: Established the private Canada-first Defence Wiki foundation as a sibling Obsidian root, with versioned read-only source-packet adapters for current Crashboard Turso intelligence and True North Map public evidence/source leads. The private wiki is not a public runtime and publication remains deferred behind a future reviewed Supabase candidate workflow.
+
 - `2026-07-21`: Designated the five project-local TNM research skills as the canonical skills of record, superseding cached copies and older operator-guide workflow language; aligned the weekly schedule contract to the exact high-yield skill chain, queued-backlog reuse, prospect inventory, evidence recovery, green/amber review, and verified private Admin Review completion.
 
 - `2026-07-21`: Reworked autonomous research for higher yield: broad runs now build 40-75 prospect inventories across six lanes, target 8-10 private candidates, retain queued backlogs, rank reusable sources, require three-lane evidence recovery before deferral, and admit useful amber candidates with explicit reviewer warnings while preserving duplicate, identity, Canada, evidence, taxonomy, and publication hard stops.
