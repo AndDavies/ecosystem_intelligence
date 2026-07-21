@@ -34,6 +34,7 @@ export default async function AdminOverviewPage() {
         <AdminLink title="Manage organizations" detail="Edit a published organization, its primary location, and its capability profile." href="/admin/organizations" />
         <AdminLink title="Manage demand signals" detail="Add or update public problem statements while preserving every linked technology match." href="/admin/demand-signals" />
         <AdminLink title="Find potential demand matches" detail="Compare reviewed technologies with public problem statements, then publish only the connections you can defend." href="/admin/demand-matches" />
+        <AdminLink title="Manage defence briefs" detail="Create answer-first, source-backed pages and publish only after explicit editorial review." href="/admin/briefs" />
         <AdminLink title="Review update subscribers" detail="See who asked to hear from True North Map and export the consent-backed list." href="/admin/subscribers" />
         <AdminLink title="Inspect coverage gaps" detail="Measure published coverage by region, domain, mission, and demand statement." href="/admin/coverage" />
       </div>

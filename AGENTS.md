@@ -185,6 +185,8 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-21`: Added Canadian Defence Briefs as the reviewed public synthesis surface at `/briefs`, with answer-first SEO/AEO structure, dedicated Supabase publication tables, source and record links, labelled Derived Reads, and administrator-only editing at `/admin/briefs`; raw packets and private wiki markdown remain outside the public runtime.
+
 - `2026-07-21`: Established the private Canada-first Defence Wiki foundation as a sibling Obsidian root, with versioned read-only source-packet adapters for current Crashboard Turso intelligence and True North Map public evidence/source leads. The private wiki is not a public runtime and publication remains deferred behind a future reviewed Supabase candidate workflow.
 
 - `2026-07-21`: Designated the five project-local TNM research skills as the canonical skills of record, superseding cached copies and older operator-guide workflow language; aligned the weekly schedule contract to the exact high-yield skill chain, queued-backlog reuse, prospect inventory, evidence recovery, green/amber review, and verified private Admin Review completion.

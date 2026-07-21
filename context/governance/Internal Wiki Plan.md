@@ -2,7 +2,7 @@
 
 ## Status
 
-Foundation implemented on 2026-07-21. This document replaces the retired in-app help-wiki plan that described legacy product routes and a Start Here funnel.
+Foundation and first reviewed-publication slice implemented on 2026-07-21. This document replaces the retired in-app help-wiki plan that described legacy product routes and a Start Here funnel.
 
 ## Purpose
 
@@ -34,7 +34,7 @@ flowchart LR
     R --> A["Audit and bounded batch plan"]
     A --> W["Human-supervised evergreen synthesis"]
     W --> L["Lint, manifest, and run ledger"]
-    L -. "future reviewed candidate only" .-> S["TNM Supabase public pages"]
+    L -->|"explicit editor review"| S["TNM Supabase Canadian Defence Briefs"]
 ```
 
 ## Selection Policy
@@ -70,8 +70,8 @@ All source reads are read-only. Inventory and export commands report selected, r
 
 1. **Inventory:** live source counts and a reviewed accepted/rejected sample.
 2. **Foundation:** private root, contracts, adapters, packet validation, audit, and lint.
-3. **Compilation:** a separately approved small representative evergreen set.
-4. **Publication:** a separately designed and approved Supabase review workflow.
+3. **Compilation:** a small, source-bounded representative set. Broad compilation remains deferred.
+4. **Publication:** approved. `/admin/briefs` writes reviewed synthesis into dedicated Supabase tables; `/briefs` exposes published rows only.
 5. **Trend:** stable topic mappings and source-balanced historical snapshots.
 
-The current milestone stops after Foundation. No broad compilation, public route, database migration, or trend publication is authorized by this document.
+The current milestone includes three reviewed launch briefs and the publication workflow. It does not authorize broad autonomous compilation, direct raw-packet publication, automated publishing, or trend publication. Private markdown and source packets remain outside the public runtime. Public pages must use approved sources, answer-first sections, visible authorship and review dates, and labelled Derived Reads.
