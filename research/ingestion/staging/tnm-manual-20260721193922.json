@@ -1,0 +1,2516 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-21T19:49:40.481Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260721193922",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "ecosystem_organization"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "organization-kind:ecosystem_organization",
+      "reason": "2 published or pending ecosystem organization records cover only 17% of the working saturation target of 12.",
+      "score": 908
+    },
+    "status": "completed",
+    "started_at": "2026-07-21T19:39:22.790Z",
+    "completed_at": "2026-07-21T19:48:42.024Z",
+    "agent_version": "tnm-research-pipeline/1.2.0",
+    "source_queries": [
+      "Canadian aerospace defence industry associations and member directories",
+      "Atlantic Canadian aerospace defence marine associations",
+      "Canadian marine shipbuilding industry organizations and procurement information",
+      "Global Innovation Clusters Canada operators and program portfolios",
+      "Canadian advanced manufacturing cluster funding programs",
+      "Canadian digital technology cluster co-investment programs",
+      "Canadian artificial intelligence cluster programs and accelerators",
+      "Canadian space industry associations and conferences",
+      "Canadian RPAS unmanned systems industry associations and competitions",
+      "Canadian cyber threat sharing organizations and public-sector relationships",
+      "Canadian ecosystem organization conference directories",
+      "Broad web recovery for canonical contact program and relationship evidence"
+    ],
+    "counters": {
+      "sourcesChecked": 35,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 2,
+      "prospectsDiscovered": 40,
+      "uniqueProspects": 40,
+      "prospectsQueued": 28,
+      "recoveryAttempts": 30,
+      "sourceLanesSearched": 10,
+      "candidatesGreen": 7,
+      "candidatesAmber": 3
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Canadian Marine Industries and Shipbuilding Association: The national marine-industry role is strongly sourced, but the reviewer should confirm how On Watch is represented as a program and retain only current contact details.",
+        "Aerial Evolution Association of Canada: The national RPAS role and current programs are supported, but the reviewer should confirm the best map location because the official source publishes regional contact details rather than a street address.",
+        "Canadian Cyber Threat Exchange: The cyber threat-sharing mandate is current, but the reviewer should verify the present headquarters and public contact details before publication because the cited Ottawa address is from a 2023 release."
+      ]
+    },
+    "stop_reason": "The discovery batch reached ten validated private candidates after reviewing forty unique prospects across ten source lanes; twenty-eight plausible prospects remain queued and two exact published identities were blocked."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-aerospace-industries-association-of-canada-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-aerospace-industries-association-of-canada-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-aerospace-industries-association-of-canada-20260721",
+        "sourceLeadIds": [
+          "lead-aerospace-industries-association-of-canada-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Aerospace Industries Association of Canada is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: The reviewer should confirm whether cluster_operator remains useful alongside the clearly sourced industry_association category.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 96,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "aiac-about",
+            "title": "AIAC national aerospace association profile",
+            "url": "https://aiac.ca/about/aiac/",
+            "publisher": "Aerospace Industries Association of Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "About AIAC and priority areas",
+            "summary": "AIAC describes its national industry role and priority areas spanning defence, space, procurement, innovation, workforce and industrial competitiveness."
+          },
+          {
+            "id": "aiac-committees",
+            "title": "AIAC member committee structure",
+            "url": "https://aiac.ca/membership/committees/",
+            "publisher": "Aerospace Industries Association of Canada",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Committees and working groups",
+            "summary": "AIAC publishes active member committees including Public Procurement and Defence, space, small business, sustainability and technology-focused groups."
+          },
+          {
+            "id": "aiac-summit",
+            "title": "Canadian Aerospace Summit 2026",
+            "url": "https://aiac.ca/events/canadian-aerospace-summit-2026/",
+            "publisher": "Aerospace Industries Association of Canada",
+            "sourceKind": "event_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Event overview",
+            "summary": "AIAC identifies the Canadian Aerospace Summit as a national Ottawa convening for aerospace leaders, government and ecosystem stakeholders."
+          },
+          {
+            "id": "aiac-contact",
+            "title": "AIAC Ottawa contact details",
+            "url": "https://aiac.ca/fr/pied-de-page/",
+            "publisher": "Aerospace Industries Association of Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Page footer",
+            "summary": "AIAC publishes its Ottawa street address and public telephone contact in the official site footer."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "aerospace-industries-association-of-canada-description-evidence",
+            "sourceId": "aiac-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports Aerospace Industries Association of Canada's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "aerospace-industries-association-of-canada-location-evidence",
+            "sourceId": "aiac-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Aerospace Industries Association of Canada; any non-exact geography is explicitly labelled.",
+            "confidence": "high"
+          },
+          {
+            "id": "aerospace-industries-association-of-canada-canadian-aerospace-summit-evidence",
+            "sourceId": "aiac-summit",
+            "fieldPath": "programs.canadian-aerospace-summit.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Canadian Aerospace Summit used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "aerospace-industries-association-of-canada-aiac-member-committees-evidence",
+            "sourceId": "aiac-committees",
+            "fieldPath": "programs.aiac-member-committees.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of AIAC Member Committees used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "aerospace-industries-association-of-canada-relationship-0-evidence",
+            "sourceId": "aiac-summit",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "AIAC's national summit and policy work publicly convene federal government and aerospace-industry participants around sector priorities.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "aerospace-industries-association-of-canada",
+          "name": "Aerospace Industries Association of Canada",
+          "legalName": "Aerospace Industries Association of Canada",
+          "aliases": [
+            "AIAC"
+          ],
+          "description": "AIAC is the national association for Canada's aerospace industry, convening companies and government around competitiveness, defence, space, procurement, innovation and workforce priorities.",
+          "websiteUrl": "https://aiac.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "industry_association",
+            "cluster_operator"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "mandate": "Serve as the national voice and collaborative hub for Canada's aerospace industry through advocacy, market intelligence, committees, events and industry-government engagement.",
+            "publicContact": "info@aiac.ca | +1-613-232-4297 | 255 Albert Street Suite 703 Ottawa Ontario K1P 6A9",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "canadian-aerospace-summit",
+            "name": "Canadian Aerospace Summit",
+            "programType": "national industry conference",
+            "websiteUrl": "https://aiac.ca/events/canadian-aerospace-summit-2026/",
+            "summary": "A national aerospace leadership conference bringing industry and government participants together in Ottawa for policy, market and capability discussions.",
+            "cohortLabel": "2026"
+          },
+          {
+            "slug": "aiac-member-committees",
+            "name": "AIAC Member Committees",
+            "programType": "industry working groups",
+            "websiteUrl": "https://aiac.ca/membership/committees/",
+            "summary": "Member committees organize sustained work on defence, public procurement, space, technology, small business and other aerospace priorities.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "industry-government-engagement",
+            "publicSummary": "AIAC's national summit and policy work publicly convene federal government and aerospace-industry participants around sector priorities."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "aerospace-industries-association-of-canada-description-evidence",
+          "sourceId": "aiac-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports Aerospace Industries Association of Canada's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "aerospace-industries-association-of-canada-location-evidence",
+          "sourceId": "aiac-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Aerospace Industries Association of Canada; any non-exact geography is explicitly labelled.",
+          "confidence": "high"
+        },
+        {
+          "id": "aerospace-industries-association-of-canada-canadian-aerospace-summit-evidence",
+          "sourceId": "aiac-summit",
+          "fieldPath": "programs.canadian-aerospace-summit.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Canadian Aerospace Summit used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "aerospace-industries-association-of-canada-aiac-member-committees-evidence",
+          "sourceId": "aiac-committees",
+          "fieldPath": "programs.aiac-member-committees.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of AIAC Member Committees used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "aerospace-industries-association-of-canada-relationship-0-evidence",
+          "sourceId": "aiac-summit",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "AIAC's national summit and policy work publicly convene federal government and aerospace-industry participants around sector priorities.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "Aerospace Industries Association of Canada is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: The reviewer should confirm whether cluster_operator remains useful alongside the clearly sourced industry_association category.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.481Z"
+    },
+    {
+      "client_candidate_id": "candidate-atlantic-canada-aerospace-and-defence-association-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-atlantic-canada-aerospace-and-defence-association-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-atlantic-canada-aerospace-and-defence-association-20260721",
+        "sourceLeadIds": [
+          "lead-atlantic-canada-aerospace-and-defence-association-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Atlantic Canada Aerospace and Defence Association is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 96,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "acada-about",
+            "title": "ACADA regional industry association profile",
+            "url": "https://ac-ada.ca/about-us/",
+            "publisher": "Atlantic Canada Aerospace and Defence Association",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "About us",
+            "summary": "ACADA describes its mandate to support, connect and promote Atlantic Canadian aerospace and defence members and strengthen the region's industry."
+          },
+          {
+            "id": "acada-members",
+            "title": "ACADA member capability directory",
+            "url": "https://ac-ada.ca/members/",
+            "publisher": "Atlantic Canada Aerospace and Defence Association",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Member directory",
+            "summary": "ACADA publishes a large searchable member directory covering aerospace, defence, marine, security and enabling technology capabilities across Atlantic Canada."
+          },
+          {
+            "id": "acada-afmf",
+            "title": "Atlantic Force Multiplier Fund",
+            "url": "https://ac-ada.ca/greening-esg-program/",
+            "publisher": "Atlantic Canada Aerospace and Defence Association",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Program overview",
+            "summary": "ACADA describes the Atlantic Force Multiplier Fund as an ACOA-supported program that helps eligible firms adopt environmental and sustainability practices through cost-shared support."
+          },
+          {
+            "id": "acada-contact",
+            "title": "ACADA Halifax contact details",
+            "url": "https://ac-ada.ca/contact/",
+            "publisher": "Atlantic Canada Aerospace and Defence Association",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Contact page",
+            "summary": "ACADA publishes its Halifax mailing address and public organizational email for ecosystem and membership enquiries."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "atlantic-canada-aerospace-and-defence-association-description-evidence",
+            "sourceId": "acada-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports Atlantic Canada Aerospace and Defence Association's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "atlantic-canada-aerospace-and-defence-association-location-evidence",
+            "sourceId": "acada-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Atlantic Canada Aerospace and Defence Association; any non-exact geography is explicitly labelled.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "atlantic-canada-aerospace-and-defence-association-atlantic-force-multiplier-fund-evidence",
+            "sourceId": "acada-afmf",
+            "fieldPath": "programs.atlantic-force-multiplier-fund.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Atlantic Force Multiplier Fund used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "atlantic-canada-aerospace-and-defence-association-acada-member-directory-evidence",
+            "sourceId": "acada-members",
+            "fieldPath": "programs.acada-member-directory.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of ACADA Member Directory used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "atlantic-canada-aerospace-and-defence-association-relationship-0-evidence",
+            "sourceId": "acada-afmf",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "ACADA identifies the Atlantic Canada Opportunities Agency as a public supporter of the Atlantic Force Multiplier Fund.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "atlantic-canada-aerospace-and-defence-association",
+          "name": "Atlantic Canada Aerospace and Defence Association",
+          "legalName": "Atlantic Canada Aerospace and Defence Association",
+          "aliases": [
+            "ACADA"
+          ],
+          "description": "ACADA is the regional aerospace, defence, marine and security industry association for Atlantic Canada, supporting member growth through advocacy, connections, events, market access and capability promotion.",
+          "websiteUrl": "https://ac-ada.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "industry_association",
+            "cluster_operator",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Halifax",
+            "provinceTerritory": "Nova Scotia",
+            "countryCode": "CA",
+            "latitude": 44.6488,
+            "longitude": -63.5752,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Support, connect and promote Atlantic Canadian aerospace and defence organizations while strengthening regional industry capacity, collaboration and access to domestic and international opportunities.",
+            "publicContact": "info@ac-ada.ca | PO Box 46040 Halifax RPO Novalea Nova Scotia B3K 5V8",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "atlantic-force-multiplier-fund",
+            "name": "Atlantic Force Multiplier Fund",
+            "programType": "industry capacity-building program",
+            "websiteUrl": "https://ac-ada.ca/greening-esg-program/",
+            "summary": "An ACOA-supported cost-sharing program that helps eligible Atlantic aerospace and defence firms strengthen environmental and sustainability practices.",
+            "cohortLabel": "2026 intake"
+          },
+          {
+            "slug": "acada-member-directory",
+            "name": "ACADA Member Directory",
+            "programType": "industry capability directory",
+            "websiteUrl": "https://ac-ada.ca/members/",
+            "summary": "A searchable directory that exposes Atlantic Canadian aerospace, defence, marine, security and enabling-technology suppliers and their capabilities.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Atlantic Canada Opportunities Agency",
+            "relationshipType": "public-program-supporter",
+            "publicSummary": "ACADA identifies the Atlantic Canada Opportunities Agency as a public supporter of the Atlantic Force Multiplier Fund."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "atlantic-canada-aerospace-and-defence-association-description-evidence",
+          "sourceId": "acada-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports Atlantic Canada Aerospace and Defence Association's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "atlantic-canada-aerospace-and-defence-association-location-evidence",
+          "sourceId": "acada-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Atlantic Canada Aerospace and Defence Association; any non-exact geography is explicitly labelled.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "atlantic-canada-aerospace-and-defence-association-atlantic-force-multiplier-fund-evidence",
+          "sourceId": "acada-afmf",
+          "fieldPath": "programs.atlantic-force-multiplier-fund.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Atlantic Force Multiplier Fund used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "atlantic-canada-aerospace-and-defence-association-acada-member-directory-evidence",
+          "sourceId": "acada-members",
+          "fieldPath": "programs.acada-member-directory.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of ACADA Member Directory used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "atlantic-canada-aerospace-and-defence-association-relationship-0-evidence",
+          "sourceId": "acada-afmf",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ACADA identifies the Atlantic Canada Opportunities Agency as a public supporter of the Atlantic Force Multiplier Fund.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "Atlantic Canada Aerospace and Defence Association is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.481Z"
+    },
+    {
+      "client_candidate_id": "candidate-canadian-marine-industries-and-shipbuilding-association-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-canadian-marine-industries-and-shipbuilding-association-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-canadian-marine-industries-and-shipbuilding-association-20260721",
+        "sourceLeadIds": [
+          "lead-canadian-marine-industries-and-shipbuilding-association-20260721"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Canadian Marine Industries and Shipbuilding Association is recommended for amber human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: The national marine-industry role is strongly sourced, but the reviewer should confirm how On Watch is represented as a program and retain only current contact details.",
+        "reviewTier": "amber",
+        "inclusionScore": 93,
+        "completenessScore": 86,
+        "reviewWarnings": [
+          "The national marine-industry role is strongly sourced, but the reviewer should confirm how On Watch is represented as a program and retain only current contact details."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "cmisa-about",
+            "title": "CMISA national marine industry mandate",
+            "url": "https://www.cmisa.ca/cpages/who-we-are",
+            "publisher": "Canadian Marine Industries and Shipbuilding Association",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Who we are",
+            "summary": "CMISA describes its national role representing the Canadian marine industrial base across shipbuilding, defence, security, resilience, equipment and services."
+          },
+          {
+            "id": "cmisa-contact",
+            "title": "CMISA contact and On Watch service",
+            "url": "https://www.cmisa.ca/cpages/contact",
+            "publisher": "Canadian Marine Industries and Shipbuilding Association",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Contact and newsletter information",
+            "summary": "CMISA publishes its Ottawa office, public contacts and the On Watch member information service covering news, opportunities, RFPs and sector updates."
+          },
+          {
+            "id": "cmisa-home",
+            "title": "CMISA Canadian marine industry network",
+            "url": "https://www.cmisa.ca/",
+            "publisher": "Canadian Marine Industries and Shipbuilding Association",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Homepage",
+            "summary": "CMISA's official site provides current national marine-industry membership, event and sector-information pathways for Canadian suppliers and stakeholders."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "canadian-marine-industries-and-shipbuilding-association-description-evidence",
+            "sourceId": "cmisa-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports Canadian Marine Industries and Shipbuilding Association's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "canadian-marine-industries-and-shipbuilding-association-location-evidence",
+            "sourceId": "cmisa-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Canadian Marine Industries and Shipbuilding Association; any non-exact geography is explicitly labelled.",
+            "confidence": "high"
+          },
+          {
+            "id": "canadian-marine-industries-and-shipbuilding-association-on-watch-evidence",
+            "sourceId": "cmisa-contact",
+            "fieldPath": "programs.on-watch.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of On Watch used in this dossier.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "canadian-marine-industries-and-shipbuilding-association",
+          "name": "Canadian Marine Industries and Shipbuilding Association",
+          "legalName": "Canadian Marine Industries and Shipbuilding Association",
+          "aliases": [
+            "CMISA"
+          ],
+          "description": "CMISA is a national association representing Canada's marine industrial base, including shipbuilding, repair, systems, equipment and services relevant to commercial marine, defence, security and national resilience.",
+          "websiteUrl": "https://www.cmisa.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "industry_association",
+            "cluster_operator",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.425,
+            "longitude": -75.693,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "mandate": "Represent and strengthen Canada's marine industrial base by advocating for members, communicating procurement and sector opportunities, and connecting Canadian marine suppliers with customers and partners.",
+            "publicContact": "info@cmisa.ca | +1-613-701-7048 | 1 Rideau Street 7th Floor Ottawa Ontario K1N 8S7",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "on-watch",
+            "name": "On Watch",
+            "programType": "member intelligence service",
+            "websiteUrl": "https://www.cmisa.ca/cpages/contact",
+            "summary": "A recurring member information service distributing Canadian marine industry news, opportunities, requests for proposals, job openings and organizational updates.",
+            "cohortLabel": "Biweekly"
+          }
+        ],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "canadian-marine-industries-and-shipbuilding-association-description-evidence",
+          "sourceId": "cmisa-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports Canadian Marine Industries and Shipbuilding Association's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "canadian-marine-industries-and-shipbuilding-association-location-evidence",
+          "sourceId": "cmisa-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Canadian Marine Industries and Shipbuilding Association; any non-exact geography is explicitly labelled.",
+          "confidence": "high"
+        },
+        {
+          "id": "canadian-marine-industries-and-shipbuilding-association-on-watch-evidence",
+          "sourceId": "cmisa-contact",
+          "fieldPath": "programs.on-watch.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of On Watch used in this dossier.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "Canadian Marine Industries and Shipbuilding Association is recommended for amber human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: The national marine-industry role is strongly sourced, but the reviewer should confirm how On Watch is represented as a program and retain only current contact details.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.481Z"
+    },
+    {
+      "client_candidate_id": "candidate-canadas-ocean-supercluster-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-canadas-ocean-supercluster-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-canadas-ocean-supercluster-20260721",
+        "sourceLeadIds": [
+          "lead-canadas-ocean-supercluster-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Canada's Ocean Supercluster is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 94,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "osc-about",
+            "title": "Canada's Ocean Supercluster national cluster profile",
+            "url": "https://oceansupercluster.ca/who-we-are/about/",
+            "publisher": "Canada's Ocean Supercluster",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "About the cluster",
+            "summary": "The cluster describes its industry-led national membership across fisheries, aquaculture, offshore industries, marine renewables, defence, transportation and ocean technology."
+          },
+          {
+            "id": "osc-projects",
+            "title": "Ocean Supercluster project programs",
+            "url": "https://oceansupercluster.ca/what-we-do/projects/",
+            "publisher": "Canada's Ocean Supercluster",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Projects and program streams",
+            "summary": "The cluster publishes its Technology Leadership and Innovation Ecosystem project streams and a portfolio of collaborative Canadian ocean projects."
+          },
+          {
+            "id": "osc-ised",
+            "title": "Canada's Ocean Cluster government profile",
+            "url": "https://ised-isde.canada.ca/site/global-innovation-clusters/en/canadas-ocean-cluster",
+            "publisher": "Innovation Science and Economic Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Cluster mandate and results",
+            "summary": "ISED identifies Canada's Ocean Cluster as a federally supported Global Innovation Cluster that accelerates ocean-sector collaboration, innovation and commercialization."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "canadas-ocean-supercluster-description-evidence",
+            "sourceId": "osc-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports Canada's Ocean Supercluster's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "canadas-ocean-supercluster-location-evidence",
+            "sourceId": "osc-ised",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Canada's Ocean Supercluster; any non-exact geography is explicitly labelled.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "canadas-ocean-supercluster-technology-leadership-program-evidence",
+            "sourceId": "osc-projects",
+            "fieldPath": "programs.technology-leadership-program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Technology Leadership Program used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "canadas-ocean-supercluster-innovation-ecosystem-program-evidence",
+            "sourceId": "osc-projects",
+            "fieldPath": "programs.innovation-ecosystem-program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Innovation Ecosystem Projects and Activity Program used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "canadas-ocean-supercluster-relationship-0-evidence",
+            "sourceId": "osc-ised",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "ISED identifies Canada's Ocean Supercluster as one of the federally supported Global Innovation Clusters operating across Canada.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "canadas-ocean-supercluster",
+          "name": "Canada's Ocean Supercluster",
+          "legalName": "Canada's Ocean Supercluster",
+          "aliases": [
+            "OSC",
+            "Ocean Supercluster"
+          ],
+          "description": "Canada's Ocean Supercluster is an industry-led national innovation cluster linking ocean industries, research organizations and governments across fisheries, offshore energy, defence, marine transportation and ocean technology.",
+          "websiteUrl": "https://oceansupercluster.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "cluster_operator",
+            "government_program_operator",
+            "ocean_technology",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "St. John's",
+            "provinceTerritory": "Newfoundland and Labrador",
+            "countryCode": "CA",
+            "latitude": 47.5615,
+            "longitude": -52.7126,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Accelerate commercialization and collaborative ocean innovation in Canada by co-investing in industry-led technology projects and ecosystem initiatives across the national ocean economy.",
+            "publicContact": "Public contact paths are available through the official Canada’s Ocean Supercluster website.",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "technology-leadership-program",
+            "name": "Technology Leadership Program",
+            "programType": "collaborative innovation funding",
+            "websiteUrl": "https://oceansupercluster.ca/what-we-do/projects/",
+            "summary": "An industry-led co-investment stream supporting collaborative ocean technology development, demonstration and commercialization projects across Canada.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "innovation-ecosystem-program",
+            "name": "Innovation Ecosystem Projects and Activity Program",
+            "programType": "ecosystem development program",
+            "websiteUrl": "https://oceansupercluster.ca/what-we-do/projects/",
+            "summary": "A cluster program supporting talent, inclusion, commercialization capacity and connections across Canada's ocean innovation ecosystem.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Innovation, Science and Economic Development Canada",
+            "relationshipType": "global-innovation-cluster-program",
+            "publicSummary": "ISED identifies Canada's Ocean Supercluster as one of the federally supported Global Innovation Clusters operating across Canada."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "canadas-ocean-supercluster-description-evidence",
+          "sourceId": "osc-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports Canada's Ocean Supercluster's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "canadas-ocean-supercluster-location-evidence",
+          "sourceId": "osc-ised",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Canada's Ocean Supercluster; any non-exact geography is explicitly labelled.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "canadas-ocean-supercluster-technology-leadership-program-evidence",
+          "sourceId": "osc-projects",
+          "fieldPath": "programs.technology-leadership-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Technology Leadership Program used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "canadas-ocean-supercluster-innovation-ecosystem-program-evidence",
+          "sourceId": "osc-projects",
+          "fieldPath": "programs.innovation-ecosystem-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Innovation Ecosystem Projects and Activity Program used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "canadas-ocean-supercluster-relationship-0-evidence",
+          "sourceId": "osc-ised",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ISED identifies Canada's Ocean Supercluster as one of the federally supported Global Innovation Clusters operating across Canada.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "Canada's Ocean Supercluster is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.481Z"
+    },
+    {
+      "client_candidate_id": "candidate-ngen-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-ngen-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-ngen-20260721",
+        "sourceLeadIds": [
+          "lead-ngen-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "NGen is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 97,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "ngen-home",
+            "title": "NGen advanced manufacturing cluster profile",
+            "url": "https://www.ngen.ca/",
+            "publisher": "NGen",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Homepage",
+            "summary": "NGen identifies itself as the industry-led organization leading Canada's Advanced Manufacturing Global Innovation Cluster and connecting companies to innovation support."
+          },
+          {
+            "id": "ngen-funding",
+            "title": "NGen funding program portfolio",
+            "url": "https://www.ngen.ca/funding",
+            "publisher": "NGen",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Funding programs",
+            "summary": "NGen publishes current co-investment programs covering advanced manufacturing, industrial AI, quantum commercialization, cluster acceleration and related strategic technologies."
+          },
+          {
+            "id": "ngen-contact",
+            "title": "NGen Hamilton contact details",
+            "url": "https://www.ngen.ca/contact",
+            "publisher": "NGen",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Contact page",
+            "summary": "NGen publishes its Hamilton street address and public organizational email for membership, funding and cluster enquiries."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "ngen-description-evidence",
+            "sourceId": "ngen-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports NGen's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "ngen-location-evidence",
+            "sourceId": "ngen-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for NGen; any non-exact geography is explicitly labelled.",
+            "confidence": "high"
+          },
+          {
+            "id": "ngen-advanced-manufacturing-technology-program-evidence",
+            "sourceId": "ngen-funding",
+            "fieldPath": "programs.advanced-manufacturing-technology-program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Advanced Manufacturing Technology Program used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "ngen-cluster-accelerator-program-evidence",
+            "sourceId": "ngen-funding",
+            "fieldPath": "programs.cluster-accelerator-program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Cluster Accelerator Program used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "ngen-relationship-0-evidence",
+            "sourceId": "ngen-home",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "NGen leads the federally supported Advanced Manufacturing Global Innovation Cluster within Canada's national cluster program.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "ngen",
+          "name": "NGen",
+          "legalName": "Next Generation Manufacturing Canada",
+          "aliases": [
+            "Next Generation Manufacturing Canada"
+          ],
+          "description": "NGen leads Canada's Advanced Manufacturing Global Innovation Cluster, connecting manufacturers, technology companies, researchers and investors to develop, commercialize and scale advanced manufacturing solutions.",
+          "websiteUrl": "https://www.ngen.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "cluster_operator",
+            "government_program_operator",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Hamilton",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.2609,
+            "longitude": -79.9192,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "mandate": "Build world-leading advanced manufacturing capabilities in Canada through industry-led collaborative projects, co-investment, commercialization support, cluster development and strategic technology programs.",
+            "publicContact": "info@ngen.ca | 175 Longwood Road South Suite 105-3 Hamilton Ontario L8P 0A1",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "advanced-manufacturing-technology-program",
+            "name": "Advanced Manufacturing Technology Program",
+            "programType": "industry-led co-investment program",
+            "websiteUrl": "https://www.ngen.ca/funding",
+            "summary": "A co-investment program supporting collaborative Canadian projects that develop, apply and commercialize advanced manufacturing technologies.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "cluster-accelerator-program",
+            "name": "Cluster Accelerator Program",
+            "programType": "ecosystem acceleration program",
+            "websiteUrl": "https://www.ngen.ca/funding",
+            "summary": "A cluster-development stream that supports organizations and initiatives expanding advanced manufacturing capabilities, commercialization and adoption in Canada.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "global-innovation-cluster-program",
+            "publicSummary": "NGen leads the federally supported Advanced Manufacturing Global Innovation Cluster within Canada's national cluster program."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "ngen-description-evidence",
+          "sourceId": "ngen-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports NGen's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "ngen-location-evidence",
+          "sourceId": "ngen-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for NGen; any non-exact geography is explicitly labelled.",
+          "confidence": "high"
+        },
+        {
+          "id": "ngen-advanced-manufacturing-technology-program-evidence",
+          "sourceId": "ngen-funding",
+          "fieldPath": "programs.advanced-manufacturing-technology-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Advanced Manufacturing Technology Program used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "ngen-cluster-accelerator-program-evidence",
+          "sourceId": "ngen-funding",
+          "fieldPath": "programs.cluster-accelerator-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Cluster Accelerator Program used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "ngen-relationship-0-evidence",
+          "sourceId": "ngen-home",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "NGen leads the federally supported Advanced Manufacturing Global Innovation Cluster within Canada's national cluster program.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "NGen is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.481Z"
+    },
+    {
+      "client_candidate_id": "candidate-digital-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-digital-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-digital-20260721",
+        "sourceLeadIds": [
+          "lead-digital-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "DIGITAL is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 97,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "digital-about",
+            "title": "DIGITAL cluster mandate and operating profile",
+            "url": "https://digitalsupercluster.ca/who-we-are/about/",
+            "publisher": "DIGITAL",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "About DIGITAL",
+            "summary": "DIGITAL describes its national mission to connect technology builders and buyers and accelerate adoption and commercialization of Canadian technology solutions."
+          },
+          {
+            "id": "digital-programs",
+            "title": "DIGITAL innovation programs and projects",
+            "url": "https://digitalsupercluster.ca/programs-projects/",
+            "publisher": "DIGITAL",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Programs and projects",
+            "summary": "DIGITAL publishes national co-investment, collaborative research and development, intellectual-property and talent-development programs and their project portfolio."
+          },
+          {
+            "id": "digital-calls",
+            "title": "DIGITAL call for innovative projects",
+            "url": "https://digitalsupercluster.ca/innovate-with-us/call-for-projects/",
+            "publisher": "DIGITAL",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Call for proposals and guidelines",
+            "summary": "DIGITAL publishes Canada-wide project calls and co-investment guidance supported through federal and provincial innovation programs."
+          },
+          {
+            "id": "digital-home",
+            "title": "DIGITAL Vancouver headquarters and partnerships",
+            "url": "https://digitalsupercluster.ca/",
+            "publisher": "DIGITAL",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Homepage and footer",
+            "summary": "DIGITAL publishes its Vancouver headquarters, public contact and collaborative model linking technology companies, government, academia and strategic partners."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "digital-description-evidence",
+            "sourceId": "digital-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports DIGITAL's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "digital-location-evidence",
+            "sourceId": "digital-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for DIGITAL; any non-exact geography is explicitly labelled.",
+            "confidence": "high"
+          },
+          {
+            "id": "digital-digital-co-investment-projects-evidence",
+            "sourceId": "digital-calls",
+            "fieldPath": "programs.digital-co-investment-projects.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of DIGITAL Co-investment Projects used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "digital-relationship-0-evidence",
+            "sourceId": "digital-calls",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "DIGITAL states that it is funded through the Government of Canada's Global Innovation Cluster program administered by ISED.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "digital",
+          "name": "DIGITAL",
+          "legalName": "Digital Technology Supercluster",
+          "aliases": [
+            "Canada's Digital Technology Cluster",
+            "Digital Supercluster"
+          ],
+          "description": "DIGITAL is Canada's Digital Technology Global Innovation Cluster, convening companies, government, academia and partners to co-invest in collaborative research, commercialization, technology adoption and workforce projects.",
+          "websiteUrl": "https://digitalsupercluster.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "cluster_operator",
+            "government_program_operator",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Vancouver",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 49.2827,
+            "longitude": -123.1207,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "mandate": "Connect Canadian technology builders and buyers to accelerate adoption and commercialization through collaborative projects, co-investment, intellectual-property creation and digital talent development.",
+            "publicContact": "info@digitalsupercluster.ca | 2127-1055 West Georgia Street Vancouver British Columbia V6E 3P3",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "digital-co-investment-projects",
+            "name": "DIGITAL Co-investment Projects",
+            "programType": "collaborative technology co-investment",
+            "websiteUrl": "https://digitalsupercluster.ca/innovate-with-us/call-for-projects/",
+            "summary": "National calls support collaborative Canadian projects in digital innovation, commercialization, talent and strategic technology adoption through matched co-investment.",
+            "cohortLabel": "Current and closed calls"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Innovation, Science and Economic Development Canada",
+            "relationshipType": "global-innovation-cluster-program",
+            "publicSummary": "DIGITAL states that it is funded through the Government of Canada's Global Innovation Cluster program administered by ISED."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "digital-description-evidence",
+          "sourceId": "digital-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports DIGITAL's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "digital-location-evidence",
+          "sourceId": "digital-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for DIGITAL; any non-exact geography is explicitly labelled.",
+          "confidence": "high"
+        },
+        {
+          "id": "digital-digital-co-investment-projects-evidence",
+          "sourceId": "digital-calls",
+          "fieldPath": "programs.digital-co-investment-projects.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of DIGITAL Co-investment Projects used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "digital-relationship-0-evidence",
+          "sourceId": "digital-calls",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DIGITAL states that it is funded through the Government of Canada's Global Innovation Cluster program administered by ISED.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "DIGITAL is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.481Z"
+    },
+    {
+      "client_candidate_id": "candidate-scale-ai-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-scale-ai-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-scale-ai-20260721",
+        "sourceLeadIds": [
+          "lead-scale-ai-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Scale AI is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 92,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "scale-home",
+            "title": "Scale AI Canadian artificial intelligence cluster",
+            "url": "https://www.scaleai.ca/",
+            "publisher": "Scale AI",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Homepage and program overview",
+            "summary": "Scale AI describes its national Global Innovation Cluster role funding industry-led artificial-intelligence projects, training, acceleration and ecosystem development."
+          },
+          {
+            "id": "scale-quebec",
+            "title": "Scale AI project and acceleration support",
+            "url": "https://www.scaleai.ca/province/quebec-en/",
+            "publisher": "Scale AI",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Quebec programs and mandate",
+            "summary": "Scale AI outlines its industry project funding, artificial-intelligence adoption, training and acceleration support for Canadian companies and startups."
+          },
+          {
+            "id": "scale-ised",
+            "title": "Global Innovation Clusters program overview",
+            "url": "https://ised-isde.canada.ca/site/global-innovation-clusters/en/frequently-asked-questions",
+            "publisher": "Innovation Science and Economic Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Cluster program frequently asked questions",
+            "summary": "ISED identifies Scale AI among Canada's industry-led Global Innovation Clusters and describes the federal cluster program's collaborative innovation model."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "scale-ai-description-evidence",
+            "sourceId": "scale-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports Scale AI's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "scale-ai-location-evidence",
+            "sourceId": "scale-ised",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Scale AI; any non-exact geography is explicitly labelled.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "scale-ai-scale-ai-industry-projects-evidence",
+            "sourceId": "scale-home",
+            "fieldPath": "programs.scale-ai-industry-projects.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Scale AI Industry-led Projects used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "scale-ai-scale-ai-acceleration-program-evidence",
+            "sourceId": "scale-quebec",
+            "fieldPath": "programs.scale-ai-acceleration-program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Scale AI Acceleration Program used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "scale-ai-relationship-0-evidence",
+            "sourceId": "scale-ised",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "ISED identifies Scale AI as one of Canada's federally supported industry-led Global Innovation Clusters.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "scale-ai",
+          "name": "Scale AI",
+          "legalName": "Scale AI",
+          "aliases": [
+            "Scale AI Global Innovation Cluster"
+          ],
+          "description": "Scale AI is Canada's artificial intelligence Global Innovation Cluster, supporting industry-led collaborative projects, technology adoption, commercialization, workforce development and startup acceleration across supply chains.",
+          "websiteUrl": "https://www.scaleai.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "cluster_operator",
+            "government_program_operator",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Montréal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Accelerate responsible artificial intelligence adoption and commercialization in Canadian industry by co-investing in collaborative projects, developing talent and supporting startup and scale-up growth.",
+            "publicContact": "Public contact and program application paths are available through the official Scale AI website.",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "scale-ai-industry-projects",
+            "name": "Scale AI Industry-led Projects",
+            "programType": "artificial intelligence co-investment",
+            "websiteUrl": "https://www.scaleai.ca/",
+            "summary": "A co-investment pathway for collaborative Canadian projects applying artificial intelligence to operational and supply-chain challenges with commercialization potential.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "scale-ai-acceleration-program",
+            "name": "Scale AI Acceleration Program",
+            "programType": "startup acceleration",
+            "websiteUrl": "https://www.scaleai.ca/province/quebec-en/",
+            "summary": "An ecosystem support stream that works with partner organizations to accelerate artificial-intelligence startups and strengthen commercialization capacity.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Innovation, Science and Economic Development Canada",
+            "relationshipType": "global-innovation-cluster-program",
+            "publicSummary": "ISED identifies Scale AI as one of Canada's federally supported industry-led Global Innovation Clusters."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "scale-ai-description-evidence",
+          "sourceId": "scale-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports Scale AI's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "scale-ai-location-evidence",
+          "sourceId": "scale-ised",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Scale AI; any non-exact geography is explicitly labelled.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "scale-ai-scale-ai-industry-projects-evidence",
+          "sourceId": "scale-home",
+          "fieldPath": "programs.scale-ai-industry-projects.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Scale AI Industry-led Projects used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "scale-ai-scale-ai-acceleration-program-evidence",
+          "sourceId": "scale-quebec",
+          "fieldPath": "programs.scale-ai-acceleration-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Scale AI Acceleration Program used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "scale-ai-relationship-0-evidence",
+          "sourceId": "scale-ised",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ISED identifies Scale AI as one of Canada's federally supported industry-led Global Innovation Clusters.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "Scale AI is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.481Z"
+    },
+    {
+      "client_candidate_id": "candidate-space-canada-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-space-canada-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-space-canada-20260721",
+        "sourceLeadIds": [
+          "lead-space-canada-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Space Canada is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+        "reviewTier": "green",
+        "inclusionScore": 95,
+        "completenessScore": 90,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "space-team",
+            "title": "Space Canada industry association profile",
+            "url": "https://space-canada.ca/team",
+            "publisher": "Space Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Team and organization profile",
+            "summary": "Space Canada describes its representation of Canadian space innovators and a member base spanning launch, communications, Earth observation, robotics, analytics and related technologies."
+          },
+          {
+            "id": "space-home",
+            "title": "Space Canada and SpaceBound 2026",
+            "url": "https://space-canada.ca/",
+            "publisher": "Space Canada",
+            "sourceKind": "event_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Homepage and SpaceBound event",
+            "summary": "Space Canada publishes SpaceBound 2026 as a three-day Ottawa and Gatineau convening for Canada's commercial space industry and public stakeholders."
+          },
+          {
+            "id": "space-launch",
+            "title": "Space Canada founding member announcement",
+            "url": "https://space-canada.ca/media/2022/03/three-two-one-space-canada-lifts-off",
+            "publisher": "Space Canada",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Founding announcement",
+            "summary": "Space Canada's launch announcement identifies founding Canadian space companies and its purpose of advancing sector growth and collaboration with government."
+          },
+          {
+            "id": "space-contact",
+            "title": "Space Canada public contact path",
+            "url": "https://space-canada.ca/contact",
+            "publisher": "Space Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Contact page",
+            "summary": "Space Canada publishes a public organizational email and newsletter path for industry and stakeholder engagement."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "space-canada-description-evidence",
+            "sourceId": "space-team",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports Space Canada's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "space-canada-location-evidence",
+            "sourceId": "space-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Space Canada; any non-exact geography is explicitly labelled.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "space-canada-spacebound-evidence",
+            "sourceId": "space-home",
+            "fieldPath": "programs.spacebound.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of SpaceBound used in this dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "space-canada-relationship-0-evidence",
+            "sourceId": "space-launch",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Space Canada's official launch announcement identifies MDA among the association's founding Canadian space-industry members.",
+            "confidence": "high"
+          },
+          {
+            "id": "space-canada-relationship-1-evidence",
+            "sourceId": "space-launch",
+            "fieldPath": "relationships.1.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Space Canada's official launch announcement identifies Telesat among the association's founding Canadian space-industry members.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "space-canada",
+          "name": "Space Canada",
+          "legalName": "Space Canada Corporation",
+          "aliases": [],
+          "description": "Space Canada is a national industry association representing Canadian space innovators across satellite communications, Earth observation, robotics, launch, exploration, data services and related advanced technologies.",
+          "websiteUrl": "https://space-canada.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "industry_association",
+            "cluster_operator",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Represent and connect Canada's commercial space sector, promote investment and policy conditions for growth, and convene companies and public stakeholders around Canadian space innovation and competitiveness.",
+            "publicContact": "info@space-canada.ca | Newsletter and public enquiry forms are available on the official website.",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "spacebound",
+            "name": "SpaceBound",
+            "programType": "national space industry conference",
+            "websiteUrl": "https://space-canada.ca/",
+            "summary": "A national space-sector convening in Ottawa and Gatineau bringing Canadian companies, policy leaders and ecosystem stakeholders together around space innovation and growth.",
+            "cohortLabel": "2026"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "MDA Space",
+            "relationshipType": "founding-member",
+            "publicSummary": "Space Canada's official launch announcement identifies MDA among the association's founding Canadian space-industry members."
+          },
+          {
+            "relatedOrganizationName": "Telesat",
+            "relationshipType": "founding-member",
+            "publicSummary": "Space Canada's official launch announcement identifies Telesat among the association's founding Canadian space-industry members."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "space-canada-description-evidence",
+          "sourceId": "space-team",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports Space Canada's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "space-canada-location-evidence",
+          "sourceId": "space-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Space Canada; any non-exact geography is explicitly labelled.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "space-canada-spacebound-evidence",
+          "sourceId": "space-home",
+          "fieldPath": "programs.spacebound.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of SpaceBound used in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "space-canada-relationship-0-evidence",
+          "sourceId": "space-launch",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Space Canada's official launch announcement identifies MDA among the association's founding Canadian space-industry members.",
+          "confidence": "high"
+        },
+        {
+          "id": "space-canada-relationship-1-evidence",
+          "sourceId": "space-launch",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Space Canada's official launch announcement identifies Telesat among the association's founding Canadian space-industry members.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "Space Canada is recommended for green human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories and preserve the cited limits on program and relationship claims before acceptance.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.481Z"
+    },
+    {
+      "client_candidate_id": "candidate-aerial-evolution-association-of-canada-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-aerial-evolution-association-of-canada-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-aerial-evolution-association-of-canada-20260721",
+        "sourceLeadIds": [
+          "lead-aerial-evolution-association-of-canada-20260721"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Aerial Evolution Association of Canada is recommended for amber human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: The national RPAS role and current programs are supported, but the reviewer should confirm the best map location because the official source publishes regional contact details rather than a street address.",
+        "reviewTier": "amber",
+        "inclusionScore": 92,
+        "completenessScore": 85,
+        "reviewWarnings": [
+          "The national RPAS role and current programs are supported, but the reviewer should confirm the best map location because the official source publishes regional contact details rather than a street address."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "aeac-about",
+            "title": "Aerial Evolution national association profile",
+            "url": "https://www.aerialevolution.ca/about/",
+            "publisher": "Aerial Evolution Association of Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "About and contact information",
+            "summary": "Aerial Evolution describes itself as Canada's national not-for-profit association for remotely piloted and uncrewed aerial systems and publishes public contact details."
+          },
+          {
+            "id": "aeac-conference",
+            "title": "Aerial Evolution Canada Conference",
+            "url": "https://conference.aerialevolution.ca/",
+            "publisher": "Aerial Evolution Association of Canada",
+            "sourceKind": "event_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Conference overview",
+            "summary": "The association operates a national conference connecting remotely piloted aircraft, autonomy, regulation, operations and technology stakeholders in Canada."
+          },
+          {
+            "id": "aeac-competition",
+            "title": "Aerial Evolution student competition concept",
+            "url": "https://www.aerialevolution.ca/wp-content/uploads/2024/09/2025-AEAC-Competition-CONOPS-v1.0-11-September-2024.docx.pdf",
+            "publisher": "Aerial Evolution Association of Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Competition concept of operations",
+            "summary": "The official competition document describes a national student unmanned-aircraft challenge built around mission planning, vehicle design, autonomous operations and judged performance."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "aerial-evolution-association-of-canada-description-evidence",
+            "sourceId": "aeac-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports Aerial Evolution Association of Canada's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "aerial-evolution-association-of-canada-location-evidence",
+            "sourceId": "aeac-competition",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Aerial Evolution Association of Canada; any non-exact geography is explicitly labelled.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "aerial-evolution-association-of-canada-aerial-evolution-canada-conference-evidence",
+            "sourceId": "aeac-conference",
+            "fieldPath": "programs.aerial-evolution-canada-conference.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Aerial Evolution Canada Conference used in this dossier.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "aerial-evolution-association-of-canada-aeac-student-competition-evidence",
+            "sourceId": "aeac-competition",
+            "fieldPath": "programs.aeac-student-competition.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of AEAC National Student Competition used in this dossier.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "aerial-evolution-association-of-canada",
+          "name": "Aerial Evolution Association of Canada",
+          "legalName": "Aerial Evolution Association of Canada",
+          "aliases": [
+            "AEAC",
+            "Unmanned Systems Canada"
+          ],
+          "description": "Aerial Evolution Association of Canada is the national not-for-profit industry association for remotely piloted and uncrewed aerial systems, connecting operators, manufacturers, researchers, regulators and end users.",
+          "websiteUrl": "https://www.aerialevolution.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "industry_association",
+            "cluster_operator",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Advance Canada's remotely piloted and uncrewed aircraft ecosystem through advocacy, education, standards engagement, industry networking, conferences and practical student innovation programs.",
+            "publicContact": "admin@aerialevolution.ca | +1-613-526-5487",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "aerial-evolution-canada-conference",
+            "name": "Aerial Evolution Canada Conference",
+            "programType": "national RPAS industry conference",
+            "websiteUrl": "https://conference.aerialevolution.ca/",
+            "summary": "A national conference for Canadian remotely piloted aircraft and uncrewed-systems stakeholders spanning regulation, operations, autonomy, technology and market development.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "aeac-student-competition",
+            "name": "AEAC National Student Competition",
+            "programType": "student technology competition",
+            "websiteUrl": "https://www.aerialevolution.ca/wp-content/uploads/2024/09/2025-AEAC-Competition-CONOPS-v1.0-11-September-2024.docx.pdf",
+            "summary": "A practical national competition in which student teams design, integrate and operate unmanned aircraft systems against a documented mission scenario.",
+            "cohortLabel": "2025 competition"
+          }
+        ],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "aerial-evolution-association-of-canada-description-evidence",
+          "sourceId": "aeac-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports Aerial Evolution Association of Canada's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "aerial-evolution-association-of-canada-location-evidence",
+          "sourceId": "aeac-competition",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Aerial Evolution Association of Canada; any non-exact geography is explicitly labelled.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "aerial-evolution-association-of-canada-aerial-evolution-canada-conference-evidence",
+          "sourceId": "aeac-conference",
+          "fieldPath": "programs.aerial-evolution-canada-conference.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of Aerial Evolution Canada Conference used in this dossier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "aerial-evolution-association-of-canada-aeac-student-competition-evidence",
+          "sourceId": "aeac-competition",
+          "fieldPath": "programs.aeac-student-competition.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of AEAC National Student Competition used in this dossier.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "Aerial Evolution Association of Canada is recommended for amber human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: The national RPAS role and current programs are supported, but the reviewer should confirm the best map location because the official source publishes regional contact details rather than a street address.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.482Z"
+    },
+    {
+      "client_candidate_id": "candidate-canadian-cyber-threat-exchange-20260721",
+      "research_run_ref": "tnm-manual-20260721193922",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-canadian-cyber-threat-exchange-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-canadian-cyber-threat-exchange-20260721",
+        "sourceLeadIds": [
+          "lead-canadian-cyber-threat-exchange-20260721"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Canadian Cyber Threat Exchange is recommended for amber human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: The cyber threat-sharing mandate is current, but the reviewer should verify the present headquarters and public contact details before publication because the cited Ottawa address is from a 2023 release.",
+        "reviewTier": "amber",
+        "inclusionScore": 94,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The cyber threat-sharing mandate is current, but the reviewer should verify the present headquarters and public contact details before publication because the cited Ottawa address is from a 2023 release."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T19:48:42.024Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+        },
+        "sources": [
+          {
+            "id": "cctx-home",
+            "title": "Canadian Cyber Threat Exchange official profile",
+            "url": "https://cctx.ca/",
+            "publisher": "Canadian Cyber Threat Exchange",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Homepage",
+            "summary": "CCTX presents its Canadian cross-sector cyber threat-sharing and collaboration role and member-focused approach to strengthening organizational cyber resilience."
+          },
+          {
+            "id": "cctx-launch",
+            "title": "Public Safety statement on CCTX launch",
+            "url": "https://www.canada.ca/en/public-safety-canada/news/2015/12/statement-from-the-minister-of-public-safety-and-emergency-preparedness-on-the-launch-of-the-canadian-cyber-threat-exchange.html",
+            "publisher": "Public Safety Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Ministerial launch statement",
+            "summary": "Public Safety Canada publicly welcomed CCTX as a private-sector-led cyber threat-information exchange supporting Canadian businesses, government and critical infrastructure resilience."
+          },
+          {
+            "id": "cctx-funding",
+            "title": "CCTX cyber innovation funding announcement",
+            "url": "https://cctx.ca/wp-content/uploads/2023/08/CCTX-Funding-Announcement_Press-Release-FINAL.pdf",
+            "publisher": "Canadian Cyber Threat Exchange",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "Organization profile and contact footer",
+            "summary": "CCTX's official funding announcement describes its cross-sector threat-intelligence role, national membership and published Ottawa contact details."
+          },
+          {
+            "id": "cctx-summit",
+            "title": "CCTX cross-sector anti-scam summit",
+            "url": "https://cctx.ca/wp-content/uploads/2025/10/CASC-Summit-From-Collaboration-to-Action.pdf",
+            "publisher": "Canadian Cyber Threat Exchange",
+            "sourceKind": "event_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T19:48:42.024Z",
+            "locator": "CCTX profile and summit overview",
+            "summary": "CCTX describes itself as a cross-sector cyber collaboration hub and documents a 2025 summit joining business, government, law enforcement and technology stakeholders against scams."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "canadian-cyber-threat-exchange-description-evidence",
+            "sourceId": "cctx-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official source supports Canadian Cyber Threat Exchange's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "canadian-cyber-threat-exchange-location-evidence",
+            "sourceId": "cctx-summit",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Canadian Cyber Threat Exchange; any non-exact geography is explicitly labelled.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "canadian-cyber-threat-exchange-cctx-threat-sharing-community-evidence",
+            "sourceId": "cctx-home",
+            "fieldPath": "programs.cctx-threat-sharing-community.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source supports the purpose, delivery model and current public description of CCTX Threat Sharing Community used in this dossier.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "canadian-cyber-threat-exchange-relationship-0-evidence",
+            "sourceId": "cctx-launch",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Public Safety Canada publicly welcomed the launch of CCTX as a private-sector-led Canadian cyber threat-information exchange.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "canadian-cyber-threat-exchange",
+          "name": "Canadian Cyber Threat Exchange",
+          "legalName": "Canadian Cyber Threat Exchange",
+          "aliases": [
+            "CCTX"
+          ],
+          "description": "CCTX is a Canadian not-for-profit, cross-sector cyber threat-sharing and collaboration hub that enables member organizations to exchange actionable information and strengthen collective cyber resilience.",
+          "websiteUrl": "https://cctx.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "industry_association",
+            "cluster_operator",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Enable trusted, cross-sector sharing and analysis of Canadian cyber threat information so member organizations can improve detection, response, resilience and collaboration on shared security risks.",
+            "publicContact": "+1-613-747-2283 | A prior official release lists 116 Albert Street Suite 300 Ottawa Ontario K1P 5G3; reviewer should confirm currency.",
+            "sectorFocus": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "space-and-earth-observation",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Organization, program and relationship facts are source-backed. Mission relevance is an analyst cue for review and is not evidence of procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "cctx-threat-sharing-community",
+            "name": "CCTX Threat Sharing Community",
+            "programType": "cross-sector cyber threat exchange",
+            "websiteUrl": "https://cctx.ca/",
+            "summary": "A trusted Canadian member community for sharing, enriching and acting on cyber threat information across sectors to strengthen collective cyber resilience.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Public Safety Canada",
+            "relationshipType": "public-launch-recognition",
+            "publicSummary": "Public Safety Canada publicly welcomed the launch of CCTX as a private-sector-led Canadian cyber threat-information exchange."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "canadian-cyber-threat-exchange-description-evidence",
+          "sourceId": "cctx-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official source supports Canadian Cyber Threat Exchange's Canadian identity, operating role and ecosystem mandate as summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "canadian-cyber-threat-exchange-location-evidence",
+          "sourceId": "cctx-summit",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports the published Canadian operating location or contact context used for Canadian Cyber Threat Exchange; any non-exact geography is explicitly labelled.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "canadian-cyber-threat-exchange-cctx-threat-sharing-community-evidence",
+          "sourceId": "cctx-home",
+          "fieldPath": "programs.cctx-threat-sharing-community.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source supports the purpose, delivery model and current public description of CCTX Threat Sharing Community used in this dossier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "canadian-cyber-threat-exchange-relationship-0-evidence",
+          "sourceId": "cctx-launch",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Public Safety Canada publicly welcomed the launch of CCTX as a private-sector-led Canadian cyber threat-information exchange.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T19:48:42.024Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by canonical URL, website domain, slug, legal name, aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "reviewer_rationale": "Canadian Cyber Threat Exchange is recommended for amber human review because multiple durable official sources resolve its Canadian identity, ecosystem role and at least one active program or public relationship relevant to True North Map's ecosystem-support coverage. The dossier distinguishes sourced organizational facts from analyst-noted mission relevance, captures available location and public contact detail, and passed live published and pending duplicate checks. Reviewer focus: The cyber threat-sharing mandate is current, but the reviewer should verify the present headquarters and public contact details before publication because the cited Ottawa address is from a 2023 release.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-21T19:49:40.482Z"
+    }
+  ]
+}

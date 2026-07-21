@@ -1,7 +1,7 @@
 # True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
 Status: active product requirements  
-Last updated: 2026-07-20
+Last updated: 2026-07-21
 
 ## Product summary
 
@@ -12,6 +12,16 @@ The primary journey is:
 > Place or public need -> relevant organizations -> technology or offering -> Where It Fits -> Working List or export
 
 The product combines public mapping, decision-useful organization profiles, public Canadian and allied demand signals, and a review-first research pipeline. Agents and deterministic comparisons can stage research suggestions but cannot publish them.
+
+## Founder catalyst and North Star
+
+True North Map is grounded in Andrew Davies's experience as a veteran and Combat Systems Engineering Officer, his work in the civilian sector, and his decision to focus that experience on Canadian defence and sovereign capability. Defence-sector project delivery and engagement with operators, engineers, subject-matter experts, founders, and program teams revealed both extraordinary national talent and a persistent coordination problem: Canada lacked a shared, practical view of who was building, what their technology could do, where it might fit, and who should be in the next conversation.
+
+The product's guiding North Star is:
+
+> Map what Canada can build. Connect the people ready to build it. Help the whole ecosystem move together.
+
+This story should guide product and marketing decisions. True North Map exists to make contribution easier, not merely to catalogue records. Discovery should lead toward clearer decisions, useful collaboration, and stronger Canadian capacity while preserving public-source trust, transparent gaps, and independent review.
 
 ## Canadian Public Beta
 
@@ -358,7 +368,7 @@ Release-ready implementation verified on 2026-07-18:
   company, investor, accelerator, incubator, research-centre, ecosystem, and
   government-office discovery
 
-Verified before the Monday public release:
+Verified for the broader public-beta release:
 
 - `truenorthmap.ca`, `www`, and the former Vercel URL resolve to the canonical
   production deployment; canonical metadata, social metadata, MapTiler, and
@@ -372,14 +382,29 @@ Verified before the Monday public release:
   contribution, connection, feedback, subscription, and administration journeys
   pass production smoke tests
 - the full automated release suite passes from the restored repository state
-- launch copy, screenshots, Open Graph art, and the short demonstration video
-  are ready under `content/launch/`
+- the broader-sharing copy, source-specific UTM convention, outreach sequence,
+  release controls, screenshots, Open Graph art, and short demonstration video
+  are maintained under `content/launch/`; visual assets require a final check
+  against the current production interface before each campaign
 - Google Search Console and Bing Webmaster Tools are verified and have received
   the canonical sitemap
+- Ask True North is live as a constrained published-corpus discovery layer with
+  known-record and citation validation, visible uncertainty, quotas, and a
+  deterministic fallback
+- Canadian Defence Briefs is live as the reviewed, answer-first public synthesis
+  surface, with source links, related records, labelled Derived Reads, SEO/AEO
+  metadata, and administrator-only publication
+- production remains the source of truth for live corpus and workflow counts;
+  release claims use rounded values and exact values are checked immediately
+  before publication
 
-Time-bound work remaining is limited to Monday's 06:30 readiness review, final
-deployment confirmation, 07:30 fresh-browser smoke test, 08:00 release decision,
-and Andrew's scheduled publishing and outreach actions.
+The product is in broader-sharing posture. Remaining release work is operational:
+close the July 19 release-test contribution and connection fixtures, keep update
+subscriber synchronization confirmed, verify no research candidates remain pending,
+perform a fresh signed-out and non-admin signed-in production walkthrough, check
+launch visuals against the current UI, and execute the channel sequence in
+`content/launch/public-beta-launch-package.md`. New features and artificial
+corpus targets are not release gates.
 
 ## Explicitly deferred
 

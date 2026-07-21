@@ -185,6 +185,10 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-21`: Reframed the public About page and marketing ethos around Andrew Davies's veteran and Combat Systems Engineering Officer background, his call to contribute to Canadian defence and sovereign capability, the missing shared picture he encountered, and the North Star of mapping what Canada can build and connecting the people ready to build it. Confirmed July 19 submissions and connection items are release-test fixtures and July 18 launch visuals are legacy assets excluded from the broader release.
+
+- `2026-07-21`: Reconciled the broader public-sharing package with the current production product, added current positioning and channel-specific release copy, and established that the remaining release gates are operational checks and queue readiness rather than new features or a fixed corpus target. Exact live counts must be read from production; durable public claims use rounded values.
+
 - `2026-07-21`: Added Canadian Defence Briefs as the reviewed public synthesis surface at `/briefs`, with answer-first SEO/AEO structure, dedicated Supabase publication tables, source and record links, labelled Derived Reads, and administrator-only editing at `/admin/briefs`; raw packets and private wiki markdown remain outside the public runtime.
 
 - `2026-07-21`: Established the private Canada-first Defence Wiki foundation as a sibling Obsidian root, with versioned read-only source-packet adapters for current Crashboard Turso intelligence and True North Map public evidence/source leads. The private wiki is not a public runtime and publication remains deferred behind a future reviewed Supabase candidate workflow.

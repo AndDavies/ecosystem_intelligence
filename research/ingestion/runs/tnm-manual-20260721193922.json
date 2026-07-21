@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260721193922",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "ecosystem_organization"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:ecosystem_organization",
+    "reason": "2 published or pending ecosystem organization records cover only 17% of the working saturation target of 12.",
+    "score": 908
+  },
+  "status": "completed",
+  "startedAt": "2026-07-21T19:39:22.790Z",
+  "completedAt": "2026-07-21T19:48:42.024Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Canadian aerospace defence industry associations and member directories",
+    "Atlantic Canadian aerospace defence marine associations",
+    "Canadian marine shipbuilding industry organizations and procurement information",
+    "Global Innovation Clusters Canada operators and program portfolios",
+    "Canadian advanced manufacturing cluster funding programs",
+    "Canadian digital technology cluster co-investment programs",
+    "Canadian artificial intelligence cluster programs and accelerators",
+    "Canadian space industry associations and conferences",
+    "Canadian RPAS unmanned systems industry associations and competitions",
+    "Canadian cyber threat sharing organizations and public-sector relationships",
+    "Canadian ecosystem organization conference directories",
+    "Broad web recovery for canonical contact program and relationship evidence"
+  ],
+  "counters": {
+    "sourcesChecked": 35,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 2,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 28,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 10,
+    "candidatesGreen": 7,
+    "candidatesAmber": 3
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Canadian Marine Industries and Shipbuilding Association: The national marine-industry role is strongly sourced, but the reviewer should confirm how On Watch is represented as a program and retain only current contact details.",
+      "Aerial Evolution Association of Canada: The national RPAS role and current programs are supported, but the reviewer should confirm the best map location because the official source publishes regional contact details rather than a street address.",
+      "Canadian Cyber Threat Exchange: The cyber threat-sharing mandate is current, but the reviewer should verify the present headquarters and public contact details before publication because the cited Ottawa address is from a 2023 release."
+    ]
+  },
+  "errors": [],
+  "stopReason": "The discovery batch reached ten validated private candidates after reviewing forty unique prospects across ten source lanes; twenty-eight plausible prospects remain queued and two exact published identities were blocked.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260721193922.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260721193922.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260721193922.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260721193922-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260721193922.json"
+  }
+}

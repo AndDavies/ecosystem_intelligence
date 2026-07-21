@@ -1,5 +1,23 @@
 # Development Log - 2026-07-15
 
+## Broader public sharing readiness - 2026-07-21
+
+- Replaced the obsolete July 20 launch package with a current broader-sharing package at `content/launch/public-beta-launch-package.md`.
+- Reconciled the launch story with the production work completed after the original package: corpus expansion, Ask True North, Google and work-email authentication, account management, expanded contribution and connection workflows, subscriber administration and MailerLite synchronization, Canadian Defence Briefs, and the larger private administration surface.
+- Switched outward-facing proof points to rounded values, with an explicit requirement to read exact production totals before interviews, presentations, or exact-count claims.
+- Added channel-specific UTM values, current LinkedIn, direct outreach, included-organization, Build Canada, BetaKit, defence-media, Show HN, and Reddit copy, plus a sequenced release-day checklist and first-week scorecard.
+- Confirmed that new features and arbitrary corpus expansion are not release gates. The remaining work is operational: queue triage, subscriber-sync confirmation, unfinished-run disposition, fresh production walkthrough, asset review, release execution, and first-week monitoring.
+- Preserved the unrelated uncommitted manual research-run artifacts; launch documentation work does not stage, publish, or discard research output.
+
+## Founder story and release-queue clarification - 2026-07-21
+
+- Reframed `/about` around Andrew Davies's background as a veteran and Combat Systems Engineering Officer, his decision to contribute to Canadian defence and sovereign capability, the talent and momentum he encountered across the ecosystem, and the missing shared picture that led to True North Map.
+- Established the guiding North Star: map what Canada can build, connect the people ready to build it, and help the ecosystem move together.
+- Preserved the independent public-source trust boundary and positioned transparency, reviewed contributions, and connection as part of the ethos rather than implementation detail.
+- Confirmed that the three pending profile contributions and one new connection request are July 19 release-acceptance test fixtures under `/admin/insights`, not real external demand. They should be rejected or closed, not accepted or introduced.
+- Confirmed the latest manual ecosystem-organization research run completed and its ten candidates were already dispositioned; production has no pending or approved candidate changes awaiting publication.
+- Classified the July 18 screenshots, demo frames, Open Graph image, and short video as legacy previous-interface assets excluded from the broader release.
+
 ## Canadian Defence Briefs publication slice - 2026-07-21
 
 - Published a new public knowledge surface at `/briefs`, branded **Canadian Defence Briefs** rather than “wiki.” It provides concise, answer-first, source-backed pages that lead from a real question to public evidence and linked True North Map records.

@@ -1,21 +1,195 @@
 import Link from "next/link";
-import { ArrowRight, Compass, Network, ShieldCheck } from "lucide-react";
-import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import {
+  ArrowRight,
+  Binoculars,
+  Compass,
+  Link2,
+  Network,
+  ShieldCheck,
+  Sparkles,
+  Waves
+} from "lucide-react";
+import { PublicPageShell } from "@/components/atlas/public-page-shell";
 
 export const metadata = {
-  title: "About",
-  description: "Why Andrew Davies created True North Map to make Canadian defence and dual-use capability easier to discover and connect."
+  title: "Why True North Map Exists",
+  description:
+    "Veteran and Combat Systems Engineering Officer Andrew Davies created True North Map to make Canadian defence and dual-use capability easier to see, understand, and connect."
 };
+
+const story = [
+  {
+    number: "01",
+    eyebrow: "The call",
+    title: "Experience became responsibility.",
+    icon: Compass,
+    body: "I am a veteran and Combat Systems Engineering Officer whose career has spanned military service and the civilian sector. As global events sharpened the importance of security, resilience, and sovereign capability, I felt a responsibility to focus my effort in Canada, in industries where that experience could be useful."
+  },
+  {
+    number: "02",
+    eyebrow: "The spark",
+    title: "Canada was already answering.",
+    icon: Sparkles,
+    body: "Working in defence brought me into conversations with operators, engineers, subject-matter experts, founders, program teams, and industry leaders. I found extraordinary talent, creativity, experience, and drive coalescing around the same ambition: build more in Canada and contribute to the work ahead."
+  },
+  {
+    number: "03",
+    eyebrow: "The gap",
+    title: "The capability was here. The shared picture was not.",
+    icon: Binoculars,
+    body: "What remained difficult was seeing the country as one connected ecosystem. Who is building? What can their technology do? Where could it fit? What evidence supports it? Who should be brought into the next conversation? Without that shared view, strong teams and useful opportunities can remain invisible to one another."
+  }
+];
+
+const outcomes = [
+  {
+    eyebrow: "Find",
+    title: "See who can help",
+    icon: Binoculars,
+    body: "Move from a region, technology, or real operational need to the Canadian organizations worth understanding next."
+  },
+  {
+    eyebrow: "Understand",
+    title: "Know why they matter",
+    icon: ShieldCheck,
+    body: "Follow the evidence, separate facts from interpretation, and see both the possible fit and what remains unknown."
+  },
+  {
+    eyebrow: "Connect",
+    title: "Start the right conversation",
+    icon: Link2,
+    body: "Turn discovery into a Working List, a stronger brief, a profile contribution, or a thoughtful introduction."
+  }
+];
 
 export default function AboutPage() {
   return (
-    <PublicPageShell eyebrow="Independent project by Andrew Davies" title="Canada’s capability is stronger than it is visible." description="True North Map is a free, evidence-backed discovery and connection layer for Canada’s defence and dual-use ecosystem.">
-      <div className="grid gap-5 lg:grid-cols-3">
-        <PublicCard title="The catalyst" eyebrow="Why this exists"><Compass className="mb-4 size-6 text-[var(--atlas-primary)]" /><p className="text-sm leading-6 text-[var(--atlas-muted)]">Work across defence, marine technology, and innovation repeatedly revealed strong Canadian capabilities hidden across fragmented regional, program, and industry networks. The problem was rarely an absence of capability. It was finding it, understanding it, and reaching the right people.</p></PublicCard>
-        <PublicCard title="See the country in one view" eyebrow="What changes"><Network className="mb-4 size-6 text-[var(--atlas-primary)]" /><p className="text-sm leading-6 text-[var(--atlas-muted)]">True North Map brings reviewed organizations, technology, locations, public signals, and sources together. You can find a relevant team faster, build a Working List, improve a profile, or request a thoughtful introduction.</p></PublicCard>
-        <PublicCard title="The trust boundary" eyebrow="What it is not"><ShieldCheck className="mb-4 size-6 text-[var(--atlas-primary)]" /><p className="text-sm leading-6 text-[var(--atlas-muted)]">This is not an official government, military, procurement, or industry-association directory. Public-source assessments do not indicate eligibility, endorsement, classified demand, or a formal opportunity.</p></PublicCard>
-      </div>
-      <section className="mt-6 rounded-xl bg-[var(--atlas-ink)] p-6 text-white sm:p-8"><p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--atlas-primary-soft)]">The ambition</p><h2 className="mt-2 max-w-3xl text-2xl font-bold tracking-[-0.025em]">A stronger sovereign industry starts with shared visibility.</h2><p className="mt-3 max-w-3xl text-sm leading-6 text-white/75">The beta is deliberately incomplete and transparent about its gaps. Each reviewed addition makes Canadian expertise easier to find, compare, support, and connect.</p><div className="mt-5 flex flex-wrap gap-3"><Link href="/" className="inline-flex h-10 items-center gap-2 rounded-md bg-[var(--atlas-primary-soft)] px-4 text-sm font-semibold text-[var(--atlas-ink)] no-underline">Explore the ecosystem map <ArrowRight className="size-4" /></Link><Link href="/methodology" className="inline-flex h-10 items-center rounded-md border border-white/25 px-4 text-sm font-semibold text-white no-underline">See how profiles are reviewed</Link></div></section>
+    <PublicPageShell
+      eyebrow="Built from service. Made for contribution."
+      title="The capability is here. The shared picture is not."
+      description="True North Map is my contribution to a problem I kept encountering: Canada has the people, technology, and ambition to build more, but no simple way to see how it all fits together."
+      actions={
+        <Link href="/" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">
+          Explore the map <ArrowRight className="size-4" />
+        </Link>
+      }
+    >
+      <section className="relative mt-8 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <div className="absolute inset-y-0 left-0 w-1.5 bg-[var(--atlas-signal)]" aria-hidden="true" />
+        <div className="grid gap-8 px-6 py-9 sm:px-9 sm:py-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:px-12 lg:py-16">
+          <div>
+            <p className="atlas-eyebrow">Why I built this</p>
+            <h2 className="mt-4 max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-4xl lg:text-5xl">
+              Canada is building more than most people can see.
+            </h2>
+          </div>
+          <div className="flex flex-col justify-between gap-8 border-l border-[var(--atlas-border)] pl-6 sm:pl-8">
+            <p className="text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-lg">
+              I did not start True North Map because Canada lacked capability. I started it because remarkable capability was too often scattered across regions, programs, companies, and conversations that did not yet connect.
+            </p>
+            <p className="text-sm font-bold leading-6 text-[var(--atlas-primary)]">
+              The opportunity is to make what Canada can do easier to find, easier to understand, and easier to bring together.
+            </p>
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Andrew Davies &middot; Founder, True North Map</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16 sm:mt-20">
+        <div className="max-w-3xl">
+          <p className="atlas-eyebrow">The path here</p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">A personal calling met a national opportunity.</h2>
+          <p className="mt-4 text-sm leading-7 text-[var(--atlas-muted)] sm:text-base">The project grew from service, experience, and a close view of the people choosing to answer Canada&apos;s defence and sovereign industry ambitions.</p>
+        </div>
+
+        <div className="mt-9 divide-y divide-[var(--atlas-border)] border-y border-[var(--atlas-border)]">
+          {story.map((item) => (
+            <article key={item.number} className="grid gap-5 py-8 sm:grid-cols-[72px_0.72fr_1.28fr] sm:gap-8 sm:py-10 lg:grid-cols-[90px_0.72fr_1.28fr] lg:gap-12">
+              <div className="flex size-12 items-center justify-center rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] text-sm font-extrabold text-[var(--atlas-primary)]">
+                {item.number}
+              </div>
+              <div>
+                <item.icon className="size-5 text-[var(--atlas-primary)]" />
+                <p className="mt-4 text-[10px] font-extrabold uppercase tracking-[0.15em] text-[var(--atlas-muted)]">{item.eyebrow}</p>
+                <h3 className="mt-2 text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-2xl">{item.title}</h3>
+              </div>
+              <p className="text-sm leading-7 text-[var(--atlas-muted)] sm:text-base sm:leading-8">{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="relative mt-16 overflow-hidden rounded-[2rem] bg-[var(--atlas-ink)] px-6 py-10 text-white sm:mt-20 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+          <div>
+            <div className="flex size-12 items-center justify-center rounded-2xl bg-white/10">
+              <Waves className="size-6 text-[var(--atlas-signal)]" />
+            </div>
+            <p className="mt-7 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-signal)]">The North Star</p>
+            <h2 className="mt-3 max-w-4xl text-3xl font-extrabold leading-[1.08] tracking-[-0.045em] sm:text-4xl lg:text-5xl">
+              Map what Canada can build. Connect the people ready to build it. Help the whole ecosystem move together.
+            </h2>
+          </div>
+          <div className="border-t border-white/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <p className="text-sm leading-7 text-white/70 sm:text-base">
+              No single company, program, region, or person can meet the scale of the challenge alone. Shared visibility helps us combine strengths, expose gaps, and act with greater purpose.
+            </p>
+            <p className="mt-5 text-base font-bold leading-7 text-white">
+              Rising tides lift all boats. Canada moves further when the people ready to contribute can find one another.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16 sm:mt-20">
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-14">
+          <div>
+            <p className="atlas-eyebrow">What this makes possible</p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">From scattered knowledge to shared momentum.</h2>
+            <p className="mt-4 text-sm leading-7 text-[var(--atlas-muted)] sm:text-base">True North Map is not valuable because it contains records. It is valuable when someone sees an opportunity sooner, finds a stronger partner, or brings the right Canadian capability into the room.</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {outcomes.map((outcome) => (
+              <article key={outcome.eyebrow} className="group rounded-3xl border border-[var(--atlas-border)] bg-white p-6 shadow-[var(--atlas-shadow-soft)] transition-transform duration-200 hover:-translate-y-1">
+                <div className="flex size-11 items-center justify-center rounded-2xl bg-[var(--atlas-signal-soft)] text-[var(--atlas-primary)]">
+                  <outcome.icon className="size-5" />
+                </div>
+                <p className="mt-6 text-[10px] font-extrabold uppercase tracking-[0.15em] text-[var(--atlas-primary)]">{outcome.eyebrow}</p>
+                <h3 className="mt-2 text-xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">{outcome.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{outcome.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16 grid overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)] sm:mt-20 lg:grid-cols-[0.72fr_1.28fr]">
+        <div className="bg-[var(--atlas-signal-soft)] p-7 sm:p-9 lg:p-11">
+          <Network className="size-7 text-[var(--atlas-primary)]" />
+          <p className="mt-8 atlas-eyebrow">My contribution</p>
+          <h2 className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-3xl">Create the shared picture and help turn discovery into the right conversation.</h2>
+        </div>
+        <div className="p-7 sm:p-9 lg:p-11">
+          <p className="text-base leading-8 text-[var(--atlas-ink-soft)]">This is a long-term project. The map will never become useful by pretending every gap is filled or every possible fit is certain. It becomes useful through reviewed evidence, honest limits, contributions from the ecosystem, and a steady commitment to making Canadian capability easier to see.</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link href="/" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">Explore the map <ArrowRight className="size-4" /></Link>
+            <Link href="/submit" className="atlas-secondary-button h-11 px-5 text-sm no-underline hover:no-underline">Add what Canada is building</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-3xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-6 sm:p-8">
+        <div className="grid gap-6 lg:grid-cols-[auto_1fr_auto] lg:items-center">
+          <div className="flex size-11 items-center justify-center rounded-2xl bg-white text-[var(--atlas-primary)] shadow-[var(--atlas-shadow-soft)]">
+            <ShieldCheck className="size-5" />
+          </div>
+          <div>
+            <p className="text-sm font-extrabold text-[var(--atlas-ink)]">Independent, public-source, and built to improve.</p>
+            <p className="mt-2 max-w-4xl text-xs leading-6 text-[var(--atlas-muted)] sm:text-sm">True North Map is not an official government, military, procurement, or industry-association directory. Profiles and assessments use reviewed public evidence. They do not indicate eligibility, endorsement, classified demand, or a formal opportunity.</p>
+          </div>
+          <Link href="/methodology" className="inline-flex items-center gap-2 text-sm font-bold text-[var(--atlas-primary)] underline">See how review works <ArrowRight className="size-4" /></Link>
+        </div>
+      </section>
     </PublicPageShell>
   );
 }
