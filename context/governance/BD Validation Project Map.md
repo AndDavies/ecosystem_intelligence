@@ -289,7 +289,7 @@ Recommended next staged research order:
 7. Expeditionary Communications Resilience.
 8. Northern Logistics And Sustainment Readiness.
 
-Operational rule: run source-lead batches first, then convert approved leads into candidate batches. Do not let the research agent write directly to Supabase or seed CSVs.
+Operational rule: run source-lead batches first, then convert validated qualified leads automatically into enriched candidate batches. Human review begins in Admin Review. Do not let the research agent write directly to canonical Supabase tables or seed CSVs; private candidate intake must use the trusted staging function.
 
 ### 2026-04-29 Update: Remaining Roadmap Phases Implemented
 

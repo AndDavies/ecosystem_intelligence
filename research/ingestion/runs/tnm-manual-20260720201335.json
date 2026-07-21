@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260720201335",
+  "agentVersion": "tnm-research-pipeline/1.1.0",
+  "trigger": "manual",
+  "mode": "gap_targeted",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": [
+      "federal_government"
+    ]
+  },
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "demand-issuer-type:federal_government",
+    "reason": "No published or pending public demand source currently represents the federal government issuer lane.",
+    "score": 925
+  },
+  "status": "completed",
+  "startedAt": "2026-07-20T20:13:35.473Z",
+  "completedAt": "2026-07-20T20:15:10.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10
+  },
+  "sourceQueries": [
+    "site:canada.ca Northern Operational Support Hubs official",
+    "site:canada.ca Our North Strong and Free 2024 defence policy official",
+    "site:canada.ca Northern Operational Support Hubs implementation locations",
+    "site:canada.ca Defence Industrial Strategy Northern Operational Support Hubs"
+  ],
+  "counters": {
+    "sourcesChecked": 4,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "One high-confidence enriched federal-government demand candidate completed the selected coverage gap and reached the review-steward handoff within the bounded run.",
+  "outputs": {
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260720201335.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260720201335.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260720201335.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260720201335.json"
+  }
+}

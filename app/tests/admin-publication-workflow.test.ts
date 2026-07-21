@@ -24,6 +24,18 @@ describe("admin publication workflow", () => {
     expect(publishPage).toContain("no redeploy is required");
   });
 
+  it("lets reviewers enrich complete typed candidates before accepting them", async () => {
+    const reviewPage = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
+    const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
+
+    expect(reviewPage).toContain("editTypedResearchCandidate");
+    expect(reviewPage).toContain("Edit complete typed candidate");
+    expect(reviewPage).toContain("Validate and save edits");
+    expect(action).toContain("export async function editTypedResearchCandidate");
+    expect(action).toContain("typedEvidenceIsComplete");
+    expect(action).toContain("parseOrganizationBundleV2");
+  });
+
   it("keeps data-driven public indexes dynamic and revalidates detail routes after publication", async () => {
     const demandPage = await readFile(path.resolve("src/app/demand/page.tsx"), "utf8");
     const organizationsPage = await readFile(path.resolve("src/app/organizations/page.tsx"), "utf8");

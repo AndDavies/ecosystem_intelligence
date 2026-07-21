@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260721102123",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "accelerator",
+      "incubator"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:accelerator",
+    "reason": "2 published or pending accelerator records cover only 17% of the working saturation target of 12.",
+    "score": 908
+  },
+  "status": "completed",
+  "startedAt": "2026-07-21T10:21:23.738Z",
+  "completedAt": "2026-07-21T10:31:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Government of Canada Start-up Visa designated business-incubator list",
+    "Department of National Defence Canadian NATO DIANA accelerator network",
+    "Canadian accelerator and incubator official program directories",
+    "Canadian aerospace accelerator 2026 cohorts",
+    "Canadian hardware and semiconductor incubator programs",
+    "Canadian AI startup accelerator and incubator programs",
+    "University-affiliated deep-technology venture programs",
+    "Canadian cleantech accelerator programs and government designation",
+    "Official accelerator cohort directories and participant lists",
+    "Canadian innovation-hub government awards and funding announcements",
+    "Canadian accelerator partner and industry-association pages",
+    "Broad web recovery for canonical organization and contact pages"
+  ],
+  "counters": {
+    "sourcesChecked": 31,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 5,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 25,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 7,
+    "candidatesAmber": 3
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Innovate Calgary is amber pending category and current hub-contact review.",
+      "Genesis is amber because its sourced role is broad technology incubation rather than defence specialization.",
+      "Volta is amber because its sourced role is AI startup incubation rather than defence specialization."
+    ]
+  },
+  "errors": [],
+  "stopReason": "The discovery batch reached its target of ten validated candidates after forty prospects across eight source lanes; twenty-five credible prospects remain queued and five exact published identities were blocked.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260721102123.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260721102123.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260721102123.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260721102123-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260721102123.json"
+  }
+}

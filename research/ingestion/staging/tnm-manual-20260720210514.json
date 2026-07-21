@@ -1,0 +1,724 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-20T21:11:16.939Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260720210514",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "company:dominion-dynamics",
+      "reason": "User-directed deep research cycle for Dominion Dynamics and its Canadian Arctic autonomy, sensing, command-and-control, aerospace, simulation, and procurement-intelligence portfolio.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-20T21:05:14.078Z",
+    "completed_at": "2026-07-20T21:10:54.000Z",
+    "agent_version": "tnm-research-pipeline/1.1.0",
+    "source_queries": [
+      "Dominion Dynamics official company autonomy sensing command control Canada",
+      "site:ddc2.com Dominion Dynamics AuraNet Arctic",
+      "site:defendthedominion.com Dominion Dynamics defence",
+      "site:canada.ca Dominion Dynamics defence",
+      "Dominion Dynamics official newsroom Series A AuraNet Scout",
+      "Dominion Dynamics Autonomous Collaborative Platform official",
+      "Dominion Dynamics Denvr sovereign AI simulation official",
+      "Dominion Dynamics AURION procurement intelligence official",
+      "Dominion Dynamics Operation NANOOK NUNALIVUT Canadian Rangers AuraNet",
+      "Dominion Dynamics Ottawa Kanata facility official"
+    ],
+    "counters": {
+      "sourcesChecked": 8,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "Stopped after one user-directed Dominion Dynamics lead was qualified, converted automatically into a deeply enriched organization candidate with four capability families, two programs, two public relationships, eight sources, conservative derived mission mappings, and zero typed validation errors or warnings."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-dominion-dynamics",
+      "research_run_ref": "tnm-manual-20260720210514",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-dominion-dynamics"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-dominion-dynamics",
+        "sourceLeadIds": [
+          "lead-dominion-dynamics"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Dominion Dynamics is worthy of inclusion because its canonical site, official newsroom, company-issued releases, live AURION service, and a current Government of Canada founder profile establish a substantial Ottawa-based Canadian defence-technology company with four distinct public capability families: AuraNet data fusion and command and control, the Scout Autonomous Collaborative Platform, sovereign AI simulation with Denvr, and AURION procurement intelligence. The evidence also supports a Kanata manufacturing facility, Toronto development office, current financing-backed scale-up, public contact path, and operator-facing Arctic field activity. Reviewers should verify whether AURION belongs inside the same defence-prime profile, whether Scout should remain program-level until specifications mature, and how prominently to present Operation NANOOK-NUNALIVUT activity because the deployment evidence located here is company-reported rather than an independent Government of Canada confirmation. No exact facility address or independently verified legal name was found in the canonical sources used, so those details remain omitted.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T21:06:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live Supabase checks of published organizations and all private organization candidates found no name, slug, ddc2.com domain, defendthedominion.com domain, or alias match for Dominion Dynamics."
+        },
+        "sources": [
+          {
+            "id": "source-dominion-official-platforms",
+            "title": "Building Next-Generation Defence Systems",
+            "url": "https://www.ddc2.com/",
+            "publisher": "Dominion Dynamics",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T21:06:00.000Z",
+            "locator": "Mission, Platforms, AI Native, Interoperable, Modular, AuraNet, Contact, and Join our team sections",
+            "summary": "Dominion's canonical site describes integrated autonomy, sensing, communications, command and control, edge data fusion, modular integration, AuraNet, and a public company contact path for extreme operations."
+          },
+          {
+            "id": "source-dominion-auranet-nanook",
+            "title": "AuraNet in the High Arctic during Operation NANOOK-NUNALIVUT",
+            "url": "https://www.ddc2.com/news/auranet-high-arctic-nanook",
+            "publisher": "Dominion Dynamics",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-04-16T00:00:00.000Z",
+            "accessedAt": "2026-07-20T21:06:00.000Z",
+            "locator": "Deployment overview, operator functions, field lessons, and evidence caveats",
+            "summary": "Dominion's detailed field account says AuraNet supported Canadian Rangers during an eight-week, 5,200-kilometre self-funded Operation NANOOK-NUNALIVUT engagement with tracking, real-time communications, a common operating picture, and rapid operator-driven software updates."
+          },
+          {
+            "id": "source-dominion-series-a",
+            "title": "Dominion Dynamics raises $139M CAD Series A",
+            "url": "https://www.newswire.ca/news-releases/dominion-dynamics-raises-139m-cad-series-a-to-scale-arctic-surveillance-network-and-drone-systems-859179965.html",
+            "publisher": "Dominion Dynamics via CNW",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-06-30T00:00:00.000Z",
+            "accessedAt": "2026-07-20T21:06:00.000Z",
+            "locator": "Financing, AuraNet deployment, Scout development, facilities, workforce, and company profile sections",
+            "summary": "The company-issued release documents a $139 million CAD Series A, AuraNet field activity, Scout Autonomous Collaborative Platform development, a 25,000-square-foot Kanata manufacturing facility, a Toronto development office, and current workforce expansion."
+          },
+          {
+            "id": "source-dominion-scout-acp",
+            "title": "Dominion invests in a sovereign Autonomous Collaborative Platform",
+            "url": "https://www.newswire.ca/news-releases/dominion-dynamics-makes-initial-50-million-investment-to-build-a-sovereign-autonomous-wingman-892420247.html",
+            "publisher": "Dominion Dynamics via CNW",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-03-05T00:00:00.000Z",
+            "accessedAt": "2026-07-20T21:06:00.000Z",
+            "locator": "Initial investment, aircraft role, mission applications, development scope, advisory council, and media contact sections",
+            "summary": "Dominion announced an initial $50 million investment for an uncrewed Autonomous Collaborative Platform designed to work with crewed fighters and support persistent surveillance, electronic warfare, strike support, and operations in remote or contested environments."
+          },
+          {
+            "id": "source-dominion-denvr-simulation",
+            "title": "Dominion Dynamics and Denvr sovereign AI simulation partnership",
+            "url": "https://www.newswire.ca/news-releases/dominion-dynamics-and-denvr-partner-to-build-canada-s-first-sovereign-ai-simulation-environment-for-autonomous-collaborative-platforms-882365877.html",
+            "publisher": "Dominion Dynamics via CNW",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-03-25T00:00:00.000Z",
+            "accessedAt": "2026-07-20T21:06:00.000Z",
+            "locator": "Corrected partnership announcement, simulation environment, sovereign infrastructure, coalition, and program-alignment sections",
+            "summary": "The corrected company-issued release describes a Dominion-Denvr partnership to develop a sovereign Canadian AI simulation environment for Autonomous Collaborative Platforms on the Canada AI Platform."
+          },
+          {
+            "id": "source-dominion-aurion-product",
+            "title": "Aurion — Government intelligence, unified",
+            "url": "https://www.ddc2.com/aurion",
+            "publisher": "Dominion Dynamics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T21:06:00.000Z",
+            "locator": "Platform overview, data sources, companies, financials, procurement chains, opportunities, and organizations sections",
+            "summary": "The official product page describes AURION as a government-intelligence layer that normalizes and links federal procurement, lobbying, funding, supplier, contract, department, and opportunity data."
+          },
+          {
+            "id": "source-dominion-aurion-live",
+            "title": "AURION live dashboard",
+            "url": "https://aurion.ddc2.com/",
+            "publisher": "Dominion Dynamics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T21:06:00.000Z",
+            "locator": "Dashboard, live procurement feed, organizations, entities, procurements, opportunities, and watchlist navigation",
+            "summary": "The live AURION service exposes current Canadian tender, award, standing-offer, supplier, procurement-chain, organization, and anomaly views, confirming that the product is operational rather than only announced."
+          },
+          {
+            "id": "source-dominion-founder-government-profile",
+            "title": "Eliot Pence — Global Affairs Canada profile",
+            "url": "https://international.canada.ca/en/global-affairs/campaigns/advisory-committee/eliot-pence",
+            "publisher": "Global Affairs Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-06-23T00:00:00.000Z",
+            "accessedAt": "2026-07-20T21:06:00.000Z",
+            "locator": "Biography and Dominion Dynamics company description",
+            "summary": "The current Government of Canada profile identifies Eliot Pence as founder of Dominion Dynamics and describes the company as a Canadian defence-technology business building sovereign capability in aerospace, autonomy, and command and control."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-dominion-description",
+            "sourceId": "source-dominion-official-platforms",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Dominion's canonical site describes an integrated Canadian defence portfolio combining autonomy, sensing, communications, command and control, data fusion, edge processing, and modular integration for remote and infrastructure-constrained operations.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-auranet-summary",
+            "sourceId": "source-dominion-official-platforms",
+            "fieldPath": "capabilities.auranet-integrated-command-and-data-fusion.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official platform page says AuraNet combines imagery, signals, telemetry, and structured reporting in an integrated command-and-control and data-fusion layer that can connect with existing architectures.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-scout-summary",
+            "sourceId": "source-dominion-scout-acp",
+            "fieldPath": "capabilities.scout-autonomous-collaborative-platform.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Dominion's announcement describes an uncrewed collaborative aircraft intended to extend crewed-fighter reach and support surveillance, electronic warfare, strike support, and high-risk or remote operations within a broader command architecture.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-simulation-summary",
+            "sourceId": "source-dominion-denvr-simulation",
+            "fieldPath": "capabilities.sovereign-ai-simulation-and-validation.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The corrected Dominion-Denvr release describes a Canadian-controlled AI simulation environment for developing, training, and validating Autonomous Collaborative Platforms on Denvr's sovereign Canada AI Platform.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-aurion-summary",
+            "sourceId": "source-dominion-aurion-product",
+            "fieldPath": "capabilities.aurion-procurement-intelligence.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Dominion's official AURION page documents a normalized intelligence layer linking procurement records, contract lifecycles, companies, departments, funding, lobbying, supplier status, and active opportunities.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-scout-program",
+            "sourceId": "source-dominion-scout-acp",
+            "fieldPath": "programs.scout-autonomous-collaborative-platform-development.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The March 2026 company release commits an initial $50 million to engineering, prototyping, simulation, and advisory work for a sovereign Canadian Autonomous Collaborative Platform later identified publicly as Scout.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-nanook-program",
+            "sourceId": "source-dominion-auranet-nanook",
+            "fieldPath": "programs.auranet-high-arctic-field-deployment.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Dominion's field account says its self-funded eight-week engagement equipped three long-range patrols operating with Canadian Rangers and used AuraNet for tracking, communications, a common picture, and operator-driven iteration.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-dominion-denvr-relationship",
+            "sourceId": "source-dominion-denvr-simulation",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Dominion and Denvr publicly announced a partnership to build a sovereign AI simulation environment for Autonomous Collaborative Platforms using the Canadian-controlled Canada AI Platform.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-rangers-relationship",
+            "sourceId": "source-dominion-auranet-nanook",
+            "fieldPath": "relationships.1.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Dominion reports that Canadian Rangers used AuraNet and lightweight sensing and communications equipment during a self-funded Operation NANOOK-NUNALIVUT field engagement; this is company-reported activity rather than independent government confirmation.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-dominion-location",
+            "sourceId": "source-dominion-series-a",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The current financing release identifies a 25,000-square-foot manufacturing facility in Kanata, Ontario, and a Toronto development office; the earlier launch release identifies company headquarters in Ottawa.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-contact",
+            "sourceId": "source-dominion-official-platforms",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "Dominion's canonical site publishes info@ddc2.com and links its newsroom, careers board, LinkedIn, YouTube, and X profiles.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-history",
+            "sourceId": "source-dominion-founder-government-profile",
+            "fieldPath": "organization.profileData.history",
+            "claimClass": "source_backed",
+            "excerpt": "The Government of Canada identifies Eliot Pence as Dominion's founder and describes the company as a Canadian defence-technology firm focused on sovereign aerospace, autonomy, and command-and-control capability.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-current-activity",
+            "sourceId": "source-dominion-series-a",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Dominion's June 2026 release says the company is using its Series A to accelerate AuraNet and Scout, grow its workforce, operate from a new Kanata manufacturing facility, and expand through a Toronto development office.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-financing",
+            "sourceId": "source-dominion-series-a",
+            "fieldPath": "organization.profileData.financing",
+            "claimClass": "source_backed",
+            "excerpt": "The company announced a $139 million CAD Series A led by Georgian and reported total financing of $169 million CAD since its 2025 launch.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-arctic-match",
+            "sourceId": "source-dominion-auranet-nanook",
+            "fieldPath": "capabilities.auranet-integrated-command-and-data-fusion.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping: a field-tested common operating picture that combines patrol tracking, sensing, communications, and ground conditions is strongly relevant to Arctic Domain Awareness, without implying a government procurement decision or endorsement.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-edge-match",
+            "sourceId": "source-dominion-official-platforms",
+            "fieldPath": "capabilities.auranet-integrated-command-and-data-fusion.missionMatches.1.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping: the official description of onboard sensing, edge models, local processing, and constrained-environment data fusion supports an Edge Data Processing alignment, subject to deployment-specific architecture review.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-dominion-autonomy-match",
+            "sourceId": "source-dominion-scout-acp",
+            "fieldPath": "capabilities.scout-autonomous-collaborative-platform.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping: an uncrewed collaborative aircraft intended for persistent surveillance in remote and contested areas plausibly supports Autonomous Patrol and Monitoring, but public prototype maturity and mission configuration require review.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-dominion-scout-arctic-match",
+            "sourceId": "source-dominion-scout-acp",
+            "fieldPath": "capabilities.scout-autonomous-collaborative-platform.missionMatches.1.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping: Dominion explicitly positions the ACP for remote Arctic operations and expanded sensing reach, making Arctic Domain Awareness a plausible future alignment rather than a verified deployed outcome.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "dominion-dynamics",
+          "name": "Dominion Dynamics",
+          "legalName": null,
+          "aliases": [
+            "Dominion",
+            "Defend the Dominion"
+          ],
+          "description": "Ottawa-based Canadian defence-technology company developing integrated autonomy, sensing, communications, command-and-control, edge data-fusion, autonomous aerospace, sovereign AI simulation, and defence procurement-intelligence systems for Arctic and other extreme operations.",
+          "websiteUrl": "https://www.ddc2.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Build sovereign Canadian defence technology for extreme and infrastructure-constrained operations, beginning with an Arctic autonomy stack and the digital backbone for next-generation command and control.",
+            "operatingModel": "The company publicly emphasizes modular, interoperable, AI-native systems, operator co-development, rapid field iteration, Canadian-controlled infrastructure, and complementary software, sensing, communications, aerospace, and data products.",
+            "history": "Founded by Eliot Pence and publicly launched in 2025 as an Ottawa-headquartered Canadian defence-technology company. The Government of Canada describes Dominion as working to establish sovereign aerospace, autonomy, and command-and-control capability.",
+            "portfolioScope": "AuraNet common-operating-picture and data-fusion software; Arctic sensing and communications integration; Scout autonomous collaborative aircraft; sovereign AI simulation and validation with Denvr; and AURION public procurement, supplier, contract, funding, and government-relationship intelligence.",
+            "canadianFootprint": "Ottawa headquarters and a 25,000-square-foot manufacturing facility in Kanata, Ontario, plus a Toronto development office disclosed in the June 2026 financing announcement.",
+            "publicContact": "Canonical company contact: info@ddc2.com. The official site also links the company newsroom, careers board, LinkedIn, YouTube, and X accounts.",
+            "currentActivity": "The June 2026 Series A announcement says Dominion is accelerating AuraNet and Scout, growing its team to more than 100, operating from its new Kanata manufacturing facility, and expanding development activity in Toronto.",
+            "financing": "Dominion announced a $139 million CAD Series A led by Georgian in June 2026 and reported total capital raised of $169 million CAD since launch.",
+            "evidencePosture": "Official company product and newsroom evidence is strong and current, with Government of Canada corroboration for company identity and founder. Operation NANOOK-NUNALIVUT activity is company-reported and should not be presented as government endorsement, procurement, or independently verified operational effectiveness."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "auranet-integrated-command-and-data-fusion",
+            "name": "AuraNet integrated command and data fusion",
+            "summary": "AI-native command-and-control and common-operating-picture platform that ingests and fuses imagery, signals, telemetry, and structured reporting, supports onboard or edge processing and autonomous tasking, and integrates with existing allied and multi-domain architectures.",
+            "capabilityType": "Integrated command-and-control and edge data-fusion platform",
+            "features": [
+              "Multi-source imagery, signals, telemetry, and reporting fusion",
+              "Edge models for onboard sensing, processing, and autonomous tasking",
+              "Interoperability with existing command-and-control architectures",
+              "Common operating picture, tracking, communications, and field-driven updates"
+            ],
+            "applications": [
+              "Arctic patrol and command-post awareness",
+              "Remote mission tracking and route planning",
+              "Signals-degraded communications and coordination",
+              "Multi-domain sensor and platform integration"
+            ],
+            "technicalTags": [
+              "command_and_control",
+              "data_fusion",
+              "edge_ai",
+              "common_operating_picture",
+              "sensor_integration"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "communications-and-cyber",
+              "autonomous-systems"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "AuraNet's field-reported common operating picture, patrol tracking, integrated sensing, communications, and ground-condition awareness are directly relevant to Arctic Domain Awareness, without implying procurement or endorsement.",
+                "matchClass": "derived",
+                "confidence": "high"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "The public architecture describes onboard sensing, edge models, local processing, and fusion for communications-constrained operations, making Edge Data Processing a credible derived alignment subject to deployment-specific review.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "scout-autonomous-collaborative-platform",
+            "name": "Scout Autonomous Collaborative Platform",
+            "summary": "Canadian uncrewed collaborative aircraft program intended to operate with crewed fighters, extend sensing and operational reach into dangerous or remote areas, and support persistent surveillance, electronic warfare, strike support, and distributed command architectures.",
+            "capabilityType": "Autonomous collaborative uncrewed aircraft",
+            "features": [
+              "Uncrewed aircraft for human-machine teaming",
+              "Integration into broader command-and-control architectures",
+              "Persistent surveillance and expanded sensing reach",
+              "Engineering, prototyping, simulation, and modular mission development"
+            ],
+            "applications": [
+              "Collaborative air operations",
+              "Remote and contested-area surveillance",
+              "Electronic warfare support",
+              "Risk-tolerant sensing and strike support"
+            ],
+            "technicalTags": [
+              "autonomous_aircraft",
+              "human_machine_teaming",
+              "collaborative_combat_aircraft",
+              "persistent_surveillance"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "aerospace-and-mobility",
+              "sensing-and-isr",
+              "communications-and-cyber",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "An uncrewed collaborative aircraft intended for persistent surveillance in remote and contested areas plausibly supports Autonomous Patrol and Monitoring, while public maturity and mission configuration remain under review.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Dominion positions Scout for remote Arctic operations and expanded sensing reach, creating a plausible future Arctic Domain Awareness role rather than a verified deployed outcome.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          },
+          {
+            "slug": "sovereign-ai-simulation-and-validation",
+            "name": "Sovereign AI simulation and validation",
+            "summary": "Canadian-controlled simulation environment under development with Denvr for training, testing, and validating autonomous collaborative aircraft and AI-enabled defence systems on sovereign computing infrastructure designed for sensitive defence workloads.",
+            "capabilityType": "Sovereign defence AI simulation environment",
+            "features": [
+              "Canadian-jurisdiction AI infrastructure",
+              "Autonomous aircraft training and validation",
+              "Simulation for AI-enabled defence systems",
+              "Secure platform partnership with Denvr"
+            ],
+            "applications": [
+              "Autonomous aircraft development",
+              "AI model training and validation",
+              "Human-machine teaming experimentation",
+              "Sovereign defence technology assurance"
+            ],
+            "technicalTags": [
+              "simulation",
+              "sovereign_ai",
+              "autonomy_validation",
+              "secure_compute"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "mission-software-and-data",
+              "communications-and-cyber",
+              "autonomous-systems"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "aurion-procurement-intelligence",
+            "name": "AURION procurement intelligence",
+            "summary": "Operational government-intelligence platform that aggregates, normalizes, and links Canadian procurement, tender, award, contract, supplier, standing-offer, lobbying, funding, organization, and opportunity data for defence builders and policymakers.",
+            "capabilityType": "Open government and defence procurement intelligence platform",
+            "features": [
+              "Tender-to-award procurement-chain tracking",
+              "Supplier, department, funding, and financial relationship profiles",
+              "Searchable active opportunities and procurement feeds",
+              "Normalized links across multiple public government datasets"
+            ],
+            "applications": [
+              "Defence business development",
+              "Supplier and partner discovery",
+              "Government market intelligence",
+              "Procurement pattern and opportunity analysis"
+            ],
+            "technicalTags": [
+              "procurement_intelligence",
+              "open_data",
+              "entity_resolution",
+              "business_intelligence"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [
+          {
+            "slug": "scout-autonomous-collaborative-platform-development",
+            "name": "Scout Autonomous Collaborative Platform development",
+            "programType": "Sovereign autonomous aircraft development",
+            "websiteUrl": "https://www.newswire.ca/news-releases/dominion-dynamics-makes-initial-50-million-investment-to-build-a-sovereign-autonomous-wingman-892420247.html",
+            "summary": "Dominion's financing-backed engineering, prototyping, simulation, and advisory program for a sovereign Canadian uncrewed aircraft designed to collaborate with crewed fighters and extend sensing and operational reach.",
+            "cohortLabel": "Initial $50 million investment announced March 2026"
+          },
+          {
+            "slug": "auranet-high-arctic-field-deployment",
+            "name": "AuraNet High Arctic field deployment",
+            "programType": "Operator field trial and co-development engagement",
+            "websiteUrl": "https://www.ddc2.com/news/auranet-high-arctic-nanook",
+            "summary": "Company-reported, self-funded eight-week Operation NANOOK-NUNALIVUT field engagement in which AuraNet supported Canadian Rangers with patrol tracking, communications, common-operating-picture functions, and rapid operator-driven iteration in extreme conditions.",
+            "cohortLabel": "Operation NANOOK-NUNALIVUT 2026"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Denvr",
+            "relationshipType": "sovereign AI simulation development partner",
+            "publicSummary": "Dominion Dynamics and Denvr publicly announced a partnership to build a Canadian-controlled AI simulation environment for Autonomous Collaborative Platforms on Denvr's Canada AI Platform."
+          },
+          {
+            "relatedOrganizationName": "Canadian Rangers",
+            "relationshipType": "company-reported field deployment participant",
+            "publicSummary": "Dominion reports that Canadian Rangers used AuraNet and lightweight sensing and communications equipment during a self-funded Operation NANOOK-NUNALIVUT field engagement; the relationship is recorded as company-reported activity, not government endorsement or procurement."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-dominion-description",
+          "sourceId": "source-dominion-official-platforms",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Dominion's canonical site describes an integrated Canadian defence portfolio combining autonomy, sensing, communications, command and control, data fusion, edge processing, and modular integration for remote and infrastructure-constrained operations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-auranet-summary",
+          "sourceId": "source-dominion-official-platforms",
+          "fieldPath": "capabilities.auranet-integrated-command-and-data-fusion.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official platform page says AuraNet combines imagery, signals, telemetry, and structured reporting in an integrated command-and-control and data-fusion layer that can connect with existing architectures.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-scout-summary",
+          "sourceId": "source-dominion-scout-acp",
+          "fieldPath": "capabilities.scout-autonomous-collaborative-platform.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Dominion's announcement describes an uncrewed collaborative aircraft intended to extend crewed-fighter reach and support surveillance, electronic warfare, strike support, and high-risk or remote operations within a broader command architecture.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-simulation-summary",
+          "sourceId": "source-dominion-denvr-simulation",
+          "fieldPath": "capabilities.sovereign-ai-simulation-and-validation.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The corrected Dominion-Denvr release describes a Canadian-controlled AI simulation environment for developing, training, and validating Autonomous Collaborative Platforms on Denvr's sovereign Canada AI Platform.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-aurion-summary",
+          "sourceId": "source-dominion-aurion-product",
+          "fieldPath": "capabilities.aurion-procurement-intelligence.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Dominion's official AURION page documents a normalized intelligence layer linking procurement records, contract lifecycles, companies, departments, funding, lobbying, supplier status, and active opportunities.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-scout-program",
+          "sourceId": "source-dominion-scout-acp",
+          "fieldPath": "programs.scout-autonomous-collaborative-platform-development.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The March 2026 company release commits an initial $50 million to engineering, prototyping, simulation, and advisory work for a sovereign Canadian Autonomous Collaborative Platform later identified publicly as Scout.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-nanook-program",
+          "sourceId": "source-dominion-auranet-nanook",
+          "fieldPath": "programs.auranet-high-arctic-field-deployment.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Dominion's field account says its self-funded eight-week engagement equipped three long-range patrols operating with Canadian Rangers and used AuraNet for tracking, communications, a common picture, and operator-driven iteration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dominion-denvr-relationship",
+          "sourceId": "source-dominion-denvr-simulation",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Dominion and Denvr publicly announced a partnership to build a sovereign AI simulation environment for Autonomous Collaborative Platforms using the Canadian-controlled Canada AI Platform.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-rangers-relationship",
+          "sourceId": "source-dominion-auranet-nanook",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Dominion reports that Canadian Rangers used AuraNet and lightweight sensing and communications equipment during a self-funded Operation NANOOK-NUNALIVUT field engagement; this is company-reported activity rather than independent government confirmation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dominion-location",
+          "sourceId": "source-dominion-series-a",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The current financing release identifies a 25,000-square-foot manufacturing facility in Kanata, Ontario, and a Toronto development office; the earlier launch release identifies company headquarters in Ottawa.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-contact",
+          "sourceId": "source-dominion-official-platforms",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "Dominion's canonical site publishes info@ddc2.com and links its newsroom, careers board, LinkedIn, YouTube, and X profiles.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-history",
+          "sourceId": "source-dominion-founder-government-profile",
+          "fieldPath": "organization.profileData.history",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada identifies Eliot Pence as Dominion's founder and describes the company as a Canadian defence-technology firm focused on sovereign aerospace, autonomy, and command-and-control capability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-current-activity",
+          "sourceId": "source-dominion-series-a",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Dominion's June 2026 release says the company is using its Series A to accelerate AuraNet and Scout, grow its workforce, operate from a new Kanata manufacturing facility, and expand through a Toronto development office.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-financing",
+          "sourceId": "source-dominion-series-a",
+          "fieldPath": "organization.profileData.financing",
+          "claimClass": "source_backed",
+          "excerpt": "The company announced a $139 million CAD Series A led by Georgian and reported total financing of $169 million CAD since its 2025 launch.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-arctic-match",
+          "sourceId": "source-dominion-auranet-nanook",
+          "fieldPath": "capabilities.auranet-integrated-command-and-data-fusion.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping: a field-tested common operating picture that combines patrol tracking, sensing, communications, and ground conditions is strongly relevant to Arctic Domain Awareness, without implying a government procurement decision or endorsement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-edge-match",
+          "sourceId": "source-dominion-official-platforms",
+          "fieldPath": "capabilities.auranet-integrated-command-and-data-fusion.missionMatches.1.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping: the official description of onboard sensing, edge models, local processing, and constrained-environment data fusion supports an Edge Data Processing alignment, subject to deployment-specific architecture review.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dominion-autonomy-match",
+          "sourceId": "source-dominion-scout-acp",
+          "fieldPath": "capabilities.scout-autonomous-collaborative-platform.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping: an uncrewed collaborative aircraft intended for persistent surveillance in remote and contested areas plausibly supports Autonomous Patrol and Monitoring, but public prototype maturity and mission configuration require review.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dominion-scout-arctic-match",
+          "sourceId": "source-dominion-scout-acp",
+          "fieldPath": "capabilities.scout-autonomous-collaborative-platform.missionMatches.1.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping: Dominion explicitly positions the ACP for remote Arctic operations and expanded sensing reach, making Arctic Domain Awareness a plausible future alignment rather than a verified deployed outcome.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T21:06:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live Supabase checks of published organizations and all private organization candidates found no name, slug, ddc2.com domain, defendthedominion.com domain, or alias match for Dominion Dynamics."
+      },
+      "reviewer_rationale": "Dominion Dynamics is worthy of inclusion because its canonical site, official newsroom, company-issued releases, live AURION service, and a current Government of Canada founder profile establish a substantial Ottawa-based Canadian defence-technology company with four distinct public capability families: AuraNet data fusion and command and control, the Scout Autonomous Collaborative Platform, sovereign AI simulation with Denvr, and AURION procurement intelligence. The evidence also supports a Kanata manufacturing facility, Toronto development office, current financing-backed scale-up, public contact path, and operator-facing Arctic field activity. Reviewers should verify whether AURION belongs inside the same defence-prime profile, whether Scout should remain program-level until specifications mature, and how prominently to present Operation NANOOK-NUNALIVUT activity because the deployment evidence located here is company-reported rather than an independent Government of Canada confirmation. No exact facility address or independently verified legal name was found in the canonical sources used, so those details remain omitted.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T21:11:16.940Z"
+    }
+  ]
+}

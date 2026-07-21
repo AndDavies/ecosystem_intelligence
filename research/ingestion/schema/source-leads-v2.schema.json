@@ -40,6 +40,8 @@
     "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "httpsUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
     "confidence": { "enum": ["high", "moderate", "needs_review"] },
+    "discoveryLane": { "enum": ["official_directory", "government_awards", "government_program", "procurement", "accelerator_cohort", "investor_portfolio", "industry_association", "conference_directory", "company_newsroom", "broad_web"] },
+    "recoveryAttempt": { "type": "object", "required": ["lane", "url", "outcome"], "properties": { "lane": { "$ref": "#/$defs/discoveryLane" }, "url": { "$ref": "#/$defs/httpsUrl" }, "outcome": { "type": "string", "minLength": 20 } } },
     "organizationKind": { "enum": ["company", "accelerator", "incubator", "research_test_centre", "investor_funder", "ecosystem_organization", "government_innovation_office"] },
     "organizationCategory": { "enum": ["commercial_company", "defence_supplier", "dual_use", "venture_capital", "corporate_venture", "public_funder", "dual_use_accelerator", "ocean_technology", "university_affiliated", "test_range", "research_lab", "cluster_operator", "industry_association", "government_program_operator"] },
     "issuerType": { "enum": ["alliance", "federal_government", "department", "armed_forces", "military_service", "procurement_authority", "research_innovation_agency", "public_program"] },
@@ -87,6 +89,12 @@
         "evidenceLocator": { "type": "string", "minLength": 2 },
         "duplicateFingerprint": { "$ref": "#/$defs/fingerprint" },
         "followUpQuestions": { "type": "array", "items": { "type": "string", "minLength": 5 } },
+        "discoveryLane": { "$ref": "#/$defs/discoveryLane" },
+        "inclusionScore": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "completenessScore": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "reviewWarnings": { "type": "array", "items": { "type": "string", "minLength": 10 } },
+        "deferralClass": { "enum": ["hard_stop", "recovery_exhausted"] },
+        "recoveryAttempts": { "type": "array", "items": { "$ref": "#/$defs/recoveryAttempt" } },
         "disposition": { "enum": ["qualified", "deferred", "rejected"] },
         "doNotIngestReason": { "type": ["string", "null"], "minLength": 20 }
       }
@@ -100,7 +108,7 @@
           "required": ["leadType", "id", "source", "discoveryPath", "possibleMissionAreaSlugs", "possibleTechnicalDomainSlugs", "sourceConfidence", "alignmentConfidence", "evidenceLocator", "duplicateFingerprint", "followUpQuestions", "disposition", "doNotIngestReason", "organizationName", "proposedKind", "proposedCategories", "websiteUrl", "aliases", "location", "candidateCapabilityName", "roleSpecificEvidence"],
           "properties": {
             "leadType": { "const": "organization_lead" },
-            "id": { "$ref": "#/$defs/slug" }, "source": { "$ref": "#/$defs/source" }, "discoveryPath": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/httpsUrl" } }, "possibleMissionAreaSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" } }, "possibleTechnicalDomainSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" } }, "sourceConfidence": { "$ref": "#/$defs/confidence" }, "alignmentConfidence": { "$ref": "#/$defs/confidence" }, "evidenceLocator": { "type": "string" }, "duplicateFingerprint": { "$ref": "#/$defs/fingerprint" }, "followUpQuestions": { "type": "array", "items": { "type": "string" } }, "disposition": { "enum": ["qualified", "deferred", "rejected"] }, "doNotIngestReason": { "type": ["string", "null"] },
+            "id": { "$ref": "#/$defs/slug" }, "source": { "$ref": "#/$defs/source" }, "discoveryPath": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/httpsUrl" } }, "possibleMissionAreaSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" } }, "possibleTechnicalDomainSlugs": { "type": "array", "items": { "$ref": "#/$defs/slug" } }, "sourceConfidence": { "$ref": "#/$defs/confidence" }, "alignmentConfidence": { "$ref": "#/$defs/confidence" }, "evidenceLocator": { "type": "string" }, "duplicateFingerprint": { "$ref": "#/$defs/fingerprint" }, "followUpQuestions": { "type": "array", "items": { "type": "string" } }, "discoveryLane": { "$ref": "#/$defs/discoveryLane" }, "inclusionScore": { "type": "integer" }, "completenessScore": { "type": "integer" }, "reviewWarnings": { "type": "array", "items": { "type": "string" } }, "deferralClass": { "enum": ["hard_stop", "recovery_exhausted"] }, "recoveryAttempts": { "type": "array", "items": { "$ref": "#/$defs/recoveryAttempt" } }, "disposition": { "enum": ["qualified", "deferred", "rejected"] }, "doNotIngestReason": { "type": ["string", "null"] },
             "organizationName": { "type": "string", "minLength": 2 }, "proposedKind": { "$ref": "#/$defs/organizationKind" }, "proposedCategories": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/organizationCategory" } }, "websiteUrl": { "$ref": "#/$defs/httpsUrl" }, "aliases": { "type": "array", "items": { "type": "string" } }, "location": { "type": "object", "required": ["city", "provinceTerritory", "countryCode"], "properties": { "city": { "type": ["string", "null"] }, "provinceTerritory": { "type": ["string", "null"] }, "countryCode": { "type": "string", "minLength": 2, "maxLength": 2 } } }, "candidateCapabilityName": { "type": ["string", "null"] }, "roleSpecificEvidence": { "type": "string", "minLength": 40 }
           }
         }

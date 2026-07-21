@@ -1,0 +1,2347 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-21T08:19:18.641Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260721080829",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-kind:company",
+      "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-21T08:08:29.557Z",
+    "completed_at": "2026-07-21T08:18:35.000Z",
+    "agent_version": "tnm-research-pipeline/1.2.0",
+    "source_queries": [
+      "CADSI and Canadian defence industry directories for unrepresented companies",
+      "Government of Canada defence innovation awards and funded-company lists",
+      "CanadaBuys defence procurement and contract histories",
+      "CANSEC and I/ITSEC exhibitor directories for Canadian companies",
+      "Canadian aerospace and defence association member directories",
+      "Canadian accelerator cohort and investor portfolio companies",
+      "PAL Aerospace official profile C4ISR newsroom and contact pages",
+      "Top Aces official company airborne-training fleet newsroom and contact pages",
+      "IMP Aerospace and Defence official profile capabilities operating units and facilities",
+      "Magellan Aerospace official corporate space rocket product and contact materials",
+      "Gastops official company condition-monitoring product and defence-news pages",
+      "Allen-Vanguard official ECM counter-UAS EQUINOX and ANCILE pages",
+      "Roshel official corporate defence-product and National Defence evidence",
+      "Simthetiq official simulation products RCN RCAF NATO news and I/ITSEC profile",
+      "QRA Corp official QVscribe FAQ requirements guide and defence customer case study",
+      "Larus Technologies official profile Total Insight Total Foresight and ISC evidence"
+    ],
+    "counters": {
+      "sourcesChecked": 32,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 6,
+      "prospectsDiscovered": 40,
+      "uniqueProspects": 40,
+      "prospectsQueued": 24,
+      "recoveryAttempts": 30,
+      "sourceLanesSearched": 8,
+      "candidatesGreen": 7,
+      "candidatesAmber": 3
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Magellan Aerospace is amber pending portfolio-splitting review.",
+        "Simthetiq is amber pending headquarters confirmation.",
+        "QRA Corp is amber with vendor-authored defence-case-study attribution."
+      ]
+    },
+    "stop_reason": "The discovery batch reached its target of ten validated candidates after forty prospects across eight source lanes; twenty-four plausible prospects remain queued and six exact known identities were blocked."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-pal-aerospace-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-pal-aerospace-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-pal-aerospace-20260721",
+        "sourceLeadIds": [
+          "lead-pal-aerospace-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "PAL Aerospace is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Airborne C4ISR and special-mission solutions. The dossier uses 4 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 94,
+        "completenessScore": 91,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "pal-about",
+            "title": "PAL Aerospace company profile",
+            "url": "https://palaerospace.com/about/",
+            "publisher": "PAL Aerospace",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "PAL describes more than fifty years of aerospace mission-solution experience and identifies its St. John's headquarters and Canadian group structure."
+          },
+          {
+            "id": "pal-c4isr",
+            "title": "PAL C4ISR software and integration",
+            "url": "https://palaerospace.com/c4isr/",
+            "publisher": "PAL Aerospace",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "PAL describes AIMS mission software, mission-system integration, C4ISR components, multi-sensor data integration, and common-operating-picture products."
+          },
+          {
+            "id": "pal-contact",
+            "title": "PAL Aerospace Canadian locations and contact",
+            "url": "https://palaerospace.com/contact/",
+            "publisher": "PAL Aerospace",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "PAL lists its St. John's headquarters, multiple Canadian operating locations, public business contact email, and phone number."
+          },
+          {
+            "id": "pal-satcom",
+            "title": "PAL Aerospace next-generation SATCOM for airborne ISR",
+            "url": "https://palaerospace.com/coco-satcom/",
+            "publisher": "PAL Aerospace",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-07-18T00:00:00.000Z",
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "July 18, 2025 release",
+            "summary": "PAL reports integration of low-Earth-orbit satellite connectivity into its contractor-operated ISR fleet for real-time transmission and collaboration."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "pal-aerospace-description-evidence",
+            "sourceId": "pal-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public profile supports the description of PAL Aerospace, its Canadian operating identity, and its defence or strategic-technology role.",
+            "confidence": "high"
+          },
+          {
+            "id": "pal-aerospace-capability-evidence",
+            "sourceId": "pal-c4isr",
+            "fieldPath": "capabilities.airborne-c4isr-special-missions.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited capability source describes airborne c4isr and special-mission solutions and the concrete features and applications summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "pal-aerospace-location-evidence",
+            "sourceId": "pal-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited source identifies PAL Aerospace's Canadian headquarters or operating location in St. John's, Newfoundland and Labrador.",
+            "confidence": "high"
+          },
+          {
+            "id": "pal-aerospace-relationship-evidence",
+            "sourceId": "pal-satcom",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "PAL reports integrating Starlink connectivity into its Force Multiplier aircraft in partnership with AeroMech for real-time airborne ISR collaboration.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "pal-aerospace",
+          "name": "PAL Aerospace",
+          "legalName": null,
+          "aliases": [
+            "Provincial Aerospace"
+          ],
+          "description": "PAL Aerospace is a Canadian aerospace and defence company that delivers airborne special-mission operations, aircraft engineering and modification, C4ISR mission software, sensor and communications integration, training, and in-service support.",
+          "websiteUrl": "https://palaerospace.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "St. John's",
+            "provinceTerritory": "Newfoundland and Labrador",
+            "countryCode": "CA",
+            "latitude": 47.6186,
+            "longitude": -52.7519,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "St. John's, Newfoundland and Labrador",
+            "publicEmail": "contact@palaerospace.com",
+            "publicPhone": "+1-855-576-3948",
+            "operatingModel": "Canadian-owned and operated global aerospace and defence company within Exchange Income Corporation."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "airborne-c4isr-special-missions",
+            "name": "Airborne C4ISR and special-mission solutions",
+            "summary": "PAL combines contracted airborne ISR operations with AIMS mission software, sensor and communications integration, aircraft missionization, ground common-operating-picture tools, engineering, training, and sustainment.",
+            "capabilityType": "airborne ISR and C4ISR integration",
+            "features": [
+              "AIMS-ISR mission management software",
+              "Multi-sensor mission system integration",
+              "Contractor-operated special-mission aircraft",
+              "AIMS-C4 common operating picture"
+            ],
+            "applications": [
+              "Maritime surveillance and domain awareness",
+              "Search and rescue and public safety",
+              "Defence ISR and mission collaboration"
+            ],
+            "technicalTags": [
+              "C4ISR",
+              "airborne ISR",
+              "mission software",
+              "sensor integration"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "aerospace-and-mobility",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "PAL's Canadian special-mission aircraft, ISR integration, and real-time communications are a plausible public-source fit for persistent northern domain awareness.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "PAL's contracted surveillance operations and integrated mission systems support persistent patrol and monitoring workflows, although this is an analyst-derived fit.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "AeroMech",
+            "relationshipType": "satcom-integration-partner",
+            "publicSummary": "PAL reports integrating Starlink connectivity into its Force Multiplier aircraft in partnership with AeroMech for real-time airborne ISR collaboration."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "pal-aerospace-description-evidence",
+          "sourceId": "pal-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public profile supports the description of PAL Aerospace, its Canadian operating identity, and its defence or strategic-technology role.",
+          "confidence": "high"
+        },
+        {
+          "id": "pal-aerospace-capability-evidence",
+          "sourceId": "pal-c4isr",
+          "fieldPath": "capabilities.airborne-c4isr-special-missions.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited capability source describes airborne c4isr and special-mission solutions and the concrete features and applications summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "pal-aerospace-location-evidence",
+          "sourceId": "pal-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source identifies PAL Aerospace's Canadian headquarters or operating location in St. John's, Newfoundland and Labrador.",
+          "confidence": "high"
+        },
+        {
+          "id": "pal-aerospace-relationship-evidence",
+          "sourceId": "pal-satcom",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "PAL reports integrating Starlink connectivity into its Force Multiplier aircraft in partnership with AeroMech for real-time airborne ISR collaboration.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "PAL Aerospace is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Airborne C4ISR and special-mission solutions. The dossier uses 4 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    },
+    {
+      "client_candidate_id": "candidate-top-aces-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-top-aces-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-top-aces-20260721",
+        "sourceLeadIds": [
+          "lead-top-aces-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Top Aces is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Advanced airborne operational training. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 92,
+        "completenessScore": 88,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "top-aces-company",
+            "title": "Top Aces company profile",
+            "url": "https://topaces.com/company",
+            "publisher": "Top Aces",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Top Aces describes its Canadian origins, contracted adversary air and JTAC training role, allied customer base, and operational training mission."
+          },
+          {
+            "id": "top-aces-home",
+            "title": "Top Aces airborne training capabilities",
+            "url": "https://topaces.com/",
+            "publisher": "Top Aces",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Top Aces lists air-to-air, air-to-ground, naval and air-defence, electronic-warfare, and test and evaluation mission profiles across its aircraft fleet."
+          },
+          {
+            "id": "top-aces-contact",
+            "title": "Top Aces Canadian headquarters",
+            "url": "https://topaces.com/contact-us/",
+            "publisher": "Top Aces",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Top Aces lists its international headquarters in Montréal, Quebec, plus public email and telephone contact paths."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "top-aces-description-evidence",
+            "sourceId": "top-aces-company",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public profile supports the description of Top Aces, its Canadian operating identity, and its defence or strategic-technology role.",
+            "confidence": "high"
+          },
+          {
+            "id": "top-aces-capability-evidence",
+            "sourceId": "top-aces-home",
+            "fieldPath": "capabilities.advanced-airborne-training.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited capability source describes advanced airborne operational training and the concrete features and applications summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "top-aces-location-evidence",
+            "sourceId": "top-aces-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited source identifies Top Aces's Canadian headquarters or operating location in Montréal, Quebec.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "top-aces",
+          "name": "Top Aces",
+          "legalName": "Top Aces Inc.",
+          "aliases": [],
+          "description": "Top Aces is a Montréal-headquartered Canadian defence training company that provides contracted adversary air, joint terminal attack controller training, electronic-warfare support, naval and air-defence training, and test and evaluation services.",
+          "websiteUrl": "https://topaces.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Montréal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5017,
+            "longitude": -73.5673,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "Montréal, Quebec",
+            "publicEmail": "info@topaces.com",
+            "publicPhone": "+1 514-694-5565",
+            "operatingModel": "Privately owned Canadian advanced operational air-combat training provider."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "advanced-airborne-training",
+            "name": "Advanced airborne operational training",
+            "summary": "Top Aces provides live-fly adversary air and close-air-support training, JTAC training, electronic-warfare training, naval and air-defence scenarios, and test and evaluation using a specialized aircraft fleet.",
+            "capabilityType": "contracted airborne training services",
+            "features": [
+              "Adversary air training",
+              "JTAC and close-air-support training",
+              "Electronic-warfare training",
+              "Naval and air-defence test support"
+            ],
+            "applications": [
+              "Fighter-pilot readiness",
+              "Joint fires and controller training",
+              "Air and naval defence exercises"
+            ],
+            "technicalTags": [
+              "ADAIR",
+              "JTAC",
+              "electronic warfare",
+              "live-fly training"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "top-aces-description-evidence",
+          "sourceId": "top-aces-company",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public profile supports the description of Top Aces, its Canadian operating identity, and its defence or strategic-technology role.",
+          "confidence": "high"
+        },
+        {
+          "id": "top-aces-capability-evidence",
+          "sourceId": "top-aces-home",
+          "fieldPath": "capabilities.advanced-airborne-training.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited capability source describes advanced airborne operational training and the concrete features and applications summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "top-aces-location-evidence",
+          "sourceId": "top-aces-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source identifies Top Aces's Canadian headquarters or operating location in Montréal, Quebec.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "Top Aces is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Advanced airborne operational training. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    },
+    {
+      "client_candidate_id": "candidate-imp-aerospace-and-defence-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-imp-aerospace-and-defence-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-imp-aerospace-and-defence-20260721",
+        "sourceLeadIds": [
+          "lead-imp-aerospace-and-defence-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "IMP Aerospace & Defence is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Aircraft support, missionization, and defence manufacturing. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 94,
+        "completenessScore": 90,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "imp-profile",
+            "title": "IMP Aerospace & Defence company profile",
+            "url": "https://www.impaerospaceanddefence.com/who-we-are.php",
+            "publisher": "IMP Aerospace & Defence",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "IMP describes itself as a Canadian full-service military and civilian aerospace provider headquartered at Halifax Stanfield International Airport with operating units across Canada."
+          },
+          {
+            "id": "imp-capabilities",
+            "title": "IMP Aerospace & Defence capabilities",
+            "url": "https://www.impaerospaceanddefence.com/",
+            "publisher": "IMP Aerospace & Defence",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "IMP lists fleet support, MRO, missionization, engineering, electronics, calibration, component manufacturing, and cross-domain manufacturing capabilities."
+          },
+          {
+            "id": "imp-contact",
+            "title": "IMP Aerospace & Defence contact and facilities",
+            "url": "https://www.impaerospaceanddefence.com/contact-us.php",
+            "publisher": "IMP Aerospace & Defence",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "IMP lists its Enfield, Nova Scotia facility and public business-development contacts for Canada and international regions."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "imp-aerospace-and-defence-description-evidence",
+            "sourceId": "imp-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public profile supports the description of IMP Aerospace & Defence, its Canadian operating identity, and its defence or strategic-technology role.",
+            "confidence": "high"
+          },
+          {
+            "id": "imp-aerospace-and-defence-capability-evidence",
+            "sourceId": "imp-capabilities",
+            "fieldPath": "capabilities.aircraft-support-missionization.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited capability source describes aircraft support, missionization, and defence manufacturing and the concrete features and applications summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "imp-aerospace-and-defence-location-evidence",
+            "sourceId": "imp-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited source identifies IMP Aerospace & Defence's Canadian headquarters or operating location in Enfield, Nova Scotia.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "imp-aerospace-and-defence",
+          "name": "IMP Aerospace & Defence",
+          "legalName": null,
+          "aliases": [
+            "IMP A&D"
+          ],
+          "description": "IMP Aerospace & Defence is a Canadian vertically integrated aerospace and defence group providing aircraft fleet management, in-service support, maintenance and overhaul, missionization, engineering, electronics, aerostructures, naval and land services, and component manufacturing.",
+          "websiteUrl": "https://www.impaerospaceanddefence.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Enfield",
+            "provinceTerritory": "Nova Scotia",
+            "countryCode": "CA",
+            "latitude": 44.884,
+            "longitude": -63.533,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "Enfield, Nova Scotia",
+            "publicPhone": "+1 902-873-2250",
+            "parentOrganization": "IMP Group Ltd.",
+            "operatingUnits": [
+              "IMP Aerospace",
+              "Cascade Aerospace",
+              "IMP Electronic Systems",
+              "IMP Aerostructures",
+              "IMP Naval & Land Services"
+            ]
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "aircraft-support-missionization",
+            "name": "Aircraft support, missionization, and defence manufacturing",
+            "summary": "IMP delivers fleet management and in-service support, military aircraft MRO, special-mission conversion and modernization, engineering and airworthiness work, avionics and electronics support, and structural and component manufacturing.",
+            "capabilityType": "aerospace in-service support and missionization",
+            "features": [
+              "Integrated fleet management and in-service support",
+              "Aircraft missionization and modernization",
+              "Engineering and airworthiness approvals",
+              "Electronics and aerostructure manufacturing"
+            ],
+            "applications": [
+              "Military fleet readiness",
+              "Search-and-rescue aircraft sustainment",
+              "Special-mission aircraft conversion"
+            ],
+            "technicalTags": [
+              "MRO",
+              "in-service support",
+              "missionization",
+              "aerostructures"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "aerospace-and-mobility",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "imp-aerospace-and-defence-description-evidence",
+          "sourceId": "imp-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public profile supports the description of IMP Aerospace & Defence, its Canadian operating identity, and its defence or strategic-technology role.",
+          "confidence": "high"
+        },
+        {
+          "id": "imp-aerospace-and-defence-capability-evidence",
+          "sourceId": "imp-capabilities",
+          "fieldPath": "capabilities.aircraft-support-missionization.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited capability source describes aircraft support, missionization, and defence manufacturing and the concrete features and applications summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "imp-aerospace-and-defence-location-evidence",
+          "sourceId": "imp-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source identifies IMP Aerospace & Defence's Canadian headquarters or operating location in Enfield, Nova Scotia.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "IMP Aerospace & Defence is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Aircraft support, missionization, and defence manufacturing. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    },
+    {
+      "client_candidate_id": "candidate-magellan-aerospace-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-magellan-aerospace-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-magellan-aerospace-20260721",
+        "sourceLeadIds": [
+          "lead-magellan-aerospace-20260721"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Magellan Aerospace is recommended for amber human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Aerospace, rocket, and satellite systems. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: The candidate summarizes a very broad corporate portfolio; reviewers should decide whether to split later capability records by aeroengines, aerostructures, rockets, and satellite systems.",
+        "reviewTier": "amber",
+        "inclusionScore": 88,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "The candidate summarizes a very broad corporate portfolio; reviewers should decide whether to split later capability records by aeroengines, aerostructures, rockets, and satellite systems."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "magellan-home",
+            "title": "Magellan Aerospace corporate site",
+            "url": "https://magellan.aero/",
+            "publisher": "Magellan Aerospace",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Magellan describes an integrated global aerospace business serving commercial, defence, and space customers with manufacturing and systems capabilities."
+          },
+          {
+            "id": "magellan-newspace",
+            "title": "Magellan Aerospace space capabilities",
+            "url": "https://magellan.aero/wp-content/uploads/NewSpace%20-%20Digital%20Version.pdf",
+            "publisher": "Magellan Aerospace",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Magellan's official space brochure describes Canadian rocket and satellite heritage, microsatellite buses, payloads, subsystems, mission engineering, and defence and space compliance."
+          },
+          {
+            "id": "magellan-contact",
+            "title": "Magellan Aerospace corporate contact",
+            "url": "https://magellan.aero/contact/",
+            "publisher": "Magellan Aerospace",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Magellan lists its corporate office in Mississauga, Ontario, with public corporate, media, investor, and space-program contact paths."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "magellan-aerospace-description-evidence",
+            "sourceId": "magellan-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public profile supports the description of Magellan Aerospace, its Canadian operating identity, and its defence or strategic-technology role.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "magellan-aerospace-capability-evidence",
+            "sourceId": "magellan-newspace",
+            "fieldPath": "capabilities.aerospace-space-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited capability source describes aerospace, rocket, and satellite systems and the concrete features and applications summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "magellan-aerospace-location-evidence",
+            "sourceId": "magellan-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited source identifies Magellan Aerospace's Canadian headquarters or operating location in Mississauga, Ontario.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "magellan-aerospace",
+          "name": "Magellan Aerospace",
+          "legalName": "Magellan Aerospace Corporation",
+          "aliases": [],
+          "description": "Magellan Aerospace is a Canadian-headquartered integrated aerospace company that designs and manufactures aeroengine and aerostructure assemblies, rocket and satellite systems, military and space products, and provides repair and overhaul services.",
+          "websiteUrl": "https://magellan.aero/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Mississauga",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6777,
+            "longitude": -79.6306,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "Mississauga, Ontario",
+            "publicEmail": "magellan.corporate@magellan.aero",
+            "publicPhone": "+1 905-677-1889",
+            "publicCompany": "TSX: MAL"
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "aerospace-space-systems",
+            "name": "Aerospace, rocket, and satellite systems",
+            "summary": "Magellan provides complex aeroengine and aerostructure assemblies, proprietary military and space products, sounding rockets, satellite buses and subsystems, space-mission engineering, and engine and component repair and overhaul.",
+            "capabilityType": "integrated aerospace and space manufacturing",
+            "features": [
+              "Aeroengine and aerostructure manufacturing",
+              "Sounding rockets and rocket systems",
+              "Microsatellite buses and subsystems",
+              "Engine and component repair and overhaul"
+            ],
+            "applications": [
+              "Defence aircraft and engine supply chains",
+              "Space missions and domain-awareness payloads",
+              "Sub-orbital research and testing"
+            ],
+            "technicalTags": [
+              "aeroengines",
+              "aerostructures",
+              "rockets",
+              "satellites"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "aerospace-and-mobility",
+              "space-and-earth-observation"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "magellan-aerospace-description-evidence",
+          "sourceId": "magellan-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public profile supports the description of Magellan Aerospace, its Canadian operating identity, and its defence or strategic-technology role.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "magellan-aerospace-capability-evidence",
+          "sourceId": "magellan-newspace",
+          "fieldPath": "capabilities.aerospace-space-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited capability source describes aerospace, rocket, and satellite systems and the concrete features and applications summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "magellan-aerospace-location-evidence",
+          "sourceId": "magellan-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source identifies Magellan Aerospace's Canadian headquarters or operating location in Mississauga, Ontario.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "Magellan Aerospace is recommended for amber human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Aerospace, rocket, and satellite systems. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: The candidate summarizes a very broad corporate portfolio; reviewers should decide whether to split later capability records by aeroengines, aerostructures, rockets, and satellite systems.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    },
+    {
+      "client_candidate_id": "candidate-gastops-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-gastops-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-gastops-20260721",
+        "sourceLeadIds": [
+          "lead-gastops-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Gastops is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Critical component condition intelligence. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 93,
+        "completenessScore": 87,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "gastops-company",
+            "title": "Gastops company profile",
+            "url": "https://www.gastops.com/company/",
+            "publisher": "Gastops",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Gastops describes more than forty years of condition-monitoring work, Canadian offices, naval and aerospace history, and critical-component diagnostic technologies."
+          },
+          {
+            "id": "gastops-home",
+            "title": "Gastops condition-monitoring solutions",
+            "url": "https://www.gastops.com/",
+            "publisher": "Gastops",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Gastops presents critical component intelligence and condition-monitoring solutions for defence, aerospace, energy, and industrial applications and lists its Ottawa headquarters."
+          },
+          {
+            "id": "gastops-news",
+            "title": "Gastops defence technology news",
+            "url": "https://www.gastops.com/news-resources/",
+            "publisher": "Gastops",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Gastops reports current defence activity including an IDEaS Test Drives contract for FluidSIGHT and validation of ChipCHECK debris analysis for the F135 engine."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "gastops-description-evidence",
+            "sourceId": "gastops-company",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public profile supports the description of Gastops, its Canadian operating identity, and its defence or strategic-technology role.",
+            "confidence": "high"
+          },
+          {
+            "id": "gastops-capability-evidence",
+            "sourceId": "gastops-home",
+            "fieldPath": "capabilities.critical-component-condition-intelligence.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited capability source describes critical component condition intelligence and the concrete features and applications summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "gastops-location-evidence",
+            "sourceId": "gastops-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited source identifies Gastops's Canadian headquarters or operating location in Ottawa, Ontario.",
+            "confidence": "high"
+          },
+          {
+            "id": "gastops-relationship-evidence",
+            "sourceId": "gastops-news",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Gastops reports an IDEaS Test Drives contract for FluidSIGHT under the public All Systems Go challenge.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "gastops",
+          "name": "Gastops",
+          "legalName": "Gastops Ltd.",
+          "aliases": [],
+          "description": "Gastops is an Ottawa-headquartered Canadian technology company that provides machinery condition monitoring, oil and wear-debris sensing, diagnostic and prognostic analytics, maintenance services, and component-support solutions for defence, aerospace, naval, energy, and industrial equipment.",
+          "websiteUrl": "https://www.gastops.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "Ottawa, Ontario",
+            "additionalCanadianOffice": "Dartmouth, Nova Scotia",
+            "founded": 1979,
+            "currentActivity": "IDEaS FluidSIGHT Test Drives and F135 ChipCHECK validation reported in 2026."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "critical-component-condition-intelligence",
+            "name": "Critical component condition intelligence",
+            "summary": "Gastops combines online oil and wear-debris sensing, portable debris analysis, condition-monitoring software, engineering diagnostics, and maintenance services to improve readiness and reduce risk for mission-critical engines and machinery.",
+            "capabilityType": "condition monitoring and predictive maintenance",
+            "features": [
+              "Oil and wear-debris sensors",
+              "Portable debris analysis",
+              "Diagnostic and prognostic analytics",
+              "Equipment-health monitoring services"
+            ],
+            "applications": [
+              "Aircraft-engine health monitoring",
+              "Naval machinery readiness",
+              "Predictive maintenance for critical assets"
+            ],
+            "technicalTags": [
+              "condition monitoring",
+              "predictive maintenance",
+              "debris analysis",
+              "engine health"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Innovation for Defence Excellence and Security",
+            "relationshipType": "test-drive-contract",
+            "publicSummary": "Gastops reports an IDEaS Test Drives contract for FluidSIGHT under the public All Systems Go challenge."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "gastops-description-evidence",
+          "sourceId": "gastops-company",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public profile supports the description of Gastops, its Canadian operating identity, and its defence or strategic-technology role.",
+          "confidence": "high"
+        },
+        {
+          "id": "gastops-capability-evidence",
+          "sourceId": "gastops-home",
+          "fieldPath": "capabilities.critical-component-condition-intelligence.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited capability source describes critical component condition intelligence and the concrete features and applications summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "gastops-location-evidence",
+          "sourceId": "gastops-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source identifies Gastops's Canadian headquarters or operating location in Ottawa, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "gastops-relationship-evidence",
+          "sourceId": "gastops-news",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Gastops reports an IDEaS Test Drives contract for FluidSIGHT under the public All Systems Go challenge.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "Gastops is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Critical component condition intelligence. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    },
+    {
+      "client_candidate_id": "candidate-larus-technologies-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-larus-technologies-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-larus-technologies-20260721",
+        "sourceLeadIds": [
+          "lead-larus-technologies-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Larus Technologies is recommended for green human review because three durable official sources resolve its Ottawa identity, long-running defence and mission-critical AI role, concrete Total Insight and Total Foresight products, and public ISC contract activity. It adds Canadian multi-sensor data fusion, simulation, predictive analytics, and C4ISR decision-support coverage. Reviewer focus: confirm the controlled categories and the conservative derived patrol-and-monitoring alignment before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 94,
+        "completenessScore": 88,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table, active private candidates, and local typed candidate artifacts; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "larus-profile",
+            "title": "Larus Technologies company profile",
+            "url": "https://larus.com/who-we-are/",
+            "publisher": "Larus Technologies",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Who We Are",
+            "summary": "Larus describes its Ottawa base, more than thirty years of AI and machine-learning work, mission-critical defence and public-safety focus, and Canadian and NATO security posture."
+          },
+          {
+            "id": "larus-insight",
+            "title": "Larus Total Insight decision support",
+            "url": "https://www.larus.com/total-insight/",
+            "publisher": "Larus Technologies",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Product overview",
+            "summary": "Larus describes Total Insight as an AI and machine-learning decision-support product that fuses active and passive sensors, trackers, reports, weather, and other data for real-time pattern recognition and prediction."
+          },
+          {
+            "id": "larus-foresight",
+            "title": "Larus Total Foresight ISC contract",
+            "url": "https://larus.com/larus-technologies-totalforesight-collaborative-analytics-solution-awarded-an-isc-contract-2/",
+            "publisher": "Larus Technologies",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "ISC contract announcement",
+            "summary": "Larus reports an Innovative Solutions Canada contract for Total Foresight, combining decision support and systems simulation for air, land, maritime, national, and joint situational awareness."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "larus-description-evidence",
+            "sourceId": "larus-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company profile identifies Larus as an Ottawa AI company with a long defence, public-safety, and mission-critical technology history.",
+            "confidence": "high"
+          },
+          {
+            "id": "larus-capability-evidence",
+            "sourceId": "larus-insight",
+            "fieldPath": "capabilities.ai-enabled-multi-sensor-decision-support.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The product page describes AI and machine-learning fusion of active and passive sensors, trackers, reports, weather, and other data for recognition and prediction.",
+            "confidence": "high"
+          },
+          {
+            "id": "larus-location-evidence",
+            "sourceId": "larus-insight",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The official product page lists Larus Technologies Corporation at 170 Laurier Avenue West in Ottawa, Ontario, Canada.",
+            "confidence": "high"
+          },
+          {
+            "id": "larus-relationship-evidence",
+            "sourceId": "larus-foresight",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Larus reports an Innovative Solutions Canada contract for Total Foresight and testing by National Defence and other national-security organizations.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "larus-technologies",
+          "name": "Larus Technologies",
+          "legalName": "Larus Technologies Corporation",
+          "aliases": [
+            "Larus"
+          ],
+          "description": "Larus Technologies is an Ottawa-based Canadian artificial-intelligence company that develops multi-sensor data fusion, predictive analytics, systems simulation, video analytics, and decision-support software for defence, public safety, government, and commercial mission-critical environments.",
+          "websiteUrl": "https://larus.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "Ottawa, Ontario",
+            "publicEmail": "info@larus.com",
+            "publicPhone": "+1 613-244-8916",
+            "founded": 1995,
+            "securityPosture": "Canadian Controlled Goods Program technologies and staff with Canadian or NATO security clearances are publicly described."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "ai-enabled-multi-sensor-decision-support",
+            "name": "AI-enabled multi-sensor decision support",
+            "summary": "Larus combines AI and machine learning, multi-sensor data fusion, predictive analytics, systems simulation, and decision-support interfaces to recognize patterns and anomalies, forecast behaviour, and improve situational awareness in complex operations.",
+            "capabilityType": "AI-enabled C4ISR decision-support software",
+            "features": [
+              "Active and passive sensor-data fusion",
+              "Real-time pattern, event, and anomaly recognition",
+              "Predictive behaviour assessment",
+              "Systems simulation and collaborative analytics"
+            ],
+            "applications": [
+              "Defence and public-safety situational awareness",
+              "Air, land, and maritime decision support",
+              "C4ISR surveillance-system augmentation"
+            ],
+            "technicalTags": [
+              "artificial intelligence",
+              "machine learning",
+              "data fusion",
+              "C4ISR"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "sensing-and-isr",
+              "autonomous-systems"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Larus' public multi-sensor fusion and real-time anomaly-recognition products are a plausible analyst-derived fit for persistent patrol and monitoring decision-support workflows.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Innovative Solutions Canada and National Defence",
+            "relationshipType": "public-innovation-contract",
+            "publicSummary": "Larus reports an ISC contract for Total Foresight and testing by National Defence and other national-security organizations."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "larus-description-evidence",
+          "sourceId": "larus-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company profile identifies Larus as an Ottawa AI company with a long defence, public-safety, and mission-critical technology history.",
+          "confidence": "high"
+        },
+        {
+          "id": "larus-capability-evidence",
+          "sourceId": "larus-insight",
+          "fieldPath": "capabilities.ai-enabled-multi-sensor-decision-support.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The product page describes AI and machine-learning fusion of active and passive sensors, trackers, reports, weather, and other data for recognition and prediction.",
+          "confidence": "high"
+        },
+        {
+          "id": "larus-location-evidence",
+          "sourceId": "larus-insight",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The official product page lists Larus Technologies Corporation at 170 Laurier Avenue West in Ottawa, Ontario, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "larus-relationship-evidence",
+          "sourceId": "larus-foresight",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Larus reports an Innovative Solutions Canada contract for Total Foresight and testing by National Defence and other national-security organizations.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table, active private candidates, and local typed candidate artifacts; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "Larus Technologies is recommended for green human review because three durable official sources resolve its Ottawa identity, long-running defence and mission-critical AI role, concrete Total Insight and Total Foresight products, and public ISC contract activity. It adds Canadian multi-sensor data fusion, simulation, predictive analytics, and C4ISR decision-support coverage. Reviewer focus: confirm the controlled categories and the conservative derived patrol-and-monitoring alignment before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    },
+    {
+      "client_candidate_id": "candidate-allen-vanguard-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-allen-vanguard-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-allen-vanguard-20260721",
+        "sourceLeadIds": [
+          "lead-allen-vanguard-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Allen-Vanguard is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Electronic countermeasures and counter-UAS. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 94,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "allen-home",
+            "title": "Allen-Vanguard counter-threat capabilities",
+            "url": "https://www.allenvanguard.com/",
+            "publisher": "Allen-Vanguard",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Allen-Vanguard describes electronic countermeasure, counter-RCIED, counter-UAS, integration, training, and field-support capabilities and lists its Ottawa head office."
+          },
+          {
+            "id": "allen-equinox",
+            "title": "Allen-Vanguard EQUINOX NG",
+            "url": "https://www.allenvanguard.com/equinox-ng/",
+            "publisher": "Allen-Vanguard",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Allen-Vanguard describes EQUINOX NG as a modular, open-standard, scalable vehicle-based electronic-countermeasure system for RCIED and drone threats."
+          },
+          {
+            "id": "allen-ancile",
+            "title": "Allen-Vanguard ANCILE counter-UAS",
+            "url": "https://www.allenvanguard.com/news-ancile-g7/",
+            "publisher": "Allen-Vanguard",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2018-06-13T00:00:00.000Z",
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "June 13, 2018 release",
+            "summary": "Allen-Vanguard describes ANCILE as a radio-frequency inhibition capability used to disrupt commercial drone command links and protect people and sites."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "allen-vanguard-description-evidence",
+            "sourceId": "allen-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public profile supports the description of Allen-Vanguard, its Canadian operating identity, and its defence or strategic-technology role.",
+            "confidence": "high"
+          },
+          {
+            "id": "allen-vanguard-capability-evidence",
+            "sourceId": "allen-equinox",
+            "fieldPath": "capabilities.electronic-countermeasures-counter-uas.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited capability source describes electronic countermeasures and counter-uas and the concrete features and applications summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "allen-vanguard-location-evidence",
+            "sourceId": "allen-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited source identifies Allen-Vanguard's Canadian headquarters or operating location in Ottawa, Ontario.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "allen-vanguard",
+          "name": "Allen-Vanguard",
+          "legalName": "Allen-Vanguard Corporation",
+          "aliases": [],
+          "description": "Allen-Vanguard is an Ottawa-headquartered Canadian electronic-warfare company providing radio-frequency electronic countermeasures, counter-RCIED and counter-UAS systems, threat-management tools, integration, training, and field support for defence and public-safety users.",
+          "websiteUrl": "https://www.allenvanguard.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "Ottawa, Ontario",
+            "publicEmail": "info@allenvanguard.com",
+            "publicPhone": "+1 613-739-9646",
+            "qualityCertification": "ISO 9001:2015 certified in Canada and the United Kingdom."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "electronic-countermeasures-counter-uas",
+            "name": "Electronic countermeasures and counter-UAS",
+            "summary": "Allen-Vanguard develops modular and scalable vehicle, fixed-site, and portable electronic-countermeasure systems that inhibit radio-controlled improvised explosive devices and commercial unmanned-aircraft command links, supported by integration and field services.",
+            "capabilityType": "electronic warfare and counter-threat systems",
+            "features": [
+              "Vehicle-mounted electronic countermeasures",
+              "Counter-RCIED radio-frequency inhibition",
+              "Counter-UAS electronic protection",
+              "Open-standard modular architecture"
+            ],
+            "applications": [
+              "Protection of military convoys and bases",
+              "Counter-drone protection of sensitive sites",
+              "Electronic-warfare support for public safety"
+            ],
+            "technicalTags": [
+              "electronic warfare",
+              "ECM",
+              "counter-UAS",
+              "counter-RCIED"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "sensing-and-isr"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "allen-vanguard-description-evidence",
+          "sourceId": "allen-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public profile supports the description of Allen-Vanguard, its Canadian operating identity, and its defence or strategic-technology role.",
+          "confidence": "high"
+        },
+        {
+          "id": "allen-vanguard-capability-evidence",
+          "sourceId": "allen-equinox",
+          "fieldPath": "capabilities.electronic-countermeasures-counter-uas.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited capability source describes electronic countermeasures and counter-uas and the concrete features and applications summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "allen-vanguard-location-evidence",
+          "sourceId": "allen-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source identifies Allen-Vanguard's Canadian headquarters or operating location in Ottawa, Ontario.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "Allen-Vanguard is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Electronic countermeasures and counter-UAS. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    },
+    {
+      "client_candidate_id": "candidate-roshel-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-roshel-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-roshel-20260721",
+        "sourceLeadIds": [
+          "lead-roshel-20260721"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Roshel is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Armoured and special-purpose vehicles. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 95,
+        "completenessScore": 85,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "roshel-about",
+            "title": "Roshel corporate profile",
+            "url": "https://roshel.com/about/",
+            "publisher": "Roshel",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Roshel describes its Brampton headquarters, North American armoured-vehicle manufacturing role, in-house production capabilities, and government and commercial customer base."
+          },
+          {
+            "id": "roshel-defence",
+            "title": "Roshel defence vehicle solutions",
+            "url": "https://roshel.com/products/defense/",
+            "publisher": "Roshel",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Roshel describes military, law-enforcement, and emergency-response armoured vehicles with configurable protection, mobility, camera, lighting, and security features."
+          },
+          {
+            "id": "roshel-dnd",
+            "title": "National Defence visit to Roshel Brampton facility",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-highlights-armoured-vehicles-donation-to-ukraine-visits-roshel-facility-in-brampton.html",
+            "publisher": "National Defence",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-03-17T00:00:00.000Z",
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "March 17, 2026 release",
+            "summary": "National Defence identifies Roshel's Brampton production facility and Canadian-made Senator armoured vehicles included in Canada's military assistance to Ukraine."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "roshel-description-evidence",
+            "sourceId": "roshel-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public profile supports the description of Roshel, its Canadian operating identity, and its defence or strategic-technology role.",
+            "confidence": "high"
+          },
+          {
+            "id": "roshel-capability-evidence",
+            "sourceId": "roshel-defence",
+            "fieldPath": "capabilities.armoured-special-purpose-vehicles.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited capability source describes armoured and special-purpose vehicles and the concrete features and applications summarized in this candidate.",
+            "confidence": "high"
+          },
+          {
+            "id": "roshel-location-evidence",
+            "sourceId": "roshel-about",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited source identifies Roshel's Canadian headquarters or operating location in Brampton, Ontario.",
+            "confidence": "high"
+          },
+          {
+            "id": "roshel-relationship-evidence",
+            "sourceId": "roshel-dnd",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "National Defence publicly identifies Canadian-made Roshel Senator vehicles as part of Canada's military assistance to Ukraine.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "roshel",
+          "name": "Roshel",
+          "legalName": null,
+          "aliases": [
+            "Roshel Smart Armored Vehicles"
+          ],
+          "description": "Roshel is a Brampton-headquartered Canadian manufacturer of armoured and special-purpose vehicles for military, law-enforcement, emergency-response, and secured-transport users, with in-house design, metal fabrication, welding, painting, mechanical assembly, electrical assembly, and upfitting.",
+          "websiteUrl": "https://roshel.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Brampton",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.7315,
+            "longitude": -79.7624,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "Brampton, Ontario",
+            "manufacturingModel": "In-house design, fabrication, welding, painting, mechanical and electrical assembly.",
+            "currentActivity": "Canadian-made Senator vehicles publicly identified in 2026 military assistance to Ukraine."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "armoured-special-purpose-vehicles",
+            "name": "Armoured and special-purpose vehicles",
+            "summary": "Roshel designs and manufactures configurable armoured emergency-response and military vehicles with ballistic protection, heavy-duty mobility components, cameras, communications and security systems, and custom in-house upfitting.",
+            "capabilityType": "armoured vehicle manufacturing",
+            "features": [
+              "In-house vehicle design and fabrication",
+              "Ballistic and blast-protection options",
+              "Special-purpose security and emergency configurations",
+              "Mechanical and electrical upfitting"
+            ],
+            "applications": [
+              "Protected troop and personnel transport",
+              "Military and law-enforcement mobility",
+              "Emergency-response and secured transport"
+            ],
+            "technicalTags": [
+              "armoured vehicles",
+              "protected mobility",
+              "vehicle upfitting",
+              "advanced manufacturing"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "National Defence and Armed Forces of Ukraine",
+            "relationshipType": "public-supply-relationship",
+            "publicSummary": "National Defence publicly identifies Canadian-made Roshel Senator vehicles as part of Canada's military assistance to Ukraine."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "roshel-description-evidence",
+          "sourceId": "roshel-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public profile supports the description of Roshel, its Canadian operating identity, and its defence or strategic-technology role.",
+          "confidence": "high"
+        },
+        {
+          "id": "roshel-capability-evidence",
+          "sourceId": "roshel-defence",
+          "fieldPath": "capabilities.armoured-special-purpose-vehicles.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited capability source describes armoured and special-purpose vehicles and the concrete features and applications summarized in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "roshel-location-evidence",
+          "sourceId": "roshel-about",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source identifies Roshel's Canadian headquarters or operating location in Brampton, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "roshel-relationship-evidence",
+          "sourceId": "roshel-dnd",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "National Defence publicly identifies Canadian-made Roshel Senator vehicles as part of Canada's military assistance to Ukraine.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "Roshel is recommended for green human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Armoured and special-purpose vehicles. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: confirm the controlled categories, derived mission alignment where present, and whether the captured capability should be split into additional records before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    },
+    {
+      "client_candidate_id": "candidate-simthetiq-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-simthetiq-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-simthetiq-20260721",
+        "sourceLeadIds": [
+          "lead-simthetiq-20260721"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Simthetiq is recommended for amber human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Interoperable 3D simulation content and synthetic terrain. The dossier uses 4 complementary sources and passed the live published and pending duplicate check. Reviewer focus: The company website does not expose a current canonical contact or headquarters page; Montréal is corroborated through the durable I/ITSEC exhibitor profile and should be confirmed by the reviewer.",
+        "reviewTier": "amber",
+        "inclusionScore": 87,
+        "completenessScore": 74,
+        "reviewWarnings": [
+          "The company website does not expose a current canonical contact or headquarters page; Montréal is corroborated through the durable I/ITSEC exhibitor profile and should be confirmed by the reviewer."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "simthetiq-home",
+            "title": "Simthetiq simulation products and services",
+            "url": "https://simthetiq.com/",
+            "publisher": "Simthetiq",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "Simthetiq describes mission-ready 3D model libraries, synthetic terrain, visual systems, digital twins, and immersive content for defence and safety-critical training."
+          },
+          {
+            "id": "simthetiq-rcn",
+            "title": "Simthetiq Royal Canadian Navy immersive training",
+            "url": "https://simthetiq.com/news/simthetiq-delivers-immersive-training-classroom-to-the-royal-canadian-navy/",
+            "publisher": "Simthetiq",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2022-05-25T00:00:00.000Z",
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "May 25, 2022 release",
+            "summary": "Simthetiq reports delivery of an immersive multi-user classroom and custom naval training content to the Royal Canadian Navy."
+          },
+          {
+            "id": "simthetiq-rcaf",
+            "title": "Simthetiq RCAF mission rehearsal support",
+            "url": "https://simthetiq.com/news/simthetiq-supports-royal-canadian-air-force-mission-rehearsal-tactical-trainer/",
+            "publisher": "Simthetiq",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2022-05-11T00:00:00.000Z",
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "May 11, 2022 release",
+            "summary": "Simthetiq reports support for an RCAF CH-146 Griffon mission-rehearsal trainer using digital scanning and a high-fidelity 3D model."
+          },
+          {
+            "id": "simthetiq-iitsec",
+            "title": "Simthetiq I/ITSEC exhibitor profile",
+            "url": "https://exhibits.iitsec.org/2025/Public/eBooth.aspx?BoothID=200451&FromPage=Exhibitors.aspx&IndexInList=98&ListByBooth=true&Nav=False&ParentBoothID=",
+            "publisher": "I/ITSEC",
+            "sourceKind": "event_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "The durable I/ITSEC exhibitor profile identifies Simthetiq in Montréal, Canada, and describes its defence and aerospace simulation and training focus."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "simthetiq-description-evidence",
+            "sourceId": "simthetiq-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public profile supports the description of Simthetiq, its Canadian operating identity, and its defence or strategic-technology role.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "simthetiq-capability-evidence",
+            "sourceId": "simthetiq-rcn",
+            "fieldPath": "capabilities.interoperable-3d-simulation-content.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited capability source describes interoperable 3d simulation content and synthetic terrain and the concrete features and applications summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "simthetiq-location-evidence",
+            "sourceId": "simthetiq-iitsec",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited source identifies Simthetiq's Canadian headquarters or operating location in Montréal, Quebec.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "simthetiq-relationship-evidence",
+            "sourceId": "simthetiq-rcn",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Simthetiq publicly reports separate immersive naval-training and tactical-helicopter mission-rehearsal deliveries for Canadian military users.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "simthetiq",
+          "name": "Simthetiq",
+          "legalName": null,
+          "aliases": [],
+          "description": "Simthetiq is a Montréal-based simulation-technology company providing interoperable mission-ready 3D entity models, synthetic terrain and airport environments, visual content pipelines, and immersive applications for defence, aerospace, emergency-response, and other mission-critical training.",
+          "websiteUrl": "https://simthetiq.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Montréal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5017,
+            "longitude": -73.5673,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "Montréal, Quebec (review confirmation requested)",
+            "publicEmail": "sales@simthetiq.com",
+            "parentOrganization": "Imagine 4D",
+            "currentActivity": "Official 2025-2026 news describes NATO simulation environments and advanced 3D content pipelines."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "interoperable-3d-simulation-content",
+            "name": "Interoperable 3D simulation content and synthetic terrain",
+            "summary": "Simthetiq supplies DIS and HLA-compatible 3D entity models, geospecific synthetic terrain and airport environments, Unreal Engine and VBS content, and immersive training solutions for military and safety-critical simulation systems.",
+            "capabilityType": "simulation content and virtual environments",
+            "features": [
+              "Mission-ready 3D entity model library",
+              "DIS and HLA interoperability",
+              "Geospecific synthetic terrains",
+              "Unreal Engine and VBS content pipelines"
+            ],
+            "applications": [
+              "Military crew and collective training",
+              "Air-base and emergency-response rehearsal",
+              "Naval and air-force immersive training"
+            ],
+            "technicalTags": [
+              "modeling and simulation",
+              "synthetic terrain",
+              "3D content",
+              "digital twins"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "mission-software-and-data"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Royal Canadian Navy and Royal Canadian Air Force",
+            "relationshipType": "training-delivery",
+            "publicSummary": "Simthetiq publicly reports separate immersive naval-training and tactical-helicopter mission-rehearsal deliveries for Canadian military users."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "simthetiq-description-evidence",
+          "sourceId": "simthetiq-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public profile supports the description of Simthetiq, its Canadian operating identity, and its defence or strategic-technology role.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "simthetiq-capability-evidence",
+          "sourceId": "simthetiq-rcn",
+          "fieldPath": "capabilities.interoperable-3d-simulation-content.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited capability source describes interoperable 3d simulation content and synthetic terrain and the concrete features and applications summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "simthetiq-location-evidence",
+          "sourceId": "simthetiq-iitsec",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source identifies Simthetiq's Canadian headquarters or operating location in Montréal, Quebec.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "simthetiq-relationship-evidence",
+          "sourceId": "simthetiq-rcn",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Simthetiq publicly reports separate immersive naval-training and tactical-helicopter mission-rehearsal deliveries for Canadian military users.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "Simthetiq is recommended for amber human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: Interoperable 3D simulation content and synthetic terrain. The dossier uses 4 complementary sources and passed the live published and pending duplicate check. Reviewer focus: The company website does not expose a current canonical contact or headquarters page; Montréal is corroborated through the durable I/ITSEC exhibitor profile and should be confirmed by the reviewer.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    },
+    {
+      "client_candidate_id": "candidate-qra-corp-20260721",
+      "research_run_ref": "tnm-manual-20260721080829",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-qra-corp-20260721"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-qra-corp-20260721",
+        "sourceLeadIds": [
+          "lead-qra-corp-20260721"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "QRA Corp is recommended for amber human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: QVscribe requirements analysis. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: Defence relevance is supported by a vendor-authored customer case study; reviewers should retain that attribution and avoid implying endorsement by the customer.",
+        "reviewTier": "amber",
+        "inclusionScore": 85,
+        "completenessScore": 76,
+        "reviewWarnings": [
+          "Defence relevance is supported by a vendor-authored customer case study; reviewers should retain that attribution and avoid implying endorsement by the customer."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T08:10:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+        },
+        "sources": [
+          {
+            "id": "qra-faq",
+            "title": "QRA Corp and QVscribe frequently asked questions",
+            "url": "https://qracorp.com/faqs/",
+            "publisher": "QRA Corp",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "QRA explains its mission-critical systems focus and QVscribe quality, terminology, unit-consistency, and similarity analysis for engineering requirements."
+          },
+          {
+            "id": "qra-incose",
+            "title": "QRA automated requirements-writing guide",
+            "url": "https://edu.qracorp.com/hubfs/Automating%20the%20INCOSE%20Guide%20for%20Writing%20Requirements.pdf",
+            "publisher": "QRA Corp",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "QRA's official guide describes natural-language requirements analysis, its Halifax address, and QVscribe's role in finding defects and improving requirements quality."
+          },
+          {
+            "id": "qra-ultra",
+            "title": "QRA QVscribe defence customer case study",
+            "url": "https://edu.qracorp.com/hubfs/UltraElectronics-CaseStudy.pdf",
+            "publisher": "QRA Corp",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T08:10:00.000Z",
+            "locator": "Official page",
+            "summary": "QRA's case study describes QVscribe use by a Canadian naval-defence systems supplier to standardize requirements, reduce correction effort, and improve quality assurance."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "qra-corp-description-evidence",
+            "sourceId": "qra-faq",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public profile supports the description of QRA Corp, its Canadian operating identity, and its defence or strategic-technology role.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "qra-corp-capability-evidence",
+            "sourceId": "qra-incose",
+            "fieldPath": "capabilities.qvscribe-requirements-analysis.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited capability source describes qvscribe requirements analysis and the concrete features and applications summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "qra-corp-location-evidence",
+            "sourceId": "qra-incose",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited source identifies QRA Corp's Canadian headquarters or operating location in Halifax, Nova Scotia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "qra-corp-relationship-evidence",
+            "sourceId": "qra-ultra",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "QRA's public case study describes QVscribe use in a Canadian naval-defence requirements-engineering workflow.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "qra-corp",
+          "name": "QRA Corp",
+          "legalName": "QRA Corp",
+          "aliases": [
+            "QRA"
+          ],
+          "description": "QRA Corp is a Halifax-headquartered Canadian software company whose QVscribe platform analyzes natural-language engineering requirements to improve clarity, consistency, completeness, and reuse in complex mission-critical and safety-critical system development.",
+          "websiteUrl": "https://qracorp.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Halifax",
+            "provinceTerritory": "Nova Scotia",
+            "countryCode": "CA",
+            "latitude": 44.6488,
+            "longitude": -63.5752,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "headquarters": "Halifax, Nova Scotia",
+            "publicEmail": "sales@qracorp.com",
+            "publicPhone": "+1 902-422-0212",
+            "operatingModel": "Software provider focused on complex mission-critical and safety-critical systems engineering."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "qvscribe-requirements-analysis",
+            "name": "QVscribe requirements analysis",
+            "summary": "QVscribe integrates with common requirements-authoring and lifecycle tools to apply best-practice quality checks, terminology and unit-consistency analysis, and requirement-similarity analysis before defects propagate into design and verification.",
+            "capabilityType": "requirements engineering software",
+            "features": [
+              "Natural-language requirements quality analysis",
+              "Terminology and unit-consistency checks",
+              "Requirement similarity analysis",
+              "Integrations with Word, Excel, Polarion, DOORS Next, and Jama"
+            ],
+            "applications": [
+              "Defence and aerospace systems engineering",
+              "Safety-critical product development",
+              "Early requirements defect detection"
+            ],
+            "technicalTags": [
+              "requirements engineering",
+              "natural language processing",
+              "systems engineering",
+              "quality assurance"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Ultra Electronics Maritime Systems",
+            "relationshipType": "customer-case-study",
+            "publicSummary": "QRA's public case study describes QVscribe use in a Canadian naval-defence requirements-engineering workflow."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "qra-corp-description-evidence",
+          "sourceId": "qra-faq",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public profile supports the description of QRA Corp, its Canadian operating identity, and its defence or strategic-technology role.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "qra-corp-capability-evidence",
+          "sourceId": "qra-incose",
+          "fieldPath": "capabilities.qvscribe-requirements-analysis.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited capability source describes qvscribe requirements analysis and the concrete features and applications summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "qra-corp-location-evidence",
+          "sourceId": "qra-incose",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source identifies QRA Corp's Canadian headquarters or operating location in Halifax, Nova Scotia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "qra-corp-relationship-evidence",
+          "sourceId": "qra-ultra",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "QRA's public case study describes QVscribe use in a Canadian naval-defence requirements-engineering workflow.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T08:10:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against the canonical production organizations table and active private candidate identities; no exact or fuzzy identity match was found."
+      },
+      "reviewer_rationale": "QRA Corp is recommended for amber human review because durable public sources resolve a Canadian operating identity and a concrete portfolio relevant to True North Map: QVscribe requirements analysis. The dossier uses 3 complementary sources and passed the live published and pending duplicate check. Reviewer focus: Defence relevance is supported by a vendor-authored customer case study; reviewers should retain that attribution and avoid implying endorsement by the customer.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-21T08:19:18.642Z"
+    }
+  ]
+}

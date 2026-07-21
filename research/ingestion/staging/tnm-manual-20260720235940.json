@@ -1,0 +1,1179 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-21T00:04:42.241Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260720235940",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "accelerator",
+        "incubator",
+        "investor_funder",
+        "government_innovation_office"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "organization-kinds:accelerator-incubator-funder",
+      "reason": "User-targeted expansion of thin ecosystem-support coverage: production has one accelerator, one incubator, one investor/funder, and three government innovation offices.",
+      "score": 975
+    },
+    "status": "completed",
+    "started_at": "2026-07-20T23:59:40.158Z",
+    "completed_at": "2026-07-21T00:05:00.000Z",
+    "agent_version": "tnm-research-pipeline/1.1.0",
+    "source_queries": [
+      "official Canadian defence and dual-use accelerators",
+      "official Canadian deep-technology incubators with aerospace or defence programs",
+      "official Canadian fabrication and advanced-manufacturing incubators",
+      "NRC IRAP Defence Industry Assist official sources",
+      "BDC Defence Platform official sources",
+      "Invest Ottawa Area X.O and IO Accelerator official sources",
+      "Centech aerospace and defence corporate programs",
+      "North Forge Founders Program and fabrication facilities",
+      "official public contact and location pages",
+      "live production organization and candidate duplicate check"
+    ],
+    "counters": {
+      "sourcesChecked": 18,
+      "leadsQualified": 5,
+      "leadsDeferred": 0,
+      "candidatesCreated": 5,
+      "duplicatesBlocked": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "Completed the user-targeted accelerator, incubator, and funding-body cycle after five duplicate-cleared qualified leads became five enriched organization candidates with zero validation warnings; trusted private Admin Review intake remains the terminal handoff."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-invest-ottawa",
+      "research_run_ref": "tnm-manual-20260720235940",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "invest-ottawa-ecosystem-support-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-invest-ottawa",
+        "sourceLeadIds": [
+          "invest-ottawa-ecosystem-support-lead"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Invest Ottawa is worthy of inclusion as an accelerator because official sources establish its economic-development mandate, milestone-driven IO Accelerator, and operation of Area X.O for testing and commercialization of autonomy, drone, communications, defence, and security technologies. Evidence strength is high and includes current official program, facility, defence-strategy, and contact pages. Reviewers should confirm whether accelerator or ecosystem organization is the best primary kind and whether Area X.O should remain a nested program rather than a separate research/test-centre profile.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T00:02:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No published organization or current organization candidate matched Invest Ottawa, invest-ottawa, investottawa.ca, its legal name, or listed aliases in the canonical production duplicate check."
+        },
+        "sources": [
+          {
+            "id": "invest-ottawa-about",
+            "title": "About Invest Ottawa",
+            "url": "https://www.investottawa.ca/about-us/",
+            "publisher": "Invest Ottawa",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Official mandate, venture-development services, and Area X.O operation",
+            "summary": "Invest Ottawa identifies itself as the Capital Region economic-development agency and documents startup acceleration, commercialization, investment attraction, and operation of Area X.O."
+          },
+          {
+            "id": "invest-ottawa-accelerator",
+            "title": "IO Accelerator Program",
+            "url": "https://www.investottawa.ca/venture-path/accelerator/",
+            "publisher": "Invest Ottawa",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Program model, eligibility, support, and current impact figures",
+            "summary": "The official program page describes a milestone-driven accelerator for Canadian-owned National Capital Region technology firms, including product-market fit, finance, sales, talent, and capital support."
+          },
+          {
+            "id": "invest-ottawa-area-xo",
+            "title": "OVIN Regional Technology Development Site renewed at Area X.O",
+            "url": "https://www.investottawa.ca/blog/ottawa-region-ovin-rtds-renewed-to-accelerate-innovation/",
+            "publisher": "Invest Ottawa",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Area X.O mandate and supported technology sectors",
+            "summary": "Invest Ottawa describes Area X.O as an R&D complex for testing, validation, demonstration, and commercialization across autonomy, drones, communications, defence, and security."
+          },
+          {
+            "id": "invest-ottawa-contact",
+            "title": "Invest Ottawa Frequently Asked Questions",
+            "url": "https://www.investottawa.ca/about-us/faq/",
+            "publisher": "Invest Ottawa",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Headquarters, facility locations, and operating details",
+            "summary": "The official FAQ identifies Invest Ottawa headquarters at Bayview Yards and confirms it operates Area X.O and the IO Accelerator."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "invest-ottawa-description-evidence",
+            "sourceId": "invest-ottawa-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Ottawa economic-development and technology accelerator that operates venture programs and Area X.O, a secure R&D complex supporting testing, validation, demonstration, and commercialization of autonomy, drones, communications, defence, and security technologies.",
+            "confidence": "high"
+          },
+          {
+            "id": "invest-ottawa-location-evidence",
+            "sourceId": "invest-ottawa-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The official contact material supports Ottawa, Ontario as the candidate's primary Canadian map location.",
+            "confidence": "high"
+          },
+          {
+            "id": "invest-ottawa-io-accelerator-evidence",
+            "sourceId": "invest-ottawa-accelerator",
+            "fieldPath": "programs.io-accelerator.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Milestone-driven growth program for qualifying National Capital Region technology firms, providing expert support on product-market fit, finance, sales, marketing, talent, market intelligence, and access to capital.",
+            "confidence": "high"
+          },
+          {
+            "id": "invest-ottawa-area-xo-evidence",
+            "sourceId": "invest-ottawa-area-xo",
+            "fieldPath": "programs.area-xo.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Invest Ottawa-operated complex supporting development, testing, validation, demonstration, and commercialization of autonomy, drones, advanced communications, defence, security, and smart-mobility technologies.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "invest-ottawa",
+          "name": "Invest Ottawa",
+          "legalName": "Invest Ottawa",
+          "aliases": [
+            "IO"
+          ],
+          "description": "Ottawa economic-development and technology accelerator that operates venture programs and Area X.O, a secure R&D complex supporting testing, validation, demonstration, and commercialization of autonomy, drones, communications, defence, and security technologies.",
+          "websiteUrl": "https://www.investottawa.ca/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator",
+            "cluster_operator"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4084,
+            "longitude": -75.7267,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "mandate": "Ottawa economic-development and technology accelerator that operates venture programs and Area X.O, a secure R&D complex supporting testing, validation, demonstration, and commercialization of autonomy, drones, communications, defence, and security technologies.",
+            "evidencePosture": "Official identity, program, location, contact, and current-activity sources support this private candidate; unresolved modeling choices are stated in the reviewer rationale."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "io-accelerator",
+            "name": "IO Accelerator",
+            "programType": "Technology venture accelerator",
+            "websiteUrl": "https://www.investottawa.ca/venture-path/accelerator/",
+            "summary": "Milestone-driven growth program for qualifying National Capital Region technology firms, providing expert support on product-market fit, finance, sales, marketing, talent, market intelligence, and access to capital.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "area-xo",
+            "name": "Area X.O",
+            "programType": "Secure technology R&D, test, and commercialization complex",
+            "websiteUrl": "https://www.investottawa.ca/blog/ottawa-region-ovin-rtds-renewed-to-accelerate-innovation/",
+            "summary": "Invest Ottawa-operated complex supporting development, testing, validation, demonstration, and commercialization of autonomy, drones, advanced communications, defence, security, and smart-mobility technologies.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "invest-ottawa-description-evidence",
+          "sourceId": "invest-ottawa-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Ottawa economic-development and technology accelerator that operates venture programs and Area X.O, a secure R&D complex supporting testing, validation, demonstration, and commercialization of autonomy, drones, communications, defence, and security technologies.",
+          "confidence": "high"
+        },
+        {
+          "id": "invest-ottawa-location-evidence",
+          "sourceId": "invest-ottawa-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The official contact material supports Ottawa, Ontario as the candidate's primary Canadian map location.",
+          "confidence": "high"
+        },
+        {
+          "id": "invest-ottawa-io-accelerator-evidence",
+          "sourceId": "invest-ottawa-accelerator",
+          "fieldPath": "programs.io-accelerator.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Milestone-driven growth program for qualifying National Capital Region technology firms, providing expert support on product-market fit, finance, sales, marketing, talent, market intelligence, and access to capital.",
+          "confidence": "high"
+        },
+        {
+          "id": "invest-ottawa-area-xo-evidence",
+          "sourceId": "invest-ottawa-area-xo",
+          "fieldPath": "programs.area-xo.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Invest Ottawa-operated complex supporting development, testing, validation, demonstration, and commercialization of autonomy, drones, advanced communications, defence, security, and smart-mobility technologies.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T00:02:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No published organization or current organization candidate matched Invest Ottawa, invest-ottawa, investottawa.ca, its legal name, or listed aliases in the canonical production duplicate check."
+      },
+      "reviewer_rationale": "Invest Ottawa is worthy of inclusion as an accelerator because official sources establish its economic-development mandate, milestone-driven IO Accelerator, and operation of Area X.O for testing and commercialization of autonomy, drone, communications, defence, and security technologies. Evidence strength is high and includes current official program, facility, defence-strategy, and contact pages. Reviewers should confirm whether accelerator or ecosystem organization is the best primary kind and whether Area X.O should remain a nested program rather than a separate research/test-centre profile.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T00:04:42.241Z"
+    },
+    {
+      "client_candidate_id": "candidate-centech",
+      "research_run_ref": "tnm-manual-20260720235940",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "centech-ecosystem-support-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-centech",
+        "sourceLeadIds": [
+          "centech-ecosystem-support-lead"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Centech is worthy of inclusion as an incubator because official sources identify a Montréal non-profit high-technology incubator with 12-week acceleration, two-year Propulsion incubation, facilities and expert support, plus corporate aerospace and defence programs with Safran, Collins Aerospace, and Thales. Evidence is strong and role-specific. Reviewers should confirm the preferred legal-name treatment, whether university affiliation should be emphasized, and which aerospace and defence corporate programs are current enough for public display.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T00:02:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No published organization or current organization candidate matched Centech, centech, centech.co, its legal name, or listed aliases in the canonical production duplicate check."
+        },
+        "sources": [
+          {
+            "id": "centech-main",
+            "title": "Centech technology incubator",
+            "url": "https://centech.co/en/",
+            "publisher": "Centech",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Mandate, sectors, programs, and operating model",
+            "summary": "Centech describes support for science- and engineering-based high-potential technology ventures from concept through commercialization, with deep-tech and medtech focus."
+          },
+          {
+            "id": "centech-faq",
+            "title": "Centech FAQ",
+            "url": "https://centech.co/en/centechs-faq/",
+            "publisher": "Centech",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Non-profit identity and Acceleration versus Propulsion program structure",
+            "summary": "The official FAQ identifies Centech as a non-profit high-technology incubator and distinguishes its 12-week Acceleration and two-year Propulsion programs."
+          },
+          {
+            "id": "centech-corporate",
+            "title": "Centech Corporate Programs",
+            "url": "https://centech.co/en/corporate-programs/",
+            "publisher": "Centech",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Aerospace, defence, and open-innovation programs",
+            "summary": "Centech documents corporate programs with Safran, Collins Aerospace, and Thales that connect startups with aerospace, defence, AI, cyber, and other deep-technology needs."
+          },
+          {
+            "id": "centech-contact",
+            "title": "Contact Centech",
+            "url": "https://centech.co/contact/",
+            "publisher": "Centech",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Current Montréal address and public phone",
+            "summary": "Centech lists its current Ax.c location at 800 Rue du Square-Victoria, Suite 310, Montréal, and a public telephone number."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "centech-description-evidence",
+            "sourceId": "centech-main",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Montréal non-profit high-technology incubator affiliated with ÉTS that supports deep-tech ventures from concept through commercialization through acceleration, long-form incubation, corporate open innovation, facilities, mentors, and industry partnerships.",
+            "confidence": "high"
+          },
+          {
+            "id": "centech-location-evidence",
+            "sourceId": "centech-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The official contact material supports Montréal, Quebec as the candidate's primary Canadian map location.",
+            "confidence": "high"
+          },
+          {
+            "id": "centech-acceleration-program-evidence",
+            "sourceId": "centech-faq",
+            "fieldPath": "programs.acceleration-program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Free 12-week validation program providing entrepreneur-in-residence support, workshops, facilities, tools, and ecosystem access for high-technology founders.",
+            "confidence": "high"
+          },
+          {
+            "id": "centech-propulsion-program-evidence",
+            "sourceId": "centech-corporate",
+            "fieldPath": "programs.propulsion-program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Two-year incubation program providing tailored expert support, workspace, manufacturing tools, laboratory access, investor networks, and commercialization resources.",
+            "confidence": "high"
+          },
+          {
+            "id": "centech-corporate-open-innovation-evidence",
+            "sourceId": "centech-contact",
+            "fieldPath": "programs.corporate-open-innovation.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Open-innovation programs connecting deep-technology ventures with corporate partners including Safran, Collins Aerospace, and Thales across aerospace, defence, AI, cybersecurity, and related sectors.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "centech",
+          "name": "Centech",
+          "legalName": null,
+          "aliases": [
+            "Centre d'entreprises et d'innovation de Montréal"
+          ],
+          "description": "Montréal non-profit high-technology incubator affiliated with ÉTS that supports deep-tech ventures from concept through commercialization through acceleration, long-form incubation, corporate open innovation, facilities, mentors, and industry partnerships.",
+          "websiteUrl": "https://centech.co/en/",
+          "entityKind": "incubator",
+          "categories": [
+            "dual_use_accelerator",
+            "university_affiliated"
+          ],
+          "primaryLocation": {
+            "city": "Montréal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5002,
+            "longitude": -73.5608,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "mandate": "Montréal non-profit high-technology incubator affiliated with ÉTS that supports deep-tech ventures from concept through commercialization through acceleration, long-form incubation, corporate open innovation, facilities, mentors, and industry partnerships.",
+            "evidencePosture": "Official identity, program, location, contact, and current-activity sources support this private candidate; unresolved modeling choices are stated in the reviewer rationale."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "acceleration-program",
+            "name": "Centech Acceleration Program",
+            "programType": "Twelve-week technology venture acceleration",
+            "websiteUrl": "https://centech.co/en/centechs-faq/",
+            "summary": "Free 12-week validation program providing entrepreneur-in-residence support, workshops, facilities, tools, and ecosystem access for high-technology founders.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "propulsion-program",
+            "name": "Centech Propulsion Program",
+            "programType": "Two-year deep-technology incubation",
+            "websiteUrl": "https://centech.co/en/propulsion-program/",
+            "summary": "Two-year incubation program providing tailored expert support, workspace, manufacturing tools, laboratory access, investor networks, and commercialization resources.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "corporate-open-innovation",
+            "name": "Collision Lab corporate programs",
+            "programType": "Corporate-startup open innovation",
+            "websiteUrl": "https://centech.co/en/corporate-programs/",
+            "summary": "Open-innovation programs connecting deep-technology ventures with corporate partners including Safran, Collins Aerospace, and Thales across aerospace, defence, AI, cybersecurity, and related sectors.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "centech-description-evidence",
+          "sourceId": "centech-main",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Montréal non-profit high-technology incubator affiliated with ÉTS that supports deep-tech ventures from concept through commercialization through acceleration, long-form incubation, corporate open innovation, facilities, mentors, and industry partnerships.",
+          "confidence": "high"
+        },
+        {
+          "id": "centech-location-evidence",
+          "sourceId": "centech-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The official contact material supports Montréal, Quebec as the candidate's primary Canadian map location.",
+          "confidence": "high"
+        },
+        {
+          "id": "centech-acceleration-program-evidence",
+          "sourceId": "centech-faq",
+          "fieldPath": "programs.acceleration-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Free 12-week validation program providing entrepreneur-in-residence support, workshops, facilities, tools, and ecosystem access for high-technology founders.",
+          "confidence": "high"
+        },
+        {
+          "id": "centech-propulsion-program-evidence",
+          "sourceId": "centech-corporate",
+          "fieldPath": "programs.propulsion-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Two-year incubation program providing tailored expert support, workspace, manufacturing tools, laboratory access, investor networks, and commercialization resources.",
+          "confidence": "high"
+        },
+        {
+          "id": "centech-corporate-open-innovation-evidence",
+          "sourceId": "centech-contact",
+          "fieldPath": "programs.corporate-open-innovation.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Open-innovation programs connecting deep-technology ventures with corporate partners including Safran, Collins Aerospace, and Thales across aerospace, defence, AI, cybersecurity, and related sectors.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T00:02:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No published organization or current organization candidate matched Centech, centech, centech.co, its legal name, or listed aliases in the canonical production duplicate check."
+      },
+      "reviewer_rationale": "Centech is worthy of inclusion as an incubator because official sources identify a Montréal non-profit high-technology incubator with 12-week acceleration, two-year Propulsion incubation, facilities and expert support, plus corporate aerospace and defence programs with Safran, Collins Aerospace, and Thales. Evidence is strong and role-specific. Reviewers should confirm the preferred legal-name treatment, whether university affiliation should be emphasized, and which aerospace and defence corporate programs are current enough for public display.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T00:04:42.241Z"
+    },
+    {
+      "client_candidate_id": "candidate-north-forge",
+      "research_run_ref": "tnm-manual-20260720235940",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "north-forge-ecosystem-support-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-north-forge",
+        "sourceLeadIds": [
+          "north-forge-ecosystem-support-lead"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "North Forge is worthy of inclusion as an incubator because its official site establishes a non-profit, no-equity startup incubator and accelerator with a four-stage Founders Program, one of North America's largest fabrication facilities, advanced-manufacturing support, intellectual-property programming, and Canadian reach. Evidence is official and strong for the incubator role, but direct defence specialization is not established; reviewers should therefore treat its relevance as dual-use and advanced-manufacturing ecosystem capacity rather than defence endorsement.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T00:02:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No published organization or current organization candidate matched North Forge Technology Exchange, north-forge, northforge.ca, its legal name, or listed aliases in the canonical production duplicate check."
+        },
+        "sources": [
+          {
+            "id": "north-forge-main",
+            "title": "North Forge startup incubator and fabrication lab",
+            "url": "https://www.northforge.ca/",
+            "publisher": "North Forge Technology Exchange",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Mandate, programs, impact, sectors, address, and contact details",
+            "summary": "North Forge identifies itself as an independent non-profit incubator, accelerator, and fabrication lab supporting technology, STEM, and advanced-manufacturing startups from ideation through Series A."
+          },
+          {
+            "id": "north-forge-faq",
+            "title": "North Forge frequently asked questions",
+            "url": "https://www.northforge.ca/faqs",
+            "publisher": "North Forge Technology Exchange",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Program structure, virtual reach, and facilities",
+            "summary": "The official FAQ describes the staged Founders Program, FabLab, Advanced Manufacturing Lab, ElevateIP, Startup Visa support, and virtual delivery across Canada."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "north-forge-description-evidence",
+            "sourceId": "north-forge-main",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Winnipeg-based non-profit startup incubator and accelerator supporting Canadian technology, STEM, and advanced-manufacturing ventures from ideation through Series A through a staged Founders Program, fabrication and advanced-manufacturing facilities, mentorship, intellectual-property support, and national virtual programming.",
+            "confidence": "high"
+          },
+          {
+            "id": "north-forge-location-evidence",
+            "sourceId": "north-forge-faq",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The official contact material supports Winnipeg, Manitoba as the candidate's primary Canadian map location.",
+            "confidence": "high"
+          },
+          {
+            "id": "north-forge-founders-program-evidence",
+            "sourceId": "north-forge-faq",
+            "fieldPath": "programs.founders-program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Structured founder journey providing curated resources, mentorship, coaching, and venture development from early ideation through acceleration.",
+            "confidence": "high"
+          },
+          {
+            "id": "north-forge-fablab-and-amlab-evidence",
+            "sourceId": "north-forge-faq",
+            "fieldPath": "programs.fablab-and-amlab.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Physical product development support through fabrication, rapid prototyping, specialized equipment, and advanced-manufacturing expertise.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "north-forge",
+          "name": "North Forge Technology Exchange",
+          "legalName": "North Forge Technology Exchange",
+          "aliases": [
+            "North Forge"
+          ],
+          "description": "Winnipeg-based non-profit startup incubator and accelerator supporting Canadian technology, STEM, and advanced-manufacturing ventures from ideation through Series A through a staged Founders Program, fabrication and advanced-manufacturing facilities, mentorship, intellectual-property support, and national virtual programming.",
+          "websiteUrl": "https://www.northforge.ca/",
+          "entityKind": "incubator",
+          "categories": [
+            "dual_use_accelerator",
+            "cluster_operator"
+          ],
+          "primaryLocation": {
+            "city": "Winnipeg",
+            "provinceTerritory": "Manitoba",
+            "countryCode": "CA",
+            "latitude": 49.8991,
+            "longitude": -97.1422,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "mandate": "Winnipeg-based non-profit startup incubator and accelerator supporting Canadian technology, STEM, and advanced-manufacturing ventures from ideation through Series A through a staged Founders Program, fabrication and advanced-manufacturing facilities, mentorship, intellectual-property support, and national virtual programming.",
+            "evidencePosture": "Official identity, program, location, contact, and current-activity sources support this private candidate; unresolved modeling choices are stated in the reviewer rationale."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "founders-program",
+            "name": "North Forge Founders Program",
+            "programType": "Four-stage startup development and acceleration",
+            "websiteUrl": "https://www.northforge.ca/",
+            "summary": "Structured founder journey providing curated resources, mentorship, coaching, and venture development from early ideation through acceleration.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "fablab-and-amlab",
+            "name": "North Forge FabLab and Advanced Manufacturing Lab",
+            "programType": "Prototype and advanced-manufacturing facilities",
+            "websiteUrl": "https://www.northforge.ca/faqs",
+            "summary": "Physical product development support through fabrication, rapid prototyping, specialized equipment, and advanced-manufacturing expertise.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "north-forge-description-evidence",
+          "sourceId": "north-forge-main",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Winnipeg-based non-profit startup incubator and accelerator supporting Canadian technology, STEM, and advanced-manufacturing ventures from ideation through Series A through a staged Founders Program, fabrication and advanced-manufacturing facilities, mentorship, intellectual-property support, and national virtual programming.",
+          "confidence": "high"
+        },
+        {
+          "id": "north-forge-location-evidence",
+          "sourceId": "north-forge-faq",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The official contact material supports Winnipeg, Manitoba as the candidate's primary Canadian map location.",
+          "confidence": "high"
+        },
+        {
+          "id": "north-forge-founders-program-evidence",
+          "sourceId": "north-forge-faq",
+          "fieldPath": "programs.founders-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Structured founder journey providing curated resources, mentorship, coaching, and venture development from early ideation through acceleration.",
+          "confidence": "high"
+        },
+        {
+          "id": "north-forge-fablab-and-amlab-evidence",
+          "sourceId": "north-forge-faq",
+          "fieldPath": "programs.fablab-and-amlab.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Physical product development support through fabrication, rapid prototyping, specialized equipment, and advanced-manufacturing expertise.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T00:02:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No published organization or current organization candidate matched North Forge Technology Exchange, north-forge, northforge.ca, its legal name, or listed aliases in the canonical production duplicate check."
+      },
+      "reviewer_rationale": "North Forge is worthy of inclusion as an incubator because its official site establishes a non-profit, no-equity startup incubator and accelerator with a four-stage Founders Program, one of North America's largest fabrication facilities, advanced-manufacturing support, intellectual-property programming, and Canadian reach. Evidence is official and strong for the incubator role, but direct defence specialization is not established; reviewers should therefore treat its relevance as dual-use and advanced-manufacturing ecosystem capacity rather than defence endorsement.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-21T00:04:42.241Z"
+    },
+    {
+      "client_candidate_id": "candidate-nrc-irap",
+      "research_run_ref": "tnm-manual-20260720235940",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "nrc-irap-ecosystem-support-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-nrc-irap",
+        "sourceLeadIds": [
+          "nrc-irap-ecosystem-support-lead"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "NRC IRAP is worthy of inclusion as a government innovation and funding office because official NRC and Government of Canada sources establish a national advisory-and-funding program for innovative SMEs and a current Defence Industry Assist initiative dedicated to Canadian defence and dual-use technologies. Evidence strength is high and includes the official defence-research page, funding announcement, departmental plan, and contact route. Reviewers should confirm whether NRC IRAP should be modeled as an organization profile or as a nested NRC program and should treat the Ottawa point as regional because IRAP operates through a national advisor network.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T00:02:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No published organization or current organization candidate matched NRC Industrial Research Assistance Program, nrc-irap, nrc.canada.ca, its legal name, or listed aliases in the canonical production duplicate check."
+        },
+        "sources": [
+          {
+            "id": "nrc-irap-main",
+            "title": "Support for technology innovation through NRC IRAP",
+            "url": "https://nrc.canada.ca/en/support-technology-innovation",
+            "publisher": "NRC Industrial Research Assistance Program",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "National advice, connections, and funding mandate",
+            "summary": "NRC presents IRAP as a national program helping innovative Canadian SMEs build technology and commercial capacity through industrial technology advisors, connections, and project funding."
+          },
+          {
+            "id": "nrc-defence-research",
+            "title": "Defence research at the NRC",
+            "url": "https://nrc.canada.ca/en/research-development/research-collaboration/defence-research-nrc",
+            "publisher": "NRC Industrial Research Assistance Program",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Defence Industry Assist and broader defence collaboration",
+            "summary": "The NRC describes IRAP Defence Industry Assist as advice and funding for high-potential Canadian SMEs advancing made-in-Canada defence and dual-use technologies."
+          },
+          {
+            "id": "nrc-di-assist",
+            "title": "NRC IRAP launches Defence Industry Assist",
+            "url": "https://www.canada.ca/en/national-research-council/news/2026/01/minister-joly-announces-over-240-million-to-boost-defence-innovation-support-for-canadian-small-and-medium-sized-businesses-developing-dual-use-tec.html",
+            "publisher": "NRC Industrial Research Assistance Program",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Funding, delivery model, SME reach, and defence coordination",
+            "summary": "The official release announces dedicated federal investment for Defence Industry Assist and describes delivery through IRAP industrial technology advisors in coordination with ISED, DND, and the Defence Investment Agency."
+          },
+          {
+            "id": "nrc-contact",
+            "title": "Contact the National Research Council",
+            "url": "https://nrc.canada.ca/en/corporate/contact-us",
+            "publisher": "NRC Industrial Research Assistance Program",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "NRC IRAP contact route and Ottawa institutional address",
+            "summary": "The NRC contact page provides the IRAP toll-free contact path, regional-office guidance, and the NRC's Ottawa institutional address."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "nrc-irap-description-evidence",
+            "sourceId": "nrc-irap-main",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "National Research Council program providing advice, connections, and non-repayable project funding to innovative Canadian small and medium-sized businesses, including dedicated Defence Industry Assist support for made-in-Canada defence and dual-use technologies.",
+            "confidence": "high"
+          },
+          {
+            "id": "nrc-irap-location-evidence",
+            "sourceId": "nrc-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The official contact material supports Ottawa, Ontario as the candidate's primary Canadian map location.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "nrc-irap-defence-industry-assist-evidence",
+            "sourceId": "nrc-defence-research",
+            "fieldPath": "programs.defence-industry-assist.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Dedicated NRC IRAP initiative providing advice, connections, and funding to help high-potential Canadian SMEs advance made-in-Canada defence and dual-use technologies.",
+            "confidence": "high"
+          },
+          {
+            "id": "nrc-irap-irap-advisory-and-funding-evidence",
+            "sourceId": "nrc-di-assist",
+            "fieldPath": "programs.irap-advisory-and-funding.summary",
+            "claimClass": "source_backed",
+            "excerpt": "National program connecting innovative SMEs with industrial technology advisors, technical and business guidance, networks, and non-repayable project contributions.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "nrc-irap",
+          "name": "NRC Industrial Research Assistance Program",
+          "legalName": null,
+          "aliases": [
+            "NRC IRAP",
+            "PARI CNRC"
+          ],
+          "description": "National Research Council program providing advice, connections, and non-repayable project funding to innovative Canadian small and medium-sized businesses, including dedicated Defence Industry Assist support for made-in-Canada defence and dual-use technologies.",
+          "websiteUrl": "https://nrc.canada.ca/en/support-technology-innovation",
+          "entityKind": "government_innovation_office",
+          "categories": [
+            "government_program_operator",
+            "public_funder"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4466,
+            "longitude": -75.6165,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "National Research Council program providing advice, connections, and non-repayable project funding to innovative Canadian small and medium-sized businesses, including dedicated Defence Industry Assist support for made-in-Canada defence and dual-use technologies.",
+            "evidencePosture": "Official identity, program, location, contact, and current-activity sources support this private candidate; unresolved modeling choices are stated in the reviewer rationale."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "defence-industry-assist",
+            "name": "Defence Industry Assist",
+            "programType": "Defence and dual-use SME advisory and funding initiative",
+            "websiteUrl": "https://nrc.canada.ca/en/research-development/research-collaboration/defence-research-nrc",
+            "summary": "Dedicated NRC IRAP initiative providing advice, connections, and funding to help high-potential Canadian SMEs advance made-in-Canada defence and dual-use technologies.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "irap-advisory-and-funding",
+            "name": "NRC IRAP advisory and project funding",
+            "programType": "National innovation advisory and contribution program",
+            "websiteUrl": "https://nrc.canada.ca/en/support-technology-innovation",
+            "summary": "National program connecting innovative SMEs with industrial technology advisors, technical and business guidance, networks, and non-repayable project contributions.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "nrc-irap-description-evidence",
+          "sourceId": "nrc-irap-main",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "National Research Council program providing advice, connections, and non-repayable project funding to innovative Canadian small and medium-sized businesses, including dedicated Defence Industry Assist support for made-in-Canada defence and dual-use technologies.",
+          "confidence": "high"
+        },
+        {
+          "id": "nrc-irap-location-evidence",
+          "sourceId": "nrc-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The official contact material supports Ottawa, Ontario as the candidate's primary Canadian map location.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "nrc-irap-defence-industry-assist-evidence",
+          "sourceId": "nrc-defence-research",
+          "fieldPath": "programs.defence-industry-assist.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Dedicated NRC IRAP initiative providing advice, connections, and funding to help high-potential Canadian SMEs advance made-in-Canada defence and dual-use technologies.",
+          "confidence": "high"
+        },
+        {
+          "id": "nrc-irap-irap-advisory-and-funding-evidence",
+          "sourceId": "nrc-di-assist",
+          "fieldPath": "programs.irap-advisory-and-funding.summary",
+          "claimClass": "source_backed",
+          "excerpt": "National program connecting innovative SMEs with industrial technology advisors, technical and business guidance, networks, and non-repayable project contributions.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T00:02:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No published organization or current organization candidate matched NRC Industrial Research Assistance Program, nrc-irap, nrc.canada.ca, its legal name, or listed aliases in the canonical production duplicate check."
+      },
+      "reviewer_rationale": "NRC IRAP is worthy of inclusion as a government innovation and funding office because official NRC and Government of Canada sources establish a national advisory-and-funding program for innovative SMEs and a current Defence Industry Assist initiative dedicated to Canadian defence and dual-use technologies. Evidence strength is high and includes the official defence-research page, funding announcement, departmental plan, and contact route. Reviewers should confirm whether NRC IRAP should be modeled as an organization profile or as a nested NRC program and should treat the Ottawa point as regional because IRAP operates through a national advisor network.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T00:04:42.241Z"
+    },
+    {
+      "client_candidate_id": "candidate-bdc",
+      "research_run_ref": "tnm-manual-20260720235940",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "bdc-ecosystem-support-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-bdc",
+        "sourceLeadIds": [
+          "bdc-ecosystem-support-lead"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "BDC is worthy of inclusion as an investor and funder because official BDC and Government of Canada sources establish its Crown-corporation development mandate and a dedicated Defence Platform, expanded to as much as $6 billion, spanning direct financing, advisory support, venture investment, StrongNorth, innovation-catalyst funding, and indirect fund investment. Evidence strength is high. Reviewers should confirm whether the public profile should emphasize BDC overall or the Defence Platform specifically and should verify current allocations as the platform continues to evolve.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-21T00:02:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No published organization or current organization candidate matched Business Development Bank of Canada, bdc, bdc.ca, its legal name, or listed aliases in the canonical production duplicate check."
+        },
+        "sources": [
+          {
+            "id": "bdc-defence-platform",
+            "title": "BDC introduces Defence Platform",
+            "url": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-introduces-platform-to-provide-4b-to-boost-canada-defence-security-ecosystem",
+            "publisher": "Business Development Bank of Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Initial platform structure, financing, investment streams, and priority sectors",
+            "summary": "BDC's official announcement describes direct financing and advisory support plus venture and indirect investments for Canadian defence, security, sovereignty, and dual-use businesses."
+          },
+          {
+            "id": "bdc-defence-expansion",
+            "title": "BDC expands Defence Platform",
+            "url": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-boosts-defence-platform-after-providing-financing-names-strong-northfund-leader",
+            "publisher": "Business Development Bank of Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Current platform ceiling and two-layer support model",
+            "summary": "BDC's official update expands the Defence Platform to as much as $6 billion and describes direct financial solutions plus ecosystem-level partnerships and indirect support."
+          },
+          {
+            "id": "bdc-defence-solutions",
+            "title": "BDC Capital defence-sector solutions",
+            "url": "https://www.bdc.ca/en/bdc-capital/venture-capital/funds/defence-sector-solutions",
+            "publisher": "Business Development Bank of Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Venture-capital allocation and defence investment focus",
+            "summary": "BDC Capital describes dedicated investment support for defence innovation, including funds and solutions aimed at Canadian defence and dual-use technology companies."
+          },
+          {
+            "id": "bdc-contact",
+            "title": "Contact BDC",
+            "url": "https://www.bdc.ca/en/contact-us",
+            "publisher": "Business Development Bank of Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-21T00:02:00.000Z",
+            "locator": "Head-office address and public support route",
+            "summary": "BDC's official contact page lists its Montréal head office at 5 Place Ville Marie and a national Business Solutions Centre contact route."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "bdc-description-evidence",
+            "sourceId": "bdc-defence-platform",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Federal Crown corporation and development bank providing financing, advisory services, and venture investment to Canadian businesses, including a dedicated Defence Platform of up to $6 billion for defence, security, sovereignty, and dual-use companies and ecosystem funds.",
+            "confidence": "high"
+          },
+          {
+            "id": "bdc-location-evidence",
+            "sourceId": "bdc-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The official contact material supports Montréal, Quebec as the candidate's primary Canadian map location.",
+            "confidence": "high"
+          },
+          {
+            "id": "bdc-bdc-defence-platform-evidence",
+            "sourceId": "bdc-defence-expansion",
+            "fieldPath": "programs.bdc-defence-platform.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Platform of up to $6 billion combining direct financing and advisory support with venture, ecosystem, and indirect investment tools for Canadian defence, security, sovereignty, and dual-use businesses.",
+            "confidence": "high"
+          },
+          {
+            "id": "bdc-strongnorth-fund-evidence",
+            "sourceId": "bdc-defence-solutions",
+            "fieldPath": "programs.strongnorth-fund.summary",
+            "claimClass": "source_backed",
+            "excerpt": "BDC Capital venture stream focused on scaling Canadian deep technologies with defence, security, sovereignty, and dual-use relevance.",
+            "confidence": "high"
+          },
+          {
+            "id": "bdc-government-capital-relationship-evidence",
+            "sourceId": "bdc-defence-platform",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "BDC states that its Defence Platform is backed by a federal capital injection and supports the Government of Canada's defence-industrial objectives through financing, advice, venture investment, and ecosystem funds.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "bdc",
+          "name": "Business Development Bank of Canada",
+          "legalName": "Business Development Bank of Canada",
+          "aliases": [
+            "BDC",
+            "BDC Capital"
+          ],
+          "description": "Federal Crown corporation and development bank providing financing, advisory services, and venture investment to Canadian businesses, including a dedicated Defence Platform of up to $6 billion for defence, security, sovereignty, and dual-use companies and ecosystem funds.",
+          "websiteUrl": "https://www.bdc.ca/en",
+          "entityKind": "investor_funder",
+          "categories": [
+            "public_funder",
+            "venture_capital"
+          ],
+          "primaryLocation": {
+            "city": "Montréal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5018,
+            "longitude": -73.5687,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "mandate": "Federal Crown corporation and development bank providing financing, advisory services, and venture investment to Canadian businesses, including a dedicated Defence Platform of up to $6 billion for defence, security, sovereignty, and dual-use companies and ecosystem funds.",
+            "evidencePosture": "Official identity, program, location, contact, and current-activity sources support this private candidate; unresolved modeling choices are stated in the reviewer rationale."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "bdc-defence-platform",
+            "name": "BDC Defence Platform",
+            "programType": "Defence financing, advisory, and investment platform",
+            "websiteUrl": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-boosts-defence-platform-after-providing-financing-names-strong-northfund-leader",
+            "summary": "Platform of up to $6 billion combining direct financing and advisory support with venture, ecosystem, and indirect investment tools for Canadian defence, security, sovereignty, and dual-use businesses.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "strongnorth-fund",
+            "name": "StrongNorth Fund",
+            "programType": "Defence and dual-use deep-technology venture fund",
+            "websiteUrl": "https://www.bdc.ca/en/bdc-capital/venture-capital/funds/defence-sector-solutions",
+            "summary": "BDC Capital venture stream focused on scaling Canadian deep technologies with defence, security, sovereignty, and dual-use relevance.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "capitalized_by",
+            "publicSummary": "BDC's Defence Platform is backed by federal capital and is designed to advance Government of Canada defence-industrial objectives through financing, advisory support, direct investment, and ecosystem funds."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "bdc-description-evidence",
+          "sourceId": "bdc-defence-platform",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Federal Crown corporation and development bank providing financing, advisory services, and venture investment to Canadian businesses, including a dedicated Defence Platform of up to $6 billion for defence, security, sovereignty, and dual-use companies and ecosystem funds.",
+          "confidence": "high"
+        },
+        {
+          "id": "bdc-location-evidence",
+          "sourceId": "bdc-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The official contact material supports Montréal, Quebec as the candidate's primary Canadian map location.",
+          "confidence": "high"
+        },
+        {
+          "id": "bdc-bdc-defence-platform-evidence",
+          "sourceId": "bdc-defence-expansion",
+          "fieldPath": "programs.bdc-defence-platform.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Platform of up to $6 billion combining direct financing and advisory support with venture, ecosystem, and indirect investment tools for Canadian defence, security, sovereignty, and dual-use businesses.",
+          "confidence": "high"
+        },
+        {
+          "id": "bdc-strongnorth-fund-evidence",
+          "sourceId": "bdc-defence-solutions",
+          "fieldPath": "programs.strongnorth-fund.summary",
+          "claimClass": "source_backed",
+          "excerpt": "BDC Capital venture stream focused on scaling Canadian deep technologies with defence, security, sovereignty, and dual-use relevance.",
+          "confidence": "high"
+        },
+        {
+          "id": "bdc-government-capital-relationship-evidence",
+          "sourceId": "bdc-defence-platform",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "BDC states that its Defence Platform is backed by a federal capital injection and supports the Government of Canada's defence-industrial objectives through financing, advice, venture investment, and ecosystem funds.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T00:02:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No published organization or current organization candidate matched Business Development Bank of Canada, bdc, bdc.ca, its legal name, or listed aliases in the canonical production duplicate check."
+      },
+      "reviewer_rationale": "BDC is worthy of inclusion as an investor and funder because official BDC and Government of Canada sources establish its Crown-corporation development mandate and a dedicated Defence Platform, expanded to as much as $6 billion, spanning direct financing, advisory support, venture investment, StrongNorth, innovation-catalyst funding, and indirect fund investment. Evidence strength is high. Reviewers should confirm whether the public profile should emphasize BDC overall or the Defence Platform specifically and should verify current allocations as the platform continues to evolve.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-21T00:04:42.241Z"
+    }
+  ]
+}

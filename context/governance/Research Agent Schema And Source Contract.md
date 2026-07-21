@@ -13,8 +13,9 @@ The promotion path is:
 
 ```mermaid
 flowchart LR
-  A["Coverage gap"] --> B["Durable source lead"]
-  B --> C["Candidate change"]
+  A["Saturation gap"] --> P["Broad prospect inventory"]
+  P --> B["Durable source lead"]
+  B --> C["Green or amber candidate change"]
   C --> D["Schema and evidence validation"]
   D --> E["Human review decision"]
   E --> F["Explicit promotion"]
@@ -179,30 +180,33 @@ Database-backed candidates use `candidate_changes`:
 - `confidence`
 - `status`
 
+New research candidates also carry `reviewTier`, `inclusionScore`, `completenessScore`, and `reviewWarnings`. Inclusion and completeness are separate: a strong core inclusion case with incomplete optional enrichment belongs in amber review, not silent exclusion.
+
 File-backed research batches must preserve the same information and validate against the applicable schema under `research/ingestion/schema/`.
 
 ## Weekly autonomous loop
 
 1. Run readiness and coverage checks.
 2. Measure coverage by region x organization type x capability x demand requirement.
-3. Choose the highest-value gap and record the selection in `research_runs.selected_gap`.
-4. Expand the Global Source Book with durable public sources.
-5. Create source leads before structured candidates unless an approved lead already exists.
-6. Draft organizations, capabilities, relationships, and citations.
-7. Validate schema, canonical URLs, duplicates, media rights, evidence completeness, and taxonomy IDs.
-8. Put candidates in the review queue.
-9. Stop. Do not publish.
-10. After explicit human promotion, recalculate coverage and freshness.
+3. Choose the highest-value saturation gap and record the selection in `research_runs.selected_gap`.
+4. Rank and expand the Global Source Book with durable public sources.
+5. Enumerate 40-75 unique prospects across at least six lanes and preserve unused plausible prospects as queued backlog.
+6. Create source leads before structured candidates. Qualified leads continue automatically without a separate human approval pause.
+7. Recover evidence across at least three lanes before deferring a plausible thin lead.
+8. Draft green and amber organizations, demand signals, capabilities, relationships, citations, scores, warnings, and rationales.
+9. Validate schema, canonical URLs, duplicates, media rights, evidence completeness, taxonomy IDs, and discovery throughput.
+10. Put candidates in the review queue. Stop. Do not publish.
+11. After explicit human promotion, recalculate coverage and freshness.
 
 Rate limits, weak sources, extraction failures, unresolved duplicates, and missing coordinates produce review notes. They never produce partially published records.
 
 ### Implemented coordinator contract
 
-The weekly loop is implemented by `app/scripts/autonomous-research.ts` and the repository skills in `.agents/skills/`. Each run is bounded by a `research_run_v1` manifest and produces typed `source_lead_batch_v2` and `research_candidate_batch_v2` artifacts before a reviewer packet and direct private `candidate_changes` intake. Every typed candidate requires a generated reviewer rationale that explains the inclusion case, evidence strength, and reviewer verification focus. The `research_runs` row is audit metadata only and is not a separate review step.
+The weekly loop is implemented by `app/scripts/autonomous-research.ts` and the five canonical skills of record in `.agents/skills/`. Those project-local copies supersede cached skills, older operator-guide workflow language, and historical run assumptions. A broad run produces `research_prospect_inventory_v1`, `source_lead_batch_v2`, and `research_candidate_batch_v2` artifacts. It targets 10 candidates and requires at least eight unless `underTargetReason` and `exhaustionEvidence` prove that 40 prospects and six lanes were genuinely exhausted. Deep dossiers preserve 1-5 candidate depth without the breadth floor. Every typed candidate requires a generated reviewer rationale. The `research_runs` row is audit metadata only.
 
 The executable schema distinguishes organization, demand-signal, and program-relationship bundles. It also enforces conditional organization evidence so accelerators, incubators, investors, research centres, and ecosystem bodies are not forced into company-capability records.
 
-The database migrations add organization aliases, hierarchical demand issuers, source-to-issuer roles, commitment metadata, durable reviewer rationales, richer run/candidate audit fields, idempotent trusted review intake, and typed human publication support for organization and public-demand candidates. Autonomous authority ends after private candidate intake; approval and all canonical-table writes remain human controlled.
+The database migrations add organization aliases, hierarchical demand issuers, source-to-issuer roles, commitment metadata, durable reviewer rationales, richer run/candidate audit fields, idempotent trusted review intake, and typed human publication support for organization and public-demand candidates. Lead qualification is autonomous; human authority begins with candidate editing and review in Admin Review. Autonomous authority ends after private candidate intake, and acceptance, publication, and all canonical-table writes remain human controlled.
 
 ## Public contributions
 

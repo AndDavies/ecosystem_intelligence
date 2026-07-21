@@ -4,7 +4,7 @@ This file is the operating contract for agent work in the `Ecosystem Intelligenc
 
 ## Project Mission
 
-`Ecosystem Intelligence` is the project and system category. Its public brand is `True North Map` at `https://truenorthmap.ca`: a simple, evidence-backed business intelligence, ecosystem-mapping, and engagement-management service for defence and strategic-tech teams. Supabase project `facoactpdckkhciamflk` is the sole canonical runtime, taxonomy, coverage, duplicate-check, and publication data source. The live public beta contains 35 reviewed organizations, 31 reviewed technologies, six public problem statements, and seven reviewed public demand matches. Expansion is governed by evidence quality and explicit human review rather than a fixed release number.
+`Ecosystem Intelligence` is the project and system category. Its public brand is `True North Map` at `https://truenorthmap.ca`: a simple, evidence-backed business intelligence, ecosystem-mapping, and engagement-management service for defence and strategic-tech teams. Supabase project `facoactpdckkhciamflk` is the sole canonical runtime, taxonomy, coverage, duplicate-check, and publication data source. Read live corpus counts from production rather than copying them into operating contracts. Expansion is governed by evidence quality and explicit candidate review and publication rather than a fixed release number.
 
 The strategic wedge is:
 
@@ -60,7 +60,7 @@ Mission Area / Use Case -> top targets -> why now -> evidence and confidence -> 
 - Global Source Book expansion is uncapped and recursive; keep going until time, tool, or reviewer limits require a stop.
 - Source-lead batch sizes are scoped only when preparing reviewable lead artifacts.
 - Source posture: durable public sources first.
-- Promotion posture: source leads -> human review -> candidate batch -> validation -> review packet -> explicit promotion.
+- Promotion posture: source discovery -> deterministic lead qualification -> automatic candidate building -> validation -> private Admin Review -> human review and editing -> explicit publication.
 
 ## Agent Roles
 
@@ -68,16 +68,18 @@ Mission Area / Use Case -> top targets -> why now -> evidence and confidence -> 
 - UX Reviewer: checks whether a first-time BD user can understand where to start and what to do next.
 - Research Coordinator: owns source-lead scope, mission-area balance, batch planning, task routing, and readiness checks.
 - Source Discovery Scout: finds source leads from company sites, press releases, government/program pages, publications, and broad web search.
-- Company Profile Builder: converts approved source leads into company and capability profile drafts using existing taxonomy IDs only.
+- Company Profile Builder: converts validated qualified source leads into enriched company and capability profile drafts using existing taxonomy IDs only.
 - Evidence And Mapping Analyst: maps capabilities to use cases/clusters and prepares evidence snippets, field citations, confidence notes, and `why_it_matters` rationale.
 - Database And Review Steward: checks schema fit, duplicate risk, validation readiness, Supabase table shape, and promotion safety.
 - Governance Reviewer: checks trust boundaries, review posture, and documentation drift.
 
-## Project-Local Skills
+## Research Skills Of Record
+
+The five project-local skills below are the canonical skills of record for the current research and ingestion pipeline. Manual runs, scheduled runs, tests, and governance reviews must use these repository copies. They supersede cached or globally installed variants, older operator-guide instructions, and workflow assumptions embedded in historical run artifacts. `app/src/lib/research/pipeline-schema.ts` remains the executable data contract when prose and code differ.
 
 - `.agents/skills/tnm-autonomous-research/`: live-database coverage, batch planning, limits, and handoffs.
-- `.agents/skills/tnm-source-discovery/`: durable public-source discovery and typed leads.
-- `.agents/skills/tnm-candidate-builder/`: approved-lead conversion into typed organization, demand, or relationship candidates.
+- `.agents/skills/tnm-source-discovery/`: broad prospect enumeration, evidence recovery, durable public-source discovery, and typed leads.
+- `.agents/skills/tnm-candidate-builder/`: qualified-lead conversion into enriched green or amber organization, demand, or relationship candidates.
 - `.agents/skills/tnm-evidence-mapper/`: field evidence, citations, confidence, and derived rationale.
 - `.agents/skills/tnm-review-steward/`: live taxonomy and duplicate checks, deterministic validation, private review intake, and publication guardrails.
 
@@ -88,11 +90,18 @@ Mission Area / Use Case -> top targets -> why now -> evidence and confidence -> 
 - Keep plain-language source search rules in `research/source-book/source-search-playbook.md`.
 - Expand the Global Source Book before creating source leads when the source base is thin or regionally narrow.
 - Do not cap Global Source Book expansion at a fixed number of rows; record useful durable sources and unresolved search trails.
-- Produce source leads before candidate records unless approved source leads already exist.
+- Produce source leads before candidate records unless validated qualified source leads already exist.
+- Use `discovery_batch` for broad expansion: enumerate 40-75 unique prospects across at least six source lanes, target 10 candidates, and require at least eight unless the run records specific exhaustion evidence.
+- Use `deep_dossier` for 1-5 named organizations; search at least three complementary source lanes and prioritize portfolio depth over prospect volume.
+- Keep plausible unused prospects queued in the prospect inventory so later runs resume the backlog instead of rediscovering it.
 - When creating source leads, choose an explicit reviewable batch size by Mission Area before work begins.
 - Prefer one source-lead batch per Mission Area when review load or provenance clarity matters.
 - A combined source-lead batch is acceptable only when leads are clearly grouped by Mission Area in `scope` and `leadSummary`.
 - Every source lead must include organization, source URL, publisher, source type, summary, possible use cases/domains, confidence, follow-up questions, and `doNotIngestReason` when rejected or deferred.
+- Every validated `qualified` lead proceeds automatically to candidate building in the same active run. Do not pause for source-lead approval. Deferred and rejected leads do not proceed.
+- Enrich candidates to the depth supported by durable public evidence, including identity, aliases, role, capabilities or programs, public relationships, location, public contact paths, and current official activity when available and useful. Never pad or invent fields.
+- Score inclusion separately from completeness. Route evidence-anchored candidates with non-blocking enrichment gaps to amber review with explicit warnings; missing legal name, direct contact, exact address, or exhaustive relationships is not by itself a hard stop.
+- Before deferring a plausible thin prospect for evidence, record recovery attempts across at least three distinct source lanes.
 - Candidate batches must follow `research/ingestion/schema/research-candidate-batch-v2.schema.json` and the executable contract in `app/src/lib/research/pipeline-schema.ts`.
 - Promotion remains human-reviewed through validation and review tooling.
 
@@ -120,8 +129,8 @@ Reject or defer:
 
 - Research Coordinator assigns Mission Area scope and target counts to Source Discovery Scout.
 - Source Discovery Scout returns validated source-lead JSON and flags weak, rejected, or follow-up-only leads.
-- Human review approves which source leads may become candidate records.
-- Company Profile Builder converts approved leads into company and capability records.
+- Deterministic evidence, taxonomy, and duplicate gates mark leads qualified, deferred, or rejected; qualified leads continue automatically.
+- Company Profile Builder converts qualified leads into enriched company and capability records.
 - Evidence And Mapping Analyst adds mappings, evidence snippets, field citations, confidence notes, and rationale.
 - Database And Review Steward checks schema fit, duplicate risk, validation output, and promotion readiness.
 - Human reviewer explicitly approves promotion.
@@ -175,6 +184,14 @@ Browser QA should cover:
 - `/admin/organizations/[id]/edit`
 
 ## Change Log
+
+- `2026-07-21`: Designated the five project-local TNM research skills as the canonical skills of record, superseding cached copies and older operator-guide workflow language; aligned the weekly schedule contract to the exact high-yield skill chain, queued-backlog reuse, prospect inventory, evidence recovery, green/amber review, and verified private Admin Review completion.
+
+- `2026-07-21`: Reworked autonomous research for higher yield: broad runs now build 40-75 prospect inventories across six lanes, target 8-10 private candidates, retain queued backlogs, rank reusable sources, require three-lane evidence recovery before deferral, and admit useful amber candidates with explicit reviewer warnings while preserving duplicate, identity, Canada, evidence, taxonomy, and publication hard stops.
+
+- `2026-07-21`: Added private subscriber administration and MailerLite delivery synchronization while keeping the production database as the consent ledger; sender-domain authentication and campaign sending remain gated on a monitored True North Map address and confirmed campaign-footer mailing address.
+
+- `2026-07-20`: Removed the redundant human source-lead approval pause, made qualified leads continue automatically into enriched typed candidates, and kept human editing, acceptance, and publication in the private Admin workflow.
 
 - `2026-07-20`: Marked the public beta release fallback at `beta-release-2026-07-20-pre-ask-true-north` and added Ask True North as a constrained published-corpus discovery layer. It uses known records and citations only, separates derived fit from source support, falls back safely, and does not change the research, review, or publication contracts.
 - `2026-07-19`: Added relationship-safe public Demand Signals administration, enriched the complete live beta corpus with evidence-bounded outcome language, and published seven individually reviewed demand matches with dual-source citations and reviewer rationales.

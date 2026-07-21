@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-modular-container-solutions-2026-07-20",
+  "agentVersion": "tnm-research-pipeline/1.0.0",
+  "trigger": "manual",
+  "mode": "gap_targeted",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "modular-containerized-naval-solutions",
+    "reason": "A real beta query exposed a gap between container fabrication, mission-system integration, naval-platform integration, and similar modular projects in the current published corpus.",
+    "score": 900
+  },
+  "status": "completed",
+  "startedAt": "2026-07-20T14:20:58.114Z",
+  "completedAt": "2026-07-20T14:25:19.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 5,
+    "maxCandidates": 5
+  },
+  "sourceQueries": [
+    "site:ctscontainers.com custom ISO container design manufacturing modification testing certification Dartmouth",
+    "site:weatherhaven.com MECC expandable ISO container military workshop command shelter Canada",
+    "site:canada.ca Weatherhaven Headquarters Shelter System contract",
+    "site:dewengineering.com military integrated shelters ISO containers CBRN",
+    "site:canada.ca DEW Engineering mobile workspaces container shelters Canadian Armed Forces",
+    "site:vardmarine.com containerized mission payload ISO containers mission bay Vigilance",
+    "site:navamar.com sea-to-shore connector modular container Joint Support Ship",
+    "site:canada.ca Navamar sea-to-shore connector Royal Canadian Navy modular",
+    "naval modular mission containers Royal Navy PODS US Navy LCS Canada Joint Support Ship"
+  ],
+  "counters": {
+    "sourcesChecked": 27,
+    "leadsQualified": 5,
+    "leadsDeferred": 0,
+    "candidatesCreated": 5,
+    "duplicatesBlocked": 0
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "The requested five complementary Canadian candidates were evidence-complete, duplicate-clear, and ready for human review.",
+  "outputs": {
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-modular-container-solutions-2026-07-20.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-modular-container-solutions-2026-07-20.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-modular-container-solutions-2026-07-20.md",
+    "stagingExport": "research/ingestion/staging/tnm-modular-container-solutions-2026-07-20.json"
+  }
+}

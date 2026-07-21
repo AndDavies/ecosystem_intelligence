@@ -6,12 +6,18 @@ import {
   demandIssuerTypeValues,
   organizationKindValues,
   researchCandidateBatchV2Schema,
+  researchProspectInventoryV1Schema,
+  reviewCandidateIntakeIssues,
+  researchRunCompletionIssues,
   researchRunSchema,
   sourceLeadBatchV2Schema,
   type ResearchCandidateBatchV2,
+  type ResearchProspectInventoryV1,
   type ResearchRun,
   type SourceLeadBatchV2
 } from "../src/lib/research/pipeline-schema";
+import { buildDefaultResearchRunId } from "../src/lib/research/run-id";
+import { parseSourceBookCsv, rankSourceBookRows } from "../src/lib/research/source-ranking";
 import { loadScriptEnv } from "./load-env";
 
 loadScriptEnv();
@@ -22,6 +28,7 @@ const ingestionRoot = path.join(researchRoot, "ingestion");
 const runDir = path.join(ingestionRoot, "runs");
 const briefDir = path.join(ingestionRoot, "briefs");
 const sourceLeadDir = path.join(ingestionRoot, "source-leads-v2");
+const prospectDir = path.join(ingestionRoot, "prospect-inventories-v1");
 const candidateDir = path.join(ingestionRoot, "candidate-batches-v2");
 const reviewDir = path.join(ingestionRoot, "reviews-v2");
 const stagingDir = path.join(ingestionRoot, "staging");
@@ -52,13 +59,23 @@ interface ResearchCoverageSnapshot {
 }
 
 interface ValidationReport {
-  kind: "run" | "source_leads" | "candidate_batch";
+  kind: "run" | "prospect_inventory" | "source_leads" | "candidate_batch";
   filePath: string;
   id: string;
   errors: string[];
   warnings: string[];
   counts: Record<string, number>;
 }
+
+const kindCoverageTargets: Record<(typeof organizationKindValues)[number], number> = {
+  company: 100,
+  accelerator: 12,
+  incubator: 12,
+  research_test_centre: 12,
+  investor_funder: 12,
+  ecosystem_organization: 12,
+  government_innovation_office: 10
+};
 
 function asRecord(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
@@ -226,6 +243,7 @@ function parseOptions(args: string[]) {
 
   for (let index = 0; index < args.length; index += 1) {
     const value = args[index];
+    if (value === "--") continue;
     if (value.startsWith("--")) {
       const next = args[index + 1];
       options.set(value.slice(2), next && !next.startsWith("--") ? next : "true");
@@ -340,7 +358,11 @@ async function buildCoverage() {
   }
 
   const sourceBookPath = path.join(researchRoot, "source-book", "known-sources.csv");
-  const sourceBookRows = (await readFile(sourceBookPath, "utf8")).trim().split(/\r?\n/).length - 1;
+  const sourceBook = parseSourceBookCsv(await readFile(sourceBookPath, "utf8"));
+  const sourceBookRows = sourceBook.length;
+  const sourceBookOperationalRows = sourceBook.filter((row) =>
+    row.expected_organization_yield && row.geography && row.refresh_cadence && row.canonical_domain_owner
+  ).length;
   const missingKinds = organizationKindValues.filter((kind) => publishedKinds[kind] + pendingKinds[kind] === 0);
   const missingMissionAreas = atlas.missionAreas
     .filter((mission) => publishedMissionCounts[mission.slug] + pendingMissionCounts[mission.slug] === 0)
@@ -357,6 +379,8 @@ async function buildCoverage() {
   return {
     generatedAt: new Date().toISOString(),
     sourceBookRows,
+    sourceBookOperationalRows,
+    rankedSources: rankSourceBookRows(sourceBook),
     publishedOrganizations: atlas.organizations.length,
     publishedCapabilities: atlas.organizations.reduce((sum, organization) => sum + organization.capabilityCount, 0),
     publishedDemandRequirements: atlas.demandRequirements.length,
@@ -405,6 +429,20 @@ function selectGap(coverage: Awaited<ReturnType<typeof buildCoverage>>, bootstra
       dimension: `technical-domain:${domainSlug}`,
       reason: `No published or pending capability candidate currently covers the ${domainSlug.replaceAll("-", " ")} technical domain.`,
       score: 980
+    };
+  }
+
+  const saturatedKindGap = organizationKindValues.map((kind) => {
+    const count = coverage.publishedKinds[kind] + coverage.pendingKinds[kind];
+    const target = kindCoverageTargets[kind];
+    return { kind, count, target, deficit: Math.max(0, target - count) / target };
+  }).sort((left, right) => right.deficit - left.deficit || left.count - right.count || left.kind.localeCompare(right.kind))[0];
+  if (saturatedKindGap.deficit > 0) {
+    return {
+      coverageView: saturatedKindGap.kind === "company" ? "supply" as const : "ecosystem_support" as const,
+      dimension: `organization-kind:${saturatedKindGap.kind}`,
+      reason: `${saturatedKindGap.count} published or pending ${saturatedKindGap.kind.replaceAll("_", " ")} records cover only ${Math.round((saturatedKindGap.count / saturatedKindGap.target) * 100)}% of the working saturation target of ${saturatedKindGap.target}.`,
+      score: Math.round(700 + saturatedKindGap.deficit * 250)
     };
   }
 
@@ -457,6 +495,7 @@ function formatCoverage(coverage: Awaited<ReturnType<typeof buildCoverage>>) {
     `# Autonomous Research Coverage - ${coverage.generatedAt.slice(0, 10)}`,
     "",
     `- Durable Source Book rows: ${coverage.sourceBookRows}`,
+    `- Operationally ranked Source Book rows: ${coverage.sourceBookOperationalRows} (${Math.round((coverage.sourceBookOperationalRows / Math.max(coverage.sourceBookRows, 1)) * 100)}%)`,
     `- Published organizations in current atlas: ${coverage.publishedOrganizations}`,
     `- Published capabilities in current atlas: ${coverage.publishedCapabilities}`,
     `- Published demand requirements: ${coverage.publishedDemandRequirements}`,
@@ -480,6 +519,10 @@ function formatCoverage(coverage: Awaited<ReturnType<typeof buildCoverage>>) {
     ...demandIssuerTypeValues.map((issuerType) => `| ${issuerType} | ${coverage.publishedIssuerCounts[issuerType]} | ${coverage.pendingIssuerCounts[issuerType]} |`),
     "",
     `Unmatched public-demand requirements: ${coverage.unmatchedDemandRequirements.join(", ") || "none"}`,
+    "",
+    "## Highest-ranked reusable sources",
+    "",
+    ...coverage.rankedSources.slice(0, 12).map((source, index) => `${index + 1}. [${source.name}](${source.url}) - score ${source.score}, expected yield ${source.yield}`),
     ""
   ];
   return lines.join("\n");
@@ -487,29 +530,57 @@ function formatCoverage(coverage: Awaited<ReturnType<typeof buildCoverage>>) {
 
 async function prepareRun(args: string[]) {
   const { options } = parseOptions(args);
-  const bootstrap = options.get("mode") === "bootstrap";
-  const date = new Date().toISOString().slice(0, 10);
-  const runId = options.get("run-id") ?? `tnm-${bootstrap ? "bootstrap" : "weekly"}-${date}`;
+  const requestedMode = options.get("mode") ?? "discovery-batch";
+  const bootstrap = requestedMode === "bootstrap";
+  const deepDossier = requestedMode === "deep-dossier";
+  if (!bootstrap && !deepDossier && !["discovery-batch", "gap-targeted"].includes(requestedMode)) {
+    throw new Error("--mode must be discovery-batch, deep-dossier, bootstrap, or gap-targeted.");
+  }
+  const startedAt = new Date().toISOString();
+  const trigger = options.get("trigger") === "weekly" ? "weekly" : "manual";
+  const runId = options.get("run-id") ?? buildDefaultResearchRunId({ trigger, bootstrap, startedAt });
   const runPath = path.join(runDir, `${runId}.json`);
   if (await fileExists(runPath)) throw new Error(`Run ${runId} already exists at ${relative(runPath)}.`);
 
   const coverage = await buildCoverage();
-  const selectedGap = selectGap(coverage, bootstrap);
-  const organizationKinds = bootstrap
+  let selectedGap = selectGap(coverage, bootstrap);
+  const explicitOrganizationKinds = (options.get("organization-kinds") ?? options.get("organization-kind") ?? "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+  for (const kind of explicitOrganizationKinds) {
+    if (!organizationKindValues.includes(kind as (typeof organizationKindValues)[number])) throw new Error(`Unknown organization kind '${kind}'.`);
+  }
+  if (explicitOrganizationKinds.length > 0) {
+    const kindLabel = explicitOrganizationKinds.join(", ").replaceAll("_", " ");
+    selectedGap = {
+      coverageView: explicitOrganizationKinds.every((kind) => kind === "company") ? "supply" : "ecosystem_support",
+      dimension: `organization-kind:${explicitOrganizationKinds.join("+")}`,
+      reason: `The operator explicitly scoped this run to increase reviewable Canadian ${kindLabel} coverage while preserving evidence and duplicate controls.`,
+      score: 1000
+    };
+  }
+  const organizationKinds = explicitOrganizationKinds.length > 0
+    ? explicitOrganizationKinds as (typeof organizationKindValues)[number][]
+    : bootstrap
     ? ["company", "accelerator", "incubator", "investor_funder"] as const
     : selectedGap.dimension.startsWith("organization-kind:")
-      ? [selectedGap.dimension.split(":")[1] as (typeof organizationKindValues)[number]]
+      ? selectedGap.dimension.split(":")[1].split("+") as (typeof organizationKindValues)[number][]
       : [];
   const demandIssuerTypes = selectedGap.dimension.startsWith("demand-issuer-type:")
     ? [selectedGap.dimension.split(":")[1] as (typeof demandIssuerTypeValues)[number]]
     : [];
-  const startedAt = new Date().toISOString();
+  const requestedTarget = Number(options.get("target-candidates") ?? (deepDossier ? 3 : bootstrap ? 4 : 10));
+  const targetCandidates = Math.max(1, Math.min(deepDossier ? 5 : 10, Number.isFinite(requestedTarget) ? requestedTarget : 10));
+  const minimumCandidates = deepDossier ? 1 : bootstrap ? 4 : Math.min(8, targetCandidates);
+  const minimumProspects = deepDossier ? 1 : bootstrap ? 20 : 40;
+  const minimumSourceLanes = deepDossier ? 3 : bootstrap ? 4 : 6;
   const run: ResearchRun = {
     schemaVersion: "research_run_v1",
     runId,
-    agentVersion: "tnm-research-pipeline/1.0.0",
-    trigger: options.get("trigger") === "weekly" ? "weekly" : "manual",
-    mode: bootstrap ? "bootstrap" : "gap_targeted",
+    agentVersion: "tnm-research-pipeline/1.2.0",
+    trigger,
+    mode: bootstrap ? "bootstrap" : deepDossier ? "deep_dossier" : requestedMode === "gap-targeted" ? "gap_targeted" : "discovery_batch",
     scope: {
       geography: "canada_first",
       organizationKinds: [...organizationKinds],
@@ -521,13 +592,37 @@ async function prepareRun(args: string[]) {
     status: "running",
     startedAt,
     completedAt: null,
-    limits: { totalMinutes: 90, sourceBookMinutes: 30, maxQualifiedLeads: 25, maxCandidates: 10 },
+    limits: {
+      totalMinutes: 90,
+      sourceBookMinutes: 30,
+      maxQualifiedLeads: 25,
+      maxCandidates: deepDossier ? 5 : 10,
+      minimumProspects,
+      minimumSourceLanes,
+      minimumCandidates,
+      targetCandidates
+    },
     sourceQueries: [],
-    counters: { sourcesChecked: 0, leadsQualified: 0, leadsDeferred: 0, candidatesCreated: 0, duplicatesBlocked: 0 },
+    counters: {
+      sourcesChecked: 0,
+      leadsQualified: 0,
+      leadsDeferred: 0,
+      candidatesCreated: 0,
+      duplicatesBlocked: 0,
+      prospectsDiscovered: 0,
+      uniqueProspects: 0,
+      prospectsQueued: 0,
+      recoveryAttempts: 0,
+      sourceLanesSearched: 0,
+      candidatesGreen: 0,
+      candidatesAmber: 0
+    },
+    underTargetReason: null,
+    exhaustionEvidence: null,
     validation: { passed: false, errors: [], warnings: [] },
     errors: [],
     stopReason: null,
-    outputs: { sourceLeadBatch: null, candidateBatch: null, reviewPacket: null, stagingExport: null }
+    outputs: { prospectInventory: null, sourceLeadBatch: null, candidateBatch: null, reviewPacket: null, stagingExport: null }
   };
 
   const brief = [
@@ -540,15 +635,22 @@ async function prepareRun(args: string[]) {
     `- Reason: ${selectedGap.reason}`,
     `- Maximum qualified leads: ${run.limits.maxQualifiedLeads}`,
     `- Maximum candidates: ${run.limits.maxCandidates}`,
+    `- Minimum prospects: ${run.limits.minimumProspects}`,
+    `- Minimum source lanes: ${run.limits.minimumSourceLanes}`,
+    `- Minimum completed candidates: ${run.limits.minimumCandidates}`,
+    `- Target candidates: ${run.limits.targetCandidates}`,
     "",
     "## Required sequence",
     "",
-    "1. Expand the Source Book within the 30-minute sub-limit.",
-    "2. Create typed source leads from durable public sources.",
-    "3. Apply evidence and duplicate gates.",
-    "4. Build typed candidates and defer ambiguous items.",
-    "5. Run `pnpm research:smoke -- --run <run> --leads <leads> --candidates <candidates>`.",
-    "6. Confirm candidates appear in Admin Review, then stop. Do not approve or publish.",
+    "1. Expand and rank the Source Book within the 30-minute sub-limit.",
+    `2. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} productive source lanes in a prospect inventory.`,
+    "3. Select the strongest prospects and create typed source leads from durable public sources.",
+    "4. Use evidence recovery across at least three distinct lanes before deferring a plausible prospect for thin evidence.",
+    "5. Apply evidence and duplicate gates. Qualified leads continue automatically; do not pause for source-lead approval.",
+    "6. Build enriched typed candidates in green or amber review tiers. Amber candidates keep non-blocking gaps as explicit reviewer warnings.",
+    "7. If the batch remains below its minimum, record a specific underTargetReason and exhaustionEvidence before completion.",
+    "8. Run `pnpm research:smoke -- --run <run> --prospects <prospects> --leads <leads> --candidates <candidates>`.",
+    "9. Confirm candidates appear in Admin Review, then stop. Do not approve or publish.",
     "",
     formatCoverage(coverage)
   ].join("\n");
@@ -583,13 +685,49 @@ function artifactPredatesPublication(artifactCreatedAt: string, organization: Re
 
 async function validateRunFile(filePath: string): Promise<ValidationReport> {
   const parsed = researchRunSchema.safeParse(await readJson<unknown>(filePath));
+  const errors = parsed.success ? [] : formatZodIssues(parsed.error);
+  const warnings: string[] = [];
+  if (parsed.success) {
+    const run = parsed.data;
+    errors.push(...researchRunCompletionIssues(run));
+  }
   return {
     kind: "run",
     filePath,
     id: parsed.success ? parsed.data.runId : path.basename(filePath),
-    errors: parsed.success ? [] : formatZodIssues(parsed.error),
-    warnings: [],
+    errors,
+    warnings,
     counts: parsed.success ? { queries: parsed.data.sourceQueries.length, candidates: parsed.data.counters.candidatesCreated } : {}
+  };
+}
+
+async function validateProspectFile(filePath: string): Promise<ValidationReport> {
+  const parsed = researchProspectInventoryV1Schema.safeParse(await readJson<unknown>(filePath));
+  if (!parsed.success) {
+    return { kind: "prospect_inventory", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
+  }
+  const inventory = parsed.data;
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  addDuplicateValueErrors(inventory.prospects.map((prospect) => normalizeName(prospect.name)), "Prospect normalized name", errors);
+  const canonicalUrls = inventory.prospects.map((prospect) => prospect.canonicalUrl).filter((value): value is string => Boolean(value));
+  addDuplicateValueErrors(canonicalUrls, "Prospect canonical URL", errors);
+  const selected = inventory.prospects.filter((prospect) => prospect.disposition === "selected").length;
+  if (selected === 0) warnings.push(`Prospect inventory ${inventory.inventoryId} has no selected prospects.`);
+  return {
+    kind: "prospect_inventory",
+    filePath,
+    id: inventory.inventoryId,
+    errors,
+    warnings,
+    counts: {
+      prospects: inventory.prospects.length,
+      selected,
+      queued: inventory.prospects.filter((prospect) => prospect.disposition === "queued").length,
+      duplicates: inventory.prospects.filter((prospect) => prospect.disposition === "duplicate").length,
+      rejected: inventory.prospects.filter((prospect) => prospect.disposition === "rejected").length,
+      sourceLanes: new Set(inventory.prospects.map((prospect) => prospect.discoveryLane)).size
+    }
   };
 }
 
@@ -611,7 +749,12 @@ async function validateSourceLeadFile(filePath: string): Promise<ValidationRepor
     const candidateBatch = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(candidatePath));
     if (!candidateBatch.success || candidateBatch.data.runId !== batch.runId) continue;
     for (const candidate of candidateBatch.data.candidates) {
-      if (coverage.candidateStatuses[candidate.candidateId] === "published") {
+      const publishedOrganization = candidate.candidateKind === "organization_bundle"
+        ? coverage.organizations.find((organization) => organization.slug === candidate.organization.slug)
+        : undefined;
+      const isPublishedArtifact = coverage.candidateStatuses[candidate.candidateId] === "published"
+        || artifactPredatesPublication(candidateBatch.data.createdAt, publishedOrganization);
+      if (isPublishedArtifact) {
         candidate.sourceLeadIds.forEach((leadId) => publishedLeadIds.add(leadId));
       }
     }
@@ -709,7 +852,9 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
   validateCandidateEvidence(batch, errors);
 
   for (const candidate of batch.candidates) {
-    if (candidate.duplicateCheck.status !== "clear") errors.push(`Candidate ${candidate.candidateId} has unresolved duplicate status '${candidate.duplicateCheck.status}'.`);
+    errors.push(...reviewCandidateIntakeIssues(candidate));
+    if (!candidate.reviewTier) warnings.push(`Candidate ${candidate.candidateId} predates green or amber review-tier metadata.`);
+    if (candidate.reviewTier === "amber") warnings.push(`Candidate ${candidate.candidateId} is amber: ${(candidate.reviewWarnings ?? []).join("; ")}`);
     if (/turn\d+(?:search|view)\d+|【|†/.test(JSON.stringify(candidate))) errors.push(`Candidate ${candidate.candidateId} contains a non-portable citation token.`);
     if (candidate.candidateKind === "organization_bundle") {
       const match = existing.find((identity) =>
@@ -764,6 +909,8 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
       organizations: batch.candidates.filter((candidate) => candidate.candidateKind === "organization_bundle").length,
       demandSignals: batch.candidates.filter((candidate) => candidate.candidateKind === "demand_signal_bundle").length,
       programRelationships: batch.candidates.filter((candidate) => candidate.candidateKind === "program_relationship_bundle").length,
+      green: batch.candidates.filter((candidate) => candidate.reviewTier === "green").length,
+      amber: batch.candidates.filter((candidate) => candidate.reviewTier === "amber").length,
       deferred: batch.deferred.length
     }
   };
@@ -788,6 +935,7 @@ async function validateArtifacts(args: string[]) {
     ? positional.map((filePath) => path.resolve(workspaceRoot, filePath))
     : [
         ...(await listJsonFiles(runDir)),
+        ...(await listJsonFiles(prospectDir)),
         ...(await listJsonFiles(sourceLeadDir)),
         ...(await listJsonFiles(candidateDir))
       ];
@@ -795,6 +943,7 @@ async function validateArtifacts(args: string[]) {
   for (const filePath of files) {
     const value = asRecord(await readJson<unknown>(filePath));
     if (value.schemaVersion === "research_run_v1") reports.push(await validateRunFile(filePath));
+    else if (value.schemaVersion === "research_prospect_inventory_v1") reports.push(await validateProspectFile(filePath));
     else if (value.schemaVersion === "source_lead_batch_v2") reports.push(await validateSourceLeadFile(filePath));
     else if (value.schemaVersion === "research_candidate_batch_v2") reports.push(await validateCandidateFile(filePath));
     else reports.push({ kind: "candidate_batch", filePath, id: path.basename(filePath), errors: ["Unknown research artifact schemaVersion."], warnings: [], counts: {} });
@@ -833,7 +982,8 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2) {
   ];
 
   for (const candidate of batch.candidates) {
-    lines.push(`### ${candidate.candidateId}`, "", `- Kind: \`${candidate.candidateKind}\``, `- Confidence: \`${candidate.confidence}\``, `- Duplicate status: \`${candidate.duplicateCheck.status}\``);
+    lines.push(`### ${candidate.candidateId}`, "", `- Kind: \`${candidate.candidateKind}\``, `- Review tier: \`${candidate.reviewTier ?? "legacy-unrated"}\``, `- Confidence: \`${candidate.confidence}\``, `- Inclusion score: ${candidate.inclusionScore ?? "not recorded"}`, `- Completeness score: ${candidate.completenessScore ?? "not recorded"}`, `- Duplicate status: \`${candidate.duplicateCheck.status}\``);
+    if ((candidate.reviewWarnings ?? []).length > 0) lines.push(`- Reviewer warnings: ${candidate.reviewWarnings?.join("; ")}`);
     if (candidate.candidateKind === "organization_bundle") {
       lines.push(`- Organization: **${candidate.organization.name}**`, `- Organization type: \`${candidate.organization.entityKind}\``, `- Categories: ${candidate.organization.categories.map((category) => `\`${category}\``).join(", ")}`, `- Capabilities: ${candidate.capabilities.map((capability) => capability.name).join(", ") || "none"}`, `- Programs: ${candidate.programs.map((program) => program.name).join(", ") || "none"}`);
     } else if (candidate.candidateKind === "demand_signal_bundle") {
@@ -953,22 +1103,36 @@ async function importStaging(stagingPath: string) {
 async function smoke(args: string[]) {
   const { options } = parseOptions(args);
   const runPath = path.resolve(workspaceRoot, options.get("run") ?? "");
+  const prospectPathOption = options.get("prospects");
+  const prospectPath = prospectPathOption ? path.resolve(workspaceRoot, prospectPathOption) : null;
   const leadPath = path.resolve(workspaceRoot, options.get("leads") ?? "");
   const candidatePath = path.resolve(workspaceRoot, options.get("candidates") ?? "");
   if (![runPath, leadPath, candidatePath].every((filePath) => filePath && filePath !== workspaceRoot)) {
     throw new Error("Smoke test requires --run, --leads, and --candidates paths.");
   }
 
-  const reports = [await validateRunFile(runPath), await validateSourceLeadFile(leadPath), await validateCandidateFile(candidatePath)];
+  const runReport = await validateRunFile(runPath);
+  const leadReport = await validateSourceLeadFile(leadPath);
+  const candidateReport = await validateCandidateFile(candidatePath);
+  const prospectReport = prospectPath ? await validateProspectFile(prospectPath) : null;
+  const reports = [runReport, ...(prospectReport ? [prospectReport] : []), leadReport, candidateReport];
   const run = researchRunSchema.safeParse(await readJson<unknown>(runPath));
   const batch = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(candidatePath));
-  if (run.success && run.data.status !== "completed") reports[0].errors.push("Smoke-test run must have status completed.");
-  if (batch.success && batch.data.candidates.length < 1) reports[2].errors.push("Smoke test must create at least one review-ready candidate.");
-  if (run.success && batch.success && run.data.counters.candidatesCreated !== batch.data.candidates.length) reports[0].errors.push("Run candidate counter does not match candidate batch size.");
+  const prospects = prospectPath ? researchProspectInventoryV1Schema.safeParse(await readJson<unknown>(prospectPath)) : null;
+  if (run.success && run.data.status !== "completed") runReport.errors.push("Smoke-test run must have status completed.");
+  if (run.success && run.data.mode === "discovery_batch" && !prospectPath) runReport.errors.push("Discovery-batch smoke test requires --prospects.");
+  if (batch.success && batch.data.candidates.length < 1) candidateReport.errors.push("Smoke test must create at least one review-ready candidate.");
+  if (run.success && batch.success && run.data.counters.candidatesCreated !== batch.data.candidates.length) runReport.errors.push("Run candidate counter does not match candidate batch size.");
+  if (run.success && prospects?.success) {
+    if (prospects.data.runId !== run.data.runId) prospectReport?.errors.push("Prospect inventory runId does not match the research run.");
+    if ((run.data.counters.uniqueProspects ?? 0) !== prospects.data.prospects.length) runReport.errors.push("Run unique-prospect counter does not match prospect inventory size.");
+    const lanes = new Set(prospects.data.prospects.map((prospect) => prospect.discoveryLane)).size;
+    if ((run.data.counters.sourceLanesSearched ?? 0) !== lanes) runReport.errors.push("Run source-lane counter does not match prospect inventory.");
+  }
   if (run.success && run.data.mode === "bootstrap" && batch.success) {
     const kinds = new Set(batch.data.candidates.filter((candidate) => candidate.candidateKind === "organization_bundle").map((candidate) => candidate.organization.entityKind));
     for (const kind of ["company", "accelerator", "incubator", "investor_funder"]) {
-      if (!kinds.has(kind as never)) reports[2].errors.push(`Bootstrap smoke test is missing ${kind}.`);
+      if (!kinds.has(kind as never)) candidateReport.errors.push(`Bootstrap smoke test is missing ${kind}.`);
     }
   }
 

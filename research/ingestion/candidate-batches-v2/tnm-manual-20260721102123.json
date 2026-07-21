@@ -1,0 +1,1736 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260721102123-candidates",
+  "runId": "tnm-manual-20260721102123",
+  "title": "Canadian accelerator and incubator discovery batch for private review",
+  "status": "candidate",
+  "createdAt": "2026-07-21T10:31:00.000Z",
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:accelerator",
+    "reason": "Only two published accelerator records covered seventeen percent of the working saturation target; adjacent incubators were also materially under-covered.",
+    "score": 908
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260721102123.json",
+  "guardrailNotes": [
+    "All organization and program facts remain private evidence-backed proposals until a human reviewer edits and explicitly publishes them.",
+    "Organization kind follows each operator's public program language; strategic mission relevance remains an analyst review cue rather than a claim of procurement demand."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-communitech-20260721",
+      "sourceLeadIds": [
+        "lead-communitech-20260721"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Communitech is recommended for green human review because durable official sources resolve its Canadian identity and an active accelerator program relevant to True North Map's ecosystem-support coverage. The candidate records 1 cited program, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "communitech-home",
+          "title": "Communitech technology-company support and contact profile",
+          "url": "https://communitech.ca/",
+          "publisher": "Communitech",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Homepage and footer",
+          "summary": "Communitech describes its mission to help technology companies start grow and succeed and publishes its Kitchener address phone and public email."
+        },
+        {
+          "id": "communitech-diana",
+          "title": "Canadian accelerators join the NATO DIANA network",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2024/03/canadian-test-centres-and-accelerators-join-nato-diana-network.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2024-03-20T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Accelerators and quick facts",
+          "summary": "National Defence identifies Communitech as a Canadian NATO DIANA accelerator and explains the network's dual-use defence and security mandate."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "communitech-description-evidence",
+          "sourceId": "communitech-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports Communitech's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "communitech-program-evidence",
+          "sourceId": "communitech-diana",
+          "fieldPath": "programs.nato-diana-communitech.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes NATO DIANA Accelerator at Communitech and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "communitech-location-evidence",
+          "sourceId": "communitech-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Communitech's Canadian operating location in Kitchener Ontario or its published local contact details.",
+          "confidence": "high"
+        },
+        {
+          "id": "communitech-relationship-0-evidence",
+          "sourceId": "communitech-diana",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "National Defence publicly confirms Communitech as one of Canada's two NATO DIANA accelerator sites.",
+          "confidence": "high"
+        },
+        {
+          "id": "communitech-relationship-1-evidence",
+          "sourceId": "communitech-diana",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Communitech participates in NATO DIANA's transatlantic network for dual-use technology acceleration.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "communitech",
+        "name": "Communitech",
+        "legalName": "Communitech Corporation",
+        "aliases": [],
+        "description": "Communitech is a Waterloo Region technology ecosystem organization and one of Canada's two NATO DIANA accelerator sites, supporting technology companies from startup formation through scale-up and dual-use defence innovation.",
+        "websiteUrl": "https://communitech.ca/",
+        "entityKind": "accelerator",
+        "categories": [
+          "dual_use_accelerator",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Kitchener",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4516,
+          "longitude": -80.4984,
+          "geographicConfidence": "exact"
+        },
+        "profileData": {
+          "mandate": "Help technology companies start, grow and succeed while operating a Canadian NATO DIANA accelerator site for dual-use innovators.",
+          "publicContact": "front.desk@communitech.ca | +1-519-888-9944 | 151 Charles Street West Suite 100 Kitchener Ontario N2G 1H6",
+          "sectorFocus": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data",
+            "communications-and-cyber"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "nato-diana-communitech",
+          "name": "NATO DIANA Accelerator at Communitech",
+          "programType": "defence and dual-use accelerator",
+          "websiteUrl": "https://www.canada.ca/en/department-national-defence/news/2024/03/canadian-test-centres-and-accelerators-join-nato-diana-network.html",
+          "summary": "A Canadian accelerator site supporting companies selected through NATO DIANA challenges to mature dual-use technologies for defence security and resilience.",
+          "cohortLabel": "NATO DIANA network"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Department of National Defence",
+          "relationshipType": "public-program-confirmation",
+          "publicSummary": "National Defence publicly confirms Communitech as one of Canada's two NATO DIANA accelerator sites."
+        },
+        {
+          "relatedOrganizationName": "NATO DIANA",
+          "relationshipType": "accelerator-network-member",
+          "publicSummary": "Communitech participates in NATO DIANA's transatlantic network for dual-use technology acceleration."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-accelerator-centre-20260721",
+      "sourceLeadIds": [
+        "lead-accelerator-centre-20260721"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Accelerator Centre is recommended for green human review because durable official sources resolve its Canadian identity and an active accelerator program relevant to True North Map's ecosystem-support coverage. The candidate records 1 cited program, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "ac-aerospace-2026",
+          "title": "Accelerator Centre opens Aerospace Accelerator cohort three",
+          "url": "https://www.acceleratorcentre.com/news/accelerator-centre-opens-applications-for-cohort-3-of-the-aerospace-accelerator-program-in-collaboration-with-the-region-of-waterloo-and-skywise/",
+          "publisher": "Accelerator Centre",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-06-22T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program announcement",
+          "summary": "The 2026 announcement describes a program for aerospace aviation autonomy advanced manufacturing and AI startups delivered with Waterloo Region and Skywise."
+        },
+        {
+          "id": "ac-showcase-2026",
+          "title": "Aerospace Innovation Showcase and Accelerator Centre contact",
+          "url": "https://www.acceleratorcentre.com/event-page/aerospace-innovation-showcase/",
+          "publisher": "Accelerator Centre",
+          "sourceKind": "event_directory",
+          "publishedAt": "2026-05-13T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Event details and footer",
+          "summary": "The official showcase page describes the milestone-based aerospace accelerator and publishes the Waterloo headquarters address email and phone."
+        },
+        {
+          "id": "ac-ircc",
+          "title": "Canada designated business incubator list",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa/designated-organizations.html",
+          "publisher": "Immigration Refugees and Citizenship Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-05-27T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Business incubators",
+          "summary": "The Government of Canada lists Waterloo Accelerator Centre as a designated Canadian business-incubator organization with priority processing status."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "accelerator-centre-description-evidence",
+          "sourceId": "ac-aerospace-2026",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports Accelerator Centre's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "accelerator-centre-program-evidence",
+          "sourceId": "ac-aerospace-2026",
+          "fieldPath": "programs.aerospace-accelerator-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes Aerospace Accelerator Program and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "accelerator-centre-location-evidence",
+          "sourceId": "ac-aerospace-2026",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Accelerator Centre's Canadian operating location in Waterloo Ontario or its published local contact details.",
+          "confidence": "high"
+        },
+        {
+          "id": "accelerator-centre-relationship-0-evidence",
+          "sourceId": "ac-showcase-2026",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Region of Waterloo collaborates on the Aerospace Accelerator Program and its regional aerospace strategy.",
+          "confidence": "high"
+        },
+        {
+          "id": "accelerator-centre-relationship-1-evidence",
+          "sourceId": "ac-ircc",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Skywise is identified as a collaborator on the 2026 Aerospace Accelerator cohort.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "accelerator-centre",
+        "name": "Accelerator Centre",
+        "legalName": null,
+        "aliases": [
+          "Waterloo Accelerator Centre"
+        ],
+        "description": "Accelerator Centre is a Waterloo-based startup accelerator whose Aerospace Accelerator Program supports founders building aerospace, aviation, autonomous systems, advanced manufacturing and artificial-intelligence technologies.",
+        "websiteUrl": "https://www.acceleratorcentre.com/",
+        "entityKind": "accelerator",
+        "categories": [
+          "dual_use_accelerator",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Waterloo",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.472,
+          "longitude": -80.5475,
+          "geographicConfidence": "exact"
+        },
+        "profileData": {
+          "mandate": "Accelerate early-stage technology companies through milestone-based mentorship commercialization support industry connections and validation opportunities.",
+          "publicContact": "info@acceleratorcentre.com | +1-519-342-2400 | 295 Hagey Boulevard Waterloo Ontario N2L 6R5",
+          "sectorFocus": [
+            "autonomous-systems",
+            "aerospace-and-mobility",
+            "advanced-manufacturing-and-integration",
+            "mission-software-and-data"
+          ],
+          "possibleMissionAreaRelevance": [
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "aerospace-accelerator-program",
+          "name": "Aerospace Accelerator Program",
+          "programType": "aerospace and autonomy accelerator",
+          "websiteUrl": "https://www.acceleratorcentre.com/news/accelerator-centre-opens-applications-for-cohort-3-of-the-aerospace-accelerator-program-in-collaboration-with-the-region-of-waterloo-and-skywise/",
+          "summary": "A high-touch accelerator helping early-stage aerospace aviation autonomy advanced-manufacturing and AI companies commercialize and validate technologies.",
+          "cohortLabel": "Cohort 3 - 2026"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Region of Waterloo",
+          "relationshipType": "program-partner",
+          "publicSummary": "The Region of Waterloo collaborates on the Aerospace Accelerator Program and its regional aerospace strategy."
+        },
+        {
+          "relatedOrganizationName": "Skywise",
+          "relationshipType": "program-partner",
+          "publicSummary": "Skywise is identified as a collaborator on the 2026 Aerospace Accelerator cohort."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-venturelab-20260721",
+      "sourceLeadIds": [
+        "lead-venturelab-20260721"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "ventureLAB is recommended for green human review because durable official sources resolve its Canadian identity and an active incubator program relevant to True North Map's ecosystem-support coverage. The candidate records 1 cited program, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "venturelab-home",
+          "title": "ventureLAB innovation hub profile and contact",
+          "url": "https://www.venturelab.ca/",
+          "publisher": "ventureLAB",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Homepage and footer",
+          "summary": "ventureLAB presents its innovation space hardware focus public contact details and Markham address on its official site."
+        },
+        {
+          "id": "venturelab-hci",
+          "title": "Hardware Catalyst Initiative",
+          "url": "https://www.venturelab.ca/programs/hardware-catalyst-initiative",
+          "publisher": "ventureLAB",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program overview",
+          "summary": "The Hardware Catalyst Initiative is described as Canada's hardware and semiconductor-focused lab and incubator with up to twenty-four months of support."
+        },
+        {
+          "id": "venturelab-feddev",
+          "title": "Government of Canada supports expansion of ventureLAB services",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2024/01/government-of-canada-supports-expansion-of-services-at-venturelab.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2024-01-15T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Funding announcement",
+          "summary": "FedDev Ontario documents federal support for ventureLAB's expanded hardware and semiconductor services and commercialization infrastructure."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "venturelab-description-evidence",
+          "sourceId": "venturelab-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports ventureLAB's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "venturelab-program-evidence",
+          "sourceId": "venturelab-hci",
+          "fieldPath": "programs.hardware-catalyst-initiative.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes Hardware Catalyst Initiative and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "venturelab-location-evidence",
+          "sourceId": "venturelab-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports ventureLAB's Canadian operating location in Markham Ontario or its published local contact details.",
+          "confidence": "high"
+        },
+        {
+          "id": "venturelab-relationship-0-evidence",
+          "sourceId": "venturelab-hci",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario publicly funded expansion of ventureLAB's hardware and semiconductor commercialization services.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "venturelab",
+        "name": "ventureLAB",
+        "legalName": "ventureLAB Innovation Centre",
+        "aliases": [],
+        "description": "ventureLAB is a Markham innovation hub and incubator whose Hardware Catalyst Initiative provides commercialization support and specialized prototyping and testing infrastructure for Canadian hardware and semiconductor startups.",
+        "websiteUrl": "https://www.venturelab.ca/",
+        "entityKind": "incubator",
+        "categories": [
+          "dual_use_accelerator",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Markham",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.8162,
+          "longitude": -79.3419,
+          "geographicConfidence": "exact"
+        },
+        "profileData": {
+          "mandate": "Support Canadian technology founders with commercialization expertise capital connections and dedicated hardware and semiconductor incubation infrastructure.",
+          "publicContact": "hello@venturelab.ca | +1-905-248-2727 | 3600 Steeles Avenue East Room C-106 Markham Ontario L3R 9Z7",
+          "sectorFocus": [
+            "advanced-manufacturing-and-integration",
+            "sensing-and-isr",
+            "communications-and-cyber",
+            "autonomous-systems"
+          ],
+          "possibleMissionAreaRelevance": [
+            "edge-data-processing",
+            "autonomous-patrol-and-monitoring"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "hardware-catalyst-initiative",
+          "name": "Hardware Catalyst Initiative",
+          "programType": "hardware and semiconductor incubator",
+          "websiteUrl": "https://www.venturelab.ca/programs/hardware-catalyst-initiative",
+          "summary": "A competitive no-equity program providing Canadian silicon and hardware companies specialized labs mentorship partners and commercialization support for up to twenty-four months.",
+          "cohortLabel": "Current program"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Federal Economic Development Agency for Southern Ontario",
+          "relationshipType": "public-funding-partner",
+          "publicSummary": "FedDev Ontario publicly funded expansion of ventureLAB's hardware and semiconductor commercialization services."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-creative-destruction-lab-20260721",
+      "sourceLeadIds": [
+        "lead-creative-destruction-lab-20260721"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Creative Destruction Lab is recommended for green human review because durable official sources resolve its Canadian identity and an active accelerator program relevant to True North Map's ecosystem-support coverage. The candidate records 2 cited programs, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "green",
+      "inclusionScore": 97,
+      "completenessScore": 95,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "cdl-toronto",
+          "title": "Creative Destruction Lab Toronto streams",
+          "url": "https://creativedestructionlab.com/locations/toronto/",
+          "publisher": "Creative Destruction Lab",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Toronto streams",
+          "summary": "CDL Toronto lists active Defence Artificial Intelligence Quantum and Space streams and describes its University of Toronto origin and science-based venture model."
+        },
+        {
+          "id": "cdl-companies",
+          "title": "Creative Destruction Lab graduate companies",
+          "url": "https://creativedestructionlab.com/companies/?location=toronto",
+          "publisher": "Creative Destruction Lab",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Toronto company directory",
+          "summary": "The official graduate directory provides public participation evidence for Toronto ventures across AI quantum space and other deep-technology streams."
+        },
+        {
+          "id": "cdl-quantum",
+          "title": "Creative Destruction Lab Quantum stream",
+          "url": "https://creativedestructionlab.com/streams/quantum/",
+          "publisher": "Creative Destruction Lab",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program overview",
+          "summary": "The Quantum stream describes a ten-month objective-setting program for quantum computing communications sensing and related commercial applications."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "creative-destruction-lab-description-evidence",
+          "sourceId": "cdl-toronto",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports Creative Destruction Lab's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "creative-destruction-lab-program-evidence",
+          "sourceId": "cdl-toronto",
+          "fieldPath": "programs.cdl-toronto-defence.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes CDL Toronto Defence and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "creative-destruction-lab-location-evidence",
+          "sourceId": "cdl-toronto",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Creative Destruction Lab's Canadian operating location in Toronto Ontario or its published local contact details.",
+          "confidence": "high"
+        },
+        {
+          "id": "creative-destruction-lab-program-1-evidence",
+          "sourceId": "cdl-quantum",
+          "fieldPath": "programs.cdl-quantum.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes CDL Quantum and supports the program role and delivery summary recorded in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "creative-destruction-lab-relationship-0-evidence",
+          "sourceId": "cdl-companies",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Creative Destruction Lab was founded at the University of Toronto's Rotman School of Management and operates its Toronto site there.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "creative-destruction-lab",
+        "name": "Creative Destruction Lab",
+        "legalName": null,
+        "aliases": [
+          "CDL"
+        ],
+        "description": "Creative Destruction Lab is a nonprofit science and technology venture program founded at the University of Toronto's Rotman School of Management, with Toronto streams spanning defence, artificial intelligence, quantum and space technologies.",
+        "websiteUrl": "https://creativedestructionlab.com/",
+        "entityKind": "accelerator",
+        "categories": [
+          "dual_use_accelerator",
+          "university_affiliated"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6676,
+          "longitude": -79.3986,
+          "geographicConfidence": "exact"
+        },
+        "profileData": {
+          "mandate": "Help seed-stage science and technology ventures set objectives access technical and business expertise and build scalable companies through a structured mentorship program.",
+          "publicContact": "Program contacts are published by stream on the CDL website; Toronto programming is based at the Rotman School of Management.",
+          "sectorFocus": [
+            "autonomous-systems",
+            "mission-software-and-data",
+            "space-and-earth-observation",
+            "communications-and-cyber",
+            "sensing-and-isr"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "cdl-toronto-defence",
+          "name": "CDL Toronto Defence",
+          "programType": "dual-use defence venture program",
+          "websiteUrl": "https://creativedestructionlab.com/locations/toronto/",
+          "summary": "A Toronto stream for founders developing dual-use defence-relevant technologies that improve mission capability resilience and national security.",
+          "cohortLabel": "Toronto program"
+        },
+        {
+          "slug": "cdl-quantum",
+          "name": "CDL Quantum",
+          "programType": "quantum technology venture program",
+          "websiteUrl": "https://creativedestructionlab.com/streams/quantum/",
+          "summary": "A structured ten-month program for ventures developing practical quantum computing communication sensing and related technologies.",
+          "cohortLabel": "2026-27 applications"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Rotman School of Management",
+          "relationshipType": "founding-institution",
+          "publicSummary": "Creative Destruction Lab was founded at the University of Toronto's Rotman School of Management and operates its Toronto site there."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-foresight-canada-20260721",
+      "sourceLeadIds": [
+        "lead-foresight-canada-20260721"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Foresight Canada is recommended for green human review because durable official sources resolve its Canadian identity and an active accelerator program relevant to True North Map's ecosystem-support coverage. The candidate records 1 cited program, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "green",
+      "inclusionScore": 93,
+      "completenessScore": 88,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "foresight-afa",
+          "title": "Foresight Accelerate from Anywhere program guide",
+          "url": "https://foresightcac.com/afa-program-guide",
+          "publisher": "Foresight Canada",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program guide",
+          "summary": "Foresight's program guide describes venture acceleration support available to cleantech founders across Canada through structured mentorship and commercialization work."
+        },
+        {
+          "id": "foresight-faq",
+          "title": "Foresight acceleration program frequently asked questions",
+          "url": "https://foresightcac.com/article/acceleration-program-faqs",
+          "publisher": "Foresight Canada",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program FAQ",
+          "summary": "The official FAQ describes Foresight as Canada's largest cleantech accelerator and explains program delivery and founder support."
+        },
+        {
+          "id": "foresight-ircc",
+          "title": "Canada designated business incubator list",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa/designated-organizations.html",
+          "publisher": "Immigration Refugees and Citizenship Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-05-27T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Business incubators",
+          "summary": "The Government of Canada identifies Foresight Cleantech Accelerator Centre as a designated Canadian business-incubator organization."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "foresight-canada-description-evidence",
+          "sourceId": "foresight-afa",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports Foresight Canada's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "foresight-canada-program-evidence",
+          "sourceId": "foresight-afa",
+          "fieldPath": "programs.accelerate-from-anywhere.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes Accelerate from Anywhere and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "foresight-canada-location-evidence",
+          "sourceId": "foresight-afa",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Foresight Canada's Canadian operating location in Vancouver British Columbia or its published local contact details.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "foresight-canada-relationship-0-evidence",
+          "sourceId": "foresight-faq",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "IRCC lists Foresight Cleantech Accelerator Centre among designated Canadian business-incubator organizations.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "foresight-canada",
+        "name": "Foresight Canada",
+        "legalName": "Foresight Cleantech Accelerator Centre",
+        "aliases": [
+          "Foresight Cleantech Accelerator Centre"
+        ],
+        "description": "Foresight Canada is a national cleantech accelerator that supports technology ventures through commercialization programs, mentorship and market connections across energy, resources, transportation and other strategic industrial sectors.",
+        "websiteUrl": "https://foresightcac.com/",
+        "entityKind": "accelerator",
+        "categories": [
+          "dual_use_accelerator",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Accelerate Canadian cleantech ventures and connect innovators with industry capital and customers to advance commercialization and climate impact.",
+          "publicContact": "Public program application and contact channels are available through foresightcac.com.",
+          "sectorFocus": [
+            "advanced-manufacturing-and-integration",
+            "aerospace-and-mobility",
+            "autonomous-systems",
+            "sensing-and-isr"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "autonomous-patrol-and-monitoring"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "accelerate-from-anywhere",
+          "name": "Accelerate from Anywhere",
+          "programType": "national cleantech accelerator",
+          "websiteUrl": "https://foresightcac.com/afa-program-guide",
+          "summary": "A remote-access commercialization program that connects Canadian cleantech founders with mentorship market validation industry partners and investment readiness support.",
+          "cohortLabel": "Current guide"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Immigration Refugees and Citizenship Canada",
+          "relationshipType": "designated-organization",
+          "publicSummary": "IRCC lists Foresight Cleantech Accelerator Centre among designated Canadian business-incubator organizations."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-next-canada-20260721",
+      "sourceLeadIds": [
+        "lead-next-canada-20260721"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "NEXT Canada is recommended for green human review because durable official sources resolve its Canadian identity and an active accelerator program relevant to True North Map's ecosystem-support coverage. The candidate records 2 cited programs, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "green",
+      "inclusionScore": 93,
+      "completenessScore": 92,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "next-programs",
+          "title": "NEXT Canada entrepreneurship programs",
+          "url": "https://www.nextcanada.com/programs-overview/",
+          "publisher": "NEXT Canada",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Programs overview",
+          "summary": "NEXT Canada describes NEXT 36 NEXT Founders and NEXT AI and identifies NEXT AI as a program for AI-based ventures and technology commercialization."
+        },
+        {
+          "id": "next-ai",
+          "title": "NEXT AI venture-development accelerator",
+          "url": "https://www.nextcanada.com/next-ai/",
+          "publisher": "NEXT Canada",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program overview and contact",
+          "summary": "NEXT AI is described as a national founder and venture-development acceleration network providing AI expertise mentorship education and investor access."
+        },
+        {
+          "id": "next-2026",
+          "title": "NEXT Canada 2026 cohorts",
+          "url": "https://www.nextcanada.com/2026-cohort/",
+          "publisher": "NEXT Canada",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": "2026-01-01T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "2026 cohort overview",
+          "summary": "The official cohort page lists current NEXT AI NEXT 36 and NEXT Founders ventures and describes the sectors represented in the 2026 intake."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "next-canada-description-evidence",
+          "sourceId": "next-programs",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports NEXT Canada's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "next-canada-program-evidence",
+          "sourceId": "next-ai",
+          "fieldPath": "programs.next-ai.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes NEXT AI and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "next-canada-location-evidence",
+          "sourceId": "next-programs",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports NEXT Canada's Canadian operating location in Toronto Ontario or its published local contact details.",
+          "confidence": "high"
+        },
+        {
+          "id": "next-canada-program-1-evidence",
+          "sourceId": "next-programs",
+          "fieldPath": "programs.next-36.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes NEXT 36 and supports the program role and delivery summary recorded in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "next-canada-relationship-0-evidence",
+          "sourceId": "next-ai",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "NEXT AI Montreal is delivered in partnership with HEC Montreal while NEXT Canada operates the Toronto and national program network.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "next-canada",
+        "name": "NEXT Canada",
+        "legalName": null,
+        "aliases": [
+          "Next Canada"
+        ],
+        "description": "NEXT Canada is a national entrepreneurship organization operating NEXT 36, NEXT Founders and NEXT AI, a venture-development accelerator for Canadian artificial-intelligence startups delivered in Toronto, Montreal and remotely.",
+        "websiteUrl": "https://www.nextcanada.com/",
+        "entityKind": "accelerator",
+        "categories": [
+          "dual_use_accelerator",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6712,
+          "longitude": -79.3832,
+          "geographicConfidence": "exact"
+        },
+        "profileData": {
+          "mandate": "Develop high-potential Canadian founders and technology ventures through education mentorship networks capital access and structured acceleration programs.",
+          "publicContact": "175 Bloor Street East Suite 1800 South Building Toronto Ontario M4W 3R8 | contact channel published on nextcanada.com",
+          "sectorFocus": [
+            "mission-software-and-data",
+            "autonomous-systems",
+            "communications-and-cyber",
+            "advanced-manufacturing-and-integration"
+          ],
+          "possibleMissionAreaRelevance": [
+            "edge-data-processing",
+            "autonomous-patrol-and-monitoring"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "next-ai",
+          "name": "NEXT AI",
+          "programType": "artificial-intelligence venture accelerator",
+          "websiteUrl": "https://www.nextcanada.com/next-ai/",
+          "summary": "A Canadian founder and venture-development program supporting early-stage AI companies with technical expertise commercialization education mentorship networks and investor exposure.",
+          "cohortLabel": "2026 cohort"
+        },
+        {
+          "slug": "next-36",
+          "name": "NEXT 36",
+          "programType": "founder and venture accelerator",
+          "websiteUrl": "https://www.nextcanada.com/programs-overview/",
+          "summary": "An eight-month national program that helps entrepreneurial students and recent graduates move from ideation through launch and early venture growth.",
+          "cohortLabel": "2026 cohort"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "HEC Montreal",
+          "relationshipType": "program-delivery-partner",
+          "publicSummary": "NEXT AI Montreal is delivered in partnership with HEC Montreal while NEXT Canada operates the Toronto and national program network."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-innovate-calgary-20260721",
+      "sourceLeadIds": [
+        "lead-innovate-calgary-20260721"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Innovate Calgary is recommended for amber human review because durable official sources resolve its Canadian identity and an active incubator program relevant to True North Map's ecosystem-support coverage. The candidate records 1 cited program, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "amber",
+      "inclusionScore": 90,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Official evidence clearly supports incubation and aerospace programming, but the reviewer should confirm the most useful public category mix and current hub contact details before publication."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "innovate-calgary-aerospace-role",
+          "title": "Innovate Calgary Associate Director Aerospace Innovation",
+          "url": "https://innovatecalgary.com/wp-content/uploads/2023/12/Associate-Director-Aerospace-Innovation-December-21-2023.pdf",
+          "publisher": "Innovate Calgary",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": "2023-12-21T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Organization and program description",
+          "summary": "The official role profile describes Innovate Calgary as the University of Calgary technology-transfer and business-incubator centre and outlines Aerospace Innovation Hub accelerator and seed-funding activity."
+        },
+        {
+          "id": "innovate-calgary-community",
+          "title": "Aerospace Innovation Hub community and startup support",
+          "url": "https://innovatecalgary.com/wp-content/uploads/2025/03/Community-Manager-March-12-2025.pdf",
+          "publisher": "Innovate Calgary",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": "2025-03-12T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Position overview",
+          "summary": "The official profile describes the Aerospace Innovation Hub's Calgary facility membership operations startup technical support and aerospace-company incubation role."
+        },
+        {
+          "id": "innovate-calgary-ircc",
+          "title": "Canada designated business incubator list",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa/designated-organizations.html",
+          "publisher": "Immigration Refugees and Citizenship Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-05-27T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Business incubators",
+          "summary": "The Government of Canada lists Innovate Calgary among designated Canadian business-incubator organizations."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "innovate-calgary-description-evidence",
+          "sourceId": "innovate-calgary-aerospace-role",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports Innovate Calgary's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "innovate-calgary-program-evidence",
+          "sourceId": "innovate-calgary-aerospace-role",
+          "fieldPath": "programs.aerospace-innovation-hub.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes Aerospace Innovation Hub and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "innovate-calgary-location-evidence",
+          "sourceId": "innovate-calgary-aerospace-role",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Innovate Calgary's Canadian operating location in Calgary Alberta or its published local contact details.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "innovate-calgary-relationship-0-evidence",
+          "sourceId": "innovate-calgary-community",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Innovate Calgary is a wholly owned University of Calgary subsidiary within the university's research and innovation portfolio.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "innovate-calgary-relationship-1-evidence",
+          "sourceId": "innovate-calgary-ircc",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Innovate Calgary's Aerospace Innovation Hub publicly collaborates with WestJet and Calgary Airport on aerospace innovation activity.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "innovate-calgary",
+        "name": "Innovate Calgary",
+        "legalName": "University Technologies International Inc.",
+        "aliases": [],
+        "description": "Innovate Calgary is the University of Calgary's technology-transfer and business-incubation organization and operates an Aerospace Innovation Hub with accelerator programming, startup support, industry challenges and seed-funding activity.",
+        "websiteUrl": "https://innovatecalgary.com/",
+        "entityKind": "incubator",
+        "categories": [
+          "dual_use_accelerator",
+          "university_affiliated",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Calgary",
+          "provinceTerritory": "Alberta",
+          "countryCode": "CA",
+          "latitude": 51.0774,
+          "longitude": -114.131,
+          "geographicConfidence": "regional"
+        },
+        "profileData": {
+          "mandate": "Bridge university and partner discoveries into economic and societal impact through technology transfer incubation acceleration funding and sector innovation hubs.",
+          "publicContact": "Public contact channels are available through innovatecalgary.com; the Aerospace Innovation Hub operates within Calgary's university and aerospace ecosystem.",
+          "sectorFocus": [
+            "aerospace-and-mobility",
+            "autonomous-systems",
+            "advanced-manufacturing-and-integration"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "autonomous-patrol-and-monitoring"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "aerospace-innovation-hub",
+          "name": "Aerospace Innovation Hub",
+          "programType": "aerospace incubator and accelerator hub",
+          "websiteUrl": "https://innovatecalgary.com/wp-content/uploads/2023/12/Associate-Director-Aerospace-Innovation-December-21-2023.pdf",
+          "summary": "A University of Calgary-linked hub supporting aerospace startups through incubation accelerator programs mentorship industry engagement innovation challenges and seed-funding activity.",
+          "cohortLabel": "Active hub"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "University of Calgary",
+          "relationshipType": "institutional-owner",
+          "publicSummary": "Innovate Calgary is a wholly owned University of Calgary subsidiary within the university's research and innovation portfolio."
+        },
+        {
+          "relatedOrganizationName": "WestJet",
+          "relationshipType": "innovation-challenge-partner",
+          "publicSummary": "Innovate Calgary's Aerospace Innovation Hub publicly collaborates with WestJet and Calgary Airport on aerospace innovation activity."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-dmz-20260721",
+      "sourceLeadIds": [
+        "lead-dmz-20260721"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "DMZ is recommended for green human review because durable official sources resolve its Canadian identity and an active incubator program relevant to True North Map's ecosystem-support coverage. The candidate records 2 cited programs, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "green",
+      "inclusionScore": 92,
+      "completenessScore": 91,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "dmz-home",
+          "title": "DMZ technology startup ecosystem",
+          "url": "https://dmz.torontomu.ca/",
+          "publisher": "DMZ",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Homepage and program listings",
+          "summary": "DMZ describes founder support from prototype to global traction and publishes current incubator and pre-incubator program entry points."
+        },
+        {
+          "id": "dmz-incubator",
+          "title": "DMZ startup incubator",
+          "url": "https://dmz.torontomu.ca/incubator",
+          "publisher": "DMZ",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program overview",
+          "summary": "The official incubator page describes an eighteen-month tailored program for growth strategy capital raising mentorship and Toronto-based or virtual participation."
+        },
+        {
+          "id": "dmz-ircc",
+          "title": "Canada designated business incubator list",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa/designated-organizations.html",
+          "publisher": "Immigration Refugees and Citizenship Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-05-27T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Business incubators",
+          "summary": "The Government of Canada lists The DMZ and DMZ Ventures in its designated Canadian business-incubator section."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "dmz-description-evidence",
+          "sourceId": "dmz-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports DMZ's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "dmz-program-evidence",
+          "sourceId": "dmz-incubator",
+          "fieldPath": "programs.dmz-incubator.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes DMZ Incubator and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "dmz-location-evidence",
+          "sourceId": "dmz-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports DMZ's Canadian operating location in Toronto Ontario or its published local contact details.",
+          "confidence": "high"
+        },
+        {
+          "id": "dmz-program-1-evidence",
+          "sourceId": "dmz-home",
+          "fieldPath": "programs.dmz-pre-incubator.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes DMZ Pre-Incubator and supports the program role and delivery summary recorded in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "dmz-relationship-0-evidence",
+          "sourceId": "dmz-incubator",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DMZ is Toronto Metropolitan University's technology-startup incubator and operates from downtown Toronto.",
+          "confidence": "high"
+        },
+        {
+          "id": "dmz-relationship-1-evidence",
+          "sourceId": "dmz-ircc",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DMZ Ventures provides an affiliated investment path and appears separately in Canada's designated-organization list.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "dmz",
+        "name": "DMZ",
+        "legalName": null,
+        "aliases": [
+          "The DMZ",
+          "DMZ at Toronto Metropolitan University"
+        ],
+        "description": "DMZ is Toronto Metropolitan University's technology-startup incubator, providing pre-incubation and eighteen-month incubation programs with tailored mentorship, investor access, workspace, growth support and specialized partner programs.",
+        "websiteUrl": "https://dmz.torontomu.ca/",
+        "entityKind": "incubator",
+        "categories": [
+          "dual_use_accelerator",
+          "university_affiliated",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6561,
+          "longitude": -79.3802,
+          "geographicConfidence": "exact"
+        },
+        "profileData": {
+          "mandate": "Help technology founders move from prototype through traction and scale using structured incubation mentorship market access capital connections and a global innovation network.",
+          "publicContact": "DMZ Toronto at Toronto Metropolitan University | public program and sponsorship contact forms at dmz.torontomu.ca",
+          "sectorFocus": [
+            "mission-software-and-data",
+            "communications-and-cyber",
+            "autonomous-systems"
+          ],
+          "possibleMissionAreaRelevance": [
+            "edge-data-processing",
+            "autonomous-patrol-and-monitoring"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "dmz-incubator",
+          "name": "DMZ Incubator",
+          "programType": "technology startup incubator",
+          "websiteUrl": "https://dmz.torontomu.ca/incubator",
+          "summary": "An eighteen-month tailored program helping seed-stage technology startups scale sales expand markets prepare for investment and access one-to-one mentorship.",
+          "cohortLabel": "Fall 2026 cohort"
+        },
+        {
+          "slug": "dmz-pre-incubator",
+          "name": "DMZ Pre-Incubator",
+          "programType": "early-stage startup incubator",
+          "websiteUrl": "https://dmz.torontomu.ca/bootcamp/",
+          "summary": "A nine-month program for technology founders to strengthen customer acquisition sales traction fundraising readiness and mentor-supported business execution.",
+          "cohortLabel": "Current program"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Toronto Metropolitan University",
+          "relationshipType": "institutional-affiliation",
+          "publicSummary": "DMZ is Toronto Metropolitan University's technology-startup incubator and operates from downtown Toronto."
+        },
+        {
+          "relatedOrganizationName": "DMZ Ventures",
+          "relationshipType": "investment-affiliate",
+          "publicSummary": "DMZ Ventures provides an affiliated investment path and appears separately in Canada's designated-organization list."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-genesis-centre-20260721",
+      "sourceLeadIds": [
+        "lead-genesis-centre-20260721"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Genesis is recommended for amber human review because durable official sources resolve its Canadian identity and an active incubator program relevant to True North Map's ecosystem-support coverage. The candidate records 2 cited programs, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "amber",
+      "inclusionScore": 87,
+      "completenessScore": 86,
+      "reviewWarnings": [
+        "Genesis is a broad technology incubator rather than a defence-specific operator; the reviewer should retain the sourced ecosystem role and avoid implying defence specialization without company-level evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "genesis-home",
+          "title": "Genesis Newfoundland and Labrador startup support",
+          "url": "https://www.genesiscentre.ca/",
+          "publisher": "Genesis",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Homepage and program overview",
+          "summary": "Genesis describes its role supporting technology founders through startup programs expert coaching community and workspace in Newfoundland and Labrador."
+        },
+        {
+          "id": "genesis-evolve",
+          "title": "Genesis Evolve customer-validation program",
+          "url": "https://www.genesiscentre.ca/evolve",
+          "publisher": "Genesis",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program details",
+          "summary": "Evolve is an eight-week cohort program for Newfoundland and Labrador founders using customer discovery validation and MVP work to test early technology ventures."
+        },
+        {
+          "id": "genesis-residency",
+          "title": "Genesis Residency for venture-scale technology companies",
+          "url": "https://www.genesiscentre.ca/residency",
+          "publisher": "Genesis",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Residency overview",
+          "summary": "Residency supports a selected group of venture-scale technology founders and confirms Genesis's longstanding affiliation with Memorial University and St. John's base."
+        },
+        {
+          "id": "genesis-ircc",
+          "title": "Canada designated business incubator list",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa/designated-organizations.html",
+          "publisher": "Immigration Refugees and Citizenship Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-05-27T00:00:00.000Z",
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Business incubators",
+          "summary": "The Government of Canada lists Genesis as a priority designated business-incubator organization."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "genesis-centre-description-evidence",
+          "sourceId": "genesis-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports Genesis's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "genesis-centre-program-evidence",
+          "sourceId": "genesis-evolve",
+          "fieldPath": "programs.genesis-evolve.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes Evolve and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "genesis-centre-location-evidence",
+          "sourceId": "genesis-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Genesis's Canadian operating location in St. John's Newfoundland and Labrador or its published local contact details.",
+          "confidence": "high"
+        },
+        {
+          "id": "genesis-centre-program-1-evidence",
+          "sourceId": "genesis-residency",
+          "fieldPath": "programs.genesis-residency.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes Genesis Residency and supports the program role and delivery summary recorded in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "genesis-centre-relationship-0-evidence",
+          "sourceId": "genesis-evolve",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Genesis has been affiliated with Memorial University since 1997 and operates from St. John's Newfoundland and Labrador.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "genesis-centre-relationship-1-evidence",
+          "sourceId": "genesis-residency",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "IRCC lists Genesis as a priority designated Canadian business-incubator organization.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "genesis-centre",
+        "name": "Genesis",
+        "legalName": null,
+        "aliases": [
+          "Genesis Centre"
+        ],
+        "description": "Genesis is a Newfoundland and Labrador technology-startup hub affiliated with Memorial University, offering founder education, customer-validation cohorts, ongoing membership and venture-scale residency support.",
+        "websiteUrl": "https://www.genesiscentre.ca/",
+        "entityKind": "incubator",
+        "categories": [
+          "dual_use_accelerator",
+          "university_affiliated",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "St. John's",
+          "provinceTerritory": "Newfoundland and Labrador",
+          "countryCode": "CA",
+          "latitude": 47.5714,
+          "longitude": -52.6989,
+          "geographicConfidence": "exact"
+        },
+        "profileData": {
+          "mandate": "Help Newfoundland and Labrador technology founders validate ideas build companies access coaching and participate in a connected provincial startup community.",
+          "publicContact": "100 Signal Hill Road St. John's Newfoundland and Labrador | info@genesiscentre.ca",
+          "sectorFocus": [
+            "mission-software-and-data",
+            "autonomous-systems"
+          ],
+          "possibleMissionAreaRelevance": [
+            "underwater-isr",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "genesis-evolve",
+          "name": "Evolve",
+          "programType": "early-stage technology incubator cohort",
+          "websiteUrl": "https://www.genesiscentre.ca/evolve",
+          "summary": "An eight-week customer-validation cohort helping Newfoundland and Labrador founders test problems interview customers refine ideas and build an initial technology MVP.",
+          "cohortLabel": "Current cohort"
+        },
+        {
+          "slug": "genesis-residency",
+          "name": "Genesis Residency",
+          "programType": "venture-scale founder residency",
+          "websiteUrl": "https://www.genesiscentre.ca/residency",
+          "summary": "A selective track within Genesis Membership for founders building venture-scale technology companies in Newfoundland and Labrador.",
+          "cohortLabel": "Current program"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Memorial University of Newfoundland",
+          "relationshipType": "institutional-affiliation",
+          "publicSummary": "Genesis has been affiliated with Memorial University since 1997 and operates from St. John's Newfoundland and Labrador."
+        },
+        {
+          "relatedOrganizationName": "Immigration Refugees and Citizenship Canada",
+          "relationshipType": "designated-organization",
+          "publicSummary": "IRCC lists Genesis as a priority designated Canadian business-incubator organization."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-volta-20260721",
+      "sourceLeadIds": [
+        "lead-volta-20260721"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Volta is recommended for amber human review because durable official sources resolve its Canadian identity and an active incubator program relevant to True North Map's ecosystem-support coverage. The candidate records 2 cited programs, public relationships and available contact or location details, and it passed live published and pending duplicate checks. Reviewer focus: confirm the controlled categories, preserve sourced program language and avoid converting analyst-noted strategic relevance into an unsupported defence claim.",
+      "reviewTier": "amber",
+      "inclusionScore": 86,
+      "completenessScore": 85,
+      "reviewWarnings": [
+        "Volta's current public positioning is AI-startup incubation rather than defence specialization; reviewers should publish the ecosystem-support role without inferring a defence mandate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-21T10:31:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked against canonical production organizations and active private candidate identities by URL domain slug legal name aliases and fuzzy name; no matching published or pending record was found."
+      },
+      "sources": [
+        {
+          "id": "volta-home",
+          "title": "Volta AI-first startup incubator",
+          "url": "https://www.voltaeffect.com/",
+          "publisher": "Volta",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Homepage and contact",
+          "summary": "Volta describes its Halifax AI-first startup community validation and scaling support and publishes its public email and phone contact."
+        },
+        {
+          "id": "volta-ai-program",
+          "title": "Volta launches AI-first support program",
+          "url": "https://www.voltaeffect.com/news/volta-launches-ai-first-support-program",
+          "publisher": "Volta",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program announcement",
+          "summary": "Volta announces an AI-first founder-support program developed with Dalhousie University to strengthen product validation commercialization and applied AI capability."
+        },
+        {
+          "id": "volta-residency",
+          "title": "Volta Residency Catalyst",
+          "url": "https://www.voltaeffect.com/residency-programs/residency-catalyst",
+          "publisher": "Volta",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Program overview",
+          "summary": "Residency Catalyst provides structured support workspace community and growth programming for selected Halifax technology startups."
+        },
+        {
+          "id": "volta-funding",
+          "title": "Volta unveils innovation hub with government funding support",
+          "url": "https://www.voltaeffect.com/news/volta-unveils-new-innovation-hub-with-major-government-funding-support",
+          "publisher": "Volta",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-21T10:31:00.000Z",
+          "locator": "Funding announcement",
+          "summary": "Volta reports public support for its Halifax innovation hub and the expansion of startup services and ecosystem infrastructure."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "volta-description-evidence",
+          "sourceId": "volta-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official profile supports Volta's Canadian identity operating role and ecosystem-support description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "volta-program-evidence",
+          "sourceId": "volta-ai-program",
+          "fieldPath": "programs.volta-ai-first.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes AI-first Startup Support Program and the concrete founder support sector focus and delivery model summarized in this dossier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "volta-location-evidence",
+          "sourceId": "volta-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Volta's Canadian operating location in Halifax Nova Scotia or its published local contact details.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "volta-program-1-evidence",
+          "sourceId": "volta-residency",
+          "fieldPath": "programs.volta-residency-catalyst.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited program source describes Residency Catalyst and supports the program role and delivery summary recorded in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "volta-relationship-0-evidence",
+          "sourceId": "volta-ai-program",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Volta publicly identifies Dalhousie University as a collaborator on its AI-first startup support program.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "volta-relationship-1-evidence",
+          "sourceId": "volta-residency",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Volta publicly reports government funding support for its expanded Halifax innovation hub and startup services.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "volta",
+        "name": "Volta",
+        "legalName": null,
+        "aliases": [
+          "Volta Labs",
+          "Volta Effect"
+        ],
+        "description": "Volta is an Atlantic Canadian AI-first startup incubator in Halifax, providing validation, residency, founder support, community, commercialization methods and connections for software ventures.",
+        "websiteUrl": "https://www.voltaeffect.com/",
+        "entityKind": "incubator",
+        "categories": [
+          "dual_use_accelerator",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Halifax",
+          "provinceTerritory": "Nova Scotia",
+          "countryCode": "CA",
+          "latitude": 44.6488,
+          "longitude": -63.5752,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Improve the success rate of Atlantic Canadian AI software startups by helping founders validate demand win early customers and scale through structured support and community.",
+          "publicContact": "contact@voltaeffect.com | +1-902-702-0194 | Halifax Nova Scotia",
+          "sectorFocus": [
+            "mission-software-and-data",
+            "autonomous-systems",
+            "communications-and-cyber"
+          ],
+          "possibleMissionAreaRelevance": [
+            "edge-data-processing",
+            "autonomous-patrol-and-monitoring"
+          ],
+          "evidenceBoundary": "Program and organizational facts are source-backed; mission relevance is an analyst cue for review and not a claim of defence demand or procurement eligibility."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "volta-ai-first",
+          "name": "AI-first Startup Support Program",
+          "programType": "artificial-intelligence startup incubator",
+          "websiteUrl": "https://www.voltaeffect.com/news/volta-launches-ai-first-support-program",
+          "summary": "A Halifax founder program combining AI capability product validation commercialization methods community and university-linked expertise for software startups.",
+          "cohortLabel": "Current program"
+        },
+        {
+          "slug": "volta-residency-catalyst",
+          "name": "Residency Catalyst",
+          "programType": "startup residency and incubator",
+          "websiteUrl": "https://www.voltaeffect.com/residency-programs/residency-catalyst",
+          "summary": "A structured residency program providing selected technology companies workspace community mentorship and company-building support in Halifax.",
+          "cohortLabel": "Current program"
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Dalhousie University",
+          "relationshipType": "program-collaborator",
+          "publicSummary": "Volta publicly identifies Dalhousie University as a collaborator on its AI-first startup support program."
+        },
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "public-funding-support",
+          "publicSummary": "Volta publicly reports government funding support for its expanded Halifax innovation hub and startup services."
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

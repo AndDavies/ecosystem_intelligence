@@ -72,6 +72,18 @@ export const publicDemandCaveat = "Public-source alignment only. This is not pro
 const slugSchema = z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const httpsUrlSchema = z.string().url().startsWith("https://");
 const confidenceSchema = z.enum(["high", "moderate", "needs_review"]);
+const discoveryLaneSchema = z.enum([
+  "official_directory",
+  "government_awards",
+  "government_program",
+  "procurement",
+  "accelerator_cohort",
+  "investor_portfolio",
+  "industry_association",
+  "conference_directory",
+  "company_newsroom",
+  "broad_web"
+]);
 const nullableDateTimeSchema = z.string().datetime().nullable();
 
 const sourceSchema = z.object({
@@ -127,6 +139,16 @@ const leadCommon = {
   evidenceLocator: z.string().trim().min(2).max(500),
   duplicateFingerprint: duplicateFingerprintSchema,
   followUpQuestions: z.array(z.string().trim().min(5).max(500)).max(20),
+  discoveryLane: discoveryLaneSchema.optional(),
+  inclusionScore: z.number().int().min(0).max(100).optional(),
+  completenessScore: z.number().int().min(0).max(100).optional(),
+  reviewWarnings: z.array(z.string().trim().min(10).max(500)).max(20).optional(),
+  deferralClass: z.enum(["hard_stop", "recovery_exhausted"]).optional(),
+  recoveryAttempts: z.array(z.object({
+    lane: discoveryLaneSchema,
+    url: httpsUrlSchema,
+    outcome: z.string().trim().min(20).max(1000)
+  })).max(10).optional(),
   disposition: z.enum(["qualified", "deferred", "rejected"]),
   doNotIngestReason: z.string().trim().min(20).max(1000).nullable()
 };
@@ -216,6 +238,53 @@ export const sourceLeadBatchV2Schema = z.object({
         path: ["leads", batch.leads.indexOf(lead), "doNotIngestReason"]
       });
     }
+    if (lead.disposition === "deferred" && lead.deferralClass === "recovery_exhausted") {
+      const lanes = new Set((lead.recoveryAttempts ?? []).map((attempt) => attempt.lane));
+      if (lanes.size < 3) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: `Deferred lead ${lead.id} needs evidence recovery across at least three source lanes.`,
+          path: ["leads", batch.leads.indexOf(lead), "recoveryAttempts"]
+        });
+      }
+    }
+  }
+});
+
+export const researchProspectInventoryV1Schema = z.object({
+  schemaVersion: z.literal("research_prospect_inventory_v1"),
+  inventoryId: slugSchema,
+  runId: slugSchema,
+  createdAt: z.string().datetime(),
+  scope: z.string().trim().min(40).max(2000),
+  prospects: z.array(z.object({
+    id: slugSchema,
+    name: z.string().trim().min(2).max(240),
+    proposedEntityType: z.enum(["organization", "demand_signal", "program", "relationship"]),
+    proposedOrganizationKind: z.enum(organizationKindValues).nullable(),
+    canonicalUrl: httpsUrlSchema.nullable(),
+    discoverySourceUrl: httpsUrlSchema,
+    discoveryLane: discoveryLaneSchema,
+    countryCode: z.string().length(2).nullable(),
+    fitSummary: z.string().trim().min(30).max(1000),
+    disposition: z.enum(["queued", "selected", "rejected", "duplicate"]),
+    rejectionReason: z.string().trim().min(20).max(1000).nullable(),
+    recoveryAttempts: z.array(z.object({
+      lane: discoveryLaneSchema,
+      url: httpsUrlSchema,
+      outcome: z.string().trim().min(20).max(1000)
+    })).max(10)
+  })).min(1).max(75)
+}).superRefine((inventory, context) => {
+  const ids = new Set<string>();
+  for (const [index, prospect] of inventory.prospects.entries()) {
+    if (ids.has(prospect.id)) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: `Duplicate prospect id ${prospect.id}.`, path: ["prospects", index, "id"] });
+    }
+    ids.add(prospect.id);
+    if (["rejected", "duplicate"].includes(prospect.disposition) && !prospect.rejectionReason) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: `${prospect.disposition} prospect ${prospect.id} needs a reason.`, path: ["prospects", index, "rejectionReason"] });
+    }
   }
 });
 
@@ -259,6 +328,10 @@ const candidateCommon = {
   confidence: confidenceSchema,
   reviewStatus: z.literal("candidate_pending"),
   reviewerRationale: z.string().trim().min(80).max(2000),
+  reviewTier: z.enum(["green", "amber"]).optional(),
+  inclusionScore: z.number().int().min(0).max(100).optional(),
+  completenessScore: z.number().int().min(0).max(100).optional(),
+  reviewWarnings: z.array(z.string().trim().min(10).max(500)).max(20).optional(),
   duplicateCheck: duplicateCheckSchema,
   sources: z.array(sourceSchema).min(1).max(20),
   fieldEvidence: z.array(fieldEvidenceSchema).min(1).max(100)
@@ -396,6 +469,17 @@ export const researchCandidateBatchV2Schema = z.object({
     reason: z.string().trim().min(20).max(1000),
     followUp: z.string().trim().min(10).max(1000)
   }))
+}).superRefine((batch, context) => {
+  for (const [index, candidate] of batch.candidates.entries()) {
+    if (candidate.reviewTier === "amber") {
+      if ((candidate.reviewWarnings ?? []).length === 0) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: `Amber candidate ${candidate.candidateId} needs at least one reviewer warning.`, path: ["candidates", index, "reviewWarnings"] });
+      }
+      if (candidate.confidence === "high") {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: `Amber candidate ${candidate.candidateId} cannot use high confidence.`, path: ["candidates", index, "confidence"] });
+      }
+    }
+  }
 });
 
 export const researchRunSchema = z.object({
@@ -403,7 +487,7 @@ export const researchRunSchema = z.object({
   runId: slugSchema,
   agentVersion: z.string().trim().min(1).max(120),
   trigger: z.enum(["manual", "weekly"]),
-  mode: z.enum(["bootstrap", "gap_targeted"]),
+  mode: z.enum(["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier"]),
   scope: z.object({
     geography: z.literal("canada_first"),
     organizationKinds: z.array(z.enum(organizationKindValues)),
@@ -424,7 +508,11 @@ export const researchRunSchema = z.object({
     totalMinutes: z.number().int().min(1).max(90),
     sourceBookMinutes: z.number().int().min(0).max(30),
     maxQualifiedLeads: z.number().int().min(1).max(25),
-    maxCandidates: z.number().int().min(1).max(10)
+    maxCandidates: z.number().int().min(1).max(10),
+    minimumProspects: z.number().int().min(1).max(75).optional(),
+    minimumSourceLanes: z.number().int().min(1).max(10).optional(),
+    minimumCandidates: z.number().int().min(1).max(10).optional(),
+    targetCandidates: z.number().int().min(1).max(10).optional()
   }),
   sourceQueries: z.array(z.string().trim().min(3).max(500)).max(200),
   counters: z.object({
@@ -432,8 +520,22 @@ export const researchRunSchema = z.object({
     leadsQualified: z.number().int().min(0).max(25),
     leadsDeferred: z.number().int().min(0),
     candidatesCreated: z.number().int().min(0).max(10),
-    duplicatesBlocked: z.number().int().min(0)
+    duplicatesBlocked: z.number().int().min(0),
+    prospectsDiscovered: z.number().int().min(0).optional(),
+    uniqueProspects: z.number().int().min(0).optional(),
+    prospectsQueued: z.number().int().min(0).optional(),
+    recoveryAttempts: z.number().int().min(0).optional(),
+    sourceLanesSearched: z.number().int().min(0).optional(),
+    candidatesGreen: z.number().int().min(0).optional(),
+    candidatesAmber: z.number().int().min(0).optional()
   }),
+  underTargetReason: z.string().trim().min(20).max(2000).nullable().optional(),
+  exhaustionEvidence: z.object({
+    sourceLanes: z.array(discoveryLaneSchema).min(1),
+    prospectsConsidered: z.number().int().min(1),
+    unresolvedTrails: z.array(z.string().trim().min(10).max(1000)),
+    note: z.string().trim().min(40).max(2000)
+  }).nullable().optional(),
   validation: z.object({
     passed: z.boolean(),
     errors: z.array(z.string()),
@@ -442,6 +544,7 @@ export const researchRunSchema = z.object({
   errors: z.array(z.string()),
   stopReason: z.string().trim().min(3).max(1000).nullable(),
   outputs: z.object({
+    prospectInventory: z.string().nullable().optional(),
     sourceLeadBatch: z.string().nullable(),
     candidateBatch: z.string().nullable(),
     reviewPacket: z.string().nullable(),
@@ -450,11 +553,53 @@ export const researchRunSchema = z.object({
 });
 
 export type SourceLeadBatchV2 = z.infer<typeof sourceLeadBatchV2Schema>;
+export type ResearchProspectInventoryV1 = z.infer<typeof researchProspectInventoryV1Schema>;
 export type OrganizationBundleV2 = z.infer<typeof organizationBundleV2Schema>;
 export type DemandSignalBundleV1 = z.infer<typeof demandSignalBundleV1Schema>;
 export type ResearchCandidateBatchV2 = z.infer<typeof researchCandidateBatchV2Schema>;
 export type ResearchRun = z.infer<typeof researchRunSchema>;
 export type ReviewCandidate = z.infer<typeof reviewCandidateSchema>;
+
+export function reviewCandidateIntakeIssues(candidate: ReviewCandidate) {
+  const errors: string[] = [];
+  if (candidate.duplicateCheck.status !== "clear") {
+    errors.push(`Candidate ${candidate.candidateId} has unresolved duplicate status '${candidate.duplicateCheck.status}'.`);
+  }
+  return errors;
+}
+
+export function researchRunCompletionIssues(run: ResearchRun) {
+  const errors: string[] = [];
+  const minimumCandidates = run.limits.minimumCandidates ?? 1;
+  const targetCandidates = run.limits.targetCandidates ?? minimumCandidates;
+  const minimumProspects = run.limits.minimumProspects ?? 1;
+  const minimumSourceLanes = run.limits.minimumSourceLanes ?? 1;
+  if (run.mode === "discovery_batch" && run.status === "completed") {
+    const underMinimum = (run.counters.prospectsDiscovered ?? 0) < minimumProspects
+      || (run.counters.sourceLanesSearched ?? 0) < minimumSourceLanes
+      || run.counters.candidatesCreated < minimumCandidates;
+    const underTarget = run.counters.candidatesCreated < targetCandidates;
+    if (underTarget && (!run.underTargetReason || !run.exhaustionEvidence)) {
+      errors.push(`Discovery batch ${run.runId} finished below target without underTargetReason and exhaustionEvidence.`);
+    }
+    if (underMinimum && !run.exhaustionEvidence) {
+      errors.push(`Discovery batch ${run.runId} did not meet minimum prospect, source-lane, and candidate controls.`);
+    }
+    if (run.exhaustionEvidence) {
+      if (run.exhaustionEvidence.prospectsConsidered < (run.counters.prospectsDiscovered ?? 0)) {
+        errors.push(`Run ${run.runId} exhaustionEvidence understates the prospects considered.`);
+      }
+      if (new Set(run.exhaustionEvidence.sourceLanes).size < Math.min(minimumSourceLanes, run.counters.sourceLanesSearched ?? 0)) {
+        errors.push(`Run ${run.runId} exhaustionEvidence does not identify the searched source lanes.`);
+      }
+    }
+  }
+  const tierCount = (run.counters.candidatesGreen ?? 0) + (run.counters.candidatesAmber ?? 0);
+  if (tierCount > 0 && tierCount !== run.counters.candidatesCreated) errors.push(`Run ${run.runId} green and amber counters do not equal candidatesCreated.`);
+  if ((run.counters.uniqueProspects ?? 0) > (run.counters.prospectsDiscovered ?? 0)) errors.push(`Run ${run.runId} uniqueProspects exceeds prospectsDiscovered.`);
+  if ((run.counters.prospectsQueued ?? 0) > (run.counters.uniqueProspects ?? 0)) errors.push(`Run ${run.runId} prospectsQueued exceeds uniqueProspects.`);
+  return errors;
+}
 
 export function formatZodIssues(error: z.ZodError) {
   return error.issues.map((issue) => `${issue.path.join(".") || "root"}: ${issue.message}`);

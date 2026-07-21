@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-ultra-maritime-2026-07-20",
+  "agentVersion": "tnm-research-pipeline/1.0.0",
+  "trigger": "manual",
+  "mode": "gap_targeted",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization:ultra-maritime-canada",
+    "reason": "Ultra Maritime is a major Canadian undersea-warfare supplier with a public Sea Tracker delivery and operator-identified PA-4 context, but it is absent from the published and pending corpus.",
+    "score": 975
+  },
+  "status": "completed",
+  "startedAt": "2026-07-20T14:59:28.335Z",
+  "completedAt": "2026-07-20T15:08:41.000Z",
+  "limits": {
+    "totalMinutes": 60,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 1,
+    "maxCandidates": 1
+  },
+  "sourceQueries": [
+    "site:umaritime.com Ultra Maritime Canada Dartmouth sonar towed arrays sonobuoys",
+    "site:umaritime.com Sea Tracker containerized ASW DRDC COVE ACOA",
+    "site:coveocean.com Ultra Maritime Sea Tracker DRDC containerized testing",
+    "site:canada.ca Ultra Maritime Dartmouth Royal Canadian Navy",
+    "site:umaritime.com Sea Lancer towed sonar arrays Sea Tracker",
+    "site:umaritime.com Sea Searcher hull mounted sonar transducers Canada",
+    "site:umaritime.com Sea Revealer sonobuoys Canadian specification",
+    "site:umaritime.com River Class lifecycle support Lockheed Martin Canada",
+    "site:canada.ca Royal Canadian Navy Ultra Electronics integrated underwater warfare system",
+    "Ultra Maritime PA-4 Protecteur Sea Tracker public source"
+  ],
+  "counters": {
+    "sourcesChecked": 10,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "One detailed Ultra Maritime organization bundle was evidence-complete, duplicate-clear, and ready for human review; the uncorroborated PA-4 label was recorded as a follow-up rather than proposed for publication.",
+  "outputs": {
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-ultra-maritime-2026-07-20.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-ultra-maritime-2026-07-20.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-ultra-maritime-2026-07-20.md",
+    "stagingExport": "research/ingestion/staging/tnm-ultra-maritime-2026-07-20.json"
+  }
+}

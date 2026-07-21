@@ -1,0 +1,914 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-modular-container-solutions-2026-07-20",
+  "runId": "tnm-modular-container-solutions-2026-07-20",
+  "title": "Canadian modular container and naval integration candidates",
+  "status": "candidate",
+  "createdAt": "2026-07-20T14:25:19.000Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "modular-containerized-naval-solutions",
+    "reason": "A real beta query exposed a gap between container fabrication, mission-system integration, naval-platform integration, and similar modular projects in the current published corpus.",
+    "score": 900
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-modular-container-solutions-2026-07-20.json",
+  "guardrailNotes": [
+    "These five records remain private candidate_pending objects until Andrew reviews and explicitly publishes them through Admin Review.",
+    "The mix separates container fabrication, deployable mission-container engineering, military shelter integration, naval-platform design, and a comparable Royal Canadian Navy modular project instead of implying that one company supplies an entire solution.",
+    "The CTS candidate uses only public evidence for container engineering and fabrication. It does not disclose or assert the privately supplied PA-4 relationship, a defence customer, procurement eligibility, endorsement, or classified demand."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-cts-containers",
+      "sourceLeadIds": [
+        "cts-containers-modular-fabrication-lead"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "CTS Containers fills the physical container-engineering layer of the modular naval-solutions query with strong first-party evidence for custom ISO and offshore-container design, fabrication, modification, testing, and certification from Dartmouth. The organization fit is useful but deliberately rated moderate because the reviewed public sources do not establish a defence customer or the privately known PA-4 relationship. Publish only the documented dual-use fabrication capability unless a separate approved public source supports a defence-project claim.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T14:25:19.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No CTS Containers name, legal-name, alias, ctscontainers.com, or stable-slug match was found in published organizations or pending and approved organization candidates."
+      },
+      "sources": [
+        {
+          "id": "cts-about-source",
+          "title": "CTS Containers Company and Facility Profile",
+          "url": "https://ctscontainers.com/about/",
+          "publisher": "CTS Container & Trailer Services Limited",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Company Info, Facility Specifications, Other Services Offered, and Contact sections",
+          "summary": "CTS states that it has operated from Dartmouth since 1986, manufactures and customizes ISO shipping and offshore containers and specialist equipment, and maintains a 20,000-square-foot CWB-certified fabrication shop plus secure storage."
+        },
+        {
+          "id": "cts-services-source",
+          "title": "CTS Containers Services and Capabilities",
+          "url": "https://ctscontainers.com/services/",
+          "publisher": "CTS Container & Trailer Services Limited",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Custom design, manufacturing, modification, testing, and certification service entries",
+          "summary": "The services page documents custom container design and manufacture, prototype work, ISO and CSC testing, DNV 2.7-1 drop testing, inspection, certification, and offshore-container support."
+        },
+        {
+          "id": "cts-modification-source",
+          "title": "CTS ISO Shipping Container Modifications",
+          "url": "https://ctscontainers.com/our_services/iso-container-modification/",
+          "publisher": "CTS Container & Trailer Services Limited",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Structural Modifications, Interior Fit-outs, Security, Electrical and HVAC, and Compliance sections",
+          "summary": "CTS describes structural changes, combined-container layouts, insulated and partitioned interiors, electrical and HVAC installations, security features, and compliance work that turn standard containers into purpose-built spaces."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "cts-description-evidence",
+          "sourceId": "cts-about-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "CTS publicly identifies itself as a Nova Scotia company specializing in the manufacture, customization, repair, service, and certification of specialist equipment plus ISO shipping and offshore containers from a Dartmouth fabrication facility.",
+          "confidence": "high"
+        },
+        {
+          "id": "cts-capability-evidence",
+          "sourceId": "cts-modification-source",
+          "fieldPath": "capabilities.custom-iso-container-engineering-and-fabrication.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official modification page documents structural changes, larger combined-container layouts, insulation, partitions, wiring, lighting, ventilation, plumbing, security enhancements, and electrical and HVAC systems for purpose-built container applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "cts-testing-evidence",
+          "sourceId": "cts-services-source",
+          "fieldPath": "organization.profileData.evidencePosture",
+          "claimClass": "source_backed",
+          "excerpt": "CTS lists in-house custom design, prototype manufacturing, ISO and CSC container testing, DNV 2.7-1 drop testing, inspection, and certification support among its public services.",
+          "confidence": "high"
+        },
+        {
+          "id": "cts-contact-evidence",
+          "sourceId": "cts-about-source",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The official CTS page lists 33 MacDonald Avenue in Dartmouth, a general email address, and the main office phone number as public contact channels.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "cts-containers",
+        "name": "CTS Containers",
+        "legalName": "CTS Container & Trailer Services Limited",
+        "aliases": [
+          "CTS Container & Trailer Services Limited"
+        ],
+        "description": "Build the transportable foundation for a modular system. CTS Containers designs, fabricates, modifies, tests, and certifies ISO and offshore containers in Dartmouth, including the structural work, interior fit-out, power, HVAC, security, and compliance needed to turn a standard box into a purpose-built workspace or equipment enclosure.",
+        "websiteUrl": "https://ctscontainers.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Dartmouth",
+          "provinceTerritory": "Nova Scotia",
+          "countryCode": "CA",
+          "latitude": 44.6661,
+          "longitude": -63.5728,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "evidencePosture": "Public evidence establishes commercial and offshore container engineering, fabrication, modification, testing, and certification. No public defence-customer or PA-4 claim is included.",
+          "publicContact": {
+            "contactPageUrl": "https://ctscontainers.com/contact/",
+            "publicEmail": "cts@ctscontainers.com",
+            "publicPhone": "+1 902-468-1960",
+            "linkedInUrl": null
+          }
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "custom-iso-container-engineering-and-fabrication",
+          "name": "Custom ISO Container Engineering & Fabrication",
+          "summary": "Start with a transportable ISO footprint, then configure the structure around the mission. CTS can modify dimensions and openings, combine units, build out insulated interiors, and add electrical, HVAC, ventilation, plumbing, security, finishing, testing, and certification support for modular workspaces and equipment enclosures.",
+          "capabilityType": "Container design, fabrication, modification, testing, and certification",
+          "features": [
+            "Structural modification, custom sizing, and combined-container configurations",
+            "Electrical, HVAC, ventilation, insulation, partition, plumbing, and security fit-outs",
+            "ISO and CSC testing plus DNV 2.7-1 prototype and certification support"
+          ],
+          "applications": [
+            "Transportable equipment enclosures and mission-system foundations",
+            "Modular workshops, laboratories, offices, storage, and living spaces",
+            "Offshore equipment transport and hazardous-material containment"
+          ],
+          "technicalTags": [
+            "ISO containers",
+            "CSC certification",
+            "DNV 2.7-1",
+            "modular fabrication",
+            "container modification",
+            "HVAC integration",
+            "equipment enclosures"
+          ],
+          "technicalDomainSlugs": [
+            "advanced-manufacturing-and-integration",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": []
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-weatherhaven",
+      "sourceLeadIds": [
+        "weatherhaven-mecc-container-shelter-lead"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Weatherhaven adds the deployable mission-space layer that a container fabricator alone does not provide. First-party product evidence supports a fully assembled ISO and CSC transportable expandable container with power, HVAC, furnishings, and command, medical, workshop, laboratory, and emergency configurations. The Government of Canada independently confirms Weatherhaven's Headquarters Shelter System contracts. Reviewers should keep the public profile focused on documented deployable shelter capability rather than imply that MECC is already a ship-integrated naval module.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T14:25:19.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No Weatherhaven name, legal-name, alias, weatherhaven.com, or stable-slug match was found in published organizations or pending and approved organization candidates."
+      },
+      "sources": [
+        {
+          "id": "weatherhaven-about-source",
+          "title": "Weatherhaven Company and Defence History",
+          "url": "https://www.weatherhaven.com/AboutUs",
+          "publisher": "Weatherhaven Global Resources Ltd.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "About Us, company history, military milestones, and Head Office sections",
+          "summary": "Weatherhaven identifies itself as a British Columbia designer, manufacturer, installer, and in-service supporter of portable turnkey shelters, camps, and field hospitals for commercial, government, humanitarian, and military users."
+        },
+        {
+          "id": "weatherhaven-mecc-source",
+          "title": "Weatherhaven Mobile Expandable Container Configuration",
+          "url": "https://www.weatherhaven.com/products/expandable-container/mecc/",
+          "publisher": "Weatherhaven Global Resources Ltd.",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "MECC overview, applications, transport, deployment, outfitting, and Head Office sections",
+          "summary": "The MECC page describes a fully assembled ISO and CSC transportable shelter that expands to three times its packed floor space and can be outfitted for command, medical, workshop, laboratory, kitchen, and emergency roles."
+        },
+        {
+          "id": "weatherhaven-hqss-source",
+          "title": "Government of Canada Headquarters Shelter System",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2017-04-10T00:00:00.000Z",
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Project summary, project updates, and technical information sections",
+          "summary": "DND reports that Weatherhaven received acquisition and in-service support contracts for the Canadian Army Headquarters Shelter System, covering tactical command, planning, office, accommodation, and medical shelter functions."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "weatherhaven-description-evidence",
+          "sourceId": "weatherhaven-about-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Weatherhaven's official profile describes a British Columbia company that designs, manufactures, installs, and supports portable turnkey shelters, camps, and field hospitals for commercial, government, humanitarian, and military operations.",
+          "confidence": "high"
+        },
+        {
+          "id": "weatherhaven-capability-evidence",
+          "sourceId": "weatherhaven-mecc-source",
+          "fieldPath": "capabilities.mecc-expandable-container-shelter.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The MECC is documented as a self-contained expandable shelter with an ISO shipping footprint, ISO and CSC transport certification, three times the packed floor space, and electrical, mechanical, HVAC, furnishing, and role-specific fit-out options.",
+          "confidence": "high"
+        },
+        {
+          "id": "weatherhaven-relationship-evidence",
+          "sourceId": "weatherhaven-hqss-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada states that Weatherhaven received contracts to acquire and support Headquarters Shelter System equipment for Canadian Army command, planning, office, accommodation, and medical functions.",
+          "confidence": "high"
+        },
+        {
+          "id": "weatherhaven-contact-evidence",
+          "sourceId": "weatherhaven-about-source",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "Weatherhaven's official profile publishes a Burnaby head-office address, general email address, and Canadian and international phone numbers for enquiries.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "weatherhaven",
+        "name": "Weatherhaven",
+        "legalName": "Weatherhaven Global Resources Ltd.",
+        "aliases": [
+          "Weatherhaven Global Resources Ltd."
+        ],
+        "description": "Move a complete working environment to the point of need. Weatherhaven designs, manufactures, installs, and supports portable shelters, camps, and field hospitals, including expandable ISO-container systems that arrive transport-ready and open into command, medical, maintenance, laboratory, or emergency spaces.",
+        "websiteUrl": "https://www.weatherhaven.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "defence_supplier",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Burnaby",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2488,
+          "longitude": -122.9805,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "evidencePosture": "First-party product and company evidence is corroborated by the Government of Canada Headquarters Shelter System project page.",
+          "publicContact": {
+            "contactPageUrl": "https://secure.weatherhaven.com/ContactUs",
+            "publicEmail": "info@weatherhaven.com",
+            "publicPhone": "+1 604-451-8900",
+            "linkedInUrl": null
+          }
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "mecc-expandable-container-shelter",
+          "name": "MECC Expandable Container Shelter",
+          "summary": "Move a fully equipped workspace with the logistics of an ISO container, then open it into three times the packed floor area. MECC can be transported by land, sea, or air, set up by two people, interconnected into larger complexes, and outfitted with power, HVAC, furnishings, and systems for command, medical, maintenance, laboratory, kitchen, emergency, or hazardous-material work.",
+          "capabilityType": "Expandable ISO-container-based deployable shelter system",
+          "features": [
+            "ISO and CSC certified packed configuration for land, sea, and air transport",
+            "Expandable self-contained design with three times the conventional shipping-footprint floor area",
+            "Electrical, mechanical, HVAC, furnishings, and role-specific equipment integration"
+          ],
+          "applications": [
+            "Deployable command and control centres",
+            "Medical facilities, laboratories, kitchens, and emergency-response spaces",
+            "Aircraft, vehicle, electronic, and general maintenance workshops"
+          ],
+          "technicalTags": [
+            "MECC",
+            "expandable containers",
+            "ISO containers",
+            "CSC certification",
+            "deployable shelters",
+            "command posts",
+            "mobile workshops"
+          ],
+          "technicalDomainSlugs": [
+            "test-training-and-sustainment",
+            "advanced-manufacturing-and-integration",
+            "communications-and-cyber"
+          ],
+          "missionMatches": []
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Department of National Defence",
+          "relationshipType": "Headquarters Shelter System supplier",
+          "publicSummary": "The Government of Canada awarded Weatherhaven contracts to provide acquisition and initial in-service support for the Canadian Army Headquarters Shelter System, a portable command-post shelter capability with planning, office, utility, accommodation, and medical uses."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-dew-engineering",
+      "sourceLeadIds": [
+        "dew-integrated-container-shelter-lead"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "DEW Engineering represents the integrated military-system layer: it does not merely supply an empty container, but designs and equips rigid, expandable, and ISO container shelters as command posts, clinics, kitchens, workshops, and CBRN systems. Strong first-party evidence is independently corroborated by DND's report of 994 baseline shelters and 846 functional kits for Canadian Armed Forces mobile workspaces. The record is suitable for review as a defence supplier while any maritime-specific availability should remain an open question rather than a published claim.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T14:25:19.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No DEW Engineering name, legal-name, alias, dewengineering.com, or stable-slug match was found in published organizations or pending and approved organization candidates."
+      },
+      "sources": [
+        {
+          "id": "dew-shelters-source",
+          "title": "DEW Military-Grade Integrated Shelters",
+          "url": "https://www.dewengineering.com/products/shelters",
+          "publisher": "DEW Engineering and Development ULC",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Shelters overview, roles, Medium Support Vehicle System, and transport sections",
+          "summary": "DEW describes military-grade rigid and expandable shelters equipped for command, medical, dental, kitchen, and maintenance roles, including 28 MSVS variants and intermodal transport by land, sea, or air."
+        },
+        {
+          "id": "dew-cbrn-source",
+          "title": "DEW Containerized CBRN Decontamination System",
+          "url": "https://www.dewengineering.com/index.php/case-studies/cbrn-decontamination-system",
+          "publisher": "DEW Engineering and Development ULC",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Contract, prime integration, equipment, and ISO-container sections",
+          "summary": "DEW describes its role as prime contractor and lead integrator for a deployable CBRN system incorporating purpose-built equipment, stowage, retrieval, and two 20-foot ISO containers."
+        },
+        {
+          "id": "dew-dnd-workspaces-source",
+          "title": "New Mobile Workspaces for the Canadian Armed Forces",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2016/12/new-mobile-workspaces-canadian-armed-forces.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2016-12-07T00:00:00.000Z",
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "News release and Quick Facts sections",
+          "summary": "DND reports that DEW delivered container-based medical, dental, workshop, kitchen, and command-post workspaces, including 994 baseline shelters and 846 kits that converted empty shelters into functional units."
+        },
+        {
+          "id": "dew-contact-source",
+          "title": "DEW Engineering Facilities and Public Contact",
+          "url": "https://www.dewengineering.com/contact",
+          "publisher": "DEW Engineering and Development ULC",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Corporate Headquarters, Miramichi, and General Enquiries sections",
+          "summary": "DEW's contact page lists its Ottawa headquarters, Miramichi production site, general enquiry phone and email, and a public invitation for sales and partnership enquiries."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "dew-description-evidence",
+          "sourceId": "dew-shelters-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "DEW describes itself as a designer and manufacturer of military-grade integrated shelters that turns bare shelters into command posts, medical and dental offices, field kitchens, and maintenance workshops with environmental and power systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "dew-capability-evidence",
+          "sourceId": "dew-dnd-workspaces-source",
+          "fieldPath": "capabilities.military-grade-integrated-container-shelters.summary",
+          "claimClass": "source_backed",
+          "excerpt": "DND states that DEW delivered container-based workspaces and kits for clinics, workshops, kitchens, and command posts, including 994 baseline shelters and 846 kits that transformed empty containers into functional units.",
+          "confidence": "high"
+        },
+        {
+          "id": "dew-cbrn-evidence",
+          "sourceId": "dew-cbrn-source",
+          "fieldPath": "organization.profileData.evidencePosture",
+          "claimClass": "source_backed",
+          "excerpt": "DEW's CBRN case study identifies the company as prime contractor and lead system integrator for a deployable decontamination system packaged with purpose-built equipment, stowage, and two 20-foot ISO containers.",
+          "confidence": "high"
+        },
+        {
+          "id": "dew-relationship-evidence",
+          "sourceId": "dew-dnd-workspaces-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Department of National Defence reports that DEW delivered Canadian Armed Forces mobile workspaces under the Medium Support Vehicle System project on time and on budget.",
+          "confidence": "high"
+        },
+        {
+          "id": "dew-contact-evidence",
+          "sourceId": "dew-contact-source",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "DEW's official contact page lists its Ottawa headquarters, general enquiry phone and email, and a public channel for sales and partnership enquiries.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "dew-engineering",
+        "name": "DEW Engineering",
+        "legalName": "DEW Engineering and Development ULC",
+        "aliases": [
+          "DEW Engineering and Development ULC",
+          "DEW"
+        ],
+        "description": "Turn an empty container into a deployable military workspace. DEW Engineering designs, integrates, manufactures, and supports rigid, expandable, and ISO-container systems for command, medical, maintenance, kitchen, and CBRN roles, combining the shelter with power, climate control, equipment, storage, and mission-specific fit-out.",
+        "websiteUrl": "https://www.dewengineering.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "defence_supplier",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "evidencePosture": "First-party shelter and CBRN-system evidence is corroborated by Department of National Defence reporting on delivered Canadian Armed Forces mobile workspaces.",
+          "publicContact": {
+            "contactPageUrl": "https://www.dewengineering.com/contact",
+            "publicEmail": "info@dewengineering.com",
+            "publicPhone": "+1 613-736-5100",
+            "linkedInUrl": null
+          }
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "military-grade-integrated-container-shelters",
+          "name": "Military-Grade Integrated Container Shelters",
+          "summary": "Move more than an empty box. DEW integrates rigid, expandable, and ISO-container shelters with power, heating, cooling, workstations, tools, storage, and role-specific equipment so they arrive ready to function as command posts, clinics, kitchens, maintenance shops, or specialized CBRN systems in deployed environments.",
+          "capabilityType": "Military shelter and container system integration",
+          "features": [
+            "Rigid and expandable shelter design, production, refurbishment, and reconfiguration",
+            "Power generation, heating, air conditioning, equipment, storage, and role-specific kitting",
+            "Intermodal configurations for transport by land, sea, or air"
+          ],
+          "applications": [
+            "Deployable command posts and mobile offices",
+            "Medical and dental clinics, field kitchens, and maintenance workshops",
+            "Containerized CBRN personnel and vehicle decontamination"
+          ],
+          "technicalTags": [
+            "military shelters",
+            "ISO containers",
+            "system integration",
+            "mobile workspaces",
+            "command posts",
+            "CBRN decontamination",
+            "MSVS"
+          ],
+          "technicalDomainSlugs": [
+            "advanced-manufacturing-and-integration",
+            "test-training-and-sustainment",
+            "communications-and-cyber"
+          ],
+          "missionMatches": []
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Department of National Defence",
+          "relationshipType": "Medium Support Vehicle System supplier",
+          "publicSummary": "DEW delivered Canadian Armed Forces container-based mobile workspaces under the Medium Support Vehicle System project, including baseline shelters and kits for medical, dental, workshop, kitchen, and command-post roles."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-vard-marine",
+      "sourceLeadIds": [
+        "vard-container-ready-mission-bay-lead"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Vard Marine addresses the naval-platform integration layer that sits above the container and its internal systems. Official design material shows multi-mission bays, containerized payload set-down areas, accommodation for up to four ISO containers, and plug-and-play mission-module handling in Canadian naval concepts. The public record must distinguish designs and approval-in-principle concepts from delivered vessels, but the evidence strongly supports Vard's ability to design container-ready naval architecture and a moderate derived connection to underwater ISR use cases.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T14:25:19.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No Vard Marine name, legal-name, alias, vardmarine.com, or stable-slug match was found in published organizations or pending and approved organization candidates."
+      },
+      "sources": [
+        {
+          "id": "vard-corporate-source",
+          "title": "Vard Marine Corporate and Ship-Design Profile",
+          "url": "https://vardmarine.com/corporate-info/",
+          "publisher": "Vard Marine Inc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Corporate Info, services, portfolio, and tailored ship-design sections",
+          "summary": "Vard Marine identifies itself as a Vancouver-based naval architecture and marine engineering firm with concept, production, analysis, testing, and full-scale trial capabilities across naval, security, offshore, ferry, icebreaker, and research vessels."
+        },
+        {
+          "id": "vard-7115-source",
+          "title": "VARD 7 115 Next Generation Offshore Patrol Vessel",
+          "url": "https://vardmarine.com/vard-secures-abs-aip-for-vard-7-115-next-generation-offshore-patrol-vessel/",
+          "publisher": "Vard Marine Inc.",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2021-09-13T00:00:00.000Z",
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Approval in Principle and multi-mission bay description",
+          "summary": "Vard Marine reports ABS Approval in Principle for an offshore patrol vessel design with air, surface, and sub-surface surveillance roles plus a multi-mission bay and set-down area for containerized mission payloads."
+        },
+        {
+          "id": "vard-7078-source",
+          "title": "VARD 7 078 Multi-Purpose Offshore Patrol Vessel",
+          "url": "https://vardmarine.com/gallery/vard-7-078/",
+          "publisher": "Vard Marine Inc.",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Vessel overview, flexible mission bay, ISO-container capacity, missions, and Vancouver contact sections",
+          "summary": "The VARD 7 078 page describes a flexible multi-purpose offshore patrol vessel whose mission bay can hold up to three boats and four standard ISO containers for mine countermeasures, diving, interdiction, humanitarian assistance, search and rescue, and combat."
+        },
+        {
+          "id": "vard-vigilance-source",
+          "title": "Vigilance Offshore Patrol Vessel for Future RCN Needs",
+          "url": "https://vardmarine.com/vard-marine-launches-a-next-generation-offshore-patrol-vessel-tailored-to-the-future-needs-of-the-royal-canadian-navy/",
+          "publisher": "Vard Marine Inc.",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2023-05-30T00:00:00.000Z",
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Vigilance launch, modular capability, mission set, and CUBE integration sections",
+          "summary": "Vard Marine describes Vigilance as a Canadian offshore patrol vessel concept combining organic and modular capabilities with a plug-and-play mission-module and payload-handling system for ISR, subsea infrastructure protection, mine countermeasures, and other missions."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "vard-description-evidence",
+          "sourceId": "vard-corporate-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Vard Marine's corporate page identifies a naval architecture and marine engineering firm providing ship design, production technology, equipment packages, analysis, model testing, and full-scale trials for naval, security, offshore, and specialized vessels.",
+          "confidence": "high"
+        },
+        {
+          "id": "vard-capability-evidence",
+          "sourceId": "vard-7115-source",
+          "fieldPath": "capabilities.container-ready-naval-mission-bay-design.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Vard Marine states that the ABS-approved VARD 7 115 design supports varied air, surface, and sub-surface missions through a multi-mission bay and set-down area designed for containerized mission payloads.",
+          "confidence": "high"
+        },
+        {
+          "id": "vard-container-capacity-evidence",
+          "sourceId": "vard-7078-source",
+          "fieldPath": "organization.profileData.evidencePosture",
+          "claimClass": "source_backed",
+          "excerpt": "The VARD 7 078 product page states that its flexible mission bay can carry up to four standard ISO containers alongside boats for a range of naval and humanitarian missions.",
+          "confidence": "high"
+        },
+        {
+          "id": "vard-underwater-mission-evidence",
+          "sourceId": "vard-vigilance-source",
+          "fieldPath": "capabilities.container-ready-naval-mission-bay-design.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Vard's Vigilance material connects modular mission payloads with public missions including intelligence, surveillance and reconnaissance, subsea infrastructure protection, and mine countermeasures; the True North Map use-case connection is a reviewed interpretation of those published roles.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "vard-contact-evidence",
+          "sourceId": "vard-7078-source",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The official Vard Marine page publishes a Vancouver office address, main phone number, and general email contact for the Canadian business.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "vard-marine",
+        "name": "Vard Marine",
+        "legalName": "Vard Marine Inc.",
+        "aliases": [
+          "Vard Marine Inc.",
+          "VARD Marine"
+        ],
+        "description": "Design the ship around the missions it may need tomorrow. Vard Marine provides naval architecture and marine engineering for naval, security, offshore, icebreaking, research, and specialized vessels, including flexible mission bays and deck arrangements that accept standard ISO containers and containerized payloads without dedicating the platform to one role.",
+        "websiteUrl": "https://vardmarine.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "defence_supplier",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "evidencePosture": "Official Vard Marine sources support naval-platform and mission-bay design capability. VARD 7 115 is an approval-in-principle design, VARD 7 078 is a product design, and Vigilance is a Canadian naval concept; none is presented here as a completed RCN procurement.",
+          "publicContact": {
+            "contactPageUrl": "https://vardmarine.com/contact/",
+            "publicEmail": "info@vardmarine.com",
+            "publicPhone": "+1 604-216-3310",
+            "linkedInUrl": null
+          }
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "container-ready-naval-mission-bay-design",
+          "name": "Container-Ready Naval Mission-Bay Design",
+          "summary": "Plan the container, payload handling, deck space, services, and launch paths as part of the ship rather than as an afterthought. Vard Marine's public patrol-vessel designs include flexible bays for standard ISO containers, set-down areas for containerized payloads, and plug-and-play module handling that lets one platform take on surveillance, subsea, mine-countermeasure, interdiction, rescue, or disaster-response roles.",
+          "capabilityType": "Naval architecture for modular and containerized mission payloads",
+          "features": [
+            "Multi-mission bays and deck set-down areas for containerized payloads",
+            "Flexible layouts documented with capacity for up to four standard ISO containers",
+            "Integration of plug-and-play mission-module and payload-handling systems"
+          ],
+          "applications": [
+            "Intelligence, surveillance, reconnaissance, and subsea infrastructure protection",
+            "Mine countermeasures, diving, and maritime interdiction",
+            "Search and rescue, humanitarian assistance, and disaster relief"
+          ],
+          "technicalTags": [
+            "naval architecture",
+            "mission bays",
+            "containerized payloads",
+            "ISO containers",
+            "modular mission systems",
+            "offshore patrol vessels",
+            "payload handling"
+          ],
+          "technicalDomainSlugs": [
+            "aerospace-and-mobility",
+            "advanced-manufacturing-and-integration",
+            "sensing-and-isr"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "Public Vard Marine designs connect containerized and plug-and-play mission payloads with sub-surface surveillance, subsea infrastructure protection, diving, and mine-countermeasure roles. This is a reviewed use-case connection, not proof of a customer requirement or procurement outcome.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-navamar",
+      "sourceLeadIds": [
+        "navamar-sea-to-shore-connector-lead"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Navamar adds a delivered Canadian example of modular naval engineering rather than another container supplier. The company's Sea-to-Shore Connector for the Royal Canadian Navy is assembled from transportable modules, carries vehicles and sea containers, and can change configuration for logistics, bridging, docking, diving, inspection, or disaster response. Navamar, PSPC, and RCN sources corroborate the project. Reviewers should confirm current delivery status if they want to state that all four systems are complete; this candidate only claims the first delivered system and the documented four-system project.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T14:25:19.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No Navamar name, legal-name, navamar.com domain, or stable-slug match was found in published organizations or pending and approved organization candidates."
+      },
+      "sources": [
+        {
+          "id": "navamar-company-source",
+          "title": "Navamar Shipbuilding and Marine Services Profile",
+          "url": "https://www.navamar.com/index.php/english/",
+          "publisher": "Navamar Inc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Company overview, service lines, facilities, and public contact sections",
+          "summary": "Navamar describes a Montréal shipyard operating since 2001 with a 5,200-square-metre workshop and ship repair, shipbuilding, inspection, industrial, and mobile marine-service capabilities."
+        },
+        {
+          "id": "navamar-connector-source",
+          "title": "Navamar Sea-to-Shore Connector System",
+          "url": "https://www.navamar.com/index.php/english/a-propos/news-about-us/270-testing-see-to-shore",
+          "publisher": "Navamar Inc.",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Contract, factory acceptance test, payload, assembly, and role sections",
+          "summary": "Navamar describes four modular Sea-to-Shore Connector systems for the RCN Joint Support Ships, carrying up to 50 tonnes at five knots and moving vehicles or sea containers where port infrastructure is limited."
+        },
+        {
+          "id": "navamar-rcn-source",
+          "title": "RCN Prepares Sea-to-Shore Connectors for Joint Support Ships",
+          "url": "https://www.canada.ca/en/department-national-defence/maple-leaf/rcn/2022/04/ship-shore.html",
+          "publisher": "Royal Canadian Navy",
+          "sourceKind": "official_report",
+          "publishedAt": "2022-04-29T00:00:00.000Z",
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Delivery, modular configurations, container-like transport, and operational role sections",
+          "summary": "The RCN confirms delivery of the first of four Canadian-made modular Sea-to-Shore Connectors, whose engines and equipment travel in 20-foot containers and whose pontoons can be stored like sea containers."
+        },
+        {
+          "id": "navamar-contact-source",
+          "title": "Navamar Public Contact and Montréal Shipyard",
+          "url": "https://www.navamar.com/index.php/english/contactus",
+          "publisher": "Navamar Inc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-20T14:25:19.000Z",
+          "locator": "Navamar Inc. address and 24-hour public phone section",
+          "summary": "Navamar's official contact page identifies Navamar Inc., its Montréal street address, and a public 24-hour phone number."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "navamar-description-evidence",
+          "sourceId": "navamar-company-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Navamar's official site describes a Montréal shipyard with shipbuilding, repair, inspection, industrial, and mobile marine services supported by a 5,200-square-metre workshop and coast-to-coast operating capability.",
+          "confidence": "high"
+        },
+        {
+          "id": "navamar-capability-evidence",
+          "sourceId": "navamar-connector-source",
+          "fieldPath": "capabilities.sea-to-shore-connector-system.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Navamar reports that its modular Sea-to-Shore Connector can carry 50 tonnes at five knots, use roll-on and roll-off access, assemble from pontoon modules, and move vehicles or sea containers between a Joint Support Ship and shore.",
+          "confidence": "high"
+        },
+        {
+          "id": "navamar-modularity-evidence",
+          "sourceId": "navamar-rcn-source",
+          "fieldPath": "organization.profileData.evidencePosture",
+          "claimClass": "source_backed",
+          "excerpt": "The Royal Canadian Navy confirms that the Canadian-made connector can be stored or transported like standard shipping containers and reconfigured as a barge, bridge, floating dock, diving platform, or maintenance and inspection platform.",
+          "confidence": "high"
+        },
+        {
+          "id": "navamar-relationship-evidence",
+          "sourceId": "navamar-rcn-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The RCN reports delivery of the first of four modular Sea-to-Shore Connectors for the future Protecteur-class Joint Support Ships and describes how the components are stored and deployed from the ships.",
+          "confidence": "high"
+        },
+        {
+          "id": "navamar-contact-evidence",
+          "sourceId": "navamar-contact-source",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "Navamar's official contact page lists Navamar Inc. at 10150 Notre-Dame Street East in Montréal and publishes a 24-hour main phone number.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "navamar",
+        "name": "Navamar",
+        "legalName": "Navamar Inc.",
+        "aliases": [],
+        "description": "Break a naval transport problem into modules that can move, store, and assemble with the ship. Navamar is a Montréal shipbuilder and marine-services company whose Sea-to-Shore Connector project for the Royal Canadian Navy packs propulsion and equipment into 20-foot containers and uses modular pontoons to move people, vehicles, and containerized supplies where port access is limited.",
+        "websiteUrl": "https://www.navamar.com/index.php/english/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "defence_supplier",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Montréal",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.5019,
+          "longitude": -73.5674,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "evidencePosture": "Navamar, PSPC, and Royal Canadian Navy sources support the four-system Joint Support Ship project and delivery of the first connector. This record does not claim that all four systems have been completed without a current confirmation source.",
+          "publicContact": {
+            "contactPageUrl": "https://www.navamar.com/index.php/english/contactus",
+            "publicEmail": null,
+            "publicPhone": "+1 514-989-0048",
+            "linkedInUrl": null
+          }
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "sea-to-shore-connector-system",
+          "name": "Sea-to-Shore Connector System",
+          "summary": "Move up to 50 tonnes of personnel, vehicles, or containerized supplies between ship and shore when a port is unavailable. Navamar's modular system travels as 20-foot equipment containers and interlocking pontoons, assembles in sheltered water, and can change from a roll-on and roll-off barge into a bridge, floating dock, diving platform, or ship-side maintenance platform.",
+          "capabilityType": "Modular naval logistics and sea-to-shore transport system",
+          "features": [
+            "Modular pontoons with propulsion and equipment carried in separate 20-foot containers",
+            "Documented 50-tonne payload at five knots with roll-on and roll-off access",
+            "Reconfigurable as a barge, bridge, floating dock, diving platform, or maintenance platform"
+          ],
+          "applications": [
+            "Sea-to-shore transport where port infrastructure is limited",
+            "Humanitarian assistance, disaster relief, and joint operations ashore",
+            "Ship-side maintenance, inspection, salvage, and diving support"
+          ],
+          "technicalTags": [
+            "modular workboats",
+            "sea-to-shore logistics",
+            "20-foot containers",
+            "pontoon systems",
+            "amphibious support",
+            "Joint Support Ships",
+            "naval shipbuilding"
+          ],
+          "technicalDomainSlugs": [
+            "aerospace-and-mobility",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": []
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Royal Canadian Navy",
+          "relationshipType": "Joint Support Ship project supplier",
+          "publicSummary": "Navamar designed and built modular Sea-to-Shore Connector systems for the Royal Canadian Navy's future Protecteur-class Joint Support Ships, with the first of four systems delivered and publicly described by the RCN in 2022."
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

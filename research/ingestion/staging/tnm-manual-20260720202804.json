@@ -1,0 +1,2967 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-20T20:40:15.480Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260720202804",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "large-defence-prime-contractors",
+      "reason": "User-directed deep research batch for large defence prime contractors with broad Canadian portfolios, flagship programs, and public delivery relationships.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-20T20:28:04.656Z",
+    "completed_at": "2026-07-20T20:39:00.000Z",
+    "agent_version": "tnm-research-pipeline/1.1.0",
+    "source_queries": [
+      "large defence prime contractors Canada official portfolio naval land air training sustainment",
+      "Lockheed Martin Canada official CMS 330 electronic warfare River-class Destroyer portfolio",
+      "General Dynamics Land Systems-Canada official LAV armoured vehicle sustainment current contract",
+      "L3Harris Canada official WESCAM aircraft missionization in-service support P-8A",
+      "Thales Canada official AJISS naval support C4ISR optronics avionics portfolio",
+      "CAE defence official training systems integration services Future Aircrew Training",
+      "Irving Shipbuilding Seaspan Shipyards official Canadian naval shipbuilding programs",
+      "Rheinmetall Canada official Mission Master C4ISR vehicle recovery sustainment CANSEC"
+    ],
+    "counters": {
+      "sourcesChecked": 35,
+      "leadsQualified": 8,
+      "leadsDeferred": 0,
+      "candidatesCreated": 8,
+      "duplicatesBlocked": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "Stopped after eight user-scoped large defence prime contractors were deeply researched, enriched across 24 capability families and eight flagship programs, cleared live duplicate checks, and passed typed validation for private human review."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-lockheed-martin-canada",
+      "research_run_ref": "tnm-manual-20260720202804",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-lockheed-martin-canada"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-lockheed-martin-canada",
+        "sourceLeadIds": [
+          "lead-lockheed-martin-canada"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Lockheed Martin Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T20:36:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Lockheed Martin Canada."
+        },
+        "sources": [
+          {
+            "id": "lockheed-canada-overview",
+            "title": "Lockheed Martin Canada overview",
+            "url": "https://www.lockheedmartin.com/en-ca/index.html",
+            "publisher": "Lockheed Martin Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Canada overview, capabilities, locations and economic impact",
+            "summary": "The official Canadian overview describes a wholly owned Canadian defence and technology business with more than 1,000 employees, seven sites, and work in software engineering, systems integration, manufacturing, training, and sustainment."
+          },
+          {
+            "id": "lockheed-cms330",
+            "title": "CMS 330 Intelligent Common Core",
+            "url": "https://www.f35.com/en-ca/cms330.html",
+            "publisher": "Lockheed Martin Canada",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "CMS 330 product and Canadian Surface Combatant sections",
+            "summary": "The official product page describes the Canadian-developed CMS 330 combat management architecture and its selection as the command-and-control core for the Canadian Surface Combatant program."
+          },
+          {
+            "id": "lockheed-canada-ew",
+            "title": "Electronic Warfare at Lockheed Martin Canada",
+            "url": "https://www.lockheedmartin.com/en-ca/ew.html",
+            "publisher": "Lockheed Martin Canada",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "RAVEN, Coronis and lifecycle capability sections",
+            "summary": "The official page describes Canadian design, development, production, integration, and in-service support for naval electronic warfare systems including RAVEN and Coronis."
+          },
+          {
+            "id": "lockheed-csc-facts",
+            "title": "Seven things to know about Canada's River-class Destroyer",
+            "url": "https://www.lockheedmartin.com/en-ca/features/7-things-about-csc.html",
+            "publisher": "Lockheed Martin Canada",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Combat-system design, CMS 330 and SPY-7 sections",
+            "summary": "The official feature describes Lockheed Martin Canada's combat-system design and integration role, CMS 330, SPY-7 radar, and multi-mission functions for the River-class Destroyer."
+          },
+          {
+            "id": "lockheed-canada-leadership",
+            "title": "Lockheed Martin Canada leadership and portfolio",
+            "url": "https://www.lockheedmartin.com/en-ca/leadership.html",
+            "publisher": "Lockheed Martin Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Business portfolio and Canadian operating-unit descriptions",
+            "summary": "The Canadian leadership page describes the Rotary and Mission Systems portfolio, the CMS business, and Calgary-based unmanned-system control software activity."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-lockheed-martin-canada-description",
+            "sourceId": "lockheed-canada-overview",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Official organization material supports this profile: Canadian defence and technology prime with a seven-site national footprint spanning naval combat management, electronic warfare, all-domain systems integration, autonomous-system control software, advanced manufacturing, training, sustainment, and program delivery.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-lockheed-martin-canada-capability-1",
+            "sourceId": "lockheed-cms330",
+            "fieldPath": "capabilities.cms-330-naval-combat-management.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the CMS 330 naval combat management capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-lockheed-martin-canada-capability-2",
+            "sourceId": "lockheed-canada-ew",
+            "fieldPath": "capabilities.naval-electronic-warfare-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Naval electronic warfare systems capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-lockheed-martin-canada-capability-3",
+            "sourceId": "lockheed-csc-facts",
+            "fieldPath": "capabilities.all-domain-systems-integration-and-sustainment.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the All-domain systems integration and sustainment capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-lockheed-martin-canada-program",
+            "sourceId": "lockheed-csc-facts",
+            "fieldPath": "programs.river-class-destroyer-combat-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source publicly documents River-class Destroyer combat systems, its delivery scope, and Lockheed Martin Canada's disclosed role.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-lockheed-martin-canada-relationship",
+            "sourceId": "lockheed-canada-leadership",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Lockheed Martin Canada leads combat-system design and integration within the Irving Shipbuilding-led River-class Destroyer delivery team, with CMS 330 and SPY-7 among the disclosed system elements.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-lockheed-martin-canada-match-1-1",
+            "sourceId": "lockheed-cms330",
+            "fieldPath": "capabilities.cms-330-naval-combat-management.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping only: A combat-management layer can integrate and present shipboard underwater-sensor and track data, but platform-specific anti-submarine performance requires reviewer confirmation.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-lockheed-martin-canada-match-2-1",
+            "sourceId": "lockheed-canada-ew",
+            "fieldPath": "capabilities.naval-electronic-warfare-systems.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping only: Electronic-support sensors may contribute to maritime awareness in northern operations, although no Arctic deployment is asserted by the cited portfolio pages.",
+            "confidence": "needs_review"
+          },
+          {
+            "id": "evidence-lockheed-martin-canada-match-3-1",
+            "sourceId": "lockheed-csc-facts",
+            "fieldPath": "capabilities.all-domain-systems-integration-and-sustainment.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping only: Canadian unmanned-system control software may support autonomous monitoring platforms, subject to verification of the specific operational configuration.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "lockheed-martin-canada",
+          "name": "Lockheed Martin Canada",
+          "legalName": "Lockheed Martin Canada Inc.",
+          "aliases": [
+            "Lockheed Martin Canada CDL Systems",
+            "LMC"
+          ],
+          "description": "Canadian defence and technology prime with a seven-site national footprint spanning naval combat management, electronic warfare, all-domain systems integration, autonomous-system control software, advanced manufacturing, training, sustainment, and program delivery.",
+          "websiteUrl": "https://www.lockheedmartin.com/en-ca/index.html",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "The public Canadian portfolio covers naval combat systems, electronic warfare, command and control, autonomous-system control, systems and software engineering, manufacturing, training, lifecycle support, and integration across maritime, air, land, space, and cyber domains.",
+            "canadianFootprint": "Headquartered in Ottawa with more than 1,000 employees and major facilities identified in Ottawa, Montreal, Halifax, Calgary, Victoria, and other Canadian locations supporting engineering, manufacturing, training, and sustainment.",
+            "currentActivity": "Current Canadian work includes the CMS 330 Intelligent Common Core and combat-system integration for the River-class Destroyer, SPY-7 radar integration, Canadian-developed electronic warfare products, and unmanned-system control software.",
+            "publicContact": "Official Canadian contact and facility information is maintained through the Lockheed Martin Canada country site and location pages.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "cms-330-naval-combat-management",
+            "name": "CMS 330 naval combat management",
+            "summary": "Canadian-developed combat management architecture that integrates sensors, weapons, command functions, tactical data, and operator decision support for complex naval combat-system programs.",
+            "capabilityType": "Naval combat management and command system",
+            "features": [
+              "Open and scalable combat-system architecture",
+              "Sensor and weapon integration",
+              "Tactical command and decision support"
+            ],
+            "applications": [
+              "Surface combatant command and control",
+              "Multi-domain maritime operations",
+              "Combat-system modernization"
+            ],
+            "technicalTags": [
+              "combat_management",
+              "c4isr",
+              "naval_systems"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "sensing-and-isr",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "A combat-management layer can integrate and present shipboard underwater-sensor and track data, but platform-specific anti-submarine performance requires reviewer confirmation.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "naval-electronic-warfare-systems",
+            "name": "Naval electronic warfare systems",
+            "summary": "Canadian electronic-warfare portfolio covering threat detection, electronic support measures, electronic attack, integration, production, and through-life support for naval platforms.",
+            "capabilityType": "Naval electronic warfare portfolio",
+            "features": [
+              "RAVEN and Coronis product families",
+              "Threat detection and situational awareness",
+              "Integration and in-service support"
+            ],
+            "applications": [
+              "Electronic support measures",
+              "Ship self-protection",
+              "Maritime spectrum awareness"
+            ],
+            "technicalTags": [
+              "electronic_warfare",
+              "spectrum",
+              "naval_self_protection"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "sensing-and-isr",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Electronic-support sensors may contribute to maritime awareness in northern operations, although no Arctic deployment is asserted by the cited portfolio pages.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          },
+          {
+            "slug": "all-domain-systems-integration-and-sustainment",
+            "name": "All-domain systems integration and sustainment",
+            "summary": "Engineering and program-delivery capability spanning software, command and control, autonomous-system control, advanced manufacturing, training, systems integration, and lifecycle support across Canadian defence domains.",
+            "capabilityType": "Mission-systems integration and lifecycle support",
+            "features": [
+              "Systems and software engineering",
+              "Unmanned-system control software",
+              "Training, manufacturing and sustainment"
+            ],
+            "applications": [
+              "Complex defence program integration",
+              "Autonomous-platform control",
+              "Fleet and mission-system lifecycle support"
+            ],
+            "technicalTags": [
+              "systems_integration",
+              "autonomy",
+              "sustainment"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "autonomous-systems",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Canadian unmanned-system control software may support autonomous monitoring platforms, subject to verification of the specific operational configuration.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [
+          {
+            "slug": "river-class-destroyer-combat-systems",
+            "name": "River-class Destroyer combat systems",
+            "programType": "Naval combat-system design and integration",
+            "websiteUrl": "https://www.lockheedmartin.com/en-ca/features/7-things-about-csc.html",
+            "summary": "Canadian combat-system design and integration program combining CMS 330, SPY-7 radar, sensors, weapons, communications, and command functions for the Royal Canadian Navy's River-class Destroyer.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Irving Shipbuilding",
+            "relationshipType": "prime shipyard integration partner",
+            "publicSummary": "Lockheed Martin Canada leads combat-system design and integration within the Irving Shipbuilding-led River-class Destroyer delivery team, with CMS 330 and SPY-7 among the disclosed system elements."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-lockheed-martin-canada-description",
+          "sourceId": "lockheed-canada-overview",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Official organization material supports this profile: Canadian defence and technology prime with a seven-site national footprint spanning naval combat management, electronic warfare, all-domain systems integration, autonomous-system control software, advanced manufacturing, training, sustainment, and program delivery.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-lockheed-martin-canada-capability-1",
+          "sourceId": "lockheed-cms330",
+          "fieldPath": "capabilities.cms-330-naval-combat-management.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the CMS 330 naval combat management capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-lockheed-martin-canada-capability-2",
+          "sourceId": "lockheed-canada-ew",
+          "fieldPath": "capabilities.naval-electronic-warfare-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Naval electronic warfare systems capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-lockheed-martin-canada-capability-3",
+          "sourceId": "lockheed-csc-facts",
+          "fieldPath": "capabilities.all-domain-systems-integration-and-sustainment.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the All-domain systems integration and sustainment capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-lockheed-martin-canada-program",
+          "sourceId": "lockheed-csc-facts",
+          "fieldPath": "programs.river-class-destroyer-combat-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source publicly documents River-class Destroyer combat systems, its delivery scope, and Lockheed Martin Canada's disclosed role.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-lockheed-martin-canada-relationship",
+          "sourceId": "lockheed-canada-leadership",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Lockheed Martin Canada leads combat-system design and integration within the Irving Shipbuilding-led River-class Destroyer delivery team, with CMS 330 and SPY-7 among the disclosed system elements.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-lockheed-martin-canada-match-1-1",
+          "sourceId": "lockheed-cms330",
+          "fieldPath": "capabilities.cms-330-naval-combat-management.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping only: A combat-management layer can integrate and present shipboard underwater-sensor and track data, but platform-specific anti-submarine performance requires reviewer confirmation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-lockheed-martin-canada-match-2-1",
+          "sourceId": "lockheed-canada-ew",
+          "fieldPath": "capabilities.naval-electronic-warfare-systems.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping only: Electronic-support sensors may contribute to maritime awareness in northern operations, although no Arctic deployment is asserted by the cited portfolio pages.",
+          "confidence": "needs_review"
+        },
+        {
+          "id": "evidence-lockheed-martin-canada-match-3-1",
+          "sourceId": "lockheed-csc-facts",
+          "fieldPath": "capabilities.all-domain-systems-integration-and-sustainment.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping only: Canadian unmanned-system control software may support autonomous monitoring platforms, subject to verification of the specific operational configuration.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T20:36:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Lockheed Martin Canada."
+      },
+      "reviewer_rationale": "Lockheed Martin Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T20:40:15.480Z"
+    },
+    {
+      "client_candidate_id": "candidate-general-dynamics-land-systems-canada",
+      "research_run_ref": "tnm-manual-20260720202804",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-general-dynamics-land-systems-canada"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-general-dynamics-land-systems-canada",
+        "sourceLeadIds": [
+          "lead-general-dynamics-land-systems-canada"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "General Dynamics Land Systems-Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T20:36:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for General Dynamics Land Systems-Canada."
+        },
+        "sources": [
+          {
+            "id": "gdls-canada-home",
+            "title": "General Dynamics Land Systems-Canada",
+            "url": "https://www.gdlscanada.com/",
+            "publisher": "General Dynamics Land Systems-Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Home page, vehicle portfolio and current contract highlights",
+            "summary": "The official site presents the company as a Canadian armoured-vehicle prime with Light Armoured Vehicle products, manufacturing, fleet support, and current Canadian logistics work."
+          },
+          {
+            "id": "gdls-canada-about",
+            "title": "About General Dynamics Land Systems-Canada",
+            "url": "https://www.gdlscanada.com/about-us/",
+            "publisher": "General Dynamics Land Systems-Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "About us and Light Armoured Vehicle family sections",
+            "summary": "The official profile describes land and amphibious combat-vehicle solutions and a Canadian portfolio spanning LAV II, LAV III, and LAV 6.0 platforms."
+          },
+          {
+            "id": "canada-gdls-2026-partnership",
+            "title": "Prime Minister announces partnership with General Dynamics Land Systems-Canada",
+            "url": "https://www.pm.gc.ca/en/news/news-releases/2026/07/16/prime-minister-carney-announces-landmark-partnership-general-dynamics",
+            "publisher": "Prime Minister of Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-07-16T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Announcement and armoured combat support vehicle scope",
+            "summary": "The Government of Canada announced a July 2026 partnership for 190 armoured combat support vehicles designed, built, and assembled in London, Ontario."
+          },
+          {
+            "id": "canada-lrss-lav",
+            "title": "Land reconnaissance surveillance system modernization",
+            "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/proactive-disclosure/main-estimates-2020-2021/procurement-land.html",
+            "publisher": "National Defence",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Land procurement and LAV 6.0 reconnaissance sections",
+            "summary": "The official procurement report identifies General Dynamics Land Systems-Canada work on LAV 6.0 reconnaissance vehicles, including platform design, integration, delivery, and support."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-general-dynamics-land-systems-canada-description",
+            "sourceId": "gdls-canada-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Official organization material supports this profile: London, Ontario-based armoured-vehicle prime that designs, integrates, manufactures, upgrades, and supports wheeled combat and combat-support vehicles for Canadian and international customers, centred on the Light Armoured Vehicle family.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-general-dynamics-land-systems-canada-capability-1",
+            "sourceId": "gdls-canada-about",
+            "fieldPath": "capabilities.lav-family-armoured-vehicle-platforms.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Light Armoured Vehicle family capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-general-dynamics-land-systems-canada-capability-2",
+            "sourceId": "canada-gdls-2026-partnership",
+            "fieldPath": "capabilities.armoured-vehicle-mission-variant-integration.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Armoured vehicle mission-variant integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-general-dynamics-land-systems-canada-capability-3",
+            "sourceId": "canada-lrss-lav",
+            "fieldPath": "capabilities.armoured-fleet-sustainment-and-logistics.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Armoured fleet sustainment and logistics capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-general-dynamics-land-systems-canada-program",
+            "sourceId": "canada-gdls-2026-partnership",
+            "fieldPath": "programs.armoured-combat-support-vehicle-expansion.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source publicly documents Armoured Combat Support Vehicle expansion, its delivery scope, and General Dynamics Land Systems-Canada's disclosed role.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-general-dynamics-land-systems-canada-relationship",
+            "sourceId": "canada-lrss-lav",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "The Government of Canada publicly selected General Dynamics Land Systems-Canada for a new 190-vehicle armoured combat support partnership tied to Canadian design, assembly, jobs, and sustainment.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "general-dynamics-land-systems-canada",
+          "name": "General Dynamics Land Systems-Canada",
+          "legalName": null,
+          "aliases": [
+            "GDLS-Canada",
+            "General Dynamics Land Systems Canada"
+          ],
+          "description": "London, Ontario-based armoured-vehicle prime that designs, integrates, manufactures, upgrades, and supports wheeled combat and combat-support vehicles for Canadian and international customers, centred on the Light Armoured Vehicle family.",
+          "websiteUrl": "https://www.gdlscanada.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "London",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 42.9849,
+            "longitude": -81.2453,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "The public portfolio spans LAV II, LAV III and LAV 6.0 families, mission-specific armoured variants, protected mobility, command and reconnaissance integration, logistics vehicles, fleet upgrades, parts, engineering, and long-term in-service support.",
+            "canadianFootprint": "The company identifies London, Ontario as its Canadian manufacturing and engineering base for design, assembly, integration, testing, delivery, and support of armoured vehicles.",
+            "currentActivity": "Current disclosed work includes a July 2026 Canadian partnership for 190 armoured combat support vehicles and ongoing logistics and sustainment activity for the Canadian Armed Forces vehicle fleet.",
+            "publicContact": "Official company contact, supplier, employment, and program information is available through the GDLS-Canada site.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "lav-family-armoured-vehicle-platforms",
+            "name": "Light Armoured Vehicle family",
+            "summary": "Design, manufacturing, integration, upgrade, and support capability for LAV II, LAV III, LAV 6.0, and related wheeled armoured platforms used for protected mobility and combat roles.",
+            "capabilityType": "Wheeled armoured combat vehicle family",
+            "features": [
+              "Canadian design and assembly",
+              "Modular vehicle variants",
+              "Protection, mobility and payload integration"
+            ],
+            "applications": [
+              "Mechanized combat",
+              "Protected mobility",
+              "Reconnaissance and command variants"
+            ],
+            "technicalTags": [
+              "armoured_vehicle",
+              "lav",
+              "protected_mobility"
+            ],
+            "technicalDomainSlugs": [
+              "aerospace-and-mobility",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "armoured-vehicle-mission-variant-integration",
+            "name": "Armoured vehicle mission-variant integration",
+            "summary": "Engineering and integration of reconnaissance, command, engineer, ambulance, recovery, and other mission-specific vehicle variants using common protected vehicle platforms.",
+            "capabilityType": "Mission-specific vehicle systems integration",
+            "features": [
+              "Mission equipment integration",
+              "Reconnaissance and command variants",
+              "Platform-level test and qualification"
+            ],
+            "applications": [
+              "Land ISR",
+              "Command-post mobility",
+              "Combat support and recovery"
+            ],
+            "technicalTags": [
+              "vehicle_integration",
+              "reconnaissance",
+              "mission_systems"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "armoured-fleet-sustainment-and-logistics",
+            "name": "Armoured fleet sustainment and logistics",
+            "summary": "Lifecycle capability covering engineering changes, upgrades, parts, maintenance support, logistics vehicles, and long-term sustainment for fielded armoured-vehicle fleets.",
+            "capabilityType": "Fleet sustainment and logistics support",
+            "features": [
+              "Parts and logistics",
+              "Platform upgrades",
+              "Long-term engineering support"
+            ],
+            "applications": [
+              "Operational fleet availability",
+              "Vehicle modernization",
+              "Training and maintenance support"
+            ],
+            "technicalTags": [
+              "fleet_support",
+              "logistics",
+              "vehicle_sustainment"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [
+          {
+            "slug": "armoured-combat-support-vehicle-expansion",
+            "name": "Armoured Combat Support Vehicle expansion",
+            "programType": "Canadian armoured vehicle acquisition",
+            "websiteUrl": "https://www.pm.gc.ca/en/news/news-releases/2026/07/16/prime-minister-carney-announces-landmark-partnership-general-dynamics",
+            "summary": "July 2026 Government of Canada partnership for 190 armoured combat support vehicles designed, built, assembled, and supported through the London, Ontario industrial base.",
+            "cohortLabel": "190 vehicles announced July 2026"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "armoured vehicle delivery partner",
+            "publicSummary": "The Government of Canada publicly selected General Dynamics Land Systems-Canada for a new 190-vehicle armoured combat support partnership tied to Canadian design, assembly, jobs, and sustainment."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-general-dynamics-land-systems-canada-description",
+          "sourceId": "gdls-canada-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Official organization material supports this profile: London, Ontario-based armoured-vehicle prime that designs, integrates, manufactures, upgrades, and supports wheeled combat and combat-support vehicles for Canadian and international customers, centred on the Light Armoured Vehicle family.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-general-dynamics-land-systems-canada-capability-1",
+          "sourceId": "gdls-canada-about",
+          "fieldPath": "capabilities.lav-family-armoured-vehicle-platforms.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Light Armoured Vehicle family capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-general-dynamics-land-systems-canada-capability-2",
+          "sourceId": "canada-gdls-2026-partnership",
+          "fieldPath": "capabilities.armoured-vehicle-mission-variant-integration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Armoured vehicle mission-variant integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-general-dynamics-land-systems-canada-capability-3",
+          "sourceId": "canada-lrss-lav",
+          "fieldPath": "capabilities.armoured-fleet-sustainment-and-logistics.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Armoured fleet sustainment and logistics capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-general-dynamics-land-systems-canada-program",
+          "sourceId": "canada-gdls-2026-partnership",
+          "fieldPath": "programs.armoured-combat-support-vehicle-expansion.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source publicly documents Armoured Combat Support Vehicle expansion, its delivery scope, and General Dynamics Land Systems-Canada's disclosed role.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-general-dynamics-land-systems-canada-relationship",
+          "sourceId": "canada-lrss-lav",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada publicly selected General Dynamics Land Systems-Canada for a new 190-vehicle armoured combat support partnership tied to Canadian design, assembly, jobs, and sustainment.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T20:36:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for General Dynamics Land Systems-Canada."
+      },
+      "reviewer_rationale": "General Dynamics Land Systems-Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T20:40:15.480Z"
+    },
+    {
+      "client_candidate_id": "candidate-l3harris-canada",
+      "research_run_ref": "tnm-manual-20260720202804",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-l3harris-canada"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-l3harris-canada",
+        "sourceLeadIds": [
+          "lead-l3harris-canada"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "L3Harris Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T20:36:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for L3Harris Canada."
+        },
+        "sources": [
+          {
+            "id": "l3harris-canada-overview",
+            "title": "L3Harris in Canada",
+            "url": "https://www.l3harris.com/en-ca/canada",
+            "publisher": "L3Harris Technologies",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Canadian businesses, locations and capability sections",
+            "summary": "The official Canadian page describes L3Harris as one of Canada's largest defence and security companies and highlights WESCAM sensing, military-aircraft mission systems, sustainment, and other operating businesses."
+          },
+          {
+            "id": "l3harris-iss",
+            "title": "L3Harris in-service support programs",
+            "url": "https://www.l3harris.com/all-capabilities/in-service-support-programs",
+            "publisher": "L3Harris Technologies",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Aircraft, naval and national support-centre sections",
+            "summary": "The official page describes more than 1,100 people across 13 Canadian centres supporting fighter, transport, helicopter, trainer, missionized-aircraft, and naval fleets."
+          },
+          {
+            "id": "l3harris-p8-mx20",
+            "title": "L3Harris to support Canada's national security with imaging technology",
+            "url": "https://www.l3harris.com/newsroom/press-release/2025/05/l3harris-support-canadas-national-security-imaging-technology",
+            "publisher": "L3Harris Technologies",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-05-27T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "P-8A and remotely piloted aircraft sensor contract sections",
+            "summary": "The official release documents 16 WESCAM MX-20 systems for Canada's P-8A aircraft and references earlier MX-series selection for Canada's remotely piloted aircraft system."
+          },
+          {
+            "id": "l3harris-aircraft-implementation",
+            "title": "Aircraft implementation and missionization",
+            "url": "https://www.l3harris.com/all-capabilities/aircraft-implementation",
+            "publisher": "L3Harris Technologies",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Aircraft integration, modification and deployment-support sections",
+            "summary": "The official capability page describes military aircraft missionization, avionics and mission-system integration, modification, certification, and in-service support from Canadian facilities and bases."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-l3harris-canada-description",
+            "sourceId": "l3harris-canada-overview",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Official organization material supports this profile: Large Canadian defence and security business spanning WESCAM electro-optical and infrared sensors, military-aircraft missionization, systems integration, fleet in-service support, naval support, communications, and operational sustainment.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-l3harris-canada-capability-1",
+            "sourceId": "l3harris-iss",
+            "fieldPath": "capabilities.wescam-mx-eoir-sensors.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the WESCAM MX electro-optical and infrared sensors capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-l3harris-canada-capability-2",
+            "sourceId": "l3harris-p8-mx20",
+            "fieldPath": "capabilities.military-aircraft-missionization.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Military aircraft missionization capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-l3harris-canada-capability-3",
+            "sourceId": "l3harris-aircraft-implementation",
+            "fieldPath": "capabilities.aircraft-fleet-in-service-support.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Aircraft fleet in-service support capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-l3harris-canada-program",
+            "sourceId": "l3harris-p8-mx20",
+            "fieldPath": "programs.canada-p8a-wescam-mx20.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source publicly documents Canada P-8A WESCAM MX-20 program, its delivery scope, and L3Harris Canada's disclosed role.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-l3harris-canada-relationship",
+            "sourceId": "l3harris-aircraft-implementation",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "L3Harris publicly supports Royal Canadian Air Force fleets through mission-system integration and in-service support and is supplying WESCAM MX-20 sensors for Canada's P-8A aircraft.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-l3harris-canada-match-1-1",
+            "sourceId": "l3harris-iss",
+            "fieldPath": "capabilities.wescam-mx-eoir-sensors.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping only: Long-range airborne and maritime imaging can contribute to northern surveillance and identification, although Arctic performance and basing are configuration-dependent.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-l3harris-canada-match-1-2",
+            "sourceId": "l3harris-iss",
+            "fieldPath": "capabilities.wescam-mx-eoir-sensors.missionMatches.1.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping only: MX sensors are publicly selected for remotely piloted aircraft, supporting a plausible autonomous patrol sensing role while vehicle autonomy remains outside the sensor itself.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "l3harris-canada",
+          "name": "L3Harris Canada",
+          "legalName": null,
+          "aliases": [
+            "L3Harris Technologies Canada",
+            "L3Harris MAS",
+            "L3Harris WESCAM"
+          ],
+          "description": "Large Canadian defence and security business spanning WESCAM electro-optical and infrared sensors, military-aircraft missionization, systems integration, fleet in-service support, naval support, communications, and operational sustainment.",
+          "websiteUrl": "https://www.l3harris.com/en-ca/canada",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Hamilton",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.2557,
+            "longitude": -79.8711,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "The official Canadian portfolio combines WESCAM airborne, land, and maritime sensing; aircraft missionization and avionics integration; fighter, transport, helicopter, and trainer sustainment; naval support; secure communications; manufacturing; and deployed technical services.",
+            "canadianFootprint": "The Canadian business reports major operations in Waterdown, Mirabel, Ottawa, Halifax, and multiple Canadian Armed Forces bases and support centres, with more than 1,100 personnel associated with in-service support programs.",
+            "currentActivity": "Current public work includes WESCAM MX-20 imaging systems for Canada's P-8A fleet, prior sensor selection for the Canadian remotely piloted aircraft system, and enduring aircraft and naval in-service support.",
+            "publicContact": "Official Canadian company, careers, product, and newsroom pages provide contact paths for the operating businesses.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "wescam-mx-eoir-sensors",
+            "name": "WESCAM MX electro-optical and infrared sensors",
+            "summary": "Stabilized multi-spectral imaging and targeting systems for airborne, maritime, and land platforms, including long-range surveillance, identification, tracking, and laser-enabled mission functions.",
+            "capabilityType": "Electro-optical and infrared sensor family",
+            "features": [
+              "Multi-spectral stabilized imaging",
+              "Long-range detection and identification",
+              "Air, land and maritime platform integration"
+            ],
+            "applications": [
+              "Maritime patrol",
+              "Airborne ISR",
+              "Border and land surveillance"
+            ],
+            "technicalTags": [
+              "eoir",
+              "gimballed_sensor",
+              "targeting"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Long-range airborne and maritime imaging can contribute to northern surveillance and identification, although Arctic performance and basing are configuration-dependent.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "MX sensors are publicly selected for remotely piloted aircraft, supporting a plausible autonomous patrol sensing role while vehicle autonomy remains outside the sensor itself.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "military-aircraft-missionization",
+            "name": "Military aircraft missionization",
+            "summary": "Canadian engineering capability for aircraft modification, avionics and mission-system integration, certification, testing, and delivery across special-mission and military fleets.",
+            "capabilityType": "Aircraft mission-system integration",
+            "features": [
+              "Avionics and sensor integration",
+              "Aircraft modification and certification",
+              "Flight and ground test"
+            ],
+            "applications": [
+              "Maritime patrol aircraft",
+              "Special-mission aircraft",
+              "Fleet capability upgrades"
+            ],
+            "technicalTags": [
+              "aircraft_integration",
+              "avionics",
+              "missionization"
+            ],
+            "technicalDomainSlugs": [
+              "aerospace-and-mobility",
+              "mission-software-and-data",
+              "sensing-and-isr",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "aircraft-fleet-in-service-support",
+            "name": "Aircraft fleet in-service support",
+            "summary": "National support network providing engineering, maintenance, logistics, technical publications, training, upgrades, and deployed services for Canadian military aircraft and selected naval fleets.",
+            "capabilityType": "Military fleet lifecycle support",
+            "features": [
+              "Thirteen Canadian support centres",
+              "Deployed technical services",
+              "Engineering, maintenance and logistics"
+            ],
+            "applications": [
+              "Fighter and transport sustainment",
+              "Helicopter and trainer support",
+              "Missionized-aircraft fleet availability"
+            ],
+            "technicalTags": [
+              "in_service_support",
+              "fleet_readiness",
+              "deployed_services"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [
+          {
+            "slug": "canada-p8a-wescam-mx20",
+            "name": "Canada P-8A WESCAM MX-20 program",
+            "programType": "Maritime patrol sensor delivery",
+            "websiteUrl": "https://www.l3harris.com/newsroom/press-release/2025/05/l3harris-support-canadas-national-security-imaging-technology",
+            "summary": "Delivery of 16 Canadian-built WESCAM MX-20 electro-optical and infrared systems for Canada's P-8A maritime patrol aircraft, supporting surveillance and identification missions.",
+            "cohortLabel": "16 systems announced May 2025"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Royal Canadian Air Force",
+            "relationshipType": "sensor and fleet-support supplier",
+            "publicSummary": "L3Harris publicly supports Royal Canadian Air Force fleets through mission-system integration and in-service support and is supplying WESCAM MX-20 sensors for Canada's P-8A aircraft."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-l3harris-canada-description",
+          "sourceId": "l3harris-canada-overview",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Official organization material supports this profile: Large Canadian defence and security business spanning WESCAM electro-optical and infrared sensors, military-aircraft missionization, systems integration, fleet in-service support, naval support, communications, and operational sustainment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-l3harris-canada-capability-1",
+          "sourceId": "l3harris-iss",
+          "fieldPath": "capabilities.wescam-mx-eoir-sensors.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the WESCAM MX electro-optical and infrared sensors capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-l3harris-canada-capability-2",
+          "sourceId": "l3harris-p8-mx20",
+          "fieldPath": "capabilities.military-aircraft-missionization.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Military aircraft missionization capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-l3harris-canada-capability-3",
+          "sourceId": "l3harris-aircraft-implementation",
+          "fieldPath": "capabilities.aircraft-fleet-in-service-support.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Aircraft fleet in-service support capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-l3harris-canada-program",
+          "sourceId": "l3harris-p8-mx20",
+          "fieldPath": "programs.canada-p8a-wescam-mx20.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source publicly documents Canada P-8A WESCAM MX-20 program, its delivery scope, and L3Harris Canada's disclosed role.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-l3harris-canada-relationship",
+          "sourceId": "l3harris-aircraft-implementation",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "L3Harris publicly supports Royal Canadian Air Force fleets through mission-system integration and in-service support and is supplying WESCAM MX-20 sensors for Canada's P-8A aircraft.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-l3harris-canada-match-1-1",
+          "sourceId": "l3harris-iss",
+          "fieldPath": "capabilities.wescam-mx-eoir-sensors.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping only: Long-range airborne and maritime imaging can contribute to northern surveillance and identification, although Arctic performance and basing are configuration-dependent.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-l3harris-canada-match-1-2",
+          "sourceId": "l3harris-iss",
+          "fieldPath": "capabilities.wescam-mx-eoir-sensors.missionMatches.1.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping only: MX sensors are publicly selected for remotely piloted aircraft, supporting a plausible autonomous patrol sensing role while vehicle autonomy remains outside the sensor itself.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T20:36:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for L3Harris Canada."
+      },
+      "reviewer_rationale": "L3Harris Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T20:40:15.480Z"
+    },
+    {
+      "client_candidate_id": "candidate-thales-canada",
+      "research_run_ref": "tnm-manual-20260720202804",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-thales-canada"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-thales-canada",
+        "sourceLeadIds": [
+          "lead-thales-canada"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Thales Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T20:36:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Thales Canada."
+        },
+        "sources": [
+          {
+            "id": "thales-canada-country",
+            "title": "Thales in Canada",
+            "url": "https://www.thalesgroup.com/en/countries/americas/canada",
+            "publisher": "Thales Group",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Canadian activities and business portfolio",
+            "summary": "The official country profile presents Thales as a long-standing Canadian technology business active across defence, digital identity and security, aerospace, transportation, and research."
+          },
+          {
+            "id": "thales-halifax-ajiss",
+            "title": "Thales opens new Halifax office to support Royal Canadian Navy",
+            "url": "https://www.thalesgroup.com/en/print/pdf/node/15971",
+            "publisher": "Thales Group",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2018-11-28T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Halifax office and AJISS delivery scope",
+            "summary": "The official release describes Thales as prime contractor for AJISS and identifies project management, systems engineering, integrated logistics, refit, repair, maintenance, and training functions for AOPS and JSS fleets."
+          },
+          {
+            "id": "thales-canada-defence-portfolio",
+            "title": "Thales expands defence and security capability in Canada",
+            "url": "https://www.thalesgroup.com/en/print/pdf/node/14291",
+            "publisher": "Thales Group",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2020-01-15T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Canadian workforce, portfolio and AJISS sections",
+            "summary": "The official release describes Canadian maritime, sea, land, optronics, air, and C4ISR activities and the 35-year AJISS contract valued at up to $5.2 billion."
+          },
+          {
+            "id": "thales-canada-innovation",
+            "title": "Thales brings global innovations to Canada",
+            "url": "https://www.thalesgroup.com/en/canada/news/thales-brings-global-innovations",
+            "publisher": "Thales Group",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Research, technology and dual-use innovation sections",
+            "summary": "The official page describes Thales Canada's Quebec City research and technology activity and the transfer of global digital, aerospace, defence, security, and transportation innovation into Canadian programs."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-thales-canada-description",
+            "sourceId": "thales-canada-country",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Official organization material supports this profile: Canadian technology and defence prime with activities across naval in-service support, systems engineering, integrated logistics, C4ISR, optronics, avionics, cybersecurity, urban systems, and research and technology.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-thales-canada-capability-1",
+            "sourceId": "thales-halifax-ajiss",
+            "fieldPath": "capabilities.ajiss-naval-in-service-support.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the AJISS naval in-service support capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-thales-canada-capability-2",
+            "sourceId": "thales-canada-defence-portfolio",
+            "fieldPath": "capabilities.naval-systems-engineering-and-logistics.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Naval systems engineering and integrated logistics capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-thales-canada-capability-3",
+            "sourceId": "thales-canada-innovation",
+            "fieldPath": "capabilities.defence-optronics-avionics-and-c4isr.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Defence optronics, avionics and C4ISR integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-thales-canada-program",
+            "sourceId": "thales-halifax-ajiss",
+            "fieldPath": "programs.ajiss.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source publicly documents Arctic and Offshore Patrol Ships and Joint Support Ships In-Service Support, its delivery scope, and Thales Canada's disclosed role.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-thales-canada-relationship",
+            "sourceId": "thales-canada-innovation",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Thales is the disclosed AJISS prime contractor supporting the Royal Canadian Navy's Arctic and Offshore Patrol Ships and Joint Support Ships through a multi-decade service arrangement.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-thales-canada-match-3-1",
+            "sourceId": "thales-canada-innovation",
+            "fieldPath": "capabilities.defence-optronics-avionics-and-c4isr.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping only: The sensing and command portfolio could support northern situational awareness, but the cited Canadian sources do not establish a specific Arctic deployment.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "thales-canada",
+          "name": "Thales Canada",
+          "legalName": "Thales Canada Inc.",
+          "aliases": [
+            "Thales Defence and Security Canada"
+          ],
+          "description": "Canadian technology and defence prime with activities across naval in-service support, systems engineering, integrated logistics, C4ISR, optronics, avionics, cybersecurity, urban systems, and research and technology.",
+          "websiteUrl": "https://www.thalesgroup.com/en/countries/americas/canada",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Public Canadian material describes maritime and land systems, optronics, avionics, command and control, integrated logistics, systems engineering, cybersecurity, transportation technology, research, and long-duration fleet support.",
+            "canadianFootprint": "Thales has described Canadian defence operations centred in Ottawa with a Halifax office supporting naval fleet services and a Quebec City research and technology presence linked to dual-use innovation.",
+            "currentActivity": "The company is prime contractor for the 35-year, up-to-$5.2-billion AJISS program supporting the Royal Canadian Navy's Arctic and Offshore Patrol Ships and Joint Support Ships while maintaining broader Canadian defence-system activities.",
+            "publicContact": "Official Canadian country, newsroom, and office pages provide company and media contact paths.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "ajiss-naval-in-service-support",
+            "name": "AJISS naval in-service support",
+            "summary": "Long-duration fleet-support capability for Arctic and Offshore Patrol Ships and Joint Support Ships, covering refit, repair, maintenance, engineering, logistics, training, and lifecycle program management.",
+            "capabilityType": "Naval fleet in-service support",
+            "features": [
+              "Refit, repair and maintenance",
+              "Integrated logistics and training",
+              "Long-term fleet-management services"
+            ],
+            "applications": [
+              "AOPS fleet readiness",
+              "Joint Support Ship sustainment",
+              "Naval lifecycle support"
+            ],
+            "technicalTags": [
+              "naval_support",
+              "integrated_logistics",
+              "fleet_readiness"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "naval-systems-engineering-and-logistics",
+            "name": "Naval systems engineering and integrated logistics",
+            "summary": "Systems-engineering, configuration, supply-chain, technical-data, and integrated-logistics services used to manage complex naval platforms and mission systems through their service lives.",
+            "capabilityType": "Naval systems engineering and logistics",
+            "features": [
+              "Systems engineering",
+              "Configuration and technical-data management",
+              "Supply and integrated logistics"
+            ],
+            "applications": [
+              "Naval platform modernization",
+              "Fleet configuration control",
+              "Maintenance planning"
+            ],
+            "technicalTags": [
+              "systems_engineering",
+              "configuration_management",
+              "logistics"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "defence-optronics-avionics-and-c4isr",
+            "name": "Defence optronics, avionics and C4ISR integration",
+            "summary": "Canadian defence-system portfolio spanning optronics, avionics, command and control, communications, sensing, land and maritime systems, and cybersecurity integration.",
+            "capabilityType": "Multi-domain defence electronics portfolio",
+            "features": [
+              "Optronic sensing",
+              "Avionics and command systems",
+              "Secure communications and cybersecurity"
+            ],
+            "applications": [
+              "Air and land situational awareness",
+              "Maritime command systems",
+              "Protected mission networks"
+            ],
+            "technicalTags": [
+              "optronics",
+              "avionics",
+              "c4isr"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "communications-and-cyber",
+              "mission-software-and-data",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "The sensing and command portfolio could support northern situational awareness, but the cited Canadian sources do not establish a specific Arctic deployment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [
+          {
+            "slug": "ajiss",
+            "name": "Arctic and Offshore Patrol Ships and Joint Support Ships In-Service Support",
+            "programType": "Naval fleet in-service support",
+            "websiteUrl": "https://www.thalesgroup.com/en/print/pdf/node/15971",
+            "summary": "Long-term Royal Canadian Navy support program under which Thales provides project management, systems engineering, integrated logistics, refit, repair, maintenance, and training for AOPS and JSS fleets.",
+            "cohortLabel": "Up to 35 years"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Royal Canadian Navy",
+            "relationshipType": "fleet in-service support prime",
+            "publicSummary": "Thales is the disclosed AJISS prime contractor supporting the Royal Canadian Navy's Arctic and Offshore Patrol Ships and Joint Support Ships through a multi-decade service arrangement."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-thales-canada-description",
+          "sourceId": "thales-canada-country",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Official organization material supports this profile: Canadian technology and defence prime with activities across naval in-service support, systems engineering, integrated logistics, C4ISR, optronics, avionics, cybersecurity, urban systems, and research and technology.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-thales-canada-capability-1",
+          "sourceId": "thales-halifax-ajiss",
+          "fieldPath": "capabilities.ajiss-naval-in-service-support.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the AJISS naval in-service support capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-thales-canada-capability-2",
+          "sourceId": "thales-canada-defence-portfolio",
+          "fieldPath": "capabilities.naval-systems-engineering-and-logistics.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Naval systems engineering and integrated logistics capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-thales-canada-capability-3",
+          "sourceId": "thales-canada-innovation",
+          "fieldPath": "capabilities.defence-optronics-avionics-and-c4isr.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Defence optronics, avionics and C4ISR integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-thales-canada-program",
+          "sourceId": "thales-halifax-ajiss",
+          "fieldPath": "programs.ajiss.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source publicly documents Arctic and Offshore Patrol Ships and Joint Support Ships In-Service Support, its delivery scope, and Thales Canada's disclosed role.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-thales-canada-relationship",
+          "sourceId": "thales-canada-innovation",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Thales is the disclosed AJISS prime contractor supporting the Royal Canadian Navy's Arctic and Offshore Patrol Ships and Joint Support Ships through a multi-decade service arrangement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-thales-canada-match-3-1",
+          "sourceId": "thales-canada-innovation",
+          "fieldPath": "capabilities.defence-optronics-avionics-and-c4isr.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping only: The sensing and command portfolio could support northern situational awareness, but the cited Canadian sources do not establish a specific Arctic deployment.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T20:36:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Thales Canada."
+      },
+      "reviewer_rationale": "Thales Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T20:40:15.480Z"
+    },
+    {
+      "client_candidate_id": "candidate-cae",
+      "research_run_ref": "tnm-manual-20260720202804",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-cae"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-cae",
+        "sourceLeadIds": [
+          "lead-cae"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "CAE is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T20:36:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for CAE."
+        },
+        "sources": [
+          {
+            "id": "cae-defence-who-we-are",
+            "title": "CAE Defence and Security - who we are",
+            "url": "https://www.cae.com/defense-security/who-we-are",
+            "publisher": "CAE",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Defence and Security overview, domains and global footprint",
+            "summary": "CAE describes a defence business providing training and operational support across air, land, maritime, space, and cyber domains with more than 5,000 employees and more than 120 sites."
+          },
+          {
+            "id": "cae-training-systems",
+            "title": "CAE defence training systems",
+            "url": "https://www.cae.com/defense-security/what-we-do/training-systems",
+            "publisher": "CAE",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Training-system portfolio by domain and learner role",
+            "summary": "The official portfolio spans pilot, rear-crew, sensor-operator, maintenance, mission, air, maritime, land, cyber, and space training systems."
+          },
+          {
+            "id": "cae-training-services",
+            "title": "CAE defence training services",
+            "url": "https://www.cae.com/defense-security/what-we-do/training-services",
+            "publisher": "CAE",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Turnkey training, instruction and lifecycle-support sections",
+            "summary": "The official page describes turnkey training centres, instructors, in-service support, sustainment, upgrades, and obsolescence management."
+          },
+          {
+            "id": "cae-training-integration",
+            "title": "CAE training systems integration",
+            "url": "https://www.cae.com/defense-security/what-we-do/training-systems-integration",
+            "publisher": "CAE",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "LVC, courseware, integration and distributed training sections",
+            "summary": "The official page describes live-virtual-constructive integration, courseware, training-centre design, distributed mission training, and program management."
+          },
+          {
+            "id": "cae-fact-skyalyne",
+            "title": "SkyAlyne selected for Canada's Future Aircrew Training program",
+            "url": "https://www.cae.com/media-centre/press-releases/skyalyne-selected-by-the-government-of-canada-for-future-aircrew-training-fact-program",
+            "publisher": "CAE",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Program selection and Canadian training scope",
+            "summary": "CAE's official release documents selection of the CAE-Leonardo joint venture SkyAlyne for Canada's Future Aircrew Training program."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-cae-description",
+            "sourceId": "cae-defence-who-we-are",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Official organization material supports this profile: Montreal-headquartered global training and operational-support prime delivering simulation, training-system integration, mission rehearsal, courseware, training services, and lifecycle support across air, land, maritime, space, and cyber domains.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cae-capability-1",
+            "sourceId": "cae-training-systems",
+            "fieldPath": "capabilities.defence-training-systems-integration.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Defence training systems integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cae-capability-2",
+            "sourceId": "cae-training-services",
+            "fieldPath": "capabilities.multi-domain-simulation-and-mission-rehearsal.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Multi-domain simulation and mission rehearsal capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cae-capability-3",
+            "sourceId": "cae-training-integration",
+            "fieldPath": "capabilities.military-aviation-training-and-operational-support.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Military aviation training and operational support capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cae-program",
+            "sourceId": "cae-fact-skyalyne",
+            "fieldPath": "programs.future-aircrew-training.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source publicly documents Future Aircrew Training, its delivery scope, and CAE's disclosed role.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cae-relationship",
+            "sourceId": "cae-fact-skyalyne",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CAE co-owns SkyAlyne with Leonardo and supplies training-system, simulation, integration, and operational-support expertise for Canada's Future Aircrew Training program.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "cae",
+          "name": "CAE",
+          "legalName": "CAE Inc.",
+          "aliases": [
+            "CAE Defence and Security",
+            "CAE Defense and Security"
+          ],
+          "description": "Montreal-headquartered global training and operational-support prime delivering simulation, training-system integration, mission rehearsal, courseware, training services, and lifecycle support across air, land, maritime, space, and cyber domains.",
+          "websiteUrl": "https://www.cae.com/defense-security/who-we-are",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5017,
+            "longitude": -73.5673,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "CAE's defence portfolio covers training devices and simulators, live-virtual-constructive environments, synthetic environments, training centres, courseware, instructors, mission rehearsal, cyber and space training, operational support, and long-term sustainment.",
+            "canadianFootprint": "The official defence profile reports more than 5,000 employees at more than 120 sites and training locations, with Canadian headquarters and major engineering, production, and program activity in Montreal and across Canadian military training locations.",
+            "currentActivity": "Current Canadian work includes the SkyAlyne-led Future Aircrew Training program and longstanding NATO Flying Training in Canada support, alongside global multi-domain simulation and training-system delivery.",
+            "publicContact": "CAE publishes defence sales, media, investor, and site contact routes through its corporate and Defence and Security pages.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "defence-training-systems-integration",
+            "name": "Defence training systems integration",
+            "summary": "End-to-end design and integration of simulators, courseware, training centres, data, instructors, devices, and management systems into coherent defence training enterprises.",
+            "capabilityType": "Integrated defence training enterprise",
+            "features": [
+              "Training-needs analysis and courseware",
+              "Simulator and centre integration",
+              "Program and training management"
+            ],
+            "applications": [
+              "Aircrew and mission-crew training",
+              "Maintenance and operator training",
+              "National training-system modernization"
+            ],
+            "technicalTags": [
+              "training_system",
+              "simulation",
+              "systems_integration"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "multi-domain-simulation-and-mission-rehearsal",
+            "name": "Multi-domain simulation and mission rehearsal",
+            "summary": "Synthetic and live-virtual-constructive environments for individual, crew, collective, and distributed mission training across air, land, maritime, space, and cyber operations.",
+            "capabilityType": "Live-virtual-constructive simulation",
+            "features": [
+              "Distributed mission training",
+              "Synthetic environments",
+              "Multi-domain mission rehearsal"
+            ],
+            "applications": [
+              "Collective readiness training",
+              "Joint and coalition exercises",
+              "Complex mission rehearsal"
+            ],
+            "technicalTags": [
+              "lvc",
+              "synthetic_environment",
+              "mission_rehearsal"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "mission-software-and-data",
+              "communications-and-cyber"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "military-aviation-training-and-operational-support",
+            "name": "Military aviation training and operational support",
+            "summary": "Turnkey aviation-training services combining aircraft, simulators, instructors, courseware, facilities, maintenance, upgrades, and long-term operational support.",
+            "capabilityType": "Turnkey military aviation training",
+            "features": [
+              "Aircraft and simulator training",
+              "Instructor and courseware services",
+              "Sustainment and obsolescence management"
+            ],
+            "applications": [
+              "Pilot and aircrew production",
+              "Operational conversion and continuation training",
+              "Training-fleet support"
+            ],
+            "technicalTags": [
+              "aircrew_training",
+              "operational_support",
+              "fleet_sustainment"
+            ],
+            "technicalDomainSlugs": [
+              "aerospace-and-mobility",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [
+          {
+            "slug": "future-aircrew-training",
+            "name": "Future Aircrew Training",
+            "programType": "National military aircrew training program",
+            "websiteUrl": "https://www.cae.com/media-centre/press-releases/skyalyne-selected-by-the-government-of-canada-for-future-aircrew-training-fact-program",
+            "summary": "SkyAlyne, a CAE and Leonardo joint venture, was selected to deliver Canada's next-generation military pilot and aircrew training enterprise with aircraft, simulators, courseware, facilities, and long-term services.",
+            "cohortLabel": "Canadian FAcT program"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "SkyAlyne",
+            "relationshipType": "joint venture delivery partner",
+            "publicSummary": "CAE co-owns SkyAlyne with Leonardo and supplies training-system, simulation, integration, and operational-support expertise for Canada's Future Aircrew Training program."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-cae-description",
+          "sourceId": "cae-defence-who-we-are",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Official organization material supports this profile: Montreal-headquartered global training and operational-support prime delivering simulation, training-system integration, mission rehearsal, courseware, training services, and lifecycle support across air, land, maritime, space, and cyber domains.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cae-capability-1",
+          "sourceId": "cae-training-systems",
+          "fieldPath": "capabilities.defence-training-systems-integration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Defence training systems integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cae-capability-2",
+          "sourceId": "cae-training-services",
+          "fieldPath": "capabilities.multi-domain-simulation-and-mission-rehearsal.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Multi-domain simulation and mission rehearsal capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cae-capability-3",
+          "sourceId": "cae-training-integration",
+          "fieldPath": "capabilities.military-aviation-training-and-operational-support.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Military aviation training and operational support capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cae-program",
+          "sourceId": "cae-fact-skyalyne",
+          "fieldPath": "programs.future-aircrew-training.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source publicly documents Future Aircrew Training, its delivery scope, and CAE's disclosed role.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cae-relationship",
+          "sourceId": "cae-fact-skyalyne",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CAE co-owns SkyAlyne with Leonardo and supplies training-system, simulation, integration, and operational-support expertise for Canada's Future Aircrew Training program.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T20:36:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for CAE."
+      },
+      "reviewer_rationale": "CAE is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T20:40:15.480Z"
+    },
+    {
+      "client_candidate_id": "candidate-irving-shipbuilding",
+      "research_run_ref": "tnm-manual-20260720202804",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-irving-shipbuilding"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-irving-shipbuilding",
+        "sourceLeadIds": [
+          "lead-irving-shipbuilding"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Irving Shipbuilding is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T20:36:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Irving Shipbuilding."
+        },
+        "sources": [
+          {
+            "id": "irving-shipbuilding-profile",
+            "title": "Irving Shipbuilding",
+            "url": "https://www.jdirving.com/en/our-business-division/shipbuilding-and-industrial-fabrication/irvingshipbuilding/",
+            "publisher": "J.D. Irving",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Company profile, delivered ships and current construction",
+            "summary": "The official company profile identifies Irving Shipbuilding as Canada's National Shipbuilder and reports six Royal Canadian Navy AOPS delivered, two Coast Guard variants under construction, and River-class work."
+          },
+          {
+            "id": "canada-river-class-project",
+            "title": "River-class Destroyer project",
+            "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/projects/large-vessels/river-class-destroyer.html",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Implementation contract, design and construction sections",
+            "summary": "The official project page documents the implementation contract for the first three River-class Destroyers, production at Halifax Shipyard, and the Canadian design and integration team."
+          },
+          {
+            "id": "dnd-river-class",
+            "title": "River-class Destroyer procurement",
+            "url": "https://www.canada.ca/en/department-national-defence/services/procurement/canadian-surface-combatant.html",
+            "publisher": "National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Program overview, contracts, capabilities and schedule",
+            "summary": "The official procurement page describes the River-class Destroyer program, disclosed contract values, multi-mission capabilities, design progress, and ship construction."
+          },
+          {
+            "id": "river-class-keel-2026",
+            "title": "Keel laying for the first River-class Destroyer",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2026/06/celebrating-the-keel-laying-for-the-first-river-class-destroyer.html",
+            "publisher": "National Defence",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-06-26T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Milestone, production and shipyard sections",
+            "summary": "The Government of Canada release confirms the first River-class Destroyer keel-laying milestone and ongoing production at Irving Shipbuilding's Halifax Shipyard."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-irving-shipbuilding-description",
+            "sourceId": "irving-shipbuilding-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Official organization material supports this profile: Canada's National Shipbuilding Strategy combat-vessel shipyard, responsible for design transition, construction, systems integration, testing, delivery, and industrial coordination for Arctic and Offshore Patrol Ships and River-class Destroyers.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-irving-shipbuilding-capability-1",
+            "sourceId": "canada-river-class-project",
+            "fieldPath": "capabilities.arctic-offshore-patrol-ship-construction.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Arctic and Offshore Patrol Ship construction capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-irving-shipbuilding-capability-2",
+            "sourceId": "dnd-river-class",
+            "fieldPath": "capabilities.river-class-destroyer-construction.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the River-class Destroyer construction capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-irving-shipbuilding-capability-3",
+            "sourceId": "river-class-keel-2026",
+            "fieldPath": "capabilities.complex-naval-program-integration.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Complex naval program integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-irving-shipbuilding-program",
+            "sourceId": "canada-river-class-project",
+            "fieldPath": "programs.river-class-destroyer-batch-one.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source publicly documents River-class Destroyer first batch, its delivery scope, and Irving Shipbuilding's disclosed role.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-irving-shipbuilding-relationship",
+            "sourceId": "river-class-keel-2026",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Irving Shipbuilding is the Government of Canada's selected National Shipbuilding Strategy combat-vessel construction partner for Arctic and Offshore Patrol Ships and River-class Destroyers.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-irving-shipbuilding-match-1-1",
+            "sourceId": "canada-river-class-project",
+            "fieldPath": "capabilities.arctic-offshore-patrol-ship-construction.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping only: Ice-capable patrol ships provide a platform for northern presence and surveillance, while actual awareness outcomes depend on embarked sensors, missions, and operational tasking.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "irving-shipbuilding",
+          "name": "Irving Shipbuilding",
+          "legalName": "Irving Shipbuilding Inc.",
+          "aliases": [
+            "Halifax Shipyard",
+            "ISI"
+          ],
+          "description": "Canada's National Shipbuilding Strategy combat-vessel shipyard, responsible for design transition, construction, systems integration, testing, delivery, and industrial coordination for Arctic and Offshore Patrol Ships and River-class Destroyers.",
+          "websiteUrl": "https://www.jdirving.com/en/our-business-division/shipbuilding-and-industrial-fabrication/irvingshipbuilding/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Halifax",
+            "provinceTerritory": "Nova Scotia",
+            "countryCode": "CA",
+            "latitude": 44.6488,
+            "longitude": -63.5752,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "The Halifax Shipyard portfolio spans complex naval ship construction, production engineering, module fabrication, combat-system and platform integration, test and trials, supplier management, workforce development, delivery, and continuing support of National Shipbuilding Strategy programs.",
+            "canadianFootprint": "Irving Shipbuilding operates the Halifax Shipyard in Nova Scotia as the National Shipbuilding Strategy combat-vessel construction centre, supported by a large Canadian supplier and workforce ecosystem.",
+            "currentActivity": "Six Royal Canadian Navy Arctic and Offshore Patrol Ships have been delivered, two Canadian Coast Guard variants are under construction, and production is underway on the first River-class Destroyers under a batch implementation contract.",
+            "publicContact": "Irving Shipbuilding maintains official business contact paths, while current Government of Canada program releases provide a public shipyard communications address for River-class milestones.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "arctic-offshore-patrol-ship-construction",
+            "name": "Arctic and Offshore Patrol Ship construction",
+            "summary": "Production and delivery capability for ice-capable patrol ships, including hull modules, platform systems, outfitting, integration, testing, trials, and delivery for naval and coast guard operators.",
+            "capabilityType": "Ice-capable patrol ship construction",
+            "features": [
+              "Modular naval construction",
+              "Platform and mission-system integration",
+              "Harbour and sea trials"
+            ],
+            "applications": [
+              "Arctic patrol vessels",
+              "Offshore surveillance platforms",
+              "Government ice-capable fleets"
+            ],
+            "technicalTags": [
+              "shipbuilding",
+              "aops",
+              "ice_capable"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "aerospace-and-mobility",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Ice-capable patrol ships provide a platform for northern presence and surveillance, while actual awareness outcomes depend on embarked sensors, missions, and operational tasking.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "river-class-destroyer-construction",
+            "name": "River-class Destroyer construction",
+            "summary": "Complex surface-combatant construction capability integrating hull, propulsion, combat systems, sensors, weapons, communications, accommodations, and ship-wide systems through production and trials.",
+            "capabilityType": "Complex naval combatant construction",
+            "features": [
+              "Surface-combatant production",
+              "Combat-system and platform integration",
+              "Acceptance testing and trials"
+            ],
+            "applications": [
+              "Air, surface and subsurface warfare",
+              "Task-group command",
+              "Long-range naval operations"
+            ],
+            "technicalTags": [
+              "destroyer",
+              "combat_system_integration",
+              "naval_construction"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "communications-and-cyber"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "complex-naval-program-integration",
+            "name": "Complex naval program integration",
+            "summary": "Prime-shipyard capability for production engineering, supply-chain coordination, module assembly, systems integration, quality assurance, workforce development, program controls, and phased ship delivery.",
+            "capabilityType": "Naval prime program integration",
+            "features": [
+              "Canadian supplier coordination",
+              "Production and quality management",
+              "Multi-year ship delivery"
+            ],
+            "applications": [
+              "National fleet recapitalization",
+              "Industrial mobilization",
+              "Complex platform delivery"
+            ],
+            "technicalTags": [
+              "program_management",
+              "supply_chain",
+              "systems_integration"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "test-training-and-sustainment",
+              "mission-software-and-data"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [
+          {
+            "slug": "river-class-destroyer-batch-one",
+            "name": "River-class Destroyer first batch",
+            "programType": "Surface combatant construction program",
+            "websiteUrl": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/projects/large-vessels/river-class-destroyer.html",
+            "summary": "Implementation and production program for the first three River-class Destroyers at Halifax Shipyard, transitioning the Canadian design into serial construction and integrated combatant delivery.",
+            "cohortLabel": "First batch of three ships"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "National Shipbuilding Strategy combat-vessel shipyard",
+            "publicSummary": "Irving Shipbuilding is the Government of Canada's selected National Shipbuilding Strategy combat-vessel construction partner for Arctic and Offshore Patrol Ships and River-class Destroyers."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-irving-shipbuilding-description",
+          "sourceId": "irving-shipbuilding-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Official organization material supports this profile: Canada's National Shipbuilding Strategy combat-vessel shipyard, responsible for design transition, construction, systems integration, testing, delivery, and industrial coordination for Arctic and Offshore Patrol Ships and River-class Destroyers.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-irving-shipbuilding-capability-1",
+          "sourceId": "canada-river-class-project",
+          "fieldPath": "capabilities.arctic-offshore-patrol-ship-construction.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Arctic and Offshore Patrol Ship construction capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-irving-shipbuilding-capability-2",
+          "sourceId": "dnd-river-class",
+          "fieldPath": "capabilities.river-class-destroyer-construction.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the River-class Destroyer construction capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-irving-shipbuilding-capability-3",
+          "sourceId": "river-class-keel-2026",
+          "fieldPath": "capabilities.complex-naval-program-integration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Complex naval program integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-irving-shipbuilding-program",
+          "sourceId": "canada-river-class-project",
+          "fieldPath": "programs.river-class-destroyer-batch-one.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source publicly documents River-class Destroyer first batch, its delivery scope, and Irving Shipbuilding's disclosed role.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-irving-shipbuilding-relationship",
+          "sourceId": "river-class-keel-2026",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Irving Shipbuilding is the Government of Canada's selected National Shipbuilding Strategy combat-vessel construction partner for Arctic and Offshore Patrol Ships and River-class Destroyers.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-irving-shipbuilding-match-1-1",
+          "sourceId": "canada-river-class-project",
+          "fieldPath": "capabilities.arctic-offshore-patrol-ship-construction.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping only: Ice-capable patrol ships provide a platform for northern presence and surveillance, while actual awareness outcomes depend on embarked sensors, missions, and operational tasking.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T20:36:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Irving Shipbuilding."
+      },
+      "reviewer_rationale": "Irving Shipbuilding is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T20:40:15.480Z"
+    },
+    {
+      "client_candidate_id": "candidate-seaspan-shipyards",
+      "research_run_ref": "tnm-manual-20260720202804",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-seaspan-shipyards"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-seaspan-shipyards",
+        "sourceLeadIds": [
+          "lead-seaspan-shipyards"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Seaspan Shipyards is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T20:36:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Seaspan Shipyards."
+        },
+        "sources": [
+          {
+            "id": "seaspan-shipyards-overview",
+            "title": "Seaspan Shipyards",
+            "url": "https://www.seaspan.com/seaspan-shipyards/",
+            "publisher": "Seaspan",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Shipbuilding, repair, conversion and lifecycle-service overview",
+            "summary": "The official overview describes new construction, conversion, refit, repair, and lifecycle maintenance for naval, coast guard, research, commercial, and submarine-related vessels across three West Coast shipyards."
+          },
+          {
+            "id": "seaspan-shipbuilding",
+            "title": "Seaspan government shipbuilding",
+            "url": "https://www.seaspan.com/seaspan-shipyards/shipbuilding/",
+            "publisher": "Seaspan",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "National Shipbuilding Strategy vessel portfolio",
+            "summary": "The official shipbuilding page lists Joint Support Ships, a polar icebreaker, multi-purpose icebreakers, and science vessels within Seaspan's National Shipbuilding Strategy portfolio."
+          },
+          {
+            "id": "seaspan-jss",
+            "title": "Protecteur-class Joint Support Ships",
+            "url": "https://www.seaspan.com/seaspan-shipyards/shipbuilding/joint-support-ships/",
+            "publisher": "Seaspan",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "JSS roles, specifications and delivery sections",
+            "summary": "The official program page describes construction of Protecteur-class Joint Support Ships for replenishment, command, medical support, helicopter operations, and global Royal Canadian Navy deployment."
+          },
+          {
+            "id": "seaspan-program-services",
+            "title": "Seaspan program services",
+            "url": "https://www.seaspan.com/program-services/",
+            "publisher": "Seaspan",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Engineering, program management and electronic-systems integration",
+            "summary": "The official page describes engineering and design, program management, electronic-systems integration, land-based test facilities, and lifecycle technical services."
+          },
+          {
+            "id": "seaspan-lockheed-jss",
+            "title": "Seaspan and Lockheed Martin Canada partner on Joint Support Ships",
+            "url": "https://www.seaspan.com/press-release/seaspan-and-lockheed-martin-canada-partner-for-work-on-the-joint-support-ships/",
+            "publisher": "Seaspan",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "CMS 330 integration and partner roles",
+            "summary": "The official release documents Lockheed Martin Canada's CMS 330 combat management system work within Seaspan's Protecteur-class Joint Support Ship program."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-seaspan-shipyards-description",
+            "sourceId": "seaspan-shipyards-overview",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Official organization material supports this profile: West Coast Canadian marine prime providing government-ship construction, complex-vessel design integration, conversion, refit, repair, lifecycle maintenance, electronic-systems integration, and program services for naval, coast guard, research, and commercial fleets.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-seaspan-shipyards-capability-1",
+            "sourceId": "seaspan-shipbuilding",
+            "fieldPath": "capabilities.joint-support-ship-construction.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Joint Support Ship construction capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-seaspan-shipyards-capability-2",
+            "sourceId": "seaspan-jss",
+            "fieldPath": "capabilities.icebreaker-and-government-vessel-construction.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Icebreaker and government vessel construction capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-seaspan-shipyards-capability-3",
+            "sourceId": "seaspan-program-services",
+            "fieldPath": "capabilities.ship-repair-refit-and-electronic-integration.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Ship repair, refit and electronic-systems integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-seaspan-shipyards-program",
+            "sourceId": "seaspan-jss",
+            "fieldPath": "programs.protecteur-class-joint-support-ships.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source publicly documents Protecteur-class Joint Support Ships, its delivery scope, and Seaspan Shipyards's disclosed role.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-seaspan-shipyards-relationship",
+            "sourceId": "seaspan-lockheed-jss",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Seaspan selected Lockheed Martin Canada to provide and integrate CMS 330 combat management capability within the Protecteur-class Joint Support Ship program.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-seaspan-shipyards-match-2-1",
+            "sourceId": "seaspan-jss",
+            "fieldPath": "capabilities.icebreaker-and-government-vessel-construction.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping only: Icebreakers and science vessels can carry personnel and sensors that support northern presence and observation, but the shipbuilding capability is an enabling platform rather than an awareness system.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "seaspan-shipyards",
+          "name": "Seaspan Shipyards",
+          "legalName": null,
+          "aliases": [
+            "Vancouver Shipyards",
+            "Vancouver Drydock",
+            "Victoria Shipyards"
+          ],
+          "description": "West Coast Canadian marine prime providing government-ship construction, complex-vessel design integration, conversion, refit, repair, lifecycle maintenance, electronic-systems integration, and program services for naval, coast guard, research, and commercial fleets.",
+          "websiteUrl": "https://www.seaspan.com/seaspan-shipyards/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "North Vancouver",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 49.32,
+            "longitude": -123.0724,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Seaspan's shipyards portfolio spans non-combat government shipbuilding, Joint Support Ships, polar and multi-purpose icebreakers, science vessels, naval and commercial repair, conversion, drydocking, submarine-related work, program management, engineering, and electronic-systems integration.",
+            "canadianFootprint": "The group operates Vancouver Shipyards and Vancouver Drydock in North Vancouver and Victoria Shipyards in Esquimalt, forming a West Coast network for new construction, repair, refit, and lifecycle support.",
+            "currentActivity": "Current National Shipbuilding Strategy work includes Protecteur-class Joint Support Ships, the polar icebreaker, multi-purpose icebreakers, and oceanographic science vessels, alongside naval repair and systems-integration services.",
+            "publicContact": "Official Seaspan Shipyards pages provide business-development, supplier, careers, media, and facility contact routes.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "joint-support-ship-construction",
+            "name": "Joint Support Ship construction",
+            "summary": "Design integration and construction of replenishment and support ships combining fuel and stores transfer, aviation, command, medical, cargo, and fleet-support functions.",
+            "capabilityType": "Naval auxiliary ship construction",
+            "features": [
+              "Replenishment-at-sea systems",
+              "Flight deck and hangar integration",
+              "Command and medical facilities"
+            ],
+            "applications": [
+              "Task-group sustainment",
+              "Humanitarian assistance",
+              "Global naval deployment"
+            ],
+            "technicalTags": [
+              "joint_support_ship",
+              "naval_logistics",
+              "shipbuilding"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "aerospace-and-mobility",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "icebreaker-and-government-vessel-construction",
+            "name": "Icebreaker and government vessel construction",
+            "summary": "Complex non-combat shipbuilding capability for polar and multi-purpose icebreakers, offshore science vessels, and other specialized government fleets.",
+            "capabilityType": "Complex government vessel construction",
+            "features": [
+              "Polar-class vessel production",
+              "Science-mission integration",
+              "Canadian supply-chain management"
+            ],
+            "applications": [
+              "Arctic access",
+              "Icebreaking and escort",
+              "Oceanographic research"
+            ],
+            "technicalTags": [
+              "icebreaker",
+              "government_shipbuilding",
+              "science_vessel"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Icebreakers and science vessels can carry personnel and sensors that support northern presence and observation, but the shipbuilding capability is an enabling platform rather than an awareness system.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "ship-repair-refit-and-electronic-integration",
+            "name": "Ship repair, refit and electronic-systems integration",
+            "summary": "West Coast lifecycle services covering drydocking, conversion, repair, naval refit, engineering, program management, and integration and testing of shipboard electronic systems.",
+            "capabilityType": "Marine lifecycle and systems integration",
+            "features": [
+              "Drydock repair and conversion",
+              "Naval refit and maintenance",
+              "Electronic-system integration and test"
+            ],
+            "applications": [
+              "Fleet availability",
+              "Platform modernization",
+              "Land-based integration testing"
+            ],
+            "technicalTags": [
+              "ship_repair",
+              "refit",
+              "electronic_systems"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration",
+              "mission-software-and-data"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [
+          {
+            "slug": "protecteur-class-joint-support-ships",
+            "name": "Protecteur-class Joint Support Ships",
+            "programType": "Naval support ship construction",
+            "websiteUrl": "https://www.seaspan.com/seaspan-shipyards/shipbuilding/joint-support-ships/",
+            "summary": "Construction of two Protecteur-class Joint Support Ships for the Royal Canadian Navy, integrating replenishment, aviation, command, medical, cargo, and combat-management functions.",
+            "cohortLabel": "Two-ship class"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Lockheed Martin Canada",
+            "relationshipType": "combat management system integration partner",
+            "publicSummary": "Seaspan selected Lockheed Martin Canada to provide and integrate CMS 330 combat management capability within the Protecteur-class Joint Support Ship program."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-seaspan-shipyards-description",
+          "sourceId": "seaspan-shipyards-overview",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Official organization material supports this profile: West Coast Canadian marine prime providing government-ship construction, complex-vessel design integration, conversion, refit, repair, lifecycle maintenance, electronic-systems integration, and program services for naval, coast guard, research, and commercial fleets.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-seaspan-shipyards-capability-1",
+          "sourceId": "seaspan-shipbuilding",
+          "fieldPath": "capabilities.joint-support-ship-construction.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Joint Support Ship construction capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-seaspan-shipyards-capability-2",
+          "sourceId": "seaspan-jss",
+          "fieldPath": "capabilities.icebreaker-and-government-vessel-construction.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Icebreaker and government vessel construction capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-seaspan-shipyards-capability-3",
+          "sourceId": "seaspan-program-services",
+          "fieldPath": "capabilities.ship-repair-refit-and-electronic-integration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Ship repair, refit and electronic-systems integration capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-seaspan-shipyards-program",
+          "sourceId": "seaspan-jss",
+          "fieldPath": "programs.protecteur-class-joint-support-ships.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source publicly documents Protecteur-class Joint Support Ships, its delivery scope, and Seaspan Shipyards's disclosed role.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-seaspan-shipyards-relationship",
+          "sourceId": "seaspan-lockheed-jss",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Seaspan selected Lockheed Martin Canada to provide and integrate CMS 330 combat management capability within the Protecteur-class Joint Support Ship program.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-seaspan-shipyards-match-2-1",
+          "sourceId": "seaspan-jss",
+          "fieldPath": "capabilities.icebreaker-and-government-vessel-construction.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping only: Icebreakers and science vessels can carry personnel and sensors that support northern presence and observation, but the shipbuilding capability is an enabling platform rather than an awareness system.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T20:36:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Seaspan Shipyards."
+      },
+      "reviewer_rationale": "Seaspan Shipyards is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T20:40:15.480Z"
+    },
+    {
+      "client_candidate_id": "candidate-rheinmetall-canada",
+      "research_run_ref": "tnm-manual-20260720202804",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-rheinmetall-canada"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-rheinmetall-canada",
+        "sourceLeadIds": [
+          "lead-rheinmetall-canada"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Rheinmetall Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T20:36:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Rheinmetall Canada."
+        },
+        "sources": [
+          {
+            "id": "rheinmetall-canada-about",
+            "title": "About Rheinmetall Canada",
+            "url": "https://www.rheinmetall.com/en/company/subsidiaries/rheinmetall-canada/about-us?sType=ispanitheplug",
+            "publisher": "Rheinmetall",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Canadian workforce, locations, portfolio and reference programs",
+            "summary": "The official profile describes roughly 400 Canadian employees and capabilities in vehicle integration, air defence, weapons, command and communications, soldier systems, robotics, and in-service support."
+          },
+          {
+            "id": "rheinmetall-mission-master",
+            "title": "Rheinmetall Mission Master family",
+            "url": "https://www.rheinmetall.com/Rheinmetall%20Group/brochure-download/Uncrewed-Systems/B253e1024-Rheinmetall-Mission-Master-family.pdf",
+            "publisher": "Rheinmetall",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Mission Master SP, XT and CXT family and PATH autonomy kit",
+            "summary": "The official brochure describes modular autonomous ground vehicles and the PATH autonomy kit for reconnaissance, surveillance, transport, fire support, and other mission modules."
+          },
+          {
+            "id": "rheinmetall-cansec-2026",
+            "title": "Rheinmetall at CANSEC 2026",
+            "url": "https://www.rheinmetall.com/Rheinmetall%20Group/Presse/News/Documents/2026/05/2026-05-26-rheinmetall-at-cansec.pdf",
+            "publisher": "Rheinmetall",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-05-26T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Canadian autonomous, Arctic, vehicle and defence-system portfolio",
+            "summary": "The official 2026 release presents Rheinmetall Canada's autonomous, Arctic mobility, vehicle, sensing, air-defence, weapon, and sustainment offerings for Canadian requirements."
+          },
+          {
+            "id": "canada-recovery-vehicles",
+            "title": "Government of Canada recovery vehicle contracts",
+            "url": "https://www.canada.ca/en/public-services-procurement/news/2024/11/government-of-canada-announces-contracts-for-recovery-vehicles-to-support-the-canadian-armed-forces.html",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2024-11-14T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:36:00.000Z",
+            "locator": "Enhanced Recovery Capability vehicles, equipment and support",
+            "summary": "The official announcement documents contracts with Rheinmetall Canada for Enhanced Recovery Capability vehicles, equipment, and in-service support for the Canadian Armed Forces."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-rheinmetall-canada-description",
+            "sourceId": "rheinmetall-canada-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Official organization material supports this profile: Canadian defence-systems prime and integrator with portfolios in autonomous ground systems, vehicle integration, air defence, weapons, command and control, communications, soldier systems, naval protection, robotics, and multi-year in-service support.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-rheinmetall-canada-capability-1",
+            "sourceId": "rheinmetall-mission-master",
+            "fieldPath": "capabilities.mission-master-autonomous-ground-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Mission Master autonomous ground systems capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-rheinmetall-canada-capability-2",
+            "sourceId": "rheinmetall-cansec-2026",
+            "fieldPath": "capabilities.land-c4isr-and-soldier-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Land C4ISR and soldier systems capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-rheinmetall-canada-capability-3",
+            "sourceId": "canada-recovery-vehicles",
+            "fieldPath": "capabilities.air-defence-weapons-and-vehicle-sustainment.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official portfolio material supports the Air defence, weapons and vehicle sustainment capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-rheinmetall-canada-program",
+            "sourceId": "canada-recovery-vehicles",
+            "fieldPath": "programs.enhanced-recovery-capability.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official program source publicly documents Enhanced Recovery Capability, its delivery scope, and Rheinmetall Canada's disclosed role.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-rheinmetall-canada-relationship",
+            "sourceId": "canada-recovery-vehicles",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Rheinmetall Canada holds public contracts to supply Enhanced Recovery Capability vehicles, equipment, and in-service support to the Canadian Armed Forces.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-rheinmetall-canada-match-1-1",
+            "sourceId": "rheinmetall-mission-master",
+            "fieldPath": "capabilities.mission-master-autonomous-ground-systems.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping only: The official Mission Master portfolio explicitly supports autonomous reconnaissance and surveillance payloads, making it relevant to patrol and monitoring subject to operational and payload configuration review.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "rheinmetall-canada",
+          "name": "Rheinmetall Canada",
+          "legalName": "Rheinmetall Canada Inc.",
+          "aliases": [
+            "Rheinmetall Defence Canada"
+          ],
+          "description": "Canadian defence-systems prime and integrator with portfolios in autonomous ground systems, vehicle integration, air defence, weapons, command and control, communications, soldier systems, naval protection, robotics, and multi-year in-service support.",
+          "websiteUrl": "https://www.rheinmetall.com/en/company/subsidiaries/rheinmetall-canada/about-us?sType=ispanitheplug",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Saint-Jean-sur-Richelieu",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.3057,
+            "longitude": -73.2536,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "The official Canadian portfolio spans Mission Master autonomous vehicles, vehicle integration, air defence and weapons, C4ISR and soldier systems, naval countermeasures, robotics, simulation, engineering, production, installation, training, and lifecycle sustainment.",
+            "canadianFootprint": "Rheinmetall Canada reports approximately 400 employees at Saint-Jean-sur-Richelieu and Ottawa facilities supporting research, engineering, production, vehicle and system integration, program management, and in-service support.",
+            "currentActivity": "Current public work includes the Mission Master family, Canadian Enhanced Recovery Capability vehicles and support, Arctic-oriented autonomous concepts, and established programs for Leopard 2 overhaul, C16 weapon systems, and MASS naval protection.",
+            "publicContact": "The official Rheinmetall Canada site publishes Canadian office, business, media, careers, and supplier contact routes.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "mission-master-autonomous-ground-systems",
+            "name": "Mission Master autonomous ground systems",
+            "summary": "Modular uncrewed ground-vehicle family and autonomy kit supporting reconnaissance, surveillance, transport, communications relay, fire support, casualty evacuation, and other configurable missions.",
+            "capabilityType": "Autonomous ground vehicle family",
+            "features": [
+              "Mission Master SP, XT and CXT platforms",
+              "PATH autonomy and convoy functions",
+              "Modular mission payloads"
+            ],
+            "applications": [
+              "Uncrewed reconnaissance",
+              "Logistics and casualty evacuation",
+              "Remote weapon and sensor carriage"
+            ],
+            "technicalTags": [
+              "ugv",
+              "autonomy",
+              "robotics"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "aerospace-and-mobility",
+              "mission-software-and-data",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The official Mission Master portfolio explicitly supports autonomous reconnaissance and surveillance payloads, making it relevant to patrol and monitoring subject to operational and payload configuration review.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "land-c4isr-and-soldier-systems",
+            "name": "Land C4ISR and soldier systems",
+            "summary": "Integrated command, control, communications, sensing, and soldier-system capability for land forces, including battle-management, networked mission modules, and platform electronics.",
+            "capabilityType": "Land command and soldier-system integration",
+            "features": [
+              "Command and control integration",
+              "Vehicle and soldier communications",
+              "Sensor and mission-module networking"
+            ],
+            "applications": [
+              "Land situational awareness",
+              "Mounted and dismounted command",
+              "Networked autonomous teams"
+            ],
+            "technicalTags": [
+              "c4isr",
+              "soldier_system",
+              "battle_management"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data",
+              "sensing-and-isr"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "air-defence-weapons-and-vehicle-sustainment",
+            "name": "Air defence, weapons and vehicle sustainment",
+            "summary": "Canadian engineering and lifecycle portfolio covering air-defence systems, weapon integration, armoured-vehicle overhaul, recovery vehicles, naval protection, training, spares, and multi-year in-service support.",
+            "capabilityType": "Defence-system integration and sustainment",
+            "features": [
+              "Air-defence and weapon-system integration",
+              "Vehicle overhaul and recovery systems",
+              "Training, spares and in-service support"
+            ],
+            "applications": [
+              "Ground-based air defence",
+              "Armoured fleet recovery",
+              "Naval and land self-protection"
+            ],
+            "technicalTags": [
+              "air_defence",
+              "vehicle_support",
+              "weapons_integration"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "advanced-manufacturing-and-integration",
+              "test-training-and-sustainment",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": []
+          }
+        ],
+        "programs": [
+          {
+            "slug": "enhanced-recovery-capability",
+            "name": "Enhanced Recovery Capability",
+            "programType": "Armoured recovery vehicle acquisition and support",
+            "websiteUrl": "https://www.canada.ca/en/public-services-procurement/news/2024/11/government-of-canada-announces-contracts-for-recovery-vehicles-to-support-the-canadian-armed-forces.html",
+            "summary": "Canadian Armed Forces program for new recovery vehicles, associated equipment, and in-service support delivered under contracts with Rheinmetall Canada.",
+            "cohortLabel": "Contracts announced November 2024"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Canadian Armed Forces",
+            "relationshipType": "vehicle and in-service support supplier",
+            "publicSummary": "Rheinmetall Canada holds public contracts to supply Enhanced Recovery Capability vehicles, equipment, and in-service support to the Canadian Armed Forces."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-rheinmetall-canada-description",
+          "sourceId": "rheinmetall-canada-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Official organization material supports this profile: Canadian defence-systems prime and integrator with portfolios in autonomous ground systems, vehicle integration, air defence, weapons, command and control, communications, soldier systems, naval protection, robotics, and multi-year in-service support.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-rheinmetall-canada-capability-1",
+          "sourceId": "rheinmetall-mission-master",
+          "fieldPath": "capabilities.mission-master-autonomous-ground-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Mission Master autonomous ground systems capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-rheinmetall-canada-capability-2",
+          "sourceId": "rheinmetall-cansec-2026",
+          "fieldPath": "capabilities.land-c4isr-and-soldier-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Land C4ISR and soldier systems capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-rheinmetall-canada-capability-3",
+          "sourceId": "canada-recovery-vehicles",
+          "fieldPath": "capabilities.air-defence-weapons-and-vehicle-sustainment.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official portfolio material supports the Air defence, weapons and vehicle sustainment capability family and its described delivery scope; product and platform availability remains configuration-dependent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-rheinmetall-canada-program",
+          "sourceId": "canada-recovery-vehicles",
+          "fieldPath": "programs.enhanced-recovery-capability.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official program source publicly documents Enhanced Recovery Capability, its delivery scope, and Rheinmetall Canada's disclosed role.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-rheinmetall-canada-relationship",
+          "sourceId": "canada-recovery-vehicles",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Rheinmetall Canada holds public contracts to supply Enhanced Recovery Capability vehicles, equipment, and in-service support to the Canadian Armed Forces.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-rheinmetall-canada-match-1-1",
+          "sourceId": "rheinmetall-mission-master",
+          "fieldPath": "capabilities.mission-master-autonomous-ground-systems.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping only: The official Mission Master portfolio explicitly supports autonomous reconnaissance and surveillance payloads, making it relevant to patrol and monitoring subject to operational and payload configuration review.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T20:36:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live Supabase checks across the canonical organizations table and pending private review candidates found no canonical URL, domain, slug, legal-name, alias, or normalized-name match for Rheinmetall Canada."
+      },
+      "reviewer_rationale": "Rheinmetall Canada is worthy of inclusion because multiple official sources establish a substantial Canadian prime-contractor footprint, three distinct defence capability families, a current or enduring flagship program, and a public delivery relationship. The record deliberately captures a broad portfolio instead of reducing the company to one product. Reviewers should verify capability-family boundaries, current Canadian scope, public contact wording, and every derived mission match; none of the cited contracts should be interpreted as endorsement or procurement eligibility.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T20:40:15.480Z"
+    }
+  ]
+}

@@ -35,6 +35,34 @@ For Global Source Book work, keep building the address book. Do not stop at an a
 - Do not treat newsletter text as promoted evidence unless a durable canonical source supports the same claim.
 - Keep notes short enough that another researcher can understand why the source is worth checking.
 
+## Run Modes
+
+- `discovery_batch`: enumerate 40-75 unique prospects across at least six lanes before deep qualification; target 10 review candidates and require eight unless concrete exhaustion is recorded.
+- `deep_dossier`: research 1-5 named organizations across at least three complementary lanes; prioritize portfolio depth and field evidence.
+
+## Source Ranking
+
+Rank reusable sources before searching them. Prefer active Canadian sources with high credibility, high or medium expected organization yield, recent successful discovery, a defined refresh cadence, target-kind fit, and recursive follow-up URLs. Treat blank operational metadata as a maintenance prompt, not evidence that the source has no value.
+
+## Discovery Lanes
+
+Use at least six in a broad run:
+
+- official directories and member books
+- government awards and funded-company lists
+- government innovation or funding programs
+- procurement and contract notices
+- accelerator cohorts and investor portfolios
+- industry associations and conference or exhibitor directories
+- company newsrooms and partner pages
+- broad web search used to resolve canonical sources
+
+Record every prospect as selected, queued, duplicate, or rejected. Queue plausible unused prospects for the next run.
+
+## Evidence Recovery
+
+For a plausible but thin prospect, search at least three distinct lanes before deferral: the canonical site or newsroom, a government or program source, and a durable directory, award, procurement, portfolio, partner, or industry source. Keep each attempt and outcome. Missing a legal name, direct contact, exact address, founding date, or complete relationship set should normally become an amber reviewer warning, not a rejection.
+
 ## Recursive Search Rules
 
 - When a source has official LinkedIn pages, social links, YouTube channels, newsletters, event pages, partner pages, or exhibitor directories, add those as separate rows if they are useful recurring sources.

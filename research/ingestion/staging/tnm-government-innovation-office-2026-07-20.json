@@ -1,0 +1,791 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-20T16:33:37.915Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-government-innovation-office-2026-07-20",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "government_innovation_office"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "organization-kind:government_innovation_office",
+      "reason": "No published or pending government innovation office organization is represented in the local coverage view.",
+      "score": 950
+    },
+    "status": "completed",
+    "started_at": "2026-07-20T15:40:17.366Z",
+    "completed_at": "2026-07-20T16:31:28.000Z",
+    "agent_version": "tnm-research-pipeline/1.0.0",
+    "source_queries": [
+      "site:canada.ca Department National Defence IDEaS program innovation elements challenges official",
+      "site:canada.ca Defence Research and Development Canada mandate innovation partnerships official",
+      "site:ised-isde.canada.ca Innovative Solutions Canada about program challenges official",
+      "production duplicate audit for IDEaS DRDC and Innovative Solutions Canada across published organizations pending candidates demand issuers and programs",
+      "official IDEaS Competitive Projects and Test Drives element pages",
+      "official DRDC DSST research priorities and Ottawa contact pages"
+    ],
+    "counters": {
+      "sourcesChecked": 12,
+      "leadsQualified": 3,
+      "leadsDeferred": 0,
+      "candidatesCreated": 3,
+      "duplicatesBlocked": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "Completed after the human reviewer approved all three source leads for candidate conversion; the run produced three evidence-mapped, non-publishable organization candidates and preserved cross-model and classification warnings for Admin Review."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-innovative-solutions-canada",
+      "research_run_ref": "tnm-government-innovation-office-2026-07-20",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "innovative-solutions-canada-government-innovation-office-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-innovative-solutions-canada",
+        "sourceLeadIds": [
+          "innovative-solutions-canada-government-innovation-office-lead"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Innovative Solutions Canada fills the government-innovation-office gap with strong official evidence for a national program that helps federal departments articulate operational problems, fund Canadian SME research and prototype development, test pre-commercial innovations in operational settings, and explore commercialization pathways. Reviewers should confirm whether True North Map should represent the initiative as an organization profile or only as an ISED-operated program, and should verify the regional Ottawa map placement before publication.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T16:28:05.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No Innovative Solutions Canada, ISC, Solutions innovatrices Canada, stable-slug, normalized-name, or pending organization match was found in the canonical production organization and private candidate coverage inspected for this run."
+        },
+        "sources": [
+          {
+            "id": "isc-about-source",
+            "title": "About Innovative Solutions Canada",
+            "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/about-us",
+            "publisher": "Innovation, Science and Economic Development Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2024-04-26T00:00:00.000Z",
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "Program description and Challenge Stream and Testing Stream overview",
+            "summary": "The official ISED page describes Innovative Solutions Canada as an initiative supporting Canadian technology research, development, commercialization, prototype testing, and improvements to government operations through Challenge and Testing streams."
+          },
+          {
+            "id": "isc-challenge-government-source",
+            "title": "Challenge Stream for Government",
+            "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/challenge-stream-government",
+            "publisher": "Innovation, Science and Economic Development Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2025-03-28T00:00:00.000Z",
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "Operational-needs overview, challenge definition, funding phases, and commercialization pathway",
+            "summary": "Official guidance describes a structured process for departments to define unmet operational problems and desired outcomes, fund Canadian SME feasibility and prototype work, test solutions, and explore procurement of market-ready innovations."
+          },
+          {
+            "id": "isc-testing-government-source",
+            "title": "Testing Stream for Government",
+            "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+            "publisher": "Innovation, Science and Economic Development Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-07-13T00:00:00.000Z",
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "Testing benefits, eligible testing organizations, and operational testing process",
+            "summary": "The official Testing Stream page describes how public-sector organizations can test Canadian prototypes in their own operational settings, provide performance feedback, and potentially pursue commercialized innovations."
+          },
+          {
+            "id": "ised-contact-source",
+            "title": "Contact Innovation Science and Economic Development Canada",
+            "url": "https://ised-isde.canada.ca/site/ised/en/contact-innovation-science-and-economic-development-canada",
+            "publisher": "Innovation, Science and Economic Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "Department contact and office information",
+            "summary": "The official department contact page identifies Innovation, Science and Economic Development Canada and provides Ottawa contact information for its public service offices."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "isc-description-evidence",
+            "sourceId": "isc-about-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "ISED describes Innovative Solutions Canada as a federal initiative that stimulates Canadian technology research, development, commercialization, and testing while helping improve government operations.",
+            "confidence": "high"
+          },
+          {
+            "id": "isc-mandate-evidence",
+            "sourceId": "isc-about-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "The official program overview supports a mandate to reduce development and testing barriers for Canadian startups and SMEs through Challenge and Testing streams tied to public-sector needs.",
+            "confidence": "high"
+          },
+          {
+            "id": "isc-challenge-program-evidence",
+            "sourceId": "isc-challenge-government-source",
+            "fieldPath": "programs.challenge-stream.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The Challenge Stream helps departments define unmet operational problems and outcomes, sponsor feasibility and prototype work, and consider pathways to acquire market-ready innovations.",
+            "confidence": "high"
+          },
+          {
+            "id": "isc-testing-program-evidence",
+            "sourceId": "isc-testing-government-source",
+            "fieldPath": "programs.testing-stream.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The Testing Stream enables eligible public organizations to test Canadian prototypes in operational settings, provide user feedback, and potentially consider commercialized solutions.",
+            "confidence": "high"
+          },
+          {
+            "id": "isc-operator-relationship-evidence",
+            "sourceId": "isc-about-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "The official page is published within the Innovation, Science and Economic Development Canada program structure and identifies Innovative Solutions Canada as a federal initiative.",
+            "confidence": "high"
+          },
+          {
+            "id": "isc-location-evidence",
+            "sourceId": "ised-contact-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Ottawa coordinate is a conservative regional placement based on the operating department's official Ottawa presence; it is not asserted as an exact Innovative Solutions Canada office address.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "innovative-solutions-canada",
+          "name": "Innovative Solutions Canada",
+          "legalName": null,
+          "aliases": [
+            "ISC",
+            "Solutions innovatrices Canada"
+          ],
+          "description": "Federal innovation initiative that helps Canadian startups and small and medium businesses develop, test, and commercialize new technologies against public-sector operational needs through challenge funding and real-world prototype testing.",
+          "websiteUrl": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en",
+          "entityKind": "government_innovation_office",
+          "categories": [
+            "government_program_operator",
+            "public_funder"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Stimulate research, development, commercialization, and public-sector testing of Canadian innovations while helping departments address operational problems and supporting Canadian startups and small and medium businesses through structured challenge and testing streams.",
+            "parentOrganization": "Innovation, Science and Economic Development Canada",
+            "evidencePosture": "Official ISED program and department-facing guidance supports the mandate and program mechanics. The reviewer must confirm organization-versus-program modeling and the regional Ottawa placement."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "challenge-stream",
+            "name": "Challenge Stream",
+            "programType": "Federal innovation challenge and prototype-development stream",
+            "websiteUrl": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/challenge-stream-government",
+            "summary": "Structured stream for federal departments to define unmet operational problems and outcomes, fund Canadian SME feasibility and prototype development, test proposed solutions, and explore procurement pathways for market-ready innovations.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "testing-stream",
+            "name": "Testing Stream",
+            "programType": "Pre-commercial innovation testing stream",
+            "websiteUrl": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+            "summary": "Program that connects eligible public organizations with Canadian prototypes for testing in operational settings, user feedback, refinement, and potential follow-on commercialization pathways.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Innovation, Science and Economic Development Canada",
+            "relationshipType": "operated_by",
+            "publicSummary": "Innovative Solutions Canada is presented through Innovation, Science and Economic Development Canada's official program structure as a federal initiative serving Canadian innovators and public-sector departments."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "isc-description-evidence",
+          "sourceId": "isc-about-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "ISED describes Innovative Solutions Canada as a federal initiative that stimulates Canadian technology research, development, commercialization, and testing while helping improve government operations.",
+          "confidence": "high"
+        },
+        {
+          "id": "isc-mandate-evidence",
+          "sourceId": "isc-about-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official program overview supports a mandate to reduce development and testing barriers for Canadian startups and SMEs through Challenge and Testing streams tied to public-sector needs.",
+          "confidence": "high"
+        },
+        {
+          "id": "isc-challenge-program-evidence",
+          "sourceId": "isc-challenge-government-source",
+          "fieldPath": "programs.challenge-stream.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Challenge Stream helps departments define unmet operational problems and outcomes, sponsor feasibility and prototype work, and consider pathways to acquire market-ready innovations.",
+          "confidence": "high"
+        },
+        {
+          "id": "isc-testing-program-evidence",
+          "sourceId": "isc-testing-government-source",
+          "fieldPath": "programs.testing-stream.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Testing Stream enables eligible public organizations to test Canadian prototypes in operational settings, provide user feedback, and potentially consider commercialized solutions.",
+          "confidence": "high"
+        },
+        {
+          "id": "isc-operator-relationship-evidence",
+          "sourceId": "isc-about-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The official page is published within the Innovation, Science and Economic Development Canada program structure and identifies Innovative Solutions Canada as a federal initiative.",
+          "confidence": "high"
+        },
+        {
+          "id": "isc-location-evidence",
+          "sourceId": "ised-contact-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Ottawa coordinate is a conservative regional placement based on the operating department's official Ottawa presence; it is not asserted as an exact Innovative Solutions Canada office address.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T16:28:05.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No Innovative Solutions Canada, ISC, Solutions innovatrices Canada, stable-slug, normalized-name, or pending organization match was found in the canonical production organization and private candidate coverage inspected for this run."
+      },
+      "reviewer_rationale": "Innovative Solutions Canada fills the government-innovation-office gap with strong official evidence for a national program that helps federal departments articulate operational problems, fund Canadian SME research and prototype development, test pre-commercial innovations in operational settings, and explore commercialization pathways. Reviewers should confirm whether True North Map should represent the initiative as an organization profile or only as an ISED-operated program, and should verify the regional Ottawa map placement before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T16:33:37.915Z"
+    },
+    {
+      "client_candidate_id": "candidate-ideas",
+      "research_run_ref": "tnm-government-innovation-office-2026-07-20",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "ideas-government-innovation-office-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-ideas",
+        "sourceLeadIds": [
+          "ideas-government-innovation-office-lead"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "IDEaS is a strong candidate for the government-innovation-office lane because official DND evidence documents a dedicated defence innovation program, long-term investment, five distinct innovation mechanisms, direct use of DND and CAF guidance, and a mandate to build Canada's defence innovation ecosystem. Reviewers must resolve the deliberate cross-model identity: IDEaS already exists as a published demand issuer, and this candidate would add an organization profile for the same public identity. The regional Ottawa map placement also requires confirmation.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T16:28:05.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No IDEaS organization or pending organization candidate was found. A published demand issuer with the same identity and slug exists in a separate model; the reviewer rationale flags that intentional cross-model representation for explicit review."
+        },
+        "sources": [
+          {
+            "id": "ideas-main-source",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "Program overview, opportunities, and official navigation",
+            "summary": "The official Department of National Defence program page identifies IDEaS as Canada's defence innovation program and provides the canonical route to program opportunities, challenges, elements, and reporting."
+          },
+          {
+            "id": "ideas-how-source",
+            "title": "How Innovation for Defence Excellence and Security Works",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/how-ideas-works.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-05-29T00:00:00.000Z",
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "Investment, mandate, DND position, and five innovation elements",
+            "summary": "Official DND guidance describes IDEaS as a long-term defence and security innovation program that mobilizes Canadian innovators from early concepts through real-world testing using Competitive Projects, Innovation Networks, Contests, Sandboxes, and Test Drives."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "ideas-description-evidence",
+            "sourceId": "ideas-how-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "DND describes IDEaS as a defence and security innovation program that mobilizes Canadian innovators through public challenges, development support, collaboration, and real-world testing.",
+            "confidence": "high"
+          },
+          {
+            "id": "ideas-mandate-evidence",
+            "sourceId": "ideas-how-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "The official page says IDEaS improves DND access to Canadian innovators, enhances defence capability, supports economic impact, and builds a national defence innovation ecosystem.",
+            "confidence": "high"
+          },
+          {
+            "id": "ideas-competitive-projects-evidence",
+            "sourceId": "ideas-how-source",
+            "fieldPath": "programs.competitive-projects.summary",
+            "claimClass": "source_backed",
+            "excerpt": "IDEaS identifies Competitive Projects as a phased development-funding mechanism intended to advance defence and security technologies along the innovation continuum.",
+            "confidence": "high"
+          },
+          {
+            "id": "ideas-test-drives-evidence",
+            "sourceId": "ideas-how-source",
+            "fieldPath": "programs.test-drives.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official program overview identifies Test Drives as a mechanism through which the Canadian Armed Forces evaluates technologies in relevant real-world settings.",
+            "confidence": "high"
+          },
+          {
+            "id": "ideas-operator-relationship-evidence",
+            "sourceId": "ideas-how-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "The program states that IDEaS is positioned within DND and uses DND and CAF leadership guidance together with defence-science expertise, including DRDC support.",
+            "confidence": "high"
+          },
+          {
+            "id": "ideas-location-evidence",
+            "sourceId": "ideas-how-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Ottawa coordinate is a conservative regional map placement for a national DND-operated program; it is not an exact IDEaS office address and requires reviewer confirmation.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "ideas",
+          "name": "Innovation for Defence Excellence and Security",
+          "legalName": null,
+          "aliases": [
+            "IDEaS",
+            "IDEeS"
+          ],
+          "description": "Department of National Defence innovation program that mobilizes Canadian researchers and companies through defence and security challenges, phased development support, networks, contests, sandboxes, and Canadian Armed Forces technology testing.",
+          "websiteUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "entityKind": "government_innovation_office",
+          "categories": [
+            "government_program_operator",
+            "public_funder"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Improve the Department of National Defence's access to Canadian innovators, accelerate defence and security concepts toward testing, enhance defence capability, create economic impact, and build Canada's defence innovation ecosystem.",
+            "parentOrganization": "Department of National Defence",
+            "crossModelIdentity": "A demand issuer with the same IDEaS identity is already published; this organization candidate is a separate profile proposal and not a duplicate published organization.",
+            "evidencePosture": "Official DND program evidence strongly supports the mandate and mechanisms. Reviewers must decide whether the same identity should exist in both organization and demand-issuer models and confirm the regional map placement."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "competitive-projects",
+            "name": "Competitive Projects",
+            "programType": "Phased defence innovation development funding",
+            "websiteUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/competitive-projects.html",
+            "summary": "IDEaS funding mechanism that supports phased development of Canadian defence and security concepts and technologies as they move along the innovation continuum.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "test-drives",
+            "name": "Test Drives",
+            "programType": "Canadian Armed Forces operational technology testing",
+            "websiteUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/test-drives.html",
+            "summary": "IDEaS mechanism that gives the Canadian Armed Forces a structured way to put selected technologies through relevant testing and provide operationally informed evaluation.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "operated_by",
+            "publicSummary": "IDEaS is positioned within the Department of National Defence and draws on DND and Canadian Armed Forces leadership guidance together with defence-science expertise, including support from DRDC."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "ideas-description-evidence",
+          "sourceId": "ideas-how-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "DND describes IDEaS as a defence and security innovation program that mobilizes Canadian innovators through public challenges, development support, collaboration, and real-world testing.",
+          "confidence": "high"
+        },
+        {
+          "id": "ideas-mandate-evidence",
+          "sourceId": "ideas-how-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official page says IDEaS improves DND access to Canadian innovators, enhances defence capability, supports economic impact, and builds a national defence innovation ecosystem.",
+          "confidence": "high"
+        },
+        {
+          "id": "ideas-competitive-projects-evidence",
+          "sourceId": "ideas-how-source",
+          "fieldPath": "programs.competitive-projects.summary",
+          "claimClass": "source_backed",
+          "excerpt": "IDEaS identifies Competitive Projects as a phased development-funding mechanism intended to advance defence and security technologies along the innovation continuum.",
+          "confidence": "high"
+        },
+        {
+          "id": "ideas-test-drives-evidence",
+          "sourceId": "ideas-how-source",
+          "fieldPath": "programs.test-drives.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official program overview identifies Test Drives as a mechanism through which the Canadian Armed Forces evaluates technologies in relevant real-world settings.",
+          "confidence": "high"
+        },
+        {
+          "id": "ideas-operator-relationship-evidence",
+          "sourceId": "ideas-how-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The program states that IDEaS is positioned within DND and uses DND and CAF leadership guidance together with defence-science expertise, including DRDC support.",
+          "confidence": "high"
+        },
+        {
+          "id": "ideas-location-evidence",
+          "sourceId": "ideas-how-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Ottawa coordinate is a conservative regional map placement for a national DND-operated program; it is not an exact IDEaS office address and requires reviewer confirmation.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T16:28:05.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No IDEaS organization or pending organization candidate was found. A published demand issuer with the same identity and slug exists in a separate model; the reviewer rationale flags that intentional cross-model representation for explicit review."
+      },
+      "reviewer_rationale": "IDEaS is a strong candidate for the government-innovation-office lane because official DND evidence documents a dedicated defence innovation program, long-term investment, five distinct innovation mechanisms, direct use of DND and CAF guidance, and a mandate to build Canada's defence innovation ecosystem. Reviewers must resolve the deliberate cross-model identity: IDEaS already exists as a published demand issuer, and this candidate would add an organization profile for the same public identity. The regional Ottawa map placement also requires confirmation.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-20T16:33:37.915Z"
+    },
+    {
+      "client_candidate_id": "candidate-drdc",
+      "research_run_ref": "tnm-government-innovation-office-2026-07-20",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "drdc-government-innovation-office-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-drdc",
+        "sourceLeadIds": [
+          "drdc-government-innovation-office-lead"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "DRDC is a credible government-innovation-office candidate because official sources identify it as Canada's defence science, technology, and innovation leader, administrator of the Defence and Security Science and Technology program, operator of national research capabilities, and a collaboration and technology-transfer partner for government, industry, academia, and allies. Reviewers must decide whether government_innovation_office or research_test_centre is the better primary kind and resolve the deliberate cross-model identity because DRDC already exists as a published demand issuer.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T16:28:05.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No DRDC organization or pending organization candidate was found. A published demand issuer with the same identity and slug exists in a separate model; the reviewer rationale flags that intentional cross-model representation for explicit review."
+        },
+        "sources": [
+          {
+            "id": "drdc-profile-source",
+            "title": "Defence Research and Development Canada",
+            "url": "https://www.canada.ca/en/defence-research-development.html",
+            "publisher": "Defence Research and Development Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "National mandate, services, research centres, and collaboration overview",
+            "summary": "The official profile identifies DRDC as Canada's defence science, technology, and innovation leader and describes its technical solutions, expert advice, research centres, programs, and work with industry, academia, government, and allies."
+          },
+          {
+            "id": "drdc-partnerships-source",
+            "title": "Partnerships and Opportunities at Defence Research and Development Canada",
+            "url": "https://www.canada.ca/en/defence-research-development/services/partnerships-opportunities.html",
+            "publisher": "Defence Research and Development Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": "2024-05-10T00:00:00.000Z",
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "Partnerships, innovation programs, collaboration, and technology-transfer sections",
+            "summary": "Official guidance describes DRDC partnerships with industry, academia, governments, and allies, links its research to the DSST program, and documents collaboration, intellectual-property licensing, and technology-transfer channels."
+          },
+          {
+            "id": "drdc-priorities-source",
+            "title": "Defence Research and Development Canada Research Priorities",
+            "url": "https://www.canada.ca/en/defence-research-development/services/science-technology-program.html",
+            "publisher": "Defence Research and Development Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": "2024-11-29T00:00:00.000Z",
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "DSST administration and eight strategic focus areas",
+            "summary": "The official research-priorities page states that DRDC administers the Defence and Security Science and Technology program and groups DND and CAF research, development, and innovation into eight strategic focus areas."
+          },
+          {
+            "id": "drdc-contact-source",
+            "title": "Contact Defence Research and Development Canada",
+            "url": "https://www.canada.ca/en/defence-research-development/corporate/contact-us.html",
+            "publisher": "Defence Research and Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T16:28:05.000Z",
+            "locator": "National Defence Headquarters and Ottawa Research Centre contact listings",
+            "summary": "The official contact page lists DRDC's National Defence Headquarters presence and Ottawa Research Centre in Ottawa, Ontario, alongside contact routes for the national organization."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "drdc-description-evidence",
+            "sourceId": "drdc-profile-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "DRDC's official profile identifies it as Canada's defence science, technology, and innovation leader providing technical solutions and advice to DND and the Canadian Armed Forces.",
+            "confidence": "high"
+          },
+          {
+            "id": "drdc-mandate-evidence",
+            "sourceId": "drdc-profile-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "The official profile supports a national mandate spanning defence science and technology, operational and policy advice, research centres, innovation programs, and work with domestic and allied partners.",
+            "confidence": "high"
+          },
+          {
+            "id": "drdc-dsst-program-evidence",
+            "sourceId": "drdc-priorities-source",
+            "fieldPath": "programs.defence-and-security-science-and-technology.summary",
+            "claimClass": "source_backed",
+            "excerpt": "DRDC is identified as the DND science and technology organization responsible for administering DSST across eight strategic focus areas for defence and security research, development, and innovation.",
+            "confidence": "high"
+          },
+          {
+            "id": "drdc-operator-relationship-evidence",
+            "sourceId": "drdc-profile-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "DRDC's official profile and services are presented as the national defence science and technology organization serving the Department of National Defence and Canadian Armed Forces.",
+            "confidence": "high"
+          },
+          {
+            "id": "drdc-location-evidence",
+            "sourceId": "drdc-contact-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The official contact page lists DRDC's National Defence Headquarters presence and Ottawa Research Centre in Ottawa, Ontario; the map uses the Ottawa city centroid rather than an exact building coordinate.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "defence-research-and-development-canada",
+          "name": "Defence Research and Development Canada",
+          "legalName": null,
+          "aliases": [
+            "DRDC",
+            "RDDC"
+          ],
+          "description": "Canada's national defence science, technology, and innovation organization, providing research, technical solutions, and expert advice to the Department of National Defence and Canadian Armed Forces while collaborating with industry, academia, government, and allies.",
+          "websiteUrl": "https://www.canada.ca/en/defence-research-development.html",
+          "entityKind": "government_innovation_office",
+          "categories": [
+            "government_program_operator",
+            "research_lab"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Lead and deliver defence science, technology, and innovation for the Department of National Defence and Canadian Armed Forces through research, technical solutions, expert advice, national research capabilities, partnerships, and technology transfer.",
+            "parentOrganization": "Department of National Defence",
+            "crossModelIdentity": "A demand issuer with the same DRDC identity is already published; this organization candidate is a separate profile proposal and not a duplicate published organization.",
+            "classificationNote": "The candidate uses government_innovation_office to fill the selected gap, but research_test_centre may better describe DRDC's national network and should be decided during review.",
+            "evidencePosture": "Official DRDC pages support the mandate, DSST administration, partnerships, technology-transfer role, and Ottawa presence. Entity-kind choice remains a reviewer decision."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "defence-and-security-science-and-technology",
+            "name": "Defence and Security Science and Technology",
+            "programType": "National defence science and technology program",
+            "websiteUrl": "https://www.canada.ca/en/defence-research-development/services/science-technology-program.html",
+            "summary": "DND and CAF research, development, and innovation program administered by DRDC across eight strategic focus areas covering people, complex combat, platforms and weapons, command and intelligence, continental defence, safety and security, institutional needs, and science and technology evolution.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "part_of",
+            "publicSummary": "DRDC is the Department of National Defence's national science and technology organization, providing research, technical solutions, and advice for DND and the Canadian Armed Forces."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "drdc-description-evidence",
+          "sourceId": "drdc-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "DRDC's official profile identifies it as Canada's defence science, technology, and innovation leader providing technical solutions and advice to DND and the Canadian Armed Forces.",
+          "confidence": "high"
+        },
+        {
+          "id": "drdc-mandate-evidence",
+          "sourceId": "drdc-profile-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official profile supports a national mandate spanning defence science and technology, operational and policy advice, research centres, innovation programs, and work with domestic and allied partners.",
+          "confidence": "high"
+        },
+        {
+          "id": "drdc-dsst-program-evidence",
+          "sourceId": "drdc-priorities-source",
+          "fieldPath": "programs.defence-and-security-science-and-technology.summary",
+          "claimClass": "source_backed",
+          "excerpt": "DRDC is identified as the DND science and technology organization responsible for administering DSST across eight strategic focus areas for defence and security research, development, and innovation.",
+          "confidence": "high"
+        },
+        {
+          "id": "drdc-operator-relationship-evidence",
+          "sourceId": "drdc-profile-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DRDC's official profile and services are presented as the national defence science and technology organization serving the Department of National Defence and Canadian Armed Forces.",
+          "confidence": "high"
+        },
+        {
+          "id": "drdc-location-evidence",
+          "sourceId": "drdc-contact-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The official contact page lists DRDC's National Defence Headquarters presence and Ottawa Research Centre in Ottawa, Ontario; the map uses the Ottawa city centroid rather than an exact building coordinate.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T16:28:05.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No DRDC organization or pending organization candidate was found. A published demand issuer with the same identity and slug exists in a separate model; the reviewer rationale flags that intentional cross-model representation for explicit review."
+      },
+      "reviewer_rationale": "DRDC is a credible government-innovation-office candidate because official sources identify it as Canada's defence science, technology, and innovation leader, administrator of the Defence and Security Science and Technology program, operator of national research capabilities, and a collaboration and technology-transfer partner for government, industry, academia, and allies. Reviewers must decide whether government_innovation_office or research_test_centre is the better primary kind and resolve the deliberate cross-model identity because DRDC already exists as a published demand issuer.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-20T16:33:37.915Z"
+    }
+  ]
+}

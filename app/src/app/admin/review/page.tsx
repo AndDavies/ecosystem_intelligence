@@ -1,6 +1,6 @@
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
-import { editAtlasCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
+import { editAtlasCandidate, editTypedResearchCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
 import type { DemandSignalBundleV1, OrganizationBundleV2 } from "@/lib/research/pipeline-schema";
@@ -316,6 +316,8 @@ function TypedOrganizationCandidateCard({
         <div className="mt-3 space-y-3">{record.fieldEvidence.map((evidence) => <div key={evidence.id}><p className="font-semibold text-[#344054]">{evidence.fieldPath} · {evidence.confidence}</p><p className="mt-1 leading-5 text-[#667085]">{evidence.excerpt}</p></div>)}</div>
       </details>
 
+      <TypedCandidateEditor candidateId={candidate.id} record={record} />
+
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
         <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale} className={areaClass} /></label>
@@ -361,6 +363,8 @@ function DemandSignalCandidateCard({ candidate, record }: { candidate: Candidate
         <div className="mt-3 space-y-3">{record.fieldEvidence.map((evidence) => <div key={evidence.id}><p className="font-semibold text-[#344054]">{evidence.fieldPath} · {evidence.confidence}</p><p className="mt-1 leading-5 text-[#667085]">{evidence.excerpt}</p></div>)}</div>
       </details>
 
+      <TypedCandidateEditor candidateId={candidate.id} record={record} />
+
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
         <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale} className={areaClass} /></label>
@@ -389,6 +393,27 @@ function GenericCandidateCard({ candidate }: { candidate: CandidateRow }) {
         <button name="decision" value="accept" className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white">Accept candidate</button>
       </form>
     </PublicCard>
+  );
+}
+
+function TypedCandidateEditor({ candidateId, record }: { candidateId: string; record: OrganizationBundleV2 | DemandSignalBundleV1 }) {
+  return (
+    <details className="mt-4 rounded-md border border-[#b2ccff] bg-[#f5f8ff] p-4">
+      <summary className="cursor-pointer text-sm font-semibold text-[#1849a9]">Edit complete typed candidate</summary>
+      <form action={editTypedResearchCandidate} className="mt-4 grid gap-4">
+        <input type="hidden" name="candidateId" value={candidateId} />
+        <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Candidate JSON
+          <textarea name="proposedRecordJson" required rows={22} defaultValue={JSON.stringify(record, null, 2)} spellCheck={false} className="rounded-md border border-[#98a2b3] bg-white px-3 py-2 font-mono text-[11px] leading-5 text-[#344054] outline-none focus:border-[#0756d9]" />
+          <span className="text-[10px] font-normal leading-4 text-[#667085]">The save action validates the typed schema, field evidence, live taxonomy, source portability, and duplicate identity before preserving the edit.</span>
+        </label>
+        <div className="grid gap-3 md:grid-cols-[1fr_auto] md:items-end">
+          <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Edit rationale
+            <input name="rationale" required minLength={3} maxLength={2000} className="h-10 rounded-md border border-[#98a2b3] bg-white px-3 text-sm font-normal outline-none focus:border-[#0756d9]" placeholder="What changed and why" />
+          </label>
+          <button className="h-10 rounded-md border border-[#0756d9] bg-white px-4 text-xs font-semibold text-[#0756d9]">Validate and save edits</button>
+        </div>
+      </form>
+    </details>
   );
 }
 

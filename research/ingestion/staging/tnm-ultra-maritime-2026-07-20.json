@@ -1,0 +1,795 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-20T15:09:16.190Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-ultra-maritime-2026-07-20",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization:ultra-maritime-canada",
+      "reason": "Ultra Maritime is a major Canadian undersea-warfare supplier with a public Sea Tracker delivery and operator-identified PA-4 context, but it is absent from the published and pending corpus.",
+      "score": 975
+    },
+    "status": "completed",
+    "started_at": "2026-07-20T14:59:28.335Z",
+    "completed_at": "2026-07-20T15:08:41.000Z",
+    "agent_version": "tnm-research-pipeline/1.0.0",
+    "source_queries": [
+      "site:umaritime.com Ultra Maritime Canada Dartmouth sonar towed arrays sonobuoys",
+      "site:umaritime.com Sea Tracker containerized ASW DRDC COVE ACOA",
+      "site:coveocean.com Ultra Maritime Sea Tracker DRDC containerized testing",
+      "site:canada.ca Ultra Maritime Dartmouth Royal Canadian Navy",
+      "site:umaritime.com Sea Lancer towed sonar arrays Sea Tracker",
+      "site:umaritime.com Sea Searcher hull mounted sonar transducers Canada",
+      "site:umaritime.com Sea Revealer sonobuoys Canadian specification",
+      "site:umaritime.com River Class lifecycle support Lockheed Martin Canada",
+      "site:canada.ca Royal Canadian Navy Ultra Electronics integrated underwater warfare system",
+      "Ultra Maritime PA-4 Protecteur Sea Tracker public source"
+    ],
+    "counters": {
+      "sourcesChecked": 10,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "One detailed Ultra Maritime organization bundle was evidence-complete, duplicate-clear, and ready for human review; the uncorroborated PA-4 label was recorded as a follow-up rather than proposed for publication."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-ultra-maritime",
+      "research_run_ref": "tnm-ultra-maritime-2026-07-20",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "ultra-maritime-canada-undersea-warfare-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-ultra-maritime",
+        "sourceLeadIds": [
+          "ultra-maritime-canada-undersea-warfare-lead"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Ultra Maritime is a high-value addition because authoritative public evidence connects its Dartmouth operation to Canadian design and production of towed arrays, sonobuoys and hull-mounted sonar; Royal Canadian Navy Halifax-class and River-class work; and a newly delivered containerized Sea Tracker system for DRDC experimentation. The profile gives BD users a clear view of the company's Canadian industrial role, the technologies it can bring to undersea missions, and the public organizations around current work. The candidate is rated high confidence because Canadian identity and programs are corroborated by ACOA, COVE, Royal Canadian Navy material and multiple first-party product or contract pages. The supplied Sea Tracker link is strong evidence for a 20-foot ISO containerized submarine-detection capability, but it does not name PA-4 or the Protecteur class. Publish the documented Sea Tracker relationship only; keep the operator-provided PA-4 context out of the public dossier until a durable public source explicitly supports it.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T15:04:12.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No Ultra Maritime name, legal-name, alias, umaritime.com domain, stable-slug, or proposed capability-slug match was found in published organizations, published capabilities, or pending organization candidates."
+        },
+        "sources": [
+          {
+            "id": "ultra-canada-acoa-source",
+            "title": "Ultra Maritime Canada",
+            "url": "https://www.canada.ca/en/atlantic-canada-opportunities/campaigns/impacts/ultra-maritime.html",
+            "publisher": "Atlantic Canada Opportunities Agency",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2025-08-12T00:00:00.000Z",
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Proudly Atlantic Canadian, ACOA's Partnership, and Royal Canadian Navy contract sections",
+            "summary": "The Government of Canada identifies Ultra Maritime's Dartmouth operation as a Canadian towed-array centre of excellence that develops or integrates sonobuoys, hull-mounted sonar, and towed acoustic arrays and supports Royal Canadian Navy programs."
+          },
+          {
+            "id": "ultra-contact-source",
+            "title": "Ultra Maritime Global Locations and Canadian Contact",
+            "url": "https://umaritime.com/contact-us/",
+            "publisher": "Ultra Maritime",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Canada and Dartmouth location entry",
+            "summary": "Ultra Maritime lists its Canadian location at 40 Atlantic Street in Dartmouth, Nova Scotia, and provides a public main telephone number."
+          },
+          {
+            "id": "ultra-sea-tracker-source",
+            "title": "Ultra Maritime Delivers New Innovation in Hybrid Anti-Submarine Warfare Capabilities with Sea Tracker",
+            "url": "https://umaritime.com/ultra-maritime-delivers-sea-tracker/",
+            "publisher": "Ultra Maritime",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-12-03T00:00:00.000Z",
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Sea Tracker announcement and ACOA, COVE, and DRDC collaboration paragraphs",
+            "summary": "Ultra Maritime describes Sea Tracker as a modular submarine-detection system in a standard 20-foot ISO container that can integrate towed arrays and torpedo-defence systems and is being provided to DRDC for experimentation with COVE and ACOA support."
+          },
+          {
+            "id": "cove-sea-tracker-source",
+            "title": "COVE Leads New At-Sea Testing Capability",
+            "url": "https://coveocean.com/news/cove-leads-new-at-sea-testing-capability-to-advance-canadas-maritime-security-innovation-and-dual-use-technology-development/",
+            "publisher": "COVE",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": "2025-12-04T00:00:00.000Z",
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Collaboration, system description, funding, and partner-role sections",
+            "summary": "COVE independently identifies Ultra Maritime Canada, DRDC and ACOA as partners in a containerized at-sea towed-array testing system, reports federal funding for the project, and states that Ultra will deliver Sea Tracker for DRDC experimentation."
+          },
+          {
+            "id": "ultra-towed-array-source",
+            "title": "Sea Lancer Towed Sonar Arrays",
+            "url": "https://umaritime.com/sonar-solutions/towed-sonar-arrays/",
+            "publisher": "Ultra Maritime",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Sea Lancer Family, multi-domain capability, architecture, and Sea Tracker sections",
+            "summary": "The product page describes the Sea Lancer family as an open modular towed-sonar architecture for detection, localization and classification across crewed, optionally crewed and uncrewed platforms and identifies Sea Tracker as a containerized integration option."
+          },
+          {
+            "id": "ultra-hull-sonar-source",
+            "title": "Sea Searcher Hull Mounted Sonars and Transducers",
+            "url": "https://umaritime.com/sonar-solutions/hull-mounted-sonars-tranducers/",
+            "publisher": "Ultra Maritime",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Sea Searcher family, digital sonar, and transducer sections",
+            "summary": "Ultra Maritime describes the Sea Searcher family as digital hull-mounted sonar and acoustic-transducer technology for navigation, early threat detection, target identification, tracking and shipboard anti-submarine warfare."
+          },
+          {
+            "id": "ultra-sonobuoy-source",
+            "title": "Sea Revealer Sonobuoys",
+            "url": "https://umaritime.com/sonobuoy-receivers/sonobuoys/",
+            "publisher": "Ultra Maritime",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Sea Revealer family, unmanned battlespace, current production, and Canadian specification sections",
+            "summary": "Ultra Maritime lists a broad Sea Revealer sonobuoy family for submarine detection and tracking, including Canadian-specification variants and integration paths for uncrewed aircraft."
+          },
+          {
+            "id": "ultra-river-support-source",
+            "title": "Ultra Maritime Deepens Commitment to Royal Canadian Navy with River Class Lifecycle Support",
+            "url": "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+            "publisher": "Ultra Maritime",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-05-27T00:00:00.000Z",
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Contract award, system-readiness scope, and lifecycle-support paragraphs",
+            "summary": "Ultra Maritime reports multiple Lockheed Martin Canada contracts for River-class Destroyer lifecycle work spanning shore installation, sea trials, final acceptance, engineering support, spares and operational-readiness activity."
+          },
+          {
+            "id": "ultra-csc-order-source",
+            "title": "Ultra Secures Follow-On Order for Canadian Surface Combatant Hull Mounted Sonar",
+            "url": "https://umaritime.com/hull-mounted-sonar-for-lockheed-martin-canada/",
+            "publisher": "Ultra Maritime",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2022-10-04T00:00:00.000Z",
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Production-order, program-role, and Dartmouth execution paragraphs",
+            "summary": "Ultra Electronics Maritime Systems Inc. reports a three-ship hull-mounted-sonar production order from Lockheed Martin Canada and identifies its Dartmouth team as responsible for design, procurement, manufacture and supply, with Ultra acting as the program's anti-submarine-warfare lead."
+          },
+          {
+            "id": "rcn-csc-factsheet-source",
+            "title": "Canadian Surface Combatant Factsheet",
+            "url": "https://www.canada.ca/content/dam/rcn-mrc/documents/ships/csc-factsheet-2022-2.pdf",
+            "publisher": "Royal Canadian Navy",
+            "sourceKind": "official_report",
+            "publishedAt": "2021-10-01T00:00:00.000Z",
+            "accessedAt": "2026-07-20T15:04:12.000Z",
+            "locator": "Integrated Underwater Warfare System section, page 1",
+            "summary": "The Royal Canadian Navy factsheet identifies Ultra Electronics for the future surface combatant's towed low-frequency active and passive sonar, S2150 hull-mounted sonar and SEA SENTOR S21700 towed torpedo countermeasures."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "ultra-description-evidence",
+            "sourceId": "ultra-canada-acoa-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "ACOA identifies Ultra Maritime's Dartmouth base as a Canadian undersea-warfare operation that manufactures or integrates sonobuoys, hull-mounted sonar and towed acoustic arrays and supports Royal Canadian Navy and allied naval programs.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-canadian-operations-evidence",
+            "sourceId": "ultra-canada-acoa-source",
+            "fieldPath": "organization.profileData.canadianOperations",
+            "claimClass": "source_backed",
+            "excerpt": "The government profile calls Dartmouth a towed-array centre of excellence, states that the arrays are developed and built in Canada, and identifies sonobuoy, hull-sonar and towed-array work at the site.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-contact-evidence",
+            "sourceId": "ultra-contact-source",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The official contact page lists Ultra Maritime's Canadian site at 40 Atlantic Street, Dartmouth, Nova Scotia B2Y 4N2, with the public telephone number +1 902 466 7491.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-evidence-posture-evidence",
+            "sourceId": "ultra-sea-tracker-source",
+            "fieldPath": "organization.profileData.evidencePosture",
+            "claimClass": "source_backed",
+            "excerpt": "The supplied official announcement names Sea Tracker, its 20-foot ISO container format, DRDC experimentation, COVE and ACOA support; it does not identify PA-4 or the Protecteur class.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-sea-tracker-capability-evidence",
+            "sourceId": "ultra-sea-tracker-source",
+            "fieldPath": "capabilities.sea-tracker-containerized-asw-system.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Ultra describes Sea Tracker as a modular submarine-detection capability in a standard 20-foot ISO container for uncrewed and non-traditionally crewed platforms that can integrate active, passive, surveillance and torpedo-defence towed technologies.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-sea-tracker-underwater-match-evidence",
+            "sourceId": "cove-sea-tracker-source",
+            "fieldPath": "capabilities.sea-tracker-containerized-asw-system.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Because COVE describes a containerized system for at-sea evaluation of active and passive towed arrays and DRDC experimentation on future ASW concepts, the capability is a direct fit for the public Underwater ISR mission area.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-sea-tracker-autonomy-match-evidence",
+            "sourceId": "ultra-sea-tracker-source",
+            "fieldPath": "capabilities.sea-tracker-containerized-asw-system.missionMatches.1.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "The official description says Sea Tracker is designed for uncrewed and non-traditionally crewed platforms, supporting a moderate derived alignment to autonomous patrol and monitoring workflows.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "ultra-sea-lancer-capability-evidence",
+            "sourceId": "ultra-towed-array-source",
+            "fieldPath": "capabilities.sea-lancer-towed-sonar-arrays.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Ultra's product page describes Sea Lancer as an open and modular family of towed sonar systems for detection, localization and classification across surface, subsurface, crewed and uncrewed platforms.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-sea-lancer-match-evidence",
+            "sourceId": "ultra-towed-array-source",
+            "fieldPath": "capabilities.sea-lancer-towed-sonar-arrays.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "The documented detection, localization, classification and multi-platform acoustic functions map directly to the public Underwater ISR mission area.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-sea-searcher-capability-evidence",
+            "sourceId": "ultra-hull-sonar-source",
+            "fieldPath": "capabilities.sea-searcher-hull-mounted-sonar-and-transducers.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Ultra documents the Sea Searcher family as fully digital hull-mounted sonar and acoustic transducer technology for navigation, early threat detection, target identification and tracking.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-sea-searcher-match-evidence",
+            "sourceId": "rcn-csc-factsheet-source",
+            "fieldPath": "capabilities.sea-searcher-hull-mounted-sonar-and-transducers.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "The Royal Canadian Navy lists Ultra hull-mounted and towed sonar within the ship's integrated underwater-warfare system, supporting direct relevance to Underwater ISR.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-sea-revealer-capability-evidence",
+            "sourceId": "ultra-sonobuoy-source",
+            "fieldPath": "capabilities.sea-revealer-sonobuoys.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Ultra lists Sea Revealer sonobuoys for submarine detection and tracking, identifies Canadian-specification variants, and describes integration work for uncrewed aerial vehicles.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-sea-revealer-match-evidence",
+            "sourceId": "ultra-canada-acoa-source",
+            "fieldPath": "capabilities.sea-revealer-sonobuoys.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "ACOA states that sonobuoys handled in Dartmouth are deployed from aircraft or ships to detect and localize submarines, mapping directly to Underwater ISR.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-river-support-capability-evidence",
+            "sourceId": "ultra-river-support-source",
+            "fieldPath": "capabilities.river-class-undersea-warfare-lifecycle-support.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Ultra reports River-class contracts covering engineering support, spares, readiness activities, shore installation, sea trials and final acceptance for the new surface-combatant fleet.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-river-support-match-evidence",
+            "sourceId": "ultra-river-support-source",
+            "fieldPath": "capabilities.river-class-undersea-warfare-lifecycle-support.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "The lifecycle scope supports readiness of the River-class hull-mounted sonar and torpedo-defence elements that underpin the fleet's Underwater ISR mission.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "ultra-drdc-relationship-evidence",
+            "sourceId": "ultra-sea-tracker-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Ultra states that it is providing Sea Tracker to Defence Research and Development Canada for experimentation and development of next-generation anti-submarine-warfare concepts.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-cove-relationship-evidence",
+            "sourceId": "cove-sea-tracker-source",
+            "fieldPath": "relationships.1.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "COVE identifies Ultra Maritime Canada as an industry partner in the containerized at-sea towed-array testing initiative and says Ultra will deliver Sea Tracker.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-acoa-relationship-evidence",
+            "sourceId": "ultra-canada-acoa-source",
+            "fieldPath": "relationships.2.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "ACOA describes prior project funding, advocacy and current support for Ultra Maritime's Canadian defence and marine work, including its Mission Pod development.",
+            "confidence": "high"
+          },
+          {
+            "id": "ultra-lockheed-relationship-evidence",
+            "sourceId": "ultra-csc-order-source",
+            "fieldPath": "relationships.3.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Ultra reports a Canadian Surface Combatant hull-mounted-sonar production order from Lockheed Martin Canada and identifies itself as the program's anti-submarine-warfare lead.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "ultra-maritime",
+          "name": "Ultra Maritime",
+          "legalName": "Ultra Electronics Maritime Systems Inc.",
+          "aliases": [
+            "Ultra Maritime Canada",
+            "Ultra Electronics Maritime Systems Inc.",
+            "Hermes Electronics Ltd."
+          ],
+          "description": "See the Canadian systems behind submarine detection at sea. From its Dartmouth operation, Ultra Maritime develops and builds towed arrays in Canada and manufactures or integrates sonobuoys, hull-mounted sonar, containerized Sea Tracker systems, and lifecycle support for Royal Canadian Navy and allied undersea-warfare programs.",
+          "websiteUrl": "https://umaritime.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "ocean_technology"
+          ],
+          "primaryLocation": {
+            "city": "Dartmouth",
+            "provinceTerritory": "Nova Scotia",
+            "countryCode": "CA",
+            "latitude": 44.6661,
+            "longitude": -63.5728,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "canadianOperations": "Dartmouth is Ultra Maritime Canada's primary public location and a towed-array centre of excellence. Public Canadian evidence ties the site to in-country towed-array development and production plus sonobuoy, hull-mounted-sonar and naval integration work.",
+            "evidencePosture": "Public sources support the Sea Tracker name, its 20-foot ISO container format, and collaboration with DRDC, COVE and ACOA. They do not use the PA-4 or Protecteur-class identifiers, so those labels are not proposed for publication.",
+            "publicContact": {
+              "contactPageUrl": "https://umaritime.com/contact-us/",
+              "publicEmail": null,
+              "publicPhone": "+1 902 466 7491",
+              "linkedInUrl": null
+            }
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "sea-tracker-containerized-asw-system",
+            "name": "Sea Tracker Containerized ASW System",
+            "summary": "Put frigate-grade submarine detection onto a wider range of ships and uncrewed platforms. Sea Tracker packages a scalable towed-sonar architecture in a standard 20-foot ISO container, giving operators a rapidly deployable way to integrate active, passive, surveillance and torpedo-defence arrays for experimentation or operational concepts.",
+            "capabilityType": "Containerized submarine detection and towed-sonar integration system",
+            "features": [
+              "Standard 20-foot ISO container form factor",
+              "Integration path for active, passive, surveillance and torpedo-defence towed technologies",
+              "Designed for uncrewed, optionally crewed and non-traditionally crewed platforms"
+            ],
+            "applications": [
+              "At-sea evaluation of next-generation towed arrays",
+              "Rapid deployment of submarine detection onto available vessels",
+              "DRDC experimentation and development of future anti-submarine-warfare concepts"
+            ],
+            "technicalTags": [
+              "Sea Tracker",
+              "containerized ASW",
+              "20-foot ISO container",
+              "towed sonar",
+              "active sonar",
+              "passive sonar",
+              "uncrewed surface vessels"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "Sea Tracker combines rapidly deployable submarine detection with active and passive towed-array integration, making it a direct fit for underwater detection, classification, tracking and experimentation.",
+                "matchClass": "derived",
+                "confidence": "high"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The system is designed for uncrewed and non-traditionally crewed platforms, creating a credible path to add persistent undersea sensing to autonomous maritime patrol concepts.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "sea-lancer-towed-sonar-arrays",
+            "name": "Sea Lancer Towed Sonar Arrays",
+            "summary": "Extend detection beyond a ship's hull and build a clearer picture of the undersea environment. The Sea Lancer family combines active and passive towed-sonar options with an open modular architecture for detection, localization and classification across crewed and uncrewed surface or subsurface platforms.",
+            "capabilityType": "Active and passive towed-sonar family",
+            "features": [
+              "Detection, localization and classification across the acoustic spectrum",
+              "Open modular architecture with interoperable and interchangeable subsystems",
+              "Support for bi-static and multi-static operations across onboard and offboard sensors"
+            ],
+            "applications": [
+              "Long-range submarine and torpedo-threat detection",
+              "Surface and subsurface platform situational awareness",
+              "Crewed, optionally crewed and uncrewed anti-submarine-warfare missions"
+            ],
+            "technicalTags": [
+              "Sea Lancer",
+              "towed arrays",
+              "active sonar",
+              "passive sonar",
+              "multistatic sonar",
+              "submarine detection"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "Sea Lancer's detection, localization and classification functions give operators the acoustic coverage needed to find and understand submarine and torpedo activity across wider areas.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          {
+            "slug": "sea-searcher-hull-mounted-sonar-and-transducers",
+            "name": "Sea Searcher Hull-Mounted Sonar & Transducers",
+            "summary": "Give a ship a continuous inner layer of underwater awareness. Sea Searcher combines digital hull-mounted sonar with acoustic-transducer engineering to support navigation, early threat detection, target identification and tracking for surface-combatant and submarine missions.",
+            "capabilityType": "Digital hull-mounted sonar and acoustic transducers",
+            "features": [
+              "Fully digital hull-mounted-sonar architecture",
+              "Acoustic transducers designed and manufactured for ship, submarine and uncrewed-vehicle sensors",
+              "Navigation, early warning, target identification and tracking functions"
+            ],
+            "applications": [
+              "Close-range submarine detection and tracking",
+              "Ship navigation and underwater situational awareness",
+              "Inner-layer anti-submarine warfare and torpedo defence"
+            ],
+            "technicalTags": [
+              "Sea Searcher",
+              "S2150",
+              "hull-mounted sonar",
+              "acoustic transducers",
+              "underwater awareness",
+              "surface combatants"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "Hull-mounted sonar provides persistent shipboard detection, classification and tracking at the centre of an integrated underwater-warfare picture.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          {
+            "slug": "sea-revealer-sonobuoys",
+            "name": "Sea Revealer Sonobuoys",
+            "summary": "Move submarine detection beyond the ship and across a larger search area. Sea Revealer includes active, passive and environmental sonobuoy variants for deployment from aircraft or ships, with Canadian-specification products and emerging integration paths for uncrewed aircraft.",
+            "capabilityType": "Air- and ship-deployable acoustic sonobuoy family",
+            "features": [
+              "Active, passive and environmental sonobuoy variants",
+              "Canadian-specification products designed for submarine detection and localization",
+              "Integration development for uncrewed aerial vehicles"
+            ],
+            "applications": [
+              "Distributed submarine detection and tracking",
+              "Airborne and shipborne acoustic search patterns",
+              "Environmental measurement supporting anti-submarine-warfare operations"
+            ],
+            "technicalTags": [
+              "Sea Revealer",
+              "sonobuoys",
+              "airborne ASW",
+              "passive acoustics",
+              "active acoustics",
+              "uncrewed aircraft"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "Deployable sonobuoys distribute acoustic sensors across a search area so teams can detect, localize and track submarine contacts beyond a single ship's organic sensor range.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          {
+            "slug": "river-class-undersea-warfare-lifecycle-support",
+            "name": "River-Class Undersea-Warfare Lifecycle Support",
+            "summary": "Carry complex sonar and torpedo-defence systems from the yard into operational service. Ultra Maritime's River-class scope covers engineering support, spares, shore installation, sea trials, final acceptance and readiness activity for the Royal Canadian Navy's new surface-combatant fleet.",
+            "capabilityType": "Naval undersea-warfare integration and lifecycle support",
+            "features": [
+              "Engineering support through installation, trials and acceptance",
+              "Spares provisioning and operational-readiness activity",
+              "Canadian support for hull-mounted sonar and torpedo-defence elements"
+            ],
+            "applications": [
+              "River-class Destroyer build and acceptance",
+              "Transition of undersea-warfare systems into operational service",
+              "Long-term fleet readiness and domestic support capacity"
+            ],
+            "technicalTags": [
+              "River-class Destroyer",
+              "naval integration",
+              "sea trials",
+              "acceptance",
+              "spares",
+              "lifecycle support"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The lifecycle scope helps bring the River-class underwater-warfare sensors and defensive systems through integration, trials and acceptance into sustained fleet readiness.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Defence Research and Development Canada",
+            "relationshipType": "Sea Tracker experimentation partner",
+            "publicSummary": "Ultra Maritime is providing Sea Tracker to DRDC for experimentation and development of next-generation anti-submarine-warfare concepts."
+          },
+          {
+            "relatedOrganizationName": "COVE",
+            "relationshipType": "At-sea testing collaboration",
+            "publicSummary": "COVE is collaborating with Ultra Maritime Canada, DRDC and ACOA on the containerized at-sea towed-array testing initiative in Dartmouth."
+          },
+          {
+            "relatedOrganizationName": "Atlantic Canada Opportunities Agency",
+            "relationshipType": "Project support and ecosystem development",
+            "publicSummary": "ACOA has provided project support and advocacy for Ultra Maritime's Canadian defence and marine work and is identified as a supporter of the Sea Tracker initiative."
+          },
+          {
+            "relatedOrganizationName": "Lockheed Martin Canada",
+            "relationshipType": "River-class systems and lifecycle contracting",
+            "publicSummary": "Lockheed Martin Canada has awarded Ultra Maritime Canadian Surface Combatant and River-class work covering hull-mounted sonar production and undersea-warfare lifecycle support."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "ultra-description-evidence",
+          "sourceId": "ultra-canada-acoa-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "ACOA identifies Ultra Maritime's Dartmouth base as a Canadian undersea-warfare operation that manufactures or integrates sonobuoys, hull-mounted sonar and towed acoustic arrays and supports Royal Canadian Navy and allied naval programs.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-canadian-operations-evidence",
+          "sourceId": "ultra-canada-acoa-source",
+          "fieldPath": "organization.profileData.canadianOperations",
+          "claimClass": "source_backed",
+          "excerpt": "The government profile calls Dartmouth a towed-array centre of excellence, states that the arrays are developed and built in Canada, and identifies sonobuoy, hull-sonar and towed-array work at the site.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-contact-evidence",
+          "sourceId": "ultra-contact-source",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The official contact page lists Ultra Maritime's Canadian site at 40 Atlantic Street, Dartmouth, Nova Scotia B2Y 4N2, with the public telephone number +1 902 466 7491.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-evidence-posture-evidence",
+          "sourceId": "ultra-sea-tracker-source",
+          "fieldPath": "organization.profileData.evidencePosture",
+          "claimClass": "source_backed",
+          "excerpt": "The supplied official announcement names Sea Tracker, its 20-foot ISO container format, DRDC experimentation, COVE and ACOA support; it does not identify PA-4 or the Protecteur class.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-sea-tracker-capability-evidence",
+          "sourceId": "ultra-sea-tracker-source",
+          "fieldPath": "capabilities.sea-tracker-containerized-asw-system.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra describes Sea Tracker as a modular submarine-detection capability in a standard 20-foot ISO container for uncrewed and non-traditionally crewed platforms that can integrate active, passive, surveillance and torpedo-defence towed technologies.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-sea-tracker-underwater-match-evidence",
+          "sourceId": "cove-sea-tracker-source",
+          "fieldPath": "capabilities.sea-tracker-containerized-asw-system.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Because COVE describes a containerized system for at-sea evaluation of active and passive towed arrays and DRDC experimentation on future ASW concepts, the capability is a direct fit for the public Underwater ISR mission area.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-sea-tracker-autonomy-match-evidence",
+          "sourceId": "ultra-sea-tracker-source",
+          "fieldPath": "capabilities.sea-tracker-containerized-asw-system.missionMatches.1.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The official description says Sea Tracker is designed for uncrewed and non-traditionally crewed platforms, supporting a moderate derived alignment to autonomous patrol and monitoring workflows.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "ultra-sea-lancer-capability-evidence",
+          "sourceId": "ultra-towed-array-source",
+          "fieldPath": "capabilities.sea-lancer-towed-sonar-arrays.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra's product page describes Sea Lancer as an open and modular family of towed sonar systems for detection, localization and classification across surface, subsurface, crewed and uncrewed platforms.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-sea-lancer-match-evidence",
+          "sourceId": "ultra-towed-array-source",
+          "fieldPath": "capabilities.sea-lancer-towed-sonar-arrays.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The documented detection, localization, classification and multi-platform acoustic functions map directly to the public Underwater ISR mission area.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-sea-searcher-capability-evidence",
+          "sourceId": "ultra-hull-sonar-source",
+          "fieldPath": "capabilities.sea-searcher-hull-mounted-sonar-and-transducers.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra documents the Sea Searcher family as fully digital hull-mounted sonar and acoustic transducer technology for navigation, early threat detection, target identification and tracking.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-sea-searcher-match-evidence",
+          "sourceId": "rcn-csc-factsheet-source",
+          "fieldPath": "capabilities.sea-searcher-hull-mounted-sonar-and-transducers.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The Royal Canadian Navy lists Ultra hull-mounted and towed sonar within the ship's integrated underwater-warfare system, supporting direct relevance to Underwater ISR.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-sea-revealer-capability-evidence",
+          "sourceId": "ultra-sonobuoy-source",
+          "fieldPath": "capabilities.sea-revealer-sonobuoys.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra lists Sea Revealer sonobuoys for submarine detection and tracking, identifies Canadian-specification variants, and describes integration work for uncrewed aerial vehicles.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-sea-revealer-match-evidence",
+          "sourceId": "ultra-canada-acoa-source",
+          "fieldPath": "capabilities.sea-revealer-sonobuoys.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "ACOA states that sonobuoys handled in Dartmouth are deployed from aircraft or ships to detect and localize submarines, mapping directly to Underwater ISR.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-river-support-capability-evidence",
+          "sourceId": "ultra-river-support-source",
+          "fieldPath": "capabilities.river-class-undersea-warfare-lifecycle-support.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra reports River-class contracts covering engineering support, spares, readiness activities, shore installation, sea trials and final acceptance for the new surface-combatant fleet.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-river-support-match-evidence",
+          "sourceId": "ultra-river-support-source",
+          "fieldPath": "capabilities.river-class-undersea-warfare-lifecycle-support.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The lifecycle scope supports readiness of the River-class hull-mounted sonar and torpedo-defence elements that underpin the fleet's Underwater ISR mission.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "ultra-drdc-relationship-evidence",
+          "sourceId": "ultra-sea-tracker-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra states that it is providing Sea Tracker to Defence Research and Development Canada for experimentation and development of next-generation anti-submarine-warfare concepts.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-cove-relationship-evidence",
+          "sourceId": "cove-sea-tracker-source",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies Ultra Maritime Canada as an industry partner in the containerized at-sea towed-array testing initiative and says Ultra will deliver Sea Tracker.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-acoa-relationship-evidence",
+          "sourceId": "ultra-canada-acoa-source",
+          "fieldPath": "relationships.2.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ACOA describes prior project funding, advocacy and current support for Ultra Maritime's Canadian defence and marine work, including its Mission Pod development.",
+          "confidence": "high"
+        },
+        {
+          "id": "ultra-lockheed-relationship-evidence",
+          "sourceId": "ultra-csc-order-source",
+          "fieldPath": "relationships.3.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra reports a Canadian Surface Combatant hull-mounted-sonar production order from Lockheed Martin Canada and identifies itself as the program's anti-submarine-warfare lead.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T15:04:12.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No Ultra Maritime name, legal-name, alias, umaritime.com domain, stable-slug, or proposed capability-slug match was found in published organizations, published capabilities, or pending organization candidates."
+      },
+      "reviewer_rationale": "Ultra Maritime is a high-value addition because authoritative public evidence connects its Dartmouth operation to Canadian design and production of towed arrays, sonobuoys and hull-mounted sonar; Royal Canadian Navy Halifax-class and River-class work; and a newly delivered containerized Sea Tracker system for DRDC experimentation. The profile gives BD users a clear view of the company's Canadian industrial role, the technologies it can bring to undersea missions, and the public organizations around current work. The candidate is rated high confidence because Canadian identity and programs are corroborated by ACOA, COVE, Royal Canadian Navy material and multiple first-party product or contract pages. The supplied Sea Tracker link is strong evidence for a 20-foot ISO containerized submarine-detection capability, but it does not name PA-4 or the Protecteur class. Publish the documented Sea Tracker relationship only; keep the operator-provided PA-4 context out of the public dossier until a durable public source explicitly supports it.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T15:09:16.191Z"
+    }
+  ]
+}

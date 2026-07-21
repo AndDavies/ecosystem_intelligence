@@ -1,0 +1,358 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-20T09:06:25.186Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-weekly-2026-07-20",
+    "run_type": "weekly_gap",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "ecosystem_organization"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "organization-kind:ecosystem_organization",
+      "reason": "No published or pending ecosystem organization organization is represented in the local coverage view.",
+      "score": 950
+    },
+    "status": "completed",
+    "started_at": "2026-07-20T09:02:27.514Z",
+    "completed_at": "2026-07-20T09:03:46.000Z",
+    "agent_version": "tnm-research-pipeline/1.0.0",
+    "source_queries": [
+      "CADSI about Canadian Association of Defence and Security Industries official mission CANSEC CAF Outlooks",
+      "site:defenceandsecurity.ca CADSI membership CANSEC CAF Outlooks official",
+      "Canadian Association of Defence and Security Industries official about CANSEC",
+      "Official CADSI mandate and mission page",
+      "Official CANSEC event site",
+      "Official CADSI SMB Gateway and International Program pages"
+    ],
+    "counters": {
+      "sourcesChecked": 8,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "Stopped after one high-confidence ecosystem organization candidate filled the selected coverage gap and passed source, evidence, and duplicate gates."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-cadsi",
+      "research_run_ref": "tnm-weekly-2026-07-20",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "cadsi-ecosystem-organization-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-cadsi",
+        "sourceLeadIds": [
+          "cadsi-ecosystem-organization-lead"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "CADSI may belong in True North Map because it fills the ecosystem-organization gap with official evidence of a Canada-wide defence and security industry mandate plus concrete platforms such as CANSEC, CAF Outlooks, Cyber and Digital Outlooks, Gateway, and the International Program. Evidence strength is high because the candidate relies on official CADSI pages; reviewers should verify the organization kind, categories, Ottawa location, and which programs should be visible on a public profile.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T09:03:46.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "No CADSI, AICDS, defenceandsecurity.ca, stable-slug, legal-name, alias, or normalized-name match was found in published organization rows or local typed candidate batches."
+        },
+        "sources": [
+          {
+            "id": "cadsi-mandate-source",
+            "title": "CADSI Our Mandate and Mission",
+            "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+            "publisher": "Canadian Association of Defence and Security Industries",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T09:03:46.000Z",
+            "locator": "Championing Canada's Defence Industrial Base and Our Mandate sections",
+            "summary": "CADSI's official mandate page identifies the association as a national voice for Canadian defence, security, and emerging-technology companies and describes policy, procurement, industry-growth, and government-industry connection work."
+          },
+          {
+            "id": "cadsi-smb-gateway-source",
+            "title": "CADSI Small to Medium Businesses Support",
+            "url": "https://www.defenceandsecurity.ca/en/small-medium-businesses-smbs",
+            "publisher": "Canadian Association of Defence and Security Industries",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T09:03:46.000Z",
+            "locator": "What CADSI Delivers, Events That Strengthen Market Position, Gateway Suite, and committees sections",
+            "summary": "The official SMB support page describes CADSI advocacy, structured events, Gateway capability and intelligence tools, and committees that support Canadian defence small and medium businesses."
+          },
+          {
+            "id": "cansec-official-source",
+            "title": "CANSEC Official Event Site",
+            "url": "https://cansec.defenceandsecurity.ca/",
+            "publisher": "Canadian Association of Defence and Security Industries",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T09:03:46.000Z",
+            "locator": "CANSEC event overview",
+            "summary": "The official CANSEC site describes an annual Ottawa defence and security event produced by CADSI that showcases land, naval, aerospace, joint-force, security, and special-operations technologies and services."
+          },
+          {
+            "id": "cadsi-international-program-source",
+            "title": "CADSI International Program",
+            "url": "https://www.defenceandsecurity.ca/en/events-/cadsi-international-program/cadsi-international-program",
+            "publisher": "Canadian Association of Defence and Security Industries",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T09:03:46.000Z",
+            "locator": "Global Impact and Connecting Canadian industry to global opportunities sections",
+            "summary": "CADSI describes an International Program that connects Canadian defence and security industry and government participants to major global events through the Canada Pavilion, delegation support, market access, and member tools."
+          },
+          {
+            "id": "cadsi-contact-source",
+            "title": "CANSEC Contact Listing",
+            "url": "https://www.defenceandsecurity.ca/CANSEC/cansec/ContactUs",
+            "publisher": "Canadian Association of Defence and Security Industries",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-20T09:03:46.000Z",
+            "locator": "Contact Us address block",
+            "summary": "The official CANSEC contact page gives CADSI's Ottawa address and identifies CANSEC as a CADSI-produced event."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "cadsi-description-evidence",
+            "sourceId": "cadsi-mandate-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "CADSI's official mandate material describes a national defence, security, and emerging-technology industry association that connects industry and government and supports policy, procurement, and industrial-base outcomes.",
+            "confidence": "high"
+          },
+          {
+            "id": "cadsi-mandate-evidence",
+            "sourceId": "cadsi-mandate-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "The mandate page says CADSI represents Canadian defence, security, and emerging-technology companies to decision-makers and works on policy, investment, procurement, and industrial growth.",
+            "confidence": "high"
+          },
+          {
+            "id": "cadsi-cansec-program-evidence",
+            "sourceId": "cansec-official-source",
+            "fieldPath": "programs.cansec.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official CANSEC page identifies CADSI as producer of an annual Ottawa event showcasing technologies, products, and services for land, naval, aerospace, joint-force, security, and special-operations communities.",
+            "confidence": "high"
+          },
+          {
+            "id": "cadsi-outlooks-program-evidence",
+            "sourceId": "cadsi-smb-gateway-source",
+            "fieldPath": "programs.caf-and-cyber-digital-outlooks.summary",
+            "claimClass": "source_backed",
+            "excerpt": "CADSI's SMB support page describes CAF Outlooks and Cyber and Digital Outlooks as structured venues for insight into defence priorities, cyber and digital initiatives, procurement programs, and relevant decision-makers.",
+            "confidence": "high"
+          },
+          {
+            "id": "cadsi-gateway-program-evidence",
+            "sourceId": "cadsi-smb-gateway-source",
+            "fieldPath": "programs.gateway-suite.summary",
+            "claimClass": "source_backed",
+            "excerpt": "CADSI presents Gateway as a structured digital platform for capability visibility, market intelligence, supplier discovery, and strengthened participation in Canadian and allied supply chains.",
+            "confidence": "high"
+          },
+          {
+            "id": "cadsi-international-program-evidence",
+            "sourceId": "cadsi-international-program-source",
+            "fieldPath": "programs.cadsi-international-program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The International Program page describes CADSI support for Canadian defence and security community participation at major global events through Canada Pavilion presence, delegation support, and market access.",
+            "confidence": "high"
+          },
+          {
+            "id": "cadsi-location-evidence",
+            "sourceId": "cadsi-contact-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The official CANSEC contact listing gives CADSI an Ottawa, Ontario address and identifies CANSEC as a CADSI-produced event.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "cadsi",
+          "name": "CADSI",
+          "legalName": "Canadian Association of Defence and Security Industries",
+          "aliases": [
+            "AICDS",
+            "Canadian Association of Defence and Security Industries"
+          ],
+          "description": "Ottawa-based national defence and security industry association connecting Canadian firms with government, allied, buyer, policy, procurement, and market-intelligence channels through advocacy, events, digital tools, and international programs.",
+          "websiteUrl": "https://www.defenceandsecurity.ca/",
+          "entityKind": "ecosystem_organization",
+          "categories": [
+            "industry_association",
+            "cluster_operator"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Represent Canada's defence, security, and emerging-technology companies to decision-makers while supporting policy, procurement, industrial-base growth, government-industry connection, and Canadian participation in domestic and allied defence markets.",
+            "evidencePosture": "Official CADSI mandate, program, event, Gateway, International Program, and contact pages support the identity and ecosystem-support role; reviewers should decide which programs are visible on the public profile."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "cansec",
+            "name": "CANSEC",
+            "programType": "Defence and security trade show",
+            "websiteUrl": "https://cansec.defenceandsecurity.ca/",
+            "summary": "Annual Ottawa defence and security event produced by CADSI that showcases technologies, products, and services for land, naval, aerospace, joint-force, security, and special-operations communities.",
+            "cohortLabel": "Annual Ottawa event"
+          },
+          {
+            "slug": "caf-and-cyber-digital-outlooks",
+            "name": "CAF Outlooks and Cyber and Digital Outlooks",
+            "programType": "Defence market-intelligence and engagement series",
+            "websiteUrl": "https://www.defenceandsecurity.ca/en/small-medium-businesses-smbs",
+            "summary": "CADSI engagement series that gives members structured access to defence, cyber, and digital priority briefings, procurement-program context, and decision-maker forums.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "gateway-suite",
+            "name": "Gateway Suite",
+            "programType": "Digital supplier-discovery and market-intelligence platform",
+            "websiteUrl": "https://www.defenceandsecurity.ca/en/small-medium-businesses-smbs",
+            "summary": "CADSI digital platform and library combining capability visibility, market intelligence, supplier discovery, and resources for Canadian defence and security industry participation.",
+            "cohortLabel": null
+          },
+          {
+            "slug": "cadsi-international-program",
+            "name": "CADSI International Program",
+            "programType": "International market-access and Canada Pavilion support",
+            "websiteUrl": "https://www.defenceandsecurity.ca/en/events-/cadsi-international-program/cadsi-international-program",
+            "summary": "Program that helps Canadian defence and security industry and government participants engage major global events through Canada Pavilion presence, delegation support, market access, and member tools.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "cadsi-description-evidence",
+          "sourceId": "cadsi-mandate-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "CADSI's official mandate material describes a national defence, security, and emerging-technology industry association that connects industry and government and supports policy, procurement, and industrial-base outcomes.",
+          "confidence": "high"
+        },
+        {
+          "id": "cadsi-mandate-evidence",
+          "sourceId": "cadsi-mandate-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The mandate page says CADSI represents Canadian defence, security, and emerging-technology companies to decision-makers and works on policy, investment, procurement, and industrial growth.",
+          "confidence": "high"
+        },
+        {
+          "id": "cadsi-cansec-program-evidence",
+          "sourceId": "cansec-official-source",
+          "fieldPath": "programs.cansec.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official CANSEC page identifies CADSI as producer of an annual Ottawa event showcasing technologies, products, and services for land, naval, aerospace, joint-force, security, and special-operations communities.",
+          "confidence": "high"
+        },
+        {
+          "id": "cadsi-outlooks-program-evidence",
+          "sourceId": "cadsi-smb-gateway-source",
+          "fieldPath": "programs.caf-and-cyber-digital-outlooks.summary",
+          "claimClass": "source_backed",
+          "excerpt": "CADSI's SMB support page describes CAF Outlooks and Cyber and Digital Outlooks as structured venues for insight into defence priorities, cyber and digital initiatives, procurement programs, and relevant decision-makers.",
+          "confidence": "high"
+        },
+        {
+          "id": "cadsi-gateway-program-evidence",
+          "sourceId": "cadsi-smb-gateway-source",
+          "fieldPath": "programs.gateway-suite.summary",
+          "claimClass": "source_backed",
+          "excerpt": "CADSI presents Gateway as a structured digital platform for capability visibility, market intelligence, supplier discovery, and strengthened participation in Canadian and allied supply chains.",
+          "confidence": "high"
+        },
+        {
+          "id": "cadsi-international-program-evidence",
+          "sourceId": "cadsi-international-program-source",
+          "fieldPath": "programs.cadsi-international-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The International Program page describes CADSI support for Canadian defence and security community participation at major global events through Canada Pavilion presence, delegation support, and market access.",
+          "confidence": "high"
+        },
+        {
+          "id": "cadsi-location-evidence",
+          "sourceId": "cadsi-contact-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The official CANSEC contact listing gives CADSI an Ottawa, Ontario address and identifies CANSEC as a CADSI-produced event.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T09:03:46.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "No CADSI, AICDS, defenceandsecurity.ca, stable-slug, legal-name, alias, or normalized-name match was found in published organization rows or local typed candidate batches."
+      },
+      "reviewer_rationale": "CADSI may belong in True North Map because it fills the ecosystem-organization gap with official evidence of a Canada-wide defence and security industry mandate plus concrete platforms such as CANSEC, CAF Outlooks, Cyber and Digital Outlooks, Gateway, and the International Program. Evidence strength is high because the candidate relies on official CADSI pages; reviewers should verify the organization kind, categories, Ottawa location, and which programs should be visible on a public profile.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T09:06:25.186Z"
+    }
+  ]
+}

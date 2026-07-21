@@ -53,6 +53,10 @@
         "confidence": { "$ref": "#/$defs/confidence" },
         "reviewStatus": { "const": "candidate_pending" },
         "reviewerRationale": { "type": "string", "minLength": 80, "maxLength": 2000 },
+        "reviewTier": { "enum": ["green", "amber"] },
+        "inclusionScore": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "completenessScore": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "reviewWarnings": { "type": "array", "items": { "type": "string", "minLength": 10 } },
         "duplicateCheck": { "$ref": "#/$defs/duplicateCheck" },
         "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/source" } },
         "fieldEvidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/fieldEvidence" } }

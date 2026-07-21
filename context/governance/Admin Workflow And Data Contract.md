@@ -9,11 +9,7 @@ This document is the current operating contract for the private True North Map a
 
 ## Current Live State
 
-- 35 published organizations.
-- 31 published technologies.
-- Two public demand sources containing six public problem statements.
-- Seven reviewed, published technology-to-demand matches.
-- Every published demand match has moderate confidence, approved review status, a specific reviewer rationale, and citations inherited from both the technology and the demand requirement.
+Read organization, technology, public-demand, and reviewed-match counts from the canonical production database. Do not freeze live counts in this operating contract. Every published demand match requires an approved review state, a specific reviewer rationale, and citations inherited from both the technology and the demand requirement.
 
 ## Routes
 

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-government-innovation-office-2026-07-20",
+  "agentVersion": "tnm-research-pipeline/1.0.0",
+  "trigger": "manual",
+  "mode": "gap_targeted",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "government_innovation_office"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:government_innovation_office",
+    "reason": "No published or pending government innovation office organization is represented in the local coverage view.",
+    "score": 950
+  },
+  "status": "completed",
+  "startedAt": "2026-07-20T15:40:17.366Z",
+  "completedAt": "2026-07-20T16:31:28.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10
+  },
+  "sourceQueries": [
+    "site:canada.ca Department National Defence IDEaS program innovation elements challenges official",
+    "site:canada.ca Defence Research and Development Canada mandate innovation partnerships official",
+    "site:ised-isde.canada.ca Innovative Solutions Canada about program challenges official",
+    "production duplicate audit for IDEaS DRDC and Innovative Solutions Canada across published organizations pending candidates demand issuers and programs",
+    "official IDEaS Competitive Projects and Test Drives element pages",
+    "official DRDC DSST research priorities and Ottawa contact pages"
+  ],
+  "counters": {
+    "sourcesChecked": 12,
+    "leadsQualified": 3,
+    "leadsDeferred": 0,
+    "candidatesCreated": 3,
+    "duplicatesBlocked": 0
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Completed after the human reviewer approved all three source leads for candidate conversion; the run produced three evidence-mapped, non-publishable organization candidates and preserved cross-model and classification warnings for Admin Review.",
+  "outputs": {
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-government-innovation-office-2026-07-20.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-government-innovation-office-2026-07-20.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-government-innovation-office-2026-07-20.md",
+    "stagingExport": "research/ingestion/staging/tnm-government-innovation-office-2026-07-20.json"
+  }
+}

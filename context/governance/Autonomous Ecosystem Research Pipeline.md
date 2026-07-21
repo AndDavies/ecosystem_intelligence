@@ -7,9 +7,9 @@ Canonical domain: `https://truenorthmap.ca`
 
 ## Outcome
 
-True North Map now has a bounded Codex-native research system that can run manually or on a weekly schedule. It measures coverage, selects one gap, expands durable sources, creates typed source leads, produces role-appropriate private candidates, applies deterministic evidence and duplicate gates, and sends successful candidates directly into the existing private Admin Review workflow.
+True North Map now has a bounded Codex-native research system that can run manually or on a weekly schedule. It measures saturation rather than zero-count coverage alone, ranks durable sources, builds a broad prospect inventory, recovers evidence across complementary lanes, creates typed source leads, produces green or amber private candidates, and sends successful candidates directly into the existing private Admin Review workflow.
 
-The system never treats review intake as publication. The public-beta corpus currently contains 35 organizations and 31 technologies or offerings; any expansion requires a human to accept an organization or public-demand candidate in Review and use the explicit Publish checkpoint. `research_runs` is hidden audit metadata, not another queue or approval step. A completed run must place every validated candidate directly into `candidate_changes` with a generated reviewer rationale; file-only artifacts are not a successful terminal state.
+The system never treats review intake as publication. Live corpus counts come from the canonical production database rather than this operating document. Any expansion requires a human to review and accept an organization or public-demand candidate in Review and use the explicit Publish checkpoint. `research_runs` is hidden audit metadata, not another queue or approval step. A completed run must place every validated candidate directly into `candidate_changes` with a generated reviewer rationale; file-only artifacts are not a successful terminal state.
 
 ## Coordinator flow
 
@@ -19,13 +19,16 @@ flowchart TD
   B --> C["Measure supply, ecosystem-support, and demand coverage"]
   C --> D["Select and record highest-value gap"]
   D --> E["Expand Global Source Book for up to 30 minutes"]
-  E --> F["Create up to 25 typed source leads"]
-  F --> G{"Lead qualified?"}
-  G -- "No" --> H["Defer or reject with reason and follow-up"]
-  G -- "Yes" --> I["Create role-specific candidate bundle and reviewer rationale"]
+  E --> F["Enumerate 40-75 prospects across 6+ lanes"]
+  F --> G["Select strongest prospects; queue the rest"]
+  G --> H{"Core inclusion evidence resolved?"}
+  H -- "Thin but plausible" --> ER["Recover evidence across 3 distinct lanes"]
+  ER --> H
+  H -- "Hard stop" --> DFR["Defer or reject with reason and trail"]
+  H -- "Yes - automatic" --> I["Create enriched green or amber candidate and rationale"]
   I --> J["Map field evidence and derived alignment"]
   J --> K["Schema, taxonomy, URL, date, and duplicate gates"]
-  K -- "Fail" --> H
+  K -- "Fail" --> DFR
   K -- "Pass" --> L["Trusted idempotent candidate intake"]
   L --> M["Admin Review: candidate_changes pending"]
   M --> N{"Human review decision"}
@@ -38,8 +41,8 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-  CO["$tnm-autonomous-research\nCoordinator"] --> SD["$tnm-source-discovery\nDurable sources and typed leads"]
-  SD --> CB["$tnm-candidate-builder\nRole-specific bundles"]
+  CO["$tnm-autonomous-research\nCoordinator"] --> SD["$tnm-source-discovery\nProspects, recovery, typed leads"]
+  SD --> CB["$tnm-candidate-builder\nGreen or amber bundles"]
   CB --> EM["$tnm-evidence-mapper\nField citations and derived matches"]
   EM --> RS["$tnm-review-steward\nValidation and direct review intake"]
   RS --> HR["Admin Review"]
@@ -114,10 +117,13 @@ Supported public-demand issuers include NATO, the Government of Canada, DND, CAF
 
 - One coordinator per run.
 - 90 minutes maximum, including 30 minutes maximum for recursive Source Book expansion.
+- Broad discovery: 40-75 unique prospects across at least six lanes; target 10 private candidates and require at least eight unless specific exhaustion evidence is recorded.
+- Deep dossier: 1-5 named organizations across at least three complementary lanes.
 - 25 qualified leads maximum and 10 candidates maximum.
 - Canada-first geography, all active Mission Areas eligible.
 - Canonical durable HTTPS sources first.
-- Stop on unresolved duplicates, taxonomy drift, missing evidence, access failures, or rate limits.
+- Hard-stop unresolved duplicates, unresolvable identity or Canadian presence, no concrete offering or mandate, no durable evidence, defunct status, taxonomy drift, access failures, or rate limits.
+- Keep missing legal names, direct contacts, exact addresses, and incomplete relationships as amber reviewer warnings when the core inclusion case is supported.
 - Resume an interrupted manifest instead of creating a second run for the same work.
 
 ## Validation and artifacts
@@ -127,6 +133,7 @@ The executable contract is `app/src/lib/research/pipeline-schema.ts`. The orches
 ```mermaid
 flowchart LR
   R["research_run_v1"] --> V["research:smoke"]
+  P["research_prospect_inventory_v1"] --> V
   L["source_lead_batch_v2"] --> V
   C["research_candidate_batch_v2"] --> V
   V --> RP["reviews-v2/*.md"]
@@ -137,7 +144,7 @@ flowchart LR
   HR --> PC["Human Publish checkpoint"]
 ```
 
-The first test cycle created four review candidates spanning company, accelerator, incubator, and investor contracts. The second selected the uncovered research/test-centre gap and created one additional candidate. A third demand-targeted cycle created the Canadian Army and IDEaS `True North Precision` innovation challenge as a first-class public-demand candidate. All three passed with zero schema, taxonomy, evidence, or duplicate errors. The six candidates were reviewed and explicitly published on July 19: five became public organizations and one became a public demand source with a reviewed requirement.
+Earlier test cycles proved the typed organization and demand paths but also exposed low discovery yield. The July 21 upgrade adds explicit prospect, lane, recovery, backlog, green/amber, and under-target controls so a passing broad run demonstrates research coverage rather than merely producing one schema-valid record.
 
 ## Publication visibility contract
 
@@ -157,6 +164,8 @@ flowchart LR
 
 ## Schedule
 
-The production cadence is one local Codex run every Monday at 06:00 America/Halifax. The scheduled prompt invokes `$tnm-autonomous-research`, selects across supply, ecosystem support, and non-NATO or NATO public-demand gaps, uses the repository skills for each handoff, runs the same deterministic validators as a manual cycle, and stops only after every private candidate and generated reviewer rationale enter Admin Review. Failed runs notify the operator; successful runs leave their run manifest, review packet, and staging export in `research/ingestion/` as reproducible audit artifacts.
+The production cadence is one local Codex run every Monday at 06:00 America/Halifax. The scheduled task must use the five project-local skills of record under `.agents/skills/`; cached copies, older operator guides, and historical artifacts are not workflow authority. It invokes `$tnm-autonomous-research` in discovery-batch mode, resumes useful queued prospects before repeating discovery, selects saturation gaps across supply, ecosystem support, and non-NATO or NATO public demand, recursively expands the Source Book within the run timebox, enumerates 40-75 prospects across at least six lanes, targets 10 candidates, and requires at least eight unless concrete exhaustion is proven. It stops only after every private candidate and generated reviewer rationale enter Admin Review. Failed runs notify the operator; successful runs leave the prospect inventory, run manifest, review packet, and staging export in `research/ingestion/` as reproducible audit artifacts.
+
+Qualified leads continue automatically from Source Discovery to Candidate Builder. The schedule never pauses for lead approval. Deferred and rejected leads remain audit artifacts, while human editing and inclusion decisions occur only on staged candidates in Admin Review.
 
 Manual execution remains available through `pnpm research:prepare`, `pnpm research:validate`, and `pnpm research:smoke`. Scheduling grants only the private candidate-intake write performed by the trusted function. It does not grant authority to accept, publish, or mutate canonical ecosystem records.

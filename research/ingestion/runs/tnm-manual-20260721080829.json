@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260721080829",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-21T08:08:29.557Z",
+  "completedAt": "2026-07-21T08:18:35.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "CADSI and Canadian defence industry directories for unrepresented companies",
+    "Government of Canada defence innovation awards and funded-company lists",
+    "CanadaBuys defence procurement and contract histories",
+    "CANSEC and I/ITSEC exhibitor directories for Canadian companies",
+    "Canadian aerospace and defence association member directories",
+    "Canadian accelerator cohort and investor portfolio companies",
+    "PAL Aerospace official profile C4ISR newsroom and contact pages",
+    "Top Aces official company airborne-training fleet newsroom and contact pages",
+    "IMP Aerospace and Defence official profile capabilities operating units and facilities",
+    "Magellan Aerospace official corporate space rocket product and contact materials",
+    "Gastops official company condition-monitoring product and defence-news pages",
+    "Allen-Vanguard official ECM counter-UAS EQUINOX and ANCILE pages",
+    "Roshel official corporate defence-product and National Defence evidence",
+    "Simthetiq official simulation products RCN RCAF NATO news and I/ITSEC profile",
+    "QRA Corp official QVscribe FAQ requirements guide and defence customer case study",
+    "Larus Technologies official profile Total Insight Total Foresight and ISC evidence"
+  ],
+  "counters": {
+    "sourcesChecked": 32,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 6,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 24,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 7,
+    "candidatesAmber": 3
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Magellan Aerospace is amber pending portfolio-splitting review.",
+      "Simthetiq is amber pending headquarters confirmation.",
+      "QRA Corp is amber with vendor-authored defence-case-study attribution."
+    ]
+  },
+  "errors": [],
+  "stopReason": "The discovery batch reached its target of ten validated candidates after forty prospects across eight source lanes; twenty-four plausible prospects remain queued and six exact known identities were blocked.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260721080829.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260721080829.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260721080829.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260721080829-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260721080829.json"
+  }
+}

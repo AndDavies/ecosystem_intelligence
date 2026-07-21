@@ -4,7 +4,8 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandSignalCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
+import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
+import type { DemandSignalBundleV1, OrganizationBundleV2 } from "@/lib/research/pipeline-schema";
 import { suggestDemandMatches } from "@/lib/atlas/demand-matching";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { createClient } from "@/lib/supabase/server";
@@ -112,6 +113,39 @@ const candidateEditSchema = z.object({
   sourcePublisher: z.string().trim().min(1).max(240),
   sourceExcerpt: z.string().trim().min(30).max(4000)
 });
+
+const typedResearchCandidateEditSchema = z.object({
+  candidateId: z.string().uuid(),
+  rationale: z.string().trim().min(3).max(2000),
+  proposedRecordJson: z.string().trim().min(2).max(500000)
+});
+
+function normalizedIdentity(value: string) {
+  return value.trim().toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function normalizedWebsite(value: string | null | undefined) {
+  return String(value ?? "").trim().toLowerCase().replace(/\/$/, "");
+}
+
+function typedEvidenceIsComplete(record: OrganizationBundleV2 | DemandSignalBundleV1) {
+  const sourceIds = new Set(record.sources.map((source) => source.id));
+  if (record.fieldEvidence.some((evidence) => !sourceIds.has(evidence.sourceId))) return false;
+  const paths = new Set(record.fieldEvidence.map((evidence) => evidence.fieldPath));
+  if (record.candidateKind === "organization_bundle") {
+    if (!paths.has("organization.description")) return false;
+    if (record.capabilities.some((capability) => !paths.has(`capabilities.${capability.slug}.summary`))) return false;
+    if (record.programs.some((program) => !paths.has(`programs.${program.slug}.summary`))) return false;
+    if (record.relationships.some((_, index) => !paths.has(`relationships.${index}.publicSummary`))) return false;
+    return true;
+  }
+  if (!paths.has("demandSource.summary")) return false;
+  return record.requirements.every((requirement) => paths.has(`requirements.${requirement.slug}.problemStatement`));
+}
+
+function containsNonPortableCitation(value: unknown) {
+  return /turn\d+(?:search|view)\d+|【|†/.test(JSON.stringify(value));
+}
 
 function revalidateReviewPaths() {
   revalidatePath("/admin");
@@ -386,6 +420,123 @@ export async function editAtlasCandidate(formData: FormData) {
     entity_id: candidate.id,
     summary: "Reviewer edited a staged organization candidate.",
     metadata: { changed_fields: changedFields, publication_changed: false }
+  });
+  revalidateReviewPaths();
+  redirect("/admin/review?success=edited");
+}
+
+export async function editTypedResearchCandidate(formData: FormData) {
+  const user = await requireAtlasStaff("reviewer");
+  const submitted = typedResearchCandidateEditSchema.safeParse({
+    candidateId: String(formData.get("candidateId") ?? ""),
+    rationale: String(formData.get("rationale") ?? ""),
+    proposedRecordJson: String(formData.get("proposedRecordJson") ?? "")
+  });
+  if (!submitted.success) redirect("/admin/review?error=invalid-edit");
+
+  let proposedValue: unknown;
+  try {
+    proposedValue = JSON.parse(submitted.data.proposedRecordJson);
+  } catch {
+    redirect("/admin/review?error=invalid-edit");
+  }
+
+  const supabase = await createClient({ writeCookies: true });
+  const { data: candidate } = await supabase
+    .from("candidate_changes")
+    .select("id, candidate_kind, proposed_record, status")
+    .eq("id", submitted.data.candidateId)
+    .single();
+  if (!candidate || candidate.status !== "pending" || !["organization_bundle", "demand_signal_bundle"].includes(candidate.candidate_kind)) {
+    redirect("/admin/review?error=invalid-edit");
+  }
+
+  const organization = candidate.candidate_kind === "organization_bundle" ? parseOrganizationBundleV2(proposedValue) : null;
+  const demand = candidate.candidate_kind === "demand_signal_bundle" ? parseDemandSignalCandidate(proposedValue) : null;
+  const parsedRecord = organization?.success ? organization.data : demand?.success ? demand.data : null;
+  if (!parsedRecord || parsedRecord.candidateId !== (candidate.proposed_record as { candidateId?: string } | null)?.candidateId || !typedEvidenceIsComplete(parsedRecord) || containsNonPortableCitation(parsedRecord)) {
+    redirect("/admin/review?error=invalid-edit");
+  }
+
+  const [{ data: domains }, { data: missions }] = await Promise.all([
+    supabase.from("technical_domains").select("slug").eq("publication_status", "published"),
+    supabase.from("mission_areas").select("slug").eq("publication_status", "published")
+  ]);
+  const domainSlugs = new Set((domains ?? []).map((domain) => domain.slug));
+  const missionSlugs = new Set((missions ?? []).map((mission) => mission.slug));
+  const taxonomyIsValid = parsedRecord.candidateKind === "organization_bundle"
+    ? parsedRecord.capabilities.every((capability) =>
+        capability.technicalDomainSlugs.every((slug) => domainSlugs.has(slug))
+        && capability.missionMatches.every((match) => missionSlugs.has(match.missionAreaSlug)))
+    : parsedRecord.requirements.every((requirement) =>
+        requirement.technicalDomainSlugs.every((slug) => domainSlugs.has(slug))
+        && requirement.missionAreaSlugs.every((slug) => missionSlugs.has(slug)));
+  if (!taxonomyIsValid) redirect("/admin/review?error=invalid-edit");
+
+  let duplicateCheck = parsedRecord.duplicateCheck;
+  if (parsedRecord.candidateKind === "organization_bundle") {
+    const { data: organizations } = await supabase.from("organizations").select("id, name, slug, website_url").limit(2000);
+    const candidateName = normalizedIdentity(parsedRecord.organization.name);
+    const candidateWebsite = normalizedWebsite(parsedRecord.organization.websiteUrl);
+    const matches = (organizations ?? []).filter((existing) =>
+      existing.slug === parsedRecord.organization.slug
+      || normalizedIdentity(existing.name) === candidateName
+      || normalizedWebsite(existing.website_url) === candidateWebsite);
+    duplicateCheck = {
+      ...parsedRecord.duplicateCheck,
+      status: matches.length ? "possible_match" : "clear",
+      checkedAt: new Date().toISOString(),
+      matches: matches.map((match) => ({ id: match.id, name: match.name, matchedBy: "edited organization identity" })),
+      note: matches.length
+        ? "The edited identity may match a published organization and requires merge or duplicate resolution."
+        : "The edited identity was rechecked against published organizations and no likely duplicate was found."
+    };
+    parsedRecord.duplicateCheck = duplicateCheck;
+  } else {
+    const { data: demandSources } = await supabase.from("demand_sources").select("id, slug, title").limit(2000);
+    const demandName = normalizedIdentity(parsedRecord.demandSource.title);
+    const hasPublishedMatch = (demandSources ?? []).some((source) =>
+      source.slug === parsedRecord.demandSource.slug || normalizedIdentity(source.title) === demandName);
+    if (hasPublishedMatch) redirect("/admin/review?error=duplicate-unresolved");
+    duplicateCheck = {
+      ...parsedRecord.duplicateCheck,
+      status: "clear",
+      checkedAt: new Date().toISOString(),
+      matches: [],
+      note: "The edited public-demand identity was rechecked against published demand sources and no likely duplicate was found."
+    };
+    parsedRecord.duplicateCheck = duplicateCheck;
+  }
+
+  const { error: updateError } = await supabase
+    .from("candidate_changes")
+    .update({
+      proposed_record: parsedRecord,
+      field_evidence: parsedRecord.fieldEvidence,
+      duplicate_check: duplicateCheck,
+      reviewer_rationale: parsedRecord.reviewerRationale,
+      confidence: parsedRecord.confidence,
+      status: "pending",
+      updated_at: new Date().toISOString()
+    })
+    .eq("id", candidate.id);
+  if (updateError) redirect("/admin/review?error=edit-failed");
+
+  await supabase.from("review_decisions").insert({
+    candidate_change_id: candidate.id,
+    reviewer_id: user.id,
+    decision: "edit",
+    field_decisions: [{ field: "proposed_record", decision: "edited" }],
+    rationale: submitted.data.rationale
+  });
+  await supabase.from("audit_events").insert({
+    actor_id: user.id,
+    actor_role: user.role,
+    event_type: "typed_candidate_edited",
+    entity_type: "candidate_change",
+    entity_id: candidate.id,
+    summary: "Reviewer edited a typed research candidate.",
+    metadata: { candidate_kind: candidate.candidate_kind, publication_changed: false }
   });
   revalidateReviewPaths();
   redirect("/admin/review?success=edited");

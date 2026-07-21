@@ -20,7 +20,7 @@ The active release is an independent, English-only Canadian Public Beta created 
 - Public browsing, evidence, profiles, and exports remain free.
 - Google OAuth and passwordless email sign-in are used only for private Working Lists, contributions, connection requests, and account management.
 - Public feedback, consent-backed updates, and contact remain available without authentication.
-- The current corpus contains 35 reviewed organizations and 31 reviewed technologies or offerings. Expansion remains evidence-backed and review-first; no jurisdiction is padded to imply coverage.
+- Read current corpus counts from the canonical production database. Expansion remains evidence-backed and review-first; no jurisdiction is padded to imply coverage.
 - `https://truenorthmap.ca` is the canonical indexable production URL; the former Vercel URL redirects to it and private workflows remain blocked from search.
 - The product is not an official government, military, procurement, or industry-association directory.
 - Introduction requests are privately reviewed and manually brokered; no personal contact details or automatic introductions are exposed.
@@ -227,7 +227,7 @@ Every source is classified as `public`, `permissioned`, or `internal`.
 Supported entry paths:
 
 1. editor stages a URL or private PDF
-2. approved research agents stage durable public-source leads
+2. trusted research agents qualify durable public-source leads and stage enriched private candidates
 3. an authenticated organization submits a claim or correction
 4. an editor manually drafts or amends a record
 
@@ -297,7 +297,7 @@ The clean public seed began with six previously validated organizations and thei
 - GeoSpectrum Technologies
 - Open Ocean Robotics
 
-The first reviewed Underwater ISR expansion added 12 source-backed organizations and technologies through the canonical review workflow, bringing the map to 18 records. A second 12-organization national expansion was field reviewed, approved with substantive rationale, and promoted atomically on July 17, 2026, bringing the live map to 30 organizations and 30 technologies. Five further typed research candidates and one Canadian public-demand source were subsequently reviewed and published. The live corpus now contains 35 organizations, 31 technologies or offerings, six public demand requirements, and seven reviewed technology-to-demand matches with dual-source citations. The fifteen scaffold organizations and all placeholder rows remain excluded. Future expansion remains source-backed and review-first rather than numerically frozen or padded.
+The first reviewed Underwater ISR expansion added 12 source-backed organizations and technologies through the canonical review workflow, bringing the map to 18 records. A second 12-organization national expansion was field reviewed, approved with substantive rationale, and promoted atomically on July 17, 2026, bringing the live map to 30 organizations and 30 technologies. Five further typed research candidates and one Canadian public-demand source were subsequently reviewed and published. That July 19 snapshot contained 35 organizations, 31 technologies or offerings, six public demand requirements, and seven reviewed technology-to-demand matches with dual-source citations. The fifteen scaffold organizations and all placeholder rows remain excluded. Current totals come from production; future expansion remains source-backed and review-first rather than numerically frozen or padded.
 
 ## Acceptance criteria
 

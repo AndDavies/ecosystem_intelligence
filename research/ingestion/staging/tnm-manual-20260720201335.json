@@ -1,0 +1,378 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-20T20:18:02.745Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260720201335",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": [
+        "federal_government"
+      ]
+    },
+    "selected_gap": {
+      "coverageView": "demand",
+      "dimension": "demand-issuer-type:federal_government",
+      "reason": "No published or pending public demand source currently represents the federal government issuer lane.",
+      "score": 925
+    },
+    "status": "completed",
+    "started_at": "2026-07-20T20:13:35.473Z",
+    "completed_at": "2026-07-20T20:15:10.000Z",
+    "agent_version": "tnm-research-pipeline/1.1.0",
+    "source_queries": [
+      "site:canada.ca Northern Operational Support Hubs official",
+      "site:canada.ca Our North Strong and Free 2024 defence policy official",
+      "site:canada.ca Northern Operational Support Hubs implementation locations",
+      "site:canada.ca Defence Industrial Strategy Northern Operational Support Hubs"
+    ],
+    "counters": {
+      "sourcesChecked": 4,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "One high-confidence enriched federal-government demand candidate completed the selected coverage gap and reached the review-steward handoff within the bounded run."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-canada-northern-operational-support-hubs",
+      "research_run_ref": "tnm-manual-20260720201335",
+      "candidate_kind": "demand_signal_bundle",
+      "schema_version": "demand_signal_bundle_v1",
+      "source_lead_ids": [
+        "lead-canada-northern-operational-support-hubs"
+      ],
+      "target_entity_type": "demand_source",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "demand_signal_bundle_v1",
+        "candidateKind": "demand_signal_bundle",
+        "candidateId": "candidate-canada-northern-operational-support-hubs",
+        "sourceLeadIds": [
+          "lead-canada-northern-operational-support-hubs"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "This candidate is worthy of inclusion because it fills the federal-government demand gap with a current, funded Canadian Arctic program rather than a generic policy theme. Four official Government of Canada sources establish the $2.67 billion commitment, 2024-2044 horizon, confirmed hub and node locations, distributed logistics model, intended operational outcomes, partner posture, dual-use infrastructure, and public engagement contact. Reviewers should verify the three issuer roles, decide whether the two requirements are the right level of granularity, and confirm that the derived Arctic Domain Awareness mapping does not overstate this infrastructure and sustainment program as a sensing requirement.",
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-20T20:15:10.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live canonical and pending-demand checks found no Northern Operational Support Hubs, NOSH, Northern Operational Support Nodes, NOSN, canonical URL, or demand-source slug match. Existing demand records are the Canadian Army True North Precision challenge and NATO aggregated demand source."
+        },
+        "sources": [
+          {
+            "id": "source-northern-operational-support-hubs-program",
+            "title": "Northern Operational Support Hubs (NOSH)",
+            "url": "https://www.canada.ca/en/department-national-defence/services/northern-operational-support-hubs.html",
+            "publisher": "National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-03-13T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:15:10.000Z",
+            "locator": "Vision, Hubs and nodes, Site locations, Arctic and northern investment, Engagement and consultation, and Contact us sections",
+            "summary": "The current official program page documents a $2.67 billion, 2024-2044 network of Arctic hubs and nodes intended to improve Canadian Armed Forces presence, reach, mobility, responsiveness, logistical support, and year-round operations."
+          },
+          {
+            "id": "source-nosh-first-locations-announcement",
+            "title": "Minister Blair announces First Northern Operational Support Hub locations",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2025/03/minister-blair-announces-first-northern-operational-support-hub-locations.html",
+            "publisher": "National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2025-03-06T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:15:10.000Z",
+            "locator": "Announcement, Quick facts, and first-location details",
+            "summary": "The official announcement confirms Iqaluit, Inuvik, and Yellowknife as initial hubs and states that scalable infrastructure, airstrips, logistics facilities, and equipment are intended to increase Arctic operational reach, responsiveness, and year-round presence."
+          },
+          {
+            "id": "source-our-north-strong-free-policy",
+            "title": "Our North, Strong and Free: A Renewed Vision for Canada's Defence",
+            "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/north-strong-free-2024.html",
+            "publisher": "National Defence",
+            "sourceKind": "official_policy",
+            "publishedAt": "2024-05-03T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:15:10.000Z",
+            "locator": "Defending Canada and Arctic investment sections; Annex A funding",
+            "summary": "Canada's renewed defence policy is the strategic and funding anchor for Northern Operational Support Hubs and broader investments intended to assert sovereignty, improve Arctic presence, and strengthen defence capability."
+          },
+          {
+            "id": "source-canada-defence-industrial-strategy-nosh",
+            "title": "Canada's Defence Industrial Strategy",
+            "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+            "publisher": "Government of Canada",
+            "sourceKind": "official_policy",
+            "publishedAt": "2026-03-01T00:00:00.000Z",
+            "accessedAt": "2026-07-20T20:15:10.000Z",
+            "locator": "Working with Northern and Arctic Partners and NOSH implementation paragraphs",
+            "summary": "The current whole-of-government strategy describes insufficient northern infrastructure, the NOSH investment and 10-20 year delivery horizon, dual-use airports, seaports, medical and power infrastructure, and collaboration with Indigenous and regional partners."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-nosh-demand-summary",
+            "sourceId": "source-northern-operational-support-hubs-program",
+            "fieldPath": "demandSource.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official program page describes a $2.67 billion network of hubs and nodes from 2024 to 2044 intended to expand CAF presence, reach, mobility, responsiveness, logistics, and year-round operations in the Canadian Arctic and North.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nosh-operational-gap",
+            "sourceId": "source-northern-operational-support-hubs-program",
+            "fieldPath": "requirements.arctic-operational-reach-and-sustainment.problemStatement",
+            "claimClass": "source_backed",
+            "excerpt": "The program identifies access and logistical constraints that limit faster, longer, and more effective Arctic operations and calls for hubs, nodes, transportation corridors, facilities, pre-positioned materiel, and multi-modal support.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nosh-operational-end-state",
+            "sourceId": "source-nosh-first-locations-announcement",
+            "fieldPath": "requirements.arctic-operational-reach-and-sustainment.desiredEndState",
+            "claimClass": "source_backed",
+            "excerpt": "The first-location announcement says scalable infrastructure and logistical stations should extend operational reach, reduce constraints, enable rapid activation, and sustain greater year-round military presence in the Arctic.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nosh-dual-use-gap",
+            "sourceId": "source-canada-defence-industrial-strategy-nosh",
+            "fieldPath": "requirements.dual-use-northern-infrastructure-and-partnerships.problemStatement",
+            "claimClass": "source_backed",
+            "excerpt": "The strategy states that northern infrastructure is stretched and insufficient for the scale and complexity of military, industrial, and civilian activity and requires climate-resilient, strategically located, dual-use investment.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nosh-dual-use-end-state",
+            "sourceId": "source-northern-operational-support-hubs-program",
+            "fieldPath": "requirements.dual-use-northern-infrastructure-and-partnerships.desiredEndState",
+            "claimClass": "source_backed",
+            "excerpt": "The program describes collaboration with governments, Indigenous partners, communities, academia, industry, and allies, plus roads, runways, seaports, medical capacity, power generation, employment, training, and procurement benefits where feasible.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nosh-locations",
+            "sourceId": "source-northern-operational-support-hubs-program",
+            "fieldPath": "demandSource.confirmedLocations",
+            "claimClass": "source_backed",
+            "excerpt": "The current program page lists hubs at Inuvik, Iqaluit, Resolute, Whitehorse, and Yellowknife and nodes at Cambridge Bay and Rankin Inlet.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nosh-investment",
+            "sourceId": "source-northern-operational-support-hubs-program",
+            "fieldPath": "demandSource.investment",
+            "claimClass": "source_backed",
+            "excerpt": "The Government of Canada states that it is investing $2.67 billion in the Northern Operational Support Hubs network between 2024 and 2044.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nosh-contact",
+            "sourceId": "source-northern-operational-support-hubs-program",
+            "fieldPath": "demandSource.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The official program page provides NOSHEngagements-EngagementsCSON@forces.gc.ca for stakeholders and partners and a separate DND media contact.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nosh-arctic-mapping",
+            "sourceId": "source-our-north-strong-free-policy",
+            "fieldPath": "requirements.arctic-operational-reach-and-sustainment.missionAreaSlugs",
+            "claimClass": "derived",
+            "excerpt": "Analyst mapping: the policy and program position sustained northern presence and response as an enabling layer for Arctic sovereignty and awareness, but NOSH is not itself a sensing capability.",
+            "confidence": "moderate"
+          }
+        ],
+        "issuers": [
+          {
+            "slug": "government-of-canada",
+            "name": "Government of Canada",
+            "issuerType": "federal_government",
+            "jurisdiction": "Canada",
+            "parentIssuerSlug": null,
+            "role": "issuer"
+          },
+          {
+            "slug": "national-defence",
+            "name": "Department of National Defence",
+            "issuerType": "department",
+            "jurisdiction": "Canada",
+            "parentIssuerSlug": "government-of-canada",
+            "role": "co_issuer"
+          },
+          {
+            "slug": "canadian-armed-forces",
+            "name": "Canadian Armed Forces",
+            "issuerType": "armed_forces",
+            "jurisdiction": "Canada",
+            "parentIssuerSlug": "national-defence",
+            "role": "beneficiary"
+          }
+        ],
+        "demandSource": {
+          "slug": "canada-northern-operational-support-hubs",
+          "title": "Northern Operational Support Hubs: Arctic operational reach and sustainment",
+          "sourceKind": "capability_plan",
+          "commitmentLevel": "programmatic",
+          "classificationLabel": "PUBLIC",
+          "summary": "A funded Government of Canada program to build a distributed network of northern hubs, nodes, transportation links, logistics, infrastructure, pre-positioned resources, and scalable multi-modal support so the Canadian Armed Forces can respond faster, remain longer, and operate more effectively across the Arctic while creating dual-use benefits where feasible.",
+          "publishedOn": "2026-03-13"
+        },
+        "requirements": [
+          {
+            "slug": "arctic-operational-reach-and-sustainment",
+            "title": "Arctic operational reach and sustainment",
+            "problemStatement": "Access, logistics, infrastructure, distance, and limited pre-positioned support constrain how quickly the Canadian Armed Forces can reach remote Arctic locations and how long and effectively personnel, aircraft, equipment, command functions, maintenance, and medical support can remain in operation.",
+            "desiredEndState": "A distributed hub-and-node network with transportation corridors, scalable multi-modal support, pre-positioned resources, logistics, deployed command-and-control support, air staging, maintenance, medical facilities, and other infrastructure enables faster response, longer deployments, persistent presence, and more effective year-round Arctic operations.",
+            "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+            "missionAreaSlugs": [
+              "arctic-domain-awareness"
+            ],
+            "technicalDomainSlugs": [
+              "aerospace-and-mobility",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ]
+          },
+          {
+            "slug": "dual-use-northern-infrastructure-and-partnerships",
+            "title": "Dual-use northern infrastructure and partnerships",
+            "problemStatement": "Northern infrastructure is insufficient for the combined scale and complexity of military, government, industrial, community, and civilian activity, while durable delivery requires climate resilience, meaningful Indigenous engagement, coordinated public partners, and practical regional benefits.",
+            "desiredEndState": "Strategically located, climate-resilient infrastructure and services support Canadian Armed Forces and federal operational needs while collaborating with Indigenous and northern partners and providing shared roads, runways, seaports, medical capacity, energy systems, employment, training, and regional procurement benefits where feasible.",
+            "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+            "missionAreaSlugs": [],
+            "technicalDomainSlugs": [
+              "aerospace-and-mobility",
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration"
+            ]
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-nosh-demand-summary",
+          "sourceId": "source-northern-operational-support-hubs-program",
+          "fieldPath": "demandSource.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official program page describes a $2.67 billion network of hubs and nodes from 2024 to 2044 intended to expand CAF presence, reach, mobility, responsiveness, logistics, and year-round operations in the Canadian Arctic and North.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nosh-operational-gap",
+          "sourceId": "source-northern-operational-support-hubs-program",
+          "fieldPath": "requirements.arctic-operational-reach-and-sustainment.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "The program identifies access and logistical constraints that limit faster, longer, and more effective Arctic operations and calls for hubs, nodes, transportation corridors, facilities, pre-positioned materiel, and multi-modal support.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nosh-operational-end-state",
+          "sourceId": "source-nosh-first-locations-announcement",
+          "fieldPath": "requirements.arctic-operational-reach-and-sustainment.desiredEndState",
+          "claimClass": "source_backed",
+          "excerpt": "The first-location announcement says scalable infrastructure and logistical stations should extend operational reach, reduce constraints, enable rapid activation, and sustain greater year-round military presence in the Arctic.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nosh-dual-use-gap",
+          "sourceId": "source-canada-defence-industrial-strategy-nosh",
+          "fieldPath": "requirements.dual-use-northern-infrastructure-and-partnerships.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "The strategy states that northern infrastructure is stretched and insufficient for the scale and complexity of military, industrial, and civilian activity and requires climate-resilient, strategically located, dual-use investment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nosh-dual-use-end-state",
+          "sourceId": "source-northern-operational-support-hubs-program",
+          "fieldPath": "requirements.dual-use-northern-infrastructure-and-partnerships.desiredEndState",
+          "claimClass": "source_backed",
+          "excerpt": "The program describes collaboration with governments, Indigenous partners, communities, academia, industry, and allies, plus roads, runways, seaports, medical capacity, power generation, employment, training, and procurement benefits where feasible.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nosh-locations",
+          "sourceId": "source-northern-operational-support-hubs-program",
+          "fieldPath": "demandSource.confirmedLocations",
+          "claimClass": "source_backed",
+          "excerpt": "The current program page lists hubs at Inuvik, Iqaluit, Resolute, Whitehorse, and Yellowknife and nodes at Cambridge Bay and Rankin Inlet.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nosh-investment",
+          "sourceId": "source-northern-operational-support-hubs-program",
+          "fieldPath": "demandSource.investment",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada states that it is investing $2.67 billion in the Northern Operational Support Hubs network between 2024 and 2044.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nosh-contact",
+          "sourceId": "source-northern-operational-support-hubs-program",
+          "fieldPath": "demandSource.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The official program page provides NOSHEngagements-EngagementsCSON@forces.gc.ca for stakeholders and partners and a separate DND media contact.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nosh-arctic-mapping",
+          "sourceId": "source-our-north-strong-free-policy",
+          "fieldPath": "requirements.arctic-operational-reach-and-sustainment.missionAreaSlugs",
+          "claimClass": "derived",
+          "excerpt": "Analyst mapping: the policy and program position sustained northern presence and response as an enabling layer for Arctic sovereignty and awareness, but NOSH is not itself a sensing capability.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-20T20:15:10.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live canonical and pending-demand checks found no Northern Operational Support Hubs, NOSH, Northern Operational Support Nodes, NOSN, canonical URL, or demand-source slug match. Existing demand records are the Canadian Army True North Precision challenge and NATO aggregated demand source."
+      },
+      "reviewer_rationale": "This candidate is worthy of inclusion because it fills the federal-government demand gap with a current, funded Canadian Arctic program rather than a generic policy theme. Four official Government of Canada sources establish the $2.67 billion commitment, 2024-2044 horizon, confirmed hub and node locations, distributed logistics model, intended operational outcomes, partner posture, dual-use infrastructure, and public engagement contact. Reviewers should verify the three issuer roles, decide whether the two requirements are the right level of granularity, and confirm that the derived Arctic Domain Awareness mapping does not overstate this infrastructure and sustainment program as a sensing requirement.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-20T20:18:02.746Z"
+    }
+  ]
+}

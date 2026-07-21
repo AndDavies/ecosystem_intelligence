@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260720235940",
+  "agentVersion": "tnm-research-pipeline/1.1.0",
+  "trigger": "manual",
+  "mode": "gap_targeted",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "accelerator",
+      "incubator",
+      "investor_funder",
+      "government_innovation_office"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kinds:accelerator-incubator-funder",
+    "reason": "User-targeted expansion of thin ecosystem-support coverage: production has one accelerator, one incubator, one investor/funder, and three government innovation offices.",
+    "score": 975
+  },
+  "status": "completed",
+  "startedAt": "2026-07-20T23:59:40.158Z",
+  "completedAt": "2026-07-21T00:05:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10
+  },
+  "sourceQueries": [
+    "official Canadian defence and dual-use accelerators",
+    "official Canadian deep-technology incubators with aerospace or defence programs",
+    "official Canadian fabrication and advanced-manufacturing incubators",
+    "NRC IRAP Defence Industry Assist official sources",
+    "BDC Defence Platform official sources",
+    "Invest Ottawa Area X.O and IO Accelerator official sources",
+    "Centech aerospace and defence corporate programs",
+    "North Forge Founders Program and fabrication facilities",
+    "official public contact and location pages",
+    "live production organization and candidate duplicate check"
+  ],
+  "counters": {
+    "sourcesChecked": 18,
+    "leadsQualified": 5,
+    "leadsDeferred": 0,
+    "candidatesCreated": 5,
+    "duplicatesBlocked": 0
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Completed the user-targeted accelerator, incubator, and funding-body cycle after five duplicate-cleared qualified leads became five enriched organization candidates with zero validation warnings; trusted private Admin Review intake remains the terminal handoff.",
+  "outputs": {
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260720235940.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260720235940.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260720235940.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260720235940.json"
+  }
+}

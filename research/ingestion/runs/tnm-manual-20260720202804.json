@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260720202804",
+  "agentVersion": "tnm-research-pipeline/1.1.0",
+  "trigger": "manual",
+  "mode": "gap_targeted",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "large-defence-prime-contractors",
+    "reason": "User-directed deep research batch for large defence prime contractors with broad Canadian portfolios, flagship programs, and public delivery relationships.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-20T20:28:04.656Z",
+  "completedAt": "2026-07-20T20:39:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10
+  },
+  "sourceQueries": [
+    "large defence prime contractors Canada official portfolio naval land air training sustainment",
+    "Lockheed Martin Canada official CMS 330 electronic warfare River-class Destroyer portfolio",
+    "General Dynamics Land Systems-Canada official LAV armoured vehicle sustainment current contract",
+    "L3Harris Canada official WESCAM aircraft missionization in-service support P-8A",
+    "Thales Canada official AJISS naval support C4ISR optronics avionics portfolio",
+    "CAE defence official training systems integration services Future Aircrew Training",
+    "Irving Shipbuilding Seaspan Shipyards official Canadian naval shipbuilding programs",
+    "Rheinmetall Canada official Mission Master C4ISR vehicle recovery sustainment CANSEC"
+  ],
+  "counters": {
+    "sourcesChecked": 35,
+    "leadsQualified": 8,
+    "leadsDeferred": 0,
+    "candidatesCreated": 8,
+    "duplicatesBlocked": 0
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Stopped after eight user-scoped large defence prime contractors were deeply researched, enriched across 24 capability families and eight flagship programs, cleared live duplicate checks, and passed typed validation for private human review.",
+  "outputs": {
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260720202804.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260720202804.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260720202804.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260720202804.json"
+  }
+}
