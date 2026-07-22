@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -75,22 +76,31 @@ export default function AboutPage() {
       }
     >
       <section className="relative mt-8 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
-        <div className="absolute inset-y-0 left-0 w-1.5 bg-[var(--atlas-signal)]" aria-hidden="true" />
-        <div className="grid gap-8 px-6 py-9 sm:px-9 sm:py-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:px-12 lg:py-16">
-          <div>
-            <p className="atlas-eyebrow">Why I built this</p>
-            <h2 className="mt-4 max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-4xl lg:text-5xl">
-              Canada is building more than most people can see.
-            </h2>
-          </div>
-          <div className="flex flex-col justify-between gap-8 border-l border-[var(--atlas-border)] pl-6 sm:pl-8">
-            <p className="text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-lg">
+        <div className="relative aspect-[16/9] min-h-[220px] sm:aspect-[2/1] lg:aspect-[16/7]">
+          <Image
+            src="/imagery/about-canada-defence-network.jpg"
+            alt="Illustration of a fighter aircraft and drone network above a connected map of Canada."
+            fill
+            priority
+            sizes="(min-width: 1280px) 1200px, 100vw"
+            className="object-cover object-[68%_center] sm:object-center"
+          />
+        </div>
+        <div className="p-5 sm:absolute sm:inset-y-6 sm:left-6 sm:flex sm:w-[48%] sm:items-center sm:p-0 lg:inset-y-8 lg:left-8 lg:w-[44%]">
+          <div className="rounded-[1.5rem] border border-white/70 bg-[rgba(250,250,248,0.94)] p-6 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:p-7 lg:p-8">
+            <div className="border-l-4 border-[var(--atlas-signal)] pl-4 sm:pl-5">
+              <p className="atlas-eyebrow">Why I built this</p>
+              <h2 className="mt-4 max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-[34px] lg:text-[40px]">
+                Canada is building more than most people can see.
+              </h2>
+            </div>
+            <p className="mt-6 text-sm leading-7 text-[var(--atlas-ink-soft)] sm:text-[15px]">
               I did not start True North Map because Canada lacked capability. I started it because remarkable capability was too often scattered across regions, programs, companies, and conversations that did not yet connect.
             </p>
-            <p className="text-sm font-bold leading-6 text-[var(--atlas-primary)]">
+            <p className="mt-5 text-sm font-bold leading-6 text-[var(--atlas-primary)]">
               The opportunity is to make what Canada can do easier to find, easier to understand, and easier to bring together.
             </p>
-            <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Andrew Davies &middot; Founder, True North Map</p>
+            <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Andrew Davies &middot; Founder, True North Map</p>
           </div>
         </div>
       </section>
