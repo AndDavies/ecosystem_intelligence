@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow, Inter } from "next/font/google";
 import { PublicBetaExperience } from "@/components/atlas/public-beta-experience";
 import { PublicBetaInsights } from "@/components/atlas/public-beta-insights";
+import { SkipLink } from "@/components/atlas/skip-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
@@ -57,11 +58,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://api.maptiler.com" crossOrigin="anonymous" />
       </head>
       <body suppressHydrationWarning className={`${barlow.variable} ${inter.variable}`}>
+        <SkipLink />
         <JsonLd data={[
           { "@context": "https://schema.org", "@type": "WebSite", name: siteName, url: siteUrl, description: siteDescription, inLanguage: "en-CA", potentialAction: { "@type": "SearchAction", target: `${siteUrl}/?q={search_term_string}`, "query-input": "required name=search_term_string" } },
           { "@context": "https://schema.org", "@type": "Dataset", name: "Canadian Defence and Dual-Use Ecosystem Map", description: siteDescription, url: siteUrl, creator: { "@type": "Person", name: "Andrew Davies" }, spatialCoverage: { "@type": "Country", name: "Canada" }, inLanguage: "en-CA", isAccessibleForFree: true, license: `${siteUrl}/terms`, keywords: ["Canada", "defence", "dual-use", "ecosystem", "technology", "innovation"] }
         ]} />
-        {children}
+        <div id="main-content" tabIndex={-1} className="outline-none">
+          {children}
+        </div>
         <PublicBetaExperience />
         <PublicBetaInsights />
       </body>

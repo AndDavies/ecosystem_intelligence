@@ -66,7 +66,9 @@ async function main() {
       latencyMs: run.metrics.latencyMs,
       inputTokens: run.metrics.inputTokens,
       cachedInputTokens: run.metrics.cachedInputTokens,
-      outputTokens: run.metrics.outputTokens
+      outputTokens: run.metrics.outputTokens,
+      candidateCount: run.metrics.candidateCount,
+      failureClass: run.metrics.failureClass
     }));
   }
 

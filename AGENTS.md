@@ -185,6 +185,8 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-21`: Hardened Ask True North with deterministic live-snapshot preselection capped at 16 organizations, sanitized provider failure classes, private candidate and failure telemetry, and safe deterministic fallback. No embedding index or second corpus was introduced, so human-published records remain immediately eligible.
+
 - `2026-07-21`: Reframed the public About page and marketing ethos around Andrew Davies's veteran and Combat Systems Engineering Officer background, his call to contribute to Canadian defence and sovereign capability, the missing shared picture he encountered, and the North Star of mapping what Canada can build and connecting the people ready to build it. Confirmed July 19 submissions and connection items are release-test fixtures and July 18 launch visuals are legacy assets excluded from the broader release.
 
 - `2026-07-21`: Reconciled the broader public-sharing package with the current production product, added current positioning and channel-specific release copy, and established that the remaining release gates are operational checks and queue readiness rather than new features or a fixed corpus target. Exact live counts must be read from production; durable public claims use rounded values.

@@ -1,5 +1,6 @@
 "use client";
 
+import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bell, CheckCircle2, LoaderCircle, MessageSquareText, Send, X } from "lucide-react";
@@ -31,12 +32,16 @@ export function PublicBetaExperience() {
   const [feedbackError, setFeedbackError] = useState("");
   const interactionCount = useRef(0);
   const automaticPromptSuppressed = useRef(false);
+  const updatesOpenedExplicitly = useRef(false);
   const feedbackGoalRef = useRef<HTMLTextAreaElement | null>(null);
   useEffect(() => {
     if (!pathIsPublicBeta(pathname)) return;
     currentPilotCohort();
 
-    const openUpdates = () => setUpdatesOpen(true);
+    const openUpdates = () => {
+      updatesOpenedExplicitly.current = true;
+      setUpdatesOpen(true);
+    };
     const openFeedback = () => {
       setUpdatesOpen(false);
       setFeedbackOpen(true);
@@ -58,7 +63,10 @@ export function PublicBetaExperience() {
     const timer = automaticPromptSuppressed.current
       ? null
       : window.setTimeout(() => {
-          if (!automaticPromptSuppressed.current) setUpdatesOpen(true);
+          if (!automaticPromptSuppressed.current) {
+            updatesOpenedExplicitly.current = false;
+            setUpdatesOpen(true);
+          }
         }, 45_000);
     const onMeaningfulInteraction = (event: MouseEvent) => {
       const target = event.target instanceof Element ? event.target.closest("a, button") : null;
@@ -68,7 +76,10 @@ export function PublicBetaExperience() {
       else if (anchor?.target === "_blank" && anchor.href.startsWith("http")) trackBetaEvent("evidence_open", { destination_host: new URL(anchor.href).hostname });
       if (automaticPromptSuppressed.current || target.closest("[data-beta-ui]")) return;
       interactionCount.current += 1;
-      if (interactionCount.current >= 2) setUpdatesOpen(true);
+      if (interactionCount.current >= 2) {
+        updatesOpenedExplicitly.current = false;
+        setUpdatesOpen(true);
+      }
     };
     document.addEventListener("click", onMeaningfulInteraction, true);
 
@@ -91,16 +102,6 @@ export function PublicBetaExperience() {
     }
     trackBetaEvent("dossier_open", { slug: pathname.split("/").pop() ?? "unknown" });
   }, [pathname]);
-
-  useEffect(() => {
-    if (!feedbackOpen) return;
-    feedbackGoalRef.current?.focus();
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setFeedbackOpen(false);
-    };
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [feedbackOpen]);
 
   if (!pathIsPublicBeta(pathname)) return null;
 
@@ -193,34 +194,45 @@ export function PublicBetaExperience() {
         }}
         className="fixed bottom-4 left-4 z-[1200] inline-flex h-11 items-center gap-2 rounded-full border border-[var(--atlas-primary)] bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white shadow-[var(--atlas-shadow-float)] transition hover:-translate-y-0.5 hover:bg-[var(--atlas-primary-hover)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(31,90,67,0.22)]"
       >
-        <MessageSquareText className="size-4" />
+        <MessageSquareText aria-hidden="true" className="size-4" />
         Give feedback
       </button>
 
-      {updatesOpen ? (
-        <aside
-          role="dialog"
-          aria-modal="false"
-          aria-labelledby="pilot-updates-title"
-          className="fixed inset-x-3 bottom-3 z-[1250] max-h-[calc(100vh-1.5rem)] overflow-y-auto rounded-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] sm:inset-x-auto sm:bottom-4 sm:right-4 sm:w-[390px]"
-        >
+      <Dialog.Root
+        open={updatesOpen}
+        modal={false}
+        onOpenChange={(open) => {
+          if (open) setUpdatesOpen(true);
+          else dismissUpdates();
+        }}
+      >
+        <Dialog.Portal>
+          <Dialog.Content
+            data-beta-ui
+            aria-modal="false"
+            aria-describedby="pilot-updates-description"
+            onOpenAutoFocus={(event) => {
+              if (!updatesOpenedExplicitly.current) event.preventDefault();
+            }}
+            className="fixed inset-x-3 bottom-3 z-[1250] max-h-[calc(100vh-1.5rem)] overflow-y-auto rounded-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:inset-x-auto sm:bottom-4 sm:right-4 sm:w-[390px]"
+          >
           <div className="flex items-start gap-3">
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><Bell className="size-5" /></span>
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><Bell aria-hidden="true" className="size-5" /></span>
             <div className="min-w-0 flex-1">
               <p className="atlas-eyebrow">Public Beta</p>
-              <h2 id="pilot-updates-title" className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">Follow the map as it grows.</h2>
+              <Dialog.Title id="pilot-updates-title" className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">Follow the map as it grows.</Dialog.Title>
             </div>
-            <button type="button" onClick={dismissUpdates} className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss update signup"><X className="size-4" /></button>
+            <Dialog.Close asChild><button type="button" className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss update signup"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
           </div>
+          <Dialog.Description id="pilot-updates-description" className={signupState === "success" ? "sr-only" : "mt-3 text-sm leading-6 text-[var(--atlas-muted)]"}>Get occasional updates when verified coverage, connections, and new workflows are ready.</Dialog.Description>
 
           {signupState === "success" ? (
             <div className="mt-5 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-4 text-sm leading-6 text-[var(--atlas-primary)]">
-              <CheckCircle2 className="mb-2 size-5" />
+              <CheckCircle2 aria-hidden="true" className="mb-2 size-5" />
               You are on the update list. We will only send occasional product and coverage updates.
             </div>
           ) : (
             <>
-              <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">Get occasional updates when verified coverage, connections, and new workflows are ready.</p>
               <form onSubmit={submitSignup} className="mt-4 space-y-3">
                 {signupError ? <div role="alert" className="rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-xs text-[var(--atlas-danger)]">{signupError}</div> : null}
                 <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">
@@ -232,34 +244,47 @@ export function PublicBetaExperience() {
                   <span>{consentText} <Link href="/privacy" className="font-semibold text-[var(--atlas-primary)] underline">Privacy details</Link></span>
                 </label>
                 <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
-                <button type="submit" disabled={signupState === "loading"} className="atlas-primary-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60">
-                  {signupState === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Bell className="size-4" />}
+                <button type="submit" disabled={signupState === "loading"} aria-busy={signupState === "loading" || undefined} className="atlas-primary-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60">
+                  {signupState === "loading" ? <LoaderCircle aria-hidden="true" className="size-4 animate-spin" /> : <Bell aria-hidden="true" className="size-4" />}
                   Get updates
                 </button>
               </form>
             </>
           )}
-        </aside>
-      ) : null}
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
 
-      {feedbackOpen ? (
-        <div className="fixed inset-0 z-[1300] flex items-end justify-center bg-[var(--atlas-ink)]/55 p-0 backdrop-blur-[2px] sm:items-center sm:p-4" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setFeedbackOpen(false); }}>
-          <section role="dialog" aria-modal="true" aria-labelledby="pilot-feedback-title" className="max-h-[92vh] w-full overflow-y-auto rounded-t-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] sm:max-w-xl sm:rounded-2xl sm:p-6">
+      <Dialog.Root open={feedbackOpen} onOpenChange={setFeedbackOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay data-beta-ui className="fixed inset-0 z-[1300] bg-[var(--atlas-ink)]/55 backdrop-blur-[2px]" />
+          <Dialog.Content
+            data-beta-ui
+            aria-modal="true"
+            aria-describedby="pilot-feedback-description"
+            onOpenAutoFocus={(event) => {
+              if (feedbackGoalRef.current) {
+                event.preventDefault();
+                feedbackGoalRef.current.focus();
+              }
+            }}
+            className="fixed bottom-0 left-1/2 z-[1301] max-h-[92vh] w-full -translate-x-1/2 overflow-y-auto rounded-t-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:top-1/2 sm:max-w-xl sm:-translate-y-1/2 sm:rounded-2xl sm:p-6"
+          >
             <div className="flex items-start gap-3">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><MessageSquareText className="size-5" /></span>
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><MessageSquareText aria-hidden="true" className="size-5" /></span>
               <div className="min-w-0 flex-1">
                 <p className="atlas-eyebrow">Public-beta feedback</p>
-                <h2 id="pilot-feedback-title" className="mt-1 text-xl font-bold tracking-[-0.025em] text-[var(--atlas-ink)]">Tell us what would make this useful.</h2>
-                <p className="mt-2 text-sm leading-6 text-[var(--atlas-muted)]">Tell us what helped, what was missing, or what would make the map more useful in real work.</p>
+                <Dialog.Title id="pilot-feedback-title" className="mt-1 text-xl font-bold tracking-[-0.025em] text-[var(--atlas-ink)]">Tell us what would make this useful.</Dialog.Title>
+                <Dialog.Description id="pilot-feedback-description" className="mt-2 text-sm leading-6 text-[var(--atlas-muted)]">Tell us what helped, what was missing, or what would make the map more useful in real work.</Dialog.Description>
               </div>
-              <button type="button" onClick={() => setFeedbackOpen(false)} className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Close feedback form"><X className="size-4" /></button>
+              <Dialog.Close asChild><button type="button" className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Close feedback form"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
             </div>
 
             {feedbackState === "success" ? (
               <div className="mt-6 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-5 text-center text-sm leading-6 text-[var(--atlas-primary)]">
-                <CheckCircle2 className="mx-auto mb-3 size-7" />
+                <CheckCircle2 aria-hidden="true" className="mx-auto mb-3 size-7" />
                 Thank you. Your feedback is queued for the product review.
-                <button type="button" onClick={() => setFeedbackOpen(false)} className="mt-4 block w-full text-xs font-semibold text-[var(--atlas-primary)] underline">Return to the ecosystem map</button>
+                <Dialog.Close asChild><button type="button" className="mt-4 block w-full text-xs font-semibold text-[var(--atlas-primary)] underline">Return to the ecosystem map</button></Dialog.Close>
               </div>
             ) : (
               <form onSubmit={submitFeedback} className="mt-5 space-y-4">
@@ -270,17 +295,17 @@ export function PublicBetaExperience() {
                 <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">Email for follow-up <span className="font-normal text-[var(--atlas-muted)]">(optional)</span><input name="contactEmail" type="email" maxLength={320} autoComplete="email" placeholder="you@organization.ca" className="h-11 rounded-xl border border-[var(--atlas-border-strong)] px-3 text-sm font-normal outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]" /></label>
                 <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
                 <div className="flex flex-col-reverse gap-2 border-t border-[var(--atlas-border)] pt-4 sm:flex-row sm:justify-end">
-                  <button type="button" onClick={() => setFeedbackOpen(false)} className="atlas-secondary-button h-10 px-4 text-sm">Cancel</button>
-                  <button type="submit" disabled={feedbackState === "loading"} className="atlas-primary-button h-10 gap-2 px-4 text-sm disabled:opacity-60">
-                    {feedbackState === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Send className="size-4" />}
+                  <Dialog.Close asChild><button type="button" className="atlas-secondary-button h-10 px-4 text-sm">Cancel</button></Dialog.Close>
+                  <button type="submit" disabled={feedbackState === "loading"} aria-busy={feedbackState === "loading" || undefined} className="atlas-primary-button h-10 gap-2 px-4 text-sm disabled:opacity-60">
+                    {feedbackState === "loading" ? <LoaderCircle aria-hidden="true" className="size-4 animate-spin" /> : <Send aria-hidden="true" className="size-4" />}
                     Send feedback
                   </button>
                 </div>
               </form>
             )}
-          </section>
-        </div>
-      ) : null}
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </div>
   );
 }

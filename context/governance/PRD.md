@@ -147,7 +147,7 @@ Natural-language discovery may only:
 - show source support separately from derived fit and link every reason to an approved public citation
 - expose an exact match, closest-supported result, or coverage gap without manufacturing certainty
 
-It must never invent an organization or fact. Ask True North uses the OpenAI Responses API with strict structured output, no web tools, no saved model response, a server-validated known-ID boundary, and the canonical published Supabase snapshot. Anonymous visitors receive three questions per rolling 24 hours and signed-in users receive 20. Follow-up context is temporary browser state only. Quota, timeout, refusal, missing-key, and invalid-output states fall back to deterministic discovery rather than failing the map. Ambiguous questions return suggested filters.
+It must never invent an organization or fact. Ask True North uses the OpenAI Responses API with strict structured output, no web tools, no saved model response, a server-validated known-ID boundary, and the canonical published Supabase snapshot. A deterministic relevance pass selects a bounded set of current published records for each question before model ranking; it is not a second index, and newly published records remain immediately eligible. Anonymous visitors receive three questions per rolling 24 hours and signed-in users receive 20. Follow-up context is temporary browser state only. Quota, timeout, refusal, missing-key, dependency, authentication, API-quota, rate-limit, model-access, network, and invalid-output failures are recorded as sanitized operational classes and fall back to deterministic discovery rather than failing the map. Ambiguous questions return suggested filters.
 
 ## Canonical data model
 

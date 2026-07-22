@@ -1,5 +1,6 @@
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PendingButton } from "@/components/ui/pending-button";
 import { stageSourceIntake } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 
@@ -18,7 +19,7 @@ export default async function AdminIntakePage({ searchParams }: { searchParams: 
             <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">PDF or document<input name="document" type="file" accept="application/pdf,.doc,.docx,.txt" className="rounded-md border border-[#d0d5dd] bg-[#f8fafc] px-3 py-2 text-sm font-normal file:mr-3 file:rounded file:border-0 file:bg-[#eaf2ff] file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-[#0756d9]" /></label>
             <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Visibility<select name="sourceVisibility" defaultValue="public" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-3 text-sm font-normal"><option value="public">Public</option><option value="permissioned">Permissioned</option><option value="internal">Internal</option></select></label>
             <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Editor notes<textarea name="notes" rows={5} maxLength={2000} placeholder="What should extraction look for?" className="rounded-md border border-[#d0d5dd] px-3 py-2 text-sm font-normal outline-none focus:border-[#0756d9] focus:ring-4 focus:ring-[#0756d9]/10" /></label>
-            <button type="submit" className="inline-flex h-10 w-full items-center justify-center rounded-md bg-[#0756d9] px-4 text-sm font-semibold text-white hover:bg-[#0649b9]">Stage for extraction</button>
+            <PendingButton unstyled type="submit" pendingLabel="Staging…" className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[#0756d9] px-4 text-sm font-semibold text-white hover:bg-[#0649b9]">Stage for extraction</PendingButton>
           </form>
         </PublicCard>
         <PublicCard title="What happens next" eyebrow="Review-first pipeline">

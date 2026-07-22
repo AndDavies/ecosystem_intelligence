@@ -374,3 +374,23 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Reused the private 90-day search ledger for question, outcome, latency, and
   token measures. No model response is stored, no web tool is enabled, and no
   private drafts or research candidates enter the model context.
+
+## Ask True North operational hardening - 2026-07-21
+
+- Added a deterministic, query-specific preselection pass over the live
+  published snapshot before OpenAI ranking. It sends at most 16 current
+  organizations while preserving relevant prior-turn records, public demand,
+  evidence, and the existing server-side known-ID validation boundary.
+- Kept the publication contract unchanged: there is no embedding store, copied
+  corpus, or additional ingestion step, so newly published records remain
+  immediately eligible for assistant discovery.
+- Added sanitized operational failure classes for missing credentials,
+  unavailable dependencies, authentication, API quota, rate limiting, model
+  access, network, timeout, refusal, invalid output, and unknown failures. Public
+  users continue to receive the existing safe deterministic fallback.
+- Added candidate-count and failure-class measures to the private search ledger
+  and Admin Insights, together with safe server logging that never records API
+  keys or raw provider error messages.
+- A live containerized naval-solutions validation retained five useful matches
+  while reducing OpenAI input from 58,737 to 22,149 tokens and model latency from
+  11.8 to 9.1 seconds.

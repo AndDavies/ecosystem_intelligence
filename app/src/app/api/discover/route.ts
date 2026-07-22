@@ -1,4 +1,9 @@
-import { atlasAssistantQuota, runAtlasAssistant, ATLAS_ASSISTANT_MODEL } from "@/lib/atlas/assistant";
+import {
+  atlasAssistantQuota,
+  runAtlasAssistant,
+  ATLAS_ASSISTANT_MODEL,
+  type AtlasAssistantFailureClass
+} from "@/lib/atlas/assistant";
 import { getAtlasUser } from "@/lib/atlas/auth";
 import { discoverAtlasSnapshot, getAtlasSnapshot } from "@/lib/atlas/repository";
 import {
@@ -28,6 +33,9 @@ interface SearchMetrics {
   inputTokens: number | null;
   outputTokens: number | null;
   cachedInputTokens: number | null;
+  candidateCount: number;
+  failureClass: AtlasAssistantFailureClass | null;
+  errorCode: string | null;
 }
 
 async function assistantUsage(requestHash: string) {
@@ -75,6 +83,9 @@ async function recordSearch(input: {
       inputTokens: input.metrics.inputTokens,
       outputTokens: input.metrics.outputTokens,
       cachedInputTokens: input.metrics.cachedInputTokens,
+      candidateCount: input.metrics.candidateCount,
+      failureClass: input.metrics.failureClass,
+      errorCode: input.metrics.errorCode,
       gapCount: input.answer?.gaps.length ?? 0
     }
   };
@@ -189,7 +200,10 @@ export async function POST(request: Request) {
           latencyMs: 0,
           inputTokens: null,
           outputTokens: null,
-          cachedInputTokens: null
+          cachedInputTokens: null,
+          candidateCount: 0,
+          failureClass: hasOpenAiEnv() ? "dependency_unavailable" as const : "missing_key" as const,
+          errorCode: null
         }
       };
 

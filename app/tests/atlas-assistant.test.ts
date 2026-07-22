@@ -5,7 +5,9 @@ vi.mock("server-only", () => ({}));
 import {
   atlasAssistantQuota,
   buildAssistantCatalog,
+  classifyAssistantFailure,
   finalizeAssistantAnswer,
+  selectAssistantOrganizations,
   type RawAssistantAnswer
 } from "@/lib/atlas/assistant";
 import type { AtlasCitation, AtlasSnapshot } from "@/types/atlas";
@@ -104,6 +106,43 @@ describe("Ask True North output guardrails", () => {
     expect(catalog.organizations[0].capabilities[0]).toMatchObject({
       id: snapshot.organizations[0].capabilities[0].id,
       citations: [{ id: capabilityCitation.id }]
+    });
+  });
+
+  it("preselects the most relevant published organizations without creating a second index", () => {
+    const selected = selectAssistantOrganizations(
+      atlasTestSnapshot,
+      "Who can help with underwater sensing for naval awareness?",
+      [],
+      5
+    );
+    expect(selected).toHaveLength(5);
+    expect(selected[0].name).toBe("Dartmouth Systems");
+    expect(new Set(selected.map((organization) => organization.id)).size).toBe(selected.length);
+  });
+
+  it("keeps prior-turn organizations available for geographic follow-up questions", () => {
+    const selected = selectAssistantOrganizations(
+      atlasTestSnapshot,
+      "Which of those are in Ontario?",
+      [{ query: "Find systems integrators", organizationIds: ["canadian-investor"] }],
+      5
+    );
+    expect(selected.map((organization) => organization.id)).toContain("canadian-investor");
+  });
+
+  it("classifies operational failures without exposing raw error messages", () => {
+    expect(classifyAssistantFailure({ status: 401, code: "invalid_api_key", message: "secret detail" })).toMatchObject({
+      fallbackReason: "unavailable",
+      failureClass: "authentication",
+      errorCode: "invalid_api_key"
+    });
+    expect(classifyAssistantFailure({ status: 429, code: "insufficient_quota" })).toMatchObject({
+      failureClass: "insufficient_quota"
+    });
+    expect(classifyAssistantFailure(new DOMException("Timed out", "TimeoutError"))).toMatchObject({
+      fallbackReason: "timeout",
+      failureClass: "timeout"
     });
   });
 

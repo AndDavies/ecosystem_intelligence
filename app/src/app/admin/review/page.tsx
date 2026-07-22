@@ -1,5 +1,8 @@
+import Link from "next/link";
+import { CheckCircle2, TriangleAlert } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PendingButton } from "@/components/ui/pending-button";
 import { editAtlasCandidate, editTypedResearchCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
@@ -108,20 +111,20 @@ function DemandMatchCandidateCard({ candidate, record }: { candidate: CandidateR
       <p className="mt-4 text-xs leading-5 text-[#667085]">{record.rationale}</p>
       <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
       <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold">
-        <a href={`/capabilities/${record.capabilitySlug}`} target="_blank" className="text-[#0756d9]">Review technology profile</a>
-        <a href={`/demand/${record.demandSlug}`} target="_blank" className="text-[#0756d9]">Review public demand statement</a>
+        <Link href={`/capabilities/${record.capabilitySlug}`} target="_blank" className="text-[#0756d9]">Review technology profile</Link>
+        <Link href={`/demand/${record.demandSlug}`} target="_blank" className="text-[#0756d9]">Review public demand statement</Link>
       </div>
       <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <form action={publishDemandMatchCandidate} className="contents">
           <input type="hidden" name="candidateId" value={candidate.id} />
           <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Why this match should be public<textarea name="rationale" required minLength={20} maxLength={2000} rows={3} className={areaClass} placeholder="Explain the source-backed, decision-useful connection and any caveat a user should understand." /></label>
-          <button className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white">Publish match</button>
+          <PendingButton unstyled type="submit" pendingLabel="Publishing…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white">Publish match</PendingButton>
         </form>
         <form action={reviewAtlasCandidate} className="contents">
           <input type="hidden" name="candidateId" value={candidate.id} />
           <input type="hidden" name="rationale" value="Potential relationship requires more source review before any public assessment." />
-          <button name="decision" value="defer" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</button>
-          <button name="decision" value="reject" className="h-10 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</button>
+          <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</PendingButton>
+          <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</PendingButton>
         </form>
       </div>
       <p className="mt-3 text-[11px] leading-5 text-[#7a2e0e]">Publishing labels this as our reviewed interpretation. It does not imply procurement eligibility, endorsement, or classified demand.</p>
@@ -194,7 +197,7 @@ function OrganizationCandidateCard({
             <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Merge rationale
               <input name="rationale" required minLength={3} maxLength={2000} className={fieldClass} placeholder="Why these records represent the same organization" />
             </label>
-            <button className="h-10 rounded-md border border-[#dc6803] bg-white px-4 text-xs font-semibold text-[#b54708]">Merge candidate</button>
+            <PendingButton unstyled type="submit" pendingLabel="Merging…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#dc6803] bg-white px-4 text-xs font-semibold text-[#b54708]">Merge candidate</PendingButton>
           </div>
         </form>
       ) : null}
@@ -238,7 +241,7 @@ function OrganizationCandidateCard({
           <EditField label="Evidence summary"><textarea name="sourceExcerpt" required minLength={30} rows={3} defaultValue={record.source.excerpt} className={areaClass} /></EditField>
           <div className="grid gap-3 md:grid-cols-[1fr_auto] md:items-end">
             <EditField label="Edit rationale"><input name="rationale" required minLength={3} maxLength={2000} className={fieldClass} placeholder="What changed and why" /></EditField>
-            <button className="h-10 rounded-md border border-[#0756d9] bg-white px-4 text-xs font-semibold text-[#0756d9]">Save edits</button>
+            <PendingButton unstyled type="submit" pendingLabel="Saving…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#0756d9] bg-white px-4 text-xs font-semibold text-[#0756d9]">Save edits</PendingButton>
           </div>
         </form>
       </details>
@@ -246,9 +249,9 @@ function OrganizationCandidateCard({
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
         <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={2} className={areaClass} /></label>
-        <button name="decision" value="defer" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</button>
-        <button name="decision" value="reject" className="h-10 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</button>
-        <button name="decision" value="accept" disabled={matches.length > 0} className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#98a2b3]">Accept for publication</button>
+        <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="accept" pendingLabel="Accepting…" disabled={matches.length > 0} className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#98a2b3]">Accept for publication</PendingButton>
       </form>
     </PublicCard>
   );
@@ -321,9 +324,9 @@ function TypedOrganizationCandidateCard({
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
         <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale} className={areaClass} /></label>
-        <button name="decision" value="defer" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</button>
-        <button name="decision" value="reject" className="h-10 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</button>
-        <button name="decision" value="accept" disabled={duplicateCheck?.status !== "clear"} className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#98a2b3]">Accept for publication</button>
+        <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="accept" pendingLabel="Accepting…" disabled={duplicateCheck?.status !== "clear"} className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#98a2b3]">Accept for publication</PendingButton>
       </form>
     </PublicCard>
   );
@@ -368,9 +371,9 @@ function DemandSignalCandidateCard({ candidate, record }: { candidate: Candidate
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
         <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale} className={areaClass} /></label>
-        <button name="decision" value="defer" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</button>
-        <button name="decision" value="reject" className="h-10 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</button>
-        <button name="decision" value="accept" disabled={duplicateCheck?.status !== "clear"} className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#98a2b3]">Accept for publication</button>
+        <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="accept" pendingLabel="Accepting…" disabled={duplicateCheck?.status !== "clear"} className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#98a2b3]">Accept for publication</PendingButton>
       </form>
     </PublicCard>
   );
@@ -388,9 +391,9 @@ function GenericCandidateCard({ candidate }: { candidate: CandidateRow }) {
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
         <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? undefined} className="rounded-md border border-[#d0d5dd] px-3 py-2 text-sm font-normal outline-none focus:border-[#0756d9]" /></label>
-        <button name="decision" value="defer" className="h-10 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</button>
-        <button name="decision" value="reject" className="h-10 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</button>
-        <button name="decision" value="accept" className="h-10 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white">Accept candidate</button>
+        <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-4 text-xs font-semibold text-[#475467]">Defer</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#fda29b] bg-white px-4 text-xs font-semibold text-[#b42318]">Reject</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="accept" pendingLabel="Accepting…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[#0756d9] px-4 text-xs font-semibold text-white">Accept candidate</PendingButton>
       </form>
     </PublicCard>
   );
@@ -410,7 +413,7 @@ function TypedCandidateEditor({ candidateId, record }: { candidateId: string; re
           <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">Edit rationale
             <input name="rationale" required minLength={3} maxLength={2000} className="h-10 rounded-md border border-[#98a2b3] bg-white px-3 text-sm font-normal outline-none focus:border-[#0756d9]" placeholder="What changed and why" />
           </label>
-          <button className="h-10 rounded-md border border-[#0756d9] bg-white px-4 text-xs font-semibold text-[#0756d9]">Validate and save edits</button>
+          <PendingButton unstyled type="submit" pendingLabel="Validating…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#0756d9] bg-white px-4 text-xs font-semibold text-[#0756d9]">Validate and save edits</PendingButton>
         </div>
       </form>
     </details>
@@ -434,7 +437,8 @@ function EditField({ label, children }: { label: string; children: React.ReactNo
 
 function ReviewFact({ label, value, tone = "default" }: { label: string; value: string; tone?: "default" | "success" | "warning" }) {
   const toneClass = tone === "success" ? "text-[#067647]" : tone === "warning" ? "text-[#b54708]" : "text-[#344054]";
-  return <div className="rounded-md border border-[#eaecf0] bg-[#fcfcfd] p-3"><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#667085]">{label}</p><p className={`mt-1 text-xs font-semibold ${toneClass}`}>{value}</p></div>;
+  const StatusIcon = tone === "success" ? CheckCircle2 : tone === "warning" ? TriangleAlert : null;
+  return <div className="rounded-md border border-[#eaecf0] bg-[#fcfcfd] p-3"><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#667085]">{label}</p><p className={`mt-1 flex items-start gap-1.5 text-xs font-semibold ${toneClass}`}>{StatusIcon ? <StatusIcon aria-hidden="true" className="mt-0.5 size-3.5 shrink-0" /> : null}<span>{value}</span></p></div>;
 }
 
 function JsonPanel({ label, value, empty }: { label: string; value: unknown; empty?: string }) {
