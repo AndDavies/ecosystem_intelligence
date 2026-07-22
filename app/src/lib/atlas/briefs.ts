@@ -113,13 +113,13 @@ async function loadPublishedDefenceBriefBySlug(slug: string) {
 
 const getCachedPublishedDefenceBriefs = unstable_cache(
   loadPublishedDefenceBriefs,
-  ["ecosystem-intelligence-published-defence-briefs-v1"],
+  ["ecosystem-intelligence-published-defence-briefs-v2"],
   { revalidate: 300, tags: ["briefs-public"] }
 );
 
 const getCachedPublishedDefenceBriefBySlug = unstable_cache(
   loadPublishedDefenceBriefBySlug,
-  ["ecosystem-intelligence-published-defence-brief-v1"],
+  ["ecosystem-intelligence-published-defence-brief-v2"],
   { revalidate: 300, tags: ["briefs-public"] }
 );
 

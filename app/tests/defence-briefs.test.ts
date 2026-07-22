@@ -54,4 +54,14 @@ describe("Canadian Defence Briefs", () => {
     expect(migration).toContain("publication_status = 'published'");
     expect(migration).toContain("reviewed_by is not null");
   });
+
+  it("lets the sole administrator save and publish without typing a rationale", async () => {
+    const page = await readFile(path.resolve("src/app/admin/briefs/page.tsx"), "utf8");
+    const editor = await readFile(path.resolve("src/components/atlas/defence-brief-editor.tsx"), "utf8");
+    const action = await readFile(path.resolve("src/lib/actions/briefs-admin.ts"), "utf8");
+    expect(page).not.toContain("record the rationale");
+    expect(editor).not.toContain('name="rationale"');
+    expect(editor).toContain("Publish brief");
+    expect(action).toContain("p_rationale: null");
+  });
 });

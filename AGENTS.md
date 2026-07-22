@@ -185,6 +185,8 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-22`: Published the five source-backed Defence Brief drafts prepared from the recompiled private knowledge base and simplified `/admin/briefs` for the sole administrator. Saving and publishing no longer require a manually entered rationale; administrator authorization, approved-source requirements, review identity and timestamps, publication state, and automatic audit events remain enforced.
+
 - `2026-07-21`: Hardened Ask True North with deterministic live-snapshot preselection capped at 16 organizations, sanitized provider failure classes, private candidate and failure telemetry, and safe deterministic fallback. No embedding index or second corpus was introduced, so human-published records remain immediately eligible.
 
 - `2026-07-21`: Reframed the public About page and marketing ethos around Andrew Davies's veteran and Combat Systems Engineering Officer background, his call to contribute to Canadian defence and sovereign capability, the missing shared picture he encountered, and the North Star of mapping what Canada can build and connecting the people ready to build it. Confirmed July 19 submissions and connection items are release-test fixtures and July 18 launch visuals are legacy assets excluded from the broader release.

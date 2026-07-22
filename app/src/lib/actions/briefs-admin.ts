@@ -10,8 +10,7 @@ const schema = z.object({
   pageId: z.string().uuid().optional(),
   payload: z.string().min(2).max(100000),
   sourceLinks: z.string().min(2).max(100000),
-  recordLinks: z.string().min(2).max(100000),
-  rationale: z.string().trim().min(20).max(2000)
+  recordLinks: z.string().min(2).max(100000)
 });
 
 export async function saveDefenceBrief(formData: FormData) {
@@ -20,8 +19,7 @@ export async function saveDefenceBrief(formData: FormData) {
     pageId: String(formData.get("pageId") ?? "") || undefined,
     payload: String(formData.get("payload") ?? ""),
     sourceLinks: String(formData.get("sourceLinks") ?? ""),
-    recordLinks: String(formData.get("recordLinks") ?? ""),
-    rationale: String(formData.get("rationale") ?? "")
+    recordLinks: String(formData.get("recordLinks") ?? "")
   });
   if (!parsed.success) redirect("/admin/briefs?error=invalid");
   let payload: unknown;
@@ -41,7 +39,7 @@ export async function saveDefenceBrief(formData: FormData) {
     p_payload: payload,
     p_source_links: sourceLinks,
     p_record_links: recordLinks,
-    p_rationale: parsed.data.rationale
+    p_rationale: null
   });
   if (error) redirect("/admin/briefs?error=save");
   revalidateTag("briefs-public");

@@ -478,3 +478,15 @@ use `ATLAS_DATA_SOURCE=supabase`.
   production-mode local server returns the pre-rendered profile and brief pages
   in roughly 1-15 ms in the bounded smoke sample; this is a local verification,
   not a claim about public-network latency.
+
+## Defence Brief publication workflow - 2026-07-22
+
+- Published the five reviewed, source-backed Defence Brief drafts prepared from
+  the July 22 private knowledge-base compilation. The public collection now has
+  eight briefs in total.
+- Simplified the sole-administrator editorial workflow by removing the manual
+  review-rationale field from Defence Brief saves and publication.
+- Preserved the actual publication controls: administrator-only access,
+  validated content, at least one approved public source for every published
+  brief, reviewer identity and timestamps, stable source and record links, and
+  an automatic audit event for every save or publication.
