@@ -5,6 +5,7 @@ vi.mock("server-only", () => ({}));
 
 import {
   parseMailerLiteWebhook,
+  parseMailerLiteWebhookEvents,
   upsertMailerLiteSubscriber,
   verifyMailerLiteSignature
 } from "@/lib/email/mailerlite";
@@ -30,6 +31,17 @@ describe("MailerLite subscriber integration", () => {
       providerStatus: "bounced"
     });
     expect(parseMailerLiteWebhook({ id: "123", email: "person@example.ca", event: "campaign.sent", status: "active" })).toBeNull();
+  });
+
+  it("accepts MailerLite batch payloads without dropping deletion events", () => {
+    expect(parseMailerLiteWebhookEvents([
+      { id: "123", email: "one@example.ca", event: "subscriber.deleted", status: "active" },
+      { id: "456", email: "two@example.ca", event: "subscriber.unsubscribed", status: "unsubscribed" },
+      { id: "789", email: "three@example.ca", event: "campaign.sent", status: "active" }
+    ])).toEqual([
+      { id: "123", email: "one@example.ca", event: "subscriber.deleted", providerStatus: "deleted" },
+      { id: "456", email: "two@example.ca", event: "subscriber.unsubscribed", providerStatus: "unsubscribed" }
+    ]);
   });
 
   it("upserts a subscriber into only the configured group", async () => {

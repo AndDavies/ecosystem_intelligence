@@ -8,7 +8,8 @@ import { createClient } from "@/lib/supabase/server";
 
 const emailLinkSchema = z.object({
   email: z.string().trim().toLowerCase().email().max(320),
-  next: z.string().trim().optional()
+  next: z.string().trim().optional(),
+  captchaToken: z.string().trim().max(4096).optional()
 });
 
 function redirectWithMessage(path: string, key: "error" | "success", message: string) {
@@ -46,7 +47,8 @@ export async function sendEmailSignInLink(formData: FormData) {
 
   const parsed = emailLinkSchema.safeParse({
     email: String(formData.get("email") ?? "").trim(),
-    next: String(formData.get("next") ?? "").trim() || undefined
+    next: String(formData.get("next") ?? "").trim() || undefined,
+    captchaToken: String(formData.get("captchaToken") ?? "").trim() || undefined
   });
 
   if (!parsed.success) {
@@ -54,13 +56,23 @@ export async function sendEmailSignInLink(formData: FormData) {
   }
 
   const next = safeAuthNextPath(parsed.data!.next);
+  const captchaRequired = Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
+  if (captchaRequired && !parsed.data!.captchaToken) {
+    redirectWithMessage(
+      `/sign-in?next=${encodeURIComponent(next)}`,
+      "error",
+      "Complete the security check before requesting a sign-in link."
+    );
+  }
+
   const baseUrl = getAuthBaseUrl();
   const supabase = await createClient({ writeCookies: true });
   const { error } = await supabase.auth.signInWithOtp({
     email: parsed.data!.email,
     options: {
       shouldCreateUser: true,
-      emailRedirectTo: `${baseUrl}/auth/callback?next=${encodeURIComponent(next)}`
+      emailRedirectTo: `${baseUrl}/auth/callback?next=${encodeURIComponent(next)}`,
+      captchaToken: parsed.data!.captchaToken
     }
   });
 

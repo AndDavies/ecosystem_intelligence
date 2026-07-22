@@ -185,6 +185,8 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-22`: Separated email delivery into Zoho human correspondence, MailerLite consent-backed updates, and Supabase Auth through a domain-restricted Resend SMTP credential. Added source-controlled branded authentication templates, enabled account-security notifications, protected passwordless email initiation with Cloudflare Turnstile, reconciled the production consent ledger to the `True North Map Updates` group, and added signed batch webhook handling. Zoho migration, MailerLite sender authentication, root DMARC, and campaigns remain gated on legacy-domain approval and verified mailbox/footer details.
+
 - `2026-07-22`: Rebuilt Canadian Defence Briefs as reviewed editorial articles rather than question-and-answer pages. Public briefs now use a compact title-and-image hero, thesis, bottom line, executive takeaways, narrative sections, evidence-bounded implications, a recommended next step, visible limits, and public sources. `/admin/briefs` now edits this article contract and manages the main image through an administrator-only Supabase Storage library, while preserving the existing review, source, record-link, RLS, and publication boundaries.
 
 - `2026-07-22`: Published the five source-backed Defence Brief drafts prepared from the recompiled private knowledge base and simplified `/admin/briefs` for the sole administrator. Saving and publishing no longer require a manually entered rationale; administrator authorization, approved-source requirements, review identity and timestamps, publication state, and automatic audit events remain enforced.

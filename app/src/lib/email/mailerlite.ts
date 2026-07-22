@@ -74,7 +74,14 @@ export function verifyMailerLiteSignature(rawBody: string, signature: string | n
   return receivedBuffer.length === expectedBuffer.length && timingSafeEqual(receivedBuffer, expectedBuffer);
 }
 
-export function parseMailerLiteWebhook(payload: unknown) {
+export type MailerLiteWebhookEvent = {
+  email: string;
+  id: string;
+  event: string;
+  providerStatus: "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk" | "deleted";
+};
+
+export function parseMailerLiteWebhook(payload: unknown): MailerLiteWebhookEvent | null {
   if (!payload || typeof payload !== "object" || Array.isArray(payload)) return null;
   const record = payload as Record<string, unknown>;
   const email = typeof record.email === "string" ? record.email.trim().toLowerCase() : "";
@@ -97,6 +104,14 @@ export function parseMailerLiteWebhook(payload: unknown) {
 
   if (!providerStatus) return null;
   return { email, id, event, providerStatus };
+}
+
+export function parseMailerLiteWebhookEvents(payload: unknown): MailerLiteWebhookEvent[] {
+  const records = Array.isArray(payload) ? payload : [payload];
+  return records
+    .slice(0, 50)
+    .map((record) => parseMailerLiteWebhook(record))
+    .filter((event): event is MailerLiteWebhookEvent => event !== null);
 }
 
 function safeProviderError(message: string | undefined, status: number) {

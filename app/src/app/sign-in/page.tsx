@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { CheckCircle2, LockKeyhole, Mail } from "lucide-react";
+import { CheckCircle2, LockKeyhole } from "lucide-react";
 import { AuthSubmitButton } from "@/components/auth/auth-submit-button";
+import { EmailSignInForm } from "@/components/auth/email-sign-in-form";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
-import { sendEmailSignInLink, signInWithGoogle } from "@/lib/actions/auth";
+import { signInWithGoogle } from "@/lib/actions/auth";
 import { getAtlasUser } from "@/lib/atlas/auth";
 import { safeAuthNextPath } from "@/lib/auth-utils";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
@@ -23,6 +24,7 @@ export default async function SignInPage({
   const user = await getAtlasUser();
   if (user) redirect(next);
   const configured = hasSupabasePublicEnv();
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   return (
     <main className="atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)]">
@@ -61,19 +63,7 @@ export default async function SignInPage({
 
           <div className="my-5 flex items-center gap-3" aria-hidden="true"><span className="h-px flex-1 bg-[var(--atlas-border)]" /><span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">or</span><span className="h-px flex-1 bg-[var(--atlas-border)]" /></div>
 
-          <form action={sendEmailSignInLink} className="space-y-4">
-            <input type="hidden" name="next" value={next} />
-            <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">
-              Email address
-              <div className="relative">
-                <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[var(--atlas-muted)]" aria-hidden="true" />
-                <input name="email" required type="email" autoComplete="email" maxLength={320} placeholder="you@company.ca" className="h-11 w-full rounded-md border border-[var(--atlas-border)] pl-10 pr-3 text-sm font-normal outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[var(--atlas-primary)]/10" />
-              </div>
-            </label>
-            <AuthSubmitButton pendingLabel="Sending secure link…" disabled={!configured} className="bg-[var(--atlas-ink)] text-white hover:bg-[var(--atlas-primary-hover)]">
-              Email me a secure sign-in link
-            </AuthSubmitButton>
-          </form>
+          <EmailSignInForm next={next} configured={configured} turnstileSiteKey={turnstileSiteKey} />
           <p className="mt-4 text-center text-[11px] leading-5 text-[var(--atlas-muted)]">By continuing, you agree to the <Link href="/terms" className="underline">Terms</Link> and acknowledge the <Link href="/privacy" className="underline">Privacy notice</Link>.</p>
         </section>
       </div>
