@@ -392,8 +392,10 @@ Verified for the broader public-beta release:
   known-record and citation validation, visible uncertainty, quotas, and a
   deterministic fallback
 - Canadian Defence Briefs is live as the reviewed, answer-first public synthesis
-  surface, with source links, related records, labelled Derived Reads, SEO/AEO
-  metadata, and administrator-only publication
+  surface, with an editorial collection page, formatted article reading experience,
+  image placements, source links, related records, labelled Derived Reads, SEO/AEO
+  metadata, and administrator-only publication. Evergreen explainers and clearly
+  labelled timely analysis share the same human-review boundary.
 - production remains the source of truth for live corpus and workflow counts;
   release claims use rounded values and exact values are checked immediately
   before publication

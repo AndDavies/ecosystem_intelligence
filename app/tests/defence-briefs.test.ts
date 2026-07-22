@@ -5,12 +5,35 @@ import { describe, expect, it } from "vitest";
 describe("Canadian Defence Briefs", () => {
   it("keeps public synthesis source-backed and answer-first", async () => {
     const detail = await readFile(path.resolve("src/app/briefs/[slug]/page.tsx"), "utf8");
-    expect(detail).toContain("The short answer");
+    expect(detail).toContain("The bottom line");
+    expect(detail).toContain("Key takeaways");
     expect(detail).toContain("What this may mean");
-    expect(detail).toContain("This is a Derived Read");
+    expect(detail).toContain("Derived Read");
     expect(detail).toContain("Public sources");
     expect(detail).toContain('"@type": "Article"');
     expect(detail).toContain('"@type": "BreadcrumbList"');
+  });
+
+  it("provides an intentional editorial image slot without requiring an image record", async () => {
+    const index = await readFile(path.resolve("src/app/briefs/page.tsx"), "utf8");
+    const detail = await readFile(path.resolve("src/app/briefs/[slug]/page.tsx"), "utf8");
+    const hero = await readFile(path.resolve("src/components/atlas/brief-hero.tsx"), "utf8");
+    expect(index).toContain("<BriefHero");
+    expect(detail).toContain("<BriefHero");
+    expect(hero).toContain("True North Map Brief");
+    expect(hero).toContain("presentation.imageSrc");
+  });
+
+  it("publishes dedicated brief imagery through social and article metadata", async () => {
+    const index = await readFile(path.resolve("src/app/briefs/page.tsx"), "utf8");
+    const detail = await readFile(path.resolve("src/app/briefs/[slug]/page.tsx"), "utf8");
+    expect(index).toContain("defence-briefs-home.jpg");
+    expect(index).toContain('card: "summary_large_image"');
+    expect(index).toContain('primaryImageOfPage');
+    expect(index).toContain('"@type": "Article"');
+    expect(index).toContain("hasPart: briefs.map");
+    expect(detail).toContain("presentation.imageSrc");
+    expect(detail).toContain("absoluteUrl(presentation.imageSrc)");
   });
 
   it("keeps private packets outside the public repository layer", async () => {

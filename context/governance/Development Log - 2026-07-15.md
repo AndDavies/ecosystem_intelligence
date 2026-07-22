@@ -1,5 +1,15 @@
 # Development Log - 2026-07-15
 
+## Defence Briefs editorial experience and draft batch - 2026-07-22
+
+- Rebuilt `/briefs` as an editorial publication surface rather than a grid of database records. The route now leads with a featured answer, distinguishes explainers, guides, and analysis, exposes topic and reading-time context, and explains how readers can move from a public signal into related needs, technology, and organizations.
+- Rebuilt each public brief around a consistent reading sequence: editorial hero-image slot, direct bottom line, key takeaways, question-led article sections, clearly labelled Derived Read, visible sources, related records, review details, and author context.
+- Added a reusable topic-aware image treatment that provides a deliberate placeholder until article-specific artwork is approved. Adding or replacing a future image does not alter the source, citation, research, or publication contracts.
+- Added six Andrew-supplied editorial images as optimized local assets and mapped them to the collection homepage, Arctic operations, future submarines, public demand, sovereign capability, innovation pathways, and naval-industry briefs. Brief images now also populate article and social-preview metadata; the graphic fallback remains available for future briefs without approved artwork.
+- Preserved the existing reviewed Supabase publication model. No raw Defence Wiki packets, newsletter bodies, or private compiler notes enter the public runtime, and no public brief is generated or published automatically.
+- Prepared and staged five private drafts from approved public sources: sovereign defence capability, moving technology from prototype to operations, resilient Arctic communications, modular containerized naval systems, and the River-class Destroyer production milestone. The batch deliberately contains four evergreen explainers or guides and one clearly labelled timely analysis. Each draft remains private until Andrew reviews and publishes it through `/admin/briefs`.
+- Preserved the unrelated uncommitted July 22 research-pipeline artifacts without staging, editing, publishing, or discarding them.
+
 ## Broader public sharing readiness - 2026-07-21
 
 - Replaced the obsolete July 20 launch package with a current broader-sharing package at `content/launch/public-beta-launch-package.md`.
