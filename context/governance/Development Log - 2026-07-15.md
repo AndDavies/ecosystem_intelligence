@@ -2,10 +2,16 @@
 
 ## Defence Briefs editorial experience and draft batch - 2026-07-22
 
+- Replaced the question-and-answer content model with a publication-ready article contract: headline, standfirst, thesis, bottom line, executive takeaways, narrative sections, implications, recommended action, limitations, public sources, and linked atlas records.
+- Refactored the `/briefs` feature layout so the editorial image can no longer cover its title or action. Individual briefs now open with a compact split hero that keeps the headline and image prominent while making the beginning of the analysis visible without an oversized image-first scroll.
+- Rebuilt `/admin/briefs` as a blog-style article editor, including format, topic, audience, hero image and accessible description, paragraph-based narrative sections, supporting points, sources, related records, review status, and SEO fields.
+- Added an administrator-managed Defence Brief image library in Supabase Storage. The editor can choose an existing approved image or upload a JPEG, PNG, or WebP file up to 10 MB; successful uploads become the article's main image and populate public page and social metadata. Anonymous visitors can load known public image URLs, while only the exact site administrator can list or modify the bucket.
+- Preserved the existing `wiki_pages`, source links, record links, RLS, audit, and human publication controls; no parallel content store or autonomous publication path was introduced.
+
 - Rebuilt `/briefs` as an editorial publication surface rather than a grid of database records. The route now leads with a featured answer, distinguishes explainers, guides, and analysis, exposes topic and reading-time context, and explains how readers can move from a public signal into related needs, technology, and organizations.
-- Rebuilt each public brief around a consistent reading sequence: editorial hero-image slot, direct bottom line, key takeaways, question-led article sections, clearly labelled Derived Read, visible sources, related records, review details, and author context.
+- Rebuilt each public brief around a consistent reading sequence: compact editorial hero, direct bottom line, executive takeaways, narrative article sections, clearly separated interpretation, visible sources, related records, review details, and author context.
 - Added a reusable topic-aware image treatment that provides a deliberate placeholder until article-specific artwork is approved. Adding or replacing a future image does not alter the source, citation, research, or publication contracts.
-- Added six Andrew-supplied editorial images as optimized local assets and mapped them to the collection homepage, Arctic operations, future submarines, public demand, sovereign capability, innovation pathways, and naval-industry briefs. Brief images now also populate article and social-preview metadata; the graphic fallback remains available for future briefs without approved artwork.
+- Added six Andrew-supplied editorial images to the canonical Supabase Storage library and mapped them to the collection homepage, Arctic operations, future submarines, public demand, sovereign capability, innovation pathways, and naval-industry briefs. Brief images now also populate article and social-preview metadata; the graphic fallback remains available for future briefs without approved artwork.
 - Preserved the existing reviewed Supabase publication model. No raw Defence Wiki packets, newsletter bodies, or private compiler notes enter the public runtime, and no public brief is generated or published automatically.
 - Prepared and staged five private drafts from approved public sources: sovereign defence capability, moving technology from prototype to operations, resilient Arctic communications, modular containerized naval systems, and the River-class Destroyer production milestone. The batch deliberately contains four evergreen explainers or guides and one clearly labelled timely analysis. Each draft remains private until Andrew reviews and publishes it through `/admin/briefs`.
 - Preserved the unrelated uncommitted July 22 research-pipeline artifacts without staging, editing, publishing, or discarding them.
@@ -30,7 +36,7 @@
 
 ## Canadian Defence Briefs publication slice - 2026-07-21
 
-- Published a new public knowledge surface at `/briefs`, branded **Canadian Defence Briefs** rather than “wiki.” It provides concise, answer-first, source-backed pages that lead from a real question to public evidence and linked True North Map records.
+- Published a new public knowledge surface at `/briefs`, branded **Canadian Defence Briefs** rather than “wiki.” It provides concise, source-backed analysis that leads from a clear thesis to public evidence and linked True North Map records.
 - Added the first three reviewed briefs: Canada’s Arctic defence operations, Canada’s future submarine industrial opportunity, and Canadian defence demand signals.
 - Added administrator-only authoring at `/admin/briefs`. Editors can create, revise, archive, or publish a brief, select approved public sources, add links to organizations, technologies, and demand signals, and record a review rationale.
 - Added dedicated `wiki_pages`, `wiki_page_sources`, and `wiki_page_record_links` tables. Public access is restricted to published rows; source packets, private markdown, raw newsletter material, and compiler notes never enter the public runtime.

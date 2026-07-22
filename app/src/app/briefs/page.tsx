@@ -7,12 +7,13 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { defenceBriefsHomePresentation, getBriefPresentation, getBriefReadingMinutes } from "@/lib/atlas/brief-presentation";
 import { getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
 import { absoluteUrl, siteName } from "@/lib/site";
+import { defenceBriefImageUrl } from "@/lib/atlas/brief-images";
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Canadian Defence Briefs",
-  description: "Clear, source-backed answers about Canadian defence priorities, industrial capacity, dual-use technology, and the opportunities taking shape around them.",
+  description: "Source-backed analysis of Canadian defence priorities, industrial capacity, dual-use technology, and the opportunities taking shape around them.",
   alternates: { canonical: "/briefs" },
   openGraph: {
     title: "Canadian Defence Briefs",
@@ -21,13 +22,13 @@ export const metadata: Metadata = {
     type: "website",
     siteName,
     locale: "en_CA",
-    images: [{ url: "/imagery/briefs/defence-briefs-home.jpg", width: 1672, height: 941, alt: defenceBriefsHomePresentation.imageAlt }]
+    images: [{ url: defenceBriefImageUrl("defence-briefs-home.jpg"), width: 1672, height: 941, alt: defenceBriefsHomePresentation.imageAlt }]
   },
   twitter: {
     card: "summary_large_image",
     title: "Canadian Defence Briefs",
     description: "Understand the needs, technology, and industrial forces shaping Canadian defence through concise, reviewed, source-backed analysis.",
-    images: [{ url: "/imagery/briefs/defence-briefs-home.jpg", alt: defenceBriefsHomePresentation.imageAlt }]
+    images: [{ url: defenceBriefImageUrl("defence-briefs-home.jpg"), alt: defenceBriefsHomePresentation.imageAlt }]
   }
 };
 
@@ -42,8 +43,7 @@ export default async function DefenceBriefsPage() {
     <PublicPageShell
       eyebrow="Canadian defence, clearly explained"
       title="See the forces shaping what Canada builds next."
-      description="Defence Briefs turn reviewed public evidence into useful answers. Understand the need, see what it could mean for Canadian industry, and follow the record into the companies and technologies worth exploring."
-      actions={featured ? <Link href={`/briefs/${featured.slug}`} className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">Read the latest brief <ArrowRight className="size-4" /></Link> : undefined}
+      description="Defence Briefs combine reviewed public evidence with a Canadian industrial lens. Follow important developments, understand what they change, and move directly into the companies, technologies, and public needs behind the story."
     >
       <JsonLd data={{
         "@context": "https://schema.org",
@@ -54,7 +54,7 @@ export default async function DefenceBriefsPage() {
         inLanguage: "en-CA",
         primaryImageOfPage: {
           "@type": "ImageObject",
-          url: absoluteUrl("/imagery/briefs/defence-briefs-home.jpg"),
+          url: defenceBriefImageUrl("defence-briefs-home.jpg"),
           width: 1672,
           height: 941,
           caption: defenceBriefsHomePresentation.imageAlt
@@ -65,7 +65,7 @@ export default async function DefenceBriefsPage() {
           return {
             "@type": "Article",
             headline: brief.title,
-            alternativeHeadline: brief.primaryQuestion,
+            alternativeHeadline: brief.thesis,
             url: absoluteUrl(`/briefs/${brief.slug}`),
             datePublished: brief.publishedAt,
             dateModified: brief.updatedAt,
@@ -82,14 +82,14 @@ export default async function DefenceBriefsPage() {
 
       {featured ? (
         <section className="mt-8 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
-          <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
-            <BriefHero presentation={defenceBriefsHomePresentation} title="Canadian Defence Briefs" priority className="min-h-[300px] lg:h-full lg:min-h-[450px]" />
-            <div className="flex flex-col justify-center p-6 sm:p-9 lg:p-11">
+          <div className="grid min-w-0 lg:grid-cols-[minmax(0,1.06fr)_minmax(360px,0.94fr)]">
+            <BriefHero presentation={getBriefPresentation(featured)} title={featured.title} priority compact className="order-2 h-[280px] min-w-0 rounded-none sm:h-[320px] lg:order-1 lg:aspect-auto lg:h-full lg:min-h-[430px]" />
+            <div className="relative z-10 order-1 flex min-w-0 flex-col justify-center bg-white p-6 sm:p-9 lg:order-2 lg:p-11">
               <BriefMeta brief={featured} featured />
-              <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">{featured.primaryQuestion}</h2>
-              <p className="mt-5 text-sm leading-7 text-[var(--atlas-ink-soft)] sm:text-base sm:leading-8">{featured.summaryAnswer}</p>
+              <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">{featured.title}</h2>
+              <p className="mt-5 text-sm leading-7 text-[var(--atlas-ink-soft)] sm:text-base sm:leading-8">{featured.standfirst}</p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={`/briefs/${featured.slug}`} className="atlas-signal-button h-11 px-5 text-sm no-underline hover:no-underline">Read the brief <ArrowRight className="ml-2 size-4" /></Link>
+                <Link href={`/briefs/${featured.slug}`} className="atlas-signal-button h-11 px-5 text-sm no-underline hover:no-underline">Read the article <ArrowRight className="ml-2 size-4" /></Link>
                 <span className="text-xs font-semibold text-[var(--atlas-muted)]">{featured.sources.length} reviewed public {featured.sources.length === 1 ? "source" : "sources"}</span>
               </div>
             </div>
@@ -108,7 +108,7 @@ export default async function DefenceBriefsPage() {
           <div className="flex flex-col gap-4 border-b border-[var(--atlas-border)] pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="atlas-eyebrow">Explore the collection</p>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Questions worth understanding now.</h2>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Analysis worth following now.</h2>
             </div>
             <p className="max-w-lg text-sm leading-6 text-[var(--atlas-muted)]">Evergreen explainers sit alongside clearly labelled analysis of current developments.</p>
           </div>
@@ -120,9 +120,9 @@ export default async function DefenceBriefsPage() {
                   <BriefHero presentation={presentation} title={brief.title} compact />
                   <div className="flex min-h-[300px] flex-col p-6">
                     <BriefMeta brief={brief} />
-                    <h3 className="mt-4 text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]">{brief.primaryQuestion}</h3>
-                    <p className="mt-3 line-clamp-4 text-sm leading-6 text-[var(--atlas-muted)]">{brief.summaryAnswer}</p>
-                    <Link href={`/briefs/${brief.slug}`} className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-[var(--atlas-primary)] no-underline group-hover:underline">Read the answer <ArrowRight className="size-4" /></Link>
+                    <h3 className="mt-4 text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]">{brief.title}</h3>
+                    <p className="mt-3 line-clamp-4 text-sm leading-6 text-[var(--atlas-muted)]">{brief.standfirst}</p>
+                    <Link href={`/briefs/${brief.slug}`} className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-[var(--atlas-primary)] no-underline group-hover:underline">Read the article <ArrowRight className="size-4" /></Link>
                   </div>
                 </article>
               );
@@ -145,7 +145,7 @@ export default async function DefenceBriefsPage() {
 
       <section className="mt-8 rounded-3xl border border-[var(--atlas-border)] bg-white p-6 sm:p-8">
         <div className="grid gap-6 md:grid-cols-3">
-          <Value icon={SearchCheck} title="Answers before exposition" text="Each page starts with the conclusion, then shows the reasoning and evidence behind it." />
+          <Value icon={SearchCheck} title="The conclusion comes first" text="Each article makes its central argument early, then develops the evidence, context, and implications." />
           <Value icon={ShieldCheck} title="Review stays visible" text="Sources, review dates, uncertainty, and interpretation remain in view as you read." />
           <Value icon={CheckCircle2} title="A path into the ecosystem" text="Move from the brief into related public needs, companies, and Canadian technology." />
         </div>

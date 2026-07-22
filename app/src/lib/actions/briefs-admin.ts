@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { createClient } from "@/lib/supabase/server";
+import { defenceBriefImageBucket, defenceBriefImageUrl } from "@/lib/atlas/brief-images";
 
 const schema = z.object({
   pageId: z.string().uuid().optional(),
@@ -22,17 +23,37 @@ export async function saveDefenceBrief(formData: FormData) {
     recordLinks: String(formData.get("recordLinks") ?? "")
   });
   if (!parsed.success) redirect("/admin/briefs?error=invalid");
-  let payload: unknown;
+  let payload: Record<string, unknown>;
   let sourceLinks: unknown;
   let recordLinks: unknown;
   try {
-    payload = JSON.parse(parsed.data.payload);
+    const parsedPayload: unknown = JSON.parse(parsed.data.payload);
+    if (!parsedPayload || typeof parsedPayload !== "object" || Array.isArray(parsedPayload)) throw new Error("Invalid payload");
+    payload = parsedPayload as Record<string, unknown>;
     sourceLinks = JSON.parse(parsed.data.sourceLinks);
     recordLinks = JSON.parse(parsed.data.recordLinks);
   } catch {
     redirect("/admin/briefs?error=invalid");
   }
   const supabase = await createClient({ writeCookies: true });
+  const heroImage = formData.get("heroImageFile");
+  let uploadedImagePath: string | null = null;
+  if (heroImage instanceof File && heroImage.size > 0) {
+    const extensionByType: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
+    const extension = extensionByType[heroImage.type];
+    if (!extension || heroImage.size > 10 * 1024 * 1024) redirect("/admin/briefs?error=invalid-image");
+    const slug = String(payload.slug ?? "defence-brief").replace(/[^a-z0-9-]+/gi, "-").replace(/^-+|-+$/g, "").toLowerCase() || "defence-brief";
+    uploadedImagePath = `${slug}-${Date.now()}-${crypto.randomUUID()}.${extension}`;
+    const { error: uploadError } = await supabase.storage.from(defenceBriefImageBucket).upload(uploadedImagePath, heroImage, {
+      contentType: heroImage.type,
+      cacheControl: "31536000",
+      upsert: false
+    });
+    if (uploadError) redirect("/admin/briefs?error=image-upload");
+    payload.heroImagePath = supabase.storage.from(defenceBriefImageBucket).getPublicUrl(uploadedImagePath).data.publicUrl;
+  }
+  const selectedImagePath = String(payload.heroImagePath ?? "");
+  if (!selectedImagePath.startsWith(defenceBriefImageUrl(""))) redirect("/admin/briefs?error=invalid-image");
   const { error } = await supabase.rpc("upsert_defence_brief", {
     p_page_id: parsed.data.pageId ?? null,
     p_reviewer_id: user.id,
@@ -41,7 +62,10 @@ export async function saveDefenceBrief(formData: FormData) {
     p_record_links: recordLinks,
     p_rationale: null
   });
-  if (error) redirect("/admin/briefs?error=save");
+  if (error) {
+    if (uploadedImagePath) await supabase.storage.from(defenceBriefImageBucket).remove([uploadedImagePath]);
+    redirect("/admin/briefs?error=save");
+  }
   revalidateTag("briefs-public");
   revalidatePath("/briefs");
   revalidatePath("/briefs/[slug]", "page");

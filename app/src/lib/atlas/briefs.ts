@@ -4,11 +4,11 @@ import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { createPublicClient } from "@/lib/supabase/public";
 
-const briefColumns = "id, slug, title, primary_question, summary_answer, dek, sections, derived_read, seo_title, meta_description, author_name, published_at, reviewed_at, updated_at";
+const briefColumns = "id, slug, title, primary_question, summary_answer, dek, sections, derived_read, key_takeaways, limitations, recommended_action, content_format, topic, audience, hero_image_path, hero_image_alt, seo_title, meta_description, author_name, published_at, reviewed_at, updated_at";
 
 export type DefenceBriefSection = {
-  question: string;
-  answer: string;
+  heading: string;
+  paragraphs: string[];
   points: string[];
 };
 
@@ -31,11 +31,19 @@ export type DefenceBrief = {
   id: string;
   slug: string;
   title: string;
-  primaryQuestion: string;
-  summaryAnswer: string;
-  dek: string;
+  thesis: string;
+  bottomLine: string;
+  standfirst: string;
   sections: DefenceBriefSection[];
-  derivedRead: string | null;
+  keyTakeaways: string[];
+  implications: string | null;
+  limitations: string | null;
+  recommendedAction: string | null;
+  format: "Brief" | "Explainer" | "Guide" | "Analysis";
+  topic: string;
+  audience: string;
+  heroImagePath: string | null;
+  heroImageAlt: string | null;
   seoTitle: string;
   metaDescription: string;
   authorName: string;
@@ -53,18 +61,32 @@ function parseSections(value: unknown): DefenceBriefSection[] {
   return value.flatMap((section) => {
     if (!section || typeof section !== "object") return [];
     const row = section as Row;
-    const question = String(row.question ?? "").trim();
-    const answer = String(row.answer ?? "").trim();
-    if (!question || !answer) return [];
-    return [{ question, answer, points: Array.isArray(row.points) ? row.points.map(String).filter(Boolean) : [] }];
+    const heading = String(row.heading ?? row.question ?? "").trim();
+    const rawParagraphs = row.paragraphs ?? row.body ?? row.answer;
+    const paragraphs = Array.isArray(rawParagraphs)
+      ? rawParagraphs.map(String).map((paragraph) => paragraph.trim()).filter(Boolean)
+      : String(rawParagraphs ?? "").split(/\n\s*\n/).map((paragraph) => paragraph.trim()).filter(Boolean);
+    if (!heading || !paragraphs.length) return [];
+    return [{ heading, paragraphs, points: Array.isArray(row.points) ? row.points.map(String).filter(Boolean) : [] }];
   });
+}
+
+function parseStringList(value: unknown) {
+  return Array.isArray(value) ? value.map(String).map((item) => item.trim()).filter(Boolean) : [];
 }
 
 function toBrief(row: Row, sources: DefenceBriefSource[], links: DefenceBriefLink[]): DefenceBrief {
   return {
-    id: String(row.id), slug: String(row.slug), title: String(row.title), primaryQuestion: String(row.primary_question),
-    summaryAnswer: String(row.summary_answer), dek: String(row.dek), sections: parseSections(row.sections),
-    derivedRead: row.derived_read ? String(row.derived_read) : null, seoTitle: String(row.seo_title),
+    id: String(row.id), slug: String(row.slug), title: String(row.title), thesis: String(row.primary_question),
+    bottomLine: String(row.summary_answer), standfirst: String(row.dek), sections: parseSections(row.sections),
+    keyTakeaways: parseStringList(row.key_takeaways), implications: row.derived_read ? String(row.derived_read) : null,
+    limitations: row.limitations ? String(row.limitations) : null,
+    recommendedAction: row.recommended_action ? String(row.recommended_action) : null,
+    format: String(row.content_format ?? "Brief") as DefenceBrief["format"], topic: String(row.topic ?? "Canadian defence"),
+    audience: String(row.audience ?? "Canadian defence and dual-use decision-makers"),
+    heroImagePath: row.hero_image_path ? String(row.hero_image_path) : null,
+    heroImageAlt: row.hero_image_alt ? String(row.hero_image_alt) : null,
+    seoTitle: String(row.seo_title),
     metaDescription: String(row.meta_description), authorName: String(row.author_name),
     publishedAt: String(row.published_at), reviewedAt: String(row.reviewed_at), updatedAt: String(row.updated_at), sources, links
   };
@@ -113,13 +135,13 @@ async function loadPublishedDefenceBriefBySlug(slug: string) {
 
 const getCachedPublishedDefenceBriefs = unstable_cache(
   loadPublishedDefenceBriefs,
-  ["ecosystem-intelligence-published-defence-briefs-v2"],
+  ["ecosystem-intelligence-published-defence-briefs-v3"],
   { revalidate: 300, tags: ["briefs-public"] }
 );
 
 const getCachedPublishedDefenceBriefBySlug = unstable_cache(
   loadPublishedDefenceBriefBySlug,
-  ["ecosystem-intelligence-published-defence-brief-v2"],
+  ["ecosystem-intelligence-published-defence-brief-v3"],
   { revalidate: 300, tags: ["briefs-public"] }
 );
 

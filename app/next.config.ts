@@ -3,6 +3,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   outputFileTracingRoot: path.resolve(__dirname),
+  images: {
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "facoactpdckkhciamflk.supabase.co",
+      pathname: "/storage/v1/object/public/brief-images/**"
+    }]
+  },
+  experimental: {
+    serverActions: { bodySizeLimit: "10mb" }
+  },
   async redirects() {
     return [
       {

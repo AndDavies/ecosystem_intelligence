@@ -39,7 +39,7 @@ export function BriefHero({
 
   if (imageSrc) {
     return (
-      <div className={`pointer-events-none relative overflow-hidden bg-[var(--atlas-ink)] ${compact ? "aspect-[16/9]" : "aspect-[16/7] min-h-[250px]"} ${className}`}>
+      <div className={`pointer-events-none relative w-full min-w-0 overflow-hidden bg-[var(--atlas-ink)] ${compact ? "aspect-[16/9]" : "aspect-[16/7] min-h-[250px]"} ${className}`}>
         <Image src={imageSrc} alt={imageAlt ?? ""} fill priority={priority} sizes={compact ? "(min-width: 1024px) 34vw, 100vw" : "(min-width: 1280px) 1200px, 100vw"} className="object-cover" />
       </div>
     );
@@ -49,7 +49,7 @@ export function BriefHero({
     <div
       role="img"
       aria-label={`Editorial artwork for ${title}`}
-      className={`pointer-events-none relative isolate overflow-hidden bg-gradient-to-br ${toneClass[presentation.tone]} ${compact ? "aspect-[16/9]" : "aspect-[16/7] min-h-[250px]"} ${className}`}
+      className={`pointer-events-none relative isolate w-full overflow-hidden bg-gradient-to-br ${toneClass[presentation.tone]} ${compact ? "aspect-[16/9]" : "aspect-[16/7] min-h-[250px]"} ${className}`}
     >
       <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:40px_40px]" />
       <div className="absolute -right-[8%] top-[9%] size-[78%] rounded-full border border-white/15" />

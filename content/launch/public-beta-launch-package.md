@@ -61,7 +61,7 @@ Production snapshot checked July 21, 2026:
 | Participation | Claims and corrections | Claims, corrections, new organizations, contact, feedback and connection requests |
 | Administration | Review and publishing | Review, publishing, record editing, needs, matches, briefs, subscribers and product insights |
 | Subscriber operations | Capture only | Private subscriber administration and MailerLite synchronization |
-| Public content discovery | Atlas pages | Atlas, profiles, public needs and answer-first Defence Briefs |
+| Public content discovery | Atlas pages | Atlas, profiles, public needs and article-led Defence Briefs |
 
 Current public release language should use durable rounded proof points rather than values that become stale after every publication:
 
@@ -182,7 +182,7 @@ The release includes:
 - Ask True North, a constrained discovery assistant that can return only published records and citations.
 - Evidence-linked organization and technology profiles with visible confidence and freshness.
 - Public needs and reviewed technology-to-need assessments.
-- Canadian Defence Briefs that answer common questions and link readers to the evidence and relevant records.
+- Canadian Defence Briefs that explain important developments, show the evidence, and link readers to relevant records.
 - Private Working Lists, reviewed contributions, and human-vetted connection requests.
 
 True North Map is an independent project created and stewarded by Andrew Davies. It is not an official government, military, procurement, or industry-association directory, and public-source alignment does not indicate endorsement or procurement eligibility.

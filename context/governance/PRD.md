@@ -391,7 +391,7 @@ Verified for the broader public-beta release:
 - Ask True North is live as a constrained published-corpus discovery layer with
   known-record and citation validation, visible uncertainty, quotas, and a
   deterministic fallback
-- Canadian Defence Briefs is live as the reviewed, answer-first public synthesis
+- Canadian Defence Briefs is live as the reviewed, article-led public synthesis
   surface, with an editorial collection page, formatted article reading experience,
   image placements, source links, related records, labelled Derived Reads, SEO/AEO
   metadata, and administrator-only publication. Evergreen explainers and clearly

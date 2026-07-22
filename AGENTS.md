@@ -185,6 +185,8 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-22`: Rebuilt Canadian Defence Briefs as reviewed editorial articles rather than question-and-answer pages. Public briefs now use a compact title-and-image hero, thesis, bottom line, executive takeaways, narrative sections, evidence-bounded implications, a recommended next step, visible limits, and public sources. `/admin/briefs` now edits this article contract and manages the main image through an administrator-only Supabase Storage library, while preserving the existing review, source, record-link, RLS, and publication boundaries.
+
 - `2026-07-22`: Published the five source-backed Defence Brief drafts prepared from the recompiled private knowledge base and simplified `/admin/briefs` for the sole administrator. Saving and publishing no longer require a manually entered rationale; administrator authorization, approved-source requirements, review identity and timestamps, publication state, and automatic audit events remain enforced.
 
 - `2026-07-21`: Hardened Ask True North with deterministic live-snapshot preselection capped at 16 organizations, sanitized provider failure classes, private candidate and failure telemetry, and safe deterministic fallback. No embedding index or second corpus was introduced, so human-published records remain immediately eligible.
@@ -193,7 +195,7 @@ Browser QA should cover:
 
 - `2026-07-21`: Reconciled the broader public-sharing package with the current production product, added current positioning and channel-specific release copy, and established that the remaining release gates are operational checks and queue readiness rather than new features or a fixed corpus target. Exact live counts must be read from production; durable public claims use rounded values.
 
-- `2026-07-21`: Added Canadian Defence Briefs as the reviewed public synthesis surface at `/briefs`, with answer-first SEO/AEO structure, dedicated Supabase publication tables, source and record links, labelled Derived Reads, and administrator-only editing at `/admin/briefs`; raw packets and private wiki markdown remain outside the public runtime.
+- `2026-07-21`: Added Canadian Defence Briefs as the reviewed public synthesis surface at `/briefs`, with source and record links, labelled interpretation, and administrator-only editing at `/admin/briefs`; raw packets and private wiki markdown remain outside the public runtime.
 
 - `2026-07-21`: Established the private Canada-first Defence Wiki foundation as a sibling Obsidian root, with versioned read-only source-packet adapters for current Crashboard Turso intelligence and True North Map public evidence/source leads. The private wiki is not a public runtime and publication remains deferred behind a future reviewed Supabase candidate workflow.
 
