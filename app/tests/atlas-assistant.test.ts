@@ -144,6 +144,10 @@ describe("Ask True North output guardrails", () => {
       fallbackReason: "timeout",
       failureClass: "timeout"
     });
+    expect(classifyAssistantFailure({ name: "APIUserAbortError", message: "Request was aborted." })).toMatchObject({
+      fallbackReason: "timeout",
+      failureClass: "timeout"
+    });
   });
 
   it("enforces sparse anonymous use and a higher signed-in allowance", () => {

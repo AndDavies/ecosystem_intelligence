@@ -1,85 +1,51 @@
-# Candidate 5 Design QA
+# Design QA: Ask True North long-filter wrapping
 
-## Build under review
+Date: 2026-07-22
 
-- Branch: `codex/candidate-5-redesign`
-- Baseline commit: `a7d19181c572333e038a3420ce9f410ecb901d35`
-- Rollback tag: `pre-candidate-5-redesign-2026-07-20`
-- Local URL: `http://localhost:3000/`
-- Scope: presentation and interaction styling only. No API, analytics, database, publication, authentication, or research-pipeline contract changes.
+## Comparison target
 
-## Visual source of truth
+- Source visual truth: `/var/folders/zy/qv3qyrkj13n26_6wv7xrdndm0000gn/T/codex-clipboard-35340354-2834-4ac1-9d5b-99b8c67cd16a.png`
+- Source size: 1502 x 301 pixels.
+- Rendered implementation: `output/design-qa/ask-true-north-filter-wrap-fixed.png`
+- Implementation capture: 1448 x 307 pixels at a 1498 x 900 CSS-pixel desktop viewport.
+- Combined comparison: `output/design-qa/ask-true-north-filter-wrap-comparison.png`
+- State: a long natural-language discovery filter displayed beside the explanatory caveat and above the Filters, Map, and Table controls.
+- Density normalization: the implementation capture was resized to the source width only in the combined comparison. The original implementation capture remains available unchanged.
 
-- Candidate 5 reference: `/Users/andrewdavies/.codex/visualizations/2026/07/19/019f79b8-46cb-7093-b081-69702dfcc6de/candidate-round-4/shortlist/05-signal-yellow-soft-ledger.png`
-- Figma draft: `IRbQj1gK1rbKfoXIXChlDO` was checked but did not contain an inspectable design frame. The approved Candidate 5 PNG therefore remained the visual source of truth.
+## Findings and comparison history
 
-## Comparison evidence
+### Iteration 1
 
-- Desktop implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/12-home-desktop-final.png`
-- Desktop reference and implementation side by side: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/13-source-vs-final.png`
-- Selected organization state: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/15-home-selected-final.png`
-- Mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/14-home-mobile-final.png`
-- Organization dossier: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/05-organization-desktop-settled.png`
-- Public demand page: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/11-demand-desktop.png`
-- Charcoal and highlighted-headline implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/16-charcoal-highlight-final.png`
-- Highlight reference and implementation comparison: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/17-highlight-reference-vs-final.png`
-- Charcoal and highlighted-headline mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/18-charcoal-highlight-mobile.png`
-- Final marketing-copy desktop implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/19-marketing-copy-desktop.png`
-- Final marketing-copy mobile implementation: `/Users/andrewdavies/.codex/visualizations/2026/07/20/true-north-map-candidate-5-implementation/20-marketing-copy-mobile.png`
+- P1: The fixed 36-pixel filter-chip height allowed a second line of text to escape the chip and overlap the Filters, Map, and Table controls.
+- Evidence: the source screenshot shows the second text line outside the chip boundary and directly above the controls.
+- Fix: replaced the fixed height with a minimum height, added vertical padding and line height, allowed word wrapping within a bounded width, prevented the close icon from shrinking, and allowed the containing flex row to shrink safely.
 
-Desktop comparisons used a 1448 by 1086 target frame. Responsive checks used 768 by 1024 and 390 by 844 viewports.
+### Iteration 2
 
-## Review history
+- Desktop post-fix geometry: filter chip height 66 pixels, bottom edge 657.2; controls top edge 665.2; overlap false.
+- Mobile post-fix geometry at 390 x 844 CSS pixels: filter chip height 186 pixels, bottom edge 716.4; controls top edge 724.4; overlap false.
+- Browser console: no errors or warnings in the verified state.
+- No actionable P0, P1, or P2 issue remains.
 
-### Pass 1
+## Required fidelity surfaces
 
-- The desktop hero was optically too large for the longer live headline and pushed the atlas too far below the initial viewport.
-- The mobile search control fell below the first viewport, weakening the primary discovery action.
+- Fonts and typography: Existing family, weight, size, and hierarchy remain unchanged. The filter now uses an explicit readable line height when it wraps.
+- Spacing and layout rhythm: The chip expands to contain its text and preserves an eight-pixel gap before the controls on desktop and mobile.
+- Colors and visual tokens: Existing surface, border, primary, and signal tokens remain unchanged.
+- Image quality and assets: No image or icon assets were changed. The existing icon library remains in use.
+- Copy and content: Search interpretation, caveat, control labels, and removal behaviour remain unchanged.
 
-### Corrections
+## Full-view and focused comparison evidence
 
-- Reduced the large-screen display scale while preserving the approved high-contrast hierarchy.
-- Compressed the mobile hero, snapshot, and trust-note spacing so the search field and action appear within the initial 844-pixel mobile viewport.
-- Kept the live product copy, corpus counts, current public-source caveat, full accessible results table, and Lookbook preview rather than replacing them with the shorter mock content.
-- Replaced pure black presentation values with a consistent `#242827` charcoal and matching translucent shadows and borders.
-- Highlighted the outcome-led opening phrase with signal yellow on desktop and mobile, and removed em dashes from static interface copy.
-- Replaced the launch headline and supporting copy with the approved Canada-first positioning, kept the credibility strip intact, and renamed the primary discovery action to `Explore the map`.
+- The combined comparison shows the original broken state above and the repaired state below.
+- A focused comparison was required because the defect concerned the chip boundary, text wrapping, and adjacent control spacing.
+- The sticky site header appears in the implementation crop because it is part of the live page and was not included in the user-provided crop; it is unrelated to the repaired component.
 
-## Final QA findings
+## Interaction checks
 
-### Fidelity
-
-- Layout: the charcoal-and-white ledger composition, signal-yellow active states, stacked wordmark, metric card, map/results split, and public-evidence rail match Candidate 5's design language.
-- Typography: the display hierarchy, tight tracking, compact labels, and body copy density remain legible across desktop, tablet, and mobile.
-- Color: charcoal, warm white, signal yellow, and evidence green are consistently tokenized. Yellow is used for headline emphasis, selection, and navigation rather than body text.
-- Surfaces: rounded corners are preserved, shadows remain restrained, and administrative screens use the quieter white/charcoal variant requested for operational work.
-- Icons: visible controls use the existing Lucide icon family; no placeholder artwork, custom SVG, or CSS illustration was introduced.
-
-### Responsiveness and interaction
-
-- Desktop keeps the synchronized map and results rail together and preserves the complete accessible table beneath.
-- Mobile retains explicit Map and List modes. At 390 pixels there is no horizontal overflow and the primary search action remains in the first viewport.
-- Selecting Kraken Robotics highlights the results rail, updates the map preview, and marks the corresponding table row without changing the underlying selection workflow.
-- Search, filters, map/list controls, dossier links, CSV export, feedback, update signup, navigation, and authentication redirects were exercised locally.
-
-### Accessibility
-
-- Public navigation, search, filters, map/list controls, results, table, feedback, and update prompts retain semantic links, buttons, labels, headings, and table structure.
-- Keyboard focus uses a high-contrast signal-yellow outline.
-- Mobile controls retain practical tap targets; text and controls do not clip or overlap at the tested viewports.
-- The accessible table remains the non-map equivalent for all visible organizations.
-
-### Intentional differences from the reference
-
-- Live product copy and verified corpus metrics are longer than the visual mock, so the hero wraps differently.
-- The implementation preserves the production Lookbook preview, dynamic clustered map, viewport-synchronized results, full table, and evidence-backed source links.
-- These differences preserve True North Map's existing information architecture and functionality while applying the approved visual system.
-
-## Severity summary
-
-- P0 blockers: none.
-- P1 major issues: none.
-- P2 material fidelity or usability issues: none.
-- P3 minor issues: none required before local stakeholder review.
+- Long discovery filter remains a removable button.
+- Filters, Map, and Table controls remain visible and unobstructed.
+- Desktop and mobile wrapping remain within the filter boundary.
+- Search behaviour, analytics, data loading, and result selection were not changed.
 
 final result: passed

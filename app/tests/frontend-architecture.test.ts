@@ -41,4 +41,12 @@ describe("frontend architecture contracts", () => {
     expect(globals).not.toContain('.atlas-admin-shell [class*=');
     expect(reviewPage).not.toMatch(/#[0-9a-fA-F]{6}/);
   });
+
+  it("lets long discovery filters grow without overlapping map controls", async () => {
+    const explorer = await readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8");
+
+    expect(explorer).toContain("inline-flex min-h-9 max-w-full items-center");
+    expect(explorer).toContain('className="min-w-0 break-words"');
+    expect(explorer).not.toContain("inline-flex h-9 items-center gap-2 rounded-full border border-[var(--atlas-primary-border)]");
+  });
 });

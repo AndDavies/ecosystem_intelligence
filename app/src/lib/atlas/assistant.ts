@@ -412,7 +412,7 @@ export function classifyAssistantFailure(error: unknown): {
   const details = errorDetails(error);
   const combined = [details.name, details.message, details.code, details.type].filter(Boolean).join(" ");
   const errorCode = details.code ?? details.type;
-  if (combined.includes("timeout") || combined.includes("timed out") || combined.includes("aborterror")) {
+  if (combined.includes("timeout") || combined.includes("timed out") || combined.includes("aborterror") || combined.includes("aborted")) {
     return { fallbackReason: "timeout", failureClass: "timeout", errorCode, status: details.status };
   }
   if (details.status === 401 || combined.includes("invalid_api_key") || combined.includes("authentication")) {

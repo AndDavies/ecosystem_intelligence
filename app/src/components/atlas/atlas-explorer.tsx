@@ -466,10 +466,10 @@ export function AtlasExplorer({
           <p className="mt-2 text-[11px] leading-5 text-[var(--atlas-muted)]">Uses reviewed public records only. Do not enter classified, confidential, proprietary, or personal information.</p>
 
           <div className="mt-3 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-            <div className="flex min-h-9 flex-wrap items-center gap-2">
+            <div className="flex min-h-9 min-w-0 flex-wrap items-center gap-2">
               {result.appliedFilters.map((filter) => (
-                <button key={`${filter.key}-${filter.value}`} type="button" onClick={() => { if (filter.key === "query" || filter.key === "metro") rememberBetaSearchId(null); void load(filterWithout(filters, filter.key), { updateQuestion: filter.key === "query" || filter.key === "metro" }); }} className="inline-flex h-9 items-center gap-2 rounded-full border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-3 text-xs font-medium text-[var(--atlas-primary)] hover:border-[var(--atlas-primary)]" aria-label={`Remove ${filter.label}: ${filter.value}`}>
-                  <span>{filter.label}: {filter.value}</span><X className="size-3.5" />
+                <button key={`${filter.key}-${filter.value}`} type="button" onClick={() => { if (filter.key === "query" || filter.key === "metro") rememberBetaSearchId(null); void load(filterWithout(filters, filter.key), { updateQuestion: filter.key === "query" || filter.key === "metro" }); }} className="inline-flex min-h-9 max-w-full items-center gap-2 rounded-full border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-3 py-2 text-left text-xs font-medium leading-5 text-[var(--atlas-primary)] hover:border-[var(--atlas-primary)]" aria-label={`Remove ${filter.label}: ${filter.value}`}>
+                  <span className="min-w-0 break-words">{filter.label}: {filter.value}</span><X className="size-3.5 shrink-0" />
                 </button>
               ))}
               {result.appliedFilters.length === 0 ? <span className="inline-flex h-9 items-center rounded-xl border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-ink-soft)]">Canada-wide view</span> : null}
