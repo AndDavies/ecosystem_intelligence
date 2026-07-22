@@ -3,8 +3,7 @@ import type {
   AtlasConfidence,
   AtlasDemandMatch,
   AtlasEntityKind,
-  AtlasLocation,
-  AtlasMissionMatch
+  AtlasLocation
 } from "@/types/atlas";
 
 export interface AtlasPublicContact {
@@ -30,7 +29,9 @@ export function alignmentTypeLabel(matchType: AtlasAlignmentType) {
   return matchType === "public_source_alignment" ? "Connected by a public source" : "Reviewed connection";
 }
 
-export function alignmentSubject(match: AtlasMissionMatch | AtlasDemandMatch) {
+export function alignmentSubject(
+  match: { missionArea: { name: string } } | Pick<AtlasDemandMatch, "demandTitle">
+) {
   return "missionArea" in match ? match.missionArea.name : match.demandTitle;
 }
 

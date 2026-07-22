@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Building2, MapPin } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PaginationNav } from "@/components/ui/pagination-nav";
 import { evidenceStrengthLabel } from "@/lib/atlas/presentation";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
+import { normalizedPage, paginate } from "@/lib/pagination";
 import { formatDate, toTitleCase } from "@/lib/utils";
 
 // Keep the directory in sync with publication without depending on a cached
@@ -15,8 +17,14 @@ export const metadata: Metadata = {
   description: "Find Canadian defence and dual-use organizations, see what they build, and inspect the public evidence behind each profile."
 };
 
-export default async function OrganizationsPage() {
+export default async function OrganizationsPage({
+  searchParams
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   const snapshot = await getAtlasSnapshot();
+  const params = await searchParams;
+  const directory = paginate(snapshot.organizations, normalizedPage(params.page), 24);
 
   return (
     <PublicPageShell
@@ -26,7 +34,7 @@ export default async function OrganizationsPage() {
       actions={<Link href="/submit?submissionType=new_organization&targetType=organization&returnTo=%2Forganizations" className="inline-flex h-10 items-center rounded-md border border-[var(--atlas-primary)] bg-white px-4 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline">Suggest an organization</Link>}
     >
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {snapshot.organizations.map((organization) => {
+        {directory.items.map((organization) => {
           const capability = organization.capabilities[0];
           return (
             <PublicCard key={organization.id} className="flex h-full flex-col">
@@ -65,6 +73,7 @@ export default async function OrganizationsPage() {
           );
         })}
       </div>
+      <PaginationNav path="/organizations" page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="organizations" />
     </PublicPageShell>
   );
 }

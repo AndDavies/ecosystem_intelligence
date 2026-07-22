@@ -6,7 +6,7 @@ import "leaflet/dist/leaflet.css";
 import maplibregl, { type GeoJSONSource, type Map as MapLibreMap } from "maplibre-gl";
 import { useEffect, useRef } from "react";
 import { isUsableAtlasBounds, organizationIdsInBounds } from "@/lib/atlas/viewport";
-import type { AtlasBounds, AtlasOrganization } from "@/types/atlas";
+import type { AtlasBounds, AtlasExplorerOrganization } from "@/types/atlas";
 
 const sourceId = "published-organizations";
 const mapColors = {
@@ -20,7 +20,7 @@ const canadaBounds = {
   northEast: [75, -50] as [number, number]
 };
 
-function organizationCoordinates(organizations: AtlasOrganization[]) {
+function organizationCoordinates(organizations: AtlasExplorerOrganization[]) {
   return organizations.flatMap((organization) => {
     const location = organization.primaryLocation;
     if (location?.longitude === null || location?.longitude === undefined || location.latitude === null || location.latitude === undefined) {
@@ -64,7 +64,7 @@ function mapStyle(): maplibregl.StyleSpecification | string {
   };
 }
 
-function featureCollection(organizations: AtlasOrganization[]) {
+function featureCollection(organizations: AtlasExplorerOrganization[]) {
   return {
     type: "FeatureCollection" as const,
     features: organizations.flatMap((organization) => {
@@ -107,7 +107,7 @@ export function AtlasMap({
   onSelect,
   onViewportChange
 }: {
-  organizations: AtlasOrganization[];
+  organizations: AtlasExplorerOrganization[];
   selectedOrganizationId: string | null;
   onSelect: (organizationId: string) => void;
   onViewportChange: (viewport: { bounds: AtlasBounds; organizationIds: string[] }) => void;

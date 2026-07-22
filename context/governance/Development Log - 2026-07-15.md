@@ -394,3 +394,26 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - A live containerized naval-solutions validation retained five useful matches
   while reducing OpenAI input from 58,737 to 22,149 tokens and model latency from
   11.8 to 9.1 seconds.
+
+## Frontend architecture hardening - 2026-07-22
+
+- Published the first resilience and accessibility pass at commit `18550cf`:
+  route-level loading and error recovery, a keyboard skip link, accessible
+  feedback and update dialogs, pending action states, and semantic internal
+  navigation. No public workflow or data contract changed.
+- Implemented and approved the second frontend architecture pass. The public explorer now
+  receives a compact, bounded projection of published records rather than full
+  organization dossiers. The canonical Supabase-backed organization, research,
+  review, export, and Ask True North contracts remain unchanged.
+- The explorer loads at most 120 organizations initially, supports an explicit
+  next-page contract up to 200 records per request, and fetches a full published
+  organization only when a user expands a result. Newly published records still
+  enter discovery automatically through the existing snapshot.
+- Added server-rendered pagination to the organization directory, future-proofed
+  the public-demand directory, and replaced the Admin Review queue's fixed
+  50-row ceiling with counted 20-row pages.
+- On the current 104-organization production corpus, the explorer API response
+  fell from approximately 596 KB to 234 KB, a 60.7% reduction, while preserving
+  the visible map, results, evidence links, full profiles, filters, and exports.
+- Andrew approved Pass 2 for production after local map, expansion, profile,
+  organization-directory, demand-directory, and full release validation.

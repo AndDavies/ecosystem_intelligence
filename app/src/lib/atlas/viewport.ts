@@ -1,11 +1,13 @@
 import type { AtlasBounds, AtlasOrganization } from "@/types/atlas";
 
+type MappableOrganization = Pick<AtlasOrganization, "id" | "primaryLocation">;
+
 export function isUsableAtlasBounds(bounds: AtlasBounds) {
   const values = [bounds.west, bounds.south, bounds.east, bounds.north];
   return values.every(Number.isFinite) && bounds.east - bounds.west > 0.001 && bounds.north - bounds.south > 0.001;
 }
 
-export function organizationIdsInBounds(organizations: AtlasOrganization[], bounds: AtlasBounds) {
+export function organizationIdsInBounds(organizations: MappableOrganization[], bounds: AtlasBounds) {
   if (!isUsableAtlasBounds(bounds)) return [];
   return organizations.flatMap((organization) => {
     const location = organization.primaryLocation;

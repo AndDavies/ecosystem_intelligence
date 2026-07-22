@@ -10,10 +10,12 @@ import type {
   AtlasDiscoveryResult,
   AtlasOrganization,
   AtlasQuery,
+  AtlasExplorerQueryResult,
   AtlasQueryResult,
   AtlasRegion,
   AtlasSnapshot
 } from "@/types/atlas";
+import { ATLAS_EXPLORER_MAX_PAGE_SIZE, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
 
 const regionDefinitions: Array<Omit<AtlasRegion, "organizationCount" | "capabilityCount" | "clusterCount">> = [
   {
@@ -362,6 +364,19 @@ export function queryAtlasSnapshot(snapshot: AtlasSnapshot, query: AtlasQuery = 
 
 export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResult> {
   return queryAtlasSnapshot(await getAtlasSnapshot(), query);
+}
+
+export function queryAtlasExplorerSnapshot(
+  snapshot: AtlasSnapshot,
+  query: AtlasQuery = {}
+): AtlasExplorerQueryResult {
+  const pageSize = Math.min(ATLAS_EXPLORER_MAX_PAGE_SIZE, Math.max(1, query.pageSize ?? 25));
+  const constrainedQuery = { ...query, pageSize };
+  return projectAtlasExplorerResult(queryAtlasSnapshot(snapshot, constrainedQuery), constrainedQuery);
+}
+
+export async function queryAtlasExplorer(query: AtlasQuery = {}): Promise<AtlasExplorerQueryResult> {
+  return queryAtlasExplorerSnapshot(await getAtlasSnapshot(), query);
 }
 
 export async function getAtlasOrganizationBySlug(slug: string) {

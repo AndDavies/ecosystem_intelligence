@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CircleDashed, FileText, ShieldAlert } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PaginationNav } from "@/components/ui/pagination-nav";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
+import { normalizedPage, paginate } from "@/lib/pagination";
 import { toTitleCase } from "@/lib/utils";
 
 // Publication invalidates the shared atlas data cache, but this index must also
@@ -14,8 +16,14 @@ export const metadata: Metadata = {
   description: "See the public problems Canadian and allied organizations are trying to solve, then explore reviewed Canadian technologies that may fit."
 };
 
-export default async function DemandIndexPage() {
+export default async function DemandIndexPage({
+  searchParams
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   const snapshot = await getAtlasSnapshot();
+  const params = await searchParams;
+  const directory = paginate(snapshot.demandRequirements, normalizedPage(params.page), 12);
   const totalMatches = snapshot.demandRequirements.reduce((sum, demand) => sum + demand.matches.length, 0);
   const demandSourceCount = new Set(snapshot.demandRequirements.map((demand) => demand.source.id)).size;
 
@@ -36,7 +44,7 @@ export default async function DemandIndexPage() {
         <p>Demand records and future mappings are based on published sources. They are not procurement eligibility, endorsement, customer interest, classified demand, or a formal opportunity.</p>
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
-        {snapshot.demandRequirements.map((demand) => (
+        {directory.items.map((demand) => (
           <PublicCard key={demand.id} className="flex h-full flex-col">
             <div className="flex items-start justify-between gap-4">
               <span className="flex size-10 items-center justify-center rounded-md bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><FileText className="size-5" /></span>
@@ -52,6 +60,7 @@ export default async function DemandIndexPage() {
           </PublicCard>
         ))}
       </div>
+      <PaginationNav path="/demand" page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="public demand signals" />
     </PublicPageShell>
   );
 }

@@ -27,6 +27,10 @@ import { AssistantAnswer, AssistantFallback } from "@/components/atlas/assistant
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
 import {
+  ATLAS_EXPLORER_PAGE_SIZE,
+  projectAtlasExplorerOrganization
+} from "@/lib/atlas/explorer-projection";
+import {
   alignmentSubject,
   alignmentTypeLabel,
   assessmentConfidenceLabel,
@@ -43,15 +47,16 @@ import {
 } from "@/lib/product-insights/client";
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
 import type {
-  AtlasCapability,
   AtlasAssistantPriorTurn,
   AtlasBounds,
   AtlasDemandRequirement,
   AtlasDiscoveryResult,
+  AtlasExplorerCapability,
+  AtlasExplorerOrganization,
+  AtlasExplorerQueryResult,
   AtlasMissionArea,
   AtlasOrganization,
   AtlasQuery,
-  AtlasQueryResult,
   AtlasRegion,
   AtlasTechnicalDomain
 } from "@/types/atlas";
@@ -81,7 +86,7 @@ const AtlasMap = dynamic(
 type ViewMode = "map" | "table";
 
 interface AtlasExplorerProps {
-  initialResult: AtlasQueryResult;
+  initialResult: AtlasExplorerQueryResult;
   initialFilters: AtlasQuery;
   snapshotMetrics: { organizations: number; capabilities: number; sources: number };
   regions: AtlasRegion[];
@@ -91,7 +96,7 @@ interface AtlasExplorerProps {
   generatedAt: string;
 }
 
-function relevantCapability(organization: AtlasOrganization, filters: AtlasQuery): AtlasCapability | null {
+function relevantCapability(organization: AtlasExplorerOrganization, filters: AtlasQuery): AtlasExplorerCapability | null {
   return (
     organization.capabilities.find((capability) => {
       if (filters.domain && !capability.technicalDomains.some((domain) => domain.slug === filters.domain)) return false;
@@ -111,7 +116,7 @@ function relevantCapability(organization: AtlasOrganization, filters: AtlasQuery
   );
 }
 
-function rowEvidence(organization: AtlasOrganization, capability: AtlasCapability | null) {
+function rowEvidence(organization: AtlasExplorerOrganization, capability: AtlasExplorerCapability | null) {
   const citations = [
     ...organization.citations,
     ...(capability?.citations ?? []),
@@ -121,7 +126,7 @@ function rowEvidence(organization: AtlasOrganization, capability: AtlasCapabilit
   return Array.from(new Map(citations.map((citation) => [citation.sourceUrl, citation])).values());
 }
 
-function selectedAlignment(capability: AtlasCapability | null, filters: AtlasQuery) {
+function selectedAlignment(capability: AtlasExplorerCapability | null, filters: AtlasQuery) {
   if (!capability) return null;
   if (filters.demand) return capability.demandMatches.find((match) => match.demandSlug === filters.demand) ?? null;
   if (filters.mission) return capability.missionMatches.find((match) => match.missionArea.slug === filters.mission) ?? null;
@@ -167,6 +172,9 @@ export function AtlasExplorer({
   const [discovery, setDiscovery] = useState<AtlasDiscoveryResult | null>(null);
   const [assistantTurns, setAssistantTurns] = useState<AtlasAssistantPriorTurn[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [organizationDetails, setOrganizationDetails] = useState<Record<string, AtlasOrganization>>({});
+  const [detailLoadingId, setDetailLoadingId] = useState<string | null>(null);
+  const [detailErrors, setDetailErrors] = useState<Record<string, string>>({});
   const tableScrollRef = useRef<HTMLDivElement | null>(null);
   const rowRefs = useRef(new Map<string, HTMLTableRowElement>());
 
@@ -226,15 +234,22 @@ export function AtlasExplorer({
       setAssistantTurns([]);
     }
     try {
-      const params = atlasQueryToSearchParams({ ...nextFilters, bounds: undefined, page: 1, pageSize: 1000 });
+      const params = atlasQueryToSearchParams({
+        ...nextFilters,
+        bounds: undefined,
+        page: 1,
+        pageSize: ATLAS_EXPLORER_PAGE_SIZE
+      });
       const response = await fetch(`/api/atlas?${params.toString()}`, { headers: { Accept: "application/json" } });
       if (!response.ok) throw new Error("The ecosystem map could not be refreshed.");
-      const nextResult = (await response.json()) as AtlasQueryResult;
+      const nextResult = (await response.json()) as AtlasExplorerQueryResult;
       setResult(nextResult);
       setFilters({ ...nextFilters, page: 1 });
       setViewport(null);
       setSelectedId(null);
       setExpandedId(null);
+      setOrganizationDetails({});
+      setDetailErrors({});
       if (options.updateQuestion) setQuestion(nextFilters.query ?? "");
       const browserParams = atlasQueryToSearchParams(nextFilters);
       window.history.replaceState(null, "", browserParams.size ? `/?${browserParams.toString()}` : "/");
@@ -283,18 +298,25 @@ export function AtlasExplorer({
         zero_result: nextDiscovery.organizationIds.length === 0
       }, { searchId: nextDiscovery.searchId });
       if (nextDiscovery.assistant && nextDiscovery.organizations) {
+        const projectedOrganizations = nextDiscovery.organizations.map((organization) =>
+          projectAtlasExplorerOrganization(organization, { query })
+        );
         setResult({
           ...initialResult,
-          organizations: nextDiscovery.organizations,
-          total: nextDiscovery.organizations.length,
+          organizations: projectedOrganizations,
+          total: projectedOrganizations.length,
           page: 1,
-          pageSize: 1000,
-          appliedFilters: nextDiscovery.filterChips
+          pageSize: Math.max(1, projectedOrganizations.length),
+          appliedFilters: nextDiscovery.filterChips,
+          hasMore: false,
+          nextPage: null
         });
         setFilters({ query });
         setViewport(null);
         setSelectedId(null);
         setExpandedId(null);
+        setOrganizationDetails({});
+        setDetailErrors({});
         setAssistantTurns((turns) => [...turns, { query, organizationIds: nextDiscovery.organizationIds }].slice(-3));
         window.history.replaceState(null, "", "/");
         setLoading(false);
@@ -346,6 +368,70 @@ export function AtlasExplorer({
   function updateViewport(nextViewport: { bounds: AtlasBounds; organizationIds: string[] }) {
     setViewport(nextViewport);
     setSelectedId((current) => current && !nextViewport.organizationIds.includes(current) ? null : current);
+  }
+
+  async function toggleExpanded(organization: AtlasExplorerOrganization, source: "mobile_list" | "table_expand") {
+    setSelectedId(organization.id);
+    trackBetaEvent("result_select", { organization: organization.slug, source });
+    if (expandedId === organization.id) {
+      setExpandedId(null);
+      return;
+    }
+
+    setExpandedId(organization.id);
+    if (organizationDetails[organization.id] || detailLoadingId === organization.id) return;
+
+    setDetailLoadingId(organization.id);
+    setDetailErrors((current) => {
+      const next = { ...current };
+      delete next[organization.id];
+      return next;
+    });
+    try {
+      const response = await fetch(`/api/organizations/${encodeURIComponent(organization.slug)}`, {
+        headers: { Accept: "application/json" }
+      });
+      if (!response.ok) throw new Error("The complete organization profile could not be loaded.");
+      const detail = (await response.json()) as AtlasOrganization;
+      setOrganizationDetails((current) => ({ ...current, [organization.id]: detail }));
+    } catch (detailError) {
+      setDetailErrors((current) => ({
+        ...current,
+        [organization.id]: detailError instanceof Error
+          ? detailError.message
+          : "The complete organization profile could not be loaded."
+      }));
+    } finally {
+      setDetailLoadingId((current) => current === organization.id ? null : current);
+    }
+  }
+
+  async function loadMore() {
+    if (!result.nextPage || loading) return;
+    setLoading(true);
+    setError(null);
+    try {
+      const params = atlasQueryToSearchParams({
+        ...filters,
+        bounds: undefined,
+        page: result.nextPage,
+        pageSize: result.pageSize
+      });
+      const response = await fetch(`/api/atlas?${params.toString()}`, { headers: { Accept: "application/json" } });
+      if (!response.ok) throw new Error("More organizations could not be loaded.");
+      const nextResult = (await response.json()) as AtlasExplorerQueryResult;
+      setResult((current) => ({
+        ...nextResult,
+        organizations: Array.from(
+          new Map([...current.organizations, ...nextResult.organizations].map((organization) => [organization.id, organization])).values()
+        )
+      }));
+      setViewport(null);
+    } catch (loadError) {
+      setError(loadError instanceof Error ? loadError.message : "More organizations could not be loaded.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const caveat = filters.demand
@@ -526,15 +612,15 @@ export function AtlasExplorer({
                 {visibleOrganizations.map((organization) => (
                   <MobileOrganizationCard
                     key={organization.id}
-                    organization={organization}
-                    capability={relevantCapability(organization, filters)}
+                    organization={organizationDetails[organization.id] ?? organization}
+                    capability={relevantCapability(organizationDetails[organization.id] ?? organization, filters)}
                     filters={filters}
                     expanded={expandedId === organization.id}
                     selected={selectedId === organization.id}
+                    detailLoading={detailLoadingId === organization.id}
+                    detailError={detailErrors[organization.id]}
                     onToggle={() => {
-                      setSelectedId(organization.id);
-                      setExpandedId((current) => (current === organization.id ? null : organization.id));
-                      trackBetaEvent("result_select", { organization: organization.slug, source: "mobile_list" });
+                      void toggleExpanded(organization, "mobile_list");
                     }}
                   />
                 ))}
@@ -556,20 +642,20 @@ export function AtlasExplorer({
                     {visibleOrganizations.map((organization) => (
                       <OrganizationRows
                         key={organization.id}
-                        organization={organization}
-                        capability={relevantCapability(organization, filters)}
+                        organization={organizationDetails[organization.id] ?? organization}
+                        capability={relevantCapability(organizationDetails[organization.id] ?? organization, filters)}
                         filters={filters}
                         expanded={expandedId === organization.id}
                         selected={selectedId === organization.id}
+                        detailLoading={detailLoadingId === organization.id}
+                        detailError={detailErrors[organization.id]}
                         rowRef={(node) => {
                           if (node) rowRefs.current.set(organization.id, node);
                           else rowRefs.current.delete(organization.id);
                         }}
                         onSelect={() => updateSelection(organization.id, false, "result")}
                         onToggleExpanded={() => {
-                          setSelectedId(organization.id);
-                          setExpandedId((current) => (current === organization.id ? null : organization.id));
-                          trackBetaEvent("result_select", { organization: organization.slug, source: "table_expand" });
+                          void toggleExpanded(organization, "table_expand");
                         }}
                       />
                     ))}
@@ -600,6 +686,23 @@ export function AtlasExplorer({
               )}
             </div>
           )}
+
+          {result.hasMore ? (
+            <div className="flex flex-col items-center gap-2 border-t border-[var(--atlas-border)] bg-white px-4 py-5 text-center">
+              <p className="text-xs text-[var(--atlas-muted)]">
+                {result.organizations.length} of {result.total} matching organizations loaded
+              </p>
+              <button
+                type="button"
+                className="atlas-secondary-button h-10 gap-2 px-4 text-xs disabled:opacity-60"
+                onClick={() => void loadMore()}
+                disabled={loading}
+              >
+                {loading ? <LoaderCircle className="size-4 animate-spin" /> : null}
+                Load more organizations
+              </button>
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -628,7 +731,7 @@ function ResultsRail({
   selectedId,
   onSelect
 }: {
-  organizations: AtlasOrganization[];
+  organizations: AtlasExplorerOrganization[];
   filters: AtlasQuery;
   selectedId: string | null;
   onSelect: (id: string) => void;
@@ -701,8 +804,8 @@ function LookbookPeek({
   filters,
   onClose
 }: {
-  organization: AtlasOrganization;
-  capability: AtlasCapability | null;
+  organization: AtlasExplorerOrganization;
+  capability: AtlasExplorerCapability | null;
   filters: AtlasQuery;
   onClose: () => void;
 }) {
@@ -833,13 +936,17 @@ function MobileOrganizationCard({
   filters,
   expanded,
   selected,
+  detailLoading,
+  detailError,
   onToggle
 }: {
-  organization: AtlasOrganization;
-  capability: AtlasCapability | null;
+  organization: AtlasExplorerOrganization;
+  capability: AtlasExplorerCapability | null;
   filters: AtlasQuery;
   expanded: boolean;
   selected: boolean;
+  detailLoading: boolean;
+  detailError?: string;
   onToggle: () => void;
 }) {
   const evidence = rowEvidence(organization, capability);
@@ -872,6 +979,8 @@ function MobileOrganizationCard({
 
       {expanded ? (
         <div className="border-t border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-4">
+          {detailLoading ? <p className="mb-3 flex items-center gap-2 text-xs font-semibold text-[var(--atlas-muted)]"><LoaderCircle className="size-3.5 animate-spin" />Loading the complete profile…</p> : null}
+          {detailError ? <p className="mb-3 text-xs font-semibold text-[var(--atlas-danger)]">{detailError} The reviewed preview remains available below.</p> : null}
           <h3 className="text-xs font-bold text-[var(--atlas-ink)]">{alignment ? `Why it may fit ${alignmentSubject(alignment)}` : "What it does"}</h3>
           <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
 
@@ -919,15 +1028,19 @@ function OrganizationRows({
   filters,
   expanded,
   selected,
+  detailLoading,
+  detailError,
   rowRef,
   onSelect,
   onToggleExpanded
 }: {
-  organization: AtlasOrganization;
-  capability: AtlasCapability | null;
+  organization: AtlasExplorerOrganization;
+  capability: AtlasExplorerCapability | null;
   filters: AtlasQuery;
   expanded: boolean;
   selected: boolean;
+  detailLoading: boolean;
+  detailError?: string;
   rowRef: (node: HTMLTableRowElement | null) => void;
   onSelect: () => void;
   onToggleExpanded: () => void;
@@ -990,6 +1103,8 @@ function OrganizationRows({
       {expanded ? (
         <tr className="border-x border-b border-[var(--atlas-coral)] bg-[var(--atlas-surface-muted)]">
           <td colSpan={7} className="p-0">
+            {detailLoading ? <p className="flex items-center gap-2 border-b border-[var(--atlas-border)] px-4 py-3 text-xs font-semibold text-[var(--atlas-muted)]"><LoaderCircle className="size-3.5 animate-spin" />Loading the complete profile…</p> : null}
+            {detailError ? <p className="border-b border-[var(--atlas-border)] px-4 py-3 text-xs font-semibold text-[var(--atlas-danger)]">{detailError} The reviewed preview remains available below.</p> : null}
             <div className="grid gap-0 px-4 py-4 lg:grid-cols-[1.1fr_0.9fr_0.78fr]">
               <section className="pr-5 lg:border-r lg:border-[var(--atlas-primary-border)]" aria-labelledby={`why-${organization.id}`}>
                 <h3 id={`why-${organization.id}`} className="text-xs font-bold text-[var(--atlas-ink)]">

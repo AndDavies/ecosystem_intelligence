@@ -240,6 +240,71 @@ export interface AtlasQueryResult {
   };
 }
 
+/**
+ * Compact public-explorer representation. Full organization records remain the
+ * canonical model and are fetched only when a user opens a detailed result.
+ */
+export interface AtlasExplorerOrganization extends Pick<
+  AtlasOrganization,
+  | "id"
+  | "slug"
+  | "name"
+  | "description"
+  | "entityKind"
+  | "sourceConfidence"
+  | "freshnessStatus"
+  | "lastReviewedAt"
+  | "primaryLocation"
+> {
+  citations: AtlasExplorerCitation[];
+  capabilities: AtlasExplorerCapability[];
+}
+
+export type AtlasExplorerCitation = Pick<
+  AtlasCitation,
+  "id" | "sourceTitle" | "sourceUrl" | "publisher"
+>;
+
+export interface AtlasExplorerMissionMatch extends Pick<
+  AtlasMissionMatch,
+  "id" | "alignmentSummary" | "matchType" | "confidence"
+> {
+  missionArea: Pick<AtlasMissionArea, "id" | "slug" | "name">;
+  citations: AtlasExplorerCitation[];
+}
+
+export interface AtlasExplorerDemandMatch extends Pick<
+  AtlasDemandMatch,
+  "id" | "demandSlug" | "demandTitle" | "alignmentSummary" | "matchType" | "confidence"
+> {
+  citations: AtlasExplorerCitation[];
+}
+
+export interface AtlasExplorerCapability extends Pick<
+  AtlasCapability,
+  | "id"
+  | "organizationId"
+  | "slug"
+  | "name"
+  | "summary"
+  | "capabilityType"
+  | "defenceApplications"
+  | "technicalTags"
+  | "sourceConfidence"
+  | "lastReviewedAt"
+> {
+  technicalDomains: Array<Pick<AtlasTechnicalDomain, "id" | "slug" | "name">>;
+  missionMatches: AtlasExplorerMissionMatch[];
+  demandMatches: AtlasExplorerDemandMatch[];
+  citations: AtlasExplorerCitation[];
+}
+
+export interface AtlasExplorerQueryResult extends Omit<AtlasQueryResult, "organizations"> {
+  organizations: AtlasExplorerOrganization[];
+  hasMore: boolean;
+  nextPage: number | null;
+}
+
 export interface AtlasDiscoveryResult {
   query: string;
   searchId?: string | null;

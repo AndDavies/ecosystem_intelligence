@@ -1,13 +1,16 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { CheckCircle2, TriangleAlert } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PendingButton } from "@/components/ui/pending-button";
+import { PaginationNav } from "@/components/ui/pagination-nav";
 import { editAtlasCandidate, editTypedResearchCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
 import type { DemandSignalBundleV1, OrganizationBundleV2 } from "@/lib/research/pipeline-schema";
 import { createClient } from "@/lib/supabase/server";
+import { normalizedPage } from "@/lib/pagination";
 
 type CandidateRow = {
   id: string;
@@ -36,16 +39,22 @@ const errorMessages: Record<string, string> = {
   "demand-match-publication-failed": "The match was not published. Refresh the queue and confirm that the technology, public demand statement, and candidate are still current."
 };
 
-export default async function AdminReviewPage({ searchParams }: { searchParams: Promise<{ error?: string; success?: string }> }) {
+export default async function AdminReviewPage({ searchParams }: { searchParams: Promise<{ error?: string; success?: string; page?: string }> }) {
   await requireAtlasStaff("reviewer");
   const params = await searchParams;
+  const pageSize = 20;
+  const page = normalizedPage(params.page);
+  const rangeStart = (page - 1) * pageSize;
   const supabase = await createClient();
-  const [{ data: candidates }, { data: domains }, { data: clusters }, { data: missionAreas }] = await Promise.all([
-    supabase.from("candidate_changes").select("id, candidate_kind, target_entity_type, proposed_record, before_record, field_evidence, duplicate_check, reviewer_rationale, confidence, status, created_at").eq("status", "pending").order("created_at").limit(50),
+  const [{ data: candidates, count: candidateCount }, { data: domains }, { data: clusters }, { data: missionAreas }] = await Promise.all([
+    supabase.from("candidate_changes").select("id, candidate_kind, target_entity_type, proposed_record, before_record, field_evidence, duplicate_check, reviewer_rationale, confidence, status, created_at", { count: "exact" }).eq("status", "pending").order("created_at").range(rangeStart, rangeStart + pageSize - 1),
     supabase.from("technical_domains").select("slug, name").eq("publication_status", "published").order("name"),
     supabase.from("ecosystem_clusters").select("slug, name").eq("publication_status", "published").order("name"),
     supabase.from("mission_areas").select("slug, name").eq("publication_status", "published").order("name")
   ]);
+  const candidateTotal = candidateCount ?? 0;
+  const totalPages = Math.max(1, Math.ceil(candidateTotal / pageSize));
+  if (candidateTotal > 0 && page > totalPages) redirect(totalPages === 1 ? "/admin/review" : `/admin/review?page=${totalPages}`);
   const candidateRows = (candidates ?? []) as CandidateRow[];
   const organizationCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "organization_bundle").length;
   const demandCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "demand_signal_bundle").length;
@@ -88,6 +97,15 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
               <GenericCandidateCard key={candidate.id} candidate={candidate} />
             );
           })}
+          <PaginationNav
+            path="/admin/review"
+            page={page}
+            totalPages={totalPages}
+            start={rangeStart + 1}
+            end={Math.min(rangeStart + candidateRows.length, candidateTotal)}
+            total={candidateTotal}
+            itemLabel="pending candidates"
+          />
         </div>
       ) : <EmptyCoverage title="Review queue is clear" detail="New source extractions, research candidates, and public submissions appear here after they are staged." />}
     </PublicPageShell>

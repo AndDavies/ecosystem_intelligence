@@ -4,7 +4,8 @@ import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { JsonLd } from "@/components/seo/json-ld";
 import { absoluteUrl } from "@/lib/site";
 import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
-import { getAtlasSnapshot, queryAtlas } from "@/lib/atlas/repository";
+import { ATLAS_EXPLORER_PAGE_SIZE } from "@/lib/atlas/explorer-projection";
+import { getAtlasSnapshot, queryAtlasExplorer } from "@/lib/atlas/repository";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +30,7 @@ export default async function PublicAtlasPage({
   const query = atlasQueryFromSearchParams(params);
   const [snapshot, result] = await Promise.all([
     getAtlasSnapshot(),
-    queryAtlas({ ...query, page: 1, pageSize: 1000 })
+    queryAtlasExplorer({ ...query, page: 1, pageSize: ATLAS_EXPLORER_PAGE_SIZE })
   ]);
 
   return (
