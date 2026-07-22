@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PendingButton } from "@/components/ui/pending-button";
-import { editPublishedOrganization, editPublishedOrganizationContact } from "@/lib/actions/atlas-admin";
+import { editPublishedOrganization, editPublishedOrganizationContact } from "@/lib/actions/atlas-organizations";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { publicContactFromProfileData } from "@/lib/atlas/presentation";
 import { createClient } from "@/lib/supabase/server";
@@ -140,22 +140,22 @@ export default async function EditPublishedOrganizationPage({
   const areaClass = "form-control h-auto py-3 leading-6";
 
   return (
-    <PublicPageShell variant="admin" eyebrow="Published record maintenance" title={`Edit ${dossier.name}`} description="Update the information people use to understand this organization and decide whether to engage. Stable profile links are preserved and every change is recorded." backHref="/admin/organizations" backLabel="Published organizations" actions={<Link href={`/organizations/${dossier.slug}`} target="_blank" className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d0d5dd] bg-white px-3 text-xs font-semibold text-[#344054] no-underline">View public profile <ExternalLink className="size-3.5" /></Link>}>
+    <PublicPageShell variant="admin" eyebrow="Published record maintenance" title={`Edit ${dossier.name}`} description="Update the information people use to understand this organization and decide whether to engage. Stable profile links are preserved and every change is recorded." backHref="/admin/organizations" backLabel="Published organizations" actions={<Link href={`/organizations/${dossier.slug}`} target="_blank" className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--admin-border)] bg-white px-3 text-xs font-semibold text-[var(--admin-ink-soft)] no-underline">View public profile <ExternalLink className="size-3.5" /></Link>}>
       <AdminNav />
-      {query.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{errorMessages[query.error] ?? "The organization could not be updated."}</div> : null}
-      {query.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">{query.success === "contact-updated" ? "Public contact details updated." : "Published record updated and public map refreshed."}</div> : null}
+      {query.error ? <div className="mb-5 rounded-md border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] px-3 py-2 text-sm text-[var(--admin-danger)]">{errorMessages[query.error] ?? "The organization could not be updated."}</div> : null}
+      {query.success ? <div className="mb-5 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] px-3 py-2 text-sm text-[var(--admin-success)]">{query.success === "contact-updated" ? "Public contact details updated." : "Published record updated and public map refreshed."}</div> : null}
 
       {capabilities.length > 1 ? (
-        <div className="mb-5 flex flex-wrap items-center gap-2 rounded-lg border border-[#d0d5dd] bg-white p-3">
-          <span className="mr-1 text-xs font-semibold text-[#667085]">Technology or offering being edited:</span>
-          {capabilities.map((item) => <Link key={item.id} href={`/admin/organizations/${dossier.id}/edit?capability=${item.id}`} className={`rounded-md px-3 py-2 text-xs font-semibold no-underline ${item.id === capability.id ? "bg-[#0756d9] text-white" : "bg-[#f2f4f7] text-[#344054]"}`}>{item.name}</Link>)}
+        <div className="mb-5 flex flex-wrap items-center gap-2 rounded-lg border border-[var(--admin-border)] bg-white p-3">
+          <span className="mr-1 text-xs font-semibold text-[var(--admin-muted)]">Technology or offering being edited:</span>
+          {capabilities.map((item) => <Link key={item.id} href={`/admin/organizations/${dossier.id}/edit?capability=${item.id}`} className={`rounded-md px-3 py-2 text-xs font-semibold no-underline ${item.id === capability.id ? "bg-[var(--admin-action)] text-white" : "bg-[var(--admin-surface-subtle)] text-[var(--admin-ink-soft)]"}`}>{item.name}</Link>)}
         </div>
       ) : null}
 
       <form action={editPublishedOrganizationContact} className="mb-5">
         <input type="hidden" name="organizationId" value={dossier.id} />
         <PublicCard title="Public contact" eyebrow="Help people take the next step">
-          <p className="mb-4 max-w-3xl text-xs leading-5 text-[#667085]">Add only official contact paths supported by a public source. Leave private contacts and unknown fields blank; visitors can still request an introduction through True North Map.</p>
+          <p className="mb-4 max-w-3xl text-xs leading-5 text-[var(--admin-muted)]">Add only official contact paths supported by a public source. Leave private contacts and unknown fields blank; visitors can still request an introduction through True North Map.</p>
           <div className="grid gap-4 md:grid-cols-2">
             <EditField label="Official contact page" help="Use the organization’s public contact or business-development page, not a personal profile."><input name="contactPageUrl" type="url" pattern="https://.*" defaultValue={publicContact.contactPageUrl ?? ""} className={fieldClass} placeholder="https://example.ca/contact" /></EditField>
             <EditField label="Public email" help="Use an email the organization publishes for general, partnerships, sales, or business-development contact."><input name="publicEmail" type="email" defaultValue={publicContact.publicEmail ?? ""} className={fieldClass} placeholder="partnerships@example.ca" /></EditField>
@@ -163,7 +163,7 @@ export default async function EditPublishedOrganizationPage({
             <EditField label="LinkedIn page" help="Use the organization’s official LinkedIn page, not an individual’s profile."><input name="linkedInUrl" type="url" pattern="https://.*" defaultValue={publicContact.linkedInUrl ?? ""} className={fieldClass} placeholder="https://www.linkedin.com/company/example" /></EditField>
           </div>
           <EditField label="Why this contact is safe to publish" className="mt-4" help="Record the official source and why the details are appropriate for public use."><textarea name="contactRationale" required minLength={3} maxLength={2000} rows={3} className={areaClass} placeholder="Official contact page reviewed on…" /></EditField>
-          <div className="mt-4 flex justify-end"><PendingButton type="submit" pendingLabel="Saving contact…" className="h-11 bg-[#0756d9] px-5 text-sm font-semibold text-white hover:bg-[#0649b8]">Save public contact</PendingButton></div>
+          <div className="mt-4 flex justify-end"><PendingButton type="submit" pendingLabel="Saving contact…" className="h-11 bg-[var(--admin-action)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-action-hover)]">Save public contact</PendingButton></div>
         </PublicCard>
       </form>
 
@@ -211,13 +211,13 @@ export default async function EditPublishedOrganizationPage({
             <EditField label="Regional ecosystem group" help="Use this when the offering belongs to an established regional concentration or initiative. It is not the organization’s location."><select name="clusterSlug" defaultValue={selectedCluster?.slug ?? ""} className={fieldClass}><option value="">No regional group</option>{clusters?.map((cluster) => <option key={cluster.id} value={cluster.slug}>{cluster.name}{cluster.region_slug ? ` · ${cluster.region_slug.replaceAll("-", " ")}` : ""}</option>)}</select>{selectedCluster?.summary ? <FieldHint>{selectedCluster.summary}</FieldHint> : null}</EditField>
             <EditField label="Technology source support" help="High means the important public claims are well supported; Moderate means usable but incomplete; Needs review keeps the gap visible."><select name="capabilityConfidence" defaultValue={capability.source_confidence} className={fieldClass}><option value="high">High</option><option value="moderate">Moderate</option><option value="needs_review">Needs review</option></select></EditField>
           </div>
-          <fieldset className="mt-4 rounded-md border border-[#d0d5dd] p-4">
-            <legend className="px-1 text-xs font-semibold text-[#344054]">Other technology areas</legend>
+          <fieldset className="mt-4 rounded-md border border-[var(--admin-border)] p-4">
+            <legend className="px-1 text-xs font-semibold text-[var(--admin-ink-soft)]">Other technology areas</legend>
             <FieldHint>Select only areas that materially improve how people find this offering.</FieldHint>
-            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">{domains?.map((domain) => <label key={domain.id} className="flex items-center gap-2 text-xs text-[#475467]"><input type="checkbox" name="additionalDomainSlug" value={domain.slug} defaultChecked={additionalDomainSlugs.has(domain.slug)} className="size-4 accent-[#0756d9]" />{domain.name}</label>)}</div>
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">{domains?.map((domain) => <label key={domain.id} className="flex items-center gap-2 text-xs text-[var(--admin-muted-strong)]"><input type="checkbox" name="additionalDomainSlug" value={domain.slug} defaultChecked={additionalDomainSlugs.has(domain.slug)} className="size-4 accent-[var(--admin-action)]" />{domain.name}</label>)}</div>
           </fieldset>
-          <details className="mt-4 rounded-md border border-[#d0d5dd] bg-[#fcfcfd] p-4">
-            <summary className="cursor-pointer text-sm font-semibold text-[#344054]">Maturity and novelty details</summary>
+          <details className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-4">
+            <summary className="cursor-pointer text-sm font-semibold text-[var(--admin-ink-soft)]">Maturity and novelty details</summary>
             <div className="mt-4 grid gap-4 md:grid-cols-3">
               <EditField label="Technology readiness level"><input name="technologyReadinessLevel" type="number" min="1" max="9" defaultValue={capability.technology_readiness_level ?? ""} className={fieldClass} /></EditField>
               <EditField label="Maturity"><input name="maturity" maxLength={240} defaultValue={capability.maturity ?? ""} className={fieldClass} /></EditField>
@@ -243,14 +243,14 @@ export default async function EditPublishedOrganizationPage({
         </PublicCard>
 
         <PublicCard title="Editorial decision" eyebrow="Immediate public change">
-          <div className="flex items-start gap-3 rounded-md border border-[#fec84b] bg-[#fffaeb] p-3 text-xs leading-5 text-[#7a2e0e]"><AlertTriangle className="mt-0.5 size-4 shrink-0" /><span>Save only source-supported changes. This editor preserves existing citations; source replacement and new evidence still belong in the review workflow.</span></div>
-          {citation ? <a href={citation.source.canonical_url ?? "#"} target={citation.source.canonical_url ? "_blank" : undefined} rel="noreferrer" className="mt-4 block rounded-md border border-[#b8dfe5] bg-[#f5fcfd] p-4 no-underline"><span className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#007f98]">Current supporting source</span><strong className="mt-1 block text-sm text-[#101828]">{citation.source.title}</strong><span className="mt-1 block text-xs leading-5 text-[#667085]">{citation.source.publisher} · {citation.evidence.excerpt}</span></a> : null}
+          <div className="flex items-start gap-3 rounded-md border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-3 text-xs leading-5 text-[var(--admin-warning)]"><AlertTriangle className="mt-0.5 size-4 shrink-0" /><span>Save only source-supported changes. This editor preserves existing citations; source replacement and new evidence still belong in the review workflow.</span></div>
+          {citation ? <a href={citation.source.canonical_url ?? "#"} target={citation.source.canonical_url ? "_blank" : undefined} rel="noreferrer" className="mt-4 block rounded-md border border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] p-4 no-underline"><span className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-evidence)]">Current supporting source</span><strong className="mt-1 block text-sm text-[var(--admin-ink)]">{citation.source.title}</strong><span className="mt-1 block text-xs leading-5 text-[var(--admin-muted)]">{citation.source.publisher} · {citation.evidence.excerpt}</span></a> : null}
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <EditField label="Profile source support" help="Rate how well the organization-level facts are supported by current public evidence."><select name="organizationConfidence" defaultValue={dossier.source_confidence} className={fieldClass}><option value="high">High</option><option value="moderate">Moderate</option><option value="needs_review">Needs review</option></select></EditField>
             <EditField label="Review status" help="Current records have recently reviewed sources. Review due and Stale keep aging evidence visible to editors."><select name="freshnessStatus" defaultValue={dossier.freshness_status} className={fieldClass}><option value="current">Current</option><option value="review_due">Review due</option><option value="stale">Stale</option></select></EditField>
             <EditField label="Change rationale"><textarea name="rationale" required minLength={3} maxLength={2000} rows={3} className={areaClass} placeholder="What changed, why, and which public evidence supports it" /></EditField>
           </div>
-          <div className="mt-5 flex justify-end"><PendingButton type="submit" pendingLabel="Saving public record…" className="h-11 bg-[#0756d9] px-5 text-sm font-semibold text-white hover:bg-[#0649b8]">Save published record</PendingButton></div>
+          <div className="mt-5 flex justify-end"><PendingButton type="submit" pendingLabel="Saving public record…" className="h-11 bg-[var(--admin-action)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-action-hover)]">Save published record</PendingButton></div>
         </PublicCard>
       </form>
     </PublicPageShell>
@@ -260,11 +260,11 @@ export default async function EditPublishedOrganizationPage({
 function EditField({ label, children, className = "", help }: { label: string; children: React.ReactNode; className?: string; help?: string }) {
   return (
     <div className={className}>
-      <label className="grid gap-1.5 text-xs font-semibold text-[#344054]">{label}{children}</label>
+      <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">{label}{children}</label>
       {help ? (
-        <details className="group relative mt-1.5 w-fit text-[10px] font-normal text-[#667085]">
-          <summary className="flex cursor-pointer list-none items-center gap-1 font-semibold text-[#475467] hover:text-[#0756d9]"><CircleHelp className="size-3.5" /> What belongs here?</summary>
-          <p className="relative z-10 mt-1 max-w-md rounded-md border border-[#d0d5dd] bg-white p-2.5 text-xs font-normal leading-5 text-[#475467] shadow-sm">{help}</p>
+        <details className="group relative mt-1.5 w-fit text-[10px] font-normal text-[var(--admin-muted)]">
+          <summary className="flex cursor-pointer list-none items-center gap-1 font-semibold text-[var(--admin-muted-strong)] hover:text-[var(--admin-action)]"><CircleHelp className="size-3.5" /> What belongs here?</summary>
+          <p className="relative z-10 mt-1 max-w-md rounded-md border border-[var(--admin-border)] bg-white p-2.5 text-xs font-normal leading-5 text-[var(--admin-muted-strong)] shadow-sm">{help}</p>
         </details>
       ) : null}
     </div>
@@ -272,5 +272,5 @@ function EditField({ label, children, className = "", help }: { label: string; c
 }
 
 function FieldHint({ children }: { children: React.ReactNode }) {
-  return <span className="text-[10px] font-normal text-[#667085]">{children}</span>;
+  return <span className="text-[10px] font-normal text-[var(--admin-muted)]">{children}</span>;
 }

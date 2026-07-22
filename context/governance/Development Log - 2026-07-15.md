@@ -417,3 +417,25 @@ use `ATLAS_DATA_SOURCE=supabase`.
   the visible map, results, evidence links, full profiles, filters, and exports.
 - Andrew approved Pass 2 for production after local map, expansion, profile,
   organization-directory, demand-directory, and full release validation.
+
+## Frontend architecture hardening, Pass 3 - 2026-07-22
+
+- Implemented the third architecture pass locally for review. It is not yet
+  committed or deployed.
+- Split the public explorer's result presentation, mobile cards, evidence
+  ledger, map selection preview, and row helpers from the discovery
+  orchestration component. The public routes, query state, analytics events,
+  data projection, and full-profile loading contract are unchanged.
+- Split published-organization editing and public-demand-signal editing into
+  bounded server-action modules while retaining the same staff authorization,
+  validation, database procedures, audit records, cache refreshes, and return
+  paths.
+- Added shared editorial badges, status chips, feedback banners, form fields,
+  and section-card primitives. Replaced raw administrative colour literals with
+  named semantic roles and removed the fragile CSS selectors that inferred
+  colours from generated utility-class text. Resolved colours and visible
+  hierarchy remain unchanged.
+- Added architecture regression tests. The complete release gate passes with
+  119 tests, lint, typed research validation, live production coverage, and the
+  optimized production build. Desktop map/table expansion and mobile layout
+  checks also pass locally.

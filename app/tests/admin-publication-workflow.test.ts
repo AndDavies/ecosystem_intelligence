@@ -60,7 +60,7 @@ describe("admin publication workflow", () => {
 
   it("supports source-backed public contact editing and explains editorial taxonomy in plain language", async () => {
     const editPage = await readFile(path.resolve("src/app/admin/organizations/[id]/edit/page.tsx"), "utf8");
-    const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
+    const action = await readFile(path.resolve("src/lib/actions/atlas-organizations.ts"), "utf8");
     const migration = await readFile(path.resolve("supabase/migrations/20260719173304_add_public_contact_to_organization_editor.sql"), "utf8");
 
     expect(editPage).toContain("editPublishedOrganizationContact");

@@ -385,55 +385,53 @@ body {
 .atlas-admin-shell {
   --atlas-surface-muted: #f4f4f1;
   --atlas-shadow-soft: 0 8px 24px rgba(36, 40, 39, 0.055);
-  background: #f3f3ef;
+  --admin-canvas: #f3f3ef;
+  --admin-surface: #ffffff;
+  --admin-surface-muted: #f8fafc;
+  --admin-surface-soft: #fcfcfd;
+  --admin-surface-subtle: #f2f4f7;
+  --admin-ink: #101828;
+  --admin-ink-soft: #344054;
+  --admin-muted-strong: #475467;
+  --admin-muted: #667085;
+  --admin-border: var(--atlas-border);
+  --admin-border-strong: #98a2b3;
+  --admin-border-subtle: #eaecf0;
+  --admin-action: var(--atlas-ink);
+  --admin-action-hover: var(--atlas-primary-hover);
+  --admin-action-soft: rgba(36, 40, 39, 0.1);
+  --admin-evidence: var(--atlas-violet);
+  --admin-evidence-soft: var(--atlas-violet-soft);
+  --admin-evidence-border: #b7d5c9;
+  --admin-signal: var(--atlas-ink);
+  --admin-signal-soft: var(--atlas-signal-soft);
+  --admin-signal-border: #b2ccff;
+  --admin-success: #067647;
+  --admin-success-soft: #f6fef9;
+  --admin-success-soft-strong: #ecfdf3;
+  --admin-success-border: #a6f4c5;
+  --admin-success-strong: #027a48;
+  --admin-warning: #7a2e0e;
+  --admin-warning-strong: #93370d;
+  --admin-warning-action: #b54708;
+  --admin-warning-action-border: #dc6803;
+  --admin-warning-soft: #fffaeb;
+  --admin-warning-border: #fec84b;
+  --admin-warning-border-soft: #fedf89;
+  --admin-danger: #b42318;
+  --admin-danger-hover: #912018;
+  --admin-danger-soft: #fff6f5;
+  --admin-danger-soft-strong: #fff1f0;
+  --admin-danger-border: #fda29b;
+  background: var(--admin-canvas);
 }
 
-/* Normalize the existing editorial utilities into the shared operator palette. */
 .atlas-admin-shell .rounded-md {
   border-radius: 0.75rem;
 }
 
 .atlas-admin-shell .rounded-lg {
   border-radius: 1rem;
-}
-
-.atlas-admin-shell [class*="border-[#d0d5dd]"] {
-  border-color: var(--atlas-border) !important;
-}
-
-.atlas-admin-shell [class*="text-[#0756d9]"],
-.atlas-admin-shell [class*="text-[#0649b8]"],
-.atlas-admin-shell [class*="text-[#0649b9]"],
-.atlas-admin-shell [class*="text-[#1849a9]"],
-.atlas-admin-shell [class*="text-[#3538cd]"],
-.atlas-admin-shell [class*="text-[#026aa2]"] {
-  color: var(--atlas-ink) !important;
-}
-
-.atlas-admin-shell [class*="bg-[#0756d9]"],
-.atlas-admin-shell [class*="bg-[#0649b8]"] {
-  border-color: var(--atlas-ink) !important;
-  background: var(--atlas-ink) !important;
-  color: white !important;
-}
-
-.atlas-admin-shell [class*="text-[#007f98]"] {
-  color: var(--atlas-violet) !important;
-}
-
-.atlas-admin-shell [class*="border-[#b8dfe5]"] {
-  border-color: #b7d5c9 !important;
-}
-
-.atlas-admin-shell [class*="bg-[#f5fcfd]"] {
-  background: var(--atlas-violet-soft) !important;
-}
-
-.atlas-admin-shell [class*="bg-[#f5f8ff]"],
-.atlas-admin-shell [class*="bg-[#eef4ff]"],
-.atlas-admin-shell [class*="bg-[#eaf2ff]"],
-.atlas-admin-shell [class*="bg-[#f0f9ff]"] {
-  background: var(--atlas-signal-soft) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

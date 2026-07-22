@@ -33,14 +33,14 @@ export default async function AdminDemandSignalsPage({ searchParams }: { searchP
   return (
     <PublicPageShell variant="admin" eyebrow="Private editorial workspace" title="Manage demand signals" description="Keep public problem statements accurate, useful, and connected to every reviewed technology match." backHref="/admin" backLabel="Admin home">
       <AdminNav />
-      {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">Demand signal {params.success}. Public pages and linked technology profiles were refreshed.</div> : null}
-      {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">The demand signal was not saved. Check every required field and try again.</div> : null}
+      {params.success ? <div className="mb-5 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] px-3 py-2 text-sm text-[var(--admin-success)]">Demand signal {params.success}. Public pages and linked technology profiles were refreshed.</div> : null}
+      {params.error ? <div className="mb-5 rounded-md border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] px-3 py-2 text-sm text-[var(--admin-danger)]">The demand signal was not saved. Check every required field and try again.</div> : null}
       <PublicCard title="Add a public demand signal" eyebrow="Manual publication">
-        <p className="mb-5 text-sm leading-6 text-[#475467]">Use an official public source. A new signal publishes immediately after the administrator-only transaction succeeds and records the rationale in the audit log.</p>
+        <p className="mb-5 text-sm leading-6 text-[var(--admin-muted-strong)]">Use an official public source. A new signal publishes immediately after the administrator-only transaction succeeds and records the rationale in the audit log.</p>
         <DemandSignalEditor issuers={issuerOptions} />
       </PublicCard>
       <div className="mt-5 space-y-4">
-        {drafts.map((draft) => <details key={draft.id} className="rounded-lg border border-[#d0d5dd] bg-white p-5"><summary className="cursor-pointer text-sm font-bold text-[#101828]">{draft.title} <span className="ml-2 text-xs font-normal text-[#667085]">{draft.requirements.length} public problem statement{draft.requirements.length === 1 ? "" : "s"}</span></summary><div className="mt-5"><DemandSignalEditor initial={draft} issuers={issuerOptions} /></div></details>)}
+        {drafts.map((draft) => <details key={draft.id} className="rounded-lg border border-[var(--admin-border)] bg-white p-5"><summary className="cursor-pointer text-sm font-bold text-[var(--admin-ink)]">{draft.title} <span className="ml-2 text-xs font-normal text-[var(--admin-muted)]">{draft.requirements.length} public problem statement{draft.requirements.length === 1 ? "" : "s"}</span></summary><div className="mt-5"><DemandSignalEditor initial={draft} issuers={issuerOptions} /></div></details>)}
       </div>
     </PublicPageShell>
   );

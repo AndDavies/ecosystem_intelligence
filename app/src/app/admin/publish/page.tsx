@@ -3,6 +3,9 @@ import { AlertTriangle, CheckCircle2, ExternalLink } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PendingButton } from "@/components/ui/pending-button";
+import { Badge } from "@/components/ui/badge";
+import { FlashBanner } from "@/components/ui/flash-banner";
+import { StatusChip } from "@/components/ui/status-chip";
 import { publishApprovedCandidates } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseDemandSignalCandidate, parseReviewableOrganizationCandidate, type ReviewableDemandSignalCandidate } from "@/lib/atlas/candidate-schema";
@@ -101,11 +104,11 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
   return (
     <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Publication checkpoint" description="Review the approved list, then publish it with one explicit action. Publication runs as one transaction and stops entirely if any record fails validation." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
-      {params.error ? <div className="mb-5 rounded-md border border-[#fda29b] bg-[#fff6f5] px-3 py-2 text-sm text-[#b42318]">{errorMessages[params.error] ?? "Publication could not be completed."}</div> : null}
-      {params.success ? <div className="mb-5 rounded-md border border-[#a6f4c5] bg-[#f6fef9] px-3 py-2 text-sm text-[#067647]">Published {params.success} reviewed {params.success === "1" ? "record" : "records"}. The live records are linked under Recent publications below; no redeploy is required.</div> : null}
+      {params.error ? <FlashBanner tone="error">{errorMessages[params.error] ?? "Publication could not be completed."}</FlashBanner> : null}
+      {params.success ? <FlashBanner tone="success">Published {params.success} reviewed {params.success === "1" ? "record" : "records"}. The live records are linked under Recent publications below; no redeploy is required.</FlashBanner> : null}
       {rows.length ? (
         <form action={publishApprovedCandidates}>
-          <div className="mb-4 flex items-start gap-3 rounded-lg border border-[#fec84b] bg-[#fffaeb] p-4 text-sm leading-6 text-[#7a2e0e]">
+          <div className="mb-4 flex items-start gap-3 rounded-lg border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-4 text-sm leading-6 text-[var(--admin-warning)]">
             <AlertTriangle className="mt-0.5 size-5 shrink-0" />
             <p><strong>{rows.length} approved {rows.length === 1 ? "record is" : "records are"} ready: {organizationCount} {organizationCount === 1 ? "organization" : "organizations"} and {demandCount} demand {demandCount === 1 ? "signal" : "signals"}.</strong> Publishing creates the reviewed public records with their sources, evidence, and citations. It does not send messages or introductions.</p>
           </div>
@@ -114,23 +117,23 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
               const display = publicationDisplay({ candidate, kind, parsed } as PublishableRow);
               const duplicateCheck = candidate.duplicate_check as { status?: string } | null;
               return (
-                <div key={candidate.id} className="grid gap-3 rounded-lg border border-[#d0d5dd] bg-white p-4 md:grid-cols-[1fr_auto] md:items-start">
+                <div key={candidate.id} className="grid gap-3 rounded-lg border border-[var(--admin-border)] bg-white p-4 md:grid-cols-[1fr_auto] md:items-start">
                   <input type="hidden" name="candidateId" value={candidate.id} />
                   <div>
-                    <span className={`mb-2 inline-flex rounded px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] ${kind === "demand" ? "bg-[#f0f9ff] text-[#026aa2]" : "bg-[#eef4ff] text-[#3538cd]"}`}>{display.typeLabel}</span>
-                    <span className="block text-sm font-bold text-[#101828]">{display.name}</span>
-                    <span className="mt-1 block text-xs leading-5 text-[#667085]">{display.detail}</span>
-                    <span className="mt-2 block text-xs leading-5 text-[#475467]">{display.description}</span>
-                    {display.sourceUrl ? <a href={display.sourceUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[#0756d9]">Review source <ExternalLink className="size-3" /></a> : null}
+                    <Badge className="mb-2" tone={kind === "demand" ? "evidence" : "signal"}>{display.typeLabel}</Badge>
+                    <span className="block text-sm font-bold text-[var(--admin-ink)]">{display.name}</span>
+                    <span className="mt-1 block text-xs leading-5 text-[var(--admin-muted)]">{display.detail}</span>
+                    <span className="mt-2 block text-xs leading-5 text-[var(--admin-muted-strong)]">{display.description}</span>
+                    {display.sourceUrl ? <a href={display.sourceUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[var(--admin-action)]">Review source <ExternalLink className="size-3" /></a> : null}
                   </div>
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#067647]"><CheckCircle2 className="size-4" />{candidate.confidence} confidence · {duplicateCheck?.status === "clear" ? "duplicate check clear" : "duplicate resolved"}</span>
+                  <span className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--admin-success)]"><CheckCircle2 className="size-4" /><StatusChip status={candidate.confidence} label={`${candidate.confidence} confidence`} /> · {duplicateCheck?.status === "clear" ? "duplicate check clear" : "duplicate resolved"}</span>
                 </div>
               );
             })}
           </div>
-          <div className="mt-5 flex flex-col gap-3 rounded-lg border border-[#d0d5dd] bg-[#f8fafc] p-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-2xl text-xs leading-5 text-[#667085]">This publishes every approved record shown above. Validation and audit logging still run before the transaction completes.</p>
-            <PendingButton type="submit" pendingLabel="Publishing…" className="h-11 shrink-0 bg-[#b42318] px-5 text-sm font-semibold text-white hover:bg-[#912018]">
+          <div className="mt-5 flex flex-col gap-3 rounded-lg border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-2xl text-xs leading-5 text-[var(--admin-muted)]">This publishes every approved record shown above. Validation and audit logging still run before the transaction completes.</p>
+            <PendingButton type="submit" pendingLabel="Publishing…" className="h-11 shrink-0 bg-[var(--admin-danger)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-danger-hover)]">
               Publish {rows.length} approved {rows.length === 1 ? "record" : "records"}
             </PendingButton>
           </div>
@@ -140,13 +143,13 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
       {recentPublications.length ? (
         <section className="mt-8">
           <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
-            <div><p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#667085]">Publication confirmation</p><h2 className="mt-1 text-lg font-bold text-[#101828]">Recent publications</h2></div>
-            <p className="text-xs text-[#667085]">Open a record to verify exactly what is live.</p>
+            <div><p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--admin-muted)]">Publication confirmation</p><h2 className="mt-1 text-lg font-bold text-[var(--admin-ink)]">Recent publications</h2></div>
+            <p className="text-xs text-[var(--admin-muted)]">Open a record to verify exactly what is live.</p>
           </div>
           <div className="grid gap-3 md:grid-cols-2">
             {recentPublications.map((row) => {
               const display = publicationDisplay(row);
-              return <div key={row.candidate.id} className="rounded-lg border border-[#d0d5dd] bg-white p-4"><div className="flex items-start justify-between gap-3"><div><span className={`inline-flex rounded px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] ${row.kind === "demand" ? "bg-[#f0f9ff] text-[#026aa2]" : "bg-[#eef4ff] text-[#3538cd]"}`}>{display.typeLabel}</span><h3 className="mt-3 text-sm font-bold text-[#101828]">{display.name}</h3><p className="mt-1 text-xs leading-5 text-[#667085]">{display.detail}</p></div><CheckCircle2 className="size-5 shrink-0 text-[#067647]" /></div><Link href={display.publicHref} target="_blank" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[#0756d9]">View live {row.kind === "demand" ? "demand signal" : "organization"} <ExternalLink className="size-3" /></Link></div>;
+              return <div key={row.candidate.id} className="rounded-lg border border-[var(--admin-border)] bg-white p-4"><div className="flex items-start justify-between gap-3"><div><span className={`inline-flex rounded px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] ${row.kind === "demand" ? "bg-[var(--admin-signal-soft)] text-[var(--admin-signal)]" : "bg-[var(--admin-signal-soft)] text-[var(--admin-signal)]"}`}>{display.typeLabel}</span><h3 className="mt-3 text-sm font-bold text-[var(--admin-ink)]">{display.name}</h3><p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{display.detail}</p></div><CheckCircle2 className="size-5 shrink-0 text-[var(--admin-success)]" /></div><Link href={display.publicHref} target="_blank" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--admin-action)]">View live {row.kind === "demand" ? "demand signal" : "organization"} <ExternalLink className="size-3" /></Link></div>;
             })}
           </div>
         </section>
