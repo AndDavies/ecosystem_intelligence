@@ -4,29 +4,37 @@ import { Download, ExternalLink, Trash2 } from "lucide-react";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { removeSavedCollectionItem } from "@/lib/actions/collections";
 import { requireAtlasUser } from "@/lib/atlas/auth";
-import { getAtlasSnapshot } from "@/lib/atlas/repository";
+import { getAtlasRecordSummaries } from "@/lib/atlas/repository";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function CollectionPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const user = await requireAtlasUser(`/collections/${id}`);
   const supabase = await createClient();
-  const [{ data: collection }, { data: items }, snapshot] = await Promise.all([
+  const [{ data: collection }, { data: items }] = await Promise.all([
     supabase.from("saved_collections").select("id, name, description").eq("id", id).eq("owner_id", user.id).single(),
-    supabase.from("saved_collection_items").select("id, entity_type, entity_id, note, created_at").eq("collection_id", id).order("created_at"),
-    getAtlasSnapshot()
+    supabase.from("saved_collection_items").select("id, entity_type, entity_id, note, created_at").eq("collection_id", id).order("created_at")
   ]);
   if (!collection) notFound();
 
-  const organizationsById = new Map(snapshot.organizations.map((organization) => [organization.id, organization]));
-  const capabilitiesById = new Map(snapshot.organizations.flatMap((organization) => organization.capabilities.map((capability) => [capability.id, { capability, organization }] as const)));
+  const savedItems = items ?? [];
+  const summaries = await getAtlasRecordSummaries(savedItems.flatMap((item) =>
+    item.entity_type === "organization" || item.entity_type === "capability"
+      ? [{ type: item.entity_type, id: item.entity_id }]
+      : []
+  ));
+  const summariesByRecord = new Map(summaries.map((summary) => [`${summary.type}:${summary.id}`, summary]));
   const resolved = (items ?? []).map((item) => {
-    if (item.entity_type === "organization") {
-      const organization = organizationsById.get(item.entity_id);
-      return organization ? { item, title: organization.name, detail: organization.description, href: `/organizations/${organization.slug}`, type: "Organization" } : null;
-    }
-    const match = capabilitiesById.get(item.entity_id);
-    return match ? { item, title: match.capability.name, detail: `${match.organization.name} · ${match.capability.summary}`, href: `/capabilities/${match.capability.slug}`, type: "Capability" } : null;
+    const summary = summariesByRecord.get(`${item.entity_type}:${item.entity_id}`);
+    if (!summary || summary.type === "demand_requirement") return null;
+    const isOrganization = summary.type === "organization";
+    return {
+      item,
+      title: summary.name,
+      detail: isOrganization ? summary.detail : `${summary.organizationName} · ${summary.detail}`,
+      href: isOrganization ? `/organizations/${summary.slug}` : `/capabilities/${summary.slug}`,
+      type: isOrganization ? "Organization" : "Capability"
+    };
   }).filter((value): value is NonNullable<typeof value> => Boolean(value));
 
   return (

@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
@@ -44,10 +44,10 @@ export async function saveDefenceBrief(formData: FormData) {
     p_rationale: parsed.data.rationale
   });
   if (error) redirect("/admin/briefs?error=save");
+  revalidateTag("briefs-public");
   revalidatePath("/briefs");
   revalidatePath("/briefs/[slug]", "page");
   revalidatePath("/admin/briefs");
   revalidatePath("/sitemap.xml");
   redirect("/admin/briefs?success=saved");
 }
-

@@ -6,9 +6,16 @@ import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { assessmentConfidenceLabel, evidenceStrengthLabel, publicSourceCountLabel } from "@/lib/atlas/presentation";
-import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
+import { getAtlasCapabilityBySlug, getPublishedAtlasSlugs } from "@/lib/atlas/repository";
 import { absoluteUrl } from "@/lib/site";
 import { formatDate, toTitleCase } from "@/lib/utils";
+
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  const slugs = await getPublishedAtlasSlugs();
+  return slugs.capabilities.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;

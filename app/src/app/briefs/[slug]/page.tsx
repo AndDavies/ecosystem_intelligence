@@ -4,11 +4,16 @@ import { notFound } from "next/navigation";
 import { ArrowRight, ExternalLink, Lightbulb, ShieldCheck } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
-import { getPublishedDefenceBriefBySlug } from "@/lib/atlas/briefs";
-import { getAtlasSnapshot } from "@/lib/atlas/repository";
+import { getPublishedDefenceBriefBySlug, getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
+import { getAtlasRecordSummaries } from "@/lib/atlas/repository";
 import { absoluteUrl, siteName } from "@/lib/site";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  const briefs = await getPublishedDefenceBriefs();
+  return briefs.map((brief) => ({ slug: brief.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -19,15 +24,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function DefenceBriefPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const [brief, snapshot] = await Promise.all([getPublishedDefenceBriefBySlug(slug), getAtlasSnapshot()]);
+  const brief = await getPublishedDefenceBriefBySlug(slug);
   if (!brief) notFound();
-  const demands = new Map(snapshot.demandRequirements.map((item) => [item.id, item]));
-  const organizations = new Map(snapshot.organizations.map((item) => [item.id, item]));
-  const capabilities = new Map(snapshot.organizations.flatMap((org) => org.capabilities.map((item) => [item.id, item])));
+  const summaries = await getAtlasRecordSummaries(brief.links);
+  const summariesByRecord = new Map(summaries.map((item) => [`${item.type}:${item.id}`, item]));
   const related = brief.links.flatMap((link) => {
-    if (link.type === "demand_requirement") { const record = demands.get(link.id); return record ? [{ ...link, href: `/demand/${record.slug}`, name: record.title }] : []; }
-    if (link.type === "organization") { const record = organizations.get(link.id); return record ? [{ ...link, href: `/organizations/${record.slug}`, name: record.name }] : []; }
-    const record = capabilities.get(link.id); return record ? [{ ...link, href: `/capabilities/${record.slug}`, name: record.name }] : [];
+    const record = summariesByRecord.get(`${link.type}:${link.id}`);
+    if (!record) return [];
+    const route = link.type === "demand_requirement" ? "demand" : link.type === "organization" ? "organizations" : "capabilities";
+    return [{ ...link, href: `/${route}/${record.slug}`, name: record.name }];
   });
   const articleSchema = { "@context": "https://schema.org", "@type": "Article", headline: brief.title, description: brief.metaDescription, mainEntityOfPage: absoluteUrl(`/briefs/${brief.slug}`), datePublished: brief.publishedAt, dateModified: brief.updatedAt, inLanguage: "en-CA", author: { "@type": "Person", name: brief.authorName, url: absoluteUrl("/about") }, publisher: { "@type": "Organization", name: siteName, url: absoluteUrl("/") }, citation: brief.sources.map((source) => source.url), about: ["Canadian defence", "dual-use technology", "defence industrial base"] };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "True North Map", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Canadian Defence Briefs", item: absoluteUrl("/briefs") }, { "@type": "ListItem", position: 3, name: brief.title, item: absoluteUrl(`/briefs/${brief.slug}`) }] };
@@ -64,4 +69,3 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
     </PublicPageShell>
   );
 }
-

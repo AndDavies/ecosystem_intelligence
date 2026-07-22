@@ -6,7 +6,7 @@ import { getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { absoluteUrl, siteName } from "@/lib/site";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Canadian Defence Briefs",
@@ -45,4 +45,3 @@ export default async function DefenceBriefsPage() {
 function Value({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return <div className="rounded-2xl border border-[var(--atlas-border)] bg-white p-5"><div className="text-[var(--atlas-primary)]">{icon}</div><h2 className="mt-4 text-base font-extrabold text-[var(--atlas-ink)]">{title}</h2><p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">{text}</p></div>;
 }
-

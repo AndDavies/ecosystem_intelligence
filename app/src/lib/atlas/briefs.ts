@@ -1,7 +1,10 @@
 import "server-only";
 
 import { cache } from "react";
-import { createClient } from "@/lib/supabase/server";
+import { unstable_cache } from "next/cache";
+import { createPublicClient } from "@/lib/supabase/public";
+
+const briefColumns = "id, slug, title, primary_question, summary_answer, dek, sections, derived_read, seo_title, meta_description, author_name, published_at, reviewed_at, updated_at";
 
 export type DefenceBriefSection = {
   question: string;
@@ -69,7 +72,7 @@ function toBrief(row: Row, sources: DefenceBriefSource[], links: DefenceBriefLin
 
 async function relatedFor(pageIds: string[]) {
   if (!pageIds.length) return { sourcesByPage: new Map<string, DefenceBriefSource[]>(), linksByPage: new Map<string, DefenceBriefLink[]>() };
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const [{ data: sourceLinks }, { data: recordLinks }] = await Promise.all([
     supabase.from("wiki_page_sources").select("page_id, citation_note, display_order, sources(id, title, publisher, canonical_url, published_at)").in("page_id", pageIds).order("display_order"),
     supabase.from("wiki_page_record_links").select("page_id, record_type, record_id, relationship_label, display_order").in("page_id", pageIds).order("display_order")
@@ -91,20 +94,35 @@ async function relatedFor(pageIds: string[]) {
   return { sourcesByPage, linksByPage };
 }
 
-export const getPublishedDefenceBriefs = cache(async () => {
-  const supabase = await createClient();
-  const { data } = await supabase.from("wiki_pages").select("*").eq("publication_status", "published").order("published_at", { ascending: false });
+async function loadPublishedDefenceBriefs() {
+  const supabase = createPublicClient();
+  const { data } = await supabase.from("wiki_pages").select(briefColumns).eq("publication_status", "published").order("published_at", { ascending: false });
   const rows = (data ?? []) as Row[];
   const related = await relatedFor(rows.map((row) => String(row.id)));
   return rows.map((row) => toBrief(row, related.sourcesByPage.get(String(row.id)) ?? [], related.linksByPage.get(String(row.id)) ?? []));
-});
+}
 
-export const getPublishedDefenceBriefBySlug = cache(async (slug: string) => {
-  const supabase = await createClient();
-  const { data } = await supabase.from("wiki_pages").select("*").eq("slug", slug).eq("publication_status", "published").maybeSingle();
+async function loadPublishedDefenceBriefBySlug(slug: string) {
+  const supabase = createPublicClient();
+  const { data } = await supabase.from("wiki_pages").select(briefColumns).eq("slug", slug).eq("publication_status", "published").maybeSingle();
   if (!data) return null;
   const row = data as Row;
   const related = await relatedFor([String(row.id)]);
   return toBrief(row, related.sourcesByPage.get(String(row.id)) ?? [], related.linksByPage.get(String(row.id)) ?? []);
-});
+}
 
+const getCachedPublishedDefenceBriefs = unstable_cache(
+  loadPublishedDefenceBriefs,
+  ["ecosystem-intelligence-published-defence-briefs-v1"],
+  { revalidate: 300, tags: ["briefs-public"] }
+);
+
+const getCachedPublishedDefenceBriefBySlug = unstable_cache(
+  loadPublishedDefenceBriefBySlug,
+  ["ecosystem-intelligence-published-defence-brief-v1"],
+  { revalidate: 300, tags: ["briefs-public"] }
+);
+
+export const getPublishedDefenceBriefs = cache(async () => getCachedPublishedDefenceBriefs());
+
+export const getPublishedDefenceBriefBySlug = cache(async (slug: string) => getCachedPublishedDefenceBriefBySlug(slug));

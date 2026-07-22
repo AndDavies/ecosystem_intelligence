@@ -21,6 +21,40 @@ import type {
 
 type Row = Record<string, unknown>;
 
+const atlasColumns = {
+  organizations: "id, slug, name, legal_name, description, website_url, entity_kind, organization_categories, source_confidence, freshness_status, last_reviewed_at, founded_year, employee_range, company_stage, ownership, commercial_status, disclosed_financing_summary, defence_posture, dual_use_posture, profile_data",
+  locations: "id, name, city, province_territory, country_code, latitude, longitude, geographic_confidence",
+  organizationLocations: "organization_id, location_id, is_primary",
+  capabilities: "id, organization_id, slug, name, summary, capability_type, core_features, technology_readiness_level, maturity, commercial_availability, defence_applications, novelty, technical_tags, source_confidence, last_reviewed_at",
+  technicalDomains: "id, slug, name, summary",
+  capabilityDomains: "capability_id, technical_domain_id",
+  missionAreas: "id, slug, name, summary, source_confidence",
+  missionMatches: "id, capability_id, mission_area_id, alignment_summary, match_type, confidence",
+  clusters: "id, slug, name, summary, region_slug, cluster_basis",
+  capabilityClusters: "ecosystem_cluster_id, capability_id",
+  demandSources: "id, source_id, slug, title, publisher, published_on, classification_label, summary, source_kind, commitment_level",
+  demandRequirements: "id, demand_source_id, slug, title, problem_statement, desired_end_state, public_caveat, display_order",
+  demandMatches: "id, capability_id, demand_requirement_id, alignment_summary, rationale, match_type, confidence",
+  programs: "id, slug, name, program_type",
+  participations: "id, organization_id, program_id, participation_type, cohort_label",
+  fundingEvents: "id, organization_id, event_type, announced_on, amount_value, amount_currency, disclosed_summary",
+  sources: "id, title, canonical_url, publisher, source_type, published_at",
+  evidence: "id, source_id, excerpt",
+  citations: "id, entity_type, entity_id, field_name, evidence_snippet_id"
+} as const;
+
+type AtlasSnapshotScope = {
+  organizationIds?: string[];
+  capabilityIds?: string[];
+  demandRequirementIds?: string[];
+};
+
+const noMatchId = "00000000-0000-0000-0000-000000000000";
+
+function scopedIds(values: string[] | undefined) {
+  return values?.length ? values : [noMatchId];
+}
+
 function asRows(value: unknown): Row[] {
   return Array.isArray(value) ? (value as Row[]) : [];
 }
@@ -100,8 +134,47 @@ function assertQuery(result: { error: { message?: string } | null }, label: stri
   }
 }
 
-export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapshot, "regions">> {
+export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope): Promise<Omit<AtlasSnapshot, "regions">> {
   const supabase = createPublicClient();
+
+  const organizationsQuery = supabase.from("organizations").select(atlasColumns.organizations).eq("publication_status", "published");
+  const organizationLocationsQuery = supabase.from("organization_locations").select(atlasColumns.organizationLocations).eq("publication_status", "published");
+  const capabilitiesQuery = supabase.from("capabilities").select(atlasColumns.capabilities).eq("publication_status", "published");
+  const capabilityDomainsQuery = supabase.from("capability_domains").select(atlasColumns.capabilityDomains).eq("publication_status", "published");
+  const missionMatchesQuery = supabase
+    .from("capability_mission_matches")
+    .select(atlasColumns.missionMatches)
+    .eq("review_status", "approved")
+    .eq("publication_status", "published");
+  const capabilityClustersQuery = supabase.from("capability_clusters").select(atlasColumns.capabilityClusters).eq("publication_status", "published");
+  const demandRequirementsQuery = supabase.from("demand_requirements").select(atlasColumns.demandRequirements).eq("publication_status", "published");
+  const demandMatchesQuery = supabase
+    .from("capability_demand_matches")
+    .select(atlasColumns.demandMatches)
+    .eq("review_status", "approved")
+    .eq("publication_status", "published");
+  const participationsQuery = supabase.from("program_participations").select(atlasColumns.participations).eq("publication_status", "published");
+  const fundingEventsQuery = supabase.from("funding_events").select(atlasColumns.fundingEvents).eq("publication_status", "published");
+
+  if (scope?.organizationIds) {
+    organizationsQuery.in("id", scopedIds(scope.organizationIds));
+    organizationLocationsQuery.in("organization_id", scopedIds(scope.organizationIds));
+    participationsQuery.in("organization_id", scopedIds(scope.organizationIds));
+    fundingEventsQuery.in("organization_id", scopedIds(scope.organizationIds));
+  }
+  if (scope?.capabilityIds) {
+    capabilitiesQuery.in("id", scopedIds(scope.capabilityIds));
+    capabilityDomainsQuery.in("capability_id", scopedIds(scope.capabilityIds));
+    missionMatchesQuery.in("capability_id", scopedIds(scope.capabilityIds));
+    capabilityClustersQuery.in("capability_id", scopedIds(scope.capabilityIds));
+    demandMatchesQuery.in("capability_id", scopedIds(scope.capabilityIds));
+  } else if (scope?.organizationIds) {
+    capabilitiesQuery.in("organization_id", scopedIds(scope.organizationIds));
+  }
+  if (scope?.demandRequirementIds) {
+    demandRequirementsQuery.in("id", scopedIds(scope.demandRequirementIds));
+    if (!scope.capabilityIds) demandMatchesQuery.in("demand_requirement_id", scopedIds(scope.demandRequirementIds));
+  }
 
   const [
     organizationsResult,
@@ -124,33 +197,25 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
     evidenceResult,
     citationsResult
   ] = await Promise.all([
-    supabase.from("organizations").select("*").eq("publication_status", "published"),
-    supabase.from("locations").select("*"),
-    supabase.from("organization_locations").select("*").eq("publication_status", "published"),
-    supabase.from("capabilities").select("*").eq("publication_status", "published"),
-    supabase.from("technical_domains").select("*").eq("publication_status", "published"),
-    supabase.from("capability_domains").select("*").eq("publication_status", "published"),
-    supabase.from("mission_areas").select("*").eq("publication_status", "published"),
-    supabase
-      .from("capability_mission_matches")
-      .select("*")
-      .eq("review_status", "approved")
-      .eq("publication_status", "published"),
-    supabase.from("ecosystem_clusters").select("*").eq("publication_status", "published"),
-    supabase.from("capability_clusters").select("*").eq("publication_status", "published"),
-    supabase.from("demand_sources").select("*").eq("publication_status", "published"),
-    supabase.from("demand_requirements").select("*").eq("publication_status", "published"),
-    supabase
-      .from("capability_demand_matches")
-      .select("*")
-      .eq("review_status", "approved")
-      .eq("publication_status", "published"),
-    supabase.from("programs").select("*").eq("publication_status", "published"),
-    supabase.from("program_participations").select("*").eq("publication_status", "published"),
-    supabase.from("funding_events").select("*").eq("publication_status", "published"),
-    supabase.from("sources").select("*").eq("visibility", "public").eq("public_approved", true),
-    supabase.from("evidence_snippets").select("*").eq("visibility", "public").eq("public_approved", true),
-    supabase.from("field_citations").select("*")
+    organizationsQuery,
+    supabase.from("locations").select(atlasColumns.locations),
+    organizationLocationsQuery,
+    capabilitiesQuery,
+    supabase.from("technical_domains").select(atlasColumns.technicalDomains).eq("publication_status", "published"),
+    capabilityDomainsQuery,
+    supabase.from("mission_areas").select(atlasColumns.missionAreas).eq("publication_status", "published"),
+    missionMatchesQuery,
+    supabase.from("ecosystem_clusters").select(atlasColumns.clusters).eq("publication_status", "published"),
+    capabilityClustersQuery,
+    supabase.from("demand_sources").select(atlasColumns.demandSources).eq("publication_status", "published"),
+    demandRequirementsQuery,
+    demandMatchesQuery,
+    supabase.from("programs").select(atlasColumns.programs).eq("publication_status", "published"),
+    participationsQuery,
+    fundingEventsQuery,
+    supabase.from("sources").select(atlasColumns.sources).eq("visibility", "public").eq("public_approved", true),
+    supabase.from("evidence_snippets").select(atlasColumns.evidence).eq("visibility", "public").eq("public_approved", true),
+    supabase.from("field_citations").select(atlasColumns.citations)
   ]);
 
   [
@@ -492,4 +557,166 @@ export async function loadAtlasSnapshotFromSupabase(): Promise<Omit<AtlasSnapsho
     generatedAt: new Date().toISOString(),
     dataSource: "supabase"
   };
+}
+
+export async function loadAtlasOrganizationBySlugFromSupabase(slug: string) {
+  const supabase = createPublicClient();
+  const organizationResult = await supabase
+    .from("organizations")
+    .select("id")
+    .eq("slug", slug)
+    .eq("publication_status", "published")
+    .maybeSingle();
+  assertQuery(organizationResult, "published organization identity");
+  if (!organizationResult.data) return null;
+
+  const organizationId = String(organizationResult.data.id);
+  const capabilityResult = await supabase
+    .from("capabilities")
+    .select("id")
+    .eq("organization_id", organizationId)
+    .eq("publication_status", "published");
+  assertQuery(capabilityResult, "published organization capabilities");
+  const capabilityIds = asRows(capabilityResult.data).map((row) => asString(row.id));
+  const snapshot = await loadAtlasSnapshotFromSupabase({ organizationIds: [organizationId], capabilityIds });
+  return snapshot.organizations.find((organization) => organization.id === organizationId) ?? null;
+}
+
+export async function loadAtlasCapabilityBySlugFromSupabase(slug: string) {
+  const supabase = createPublicClient();
+  const capabilityResult = await supabase
+    .from("capabilities")
+    .select("id, organization_id")
+    .eq("slug", slug)
+    .eq("publication_status", "published")
+    .maybeSingle();
+  assertQuery(capabilityResult, "published capability identity");
+  if (!capabilityResult.data) return null;
+
+  const capabilityId = String(capabilityResult.data.id);
+  const organizationId = String(capabilityResult.data.organization_id);
+  const snapshot = await loadAtlasSnapshotFromSupabase({ organizationIds: [organizationId], capabilityIds: [capabilityId] });
+  const organization = snapshot.organizations.find((item) => item.id === organizationId);
+  const capability = organization?.capabilities.find((item) => item.id === capabilityId);
+  return organization && capability ? { organization, capability } : null;
+}
+
+export async function loadAtlasDemandBySlugFromSupabase(slug: string) {
+  const supabase = createPublicClient();
+  const demandResult = await supabase
+    .from("demand_requirements")
+    .select("id")
+    .eq("slug", slug)
+    .eq("publication_status", "published")
+    .maybeSingle();
+  assertQuery(demandResult, "published demand identity");
+  if (!demandResult.data) return null;
+
+  const demandRequirementId = String(demandResult.data.id);
+  const demandMatchesResult = await supabase
+    .from("capability_demand_matches")
+    .select("capability_id")
+    .eq("demand_requirement_id", demandRequirementId)
+    .eq("review_status", "approved")
+    .eq("publication_status", "published");
+  assertQuery(demandMatchesResult, "published demand matches");
+  const capabilityIds = Array.from(new Set(asRows(demandMatchesResult.data).map((row) => asString(row.capability_id))));
+  const capabilityResult = capabilityIds.length
+    ? await supabase.from("capabilities").select("id, organization_id").in("id", capabilityIds).eq("publication_status", "published")
+    : { data: [], error: null };
+  assertQuery(capabilityResult, "published matched capabilities");
+  const organizationIds = Array.from(new Set(asRows(capabilityResult.data).map((row) => asString(row.organization_id))));
+  const snapshot = await loadAtlasSnapshotFromSupabase({
+    organizationIds,
+    capabilityIds,
+    demandRequirementIds: [demandRequirementId]
+  });
+  return snapshot.demandRequirements.find((demand) => demand.id === demandRequirementId) ?? null;
+}
+
+export type AtlasRecordSummary = {
+  type: "organization" | "capability" | "demand_requirement";
+  id: string;
+  slug: string;
+  name: string;
+  detail: string;
+  organizationName?: string;
+};
+
+export async function loadPublishedAtlasSlugsFromSupabase() {
+  const supabase = createPublicClient();
+  const [organizationsResult, capabilitiesResult, demandsResult] = await Promise.all([
+    supabase.from("organizations").select("slug").eq("publication_status", "published"),
+    supabase.from("capabilities").select("slug").eq("publication_status", "published"),
+    supabase.from("demand_requirements").select("slug").eq("publication_status", "published")
+  ]);
+  assertQuery(organizationsResult, "published organization slugs");
+  assertQuery(capabilitiesResult, "published capability slugs");
+  assertQuery(demandsResult, "published demand slugs");
+  return {
+    organizations: asRows(organizationsResult.data).map((row) => asString(row.slug)).filter(Boolean),
+    capabilities: asRows(capabilitiesResult.data).map((row) => asString(row.slug)).filter(Boolean),
+    demands: asRows(demandsResult.data).map((row) => asString(row.slug)).filter(Boolean)
+  };
+}
+
+export async function loadAtlasRecordSummariesFromSupabase(
+  records: Array<{ type: AtlasRecordSummary["type"]; id: string }>
+): Promise<AtlasRecordSummary[]> {
+  const supabase = createPublicClient();
+  const organizationIds = records.filter((record) => record.type === "organization").map((record) => record.id);
+  const capabilityIds = records.filter((record) => record.type === "capability").map((record) => record.id);
+  const demandIds = records.filter((record) => record.type === "demand_requirement").map((record) => record.id);
+  const [capabilityResult, demandResult] = await Promise.all([
+    capabilityIds.length
+      ? supabase.from("capabilities").select("id, organization_id, slug, name, summary").in("id", capabilityIds).eq("publication_status", "published")
+      : Promise.resolve({ data: [], error: null }),
+    demandIds.length
+      ? supabase.from("demand_requirements").select("id, slug, title, problem_statement").in("id", demandIds).eq("publication_status", "published")
+      : Promise.resolve({ data: [], error: null })
+  ]);
+  assertQuery(capabilityResult, "linked capability summaries");
+  assertQuery(demandResult, "linked demand summaries");
+  const capabilityRows = asRows(capabilityResult.data);
+  const referencedOrganizationIds = Array.from(new Set([
+    ...organizationIds,
+    ...capabilityRows.map((row) => asString(row.organization_id))
+  ]));
+  const organizationResult = referencedOrganizationIds.length
+    ? await supabase
+        .from("organizations")
+        .select("id, slug, name, description")
+        .in("id", referencedOrganizationIds)
+        .eq("publication_status", "published")
+    : { data: [], error: null };
+  assertQuery(organizationResult, "linked organization summaries");
+  const organizationRows = asRows(organizationResult.data);
+  const organizationById = byId(organizationRows);
+
+  return [
+    ...organizationRows
+      .filter((row) => organizationIds.includes(asString(row.id)))
+      .map((row): AtlasRecordSummary => ({
+        type: "organization",
+        id: asString(row.id),
+        slug: asString(row.slug),
+        name: asString(row.name),
+        detail: asString(row.description)
+      })),
+    ...capabilityRows.map((row): AtlasRecordSummary => ({
+      type: "capability",
+      id: asString(row.id),
+      slug: asString(row.slug),
+      name: asString(row.name),
+      detail: asString(row.summary),
+      organizationName: asString(organizationById.get(asString(row.organization_id))?.name)
+    })),
+    ...asRows(demandResult.data).map((row): AtlasRecordSummary => ({
+      type: "demand_requirement",
+      id: asString(row.id),
+      slug: asString(row.slug),
+      name: asString(row.title),
+      detail: asString(row.problem_statement)
+    }))
+  ];
 }

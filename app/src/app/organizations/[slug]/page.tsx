@@ -16,9 +16,16 @@ import {
   publicContactFromProfileData,
   publicSourceCountLabel
 } from "@/lib/atlas/presentation";
-import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
+import { getAtlasOrganizationBySlug, getPublishedAtlasSlugs } from "@/lib/atlas/repository";
 import { formatDate, toTitleCase } from "@/lib/utils";
 import { absoluteUrl } from "@/lib/site";
+
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  const slugs = await getPublishedAtlasSlugs();
+  return slugs.organizations.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;

@@ -3,7 +3,15 @@ import "server-only";
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { getAtlasMetroArea, inferAtlasMetroArea, organizationMatchesMetro } from "@/lib/atlas/geography";
-import { loadAtlasSnapshotFromSupabase } from "@/lib/atlas/supabase-repository";
+import {
+  loadAtlasCapabilityBySlugFromSupabase,
+  loadAtlasDemandBySlugFromSupabase,
+  loadAtlasOrganizationBySlugFromSupabase,
+  loadPublishedAtlasSlugsFromSupabase,
+  loadAtlasRecordSummariesFromSupabase,
+  loadAtlasSnapshotFromSupabase,
+  type AtlasRecordSummary
+} from "@/lib/atlas/supabase-repository";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 import type {
   AtlasBounds,
@@ -108,6 +116,30 @@ function buildRegions(snapshot: Omit<AtlasSnapshot, "regions">): AtlasRegion[] {
 const getCachedSupabaseSnapshot = unstable_cache(
   async () => loadAtlasSnapshotFromSupabase(),
   ["ecosystem-intelligence-public-atlas-snapshot-v1"],
+  { revalidate: 300, tags: ["atlas-public"] }
+);
+
+const getCachedAtlasOrganizationBySlug = unstable_cache(
+  loadAtlasOrganizationBySlugFromSupabase,
+  ["ecosystem-intelligence-organization-detail-v1"],
+  { revalidate: 300, tags: ["atlas-public"] }
+);
+
+const getCachedAtlasCapabilityBySlug = unstable_cache(
+  loadAtlasCapabilityBySlugFromSupabase,
+  ["ecosystem-intelligence-capability-detail-v1"],
+  { revalidate: 300, tags: ["atlas-public"] }
+);
+
+const getCachedAtlasDemandBySlug = unstable_cache(
+  loadAtlasDemandBySlugFromSupabase,
+  ["ecosystem-intelligence-demand-detail-v1"],
+  { revalidate: 300, tags: ["atlas-public"] }
+);
+
+const getCachedPublishedAtlasSlugs = unstable_cache(
+  loadPublishedAtlasSlugsFromSupabase,
+  ["ecosystem-intelligence-published-atlas-slugs-v1"],
   { revalidate: 300, tags: ["atlas-public"] }
 );
 
@@ -379,23 +411,37 @@ export async function queryAtlasExplorer(query: AtlasQuery = {}): Promise<AtlasE
   return queryAtlasExplorerSnapshot(await getAtlasSnapshot(), query);
 }
 
-export async function getAtlasOrganizationBySlug(slug: string) {
-  const snapshot = await getAtlasSnapshot();
-  return snapshot.organizations.find((organization) => organization.slug === slug) ?? null;
-}
-
-export async function getAtlasCapabilityBySlug(slug: string) {
-  const snapshot = await getAtlasSnapshot();
-  for (const organization of snapshot.organizations) {
-    const capability = organization.capabilities.find((item) => item.slug === slug);
-    if (capability) return { organization, capability };
+function requireAtlasPublicEnvironment() {
+  if (!hasSupabasePublicEnv()) {
+    throw new Error(
+      "The production database connection is not configured. True North Map does not fall back to bundled records."
+    );
   }
-  return null;
 }
 
-export async function getAtlasDemandBySlug(slug: string) {
-  const snapshot = await getAtlasSnapshot();
-  return snapshot.demandRequirements.find((demand) => demand.slug === slug) ?? null;
+export const getAtlasOrganizationBySlug = cache(async (slug: string) => {
+  requireAtlasPublicEnvironment();
+  return getCachedAtlasOrganizationBySlug(slug);
+});
+
+export const getAtlasCapabilityBySlug = cache(async (slug: string) => {
+  requireAtlasPublicEnvironment();
+  return getCachedAtlasCapabilityBySlug(slug);
+});
+
+export const getAtlasDemandBySlug = cache(async (slug: string) => {
+  requireAtlasPublicEnvironment();
+  return getCachedAtlasDemandBySlug(slug);
+});
+
+export async function getAtlasRecordSummaries(records: Array<{ type: AtlasRecordSummary["type"]; id: string }>) {
+  requireAtlasPublicEnvironment();
+  return loadAtlasRecordSummariesFromSupabase(records);
+}
+
+export async function getPublishedAtlasSlugs() {
+  requireAtlasPublicEnvironment();
+  return getCachedPublishedAtlasSlugs();
 }
 
 export async function getAtlasRegionBySlug(slug: string) {

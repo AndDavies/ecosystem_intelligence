@@ -420,8 +420,8 @@ use `ATLAS_DATA_SOURCE=supabase`.
 
 ## Frontend architecture hardening, Pass 3 - 2026-07-22
 
-- Implemented the third architecture pass locally for review. It is not yet
-  committed or deployed.
+- Published the approved third architecture pass at commit `58e1030` and
+  verified the production deployment and core public routes.
 - Split the public explorer's result presentation, mobile cards, evidence
   ledger, map selection preview, and row helpers from the discovery
   orchestration component. The public routes, query state, analytics events,
@@ -439,3 +439,32 @@ use `ATLAS_DATA_SOURCE=supabase`.
   119 tests, lint, typed research validation, live production coverage, and the
   optimized production build. Desktop map/table expansion and mobile layout
   checks also pass locally.
+
+## Frontend architecture hardening, Pass 4 - 2026-07-22
+
+- Implemented the final measured data-access pass locally for approval. It is
+  not yet committed or deployed.
+- Replaced wildcard reads across the public atlas and Defence Brief repository
+  with explicit public-column contracts. Private editorial screens retain their
+  deliberate full-row reads where an editor needs the complete record.
+- Replaced full national-snapshot loads on organization, technology, and demand
+  detail pages with slug-targeted published-record loaders. The loaders reuse
+  the canonical database assembler so presentation, evidence, and relationship
+  semantics remain unchanged.
+- Pre-rendered the current published organization, technology, demand, and brief
+  detail routes with five-minute revalidation. Search-param-driven map and index
+  routes remain request-rendered so filters, pagination, URL state, and newly
+  published records continue to behave as before.
+- Replaced full-snapshot link resolution in Defence Briefs and private Working
+  Lists with small ID-targeted summaries. Publication actions now invalidate the
+  brief cache explicitly alongside the existing public paths.
+- Added public data-access regression tests covering explicit columns, targeted
+  detail reads, cache boundaries, pre-rendered detail routes, and preserved live
+  discovery indexes. Local browser checks confirm the map, organization,
+  technology, demand, brief, and authentication boundary render without console
+  errors.
+- The complete release gate passes with 123 tests, lint, typed research
+  validation, live production coverage, and a 243-page optimized build. The
+  production-mode local server returns the pre-rendered profile and brief pages
+  in roughly 1-15 ms in the bounded smoke sample; this is a local verification,
+  not a claim about public-network latency.

@@ -5,9 +5,14 @@ import { ExternalLink, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { assessmentConfidenceLabel } from "@/lib/atlas/presentation";
-import { getAtlasDemandBySlug } from "@/lib/atlas/repository";
+import { getAtlasDemandBySlug, getPublishedAtlasSlugs } from "@/lib/atlas/repository";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  const slugs = await getPublishedAtlasSlugs();
+  return slugs.demands.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
