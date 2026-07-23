@@ -23,16 +23,21 @@ Never send authentication mail through MailerLite. Never use the subscriber list
 - Password, email, sign-in-method, and MFA security notifications are enabled. Phone-change notification remains off because phone authentication is not offered.
 - Passwordless email initiation is protected by a managed Cloudflare Turnstile widget for `truenorthmap.ca` and `localhost`. The public site key is a Vercel and local application variable. The secret is stored only in Supabase Auth.
 - MailerLite uses the `True North Map Updates` group. The production consent ledger has been reconciled to that group, and the lifecycle webhook accepts signed single or batched events.
-- Zoho and MailerLite sender-domain authentication remain blocked until the monitored True North Map mailbox is established. Campaign sending remains blocked until the lawful footer address is confirmed.
+- Zoho Mail is live for `andrew@truenorthmap.ca`; `hello@`, `privacy@`, `updates@`, `security@`, and `dmarc@` route to the same monitored mailbox.
+- The obsolete Zoho domain and mailbox were deleted after the replacement domain was verified. The Zoho organization is named `True North Map`, and Andrew Davies is the sole administrator.
+- Zoho MX, SPF, and DKIM are active. A controlled message to Gmail passed SPF, DKIM, and DMARC; a controlled message to the work address was accepted for delivery.
+- MailerLite has an authenticated `truenorthmap.ca` sending domain, a verified `updates@truenorthmap.ca` sender, and `andrew@truenorthmap.ca` as the reply-to address. The obsolete ROOTED sending domain was removed.
+- The MailerLite company profile uses the lawful campaign-footer address confirmed by Andrew. Campaign sending is operationally available but remains a deliberate administrator action.
+- Root DMARC is active in monitoring mode at `p=none`, with aggregate reports delivered to `dmarc@truenorthmap.ca`.
 
 ## Provider ownership and administration
 
 - Domain and deployment owner: Vercel project for `truenorthmap.ca`.
 - Authentication data and transactional-delivery owner: Supabase project `facoactpdckkhciamflk`.
-- Human-mail owner: the True North Map Zoho organization, once the domain migration is approved and completed.
+- Human-mail owner: the True North Map Zoho organization.
 - Marketing-delivery owner: the True North Map MailerLite workspace.
 - Operational administrator and reply contact: Andrew Davies.
-- Public support, privacy, security, and update addresses must not be advertised until their Zoho routes receive and send successfully.
+- Public support, privacy, security, and update addresses are approved for public use after successful inbound alias and outbound authentication tests.
 
 ## Secret ownership
 
@@ -66,12 +71,11 @@ Never send authentication mail through MailerLite. Never use the subscriber list
 - Revoke the Resend credential without affecting Zoho or MailerLite.
 - Revoke the MailerLite token without changing the production consent ledger.
 - Remove DNS records only after the dependent service has been disabled.
-- Preserve the legacy Zoho domain and mailbox until the replacement mailbox passes inbound and outbound tests.
+- The legacy Zoho domain and mailbox were intentionally deleted after the replacement mailbox passed inbound and outbound tests. There is no legacy-mail rollback path.
 
-## Remaining launch gates
+## Operational follow-up
 
-1. Obtain approval before removing the obsolete Zoho domain that currently consumes the free plan's only domain slot.
-2. Establish and test the monitored Zoho mailbox and approved aliases.
-3. Authenticate the MailerLite sender domain and verify `updates@truenorthmap.ca`.
-4. Confirm the lawful physical mailing address before sending any campaign.
-5. Publish root DMARC monitoring only after all legitimate senders authenticate successfully.
+1. Review DMARC aggregate reports for two to four weeks before considering an enforcing policy.
+2. Send every new MailerLite campaign to a small test group before scheduling the full `True North Map Updates` group.
+3. Verify the unsubscribe link, sender, reply-to address, and campaign footer in Gmail and a non-Gmail client before each new template is reused.
+4. Keep campaign sending manual until list growth or operating volume creates a clear need for automation.

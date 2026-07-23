@@ -55,4 +55,4 @@ Build and send campaigns in MailerLite. Do not add an in-application campaign co
 
 If a paid newsletter or premium intelligence product is introduced later, keep commercial entitlement and billing outside the consent ledger. The mailing provider may segment delivery, but the production database must continue to record consent and withdrawals.
 
-Campaign sending is currently blocked. The API token, delivery group, lifecycle webhook, and current subscriber reconciliation are complete, but the monitored mailbox, sender verification, domain authentication, and lawful footer-address confirmation remain outstanding.
+Campaign sending is available through MailerLite. The monitored mailbox, verified sender, authenticated domain, lawful footer address, API token, delivery group, lifecycle webhook, and current subscriber reconciliation are complete. Sending remains a manual administrator action: test the campaign in Gmail and a non-Gmail client, verify its unsubscribe link and footer, then select only the `True North Map Updates` group.

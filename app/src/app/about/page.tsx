@@ -184,6 +184,7 @@ export default function AboutPage() {
           <div className="mt-7 flex flex-wrap gap-3">
             <Link href="/" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">Explore the map <ArrowRight className="size-4" /></Link>
             <Link href="/submit" className="atlas-secondary-button h-11 px-5 text-sm no-underline hover:no-underline">Add what Canada is building</Link>
+            <a href="mailto:andrew@truenorthmap.ca" className="atlas-secondary-button h-11 px-5 text-sm no-underline hover:no-underline">Contact Andrew</a>
           </div>
         </div>
       </section>
