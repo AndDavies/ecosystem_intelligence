@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260722123309",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-22T12:33:09.970Z",
+  "completedAt": "2026-07-22T12:45:41.396Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "ANVIL Canada sovereign defence intelligence AI platform",
+    "Canadian sovereign defence AI intelligence fusion companies",
+    "Canada tactical edge ISR data assurance software",
+    "Canada defence mission software C4ISR companies",
+    "Canadian secure AI compute defence infrastructure",
+    "Canada military simulation extended reality training companies",
+    "CanadaBuys defence AI software suppliers",
+    "Innovative Solutions Canada military digital enablers",
+    "NATO DIANA Canadian multidomain sensing companies",
+    "Canadian geospatial AI defence companies",
+    "Ottawa defence intelligence software companies",
+    "Canadian veteran-founded defence technology companies"
+  ],
+  "counters": {
+    "sourcesChecked": 36,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 10,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 20,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 10,
+    "candidatesGreen": 7,
+    "candidatesAmber": 3
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "NovaFuse: NovaFuse is a young company and its performance figures and maturity statements are self-reported; submitted or under-evaluation IDEaS proposals must not be described as awards or operational deployments.",
+      "Chaac Technologies: The government program evidence supports the product class and commercialization eligibility, but the reported CFB Gagetown mine-detection accuracy comes from Chaac's own announcement and must remain attributed.",
+      "ChimeraXR: The current product storefront uses a Shopify domain, and a 2024 Investment Canada notice records an acquisition by a United States-controlled investor; the reviewer should confirm current branding, control, and preferred public URL."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the ten-candidate target with ANVIL first and retained twenty unused peers in the prospect backlog.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260722123309.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260722123309.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260722123309.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260722123309-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260722123309.json"
+  }
+}

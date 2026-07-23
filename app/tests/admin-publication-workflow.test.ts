@@ -19,9 +19,43 @@ describe("admin publication workflow", () => {
 
     expect(reviewPage).toContain("Organization candidates");
     expect(reviewPage).toContain("Demand-signal candidates");
+    expect(reviewPage).toContain("Record refreshes");
+    expect(reviewPage).toContain("Open target record");
+    expect(reviewPage).toContain("Open live profile");
+    expect(reviewPage).toContain('<JsonPanel label="Before"');
+    expect(reviewPage).toContain('<JsonPanel label="After"');
+    expect(reviewPage).toContain("Sources, evidence, warnings, and provenance");
     expect(publishPage).toContain("Recent publications");
-    expect(publishPage).toContain("View live {row.kind === \"demand\" ? \"demand signal\" : \"organization\"}");
+    expect(publishPage).toContain("row.kind === \"refresh\" ? \"updated record\" : \"organization\"");
     expect(publishPage).toContain("no redeploy is required");
+    expect(publishPage).toContain('"organization_refresh_bundle", "demand_refresh_bundle"');
+  });
+
+  it("makes the accepted-to-publish handoff visible and fails closed for unknown candidate types", async () => {
+    const reviewPage = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
+    const overviewPage = await readFile(path.resolve("src/app/admin/page.tsx"), "utf8");
+    const publishPage = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
+    const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
+    const contractRoute = await readFile(path.resolve("src/app/api/system/research-contract/route.ts"), "utf8");
+
+    expect(reviewPage).toContain("Continue to the Publication checkpoint");
+    expect(reviewPage).toContain("This candidate type has no complete review and publication interface. It cannot be accepted.");
+    const genericCard = reviewPage.slice(reviewPage.indexOf("function GenericCandidateCard"), reviewPage.indexOf("function TypedCandidateEditor"));
+    expect(genericCard).not.toContain('value="accept"');
+    expect(action).toContain("isSupportedResearchCandidateKind");
+    expect(action).toContain("researchCandidateContractIssues");
+    expect(action).toContain("selectedCandidates.some");
+    expect(publishPage).toContain("candidate.candidate_kind === \"organization_refresh_bundle\"");
+    expect(action).toContain("unsupported-candidate");
+    expect(overviewPage).toContain("waiting at the Publication checkpoint");
+    expect(contractRoute).toContain("researchReviewContract");
+  });
+
+  it("keeps local migration names aligned with the applied production history", async () => {
+    await expect(readFile(path.resolve("supabase/migrations/20260723105823_signal_refresh_pipeline.sql"), "utf8")).resolves.toContain("organization_refresh_bundle_v1");
+    await expect(readFile(path.resolve("supabase/migrations/20260723111826_preserve_nonorganization_candidate_targets.sql"), "utf8")).resolves.toContain("preserve_candidate_published_organization_reference");
+    await expect(readFile(path.resolve("supabase/migrations/20260723104555_signal_refresh_pipeline.sql"), "utf8")).rejects.toThrow();
+    await expect(readFile(path.resolve("supabase/migrations/20260723111800_preserve_nonorganization_candidate_targets.sql"), "utf8")).rejects.toThrow();
   });
 
   it("lets reviewers enrich complete typed candidates before accepting them", async () => {

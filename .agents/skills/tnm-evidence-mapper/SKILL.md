@@ -29,6 +29,8 @@ Make every important public claim traceable and every interpretation visibly der
 8. Separate core inclusion evidence from optional enrichment. Hard-stop only when identity, Canadian presence, a concrete offering or mandate, durable evidence, taxonomy, operational status, or duplicate safety cannot be resolved. Route non-blocking gaps to amber `reviewWarnings`.
 9. Audit enrichment completeness. Ensure material identity, role, capability or program, relationship, location, public-contact, and current-activity fields found in the sources are represented or explicitly identified as unavailable or irrelevant.
 10. Check that the generated reviewer rationale accurately summarizes the inclusion case, evidence strength, omitted or unavailable detail, and remaining review questions; do not let it introduce uncited facts.
+11. For refresh candidates, require durable evidence for every changed field or child operation. Preserve existing evidence and citations; new evidence is appended. Newsletter, LinkedIn, social, video, podcast, and search-result content may retain discovery provenance but cannot be used as field evidence without a resolved durable source.
+12. Do not evidence-map a candidate kind for live intake unless the deployed application contract supports that kind and schema. Keep unsupported shapes as research artifacts until their complete Review and Publish workflow exists.
 
 ## Demand boundary
 

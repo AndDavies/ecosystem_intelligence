@@ -5,7 +5,7 @@ description: Run a bounded, review-first True North Map ecosystem research cycle
 
 # True North Map Autonomous Research
 
-This project-local skill is the coordinator skill of record. Use it with the four project-local downstream skills named below; do not substitute cached copies or older operator-guide workflows.
+This project-local skill is the coordinator skill of record. Use it with the five project-local downstream skills named below; do not substitute cached copies or older operator-guide workflows.
 
 Run one reproducible coordinator cycle. Research is not organization-only: select the highest-priority saturation gap across supply, ecosystem support, or public demand. Read coverage and taxonomy only from the production database. Broad discovery aims to place 8-10 enriched candidates in Admin Review; named-organization deep dossiers use a separate 1-5 candidate mode.
 
@@ -14,12 +14,13 @@ Run one reproducible coordinator cycle. Research is not organization-only: selec
 1. Work from the repository root and read `AGENTS.md`.
 2. Run `pnpm data:readiness` and `pnpm research:coverage`.
    Both commands must reach the production database. Missing credentials or failed reads are hard stops; never substitute bundled records or remembered taxonomy.
-3. Create a run with `pnpm research:prepare -- --trigger manual --mode discovery-batch` or `--trigger weekly --mode discovery-batch`. Use `--mode deep-dossier --target-candidates <1-5>` for named organizations and `--mode bootstrap` only for an explicitly requested balanced bootstrap. Optionally scope organization research with `--organization-kinds company,accelerator`. Resume an existing manifest instead of duplicating it.
+3. Create a run with `pnpm research:prepare -- --trigger manual --mode discovery-batch` or `--trigger weekly --mode discovery-batch`. For database enrichment use `pnpm research:prepare -- --trigger weekday --mode refresh-batch`; this is a 45-minute, 50-source-item, 10-candidate maximum run. Use `--mode deep-dossier --target-candidates <1-5>` for named organizations and `--mode bootstrap` only for an explicitly requested balanced bootstrap. Optionally scope organization research with `--organization-kinds company,accelerator`. Resume an existing manifest instead of duplicating it.
 4. Read the generated brief in `research/ingestion/briefs/`.
-5. Apply `$tnm-source-discovery`, `$tnm-candidate-builder`, `$tnm-evidence-mapper`, and `$tnm-review-steward` in that order. Read each skill before doing its work. Discovery-batch mode first creates a 40-75 prospect inventory across at least six lanes, then qualifies the strongest prospects. Every validated `qualified` lead proceeds automatically. Do not pause or request source-lead approval.
+5. In `refresh_batch`, apply `$tnm-signal-refresh` first. Then apply `$tnm-source-discovery`, `$tnm-candidate-builder`, `$tnm-evidence-mapper`, and `$tnm-review-steward` in that order. Read each skill before doing its work. Discovery-batch mode first creates a 40-75 prospect inventory across at least six lanes, then qualifies the strongest prospects. Every validated `qualified` lead proceeds automatically. Do not pause or request source-lead approval.
 6. Update the run JSON with prospect, lane, recovery, green/amber, query, output, and validation counters. If a discovery batch is below target, record both `underTargetReason` and concrete `exhaustionEvidence`; a vague time-limit statement is insufficient.
 7. Run the exact smoke command recorded in the run brief.
-8. Confirm every completed-run candidate is visible in Admin Review with its generated reviewer rationale, then report organization candidates, demand-signal candidates, deferred leads, duplicates, warnings, and reviewer packet paths. Stop.
+8. Before live staging, require the deployed `/api/system/research-contract` endpoint to advertise support for every candidate kind and schema version in the batch. If the endpoint is unavailable or incompatible, stop before database intake and retain only the validated file artifacts. Never stage a candidate kind ahead of its deployed Review and Publish interfaces.
+9. Confirm every completed-run candidate is visible in Admin Review with its generated reviewer rationale, then report organization candidates, demand-signal candidates, deferred leads, duplicates, warnings, and reviewer packet paths. Stop.
 
 ## Run limits
 
@@ -42,6 +43,7 @@ Run one reproducible coordinator cycle. Research is not organization-only: selec
 
 - Write research artifacts under `research/`, then use only the trusted review-intake function invoked by `research:smoke` to create private candidates.
 - A run that only leaves files under `research/` is incomplete. The terminal handoff is a verified pending Admin Review row; `research_runs` remains audit metadata only.
+- The exception is a deliberate compatibility stop: when the deployed application cannot review and publish the candidate schema end to end, file-only artifacts are the correct safe terminal state until that application support is deployed.
 - Lead qualification is not human review or publication approval. Human review begins on the enriched candidate in Admin Review.
 - Never approve candidates, publish canonical records, apply migrations, or write core ecosystem tables.
 - Keep source-backed facts, derived alignment, and suggested next steps structurally separate.

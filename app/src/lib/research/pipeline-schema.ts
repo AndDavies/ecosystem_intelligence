@@ -84,6 +84,30 @@ const discoveryLaneSchema = z.enum([
   "company_newsroom",
   "broad_web"
 ]);
+export const signalSourceChannelValues = [
+  "official_company",
+  "government_procurement",
+  "source_book",
+  "ecosystem_program",
+  "industry_publication",
+  "gmail_newsletter",
+  "linkedin_chrome",
+  "other_discovery"
+] as const;
+export const signalTypeValues = [
+  "technology_launch",
+  "technology_update",
+  "contract_or_award",
+  "procurement_notice",
+  "marketplace_or_supply_arrangement",
+  "government_project",
+  "partnership_or_consortium",
+  "financing_or_ownership_event",
+  "program_or_cohort_participation",
+  "official_demand_statement"
+] as const;
+const signalSourceChannelSchema = z.enum(signalSourceChannelValues);
+const signalTypeSchema = z.enum(signalTypeValues);
 const nullableDateTimeSchema = z.string().datetime().nullable();
 
 const sourceSchema = z.object({
@@ -202,11 +226,30 @@ const relationshipLeadSchema = z.object({
   publicSummary: z.string().trim().min(40).max(4000)
 });
 
+const targetMatchSchema = z.object({
+  entityType: z.enum(["organization", "capability", "demand_source", "demand_requirement"]),
+  entityId: z.string().uuid(),
+  slug: slugSchema,
+  matchMethods: z.array(z.enum(["canonical_url", "website_domain", "slug", "legal_name", "alias", "name", "parent_relationship"])).min(1),
+  confidence: z.enum(["high", "moderate"]),
+  baselineUpdatedAt: z.string().datetime()
+});
+
+const recordRefreshLeadSchema = z.object({
+  leadType: z.literal("record_refresh_lead"),
+  ...leadCommon,
+  targetMatch: targetMatchSchema,
+  signalIds: z.array(slugSchema).min(1).max(50),
+  refreshSummary: z.string().trim().min(40).max(4000),
+  intendedChanges: z.array(z.string().trim().min(10).max(500)).min(1).max(30)
+});
+
 export const typedSourceLeadSchema = z.discriminatedUnion("leadType", [
   organizationLeadSchema,
   demandSignalLeadSchema,
   programLeadSchema,
-  relationshipLeadSchema
+  relationshipLeadSchema,
+  recordRefreshLeadSchema
 ]);
 
 export const sourceLeadBatchV2Schema = z.object({
@@ -442,10 +485,125 @@ export const programRelationshipBundleV1Schema = z.object({
   })).min(1).max(100)
 });
 
+const refreshOperationCommon = {
+  operationId: slugSchema,
+  evidenceIds: z.array(slugSchema).min(1).max(20),
+  reviewerExplanation: z.string().trim().min(30).max(2000)
+};
+
+const refreshOperationSchema = z.discriminatedUnion("operation", [
+  z.object({
+    operation: z.literal("set_field"),
+    ...refreshOperationCommon,
+    entityType: z.enum(["organization", "capability", "demand_source", "demand_requirement"]),
+    targetId: z.string().uuid(),
+    field: z.string().trim().regex(/^[a-z][a-z0-9_]*$/),
+    before: z.unknown(),
+    after: z.unknown()
+  }),
+  z.object({
+    operation: z.literal("add_child"),
+    ...refreshOperationCommon,
+    entityType: z.enum(["capability", "program", "relationship", "demand_requirement"]),
+    parentId: z.string().uuid(),
+    value: z.record(z.string(), z.unknown())
+  }),
+  z.object({
+    operation: z.literal("update_child"),
+    ...refreshOperationCommon,
+    entityType: z.enum(["capability", "demand_requirement"]),
+    targetId: z.string().uuid(),
+    before: z.record(z.string(), z.unknown()),
+    after: z.record(z.string(), z.unknown())
+  })
+]);
+
+const refreshCandidateCommon = {
+  ...candidateCommon,
+  targetMatch: targetMatchSchema,
+  beforeRecord: z.record(z.string(), z.unknown()),
+  operations: z.array(refreshOperationSchema).min(1).max(30),
+  sourceChannels: z.array(signalSourceChannelSchema).min(1),
+  signalIds: z.array(slugSchema).min(1).max(50),
+  corroboration: z.array(z.object({
+    claim: z.string().trim().min(20).max(1000),
+    sourceIds: z.array(slugSchema).min(1).max(10)
+  })).max(20)
+};
+
+export const organizationRefreshBundleV1Schema = z.object({
+  schemaVersion: z.literal("organization_refresh_bundle_v1"),
+  candidateKind: z.literal("organization_refresh_bundle"),
+  ...refreshCandidateCommon,
+  targetMatch: targetMatchSchema.extend({ entityType: z.literal("organization") })
+});
+
+export const demandRefreshBundleV1Schema = z.object({
+  schemaVersion: z.literal("demand_refresh_bundle_v1"),
+  candidateKind: z.literal("demand_refresh_bundle"),
+  ...refreshCandidateCommon,
+  targetMatch: targetMatchSchema.extend({ entityType: z.literal("demand_source") })
+});
+
+export const researchSignalBatchV1Schema = z.object({
+  schemaVersion: z.literal("research_signal_batch_v1"),
+  signalBatchId: slugSchema,
+  runId: slugSchema,
+  createdAt: z.string().datetime(),
+  watermarkStart: z.string().datetime(),
+  watermarkEnd: z.string().datetime(),
+  sourceFamilyCounters: z.record(signalSourceChannelSchema, z.number().int().min(0)),
+  warnings: z.array(z.string().trim().min(10).max(1000)),
+  signals: z.array(z.object({
+    signalId: slugSchema,
+    fingerprint: z.string().trim().regex(/^[a-f0-9]{64}$/),
+    sourceChannel: signalSourceChannelSchema,
+    sourceFamily: z.string().trim().min(3).max(120),
+    discoveryOrigin: z.object({
+      url: httpsUrlSchema.nullable(),
+      gmailMessageId: z.string().trim().min(1).nullable(),
+      gmailThreadId: z.string().trim().min(1).nullable(),
+      linkedinUrl: httpsUrlSchema.nullable()
+    }),
+    extracted: z.object({
+      organization: z.string().trim().min(2).max(240).nullable(),
+      technology: z.string().trim().min(2).max(240).nullable(),
+      program: z.string().trim().min(2).max(240).nullable(),
+      issuer: z.string().trim().min(2).max(240).nullable(),
+      eventDate: z.string().date().nullable(),
+      amount: z.string().trim().min(1).max(120).nullable(),
+      details: z.string().trim().min(30).max(4000)
+    }),
+    redirectUrls: z.array(httpsUrlSchema).max(20),
+    canonicalUrls: z.array(httpsUrlSchema).max(20),
+    signalType: signalTypeSchema,
+    canonicalEvidenceStatus: z.enum(["resolved", "unresolved", "not_required_duplicate"]),
+    liveEntityMatches: z.array(targetMatchSchema).max(10),
+    intendedOutcomes: z.array(z.enum(["new_record", "organization_refresh", "demand_refresh", "demand_match", "deferred"])).min(1),
+    recoveryAttempts: z.array(z.object({ channel: signalSourceChannelSchema, url: httpsUrlSchema.nullable(), outcome: z.string().trim().min(20).max(1000) })).max(10),
+    warnings: z.array(z.string().trim().min(10).max(500)).max(20),
+    disposition: z.enum(["qualified", "duplicate", "irrelevant", "unresolved", "already_current", "deferred"]),
+    deferralRationale: z.string().trim().min(20).max(1000).nullable()
+  })).max(50)
+}).superRefine((batch, context) => {
+  const families = Object.entries(batch.sourceFamilyCounters).filter(([, count]) => count > 0);
+  if (families.length < 4) context.addIssue({ code: z.ZodIssueCode.custom, message: "Refresh batches require at least four searched source families.", path: ["sourceFamilyCounters"] });
+  for (const [index, signal] of batch.signals.entries()) {
+    if (["qualified", "already_current", "duplicate"].includes(signal.disposition) && signal.canonicalEvidenceStatus === "unresolved") {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Qualified, duplicate, and already-current signals must resolve canonical evidence.", path: ["signals", index, "canonicalEvidenceStatus"] });
+    }
+    if (["unresolved", "deferred"].includes(signal.disposition) && !signal.deferralRationale) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Unresolved or deferred signals require a rationale.", path: ["signals", index, "deferralRationale"] });
+    }
+  }
+});
+
 export const reviewCandidateSchema = z.union([
   organizationBundleV2Schema,
   demandSignalBundleV1Schema,
-  programRelationshipBundleV1Schema
+  programRelationshipBundleV1Schema,
+  organizationRefreshBundleV1Schema,
+  demandRefreshBundleV1Schema
 ]);
 
 export const researchCandidateBatchV2Schema = z.object({
@@ -486,8 +644,8 @@ export const researchRunSchema = z.object({
   schemaVersion: z.literal("research_run_v1"),
   runId: slugSchema,
   agentVersion: z.string().trim().min(1).max(120),
-  trigger: z.enum(["manual", "weekly"]),
-  mode: z.enum(["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier"]),
+  trigger: z.enum(["manual", "weekly", "weekday"]),
+  mode: z.enum(["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "refresh_batch"]),
   scope: z.object({
     geography: z.literal("canada_first"),
     organizationKinds: z.array(z.enum(organizationKindValues)),
@@ -509,6 +667,7 @@ export const researchRunSchema = z.object({
     sourceBookMinutes: z.number().int().min(0).max(30),
     maxQualifiedLeads: z.number().int().min(1).max(25),
     maxCandidates: z.number().int().min(1).max(10),
+    maxSourceItems: z.number().int().min(1).max(50).optional(),
     minimumProspects: z.number().int().min(1).max(75).optional(),
     minimumSourceLanes: z.number().int().min(1).max(10).optional(),
     minimumCandidates: z.number().int().min(1).max(10).optional(),
@@ -527,7 +686,10 @@ export const researchRunSchema = z.object({
     recoveryAttempts: z.number().int().min(0).optional(),
     sourceLanesSearched: z.number().int().min(0).optional(),
     candidatesGreen: z.number().int().min(0).optional(),
-    candidatesAmber: z.number().int().min(0).optional()
+    candidatesAmber: z.number().int().min(0).optional(),
+    signalsExtracted: z.number().int().min(0).max(50).optional(),
+    signalsDispositioned: z.number().int().min(0).max(50).optional(),
+    sourceFamiliesSearched: z.number().int().min(0).max(8).optional()
   }),
   underTargetReason: z.string().trim().min(20).max(2000).nullable().optional(),
   exhaustionEvidence: z.object({
@@ -545,6 +707,7 @@ export const researchRunSchema = z.object({
   stopReason: z.string().trim().min(3).max(1000).nullable(),
   outputs: z.object({
     prospectInventory: z.string().nullable().optional(),
+    signalBatch: z.string().nullable().optional(),
     sourceLeadBatch: z.string().nullable(),
     candidateBatch: z.string().nullable(),
     reviewPacket: z.string().nullable(),
@@ -556,6 +719,9 @@ export type SourceLeadBatchV2 = z.infer<typeof sourceLeadBatchV2Schema>;
 export type ResearchProspectInventoryV1 = z.infer<typeof researchProspectInventoryV1Schema>;
 export type OrganizationBundleV2 = z.infer<typeof organizationBundleV2Schema>;
 export type DemandSignalBundleV1 = z.infer<typeof demandSignalBundleV1Schema>;
+export type OrganizationRefreshBundleV1 = z.infer<typeof organizationRefreshBundleV1Schema>;
+export type DemandRefreshBundleV1 = z.infer<typeof demandRefreshBundleV1Schema>;
+export type ResearchSignalBatchV1 = z.infer<typeof researchSignalBatchV1Schema>;
 export type ResearchCandidateBatchV2 = z.infer<typeof researchCandidateBatchV2Schema>;
 export type ResearchRun = z.infer<typeof researchRunSchema>;
 export type ReviewCandidate = z.infer<typeof reviewCandidateSchema>;
@@ -593,6 +759,10 @@ export function researchRunCompletionIssues(run: ResearchRun) {
         errors.push(`Run ${run.runId} exhaustionEvidence does not identify the searched source lanes.`);
       }
     }
+  }
+  if (run.mode === "refresh_batch" && run.status === "completed") {
+    if ((run.counters.sourceFamiliesSearched ?? 0) < 4) errors.push(`Refresh batch ${run.runId} searched fewer than four source families.`);
+    if ((run.counters.signalsExtracted ?? 0) !== (run.counters.signalsDispositioned ?? 0)) errors.push(`Refresh batch ${run.runId} did not disposition every extracted signal.`);
   }
   const tierCount = (run.counters.candidatesGreen ?? 0) + (run.counters.candidatesAmber ?? 0);
   if (tierCount > 0 && tierCount !== run.counters.candidatesCreated) errors.push(`Run ${run.runId} green and amber counters do not equal candidatesCreated.`);

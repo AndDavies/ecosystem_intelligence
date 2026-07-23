@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260723181402",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization:sentinel-advanced-military-solutions",
+    "reason": "The operator requested a named deep dossier for Sentinel AMS, a Canadian defence systems integrator absent from the published and pending corpus despite a broad public capability portfolio.",
+    "score": 980
+  },
+  "status": "completed",
+  "startedAt": "2026-07-23T18:14:02.194Z",
+  "completedAt": "2026-07-23T18:23:45.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "site:sentinel-ams.com Sentinel AMS Canada autonomous maritime systems products",
+    "Sentinel AMS Canada defence",
+    "Sentinel Advanced Military Solutions",
+    "site:canada.ca OR site:canadabuys.canada.ca Sentinel AMS",
+    "Sentinel Advanced Military Solutions CANSEC",
+    "site:defenceandsecurity.ca Sentinel Advanced Military Solutions",
+    "StarForge Sentinel defence Canada",
+    "Sentinel AMS CMP Advanced Mechanical Solutions"
+  ],
+  "counters": {
+    "sourcesChecked": 8,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 3,
+    "uniqueProspects": 3,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 3,
+    "sourceLanesSearched": 3,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Amber review: Sentinel's separate legal identity, specific LinkedIn-discovered CANSEC product names, and deployment or maturity details require reviewer verification."
+    ]
+  },
+  "errors": [],
+  "stopReason": "completed_pending_human_review",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260723181402.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260723181402.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260723181402.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260723181402-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260723181402.json"
+  }
+}

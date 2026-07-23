@@ -1,0 +1,3193 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "generatedAt": "2026-07-22T12:46:28.353Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260722123309",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-kind:company",
+      "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-22T12:33:09.970Z",
+    "completed_at": "2026-07-22T12:45:41.396Z",
+    "agent_version": "tnm-research-pipeline/1.2.0",
+    "source_queries": [
+      "ANVIL Canada sovereign defence intelligence AI platform",
+      "Canadian sovereign defence AI intelligence fusion companies",
+      "Canada tactical edge ISR data assurance software",
+      "Canada defence mission software C4ISR companies",
+      "Canadian secure AI compute defence infrastructure",
+      "Canada military simulation extended reality training companies",
+      "CanadaBuys defence AI software suppliers",
+      "Innovative Solutions Canada military digital enablers",
+      "NATO DIANA Canadian multidomain sensing companies",
+      "Canadian geospatial AI defence companies",
+      "Ottawa defence intelligence software companies",
+      "Canadian veteran-founded defence technology companies"
+    ],
+    "counters": {
+      "sourcesChecked": 36,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 10,
+      "prospectsDiscovered": 40,
+      "uniqueProspects": 40,
+      "prospectsQueued": 20,
+      "recoveryAttempts": 30,
+      "sourceLanesSearched": 10,
+      "candidatesGreen": 7,
+      "candidatesAmber": 3
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "NovaFuse: NovaFuse is a young company and its performance figures and maturity statements are self-reported; submitted or under-evaluation IDEaS proposals must not be described as awards or operational deployments.",
+        "Chaac Technologies: The government program evidence supports the product class and commercialization eligibility, but the reported CFB Gagetown mine-detection accuracy comes from Chaac's own announcement and must remain attributed.",
+        "ChimeraXR: The current product storefront uses a Shopify domain, and a 2024 Investment Canada notice records an acquisition by a United States-controlled investor; the reviewer should confirm current branding, control, and preferred public URL."
+      ]
+    },
+    "stop_reason": "Completed the ten-candidate target with ANVIL first and retained twenty unused peers in the prospect backlog."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-anvil-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-anvil-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-anvil-20260722",
+        "sourceLeadIds": [
+          "lead-anvil-20260722"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "ANVIL is the operator-mandated first candidate and is recommended for green review. Four durable official sources resolve its legal identity, exact Ottawa contact, Canadian sovereignty posture, concrete platform architecture, defence use cases, and current government-facing activity. Its fit is direct: the platform sits at the intersection of mission data, intelligence fusion, AI-assisted planning, interoperability, and tactical-edge workflows. The reviewer should preserve attribution for company performance and interoperability claims while retaining the strong source-backed identity and capability record.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 97,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked ANVIL against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "anvil-home",
+            "title": "ANVIL sovereign intelligence company profile",
+            "url": "https://anvil.ai/",
+            "publisher": "ANVIL",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Homepage and ANVIL Platform overview",
+            "summary": "ANVIL describes itself as Canada's sovereign intelligence capability and says its flagship platform links intelligence, operations, and planning with AI."
+          },
+          {
+            "id": "anvil-solutions",
+            "title": "ANVIL Platform solutions and deployment model",
+            "url": "https://anvil.ai/solutions",
+            "publisher": "ANVIL",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Solutions, use cases, architecture, security and deployment sections",
+            "summary": "The product page describes all-source ingestion and fusion, ontology-based data structuring, AI enrichment, open-standard interoperability, access controls, provenance, data lineage, and edge-native deployment."
+          },
+          {
+            "id": "anvil-mission",
+            "title": "ANVIL mission and Canadian sovereignty statement",
+            "url": "https://anvil.ai/mission",
+            "publisher": "ANVIL",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Mission and interoperability sections",
+            "summary": "ANVIL states that it is Canadian-owned, builds a sovereign defence capability, and has tested interoperability with NATO allies and Ukraine."
+          },
+          {
+            "id": "anvil-registry",
+            "title": "Anvil Intelligence federal lobby registration",
+            "url": "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=382323&regId=974175",
+            "publisher": "Office of the Commissioner of Lobbying of Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Client details and subject-matter sections",
+            "summary": "The federal registry identifies Anvil Intelligence Inc., its Ottawa address, CEO, website, NRC funding history, and defence digital-service discussions involving ANVIL and ANVIL Smithy."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "anvil-description-evidence",
+            "sourceId": "anvil-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports ANVIL's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "anvil-location-evidence",
+            "sourceId": "anvil-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for ANVIL; the geographic-confidence label records the available precision.",
+            "confidence": "high"
+          },
+          {
+            "id": "anvil-contact-evidence",
+            "sourceId": "anvil-home",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "high"
+          },
+          {
+            "id": "anvil-activity-evidence",
+            "sourceId": "anvil-registry",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for ANVIL.",
+            "confidence": "high"
+          },
+          {
+            "id": "anvil-anvil-platform-evidence",
+            "sourceId": "anvil-solutions",
+            "fieldPath": "capabilities.anvil-platform.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for ANVIL Platform.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "anvil",
+          "name": "ANVIL",
+          "legalName": "Anvil Intelligence Inc.",
+          "aliases": [
+            "Anvil Intelligence",
+            "IMRSV Data Labs Inc. o/a ANVIL"
+          ],
+          "description": "ANVIL is an Ottawa-based Canadian defence software company whose sovereign intelligence platform connects intelligence, operations, and planning by structuring mission data, enriching it with AI, and exposing it through interoperable mission applications.",
+          "websiteUrl": "https://anvil.ai/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.429,
+            "longitude": -75.695,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "publicContact": "55 Murray Street Suite 500 Ottawa Ontario K1N 9M5 | 613-797-3550 | https://anvil.ai/contact",
+            "currentActivity": "ANVIL publicly positions its platform for major combat operations, strategic intelligence, and tactical-edge workflows; the federal Registry of Lobbyists also identifies ANVIL and ANVIL Smithy as company platforms in active defence-procurement discussions.",
+            "portfolioSummary": [
+              "ANVIL Platform"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "anvil-platform",
+            "name": "ANVIL Platform",
+            "summary": "ANVIL Platform ingests and fuses all-source mission data, structures it through configurable ontologies, enriches it with AI, and delivers interoperable applications for strategic intelligence, operational planning, and tactical-edge use.",
+            "capabilityType": "AI-enabled mission data and intelligence platform",
+            "features": [
+              "all-source ingestion and fusion",
+              "configurable ontology",
+              "AI enrichment",
+              "open-standard interoperability",
+              "attribute-based access control",
+              "data provenance and lineage",
+              "edge-native deployment"
+            ],
+            "applications": [
+              "major combat operations",
+              "strategic intelligence",
+              "tactical-edge operations"
+            ],
+            "technicalTags": [
+              "mission data",
+              "intelligence fusion",
+              "AI enrichment",
+              "interoperability",
+              "sovereign software"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "communications-and-cyber",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "ANVIL may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "ANVIL may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "ANVIL may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "anvil-description-evidence",
+          "sourceId": "anvil-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports ANVIL's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "anvil-location-evidence",
+          "sourceId": "anvil-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for ANVIL; the geographic-confidence label records the available precision.",
+          "confidence": "high"
+        },
+        {
+          "id": "anvil-contact-evidence",
+          "sourceId": "anvil-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "anvil-activity-evidence",
+          "sourceId": "anvil-registry",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for ANVIL.",
+          "confidence": "high"
+        },
+        {
+          "id": "anvil-anvil-platform-evidence",
+          "sourceId": "anvil-solutions",
+          "fieldPath": "capabilities.anvil-platform.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for ANVIL Platform.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked ANVIL against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "ANVIL is the operator-mandated first candidate and is recommended for green review. Four durable official sources resolve its legal identity, exact Ottawa contact, Canadian sovereignty posture, concrete platform architecture, defence use cases, and current government-facing activity. Its fit is direct: the platform sits at the intersection of mission data, intelligence fusion, AI-assisted planning, interoperability, and tactical-edge workflows. The reviewer should preserve attribution for company performance and interoperability claims while retaining the strong source-backed identity and capability record.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    },
+    {
+      "client_candidate_id": "candidate-sapper-labs-group-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-sapper-labs-group-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-sapper-labs-group-20260722",
+        "sourceLeadIds": [
+          "lead-sapper-labs-group-20260722"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Sapper Labs Group is recommended for green review because official company, product, partnership, and DND sources resolve a broad but coherent Canadian defence portfolio: intelligence fusion, AI decision support, cyber operations, managed attribution, sovereign infrastructure, and training. The DND IDEaS profile provides durable public corroboration beyond the company site, while the Denvr alliance establishes a current ecosystem relationship. The candidate intentionally captures two distinct capabilities so the reviewer can preserve portfolio breadth without collapsing cyber operational security into the intelligence platform.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 94,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked Sapper Labs Group against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "sapper-home",
+            "title": "Sapper Labs sovereign intelligence capabilities",
+            "url": "https://sapperlabs.com/",
+            "publisher": "Sapper Labs Group",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Homepage capability and company-history sections",
+            "summary": "Sapper Labs describes its Canadian-owned and veteran-led identity and its intelligence, cyber-defence, secure infrastructure, operational-security, and training capabilities."
+          },
+          {
+            "id": "sapper-platform",
+            "title": "Sapper Labs AI decision support platform",
+            "url": "https://sapperlabs.com/ai-platform",
+            "publisher": "Sapper Labs Group",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "AI-Powered Decision Support Platform",
+            "summary": "The official product page describes a Canadian multi-source intelligence-fusion platform supporting intelligence collection, analysis, investigations, and decisions from strategic settings to the tactical edge."
+          },
+          {
+            "id": "sapper-denvr",
+            "title": "Sapper Labs and Denvr sovereign AI alliance",
+            "url": "https://sapperlabs.com/pages/news",
+            "publisher": "Sapper Labs Group",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-03-25T00:00:00.000Z",
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "March 25 2026 strategic-alliance announcement",
+            "summary": "Sapper Labs and Denvr announced a Canadian-owned alliance to deploy intelligence and cyber-defence applications on the Canada AI Platform for defence and national-security workloads."
+          },
+          {
+            "id": "sapper-dnd",
+            "title": "DND IDEaS profile for Sapper Labs",
+            "url": "https://www.canada.ca/en/department-national-defence/corporate/video/defence-ideas/sapper-labs.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "IDEaS innovator profile",
+            "summary": "DND profiles an IDEaS test-drive collaboration with Sapper Labs involving advanced cyber-attribution technology and the Canadian Armed Forces."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "sapper-labs-group-description-evidence",
+            "sourceId": "sapper-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports Sapper Labs Group's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "sapper-labs-group-location-evidence",
+            "sourceId": "sapper-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for Sapper Labs Group; the geographic-confidence label records the available precision.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "sapper-labs-group-contact-evidence",
+            "sourceId": "sapper-home",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "high"
+          },
+          {
+            "id": "sapper-labs-group-activity-evidence",
+            "sourceId": "sapper-dnd",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for Sapper Labs Group.",
+            "confidence": "high"
+          },
+          {
+            "id": "sapper-labs-group-sapper-ai-decision-support-platform-evidence",
+            "sourceId": "sapper-platform",
+            "fieldPath": "capabilities.sapper-ai-decision-support-platform.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for AI-Powered Decision Support Platform.",
+            "confidence": "high"
+          },
+          {
+            "id": "sapper-labs-group-sapper-managed-attribution-evidence",
+            "sourceId": "sapper-home",
+            "fieldPath": "capabilities.sapper-managed-attribution.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Managed Attribution and Operational Security.",
+            "confidence": "high"
+          },
+          {
+            "id": "sapper-labs-group-relationship-0-evidence",
+            "sourceId": "sapper-denvr",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Sapper Labs and Denvr publicly announced a strategic alliance to combine Sapper's intelligence and cyber-defence applications with Denvr's Canada AI Platform for sovereign defence workloads.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "sapper-labs-group",
+          "name": "Sapper Labs Group",
+          "legalName": "Sapper Labs Group Inc.",
+          "aliases": [
+            "Sapper Labs"
+          ],
+          "description": "Sapper Labs Group is a Canadian-owned, veteran-led intelligence and cyber-defence company delivering AI decision support, multi-source intelligence fusion, managed attribution, operational security, sovereign infrastructure, intelligence services, and advanced training.",
+          "websiteUrl": "https://sapperlabs.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "publicContact": "info@sapperlabs.com | https://sapperlabs.com/",
+            "currentActivity": "In March 2026 Sapper Labs and Denvr announced a strategic alliance combining Sapper's intelligence and cyber-defence applications with the Canada AI Platform for sovereign Canadian defence workloads.",
+            "portfolioSummary": [
+              "AI-Powered Decision Support Platform",
+              "Managed Attribution and Operational Security"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "sapper-ai-decision-support-platform",
+            "name": "AI-Powered Decision Support Platform",
+            "summary": "A sovereign Canadian intelligence-fusion platform designed to accelerate collection, analysis, production, investigations, and human-led decisions across strategic environments and the tactical edge.",
+            "capabilityType": "multi-source intelligence fusion platform",
+            "features": [
+              "multi-source intelligence fusion",
+              "AI-assisted analysis",
+              "Canadian cloud or hybrid deployment",
+              "investigation support",
+              "human-led decision support"
+            ],
+            "applications": [
+              "defence intelligence",
+              "national-security investigations",
+              "tactical-edge decision support"
+            ],
+            "technicalTags": [
+              "intelligence fusion",
+              "agentic AI",
+              "decision support",
+              "sovereign compute"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "communications-and-cyber",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Sapper Labs Group may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Sapper Labs Group may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Sapper Labs Group may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "sapper-managed-attribution",
+            "name": "Managed Attribution and Operational Security",
+            "summary": "Sapper Labs provides managed-attribution systems and operational-security capabilities intended to protect online researchers, operators, analysts, government, enterprise, and critical-infrastructure activities.",
+            "capabilityType": "cyber operational-security capability",
+            "features": [
+              "managed attribution",
+              "operational security",
+              "cyber-defence expertise",
+              "high-assurance infrastructure"
+            ],
+            "applications": [
+              "online research protection",
+              "cyber operations",
+              "critical-infrastructure security"
+            ],
+            "technicalTags": [
+              "OPSEC",
+              "managed attribution",
+              "cyber defence"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Sapper Labs Group may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Denvr",
+            "relationshipType": "strategic-alliance",
+            "publicSummary": "Sapper Labs and Denvr publicly announced a strategic alliance to combine Sapper's intelligence and cyber-defence applications with Denvr's Canada AI Platform for sovereign defence workloads."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "sapper-labs-group-description-evidence",
+          "sourceId": "sapper-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Sapper Labs Group's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "sapper-labs-group-location-evidence",
+          "sourceId": "sapper-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for Sapper Labs Group; the geographic-confidence label records the available precision.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "sapper-labs-group-contact-evidence",
+          "sourceId": "sapper-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "sapper-labs-group-activity-evidence",
+          "sourceId": "sapper-dnd",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for Sapper Labs Group.",
+          "confidence": "high"
+        },
+        {
+          "id": "sapper-labs-group-sapper-ai-decision-support-platform-evidence",
+          "sourceId": "sapper-platform",
+          "fieldPath": "capabilities.sapper-ai-decision-support-platform.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for AI-Powered Decision Support Platform.",
+          "confidence": "high"
+        },
+        {
+          "id": "sapper-labs-group-sapper-managed-attribution-evidence",
+          "sourceId": "sapper-home",
+          "fieldPath": "capabilities.sapper-managed-attribution.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Managed Attribution and Operational Security.",
+          "confidence": "high"
+        },
+        {
+          "id": "sapper-labs-group-relationship-0-evidence",
+          "sourceId": "sapper-denvr",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Sapper Labs and Denvr publicly announced a strategic alliance to combine Sapper's intelligence and cyber-defence applications with Denvr's Canada AI Platform for sovereign defence workloads.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked Sapper Labs Group against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "Sapper Labs Group is recommended for green review because official company, product, partnership, and DND sources resolve a broad but coherent Canadian defence portfolio: intelligence fusion, AI decision support, cyber operations, managed attribution, sovereign infrastructure, and training. The DND IDEaS profile provides durable public corroboration beyond the company site, while the Denvr alliance establishes a current ecosystem relationship. The candidate intentionally captures two distinct capabilities so the reviewer can preserve portfolio breadth without collapsing cyber operational security into the intelligence platform.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    },
+    {
+      "client_candidate_id": "candidate-denvr-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-denvr-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-denvr-20260722",
+        "sourceLeadIds": [
+          "lead-denvr-20260722"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Denvr is recommended for green review as a critical enabling company in the same sovereign defence-AI ecosystem as ANVIL. Its official sources document the infrastructure stack in useful technical depth, its legal terms resolve the Calgary identity, and a named partner announcement ties the platform to Canadian defence and national-security workloads without requiring an inferred customer claim. The reviewer should retain the distinction between Denvr's general AI infrastructure and defence-specific partner configurations; that distinction is already explicit in the dossier.",
+        "reviewTier": "green",
+        "inclusionScore": 94,
+        "completenessScore": 91,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked Denvr against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "denvr-home",
+            "title": "Denvr sovereign Canadian AI infrastructure",
+            "url": "https://www.denvr.com/",
+            "publisher": "Denvr",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "AI Platform Highlights and Proudly Canadian sections",
+            "summary": "Denvr describes Canadian-operated AI compute, inference, data systems, encrypted access, tenant isolation, monitoring, and regional data-residency infrastructure."
+          },
+          {
+            "id": "denvr-platform",
+            "title": "Denvr private AI platform architecture",
+            "url": "https://www.denvr.com/ai-platform",
+            "publisher": "Denvr",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Private AI Platform and sovereign-security sections",
+            "summary": "The official platform page describes private cloud and on-premises AI infrastructure for sensitive public and critical workloads, including isolated and secure configurations."
+          },
+          {
+            "id": "denvr-terms",
+            "title": "Denvr Dataworks legal identity and Calgary base",
+            "url": "https://www.denvr.com/terms-of-service",
+            "publisher": "Denvr Dataworks Corp.",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Legal identity, geographic restrictions and contact sections",
+            "summary": "The terms identify Denvr Dataworks Corp., state that it is based in Calgary, Alberta, and publish a legal contact channel."
+          },
+          {
+            "id": "denvr-alliance",
+            "title": "Denvr and Sapper Labs defence AI alliance",
+            "url": "https://sapperlabs.com/pages/news",
+            "publisher": "Sapper Labs Group",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-03-25T00:00:00.000Z",
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "March 25 2026 alliance announcement",
+            "summary": "The partner announcement identifies Denvr as the Canadian-owned developer of the Canada AI Platform and describes a sovereign defence AI and cyber alliance."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "denvr-description-evidence",
+            "sourceId": "denvr-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports Denvr's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "denvr-location-evidence",
+            "sourceId": "denvr-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for Denvr; the geographic-confidence label records the available precision.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "denvr-contact-evidence",
+            "sourceId": "denvr-home",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "high"
+          },
+          {
+            "id": "denvr-activity-evidence",
+            "sourceId": "denvr-alliance",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for Denvr.",
+            "confidence": "high"
+          },
+          {
+            "id": "denvr-denvr-private-ai-platform-evidence",
+            "sourceId": "denvr-platform",
+            "fieldPath": "capabilities.denvr-private-ai-platform.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Denvr Private AI Platform.",
+            "confidence": "high"
+          },
+          {
+            "id": "denvr-relationship-0-evidence",
+            "sourceId": "denvr-alliance",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Denvr and Sapper Labs publicly announced that Sapper's intelligence and cyber-defence applications would run on and contribute security expertise to the Canada AI Platform.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "denvr",
+          "name": "Denvr",
+          "legalName": "Denvr Dataworks Corp.",
+          "aliases": [
+            "Denvr Dataworks",
+            "Canada AI Platform",
+            "CAIP"
+          ],
+          "description": "Denvr is a Calgary-based Canadian AI infrastructure company operating sovereign cloud and private AI platforms with integrated GPU compute, inference, networking, storage, encryption, monitoring, and data-residency controls.",
+          "websiteUrl": "https://www.denvr.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Calgary",
+            "provinceTerritory": "Alberta",
+            "countryCode": "CA",
+            "latitude": 51.0447,
+            "longitude": -114.0719,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "publicContact": "media@denvr.com | legal@denvrdata.com | https://www.denvr.com/book-a-meeting",
+            "currentActivity": "Denvr's Canada AI Platform is being positioned with Canadian defence-technology partners for secure sovereign workloads, including a March 2026 alliance with Sapper Labs.",
+            "portfolioSummary": [
+              "Denvr Private AI Platform"
+            ],
+            "possibleMissionAreaRelevance": [
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "denvr-private-ai-platform",
+            "name": "Denvr Private AI Platform",
+            "summary": "Denvr provides integrated Canadian AI infrastructure spanning GPU compute, model inference, high-performance storage, isolated networking, encryption, observability, and private cloud or on-premises deployment for sensitive workloads.",
+            "capabilityType": "sovereign AI compute and data platform",
+            "features": [
+              "GPU compute clusters",
+              "dedicated inference endpoints",
+              "high-performance shared storage",
+              "tenant-isolated networking",
+              "end-to-end encryption",
+              "cloud and on-premises deployment"
+            ],
+            "applications": [
+              "sovereign AI development",
+              "secure model inference",
+              "defence and public-sector workloads"
+            ],
+            "technicalTags": [
+              "AI infrastructure",
+              "GPU cloud",
+              "data sovereignty",
+              "private AI"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Denvr may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Sapper Labs Group",
+            "relationshipType": "strategic-alliance",
+            "publicSummary": "Denvr and Sapper Labs publicly announced that Sapper's intelligence and cyber-defence applications would run on and contribute security expertise to the Canada AI Platform."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "denvr-description-evidence",
+          "sourceId": "denvr-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Denvr's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "denvr-location-evidence",
+          "sourceId": "denvr-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for Denvr; the geographic-confidence label records the available precision.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "denvr-contact-evidence",
+          "sourceId": "denvr-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "denvr-activity-evidence",
+          "sourceId": "denvr-alliance",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for Denvr.",
+          "confidence": "high"
+        },
+        {
+          "id": "denvr-denvr-private-ai-platform-evidence",
+          "sourceId": "denvr-platform",
+          "fieldPath": "capabilities.denvr-private-ai-platform.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Denvr Private AI Platform.",
+          "confidence": "high"
+        },
+        {
+          "id": "denvr-relationship-0-evidence",
+          "sourceId": "denvr-alliance",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Denvr and Sapper Labs publicly announced that Sapper's intelligence and cyber-defence applications would run on and contribute security expertise to the Canada AI Platform.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked Denvr against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "Denvr is recommended for green review as a critical enabling company in the same sovereign defence-AI ecosystem as ANVIL. Its official sources document the infrastructure stack in useful technical depth, its legal terms resolve the Calgary identity, and a named partner announcement ties the platform to Canadian defence and national-security workloads without requiring an inferred customer claim. The reviewer should retain the distinction between Denvr's general AI infrastructure and defence-specific partner configurations; that distinction is already explicit in the dossier.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    },
+    {
+      "client_candidate_id": "candidate-novafuse-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-novafuse-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-novafuse-20260722",
+        "sourceLeadIds": [
+          "lead-novafuse-20260722"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "NovaFuse is recommended for amber review because its fit with ANVIL's field is exceptionally direct and the official site provides unusually detailed technical architecture, identity, location, and contact information. The caution is maturity, not relevance: the company is young, performance figures are vendor-reported, and its listed IDEaS submissions remain under evaluation. The reviewer can still publish a valuable evidence-bounded company and capability profile by preserving those attributions and avoiding any implication that proposals are awards or deployments.",
+        "reviewTier": "amber",
+        "inclusionScore": 89,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "NovaFuse is a young company and its performance figures and maturity statements are self-reported; submitted or under-evaluation IDEaS proposals must not be described as awards or operational deployments."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked NovaFuse against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "novafuse-home",
+            "title": "NovaFuse multimodal defence AI platform",
+            "url": "https://www.novafuse.ca/",
+            "publisher": "NovaFuse Inc.",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Core capabilities, fusion pipeline, company and contact sections",
+            "summary": "NovaFuse describes its Ottawa identity, Canadian ownership, multimodal fusion pipeline, explainable outputs, policy-aware controls, tactical-edge use, and public contact details."
+          },
+          {
+            "id": "novafuse-graphs",
+            "title": "NovaFuse persistent tracking knowledge graphs",
+            "url": "https://www.novafuse.ca/blog/knowledge-graphs-persistent-tracking.html",
+            "publisher": "NovaFuse Inc.",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Persistent entity tracking and edge synchronization sections",
+            "summary": "The technical article describes knowledge-graph entity resolution, persistent tracking, edge synchronization, tactical hardware constraints, and the company's IDEaS-related research posture."
+          },
+          {
+            "id": "novafuse-canadabuys",
+            "title": "NovaFuse CanadaBuys supplier profile",
+            "url": "https://canadabuys.canada.ca/en/node/preview/1458477",
+            "publisher": "Government of Canada",
+            "sourceKind": "procurement_notice",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Supplier identity and capability summary",
+            "summary": "CanadaBuys identifies NovaFuse as a Canadian AI company in Ottawa and summarizes its multimodal fusion platform and public partnering interest."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "novafuse-description-evidence",
+            "sourceId": "novafuse-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports NovaFuse's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "novafuse-location-evidence",
+            "sourceId": "novafuse-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for NovaFuse; the geographic-confidence label records the available precision.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "novafuse-contact-evidence",
+            "sourceId": "novafuse-home",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "novafuse-activity-evidence",
+            "sourceId": "novafuse-canadabuys",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for NovaFuse.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "novafuse-novafuse-multimodal-fusion-platform-evidence",
+            "sourceId": "novafuse-home",
+            "fieldPath": "capabilities.novafuse-multimodal-fusion-platform.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for NovaFuse Multimodal Fusion Platform.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "novafuse",
+          "name": "NovaFuse",
+          "legalName": "NovaFuse Inc.",
+          "aliases": [
+            "Nova Fuse Inc."
+          ],
+          "description": "NovaFuse is an Ottawa defence-AI company developing multimodal sensor-fusion software that correlates RF, electro-optical, infrared, signals-intelligence, acoustic, text, and drone data into explainable operational tracks at the tactical edge.",
+          "websiteUrl": "https://www.novafuse.ca/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "publicContact": "info@novafuse.ca | 343-575-4715 | Ottawa Ontario Canada",
+            "currentActivity": "NovaFuse publicly reports active research into policy-aware fusion and persistent entity tracking while listing several IDEaS proposals as submitted and under evaluation rather than awarded.",
+            "portfolioSummary": [
+              "NovaFuse Multimodal Fusion Platform"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "underwater-isr",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "novafuse-multimodal-fusion-platform",
+            "name": "NovaFuse Multimodal Fusion Platform",
+            "summary": "NovaFuse combines heterogeneous RF, EO/IR, SIGINT, acoustic, text, and drone feeds through spatiotemporal alignment, uncertainty propagation, knowledge-graph entity resolution, policy controls, and explainable outputs.",
+            "capabilityType": "AI sensor-fusion and decision-support platform",
+            "features": [
+              "multimodal sensor fusion",
+              "spatiotemporal alignment",
+              "uncertainty propagation",
+              "dynamic knowledge graph",
+              "policy-aware fusion",
+              "explainable outputs"
+            ],
+            "applications": [
+              "operational picture generation",
+              "persistent entity tracking",
+              "counter-UAS analysis",
+              "maritime domain awareness"
+            ],
+            "technicalTags": [
+              "sensor fusion",
+              "knowledge graph",
+              "edge AI",
+              "explainable AI"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "autonomous-systems"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "NovaFuse may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              },
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "NovaFuse may support underwater ISR where its cited data-fusion or mission-software capability can ingest, correlate, interpret, or communicate acoustic and other maritime sensor information.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "NovaFuse may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "NovaFuse may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "novafuse-description-evidence",
+          "sourceId": "novafuse-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports NovaFuse's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "novafuse-location-evidence",
+          "sourceId": "novafuse-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for NovaFuse; the geographic-confidence label records the available precision.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "novafuse-contact-evidence",
+          "sourceId": "novafuse-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "novafuse-activity-evidence",
+          "sourceId": "novafuse-canadabuys",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for NovaFuse.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "novafuse-novafuse-multimodal-fusion-platform-evidence",
+          "sourceId": "novafuse-home",
+          "fieldPath": "capabilities.novafuse-multimodal-fusion-platform.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for NovaFuse Multimodal Fusion Platform.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked NovaFuse against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "NovaFuse is recommended for amber review because its fit with ANVIL's field is exceptionally direct and the official site provides unusually detailed technical architecture, identity, location, and contact information. The caution is maturity, not relevance: the company is young, performance figures are vendor-reported, and its listed IDEaS submissions remain under evaluation. The reviewer can still publish a valuable evidence-bounded company and capability profile by preserving those attributions and avoiding any implication that proposals are awards or deployments.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    },
+    {
+      "client_candidate_id": "candidate-tactiql-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-tactiql-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-tactiql-20260722",
+        "sourceLeadIds": [
+          "lead-tactiql-20260722"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "TACTIQL is recommended for green review with one of the strongest evidence packages in this batch. Its official product material provides technical depth, Innovative Solutions Canada documents a completed Canadian Army test, NATO DIANA corroborates the company and accelerator progression, and Calian provides a current public relationship. The profile deliberately records KILO as the earlier tested name and FULCRUM as the current platform so the reviewer can avoid treating them as unrelated products or overstating an evolution that the sources support.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 94,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked TACTIQL against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "tactiql-home",
+            "title": "TACTIQL FULCRUM ISR data platform",
+            "url": "https://www.tactiql.com/",
+            "publisher": "TACTIQL",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "FULCRUM product, deployment and ecosystem sections",
+            "summary": "TACTIQL describes FULCRUM as a tactical-edge ISR data platform for feed verification, geospatial correction, metadata enrichment, bandwidth optimization, and connected or disconnected deployment."
+          },
+          {
+            "id": "tactiql-isc",
+            "title": "Government testing of TACTIQL KILO",
+            "url": "https://www.ised-isde.canada.ca/site/innovative-solutions-canada/en/revolutionizing-defence-interoperability-tactiql",
+            "publisher": "Innovative Solutions Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Company, KILO contract and testing results",
+            "summary": "The Government of Canada describes TACTIQL as a military-focused engineering company and reports Canadian Army testing of KILO for sensor-data standardization and interoperability."
+          },
+          {
+            "id": "tactiql-diana",
+            "title": "NATO DIANA spotlight on TACTIQL",
+            "url": "https://www.diana.nato.int/connect/spotlight-on-tactiql-data-assurance-for-multidomain-sensing.html",
+            "publisher": "NATO DIANA",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Company, technology and Phase 2 sections",
+            "summary": "NATO DIANA profiles TACTIQL's Canadian veteran-founded team, data-assurance technology for multidomain sensing, and progression into the accelerator's second phase."
+          },
+          {
+            "id": "tactiql-calian",
+            "title": "Calian defence partnership with TACTIQL",
+            "url": "https://www.calian.com/news-media/calian-announces-first-ventures-defence-partnership-with-tactiql/",
+            "publisher": "Calian Group",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Partnership and co-development announcement",
+            "summary": "Calian announced a defence partnership with TACTIQL to co-develop and commercialize a sovereign ISR solution combining their capabilities."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "tactiql-description-evidence",
+            "sourceId": "tactiql-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports TACTIQL's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "tactiql-location-evidence",
+            "sourceId": "tactiql-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for TACTIQL; the geographic-confidence label records the available precision.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tactiql-contact-evidence",
+            "sourceId": "tactiql-home",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "high"
+          },
+          {
+            "id": "tactiql-activity-evidence",
+            "sourceId": "tactiql-calian",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for TACTIQL.",
+            "confidence": "high"
+          },
+          {
+            "id": "tactiql-tactiql-fulcrum-evidence",
+            "sourceId": "tactiql-home",
+            "fieldPath": "capabilities.tactiql-fulcrum.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for FULCRUM.",
+            "confidence": "high"
+          },
+          {
+            "id": "tactiql-relationship-0-evidence",
+            "sourceId": "tactiql-calian",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Calian publicly announced a partnership with TACTIQL to co-develop and commercialize a sovereign ISR solution using complementary defence and data-assurance capabilities.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "tactiql",
+          "name": "TACTIQL",
+          "legalName": "TACTIQL Inc.",
+          "aliases": [
+            "KILO",
+            "FULCRUM"
+          ],
+          "description": "TACTIQL is a Canadian veteran-founded defence data-assurance company building FULCRUM, a tactical-edge platform that verifies, conditions, enriches, and standardizes ISR video and metadata from crewed and uncrewed sensors.",
+          "websiteUrl": "https://www.tactiql.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "publicContact": "mike@tactiql.com | 613-447-7944 | https://www.tactiql.com/",
+            "currentActivity": "TACTIQL progressed its earlier KILO capability into FULCRUM, completed Canadian government testing, entered NATO DIANA Phase 2, and announced a Calian defence co-development partnership.",
+            "portfolioSummary": [
+              "FULCRUM"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "tactiql-fulcrum",
+            "name": "FULCRUM",
+            "summary": "FULCRUM verifies and processes ISR feeds, corrects geospatial errors, enriches full-motion-video metadata, standardizes outputs for interoperability, optimizes network delivery, and deploys from soldier-portable devices to servers and secure cloud environments.",
+            "capabilityType": "tactical-edge ISR data assurance platform",
+            "features": [
+              "ISR feed verification",
+              "geospatial error correction",
+              "FMV metadata enrichment",
+              "MISB 0601 and STANAG 4609 support",
+              "bandwidth optimization",
+              "connected and disconnected deployment"
+            ],
+            "applications": [
+              "airborne ISR processing",
+              "uncrewed sensor integration",
+              "tactical-edge data assurance",
+              "coalition interoperability"
+            ],
+            "technicalTags": [
+              "ISR",
+              "FMV",
+              "metadata",
+              "data assurance",
+              "interoperability"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "TACTIQL may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "TACTIQL may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "TACTIQL may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Calian Group",
+            "relationshipType": "defence-co-development-partnership",
+            "publicSummary": "Calian publicly announced a partnership with TACTIQL to co-develop and commercialize a sovereign ISR solution using complementary defence and data-assurance capabilities."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "tactiql-description-evidence",
+          "sourceId": "tactiql-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports TACTIQL's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "tactiql-location-evidence",
+          "sourceId": "tactiql-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for TACTIQL; the geographic-confidence label records the available precision.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tactiql-contact-evidence",
+          "sourceId": "tactiql-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "tactiql-activity-evidence",
+          "sourceId": "tactiql-calian",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for TACTIQL.",
+          "confidence": "high"
+        },
+        {
+          "id": "tactiql-tactiql-fulcrum-evidence",
+          "sourceId": "tactiql-home",
+          "fieldPath": "capabilities.tactiql-fulcrum.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for FULCRUM.",
+          "confidence": "high"
+        },
+        {
+          "id": "tactiql-relationship-0-evidence",
+          "sourceId": "tactiql-calian",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Calian publicly announced a partnership with TACTIQL to co-develop and commercialize a sovereign ISR solution using complementary defence and data-assurance capabilities.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked TACTIQL against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "TACTIQL is recommended for green review with one of the strongest evidence packages in this batch. Its official product material provides technical depth, Innovative Solutions Canada documents a completed Canadian Army test, NATO DIANA corroborates the company and accelerator progression, and Calian provides a current public relationship. The profile deliberately records KILO as the earlier tested name and FULCRUM as the current platform so the reviewer can avoid treating them as unrelated products or overstating an evolution that the sources support.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    },
+    {
+      "client_candidate_id": "candidate-h2-analytics-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-h2-analytics-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-h2-analytics-20260722",
+        "sourceLeadIds": [
+          "lead-h2-analytics-20260722"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "H2 Analytics is recommended for green review because the dossier combines detailed official product evidence with unusually strong independent federal records. CanadaBuys resolves the legal name, exact Ottawa address, software contract, and National Defence buying organization; the NRC contribution documents continuing product development; and the company pages explain the actual workflow supported by EASE. This is a high-confidence candidate in ANVIL's wider mission-software ecosystem, particularly for intelligence preparation, C4ISR integration, and realistic decision training.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 98,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked H2 Analytics against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "h2-home",
+            "title": "H2 Analytics intelligence and geospatial capabilities",
+            "url": "https://www.h2analytics.ca/",
+            "publisher": "H2 Analytics",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Company overview, capability and EASE sections",
+            "summary": "H2 Analytics describes its intelligence training, C4ISR, geospatial, TAK integration, custom data, and EASE software capabilities for defence, security, and command teams."
+          },
+          {
+            "id": "h2-ease",
+            "title": "H2 Analytics Exercise Architect Suite",
+            "url": "https://www.h2analytics.ca/ease-platform/",
+            "publisher": "H2 Analytics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "EASE planning, creation, scheduling and AI-enabled tools",
+            "summary": "The product page describes EASE as a single source of truth for designing, generating, scheduling, and managing realistic intelligence-driven training exercises."
+          },
+          {
+            "id": "h2-contract",
+            "title": "CanadaBuys EASE contract history",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428966-000",
+            "publisher": "Government of Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-11-19T00:00:00.000Z",
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Contract CW2428966 award, supplier, address and buying organization",
+            "summary": "CanadaBuys records a 2025 contract awarded to H2 Analytics Inc. for EASE, identifies the Ottawa business address, and lists National Defence as a buying organization."
+          },
+          {
+            "id": "h2-irap",
+            "title": "NRC contribution for EASE simulation integration",
+            "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019001%2Ccurrent",
+            "publisher": "Government of Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2024-06-03T00:00:00.000Z",
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Grant 1019001 recipient and project description",
+            "summary": "The federal grant record identifies H2 Analytics Inc. and supports an NRC IRAP contribution to integrate simulation capabilities into EASE for readiness training."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "h2-analytics-description-evidence",
+            "sourceId": "h2-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports H2 Analytics's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "h2-analytics-location-evidence",
+            "sourceId": "h2-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for H2 Analytics; the geographic-confidence label records the available precision.",
+            "confidence": "high"
+          },
+          {
+            "id": "h2-analytics-contact-evidence",
+            "sourceId": "h2-home",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "high"
+          },
+          {
+            "id": "h2-analytics-activity-evidence",
+            "sourceId": "h2-irap",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for H2 Analytics.",
+            "confidence": "high"
+          },
+          {
+            "id": "h2-analytics-exercise-architect-suite-evidence",
+            "sourceId": "h2-ease",
+            "fieldPath": "capabilities.exercise-architect-suite.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Exercise Architect Suite (EASE).",
+            "confidence": "high"
+          },
+          {
+            "id": "h2-analytics-relationship-0-evidence",
+            "sourceId": "h2-contract",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records H2 Analytics Inc. as the supplier for a current EASE software contract and identifies National Defence as a buying organization.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "h2-analytics",
+          "name": "H2 Analytics",
+          "legalName": "H2 Analytics Inc.",
+          "aliases": [
+            "H2A",
+            "Exercise Architect Suite",
+            "EASE"
+          ],
+          "description": "H2 Analytics is an Ottawa software and professional-services company focused on intelligence training, exercise design, C4ISR integration, geospatial solutions, and the AI-enabled Exercise Architect Suite for complex defence and security scenarios.",
+          "websiteUrl": "https://www.h2analytics.ca/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.432,
+            "longitude": -75.606,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "publicContact": "304-1400 Blair Towers Place Ottawa Ontario K1J 9B8 | https://www.h2analytics.ca/contact-us/",
+            "currentActivity": "A current CanadaBuys contract records a Department of National Defence purchase of EASE, while an NRC IRAP contribution supports integration of live-virtual-constructive simulation capabilities into the platform.",
+            "portfolioSummary": [
+              "Exercise Architect Suite (EASE)"
+            ],
+            "possibleMissionAreaRelevance": [
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "exercise-architect-suite",
+            "name": "Exercise Architect Suite (EASE)",
+            "summary": "EASE helps exercise staffs create entities, generate intelligence injects and reports, schedule event traffic, manage evolving scenarios, and integrate live, virtual, and constructive inputs for realistic intelligence-driven training.",
+            "capabilityType": "AI-enabled exercise planning and simulation platform",
+            "features": [
+              "exercise entity templates",
+              "AI-enabled inject and report generation",
+              "scenario scheduling",
+              "intelligence traffic management",
+              "live-virtual-constructive integration"
+            ],
+            "applications": [
+              "military exercise design",
+              "intelligence training",
+              "command-post simulation",
+              "readiness assessment"
+            ],
+            "technicalTags": [
+              "training simulation",
+              "exercise management",
+              "C4ISR",
+              "generative AI"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "test-training-and-sustainment",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "H2 Analytics may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "public-contract",
+            "publicSummary": "CanadaBuys records H2 Analytics Inc. as the supplier for a current EASE software contract and identifies National Defence as a buying organization."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "h2-analytics-description-evidence",
+          "sourceId": "h2-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports H2 Analytics's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "h2-analytics-location-evidence",
+          "sourceId": "h2-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for H2 Analytics; the geographic-confidence label records the available precision.",
+          "confidence": "high"
+        },
+        {
+          "id": "h2-analytics-contact-evidence",
+          "sourceId": "h2-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "h2-analytics-activity-evidence",
+          "sourceId": "h2-irap",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for H2 Analytics.",
+          "confidence": "high"
+        },
+        {
+          "id": "h2-analytics-exercise-architect-suite-evidence",
+          "sourceId": "h2-ease",
+          "fieldPath": "capabilities.exercise-architect-suite.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Exercise Architect Suite (EASE).",
+          "confidence": "high"
+        },
+        {
+          "id": "h2-analytics-relationship-0-evidence",
+          "sourceId": "h2-contract",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records H2 Analytics Inc. as the supplier for a current EASE software contract and identifies National Defence as a buying organization.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked H2 Analytics against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "H2 Analytics is recommended for green review because the dossier combines detailed official product evidence with unusually strong independent federal records. CanadaBuys resolves the legal name, exact Ottawa address, software contract, and National Defence buying organization; the NRC contribution documents continuing product development; and the company pages explain the actual workflow supported by EASE. This is a high-confidence candidate in ANVIL's wider mission-software ecosystem, particularly for intelligence preparation, C4ISR integration, and realistic decision training.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    },
+    {
+      "client_candidate_id": "candidate-chaac-technologies-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-chaac-technologies-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-chaac-technologies-20260722",
+        "sourceLeadIds": [
+          "lead-chaac-technologies-20260722"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Chaac Technologies is recommended for amber review because government and official company sources support two concrete, map-worthy capabilities in the same AI-to-decision ecosystem as ANVIL: georeferenced aerial-data analysis and SHIELDS mine detection. The inclusion case is strong; the caution concerns evidence attribution and completeness. The CFB Gagetown result is described by the vendor, while the government source supports the innovation class and commercialization pathway. Reviewers should retain the company, keep the reported performance attributed, and confirm current contact details before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 91,
+        "completenessScore": 86,
+        "reviewWarnings": [
+          "The government program evidence supports the product class and commercialization eligibility, but the reported CFB Gagetown mine-detection accuracy comes from Chaac's own announcement and must remain attributed."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked Chaac Technologies against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "chaac-home",
+            "title": "Chaac Technologies geospatial AI company profile",
+            "url": "https://chaac.tech/",
+            "publisher": "Chaac Technologies",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Company, geospatial integration and technology sections",
+            "summary": "Chaac presents its Canadian AI, drone, geospatial data-integration, mapping, and decision-support work for complex environments."
+          },
+          {
+            "id": "chaac-mines",
+            "title": "Chaac SHIELDS mine-detection demonstration",
+            "url": "https://chaac.tech/chaac-detection-mines-ia-bfc-gagetown",
+            "publisher": "Chaac Technologies",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "CFB Gagetown demonstration and SHIELDS description",
+            "summary": "Chaac reports an IDEaS Sandbox demonstration of its SHIELDS AI mine-detection and battlefield-mapping system at CFB Gagetown for Canadian and Ukrainian military personnel."
+          },
+          {
+            "id": "chaac-isc",
+            "title": "Innovative Solutions Canada Chaac listings",
+            "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/innovations-eligible-additional-sales",
+            "publisher": "Innovative Solutions Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Chaac Technologies military innovation entries",
+            "summary": "The federal program lists Chaac's drone-based real-time crisis digital twin and AI platform for capturing, analyzing, and visualizing georeferenced aerial data as eligible innovations."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "chaac-technologies-description-evidence",
+            "sourceId": "chaac-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports Chaac Technologies's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chaac-technologies-location-evidence",
+            "sourceId": "chaac-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for Chaac Technologies; the geographic-confidence label records the available precision.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chaac-technologies-contact-evidence",
+            "sourceId": "chaac-home",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chaac-technologies-activity-evidence",
+            "sourceId": "chaac-isc",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for Chaac Technologies.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chaac-technologies-chaac-georeferenced-aerial-ai-evidence",
+            "sourceId": "chaac-isc",
+            "fieldPath": "capabilities.chaac-georeferenced-aerial-ai.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for AI Georeferenced Aerial Data Platform.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chaac-technologies-chaac-shields-evidence",
+            "sourceId": "chaac-mines",
+            "fieldPath": "capabilities.chaac-shields.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for SHIELDS.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "chaac-technologies",
+          "name": "Chaac Technologies",
+          "legalName": "Chaac Technologies Inc.",
+          "aliases": [
+            "Chaac",
+            "SHIELDS"
+          ],
+          "description": "Chaac Technologies is a Montréal AI and geospatial company developing drone-enabled crisis digital twins, georeferenced aerial-data analysis, interactive mapping, customizable computer-vision models, and the SHIELDS mine-detection and battlefield-mapping system.",
+          "websiteUrl": "https://chaac.tech/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Montréal",
+            "provinceTerritory": "Québec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "publicContact": "https://chaac.tech/",
+            "currentActivity": "Chaac reports a military sandbox demonstration of SHIELDS at CFB Gagetown, and Innovative Solutions Canada lists both its drone-based crisis digital-twin system and AI georeferenced aerial-data platform as eligible for additional sales.",
+            "portfolioSummary": [
+              "AI Georeferenced Aerial Data Platform",
+              "SHIELDS"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "chaac-georeferenced-aerial-ai",
+            "name": "AI Georeferenced Aerial Data Platform",
+            "summary": "The platform analyzes georeferenced aerial imagery with AI, produces geographic data layers for an interactive map, and supports adding and training customized deep-learning models through an accessible interface.",
+            "capabilityType": "geospatial AI analysis and visualization platform",
+            "features": [
+              "aerial imagery ingestion",
+              "AI object analysis",
+              "geographic data-layer generation",
+              "interactive mapping",
+              "custom model training"
+            ],
+            "applications": [
+              "crisis mapping",
+              "aerial reconnaissance",
+              "infrastructure assessment",
+              "defence geospatial analysis"
+            ],
+            "technicalTags": [
+              "geospatial AI",
+              "computer vision",
+              "drone data",
+              "digital twin"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "autonomous-systems"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Chaac Technologies may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Chaac Technologies may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Chaac Technologies may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          },
+          {
+            "slug": "chaac-shields",
+            "name": "SHIELDS",
+            "summary": "SHIELDS combines aerial sensing, computer vision, and geospatial mapping to identify suspected mines and environmental landmarks and present them as decision-support layers for battlefield awareness.",
+            "capabilityType": "AI-assisted mine detection and battlefield mapping system",
+            "features": [
+              "AI mine detection",
+              "aerial survey",
+              "georeferenced hazard mapping",
+              "interactive battlefield display"
+            ],
+            "applications": [
+              "minefield reconnaissance",
+              "route-risk assessment",
+              "battlefield mapping"
+            ],
+            "technicalTags": [
+              "mine detection",
+              "computer vision",
+              "hazard mapping"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "autonomous-systems"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Chaac Technologies may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Chaac Technologies may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "chaac-technologies-description-evidence",
+          "sourceId": "chaac-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Chaac Technologies's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chaac-technologies-location-evidence",
+          "sourceId": "chaac-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for Chaac Technologies; the geographic-confidence label records the available precision.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chaac-technologies-contact-evidence",
+          "sourceId": "chaac-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chaac-technologies-activity-evidence",
+          "sourceId": "chaac-isc",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for Chaac Technologies.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chaac-technologies-chaac-georeferenced-aerial-ai-evidence",
+          "sourceId": "chaac-isc",
+          "fieldPath": "capabilities.chaac-georeferenced-aerial-ai.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for AI Georeferenced Aerial Data Platform.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chaac-technologies-chaac-shields-evidence",
+          "sourceId": "chaac-mines",
+          "fieldPath": "capabilities.chaac-shields.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for SHIELDS.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked Chaac Technologies against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "Chaac Technologies is recommended for amber review because government and official company sources support two concrete, map-worthy capabilities in the same AI-to-decision ecosystem as ANVIL: georeferenced aerial-data analysis and SHIELDS mine detection. The inclusion case is strong; the caution concerns evidence attribution and completeness. The CFB Gagetown result is described by the vendor, while the government source supports the innovation class and commercialization pathway. Reviewers should retain the company, keep the reported performance attributed, and confirm current contact details before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    },
+    {
+      "client_candidate_id": "candidate-chimeraxr-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-chimeraxr-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-chimeraxr-20260722",
+        "sourceLeadIds": [
+          "lead-chimeraxr-20260722"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "ChimeraXR is recommended for amber review because government commercialization, grant, and investment records corroborate a Canadian operating footprint and two substantive XR training products beyond the storefront. The company adds a useful training-and-simulation node to the ecosystem around mission software. The caution is current corporate presentation: the storefront is on Shopify, location records vary over time, and an acquisition notice indicates United States ultimate control. These are reviewer-edit questions, not reasons to discard the evidence-backed company and capabilities.",
+        "reviewTier": "amber",
+        "inclusionScore": 87,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "The current product storefront uses a Shopify domain, and a 2024 Investment Canada notice records an acquisition by a United States-controlled investor; the reviewer should confirm current branding, control, and preferred public URL."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked ChimeraXR against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "chimera-home",
+            "title": "ChimeraXR immersive training systems",
+            "url": "https://chimeraxr.myshopify.com/",
+            "publisher": "ChimeraXR",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Company and training-system overview",
+            "summary": "ChimeraXR describes mobile virtual- and mixed-reality training systems for armed professionals with modular scenarios, equipment integration, and distributed access."
+          },
+          {
+            "id": "chimera-mythos",
+            "title": "ChimeraXR Project Mythos training kit",
+            "url": "https://chimeraxr.myshopify.com/products/chimeraxr-project-mythos",
+            "publisher": "ChimeraXR",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Project Mythos product description and kit contents",
+            "summary": "The official product page describes a mobile virtual-reality agency training kit with scenario creation controls, simulated firearms, headset, support, and deployable equipment."
+          },
+          {
+            "id": "chimera-isc",
+            "title": "Innovative Solutions Canada Project Spear listing",
+            "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/innovations-eligible-additional-sales",
+            "publisher": "Innovative Solutions Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "ChimeraXR Project Spear military entry",
+            "summary": "The federal program describes Project Spear as a mobile extended-reality military training system designed to bring up to forty soldiers and real weapon systems into one virtual environment."
+          },
+          {
+            "id": "chimera-investment",
+            "title": "Investment Canada profile for ChimeraXR",
+            "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/node/207893",
+            "publisher": "Innovation, Science and Economic Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Investee business activity and location",
+            "summary": "The federal Investment Canada profile places ChimeraXR in Whitby, Ontario and describes virtual-reality technology and training for law enforcement, military, and educational institutions."
+          },
+          {
+            "id": "chimera-irap",
+            "title": "NRC contribution for ChimeraXR scenario builder",
+            "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q1-1005564%2Ccurrent",
+            "publisher": "Government of Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2023-04-01T00:00:00.000Z",
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Project AGERE grant description",
+            "summary": "The federal grant record identifies ChimeraXR Incorporated and an IRAP-supported end-to-end scenario builder for low-cost virtual- and mixed-reality training content."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "chimeraxr-description-evidence",
+            "sourceId": "chimera-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports ChimeraXR's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chimeraxr-location-evidence",
+            "sourceId": "chimera-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for ChimeraXR; the geographic-confidence label records the available precision.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chimeraxr-contact-evidence",
+            "sourceId": "chimera-home",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chimeraxr-activity-evidence",
+            "sourceId": "chimera-irap",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for ChimeraXR.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chimeraxr-chimeraxr-project-spear-evidence",
+            "sourceId": "chimera-isc",
+            "fieldPath": "capabilities.chimeraxr-project-spear.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Project Spear.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "chimeraxr-chimeraxr-project-mythos-evidence",
+            "sourceId": "chimera-mythos",
+            "fieldPath": "capabilities.chimeraxr-project-mythos.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Project Mythos.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "chimeraxr",
+          "name": "ChimeraXR",
+          "legalName": "ChimeraXR Incorporated",
+          "aliases": [
+            "Project Spear",
+            "Project Mythos",
+            "Mythos V2"
+          ],
+          "description": "ChimeraXR is an Ontario extended-reality training company developing mobile virtual- and mixed-reality systems that let military, law-enforcement, and other armed professionals build and run modular tactics and use-of-force scenarios with physical training equipment.",
+          "websiteUrl": "https://chimeraxr.myshopify.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Whitby",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.8975,
+            "longitude": -78.9429,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "publicContact": "https://chimeraxr.myshopify.com/",
+            "currentActivity": "Innovative Solutions Canada lists Project Spear as an extended-reality military training system eligible for additional sales, while federal records show prior IRAP support for a low-code mixed-reality scenario builder.",
+            "portfolioSummary": [
+              "Project Spear",
+              "Project Mythos"
+            ],
+            "possibleMissionAreaRelevance": [
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "chimeraxr-project-spear",
+            "name": "Project Spear",
+            "summary": "Project Spear is a mobile extended-reality training system intended to place as many as forty soldiers using head-mounted displays and real weapon systems into a shared virtual environment.",
+            "capabilityType": "deployable mixed-reality military training system",
+            "features": [
+              "multi-user extended reality",
+              "mobile deployment",
+              "real-equipment integration",
+              "shared training environment"
+            ],
+            "applications": [
+              "collective military training",
+              "tactics rehearsal",
+              "distributed simulation"
+            ],
+            "technicalTags": [
+              "extended reality",
+              "military training",
+              "multi-user simulation"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "ChimeraXR may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          },
+          {
+            "slug": "chimeraxr-project-mythos",
+            "name": "Project Mythos",
+            "summary": "Project Mythos packages a standalone headset, simulated firearm, administrative scenario controller, casting device, software, and field case into a portable system for agency tactics and use-of-force training.",
+            "capabilityType": "mobile virtual-reality agency training kit",
+            "features": [
+              "portable VR kit",
+              "scenario authoring",
+              "simulated firearm integration",
+              "instructor casting and control"
+            ],
+            "applications": [
+              "law-enforcement training",
+              "use-of-force rehearsal",
+              "small-team tactics training"
+            ],
+            "technicalTags": [
+              "virtual reality",
+              "scenario authoring",
+              "use-of-force training"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "ChimeraXR may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "chimeraxr-description-evidence",
+          "sourceId": "chimera-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports ChimeraXR's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chimeraxr-location-evidence",
+          "sourceId": "chimera-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for ChimeraXR; the geographic-confidence label records the available precision.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chimeraxr-contact-evidence",
+          "sourceId": "chimera-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chimeraxr-activity-evidence",
+          "sourceId": "chimera-irap",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for ChimeraXR.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chimeraxr-chimeraxr-project-spear-evidence",
+          "sourceId": "chimera-isc",
+          "fieldPath": "capabilities.chimeraxr-project-spear.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Project Spear.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "chimeraxr-chimeraxr-project-mythos-evidence",
+          "sourceId": "chimera-mythos",
+          "fieldPath": "capabilities.chimeraxr-project-mythos.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Project Mythos.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked ChimeraXR against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "ChimeraXR is recommended for amber review because government commercialization, grant, and investment records corroborate a Canadian operating footprint and two substantive XR training products beyond the storefront. The company adds a useful training-and-simulation node to the ecosystem around mission software. The caution is current corporate presentation: the storefront is on Shopify, location records vary over time, and an acquisition notice indicates United States ultimate control. These are reviewer-edit questions, not reasons to discard the evidence-backed company and capabilities.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    },
+    {
+      "client_candidate_id": "candidate-modest-tree-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-modest-tree-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-modest-tree-20260722",
+        "sourceLeadIds": [
+          "lead-modest-tree-20260722"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Modest Tree is recommended for green review because its legal identity, exact Halifax contact, defence training portfolio, concrete product applications, and public growth support are all resolved through durable sources. The company broadens the ANVIL-adjacent ecosystem into simulation, maintenance, and human readiness while remaining anchored in mission software and data visualization. The candidate consolidates overlapping product names into one evidence-backed capability family so the reviewer gets portfolio depth without an artificially fragmented record.",
+        "reviewTier": "green",
+        "inclusionScore": 96,
+        "completenessScore": 96,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked Modest Tree against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "modest-services",
+            "title": "Modest Tree defence immersive training services",
+            "url": "https://www.modesttree.com/services-old/",
+            "publisher": "Modest Tree",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Defence, immersive operational training and procedural trainer sections",
+            "summary": "Modest Tree describes platform-agnostic XR, desktop, mobile, multiplayer, procedural, maintenance, and familiarization training delivered across Army, Navy, Air Force, aerospace, and industrial contexts."
+          },
+          {
+            "id": "modest-contact",
+            "title": "Modest Tree Halifax contact and company details",
+            "url": "https://www.modesttree.com/contact/",
+            "publisher": "Modest Tree",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Head office and public inquiry sections",
+            "summary": "The official contact page publishes the Halifax head-office address, public telephone number, and sales, media, careers, and general inquiry channels."
+          },
+          {
+            "id": "modest-acoa",
+            "title": "Federal support for Modest Tree growth",
+            "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/12/backgrounder-nova-scotias-aerospace-and-defence-companies-reach-new-heights.html",
+            "publisher": "Atlantic Canada Opportunities Agency",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2023-12-18T00:00:00.000Z",
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Modest Tree Media Inc. project entry",
+            "summary": "The federal backgrounder identifies Modest Tree Media Inc. in Halifax and supports investment to grow its 3D training simulations and digital maintenance and operations solutions."
+          },
+          {
+            "id": "modest-ussf",
+            "title": "Modest Tree United States Space Force contract",
+            "url": "https://www.modesttree.com/top-2022-vr-ar-trendsenterprise-ar-vr/",
+            "publisher": "Modest Tree",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2022-08-18T00:00:00.000Z",
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Contract announcement and Tech Companion application",
+            "summary": "Modest Tree reports a United States Space Force contract using Tech Companion to support three-dimensional and virtual-reality vehicle-maintenance proficiency training."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "modest-tree-description-evidence",
+            "sourceId": "modest-services",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports Modest Tree's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "modest-tree-location-evidence",
+            "sourceId": "modest-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for Modest Tree; the geographic-confidence label records the available precision.",
+            "confidence": "high"
+          },
+          {
+            "id": "modest-tree-contact-evidence",
+            "sourceId": "modest-contact",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "high"
+          },
+          {
+            "id": "modest-tree-activity-evidence",
+            "sourceId": "modest-ussf",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for Modest Tree.",
+            "confidence": "high"
+          },
+          {
+            "id": "modest-tree-modest-tree-immersive-training-evidence",
+            "sourceId": "modest-services",
+            "fieldPath": "capabilities.modest-tree-immersive-training.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Immersive Operational and Maintenance Training.",
+            "confidence": "high"
+          },
+          {
+            "id": "modest-tree-relationship-0-evidence",
+            "sourceId": "modest-acoa",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "A federal backgrounder records ACOA support for Modest Tree Media Inc. to grow its 3D training simulation and digital maintenance-support business.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "modest-tree",
+          "name": "Modest Tree",
+          "legalName": "Modest Tree Media Inc.",
+          "aliases": [
+            "ModestTree",
+            "Xplorer",
+            "Tech Companion"
+          ],
+          "description": "Modest Tree is a Halifax modelling, simulation, immersive-training, and digital-twin company providing XR, desktop, mobile, procedural training, maintenance support, and data-visualization solutions for defence, aerospace, and complex-equipment operators.",
+          "websiteUrl": "https://www.modesttree.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Halifax",
+            "provinceTerritory": "Nova Scotia",
+            "countryCode": "CA",
+            "latitude": 44.663,
+            "longitude": -63.609,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "publicContact": "info@modesttree.com | sales@modesttree.com | 902-466-6564 | 6300 Lady Hammond Road Suite 100 Halifax Nova Scotia B3K 2R6",
+            "currentActivity": "Federal support records describe continued growth of Modest Tree's 3D training simulation and maintenance-support products, and its official portfolio documents defence use across land, maritime, and aerospace training contexts.",
+            "portfolioSummary": [
+              "Immersive Operational and Maintenance Training"
+            ],
+            "possibleMissionAreaRelevance": [
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "modest-tree-immersive-training",
+            "name": "Immersive Operational and Maintenance Training",
+            "summary": "Modest Tree creates reusable XR, desktop, mobile, multiplayer, procedural, maintenance, familiarization, and digital-twin training that turns product and operations data into interactive learning and support experiences.",
+            "capabilityType": "XR simulation and digital training suite",
+            "features": [
+              "VR and AR delivery",
+              "desktop and mobile deployment",
+              "multiplayer training",
+              "procedural task simulation",
+              "maintenance knowledge support",
+              "digital-twin visualization"
+            ],
+            "applications": [
+              "ship equipment training",
+              "aircraft maintenance training",
+              "vehicle maintenance",
+              "defence familiarization",
+              "complex-equipment sustainment"
+            ],
+            "technicalTags": [
+              "XR training",
+              "simulation",
+              "digital twin",
+              "maintenance support"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Modest Tree may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Atlantic Canada Opportunities Agency",
+            "relationshipType": "public-growth-support",
+            "publicSummary": "A federal backgrounder records ACOA support for Modest Tree Media Inc. to grow its 3D training simulation and digital maintenance-support business."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "modest-tree-description-evidence",
+          "sourceId": "modest-services",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports Modest Tree's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "modest-tree-location-evidence",
+          "sourceId": "modest-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for Modest Tree; the geographic-confidence label records the available precision.",
+          "confidence": "high"
+        },
+        {
+          "id": "modest-tree-contact-evidence",
+          "sourceId": "modest-contact",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "modest-tree-activity-evidence",
+          "sourceId": "modest-ussf",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for Modest Tree.",
+          "confidence": "high"
+        },
+        {
+          "id": "modest-tree-modest-tree-immersive-training-evidence",
+          "sourceId": "modest-services",
+          "fieldPath": "capabilities.modest-tree-immersive-training.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for Immersive Operational and Maintenance Training.",
+          "confidence": "high"
+        },
+        {
+          "id": "modest-tree-relationship-0-evidence",
+          "sourceId": "modest-acoa",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "A federal backgrounder records ACOA support for Modest Tree Media Inc. to grow its 3D training simulation and digital maintenance-support business.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked Modest Tree against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "Modest Tree is recommended for green review because its legal identity, exact Halifax contact, defence training portfolio, concrete product applications, and public growth support are all resolved through durable sources. The company broadens the ANVIL-adjacent ecosystem into simulation, maintenance, and human readiness while remaining anchored in mission software and data visualization. The candidate consolidates overlapping product names into one evidence-backed capability family so the reviewer gets portfolio depth without an artificially fragmented record.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    },
+    {
+      "client_candidate_id": "candidate-nortac-defence-20260722",
+      "research_run_ref": "tnm-manual-20260722123309",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-nortac-defence-20260722"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-nortac-defence-20260722",
+        "sourceLeadIds": [
+          "lead-nortac-defence-20260722"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "NORTAC Defence is recommended for green review because official product evidence resolves a technically rich command-and-control portfolio, exact public contact information, and strong relevance to remote Canadian operations. A Government of Canada investment announcement independently confirms the legal name, Ottawa-region presence, incorporation history, secure communications focus, and public support. TITAN is captured separately from its WAVE and TACTICAL edge components so reviewers can see both the data-fusion backbone and the polar-capable field communications layer.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 97,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-22T12:45:41.396Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Checked NORTAC Defence against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+        },
+        "sources": [
+          {
+            "id": "nortac-home",
+            "title": "NORTAC Defence TITAN command-and-control ecosystem",
+            "url": "https://www.nortacdefence.com/",
+            "publisher": "NORTAC Defence",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "TITAN, nationalisation, dual-use, communications and contact sections",
+            "summary": "NORTAC describes TITAN as a secure federated data-fusion and command-and-control hub linking remote devices, sensors, uncrewed systems, radios, cellular and satellite communications."
+          },
+          {
+            "id": "nortac-tdk",
+            "title": "NORTAC Team Deployment Kit capability overview",
+            "url": "https://www.nortacdefence.com/wp-content/uploads/2024/12/TDK-2024-MIL.pdf",
+            "publisher": "NORTAC Defence",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "TITAN, WAVE, ORION and deployment-kit capability pages",
+            "summary": "The product factsheet details TITAN as a data-fusion hub and NORTAC WAVE and ORION as secure situational-awareness and communications components for remote military teams."
+          },
+          {
+            "id": "nortac-feddev",
+            "title": "Government investment profile for NORTAC Defence",
+            "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-to-support-ottawa-region-ai-and-tech-businesses.html",
+            "publisher": "Federal Economic Development Agency for Southern Ontario",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-03-03T00:00:00.000Z",
+            "accessedAt": "2026-07-22T12:45:41.396Z",
+            "locator": "Investment announcement and NORTAC company quick fact",
+            "summary": "The Government of Canada identifies NORTAC Defence Limited as an Ottawa-region investment recipient and describes its secure digital communications products for defence and first-responder markets."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "nortac-defence-description-evidence",
+            "sourceId": "nortac-home",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The cited official source supports NORTAC Defence's Canadian identity, operating role, and core company description used in this candidate dossier.",
+            "confidence": "high"
+          },
+          {
+            "id": "nortac-defence-location-evidence",
+            "sourceId": "nortac-home",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for NORTAC Defence; the geographic-confidence label records the available precision.",
+            "confidence": "high"
+          },
+          {
+            "id": "nortac-defence-contact-evidence",
+            "sourceId": "nortac-home",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+            "confidence": "high"
+          },
+          {
+            "id": "nortac-defence-activity-evidence",
+            "sourceId": "nortac-feddev",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for NORTAC Defence.",
+            "confidence": "high"
+          },
+          {
+            "id": "nortac-defence-titan-by-nortac-evidence",
+            "sourceId": "nortac-home",
+            "fieldPath": "capabilities.titan-by-nortac.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for TITAN BY NORTAC.",
+            "confidence": "high"
+          },
+          {
+            "id": "nortac-defence-nortac-wave-and-tactical-evidence",
+            "sourceId": "nortac-tdk",
+            "fieldPath": "capabilities.nortac-wave-and-tactical.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for NORTAC WAVE and NORTAC TACTICAL.",
+            "confidence": "high"
+          },
+          {
+            "id": "nortac-defence-relationship-0-evidence",
+            "sourceId": "nortac-feddev",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "FedDev Ontario identified NORTAC Defence Limited among six Ottawa-region technology companies receiving investment support to scale and commercialize products and services.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "nortac-defence",
+          "name": "NORTAC Defence",
+          "legalName": "NORTAC Defence Limited",
+          "aliases": [
+            "NORTAC",
+            "TITAN BY NORTAC",
+            "NORTAC WAVE",
+            "NORTAC TACTICAL",
+            "NTAC"
+          ],
+          "description": "NORTAC Defence is an Ottawa secure-communications and command-and-control company whose TITAN ecosystem fuses data from remote devices, sensors, uncrewed systems, satellite, cellular, radio, and mesh bearers into operational situational awareness.",
+          "websiteUrl": "https://www.nortacdefence.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.347,
+            "longitude": -75.709,
+            "geographicConfidence": "exact"
+          },
+          "profileData": {
+            "publicContact": "sales@nortacdefence.com | 613-228-6800 | Suite 402 2 Gurdwara Road Ottawa Ontario K2E 1A2",
+            "currentActivity": "The Government of Canada identified NORTAC Defence Limited in a 2025 Ottawa technology investment announcement, while current product materials emphasize multi-service interoperability, data fusion, sovereign source-code options, and remote-environment operations.",
+            "portfolioSummary": [
+              "TITAN BY NORTAC",
+              "NORTAC WAVE and NORTAC TACTICAL"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "titan-by-nortac",
+            "name": "TITAN BY NORTAC",
+            "summary": "TITAN acts as a device- and bearer-agnostic communications and data-fusion hub connecting remote devices, UAVs, sensors, satellite, cellular, HF/VHF/UHF, and mesh radios with headquarters and higher-level C2 systems.",
+            "capabilityType": "secure federated data-fusion and command-and-control platform",
+            "features": [
+              "multi-bearer communications",
+              "machine-to-machine data fusion",
+              "sensor and UAV integration",
+              "cloud or on-premises deployment",
+              "higher-level C2 interfaces",
+              "sovereign source-code option"
+            ],
+            "applications": [
+              "remote command and control",
+              "joint situational awareness",
+              "border and first-responder coordination",
+              "beyond-line-of-sight operations"
+            ],
+            "technicalTags": [
+              "C2",
+              "data fusion",
+              "BLOS",
+              "satellite communications",
+              "interoperability"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "communications-and-cyber",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "NORTAC Defence may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "NORTAC Defence may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "NORTAC Defence may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "nortac-wave-and-tactical",
+            "name": "NORTAC WAVE and NORTAC TACTICAL",
+            "summary": "NORTAC WAVE provides secure satellite-backed personnel communications while NORTAC TACTICAL extends TITAN situational awareness to Android devices for remote teams operating on foot, vehicles, vessels, or aircraft.",
+            "capabilityType": "secure remote situational-awareness communications",
+            "features": [
+              "Iridium short-burst data",
+              "global including polar coverage",
+              "Android tactical display",
+              "offline map support",
+              "position and geofence synchronization"
+            ],
+            "applications": [
+              "Arctic field teams",
+              "remote patrols",
+              "maritime awareness",
+              "first-responder coordination"
+            ],
+            "technicalTags": [
+              "satcom",
+              "situational awareness",
+              "tactical mobility",
+              "polar communications"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "NORTAC Defence may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "NORTAC Defence may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "NORTAC Defence may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Federal Economic Development Agency for Southern Ontario",
+            "relationshipType": "public-growth-investment",
+            "publicSummary": "FedDev Ontario identified NORTAC Defence Limited among six Ottawa-region technology companies receiving investment support to scale and commercialize products and services."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "nortac-defence-description-evidence",
+          "sourceId": "nortac-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports NORTAC Defence's Canadian identity, operating role, and core company description used in this candidate dossier.",
+          "confidence": "high"
+        },
+        {
+          "id": "nortac-defence-location-evidence",
+          "sourceId": "nortac-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited durable source supports the Canadian city, province, or exact public address used for NORTAC Defence; the geographic-confidence label records the available precision.",
+          "confidence": "high"
+        },
+        {
+          "id": "nortac-defence-contact-evidence",
+          "sourceId": "nortac-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, email, telephone, or address channel captured for reviewer use; no private contact data is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "nortac-defence-activity-evidence",
+          "sourceId": "nortac-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited current official or durable public record supports the activity, program, partnership, test, contract, or funding context summarized for NORTAC Defence.",
+          "confidence": "high"
+        },
+        {
+          "id": "nortac-defence-titan-by-nortac-evidence",
+          "sourceId": "nortac-home",
+          "fieldPath": "capabilities.titan-by-nortac.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for TITAN BY NORTAC.",
+          "confidence": "high"
+        },
+        {
+          "id": "nortac-defence-nortac-wave-and-tactical-evidence",
+          "sourceId": "nortac-tdk",
+          "fieldPath": "capabilities.nortac-wave-and-tactical.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited product or program source supports the architecture, features, applications, and bounded capability summary recorded for NORTAC WAVE and NORTAC TACTICAL.",
+          "confidence": "high"
+        },
+        {
+          "id": "nortac-defence-relationship-0-evidence",
+          "sourceId": "nortac-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario identified NORTAC Defence Limited among six Ottawa-region technology companies receiving investment support to scale and commercialize products and services.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T12:45:41.396Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Checked NORTAC Defence against the canonical production organizations and active private candidates by URL, domain, slug, legal name, aliases and fuzzy name; no match was found."
+      },
+      "reviewer_rationale": "NORTAC Defence is recommended for green review because official product evidence resolves a technically rich command-and-control portfolio, exact public contact information, and strong relevance to remote Canadian operations. A Government of Canada investment announcement independently confirms the legal name, Ottawa-region presence, incorporation history, secure communications focus, and public support. TITAN is captured separately from its WAVE and TACTICAL edge components so reviewers can see both the data-fusion backbone and the polar-capable field communications layer.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-22T12:46:28.353Z"
+    }
+  ]
+}

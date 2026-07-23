@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-refresh-2026-07-23-candidates",
+  "runId": "tnm-refresh-2026-07-23",
+  "title": "Kraken Robotics technology record refresh",
+  "status": "candidate",
+  "createdAt": "2026-07-23T11:05:36.000Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "published-record-refresh:kraken-robotics",
+    "reason": "The published profile lists only KATFISH even though current official product evidence supports distinct SeaPower and Kraken SAS capabilities.",
+    "score": 995
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-refresh-2026-07-23.json",
+  "guardrailNotes": [
+    "This batch stages an additive refresh only; the existing organization, KATFISH capability, stable identifiers and prior evidence remain unchanged until a human reviewer explicitly publishes the candidate.",
+    "Gmail and LinkedIn were used as discovery inputs only. Every proposed field is supported by a durable Kraken Robotics product or newsroom page."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "kraken-robotics-technology-refresh-2026-07-23",
+      "sourceLeadIds": ["kraken-robotics-technology-refresh-2026-07-23"],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Kraken Robotics is already published, but its public profile materially understates the official portfolio by representing only KATFISH. Kraken's own product pages establish SeaPower and Kraken SAS as concrete, differentiated technologies, while official order activity corroborates current commercial use. The refresh is additive, preserves the existing record, and gives reviewers a precise two-capability diff backed by durable first-party evidence.",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "LinkedIn supplied discovery provenance only and is not used as field-level evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-23T11:05:36.000Z",
+        "methods": ["canonical_url", "website_domain", "slug", "legal_name", "fuzzy_name"],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "name": "Kraken Robotics",
+            "matchedBy": "intended refresh target via exact slug and website domain"
+          }
+        ],
+        "note": "The only organization match is the intended published refresh target; neither proposed capability slug exists on the live Kraken record."
+      },
+      "sources": [
+        {
+          "id": "kraken-seapower-product",
+          "title": "SeaPower Batteries: Energy and Reliability for Extended Missions",
+          "url": "https://www.krakenrobotics.com/products/seapower/",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-23T11:05:36.000Z",
+          "locator": "Product overview, key features, battery solutions and gallery",
+          "summary": "Official product evidence describes SeaPower's pressure-tolerant encapsulation, battery management, modular architecture and scalable subsea energy applications."
+        },
+        {
+          "id": "kraken-seapower-sales-2026",
+          "title": "Kraken Robotics Announces $35 Million in SeaPower Battery Sales",
+          "url": "https://www.krakenrobotics.com/news-releases/kraken-robotics-announces-35-million-in-seapower-battery-sales/",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-01-13T00:00:00.000Z",
+          "accessedAt": "2026-07-23T11:05:36.000Z",
+          "locator": "Announcement body and SeaPower product description",
+          "summary": "Official company news confirms active SeaPower sales and explains its use for long-endurance uncrewed underwater vehicle missions."
+        },
+        {
+          "id": "kraken-sas-product",
+          "title": "Kraken SAS: Advanced Sonar Solutions",
+          "url": "https://www.krakenrobotics.com/products/kraken-sas/",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-23T11:05:36.000Z",
+          "locator": "Product overview, flexible design, performance and sector applications",
+          "summary": "Official product evidence describes modular Kraken SAS payloads that combine high-resolution imaging, bathymetry, real-time processing and underwater survey applications."
+        },
+        {
+          "id": "kraken-newsroom-2026",
+          "title": "Kraken Robotics Press Releases and Latest Announcements",
+          "url": "https://www.krakenrobotics.com/press-releases/",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-23T11:05:36.000Z",
+          "locator": "2026 press-release index and July 20 business update",
+          "summary": "The due Global Source Book newsroom records continuing 2026 orders and current company activity across Kraken's subsea battery and sonar portfolio."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-kraken-seapower-product",
+          "sourceId": "kraken-seapower-product",
+          "fieldPath": "operations.add-seapower.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken describes SeaPower as a subsea lithium-ion battery with pressure-tolerant encapsulation, integrated battery management and modular systems scalable from compact vehicles to XL platforms.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kraken-seapower-orders",
+          "sourceId": "kraken-seapower-sales-2026",
+          "fieldPath": "operations.add-seapower.value.commercial_activity",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken announced $35 million in SeaPower battery sales and stated that the batteries support long-endurance uncrewed underwater vehicle operations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kraken-sas-product",
+          "sourceId": "kraken-sas-product",
+          "fieldPath": "operations.add-kraken-sas.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken states that Kraken SAS performs imaging and bathymetric mapping simultaneously with modular arrays, constant swath resolution and real-time full-swath processing.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kraken-sas-applications",
+          "sourceId": "kraken-sas-product",
+          "fieldPath": "operations.add-kraken-sas.value.applications",
+          "claimClass": "source_backed",
+          "excerpt": "The official product page identifies mine countermeasures, port and harbour security, critical underwater infrastructure inspection and route survey among Kraken SAS applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kraken-current-activity",
+          "sourceId": "kraken-newsroom-2026",
+          "fieldPath": "corroboration.current_activity",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken's official newsroom lists continuing 2026 business updates and orders involving its subsea battery and synthetic aperture sonar portfolio.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000001",
+        "slug": "kraken-robotics",
+        "matchMethods": ["website_domain", "slug", "name"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000001",
+          "slug": "kraken-robotics",
+          "name": "Kraken Robotics",
+          "updated_at": "2026-07-19T20:10:32.645435Z",
+          "website_url": "https://www.krakenrobotics.com/",
+          "publication_status": "published"
+        },
+        "capabilities": [
+          {
+            "id": "20000000-0000-4000-8000-000000000001",
+            "slug": "kraken-katfish-sas",
+            "name": "KATFISH Towed Synthetic Aperture Sonar",
+            "publication_status": "published",
+            "updated_at": "2026-07-19T20:10:32.645435Z"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-seapower",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "10000000-0000-4000-8000-000000000001",
+          "value": {
+            "slug": "kraken-seapower-subsea-batteries",
+            "name": "SeaPower Subsea Batteries",
+            "summary": "Power long-endurance underwater vehicles with modular, pressure-tolerant lithium-ion battery systems designed for deep and complex subsea missions.",
+            "capabilityType": "Pressure-tolerant subsea battery system",
+            "features": [
+              "Pressure-tolerant polymer encapsulation",
+              "Integrated battery management system",
+              "Modular and scalable architecture",
+              "Systems scalable from 1.8 kWh to 5 MWh"
+            ],
+            "applications": [
+              "Long-endurance uncrewed underwater vehicles",
+              "Extra-large uncrewed underwater vehicles",
+              "Subsea energy storage and underwater missions"
+            ],
+            "technicalTags": ["subsea batteries", "underwater power", "pressure tolerant", "UUV endurance"],
+            "technicalDomainSlugs": ["autonomous-systems"],
+            "missionMatches": []
+          },
+          "evidenceIds": ["evidence-kraken-seapower-product", "evidence-kraken-seapower-orders"],
+          "reviewerExplanation": "Add SeaPower as a separately reviewable capability because official product and sales evidence establish a concrete technology that is absent from the current profile."
+        },
+        {
+          "operationId": "add-kraken-sas",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "10000000-0000-4000-8000-000000000001",
+          "value": {
+            "slug": "kraken-synthetic-aperture-sonar",
+            "name": "Kraken Synthetic Aperture Sonar",
+            "summary": "Integrate modular synthetic-aperture sonar payloads that combine high-resolution underwater imaging, bathymetric mapping and real-time processing across vehicle sizes.",
+            "capabilityType": "Modular synthetic aperture sonar payload",
+            "features": [
+              "Simultaneous imaging and bathymetric mapping",
+              "Modular 60 cm, 120 cm and 180 cm arrays",
+              "Real-time full-swath processing",
+              "Constant resolution across the survey swath"
+            ],
+            "applications": [
+              "Mine countermeasure operations",
+              "Critical underwater infrastructure inspection",
+              "Port and harbour security",
+              "Route survey and seabed mapping"
+            ],
+            "technicalTags": ["synthetic aperture sonar", "bathymetry", "underwater sensing", "mine countermeasures"],
+            "technicalDomainSlugs": ["sensing-and-isr"],
+            "missionMatches": []
+          },
+          "evidenceIds": ["evidence-kraken-sas-product", "evidence-kraken-sas-applications"],
+          "reviewerExplanation": "Add Kraken SAS as the modular payload family distinct from the existing KATFISH towfish so the public map reflects the company's actual product architecture."
+        }
+      ],
+      "sourceChannels": ["official_company", "source_book", "linkedin_chrome"],
+      "signalIds": [
+        "kraken-seapower-capability-2026",
+        "kraken-orders-source-book-2026-07-20",
+        "kraken-sas-linkedin-2026-07-22"
+      ],
+      "corroboration": [
+        {
+          "claim": "SeaPower is a current commercial capability rather than a legacy product mention.",
+          "sourceIds": ["kraken-seapower-product", "kraken-seapower-sales-2026", "kraken-newsroom-2026"]
+        },
+        {
+          "claim": "Kraken SAS is a distinct modular product family with documented defence applications.",
+          "sourceIds": ["kraken-sas-product", "kraken-newsroom-2026"]
+        }
+      ]
+    }
+  ],
+  "deferred": [
+    {
+      "leadId": "dnd-uncrewed-systems-dish-2026",
+      "reason": "The durable government signal warrants a separate demand or program candidate rather than being mixed into the Kraken organization refresh.",
+      "followUp": "Resume from the signal backlog and map the hub's priority areas to existing public demand requirements."
+    },
+    {
+      "leadId": "caf-dia-drone-marketplace-newsletter-2026-07-23",
+      "reason": "The newsletter's marketplace claim did not resolve to a durable official RFSA during this run.",
+      "followUp": "Retry CanadaBuys and DND sources after the solicitation becomes publicly addressable."
+    }
+  ]
+}

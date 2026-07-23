@@ -1,8 +1,12 @@
 import { z } from "zod";
 import {
   demandSignalBundleV1Schema,
+  demandRefreshBundleV1Schema,
+  organizationRefreshBundleV1Schema,
   organizationBundleV2Schema,
   type DemandSignalBundleV1,
+  type DemandRefreshBundleV1,
+  type OrganizationRefreshBundleV1,
   type OrganizationBundleV2
 } from "@/lib/research/pipeline-schema";
 export { demandMatchCandidateSchema, type DemandMatchCandidate } from "@/lib/atlas/demand-matching";
@@ -51,6 +55,7 @@ export const atlasOrganizationCandidateSchema = z.object({
 export type AtlasOrganizationCandidate = z.infer<typeof atlasOrganizationCandidateSchema>;
 export type ReviewableOrganizationCandidate = AtlasOrganizationCandidate | OrganizationBundleV2;
 export type ReviewableDemandSignalCandidate = DemandSignalBundleV1;
+export type ReviewableRefreshCandidate = OrganizationRefreshBundleV1 | DemandRefreshBundleV1;
 
 export function parseAtlasOrganizationCandidate(value: unknown) {
   return atlasOrganizationCandidateSchema.safeParse(value);
@@ -62,6 +67,14 @@ export function parseOrganizationBundleV2(value: unknown) {
 
 export function parseDemandSignalCandidate(value: unknown) {
   return demandSignalBundleV1Schema.safeParse(value);
+}
+
+export function parseOrganizationRefreshCandidate(value: unknown) {
+  return organizationRefreshBundleV1Schema.safeParse(value);
+}
+
+export function parseDemandRefreshCandidate(value: unknown) {
+  return demandRefreshBundleV1Schema.safeParse(value);
 }
 
 export function parseDemandMatchCandidate(value: unknown) {

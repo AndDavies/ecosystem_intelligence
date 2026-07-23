@@ -24,7 +24,7 @@ The private defence synthesis layer is intentionally outside the repository at `
 - Put application-specific types and repositories under `app/src/types/atlas.ts` and `app/src/lib/atlas/`.
 - Require production database configuration for application startup, research coverage, taxonomy validation, duplicate checks, and release validation. Missing or failed database access is a hard stop.
 - Put durable product decisions in `context/governance/`, not in source-code comments or research reports.
-- Put project-local agent role instructions in `context/agent-skills/`.
+- Put executable project-local research skills in `.agents/skills/`; governance documents describe their contracts but do not duplicate their instructions.
 - Keep runtime imagery in `app/public/`; keep campaign or production media in `content/`.
 - Avoid adding another top-level folder unless it represents a genuinely new operating concern.
 - Keep public wiki publication deferred until a reviewed Supabase candidate workflow is separately designed and approved.

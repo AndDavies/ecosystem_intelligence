@@ -24,4 +24,4 @@ pnpm data:readiness
 pnpm release:validate
 ```
 
-See `app/README.md` for application development and `research/README.md` for the evidence workflow.
+See `context/governance/Project Status.md` for the current product and operating snapshot, `app/README.md` for application development, and `research/README.md` for the evidence workflow.

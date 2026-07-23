@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260722194846",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "investor_funder"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:investor_funder",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian investor funder coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-22T19:48:46.455Z",
+  "completedAt": "2026-07-22T19:56:06.928Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Canadian defence and national-security venture capital official portfolio",
+    "Canadian AI and cybersecurity venture capital official mandate",
+    "Canadian industrial AI robotics venture portfolio",
+    "Canadian quantum venture capital official portfolio",
+    "Canadian deep technology venture funds official portfolio",
+    "Canadian venture capital association and conference directories"
+  ],
+  "counters": {
+    "sourcesChecked": 25,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 2,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 28,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 10,
+    "candidatesGreen": 8,
+    "candidatesAmber": 2
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Two candidates are amber because public material supports inclusion but leaves a location or mandate-modeling choice for the human reviewer."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed at the ten-candidate review-load ceiling after the broad prospect inventory and live duplicate checks.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260722194846.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260722194846.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260722194846.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260722194846-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260722194846.json"
+  }
+}

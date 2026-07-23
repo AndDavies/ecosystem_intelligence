@@ -7,8 +7,8 @@ import { PendingButton } from "@/components/ui/pending-button";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { editAtlasCandidate, editTypedResearchCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
-import type { DemandSignalBundleV1, OrganizationBundleV2 } from "@/lib/research/pipeline-schema";
+import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationRefreshCandidate, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
+import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationRefreshBundleV1 } from "@/lib/research/pipeline-schema";
 import { createClient } from "@/lib/supabase/server";
 import { normalizedPage } from "@/lib/pagination";
 
@@ -16,6 +16,7 @@ type CandidateRow = {
   id: string;
   candidate_kind: string;
   target_entity_type: string | null;
+  target_entity_id: string | null;
   proposed_record: unknown;
   before_record: unknown;
   field_evidence: unknown;
@@ -35,6 +36,7 @@ const errorMessages: Record<string, string> = {
   "invalid-merge": "Select a valid canonical organization before merging.",
   "merge-failed": "The duplicate resolution could not be saved.",
   "review-failed": "The review decision could not be recorded.",
+  "unsupported-candidate": "This candidate type is not supported by the current review and publication workflow. It was not accepted or published.",
   "invalid-demand-match": "Explain why this technology-to-demand match is useful and defensible before publishing it.",
   "demand-match-publication-failed": "The match was not published. Refresh the queue and confirm that the technology, public demand statement, and candidate are still current."
 };
@@ -47,7 +49,7 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
   const rangeStart = (page - 1) * pageSize;
   const supabase = await createClient();
   const [{ data: candidates, count: candidateCount }, { data: domains }, { data: clusters }, { data: missionAreas }] = await Promise.all([
-    supabase.from("candidate_changes").select("id, candidate_kind, target_entity_type, proposed_record, before_record, field_evidence, duplicate_check, reviewer_rationale, confidence, status, created_at", { count: "exact" }).eq("status", "pending").order("created_at").range(rangeStart, rangeStart + pageSize - 1),
+    supabase.from("candidate_changes").select("id, candidate_kind, target_entity_type, target_entity_id, proposed_record, before_record, field_evidence, duplicate_check, reviewer_rationale, confidence, status, created_at", { count: "exact" }).eq("status", "pending").order("created_at").range(rangeStart, rangeStart + pageSize - 1),
     supabase.from("technical_domains").select("slug, name").eq("publication_status", "published").order("name"),
     supabase.from("ecosystem_clusters").select("slug, name").eq("publication_status", "published").order("name"),
     supabase.from("mission_areas").select("slug, name").eq("publication_status", "published").order("name")
@@ -59,18 +61,20 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
   const organizationCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "organization_bundle").length;
   const demandCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "demand_signal_bundle").length;
   const demandMatchCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "demand_match_bundle").length;
+  const refreshCandidateCount = candidateRows.filter((candidate) => ["organization_refresh_bundle", "demand_refresh_bundle"].includes(candidate.candidate_kind)).length;
 
   return (
     <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Review queue" description="Inspect and edit staged research. Accepting a candidate moves it to the publication checkpoint; it does not make the record public." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
       {params.error ? <div className="mb-5 rounded-md border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] px-3 py-2 text-sm text-[var(--admin-danger)]">{errorMessages[params.error] ?? "The review action could not be completed."}</div> : null}
-      {params.success ? <div className="mb-5 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] px-3 py-2 text-sm text-[var(--admin-success)]">{params.success === "demand-match-published" ? "Technology-to-demand match published and public profiles refreshed." : `Candidate ${params.success === "merged" ? "merged into its canonical organization" : "updated"}. Publication remains unchanged.`}</div> : null}
+      {params.success ? <div className="mb-5 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] px-3 py-2 text-sm text-[var(--admin-success)]">{params.success === "accepted" ? <span>Candidate accepted. It is not public yet. <Link href="/admin/publish" className="font-bold underline underline-offset-2">Continue to the Publication checkpoint</Link>.</span> : params.success === "demand-match-published" ? "Technology-to-demand match published and public profiles refreshed." : params.success === "rejected" ? "Candidate rejected. Publication remains unchanged." : params.success === "deferred" ? "Candidate deferred for further review. Publication remains unchanged." : `Candidate ${params.success === "merged" ? "merged into its canonical organization" : "updated"}. Publication remains unchanged.`}</div> : null}
       {candidateRows.length ? (
         <div className="space-y-5">
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-4">
             <QueueTypeSummary label="Organization candidates" value={organizationCandidateCount} detail="Companies, accelerators, incubators, investors, research centres, and ecosystem organizations." tone="organization" />
             <QueueTypeSummary label="Demand-signal candidates" value={demandCandidateCount} detail="Public problem statements from governments, armed forces, programs, procurement bodies, and allies." tone="demand" />
             <QueueTypeSummary label="Potential matches" value={demandMatchCandidateCount} detail="Private suggestions connecting reviewed technologies to public demand statements. Each requires an explicit publication decision." tone="match" />
+            <QueueTypeSummary label="Record refreshes" value={refreshCandidateCount} detail="Evidence-backed changes to existing organizations, capabilities, programs, relationships, or public demand." tone="refresh" />
           </div>
           {candidateRows.map((candidate) => {
             const legacy = candidate.candidate_kind === "organization_bundle"
@@ -85,6 +89,8 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
             const demandMatch = candidate.candidate_kind === "demand_match_bundle"
               ? parseDemandMatchCandidate(candidate.proposed_record)
               : null;
+            const organizationRefresh = candidate.candidate_kind === "organization_refresh_bundle" ? parseOrganizationRefreshCandidate(candidate.proposed_record) : null;
+            const demandRefresh = candidate.candidate_kind === "demand_refresh_bundle" ? parseDemandRefreshCandidate(candidate.proposed_record) : null;
             return legacy?.success ? (
               <OrganizationCandidateCard key={candidate.id} candidate={candidate} record={legacy.data} domains={domains ?? []} clusters={clusters ?? []} missionAreas={missionAreas ?? []} />
             ) : typed?.success ? (
@@ -93,6 +99,10 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
               <DemandSignalCandidateCard key={candidate.id} candidate={candidate} record={demand.data} />
             ) : demandMatch?.success ? (
               <DemandMatchCandidateCard key={candidate.id} candidate={candidate} record={demandMatch.data} />
+            ) : organizationRefresh?.success ? (
+              <RefreshCandidateCard key={candidate.id} candidate={candidate} record={organizationRefresh.data} />
+            ) : demandRefresh?.success ? (
+              <RefreshCandidateCard key={candidate.id} candidate={candidate} record={demandRefresh.data} />
             ) : (
               <GenericCandidateCard key={candidate.id} candidate={candidate} />
             );
@@ -397,6 +407,43 @@ function DemandSignalCandidateCard({ candidate, record }: { candidate: Candidate
   );
 }
 
+function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; record: OrganizationRefreshBundleV1 | DemandRefreshBundleV1 }) {
+  const targetHref = record.candidateKind === "organization_refresh_bundle" ? `/organizations/${record.targetMatch.slug}` : `/demand/${record.targetMatch.slug}`;
+  const targetAdminHref = record.candidateKind === "organization_refresh_bundle" ? `/admin/organizations/${record.targetMatch.entityId}/edit` : "/admin/demand-signals";
+  return (
+    <PublicCard title={`Refresh ${record.targetMatch.slug.replaceAll("-", " ")}`} eyebrow={`${record.candidateKind === "organization_refresh_bundle" ? "Organization" : "Demand"} refresh · ${record.confidence} confidence`}>
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="rounded-full bg-[var(--admin-evidence-soft)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-evidence)]">Refresh existing record</span>
+        <Link href={targetAdminHref} className="text-xs font-semibold text-[var(--admin-action)]">Open target record</Link>
+        <Link href={targetHref} target="_blank" className="text-xs font-semibold text-[var(--admin-action)]">Open live profile</Link>
+        <span className="text-xs text-[var(--admin-muted)]">Target confidence: {record.targetMatch.confidence} · {record.targetMatch.matchMethods.join(", ")}</span>
+      </div>
+      <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
+      <div className="mt-4 grid gap-3">
+        {record.operations.map((operation) => (
+          <section key={operation.operationId} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
+            <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-ink-soft)]">{operation.operation.replaceAll("_", " ")} · {operation.entityType.replaceAll("_", " ")}</p>
+            <p className="mt-2 text-xs leading-5 text-[var(--admin-muted-strong)]">{operation.reviewerExplanation}</p>
+            <div className="mt-3 grid gap-3 lg:grid-cols-2">
+              <JsonPanel label="Before" value={"before" in operation ? operation.before : candidate.before_record} />
+              <JsonPanel label="After" value={operation.operation === "add_child" ? operation.value : operation.after} />
+            </div>
+          </section>
+        ))}
+      </div>
+      <details className="mt-4 rounded-md border border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] p-3 text-xs"><summary className="cursor-pointer font-semibold text-[var(--admin-evidence)]">Sources, evidence, warnings, and provenance</summary><pre className="mt-3 overflow-auto whitespace-pre-wrap text-[11px] leading-5 text-[var(--admin-muted-strong)]">{JSON.stringify({ sourceChannels: record.sourceChannels, sources: record.sources, fieldEvidence: record.fieldEvidence, corroboration: record.corroboration, warnings: record.reviewWarnings ?? [] }, null, 2)}</pre></details>
+      <TypedCandidateEditor candidateId={candidate.id} record={record} />
+      <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
+        <input type="hidden" name="candidateId" value={candidate.id} />
+        <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={record.reviewerRationale} className="rounded-md border border-[var(--admin-border)] px-3 py-2 text-sm font-normal outline-none focus:border-[var(--admin-action)]" /></label>
+        <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center rounded-md border border-[var(--admin-border)] bg-white px-4 text-xs font-semibold">Defer</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center rounded-md border border-[var(--admin-danger-border)] bg-white px-4 text-xs font-semibold text-[var(--admin-danger)]">Reject</PendingButton>
+        <PendingButton unstyled type="submit" name="decision" value="accept" pendingLabel="Accepting…" className="inline-flex h-10 items-center justify-center rounded-md bg-[var(--admin-action)] px-4 text-xs font-semibold text-white">Accept for publication</PendingButton>
+      </form>
+    </PublicCard>
+  );
+}
+
 function GenericCandidateCard({ candidate }: { candidate: CandidateRow }) {
   return (
     <PublicCard title={candidate.candidate_kind.replaceAll("_", " ")} eyebrow={`${candidate.confidence} confidence · ${candidate.target_entity_type ?? "new candidate"}`}>
@@ -406,18 +453,18 @@ function GenericCandidateCard({ candidate }: { candidate: CandidateRow }) {
       </div>
       <details className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-3 text-xs"><summary className="cursor-pointer font-semibold text-[var(--admin-ink-soft)]">Evidence and duplicate checks</summary><pre className="mt-3 overflow-auto whitespace-pre-wrap text-[11px] leading-5 text-[var(--admin-muted-strong)]">{JSON.stringify({ fieldEvidence: candidate.field_evidence, duplicateCheck: candidate.duplicate_check }, null, 2)}</pre></details>
       {candidate.reviewer_rationale ? <ReviewerRationale rationale={candidate.reviewer_rationale} /> : null}
-      <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
+      <div className="mt-4 rounded-md border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-3 text-xs leading-5 text-[var(--admin-warning)]">This candidate type has no complete review and publication interface. It cannot be accepted. Defer it for pipeline repair or reject it.</div>
+      <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
         <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Reviewer rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? undefined} className="rounded-md border border-[var(--admin-border)] px-3 py-2 text-sm font-normal outline-none focus:border-[var(--admin-action)]" /></label>
         <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[var(--admin-border)] bg-white px-4 text-xs font-semibold text-[var(--admin-muted-strong)]">Defer</PendingButton>
         <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[var(--admin-danger-border)] bg-white px-4 text-xs font-semibold text-[var(--admin-danger)]">Reject</PendingButton>
-        <PendingButton unstyled type="submit" name="decision" value="accept" pendingLabel="Accepting…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[var(--admin-action)] px-4 text-xs font-semibold text-white">Accept candidate</PendingButton>
       </form>
     </PublicCard>
   );
 }
 
-function TypedCandidateEditor({ candidateId, record }: { candidateId: string; record: OrganizationBundleV2 | DemandSignalBundleV1 }) {
+function TypedCandidateEditor({ candidateId, record }: { candidateId: string; record: OrganizationBundleV2 | DemandSignalBundleV1 | OrganizationRefreshBundleV1 | DemandRefreshBundleV1 }) {
   return (
     <details className="mt-4 rounded-md border border-[var(--admin-signal-border)] bg-[var(--admin-signal-soft)] p-4">
       <summary className="cursor-pointer text-sm font-semibold text-[var(--admin-signal)]">Edit complete typed candidate</summary>
@@ -442,10 +489,10 @@ function ReviewerRationale({ rationale }: { rationale: string }) {
   return <aside className="mt-4 rounded-md border border-[var(--admin-signal-border)] bg-[var(--admin-signal-soft)] p-4"><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-signal)]">Generated reviewer rationale</p><p className="mt-2 text-xs leading-5 text-[var(--admin-ink-soft)]">{rationale}</p></aside>;
 }
 
-function QueueTypeSummary({ label, value, detail, tone }: { label: string; value: number; detail: string; tone: "organization" | "demand" | "match" }) {
+function QueueTypeSummary({ label, value, detail, tone }: { label: string; value: number; detail: string; tone: "organization" | "demand" | "match" | "refresh" }) {
   const toneClasses = tone === "organization"
     ? "border-[var(--admin-signal-border)] bg-[var(--admin-signal-soft)] text-[var(--admin-signal)]"
-    : tone === "demand" ? "border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] text-[var(--admin-evidence)]" : "border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] text-[var(--admin-warning-strong)]";
+    : tone === "demand" || tone === "refresh" ? "border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] text-[var(--admin-evidence)]" : "border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] text-[var(--admin-warning-strong)]";
   return <div className={`rounded-lg border p-4 ${toneClasses}`}><div className="flex items-center justify-between gap-3"><p className="text-xs font-bold uppercase tracking-[0.08em]">{label}</p><strong className="text-2xl">{value}</strong></div><p className="mt-2 text-xs leading-5 text-[var(--admin-muted-strong)]">{detail}</p></div>;
 }
 

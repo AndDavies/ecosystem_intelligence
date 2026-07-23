@@ -2,6 +2,8 @@
 
 This document is the current operating contract for the private True North Map administration routes. The detailed route-by-route manual is [True North Map Admin Manual](../../output/pdf/True_North_Map_Admin_Manual.pdf).
 
+Last verified: 2026-07-23
+
 ## Access
 
 - Every `/admin/*` page is private, `noindex`, absent from public navigation, and fail-closed to Andrew Davies's immutable user ID, exact email, and controlled `app_metadata.role = admin`.
@@ -17,8 +19,8 @@ Read organization, technology, public-demand, and reviewed-match counts from the
 | --- | --- | --- |
 | `/admin` | Live operations overview | Read-only |
 | `/admin/intake` | Stage a URL or private document | Private research run and candidate only |
-| `/admin/review` | Inspect, edit, merge, accept, reject, defer, or publish a demand match | Acceptance stays private; demand-match Publish is immediate |
-| `/admin/publish` | Publish approved organization and demand-signal candidates | Transactional public publication |
+| `/admin/review` | Inspect, edit, merge, accept, reject, or defer new-record and refresh candidates; publish a demand match | Research-candidate acceptance stays private; demand-match Publish is immediate |
+| `/admin/publish` | Publish approved organization, demand-signal, organization-refresh, and demand-refresh candidates | Transactional public publication |
 | `/admin/organizations` | Find canonical public records | Read-only list |
 | `/admin/organizations/[id]/edit` | Maintain one published organization dossier | Immediate transactional public update |
 | `/admin/demand-signals` | Add or maintain official public demand sources and requirements | Immediate transactional public update |
@@ -32,6 +34,26 @@ Read organization, technology, public-demand, and reviewed-match counts from the
 - Demand-signal maintenance updates existing `sources`, `demand_sources`, `demand_source_issuers`, and `demand_requirements` rows transactionally. The selected issuing authority remains explicit. Existing requirement IDs and slugs remain stable, so `capability_demand_matches` and `field_citations` do not detach.
 - Adding a demand requirement creates a new stable row. It does not generate or publish matches automatically.
 - Material writes record the administrator, rationale, and timestamp in `audit_events` or `review_decisions`.
+
+## Research refresh candidates
+
+An enrichment run does not edit a published dossier directly. It creates a typed refresh candidate in the existing `candidate_changes` review workflow:
+
+1. `target_entity_id` identifies the published organization or demand source.
+2. `before_record` captures the canonical rows reviewed by the agent.
+3. `targetMatch.baselineUpdatedAt` records the target's live `updated_at` value.
+4. `operations` describes only the proposed `set_field`, `add_child`, or `update_child` changes.
+5. Each operation references durable field evidence and includes a reviewer explanation.
+
+Trusted staging upserts `research_runs` and `candidate_changes` only. Accepting a refresh adds a `review_decisions` row, sets the candidate to `approved`, records an audit event with `publication_changed: false`, removes it from the pending Review list, and makes it eligible in the Publish selection. It still does not change the target.
+
+The Review action accepts only candidate kinds with complete typed Review and Publish support. Unknown or partial candidate types fail closed and may only be deferred or rejected. After acceptance, the Review screen links directly to the Publication checkpoint, and the Admin overview keeps an approved-record notice visible until publication.
+
+Before trusted staging, the research importer compares every candidate kind and schema with the deployed `/api/system/research-contract` response. This prevents a database migration or research run from placing a candidate into a queue that the deployed application cannot interpret or publish.
+
+The separate Publish action locks the candidate and target, compares the current target timestamp with the recorded baseline, and fails atomically if the target changed after research. An eligible publication applies only the reviewed operations, preserves existing IDs and slugs, upserts sources, appends evidence snippets and field citations, records the before/operation audit payload, and revalidates affected public routes.
+
+The Admin UI may expose the typed envelope as JSON when a structured refresh renderer is unavailable. That JSON is the reviewable change set and evidence package; it is not the canonical organization record and is never applied merely by being displayed or accepted.
 
 ## Publication Rules
 

@@ -20,6 +20,7 @@ export default async function AdminOverviewPage() {
   return (
     <PublicPageShell variant="admin" eyebrow="Private editorial workspace" title="True North Map operations" description="Stage research, review field-level candidates, maintain published intelligence, and monitor coverage without granting agents autonomous publication." actions={<span className="rounded bg-[var(--admin-surface-subtle)] px-3 py-2 text-xs font-semibold text-[var(--admin-muted-strong)]">{user.role} · {user.email}</span>}>
       <AdminNav />
+      {(approved.count ?? 0) > 0 ? <Link href="/admin/publish" className="mb-5 flex items-center justify-between gap-4 rounded-lg border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] p-4 text-[var(--admin-success)] no-underline hover:no-underline"><span><strong className="block text-sm">{approved.count} approved {approved.count === 1 ? "record is" : "records are"} waiting at the Publication checkpoint</strong><span className="mt-1 block text-xs">Review the approved record and use the separate Publish action when you are ready.</span></span><ArrowRight className="size-5 shrink-0" /></Link> : null}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <AdminMetric icon={<Database className="size-5" />} label="Published organizations" value={snapshot.organizations.length} />
         <AdminMetric icon={<RadioTower className="size-5" />} label="Published demand signals" value={publishedDemandSignals} />

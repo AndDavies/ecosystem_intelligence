@@ -9,21 +9,21 @@
     "schemaVersion": { "const": "research_run_v1" },
     "runId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "agentVersion": { "type": "string", "minLength": 1 },
-    "trigger": { "enum": ["manual", "weekly"] },
-    "mode": { "enum": ["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier"] },
+    "trigger": { "enum": ["manual", "weekly", "weekday"] },
+    "mode": { "enum": ["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "refresh_batch"] },
     "scope": { "type": "object" },
     "selectedGap": { "type": "object", "required": ["coverageView", "dimension", "reason", "score"] },
     "status": { "enum": ["queued", "running", "completed", "failed", "stopped"] },
     "startedAt": { "type": "string", "format": "date-time" },
     "completedAt": { "type": ["string", "null"], "format": "date-time" },
-    "limits": { "type": "object", "required": ["totalMinutes", "sourceBookMinutes", "maxQualifiedLeads", "maxCandidates"], "properties": { "totalMinutes": { "type": "integer" }, "sourceBookMinutes": { "type": "integer" }, "maxQualifiedLeads": { "type": "integer" }, "maxCandidates": { "type": "integer" }, "minimumProspects": { "type": "integer" }, "minimumSourceLanes": { "type": "integer" }, "minimumCandidates": { "type": "integer" }, "targetCandidates": { "type": "integer" } } },
+    "limits": { "type": "object", "required": ["totalMinutes", "sourceBookMinutes", "maxQualifiedLeads", "maxCandidates"], "properties": { "totalMinutes": { "type": "integer" }, "sourceBookMinutes": { "type": "integer" }, "maxQualifiedLeads": { "type": "integer" }, "maxCandidates": { "type": "integer" }, "maxSourceItems": { "type": "integer", "maximum": 50 }, "minimumProspects": { "type": "integer" }, "minimumSourceLanes": { "type": "integer" }, "minimumCandidates": { "type": "integer" }, "targetCandidates": { "type": "integer" } } },
     "sourceQueries": { "type": "array", "items": { "type": "string" } },
-    "counters": { "type": "object", "required": ["sourcesChecked", "leadsQualified", "leadsDeferred", "candidatesCreated", "duplicatesBlocked"], "properties": { "prospectsDiscovered": { "type": "integer" }, "uniqueProspects": { "type": "integer" }, "prospectsQueued": { "type": "integer" }, "recoveryAttempts": { "type": "integer" }, "sourceLanesSearched": { "type": "integer" }, "candidatesGreen": { "type": "integer" }, "candidatesAmber": { "type": "integer" } } },
+    "counters": { "type": "object", "required": ["sourcesChecked", "leadsQualified", "leadsDeferred", "candidatesCreated", "duplicatesBlocked"], "properties": { "prospectsDiscovered": { "type": "integer" }, "uniqueProspects": { "type": "integer" }, "prospectsQueued": { "type": "integer" }, "recoveryAttempts": { "type": "integer" }, "sourceLanesSearched": { "type": "integer" }, "candidatesGreen": { "type": "integer" }, "candidatesAmber": { "type": "integer" }, "signalsExtracted": { "type": "integer" }, "signalsDispositioned": { "type": "integer" }, "sourceFamiliesSearched": { "type": "integer" } } },
     "underTargetReason": { "type": ["string", "null"] },
     "exhaustionEvidence": { "type": ["object", "null"] },
     "validation": { "type": "object", "required": ["passed", "errors", "warnings"] },
     "errors": { "type": "array", "items": { "type": "string" } },
     "stopReason": { "type": ["string", "null"] },
-    "outputs": { "type": "object", "required": ["sourceLeadBatch", "candidateBatch", "reviewPacket", "stagingExport"], "properties": { "prospectInventory": { "type": ["string", "null"] } }
+    "outputs": { "type": "object", "required": ["sourceLeadBatch", "candidateBatch", "reviewPacket", "stagingExport"], "properties": { "prospectInventory": { "type": ["string", "null"] }, "signalBatch": { "type": ["string", "null"] } }
   }
 }

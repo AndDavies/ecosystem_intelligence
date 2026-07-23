@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-manual-20260723181402-prospects",
+  "runId": "tnm-manual-20260723181402",
+  "createdAt": "2026-07-23T18:19:35.000Z",
+  "scope": "Named-organization deep dossier for Sentinel Advanced Military Solutions, covering Canadian identity, CMP parentage, deployable defence infrastructure, edge manufacturing, modular systems, power, UAS and counter-UAS capabilities.",
+  "prospects": [
+    {
+      "id": "prospect-sentinel-ams",
+      "name": "Sentinel Advanced Military Solutions",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.sentinel-ams.com/",
+      "discoverySourceUrl": "https://www.sentinel-ams.com/",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Sentinel AMS is a Canadian defence systems integrator with durable public evidence of deployable infrastructure, edge manufacturing, modular systems, power, and layered UAS and counter-UAS capabilities.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.sentinel-ams.com/about",
+          "outcome": "Sentinel's official profile resolves its operating role, mission, CMP Group relationship, and focus on mobile, resilient, self-sustaining defence infrastructure."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.sentinel-ams.com/capabilities",
+          "outcome": "The official capability page provides five concrete and separately reviewable system families, including Star Forge, deployable manufacturing, enclosures, power, and counter-UAS."
+        },
+        {
+          "lane": "conference_directory",
+          "url": "https://online.flippingbook.com/view/167012545/9/",
+          "outcome": "CADSI's official CANSEC 2026 media kit lists Sentinel Advanced Military Solutions as a new exhibitor and independently corroborates current Canadian defence-sector activity."
+        }
+      ]
+    },
+    {
+      "id": "prospect-sentinel-cmp-parent-relationship",
+      "name": "Sentinel AMS and CMP Advanced Mechanical Solutions parent relationship",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.cmpdifference.com/contact",
+      "discoverySourceUrl": "https://www.sentinel-ams.com/about",
+      "discoveryLane": "official_directory",
+      "countryCode": "CA",
+      "fitSummary": "Sentinel's official profile identifies CMP Group parentage, while CMP's official pages corroborate the Châteauguay operating address and defence-infrastructure manufacturing base.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.cmpdifference.com/contact",
+          "outcome": "CMP's official location page resolves the shared Châteauguay address, Canadian headquarters, public telephone channels, and manufacturing-campus role."
+        }
+      ]
+    },
+    {
+      "id": "prospect-sentinel-cansec-relationship",
+      "name": "Sentinel AMS CANSEC 2026 participation",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://online.flippingbook.com/view/167012545/9/",
+      "discoverySourceUrl": "https://online.flippingbook.com/view/167012545/9/",
+      "discoveryLane": "conference_directory",
+      "countryCode": "CA",
+      "fitSummary": "CADSI's official event directory lists Sentinel as a new CANSEC 2026 exhibitor and supports a current Canadian defence-industry membership and participation relationship.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "conference_directory",
+          "url": "https://online.flippingbook.com/view/167012545/4/",
+          "outcome": "CADSI's event background explains Canadian operating requirements for exhibitors and corroborates the association relationship recorded inside Sentinel's organization bundle."
+        }
+      ]
+    }
+  ]
+}

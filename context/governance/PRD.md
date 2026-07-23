@@ -1,7 +1,7 @@
 # True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
-Status: active product requirements  
-Last updated: 2026-07-21
+Status: active product requirements
+Last updated: 2026-07-23
 
 ## Product summary
 
@@ -237,7 +237,7 @@ Every source is classified as `public`, `permissioned`, or `internal`.
 Supported entry paths:
 
 1. editor stages a URL or private PDF
-2. trusted research agents qualify durable public-source leads and stage enriched private candidates
+2. trusted research agents qualify durable public-source leads and stage enriched private new-record or refresh candidates
 3. an authenticated organization submits a claim or correction
 4. an editor manually drafts or amends a record
 
@@ -259,6 +259,15 @@ paths have their own narrow, audited editor and are omitted unless a public
 source supports them. New or replacement
 evidence continues through the review-first candidate workflow.
 
+Automated enrichment follows the same boundary. The refresh agent matches a
+signal to a live record, captures its target ID and `updated_at` baseline, and
+stages explicit additive field or child-record operations with durable
+field-level evidence. Staging and human acceptance remain private. Only the
+separate Publish checkpoint may lock the target, reject a stale baseline, apply
+the reviewed operations, append sources and citations, and revalidate public
+routes. A refresh candidate shown as JSON is a private change envelope, not a
+canonical dossier update.
+
 The private demand-matching workspace compares reviewed technology profiles
 with published demand statements using deterministic mission-concept overlap.
 It stages only `needs_review` suggestions, excludes existing pairs, and never
@@ -268,16 +277,17 @@ an explicit rationale. Publication copies the existing technology and demand
 citations, labels the connection as a reviewed assessment, and records the full
 audit trail.
 
-The weekly research loop is:
+The autonomous research cadence is:
 
-1. calculate coverage by region x organization type x capability x demand requirement
-2. select the highest-value gap
-3. search durable public sources
-4. draft records and citations
-5. validate schema, URLs, duplicates, media rights, and evidence completeness
-6. stage candidates in the review queue
-7. require explicit human promotion
-8. recalculate coverage and freshness
+1. run broad discovery at 06:00 America/Halifax each Monday
+2. run multi-source record and demand refresh at 08:00 each weekday
+3. calculate coverage and freshness from live production records
+4. search official, government, Source Book, and discovery-feed source families
+5. qualify durable evidence and build typed new-record or refresh candidates
+6. validate schema, URLs, target baselines, duplicates, and evidence completeness
+7. stage candidates in the existing review queue
+8. require explicit human promotion
+9. recalculate coverage and freshness
 
 Failure, rate-limit, weak-source, and duplicate states produce review notes rather than partial publication.
 
@@ -324,15 +334,15 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
 
 ## Delivery status
 
-Release-ready implementation verified on 2026-07-18:
+Current implementation status updated on 2026-07-23. Exact live corpus and
+workflow counts are read from production rather than frozen here:
 
 - clean schema, explicit grants, RLS, storage policy, validated seed, migration
   tests, and server-only credentials
-- 35 published organizations and 31 published technologies or offerings; the
-  verified release floor is met and scaffold records remain excluded
-- two authoritative demand sources containing six public problem statements,
-  plus seven reviewed technology-to-demand matches with specific rationales and
-  evidence inherited from both sides of each relationship
+- the verified release floor is met, scaffold records remain excluded, and
+  continued expansion is evidence-backed and human-published
+- authoritative public-demand sources and reviewed technology-to-demand matches
+  retain specific rationales and evidence inherited from both sides
 - independent Field Atlas visual system using a warm neutral canvas, spruce
   primary actions, coral selection, violet analyst-assessment states, and
   rounded public surfaces
@@ -358,6 +368,10 @@ Release-ready implementation verified on 2026-07-18:
 - structured candidate review, substantive rationale, duplicate resolution,
   one-button atomic publication, direct published-record editing, audit history,
   stable slugs, and cache invalidation
+- six project-local research skills of record, including multi-source signal
+  refresh, live entity matching, typed before/after refresh operations, direct
+  private review intake, stale-baseline rejection, append-only evidence, and
+  explicit human publication
 - Vercel Web Analytics plus bounded semantic workflow events, private 90-day
   searches, and private 30-day detailed events; paid Speed Insights is deferred
   and Lighthouse is the release performance check
@@ -399,10 +413,14 @@ Verified for the broader public-beta release:
 - production remains the source of truth for live corpus and workflow counts;
   release claims use rounded values and exact values are checked immediately
   before publication
+- the separated production email stack is operational across Zoho, MailerLite,
+  Resend, Supabase Auth, and the consent ledger, with authenticated domains and
+  signed subscriber lifecycle synchronization
 
 The product is in broader-sharing posture. Remaining release work is operational:
 close the July 19 release-test contribution and connection fixtures, keep update
-subscriber synchronization confirmed, verify no research candidates remain pending,
+subscriber synchronization confirmed, work pending and approved research candidates
+through their appropriate review or Publish checkpoints,
 perform a fresh signed-out and non-admin signed-in production walkthrough, check
 launch visuals against the current UI, and execute the channel sequence in
 `content/launch/public-beta-launch-package.md`. New features and artificial

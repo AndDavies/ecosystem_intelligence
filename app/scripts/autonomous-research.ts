@@ -6,6 +6,7 @@ import {
   demandIssuerTypeValues,
   organizationKindValues,
   researchCandidateBatchV2Schema,
+  researchSignalBatchV1Schema,
   researchProspectInventoryV1Schema,
   reviewCandidateIntakeIssues,
   researchRunCompletionIssues,
@@ -14,10 +15,12 @@ import {
   type ResearchCandidateBatchV2,
   type ResearchProspectInventoryV1,
   type ResearchRun,
+  type ResearchSignalBatchV1,
   type SourceLeadBatchV2
 } from "../src/lib/research/pipeline-schema";
 import { buildDefaultResearchRunId } from "../src/lib/research/run-id";
 import { parseSourceBookCsv, rankSourceBookRows } from "../src/lib/research/source-ranking";
+import { assertDeployedResearchReviewContract, researchCandidateContractIssues, researchReviewContractVersion } from "../src/lib/research/deployment-contract";
 import { loadScriptEnv } from "./load-env";
 
 loadScriptEnv();
@@ -32,6 +35,7 @@ const prospectDir = path.join(ingestionRoot, "prospect-inventories-v1");
 const candidateDir = path.join(ingestionRoot, "candidate-batches-v2");
 const reviewDir = path.join(ingestionRoot, "reviews-v2");
 const stagingDir = path.join(ingestionRoot, "staging");
+const signalDir = path.join(ingestionRoot, "signal-batches-v1");
 
 interface ExistingIdentity {
   id: string;
@@ -59,7 +63,7 @@ interface ResearchCoverageSnapshot {
 }
 
 interface ValidationReport {
-  kind: "run" | "prospect_inventory" | "source_leads" | "candidate_batch";
+  kind: "run" | "prospect_inventory" | "source_leads" | "candidate_batch" | "signal_batch";
   filePath: string;
   id: string;
   errors: string[];
@@ -533,11 +537,12 @@ async function prepareRun(args: string[]) {
   const requestedMode = options.get("mode") ?? "discovery-batch";
   const bootstrap = requestedMode === "bootstrap";
   const deepDossier = requestedMode === "deep-dossier";
-  if (!bootstrap && !deepDossier && !["discovery-batch", "gap-targeted"].includes(requestedMode)) {
-    throw new Error("--mode must be discovery-batch, deep-dossier, bootstrap, or gap-targeted.");
+  const refreshBatch = requestedMode === "refresh-batch";
+  if (!bootstrap && !deepDossier && !refreshBatch && !["discovery-batch", "gap-targeted"].includes(requestedMode)) {
+    throw new Error("--mode must be discovery-batch, refresh-batch, deep-dossier, bootstrap, or gap-targeted.");
   }
   const startedAt = new Date().toISOString();
-  const trigger = options.get("trigger") === "weekly" ? "weekly" : "manual";
+  const trigger = options.get("trigger") === "weekly" ? "weekly" : options.get("trigger") === "weekday" ? "weekday" : "manual";
   const runId = options.get("run-id") ?? buildDefaultResearchRunId({ trigger, bootstrap, startedAt });
   const runPath = path.join(runDir, `${runId}.json`);
   if (await fileExists(runPath)) throw new Error(`Run ${runId} already exists at ${relative(runPath)}.`);
@@ -572,15 +577,15 @@ async function prepareRun(args: string[]) {
     : [];
   const requestedTarget = Number(options.get("target-candidates") ?? (deepDossier ? 3 : bootstrap ? 4 : 10));
   const targetCandidates = Math.max(1, Math.min(deepDossier ? 5 : 10, Number.isFinite(requestedTarget) ? requestedTarget : 10));
-  const minimumCandidates = deepDossier ? 1 : bootstrap ? 4 : Math.min(8, targetCandidates);
-  const minimumProspects = deepDossier ? 1 : bootstrap ? 20 : 40;
-  const minimumSourceLanes = deepDossier ? 3 : bootstrap ? 4 : 6;
+  const minimumCandidates = refreshBatch ? 1 : deepDossier ? 1 : bootstrap ? 4 : Math.min(8, targetCandidates);
+  const minimumProspects = refreshBatch ? 1 : deepDossier ? 1 : bootstrap ? 20 : 40;
+  const minimumSourceLanes = refreshBatch ? 4 : deepDossier ? 3 : bootstrap ? 4 : 6;
   const run: ResearchRun = {
     schemaVersion: "research_run_v1",
     runId,
     agentVersion: "tnm-research-pipeline/1.2.0",
     trigger,
-    mode: bootstrap ? "bootstrap" : deepDossier ? "deep_dossier" : requestedMode === "gap-targeted" ? "gap_targeted" : "discovery_batch",
+    mode: bootstrap ? "bootstrap" : deepDossier ? "deep_dossier" : refreshBatch ? "refresh_batch" : requestedMode === "gap-targeted" ? "gap_targeted" : "discovery_batch",
     scope: {
       geography: "canada_first",
       organizationKinds: [...organizationKinds],
@@ -593,10 +598,11 @@ async function prepareRun(args: string[]) {
     startedAt,
     completedAt: null,
     limits: {
-      totalMinutes: 90,
-      sourceBookMinutes: 30,
+      totalMinutes: refreshBatch ? 45 : 90,
+      sourceBookMinutes: refreshBatch ? 10 : 30,
       maxQualifiedLeads: 25,
       maxCandidates: deepDossier ? 5 : 10,
+      maxSourceItems: refreshBatch ? 50 : undefined,
       minimumProspects,
       minimumSourceLanes,
       minimumCandidates,
@@ -615,14 +621,17 @@ async function prepareRun(args: string[]) {
       recoveryAttempts: 0,
       sourceLanesSearched: 0,
       candidatesGreen: 0,
-      candidatesAmber: 0
+      candidatesAmber: 0,
+      signalsExtracted: refreshBatch ? 0 : undefined,
+      signalsDispositioned: refreshBatch ? 0 : undefined,
+      sourceFamiliesSearched: refreshBatch ? 0 : undefined
     },
     underTargetReason: null,
     exhaustionEvidence: null,
     validation: { passed: false, errors: [], warnings: [] },
     errors: [],
     stopReason: null,
-    outputs: { prospectInventory: null, sourceLeadBatch: null, candidateBatch: null, reviewPacket: null, stagingExport: null }
+    outputs: { prospectInventory: null, signalBatch: null, sourceLeadBatch: null, candidateBatch: null, reviewPacket: null, stagingExport: null }
   };
 
   const brief = [
@@ -642,8 +651,8 @@ async function prepareRun(args: string[]) {
     "",
     "## Required sequence",
     "",
-    "1. Expand and rank the Source Book within the 30-minute sub-limit.",
-    `2. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} productive source lanes in a prospect inventory.`,
+    refreshBatch ? "1. Apply $tnm-signal-refresh and build live published-record and public-demand watchlists before searching." : "1. Expand and rank the Source Book within the 30-minute sub-limit.",
+    refreshBatch ? "2. Search at least four source families, inspect no more than 50 source items, extract atomic signals, and disposition every signal." : `2. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} productive source lanes in a prospect inventory.`,
     "3. Select the strongest prospects and create typed source leads from durable public sources.",
     "4. Use evidence recovery across at least three distinct lanes before deferring a plausible prospect for thin evidence.",
     "5. Apply evidence and duplicate gates. Qualified leads continue automatically; do not pause for source-lead approval.",
@@ -662,6 +671,31 @@ async function prepareRun(args: string[]) {
   console.log(`Created ${relative(runPath)}`);
   console.log(`Created ${relative(path.join(briefDir, `${runId}.md`))}`);
   console.log(`Selected gap: ${selectedGap.dimension}`);
+}
+
+async function validateSignalFile(filePath: string): Promise<ValidationReport> {
+  const parsed = researchSignalBatchV1Schema.safeParse(await readJson<unknown>(filePath));
+  if (!parsed.success) return { kind: "signal_batch", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
+  const batch: ResearchSignalBatchV1 = parsed.data;
+  const fingerprints = batch.signals.map((signal) => signal.fingerprint);
+  const errors: string[] = [];
+  addDuplicateValueErrors(fingerprints, "Signal fingerprint", errors);
+  const selected = batch.signals.filter((signal) => signal.disposition === "qualified");
+  const discoveryFeedSelected = selected.filter((signal) => ["gmail_newsletter", "linkedin_chrome", "other_discovery"].includes(signal.sourceChannel)).length;
+  if (selected.length > 1 && discoveryFeedSelected > selected.length / 2) errors.push("Discovery feeds provide more than half of selected signals.");
+  return {
+    kind: "signal_batch",
+    filePath,
+    id: batch.signalBatchId,
+    errors,
+    warnings: batch.warnings,
+    counts: {
+      signals: batch.signals.length,
+      qualified: selected.length,
+      deferred: batch.signals.filter((signal) => ["deferred", "unresolved"].includes(signal.disposition)).length,
+      sourceFamilies: Object.values(batch.sourceFamilyCounters).filter((count) => count > 0).length
+    }
+  };
 }
 
 function addTaxonomyErrors(values: string[], allowed: Set<string>, label: string, errors: string[]) {
@@ -832,6 +866,12 @@ function validateCandidateEvidence(batch: ResearchCandidateBatchV2, errors: stri
         if (!evidencePaths.has(`participations.${index}.publicSummary`)) errors.push(`Candidate ${candidate.candidateId} needs evidence for participation ${index}.`);
       });
     }
+    if (candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle") {
+      const evidenceIds = new Set(candidate.fieldEvidence.map((evidence) => evidence.id));
+      for (const operation of candidate.operations) {
+        for (const evidenceId of operation.evidenceIds) if (!evidenceIds.has(evidenceId)) errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} references missing evidence ${evidenceId}.`);
+      }
+    }
   }
 }
 
@@ -909,6 +949,8 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
       organizations: batch.candidates.filter((candidate) => candidate.candidateKind === "organization_bundle").length,
       demandSignals: batch.candidates.filter((candidate) => candidate.candidateKind === "demand_signal_bundle").length,
       programRelationships: batch.candidates.filter((candidate) => candidate.candidateKind === "program_relationship_bundle").length,
+      organizationRefreshes: batch.candidates.filter((candidate) => candidate.candidateKind === "organization_refresh_bundle").length,
+      demandRefreshes: batch.candidates.filter((candidate) => candidate.candidateKind === "demand_refresh_bundle").length,
       green: batch.candidates.filter((candidate) => candidate.reviewTier === "green").length,
       amber: batch.candidates.filter((candidate) => candidate.reviewTier === "amber").length,
       deferred: batch.deferred.length
@@ -937,7 +979,8 @@ async function validateArtifacts(args: string[]) {
         ...(await listJsonFiles(runDir)),
         ...(await listJsonFiles(prospectDir)),
         ...(await listJsonFiles(sourceLeadDir)),
-        ...(await listJsonFiles(candidateDir))
+        ...(await listJsonFiles(candidateDir)),
+        ...(await listJsonFiles(signalDir))
       ];
   const reports: ValidationReport[] = [];
   for (const filePath of files) {
@@ -946,6 +989,7 @@ async function validateArtifacts(args: string[]) {
     else if (value.schemaVersion === "research_prospect_inventory_v1") reports.push(await validateProspectFile(filePath));
     else if (value.schemaVersion === "source_lead_batch_v2") reports.push(await validateSourceLeadFile(filePath));
     else if (value.schemaVersion === "research_candidate_batch_v2") reports.push(await validateCandidateFile(filePath));
+    else if (value.schemaVersion === "research_signal_batch_v1") reports.push(await validateSignalFile(filePath));
     else reports.push({ kind: "candidate_batch", filePath, id: path.basename(filePath), errors: ["Unknown research artifact schemaVersion."], warnings: [], counts: {} });
   }
   console.log(formatValidation(reports));
@@ -988,6 +1032,8 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2) {
       lines.push(`- Organization: **${candidate.organization.name}**`, `- Organization type: \`${candidate.organization.entityKind}\``, `- Categories: ${candidate.organization.categories.map((category) => `\`${category}\``).join(", ")}`, `- Capabilities: ${candidate.capabilities.map((capability) => capability.name).join(", ") || "none"}`, `- Programs: ${candidate.programs.map((program) => program.name).join(", ") || "none"}`);
     } else if (candidate.candidateKind === "demand_signal_bundle") {
       lines.push(`- Demand source: **${candidate.demandSource.title}**`, `- Issuers: ${candidate.issuers.map((issuer) => issuer.name).join(", ")}`, `- Requirements: ${candidate.requirements.length}`);
+    } else if (candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle") {
+      lines.push(`- Refresh target: **${candidate.targetMatch.slug}**`, `- Target ID: \`${candidate.targetMatch.entityId}\``, `- Operations: ${candidate.operations.length}`, `- Source channels: ${candidate.sourceChannels.join(", ")}`);
     } else {
       lines.push(`- Program: **${candidate.program.name}**`, `- Participations: ${candidate.participations.length}`);
     }
@@ -1017,14 +1063,23 @@ async function writeStaging(runPath: string, candidatePath: string) {
   const batch = researchCandidateBatchV2Schema.parse(await readJson<unknown>(candidatePath));
   if (run.runId !== batch.runId) throw new Error(`Run ${run.runId} does not match candidate batch run ${batch.runId}.`);
   const stagingPath = path.join(stagingDir, `${run.runId}.json`);
+  const contractCandidates = batch.candidates.map((candidate) => ({
+    candidate_kind: candidate.candidateKind,
+    schema_version: candidate.schemaVersion
+  }));
+  const contractIssues = researchCandidateContractIssues(contractCandidates);
+  if (contractIssues.length) {
+    throw new Error(`Candidate batch cannot enter Admin Review: ${contractIssues.join("; ")}`);
+  }
   const exportValue = {
     schemaVersion: "research_staging_export_v1",
+    requiredApplicationContract: researchReviewContractVersion,
     generatedAt: new Date().toISOString(),
     writePolicy: "private_candidate_changes_only",
     publicationAllowed: false,
     researchRun: {
       client_run_id: run.runId,
-      run_type: run.trigger === "weekly" ? "weekly_gap" : "manual",
+      run_type: run.trigger === "weekly" ? "weekly_gap" : run.trigger === "weekday" ? "targeted" : "manual",
       scope: run.scope,
       selected_gap: run.selectedGap,
       status: "completed",
@@ -1041,7 +1096,12 @@ async function writeStaging(runPath: string, candidatePath: string) {
         ? "organization"
         : candidate.candidateKind === "demand_signal_bundle"
           ? "demand_source"
+          : candidate.candidateKind === "organization_refresh_bundle"
+            ? "organization"
+            : candidate.candidateKind === "demand_refresh_bundle"
+              ? "demand_source"
           : "program";
+      const isRefresh = candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle";
       return {
         client_candidate_id: candidate.candidateId,
         research_run_ref: run.runId,
@@ -1049,9 +1109,9 @@ async function writeStaging(runPath: string, candidatePath: string) {
         schema_version: candidate.schemaVersion,
         source_lead_ids: candidate.sourceLeadIds,
         target_entity_type: targetEntityType,
-        target_entity_id: null,
+        target_entity_id: isRefresh ? candidate.targetMatch.entityId : null,
         proposed_record: candidate,
-        before_record: null,
+        before_record: isRefresh ? candidate.beforeRecord : null,
         field_evidence: candidate.fieldEvidence,
         duplicate_check: candidate.duplicateCheck,
         reviewer_rationale: candidate.reviewerRationale,
@@ -1083,6 +1143,14 @@ async function importStaging(stagingPath: string) {
   if (!researchRun.client_run_id || candidateChanges.length < 1) {
     throw new Error("The staging export must contain one research run and at least one candidate.");
   }
+  if (staging.requiredApplicationContract !== researchReviewContractVersion) {
+    throw new Error(`Staging export requires '${String(staging.requiredApplicationContract || "missing")}', but this importer requires '${researchReviewContractVersion}'. Recreate the staging export with the current project.`);
+  }
+  const localContractIssues = researchCandidateContractIssues(candidateChanges);
+  if (localContractIssues.length) {
+    throw new Error(`Review intake stopped before database staging: ${localContractIssues.join("; ")}`);
+  }
+  await assertDeployedResearchReviewContract(candidateChanges);
 
   const client = createClient(url, key, {
     auth: { autoRefreshToken: false, persistSession: false }
@@ -1105,6 +1173,8 @@ async function smoke(args: string[]) {
   const runPath = path.resolve(workspaceRoot, options.get("run") ?? "");
   const prospectPathOption = options.get("prospects");
   const prospectPath = prospectPathOption ? path.resolve(workspaceRoot, prospectPathOption) : null;
+  const signalPathOption = options.get("signals");
+  const signalPath = signalPathOption ? path.resolve(workspaceRoot, signalPathOption) : null;
   const leadPath = path.resolve(workspaceRoot, options.get("leads") ?? "");
   const candidatePath = path.resolve(workspaceRoot, options.get("candidates") ?? "");
   if (![runPath, leadPath, candidatePath].every((filePath) => filePath && filePath !== workspaceRoot)) {
@@ -1115,12 +1185,15 @@ async function smoke(args: string[]) {
   const leadReport = await validateSourceLeadFile(leadPath);
   const candidateReport = await validateCandidateFile(candidatePath);
   const prospectReport = prospectPath ? await validateProspectFile(prospectPath) : null;
-  const reports = [runReport, ...(prospectReport ? [prospectReport] : []), leadReport, candidateReport];
+  const signalReport = signalPath ? await validateSignalFile(signalPath) : null;
+  const reports = [runReport, ...(prospectReport ? [prospectReport] : []), ...(signalReport ? [signalReport] : []), leadReport, candidateReport];
   const run = researchRunSchema.safeParse(await readJson<unknown>(runPath));
   const batch = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(candidatePath));
   const prospects = prospectPath ? researchProspectInventoryV1Schema.safeParse(await readJson<unknown>(prospectPath)) : null;
+  const signals = signalPath ? researchSignalBatchV1Schema.safeParse(await readJson<unknown>(signalPath)) : null;
   if (run.success && run.data.status !== "completed") runReport.errors.push("Smoke-test run must have status completed.");
   if (run.success && run.data.mode === "discovery_batch" && !prospectPath) runReport.errors.push("Discovery-batch smoke test requires --prospects.");
+  if (run.success && run.data.mode === "refresh_batch" && !signalPath) runReport.errors.push("Refresh-batch smoke test requires --signals.");
   if (batch.success && batch.data.candidates.length < 1) candidateReport.errors.push("Smoke test must create at least one review-ready candidate.");
   if (run.success && batch.success && run.data.counters.candidatesCreated !== batch.data.candidates.length) runReport.errors.push("Run candidate counter does not match candidate batch size.");
   if (run.success && prospects?.success) {
@@ -1128,6 +1201,14 @@ async function smoke(args: string[]) {
     if ((run.data.counters.uniqueProspects ?? 0) !== prospects.data.prospects.length) runReport.errors.push("Run unique-prospect counter does not match prospect inventory size.");
     const lanes = new Set(prospects.data.prospects.map((prospect) => prospect.discoveryLane)).size;
     if ((run.data.counters.sourceLanesSearched ?? 0) !== lanes) runReport.errors.push("Run source-lane counter does not match prospect inventory.");
+  }
+  if (run.success && signals?.success) {
+    if (signals.data.runId !== run.data.runId) signalReport?.errors.push("Signal batch runId does not match the research run.");
+    if ((run.data.counters.signalsExtracted ?? 0) !== signals.data.signals.length) runReport.errors.push("Run signal counter does not match signal batch size.");
+    const dispositioned = signals.data.signals.filter((signal) => signal.disposition !== undefined).length;
+    if ((run.data.counters.signalsDispositioned ?? 0) !== dispositioned) runReport.errors.push("Run dispositioned-signal counter does not match signal batch.");
+    const families = Object.values(signals.data.sourceFamilyCounters).filter((count) => count > 0).length;
+    if ((run.data.counters.sourceFamiliesSearched ?? 0) !== families) runReport.errors.push("Run source-family counter does not match signal batch.");
   }
   if (run.success && run.data.mode === "bootstrap" && batch.success) {
     const kinds = new Set(batch.data.candidates.filter((candidate) => candidate.candidateKind === "organization_bundle").map((candidate) => candidate.organization.entityKind));

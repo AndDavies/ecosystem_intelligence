@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://truenorthmap.ca/schemas/research-signal-batch-v1.schema.json",
+  "title": "True North Map Research Signal Batch",
+  "description": "Private multi-source atomic signal inventory. The Zod schema is executable.",
+  "type": "object",
+  "required": ["schemaVersion", "signalBatchId", "runId", "createdAt", "watermarkStart", "watermarkEnd", "sourceFamilyCounters", "warnings", "signals"],
+  "properties": {
+    "schemaVersion": { "const": "research_signal_batch_v1" },
+    "signalBatchId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "runId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "watermarkStart": { "type": "string", "format": "date-time" },
+    "watermarkEnd": { "type": "string", "format": "date-time" },
+    "sourceFamilyCounters": { "type": "object", "minProperties": 4 },
+    "warnings": { "type": "array" },
+    "signals": { "type": "array", "maxItems": 50, "items": { "type": "object", "required": ["signalId", "fingerprint", "sourceChannel", "sourceFamily", "discoveryOrigin", "extracted", "redirectUrls", "canonicalUrls", "signalType", "canonicalEvidenceStatus", "liveEntityMatches", "intendedOutcomes", "recoveryAttempts", "warnings", "disposition", "deferralRationale"] } }
+  }
+}

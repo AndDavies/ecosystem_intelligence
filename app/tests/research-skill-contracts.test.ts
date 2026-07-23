@@ -12,6 +12,7 @@ describe("True North Map research skill contracts", () => {
   it("keeps the project-local research chain as the skills of record", async () => {
     const skillPaths = [
       ".agents/skills/tnm-autonomous-research/SKILL.md",
+      ".agents/skills/tnm-signal-refresh/SKILL.md",
       ".agents/skills/tnm-source-discovery/SKILL.md",
       ".agents/skills/tnm-candidate-builder/SKILL.md",
       ".agents/skills/tnm-evidence-mapper/SKILL.md",
@@ -25,7 +26,7 @@ describe("True North Map research skill contracts", () => {
 
     expect(governance).toContain("canonical skills of record");
     expect(governance).toContain("supersede cached or globally installed variants");
-    expect(scheduleContract).toContain("must use the five project-local skills of record");
+    expect(scheduleContract).toContain("six project-local skills of record");
     for (const skill of skills) {
       expect(skill).toContain("skill of record");
     }

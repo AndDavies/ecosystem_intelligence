@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-refresh-2026-07-23-leads",
+  "runId": "tnm-refresh-2026-07-23",
+  "createdAt": "2026-07-23T11:05:36.000Z",
+  "scope": {
+    "description": "Refresh the published Kraken Robotics record from official product and newsroom evidence after current Gmail and LinkedIn discovery signals exposed material technology coverage gaps.",
+    "targetMissionAreaSlugs": ["underwater-isr", "autonomous-patrol-and-monitoring"],
+    "targetTechnicalDomainSlugs": ["sensing-and-isr", "autonomous-systems"],
+    "targetOrganizationKinds": ["company"],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "kraken-robotics-technology-refresh-2026-07-23",
+      "source": {
+        "id": "kraken-seapower-product",
+        "title": "SeaPower Batteries: Energy and Reliability for Extended Missions",
+        "url": "https://www.krakenrobotics.com/products/seapower/",
+        "publisher": "Kraken Robotics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-23T11:05:36.000Z",
+        "locator": "Product overview, key features, battery solutions and gallery",
+        "summary": "Kraken's official product page documents SeaPower as a modular pressure-tolerant subsea lithium-ion battery system for extended underwater vehicle missions."
+      },
+      "discoveryPath": [
+        "https://mail.google.com/mail/#all/19f708d4e78d95d9",
+        "https://www.linkedin.com/company/krakenrobotics/posts/",
+        "https://www.krakenrobotics.com/press-releases/",
+        "https://www.krakenrobotics.com/products/seapower/",
+        "https://www.krakenrobotics.com/products/kraken-sas/"
+      ],
+      "possibleMissionAreaSlugs": ["underwater-isr", "autonomous-patrol-and-monitoring"],
+      "possibleTechnicalDomainSlugs": ["sensing-and-isr", "autonomous-systems"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "SeaPower product overview and key features; Kraken SAS overview, performance features and defence applications",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.krakenrobotics.com/",
+        "websiteDomain": "krakenrobotics.com",
+        "stableSlug": "kraken-robotics",
+        "legalName": "Kraken Robotics Inc.",
+        "aliases": ["Kraken Robotics", "Kraken"]
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000001",
+        "slug": "kraken-robotics",
+        "matchMethods": ["website_domain", "slug", "name"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435Z"
+      },
+      "signalIds": [
+        "kraken-seapower-capability-2026",
+        "kraken-orders-source-book-2026-07-20",
+        "kraken-sas-linkedin-2026-07-22"
+      ],
+      "refreshSummary": "Add SeaPower and Kraken SAS as distinct capabilities on the existing Kraken Robotics profile while retaining KATFISH and all prior evidence.",
+      "intendedChanges": [
+        "Add the SeaPower pressure-tolerant subsea battery capability.",
+        "Add the modular Kraken SAS imaging and bathymetric mapping capability."
+      ]
+    }
+  ]
+}

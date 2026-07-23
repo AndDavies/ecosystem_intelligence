@@ -1,0 +1,1568 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260722194846-candidates",
+  "runId": "tnm-manual-20260722194846",
+  "title": "Canadian venture capital firms for private True North Map review",
+  "status": "candidate",
+  "createdAt": "2026-07-22T19:56:06.928Z",
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:investor_funder",
+    "reason": "The live corpus contained only two investor and funder organizations, so this run expands Canadian capital-provider coverage with mandate and portfolio evidence.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260722194846.json",
+  "guardrailNotes": [
+    "All ten records are private investor_funder candidates only; the run changes no published organization, capability, source, evidence, relationship, demand, or taxonomy data.",
+    "Investor profiles use sourced mandates and public portfolio relationships rather than misclassifying investment themes as company capabilities."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-one9-20260722",
+      "sourceLeadIds": [
+        "lead-one9-20260722"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "ONE9 is recommended for green private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. ONE9 is a Canadian national-security technology investment and innovation platform that funds and helps scale defence, security, and dual-use companies while connecting private-sector capability with public-sector demand. The candidate is intentionally modeled as an investor/funder with no company capability claims. The reviewer can focus on wording and map placement rather than evidence recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching ONE9, one9, or www.one9.ca."
+      },
+      "sources": [
+        {
+          "id": "one9-home",
+          "title": "ONE9 national security investment platform",
+          "url": "https://www.one9.ca/",
+          "publisher": "ONE9",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Homepage, investment themes, portfolio, and platform model",
+          "summary": "ONE9 describes its Canadian national-security investment mandate, strategic technology themes, Capability Labs model, and named portfolio companies."
+        },
+        {
+          "id": "one9-task-force",
+          "title": "ONE9 security and defence investing team",
+          "url": "https://www.one9.ca/taskforce/",
+          "publisher": "ONE9",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Security and defence investing management team",
+          "summary": "ONE9 identifies its security and defence investment leadership, Canadian roots, operating experience, and dual-use investment posture."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "one9-description-evidence",
+          "sourceId": "one9-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for ONE9.",
+          "confidence": "high"
+        },
+        {
+          "id": "one9-location-evidence",
+          "sourceId": "one9-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Ottawa, Ontario as the primary Canadian map location used for this private candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "one9-mandate-evidence",
+          "sourceId": "one9-home",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in ONE9's mandate.",
+          "confidence": "high"
+        },
+        {
+          "id": "one9-contact-evidence",
+          "sourceId": "one9-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "one9-activity-evidence",
+          "sourceId": "one9-task-force",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for ONE9.",
+          "confidence": "high"
+        },
+        {
+          "id": "one9-relationship-evidence",
+          "sourceId": "one9-task-force",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ONE9's official investment portfolio identifies North Vector Dynamics as a portfolio company building advanced, cost-effective counter-uncrewed aerial system solutions.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "one9",
+        "name": "ONE9",
+        "legalName": null,
+        "aliases": [
+          "ONE9 Venture Capital",
+          "ONE9 Investments"
+        ],
+        "description": "ONE9 is a Canadian national-security technology investment and innovation platform that funds and helps scale defence, security, and dual-use companies while connecting private-sector capability with public-sector demand.",
+        "websiteUrl": "https://www.one9.ca/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "ONE9 invests in founders, companies, and capabilities considered important to Canadian and allied security and prosperity, with themes spanning advanced manufacturing, aerospace, autonomous systems, AI, critical infrastructure, cybersecurity, secure connectivity, and quantum technology.",
+          "publicContact": "Public inquiry and newsletter routes are available through https://www.one9.ca/.",
+          "currentActivity": "ONE9 currently presents a dedicated venture portfolio and Capability Labs model under Kensington Capital Partners, with investments across counter-UAS, tactical communications, space operations, critical-infrastructure data, unmanned command and control, and technology-security intelligence.",
+          "portfolioSummary": [
+            "North Vector Dynamics"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "North Vector Dynamics",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "ONE9's official investment portfolio identifies North Vector Dynamics as a portfolio company building advanced, cost-effective counter-uncrewed aerial system solutions."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-awz-ventures-20260722",
+      "sourceLeadIds": [
+        "lead-awz-ventures-20260722"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "AWZ Ventures is recommended for green private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. AWZ Ventures is a Toronto-based venture investment firm focused on commercial and defensive applications of security, intelligence, cybersecurity, critical-infrastructure, and AI-powered technologies. The candidate is intentionally modeled as an investor/funder with no company capability claims. The reviewer can focus on wording and map placement rather than evidence recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 98,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching AWZ Ventures, awz-ventures, or www.awzventures.com."
+      },
+      "sources": [
+        {
+          "id": "awz-home",
+          "title": "AWZ active capital profile",
+          "url": "https://www.awzventures.com/",
+          "publisher": "AWZ Ventures",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Homepage and Active Capital overview",
+          "summary": "AWZ describes its security and intelligence investment approach and active support for technology companies."
+        },
+        {
+          "id": "awz-funds",
+          "title": "AWZ funds and Toronto contact",
+          "url": "https://www.awzventures.com/our-funds",
+          "publisher": "AWZ Ventures",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Funds, stages, resilience strategy, and contact section",
+          "summary": "AWZ lists its multi-stage fund strategies, assets under management, Toronto office, telephone number, and public email address."
+        },
+        {
+          "id": "awz-portfolio",
+          "title": "AWZ security and intelligence portfolio",
+          "url": "https://www.awzventures.com/our-portfolio",
+          "publisher": "AWZ Ventures",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Portfolio companies and investment focus",
+          "summary": "AWZ states that it invests solely in commercial and defensive security and intelligence applications and describes named portfolio companies including SIGA."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "awz-ventures-description-evidence",
+          "sourceId": "awz-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for AWZ Ventures.",
+          "confidence": "high"
+        },
+        {
+          "id": "awz-ventures-location-evidence",
+          "sourceId": "awz-funds",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Toronto, Ontario as the primary Canadian map location used for this private candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "awz-ventures-mandate-evidence",
+          "sourceId": "awz-home",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in AWZ Ventures's mandate.",
+          "confidence": "high"
+        },
+        {
+          "id": "awz-ventures-contact-evidence",
+          "sourceId": "awz-funds",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "awz-ventures-activity-evidence",
+          "sourceId": "awz-portfolio",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for AWZ Ventures.",
+          "confidence": "high"
+        },
+        {
+          "id": "awz-ventures-relationship-evidence",
+          "sourceId": "awz-portfolio",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "AWZ's official portfolio identifies SIGA as an AI-based anomaly-detection, cybersecurity, and predictive-maintenance company serving operational technology and critical assets.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "awz-ventures",
+        "name": "AWZ Ventures",
+        "legalName": null,
+        "aliases": [
+          "AWZ"
+        ],
+        "description": "AWZ Ventures is a Toronto-based venture investment firm focused on commercial and defensive applications of security, intelligence, cybersecurity, critical-infrastructure, and AI-powered technologies.",
+        "websiteUrl": "https://www.awzventures.com/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.7064,
+          "longitude": -79.3986,
+          "geographicConfidence": "exact"
+        },
+        "profileData": {
+          "mandate": "AWZ invests across inception, seed, and early-growth stages in security and intelligence technologies, using an active-capital model that combines investment with product, sales, partnership, fundraising, and commercialization support.",
+          "publicContact": "info@awzventures.com | +1 416 638 2299 | Yonge Eglinton Centre, 20 Eglinton Avenue West, Suite 1008, Toronto, Ontario M4R 1K8",
+          "currentActivity": "AWZ reports managing more than US$500 million across five funds and co-investment vehicles, including inception, cybersecurity and intelligence, early-growth, and resilience-technology strategies.",
+          "portfolioSummary": [
+            "SIGA OT Solutions"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "SIGA OT Solutions",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "AWZ's official portfolio identifies SIGA as an AI-based anomaly-detection, cybersecurity, and predictive-maintenance company serving operational technology and critical assets."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-radical-ventures-20260722",
+      "sourceLeadIds": [
+        "lead-radical-ventures-20260722"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Radical Ventures is recommended for green private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. Radical Ventures is a Toronto-rooted venture capital firm investing in companies that use artificial intelligence across software, infrastructure, robotics, semiconductors, space, materials, and other strategic technology sectors. The candidate is intentionally modeled as an investor/funder with no company capability claims. The reviewer can focus on wording and map placement rather than evidence recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 91,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching Radical Ventures, radical-ventures, or radical.vc."
+      },
+      "sources": [
+        {
+          "id": "radical-home",
+          "title": "Radical Ventures AI investment mandate",
+          "url": "https://radical.vc/",
+          "publisher": "Radical Ventures",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Homepage investment statement and legal footer",
+          "summary": "Radical states that it invests in people using AI to shape the future and identifies its corporate name in the site footer."
+        },
+        {
+          "id": "radical-portfolio",
+          "title": "Radical Ventures portfolio",
+          "url": "https://radical.vc/portfolios/",
+          "publisher": "Radical Ventures",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Portfolio by company, category, and investment year",
+          "summary": "Radical lists current and exited investments across AI-relevant sectors, including Cohere, Waabi, Xanadu, Muon Space, and Promise Robotics."
+        },
+        {
+          "id": "radical-canada",
+          "title": "Leading with Talent",
+          "url": "https://radical.vc/leading-with-talent/",
+          "publisher": "Radical Ventures",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Canadian AI ecosystem and firm origin",
+          "summary": "Radical's co-founder describes the firm's Toronto and Canadian AI ecosystem roots and its purpose of building globally important AI companies from Canada."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "radical-ventures-description-evidence",
+          "sourceId": "radical-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for Radical Ventures.",
+          "confidence": "high"
+        },
+        {
+          "id": "radical-ventures-location-evidence",
+          "sourceId": "radical-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Toronto, Ontario as the primary Canadian map location used for this private candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "radical-ventures-mandate-evidence",
+          "sourceId": "radical-home",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in Radical Ventures's mandate.",
+          "confidence": "high"
+        },
+        {
+          "id": "radical-ventures-contact-evidence",
+          "sourceId": "radical-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "radical-ventures-activity-evidence",
+          "sourceId": "radical-portfolio",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for Radical Ventures.",
+          "confidence": "high"
+        },
+        {
+          "id": "radical-ventures-relationship-evidence",
+          "sourceId": "radical-portfolio",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Radical Ventures' official portfolio lists Cohere as an LLM and software portfolio company, with Radical's investment dated to 2020.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "radical-ventures",
+        "name": "Radical Ventures",
+        "legalName": "Radical Ventures Investments Inc.",
+        "aliases": [],
+        "description": "Radical Ventures is a Toronto-rooted venture capital firm investing in companies that use artificial intelligence across software, infrastructure, robotics, semiconductors, space, materials, and other strategic technology sectors.",
+        "websiteUrl": "https://radical.vc/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Radical Ventures invests in people using artificial intelligence to shape how people live and work, while building an AI-focused portfolio and support network intended to help ambitious technology companies reach global scale.",
+          "publicContact": "Public firm and portfolio information is available through https://radical.vc/.",
+          "currentActivity": "Radical's current public portfolio spans AI infrastructure, large language models, robotics, semiconductors, cybersecurity, space, transportation, and software, and includes Canadian-founded companies such as Cohere, Waabi, Xanadu, and Promise Robotics.",
+          "portfolioSummary": [
+            "Cohere"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Cohere",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "Radical Ventures' official portfolio lists Cohere as an LLM and software portfolio company, with Radical's investment dated to 2020."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-inovia-capital-20260722",
+      "sourceLeadIds": [
+        "lead-inovia-capital-20260722"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Inovia Capital is recommended for amber private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. Inovia Capital is a full-stack Canadian venture capital firm investing from pre-seed through pre-IPO in software, AI-driven solutions, cybersecurity, infrastructure, developer tools, and other globally oriented technology companies. The candidate is intentionally modeled as an investor/funder with no company capability claims. Reviewer attention: The dossier uses Montréal as the primary Canadian map point for a multi-office firm; the reviewer may prefer another office if the public organization profile adopts a different primary-location convention.",
+      "reviewTier": "amber",
+      "inclusionScore": 91,
+      "completenessScore": 83,
+      "reviewWarnings": [
+        "The dossier uses Montréal as the primary Canadian map point for a multi-office firm; the reviewer may prefer another office if the public organization profile adopts a different primary-location convention."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching Inovia Capital, inovia-capital, or www.inovia.vc."
+      },
+      "sources": [
+        {
+          "id": "inovia-home",
+          "title": "Inovia Capital firm profile",
+          "url": "https://www.inovia.vc/",
+          "publisher": "Inovia Capital",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Inovia at a glance",
+          "summary": "Inovia describes its Canada-anchored full-stack investment model, three strategies, assets under management, and portfolio scale."
+        },
+        {
+          "id": "inovia-active",
+          "title": "Inovia active companies",
+          "url": "https://www.inovia.vc/active-companies/",
+          "publisher": "Inovia Capital",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Active portfolio focus",
+          "summary": "Inovia describes an active portfolio focused on software and AI-driven solutions across cybersecurity, infrastructure, developer tools, and related sectors."
+        },
+        {
+          "id": "inovia-team-spare",
+          "title": "Inovia investment team and Spare relationship",
+          "url": "https://www.inovia.vc/team/hugues-lalancette/",
+          "publisher": "Inovia Capital",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Supported companies",
+          "summary": "Inovia identifies Spare among the companies associated with partner Hugues Lalancette's investment work."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "inovia-capital-description-evidence",
+          "sourceId": "inovia-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for Inovia Capital.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "inovia-capital-location-evidence",
+          "sourceId": "inovia-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Montréal, Quebec as the primary Canadian map location used for this private candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "inovia-capital-mandate-evidence",
+          "sourceId": "inovia-home",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in Inovia Capital's mandate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "inovia-capital-contact-evidence",
+          "sourceId": "inovia-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "inovia-capital-activity-evidence",
+          "sourceId": "inovia-active",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for Inovia Capital.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "inovia-capital-relationship-evidence",
+          "sourceId": "inovia-active",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Inovia's official team and portfolio materials identify Spare among the companies supported by its investment team.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "inovia-capital",
+        "name": "Inovia Capital",
+        "legalName": null,
+        "aliases": [
+          "Inovia"
+        ],
+        "description": "Inovia Capital is a full-stack Canadian venture capital firm investing from pre-seed through pre-IPO in software, AI-driven solutions, cybersecurity, infrastructure, developer tools, and other globally oriented technology companies.",
+        "websiteUrl": "https://www.inovia.vc/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Montréal",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.5019,
+          "longitude": -73.5674,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Inovia partners with founders across Discovery, Venture, and Growth strategies to build enduring global technology companies, providing capital, operating insight, mentorship, and a network rooted in Canada with an international reach.",
+          "publicContact": "Public firm, founder, and portfolio routes are available through https://www.inovia.vc/.",
+          "currentActivity": "Inovia reports three investment strategies, US$2.5 billion in assets under management, 73 portfolio companies, and active focus on AI-driven software across cybersecurity, infrastructure, developer tools, digital health, fintech, and future-of-work sectors.",
+          "portfolioSummary": [
+            "Spare"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Spare",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "Inovia's official team and portfolio materials identify Spare among the companies supported by its investment team."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-georgian-20260722",
+      "sourceLeadIds": [
+        "lead-georgian-20260722"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Georgian is recommended for green private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. Georgian is a Toronto-based growth-stage technology investor that backs AI-powered B2B companies across infrastructure, applications, cybersecurity, developer tools, robotics, and emerging defence technology. The candidate is intentionally modeled as an investor/funder with no company capability claims. The reviewer can focus on wording and map placement rather than evidence recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching Georgian, georgian, or georgian.io."
+      },
+      "sources": [
+        {
+          "id": "georgian-home",
+          "title": "Georgian AI investment model",
+          "url": "https://georgian.io/",
+          "publisher": "Georgian",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Investment model, portfolio focus, and firm metrics",
+          "summary": "Georgian describes its AI-focused investment mandate, internal AI Lab, investment size, portfolio, assets under management, and fund strategy."
+        },
+        {
+          "id": "georgian-dominion",
+          "title": "Why Georgian invested in Dominion Dynamics",
+          "url": "https://georgian.io/posts/why-georgian-invested-in-dominion-dynamics",
+          "publisher": "Georgian",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Defence technology investment thesis and financing relationship",
+          "summary": "Georgian states that it led Dominion Dynamics' seed financing and explains its defence technology, Arctic security, physical AI, cybersecurity, and edge-computing thesis."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "georgian-description-evidence",
+          "sourceId": "georgian-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for Georgian.",
+          "confidence": "high"
+        },
+        {
+          "id": "georgian-location-evidence",
+          "sourceId": "georgian-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Toronto, Ontario as the primary Canadian map location used for this private candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "georgian-mandate-evidence",
+          "sourceId": "georgian-home",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in Georgian's mandate.",
+          "confidence": "high"
+        },
+        {
+          "id": "georgian-contact-evidence",
+          "sourceId": "georgian-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "georgian-activity-evidence",
+          "sourceId": "georgian-dominion",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for Georgian.",
+          "confidence": "high"
+        },
+        {
+          "id": "georgian-relationship-evidence",
+          "sourceId": "georgian-dominion",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Georgian officially announced that it led Dominion Dynamics' seed financing and described the Canadian defence technology company as a Pathfinder investment in an emerging market.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "georgian",
+        "name": "Georgian",
+        "legalName": null,
+        "aliases": [
+          "Georgian Partners"
+        ],
+        "description": "Georgian is a Toronto-based growth-stage technology investor that backs AI-powered B2B companies across infrastructure, applications, cybersecurity, developer tools, robotics, and emerging defence technology.",
+        "websiteUrl": "https://georgian.io/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Georgian invests with high conviction in a small number of market-leading technology companies and pairs long-term growth capital with an in-house AI Lab that works directly with portfolio-company research and development teams.",
+          "publicContact": "Public investment and insight routes are available through https://georgian.io/.",
+          "currentActivity": "Georgian reports investing from its sixth flagship Growth Fund with US$5.8 billion in assets under management, while its Pathfinder strategy also takes early positions in emerging markets such as quantum, physical AI, and Canadian defence technology.",
+          "portfolioSummary": [
+            "Dominion Dynamics"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Dominion Dynamics",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "Georgian officially announced that it led Dominion Dynamics' seed financing and described the Canadian defence technology company as a Pathfinder investment in an emerging market."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-mcrock-capital-20260722",
+      "sourceLeadIds": [
+        "lead-mcrock-capital-20260722"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "McRock Capital is recommended for green private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. McRock Capital is a Canadian venture capital fund manager specializing in industrial software and industrial AI for the physical economy, including robotics, critical infrastructure, manufacturing, and connected operational systems. The candidate is intentionally modeled as an investor/funder with no company capability claims. The reviewer can focus on wording and map placement rather than evidence recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching McRock Capital, mcrock-capital, or mcrockcapital.com."
+      },
+      "sources": [
+        {
+          "id": "mcrock-home",
+          "title": "McRock industrial software and AI investment profile",
+          "url": "https://mcrockcapital.com/",
+          "publisher": "McRock Capital",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Homepage and Fund III activity",
+          "summary": "McRock positions itself as a venture capital investor in industrial software and industrial AI and reports the latest fund close."
+        },
+        {
+          "id": "mcrock-portfolio",
+          "title": "McRock Capital portfolio",
+          "url": "https://mcrockcapital.com/our-portfolio/",
+          "publisher": "McRock Capital",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Portfolio companies and investment details",
+          "summary": "McRock provides named portfolio evidence across industrial AI, robotics, critical infrastructure, operational software, and cybersecurity, including Clearpath Robotics."
+        },
+        {
+          "id": "mcrock-contact",
+          "title": "Reaching out to McRock",
+          "url": "https://www.mcrockcapital.com/reaching-out/",
+          "publisher": "McRock Capital",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Public investment contact",
+          "summary": "McRock provides a public deals email and investment contact route."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "mcrock-capital-description-evidence",
+          "sourceId": "mcrock-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for McRock Capital.",
+          "confidence": "high"
+        },
+        {
+          "id": "mcrock-capital-location-evidence",
+          "sourceId": "mcrock-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Toronto, Ontario as the primary Canadian map location used for this private candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "mcrock-capital-mandate-evidence",
+          "sourceId": "mcrock-home",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in McRock Capital's mandate.",
+          "confidence": "high"
+        },
+        {
+          "id": "mcrock-capital-contact-evidence",
+          "sourceId": "mcrock-contact",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "mcrock-capital-activity-evidence",
+          "sourceId": "mcrock-portfolio",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for McRock Capital.",
+          "confidence": "high"
+        },
+        {
+          "id": "mcrock-capital-relationship-evidence",
+          "sourceId": "mcrock-portfolio",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "McRock's official portfolio identifies Clearpath Robotics as a Canadian industrial autonomous-software investment and records its acquisition by Rockwell Automation in 2023.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "mcrock-capital",
+        "name": "McRock Capital",
+        "legalName": null,
+        "aliases": [
+          "McRock"
+        ],
+        "description": "McRock Capital is a Canadian venture capital fund manager specializing in industrial software and industrial AI for the physical economy, including robotics, critical infrastructure, manufacturing, and connected operational systems.",
+        "websiteUrl": "https://mcrockcapital.com/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "McRock invests in industrial software and AI companies that reason, predict, and act on operational data, with a focus on technologies improving physical industries across Canada, the United States, and Europe.",
+          "publicContact": "deals@mcrockcapital.com | https://www.mcrockcapital.com/reaching-out/",
+          "currentActivity": "McRock announced that Fund III closed at more than $120 million and currently presents a portfolio spanning industrial AI, autonomous robotics, infrastructure monitoring, manufacturing software, operational cybersecurity, and engineering intelligence.",
+          "portfolioSummary": [
+            "Clearpath Robotics"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Clearpath Robotics",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "McRock's official portfolio identifies Clearpath Robotics as a Canadian industrial autonomous-software investment and records its acquisition by Rockwell Automation in 2023."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-vanedge-capital-20260722",
+      "sourceLeadIds": [
+        "lead-vanedge-capital-20260722"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Vanedge Capital is recommended for green private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. Vanedge Capital is a Vancouver-based early-stage venture capital fund that backs deep-technology companies and applies operating experience, board support, and follow-on investor networks to help technical teams scale. The candidate is intentionally modeled as an investor/funder with no company capability claims. The reviewer can focus on wording and map placement rather than evidence recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching Vanedge Capital, vanedge-capital, or www.vanedgecapital.com."
+      },
+      "sources": [
+        {
+          "id": "vanedge-home",
+          "title": "Vanedge Capital firm profile",
+          "url": "https://www.vanedgecapital.com/",
+          "publisher": "Vanedge Capital",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Homepage investment model and Vancouver location",
+          "summary": "Vanedge identifies itself as a Vancouver early-stage venture fund focused on deep technology and describes its operating and follow-on support."
+        },
+        {
+          "id": "vanedge-companies",
+          "title": "Vanedge Capital companies",
+          "url": "https://www.vanedgecapital.com/companies/",
+          "publisher": "Vanedge Capital",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Current and exited portfolio directory",
+          "summary": "Vanedge lists deep-technology investments across Canada and internationally, including North Vector Dynamics and other defence, sensing, quantum, cyber, AI, and space companies."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "vanedge-capital-description-evidence",
+          "sourceId": "vanedge-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for Vanedge Capital.",
+          "confidence": "high"
+        },
+        {
+          "id": "vanedge-capital-location-evidence",
+          "sourceId": "vanedge-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Vancouver, British Columbia as the primary Canadian map location used for this private candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "vanedge-capital-mandate-evidence",
+          "sourceId": "vanedge-home",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in Vanedge Capital's mandate.",
+          "confidence": "high"
+        },
+        {
+          "id": "vanedge-capital-contact-evidence",
+          "sourceId": "vanedge-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "vanedge-capital-activity-evidence",
+          "sourceId": "vanedge-companies",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for Vanedge Capital.",
+          "confidence": "high"
+        },
+        {
+          "id": "vanedge-capital-relationship-evidence",
+          "sourceId": "vanedge-companies",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Vanedge Capital's official companies directory identifies North Vector Dynamics as a Calgary defence technology company developing low-cost autonomous counter-UAS interceptors.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "vanedge-capital",
+        "name": "Vanedge Capital",
+        "legalName": null,
+        "aliases": [
+          "Vanedge"
+        ],
+        "description": "Vanedge Capital is a Vancouver-based early-stage venture capital fund that backs deep-technology companies and applies operating experience, board support, and follow-on investor networks to help technical teams scale.",
+        "websiteUrl": "https://www.vanedgecapital.com/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Vanedge invests at the early stage in deep technology, working alongside technical founders to reduce execution risk, build commercial momentum, attract follow-on capital, and pursue large global markets.",
+          "publicContact": "Public firm and portfolio information is available through https://www.vanedgecapital.com/.",
+          "currentActivity": "Vanedge's current public company directory spans AI, defence technology, autonomy, geospatial intelligence, cybersecurity, quantum software, sensing, advanced displays, space, and other deep-technology categories.",
+          "portfolioSummary": [
+            "North Vector Dynamics"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "North Vector Dynamics",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "Vanedge Capital's official companies directory identifies North Vector Dynamics as a Calgary defence technology company developing low-cost autonomous counter-UAS interceptors."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-panache-ventures-20260722",
+      "sourceLeadIds": [
+        "lead-panache-ventures-20260722"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Panache Ventures is recommended for green private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. Panache Ventures is a Canada-wide pre-seed and seed venture fund backing technology founders across AI, deep tech, cybersecurity, advanced manufacturing, quantum, climate technology, and enterprise software. The candidate is intentionally modeled as an investor/funder with no company capability claims. The reviewer can focus on wording and map placement rather than evidence recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching Panache Ventures, panache-ventures, or www.panache.vc."
+      },
+      "sources": [
+        {
+          "id": "panache-home",
+          "title": "Panache Ventures Canadian pre-seed fund",
+          "url": "https://www.panache.vc/",
+          "publisher": "Panache Ventures",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Investment mandate, support model, offices, and public submission route",
+          "summary": "Panache describes its Canada-wide pre-seed mandate, Series A support model, office network, and pitch-deck submission route."
+        },
+        {
+          "id": "panache-portfolio",
+          "title": "Panache Ventures portfolio",
+          "url": "https://www.panache.vc/portfolio",
+          "publisher": "Panache Ventures",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Portfolio by sector and company",
+          "summary": "Panache lists Canadian portfolio companies across AI, infrastructure, deep tech, quantum, manufacturing, cybersecurity, and other technology sectors, including Nord Quantique."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "panache-ventures-description-evidence",
+          "sourceId": "panache-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for Panache Ventures.",
+          "confidence": "high"
+        },
+        {
+          "id": "panache-ventures-location-evidence",
+          "sourceId": "panache-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Montréal, Quebec as the primary Canadian map location used for this private candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "panache-ventures-mandate-evidence",
+          "sourceId": "panache-home",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in Panache Ventures's mandate.",
+          "confidence": "high"
+        },
+        {
+          "id": "panache-ventures-contact-evidence",
+          "sourceId": "panache-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "panache-ventures-activity-evidence",
+          "sourceId": "panache-portfolio",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for Panache Ventures.",
+          "confidence": "high"
+        },
+        {
+          "id": "panache-ventures-relationship-evidence",
+          "sourceId": "panache-portfolio",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Panache Ventures' official portfolio lists Sherbrooke-based Nord Quantique, which is developing a scalable fault-tolerant quantum computer using error-corrected superconducting qubits.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "panache-ventures",
+        "name": "Panache Ventures",
+        "legalName": null,
+        "aliases": [
+          "Panache"
+        ],
+        "description": "Panache Ventures is a Canada-wide pre-seed and seed venture fund backing technology founders across AI, deep tech, cybersecurity, advanced manufacturing, quantum, climate technology, and enterprise software.",
+        "websiteUrl": "https://www.panache.vc/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Montréal",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.5019,
+          "longitude": -73.5674,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Panache invests early in high-growth Canadian technology companies and supports founders toward Series A through hands-on guidance, operating experience, warm introductions, and a coast-to-coast network with offices in Montréal, Toronto, Calgary, and Vancouver.",
+          "publicContact": "Public pitch-deck submission and firm information are available through https://www.panache.vc/.",
+          "currentActivity": "Panache's current portfolio includes Canadian companies working in deep tech, quantum computing, AI infrastructure, autonomous systems, advanced manufacturing, cybersecurity, robotics, and supply-chain technology.",
+          "portfolioSummary": [
+            "Nord Quantique"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Nord Quantique",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "Panache Ventures' official portfolio lists Sherbrooke-based Nord Quantique, which is developing a scalable fault-tolerant quantum computer using error-corrected superconducting qubits."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-whitecap-venture-partners-20260722",
+      "sourceLeadIds": [
+        "lead-whitecap-venture-partners-20260722"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Whitecap Venture Partners is recommended for amber private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. Whitecap Venture Partners is a Toronto-based Canadian venture capital firm investing in technology companies, with a current portfolio that includes AI-enabled software, climate and industrial technology, health technology, and other scalable platforms. The candidate is intentionally modeled as an investor/funder with no company capability claims. Reviewer attention: The public site provides less explicit sector and stage language than specialist-fund peers; the reviewer should keep the description broad and avoid inferring a defence-specific mandate.",
+      "reviewTier": "amber",
+      "inclusionScore": 87,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "The public site provides less explicit sector and stage language than specialist-fund peers; the reviewer should keep the description broad and avoid inferring a defence-specific mandate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching Whitecap Venture Partners, whitecap-venture-partners, or www.whitecapvp.com."
+      },
+      "sources": [
+        {
+          "id": "whitecap-home",
+          "title": "Whitecap Venture Partners profile",
+          "url": "https://www.whitecapvp.com/",
+          "publisher": "Whitecap Venture Partners",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Homepage, firm positioning, and Toronto footer",
+          "summary": "Whitecap presents its Canadian venture investment platform and public Toronto location."
+        },
+        {
+          "id": "whitecap-portfolio",
+          "title": "Whitecap Venture Partners portfolio",
+          "url": "https://www.whitecapvp.com/portfolio",
+          "publisher": "Whitecap Venture Partners",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Portfolio directory and company descriptions",
+          "summary": "Whitecap lists current and exited technology investments and describes Deep Sky's carbon-removal infrastructure activity."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "whitecap-venture-partners-description-evidence",
+          "sourceId": "whitecap-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for Whitecap Venture Partners.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "whitecap-venture-partners-location-evidence",
+          "sourceId": "whitecap-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Toronto, Ontario as the primary Canadian map location used for this private candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "whitecap-venture-partners-mandate-evidence",
+          "sourceId": "whitecap-home",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in Whitecap Venture Partners's mandate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "whitecap-venture-partners-contact-evidence",
+          "sourceId": "whitecap-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "whitecap-venture-partners-activity-evidence",
+          "sourceId": "whitecap-portfolio",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for Whitecap Venture Partners.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "whitecap-venture-partners-relationship-evidence",
+          "sourceId": "whitecap-portfolio",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Whitecap Venture Partners' official portfolio identifies Deep Sky as a portfolio company building large-scale carbon-removal infrastructure by integrating capture and storage technologies.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "whitecap-venture-partners",
+        "name": "Whitecap Venture Partners",
+        "legalName": null,
+        "aliases": [
+          "Whitecap VP"
+        ],
+        "description": "Whitecap Venture Partners is a Toronto-based Canadian venture capital firm investing in technology companies, with a current portfolio that includes AI-enabled software, climate and industrial technology, health technology, and other scalable platforms.",
+        "websiteUrl": "https://www.whitecapvp.com/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Whitecap backs technology founders and builds long-term investment relationships, using its venture platform and operating network to support companies from early institutional financing through growth and exit.",
+          "publicContact": "Whitecap Venture Partners | 22 St. Clair Avenue East, Toronto, Ontario | https://www.whitecapvp.com/",
+          "currentActivity": "Whitecap's current portfolio includes AI and software companies as well as Canadian strategic-technology businesses such as Deep Sky, a large-scale carbon-removal project developer integrating capture and storage technologies.",
+          "portfolioSummary": [
+            "Deep Sky"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Deep Sky",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "Whitecap Venture Partners' official portfolio identifies Deep Sky as a portfolio company building large-scale carbon-removal infrastructure by integrating capture and storage technologies."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-quantacet-20260722",
+      "sourceLeadIds": [
+        "lead-quantacet-20260722"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Quantacet is recommended for green private review because official public sources establish a Canadian venture-capital identity, a substantive investment mandate, current strategic-technology activity, and at least one named portfolio relationship. Quantacet is a Québec-based specialist venture capital fund investing at pre-seed and seed in quantum computing, sensing, communications, cybersecurity, and enabling technologies with global commercialization potential. The candidate is intentionally modeled as an investor/funder with no company capability claims. The reviewer can focus on wording and map placement rather than evidence recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 97,
+      "completenessScore": 98,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-22T19:56:06.928Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production duplicate checks found no published organization or active pending candidate matching Quantacet, quantacet, or www.quantacet.com."
+      },
+      "sources": [
+        {
+          "id": "quantacet-about",
+          "title": "Quantacet quantum investment mandate",
+          "url": "https://www.quantacet.com/en/about/",
+          "publisher": "Quantacet",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Investment thesis, stages, sectors, and support model",
+          "summary": "Quantacet describes its Québec specialist quantum mandate, pre-seed and seed focus, commercialization support, and quantum sectors."
+        },
+        {
+          "id": "quantacet-portfolio",
+          "title": "Quantacet quantum startup portfolio",
+          "url": "https://www.quantacet.com/en/clients/",
+          "publisher": "Quantacet",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Portfolio companies by quantum category",
+          "summary": "Quantacet lists portfolio companies across quantum hardware, software, sensing, communications, and enabling technologies, including SBQuantum."
+        },
+        {
+          "id": "quantacet-contact",
+          "title": "Quantacet contact and offices",
+          "url": "https://www.quantacet.com/en/contact-us/",
+          "publisher": "Quantacet",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-22T19:56:06.928Z",
+          "locator": "Montréal and Sherbrooke offices and public email",
+          "summary": "Quantacet publishes Montréal and Sherbrooke office addresses together with a public email route."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "quantacet-description-evidence",
+          "sourceId": "quantacet-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official firm profile supports the Canadian investor identity, operating role, and bounded organization description recorded for Quantacet.",
+          "confidence": "high"
+        },
+        {
+          "id": "quantacet-location-evidence",
+          "sourceId": "quantacet-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official firm material supports Montréal, Quebec as the primary Canadian map location used for this private candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "quantacet-mandate-evidence",
+          "sourceId": "quantacet-about",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The official organization profile supports the investment stages, technology themes, founder support, and market posture summarized in Quantacet's mandate.",
+          "confidence": "high"
+        },
+        {
+          "id": "quantacet-contact-evidence",
+          "sourceId": "quantacet-contact",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited public source supports the website, inquiry route, email, telephone, or office channel captured for reviewer use; no private contact information is included.",
+          "confidence": "high"
+        },
+        {
+          "id": "quantacet-activity-evidence",
+          "sourceId": "quantacet-portfolio",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio or current firm source supports the strategic-technology investment activity and named examples summarized for Quantacet.",
+          "confidence": "high"
+        },
+        {
+          "id": "quantacet-relationship-evidence",
+          "sourceId": "quantacet-portfolio",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Quantacet's official portfolio identifies SBQuantum as a developer of diamond-based high-sensitivity quantum magnetometers for security and defence markets.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "quantacet",
+        "name": "Quantacet",
+        "legalName": null,
+        "aliases": [],
+        "description": "Quantacet is a Québec-based specialist venture capital fund investing at pre-seed and seed in quantum computing, sensing, communications, cybersecurity, and enabling technologies with global commercialization potential.",
+        "websiteUrl": "https://www.quantacet.com/en/",
+        "entityKind": "investor_funder",
+        "categories": [
+          "venture_capital"
+        ],
+        "primaryLocation": {
+          "city": "Montréal",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.5017,
+          "longitude": -73.5687,
+          "geographicConfidence": "exact"
+        },
+        "profileData": {
+          "mandate": "Quantacet invests early in ambitious quantum startups, filling a specialist funding gap where technical development risk is high and helping companies bridge research, commercialization, follow-on financing, and the Québec and global quantum ecosystems.",
+          "publicContact": "info@quantacet.com | 3 Place Ville Marie, Suite 12350, Montréal, Quebec H3B 0E7 | https://www.quantacet.com/en/contact-us/",
+          "currentActivity": "Quantacet's current public portfolio spans quantum computing hardware and software, sensing, communications, photonics, critical-mineral discovery, low-power AI chips, and defence-relevant magnetic sensing and stealth communications.",
+          "portfolioSummary": [
+            "SBQuantum"
+          ],
+          "possibleMissionAreaRelevance": [
+            "arctic-domain-awareness",
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring",
+            "edge-data-processing"
+          ],
+          "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "SBQuantum",
+          "relationshipType": "portfolio_company",
+          "publicSummary": "Quantacet's official portfolio identifies SBQuantum as a developer of diamond-based high-sensitivity quantum magnetometers for security and defence markets."
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

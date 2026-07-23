@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-refresh-2026-07-23-signals",
+  "runId": "tnm-refresh-2026-07-23",
+  "createdAt": "2026-07-23T11:05:36.000Z",
+  "watermarkStart": "2026-07-16T00:00:00.000Z",
+  "watermarkEnd": "2026-07-23T11:05:36.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 2,
+    "government_procurement": 1,
+    "source_book": 1,
+    "ecosystem_program": 0,
+    "industry_publication": 0,
+    "gmail_newsletter": 1,
+    "linkedin_chrome": 1,
+    "other_discovery": 0
+  },
+  "warnings": [],
+  "signals": [
+    {
+      "signalId": "kraken-seapower-capability-2026",
+      "fingerprint": "8c7c3d5e6eae6d13934dd5d7b3119c5424cb7aa86da7b30bbe64d4b9ab397b60",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom",
+      "discoveryOrigin": {
+        "url": "https://www.krakenrobotics.com/products/seapower/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Kraken Robotics",
+        "technology": "SeaPower",
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-01-13",
+        "amount": "$35 million",
+        "details": "Kraken's official product page documents a modular pressure-tolerant subsea lithium-ion battery system, and an official release confirms active SeaPower sales to multiple customers."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.krakenrobotics.com/products/seapower/",
+        "https://www.krakenrobotics.com/news-releases/kraken-robotics-announces-35-million-in-seapower-battery-sales/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000001",
+          "slug": "kraken-robotics",
+          "matchMethods": ["website_domain", "slug", "name"],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435Z"
+        }
+      ],
+      "intendedOutcomes": ["organization_refresh"],
+      "recoveryAttempts": [],
+      "warnings": [],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "dnd-uncrewed-systems-dish-2026",
+      "fingerprint": "712cc6cfab052c522e654d51932d744f75917781cec6d6e8df656c76deb3ea02",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "official government program",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": null,
+        "technology": "Uncrewed Systems Defence Innovation Secure Hub",
+        "program": "BOREALIS UxS DISH",
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-07-14",
+        "amount": "$29.6 million over two years",
+        "details": "DND established a secure hub for testing, validating, integrating and transitioning Canadian uncrewed and autonomous systems toward operational capability."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": ["deferred"],
+      "recoveryAttempts": [],
+      "warnings": [],
+      "disposition": "deferred",
+      "deferralRationale": "Retained for a dedicated demand or program candidate because this acceptance run consolidates one existing-record refresh and does not discard the separately qualified government signal."
+    },
+    {
+      "signalId": "kraken-orders-source-book-2026-07-20",
+      "fingerprint": "afd7e6fbd14c8608de43e2528d903a2ff1c823f43c641b8cba40bb250d55e014",
+      "sourceChannel": "source_book",
+      "sourceFamily": "due Global Source Book company newsroom",
+      "discoveryOrigin": {
+        "url": "https://www.krakenrobotics.com/press-releases/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Kraken Robotics",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-07-20",
+        "amount": "$35 million",
+        "details": "The due Source Book newsroom published a current business update and also exposes recurring official releases supporting SeaPower and Kraken SAS product activity."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": ["https://www.krakenrobotics.com/press-releases/"],
+      "signalType": "contract_or_award",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000001",
+          "slug": "kraken-robotics",
+          "matchMethods": ["website_domain", "slug", "name"],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435Z"
+        }
+      ],
+      "intendedOutcomes": ["organization_refresh"],
+      "recoveryAttempts": [],
+      "warnings": [],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "caf-dia-drone-marketplace-newsletter-2026-07-23",
+      "fingerprint": "3903aee620ff7f3fb250d8daf9e7bcfa06c71d6c544de3ca4395b866355a2e3f",
+      "sourceChannel": "gmail_newsletter",
+      "sourceFamily": "Gmail Newsletters Defence",
+      "discoveryOrigin": {
+        "url": "https://mail.google.com/mail/#all/19f8e71312196e66",
+        "gmailMessageId": "19f8e71312196e66",
+        "gmailThreadId": "19f8e71312196e66",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": null,
+        "technology": "Standing marketplace for pre-qualified Canadian drone suppliers",
+        "program": null,
+        "issuer": "Canadian Joint Forces Command and Defence Investment Agency",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "A defence newsletter reports a new supply-arrangement marketplace and six early use cases, but the underlying CanadaBuys solicitation was not publicly resolvable during this run."
+      },
+      "redirectUrls": ["https://substack.com/redirect/f1cf89e9-a2a6-4d2e-88e8-0d75c73fc74e"],
+      "canonicalUrls": [],
+      "signalType": "marketplace_or_supply_arrangement",
+      "canonicalEvidenceStatus": "unresolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": ["deferred"],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Searched the public tender surface, but the specific RFSA documents required an authenticated supplier view and were not used as evidence."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.canada.ca/en/department-national-defence.html",
+          "outcome": "Searched current DND releases for the named marketplace and did not find a matching durable public announcement during the run."
+        }
+      ],
+      "warnings": ["Newsletter assertions remain discovery-only until the RFSA resolves to a durable official page."],
+      "disposition": "unresolved",
+      "deferralRationale": "The signal is material but cannot support a demand candidate until the underlying RFSA or equivalent official notice is available as canonical evidence."
+    },
+    {
+      "signalId": "kraken-sas-linkedin-2026-07-22",
+      "fingerprint": "fafb9ad9c5a59aed5c10594ccf76fa90fde33c2a95095d8bc43e0b16274e897c",
+      "sourceChannel": "linkedin_chrome",
+      "sourceFamily": "targeted LinkedIn company activity",
+      "discoveryOrigin": {
+        "url": "https://www.linkedin.com/company/krakenrobotics/posts/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": "https://www.linkedin.com/company/krakenrobotics/posts/"
+      },
+      "extracted": {
+        "organization": "Kraken Robotics",
+        "technology": "Kraken SAS",
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-07-22",
+        "amount": null,
+        "details": "A targeted read-only company-page search surfaced current Kraken SAS imagery and an outbound product link; the claim was resolved to Kraken's durable product page before use."
+      },
+      "redirectUrls": ["https://lnkd.in/eU45dX3E"],
+      "canonicalUrls": ["https://www.krakenrobotics.com/products/kraken-sas/"],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000001",
+          "slug": "kraken-robotics",
+          "matchMethods": ["website_domain", "slug", "name"],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435Z"
+        }
+      ],
+      "intendedOutcomes": ["organization_refresh"],
+      "recoveryAttempts": [],
+      "warnings": ["LinkedIn supplied discovery provenance only; all candidate field evidence comes from Kraken's durable product page."],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

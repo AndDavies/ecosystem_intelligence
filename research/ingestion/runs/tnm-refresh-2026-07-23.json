@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-2026-07-23",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": [
+      "department",
+      "procurement_authority",
+      "armed_forces"
+    ]
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "published-record-refresh:kraken-robotics",
+    "reason": "The published Kraken Robotics record has one capability while current official product evidence supports distinct SeaPower and Kraken SAS technologies.",
+    "score": 995
+  },
+  "status": "completed",
+  "startedAt": "2026-07-23T11:03:02.559Z",
+  "completedAt": "2026-07-23T11:05:36.000Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 4,
+    "minimumCandidates": 1,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Published-record watchlist: Kraken Robotics aliases, domain, capabilities and pending candidates",
+    "Government and procurement: Canadian uncrewed systems programs and current marketplaces",
+    "Due Source Book entry: Kraken Robotics Press Releases",
+    "Gmail label:Newsletters/Defence newer_than:30d Kraken OR sonar OR subsea OR battery OR drone OR procurement",
+    "LinkedIn company activity through authenticated Chrome: Kraken Robotics SeaPower and Kraken SAS"
+  ],
+  "counters": {
+    "sourcesChecked": 6,
+    "leadsQualified": 1,
+    "leadsDeferred": 2,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 0,
+    "uniqueProspects": 0,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 0,
+    "sourceLanesSearched": 5,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0,
+    "signalsExtracted": 5,
+    "signalsDispositioned": 5,
+    "sourceFamiliesSearched": 5
+  },
+  "underTargetReason": "This live acceptance run intentionally consolidated three Kraken technology signals into one high-confidence existing-record refresh; two unrelated demand signals remain dispositioned in the backlog.",
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "The Gmail marketplace signal remains discovery-only because its underlying RFSA was not publicly resolvable.",
+      "No canonical record changes were made; the candidate stops in private Admin Review."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "prospectInventory": null,
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-2026-07-23.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-2026-07-23.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-2026-07-23.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-refresh-2026-07-23-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-2026-07-23.json"
+  }
+}

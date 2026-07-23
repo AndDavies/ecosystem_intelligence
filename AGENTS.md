@@ -75,9 +75,10 @@ Mission Area / Use Case -> top targets -> why now -> evidence and confidence -> 
 
 ## Research Skills Of Record
 
-The five project-local skills below are the canonical skills of record for the current research and ingestion pipeline. Manual runs, scheduled runs, tests, and governance reviews must use these repository copies. They supersede cached or globally installed variants, older operator-guide instructions, and workflow assumptions embedded in historical run artifacts. `app/src/lib/research/pipeline-schema.ts` remains the executable data contract when prose and code differ.
+The six project-local skills below are the canonical skills of record for the current research and ingestion pipeline. Manual runs, scheduled runs, tests, and governance reviews must use these repository copies. They supersede cached or globally installed variants, older operator-guide instructions, and workflow assumptions embedded in historical run artifacts. `app/src/lib/research/pipeline-schema.ts` remains the executable data contract when prose and code differ.
 
 - `.agents/skills/tnm-autonomous-research/`: live-database coverage, batch planning, limits, and handoffs.
+- `.agents/skills/tnm-signal-refresh/`: multi-source monitoring, atomic-signal extraction, durable-evidence resolution, live entity matching, and refresh handoffs.
 - `.agents/skills/tnm-source-discovery/`: broad prospect enumeration, evidence recovery, durable public-source discovery, and typed leads.
 - `.agents/skills/tnm-candidate-builder/`: qualified-lead conversion into enriched green or amber organization, demand, or relationship candidates.
 - `.agents/skills/tnm-evidence-mapper/`: field evidence, citations, confidence, and derived rationale.
@@ -93,6 +94,7 @@ The five project-local skills below are the canonical skills of record for the c
 - Produce source leads before candidate records unless validated qualified source leads already exist.
 - Use `discovery_batch` for broad expansion: enumerate 40-75 unique prospects across at least six source lanes, target 10 candidates, and require at least eight unless the run records specific exhaustion evidence.
 - Use `deep_dossier` for 1-5 named organizations; search at least three complementary source lanes and prioritize portfolio depth over prospect volume.
+- Use `refresh_batch` for multi-source change monitoring: 45 minutes, at most 50 inspected source items, at least four source families, at most 10 consolidated candidates, and a seven-day watermark overlap.
 - Keep plausible unused prospects queued in the prospect inventory so later runs resume the backlog instead of rediscovering it.
 - When creating source leads, choose an explicit reviewable batch size by Mission Area before work begins.
 - Prefer one source-lead batch per Mission Area when review load or provenance clarity matters.
@@ -103,6 +105,8 @@ The five project-local skills below are the canonical skills of record for the c
 - Score inclusion separately from completeness. Route evidence-anchored candidates with non-blocking enrichment gaps to amber review with explicit warnings; missing legal name, direct contact, exact address, or exhaustive relationships is not by itself a hard stop.
 - Before deferring a plausible thin prospect for evidence, record recovery attempts across at least three distinct source lanes.
 - Candidate batches must follow `research/ingestion/schema/research-candidate-batch-v2.schema.json` and the executable contract in `app/src/lib/research/pipeline-schema.ts`.
+- Before any live candidate staging, verify the deployed `/api/system/research-contract` supports every candidate kind and schema version in the batch. If not, stop at validated file-only artifacts. Database migrations and candidate staging must never lead the deployed Review and Publish interfaces.
+- Refresh runs must write `research_signal_batch_v1`, disposition every atomic signal, and consolidate existing-record changes into one organization or demand refresh candidate per target per run.
 - Promotion remains human-reviewed through validation and review tooling.
 
 ## Source Hierarchy
@@ -184,6 +188,9 @@ Browser QA should cover:
 - `/admin/organizations/[id]/edit`
 
 ## Change Log
+
+- `2026-07-23`: Reconciled the signal-refresh migration filenames with the applied production history, made unknown candidate types fail closed, added visible accepted-to-publish navigation, and introduced a deployed application-contract check that stops research intake before database staging when Review or Publish support is absent.
+- `2026-07-23`: Added the sixth canonical `$tnm-signal-refresh` skill and weekday multi-source refresh schedule. Refresh runs now build live watchlists, extract and deduplicate atomic signals from official, Source Book, Gmail, LinkedIn, and ecosystem sources, resolve durable evidence, and stage additive organization or demand refresh candidates with target baselines and before/after operations. Admin Review and the human Publish checkpoint now support refresh diffs, provenance, stale-baseline rejection, stable-ID updates, appended evidence, and immediate route revalidation.
 
 - `2026-07-22`: Completed the separated email-delivery stack: Zoho now hosts the monitored `andrew@truenorthmap.ca` mailbox and five operational aliases; MailerLite uses a verified `updates@truenorthmap.ca` sender, authenticated domain, consent-backed `True North Map Updates` group, lawful footer address, and signed lifecycle webhook; Supabase Auth sends branded security mail through domain-restricted Resend SMTP. Root SPF authorizes Zoho and MailerLite, service DKIM records are active, DMARC monitors at `p=none`, and controlled inbound and outbound tests passed. The obsolete Zoho mailbox/domain and ROOTED MailerLite sending domain were removed.
 

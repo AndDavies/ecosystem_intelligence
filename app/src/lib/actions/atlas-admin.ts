@@ -4,10 +4,11 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
-import type { DemandSignalBundleV1, OrganizationBundleV2 } from "@/lib/research/pipeline-schema";
+import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
+import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationRefreshBundleV1 } from "@/lib/research/pipeline-schema";
 import { suggestDemandMatches } from "@/lib/atlas/demand-matching";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
+import { isSupportedResearchCandidateKind, researchCandidateContractIssues } from "@/lib/research/deployment-contract";
 import { createClient } from "@/lib/supabase/server";
 
 const intakeSchema = z.object({
@@ -128,9 +129,13 @@ function normalizedWebsite(value: string | null | undefined) {
   return String(value ?? "").trim().toLowerCase().replace(/\/$/, "");
 }
 
-function typedEvidenceIsComplete(record: OrganizationBundleV2 | DemandSignalBundleV1) {
+function typedEvidenceIsComplete(record: OrganizationBundleV2 | DemandSignalBundleV1 | OrganizationRefreshBundleV1 | DemandRefreshBundleV1) {
   const sourceIds = new Set(record.sources.map((source) => source.id));
   if (record.fieldEvidence.some((evidence) => !sourceIds.has(evidence.sourceId))) return false;
+  if (record.candidateKind === "organization_refresh_bundle" || record.candidateKind === "demand_refresh_bundle") {
+    const evidenceIds = new Set(record.fieldEvidence.map((evidence) => evidence.id));
+    return record.operations.every((operation) => operation.evidenceIds.every((evidenceId) => evidenceIds.has(evidenceId)));
+  }
   const paths = new Set(record.fieldEvidence.map((evidence) => evidence.fieldPath));
   if (record.candidateKind === "organization_bundle") {
     if (!paths.has("organization.description")) return false;
@@ -139,8 +144,11 @@ function typedEvidenceIsComplete(record: OrganizationBundleV2 | DemandSignalBund
     if (record.relationships.some((_, index) => !paths.has(`relationships.${index}.publicSummary`))) return false;
     return true;
   }
-  if (!paths.has("demandSource.summary")) return false;
-  return record.requirements.every((requirement) => paths.has(`requirements.${requirement.slug}.problemStatement`));
+  if (record.candidateKind === "demand_signal_bundle") {
+    if (!paths.has("demandSource.summary")) return false;
+    return record.requirements.every((requirement) => paths.has(`requirements.${requirement.slug}.problemStatement`));
+  }
+  return false;
 }
 
 function containsNonPortableCitation(value: unknown) {
@@ -268,16 +276,26 @@ export async function reviewAtlasCandidate(formData: FormData) {
   const supabase = await createClient({ writeCookies: true });
   const { data: candidate } = await supabase
     .from("candidate_changes")
-    .select("id, candidate_kind, proposed_record, duplicate_check, status")
+    .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, status")
     .eq("id", parsed.data.candidateId)
     .single();
   if (!candidate || candidate.status === "published" || candidate.status === "superseded") {
     redirect("/admin/review?error=invalid-review");
   }
-  if (parsed.data.decision === "accept" && ["organization_bundle", "demand_signal_bundle"].includes(candidate.candidate_kind)) {
+  if (parsed.data.decision === "accept" && (
+    !isSupportedResearchCandidateKind(candidate.candidate_kind)
+    || researchCandidateContractIssues([{ candidate_kind: candidate.candidate_kind, schema_version: candidate.schema_version }]).length > 0
+  )) {
+    redirect("/admin/review?error=unsupported-candidate");
+  }
+  if (parsed.data.decision === "accept" && ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"].includes(candidate.candidate_kind)) {
     const validCandidate = candidate.candidate_kind === "organization_bundle"
       ? parseReviewableOrganizationCandidate(candidate.proposed_record)
-      : parseDemandSignalCandidate(candidate.proposed_record).success;
+      : candidate.candidate_kind === "demand_signal_bundle"
+        ? parseDemandSignalCandidate(candidate.proposed_record).success
+        : candidate.candidate_kind === "organization_refresh_bundle"
+          ? parseOrganizationRefreshCandidate(candidate.proposed_record).success
+          : parseDemandRefreshCandidate(candidate.proposed_record).success;
     if (!validCandidate) {
       redirect("/admin/review?error=invalid-candidate");
     }
@@ -296,7 +314,8 @@ export async function reviewAtlasCandidate(formData: FormData) {
     rationale: parsed.data.rationale
   });
   if (decisionError) redirect("/admin/review?error=review-failed");
-  await supabase.from("candidate_changes").update({ status, updated_at: new Date().toISOString() }).eq("id", parsed.data.candidateId);
+  const { error: statusError } = await supabase.from("candidate_changes").update({ status, updated_at: new Date().toISOString() }).eq("id", parsed.data.candidateId);
+  if (statusError) redirect("/admin/review?error=review-failed");
   await supabase.from("audit_events").insert({
     actor_id: user.id,
     actor_role: user.role,
@@ -307,6 +326,8 @@ export async function reviewAtlasCandidate(formData: FormData) {
     metadata: { decision: parsed.data.decision, publication_changed: false }
   });
   revalidateReviewPaths();
+  if (parsed.data.decision === "accept") redirect("/admin/review?success=accepted");
+  redirect(`/admin/review?success=${parsed.data.decision === "reject" ? "rejected" : "deferred"}`);
 }
 
 export async function editAtlasCandidate(formData: FormData) {
@@ -447,13 +468,15 @@ export async function editTypedResearchCandidate(formData: FormData) {
     .select("id, candidate_kind, proposed_record, status")
     .eq("id", submitted.data.candidateId)
     .single();
-  if (!candidate || candidate.status !== "pending" || !["organization_bundle", "demand_signal_bundle"].includes(candidate.candidate_kind)) {
+  if (!candidate || candidate.status !== "pending" || !["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"].includes(candidate.candidate_kind)) {
     redirect("/admin/review?error=invalid-edit");
   }
 
   const organization = candidate.candidate_kind === "organization_bundle" ? parseOrganizationBundleV2(proposedValue) : null;
   const demand = candidate.candidate_kind === "demand_signal_bundle" ? parseDemandSignalCandidate(proposedValue) : null;
-  const parsedRecord = organization?.success ? organization.data : demand?.success ? demand.data : null;
+  const organizationRefresh = candidate.candidate_kind === "organization_refresh_bundle" ? parseOrganizationRefreshCandidate(proposedValue) : null;
+  const demandRefresh = candidate.candidate_kind === "demand_refresh_bundle" ? parseDemandRefreshCandidate(proposedValue) : null;
+  const parsedRecord = organization?.success ? organization.data : demand?.success ? demand.data : organizationRefresh?.success ? organizationRefresh.data : demandRefresh?.success ? demandRefresh.data : null;
   if (!parsedRecord || parsedRecord.candidateId !== (candidate.proposed_record as { candidateId?: string } | null)?.candidateId || !typedEvidenceIsComplete(parsedRecord) || containsNonPortableCitation(parsedRecord)) {
     redirect("/admin/review?error=invalid-edit");
   }
@@ -468,9 +491,9 @@ export async function editTypedResearchCandidate(formData: FormData) {
     ? parsedRecord.capabilities.every((capability) =>
         capability.technicalDomainSlugs.every((slug) => domainSlugs.has(slug))
         && capability.missionMatches.every((match) => missionSlugs.has(match.missionAreaSlug)))
-    : parsedRecord.requirements.every((requirement) =>
+    : parsedRecord.candidateKind === "demand_signal_bundle" ? parsedRecord.requirements.every((requirement) =>
         requirement.technicalDomainSlugs.every((slug) => domainSlugs.has(slug))
-        && requirement.missionAreaSlugs.every((slug) => missionSlugs.has(slug)));
+        && requirement.missionAreaSlugs.every((slug) => missionSlugs.has(slug))) : true;
   if (!taxonomyIsValid) redirect("/admin/review?error=invalid-edit");
 
   let duplicateCheck = parsedRecord.duplicateCheck;
@@ -492,7 +515,7 @@ export async function editTypedResearchCandidate(formData: FormData) {
         : "The edited identity was rechecked against published organizations and no likely duplicate was found."
     };
     parsedRecord.duplicateCheck = duplicateCheck;
-  } else {
+  } else if (parsedRecord.candidateKind === "demand_signal_bundle") {
     const { data: demandSources } = await supabase.from("demand_sources").select("id, slug, title").limit(2000);
     const demandName = normalizedIdentity(parsedRecord.demandSource.title);
     const hasPublishedMatch = (demandSources ?? []).some((source) =>
@@ -506,6 +529,8 @@ export async function editTypedResearchCandidate(formData: FormData) {
       note: "The edited public-demand identity was rechecked against published demand sources and no likely duplicate was found."
     };
     parsedRecord.duplicateCheck = duplicateCheck;
+  } else {
+    duplicateCheck = parsedRecord.duplicateCheck;
   }
 
   const { error: updateError } = await supabase
@@ -602,8 +627,29 @@ export async function publishApprovedCandidates(formData: FormData) {
   });
   if (!parsed.success) redirect("/admin/publish?error=selection");
   const supabase = await createClient({ writeCookies: true });
+  const uniqueCandidateIds = [...new Set(parsed.data.candidateIds)];
+  if (uniqueCandidateIds.length !== parsed.data.candidateIds.length) redirect("/admin/publish?error=selection");
+  const { data: selectedCandidates, error: selectionError } = await supabase
+    .from("candidate_changes")
+    .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, status")
+    .in("id", uniqueCandidateIds);
+  if (selectionError || selectedCandidates?.length !== uniqueCandidateIds.length) redirect("/admin/publish?error=selection");
+
+  const invalidSelection = selectedCandidates.some((candidate) => {
+    if (candidate.status !== "approved") return true;
+    if (researchCandidateContractIssues([{ candidate_kind: candidate.candidate_kind, schema_version: candidate.schema_version }]).length) return true;
+    const duplicateStatus = (candidate.duplicate_check as { status?: string } | null)?.status;
+    if (!["clear", "merged"].includes(duplicateStatus ?? "")) return true;
+    if (candidate.candidate_kind === "organization_bundle") return !parseReviewableOrganizationCandidate(candidate.proposed_record);
+    if (candidate.candidate_kind === "demand_signal_bundle") return !parseDemandSignalCandidate(candidate.proposed_record).success;
+    if (candidate.candidate_kind === "organization_refresh_bundle") return !parseOrganizationRefreshCandidate(candidate.proposed_record).success;
+    if (candidate.candidate_kind === "demand_refresh_bundle") return !parseDemandRefreshCandidate(candidate.proposed_record).success;
+    return true;
+  });
+  if (invalidSelection) redirect("/admin/publish?error=publication-failed");
+
   const { error } = await supabase.rpc("publish_reviewed_research_candidates", {
-    p_candidate_ids: parsed.data.candidateIds,
+    p_candidate_ids: uniqueCandidateIds,
     p_reviewer_id: user.id
   });
   if (error) redirect("/admin/publish?error=publication-failed");
@@ -615,5 +661,5 @@ export async function publishApprovedCandidates(formData: FormData) {
   revalidatePath("/demand");
   revalidatePath("/demand/[slug]", "page");
   revalidatePath("/sitemap.xml");
-  redirect(`/admin/publish?success=${parsed.data.candidateIds.length}`);
+  redirect(`/admin/publish?success=${uniqueCandidateIds.length}`);
 }

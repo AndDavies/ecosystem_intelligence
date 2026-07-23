@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260723181402-leads",
+  "runId": "tnm-manual-20260723181402",
+  "createdAt": "2026-07-23T18:19:35.000Z",
+  "scope": {
+    "description": "Sentinel AMS named-company dossier focused on Canadian identity, deployable defence infrastructure, edge manufacturing, modular systems, power, UAS and counter-UAS offerings, parentage, and current industry activity.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": ["company"],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-sentinel-ams-20260723",
+      "source": {
+        "id": "sentinel-capabilities",
+        "title": "Sentinel Advanced Military Solutions capabilities",
+        "url": "https://www.sentinel-ams.com/capabilities",
+        "publisher": "Sentinel Advanced Military Solutions",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-23T18:19:35.000Z",
+        "locator": "Star Forge, edge manufacturing, modular enclosure, power and UAS or counter-UAS sections",
+        "summary": "Sentinel's official portfolio describes a deployable integrated defence ecosystem plus separate edge-manufacturing, modular-enclosure, hybrid-power, and layered UAS and counter-UAS capabilities."
+      },
+      "discoveryPath": [
+        "https://www.sentinel-ams.com/",
+        "https://www.sentinel-ams.com/about",
+        "https://www.sentinel-ams.com/capabilities",
+        "https://www.sentinel-ams.com/privacy-policy",
+        "https://www.cmpdifference.com/contact",
+        "https://www.cmpdifference.com/industries",
+        "https://online.flippingbook.com/view/167012545/4/",
+        "https://online.flippingbook.com/view/167012545/9/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official Sentinel capability portfolio, CMP Canadian location and manufacturing pages, and CADSI CANSEC exhibitor pages",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.sentinel-ams.com/",
+        "websiteDomain": "sentinel-ams.com",
+        "stableSlug": "sentinel-advanced-military-solutions",
+        "legalName": null,
+        "aliases": ["Sentinel AMS"]
+      },
+      "followUpQuestions": [
+        "Confirm whether Sentinel Advanced Military Solutions is a distinct incorporated legal entity or an operating brand within CMP Advanced Mechanical Solutions.",
+        "Resolve StarForge DTIN, ForgeX, ForgeExtreme, LARS, and other CANSEC product names to durable company or government pages before adding those more-specific records.",
+        "Confirm public deployment, contract, specification, and maturity details as Sentinel publishes durable technical or program evidence."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 96,
+      "completenessScore": 86,
+      "reviewWarnings": [
+        "Sentinel's official policies identify CMP as the site operator, but no separate Sentinel legal name was found; legalName remains null.",
+        "Specific CANSEC names such as StarForge DTIN, ForgeX, ForgeExtreme, and LARS surfaced through LinkedIn discovery and are not promoted as field evidence without durable corroboration.",
+        "The official portfolio does not yet publish customer deployments, contracts, detailed specifications, or readiness levels for the proposed capability families."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.sentinel-ams.com/about",
+          "outcome": "The official company profile and policies resolve the Sentinel operating role, CMP relationship, Quebec jurisdiction, public contact channel, and Canadian corporate context."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.sentinel-ams.com/capabilities",
+          "outcome": "The official capability portfolio resolves five concrete system families and their bounded features and intended operational applications."
+        },
+        {
+          "lane": "conference_directory",
+          "url": "https://online.flippingbook.com/view/167012545/9/",
+          "outcome": "The official CADSI event directory corroborates Sentinel's current Canadian defence-sector activity and 2026 CANSEC exhibitor status."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Sentinel Advanced Military Solutions",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.sentinel-ams.com/",
+      "aliases": ["Sentinel AMS"],
+      "location": {
+        "city": "Châteauguay",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Star Forge Modular Ecosystem",
+      "roleSpecificEvidence": "Sentinel describes itself as a defence-focused systems integration company within the CMP Group of Companies. Its official portfolio identifies the Star Forge deployable ecosystem, point-of-need manufacturing through secure digital stockpiles, modular command and support enclosures, hybrid power systems, and layered UAS and counter-UAS integration. CMP's official site establishes the shared Châteauguay manufacturing campus and its defence-infrastructure production capability. CADSI's CANSEC 2026 media kit independently lists Sentinel as a new exhibitor and explains that exhibitors are Canadian-registered private-sector member companies with active Canadian operations."
+    }
+  ]
+}

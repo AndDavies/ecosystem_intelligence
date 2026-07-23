@@ -8,12 +8,14 @@ import { FlashBanner } from "@/components/ui/flash-banner";
 import { StatusChip } from "@/components/ui/status-chip";
 import { publishApprovedCandidates } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseDemandSignalCandidate, parseReviewableOrganizationCandidate, type ReviewableDemandSignalCandidate } from "@/lib/atlas/candidate-schema";
+import { parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, type ReviewableDemandSignalCandidate, type ReviewableRefreshCandidate } from "@/lib/atlas/candidate-schema";
+import { researchCandidateContractIssues } from "@/lib/research/deployment-contract";
 import { createClient } from "@/lib/supabase/server";
 
 type ApprovedRow = {
   id: string;
   candidate_kind: string;
+  schema_version: string | null;
   proposed_record: unknown;
   duplicate_check: unknown;
   confidence: string;
@@ -24,7 +26,8 @@ type ApprovedRow = {
 type ParsedOrganizationCandidate = NonNullable<ReturnType<typeof parseReviewableOrganizationCandidate>>;
 type PublishableRow =
   | { candidate: ApprovedRow; kind: "organization"; parsed: ParsedOrganizationCandidate }
-  | { candidate: ApprovedRow; kind: "demand"; parsed: ReviewableDemandSignalCandidate };
+  | { candidate: ApprovedRow; kind: "demand"; parsed: ReviewableDemandSignalCandidate }
+  | { candidate: ApprovedRow; kind: "refresh"; parsed: ReviewableRefreshCandidate };
 
 const errorMessages: Record<string, string> = {
   selection: "No approved records were available to publish. Refresh the checkpoint and try again.",
@@ -33,15 +36,38 @@ const errorMessages: Record<string, string> = {
 
 function parsePublishableRows(data: unknown[] | null): PublishableRow[] {
   return ((data ?? []) as ApprovedRow[]).flatMap((candidate): PublishableRow[] => {
-    const organization = parseReviewableOrganizationCandidate(candidate.proposed_record);
-    if (organization) return [{ candidate, kind: "organization", parsed: organization }];
-    const demand = parseDemandSignalCandidate(candidate.proposed_record);
-    if (demand.success) return [{ candidate, kind: "demand", parsed: demand.data }];
+    if (researchCandidateContractIssues([{ candidate_kind: candidate.candidate_kind, schema_version: candidate.schema_version }]).length) return [];
+    if (candidate.candidate_kind === "organization_bundle") {
+      const organization = parseReviewableOrganizationCandidate(candidate.proposed_record);
+      if (organization) return [{ candidate, kind: "organization", parsed: organization }];
+    }
+    if (candidate.candidate_kind === "demand_signal_bundle") {
+      const demand = parseDemandSignalCandidate(candidate.proposed_record);
+      if (demand.success) return [{ candidate, kind: "demand", parsed: demand.data }];
+    }
+    if (candidate.candidate_kind === "organization_refresh_bundle") {
+      const organizationRefresh = parseOrganizationRefreshCandidate(candidate.proposed_record);
+      if (organizationRefresh.success) return [{ candidate, kind: "refresh", parsed: organizationRefresh.data }];
+    }
+    if (candidate.candidate_kind === "demand_refresh_bundle") {
+      const demandRefresh = parseDemandRefreshCandidate(candidate.proposed_record);
+      if (demandRefresh.success) return [{ candidate, kind: "refresh", parsed: demandRefresh.data }];
+    }
     return [];
   });
 }
 
 function publicationDisplay(row: PublishableRow) {
+  if (row.kind === "refresh") {
+    return {
+      typeLabel: row.parsed.candidateKind === "organization_refresh_bundle" ? "Organization refresh" : "Demand refresh",
+      name: row.parsed.targetMatch.slug.replaceAll("-", " "),
+      description: row.parsed.reviewerRationale,
+      detail: `${row.parsed.operations.length} reviewed ${row.parsed.operations.length === 1 ? "operation" : "operations"} · ${row.parsed.sourceChannels.join(" · ")}`,
+      sourceUrl: row.parsed.sources[0]?.url,
+      publicHref: row.parsed.candidateKind === "organization_refresh_bundle" ? `/organizations/${row.parsed.targetMatch.slug}` : `/demand/${row.parsed.targetMatch.slug}`
+    };
+  }
   if (row.kind === "demand") {
     return {
       typeLabel: "Demand signal",
@@ -83,16 +109,16 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
   const [{ data }, { data: publishedData }] = await Promise.all([
     database
       .from("candidate_changes")
-      .select("id, candidate_kind, proposed_record, duplicate_check, confidence, updated_at")
+      .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, confidence, updated_at")
       .eq("status", "approved")
-      .in("candidate_kind", ["organization_bundle", "demand_signal_bundle"])
+      .in("candidate_kind", ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"])
       .order("updated_at")
       .limit(50),
     database
       .from("candidate_changes")
-      .select("id, candidate_kind, proposed_record, duplicate_check, confidence, updated_at, published_at")
+      .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, confidence, updated_at, published_at")
       .eq("status", "published")
-      .in("candidate_kind", ["organization_bundle", "demand_signal_bundle"])
+      .in("candidate_kind", ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"])
       .order("published_at", { ascending: false })
       .limit(12)
   ]);
@@ -100,6 +126,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
   const recentPublications = parsePublishableRows(publishedData);
   const organizationCount = rows.filter((row) => row.kind === "organization").length;
   const demandCount = rows.filter((row) => row.kind === "demand").length;
+  const refreshCount = rows.filter((row) => row.kind === "refresh").length;
 
   return (
     <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Publication checkpoint" description="Review the approved list, then publish it with one explicit action. Publication runs as one transaction and stops entirely if any record fails validation." backHref="/admin" backLabel="Atlas operations">
@@ -110,7 +137,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
         <form action={publishApprovedCandidates}>
           <div className="mb-4 flex items-start gap-3 rounded-lg border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-4 text-sm leading-6 text-[var(--admin-warning)]">
             <AlertTriangle className="mt-0.5 size-5 shrink-0" />
-            <p><strong>{rows.length} approved {rows.length === 1 ? "record is" : "records are"} ready: {organizationCount} {organizationCount === 1 ? "organization" : "organizations"} and {demandCount} demand {demandCount === 1 ? "signal" : "signals"}.</strong> Publishing creates the reviewed public records with their sources, evidence, and citations. It does not send messages or introductions.</p>
+            <p><strong>{rows.length} approved {rows.length === 1 ? "record is" : "records are"} ready: {organizationCount} new {organizationCount === 1 ? "organization" : "organizations"}, {demandCount} new demand {demandCount === 1 ? "signal" : "signals"}, and {refreshCount} {refreshCount === 1 ? "refresh" : "refreshes"}.</strong> Publishing creates or updates only the reviewed records with their sources, evidence, and citations. It does not send messages or introductions.</p>
           </div>
           <div className="space-y-3">
             {rows.map(({ candidate, kind, parsed }) => {
@@ -149,7 +176,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
           <div className="grid gap-3 md:grid-cols-2">
             {recentPublications.map((row) => {
               const display = publicationDisplay(row);
-              return <div key={row.candidate.id} className="rounded-lg border border-[var(--admin-border)] bg-white p-4"><div className="flex items-start justify-between gap-3"><div><span className={`inline-flex rounded px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] ${row.kind === "demand" ? "bg-[var(--admin-signal-soft)] text-[var(--admin-signal)]" : "bg-[var(--admin-signal-soft)] text-[var(--admin-signal)]"}`}>{display.typeLabel}</span><h3 className="mt-3 text-sm font-bold text-[var(--admin-ink)]">{display.name}</h3><p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{display.detail}</p></div><CheckCircle2 className="size-5 shrink-0 text-[var(--admin-success)]" /></div><Link href={display.publicHref} target="_blank" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--admin-action)]">View live {row.kind === "demand" ? "demand signal" : "organization"} <ExternalLink className="size-3" /></Link></div>;
+              return <div key={row.candidate.id} className="rounded-lg border border-[var(--admin-border)] bg-white p-4"><div className="flex items-start justify-between gap-3"><div><span className={`inline-flex rounded px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] ${row.kind === "demand" ? "bg-[var(--admin-signal-soft)] text-[var(--admin-signal)]" : "bg-[var(--admin-signal-soft)] text-[var(--admin-signal)]"}`}>{display.typeLabel}</span><h3 className="mt-3 text-sm font-bold text-[var(--admin-ink)]">{display.name}</h3><p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{display.detail}</p></div><CheckCircle2 className="size-5 shrink-0 text-[var(--admin-success)]" /></div><Link href={display.publicHref} target="_blank" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--admin-action)]">View live {row.kind === "demand" ? "demand signal" : row.kind === "refresh" ? "updated record" : "organization"} <ExternalLink className="size-3" /></Link></div>;
             })}
           </div>
         </section>

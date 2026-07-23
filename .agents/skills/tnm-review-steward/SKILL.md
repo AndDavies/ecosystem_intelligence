@@ -12,7 +12,7 @@ Protect the review and publication boundary with deterministic checks.
 ## Workflow
 
 1. Run `pnpm research:validate -- <run-path> <prospect-path> <lead-path> <candidate-path>` for discovery batches. Deep dossiers may omit the prospect argument only when the run manifest does not require it.
-2. Resolve every schema, taxonomy, evidence, date, URL, and duplicate error. Do not waive errors. Confirm each qualified lead proceeded automatically or has an explicit candidate-level deferral reason; a missing human source-lead approval is never an error.
+2. Resolve every schema, taxonomy, evidence, date, URL, and duplicate error. For refresh candidates also validate target UUID/slug, live baseline `updated_at`, complete `beforeRecord`, operation safety, canonical evidence, and source-channel provenance. Do not waive errors. Confirm each qualified lead proceeded automatically or has an explicit candidate-level deferral reason; a missing human source-lead approval is never an error.
 3. Confirm the run counters and output paths match the artifacts.
 4. Run:
 
@@ -20,9 +20,11 @@ Protect the review and publication boundary with deterministic checks.
 pnpm research:smoke -- --run <run-path> --prospects <prospect-path> --leads <lead-path> --candidates <candidate-path>
 ```
 
-If the local service-role credential is unavailable, rerun the same command with `--file-only`, then use the Supabase connector only to call `public.stage_research_candidates_for_review` with that validated staging export. Do not substitute direct table writes.
+The smoke command verifies that the deployed `/api/system/research-contract` supports every candidate kind and schema before calling the guarded intake RPC.
 
-5. Confirm the command reports the target candidate count in Admin Review. A discovery batch targets 10 and requires at least eight unless its manifest proves exhaustion; a deep dossier requires its 1-5 named candidates. Verify review tier, warnings, scores, candidate kind, and generated rationale on every row. Confirm candidates are enriched to the depth supported by official sources rather than merely schema-minimal.
+If the local service-role credential is unavailable, rerun the same command with `--file-only`. Before using the Supabase connector, open the deployed contract endpoint and verify its contract version plus every candidate kind and schema in the export. Only then call `public.stage_research_candidates_for_review` with that validated staging export. Do not substitute direct table writes or bypass an incompatible application contract.
+
+5. Confirm the command reports the target candidate count in Admin Review. A discovery batch targets 10 and requires at least eight unless its manifest proves exhaustion; a deep dossier requires its 1-5 named candidates. Verify review tier, warnings, scores, candidate kind, and generated rationale on every row. Refresh cards must show the target/live-profile links, new-versus-refresh status, before/after operations, source channels, evidence, warnings, target confidence, and rationale. Confirm candidates are enriched to the depth supported by official sources rather than merely schema-minimal.
 6. Run the current project release contract:
 
 ```bash
@@ -47,6 +49,7 @@ The release contract validates typed v2 artifacts and live production coverage. 
 - candidate or lead ceiling exceeded
 - discovery batch below target without specific exhaustion evidence
 - candidate approval, publication, or canonical-table mutation requested
+- deployed application contract missing or incompatible with the candidate kind or schema
 
 ## Reviewer warnings, not hard stops
 

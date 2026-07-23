@@ -31,7 +31,8 @@
           { "$ref": "#/$defs/organizationLead" },
           { "$ref": "#/$defs/demandLead" },
           { "$ref": "#/$defs/programLead" },
-          { "$ref": "#/$defs/relationshipLead" }
+          { "$ref": "#/$defs/relationshipLead" },
+          { "$ref": "#/$defs/recordRefreshLead" }
         ]
       }
     }
@@ -116,6 +117,7 @@
     },
     "demandLead": { "allOf": [{ "$ref": "#/$defs/common" }, { "type": "object", "required": ["leadType", "title", "issuerNames", "demandSourceKind", "commitmentLevel", "candidateRequirements"], "properties": { "leadType": { "const": "demand_signal_lead" }, "title": { "type": "string", "minLength": 8 }, "issuerNames": { "type": "array", "minItems": 1, "items": { "type": "string" } }, "demandSourceKind": { "$ref": "#/$defs/demandSourceKind" }, "commitmentLevel": { "enum": ["directional", "programmatic", "procurement"] }, "candidateRequirements": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 30 } } } }] },
     "programLead": { "allOf": [{ "$ref": "#/$defs/common" }, { "type": "object", "required": ["leadType", "programName", "operatorName", "programType", "dates", "participationEvidence"], "properties": { "leadType": { "const": "program_lead" }, "programName": { "type": "string" }, "operatorName": { "type": "string" }, "programType": { "type": "string" }, "dates": { "type": "object", "required": ["startsOn", "endsOn"], "properties": { "startsOn": { "type": ["string", "null"], "format": "date" }, "endsOn": { "type": ["string", "null"], "format": "date" } } }, "participationEvidence": { "type": "string", "minLength": 40 } } }] },
-    "relationshipLead": { "allOf": [{ "$ref": "#/$defs/common" }, { "type": "object", "required": ["leadType", "subjectName", "objectName", "relationshipType", "publicSummary"], "properties": { "leadType": { "const": "relationship_lead" }, "subjectName": { "type": "string" }, "objectName": { "type": "string" }, "relationshipType": { "type": "string" }, "publicSummary": { "type": "string", "minLength": 40 } } }] }
+    "relationshipLead": { "allOf": [{ "$ref": "#/$defs/common" }, { "type": "object", "required": ["leadType", "subjectName", "objectName", "relationshipType", "publicSummary"], "properties": { "leadType": { "const": "relationship_lead" }, "subjectName": { "type": "string" }, "objectName": { "type": "string" }, "relationshipType": { "type": "string" }, "publicSummary": { "type": "string", "minLength": 40 } } }] },
+    "recordRefreshLead": { "allOf": [{ "$ref": "#/$defs/common" }, { "type": "object", "required": ["leadType", "targetMatch", "signalIds", "refreshSummary", "intendedChanges"], "properties": { "leadType": { "const": "record_refresh_lead" }, "targetMatch": { "type": "object", "required": ["entityType", "entityId", "slug", "matchMethods", "confidence", "baselineUpdatedAt"] }, "signalIds": { "type": "array", "minItems": 1 }, "refreshSummary": { "type": "string", "minLength": 40 }, "intendedChanges": { "type": "array", "minItems": 1 } } }] }
   }
 }

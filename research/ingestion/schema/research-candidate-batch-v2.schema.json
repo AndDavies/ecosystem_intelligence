@@ -20,7 +20,7 @@
       "type": "array",
       "minItems": 1,
       "maxItems": 10,
-      "items": { "oneOf": [{ "$ref": "#/$defs/organizationBundle" }, { "$ref": "#/$defs/demandBundle" }, { "$ref": "#/$defs/programRelationshipBundle" }] }
+      "items": { "oneOf": [{ "$ref": "#/$defs/organizationBundle" }, { "$ref": "#/$defs/demandBundle" }, { "$ref": "#/$defs/programRelationshipBundle" }, { "$ref": "#/$defs/organizationRefreshBundle" }, { "$ref": "#/$defs/demandRefreshBundle" }] }
     },
     "deferred": { "type": "array", "items": { "type": "object", "required": ["leadId", "reason", "followUp"] } }
   },
@@ -90,6 +90,22 @@
         { "$ref": "#/$defs/candidateCommon" },
         { "type": "object", "required": ["schemaVersion", "candidateKind", "operatorOrganizationSlug", "program", "participations"], "properties": { "schemaVersion": { "const": "program_relationship_bundle_v1" }, "candidateKind": { "const": "program_relationship_bundle" }, "operatorOrganizationSlug": { "$ref": "#/$defs/slug" }, "program": { "type": "object" }, "participations": { "type": "array", "minItems": 1 } } }
       ]
+    },
+    "targetMatch": {
+      "type": "object",
+      "required": ["entityType", "entityId", "slug", "matchMethods", "confidence", "baselineUpdatedAt"],
+      "properties": { "entityType": { "enum": ["organization", "capability", "demand_source", "demand_requirement"] }, "entityId": { "type": "string", "format": "uuid" }, "slug": { "$ref": "#/$defs/slug" }, "matchMethods": { "type": "array", "minItems": 1 }, "confidence": { "enum": ["high", "moderate"] }, "baselineUpdatedAt": { "type": "string", "format": "date-time" } }
+    },
+    "refreshOperation": {
+      "type": "object",
+      "required": ["operationId", "operation", "entityType", "evidenceIds", "reviewerExplanation"],
+      "properties": { "operationId": { "$ref": "#/$defs/slug" }, "operation": { "enum": ["set_field", "add_child", "update_child"] }, "entityType": { "enum": ["organization", "capability", "program", "relationship", "demand_source", "demand_requirement"] }, "evidenceIds": { "type": "array", "minItems": 1 }, "reviewerExplanation": { "type": "string", "minLength": 30 } }
+    },
+    "organizationRefreshBundle": {
+      "allOf": [{ "$ref": "#/$defs/candidateCommon" }, { "type": "object", "required": ["schemaVersion", "candidateKind", "targetMatch", "beforeRecord", "operations", "sourceChannels", "signalIds", "corroboration"], "properties": { "schemaVersion": { "const": "organization_refresh_bundle_v1" }, "candidateKind": { "const": "organization_refresh_bundle" }, "targetMatch": { "$ref": "#/$defs/targetMatch" }, "beforeRecord": { "type": "object" }, "operations": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/refreshOperation" } }, "sourceChannels": { "type": "array", "minItems": 1 }, "signalIds": { "type": "array", "minItems": 1 }, "corroboration": { "type": "array" } } }]
+    },
+    "demandRefreshBundle": {
+      "allOf": [{ "$ref": "#/$defs/candidateCommon" }, { "type": "object", "required": ["schemaVersion", "candidateKind", "targetMatch", "beforeRecord", "operations", "sourceChannels", "signalIds", "corroboration"], "properties": { "schemaVersion": { "const": "demand_refresh_bundle_v1" }, "candidateKind": { "const": "demand_refresh_bundle" }, "targetMatch": { "$ref": "#/$defs/targetMatch" }, "beforeRecord": { "type": "object" }, "operations": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/refreshOperation" } }, "sourceChannels": { "type": "array", "minItems": 1 }, "signalIds": { "type": "array", "minItems": 1 }, "corroboration": { "type": "array" } } }]
     }
   }
 }

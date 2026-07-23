@@ -511,7 +511,7 @@ describe("public atlas database foundation", () => {
   });
 
   it("stages a completed research result directly into Review and publishes typed organizations only after approval", async () => {
-    const staging = JSON.parse(await readFile(path.resolve("../research/ingestion/staging/tnm-balanced-bootstrap-2026-07-18.json"))) as {
+    const staging = JSON.parse(await readFile(path.resolve("../research/ingestion/staging/tnm-balanced-bootstrap-2026-07-18.json"), "utf8")) as {
       researchRun: Record<string, unknown>;
       candidateChanges: Array<Record<string, unknown>>;
     };
@@ -772,5 +772,120 @@ describe("public atlas database foundation", () => {
         (select count(*)::int from public.candidate_changes where client_candidate_id = 'candidate-canadian-army-contested-logistics' and status = 'published') as published_candidates
     `);
     expect(result.rows[0]).toEqual({ sources: 1, requirements: 1, issuers: 1, citations: 1, published_candidates: 1 });
+  });
+
+  it("stages, publishes, and retries an additive organization refresh safely", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    const target = await db.query<{ id: string; slug: string; updated_at: string }>("select id, slug, updated_at::text from public.organizations where slug = 'kraken-robotics'");
+    const organization = target.rows[0];
+    const reviewerRationale = "Add a newly documented product capability to the existing Kraken Robotics profile using a durable official product source. Review the additive fields, target baseline, evidence, and taxonomy before publication.";
+    const source = { id: "refresh-product-source", title: "Official refresh product technology page", url: "https://www.krakenrobotics.com/products/refresh-test-system", publisher: "Kraken Robotics", sourceKind: "official_company_product", publishedAt: null, accessedAt: "2026-07-23T12:00:00.000Z", locator: "Product overview", summary: "The official page describes a new test capability for validating the reviewed refresh publication path." };
+    const evidence = { id: "refresh-product-evidence", sourceId: source.id, fieldPath: "operations.add-refresh-test.value.summary", claimClass: "source_backed", excerpt: "The official page describes the refresh test system as a concrete maritime sensing capability for defence users.", confidence: "moderate" };
+    const proposedRecord = {
+      schemaVersion: "organization_refresh_bundle_v1", candidateKind: "organization_refresh_bundle", candidateId: "candidate-kraken-refresh-test",
+      sourceLeadIds: ["lead-kraken-refresh-test"], confidence: "moderate", reviewStatus: "candidate_pending", reviewerRationale,
+      duplicateCheck: { status: "clear", checkedAt: "2026-07-23T12:00:00.000Z", methods: ["canonical_url", "website_domain", "slug"], matches: [], note: "The intended target is Kraken Robotics and no other entity conflicts with this additive capability." },
+      sources: [source], fieldEvidence: [evidence],
+      targetMatch: { entityType: "organization", entityId: organization.id, slug: organization.slug, matchMethods: ["slug"], confidence: "high", baselineUpdatedAt: organization.updated_at },
+      beforeRecord: { organization: { id: organization.id, slug: organization.slug, updated_at: organization.updated_at }, capabilities: [] },
+      operations: [{ operationId: "add-refresh-test", operation: "add_child", entityType: "capability", parentId: organization.id, value: { slug: "kraken-refresh-test-system", name: "Refresh Test System", summary: "A test-only maritime sensing capability used to validate additive reviewed refresh publication.", capabilityType: "maritime sensing system", features: ["Synthetic aperture sensing"], applications: ["Maritime situational awareness"], technicalTags: ["maritime sensing"], technicalDomainSlugs: ["sensing-and-isr"], missionMatches: [] }, evidenceIds: [evidence.id], reviewerExplanation: "Add the newly supported capability without replacing or deleting the organization's existing technologies." }],
+      sourceChannels: ["official_company"], signalIds: ["signal-kraken-refresh-test"], corroboration: []
+    };
+    const run = { client_run_id: "tnm-refresh-test-2026-07-23", run_type: "manual", scope: { workflow: "signal_refresh" }, selected_gap: { dimension: "record-refresh" }, started_at: "2026-07-23T12:00:00.000Z", completed_at: "2026-07-23T12:10:00.000Z", agent_version: "test", source_queries: [], counters: {}, validation_results: { passed: true }, stop_reason: "fixture complete" };
+    const change = { client_candidate_id: proposedRecord.candidateId, candidate_kind: proposedRecord.candidateKind, schema_version: proposedRecord.schemaVersion, source_lead_ids: proposedRecord.sourceLeadIds, target_entity_type: "organization", target_entity_id: organization.id, proposed_record: proposedRecord, before_record: proposedRecord.beforeRecord, field_evidence: proposedRecord.fieldEvidence, duplicate_check: proposedRecord.duplicateCheck, confidence: proposedRecord.confidence, status: "pending", staged_at: "2026-07-23T12:10:00.000Z" };
+
+    const staged = await db.query<{ staged_count: number; skipped_count: number }>("select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)", [JSON.stringify(run), JSON.stringify([change])]);
+    expect(staged.rows[0]).toEqual({ staged_count: 1, skipped_count: 0 });
+    const reviewQueueBefore = await db.query<{ count: number }>("select count(*)::int count from public.candidate_changes where client_candidate_id = 'candidate-kraken-refresh-test' and status = 'pending'");
+    expect(reviewQueueBefore.rows[0].count).toBe(1);
+    await db.exec(`
+      insert into auth.users (id) values ('${administratorId}') on conflict (id) do nothing;
+      insert into public.review_decisions (candidate_change_id, reviewer_id, decision, field_decisions, rationale)
+      select id, '${administratorId}'::uuid, 'accept', '[]'::jsonb, 'Reviewed the target identity, additive capability, durable official source, evidence mapping, duplicate check, and publication caveats.'
+      from public.candidate_changes where client_candidate_id = 'candidate-kraken-refresh-test';
+      update public.candidate_changes set status = 'approved' where client_candidate_id = 'candidate-kraken-refresh-test';
+    `);
+    const checkpoints = await db.query<{ pending: number; approved: number; decisions: number }>(`
+      select
+        (select count(*)::int from public.candidate_changes where client_candidate_id = 'candidate-kraken-refresh-test' and status = 'pending') pending,
+        (select count(*)::int from public.candidate_changes where client_candidate_id = 'candidate-kraken-refresh-test' and status = 'approved') approved,
+        (select count(*)::int from public.review_decisions decision join public.candidate_changes candidate on candidate.id = decision.candidate_change_id where candidate.client_candidate_id = 'candidate-kraken-refresh-test' and decision.decision = 'accept') decisions
+    `);
+    expect(checkpoints.rows[0]).toEqual({ pending: 0, approved: 1, decisions: 1 });
+    const published = await db.query<{ entity_type: string; entity_slug: string }>(`select entity_type, entity_slug from public.publish_reviewed_research_candidates(array(select id from public.candidate_changes where client_candidate_id = 'candidate-kraken-refresh-test'), '${administratorId}'::uuid)`);
+    expect(published.rows[0]).toEqual({ entity_type: "organization", entity_slug: "kraken-robotics" });
+    const result = await db.query<{ capabilities: number; citations: number; sources: number; published_candidates: number }>(`select (select count(*)::int from public.capabilities where slug = 'kraken-refresh-test-system') capabilities, (select count(*)::int from public.field_citations citation join public.capabilities capability on capability.id = citation.entity_id where capability.slug = 'kraken-refresh-test-system') citations, (select count(*)::int from public.sources where canonical_url = 'https://www.krakenrobotics.com/products/refresh-test-system') sources, (select count(*)::int from public.candidate_changes where client_candidate_id = 'candidate-kraken-refresh-test' and status = 'published') published_candidates`);
+    expect(result.rows[0]).toEqual({ capabilities: 1, citations: 1, sources: 1, published_candidates: 1 });
+    const retry = await db.query<{ staged_count: number; skipped_count: number }>("select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)", [JSON.stringify(run), JSON.stringify([change])]);
+    expect(retry.rows[0]).toEqual({ staged_count: 0, skipped_count: 1 });
+
+    const refreshedTarget = await db.query<{ id: string; updated_at: string }>("select id, updated_at::text from public.organizations where id = $1", [organization.id]);
+    const existingCapability = await db.query<{ id: string; slug: string; name: string; summary: string }>("select id, slug, name, summary from public.capabilities where slug = 'kraken-refresh-test-system'");
+    const capabilityBefore = existingCapability.rows[0];
+    const updateRecord = JSON.parse(JSON.stringify(proposedRecord));
+    updateRecord.candidateId = "candidate-kraken-update-refresh-test";
+    updateRecord.sourceLeadIds = ["lead-kraken-update-refresh-test"];
+    updateRecord.targetMatch.baselineUpdatedAt = refreshedTarget.rows[0].updated_at;
+    updateRecord.beforeRecord = { organization: { id: organization.id, slug: organization.slug, updated_at: refreshedTarget.rows[0].updated_at }, capabilities: [capabilityBefore] };
+    updateRecord.sources[0].id = "update-refresh-source";
+    updateRecord.sources[0].url = "https://www.krakenrobotics.com/products/refresh-test-system-update";
+    updateRecord.fieldEvidence[0].id = "update-refresh-evidence";
+    updateRecord.fieldEvidence[0].sourceId = "update-refresh-source";
+    updateRecord.operations = [{ operationId: "update-refresh-test", operation: "update_child", entityType: "capability", targetId: capabilityBefore.id, before: capabilityBefore, after: { name: capabilityBefore.name, summary: "An updated test-only maritime sensing capability that preserves its canonical identity while adding reviewed details.", capabilityType: "maritime sensing system", features: ["Synthetic aperture sensing", "Reviewed stable-identity update"], applications: ["Maritime situational awareness"], technicalTags: ["maritime sensing"] }, evidenceIds: ["update-refresh-evidence"], reviewerExplanation: "Update the existing capability fields while preserving its stable database identifier and public slug." }];
+    updateRecord.signalIds = ["signal-kraken-update-refresh-test"];
+    const updateChange = { ...change, client_candidate_id: updateRecord.candidateId, source_lead_ids: updateRecord.sourceLeadIds, proposed_record: updateRecord, before_record: updateRecord.beforeRecord, field_evidence: updateRecord.fieldEvidence };
+    const updateRun = { ...run, client_run_id: "tnm-update-refresh-test-2026-07-23" };
+    await db.query("select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)", [JSON.stringify(updateRun), JSON.stringify([updateChange])]);
+    await db.exec("update public.candidate_changes set status = 'approved' where client_candidate_id = 'candidate-kraken-update-refresh-test'");
+    await db.query(`select * from public.publish_reviewed_research_candidates(array(select id from public.candidate_changes where client_candidate_id = 'candidate-kraken-update-refresh-test'), '${administratorId}'::uuid)`);
+    const capabilityAfter = await db.query<{ id: string; slug: string; summary: string }>("select id, slug, summary from public.capabilities where id = $1", [capabilityBefore.id]);
+    expect(capabilityAfter.rows[0]).toEqual({ id: capabilityBefore.id, slug: capabilityBefore.slug, summary: "An updated test-only maritime sensing capability that preserves its canonical identity while adding reviewed details." });
+
+    const staleRecord = structuredClone(proposedRecord);
+    staleRecord.candidateId = "candidate-kraken-stale-refresh-test";
+    staleRecord.sourceLeadIds = ["lead-kraken-stale-refresh-test"];
+    staleRecord.sources[0].id = "stale-refresh-source";
+    staleRecord.sources[0].url = "https://www.krakenrobotics.com/products/stale-refresh-test-system";
+    staleRecord.fieldEvidence[0].id = "stale-refresh-evidence";
+    staleRecord.fieldEvidence[0].sourceId = "stale-refresh-source";
+    staleRecord.operations[0].operationId = "add-stale-refresh-test";
+    staleRecord.operations[0].value.slug = "kraken-stale-refresh-test-system";
+    staleRecord.operations[0].evidenceIds = ["stale-refresh-evidence"];
+    const staleChange = { ...change, client_candidate_id: staleRecord.candidateId, source_lead_ids: staleRecord.sourceLeadIds, proposed_record: staleRecord, field_evidence: staleRecord.fieldEvidence };
+    const staleRun = { ...run, client_run_id: "tnm-stale-refresh-test-2026-07-23" };
+    await db.query("select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)", [JSON.stringify(staleRun), JSON.stringify([staleChange])]);
+    await db.exec("update public.candidate_changes set status = 'approved' where client_candidate_id = 'candidate-kraken-stale-refresh-test'");
+    await expect(db.query(`select * from public.publish_reviewed_research_candidates(array(select id from public.candidate_changes where client_candidate_id = 'candidate-kraken-stale-refresh-test'), '${administratorId}'::uuid)`)).rejects.toThrow(/stale baseline/i);
+    const staleResult = await db.query<{ capabilities: number }>("select count(*)::int capabilities from public.capabilities where slug = 'kraken-stale-refresh-test-system'");
+    expect(staleResult.rows[0].capabilities).toBe(0);
+  });
+
+  it("adds a reviewed requirement to an existing demand source through the refresh path", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    const target = await db.query<{ id: string; slug: string; updated_at: string }>("select id, slug, updated_at::text from public.demand_sources where slug = 'canadian-army-contested-logistics-test-2026'");
+    const demand = target.rows[0];
+    const source = { id: "demand-refresh-source", title: "Official contested logistics requirement update", url: "https://www.canada.ca/en/department-national-defence/programs/contested-logistics-refresh-test.html", publisher: "Department of National Defence", sourceKind: "official_policy", publishedAt: "2026-07-23T00:00:00.000Z", accessedAt: "2026-07-23T13:00:00.000Z", locator: "Updated requirement section", summary: "The official update adds an explicit requirement for distributed autonomous resupply in degraded operating environments." };
+    const evidence = { id: "demand-refresh-evidence", sourceId: source.id, fieldPath: "operations.add-autonomous-resupply.value", claimClass: "source_backed", excerpt: "The public requirement calls for distributed autonomous resupply that can continue operating when communications and transport routes are degraded.", confidence: "high" };
+    const proposedRecord = {
+      schemaVersion: "demand_refresh_bundle_v1", candidateKind: "demand_refresh_bundle", candidateId: "candidate-contested-logistics-demand-refresh-test",
+      sourceLeadIds: ["lead-contested-logistics-demand-refresh-test"], confidence: "high", reviewStatus: "candidate_pending",
+      reviewerRationale: "Add a newly published, source-backed requirement to the existing contested logistics demand record while preserving its stable identity and all previously reviewed requirements and evidence.",
+      duplicateCheck: { status: "clear", checkedAt: "2026-07-23T13:00:00.000Z", methods: ["canonical_url", "slug", "fuzzy_name"], matches: [], note: "The requirement slug is new and the intended demand source is an exact live target." },
+      sources: [source], fieldEvidence: [evidence],
+      targetMatch: { entityType: "demand_source", entityId: demand.id, slug: demand.slug, matchMethods: ["slug"], confidence: "high", baselineUpdatedAt: demand.updated_at },
+      beforeRecord: { demandSource: { id: demand.id, slug: demand.slug, updated_at: demand.updated_at } },
+      operations: [{ operationId: "add-autonomous-resupply-requirement", operation: "add_child", entityType: "demand_requirement", parentId: demand.id, value: { slug: "distributed-autonomous-resupply-refresh-test", title: "Distributed autonomous resupply in degraded environments", problemStatement: "Land formations need resilient ways to distribute supplies when transport routes, communications and conventional logistics nodes are degraded or contested.", desiredEndState: "Forces can sustain dispersed operations with autonomous resupply options that reduce exposure and continue functioning through intermittent connectivity.", publicCaveat: "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.", displayOrder: 3 }, evidenceIds: [evidence.id], reviewerExplanation: "Append the new public requirement without deleting or rewriting any previously reviewed demand content." }],
+      sourceChannels: ["government_procurement"], signalIds: ["signal-autonomous-resupply-refresh-test"], corroboration: []
+    };
+    const run = { client_run_id: "tnm-demand-refresh-test-2026-07-23", run_type: "targeted", scope: { workflow: "signal_refresh" }, selected_gap: { dimension: "demand-refresh" }, started_at: "2026-07-23T13:00:00.000Z", completed_at: "2026-07-23T13:10:00.000Z", agent_version: "test", source_queries: [], counters: {}, validation_results: { passed: true }, stop_reason: "fixture complete" };
+    const change = { client_candidate_id: proposedRecord.candidateId, candidate_kind: proposedRecord.candidateKind, schema_version: proposedRecord.schemaVersion, source_lead_ids: proposedRecord.sourceLeadIds, target_entity_type: "demand_source", target_entity_id: demand.id, proposed_record: proposedRecord, before_record: proposedRecord.beforeRecord, field_evidence: proposedRecord.fieldEvidence, duplicate_check: proposedRecord.duplicateCheck, confidence: proposedRecord.confidence, status: "pending", staged_at: "2026-07-23T13:10:00.000Z" };
+
+    const staged = await db.query<{ staged_count: number }>("select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)", [JSON.stringify(run), JSON.stringify([change])]);
+    expect(staged.rows[0].staged_count).toBe(1);
+    await db.exec("update public.candidate_changes set status = 'approved' where client_candidate_id = 'candidate-contested-logistics-demand-refresh-test'");
+    const published = await db.query<{ entity_type: string; entity_slug: string }>(`select entity_type, entity_slug from public.publish_reviewed_research_candidates(array(select id from public.candidate_changes where client_candidate_id = 'candidate-contested-logistics-demand-refresh-test'), '${administratorId}'::uuid)`);
+    expect(published.rows[0]).toEqual({ entity_type: "demand_source", entity_slug: demand.slug });
+    const result = await db.query<{ requirements: number; citations: number }>("select (select count(*)::int from public.demand_requirements where slug = 'distributed-autonomous-resupply-refresh-test') requirements, (select count(*)::int from public.field_citations citation join public.demand_requirements requirement on requirement.id = citation.entity_id where requirement.slug = 'distributed-autonomous-resupply-refresh-test') citations");
+    expect(result.rows[0]).toEqual({ requirements: 1, citations: 1 });
   });
 });
