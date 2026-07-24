@@ -13,6 +13,15 @@ describe("admin publication workflow", () => {
     expect(action).not.toContain("PUBLISH ${parsed.data.candidateIds.length}");
   });
 
+  it("guards normalized alias duplicates before and during publication", async () => {
+    const schema = await readFile(path.resolve("src/lib/research/pipeline-schema.ts"), "utf8");
+    const migration = await readFile(path.resolve("supabase/migrations/20260724112156_harden_candidate_alias_publication.sql"), "utf8");
+
+    expect(schema).toContain("duplicates '${previous}' after normalization");
+    expect(migration).toContain("distinct on (lower(regexp_replace(trim(alias_value)");
+    expect(migration).toContain("on conflict do nothing");
+  });
+
   it("shows candidate types and gives the reviewer direct live-record confirmation", async () => {
     const reviewPage = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
     const publishPage = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");

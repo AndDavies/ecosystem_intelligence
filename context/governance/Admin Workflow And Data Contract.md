@@ -74,3 +74,5 @@ The executable refresh contract also rejects incomplete child records, organizat
 7. Open the public page after publication and verify evidence and relationships.
 
 The production Supabase project remains the sole source of truth. Local fixtures, remembered taxonomy, candidate files, and research-agent output cannot substitute for live database validation or human publication.
+
+Candidate publication also validates organization aliases after the database's normalization rule is applied. Case and punctuation variants are rejected during candidate parsing, while the publication function defensively keeps one deterministic alias per normalized value so an older approved candidate cannot abort an otherwise valid atomic batch.

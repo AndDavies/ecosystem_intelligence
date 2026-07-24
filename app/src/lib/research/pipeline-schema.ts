@@ -407,6 +407,20 @@ export const organizationBundleV2Schema = z.object({
   programs: z.array(programSchema).max(20),
   relationships: z.array(relationshipSchema).max(50)
 }).superRefine((candidate, context) => {
+  const normalizedAliases = new Map<string, string>();
+  candidate.organization.aliases.forEach((alias, index) => {
+    const normalized = alias.trim().toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    const previous = normalizedAliases.get(normalized);
+    if (previous) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: `Alias '${alias}' duplicates '${previous}' after normalization. Keep one canonical alias.`,
+        path: ["organization", "aliases", index]
+      });
+    } else {
+      normalizedAliases.set(normalized, alias);
+    }
+  });
   const kind = candidate.organization.entityKind;
   const requireProfileText = (key: string, message: string) => {
     const value = candidate.organization.profileData[key];

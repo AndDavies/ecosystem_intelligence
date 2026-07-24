@@ -189,6 +189,7 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-24`: Hardened organization-candidate publication against normalized alias collisions. Candidate validation now rejects case and punctuation variants, the live publication function deduplicates defensively, and the Photon etc. pending candidate was repaired to one canonical alias without publishing it.
 - `2026-07-24`: Aligned the private demand-matching workspace with the current review workflow, added demand-specific false-positive safeguards, and made every new or existing pending suggestion open with an editable plain-language explanation of why the derived match may be useful to publish. Human review and individual publication remain mandatory.
 - `2026-07-24`: Replaced JSON-first refresh review with readable publication summaries, structured added-versus-changed field comparisons, evidence excerpts, and an optional technical payload. Strengthened the executable refresh contract so incomplete children, cross-family operations, mismatched parents, and unknown edited taxonomy values fail before acceptance; database regression coverage now verifies stable in-place technology updates and correctly attached program additions.
 - `2026-07-23`: Reconciled the signal-refresh migration filenames with the applied production history, made unknown candidate types fail closed, added visible accepted-to-publish navigation, and introduced a deployed application-contract check that stops research intake before database staging when Review or Publish support is absent.
