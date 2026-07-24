@@ -518,6 +518,41 @@ const refreshOperationSchema = z.discriminatedUnion("operation", [
   })
 ]);
 
+const refreshProgramValueSchema = programSchema.extend({
+  operatorName: z.string().trim().min(2).max(240),
+  participationType: z.string().trim().min(2).max(120)
+});
+
+const refreshDemandRequirementValueSchema = z.object({
+  slug: slugSchema,
+  title: z.string().trim().min(8).max(500),
+  problemStatement: z.string().trim().min(40).max(4000),
+  desiredEndState: z.string().trim().min(40).max(4000),
+  publicCaveat: z.literal(publicDemandCaveat),
+  displayOrder: z.number().int().min(0).max(32767).optional()
+});
+
+function validateRefreshOperationValue(operation: z.infer<typeof refreshOperationSchema>, context: z.RefinementCtx, path: Array<string | number>) {
+  if (operation.operation === "add_child") {
+    const schema = operation.entityType === "capability" ? capabilitySchema
+      : operation.entityType === "program" ? refreshProgramValueSchema
+      : operation.entityType === "relationship" ? relationshipSchema
+      : refreshDemandRequirementValueSchema;
+    if (!schema.safeParse(operation.value).success) context.addIssue({ code: z.ZodIssueCode.custom, message: `The new ${operation.entityType.replaceAll("_", " ")} does not satisfy its publication contract.`, path: [...path, "value"] });
+  }
+  if (operation.operation === "update_child" && operation.entityType === "capability") {
+    const after = operation.after;
+    const valid = z.object({
+      name: z.string().trim().min(2).max(240), summary: z.string().trim().min(40).max(4000), capabilityType: z.string().trim().min(3).max(240),
+      features: z.array(z.string().trim().min(2).max(500)).min(1), applications: z.array(z.string().trim().min(2).max(500)).min(1), technicalTags: z.array(z.string().trim().min(2).max(120)).min(1)
+    }).safeParse(after).success;
+    if (!valid) context.addIssue({ code: z.ZodIssueCode.custom, message: "The updated capability does not satisfy its publication contract.", path: [...path, "after"] });
+  }
+  if (operation.operation === "update_child" && operation.entityType === "demand_requirement" && !refreshDemandRequirementValueSchema.omit({ slug: true, displayOrder: true }).safeParse(operation.after).success) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "The updated demand statement does not satisfy its publication contract.", path: [...path, "after"] });
+  }
+}
+
 const refreshCandidateCommon = {
   ...candidateCommon,
   targetMatch: targetMatchSchema,
@@ -536,6 +571,13 @@ export const organizationRefreshBundleV1Schema = z.object({
   candidateKind: z.literal("organization_refresh_bundle"),
   ...refreshCandidateCommon,
   targetMatch: targetMatchSchema.extend({ entityType: z.literal("organization") })
+}).superRefine((candidate, context) => {
+  candidate.operations.forEach((operation, index) => {
+    validateRefreshOperationValue(operation, context, ["operations", index]);
+    if (operation.entityType === "demand_source" || operation.entityType === "demand_requirement") context.addIssue({ code: z.ZodIssueCode.custom, message: "Organization refreshes cannot contain demand operations.", path: ["operations", index, "entityType"] });
+    if (operation.operation === "add_child" && operation.parentId !== candidate.targetMatch.entityId) context.addIssue({ code: z.ZodIssueCode.custom, message: "The new child must belong to the matched organization.", path: ["operations", index, "parentId"] });
+    if (operation.operation === "set_field" && operation.entityType === "organization" && operation.targetId !== candidate.targetMatch.entityId) context.addIssue({ code: z.ZodIssueCode.custom, message: "The field update must target the matched organization.", path: ["operations", index, "targetId"] });
+  });
 });
 
 export const demandRefreshBundleV1Schema = z.object({
@@ -543,6 +585,13 @@ export const demandRefreshBundleV1Schema = z.object({
   candidateKind: z.literal("demand_refresh_bundle"),
   ...refreshCandidateCommon,
   targetMatch: targetMatchSchema.extend({ entityType: z.literal("demand_source") })
+}).superRefine((candidate, context) => {
+  candidate.operations.forEach((operation, index) => {
+    validateRefreshOperationValue(operation, context, ["operations", index]);
+    if (operation.entityType !== "demand_source" && operation.entityType !== "demand_requirement") context.addIssue({ code: z.ZodIssueCode.custom, message: "Demand refreshes cannot contain organization operations.", path: ["operations", index, "entityType"] });
+    if (operation.operation === "add_child" && operation.parentId !== candidate.targetMatch.entityId) context.addIssue({ code: z.ZodIssueCode.custom, message: "The new demand statement must belong to the matched demand source.", path: ["operations", index, "parentId"] });
+    if (operation.operation === "set_field" && operation.entityType === "demand_source" && operation.targetId !== candidate.targetMatch.entityId) context.addIssue({ code: z.ZodIssueCode.custom, message: "The field update must target the matched demand source.", path: ["operations", index, "targetId"] });
+  });
 });
 
 export const researchSignalBatchV1Schema = z.object({

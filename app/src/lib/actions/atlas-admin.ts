@@ -493,7 +493,15 @@ export async function editTypedResearchCandidate(formData: FormData) {
         && capability.missionMatches.every((match) => missionSlugs.has(match.missionAreaSlug)))
     : parsedRecord.candidateKind === "demand_signal_bundle" ? parsedRecord.requirements.every((requirement) =>
         requirement.technicalDomainSlugs.every((slug) => domainSlugs.has(slug))
-        && requirement.missionAreaSlugs.every((slug) => missionSlugs.has(slug))) : true;
+        && requirement.missionAreaSlugs.every((slug) => missionSlugs.has(slug)))
+      : parsedRecord.candidateKind === "organization_refresh_bundle" ? parsedRecord.operations.every((operation) => {
+          if (operation.operation !== "add_child" || operation.entityType !== "capability") return true;
+          const value = operation.value as { technicalDomainSlugs?: unknown; missionMatches?: unknown };
+          const operationDomains = Array.isArray(value.technicalDomainSlugs) ? value.technicalDomainSlugs : [];
+          const operationMissions = Array.isArray(value.missionMatches) ? value.missionMatches : [];
+          return operationDomains.every((slug) => typeof slug === "string" && domainSlugs.has(slug))
+            && operationMissions.every((match) => Boolean(match && typeof match === "object" && "missionAreaSlug" in match && typeof match.missionAreaSlug === "string" && missionSlugs.has(match.missionAreaSlug)));
+        }) : true;
   if (!taxonomyIsValid) redirect("/admin/review?error=invalid-edit");
 
   let duplicateCheck = parsedRecord.duplicateCheck;

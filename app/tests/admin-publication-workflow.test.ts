@@ -22,9 +22,12 @@ describe("admin publication workflow", () => {
     expect(reviewPage).toContain("Record refreshes");
     expect(reviewPage).toContain("Open target record");
     expect(reviewPage).toContain("Open live profile");
-    expect(reviewPage).toContain('<JsonPanel label="Before"');
-    expect(reviewPage).toContain('<JsonPanel label="After"');
-    expect(reviewPage).toContain("Sources, evidence, warnings, and provenance");
+    expect(reviewPage).toContain("What publication will do");
+    expect(reviewPage).toContain("RefreshOperationReview");
+    expect(reviewPage).toContain("Current");
+    expect(reviewPage).toContain("Proposed");
+    expect(reviewPage).toContain("Review evidence and provenance");
+    expect(reviewPage).toContain("Technical payload");
     expect(publishPage).toContain("Recent publications");
     expect(publishPage).toContain("row.kind === \"refresh\" ? \"updated record\" : \"organization\"");
     expect(publishPage).toContain("no redeploy is required");

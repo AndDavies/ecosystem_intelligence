@@ -71,6 +71,16 @@ describe("multi-source signal refresh", () => {
     expect(candidate?.operations[0].operation).toBe("add_child");
   });
 
+  it("rejects refresh operations that could target the wrong record or publish an incomplete child", () => {
+    const wrongParent = refreshCandidate();
+    wrongParent.operations[0].parentId = "78532d21-8dfc-470f-9526-0f98c4a57631";
+    expect(organizationRefreshBundleV1Schema.safeParse(wrongParent).success).toBe(false);
+
+    const incompleteCapability = refreshCandidate();
+    incompleteCapability.operations[0].value.features = [];
+    expect(organizationRefreshBundleV1Schema.safeParse(incompleteCapability).success).toBe(false);
+  });
+
   it("keeps social and newsletter fixtures as discovery routes, not evidence anchors", async () => {
     const fixtures = JSON.parse(await readFile(path.resolve("tests/fixtures/signal-source-items.json"), "utf8"));
     expect(fixtures.linkedinCompanyPost.disposition).toBe("qualified_after_canonical_resolution");

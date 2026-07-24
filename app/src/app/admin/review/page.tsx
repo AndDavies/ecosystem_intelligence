@@ -410,6 +410,7 @@ function DemandSignalCandidateCard({ candidate, record }: { candidate: Candidate
 function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; record: OrganizationRefreshBundleV1 | DemandRefreshBundleV1 }) {
   const targetHref = record.candidateKind === "organization_refresh_bundle" ? `/organizations/${record.targetMatch.slug}` : `/demand/${record.targetMatch.slug}`;
   const targetAdminHref = record.candidateKind === "organization_refresh_bundle" ? `/admin/organizations/${record.targetMatch.entityId}/edit` : "/admin/demand-signals";
+  const operationSummary = summarizeRefreshOperations(record.operations);
   return (
     <PublicCard title={`Refresh ${record.targetMatch.slug.replaceAll("-", " ")}`} eyebrow={`${record.candidateKind === "organization_refresh_bundle" ? "Organization" : "Demand"} refresh · ${record.confidence} confidence`}>
       <div className="flex flex-wrap items-center gap-2">
@@ -419,19 +420,22 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
         <span className="text-xs text-[var(--admin-muted)]">Target confidence: {record.targetMatch.confidence} · {record.targetMatch.matchMethods.join(", ")}</span>
       </div>
       <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
+      <aside className="mt-4 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] p-4">
+        <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-success)]">What publication will do</p>
+        <p className="mt-2 text-sm font-semibold text-[var(--admin-ink-soft)]">{operationSummary}</p>
+        <p className="mt-1 text-xs leading-5 text-[var(--admin-muted-strong)]">The existing record keeps its stable identity. Only the reviewed changes below will be applied.</p>
+      </aside>
       <div className="mt-4 grid gap-3">
-        {record.operations.map((operation) => (
-          <section key={operation.operationId} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
-            <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-ink-soft)]">{operation.operation.replaceAll("_", " ")} · {operation.entityType.replaceAll("_", " ")}</p>
-            <p className="mt-2 text-xs leading-5 text-[var(--admin-muted-strong)]">{operation.reviewerExplanation}</p>
-            <div className="mt-3 grid gap-3 lg:grid-cols-2">
-              <JsonPanel label="Before" value={"before" in operation ? operation.before : candidate.before_record} />
-              <JsonPanel label="After" value={operation.operation === "add_child" ? operation.value : operation.after} />
-            </div>
-          </section>
-        ))}
+        {record.operations.map((operation) => <RefreshOperationReview key={operation.operationId} operation={operation} />)}
       </div>
-      <details className="mt-4 rounded-md border border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] p-3 text-xs"><summary className="cursor-pointer font-semibold text-[var(--admin-evidence)]">Sources, evidence, warnings, and provenance</summary><pre className="mt-3 overflow-auto whitespace-pre-wrap text-[11px] leading-5 text-[var(--admin-muted-strong)]">{JSON.stringify({ sourceChannels: record.sourceChannels, sources: record.sources, fieldEvidence: record.fieldEvidence, corroboration: record.corroboration, warnings: record.reviewWarnings ?? [] }, null, 2)}</pre></details>
+      <details className="mt-4 rounded-md border border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] p-3 text-xs">
+        <summary className="cursor-pointer font-semibold text-[var(--admin-evidence)]">Review evidence and provenance ({record.fieldEvidence.length} evidence excerpts)</summary>
+        <div className="mt-3 grid gap-3">
+          {record.fieldEvidence.map((evidence) => <div key={evidence.id} className="rounded-md border border-[var(--admin-evidence-border)] bg-white p-3"><p className="font-semibold text-[var(--admin-ink-soft)]">{humanizeFieldPath(evidence.fieldPath)} · {evidence.confidence} confidence</p><p className="mt-1 leading-5 text-[var(--admin-muted-strong)]">{evidence.excerpt}</p></div>)}
+          {record.reviewWarnings?.length ? <div className="rounded-md border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-3 text-[var(--admin-warning)]"><p className="font-semibold">Warnings</p><ul className="mt-1 list-disc space-y-1 pl-4">{record.reviewWarnings.map((warning) => <li key={warning}>{warning}</li>)}</ul></div> : null}
+        </div>
+      </details>
+      <details className="mt-3 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-3 text-xs"><summary className="cursor-pointer font-semibold text-[var(--admin-muted-strong)]">Technical payload</summary><pre className="mt-3 max-h-96 overflow-auto whitespace-pre-wrap text-[11px] leading-5 text-[var(--admin-muted-strong)]">{JSON.stringify({ sourceChannels: record.sourceChannels, sources: record.sources, corroboration: record.corroboration, operations: record.operations }, null, 2)}</pre></details>
       <TypedCandidateEditor candidateId={candidate.id} record={record} />
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
@@ -443,6 +447,73 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
     </PublicCard>
   );
 }
+
+type RefreshOperation = OrganizationRefreshBundleV1["operations"][number] | DemandRefreshBundleV1["operations"][number];
+
+function RefreshOperationReview({ operation }: { operation: RefreshOperation }) {
+  const actionLabel = operation.operation === "add_child" ? `Add ${entityLabel(operation.entityType)}` : operation.operation === "update_child" ? `Update ${entityLabel(operation.entityType)}` : `Update ${fieldLabel(operation.field)}`;
+  const after = operation.operation === "add_child" ? operation.value : operation.after;
+  const before = operation.operation === "add_child" ? null : operation.before;
+  const title = recordValue(after, "name") ?? recordValue(after, "title") ?? actionLabel;
+  const changes = operation.operation === "add_child" ? Object.entries(asRecord(after)).filter(([key]) => !hiddenReviewFields.has(key)) : changedEntries(before, after);
+  return (
+    <section className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <div><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-action)]">{actionLabel}</p><h3 className="mt-1 text-base font-semibold text-[var(--admin-ink)]">{title}</h3></div>
+        <span className="rounded-full border border-[var(--admin-border)] bg-white px-2.5 py-1 text-[10px] font-semibold text-[var(--admin-muted-strong)]">{changes.length} {changes.length === 1 ? "field" : "fields"} reviewed</span>
+      </div>
+      <p className="mt-2 text-xs leading-5 text-[var(--admin-muted-strong)]">{operation.reviewerExplanation}</p>
+      {operation.operation === "add_child" ? <p className="mt-3 rounded-md border border-dashed border-[var(--admin-border-strong)] bg-white p-3 text-xs text-[var(--admin-muted-strong)]">This {entityLabel(operation.entityType)} is not currently on the record. Publishing will add it without replacing existing content.</p> : null}
+      <div className="mt-3 grid gap-2">
+        {changes.map(([key, value]) => <RefreshFieldChange key={key} field={key} before={operation.operation === "add_child" ? undefined : asRecord(before)[key]} after={value} isNew={operation.operation === "add_child"} />)}
+      </div>
+    </section>
+  );
+}
+
+function RefreshFieldChange({ field, before, after, isNew }: { field: string; before: unknown; after: unknown; isNew: boolean }) {
+  const listDiff = Array.isArray(before) && Array.isArray(after) ? diffLists(before, after) : null;
+  return (
+    <div className="rounded-md border border-[var(--admin-border-subtle)] bg-white p-3">
+      <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-muted)]">{fieldLabel(field)}</p>
+      {listDiff ? <div className="mt-2 grid gap-2 md:grid-cols-2"><ReviewValue label="Removed" value={listDiff.removed} tone="removed" empty="None" /><ReviewValue label="Added" value={listDiff.added} tone="added" empty="None" /></div> : isNew ? <ReviewValue label="New value" value={after} tone="added" /> : <div className="mt-2 grid gap-2 md:grid-cols-2"><ReviewValue label="Current" value={before} /><ReviewValue label="Proposed" value={after} tone="added" /></div>}
+    </div>
+  );
+}
+
+function ReviewValue({ label, value, tone = "default", empty = "Not set" }: { label: string; value: unknown; tone?: "default" | "added" | "removed"; empty?: string }) {
+  const toneClass = tone === "added" ? "border-[var(--admin-success-border)] bg-[var(--admin-success-soft)]" : tone === "removed" ? "border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)]" : "border-[var(--admin-border)] bg-[var(--admin-surface-soft)]";
+  return <div className={`rounded-md border p-2.5 ${toneClass}`}><p className="text-[9px] font-bold uppercase tracking-[0.08em] text-[var(--admin-muted)]">{label}</p><div className="mt-1 text-xs leading-5 text-[var(--admin-ink-soft)]"><ReadableValue value={value} empty={empty} /></div></div>;
+}
+
+function ReadableValue({ value, empty }: { value: unknown; empty: string }) {
+  if (value === null || value === undefined || value === "" || (Array.isArray(value) && value.length === 0)) return <span className="text-[var(--admin-muted)]">{empty}</span>;
+  if (Array.isArray(value)) return <ul className="list-disc space-y-1 pl-4">{value.map((item, index) => <li key={`${String(item)}-${index}`}>{String(item)}</li>)}</ul>;
+  if (typeof value === "object") return <dl className="grid gap-2">{Object.entries(asRecord(value)).map(([key, nested]) => <div key={key}><dt className="font-semibold">{fieldLabel(key)}</dt><dd className="text-[var(--admin-muted-strong)]"><ReadableValue value={nested} empty="Not set" /></dd></div>)}</dl>;
+  if (typeof value === "boolean") return <span>{value ? "Yes" : "No"}</span>;
+  return <span className="whitespace-pre-wrap">{String(value)}</span>;
+}
+
+const hiddenReviewFields = new Set(["id", "slug", "parentId", "missionMatches"]);
+function asRecord(value: unknown): Record<string, unknown> { return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {}; }
+function recordValue(value: unknown, key: string) { const found = asRecord(value)[key]; return typeof found === "string" ? found : null; }
+function fieldLabel(value: string) { return value.replaceAll("_", " ").replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/^./, (letter) => letter.toUpperCase()); }
+function entityLabel(value: string) { return value === "capability" ? "technology" : value === "demand_requirement" ? "demand statement" : value.replaceAll("_", " "); }
+function humanizeFieldPath(value: string) { return value.split(".").map(fieldLabel).join(" · "); }
+function changedEntries(before: unknown, after: unknown) { const prior = asRecord(before); return Object.entries(asRecord(after)).filter(([key, value]) => !hiddenReviewFields.has(key) && JSON.stringify(prior[key]) !== JSON.stringify(value)); }
+function diffLists(before: unknown[], after: unknown[]) { const oldValues = before.map(String); const newValues = after.map(String); return { removed: oldValues.filter((value) => !newValues.includes(value)), added: newValues.filter((value) => !oldValues.includes(value)) }; }
+function summarizeRefreshOperations(operations: RefreshOperation[]) {
+  const counts = new Map<string, number>();
+  for (const operation of operations) {
+    const verb = operation.operation === "add_child" ? "add" : "update";
+    const label = operation.operation === "add_child" ? `new ${entityLabel(operation.entityType)}` : operation.operation === "update_child" ? `existing ${entityLabel(operation.entityType)}` : fieldLabel(operation.field).toLowerCase();
+    const key = `${verb}|${label}`;
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  const phrases = [...counts].map(([key, count]) => { const [verb, label] = key.split("|"); return `${verb} ${count} ${count === 1 ? label : pluralizeReviewLabel(label)}`; });
+  return phrases.join(", ").replace(/^./, (letter) => letter.toUpperCase()) + ".";
+}
+function pluralizeReviewLabel(label: string) { return label.endsWith("technology") ? `${label.slice(0, -1)}ies` : `${label}s`; }
 
 function GenericCandidateCard({ candidate }: { candidate: CandidateRow }) {
   return (

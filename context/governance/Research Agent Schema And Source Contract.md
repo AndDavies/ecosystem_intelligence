@@ -197,6 +197,8 @@ Existing-record matches use `organization_refresh_bundle_v1` or `demand_refresh_
 - evidence IDs and a reviewer explanation for every operation
 - source-channel provenance, corroboration, reviewer rationale, and warnings
 
+Additive child values must satisfy the same typed technology, program, relationship, or demand-statement contract used at publication. Every declared parent must equal the matched canonical target. Refreshes fail validation when they mix organization and demand operation families or reference unknown Technical Domain and Mission Area values.
+
 The intended existing target is not treated as a duplicate collision. Accidental matches remain blocking. Refresh publication is additive in v1; automated delete operations are prohibited.
 
 ## Autonomous discovery and refresh loops

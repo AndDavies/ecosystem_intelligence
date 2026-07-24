@@ -189,6 +189,7 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-24`: Replaced JSON-first refresh review with readable publication summaries, structured added-versus-changed field comparisons, evidence excerpts, and an optional technical payload. Strengthened the executable refresh contract so incomplete children, cross-family operations, mismatched parents, and unknown edited taxonomy values fail before acceptance; database regression coverage now verifies stable in-place technology updates and correctly attached program additions.
 - `2026-07-23`: Reconciled the signal-refresh migration filenames with the applied production history, made unknown candidate types fail closed, added visible accepted-to-publish navigation, and introduced a deployed application-contract check that stops research intake before database staging when Review or Publish support is absent.
 - `2026-07-23`: Added the sixth canonical `$tnm-signal-refresh` skill and weekday multi-source refresh schedule. Refresh runs now build live watchlists, extract and deduplicate atomic signals from official, Source Book, Gmail, LinkedIn, and ecosystem sources, resolve durable evidence, and stage additive organization or demand refresh candidates with target baselines and before/after operations. Admin Review and the human Publish checkpoint now support refresh diffs, provenance, stale-baseline rejection, stable-ID updates, appended evidence, and immediate route revalidation.
 

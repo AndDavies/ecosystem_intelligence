@@ -53,7 +53,9 @@ Before trusted staging, the research importer compares every candidate kind and 
 
 The separate Publish action locks the candidate and target, compares the current target timestamp with the recorded baseline, and fails atomically if the target changed after research. An eligible publication applies only the reviewed operations, preserves existing IDs and slugs, upserts sources, appends evidence snippets and field citations, records the before/operation audit payload, and revalidates affected public routes.
 
-The Admin UI may expose the typed envelope as JSON when a structured refresh renderer is unavailable. That JSON is the reviewable change set and evidence package; it is not the canonical organization record and is never applied merely by being displayed or accepted.
+The Admin Review UI renders each refresh as a plain-language publication summary followed by structured field changes. New technologies, programs, relationships, and demand statements are labelled as additions; in-place updates show current and proposed values, including added and removed list items. Evidence excerpts and warnings remain readable, while the complete typed payload is available only in a collapsed technical disclosure. Displaying or accepting a refresh never changes the canonical record.
+
+The executable refresh contract also rejects incomplete child records, organization operations inside demand refreshes, demand operations inside organization refreshes, and child or field operations whose declared parent does not match the canonical target. Administrator edits recheck live Technical Domain and Mission Area values before they can be saved.
 
 ## Publication Rules
 
