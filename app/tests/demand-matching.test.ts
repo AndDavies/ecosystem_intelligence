@@ -40,6 +40,8 @@ describe("review-first demand matching", () => {
     expect(candidate.matchType).toBe("derived");
     expect(candidate.matchedConcepts).toEqual(expect.arrayContaining(["maritime and undersea operations", "detection and situational awareness", "autonomous and uncrewed systems"]));
     expect(candidate.reviewerRationale).toContain("not evidence of eligibility");
+    expect(candidate.publicationRationale).toContain("Publish this match because");
+    expect(candidate.publicationRationale).toContain("clearly derived");
   });
 
   it("does not suggest weak or already-covered pairs", () => {
@@ -58,6 +60,15 @@ describe("review-first demand matching", () => {
       desiredEndState: "Improve targeting, protection, and operational resilience."
     };
     expect(suggestDemandMatches([organization], [droneDemand])).toHaveLength(0);
+  });
+
+  it("blocks generic sustainment from matching a submarine-specific demand", () => {
+    const aviationOrganization = {
+      ...organization,
+      capabilities: [{ ...organization.capabilities[0], name: "Aircraft fleet sustainment", summary: "Manufacturing, maintenance, repair, logistics, and lifecycle support for military aircraft fleets.", coreFeatures: ["Aircraft overhaul"], defenceApplications: ["Aviation readiness"], technicalTags: ["aerospace", "manufacturing", "sustainment"] }]
+    } as unknown as AtlasOrganization;
+    const submarineDemand = { ...demand, slug: "submarine-industrial-capacity", title: "Canadian submarine sustainment and industrial capacity", problemStatement: "Canada needs manufacturing and logistics capacity to sustain future submarine fleets.", desiredEndState: "A durable Canadian undersea industrial base." };
+    expect(suggestDemandMatches([aviationOrganization], [submarineDemand])).toHaveLength(0);
   });
 
   it("can surface a specific single-anchor lane such as logistics", () => {
@@ -107,6 +118,8 @@ describe("review-first demand matching", () => {
     expect(action).toContain('candidate_kind: "demand_match_bundle"');
     expect(action).toContain('status: "pending"');
     expect(review).toContain("Publish match");
+    expect(review).toContain("defaultValue={publicationRationale}");
+    expect(review).toContain("What publication will do");
     expect(migration).toContain("private.is_atlas_staff()");
     expect(migration).toContain("and status = 'pending'");
     expect(migration).toContain("'approved',");

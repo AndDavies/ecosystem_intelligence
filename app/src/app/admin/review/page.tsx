@@ -8,6 +8,7 @@ import { PaginationNav } from "@/components/ui/pagination-nav";
 import { editAtlasCandidate, editTypedResearchCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationRefreshCandidate, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
+import { buildDemandMatchPublicationRationale } from "@/lib/atlas/demand-matching";
 import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationRefreshBundleV1 } from "@/lib/research/pipeline-schema";
 import { createClient } from "@/lib/supabase/server";
 import { normalizedPage } from "@/lib/pagination";
@@ -124,6 +125,7 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
 
 function DemandMatchCandidateCard({ candidate, record }: { candidate: CandidateRow; record: DemandMatchCandidate }) {
   const areaClass = "rounded-md border border-[var(--admin-border)] bg-white px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[var(--admin-action)]";
+  const publicationRationale = record.publicationRationale ?? buildDemandMatchPublicationRationale(record);
   return (
     <PublicCard title={`${record.organizationName} → ${record.demandTitle}`} eyebrow="Potential technology-to-demand match · private until you publish it">
       <div className="grid gap-4 md:grid-cols-3">
@@ -132,11 +134,12 @@ function DemandMatchCandidateCard({ candidate, record }: { candidate: CandidateR
         <ReviewFact label="Current status" value="Needs human review" tone="warning" />
       </div>
       <div className="mt-4 rounded-md border border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] p-4">
-        <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-evidence)]">What the system noticed</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-evidence)]">Why it may fit</p>
         <p className="mt-2 text-sm leading-6 text-[var(--admin-ink-soft)]">{record.alignmentSummary}</p>
         <div className="mt-3 flex flex-wrap gap-2">{record.matchedConcepts.map((concept) => <span key={concept} className="rounded-full border border-[var(--admin-evidence-border)] bg-white px-2.5 py-1 text-[10px] font-semibold text-[var(--admin-evidence)]">{concept}</span>)}</div>
       </div>
-      <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)]">{record.rationale}</p>
+      <aside className="mt-4 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] p-4"><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-success)]">What publication will do</p><p className="mt-2 text-xs leading-5 text-[var(--admin-ink-soft)]">Add a reviewed, moderate-confidence connection to the technology and demand profiles. The underlying records and citations remain unchanged.</p></aside>
+      <details className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-3 text-xs"><summary className="cursor-pointer font-semibold text-[var(--admin-muted-strong)]">Matching method and caveats</summary><p className="mt-2 leading-5 text-[var(--admin-muted)]">{record.rationale}</p></details>
       <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
       <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold">
         <Link href={`/capabilities/${record.capabilitySlug}`} target="_blank" className="text-[var(--admin-action)]">Review technology profile</Link>
@@ -145,7 +148,7 @@ function DemandMatchCandidateCard({ candidate, record }: { candidate: CandidateR
       <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <form action={publishDemandMatchCandidate} className="contents">
           <input type="hidden" name="candidateId" value={candidate.id} />
-          <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Why this match should be public<textarea name="rationale" required minLength={20} maxLength={2000} rows={3} className={areaClass} placeholder="Explain the source-backed, decision-useful connection and any caveat a user should understand." /></label>
+          <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Why this match should be public<textarea name="rationale" required minLength={20} maxLength={2000} rows={5} defaultValue={publicationRationale} className={areaClass} /></label>
           <PendingButton unstyled type="submit" pendingLabel="Publishing…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[var(--admin-action)] px-4 text-xs font-semibold text-white">Publish match</PendingButton>
         </form>
         <form action={reviewAtlasCandidate} className="contents">

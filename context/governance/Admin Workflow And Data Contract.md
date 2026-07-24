@@ -2,7 +2,7 @@
 
 This document is the current operating contract for the private True North Map administration routes. The detailed route-by-route manual is [True North Map Admin Manual](../../output/pdf/True_North_Map_Admin_Manual.pdf).
 
-Last verified: 2026-07-23
+Last verified: 2026-07-24
 
 ## Access
 
@@ -34,6 +34,12 @@ Read organization, technology, public-demand, and reviewed-match counts from the
 - Demand-signal maintenance updates existing `sources`, `demand_sources`, `demand_source_issuers`, and `demand_requirements` rows transactionally. The selected issuing authority remains explicit. Existing requirement IDs and slugs remain stable, so `capability_demand_matches` and `field_citations` do not detach.
 - Adding a demand requirement creates a new stable row. It does not generate or publish matches automatically.
 - Material writes record the administrator, rationale, and timestamp in `audit_events` or `review_decisions`.
+
+## Demand-match suggestions
+
+The private matching workspace compares reviewed technology records with published public needs. It requires shared mission concepts, applies demand-specific safeguards for narrow requirements, and excludes existing or previously reviewed pairs. The result remains a derived suggestion rather than source-backed proof of fit.
+
+Every staged suggestion carries a plain-language, editable publication rationale. Existing pending candidates created before this field was introduced receive the same deterministic rationale when rendered in Admin Review. The administrator must still review the technology profile, demand statement, underlying citations, and caveats before using the individual Publish control. Publishing adds only the reviewed relationship; it does not alter either source record or imply eligibility, endorsement, customer interest, or classified demand.
 
 ## Research refresh candidates
 
