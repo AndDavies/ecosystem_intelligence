@@ -5,13 +5,14 @@ import { ExternalLink, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { assessmentConfidenceLabel } from "@/lib/atlas/presentation";
-import { getAtlasDemandBySlug, getPublishedAtlasSlugs } from "@/lib/atlas/repository";
+import { getAtlasDemandBySlug } from "@/lib/atlas/repository";
 
 export const revalidate = 300;
 
 export async function generateStaticParams() {
-  const slugs = await getPublishedAtlasSlugs();
-  return slugs.demands.map((slug) => ({ slug }));
+  // Demand pages render on demand so production builds do not depend on a
+  // successful bulk database read at build time.
+  return [];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

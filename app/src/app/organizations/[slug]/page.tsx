@@ -16,15 +16,17 @@ import {
   publicContactFromProfileData,
   publicSourceCountLabel
 } from "@/lib/atlas/presentation";
-import { getAtlasOrganizationBySlug, getPublishedAtlasSlugs } from "@/lib/atlas/repository";
+import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
 import { formatDate, toTitleCase } from "@/lib/utils";
 import { absoluteUrl } from "@/lib/site";
 
 export const revalidate = 300;
 
 export async function generateStaticParams() {
-  const slugs = await getPublishedAtlasSlugs();
-  return slugs.organizations.map((slug) => ({ slug }));
+  // Profile pages render on demand so a transient database timeout cannot
+  // take down the entire production build. They remain crawlable and retain
+  // the five-minute ISR policy after the first request.
+  return [];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
