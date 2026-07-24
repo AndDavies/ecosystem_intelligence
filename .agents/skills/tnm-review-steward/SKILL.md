@@ -12,7 +12,7 @@ Protect the review and publication boundary with deterministic checks.
 ## Workflow
 
 1. Run `pnpm research:validate -- <run-path> <prospect-path> <lead-path> <candidate-path>` for discovery batches. Deep dossiers may omit the prospect argument only when the run manifest does not require it.
-2. Resolve every schema, taxonomy, evidence, date, URL, and duplicate error. For refresh candidates also validate target UUID/slug, live baseline `updated_at`, complete `beforeRecord`, operation safety, canonical evidence, and source-channel provenance. Do not waive errors. Confirm each qualified lead proceeded automatically or has an explicit candidate-level deferral reason; a missing human source-lead approval is never an error.
+2. Resolve every schema, taxonomy, evidence, date, URL, and duplicate error. For demand-signal candidates, verify each `parentIssuerSlug` against a published canonical `demand_issuers` row; a missing parent is a hard stop before staging, not a publish-time surprise. For refresh candidates also validate target UUID/slug, live baseline `updated_at`, complete `beforeRecord`, operation safety, canonical evidence, and source-channel provenance. Do not waive errors. Confirm each qualified lead proceeded automatically or has an explicit candidate-level deferral reason; a missing human source-lead approval is never an error.
 3. Confirm the run counters and output paths match the artifacts.
 4. Run:
 

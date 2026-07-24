@@ -161,7 +161,7 @@ describe("public atlas database foundation", () => {
         ) as commitment_level
     `);
     expect(result.rows[0]).toEqual({
-      issuers: 10,
+      issuers: 11,
       nato_links: 1,
       source_kind: "official_problem_statement",
       commitment_level: "directional"

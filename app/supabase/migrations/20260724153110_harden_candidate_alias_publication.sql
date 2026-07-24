@@ -9,6 +9,10 @@ begin
   select pg_get_functiondef('public.publish_reviewed_organization_candidates(uuid[], uuid)'::regprocedure)
     into function_sql;
 
+  if position('select distinct on (lower(regexp_replace(trim(alias_value)' in function_sql) > 0 then
+    return;
+  end if;
+
   function_sql := replace(
     function_sql,
     $old$insert into public.organization_aliases (organization_id, alias, alias_type, publication_status)

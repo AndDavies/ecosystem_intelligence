@@ -18,7 +18,7 @@ Build the record shape appropriate to the actor or demand source. Do not force n
    - `demand_signal_bundle_v1`
    - `organization_refresh_bundle_v1`
    - `demand_refresh_bundle_v1`
-4. Use only controlled organization kinds, categories, issuer types, mission slugs, and domain slugs.
+4. Use only controlled organization kinds, categories, issuer types, mission slugs, and domain slugs. For a demand issuer with `parentIssuerSlug`, resolve that parent against the published `demand_issuers` taxonomy before staging. A candidate may introduce an issuing body, but it must not introduce an unreviewed parent hierarchy through a demand signal.
 5. Leave unknown fields null. Keep `reviewStatus` as `candidate_pending` and batch `status` as `candidate`.
 6. For organization candidates, resolve a Canadian primary city, province or territory, latitude, longitude, and geographic confidence. City-centroid or regional coordinates are acceptable when exact public coordinates are unavailable; null coordinates are not review-ready because the organization would disappear from the public map.
 7. Score inclusion and completeness separately. Inclusion weighs resolved identity, Canadian presence, concrete capability or mandate, durable evidence, taxonomy fit, and duplicate clearance. Completeness measures useful enrichment already captured and must not become a disguised exclusion score.

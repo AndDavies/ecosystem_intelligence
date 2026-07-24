@@ -9,6 +9,7 @@ import { StatusChip } from "@/components/ui/status-chip";
 import { publishApprovedCandidates } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, type ReviewableDemandSignalCandidate, type ReviewableRefreshCandidate } from "@/lib/atlas/candidate-schema";
+import { findMissingDemandIssuerDependencies } from "@/lib/atlas/demand-issuer-dependencies";
 import { researchCandidateContractIssues } from "@/lib/research/deployment-contract";
 import { createClient } from "@/lib/supabase/server";
 
@@ -31,7 +32,8 @@ type PublishableRow =
 
 const errorMessages: Record<string, string> = {
   selection: "No approved records were available to publish. Refresh the checkpoint and try again.",
-  "publication-failed": "Publication was stopped. No selected record was published. Recheck the approved records and try again."
+  "publication-failed": "Publication was stopped. No selected record was published. Recheck the approved records and try again.",
+  "missing-demand-issuer": "Publication is paused because a required issuing authority has not been established in the canonical demand hierarchy."
 };
 
 function parsePublishableRows(data: unknown[] | null): PublishableRow[] {
@@ -102,11 +104,11 @@ function publicationDisplay(row: PublishableRow) {
   };
 }
 
-export default async function AdminPublishPage({ searchParams }: { searchParams: Promise<{ error?: string; success?: string }> }) {
+export default async function AdminPublishPage({ searchParams }: { searchParams: Promise<{ error?: string; issuer?: string; success?: string }> }) {
   await requireAtlasStaff("reviewer");
   const params = await searchParams;
   const database = await createClient();
-  const [{ data }, { data: publishedData }] = await Promise.all([
+  const [{ data }, { data: publishedData }, { data: issuerRows }] = await Promise.all([
     database
       .from("candidate_changes")
       .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, confidence, updated_at")
@@ -120,10 +122,18 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
       .eq("status", "published")
       .in("candidate_kind", ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"])
       .order("published_at", { ascending: false })
-      .limit(12)
+      .limit(12),
+    database
+      .from("demand_issuers")
+      .select("slug")
+      .eq("publication_status", "published")
   ]);
   const rows = parsePublishableRows(data);
   const recentPublications = parsePublishableRows(publishedData);
+  const missingIssuerDependencies = findMissingDemandIssuerDependencies(
+    rows.flatMap((row) => row.kind === "demand" ? [row.parsed] : []),
+    (issuerRows ?? []).map((issuer) => issuer.slug)
+  );
   const organizationCount = rows.filter((row) => row.kind === "organization").length;
   const demandCount = rows.filter((row) => row.kind === "demand").length;
   const refreshCount = rows.filter((row) => row.kind === "refresh").length;
@@ -131,7 +141,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
   return (
     <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Publication checkpoint" description="Review the approved list, then publish it with one explicit action. Publication runs as one transaction and stops entirely if any record fails validation." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
-      {params.error ? <FlashBanner tone="error">{errorMessages[params.error] ?? "Publication could not be completed."}</FlashBanner> : null}
+      {params.error ? <FlashBanner tone="error">{params.error === "missing-demand-issuer" && params.issuer ? `${errorMessages[params.error]} Missing issuer: ${params.issuer.replaceAll("-", " ")}.` : errorMessages[params.error] ?? "Publication could not be completed."}</FlashBanner> : null}
       {params.success ? <FlashBanner tone="success">Published {params.success} reviewed {params.success === "1" ? "record" : "records"}. The live records are linked under Recent publications below; no redeploy is required.</FlashBanner> : null}
       {rows.length ? (
         <form action={publishApprovedCandidates}>
@@ -139,6 +149,16 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
             <AlertTriangle className="mt-0.5 size-5 shrink-0" />
             <p><strong>{rows.length} approved {rows.length === 1 ? "record is" : "records are"} ready: {organizationCount} new {organizationCount === 1 ? "organization" : "organizations"}, {demandCount} new demand {demandCount === 1 ? "signal" : "signals"}, and {refreshCount} {refreshCount === 1 ? "refresh" : "refreshes"}.</strong> Publishing creates or updates only the reviewed records with their sources, evidence, and citations. It does not send messages or introductions.</p>
           </div>
+          {missingIssuerDependencies.length ? (
+            <div className="mb-4 rounded-lg border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] p-4 text-sm leading-6 text-[var(--admin-danger)]">
+              <strong>Publication is paused until the issuer hierarchy is complete.</strong>
+              <ul className="mt-2 list-disc space-y-1 pl-5">
+                {missingIssuerDependencies.map((dependency) => (
+                  <li key={`${dependency.parentIssuerSlug}-${dependency.demandSourceTitle}`}><span className="font-semibold">{dependency.parentIssuerSlug.replaceAll("-", " ")}</span> is required as the parent of {dependency.issuerName} for “{dependency.demandSourceTitle}”. Establish the canonical issuer first, then refresh this checkpoint.</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           <div className="space-y-3">
             {rows.map(({ candidate, kind, parsed }) => {
               const display = publicationDisplay({ candidate, kind, parsed } as PublishableRow);
@@ -160,7 +180,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
           </div>
           <div className="mt-5 flex flex-col gap-3 rounded-lg border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-2xl text-xs leading-5 text-[var(--admin-muted)]">This publishes every approved record shown above. Validation and audit logging still run before the transaction completes.</p>
-            <PendingButton type="submit" pendingLabel="Publishing…" className="h-11 shrink-0 bg-[var(--admin-danger)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-danger-hover)]">
+            <PendingButton type="submit" pendingLabel="Publishing…" disabled={missingIssuerDependencies.length > 0} className="h-11 shrink-0 bg-[var(--admin-danger)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-danger-hover)] disabled:cursor-not-allowed disabled:opacity-60">
               Publish {rows.length} approved {rows.length === 1 ? "record" : "records"}
             </PendingButton>
           </div>

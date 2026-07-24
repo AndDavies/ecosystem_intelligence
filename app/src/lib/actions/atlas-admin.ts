@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
+import { findMissingDemandIssuerDependencies } from "@/lib/atlas/demand-issuer-dependencies";
 import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationRefreshBundleV1 } from "@/lib/research/pipeline-schema";
 import { suggestDemandMatches } from "@/lib/atlas/demand-matching";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
@@ -656,11 +657,32 @@ export async function publishApprovedCandidates(formData: FormData) {
   });
   if (invalidSelection) redirect("/admin/publish?error=publication-failed");
 
+  const demandCandidates = selectedCandidates.flatMap((candidate) => {
+    if (candidate.candidate_kind !== "demand_signal_bundle") return [];
+    const parsedDemand = parseDemandSignalCandidate(candidate.proposed_record);
+    return parsedDemand.success ? [parsedDemand.data] : [];
+  });
+  if (demandCandidates.length) {
+    const { data: issuerRows, error: issuerError } = await supabase
+      .from("demand_issuers")
+      .select("slug")
+      .eq("publication_status", "published");
+    if (issuerError) redirect("/admin/publish?error=publication-failed");
+    const missingDependencies = findMissingDemandIssuerDependencies(demandCandidates, (issuerRows ?? []).map((issuer) => issuer.slug));
+    if (missingDependencies.length) {
+      redirect(`/admin/publish?error=missing-demand-issuer&issuer=${encodeURIComponent(missingDependencies[0].parentIssuerSlug)}`);
+    }
+  }
+
   const { error } = await supabase.rpc("publish_reviewed_research_candidates", {
     p_candidate_ids: uniqueCandidateIds,
     p_reviewer_id: user.id
   });
-  if (error) redirect("/admin/publish?error=publication-failed");
+  if (error) {
+    const missingIssuer = error.message.match(/^Unknown parent demand issuer ([a-z0-9-]+)\.$/i)?.[1];
+    if (missingIssuer) redirect(`/admin/publish?error=missing-demand-issuer&issuer=${encodeURIComponent(missingIssuer)}`);
+    redirect("/admin/publish?error=publication-failed");
+  }
   revalidateTag("atlas-public");
   revalidateReviewPaths();
   revalidatePath("/");
