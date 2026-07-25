@@ -20,7 +20,7 @@ export async function GET(request: Request) {
       <div style={{ position: "absolute", right: 98, top: 92, width: 158, height: 158, border: "1px solid rgba(31,90,67,.22)", borderRadius: 999, display: "flex" }} />
       <div style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "space-between", width: "100%" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ width: 44, height: 50, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 15, background: "#232725", color: "#f5e900", fontSize: 25, fontWeight: 900 }}>✦</div>
+          <div style={{ width: 44, height: 50, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 15, background: "#232725", color: "#f5e900", fontSize: 18, fontWeight: 900, letterSpacing: "-0.04em" }}>TN</div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 22, fontWeight: 900, letterSpacing: "-0.02em" }}>TRUE NORTH MAP</span>
             <span style={{ marginTop: 4, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", color: "#52605a" }}>CANADIAN DEFENCE, CLEARLY MAPPED</span>
