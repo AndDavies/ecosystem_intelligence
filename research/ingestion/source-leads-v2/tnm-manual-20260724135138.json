@@ -1,0 +1,816 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260724135138-leads",
+  "runId": "tnm-manual-20260724135138",
+  "createdAt": "2026-07-24T13:58:00.000Z",
+  "scope": {
+    "description": "Qualify a balanced set of Canadian subsystem suppliers and one official public demand signal for containerized anti-submarine-warfare systems while preserving published duplicates and a reusable adjacent prospect backlog.",
+    "targetMissionAreaSlugs": [
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": [
+      "department",
+      "armed_forces",
+      "military_service"
+    ]
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-cartenav-20260724",
+      "source": {
+        "id": "cartenav-about",
+        "title": "About CarteNav",
+        "url": "https://cartenav.com/about/",
+        "publisher": "CarteNav",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "Canadian identity, ownership, certifications and operating profile",
+        "summary": "CarteNav states that it is a Canadian ISR mission-software company, a PAL Aerospace subsidiary and a supplier with hundreds of installations."
+      },
+      "discoveryPath": [
+        "https://cartenav.com/about/",
+        "https://cartenav.com/systems/naval-maritime-vessels/",
+        "https://cartenav.com/news/imms-osi-maritime-systems-cartenav/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "sensing-and-isr",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official company product and profile material plus durable government or procurement corroboration where available",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://cartenav.com/",
+        "websiteDomain": "cartenav.com",
+        "stableSlug": "cartenav",
+        "legalName": "CarteNav Solutions Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 96,
+      "completenessScore": 95,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://cartenav.com/about/",
+          "outcome": "The official organization source resolved Canadian identity, public operating scope and a concrete product or service portfolio."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://cartenav.com/systems/naval-maritime-vessels/",
+          "outcome": "A complementary durable source resolved the mission-relevant technology, integration role or current public activity."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://cartenav.com/",
+          "outcome": "Targeted identity and product searches were reconciled to the canonical organization domain before candidate building."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "CarteNav",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://cartenav.com/",
+      "aliases": [],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "AIMS Maritime Mission Software",
+      "roleSpecificEvidence": "CarteNav is a Canadian mission-software company and PAL Aerospace subsidiary whose AIMS-ISR and AIMS-C4 products integrate sensors, mission data and common operating pictures across airborne, maritime and command environments. CarteNav documents AIMS-ISR at shipboard operator consoles and AIMS-C4 for distributing maritime operating pictures to fleet and shore users."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-devocean-20260724",
+      "source": {
+        "id": "devocean-home",
+        "title": "Devocean on-demand recovery systems",
+        "url": "https://devocean-solutions.com/",
+        "publisher": "Devocean",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "DRS system operation and public contact",
+        "summary": "Devocean describes its submersible on-demand recovery buoy, acoustic activation, rewinder, depth rating and operational use."
+      },
+      "discoveryPath": [
+        "https://devocean-solutions.com/",
+        "https://canadabuys.canada.ca/en/node/preview/1459548"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "communications-and-cyber",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company product and profile material plus durable government or procurement corroboration where available",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://devocean-solutions.com/",
+        "websiteDomain": "devocean-solutions.com",
+        "stableSlug": "devocean",
+        "legalName": "Devocean Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "The CanadaBuys profile distinguishes an existing acoustic-sensing prototype from a prospective adaptation into a secure underwater communications gateway; the reviewer should preserve that boundary."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The CanadaBuys profile distinguishes an existing acoustic-sensing prototype from a prospective adaptation into a secure underwater communications gateway; the reviewer should preserve that boundary."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://devocean-solutions.com/",
+          "outcome": "The official organization source resolved Canadian identity, public operating scope and a concrete product or service portfolio."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://canadabuys.canada.ca/en/node/preview/1459548",
+          "outcome": "A complementary durable source resolved the mission-relevant technology, integration role or current public activity."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://devocean-solutions.com/",
+          "outcome": "Targeted identity and product searches were reconciled to the canonical organization domain before candidate building."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Devocean",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://devocean-solutions.com/",
+      "aliases": [],
+      "location": {
+        "city": "Rimouski",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Recoverable DRS Buoy and Acoustic Gateway Platform",
+      "roleSpecificEvidence": "Devocean is a Quebec marine-technology company developing on-demand recoverable buoy systems, embedded ocean electronics and acoustic release mechanisms for field-deployed underwater sensing and data recovery. A May 2026 CanadaBuys partner profile describes a prototype combining a recoverable DRS buoy, embedded acquisition and storage, wireless transfer and software, while presenting naval acoustic-gateway adaptation as a future partnering opportunity."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-hawboldt-industries-20260724",
+      "source": {
+        "id": "hawboldt-home",
+        "title": "Hawboldt marine cranes and deck equipment",
+        "url": "https://dev.hawboldt.ca/",
+        "publisher": "Hawboldt Industries",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "Company, market and contact overview",
+        "summary": "Hawboldt describes its Nova Scotia manufacturing base and portfolio of marine launch-and-recovery systems, winches, cranes and deck equipment."
+      },
+      "discoveryPath": [
+        "https://dev.hawboldt.ca/",
+        "https://dev.hawboldt.ca/applications/research-vessels/auv-lars/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "autonomous-systems",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official company product and profile material plus durable government or procurement corroboration where available",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://hawboldt.ca/",
+        "websiteDomain": "hawboldt.ca",
+        "stableSlug": "hawboldt-industries",
+        "legalName": "Hawboldt Industries (1989) Limited",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 95,
+      "completenessScore": 93,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://dev.hawboldt.ca/",
+          "outcome": "The official organization source resolved Canadian identity, public operating scope and a concrete product or service portfolio."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://dev.hawboldt.ca/applications/research-vessels/auv-lars/",
+          "outcome": "A complementary durable source resolved the mission-relevant technology, integration role or current public activity."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://hawboldt.ca/",
+          "outcome": "Targeted identity and product searches were reconciled to the canonical organization domain before candidate building."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Hawboldt Industries",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://hawboldt.ca/",
+      "aliases": [],
+      "location": {
+        "city": "Chester",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Containerizable AUV and ROV Launch-and-Recovery Systems",
+      "roleSpecificEvidence": "Hawboldt Industries is a Nova Scotia designer and manufacturer of marine launch-and-recovery systems, winches, cranes and deck equipment for defence, ocean-science, offshore and polar operations. The official launch-and-recovery page documents configurable handling systems for AUVs, ROVs and subsea drills, including systems that are easily mobilized on deck or in a container."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-marine-magnetics-20260724",
+      "source": {
+        "id": "marine-magnetics-about",
+        "title": "About Marine Magnetics",
+        "url": "https://marinemagnetics.com/ethos",
+        "publisher": "Marine Magnetics",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "Company specialization and Canadian headquarters",
+        "summary": "Marine Magnetics describes its focus on purpose-built marine magnetometers and publishes its Markham, Ontario headquarters and public contacts."
+      },
+      "discoveryPath": [
+        "https://marinemagnetics.com/ethos",
+        "https://marinemagnetics.com/magnetometers/seaspy"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official company product and profile material plus durable government or procurement corroboration where available",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://marinemagnetics.com/",
+        "websiteDomain": "marinemagnetics.com",
+        "stableSlug": "marine-magnetics",
+        "legalName": "Marine Magnetics Corporation",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 91,
+      "completenessScore": 95,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://marinemagnetics.com/ethos",
+          "outcome": "The official organization source resolved Canadian identity, public operating scope and a concrete product or service portfolio."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://marinemagnetics.com/magnetometers/seaspy",
+          "outcome": "A complementary durable source resolved the mission-relevant technology, integration role or current public activity."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://marinemagnetics.com/",
+          "outcome": "Targeted identity and product searches were reconciled to the canonical organization domain before candidate building."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Marine Magnetics",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://marinemagnetics.com/",
+      "aliases": [],
+      "location": {
+        "city": "Markham",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "SeaSPY Towed Marine Magnetometer",
+      "roleSpecificEvidence": "Marine Magnetics is an Ontario designer and manufacturer of marine magnetometers and gradiometers for high-accuracy detection and mapping of ferrous targets and geophysical features in maritime environments. The current SeaSPY product page documents a portable towed sensor family with side-scan integration, multiple depth ratings and BOB survey software compatibility."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-oceanworks-international-20260724",
+      "source": {
+        "id": "oceanworks-about",
+        "title": "About OceanWorks International",
+        "url": "https://oceanworks.com/about/",
+        "publisher": "OceanWorks International",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "Canadian identity, markets and engineering scope",
+        "summary": "OceanWorks describes its Burnaby base and subsea design, manufacturing, testing, logistics and support work for military, scientific and commercial clients."
+      },
+      "discoveryPath": [
+        "https://oceanworks.com/about/",
+        "https://oceanworks.com/our-business/oil-gas/launch-recovery/index.html",
+        "https://oceanworks.com/our-business/military/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "autonomous-systems",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official company product and profile material plus durable government or procurement corroboration where available",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://oceanworks.com/",
+        "websiteDomain": "oceanworks.com",
+        "stableSlug": "oceanworks-international",
+        "legalName": "OceanWorks International Corporation",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 96,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://oceanworks.com/about/",
+          "outcome": "The official organization source resolved Canadian identity, public operating scope and a concrete product or service portfolio."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://oceanworks.com/our-business/oil-gas/launch-recovery/index.html",
+          "outcome": "A complementary durable source resolved the mission-relevant technology, integration role or current public activity."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://oceanworks.com/",
+          "outcome": "Targeted identity and product searches were reconciled to the canonical organization domain before candidate building."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "OceanWorks International",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://oceanworks.com/",
+      "aliases": [],
+      "location": {
+        "city": "Burnaby",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Modular Subsea Systems and Launch-and-Recovery Integration",
+      "roleSpecificEvidence": "OceanWorks International is a British Columbia subsea-engineering company that designs and manufactures manned and unmanned underwater work systems, submarine rescue equipment, launch-and-recovery systems and seafloor network infrastructure. OceanWorks documents modular, air-transportable and container-compatible launch-and-recovery configurations alongside military submarine-rescue and subsea intervention systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-d-ta-systems-20260724",
+      "source": {
+        "id": "dta-home",
+        "title": "D-TA Systems defence sensor solutions",
+        "url": "https://www.d-ta.com/",
+        "publisher": "D-TA Systems",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "Portfolio, operating base and public contact",
+        "summary": "D-TA describes its Ottawa headquarters and current sea-domain, SIGINT, radar, electronic-warfare and signal record-and-playback portfolio."
+      },
+      "discoveryPath": [
+        "https://www.d-ta.com/",
+        "https://ised-isde.canada.ca/site/industrial-technologies-office/en/strategic-aerospace-and-defence-initiative-sadi/success-stories/success-stories-d-ta-systems-inc"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official company product and profile material plus durable government or procurement corroboration where available",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.d-ta.com/",
+        "websiteDomain": "d-ta.com",
+        "stableSlug": "d-ta-systems",
+        "legalName": "D-TA Systems Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "procurement",
+      "inclusionScore": 94,
+      "completenessScore": 92,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.d-ta.com/",
+          "outcome": "The official organization source resolved Canadian identity, public operating scope and a concrete product or service portfolio."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/site/industrial-technologies-office/en/strategic-aerospace-and-defence-initiative-sadi/success-stories/success-stories-d-ta-systems-inc",
+          "outcome": "A complementary durable source resolved the mission-relevant technology, integration role or current public activity."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.d-ta.com/",
+          "outcome": "Targeted identity and product searches were reconciled to the canonical organization domain before candidate building."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "D-TA Systems",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.d-ta.com/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Network-Attached Sonar and Acoustic Sensor Processing",
+      "roleSpecificEvidence": "D-TA Systems is an Ottawa defence-electronics company developing networked sensor-processing, recording, playback, SIGINT, electronic-warfare and radar systems for air, land and maritime platforms. Government of Canada material documents D-TA sensor-processing systems for sonar and acoustic inputs, including scalable capture, conversion, recording, playback and real-time processing."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-babcock-canada-20260724",
+      "source": {
+        "id": "babcock-vissc",
+        "title": "Victoria In-Service Support Contract",
+        "url": "https://babcockcanada.com/what-we-do/equipment-support/victoria-in-service-support-contract/",
+        "publisher": "Babcock Canada",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "Canadian submarine sustainment enterprise",
+        "summary": "The official page describes Babcock's long-running prime-contractor role and specific integration work on torpedo firing, external communications and modular masts."
+      },
+      "discoveryPath": [
+        "https://babcockcanada.com/what-we-do/equipment-support/victoria-in-service-support-contract/",
+        "https://babcockcanada.com/what-we-do/technology-systems-integration/weapons-handling-systems/",
+        "https://babcockcanada.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official company product and profile material plus durable government or procurement corroboration where available",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://babcockcanada.com/",
+        "websiteDomain": "babcockcanada.com",
+        "stableSlug": "babcock-canada",
+        "legalName": "Babcock Canada Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 96,
+      "completenessScore": 95,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://babcockcanada.com/what-we-do/equipment-support/victoria-in-service-support-contract/",
+          "outcome": "The official organization source resolved Canadian identity, public operating scope and a concrete product or service portfolio."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://babcockcanada.com/what-we-do/technology-systems-integration/weapons-handling-systems/",
+          "outcome": "A complementary durable source resolved the mission-relevant technology, integration role or current public activity."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://babcockcanada.com/",
+          "outcome": "Targeted identity and product searches were reconciled to the canonical organization domain before candidate building."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Babcock Canada",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://babcockcanada.com/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Naval Submarine Systems Integration and Sustainment",
+      "roleSpecificEvidence": "Babcock Canada is a Canadian defence and critical-services company delivering naval equipment support, submarine sustainment, weapons handling and launch systems, systems integration and autonomous-system support. Babcock documents more than eighteen years as prime contractor for the Victoria In-Service Support Contract, including torpedo firing, external communications and modular mast integration."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-marine-thinking-20260724",
+      "source": {
+        "id": "marine-thinking-home",
+        "title": "Marine Thinking autonomous vessels",
+        "url": "https://www.marinethinking.com/",
+        "publisher": "Marine Thinking",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "USV portfolio and Halifax contact",
+        "summary": "Marine Thinking describes its portable BlueBoat, larger autonomous vessels, Marine Tensor kit and Halifax operating location."
+      },
+      "discoveryPath": [
+        "https://www.marinethinking.com/",
+        "https://www.marinethinking.com/projects/innovative-solutions-canada-case-study/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "mission-software-and-data",
+        "communications-and-cyber",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official company product and profile material plus durable government or procurement corroboration where available",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.marinethinking.com/",
+        "websiteDomain": "marinethinking.com",
+        "stableSlug": "marine-thinking",
+        "legalName": "Marine Thinking Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 92,
+      "completenessScore": 93,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.marinethinking.com/",
+          "outcome": "The official organization source resolved Canadian identity, public operating scope and a concrete product or service portfolio."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.marinethinking.com/projects/innovative-solutions-canada-case-study/",
+          "outcome": "A complementary durable source resolved the mission-relevant technology, integration role or current public activity."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.marinethinking.com/",
+          "outcome": "Targeted identity and product searches were reconciled to the canonical organization domain before candidate building."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Marine Thinking",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://www.marinethinking.com/",
+      "aliases": [],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Marine Tensor Autonomous Vessel Platform",
+      "roleSpecificEvidence": "Marine Thinking is a Halifax marine-autonomy company developing portable and larger uncrewed surface vessels, vessel-autonomy kits, edge computing and communications for hydrographic, environmental and defence-relevant missions. Marine Thinking reports successful delivery and NRC testing of an all-electric autonomous rigid inflatable boat using Marine Tensor control, edge processing and networking."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-shift-coastal-technologies-20260724",
+      "source": {
+        "id": "shift-home",
+        "title": "Shift Coastal autonomous maritime systems",
+        "url": "https://shiftcoastaltechnologies.com/",
+        "publisher": "Shift Coastal Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "End-to-end system integration, deployment and contact",
+        "summary": "Shift describes the design, build, integration, deployment and sustainment of mission-ready autonomous maritime platforms, payloads, sensors and command infrastructure."
+      },
+      "discoveryPath": [
+        "https://shiftcoastaltechnologies.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration",
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official company product and profile material plus durable government or procurement corroboration where available",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://shiftcoastaltechnologies.com/",
+        "websiteDomain": "shiftcoastaltechnologies.com",
+        "stableSlug": "shift-coastal-technologies",
+        "legalName": "Shift Coastal Technologies Ltd.",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 91,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://shiftcoastaltechnologies.com/",
+          "outcome": "The official organization source resolved Canadian identity, public operating scope and a concrete product or service portfolio."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://shiftcoastaltechnologies.com/",
+          "outcome": "A complementary durable source resolved the mission-relevant technology, integration role or current public activity."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://shiftcoastaltechnologies.com/",
+          "outcome": "Targeted identity and product searches were reconciled to the canonical organization domain before candidate building."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Shift Coastal Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://shiftcoastaltechnologies.com/",
+      "aliases": [],
+      "location": {
+        "city": "Nanaimo",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Mission-Ready Autonomous Maritime Systems Integration",
+      "roleSpecificEvidence": "Shift Coastal Technologies is a Nanaimo autonomous-maritime systems integrator that combines platforms, sensing or effecting payloads, onboard compute, communications and command infrastructure into field-deployable systems. Shift describes an end-to-end process covering mission architecture, platform preparation, sensor and command integration, field deployment, training and long-term sustainment."
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-dnd-uncrewed-underwater-surveillance-system-20260724",
+      "source": {
+        "id": "dnd-uuss",
+        "title": "Uncrewed Underwater Surveillance System",
+        "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=2523",
+        "publisher": "National Defence",
+        "sourceKind": "official_report",
+        "publishedAt": "2025-12-01T00:00:00.000Z",
+        "accessedAt": "2026-07-24T13:58:00.000Z",
+        "locator": "Objective, requirements, funding range and anticipated timeline",
+        "summary": "The Defence Capabilities Blueprint states a requirement for long-duration uncrewed vehicles and persistent sensors to detect, track and report subsurface vessels in northern, coastal and expeditionary operations."
+      },
+      "discoveryPath": [
+        "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=2523"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official Defence Capabilities Blueprint project objective, requirements, funding and delivery timeline",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=2523",
+        "websiteDomain": "apps.forces.gc.ca",
+        "stableSlug": "uncrewed-underwater-surveillance-system",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "government_program",
+      "inclusionScore": 100,
+      "completenessScore": 96,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=2523",
+          "outcome": "The official capability project page resolved the objective, long-duration uncrewed-system requirement, funding range and delivery schedule."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=2523",
+          "outcome": "The public project record was checked as a capability-plan signal rather than represented as an open solicitation or supplier qualification."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=2523",
+          "outcome": "Targeted searches found no matching published or active pending demand source in the live True North Map corpus."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Uncrewed Underwater Surveillance System",
+      "issuerNames": [
+        "National Defence",
+        "Canadian Armed Forces"
+      ],
+      "demandSourceKind": "capability_plan",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Long-duration uncrewed vehicles should deploy and employ sensors that provide persistent covert detection, tracking, intelligence collection and notification of subsurface vessels in northern, coastal and expeditionary areas."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1726 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260724105413-candidates",
+  "runId": "tnm-manual-20260724105413",
+  "title": "Canadian commercial hyperspectral imagery ecosystem",
+  "status": "candidate",
+  "createdAt": "2026-07-24T11:05:00.000Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "keyword:commercial-hyperspectral-imagery",
+    "reason": "The operator requested a Canada-first landscape of commercial hyperspectral imagery providers and enabling companies across collection, instruments, access, processing and analytics.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260724105413.json",
+  "guardrailNotes": [
+    "The ten records are private company candidates only; no published organization, capability, source, evidence, taxonomy or demand row is changed before explicit human publication.",
+    "Wyvern is recorded as an exact published duplicate and is not restaged. Global suppliers and adjacent Canadian prospects remain queued for later research rather than being forced into this batch."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-metaspectral-20260724",
+      "sourceLeadIds": [
+        "lead-metaspectral-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Metaspectral is recommended for green private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. Metaspectral is a Vancouver spectral-intelligence company that applies artificial intelligence and accelerated computing to hyperspectral and geospatial data for Earth observation, defence, emissions monitoring and industrial material identification. The evidence supports the proposed capability, location, public contact path and current commercial activity. The record is sufficiently enriched for substantive review rather than further source recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Metaspectral, metaspectral, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "metaspectral-company",
+          "title": "Metaspectral company and team",
+          "url": "https://metaspectral.com/company",
+          "publisher": "Metaspectral",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Company overview and headquarters",
+          "summary": "Metaspectral describes its Vancouver headquarters, technical team and ClarityAI platform for hyperspectral material intelligence and mission-critical operations."
+        },
+        {
+          "id": "metaspectral-planet",
+          "title": "Planet Tanager and Metaspectral Clarity",
+          "url": "https://metaspectral.com/partners/planet",
+          "publisher": "Metaspectral",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Tanager integration and sandbox",
+          "summary": "The official partner page explains how Clarity turns Planet Tanager hyperspectral imagery into evidence, confidence context and decision-ready monitoring outputs."
+        },
+        {
+          "id": "metaspectral-contact",
+          "title": "Metaspectral contact",
+          "url": "https://metaspectral.com/contact/",
+          "publisher": "Metaspectral",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Headquarters and inquiry channels",
+          "summary": "Metaspectral publishes its Vancouver address, public email and Earth-observation, defence and emissions inquiry areas."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-metaspectral-description",
+          "sourceId": "metaspectral-company",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Metaspectral's Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metaspectral-capability",
+          "sourceId": "metaspectral-planet",
+          "fieldPath": "capabilities.metaspectral-clarity-spectral-intelligence.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metaspectral-contact",
+          "sourceId": "metaspectral-contact",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in Metaspectral's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metaspectral-activity",
+          "sourceId": "metaspectral-planet",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "metaspectral",
+        "name": "Metaspectral",
+        "legalName": "MLVX Technologies Inc.",
+        "aliases": [
+          "MLVX Technologies Inc.",
+          "Metaspectral Clarity"
+        ],
+        "description": "Metaspectral is a Vancouver spectral-intelligence company that applies artificial intelligence and accelerated computing to hyperspectral and geospatial data for Earth observation, defence, emissions monitoring and industrial material identification.",
+        "websiteUrl": "https://metaspectral.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Clarity Geo, Clarity Plume and related spectral-intelligence workflows for Earth observation, industrial sorting, defence, emissions and material analysis.",
+          "publicContact": "Global headquarters: 201-228 E Georgia Street, Vancouver, BC V6A 1Z6; admin@metaspectral.com.",
+          "currentActivity": "Metaspectral currently offers a Planet Tanager demonstration environment that converts commercial VSWIR hyperspectral observations into evidence, confidence and review-ready intelligence.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "metaspectral-clarity-spectral-intelligence",
+          "name": "Clarity Spectral Intelligence Platform",
+          "summary": "Convert airborne, satellite and industrial hyperspectral data into reviewable material classifications, target detections, emissions observations and change-monitoring outputs with evidence and uncertainty context.",
+          "capabilityType": "Hyperspectral AI and material-intelligence software",
+          "features": [
+            "Hyperspectral classification and sub-pixel target detection",
+            "Satellite and airborne Earth-observation workflows",
+            "Evidence, confidence and uncertainty reporting",
+            "FPGA and cloud processing options",
+            "Material and plume intelligence products"
+          ],
+          "applications": [
+            "Defence and intelligence analysis",
+            "Mining and mineral monitoring",
+            "Emissions detection",
+            "Industrial sorting and inspection",
+            "Agriculture and environmental monitoring"
+          ],
+          "technicalTags": [
+            "hyperspectral AI",
+            "spectral intelligence",
+            "material identification",
+            "GeoAI",
+            "target detection"
+          ],
+          "technicalDomainSlugs": [
+            "mission-software-and-data",
+            "sensing-and-isr",
+            "space-and-earth-observation"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Metaspectral's commercial spectral collection, imagery access or analytics could help distinguish materials and environmental conditions across remote northern areas where conventional imagery is insufficient.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Metaspectral's spectral-data processing or delivery workflow could reduce complex imagery into shareable outputs for analysts and distributed operational teams.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-itres-research-20260724",
+      "sourceLeadIds": [
+        "lead-itres-research-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "ITRES Research Limited is recommended for green private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. ITRES Research Limited is a Calgary company that designs and manufactures airborne, UAV, ground and emerging space hyperspectral imagers and also delivers commercial hyperspectral and thermal survey data. The evidence supports the proposed capability, location, public contact path and current commercial activity. The record is sufficiently enriched for substantive review rather than further source recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching ITRES Research Limited, itres-research, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "itres-home",
+          "title": "ITRES airborne hyperspectral and thermal imaging",
+          "url": "https://www.itres.com/",
+          "publisher": "ITRES Research Limited",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Products and services overview",
+          "summary": "ITRES lists CASI and other airborne, UAV, ground and space-oriented hyperspectral imagers and states that it designs sensor systems and provides data sets."
+        },
+        {
+          "id": "itres-surveys",
+          "title": "ITRES airborne surveys",
+          "url": "https://www.itres.com/airborne-surveys/",
+          "publisher": "ITRES Research Limited",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Survey services and operating history",
+          "summary": "ITRES describes commercial hyperspectral and thermal surveys across seven continents and defence research involving DRDC Suffield."
+        },
+        {
+          "id": "itres-contact",
+          "title": "ITRES contact",
+          "url": "https://www.itres.com/contact/",
+          "publisher": "ITRES Research Limited",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Calgary office and public contact",
+          "summary": "ITRES publishes its Calgary office, telephone, email and hardware, software, service and data inquiry routes."
+        },
+        {
+          "id": "itres-savi",
+          "title": "SAVI-1000 hyperspectral imager",
+          "url": "https://www.itres.com/wp-content/uploads/2026/04/U10089-01_SAVI-1000_Updated-2026.pdf",
+          "publisher": "ITRES Research Limited",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2026-04-01T00:00:00.000Z",
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Product specifications",
+          "summary": "ITRES documents the SAVI-1000 hyperspectral imager, embedded calibration, georeferencing, storage and multi-sensor operating features."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-itres-research-description",
+          "sourceId": "itres-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports ITRES Research Limited's Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-itres-research-capability",
+          "sourceId": "itres-surveys",
+          "fieldPath": "capabilities.itres-hyperspectral-imagers-and-surveys.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-itres-research-contact",
+          "sourceId": "itres-savi",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in ITRES Research Limited's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-itres-research-activity",
+          "sourceId": "itres-surveys",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "itres-research",
+        "name": "ITRES Research Limited",
+        "legalName": "ITRES Research Limited",
+        "aliases": [
+          "ITRES"
+        ],
+        "description": "ITRES Research Limited is a Calgary company that designs and manufactures airborne, UAV, ground and emerging space hyperspectral imagers and also delivers commercial hyperspectral and thermal survey data.",
+        "websiteUrl": "https://itres.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Calgary",
+          "provinceTerritory": "Alberta",
+          "countryCode": "CA",
+          "latitude": 51.0447,
+          "longitude": -114.0719,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Commercial imaging spectrometers, supporting processing systems and end-to-end airborne hyperspectral and thermal surveys across environmental, resource, defence and research applications.",
+          "publicContact": "2175 29 Street NE, Unit 90, Calgary, AB T1Y 7H8; info@itres.com; +1 403-250-9944.",
+          "currentActivity": "ITRES publishes a 2026 SAVI-1000 scientific-grade hyperspectral imager specification with embedded calibration, georeferencing and multi-sensor operation.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "itres-hyperspectral-imagers-and-surveys",
+          "name": "Hyperspectral Imagers and Airborne Survey Services",
+          "summary": "Provide CASI, SASI, MASI, TASI and SAVI hyperspectral imaging systems plus airborne acquisition, calibration, real-time processing and delivery of georeferenced spectral data products.",
+          "capabilityType": "Airborne, UAV, ground and space hyperspectral imaging systems",
+          "features": [
+            "VNIR, SWIR, MWIR and thermal spectral coverage",
+            "Up to 288 spectral bands in CASI configurations",
+            "Airborne, UAV, ground and space-oriented sensor models",
+            "Georeferencing, mosaicing and calibration workflows",
+            "Commercial survey acquisition and data delivery"
+          ],
+          "applications": [
+            "Defence target and disturbed-soil detection",
+            "Mineral and resource mapping",
+            "Water-quality and environmental monitoring",
+            "Forestry and precision agriculture",
+            "Satellite calibration and validation"
+          ],
+          "technicalTags": [
+            "CASI",
+            "SASI",
+            "airborne hyperspectral",
+            "imaging spectrometer",
+            "remote sensing"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "space-and-earth-observation",
+            "aerospace-and-mobility"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "ITRES Research Limited's commercial spectral collection, imagery access or analytics could help distinguish materials and environmental conditions across remote northern areas where conventional imagery is insufficient.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-telops-20260724",
+      "sourceLeadIds": [
+        "lead-telops-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Telops is recommended for green private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. Telops is a Québec City optical-systems company that designs and manufactures high-performance infrared cameras and Hyper-Cam hyperspectral imagers for defence, environmental, industrial and research applications. The evidence supports the proposed capability, location, public contact path and current commercial activity. The record is sufficiently enriched for substantive review rather than further source recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Telops, telops, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "telops-hypercam-airborne",
+          "title": "Hyper-Cam thermal airborne hyperspectral imaging",
+          "url": "https://info.telops.com/rs/telops/images/TEL-COMM-00082-d%20%28Hyper-Cam_Airborne%29.pdf",
+          "publisher": "Telops",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Airborne system benefits and applications",
+          "summary": "Telops documents airborne hyperspectral mapping, targeting, georeferencing and applications in surveillance, geology, environmental monitoring and agriculture."
+        },
+        {
+          "id": "telops-hypercam-overview",
+          "title": "Hyper-Cam systems overview",
+          "url": "https://info.telops.com/rs/telops/images/TEL-COMM-00074-g_%28H-C_4%20pages%29.pdf",
+          "publisher": "Telops",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Hyper-Cam configurations and headquarters",
+          "summary": "The official brochure describes Hyper-Cam sensor and airborne-platform configurations and publishes Telops' Québec headquarters and contact information."
+        },
+        {
+          "id": "telops-gas-quantification",
+          "title": "Remote quantification of greenhouse-gas emissions",
+          "url": "https://info.telops.com/Website-content-requests_15---LP----Remote-Quantification-of-Greenhouse-Gas-Emissions-from-a-Power-Plant.html",
+          "publisher": "Telops",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Application description",
+          "summary": "Telops explains use of Hyper-Cam and signal processing to remotely detect, identify and quantify greenhouse gases."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-telops-description",
+          "sourceId": "telops-hypercam-airborne",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Telops's Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-telops-capability",
+          "sourceId": "telops-hypercam-overview",
+          "fieldPath": "capabilities.telops-hyper-cam-hyperspectral-imaging.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-telops-contact",
+          "sourceId": "telops-gas-quantification",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in Telops's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-telops-activity",
+          "sourceId": "telops-hypercam-overview",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "telops",
+        "name": "Telops",
+        "legalName": "Telops Inc.",
+        "aliases": [
+          "Telops Inc."
+        ],
+        "description": "Telops is a Québec City optical-systems company that designs and manufactures high-performance infrared cameras and Hyper-Cam hyperspectral imagers for defence, environmental, industrial and research applications.",
+        "websiteUrl": "https://www.telops.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "defence_supplier",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Québec City",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 46.8139,
+          "longitude": -71.208,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Hyper-Cam hyperspectral imagers, high-speed and scientific infrared cameras, airborne stabilization and navigation accessories, and optical-system R&D services.",
+          "publicContact": "100-2600 St-Jean-Baptiste Avenue, Québec, QC G2E 6J5; contact@telops.com; +1 418-864-7808.",
+          "currentActivity": "Current Telops material continues to market Hyper-Cam airborne hyperspectral imaging for mapping, surveillance, target interrogation, gas detection and environmental monitoring.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "telops-hyper-cam-hyperspectral-imaging",
+          "name": "Hyper-Cam Hyperspectral Imaging Systems",
+          "summary": "Detect, identify, map and quantify gases, minerals, materials and targets using ground-based or airborne high-spectral-resolution infrared hyperspectral imagers and georeferenced mapping configurations.",
+          "capabilityType": "Infrared hyperspectral imaging camera family",
+          "features": [
+            "MWIR and LWIR Hyper-Cam configurations",
+            "Airborne mapping and ground targeting modes",
+            "User-selectable spectral resolution",
+            "Georeferenced data with GPS and inertial navigation",
+            "Gas detection, identification and quantification"
+          ],
+          "applications": [
+            "Target detection and surveillance",
+            "Chemical and gas-plume identification",
+            "Mineral and mine-face mapping",
+            "Environmental monitoring",
+            "Industrial and defence research"
+          ],
+          "technicalTags": [
+            "Hyper-Cam",
+            "infrared hyperspectral",
+            "gas detection",
+            "target identification",
+            "airborne mapping"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "aerospace-and-mobility",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": []
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-photon-etc-20260724",
+      "sourceLeadIds": [
+        "lead-photon-etc-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Photon etc. is recommended for green private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. Photon etc. is a Montréal photonics company that designs and manufactures wide-field, microscopy and push-broom hyperspectral imaging systems, infrared cameras, tunable filters and analysis software. The evidence supports the proposed capability, location, public contact path and current commercial activity. The record is sufficiently enriched for substantive review rather than further source recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Photon etc., photon-etc, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "photon-products",
+          "title": "Photon etc. products",
+          "url": "https://www.photonetc.com/products",
+          "publisher": "Photon etc.",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Hyperspectral product catalogue",
+          "summary": "Photon etc. lists tunable, microscopy and push-broom hyperspectral systems, cameras, lenses, filters and instrument-control software across visible and infrared ranges."
+        },
+        {
+          "id": "photon-about",
+          "title": "What defines Photon etc.",
+          "url": "https://www.photonetc.com/who-we-are",
+          "publisher": "Photon etc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Company history and portfolio",
+          "summary": "Photon etc. identifies itself as a Montréal designer and manufacturer of hyperspectral and infrared imaging systems founded in 2003."
+        },
+        {
+          "id": "photon-contact",
+          "title": "Photon etc. contact",
+          "url": "https://www.photonetc.com/contact",
+          "publisher": "Photon etc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Office and public contacts",
+          "summary": "Photon etc. publishes its Montréal address, public telephone and sales, information and support email channels."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-photon-etc-description",
+          "sourceId": "photon-products",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Photon etc.'s Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-photon-etc-capability",
+          "sourceId": "photon-about",
+          "fieldPath": "capabilities.photon-etc-hyperspectral-imaging-platforms.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-photon-etc-contact",
+          "sourceId": "photon-contact",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in Photon etc.'s profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-photon-etc-activity",
+          "sourceId": "photon-about",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "photon-etc",
+        "name": "Photon etc.",
+        "legalName": null,
+        "aliases": [
+          "Photon Etc"
+        ],
+        "description": "Photon etc. is a Montréal photonics company that designs and manufactures wide-field, microscopy and push-broom hyperspectral imaging systems, infrared cameras, tunable filters and analysis software.",
+        "websiteUrl": "https://photonetc.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Montréal",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.5019,
+          "longitude": -73.5674,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "IMA, HyperCube, GRAND-EOS, S-EOS, V-EOS and L-EOS hyperspectral platforms plus SWIR cameras, optics, tunable filters and PHySpec control software.",
+          "publicContact": "5795 Avenue de Gaspé, Suite 222, Montréal, QC H2S 2X3; info@photonetc.com; sales@photonetc.com; +1 514-385-9555.",
+          "currentActivity": "Photon etc. currently markets an expanded hyperspectral and SWIR product line for industrial, advanced-material and life-science users, including the L-EOS push-broom imager and a photovoltaic mapping software module.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "photon-etc-hyperspectral-imaging-platforms",
+          "name": "Hyperspectral Imaging Platforms",
+          "summary": "Acquire and analyze visible, near-infrared and shortwave-infrared spectral image cubes using tunable global imagers, microscopy platforms, push-broom systems, filters, cameras and instrument-control software.",
+          "capabilityType": "Laboratory and industrial hyperspectral imaging systems",
+          "features": [
+            "VIS, NIR and SWIR spectral coverage",
+            "Global tunable and push-broom imaging architectures",
+            "Wide-field and microscopy platforms",
+            "Scientific infrared cameras and telecentric lenses",
+            "PHySpec instrument-control software"
+          ],
+          "applications": [
+            "Industrial material sorting and inspection",
+            "Advanced-material characterization",
+            "Counterfeit ink and document analysis",
+            "Photovoltaic mapping",
+            "Life-science and preclinical imaging"
+          ],
+          "technicalTags": [
+            "hyperspectral camera",
+            "SWIR",
+            "spectral microscopy",
+            "push-broom imager",
+            "material characterization"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "advanced-manufacturing-and-integration",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": []
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-pacific-geomatics-20260724",
+      "sourceLeadIds": [
+        "lead-pacific-geomatics-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Pacific Geomatics is recommended for green private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. Pacific Geomatics is a privately owned Canadian Earth-observation data provider that supplies commercial optical, radar, elevation and hyperspectral imagery and derived products to government, defence, resource and environmental customers. The evidence supports the proposed capability, location, public contact path and current commercial activity. The record is sufficiently enriched for substantive review rather than further source recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Pacific Geomatics, pacific-geomatics, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "pacgeo-nmso",
+          "title": "PacGeo National Master Standing Offers",
+          "url": "https://pacgeo.com/nmso/",
+          "publisher": "Pacific Geomatics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Government imagery procurement catalogue",
+          "summary": "PacGeo lists Government of Canada NMSOs for Wyvern and Pixxel hyperspectral imagery with resolution, band and application details."
+        },
+        {
+          "id": "pacgeo-products",
+          "title": "Pacific Geomatics imagery products",
+          "url": "https://pacgeo.com/products/",
+          "publisher": "Pacific Geomatics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Satellite imagery catalogue",
+          "summary": "PacGeo's commercial catalogue includes Planet Tanager, Wyvern Dragonette and Pixxel Firefly hyperspectral datasets."
+        },
+        {
+          "id": "pacgeo-company",
+          "title": "About Pacific Geomatics",
+          "url": "https://pacgeo.com/company/",
+          "publisher": "Pacific Geomatics",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Canadian ownership, operating history and contacts",
+          "summary": "PacGeo describes a privately owned Canadian corporation operating since 1994 and supplying Earth-observation data to Canadian defence, intelligence and security customers."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-pacific-geomatics-description",
+          "sourceId": "pacgeo-nmso",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Pacific Geomatics's Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-pacific-geomatics-capability",
+          "sourceId": "pacgeo-products",
+          "fieldPath": "capabilities.pacgeo-commercial-hyperspectral-imagery-access.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-pacific-geomatics-contact",
+          "sourceId": "pacgeo-company",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in Pacific Geomatics's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-pacific-geomatics-activity",
+          "sourceId": "pacgeo-products",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "pacific-geomatics",
+        "name": "Pacific Geomatics",
+        "legalName": "Pacific Geomatics Limited",
+        "aliases": [
+          "PacGeo"
+        ],
+        "description": "Pacific Geomatics is a privately owned Canadian Earth-observation data provider that supplies commercial optical, radar, elevation and hyperspectral imagery and derived products to government, defence, resource and environmental customers.",
+        "websiteUrl": "https://pacgeo.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "defence_supplier",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Victoria",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 48.4284,
+          "longitude": -123.3656,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Vendor-neutral commercial satellite imagery and derived products spanning hyperspectral, optical, synthetic-aperture radar and elevation datasets.",
+          "publicContact": "Public inquiry: info@pacgeo.com; Victoria +1 604-372-3300; Ottawa +1 613-240-6206.",
+          "currentActivity": "PacGeo currently lists Canadian federal NMSOs for Wyvern and Pixxel hyperspectral imagery and commercial access to Planet Tanager data.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "pacgeo-commercial-hyperspectral-imagery-access",
+          "name": "Commercial Hyperspectral Imagery Access",
+          "summary": "Source, task and deliver commercial hyperspectral satellite imagery from Wyvern Dragonette, Pixxel Firefly and Planet Tanager, including Canadian federal procurement access through National Master Standing Offers.",
+          "capabilityType": "Satellite imagery distribution and procurement service",
+          "features": [
+            "Wyvern 5.3-metre 31-band VNIR imagery",
+            "Pixxel 5-metre 150-plus-band imagery",
+            "Planet Tanager VSWIR imagery",
+            "Archive and new-tasking support",
+            "Government of Canada NMSO procurement pathways"
+          ],
+          "applications": [
+            "Defence and security geospatial intelligence",
+            "Wildfire and vegetation monitoring",
+            "Mineral exploration",
+            "Contamination and environmental monitoring",
+            "Government land and resource management"
+          ],
+          "technicalTags": [
+            "commercial imagery",
+            "hyperspectral satellite",
+            "NMSO",
+            "geospatial data",
+            "imagery tasking"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Pacific Geomatics's commercial spectral collection, imagery access or analytics could help distinguish materials and environmental conditions across remote northern areas where conventional imagery is insufficient.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Pacific Geomatics's spectral-data processing or delivery workflow could reduce complex imagery into shareable outputs for analysts and distributed operational teams.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-skywatch-space-applications-20260724",
+      "sourceLeadIds": [
+        "lead-skywatch-space-applications-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "SkyWatch Space Applications is recommended for green private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. SkyWatch Space Applications is a Waterloo-based geospatial platform company that aggregates commercial satellite, aerial and drone imagery, including hyperspectral data, into searchable purchasing, tasking and data-management workflows. The evidence supports the proposed capability, location, public contact path and current commercial activity. The record is sufficiently enriched for substantive review rather than further source recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 93,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching SkyWatch Space Applications, skywatch-space-applications, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "skywatch-home",
+          "title": "SkyWatch satellite imagery and geospatial data",
+          "url": "https://skywatch.com/",
+          "publisher": "SkyWatch",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Platform overview",
+          "summary": "SkyWatch describes a unified commercial workflow for discovering, comparing, purchasing and integrating optical, SAR, hyperspectral and aerial imagery."
+        },
+        {
+          "id": "skywatch-explore",
+          "title": "SkyWatch EXPLORE",
+          "url": "https://skywatch.com/explore/",
+          "publisher": "SkyWatch",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Marketplace features and providers",
+          "summary": "EXPLORE advertises archive and fresh-tasking access across more than 700 sensors and 25-plus providers without minimum contracts."
+        },
+        {
+          "id": "skywatch-wyvern",
+          "title": "Wyvern hyperspectral data available through SkyWatch",
+          "url": "https://skywatch.com/wyvern-hyperspectral-data-now-available-to-skywatch-customers/",
+          "publisher": "SkyWatch",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2024-09-04T00:00:00.000Z",
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Product integration announcement",
+          "summary": "SkyWatch confirms commercial distribution of Wyvern Dragonette hyperspectral imagery through its platform."
+        },
+        {
+          "id": "skywatch-canadian-partnership",
+          "title": "Canadian companies partner on Earth-observation data",
+          "url": "https://skywatch.com/canadian-space-tech-companies-partner-to-deliver-next-generation-earth-observation-data/",
+          "publisher": "SkyWatch",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Waterloo and Edmonton partnership",
+          "summary": "SkyWatch identifies itself as Waterloo-based and describes its data-management relationship with Edmonton hyperspectral company Wyvern."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-skywatch-space-applications-description",
+          "sourceId": "skywatch-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports SkyWatch Space Applications's Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-skywatch-space-applications-capability",
+          "sourceId": "skywatch-explore",
+          "fieldPath": "capabilities.skywatch-hyperspectral-imagery-marketplace.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-skywatch-space-applications-contact",
+          "sourceId": "skywatch-canadian-partnership",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in SkyWatch Space Applications's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-skywatch-space-applications-activity",
+          "sourceId": "skywatch-explore",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "skywatch-space-applications",
+        "name": "SkyWatch Space Applications",
+        "legalName": "SkyWatch Space Applications Inc.",
+        "aliases": [
+          "SkyWatch"
+        ],
+        "description": "SkyWatch Space Applications is a Waterloo-based geospatial platform company that aggregates commercial satellite, aerial and drone imagery, including hyperspectral data, into searchable purchasing, tasking and data-management workflows.",
+        "websiteUrl": "https://skywatch.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Waterloo",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4643,
+          "longitude": -80.5204,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "EXPLORE commercial imagery marketplace, HUB data procurement and sharing workspace, and provider-facing infrastructure for satellite data distribution.",
+          "publicContact": "Public product, sales and demonstration requests are available through https://skywatch.com/.",
+          "currentActivity": "SkyWatch currently advertises access to 700-plus sensors and explicitly distributes Wyvern commercial hyperspectral imagery alongside other satellite, aerial and drone sources.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "skywatch-hyperspectral-imagery-marketplace",
+          "name": "Hyperspectral Imagery Marketplace and Data Hub",
+          "summary": "Search, compare, purchase, task, manage and share hyperspectral and other geospatial imagery through a unified commercial platform connected to hundreds of sensors and multiple data providers.",
+          "capabilityType": "Commercial Earth-observation marketplace and data-management platform",
+          "features": [
+            "Catalog access across 700-plus sensors",
+            "Archive search and new collection tasking",
+            "Hyperspectral, optical, SAR and aerial data",
+            "Pricing and provider comparison",
+            "Project workspaces, sharing and GIS integration"
+          ],
+          "applications": [
+            "Government and defence imagery acquisition",
+            "Environmental and resource monitoring",
+            "Infrastructure and change analysis",
+            "GeoAI data sourcing",
+            "Distributed team imagery management"
+          ],
+          "technicalTags": [
+            "imagery marketplace",
+            "hyperspectral data",
+            "satellite tasking",
+            "geospatial procurement",
+            "Earth observation"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "mission-software-and-data",
+            "sensing-and-isr"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "SkyWatch Space Applications's commercial spectral collection, imagery access or analytics could help distinguish materials and environmental conditions across remote northern areas where conventional imagery is insufficient.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "SkyWatch Space Applications's spectral-data processing or delivery workflow could reduce complex imagery into shareable outputs for analysts and distributed operational teams.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-aero-geometrics-20260724",
+      "sourceLeadIds": [
+        "lead-aero-geometrics-20260724"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Aero Geometrics is recommended for amber private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. Aero Geometrics is a Canadian-owned Vancouver geomatics company providing aerial and ground surveys, digital mapping, orthophotography, LiDAR and hyperspectral imagery services for government and commercial clients. The evidence supports the proposed capability, location, public contact path and current commercial activity. The reviewer should preserve the explicit warning and avoid expanding the record beyond the currently published evidence.",
+      "reviewTier": "amber",
+      "inclusionScore": 88,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "The current site identifies hyperspectral imagery among company services but provides little current sensor, spectral-range, sample-deliverable or recent-project detail; reviewers should preserve a broad service description."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Aero Geometrics, aero-geometrics, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "aerogeo-about",
+          "title": "Aero Geometrics company profile",
+          "url": "https://www.aerogeo.com/about",
+          "publisher": "Aero Geometrics",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "History, services and location",
+          "summary": "Aero Geometrics describes a Canadian-owned Vancouver operation established in 1975 with hyperspectral imagery among its aerial and ground survey services."
+        },
+        {
+          "id": "aerogeo-home",
+          "title": "Aero Geometrics services",
+          "url": "https://www.aerogeo.com/",
+          "publisher": "Aero Geometrics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Current services and contact",
+          "summary": "The current site describes customized aerial and ground survey, LiDAR, digital imaging and orthophotography services and publishes Vancouver contact details."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-aero-geometrics-description",
+          "sourceId": "aerogeo-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Aero Geometrics's Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aero-geometrics-capability",
+          "sourceId": "aerogeo-home",
+          "fieldPath": "capabilities.aerogeo-airborne-hyperspectral-imagery.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aero-geometrics-contact",
+          "sourceId": "aerogeo-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in Aero Geometrics's profile.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aero-geometrics-activity",
+          "sourceId": "aerogeo-home",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "aero-geometrics",
+        "name": "Aero Geometrics",
+        "legalName": "Aero Geometrics Ltd.",
+        "aliases": [
+          "AeroGeo"
+        ],
+        "description": "Aero Geometrics is a Canadian-owned Vancouver geomatics company providing aerial and ground surveys, digital mapping, orthophotography, LiDAR and hyperspectral imagery services for government and commercial clients.",
+        "websiteUrl": "https://aerogeo.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Aerial and ground survey services covering hyperspectral imagery, LiDAR, digital mapping, orthophotography, underground mapping and volumetric calculations.",
+          "publicContact": "209-837 West Hastings Street, Vancouver, BC V6C 3N6; +1 604-408-8740; manager@aerogeo.com.",
+          "currentActivity": "The current official site continues to offer tailored Canadian geomatics and aerial-survey services, while detailed recent hyperspectral project evidence is not published.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "aerogeo-airborne-hyperspectral-imagery",
+          "name": "Airborne Hyperspectral Imagery Services",
+          "summary": "Plan and deliver hyperspectral imagery as part of customized aerial-survey and geomatics projects alongside LiDAR, digital mapping, orthophotography and related geospatial products.",
+          "capabilityType": "Commercial airborne hyperspectral survey service",
+          "features": [
+            "Customized aerial survey planning",
+            "Hyperspectral imagery acquisition",
+            "Integration with LiDAR and digital mapping",
+            "Orthophoto and geospatial deliverables",
+            "Canadian-owned survey operation"
+          ],
+          "applications": [
+            "Government mapping",
+            "Forestry and environmental consulting",
+            "Mining and construction surveys",
+            "Engineering geospatial support",
+            "Site and corridor assessment"
+          ],
+          "technicalTags": [
+            "airborne survey",
+            "hyperspectral imagery",
+            "geomatics",
+            "LiDAR",
+            "orthophotography"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "aerospace-and-mobility",
+            "space-and-earth-observation"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Aero Geometrics's commercial spectral collection, imagery access or analytics could help distinguish materials and environmental conditions across remote northern areas where conventional imagery is insufficient.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-kisik-geospatial-20260724",
+      "sourceLeadIds": [
+        "lead-kisik-geospatial-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Kîsik GeoSpatial is recommended for green private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. Kîsik GeoSpatial is a Delta, British Columbia aerial-survey company delivering end-to-end airborne acquisition, processing and analytics, including full-spectrum VNIR-SWIR hyperspectral imagery. The evidence supports the proposed capability, location, public contact path and current commercial activity. The record is sufficiently enriched for substantive review rather than further source recovery.",
+      "reviewTier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 93,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Kîsik GeoSpatial, kisik-geospatial, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "kisik-home",
+          "title": "Kîsik geospatial and aerial survey",
+          "url": "https://kisik.ca/",
+          "publisher": "Kîsik GeoSpatial",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Company, services and technology overview",
+          "summary": "Kîsik describes end-to-end commercial aerial acquisition and processing with hyperspectral, LiDAR and imagery technologies from Delta, British Columbia."
+        },
+        {
+          "id": "kisik-products",
+          "title": "Kîsik hyperspectral products",
+          "url": "https://kisik.ca/products/",
+          "publisher": "Kîsik GeoSpatial",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Hyperspectral product description",
+          "summary": "Kîsik states that it produces high-spatial- and spectral-resolution VNIR-SWIR data for geological, fire, flood, vegetation, forest and environmental uses."
+        },
+        {
+          "id": "kisik-aerial-services",
+          "title": "Kîsik aerial acquisition services",
+          "url": "https://kisik.ca/services/aerial-acquisition-services/",
+          "publisher": "Kîsik GeoSpatial",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Fleet, operating authority and hyperspectral collection",
+          "summary": "Kîsik describes its licensed survey fleet, sensor ports and commercial hyperspectral imagery collection service."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-kisik-geospatial-description",
+          "sourceId": "kisik-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Kîsik GeoSpatial's Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kisik-geospatial-capability",
+          "sourceId": "kisik-products",
+          "fieldPath": "capabilities.kisik-airborne-hyperspectral-surveys.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kisik-geospatial-contact",
+          "sourceId": "kisik-aerial-services",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in Kîsik GeoSpatial's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kisik-geospatial-activity",
+          "sourceId": "kisik-products",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "kisik-geospatial",
+        "name": "Kîsik GeoSpatial",
+        "legalName": "Kîsik Aerial Survey Inc.",
+        "aliases": [
+          "Kîsik",
+          "Kisik Aerial Survey"
+        ],
+        "description": "Kîsik GeoSpatial is a Delta, British Columbia aerial-survey company delivering end-to-end airborne acquisition, processing and analytics, including full-spectrum VNIR-SWIR hyperspectral imagery.",
+        "websiteUrl": "https://kisik.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Delta",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.0847,
+          "longitude": -123.0586,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "End-to-end aerial acquisition, production services, ground control and analytics using hyperspectral, LiDAR and large-format imagery sensors.",
+          "publicContact": "Unit 3, 4340 King Street, Delta, BC V4K 0A5; +1 604-821-9915; public inquiry route at https://kisik.ca/.",
+          "currentActivity": "Kîsik currently operates commercial survey aircraft and markets AisaFENIX hyperspectral acquisition plus integrated environmental, forestry and geological analytics.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "kisik-airborne-hyperspectral-surveys",
+          "name": "Airborne Hyperspectral Survey and Analytics",
+          "summary": "Collect and process full-spectrum VNIR-SWIR hyperspectral imagery with crewed aircraft and AisaFENIX sensors, then deliver geospatial products and analytics for environmental, resource and risk-monitoring applications.",
+          "capabilityType": "End-to-end airborne hyperspectral acquisition and analytics",
+          "features": [
+            "AisaFENIX full-spectrum VNIR-SWIR sensor",
+            "Licensed commercial aerial-survey aircraft fleet",
+            "In-house acquisition, processing and delivery",
+            "Integration with LiDAR and large-format imagery",
+            "Forestry and environmental analytics"
+          ],
+          "applications": [
+            "Mineral and geothermal exploration",
+            "Fire and flood risk analysis",
+            "Vegetation health and forest inventory",
+            "Environmental and coastal monitoring",
+            "Wide-area mapping and emergency response"
+          ],
+          "technicalTags": [
+            "AisaFENIX",
+            "VNIR-SWIR",
+            "airborne hyperspectral",
+            "aerial survey",
+            "geospatial analytics"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "aerospace-and-mobility",
+            "space-and-earth-observation"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Kîsik GeoSpatial's commercial spectral collection, imagery access or analytics could help distinguish materials and environmental conditions across remote northern areas where conventional imagery is insufficient.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-echo-labs-20260724",
+      "sourceLeadIds": [
+        "lead-echo-labs-20260724"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Echo Labs is recommended for amber private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. Echo Labs is a Vancouver software company that uses machine learning and hyperspectral imagery from satellite, aircraft, helicopter, UAS and ground platforms to identify and quantify gases, liquids and other materials. The evidence supports the proposed capability, location, public contact path and current commercial activity. The reviewer should preserve the explicit warning and avoid expanding the record beyond the currently published evidence.",
+      "reviewTier": "amber",
+      "inclusionScore": 91,
+      "completenessScore": 80,
+      "reviewWarnings": [
+        "The official site supports a concrete software and reporting offer but publishes limited customer, deployment, performance and corporate legal-identity evidence; retain an amber review posture."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Echo Labs, echo-labs, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "echo-labs-home",
+          "title": "Echo Labs material identification software",
+          "url": "https://www.echolabs.ca/",
+          "publisher": "Echo Labs",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Solution, product, team and contact sections",
+          "summary": "Echo Labs describes EchoPath, multi-platform hyperspectral inputs, material and gas reporting applications, its Vancouver address and public sales channel."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-echo-labs-description",
+          "sourceId": "echo-labs-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Echo Labs's Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-echo-labs-capability",
+          "sourceId": "echo-labs-home",
+          "fieldPath": "capabilities.echo-labs-echopath-material-identification.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-echo-labs-contact",
+          "sourceId": "echo-labs-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in Echo Labs's profile.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-echo-labs-activity",
+          "sourceId": "echo-labs-home",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "echo-labs",
+        "name": "Echo Labs",
+        "legalName": null,
+        "aliases": [
+          "Echo Labs HSI"
+        ],
+        "description": "Echo Labs is a Vancouver software company that uses machine learning and hyperspectral imagery from satellite, aircraft, helicopter, UAS and ground platforms to identify and quantify gases, liquids and other materials.",
+        "websiteUrl": "https://echolabs.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "EchoPath software and customized reporting that convert multi-platform hyperspectral data into material, gas, leak and contamination intelligence.",
+          "publicContact": "Suite 2700, 1133 Melville Street, Vancouver, BC V6E 4E5; sales@echolabs.ca; +1 604-932-0823.",
+          "currentActivity": "Echo Labs currently markets AI-driven hyperspectral analysis for oil-and-gas and environmental threats, with data inputs spanning satellite, crewed aircraft, helicopter, UAS and ground platforms.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "echo-labs-echopath-material-identification",
+          "name": "EchoPath Hyperspectral Material Identification",
+          "summary": "Process remotely sensed VNIR, SWIR, MWIR and LWIR hyperspectral data into GIS-ready material-identification and quantification reports for leaks, contamination and other operational threats.",
+          "capabilityType": "Hyperspectral analytics and reporting software",
+          "features": [
+            "Multi-platform hyperspectral data ingestion",
+            "VNIR through LWIR spectral support",
+            "Machine-learning material identification",
+            "GIS-ready notification and reporting",
+            "Collection-partner data audit workflow"
+          ],
+          "applications": [
+            "Methane and industrial gas detection",
+            "Oil and fuel leak mapping",
+            "Produced-water and salinity monitoring",
+            "Heavy-metal and contamination assessment",
+            "Remote site inspection"
+          ],
+          "technicalTags": [
+            "EchoPath",
+            "hyperspectral analytics",
+            "material identification",
+            "leak detection",
+            "GIS reporting"
+          ],
+          "technicalDomainSlugs": [
+            "mission-software-and-data",
+            "sensing-and-isr"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Echo Labs's spectral-data processing or delivery workflow could reduce complex imagery into shareable outputs for analysts and distributed operational teams.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-terraplus-20260724",
+      "sourceLeadIds": [
+        "lead-terraplus-20260724"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Terraplus is recommended for amber private review because durable official sources establish a Canadian commercial identity and a concrete role in the hyperspectral imagery value chain. Terraplus is a Richmond Hill geophysical-equipment supplier and integrator offering turnkey UAV, airborne and laboratory hyperspectral imaging systems spanning VNIR and SWIR spectral ranges. The evidence supports the proposed capability, location, public contact path and current commercial activity. The reviewer should preserve the explicit warning and avoid expanding the record beyond the currently published evidence.",
+      "reviewTier": "amber",
+      "inclusionScore": 90,
+      "completenessScore": 85,
+      "reviewWarnings": [
+        "Terraplus is primarily a Canadian equipment supplier and integrator rather than an imagery operator; publish it as a hyperspectral-system access and integration company, not as a satellite imagery producer."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:05:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Terraplus, terraplus, its official domain or the recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "terraplus-hyperspectral",
+          "title": "Terraplus hyperspectral imaging",
+          "url": "https://terraplus.ca/product-details/hyperspectral-imaging",
+          "publisher": "Terraplus",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "UAV solutions and company contact",
+          "summary": "Terraplus lists turnkey UAV hyperspectral systems, VNIR-SWIR configurations and its Richmond Hill office and public sales contact."
+        },
+        {
+          "id": "terraplus-vnir-swir",
+          "title": "Co-aligned VNIR-SWIR hyperspectral imaging system",
+          "url": "https://terraplus.ca/wp-content/uploads/terraplus-Brochures-English/Co-Aligned-VNIR-SWIR-Hyperspectral-Imaging-Sensor.pdf",
+          "publisher": "Terraplus",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Payload specifications and applications",
+          "summary": "The official brochure documents 400-2500-nanometre coverage, GPS-IMU, optional LiDAR and mining, infrastructure and environmental applications."
+        },
+        {
+          "id": "terraplus-laboratory",
+          "title": "Terraplus laboratory imaging",
+          "url": "https://terraplus.ca/sale/laboratory",
+          "publisher": "Terraplus",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T11:05:00.000Z",
+          "locator": "Laboratory and core imaging systems",
+          "summary": "Terraplus describes high-resolution hyperspectral imaging and multi-sensor systems for drill core and small samples."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-terraplus-description",
+          "sourceId": "terraplus-hyperspectral",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Terraplus's Canadian commercial identity and the bounded hyperspectral role described in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-terraplus-capability",
+          "sourceId": "terraplus-vnir-swir",
+          "fieldPath": "capabilities.terraplus-uav-hyperspectral-imaging-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named hyperspectral capability, its principal features and the applications summarized for reviewer consideration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-terraplus-contact",
+          "sourceId": "terraplus-laboratory",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official source supports the Canadian location and public contact route included in Terraplus's profile.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-terraplus-activity",
+          "sourceId": "terraplus-vnir-swir",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, technical or partnership source supports the present commercial activity summarized in the candidate.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "terraplus",
+        "name": "Terraplus",
+        "legalName": "Terraplus Inc.",
+        "aliases": [
+          "TerraPlus"
+        ],
+        "description": "Terraplus is a Richmond Hill geophysical-equipment supplier and integrator offering turnkey UAV, airborne and laboratory hyperspectral imaging systems spanning VNIR and SWIR spectral ranges.",
+        "websiteUrl": "https://terraplus.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Richmond Hill",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.8828,
+          "longitude": -79.4403,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Sales and integration of UAV, airborne and laboratory hyperspectral systems, geophysical instruments and multi-sensor drill-core analysis platforms.",
+          "publicContact": "120 West Beaver Creek Road, Unit 15, Richmond Hill, ON L4B 1L2; sales@terraplus.ca; +1 905-764-5505.",
+          "currentActivity": "Terraplus currently lists turnkey UAV hyperspectral systems, co-aligned VNIR-SWIR payloads, laboratory imaging and multi-sensor drill-core systems.",
+          "evidenceBoundary": "Identity, capabilities, location, public contacts and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "terraplus-uav-hyperspectral-imaging-systems",
+          "name": "UAV and Laboratory Hyperspectral Imaging Systems",
+          "summary": "Supply and integrate turnkey VNIR and SWIR hyperspectral sensors for UAV remote sensing, material identification, mining, infrastructure and environmental monitoring, including co-aligned systems with optional LiDAR.",
+          "capabilityType": "Hyperspectral sensor distribution and system integration",
+          "features": [
+            "Turnkey UAV hyperspectral payloads",
+            "VNIR and SWIR coverage from 400 to 2500 nanometres",
+            "Co-aligned dual-sensor configurations",
+            "GPS-IMU, storage and optional LiDAR integration",
+            "Laboratory and drill-core imaging options"
+          ],
+          "applications": [
+            "Mineral exploration and drill-core analysis",
+            "Infrastructure inspection",
+            "Environmental monitoring",
+            "Archaeology and material identification",
+            "UAV remote-sensing missions"
+          ],
+          "technicalTags": [
+            "UAV hyperspectral",
+            "VNIR-SWIR",
+            "sensor integration",
+            "remote sensing",
+            "drill core imaging"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "aerospace-and-mobility",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": []
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    }
+  ],
+  "deferred": []
+}

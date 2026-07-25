@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260724131927",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "named-company:canadian-strategic-missions-corporation",
+    "reason": "The operator explicitly requested a deep dossier for a Canadian space and defence developer with a broad, current portfolio spanning strategic power, space resources and advanced sensing.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-24T13:19:27.962Z",
+  "completedAt": "2026-07-24T13:27:02.623Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "site:strategicmissions.ca Canadian Strategic Missions Corporation projects mission space Canada",
+    "Canadian Strategic Missions Corporation Canada government CSA NRC DND",
+    "site:asc-csa.gc.ca Canadian Strategic Missions Corporation",
+    "site:canada.ca Canadian Strategic Missions Corporation",
+    "site:canadabuys.canada.ca Canadian Space Mining Corporation",
+    "site:diana.nato.int Canadian Space Mining Corporation",
+    "Canadian Space Mining Corporation quantum sensor QASM contract"
+  ],
+  "counters": {
+    "sourcesChecked": 18,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 6,
+    "uniqueProspects": 6,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 5,
+    "sourceLanesSearched": 5,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260724131927.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260724131927.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260724131927.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260724131927-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260724131927.json"
+  }
+}

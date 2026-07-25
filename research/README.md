@@ -10,4 +10,6 @@ Research remains review-first. New-record and existing-record refresh candidates
 
 The Monday discovery run expands the corpus. The weekday signal-refresh run monitors published organizations and public demand for technology, product, contract, procurement, program, financing, and relationship changes. Both routes use the same private Admin Review and Publish workflow.
 
+The current operator guide is available as [PDF](../output/doc/true-north-map-research-pipeline-skills-operator-guide.pdf), [DOCX](../output/doc/true-north-map-research-pipeline-skills-operator-guide.docx), and [Mermaid-enabled Markdown](../output/doc/true-north-map-research-pipeline-skills-operator-guide.md). Regenerate the document from Markdown with `research/scripts/build_operator_guide.py`.
+
 Run research workflow commands from the project root or from `app/`; the root commands forward to the application package.

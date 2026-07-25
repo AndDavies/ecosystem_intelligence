@@ -1,0 +1,1001 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-24T00:56:08.873Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260724004602",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-kind:company",
+      "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-24T00:46:02.320Z",
+    "completed_at": "2026-07-24T00:52:00.000Z",
+    "agent_version": "tnm-research-pipeline/1.2.0",
+    "source_queries": [
+      "Dominion Dynamics AURION official product, live service, newsroom, and government identity sources",
+      "CAE official defence technology portfolio, MAD-XR, FFLIT company release, and Government of Canada program and award sources",
+      "Lockheed Martin Canada Coast Guard systems, CMS 330, CSI ISS, and Government of Canada contract sources"
+    ],
+    "counters": {
+      "sourcesChecked": 11,
+      "leadsQualified": 3,
+      "leadsDeferred": 0,
+      "candidatesCreated": 3,
+      "duplicatesBlocked": 3,
+      "prospectsDiscovered": 3,
+      "uniqueProspects": 3,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 9,
+      "sourceLanesSearched": 3,
+      "candidatesGreen": 3,
+      "candidatesAmber": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "completed"
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "dominion-dynamics-aurion-refresh-2026-07-24",
+      "research_run_ref": "tnm-manual-20260724004602",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "dominion-dynamics-aurion-refresh-2026-07-24"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "622647bd-e3e6-4caa-a56d-08dee4a61f05",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "dominion-dynamics-aurion-refresh-2026-07-24",
+        "sourceLeadIds": [
+          "dominion-dynamics-aurion-refresh-2026-07-24"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Dominion Dynamics is already published and its broader portfolio is current, but AURION is materially under-described. The live official product page now exposes quantifiable scale and functions covering procurement lifecycles, lobbying, funding, former officials, departments, supplier qualification, and active opportunities. Updating the existing capability preserves its UUID and avoids manufacturing a duplicate product record while giving reviewers a precise evidence-backed diff.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 93,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-24T00:50:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "622647bd-e3e6-4caa-a56d-08dee4a61f05",
+              "name": "dominion-dynamics",
+              "matchedBy": "intended published refresh target via exact slug, name, and website domain"
+            }
+          ],
+          "note": "The organization match is the intended refresh target; live checks found no conflicting proposed capability or program slug."
+        },
+        "sources": [
+          {
+            "id": "dominion-aurion-product-2026",
+            "title": "Aurion — Government intelligence, unified",
+            "url": "https://www.ddc2.com/aurion",
+            "publisher": "Dominion Dynamics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Product metrics and Companies, Financials, Procurement Chains, Opportunities, and Organizations modules",
+            "summary": "The current official page quantifies AURION's linked public datasets and documents entity, financial, procurement-chain, opportunity, and department intelligence modules."
+          },
+          {
+            "id": "dominion-aurion-live-2026",
+            "title": "AURION live government intelligence service",
+            "url": "https://aurion.ddc2.com/",
+            "publisher": "Dominion Dynamics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Live dashboard and procurement, entity, organization, and opportunity navigation",
+            "summary": "The operational service corroborates that AURION exposes live, searchable government procurement and organization intelligence rather than only a product announcement."
+          },
+          {
+            "id": "dominion-gac-founder-profile-2026",
+            "title": "Eliot Pence — Global Affairs Canada profile",
+            "url": "https://international.canada.ca/en/global-affairs/campaigns/advisory-committee/eliot-pence",
+            "publisher": "Global Affairs Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-06-23T00:00:00.000Z",
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Biography and Dominion Dynamics description",
+            "summary": "The Government of Canada identifies Dominion's founder and the company's Canadian sovereign-defence focus in aerospace, autonomy, and command and control."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-dominion-aurion-scale",
+            "sourceId": "dominion-aurion-product-2026",
+            "fieldPath": "operations.update-dominion-aurion.after",
+            "claimClass": "source_backed",
+            "excerpt": "The official page reports more than C$116 billion in contract value, 41,000 procurement chains, 32,000 companies, 350,000 lobbying communications, 165,000 registrations, and 184,000 funding disclosures, alongside company, financial, procurement-chain, opportunity, and organization modules.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dominion-aurion-operational",
+            "sourceId": "dominion-aurion-live-2026",
+            "fieldPath": "operations.update-dominion-aurion.after.applications",
+            "claimClass": "source_backed",
+            "excerpt": "The live AURION service exposes operational procurement, opportunity, entity, and organization navigation, supporting treatment as a current capability rather than an announcement.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "622647bd-e3e6-4caa-a56d-08dee4a61f05",
+          "slug": "dominion-dynamics",
+          "matchMethods": [
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T21:18:43.928864Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "622647bd-e3e6-4caa-a56d-08dee4a61f05",
+            "slug": "dominion-dynamics",
+            "name": "Dominion Dynamics",
+            "updated_at": "2026-07-20T21:18:43.928864Z",
+            "website_url": "https://www.ddc2.com/",
+            "publication_status": "published"
+          },
+          "capabilities": [
+            {
+              "id": "5ed1723a-0193-4432-b49f-577fcaa9badb",
+              "slug": "aurion-procurement-intelligence",
+              "name": "AURION procurement intelligence",
+              "summary": "Operational government-intelligence platform that aggregates, normalizes, and links Canadian procurement, tender, award, contract, supplier, standing-offer, lobbying, funding, organization, and opportunity data for defence builders and policymakers.",
+              "capabilityType": "Open government and defence procurement intelligence platform",
+              "features": [
+                "Tender-to-award procurement-chain tracking",
+                "Supplier, department, funding, and financial relationship profiles",
+                "Searchable active opportunities and procurement feeds",
+                "Normalized links across multiple public government datasets"
+              ],
+              "applications": [
+                "Defence business development",
+                "Supplier and partner discovery",
+                "Government market intelligence",
+                "Procurement pattern and opportunity analysis"
+              ],
+              "technicalTags": [
+                "procurement_intelligence",
+                "open_data",
+                "entity_resolution",
+                "business_intelligence"
+              ]
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "update_child",
+            "operationId": "update-dominion-aurion",
+            "evidenceIds": [
+              "evidence-dominion-aurion-scale",
+              "evidence-dominion-aurion-operational"
+            ],
+            "reviewerExplanation": "Refresh the existing AURION child in place so its public description reflects the current official product scale and analytical modules without changing its stable identity.",
+            "entityType": "capability",
+            "targetId": "5ed1723a-0193-4432-b49f-577fcaa9badb",
+            "before": {
+              "id": "5ed1723a-0193-4432-b49f-577fcaa9badb",
+              "slug": "aurion-procurement-intelligence",
+              "name": "AURION procurement intelligence",
+              "summary": "Operational government-intelligence platform that aggregates, normalizes, and links Canadian procurement, tender, award, contract, supplier, standing-offer, lobbying, funding, organization, and opportunity data for defence builders and policymakers.",
+              "capabilityType": "Open government and defence procurement intelligence platform",
+              "features": [
+                "Tender-to-award procurement-chain tracking",
+                "Supplier, department, funding, and financial relationship profiles",
+                "Searchable active opportunities and procurement feeds",
+                "Normalized links across multiple public government datasets"
+              ],
+              "applications": [
+                "Defence business development",
+                "Supplier and partner discovery",
+                "Government market intelligence",
+                "Procurement pattern and opportunity analysis"
+              ],
+              "technicalTags": [
+                "procurement_intelligence",
+                "open_data",
+                "entity_resolution",
+                "business_intelligence"
+              ]
+            },
+            "after": {
+              "id": "5ed1723a-0193-4432-b49f-577fcaa9badb",
+              "slug": "aurion-procurement-intelligence",
+              "name": "AURION procurement intelligence",
+              "summary": "Operational government-intelligence platform linking Canadian procurement chains, contracts, supplier registries, lobbying, funding, departments, companies, financial relationships, and active opportunities across normalized public datasets.",
+              "capabilityType": "Open government and defence procurement intelligence platform",
+              "features": [
+                "Tender-to-award procurement-chain tracking across more than 41,000 chains",
+                "Unified company profiles spanning contracts, lobbying, supplier qualification, and former officials",
+                "Department, funding, and whole-of-government financial relationship analysis",
+                "Searchable active opportunities and normalized links across public government datasets",
+                "Published coverage exceeding 32,000 companies, 350,000 lobbying communications, 165,000 registrations, and 184,000 funding disclosures"
+              ],
+              "applications": [
+                "Defence business development and active opportunity discovery",
+                "Supplier, partner, and company diligence",
+                "Government financial and stakeholder intelligence",
+                "Procurement lifecycle and departmental-spend analysis"
+              ],
+              "technicalTags": [
+                "procurement_intelligence",
+                "open_data",
+                "entity_resolution",
+                "business_intelligence"
+              ]
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement",
+          "source_book"
+        ],
+        "signalIds": [
+          "dominion-aurion-scale-2026-07-24"
+        ],
+        "corroboration": [
+          {
+            "claim": "AURION is an operational government-intelligence product with materially broader coverage than the current capability description.",
+            "sourceIds": [
+              "dominion-aurion-product-2026",
+              "dominion-aurion-live-2026"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "622647bd-e3e6-4caa-a56d-08dee4a61f05",
+          "slug": "dominion-dynamics",
+          "name": "Dominion Dynamics",
+          "updated_at": "2026-07-20T21:18:43.928864Z",
+          "website_url": "https://www.ddc2.com/",
+          "publication_status": "published"
+        },
+        "capabilities": [
+          {
+            "id": "5ed1723a-0193-4432-b49f-577fcaa9badb",
+            "slug": "aurion-procurement-intelligence",
+            "name": "AURION procurement intelligence",
+            "summary": "Operational government-intelligence platform that aggregates, normalizes, and links Canadian procurement, tender, award, contract, supplier, standing-offer, lobbying, funding, organization, and opportunity data for defence builders and policymakers.",
+            "capabilityType": "Open government and defence procurement intelligence platform",
+            "features": [
+              "Tender-to-award procurement-chain tracking",
+              "Supplier, department, funding, and financial relationship profiles",
+              "Searchable active opportunities and procurement feeds",
+              "Normalized links across multiple public government datasets"
+            ],
+            "applications": [
+              "Defence business development",
+              "Supplier and partner discovery",
+              "Government market intelligence",
+              "Procurement pattern and opportunity analysis"
+            ],
+            "technicalTags": [
+              "procurement_intelligence",
+              "open_data",
+              "entity_resolution",
+              "business_intelligence"
+            ]
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-dominion-aurion-scale",
+          "sourceId": "dominion-aurion-product-2026",
+          "fieldPath": "operations.update-dominion-aurion.after",
+          "claimClass": "source_backed",
+          "excerpt": "The official page reports more than C$116 billion in contract value, 41,000 procurement chains, 32,000 companies, 350,000 lobbying communications, 165,000 registrations, and 184,000 funding disclosures, alongside company, financial, procurement-chain, opportunity, and organization modules.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dominion-aurion-operational",
+          "sourceId": "dominion-aurion-live-2026",
+          "fieldPath": "operations.update-dominion-aurion.after.applications",
+          "claimClass": "source_backed",
+          "excerpt": "The live AURION service exposes operational procurement, opportunity, entity, and organization navigation, supporting treatment as a current capability rather than an announcement.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T00:50:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "622647bd-e3e6-4caa-a56d-08dee4a61f05",
+            "name": "dominion-dynamics",
+            "matchedBy": "intended published refresh target via exact slug, name, and website domain"
+          }
+        ],
+        "note": "The organization match is the intended refresh target; live checks found no conflicting proposed capability or program slug."
+      },
+      "reviewer_rationale": "Dominion Dynamics is already published and its broader portfolio is current, but AURION is materially under-described. The live official product page now exposes quantifiable scale and functions covering procurement lifecycles, lobbying, funding, former officials, departments, supplier qualification, and active opportunities. Updating the existing capability preserves its UUID and avoids manufacturing a duplicate product record while giving reviewers a precise evidence-backed diff.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-24T00:56:08.873Z"
+    },
+    {
+      "client_candidate_id": "cae-technology-program-refresh-2026-07-24",
+      "research_run_ref": "tnm-manual-20260724004602",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "cae-technology-program-refresh-2026-07-24"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "cae-technology-program-refresh-2026-07-24",
+        "sourceLeadIds": [
+          "cae-technology-program-refresh-2026-07-24"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "CAE is already published as a broad training and simulation prime, but the record omits MAD-XR, a concrete Canadian-developed digital magnetic-anomaly-detection technology with a distinct anti-submarine role. It also mentions current fighter training generally without representing CAE's separately reviewable FFLIT strategic partnership. The proposed additions improve technology depth and current Canadian program visibility without altering CAE's existing identity or capabilities.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 93,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-24T00:50:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+              "name": "cae",
+              "matchedBy": "intended published refresh target via exact slug, name, and website domain"
+            }
+          ],
+          "note": "The organization match is the intended refresh target; live checks found no conflicting proposed capability or program slug."
+        },
+        "sources": [
+          {
+            "id": "cae-mad-xr-product",
+            "title": "Système à rôle élargi de détection d'anomalies magnétiques MAD-XR",
+            "url": "https://www.cae.com/fr/defense-et-securite/ce-que-nous-faisons/soutien-aux-missions-et-aux-operations/systeme-a-role-elargi-de-la-detection-danomalies-magnetiques-mad-xr",
+            "publisher": "CAE",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Product overview and platform applications",
+            "summary": "CAE describes MAD-XR as a compact digital magnetic-anomaly-detection sensor for detecting submarines from maritime patrol aircraft, helicopters, remotely piloted aircraft, and small fixed-wing platforms."
+          },
+          {
+            "id": "cae-fflit-company-2025",
+            "title": "CAE identified as strategic partner for Future Fighter Lead-in Training",
+            "url": "https://www.cae.com/content/docs/corporate/CAE_identified_as_strategic_partner_by_the_Government_of_Canada_for_the_Future_Fighter_Lead-in_Training_program_-_EN.pdf",
+            "publisher": "CAE",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-02-12T00:00:00.000Z",
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Press release body",
+            "summary": "CAE states that it will work with the RCAF to design and co-develop FFLIT for pilots transitioning to Canada's CF-35A capability."
+          },
+          {
+            "id": "canada-fflit-program",
+            "title": "Future Fighter Lead-In Training",
+            "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-fighter-lead-in-training.html",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2025-07-17T00:00:00.000Z",
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Procurement at a glance and February 2025 progress",
+            "summary": "The Government of Canada identifies CAE as strategic partner to DND and the RCAF for development and refinement of FFLIT."
+          },
+          {
+            "id": "canada-fflit-announcement",
+            "title": "Government of Canada announces strategic partner for Future Fighter Lead-in Training",
+            "url": "https://www.canada.ca/en/public-services-procurement/news/2025/02/government-of-canada-announces-strategic-partner-for-its-future-fighter-lead-in-training-program.html",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2025-02-12T00:00:00.000Z",
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Announcement and quick facts",
+            "summary": "The government announcement corroborates CAE's strategic-partner role and the program's sovereign fighter-training and industrial outcomes."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-cae-mad-xr",
+            "sourceId": "cae-mad-xr-product",
+            "fieldPath": "operations.add-cae-mad-xr.value",
+            "claimClass": "source_backed",
+            "excerpt": "CAE's official product page describes MAD-XR as a highly sensitive compact digital magnetic-anomaly-detection sensor for submarine detection, with reduced size, weight, and power for maritime patrol aircraft, helicopters, RPAs, and small fixed-wing platforms.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cae-fflit-company",
+            "sourceId": "cae-fflit-company-2025",
+            "fieldPath": "operations.add-cae-fflit.value",
+            "claimClass": "source_backed",
+            "excerpt": "CAE states it will work with the RCAF to design and co-develop FFLIT and prepare pilots for Canada's CF-35A capability.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cae-fflit-government",
+            "sourceId": "canada-fflit-program",
+            "fieldPath": "operations.add-cae-fflit.value",
+            "claimClass": "source_backed",
+            "excerpt": "The Government of Canada program page independently identifies CAE as strategic partner to DND and the RCAF for development and refinement of FFLIT.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+          "slug": "cae",
+          "matchMethods": [
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T07:44:33.468601Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+            "slug": "cae",
+            "name": "CAE",
+            "updated_at": "2026-07-21T07:44:33.468601Z",
+            "website_url": "https://www.cae.com/",
+            "publication_status": "published"
+          },
+          "capabilities": [
+            {
+              "id": "ac6a5e66-87ab-4754-a476-8a925667de3d",
+              "slug": "defence-training-systems-integration"
+            },
+            {
+              "id": "46af75e7-1b3c-425e-96b4-9d7dae58b2ef",
+              "slug": "military-aviation-training-and-operational-support"
+            },
+            {
+              "id": "70c4b745-c821-4448-9f7e-098a0d03ad4b",
+              "slug": "multi-domain-simulation-and-mission-rehearsal"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "add_child",
+            "operationId": "add-cae-mad-xr",
+            "evidenceIds": [
+              "evidence-cae-mad-xr"
+            ],
+            "reviewerExplanation": "Add MAD-XR as a distinct concrete technology because the current CAE profile contains only portfolio-level training capabilities and omits this source-backed operational sensor family.",
+            "entityType": "capability",
+            "parentId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+            "value": {
+              "slug": "cae-mad-xr-magnetic-anomaly-detection",
+              "name": "MAD-XR Magnetic Anomaly Detection",
+              "summary": "Detect submarines and other submerged objects with a compact, highly sensitive digital magnetic-anomaly sensor designed for fixed-wing, rotary-wing, and remotely piloted maritime platforms.",
+              "capabilityType": "Compact digital magnetic-anomaly-detection sensor",
+              "features": [
+                "Digital magnetic anomaly detection for submerged targets",
+                "Reduced size, weight, and power requirements",
+                "Integration across maritime patrol aircraft, helicopters, RPAs, and small fixed-wing aircraft",
+                "Extended-role design derived from more than 40 years of CAE MAD experience"
+              ],
+              "applications": [
+                "Airborne anti-submarine warfare",
+                "Submarine detection and localization",
+                "Maritime patrol sensor integration",
+                "Uncrewed and rotary-wing maritime surveillance"
+              ],
+              "technicalTags": [
+                "magnetic anomaly detection",
+                "anti-submarine warfare",
+                "maritime sensing",
+                "airborne sensors"
+              ],
+              "technicalDomainSlugs": [
+                "sensing-and-isr"
+              ],
+              "missionMatches": []
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-cae-fflit",
+            "evidenceIds": [
+              "evidence-cae-fflit-company",
+              "evidence-cae-fflit-government"
+            ],
+            "reviewerExplanation": "Represent CAE's named FFLIT strategic-partner role as a program participation rather than leaving the current activity only in unstructured profile text.",
+            "entityType": "program",
+            "parentId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+            "value": {
+              "slug": "cae-future-fighter-lead-in-training",
+              "name": "Future Fighter Lead-in Training",
+              "programType": "Canadian fighter-pilot training modernization program",
+              "operatorName": "Government of Canada",
+              "websiteUrl": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-fighter-lead-in-training.html",
+              "summary": "Government of Canada program to develop sovereign fighter lead-in training for the RCAF's transition to advanced front-line fighters, with CAE identified as strategic partner to DND and the RCAF for program design and refinement.",
+              "participationType": "strategic partner",
+              "cohortLabel": null
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement",
+          "source_book"
+        ],
+        "signalIds": [
+          "cae-mad-xr-technology-2026-07-24",
+          "cae-fflit-program-2026-07-24"
+        ],
+        "corroboration": [
+          {
+            "claim": "MAD-XR is a distinct CAE technology for airborne submarine detection across multiple platform classes.",
+            "sourceIds": [
+              "cae-mad-xr-product"
+            ]
+          },
+          {
+            "claim": "CAE is the Government of Canada's named strategic partner for FFLIT development with DND and the RCAF.",
+            "sourceIds": [
+              "cae-fflit-company-2025",
+              "canada-fflit-program",
+              "canada-fflit-announcement"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+          "slug": "cae",
+          "name": "CAE",
+          "updated_at": "2026-07-21T07:44:33.468601Z",
+          "website_url": "https://www.cae.com/",
+          "publication_status": "published"
+        },
+        "capabilities": [
+          {
+            "id": "ac6a5e66-87ab-4754-a476-8a925667de3d",
+            "slug": "defence-training-systems-integration"
+          },
+          {
+            "id": "46af75e7-1b3c-425e-96b4-9d7dae58b2ef",
+            "slug": "military-aviation-training-and-operational-support"
+          },
+          {
+            "id": "70c4b745-c821-4448-9f7e-098a0d03ad4b",
+            "slug": "multi-domain-simulation-and-mission-rehearsal"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-cae-mad-xr",
+          "sourceId": "cae-mad-xr-product",
+          "fieldPath": "operations.add-cae-mad-xr.value",
+          "claimClass": "source_backed",
+          "excerpt": "CAE's official product page describes MAD-XR as a highly sensitive compact digital magnetic-anomaly-detection sensor for submarine detection, with reduced size, weight, and power for maritime patrol aircraft, helicopters, RPAs, and small fixed-wing platforms.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cae-fflit-company",
+          "sourceId": "cae-fflit-company-2025",
+          "fieldPath": "operations.add-cae-fflit.value",
+          "claimClass": "source_backed",
+          "excerpt": "CAE states it will work with the RCAF to design and co-develop FFLIT and prepare pilots for Canada's CF-35A capability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cae-fflit-government",
+          "sourceId": "canada-fflit-program",
+          "fieldPath": "operations.add-cae-fflit.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada program page independently identifies CAE as strategic partner to DND and the RCAF for development and refinement of FFLIT.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T00:50:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+            "name": "cae",
+            "matchedBy": "intended published refresh target via exact slug, name, and website domain"
+          }
+        ],
+        "note": "The organization match is the intended refresh target; live checks found no conflicting proposed capability or program slug."
+      },
+      "reviewer_rationale": "CAE is already published as a broad training and simulation prime, but the record omits MAD-XR, a concrete Canadian-developed digital magnetic-anomaly-detection technology with a distinct anti-submarine role. It also mentions current fighter training generally without representing CAE's separately reviewable FFLIT strategic partnership. The proposed additions improve technology depth and current Canadian program visibility without altering CAE's existing identity or capabilities.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-24T00:56:08.873Z"
+    },
+    {
+      "client_candidate_id": "lockheed-martin-canada-maritime-refresh-2026-07-24",
+      "research_run_ref": "tnm-manual-20260724004602",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lockheed-martin-canada-maritime-refresh-2026-07-24"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "lockheed-martin-canada-maritime-refresh-2026-07-24",
+        "sourceLeadIds": [
+          "lockheed-martin-canada-maritime-refresh-2026-07-24"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Lockheed Martin Canada is already published with CMS 330 and broad systems-integration coverage, but two material Canadian maritime activities remain hidden inside that abstraction. The Coast Guard Information System and Science Management System are concrete systems for AOPS Coast Guard variants, while the renewed Halifax-class CSI ISS award is a major through-2045 sustainment program independently confirmed by Canada. Adding both gives reviewers technology and program depth without duplicating CMS 330 or changing stable records.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 93,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-24T00:50:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+              "name": "lockheed-martin-canada",
+              "matchedBy": "intended published refresh target via exact slug, name, and website domain"
+            }
+          ],
+          "note": "The organization match is the intended refresh target; live checks found no conflicting proposed capability or program slug."
+        },
+        "sources": [
+          {
+            "id": "lmc-coast-guard-systems-2025",
+            "title": "Delivering Next-Generation Coast Guard Vessels",
+            "url": "https://www.lockheedmartin.com/en-ca/features/next-generation-coast-guard-vessels.html",
+            "publisher": "Lockheed Martin Canada",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-11-01T00:00:00.000Z",
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "AOPS CCGV program, information system, science management, and partnerships sections",
+            "summary": "Lockheed Martin Canada describes its role integrating electronic science and situational-awareness systems and developing Coast Guard Information and Science Management systems for AOPS Coast Guard variants 7 and 8."
+          },
+          {
+            "id": "lmc-csi-iss-2025",
+            "title": "CSI ISS Program: Sustainment that keeps the fleet modernized",
+            "url": "https://www.lockheedmartin.com/en-ca/features/csi-iss-program.html",
+            "publisher": "Lockheed Martin Canada",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-12-04T00:00:00.000Z",
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Award, coast-to-coast services, collaboration, and sustainment sections",
+            "summary": "The official feature describes the Halifax-class CSI ISS contract through 2045, more than 160 Canadian staff, CMS 330 releases, engineering, weapons and sensor integration, training, and embedded support."
+          },
+          {
+            "id": "canada-lmc-csi-iss-award",
+            "title": "Federal government reinforces defence capacity and creates Canadian jobs",
+            "url": "https://www.canada.ca/en/public-services-procurement/news/2024/10/federal-government-reinforces-our-defence-capacity-and-creates-good-paying-jobs-for-canadians.html",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2024-10-31T00:00:00.000Z",
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Contract award and Halifax-class CSI ISS scope",
+            "summary": "The Government of Canada confirms an award to Lockheed Martin Canada valued up to C$1.85 billion to renew Halifax-class combat-system integration in-service support."
+          },
+          {
+            "id": "lmc-cms330-product",
+            "title": "Lockheed Martin Canada CMS 330",
+            "url": "https://www.lockheedmartin.com/en-ca/cms330.html",
+            "publisher": "Lockheed Martin Canada",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-24T00:50:00.000Z",
+            "locator": "Fleet commonality, partnership, evolution, and in-action sections",
+            "summary": "The official product page documents CMS 330's open architecture, fleet-wide integrations, training, software evolution, and support across Canadian and allied naval platforms."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-lmc-coast-guard-systems",
+            "sourceId": "lmc-coast-guard-systems-2025",
+            "fieldPath": "operations.add-lmc-coast-guard-systems.value",
+            "claimClass": "source_backed",
+            "excerpt": "Lockheed Martin Canada states that its team integrates electronic science and situational-awareness systems and is designing Coast Guard Information and Science Management systems derived from CMS 330 for AOPS Coast Guard variants 7 and 8.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-lmc-csi-company",
+            "sourceId": "lmc-csi-iss-2025",
+            "fieldPath": "operations.add-lmc-csi-iss.value",
+            "claimClass": "source_backed",
+            "excerpt": "The official program feature states that CSI ISS runs through 2045 and covers CMS 330 releases, software, systems engineering, weapons and sensor integration, training, and embedded support by more than 160 Canadian personnel.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-lmc-csi-government",
+            "sourceId": "canada-lmc-csi-iss-award",
+            "fieldPath": "operations.add-lmc-csi-iss.value",
+            "claimClass": "source_backed",
+            "excerpt": "Public Services and Procurement Canada confirms a contract valued up to C$1.85 billion to Lockheed Martin Canada for renewed Halifax-class combat-system integration in-service support.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+          "slug": "lockheed-martin-canada",
+          "matchMethods": [
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T21:02:22.401996Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+            "slug": "lockheed-martin-canada",
+            "name": "Lockheed Martin Canada",
+            "updated_at": "2026-07-20T21:02:22.401996Z",
+            "website_url": "https://www.lockheedmartin.com/en-ca/index.html",
+            "publication_status": "published"
+          },
+          "capabilities": [
+            {
+              "id": "37244a28-de77-4d9f-83b5-82de53574833",
+              "slug": "all-domain-systems-integration-and-sustainment"
+            },
+            {
+              "id": "b39f6a66-54c7-4796-9bfb-65c202393f13",
+              "slug": "cms-330-naval-combat-management"
+            },
+            {
+              "id": "50f63df3-2b73-47ac-bbdd-aa330c1cd1fa",
+              "slug": "naval-electronic-warfare-systems"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "add_child",
+            "operationId": "add-lmc-coast-guard-systems",
+            "evidenceIds": [
+              "evidence-lmc-coast-guard-systems"
+            ],
+            "reviewerExplanation": "Add the Coast Guard systems as a distinct capability because they serve a non-combat scientific and situational-awareness mission not represented by the existing CMS 330 combat-management child.",
+            "entityType": "capability",
+            "parentId": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+            "value": {
+              "slug": "lockheed-canada-coast-guard-information-science-management",
+              "name": "Coast Guard Information and Science Management Systems",
+              "summary": "Integrate electronic science and situational-awareness functions for Canadian Coast Guard vessels through Coast Guard Information and Science Management systems derived from the Canadian CMS 330 architecture.",
+              "capabilityType": "Maritime information and science-management systems",
+              "features": [
+                "Coast Guard Information System",
+                "Science Management System",
+                "Electronic science and situational-awareness integration",
+                "Canadian-developed architecture derived from CMS 330"
+              ],
+              "applications": [
+                "AOPS Coast Guard variants 7 and 8",
+                "Scientific mission data display, capture, and assessment",
+                "Coast Guard situational awareness",
+                "Sovereign maritime information-system sustainment"
+              ],
+              "technicalTags": [
+                "coast guard systems",
+                "science management",
+                "situational awareness",
+                "maritime integration"
+              ],
+              "technicalDomainSlugs": [
+                "mission-software-and-data"
+              ],
+              "missionMatches": []
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-lmc-csi-iss",
+            "evidenceIds": [
+              "evidence-lmc-csi-company",
+              "evidence-lmc-csi-government"
+            ],
+            "reviewerExplanation": "Add CSI ISS as a separately reviewable current program because official company and government sources establish its duration, contract scope, scale, and direct relevance to fleet readiness.",
+            "entityType": "program",
+            "parentId": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+            "value": {
+              "slug": "lockheed-martin-canada-halifax-csi-iss",
+              "name": "Halifax-class Combat System Integration In-Service Support",
+              "programType": "Naval combat-system sustainment program",
+              "operatorName": "Public Services and Procurement Canada",
+              "websiteUrl": "https://www.canada.ca/en/public-services-procurement/news/2024/10/federal-government-reinforces-our-defence-capacity-and-creates-good-paying-jobs-for-canadians.html",
+              "summary": "Renewed Canadian program through 2045 for Halifax-class combat-system integration, CMS 330 software evolution, systems engineering, new weapon and sensor integration, training, and embedded Royal Canadian Navy support.",
+              "participationType": "prime contractor and combat system integrator",
+              "cohortLabel": null
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement",
+          "source_book"
+        ],
+        "signalIds": [
+          "lmc-coast-guard-systems-2026-07-24",
+          "lmc-csi-iss-program-2026-07-24"
+        ],
+        "corroboration": [
+          {
+            "claim": "Lockheed Martin Canada is developing distinct information and science-management systems for Canadian Coast Guard AOPS variants.",
+            "sourceIds": [
+              "lmc-coast-guard-systems-2025",
+              "lmc-cms330-product"
+            ]
+          },
+          {
+            "claim": "The renewed Halifax-class CSI ISS program is a current, government-awarded sustainment program through 2045.",
+            "sourceIds": [
+              "lmc-csi-iss-2025",
+              "canada-lmc-csi-iss-award"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+          "slug": "lockheed-martin-canada",
+          "name": "Lockheed Martin Canada",
+          "updated_at": "2026-07-20T21:02:22.401996Z",
+          "website_url": "https://www.lockheedmartin.com/en-ca/index.html",
+          "publication_status": "published"
+        },
+        "capabilities": [
+          {
+            "id": "37244a28-de77-4d9f-83b5-82de53574833",
+            "slug": "all-domain-systems-integration-and-sustainment"
+          },
+          {
+            "id": "b39f6a66-54c7-4796-9bfb-65c202393f13",
+            "slug": "cms-330-naval-combat-management"
+          },
+          {
+            "id": "50f63df3-2b73-47ac-bbdd-aa330c1cd1fa",
+            "slug": "naval-electronic-warfare-systems"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-lmc-coast-guard-systems",
+          "sourceId": "lmc-coast-guard-systems-2025",
+          "fieldPath": "operations.add-lmc-coast-guard-systems.value",
+          "claimClass": "source_backed",
+          "excerpt": "Lockheed Martin Canada states that its team integrates electronic science and situational-awareness systems and is designing Coast Guard Information and Science Management systems derived from CMS 330 for AOPS Coast Guard variants 7 and 8.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-lmc-csi-company",
+          "sourceId": "lmc-csi-iss-2025",
+          "fieldPath": "operations.add-lmc-csi-iss.value",
+          "claimClass": "source_backed",
+          "excerpt": "The official program feature states that CSI ISS runs through 2045 and covers CMS 330 releases, software, systems engineering, weapons and sensor integration, training, and embedded support by more than 160 Canadian personnel.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-lmc-csi-government",
+          "sourceId": "canada-lmc-csi-iss-award",
+          "fieldPath": "operations.add-lmc-csi-iss.value",
+          "claimClass": "source_backed",
+          "excerpt": "Public Services and Procurement Canada confirms a contract valued up to C$1.85 billion to Lockheed Martin Canada for renewed Halifax-class combat-system integration in-service support.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T00:50:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+            "name": "lockheed-martin-canada",
+            "matchedBy": "intended published refresh target via exact slug, name, and website domain"
+          }
+        ],
+        "note": "The organization match is the intended refresh target; live checks found no conflicting proposed capability or program slug."
+      },
+      "reviewer_rationale": "Lockheed Martin Canada is already published with CMS 330 and broad systems-integration coverage, but two material Canadian maritime activities remain hidden inside that abstraction. The Coast Guard Information System and Science Management System are concrete systems for AOPS Coast Guard variants, while the renewed Halifax-class CSI ISS award is a major through-2045 sustainment program independently confirmed by Canada. Adding both gives reviewers technology and program depth without duplicating CMS 330 or changing stable records.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-24T00:56:08.873Z"
+    }
+  ]
+}

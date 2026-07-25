@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260724131927-leads",
+  "runId": "tnm-manual-20260724131927",
+  "createdAt": "2026-07-24T13:27:02.623Z",
+  "scope": {
+    "description": "Qualify Canadian Strategic Missions Corporation as a new Canadian company candidate and deeply map its nuclear-energy, lunar-resource, water-purification, portable-imaging and quantum-sensing portfolio using complementary official evidence.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-canadian-strategic-missions-corporation-20260724",
+      "source": {
+        "id": "csmc-official-portfolio",
+        "title": "Canadian Strategic Missions Corporation official portfolio",
+        "url": "https://strategicmissions.ca/",
+        "publisher": "Canadian Strategic Missions Corporation",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T13:27:02.623Z",
+        "locator": "Who we are, Nuclear, LEUNR, Labs, Team, Partner With Us and Contact sections",
+        "summary": "CSMC describes a Canadian space and defence company with wholly owned CSMC Nuclear and CSMC Labs divisions, a development-stage LEUNR microreactor, and research depth spanning quantum, robotics, nanomaterials, electrochemistry, industrial automation and space systems."
+      },
+      "discoveryPath": [
+        "https://strategicmissions.ca/",
+        "https://www.newswire.ca/news-releases/canadian-space-mining-corporation-rebrands-as-canadian-strategic-missions-corporation-launches-nuclear-and-r-amp-d-subsidiaries-846764818.html",
+        "https://ised-isde.canada.ca/cipo/trademark-search/2443927?wbdisable=true",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q1-NMST-206%2Ccurrent",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+        "https://www.asc-csa.gc.ca/eng/sciences/aqualunar-challenge.asp",
+        "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp",
+        "https://www.asc-csa.gc.ca/eng/news/articles/2023/2023-12-13-canada-reaches-for-moon-2-million-support-sustainable-lunar-exploration.asp",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2022-2023-Q3-994139%2Ccurrent",
+        "https://www.prnewswire.com/news-releases/luxembourg-space-agency-awards-contract-to-csmc-to-advance-quantum-sensing-for-resource-exploration-302624205.html",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2233478-002"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company portfolio and rebrand; federal name record; current FedDev, DND, NRC and CSA funding, challenge, contract and project sources",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://strategicmissions.ca/",
+        "websiteDomain": "strategicmissions.ca",
+        "stableSlug": "canadian-strategic-missions-corporation",
+        "legalName": "Canadian Strategic Missions Corporation",
+        "aliases": [
+          "CSMC",
+          "Canadian Space Mining Corporation"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm whether Waterloo or Toronto should be treated as the current primary headquarters; July 2026 FedDev reporting calls CSMC Waterloo-based while CSA and other official records retain Toronto locations.",
+        "Confirm the current regulatory and licensing pathway for LEUNR before representing any schedule beyond the company's stated 2029 demonstration target."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [
+        "LEUNR remains a development-stage reactor program; government sources document prototype work and funding, not a licensed or deployed commercial reactor.",
+        "The QASM contract and technical description are sourced to a company-issued announcement; an independent Luxembourg Space Agency project page was not resolved.",
+        "Current official sources differ on whether Waterloo or Toronto is the primary headquarters; Waterloo is used as the map location because the newest FedDev Ontario profile calls the company Waterloo-based."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://strategicmissions.ca/",
+          "outcome": "Official material established the current identity, subsidiaries, leadership, LEUNR and Labs research scope."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Current FedDev reporting independently confirmed identity, name continuity, Waterloo presence, microreactor purpose, project cost and contribution."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.asc-csa.gc.ca/eng/sciences/aqualunar-challenge.asp",
+          "outcome": "CSA and DND program records supported LunaPure, HYDRO+, LEUNR, lunar studies and defence innovation participation."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2233478-002",
+          "outcome": "CanadaBuys corroborated a competitively awarded CSA research contract under the former name and CSMC operating identity."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2443927?wbdisable=true",
+          "outcome": "The CIPO record resolved the formal name transition and the nuclear, quantum, aerospace and geophysical technology scope."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Canadian Strategic Missions Corporation",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use"
+      ],
+      "websiteUrl": "https://strategicmissions.ca/",
+      "aliases": [
+        "CSMC",
+        "Canadian Space Mining Corporation"
+      ],
+      "location": {
+        "city": "Waterloo",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "LEUNR micro-nuclear reactor",
+      "roleSpecificEvidence": "Official company and government sources establish a Canadian space and defence technology developer incorporated in 2020, operating through CSMC Nuclear and CSMC Labs, with concrete programs in portable micro-nuclear power, lunar water purification and resource processing, portable multi-sensor imaging, and space-based quantum sensing. Current federal evidence ties its work to Arctic defence, NORAD modernization, remote energy and lunar infrastructure."
+    }
+  ]
+}

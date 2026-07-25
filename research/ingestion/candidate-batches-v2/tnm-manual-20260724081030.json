@@ -1,0 +1,424 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260724081030-candidates",
+  "runId": "tnm-manual-20260724081030",
+  "title": "QinetiQ Target Systems Canada deep-dossier refresh",
+  "status": "candidate",
+  "createdAt": "2026-07-24T08:11:00.000Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "published-record-refresh:qinetiq-target-systems-canada",
+    "reason": "The published record has one umbrella capability and lacks its principal aerial and naval product families, current field activity, Canadian operating context and active naval-target program.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260724081030.json",
+  "guardrailNotes": [
+    "The candidate preserves the published organization and existing umbrella capability; proposed changes are additive except for an evidence-backed profile_data refresh that retains all prior review metadata.",
+    "The exact current Ontario legal entity remains unresolved, so legalName is not changed. No canonical record changes before explicit human publication."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "qinetiq-target-systems-canada-refresh-2026-07-24",
+      "sourceLeadIds": [
+        "qinetiq-target-systems-canada-refresh-2026-07-24"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "QinetiQ Target Systems Canada is already published, but the record materially understates the Medicine Hat operation by collapsing its portfolio into one generic capability. Official product pages and CanadaBuys evidence support distinct Banshee aerial targets, Hammerhead and Barracuda naval targets, deployable control and field services, and a current C$47.97 million Canadian naval-target standing offer. A March 2026 exercise account confirms current Canadian team activity. The refresh preserves existing IDs and prior metadata; the reviewer should verify the present Ontario legal entity before adding a legal name.",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The former federal QinetiQ Target Systems Canada Inc. corporation was discontinued to Ontario in 2017, while current CanadaBuys history uses QinetiQ Group Canada Inc.; legalName remains unchanged pending current Ontario-registry confirmation."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T08:11:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "78532d21-8dfc-470f-9526-0f98c4a57631",
+            "name": "QinetiQ Target Systems Canada",
+            "matchedBy": "intended published refresh target via exact slug, name, website domain and operating aliases"
+          }
+        ],
+        "note": "The only organization match is the intended published target; live checks found no existing Banshee, Hammerhead/Barracuda or naval-standing-offer child with the proposed slugs."
+      },
+      "sources": [
+        {
+          "id": "qinetiq-target-services",
+          "title": "Mission Rehearsal and Operational Readiness — Target Services",
+          "url": "https://www.qinetiq.com/en/what-we-do/services-and-products/mission-rehearsal-and-operational-readiness",
+          "publisher": "QinetiQ",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T08:11:00.000Z",
+          "locator": "Target Services section",
+          "summary": "QinetiQ identifies Alberta, Canada as a target-system manufacturing location and documents aerial, rotary-wing, land, naval and special-mission targets, command and control, scoring, launchers and field services."
+        },
+        {
+          "id": "qinetiq-banshee-jet-80",
+          "title": "Banshee Jet 80 aerial target",
+          "url": "https://www.qinetiq.com/en/what-we-do/test-and-training/threat-representation/target-systems/other-products-and-services/banshee-jet-80",
+          "publisher": "QinetiQ",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T08:11:00.000Z",
+          "locator": "Product overview and key features",
+          "summary": "The official product page documents a twin-turbine aerial target for land and sea launch, air-to-air and surface-to-air weapon training, modular signatures and worldwide operation."
+        },
+        {
+          "id": "qinetiq-surface-targets",
+          "title": "Uncrewed Surface Targets",
+          "url": "https://www.qinetiq.com/en/what-we-do/test-and-training/threat-representation/target-systems/uncrewed-surface-targets",
+          "publisher": "QinetiQ",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T08:11:00.000Z",
+          "locator": "Portfolio overview and Hammerhead, Barracuda, Sprite II and tow-target listings",
+          "summary": "The official portfolio describes remotely operated surface and tow targets for live-fire naval training, piracy and fast-attack-craft threat representation, with simultaneous control of up to 40 targets."
+        },
+        {
+          "id": "qinetiq-hammerhead",
+          "title": "Hammerhead MkII Uncrewed Surface Vehicle",
+          "url": "https://www.qinetiq.com/en/what-we-do/test-and-training/threat-representation/target-systems/uncrewed-surface-targets/hammerhead",
+          "publisher": "QinetiQ",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T08:11:00.000Z",
+          "locator": "Product overview and key features",
+          "summary": "QinetiQ describes Hammerhead MkII as a remotely controlled naval training target for fast inshore attack craft and swarm scenarios, with line-of-sight or over-the-horizon control and speeds up to 35 knots in Sea State 3."
+        },
+        {
+          "id": "qinetiq-cobra-gold-2026",
+          "title": "Hammerhead USVs put allies to the test",
+          "url": "https://www.qinetiq.com/en/news/hammerhead-usvs-put-allies-to-the-test",
+          "publisher": "QinetiQ",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-03-10T00:00:00.000Z",
+          "accessedAt": "2026-07-24T08:11:00.000Z",
+          "locator": "Exercise Cobra Gold deployment account",
+          "summary": "QinetiQ reports that its Canadian Target Systems field-service team deployed and remotely controlled ten Hammerhead targets across three multinational exercise scenarios in Thailand."
+        },
+        {
+          "id": "canadabuys-qinetiq-naval-standing-offer",
+          "title": "NISO for Target — QINETIQ GROUP CANADA INC.",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2022-05-26T00:00:00.000Z",
+          "accessedAt": "2026-07-24T08:11:00.000Z",
+          "locator": "Contract value, duration, amendment, supplier, operating name and address",
+          "summary": "CanadaBuys records a naval air-and-sea target standing offer awarded to QinetiQ Target Systems Canada, amended in January 2026, valued at C$47,967,583 and running through March 2027 from its Medicine Hat address."
+        },
+        {
+          "id": "canadabuys-qinetiq-gbad-profile",
+          "title": "QinetiQ Target Systems — Ground Based Air Defence partnering profile",
+          "url": "https://canadabuys.canada.ca/en/node/preview/985258",
+          "publisher": "CanadaBuys",
+          "sourceKind": "procurement_notice",
+          "publishedAt": "2023-10-05T00:00:00.000Z",
+          "accessedAt": "2026-07-24T08:11:00.000Z",
+          "locator": "QinetiQ Target Systems details and contact",
+          "summary": "The CanadaBuys profile describes QTS as a Canadian aerial-target equipment and services provider, identifies Banshee use across numerous air-defence systems, and publishes a Canadian business contact."
+        },
+        {
+          "id": "ised-qinetiq-corporate-history",
+          "title": "Federal corporation information — QinetiQ Target Systems Canada Inc.",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=4280571",
+          "publisher": "Corporations Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T08:11:00.000Z",
+          "locator": "Status and corporate-name history",
+          "summary": "The federal registry records the former QinetiQ Target Systems Canada Inc. federal corporation as discontinued to Ontario in 2017 and preserves its prior Meggitt names; this supports alias history but does not independently resolve the current Ontario legal entity."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-qinetiq-profile",
+          "sourceId": "qinetiq-target-services",
+          "fieldPath": "operations.set-qinetiq-profile.after",
+          "claimClass": "source_backed",
+          "excerpt": "QinetiQ states that it manufactures target systems in Alberta and offers aerial, rotary-wing, land and naval targets, special-mission vehicles, command and control, scoring, launchers and turnkey field services.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qinetiq-current-activity",
+          "sourceId": "qinetiq-cobra-gold-2026",
+          "fieldPath": "operations.set-qinetiq-profile.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "QinetiQ's March 2026 report identifies the Canadian Target Systems team and documents deployment and remote control of ten Hammerhead targets in three multinational exercise scenarios.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qinetiq-contact-location",
+          "sourceId": "canadabuys-qinetiq-naval-standing-offer",
+          "fieldPath": "operations.set-qinetiq-profile.after.canadianFootprint",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys lists QinetiQ Target Systems Canada at Unit 3, 1735 Brier Park Road NW in Medicine Hat and records 95 employees on the amended naval-target standing offer.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qinetiq-banshee",
+          "sourceId": "qinetiq-banshee-jet-80",
+          "fieldPath": "operations.add-qinetiq-banshee.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Banshee Jet 80 official page documents twin turbine propulsion, land and sea launch, use with surface-to-air and air-to-air weapon systems, modular target enhancement and realistic infrared signatures.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qinetiq-banshee-canada",
+          "sourceId": "canadabuys-qinetiq-gbad-profile",
+          "fieldPath": "operations.add-qinetiq-banshee.value.applications",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys identifies QTS as a Canadian aerial-target equipment and services provider and documents Banshee use across a broad set of ground-based and naval air-defence systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qinetiq-naval-targets",
+          "sourceId": "qinetiq-surface-targets",
+          "fieldPath": "operations.add-qinetiq-naval-targets.value",
+          "claimClass": "source_backed",
+          "excerpt": "QinetiQ's official surface-target portfolio describes Hammerhead, Barracuda, Sprite II and tow targets for naval live-fire readiness, fast-attack-craft and piracy scenarios, including simultaneous control of up to 40 targets.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qinetiq-hammerhead",
+          "sourceId": "qinetiq-hammerhead",
+          "fieldPath": "operations.add-qinetiq-naval-targets.value.features",
+          "claimClass": "source_backed",
+          "excerpt": "The Hammerhead MkII product page supports line-of-sight and over-the-horizon control, 35-knot operation in Sea State 3, payload customization and swarm threat representation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qinetiq-standing-offer",
+          "sourceId": "canadabuys-qinetiq-naval-standing-offer",
+          "fieldPath": "operations.add-qinetiq-standing-offer.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records a C$47,967,583 naval air-and-sea target standing offer for QinetiQ Target Systems Canada, awarded in May 2022, amended in January 2026 and expiring in March 2027.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "78532d21-8dfc-470f-9526-0f98c4a57631",
+        "slug": "qinetiq-target-systems-canada",
+        "matchMethods": [
+          "website_domain",
+          "slug",
+          "name",
+          "alias"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "78532d21-8dfc-470f-9526-0f98c4a57631",
+          "slug": "qinetiq-target-systems-canada",
+          "name": "QinetiQ Target Systems Canada",
+          "legal_name": null,
+          "website_url": "https://www.qinetiq.com/en-ca",
+          "publication_status": "published",
+          "updated_at": "2026-07-19T20:10:32.645435Z",
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "40a26c8f-d31a-45c1-b893-a02e5c1ad366"
+          }
+        },
+        "capabilities": [
+          {
+            "id": "82a4d84f-3fe9-4ae4-bb40-2d48d6a1ff41",
+            "slug": "qinetiq-threat-representation-target-systems",
+            "name": "Threat-representation target systems",
+            "publication_status": "published",
+            "updated_at": "2026-07-19T20:10:32.645435Z"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "set-qinetiq-profile",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "78532d21-8dfc-470f-9526-0f98c4a57631",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "40a26c8f-d31a-45c1-b893-a02e5c1ad366"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "40a26c8f-d31a-45c1-b893-a02e5c1ad366",
+            "aliases": [
+              "QinetiQ Target Systems Canada",
+              "QTS Canada",
+              "QTSC",
+              "QinetiQ Canada",
+              "QinetiQ Group Canada Inc.",
+              "Meggitt Training Systems Canada Inc."
+            ],
+            "canadianFootprint": "Target-system manufacturing and field-service operations at Unit 3, 1735 Brier Park Road NW, Medicine Hat, Alberta. CanadaBuys listed 95 employees on the current naval-target standing offer.",
+            "portfolioScope": "Threat-representative aerial, rotary-wing, land and naval targets; special-mission uncrewed vehicles; command and control; radar, acoustic and visual scoring; launchers; payloads; and deployable field services for live-fire training and weapon-system test and evaluation.",
+            "currentActivity": "QinetiQ Target Systems Canada deployed and remotely controlled ten Hammerhead USV targets during Exercise Cobra Gold in March 2026. Its Canadian naval air-and-sea target standing offer was amended in January 2026 and runs through March 2027.",
+            "publicContact": "CanadaBuys publishes a Canadian customer-account contact at (587) 554-6932 and ryan.peterson@qinetiq.ca; the canonical QinetiQ site also provides a corporate contact form.",
+            "evidencePosture": "Official QinetiQ product and newsroom pages establish the technology portfolio and current field activity. CanadaBuys establishes current Canadian procurement, location and operating-name evidence. The exact current Ontario legal entity name should be confirmed before populating legalName."
+          },
+          "evidenceIds": [
+            "evidence-qinetiq-profile",
+            "evidence-qinetiq-current-activity",
+            "evidence-qinetiq-contact-location"
+          ],
+          "reviewerExplanation": "Preserve the existing ingestion metadata while adding sourced portfolio, Canadian footprint, public contact, current-activity and identity-caveat context."
+        },
+        {
+          "operationId": "add-qinetiq-banshee",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "78532d21-8dfc-470f-9526-0f98c4a57631",
+          "value": {
+            "slug": "qinetiq-banshee-aerial-target-systems",
+            "name": "Banshee Aerial Target Systems",
+            "summary": "Provide reusable and configurable uncrewed aerial targets for live-fire training, weapons acceptance, air-defence test and evaluation, and realistic radar and infrared threat representation from land or sea.",
+            "capabilityType": "Uncrewed aerial threat-representation target family",
+            "features": [
+              "Propeller and single- or twin-turbine target variants",
+              "Land and sea launch configurations",
+              "Configurable radar and infrared signature augmentation",
+              "Digital avionics, telemetry, autonomous control and scoring integration",
+              "Compatibility with air-to-air and surface-to-air weapon training"
+            ],
+            "applications": [
+              "Ground-based air-defence acceptance and training",
+              "Air-to-air and surface-to-air weapon-system testing",
+              "Live-fire mission rehearsal",
+              "Radar, infrared and sea-skimming threat representation"
+            ],
+            "technicalTags": [
+              "aerial targets",
+              "uncrewed aircraft",
+              "air defence training",
+              "threat emulation",
+              "test and evaluation"
+            ],
+            "technicalDomainSlugs": [
+              "aerospace-and-mobility",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": []
+          },
+          "evidenceIds": [
+            "evidence-qinetiq-banshee",
+            "evidence-qinetiq-banshee-canada"
+          ],
+          "reviewerExplanation": "Add Banshee as a distinct concrete Canadian target-system product family rather than leaving it hidden inside the current broad umbrella capability."
+        },
+        {
+          "operationId": "add-qinetiq-naval-targets",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "78532d21-8dfc-470f-9526-0f98c4a57631",
+          "value": {
+            "slug": "qinetiq-hammerhead-barracuda-naval-targets",
+            "name": "Hammerhead and Barracuda Naval Target Systems",
+            "summary": "Deploy remotely controlled uncrewed surface and tow targets that reproduce fast-attack craft, fast inshore attack craft, piracy, explosive-USV and swarm threats for naval training and weapon-system evaluation.",
+            "capabilityType": "Uncrewed surface and naval threat-representation systems",
+            "features": [
+              "Hammerhead MkII and Barracuda high-speed uncrewed surface targets",
+              "Line-of-sight and over-the-horizon remote control",
+              "Multi-target swarm scenarios with control of up to 40 vehicles",
+              "Configurable payload, radar, visual and scoring augmentation",
+              "Deployable field-service launch, recovery and mission operation"
+            ],
+            "applications": [
+              "Naval gunnery and close-in weapon-system training",
+              "Surface-to-surface and air-to-surface weapon evaluation",
+              "Fast inshore attack craft and piracy threat rehearsal",
+              "Explosive-USV and swarm-defence training"
+            ],
+            "technicalTags": [
+              "uncrewed surface vehicles",
+              "naval targets",
+              "swarm training",
+              "threat representation",
+              "live-fire training"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": []
+          },
+          "evidenceIds": [
+            "evidence-qinetiq-naval-targets",
+            "evidence-qinetiq-hammerhead",
+            "evidence-qinetiq-current-activity"
+          ],
+          "reviewerExplanation": "Add the naval target family as a distinct capability because official product and 2026 exercise evidence establish concrete systems, operating modes and current field deployment absent from the published profile."
+        },
+        {
+          "operationId": "add-qinetiq-standing-offer",
+          "operation": "add_child",
+          "entityType": "program",
+          "parentId": "78532d21-8dfc-470f-9526-0f98c4a57631",
+          "value": {
+            "slug": "qinetiq-canadian-naval-target-standing-offer",
+            "name": "Canadian Naval Air and Sea Target Standing Offer",
+            "programType": "Naval target systems standing offer",
+            "operatorName": "Public Services and Procurement Canada",
+            "websiteUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+            "summary": "Canadian standing offer for naval air-and-sea targets supplied by QinetiQ Target Systems Canada, valued at C$47,967,583 after amendments and running from May 2022 through March 2027.",
+            "participationType": "target-system supplier",
+            "cohortLabel": null
+          },
+          "evidenceIds": [
+            "evidence-qinetiq-standing-offer"
+          ],
+          "reviewerExplanation": "Represent the current amended naval-target standing offer as a separately reviewable program participation instead of burying material Canadian procurement activity in narrative text."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book"
+      ],
+      "signalIds": [
+        "qinetiq-banshee-portfolio-2026-07-24",
+        "qinetiq-naval-targets-2026-07-24",
+        "qinetiq-cobra-gold-2026-07-24",
+        "qinetiq-canada-standing-offer-2026-07-24"
+      ],
+      "corroboration": [
+        {
+          "claim": "QinetiQ's Canadian target-systems portfolio includes concrete aerial and naval target families beyond the current umbrella capability.",
+          "sourceIds": [
+            "qinetiq-target-services",
+            "qinetiq-banshee-jet-80",
+            "qinetiq-surface-targets",
+            "canadabuys-qinetiq-gbad-profile"
+          ]
+        },
+        {
+          "claim": "The Medicine Hat team has current deployable Hammerhead field activity and a live Canadian naval-target supply program.",
+          "sourceIds": [
+            "qinetiq-cobra-gold-2026",
+            "canadabuys-qinetiq-naval-standing-offer"
+          ]
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

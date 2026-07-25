@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260724141414",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": [
+      "department",
+      "public_program",
+      "federal_government"
+    ]
+  },
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "demand-issuer-type:department",
+    "reason": "The operator explicitly scoped this run to find and stage evidence-backed demand signals issued by Communications Security Establishment Canada and related federal departments.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-24T14:14:14.000Z",
+  "completedAt": "2026-07-24T14:14:14.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "CSE Canada annual report 2025 2026 cyber security critical infrastructure",
+    "site:cse-cst.gc.ca quantum-resistant cryptography CSE",
+    "site:cse-cst.gc.ca Arctic cyber advanced sensors",
+    "site:cse-cst.gc.ca Canadian Top Secret network modernization",
+    "site:cse-cst.gc.ca identity access management GC KMI",
+    "CanadaBuys CSE cyber security procurement and contracts"
+  ],
+  "counters": {
+    "sourcesChecked": 10,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 30,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 6,
+    "candidatesGreen": 4,
+    "candidatesAmber": 6
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "All ten candidates are public-source demand or capability signals; none should be interpreted as an open procurement, supplier endorsement or classified requirement."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed demand-focused discovery and staged ten CSE signals for private Admin Review; no approval or publication performed.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260724141414.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260724141414.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260724141414.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260724141414.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260724141414.json"
+  }
+}

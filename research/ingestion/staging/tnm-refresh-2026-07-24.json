@@ -1,0 +1,427 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-24T11:19:42.054Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-refresh-2026-07-24",
+    "run_type": "targeted",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "research_test_centre"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "organization-kind:research_test_centre",
+      "reason": "2 published or pending research test centre records cover only 17% of the working saturation target of 12.",
+      "score": 908
+    },
+    "status": "completed",
+    "started_at": "2026-07-24T11:03:30.909Z",
+    "completed_at": "2026-07-24T11:11:11.000Z",
+    "agent_version": "tnm-research-pipeline/1.2.0",
+    "source_queries": [
+      "pnpm data:readiness production readiness check",
+      "pnpm research:coverage live coverage, taxonomy, published records, pending candidate baselines",
+      "Supabase published organization watchlist for research_test_centre records and pending candidate_changes",
+      "Supabase duplicate watchlist for YMX, NEXUS, Espace Aero, BOREALIS, NRC, and canada.ca/admtl.com domains",
+      "Source Book due rows for NRC IRAP defence research, Aero Montreal, C-CORE, Marine Institute, and YMX-related ecosystem sources",
+      "Gmail label Newsletters/Defence after 2026-07-16 with drone, uncrewed, defence, BOREALIS, DISH, innovation, procurement, sonar, maritime, Arctic terms",
+      "DND Canada.ca UxS DISH launch and backgrounder pages",
+      "DND IDEaS BOREALIS Defence Innovation Secure Hubs applicant guide page",
+      "ADM YMX Innovation Centre official page",
+      "NRC Drone Innovation Hub, defence research at NRC, and advancing aerospace and defence innovation pages",
+      "DARIT, Octasic, and C3RiOS official newsroom pages for NEXUS/UxS DISH corroboration",
+      "Public web discovery for YMX Innovation Centre, NEXUS UxS DISH, Mirabel, and drone innovation hub"
+    ],
+    "counters": {
+      "sourcesChecked": 18,
+      "leadsQualified": 1,
+      "leadsDeferred": 4,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 0,
+      "uniqueProspects": 0,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 6,
+      "sourceLanesSearched": 0,
+      "candidatesGreen": 0,
+      "candidatesAmber": 1,
+      "signalsExtracted": 9,
+      "signalsDispositioned": 9,
+      "sourceFamiliesSearched": 6
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Authenticated Chrome/LinkedIn read-only research was unavailable in this environment; no LinkedIn-derived field evidence was used.",
+        "Gmail newsletters, company-news mentions, search results, and social/video-adjacent discovery were treated as discovery or corroboration only.",
+        "NRC Drone Innovation Hub was retained as deferred modeling backlog because nrc.canada.ca is already attached to published NRC IRAP and the local duplicate validator blocks shared-domain new organization bundles."
+      ]
+    },
+    "stop_reason": "completed with one amber private review candidate and all extracted signals dispositioned"
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "ymx-innovation-centre-research-test-centre-2026-07-24",
+      "research_run_ref": "tnm-refresh-2026-07-24",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "ymx-innovation-centre-research-test-centre-2026-07-24"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "ymx-innovation-centre-research-test-centre-2026-07-24",
+        "sourceLeadIds": [
+          "ymx-innovation-centre-research-test-centre-2026-07-24"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "YMX Innovation Centre is a useful research/test-centre candidate because official DND evidence places the NEXUS UxS DISH primarily at YMX in Mirabel and describes secure collaboration spaces, specialized testing infrastructure, regulated airspace, and development, testing, validation, and integration work for uncrewed and counter-uncrewed systems. The candidate is amber because the reviewer should confirm whether the map should model the physical YMX facility as the entity, with NEXUS as a program relationship, rather than creating a separate NEXUS or Aéro Montréal record.",
+        "reviewTier": "amber",
+        "inclusionScore": 90,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "Modeling choice needs reviewer confirmation: DND describes NEXUS as operating from YMX Innovation Centre, while Aéro Montréal and Espace Aero lead the consortium.",
+          "ADM's YMX profile is official but rendered limited static text in curl, so DND official evidence carries the strongest field-level support.",
+          "The candidate should not be accepted until the reviewer decides whether YMX, NEXUS, or Aéro Montréal is the preferred public record boundary."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-24T11:11:11.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "acd8686c-f889-4383-8c81-6de09fdaa309",
+              "name": "Aero Montreal",
+              "matchedBy": "related consortium lead, not the YMX facility domain or exact record"
+            }
+          ],
+          "note": "No published or pending YMX, NEXUS, BOREALIS, or admtl.com organization match was found. Aero Montreal is published as an ecosystem organization and is related as consortium lead, not treated as an exact duplicate."
+        },
+        "sources": [
+          {
+            "id": "ymx-innovation-centre-adm",
+            "title": "YMX Innovation Centre",
+            "url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+            "publisher": "Aeroports de Montreal",
+            "sourceKind": "research_centre_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-24T11:11:11.000Z",
+            "locator": "Official YMX Innovation profile",
+            "summary": "The official ADM profile identifies YMX Innovation as an aerospace innovation hub at Mirabel, and public DND evidence connects the site to the NEXUS UxS DISH."
+          },
+          {
+            "id": "dnd-uxs-dish-backgrounder-2026",
+            "title": "Uncrewed Systems Defence Innovation Secure Hub",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-07-14T00:00:00.000Z",
+            "accessedAt": "2026-07-24T11:11:11.000Z",
+            "locator": "NEXUS location, overview, priorities, selected consortium, and connection to NRC Drone Innovation Hub",
+            "summary": "The official DND backgrounder says NEXUS operates primarily from YMX Innovation Centre in Mirabel and provides secure spaces, specialized testing infrastructure, and regulated airspace for uncrewed and counter-uncrewed systems work."
+          },
+          {
+            "id": "dnd-dish-applicant-guide-2026",
+            "title": "From innovation to operational advantage: Defence Innovation Secure Hubs",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/innovation-networks/challenge/from-innovation-to-operational-advantage-defence-innovation-secure-hubs.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-24T11:11:11.000Z",
+            "locator": "Challenge, context, eligible DISH activities, and UxS mission area sections",
+            "summary": "The DND guide defines DISHs as secure mission-oriented environments for collaboration, research, development, experimentation, testing, system integration, and validation."
+          },
+          {
+            "id": "dnd-maple-leaf-dish-launch-2026",
+            "title": "Canada launches Uncrewed Systems Defence Innovation Secure Hub",
+            "url": "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2026/07/defence-innovation-secure-hub-system-launch.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-07-21T00:00:00.000Z",
+            "accessedAt": "2026-07-24T11:11:11.000Z",
+            "locator": "Launch announcement, secure environments, source families, and priority areas",
+            "summary": "The DND article confirms the July 2026 UxS DISH launch, $29.6 million contribution, secure environments, and focus on uncrewed and counter-uncrewed systems, human-machine teaming, contested environments, and sensor integration."
+          },
+          {
+            "id": "darit-dish-nexus-partner-2026",
+            "title": "DARIT Technologies selected to partner in DISH NEXUS",
+            "url": "https://www.darit.tech/blog/darit-technologies-partner-dish-nexus",
+            "publisher": "DARIT Technologies",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-07-15T00:00:00.000Z",
+            "accessedAt": "2026-07-24T11:11:11.000Z",
+            "locator": "NEXUS partnership announcement and YMX location details",
+            "summary": "DARIT's official page corroborates the NEXUS partnership, YMX location, dedicated airspace, and counter-UxS/robotic autonomous systems focus."
+          },
+          {
+            "id": "octasic-nexus-partner-2026",
+            "title": "Octasic selected to help build Canada's future autonomous defence ecosystem",
+            "url": "https://www.octasic.com/newsroom/octasic-selected-to-help-build-canadas-future-autonomous-defence-ecosystem",
+            "publisher": "Octasic",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-07-15T00:00:00.000Z",
+            "accessedAt": "2026-07-24T11:11:11.000Z",
+            "locator": "NEXUS participation and technology contribution",
+            "summary": "Octasic's official newsroom corroborates NEXUS as a Mirabel-based collaboration, test, and validation hub for autonomous defence technology."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-ymx-official-profile",
+            "sourceId": "ymx-innovation-centre-adm",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official ADM page presents YMX Innovation as a YMX-based hub that accelerates aerospace industry transformation for civil and defence purposes.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-nexus-ymx-location",
+            "sourceId": "dnd-uxs-dish-backgrounder-2026",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "DND states that NEXUS operates primarily from the YMX Innovation Centre in Mirabel, Quebec, with secure collaboration spaces and specialized testing infrastructure.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nexus-technical-mandate",
+            "sourceId": "dnd-uxs-dish-backgrounder-2026",
+            "fieldPath": "organization.profileData.technicalMandate",
+            "claimClass": "source_backed",
+            "excerpt": "DND describes the hub as supporting development, testing, validation and integration, with priority areas including uncrewed and counter-uncrewed systems, human-machine teaming, contested environments and sensor integration.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dish-secure-environments",
+            "sourceId": "dnd-dish-applicant-guide-2026",
+            "fieldPath": "organization.profileData.secureEnvironmentRole",
+            "claimClass": "source_backed",
+            "excerpt": "DND defines DISHs as secure, mission-oriented environments for collaboration, experimentation, testing, system integration and validation of UxS and quantum technologies.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-dish-program",
+            "sourceId": "dnd-maple-leaf-dish-launch-2026",
+            "fieldPath": "programs.nexus-uxs-dish.summary",
+            "claimClass": "source_backed",
+            "excerpt": "DND says the UxS DISH accelerates the development and adoption of uncrewed and autonomous technologies through trusted partners working in secure environments.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-espace-aero-relationship",
+            "sourceId": "dnd-uxs-dish-backgrounder-2026",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "DND identifies an Espace Aero-led consortium, under Aero Montreal, as the selected UxS DISH delivery team with partners across industry, academia and not-for-profit sectors.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nrc-drone-hub-relationship",
+            "sourceId": "dnd-uxs-dish-backgrounder-2026",
+            "fieldPath": "relationships.1.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "DND states that NEXUS complements the NRC Drone Innovation Hub operating across Ottawa and Mirabel for uncrewed and counter-drone systems research, testing and commercialization.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-participant-corroboration",
+            "sourceId": "darit-dish-nexus-partner-2026",
+            "fieldPath": "relationships.2.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "DARIT describes joining NEXUS at the YMX Innovation Centre and contributing a counter-UxS and robotic autonomous systems use case to the hub.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "ymx-innovation-centre",
+          "name": "YMX Innovation Centre",
+          "legalName": null,
+          "aliases": [
+            "YMX Innovation",
+            "YMX Innovation Center",
+            "YMX Innovation campus"
+          ],
+          "description": "YMX Innovation Centre is a Mirabel aerospace innovation hub that now anchors NEXUS, the BOREALIS-backed Uncrewed Systems Defence Innovation Secure Hub for development, testing, validation, and integration of uncrewed and counter-uncrewed systems.",
+          "websiteUrl": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+          "entityKind": "research_test_centre",
+          "categories": [
+            "test_range",
+            "research_lab",
+            "cluster_operator"
+          ],
+          "primaryLocation": {
+            "city": "Mirabel",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.6501,
+            "longitude": -74.0834,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "technicalMandate": "Support aerospace and defence innovation, including NEXUS UxS DISH development, testing, validation and integration activity for uncrewed and counter-uncrewed systems in secure collaboration settings.",
+            "secureEnvironmentRole": "DND describes DISHs as secure, mission-oriented environments that enable government, industry and academia to collaborate on experimentation, testing, system integration and validation.",
+            "operatorContext": "YMX Innovation Centre is presented by Aeroports de Montreal as the facility context, while DND identifies an Aero Montreal and Espace Aero-led consortium as the selected UxS DISH delivery team.",
+            "priorityAreas": [
+              "uncrewed systems",
+              "counter-uncrewed systems",
+              "human-machine teaming",
+              "operations in contested environments",
+              "sensor integration"
+            ],
+            "evidenceBoundary": "Public-source alignment only. This record describes a public innovation and testing hub, not classified access, procurement eligibility, or DND endorsement of any participant."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "nexus-uxs-dish",
+            "name": "NEXUS Uncrewed Systems Defence Innovation Secure Hub",
+            "programType": "Secure uncrewed-systems innovation hub",
+            "websiteUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+            "summary": "NEXUS is the UxS Defence Innovation Secure Hub operating primarily from YMX Innovation Centre in Mirabel to support secure collaboration, testing, validation, and integration of uncrewed and counter-uncrewed systems.",
+            "cohortLabel": "UxS DISH 2026-2028"
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Aero Montreal and Espace Aero",
+            "relationshipType": "consortium lead",
+            "publicSummary": "DND identifies an Espace Aero-led consortium under Aero Montreal as the selected delivery team for NEXUS, the UxS Defence Innovation Secure Hub in Mirabel."
+          },
+          {
+            "relatedOrganizationName": "National Research Council Drone Innovation Hub",
+            "relationshipType": "complementary test and commercialization hub",
+            "publicSummary": "DND says NEXUS complements the NRC Drone Innovation Hub operating across Ottawa and Mirabel to advance uncrewed and counter-drone systems research, testing and commercialization."
+          },
+          {
+            "relatedOrganizationName": "DARIT Technologies",
+            "relationshipType": "selected consortium participant",
+            "publicSummary": "DARIT's official announcement says the company joined NEXUS at YMX Innovation Centre and will contribute a counter-UxS and robotic autonomous systems use case."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-ymx-official-profile",
+          "sourceId": "ymx-innovation-centre-adm",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official ADM page presents YMX Innovation as a YMX-based hub that accelerates aerospace industry transformation for civil and defence purposes.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-nexus-ymx-location",
+          "sourceId": "dnd-uxs-dish-backgrounder-2026",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "DND states that NEXUS operates primarily from the YMX Innovation Centre in Mirabel, Quebec, with secure collaboration spaces and specialized testing infrastructure.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nexus-technical-mandate",
+          "sourceId": "dnd-uxs-dish-backgrounder-2026",
+          "fieldPath": "organization.profileData.technicalMandate",
+          "claimClass": "source_backed",
+          "excerpt": "DND describes the hub as supporting development, testing, validation and integration, with priority areas including uncrewed and counter-uncrewed systems, human-machine teaming, contested environments and sensor integration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dish-secure-environments",
+          "sourceId": "dnd-dish-applicant-guide-2026",
+          "fieldPath": "organization.profileData.secureEnvironmentRole",
+          "claimClass": "source_backed",
+          "excerpt": "DND defines DISHs as secure, mission-oriented environments for collaboration, experimentation, testing, system integration and validation of UxS and quantum technologies.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-dish-program",
+          "sourceId": "dnd-maple-leaf-dish-launch-2026",
+          "fieldPath": "programs.nexus-uxs-dish.summary",
+          "claimClass": "source_backed",
+          "excerpt": "DND says the UxS DISH accelerates the development and adoption of uncrewed and autonomous technologies through trusted partners working in secure environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-espace-aero-relationship",
+          "sourceId": "dnd-uxs-dish-backgrounder-2026",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DND identifies an Espace Aero-led consortium, under Aero Montreal, as the selected UxS DISH delivery team with partners across industry, academia and not-for-profit sectors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nrc-drone-hub-relationship",
+          "sourceId": "dnd-uxs-dish-backgrounder-2026",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DND states that NEXUS complements the NRC Drone Innovation Hub operating across Ottawa and Mirabel for uncrewed and counter-drone systems research, testing and commercialization.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-participant-corroboration",
+          "sourceId": "darit-dish-nexus-partner-2026",
+          "fieldPath": "relationships.2.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DARIT describes joining NEXUS at the YMX Innovation Centre and contributing a counter-UxS and robotic autonomous systems use case to the hub.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T11:11:11.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "acd8686c-f889-4383-8c81-6de09fdaa309",
+            "name": "Aero Montreal",
+            "matchedBy": "related consortium lead, not the YMX facility domain or exact record"
+          }
+        ],
+        "note": "No published or pending YMX, NEXUS, BOREALIS, or admtl.com organization match was found. Aero Montreal is published as an ecosystem organization and is related as consortium lead, not treated as an exact duplicate."
+      },
+      "reviewer_rationale": "YMX Innovation Centre is a useful research/test-centre candidate because official DND evidence places the NEXUS UxS DISH primarily at YMX in Mirabel and describes secure collaboration spaces, specialized testing infrastructure, regulated airspace, and development, testing, validation, and integration work for uncrewed and counter-uncrewed systems. The candidate is amber because the reviewer should confirm whether the map should model the physical YMX facility as the entity, with NEXUS as a program relationship, rather than creating a separate NEXUS or Aéro Montréal record.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-24T11:19:42.054Z"
+    }
+  ]
+}

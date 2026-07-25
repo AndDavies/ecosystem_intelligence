@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260724135138",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": [
+      "department",
+      "armed_forces",
+      "military_service"
+    ]
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "mission:containerized-asw-systems",
+    "reason": "The operator requested a mission-led Canadian landscape for containerized ASW systems across sensing, processing, deployable platforms, integration, handling and sustainment, with public demand kept distinct from supply candidates.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-24T13:51:38.982Z",
+  "completedAt": "2026-07-24T14:01:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Canada containerized ASW mission pod modular sonar",
+    "Canadian underwater acoustic communications suppliers",
+    "Canada AUV ROV launch recovery containerized systems",
+    "Canadian sonar acoustic signal processing companies",
+    "Canada marine magnetometer underwater target detection",
+    "Canadian autonomous surface vessel payload integration",
+    "Canada submarine systems integration sustainment",
+    "National Defence uncrewed underwater surveillance requirement"
+  ],
+  "counters": {
+    "sourcesChecked": 58,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 17,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 13,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 9,
+    "candidatesAmber": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Devocean is intentionally amber because the durable evidence separates an existing acoustic-sensing prototype from a proposed naval communications adaptation."
+    ]
+  },
+  "errors": [],
+  "stopReason": "target_candidates_reached",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260724135138.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260724135138.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260724135138.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260724135138-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260724135138.json"
+  }
+}

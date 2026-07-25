@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260724081909-leads",
+  "runId": "tnm-manual-20260724081909",
+  "createdAt": "2026-07-24T08:22:10.000Z",
+  "scope": {
+    "description": "Qualify Marconi Technologies as a new Canadian company candidate and deeply map its tactical communications, beyond-line-of-sight connectivity, SATCOM and mission-data portfolio using durable public evidence.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "communications-and-cyber",
+      "mission-software-and-data",
+      "autonomous-systems"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-marconi-technologies-20260724",
+      "source": {
+        "id": "marconi-official-portfolio",
+        "title": "Marconi tactical communications product ecosystem",
+        "url": "https://marconi-technologies.com/",
+        "publisher": "Marconi Technologies",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T08:22:10.000Z",
+        "locator": "Mission, About, Orion, Archer, Hunter, SAMS, Crypto and contact sections",
+        "summary": "Marconi describes its Montréal-headquartered identity, tactical communications mission, public contact routes and Orion, Archer, Hunter and development-stage SAMS and cryptographic product lines."
+      },
+      "discoveryPath": [
+        "https://marconi-technologies.com/",
+        "https://www.newswire.ca/news-releases/defense-sector-announcement-marconi-technologies-launches-as-canada-s-new-specialized-defence-prime-at-montreal-headquarters-reviving-an-iconic-name-in-communications-technology-837726931.html",
+        "https://www.newswire.ca/news-releases/marconi-technologies-selected-to-deliver-orion-x650-tactical-radios-to-polish-military-815497174.html",
+        "https://www.newswire.ca/news-releases/readout-prime-minister-carney-meets-with-european-council-president-antonio-costa-and-european-commission-president-ursula-von-der-leyen-861641438.html",
+        "https://www.newswire.ca/fr/news-releases/marconi-technologies-acheve-une-serie-d-essais-rigoureux-de-diffusion-tropospherique-en-suede-880352069.html",
+        "https://marconi-technologies.com/wp-content/uploads/2026/05/Archer-Datasheet-May_2026_MT.pdf",
+        "https://marconi-technologies.com/wp-content/uploads/2026/05/Hunter-FA-180-Datasheet-May_2026_MT.pdf"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official corporate portfolio, launch and technical datasheets; PMO contract corroboration; current allied field-trial reporting",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://marconi-technologies.com/",
+        "websiteDomain": "marconi-technologies.com",
+        "stableSlug": "marconi-technologies",
+        "legalName": null,
+        "aliases": [
+          "Marconi",
+          "Marconi Inc.",
+          "Ultra I&C Tactical Communications"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the exact registered Canadian legal entity before populating legalName; the website footer uses Marconi Inc. but no registry record was resolved in this run."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 99,
+      "completenessScore": 95,
+      "reviewWarnings": [
+        "SAMS and cryptographic products are described as coming soon; only SAMS is included and is explicitly marked development-stage, while the insufficiently detailed crypto item is excluded."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://marconi-technologies.com/",
+          "outcome": "Official product and launch sources establish company identity, headquarters, portfolio, contact paths and ownership transition."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.newswire.ca/news-releases/readout-prime-minister-carney-meets-with-european-council-president-antonio-costa-and-european-commission-president-ursula-von-der-leyen-861641438.html",
+          "outcome": "Government reporting independently confirms the Orion contract, made-in-Canada production, contract value threshold and delivery horizon."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.newswire.ca/fr/news-releases/marconi-technologies-acheve-une-serie-d-essais-rigoureux-de-diffusion-tropospherique-en-suede-880352069.html",
+          "outcome": "Current attributed trial reporting supplies operational evidence for Archer with Sweden's defence materiel authority."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Marconi Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use"
+      ],
+      "websiteUrl": "https://marconi-technologies.com/",
+      "aliases": [
+        "Marconi",
+        "Marconi Inc.",
+        "Ultra I&C Tactical Communications"
+      ],
+      "location": {
+        "city": "Montréal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Orion tactical radios",
+      "roleSpecificEvidence": "Marconi Technologies is a standalone, Canadian-majority-owned and veteran-run Montréal defence prime formed from Ultra I&C's Tactical Communications division. Durable official evidence supports Orion tactical MANET radios, Archer troposcatter, Hunter tactical SATCOM and the development-stage SAMS sensor-and-cyber fusion platform. Government of Canada reporting independently corroborates a current made-in-Canada Orion contract exceeding C$10 million."
+    }
+  ]
+}

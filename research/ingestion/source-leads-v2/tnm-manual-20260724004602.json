@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260724004602-leads",
+  "runId": "tnm-manual-20260724004602",
+  "createdAt": "2026-07-24T00:50:00.000Z",
+  "scope": {
+    "description": "Prepare stable-ID refresh candidates for Dominion Dynamics, CAE, and Lockheed Martin Canada after deep research identified concrete technology and Canadian program coverage missing from their published records.",
+    "targetMissionAreaSlugs": [],
+    "targetTechnicalDomainSlugs": [
+      "mission-software-and-data",
+      "sensing-and-isr",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "dominion-dynamics-aurion-refresh-2026-07-24",
+      "source": {
+        "id": "dominion-aurion-product-2026",
+        "title": "Aurion — Government intelligence, unified",
+        "url": "https://www.ddc2.com/aurion",
+        "publisher": "Dominion Dynamics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T00:50:00.000Z",
+        "locator": "Product metrics and Companies, Financials, Procurement Chains, Opportunities, and Organizations modules",
+        "summary": "The current official page quantifies AURION's linked public datasets and documents entity, financial, procurement-chain, opportunity, and department intelligence modules."
+      },
+      "discoveryPath": [
+        "https://www.ddc2.com/aurion",
+        "https://aurion.ddc2.com/",
+        "https://international.canada.ca/en/global-affairs/campaigns/advisory-committee/eliot-pence"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Product metrics and Companies, Financials, Procurement Chains, Opportunities, and Organizations modules",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.ddc2.com/aurion",
+        "websiteDomain": "ddc2.com",
+        "stableSlug": "dominion-dynamics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 96,
+      "completenessScore": 92,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "622647bd-e3e6-4caa-a56d-08dee4a61f05",
+        "slug": "dominion-dynamics",
+        "matchMethods": [
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-20T21:18:43.928864Z"
+      },
+      "signalIds": [
+        "dominion-aurion-scale-2026-07-24"
+      ],
+      "refreshSummary": "Update the existing AURION capability to capture current published dataset scale, lobbying and former-official links, financial relationship analysis, procurement lifecycles, and operational opportunity discovery.",
+      "intendedChanges": [
+        "Update the existing AURION capability while preserving its stable UUID and slug."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "cae-technology-program-refresh-2026-07-24",
+      "source": {
+        "id": "cae-mad-xr-product",
+        "title": "Système à rôle élargi de détection d'anomalies magnétiques MAD-XR",
+        "url": "https://www.cae.com/fr/defense-et-securite/ce-que-nous-faisons/soutien-aux-missions-et-aux-operations/systeme-a-role-elargi-de-la-detection-danomalies-magnetiques-mad-xr",
+        "publisher": "CAE",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T00:50:00.000Z",
+        "locator": "Product overview and platform applications",
+        "summary": "CAE describes MAD-XR as a compact digital magnetic-anomaly-detection sensor for detecting submarines from maritime patrol aircraft, helicopters, remotely piloted aircraft, and small fixed-wing platforms."
+      },
+      "discoveryPath": [
+        "https://www.cae.com/fr/defense-et-securite/ce-que-nous-faisons/soutien-aux-missions-et-aux-operations/systeme-a-role-elargi-de-la-detection-danomalies-magnetiques-mad-xr",
+        "https://www.cae.com/content/docs/corporate/CAE_identified_as_strategic_partner_by_the_Government_of_Canada_for_the_Future_Fighter_Lead-in_Training_program_-_EN.pdf",
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-fighter-lead-in-training.html",
+        "https://www.canada.ca/en/public-services-procurement/news/2025/02/government-of-canada-announces-strategic-partner-for-its-future-fighter-lead-in-training-program.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Product overview and platform applications",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cae.com/fr/defense-et-securite/ce-que-nous-faisons/soutien-aux-missions-et-aux-operations/systeme-a-role-elargi-de-la-detection-danomalies-magnetiques-mad-xr",
+        "websiteDomain": "cae.com",
+        "stableSlug": "cae",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 92,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+        "slug": "cae",
+        "matchMethods": [
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T07:44:33.468601Z"
+      },
+      "signalIds": [
+        "cae-mad-xr-technology-2026-07-24",
+        "cae-fflit-program-2026-07-24"
+      ],
+      "refreshSummary": "Add CAE's concrete MAD-XR magnetic-anomaly-detection technology and represent the Government of Canada Future Fighter Lead-in Training strategic partnership as a program participation.",
+      "intendedChanges": [
+        "Add the MAD-XR capability.",
+        "Add the Future Fighter Lead-in Training program participation."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lockheed-martin-canada-maritime-refresh-2026-07-24",
+      "source": {
+        "id": "lmc-coast-guard-systems-2025",
+        "title": "Delivering Next-Generation Coast Guard Vessels",
+        "url": "https://www.lockheedmartin.com/en-ca/features/next-generation-coast-guard-vessels.html",
+        "publisher": "Lockheed Martin Canada",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2025-11-01T00:00:00.000Z",
+        "accessedAt": "2026-07-24T00:50:00.000Z",
+        "locator": "AOPS CCGV program, information system, science management, and partnerships sections",
+        "summary": "Lockheed Martin Canada describes its role integrating electronic science and situational-awareness systems and developing Coast Guard Information and Science Management systems for AOPS Coast Guard variants 7 and 8."
+      },
+      "discoveryPath": [
+        "https://www.lockheedmartin.com/en-ca/features/next-generation-coast-guard-vessels.html",
+        "https://www.lockheedmartin.com/en-ca/features/csi-iss-program.html",
+        "https://www.canada.ca/en/public-services-procurement/news/2024/10/federal-government-reinforces-our-defence-capacity-and-creates-good-paying-jobs-for-canadians.html",
+        "https://www.lockheedmartin.com/en-ca/cms330.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "AOPS CCGV program, information system, science management, and partnerships sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.lockheedmartin.com/en-ca/features/next-generation-coast-guard-vessels.html",
+        "websiteDomain": "lockheedmartin.com",
+        "stableSlug": "lockheed-martin-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 96,
+      "completenessScore": 92,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+        "slug": "lockheed-martin-canada",
+        "matchMethods": [
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-20T21:02:22.401996Z"
+      },
+      "signalIds": [
+        "lmc-coast-guard-systems-2026-07-24",
+        "lmc-csi-iss-program-2026-07-24"
+      ],
+      "refreshSummary": "Add Lockheed Martin Canada's current Coast Guard information and science-management systems as a concrete capability and represent its renewed Halifax-class CSI ISS contract as a program participation.",
+      "intendedChanges": [
+        "Add the Coast Guard information and science-management systems capability.",
+        "Add the Halifax-class CSI ISS program participation."
+      ]
+    }
+  ]
+}

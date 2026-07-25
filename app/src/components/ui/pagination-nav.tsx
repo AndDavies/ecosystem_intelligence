@@ -8,7 +8,8 @@ export function PaginationNav({
   start,
   end,
   total,
-  itemLabel
+  itemLabel,
+  query
 }: {
   path: string;
   page: number;
@@ -17,9 +18,19 @@ export function PaginationNav({
   end: number;
   total: number;
   itemLabel: string;
+  /** Filter state carried across pages so pagination never drops the current view. */
+  query?: Record<string, string | undefined>;
 }) {
   if (totalPages <= 1) return null;
-  const href = (targetPage: number) => targetPage === 1 ? path : `${path}?page=${targetPage}`;
+  const href = (targetPage: number) => {
+    const params = new URLSearchParams();
+    Object.entries(query ?? {}).forEach(([key, value]) => {
+      if (value) params.set(key, value);
+    });
+    if (targetPage > 1) params.set("page", String(targetPage));
+    const search = params.toString();
+    return search ? `${path}?${search}` : path;
+  };
 
   return (
     <nav className="mt-7 flex flex-col gap-3 rounded-[18px] border border-[var(--atlas-border)] bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between" aria-label={`${itemLabel} pages`}>

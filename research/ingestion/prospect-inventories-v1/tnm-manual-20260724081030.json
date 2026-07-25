@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-manual-20260724081030-prospects",
+  "runId": "tnm-manual-20260724081030",
+  "createdAt": "2026-07-24T08:11:00.000Z",
+  "scope": "Deep-dossier enrichment of the published QinetiQ Target Systems Canada record, covering concrete aerial and naval target technologies, Canadian manufacturing and contact details, current field-service activity, contracting identity and a live Canadian naval-target program.",
+  "prospects": [
+    {
+      "id": "prospect-qinetiq-target-systems-canada",
+      "name": "QinetiQ Target Systems Canada",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.qinetiq.com/en-ca",
+      "discoverySourceUrl": "https://www.qinetiq.com/en/what-we-do/services-and-products/mission-rehearsal-and-operational-readiness",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "The intended published refresh target has a durable Canadian operating identity and a materially broader official target-system portfolio than its current single umbrella capability shows.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.qinetiq.com/en/what-we-do/services-and-products/mission-rehearsal-and-operational-readiness",
+          "outcome": "Official portfolio evidence resolves Canadian manufacture, target families, control, scoring, launch equipment and field services."
+        }
+      ]
+    },
+    {
+      "id": "prospect-qinetiq-canadian-naval-target-standing-offer",
+      "name": "QinetiQ Canadian naval-target standing offer",
+      "proposedEntityType": "program",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+      "discoverySourceUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+      "discoveryLane": "government_awards",
+      "countryCode": "CA",
+      "fitSummary": "The current CanadaBuys record establishes a material Canadian naval-target supply program, current amendment, duration, value and Medicine Hat operating address.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_awards",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+          "outcome": "The official contract history resolves award value, dates, amendment, supplier naming, operating name and business location."
+        }
+      ]
+    },
+    {
+      "id": "prospect-qinetiq-gbad-target-partner",
+      "name": "QinetiQ Ground Based Air Defence target-system participation",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://canadabuys.canada.ca/en/node/preview/985258",
+      "discoverySourceUrl": "https://canadabuys.canada.ca/en/node/preview/985258",
+      "discoveryLane": "procurement",
+      "countryCode": "CA",
+      "fitSummary": "The official procurement profile independently connects the Canadian target-systems business, Banshee aerial targets and weapons-acceptance and training use cases to a Canadian GBAD procurement context.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/node/preview/985258",
+          "outcome": "CanadaBuys supplies Canadian identity, target-system role, Banshee applications and a public Canadian account contact."
+        }
+      ]
+    }
+  ]
+}

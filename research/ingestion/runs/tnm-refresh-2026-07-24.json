@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-2026-07-24",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "research_test_centre"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:research_test_centre",
+    "reason": "2 published or pending research test centre records cover only 17% of the working saturation target of 12.",
+    "score": 908
+  },
+  "status": "completed",
+  "startedAt": "2026-07-24T11:03:30.909Z",
+  "completedAt": "2026-07-24T11:11:11.000Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 4,
+    "minimumCandidates": 1,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "pnpm data:readiness production readiness check",
+    "pnpm research:coverage live coverage, taxonomy, published records, pending candidate baselines",
+    "Supabase published organization watchlist for research_test_centre records and pending candidate_changes",
+    "Supabase duplicate watchlist for YMX, NEXUS, Espace Aero, BOREALIS, NRC, and canada.ca/admtl.com domains",
+    "Source Book due rows for NRC IRAP defence research, Aero Montreal, C-CORE, Marine Institute, and YMX-related ecosystem sources",
+    "Gmail label Newsletters/Defence after 2026-07-16 with drone, uncrewed, defence, BOREALIS, DISH, innovation, procurement, sonar, maritime, Arctic terms",
+    "DND Canada.ca UxS DISH launch and backgrounder pages",
+    "DND IDEaS BOREALIS Defence Innovation Secure Hubs applicant guide page",
+    "ADM YMX Innovation Centre official page",
+    "NRC Drone Innovation Hub, defence research at NRC, and advancing aerospace and defence innovation pages",
+    "DARIT, Octasic, and C3RiOS official newsroom pages for NEXUS/UxS DISH corroboration",
+    "Public web discovery for YMX Innovation Centre, NEXUS UxS DISH, Mirabel, and drone innovation hub"
+  ],
+  "counters": {
+    "sourcesChecked": 18,
+    "leadsQualified": 1,
+    "leadsDeferred": 4,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 0,
+    "uniqueProspects": 0,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 6,
+    "sourceLanesSearched": 0,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 9,
+    "signalsDispositioned": 9,
+    "sourceFamiliesSearched": 6
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Authenticated Chrome/LinkedIn read-only research was unavailable in this environment; no LinkedIn-derived field evidence was used.",
+      "Gmail newsletters, company-news mentions, search results, and social/video-adjacent discovery were treated as discovery or corroboration only.",
+      "NRC Drone Innovation Hub was retained as deferred modeling backlog because nrc.canada.ca is already attached to published NRC IRAP and the local duplicate validator blocks shared-domain new organization bundles."
+    ]
+  },
+  "errors": [],
+  "stopReason": "completed with one amber private review candidate and all extracted signals dispositioned",
+  "outputs": {
+    "prospectInventory": null,
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-2026-07-24.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-2026-07-24.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-2026-07-24.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-refresh-2026-07-24-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-2026-07-24.json"
+  }
+}

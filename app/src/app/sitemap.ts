@@ -6,7 +6,7 @@ import { absoluteUrl } from "@/lib/site";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [snapshot, briefs] = await Promise.all([getAtlasSnapshot(), getPublishedDefenceBriefs()]);
   const lastModified = new Date(snapshot.generatedAt);
-  const staticPages = ["/", "/organizations", "/demand", "/briefs", "/about", "/methodology", "/contact", "/privacy", "/terms"];
+  const staticPages = ["/", "/organizations", "/regions", "/demand", "/briefs", "/about", "/methodology", "/contact", "/privacy", "/terms"];
   const capabilities = new Map(snapshot.organizations.flatMap((organization) => organization.capabilities.map((capability) => [capability.slug, capability])));
   return [
     ...staticPages.map((path) => ({ url: absoluteUrl(path), lastModified, changeFrequency: path === "/" ? "daily" as const : "monthly" as const, priority: path === "/" ? 1 : 0.6 })),

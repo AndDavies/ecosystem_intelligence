@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-manual-20260724004602-prospects",
+  "runId": "tnm-manual-20260724004602",
+  "createdAt": "2026-07-24T00:50:00.000Z",
+  "scope": "Deep-dossier enrichment of the published Dominion Dynamics, CAE, and Lockheed Martin Canada records, emphasizing concrete technologies, current Canadian programs, durable government corroboration, and stable-ID refresh operations.",
+  "prospects": [
+    {
+      "id": "prospect-dominion-dynamics-refresh",
+      "name": "Dominion Dynamics",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.ddc2.com/",
+      "discoverySourceUrl": "https://www.ddc2.com/aurion",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "The existing published organization is the intended target; current official AURION evidence adds material product-scale and government-relationship details absent from its capability record.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.ddc2.com/aurion",
+          "outcome": "The official product page resolves AURION's current data scale, procurement-chain, lobbying, funding, supplier-registry, opportunity, and department analysis functions."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://international.canada.ca/en/global-affairs/campaigns/advisory-committee/eliot-pence",
+          "outcome": "Global Affairs Canada independently resolves founder identity and Dominion as a Canadian defence-technology company focused on sovereign aerospace, autonomy, and command and control."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://aurion.ddc2.com/",
+          "outcome": "The live service corroborates that AURION is operational and exposes searchable procurement, opportunity, organization, and entity views rather than being announcement-only."
+        }
+      ]
+    },
+    {
+      "id": "prospect-cae-refresh",
+      "name": "CAE",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.cae.com/",
+      "discoverySourceUrl": "https://www.cae.com/defense-security/what-we-do",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "The published CAE profile omits its concrete MAD-XR magnetic-anomaly-detection technology and does not separately represent its Government of Canada Future Fighter Lead-in Training role.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.cae.com/fr/defense-et-securite/ce-que-nous-faisons/soutien-aux-missions-et-aux-operations/systeme-a-role-elargi-de-la-detection-danomalies-magnetiques-mad-xr",
+          "outcome": "CAE's official product page documents the compact digital MAD-XR sensor, submarine-detection role, reduced size, weight and power, and use across fixed-wing, rotary-wing and remotely piloted platforms."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-fighter-lead-in-training.html",
+          "outcome": "The live government program page names CAE as strategic partner to DND and the RCAF for development of Future Fighter Lead-in Training."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2025/02/government-of-canada-announces-strategic-partner-for-its-future-fighter-lead-in-training-program.html",
+          "outcome": "The government award announcement corroborates CAE's role, sovereign fighter-training outcome, employment scope, and relationship to CF-35A transition."
+        }
+      ]
+    },
+    {
+      "id": "prospect-lockheed-martin-canada-refresh",
+      "name": "Lockheed Martin Canada",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.lockheedmartin.com/en-ca/index.html",
+      "discoverySourceUrl": "https://www.lockheedmartin.com/en-ca/features/csi-iss-program.html",
+      "discoveryLane": "government_awards",
+      "countryCode": "CA",
+      "fitSummary": "The published profile omits current Canadian Coast Guard information and science-management systems and does not separately represent the renewed Halifax-class combat-system sustainment program.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.lockheedmartin.com/en-ca/features/next-generation-coast-guard-vessels.html",
+          "outcome": "The official feature resolves Lockheed Martin Canada's Coast Guard Information System and Science Management System role for AOPS Coast Guard variants 7 and 8."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.lockheedmartin.com/en-ca/features/csi-iss-program.html",
+          "outcome": "The official program account describes the CSI ISS award through 2045, more than 160 Canadian personnel, CMS 330 software releases, systems engineering, integration, training, and embedded fleet support."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2024/10/federal-government-reinforces-our-defence-capacity-and-creates-good-paying-jobs-for-canadians.html",
+          "outcome": "Public Services and Procurement Canada independently confirms the Lockheed Martin Canada CSI ISS award, Halifax-class scope, and value up to C$1.85 billion."
+        }
+      ]
+    }
+  ]
+}

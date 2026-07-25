@@ -1,0 +1,830 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-refresh-20260724153200",
+  "runId": "tnm-refresh-20260724153200",
+  "createdAt": "2026-07-24T14:55:00.000Z",
+  "scope": {
+    "description": "CAF Defence Industrial Strategy refresh across official policy, Defence Investment Agency, government procurement and funding programs, NRC innovation sources, departmental plans and live demand matching; qualified leads continue automatically into review candidates.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "communications-and-cyber",
+      "mission-software-and-data",
+      "sensing-and-isr",
+      "autonomous-systems",
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [],
+    "targetDemandIssuerTypes": [
+      "department",
+      "procurement_authority",
+      "research_innovation_agency",
+      "public_program",
+      "federal_government"
+    ]
+  },
+  "leads": [
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-dis-sovereign-capability-build-priorities",
+      "source": {
+        "id": "dis-strategy-2026-dis-sovereign-capability-build-priorities",
+        "title": "Canada's Defence Industrial Strategy",
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html#dis-sovereign-capability-build-priorities",
+        "publisher": "National Defence",
+        "sourceKind": "official_policy",
+        "publishedAt": "2026-02-17T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+        "summary": "The official strategy sets the long-term policy and investment direction for rebuilding Canada's defence industrial base, including sovereign capabilities, domestic production, trusted partnerships, innovation, supply chains, Arctic cooperation and workforce development."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "sensing-and-isr",
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "dis-sovereign-capability-build-priorities",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should this signal remain distinct from existing demand records or be merged at review?",
+        "Which future program, procurement, funding or delivery artifact should be monitored next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "This is a strategic prioritization signal, not a single solicitation or guarantee of Canadian eligibility."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+          "outcome": "The official Defence Industrial Strategy or implementation source established the policy or program signal."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "A complementary government source was checked to establish a concrete implementation, investment or delivery path."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The official strategy index confirmed the durable government publication and reduced the risk of promoting a secondary summary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Canadian sovereign defence capability areas",
+      "issuerNames": [
+        "Department of National Defence",
+        "Defence Investment Agency"
+      ],
+      "demandSourceKind": "strategic_policy",
+      "commitmentLevel": "directional",
+      "candidateRequirements": [
+        "Canada needs secure strategic autonomy and reliable access to capabilities that are critical to defending its sovereignty and meeting allied commitments, while reducing exposure to foreign supply-chain and intellectual-property dependencies."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-defence-investment-agency-build-partner-buy",
+      "source": {
+        "id": "dis-strategy-2026-defence-investment-agency-build-partner-buy",
+        "title": "Canada's Defence Industrial Strategy",
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html#defence-investment-agency-build-partner-buy",
+        "publisher": "National Defence",
+        "sourceKind": "official_policy",
+        "publishedAt": "2026-02-17T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+        "summary": "The official strategy sets the long-term policy and investment direction for rebuilding Canada's defence industrial base, including sovereign capabilities, domestic production, trusted partnerships, innovation, supply chains, Arctic cooperation and workforce development."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "https://www.canada.ca/en/defence-investment-agency/corporate/delivering-defence-industrial-strategy.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "communications-and-cyber",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "defence-investment-agency-build-partner-buy",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should this signal remain distinct from existing demand records or be merged at review?",
+        "Which future program, procurement, funding or delivery artifact should be monitored next?"
+      ],
+      "discoveryLane": "broad_web",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The strategy establishes a policy and delivery framework; specific future procurements and partner selections remain to be confirmed."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+          "outcome": "The official Defence Industrial Strategy or implementation source established the policy or program signal."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/defence-investment-agency/corporate/delivering-defence-industrial-strategy.html",
+          "outcome": "A complementary government source was checked to establish a concrete implementation, investment or delivery path."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The official strategy index confirmed the durable government publication and reduced the risk of promoting a secondary summary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Defence Investment Agency Build–Partner–Buy procurement pathway",
+      "issuerNames": [
+        "Defence Investment Agency",
+        "Department of National Defence",
+        "Innovation, Science and Economic Development Canada"
+      ],
+      "demandSourceKind": "capability_plan",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Fragmented defence acquisition processes can delay urgent capability delivery and obscure how domestic build, trusted co-development and foreign buy decisions will preserve Canadian control, workshare, intellectual property and through-life sustainment."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cdir-domestic-ammunition-and-critical-inputs",
+      "source": {
+        "id": "cdir-program-2026-cdir-domestic-ammunition-and-critical-inputs",
+        "title": "Canadian Defence Industry Resilience Program",
+        "url": "https://www.canada.ca/en/department-national-defence/programs/canadian-defence-industry-resilience.html#cdir-domestic-ammunition-and-critical-inputs",
+        "publisher": "National Defence",
+        "sourceKind": "innovation_program",
+        "publishedAt": "2026-03-18T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Program purpose, eligibility, funding and Buy Canada alignment",
+        "summary": "The CDIR program provides funding to Canadian businesses and supply-chain partners to increase defence production capacity, strengthen critical inputs and improve domestic resilience."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+        "https://www.canada.ca/en/department-national-defence/programs/canadian-defence-industry-resilience.html",
+        "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-investment-of-1-4-billion-into-domestic-ammunition-production.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Program purpose, eligibility, funding and Buy Canada alignment",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/canadian-defence-industry-resilience.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "cdir-domestic-ammunition-and-critical-inputs",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should this signal remain distinct from existing demand records or be merged at review?",
+        "Which future program, procurement, funding or delivery artifact should be monitored next?"
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "CDIR and the ammunition announcement establish public program and investment signals; they do not enumerate every future supplier opportunity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/canadian-defence-industry-resilience.html",
+          "outcome": "The official Defence Industrial Strategy or implementation source established the policy or program signal."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-investment-of-1-4-billion-into-domestic-ammunition-production.html",
+          "outcome": "A complementary government source was checked to establish a concrete implementation, investment or delivery path."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The official strategy index confirmed the durable government publication and reduced the risk of promoting a secondary summary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Domestic ammunition, explosives and critical defence inputs",
+      "issuerNames": [
+        "Department of National Defence",
+        "Defence Investment Agency",
+        "Innovation, Science and Economic Development Canada"
+      ],
+      "demandSourceKind": "funding_program",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Canada must reduce vulnerabilities in ammunition and explosives supply chains and expand production capacity for components, materials and other critical inputs required to sustain CAF readiness and sovereign defence capability."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-defence-industry-assist-borealis-innovation-pipeline",
+      "source": {
+        "id": "dis-strategy-2026-defence-industry-assist-borealis-innovation-pipeline",
+        "title": "Canada's Defence Industrial Strategy",
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html#defence-industry-assist-borealis-innovation-pipeline",
+        "publisher": "National Defence",
+        "sourceKind": "official_policy",
+        "publishedAt": "2026-02-17T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+        "summary": "The official strategy sets the long-term policy and investment direction for rebuilding Canada's defence industrial base, including sovereign capabilities, domestic production, trusted partnerships, innovation, supply chains, Arctic cooperation and workforce development."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "https://nrc.canada.ca/en/corporate/planning-reporting/national-research-council-canadas-2026-27-departmental-plan",
+        "https://www.canada.ca/en/defence-investment-agency/corporate/delivering-defence-industrial-strategy.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "defence-industry-assist-borealis-innovation-pipeline",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should this signal remain distinct from existing demand records or be merged at review?",
+        "Which future program, procurement, funding or delivery artifact should be monitored next?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Program funding and planned mechanisms are public commitments; individual project awards and operational adoption require separate evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+          "outcome": "The official Defence Industrial Strategy or implementation source established the policy or program signal."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://nrc.canada.ca/en/corporate/planning-reporting/national-research-council-canadas-2026-27-departmental-plan",
+          "outcome": "A complementary government source was checked to establish a concrete implementation, investment or delivery path."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The official strategy index confirmed the durable government publication and reduced the risk of promoting a secondary summary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Defence Industry Assist and BOREALIS innovation-to-deployment pipeline",
+      "issuerNames": [
+        "National Research Council Canada Industrial Research Assistance Program",
+        "Department of National Defence",
+        "Defence Investment Agency",
+        "Innovation, Science and Economic Development Canada"
+      ],
+      "demandSourceKind": "funding_program",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Canadian defence and dual-use discoveries need a connected path from fundamental research through applied R&D, secure testing, prototyping, demonstration, commercialization and rapid CAF adoption."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-dis-sovereign-digital-systems-and-high-assurance-comms",
+      "source": {
+        "id": "dis-strategy-2026-dis-sovereign-digital-systems-and-high-assurance-comms",
+        "title": "Canada's Defence Industrial Strategy",
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html#dis-sovereign-digital-systems-and-high-assurance-comms",
+        "publisher": "National Defence",
+        "sourceKind": "official_policy",
+        "publishedAt": "2026-02-17T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+        "summary": "The official strategy sets the long-term policy and investment direction for rebuilding Canada's defence industrial base, including sovereign capabilities, domestic production, trusted partnerships, innovation, supply chains, Arctic cooperation and workforce development."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "dis-sovereign-digital-systems-and-high-assurance-comms",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should this signal remain distinct from existing demand records or be merged at review?",
+        "Which future program, procurement, funding or delivery artifact should be monitored next?"
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "This policy signal identifies sovereign technology areas; it is not a technical specification or procurement notice."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+          "outcome": "The official Defence Industrial Strategy or implementation source established the policy or program signal."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html",
+          "outcome": "A complementary government source was checked to establish a concrete implementation, investment or delivery path."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The official strategy index confirmed the durable government publication and reduced the risk of promoting a secondary summary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Sovereign digital systems, AI, quantum and high-assurance communications",
+      "issuerNames": [
+        "Department of National Defence",
+        "Defence Investment Agency",
+        "Innovation, Science and Economic Development Canada"
+      ],
+      "demandSourceKind": "strategic_policy",
+      "commitmentLevel": "directional",
+      "candidateRequirements": [
+        "CAF operations and defence platforms increasingly depend on secure cloud, AI, quantum technologies, integrated command-and-control, communications and high-assurance equipment whose software, data and intellectual property must remain supportable and sovereignly controlled."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-dis-sensors-ew-space-and-autonomous-systems",
+      "source": {
+        "id": "dis-strategy-2026-dis-sensors-ew-space-and-autonomous-systems",
+        "title": "Canada's Defence Industrial Strategy",
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html#dis-sensors-ew-space-and-autonomous-systems",
+        "publisher": "National Defence",
+        "sourceKind": "official_policy",
+        "publishedAt": "2026-02-17T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+        "summary": "The official strategy sets the long-term policy and investment direction for rebuilding Canada's defence industrial base, including sovereign capabilities, domestic production, trusted partnerships, innovation, supply chains, Arctic cooperation and workforce development."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "space-and-earth-observation",
+        "autonomous-systems",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "dis-sensors-ew-space-and-autonomous-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should this signal remain distinct from existing demand records or be merged at review?",
+        "Which future program, procurement, funding or delivery artifact should be monitored next?"
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The strategy names capability areas and industrial intent; specific CAF requirements, platforms and acquisition schedules remain open."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+          "outcome": "The official Defence Industrial Strategy or implementation source established the policy or program signal."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html",
+          "outcome": "A complementary government source was checked to establish a concrete implementation, investment or delivery path."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The official strategy index confirmed the durable government publication and reduced the risk of promoting a secondary summary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Sovereign sensors, electronic warfare, space and autonomous systems",
+      "issuerNames": [
+        "Department of National Defence",
+        "Defence Investment Agency"
+      ],
+      "demandSourceKind": "strategic_policy",
+      "commitmentLevel": "directional",
+      "candidateRequirements": [
+        "Canada needs domestic or trusted-partner capacity in marine and quantum sensors, electronic warfare, space-based ISR, space-domain awareness, satellite communications, launch and uncrewed systems to maintain situational awareness and operational advantage."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-dis-defence-workforce-clearance-and-secure-facilities",
+      "source": {
+        "id": "dis-strategy-2026-dis-defence-workforce-clearance-and-secure-facilities",
+        "title": "Canada's Defence Industrial Strategy",
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html#dis-defence-workforce-clearance-and-secure-facilities",
+        "publisher": "National Defence",
+        "sourceKind": "official_policy",
+        "publishedAt": "2026-02-17T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+        "summary": "The official strategy sets the long-term policy and investment direction for rebuilding Canada's defence industrial base, including sovereign capabilities, domestic production, trusted partnerships, innovation, supply chains, Arctic cooperation and workforce development."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "dis-defence-workforce-clearance-and-secure-facilities",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should this signal remain distinct from existing demand records or be merged at review?",
+        "Which future program, procurement, funding or delivery artifact should be monitored next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "This is a workforce and enabling-infrastructure demand signal rather than a technology procurement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+          "outcome": "The official Defence Industrial Strategy or implementation source established the policy or program signal."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html",
+          "outcome": "A complementary government source was checked to establish a concrete implementation, investment or delivery path."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The official strategy index confirmed the durable government publication and reduced the risk of promoting a secondary summary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Defence workforce, security clearances and secure facilities",
+      "issuerNames": [
+        "Department of National Defence",
+        "Innovation, Science and Economic Development Canada",
+        "Government of Canada"
+      ],
+      "demandSourceKind": "strategic_policy",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Canadian firms need a larger skilled workforce and faster, more predictable security-clearance and secure-facility accreditation pathways to participate in defence R&D, classified collaboration and procurement."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-dis-canadian-ip-itb-and-strategic-partnerships",
+      "source": {
+        "id": "dis-strategy-2026-dis-canadian-ip-itb-and-strategic-partnerships",
+        "title": "Canada's Defence Industrial Strategy",
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html#dis-canadian-ip-itb-and-strategic-partnerships",
+        "publisher": "National Defence",
+        "sourceKind": "official_policy",
+        "publishedAt": "2026-02-17T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+        "summary": "The official strategy sets the long-term policy and investment direction for rebuilding Canada's defence industrial base, including sovereign capabilities, domestic production, trusted partnerships, innovation, supply chains, Arctic cooperation and workforce development."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "https://www.canada.ca/en/defence-investment-agency/corporate/delivering-defence-industrial-strategy.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "dis-canadian-ip-itb-and-strategic-partnerships",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should this signal remain distinct from existing demand records or be merged at review?",
+        "Which future program, procurement, funding or delivery artifact should be monitored next?"
+      ],
+      "discoveryLane": "broad_web",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The strategy describes proposed policy mechanisms and targets; contract-specific ITB obligations require separate procurement evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+          "outcome": "The official Defence Industrial Strategy or implementation source established the policy or program signal."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/defence-investment-agency/corporate/delivering-defence-industrial-strategy.html",
+          "outcome": "A complementary government source was checked to establish a concrete implementation, investment or delivery path."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The official strategy index confirmed the durable government publication and reduced the risk of promoting a secondary summary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Canadian IP, ITB reform and strategic defence partnerships",
+      "issuerNames": [
+        "Defence Investment Agency",
+        "Department of National Defence",
+        "Innovation, Science and Economic Development Canada"
+      ],
+      "demandSourceKind": "strategic_policy",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Foreign-prime procurement and fragmented industrial benefits can leave Canada without durable control of critical IP, direct Canadian workshare, domestic supplier development or a pathway for SMBs to scale into anchor firms."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-dis-medical-countermeasures-and-critical-minerals",
+      "source": {
+        "id": "dis-strategy-2026-dis-medical-countermeasures-and-critical-minerals",
+        "title": "Canada's Defence Industrial Strategy",
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html#dis-medical-countermeasures-and-critical-minerals",
+        "publisher": "National Defence",
+        "sourceKind": "official_policy",
+        "publishedAt": "2026-02-17T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+        "summary": "The official strategy sets the long-term policy and investment direction for rebuilding Canada's defence industrial base, including sovereign capabilities, domestic production, trusted partnerships, innovation, supply chains, Arctic cooperation and workforce development."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "dis-medical-countermeasures-and-critical-minerals",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should this signal remain distinct from existing demand records or be merged at review?",
+        "Which future program, procurement, funding or delivery artifact should be monitored next?"
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The strategy signals industrial and policy demand; technical quantities, sites and procurement vehicles are not specified in the public source."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+          "outcome": "The official Defence Industrial Strategy or implementation source established the policy or program signal."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html",
+          "outcome": "A complementary government source was checked to establish a concrete implementation, investment or delivery path."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The official strategy index confirmed the durable government publication and reduced the risk of promoting a secondary summary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Medical countermeasures, critical minerals and strategic materials",
+      "issuerNames": [
+        "Department of National Defence",
+        "Innovation, Science and Economic Development Canada",
+        "Government of Canada"
+      ],
+      "demandSourceKind": "strategic_policy",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Defence readiness depends on reliable access to medical countermeasures, critical minerals, steel, aluminum and other strategic materials that can be disrupted by geopolitical competition, tariffs or fragile global supply chains."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-canada-northern-operational-support-hubs-dis-refresh",
+      "source": {
+        "id": "dis-strategy-2026-arctic-operational-reach-refresh",
+        "title": "Canada's Defence Industrial Strategy",
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html#arctic-operational-reach-refresh",
+        "publisher": "National Defence",
+        "sourceKind": "official_policy",
+        "publishedAt": "2026-02-17T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:55:00.000Z",
+        "locator": "Five pillars, sovereign capabilities, Build–Partner–Buy, key actions and commitments",
+        "summary": "The official strategy sets the long-term policy and investment direction for rebuilding Canada's defence industrial base, including sovereign capabilities, domestic production, trusted partnerships, innovation, supply chains, Arctic cooperation and workforce development."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+        "https://www.canada.ca/en/department-national-defence/services/northern-operational-support-hubs.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "communications-and-cyber",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Defence Industrial Strategy Pillar V, Northern Operational Support Hubs program and domestic-partner commitments",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/services/northern-operational-support-hubs.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "canada-northern-operational-support-hubs",
+        "legalName": null,
+        "aliases": [
+          "NOSH",
+          "Northern Operational Support Hubs"
+        ]
+      },
+      "followUpQuestions": [
+        "Should the reviewer keep the enriched industrial and northern-partnership language in the existing requirement or split it into a second requirement?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "This is an additive refresh of a published demand record; preserve stable IDs and do not create a duplicate source."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+          "outcome": "The strategy adds new industrial, infrastructure and partnership context to the existing Arctic demand."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/services/northern-operational-support-hubs.html",
+          "outcome": "The official Northern Operational Support Hubs page confirmed the existing program and requirement boundary."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy.html",
+          "outcome": "The durable strategy overview confirmed the policy context and current government ownership."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "demand_source",
+        "entityId": "06b6835c-c204-4458-ac75-bfe8f24d046f",
+        "slug": "canada-northern-operational-support-hubs",
+        "matchMethods": [
+          "slug",
+          "name",
+          "parent_relationship"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-20T20:24:54.887961Z"
+      },
+      "signalIds": [
+        "signal-dis-arctic-operational-reach-refresh"
+      ],
+      "refreshSummary": "The Defence Industrial Strategy materially enriches the existing Northern Operational Support Hubs requirement by adding domestic industrial capacity, northern infrastructure, communications, energy, climate resilience and Indigenous and territorial participation as explicit sustainment context.",
+      "intendedChanges": [
+        "Update the existing arctic-operational-reach-and-sustainment problem statement in place.",
+        "Update its desired end state in place with the strategy's industrial and northern-partner dimensions."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260724081030",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-24T08:10:30.021Z",
+  "completedAt": "2026-07-24T08:13:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "QinetiQ Target Systems Canada official portfolio, product and newsroom research",
+    "CanadaBuys supplier profile, standing-offer history and current contract amendments",
+    "Corporations Canada operating-name history and legal-identity recovery"
+  ],
+  "counters": {
+    "sourcesChecked": 8,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 1,
+    "prospectsDiscovered": 3,
+    "uniqueProspects": 3,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 3,
+    "sourceLanesSearched": 3,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "completed",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260724081030.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260724081030.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260724081030.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260724081030-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260724081030.json"
+  }
+}

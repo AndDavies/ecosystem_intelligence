@@ -1,0 +1,1861 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260724122619-candidates",
+  "runId": "tnm-manual-20260724122619",
+  "title": "Canadian rapid-deployment ROV ecosystem",
+  "status": "candidate",
+  "createdAt": "2026-07-24T12:34:00.000Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "keyword:rapid-deployment-rov",
+    "reason": "The operator requested a Canada-first landscape for rapid-deployment remotely operated vehicles and the enabling inspection, sensing, intervention and training supply chain.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260724122619.json",
+  "guardrailNotes": [
+    "The ten records are private company candidates only; no published organization, capability, evidence, taxonomy or demand record changes before explicit human publication.",
+    "Twelve exact published organizations are preserved as duplicates, and eighteen plausible adjacent prospects remain queued rather than being forced into the current review capacity."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-marinenav-20260724",
+      "sourceLeadIds": [
+        "lead-marinenav-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 97,
+      "reviewWarnings": [],
+      "reviewerRationale": "MarineNav is recommended for green private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. MarineNav is an independently owned Prince Edward Island manufacturer of portable Oceanus remotely operated vehicles, marine-grade computers, displays, vessel monitoring systems and fleet-management software. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The record is sufficiently enriched for substantive review without another source-recovery pause.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching MarineNav, marinenav, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "marinenav-home",
+          "title": "MarineNav underwater ROV systems",
+          "url": "https://www.marinenav.ca/",
+          "publisher": "MarineNav",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Company and product overview",
+          "summary": "MarineNav states that it designs and manufactures portable Oceanus ROVs, marine computers, displays, vessel-monitoring systems and fleet software in Canada."
+        },
+        {
+          "id": "marinenav-oceanus-pro",
+          "title": "Oceanus Pro ROV system",
+          "url": "https://marinenav.ca/oceanus-pro-rov.html",
+          "publisher": "MarineNav",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Oceanus Pro platform and accessories",
+          "summary": "The official product page documents the Oceanus Pro vehicle, topside control and compatibility with mission-specific ROV attachments."
+        },
+        {
+          "id": "marinenav-product-guide",
+          "title": "MarineNav 2025 ROV product guide",
+          "url": "https://www.marinenav.ca/assets/files/MN-ProductGuide-2025-RS.pdf",
+          "publisher": "MarineNav",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2025-01-01T00:00:00.000Z",
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "ROV fleet specifications and company qualifications",
+          "summary": "MarineNav's product guide documents the Oceanus fleet, Canadian manufacturing, ISO 9001 certification and controlled-goods access."
+        },
+        {
+          "id": "marinenav-canadabuys",
+          "title": "MarineNav remotely operated vehicle award",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-211-3915514",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-01-24T00:00:00.000Z",
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Award recipient, value and PEI address",
+          "summary": "CanadaBuys records a competitive ROV award to MarineNav and confirms its Panmure Island business address."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-marinenav-description",
+          "sourceId": "marinenav-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports MarineNav's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marinenav-capability",
+          "sourceId": "marinenav-home",
+          "fieldPath": "capabilities.marinenav-oceanus-rapid-deployment-rovs.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marinenav-contact",
+          "sourceId": "marinenav-oceanus-pro",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in MarineNav's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marinenav-activity",
+          "sourceId": "marinenav-canadabuys",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "marinenav",
+        "name": "MarineNav",
+        "legalName": "MarineNav Ltd.",
+        "aliases": [],
+        "description": "MarineNav is an independently owned Prince Edward Island manufacturer of portable Oceanus remotely operated vehicles, marine-grade computers, displays, vessel monitoring systems and fleet-management software.",
+        "websiteUrl": "https://www.marinenav.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "defence_supplier",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Panmure Island",
+          "provinceTerritory": "Prince Edward Island",
+          "countryCode": "CA",
+          "latitude": 46.111,
+          "longitude": -62.47,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Oceanus underwater ROV platforms plus rugged marine computers, displays, automatic vessel monitoring and fleet-management software.",
+          "publicContact": "1466 Panmure Island Road, Panmure Island, PE C0A 1R0; info@marinenav.ca; +1 902-838-7011.",
+          "currentActivity": "CanadaBuys records a 2025 Department of Fisheries and Oceans ROV award to MarineNav and a separate three-year ROV contract running through March 2028.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "marinenav-oceanus-rapid-deployment-rovs",
+          "name": "Oceanus Rapid-Deployment ROV Systems",
+          "summary": "Deploy portable Oceanus Mini, Pro and Ultimate underwater vehicles from transport cases with integrated topside control, video, navigation, tether and accessory options for inspection, search, recovery and marine operations.",
+          "capabilityType": "Portable inspection-class remotely operated vehicle family",
+          "features": [
+            "Hardshell transport-case packaging",
+            "Self-contained topside control and recording",
+            "Minimal field setup",
+            "Mini, Pro and Ultimate vehicle configurations",
+            "Manipulator, sonar and third-party accessory compatibility"
+          ],
+          "applications": [
+            "Ship-hull and harbour inspection",
+            "Search and recovery",
+            "Fisheries and environmental monitoring",
+            "Public-safety and government operations",
+            "Submerged infrastructure assessment"
+          ],
+          "technicalTags": [
+            "portable ROV",
+            "Oceanus",
+            "underwater inspection",
+            "marine robotics",
+            "rapid deployment"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "MarineNav's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "MarineNav's portable field systems, marine logistics or remote-area operating model could support source-bounded underwater awareness in northern environments.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "MarineNav's vehicle, navigation or operator-support technology could contribute to repeatable uncrewed monitoring workflows when integrated into an approved mission system.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-shark-marine-technologies-20260724",
+      "sourceLeadIds": [
+        "lead-shark-marine-technologies-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [],
+      "reviewerRationale": "Shark Marine Technologies is recommended for green private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. Shark Marine Technologies is a St. Catharines underwater-technology manufacturer producing ROVs, diver navigation and delivery systems, sonar, mission software and supporting hardware for military, law-enforcement, scientific and commercial users. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The record is sufficiently enriched for substantive review without another source-recovery pause.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Shark Marine Technologies, shark-marine-technologies, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "shark-marine-home",
+          "title": "Shark Marine underwater technology",
+          "url": "https://www.sharkmarine.com/",
+          "publisher": "Shark Marine Technologies",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Company, product families and contact",
+          "summary": "Shark Marine describes its ROV, diver navigation, diver delivery, sonar, hardware and software portfolio and publishes its Ontario contact information."
+        },
+        {
+          "id": "shark-marine-about",
+          "title": "Shark Marine company profile",
+          "url": "https://www.sharkmarine.com/aboutus",
+          "publisher": "Shark Marine Technologies",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Markets and operating history",
+          "summary": "The official profile describes international naval, marine-force, law-enforcement, science and commercial users of Shark Marine underwater systems."
+        },
+        {
+          "id": "shark-marine-navigator",
+          "title": "Shark Marine Navigator",
+          "url": "https://www.sharkmarine.com/navigator",
+          "publisher": "Shark Marine Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Navigator product family",
+          "summary": "The official Navigator page supports the company's diver-held underwater sonar, navigation and mapping capability."
+        },
+        {
+          "id": "shark-marine-canadabuys",
+          "title": "Diver-held imaging and navigation system",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/tender-notice/cb-554-93782208",
+          "publisher": "CanadaBuys",
+          "sourceKind": "procurement_notice",
+          "publishedAt": "2026-06-16T00:00:00.000Z",
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Named Shark Marine equipment for DND delivery",
+          "summary": "CanadaBuys lists Shark Marine sonar, navigation, camera, tablet, cable and mission-planning equipment requested for delivery to CFB Gagetown."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-shark-marine-technologies-description",
+          "sourceId": "shark-marine-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Shark Marine Technologies's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-shark-marine-technologies-capability",
+          "sourceId": "shark-marine-navigator",
+          "fieldPath": "capabilities.shark-marine-integrated-underwater-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-shark-marine-technologies-contact",
+          "sourceId": "shark-marine-about",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in Shark Marine Technologies's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-shark-marine-technologies-activity",
+          "sourceId": "shark-marine-canadabuys",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "shark-marine-technologies",
+        "name": "Shark Marine Technologies",
+        "legalName": "Shark Marine Technologies Inc.",
+        "aliases": [],
+        "description": "Shark Marine Technologies is a St. Catharines underwater-technology manufacturer producing ROVs, diver navigation and delivery systems, sonar, mission software and supporting hardware for military, law-enforcement, scientific and commercial users.",
+        "websiteUrl": "https://www.sharkmarine.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "defence_supplier",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "St. Catharines",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.1594,
+          "longitude": -79.2469,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "ROVs, Navigator and E-Tac diver-navigation products, sonar, Hammerhead diver delivery, DiveLog software, displays, cameras and custom underwater systems.",
+          "publicContact": "23 Nihan Drive, St. Catharines, ON L2N 1L2; sales@sharkmarine.com; +1 905-687-6672.",
+          "currentActivity": "A 2026 CanadaBuys notice identifies Shark Marine navigation, sonar, computing, camera and mission-planning equipment for delivery to CFB Gagetown.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "shark-marine-integrated-underwater-systems",
+          "name": "Integrated Underwater Navigation and ROV Systems",
+          "summary": "Equip divers and remotely operated vehicles with integrated sonar, navigation, mapping, mission-planning, control and delivery systems for underwater search, survey, target reacquisition and intervention.",
+          "capabilityType": "Underwater navigation, sonar and remotely operated systems",
+          "features": [
+            "ROV and diver-operated configurations",
+            "Navigator sonar and navigation family",
+            "DiveLog mission software",
+            "Diver delivery systems",
+            "Custom in-house system integration"
+          ],
+          "applications": [
+            "Clearance-diver navigation",
+            "Mine-countermeasure support",
+            "Port and harbour security",
+            "Search and recovery",
+            "Underwater survey and target mapping"
+          ],
+          "technicalTags": [
+            "diver navigation",
+            "ROV",
+            "sonar",
+            "DiveLog",
+            "underwater mission systems"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "Shark Marine Technologies's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Shark Marine Technologies's vehicle, navigation or operator-support technology could contribute to repeatable uncrewed monitoring workflows when integrated into an approved mission system.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-asi-group-20260724",
+      "sourceLeadIds": [
+        "lead-asi-group-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "reviewWarnings": [],
+      "reviewerRationale": "ASI Group is recommended for green private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. ASI Group is an Ontario underwater engineering, inspection and survey company operating a large fleet of configurable ROVs for rapid-response ship, dam, tunnel, pipeline, port and submerged-infrastructure work. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The record is sufficiently enriched for substantive review without another source-recovery pause.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching ASI Group, asi-group, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "asi-home",
+          "title": "ASI Group underwater services",
+          "url": "https://asi-group.com/",
+          "publisher": "ASI Group",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Company and service overview",
+          "summary": "ASI identifies ROV inspection, commercial diving and marine geophysical and hydrographic survey as core underwater services."
+        },
+        {
+          "id": "asi-rov-inspection",
+          "title": "ASI underwater ROV inspection",
+          "url": "https://asi-group.com/under-water-inspection/",
+          "publisher": "ASI Group",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "ROV fleet, sensors and deliverables",
+          "summary": "ASI documents a fleet of more than 25 configurable ROVs with video, 2D and 3D sonar, positioning, sampling and intervention tooling."
+        },
+        {
+          "id": "asi-ship-inspection",
+          "title": "ASI rapid ship inspection",
+          "url": "https://asi-group.com/ship-inspection/",
+          "publisher": "ASI Group",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "National mobilization and ship services",
+          "summary": "ASI states that its crews can deploy across Canada at short notice with ROV pilots, technicians, hydrographers, engineers and support staff."
+        },
+        {
+          "id": "asi-services",
+          "title": "ASI underwater service portfolio",
+          "url": "https://asi-group.com/services/",
+          "publisher": "ASI Group",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Service portfolio and public contact",
+          "summary": "ASI describes contained and open-water ROV operations for docks, dams, pipelines, cables, intakes, outfalls and target identification."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-asi-group-description",
+          "sourceId": "asi-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports ASI Group's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-asi-group-capability",
+          "sourceId": "asi-rov-inspection",
+          "fieldPath": "capabilities.asi-rapid-response-rov-inspection.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-asi-group-contact",
+          "sourceId": "asi-rov-inspection",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in ASI Group's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-asi-group-activity",
+          "sourceId": "asi-services",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "asi-group",
+        "name": "ASI Group",
+        "legalName": "ASI Group Ltd.",
+        "aliases": [
+          "ASI Marine"
+        ],
+        "description": "ASI Group is an Ontario underwater engineering, inspection and survey company operating a large fleet of configurable ROVs for rapid-response ship, dam, tunnel, pipeline, port and submerged-infrastructure work.",
+        "websiteUrl": "https://asi-group.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Stoney Creek",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.2272,
+          "longitude": -79.7196,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "ROV and USV inspection, hydrographic and geophysical survey, commercial diving, underwater construction, repair and engineering reporting.",
+          "publicContact": "566 Arvin Avenue, Stoney Creek, ON L8E 5P1; +1 905-643-3283.",
+          "currentActivity": "ASI's current service material states that it operates more than 25 ROVs and maintains teams that can deploy to vessel locations across Canada at short notice.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "asi-rapid-response-rov-inspection",
+          "name": "Rapid-Response ROV Inspection and Survey Services",
+          "summary": "Mobilize configurable ROVs, pilots, hydrographers and engineers for underwater inspection, mapping and condition assessment using high-resolution video, sonar, positioning and task-specific tooling.",
+          "capabilityType": "Rapid-response underwater robotic inspection service",
+          "features": [
+            "Fleet of more than 25 ROVs",
+            "2D and 3D sonar integration",
+            "High-resolution video and real-time reporting",
+            "Custom tooling and vehicle retrofits",
+            "Rapid national mobilization"
+          ],
+          "applications": [
+            "Ship and hull inspection",
+            "Dam and hydropower assessment",
+            "Tunnel and pipeline surveys",
+            "Port and cable-route inspection",
+            "Underwater search and recovery"
+          ],
+          "technicalTags": [
+            "ROV inspection",
+            "sonar mapping",
+            "rapid response",
+            "underwater engineering",
+            "asset condition assessment"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "ASI Group's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "high"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-completewaters-20260724",
+      "sourceLeadIds": [
+        "lead-completewaters-20260724"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 90,
+      "completenessScore": 80,
+      "reviewWarnings": [
+        "The official site establishes a concrete Ontario operating identity and portable field service, but it does not publish the company's legal name, fleet inventory, formal certifications or detailed recent project records."
+      ],
+      "reviewerRationale": "CompleteWaters is recommended for amber private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. CompleteWaters is a Meaford marine-robotics operator providing portable ROV, USV, water-quality, sediment-sampling and boat services across Canada, including deployments in Arctic conditions. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The reviewer should retain the explicit evidence limitation and avoid extending the record beyond the published material.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching CompleteWaters, completewaters, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "completewaters-home",
+          "title": "CompleteWaters underwater imagery",
+          "url": "https://www.completewaters.com/",
+          "publisher": "CompleteWaters",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Company services and contact",
+          "summary": "CompleteWaters publishes its Meaford base, Canada-wide service posture, ROV and USV services and public contact channels."
+        },
+        {
+          "id": "completewaters-about",
+          "title": "About CompleteWaters",
+          "url": "https://www.completewaters.com/about",
+          "publisher": "CompleteWaters",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Company purpose and operating range",
+          "summary": "The company describes itself as an Ontario marine-robotics service provider using portable ROV and USV systems across Canada, including north of the Arctic Circle."
+        },
+        {
+          "id": "completewaters-rov",
+          "title": "CompleteWaters ROV services",
+          "url": "https://www.completewaters.com/rovservices",
+          "publisher": "CompleteWaters",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "ROV recovery and sampling services",
+          "summary": "The official service page documents compact ROV recovery, real-time imagery and water and sediment sampling to depths and distances of 100 metres."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-completewaters-description",
+          "sourceId": "completewaters-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports CompleteWaters's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-completewaters-capability",
+          "sourceId": "completewaters-rov",
+          "fieldPath": "capabilities.completewaters-portable-rov-field-services.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-completewaters-contact",
+          "sourceId": "completewaters-about",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in CompleteWaters's profile.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-completewaters-activity",
+          "sourceId": "completewaters-rov",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "completewaters",
+        "name": "CompleteWaters",
+        "legalName": null,
+        "aliases": [],
+        "description": "CompleteWaters is a Meaford marine-robotics operator providing portable ROV, USV, water-quality, sediment-sampling and boat services across Canada, including deployments in Arctic conditions.",
+        "websiteUrl": "https://www.completewaters.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Meaford",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 44.607,
+          "longitude": -80.593,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Portable ROV and USV inspection, water-quality monitoring, sediment and water sampling, recovery, underwater imagery and boat services.",
+          "publicContact": "Based in Meaford, Ontario and serving Canada-wide; info@completewaters.com; +1 905-818-5272.",
+          "currentActivity": "CompleteWaters continues to advertise compact ROV deployments, object recovery and targeted underwater sampling from local harbours through Arctic field locations.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "completewaters-portable-rov-field-services",
+          "name": "Portable ROV Field Inspection and Sampling",
+          "summary": "Rapidly deploy compact ROVs for live underwater imagery, object recovery, water and sediment sampling, infrastructure inspection and aquatic research from shore, dock or small-vessel operating sites.",
+          "capabilityType": "Portable ROV inspection and sampling service",
+          "features": [
+            "Compact portable ROV systems",
+            "Live pilot video",
+            "Grabber and object-recovery tools",
+            "Water and sediment samplers",
+            "Canada-wide mobile service"
+          ],
+          "applications": [
+            "Underwater infrastructure inspection",
+            "Aquatic research",
+            "Search and equipment recovery",
+            "Environmental sampling",
+            "Remote and Arctic field operations"
+          ],
+          "technicalTags": [
+            "portable ROV",
+            "underwater sampling",
+            "object recovery",
+            "water quality",
+            "mobile marine robotics"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "CompleteWaters's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-ven-tech-subsea-20260724",
+      "sourceLeadIds": [
+        "lead-ven-tech-subsea-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 92,
+      "reviewWarnings": [],
+      "reviewerRationale": "Ven-Tech Subsea is recommended for green private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. Ven-Tech Subsea is a North Vancouver commercial-diving and marine-robotics company providing rapidly deployable ROV inspection, survey, mapping, intervention and recovery services across Western Canada, Nunavut and offshore environments. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The record is sufficiently enriched for substantive review without another source-recovery pause.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Ven-Tech Subsea, ven-tech-subsea, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "ven-tech-home",
+          "title": "Ven-Tech Subsea inspections",
+          "url": "https://ven-techsubsea.ca/",
+          "publisher": "Ven-Tech Subsea",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Company and service overview",
+          "summary": "Ven-Tech describes Canadian ROV, USV, diving, construction, pipeline and survey work across Western Canada and beyond."
+        },
+        {
+          "id": "ven-tech-about",
+          "title": "About Ven-Tech Subsea",
+          "url": "https://ven-techsubsea.ca/about/",
+          "publisher": "Ven-Tech Subsea",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Operating identity, certifications and contact",
+          "summary": "The official profile supports the North Vancouver operating location, public contact route, 2014 start and national diving and ROV service scope."
+        },
+        {
+          "id": "ven-tech-rov",
+          "title": "Ven-Tech advanced ROV services",
+          "url": "https://ven-techsubsea.ca/rov-services/",
+          "publisher": "Ven-Tech Subsea",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Fleet, sensors, tooling and deployment regions",
+          "summary": "Ven-Tech documents portable through work-class ROVs, 4K video, sonar, positioning, intervention tooling and service across Western Canada and Nunavut."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-ven-tech-subsea-description",
+          "sourceId": "ven-tech-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Ven-Tech Subsea's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ven-tech-subsea-capability",
+          "sourceId": "ven-tech-rov",
+          "fieldPath": "capabilities.ven-tech-rapidly-deployable-rov-services.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ven-tech-subsea-contact",
+          "sourceId": "ven-tech-about",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in Ven-Tech Subsea's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ven-tech-subsea-activity",
+          "sourceId": "ven-tech-rov",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "ven-tech-subsea",
+        "name": "Ven-Tech Subsea",
+        "legalName": null,
+        "aliases": [
+          "Ven-Tech Subsea Inspections"
+        ],
+        "description": "Ven-Tech Subsea is a North Vancouver commercial-diving and marine-robotics company providing rapidly deployable ROV inspection, survey, mapping, intervention and recovery services across Western Canada, Nunavut and offshore environments.",
+        "websiteUrl": "https://ven-techsubsea.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "North Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.32,
+          "longitude": -123.073,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "ROV and USV inspection, commercial diving, hydrographic survey, pipeline assessment, subsea construction, salvage and robotic reservoir maintenance.",
+          "publicContact": "1641 Lonsdale Avenue, North Vancouver, BC V7M 2J5; info@ven-techsubsea.ca; +1 604-230-3022.",
+          "currentActivity": "Ven-Tech's current service portfolio includes portable Deep Trekker inspection vehicles, deepwater systems, multibeam sonar, positioning, ultrasonic thickness measurement and robotic reservoir tooling.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "ven-tech-rapidly-deployable-rov-services",
+          "name": "Rapidly Deployable ROV Inspection Services",
+          "summary": "Deploy portable inspection-class through work-class ROVs with video, multibeam sonar, USBL or INS positioning, manipulators and nondestructive-testing tools for confined, inshore, offshore and deepwater missions.",
+          "capabilityType": "Portable and work-class ROV inspection and intervention service",
+          "features": [
+            "Lightweight portable and deepwater ROV fleet",
+            "4K video and multibeam sonar",
+            "USBL and INS positioning",
+            "Manipulator and nondestructive-testing tools",
+            "Engineering-grade post-mission deliverables"
+          ],
+          "applications": [
+            "Vessel and port inspection",
+            "Pipeline and cable-route survey",
+            "Search, recovery and salvage",
+            "Reservoir and confined-space inspection",
+            "Offshore construction and maintenance"
+          ],
+          "technicalTags": [
+            "rapidly deployable ROV",
+            "multibeam sonar",
+            "USBL",
+            "subsea intervention",
+            "underwater NDT"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "Ven-Tech Subsea's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Ven-Tech Subsea's portable field systems, marine logistics or remote-area operating model could support source-bounded underwater awareness in northern environments.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-gr8dane-marine-services-20260724",
+      "sourceLeadIds": [
+        "lead-gr8dane-marine-services-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 92,
+      "reviewWarnings": [],
+      "reviewerRationale": "Gr8Dane Marine Services is recommended for green private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. Gr8Dane Marine Services is a Nova Scotia ROV and marine-services company providing rapid-mobilization underwater inspection, search, recovery, USBL positioning, side-scan sonar and port-security support across Atlantic Canada. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The record is sufficiently enriched for substantive review without another source-recovery pause.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Gr8Dane Marine Services, gr8dane-marine-services, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "gr8dane-home",
+          "title": "Gr8Dane ROV operations",
+          "url": "https://gr8dane.ca/",
+          "publisher": "Gr8Dane Marine Services",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "ROV, positioning and sector coverage",
+          "summary": "Gr8Dane documents Oceanus ROV inspection, recovery, USBL positioning, side-scan sonar and government, fisheries, science and security applications."
+        },
+        {
+          "id": "gr8dane-about",
+          "title": "About Gr8Dane Marine Services",
+          "url": "https://gr8dane.ca/about-us",
+          "publisher": "Gr8Dane Marine Services",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Identity, experience and certifications",
+          "summary": "The official profile identifies the Nova Scotia company, marine and Coast Guard experience, ROV pilot training and public contact details."
+        },
+        {
+          "id": "gr8dane-contact",
+          "title": "Gr8Dane rapid deployment contact",
+          "url": "https://gr8dane.ca/contact-us-1",
+          "publisher": "Gr8Dane Marine Services",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Rapid mobilization and address",
+          "summary": "Gr8Dane states that its Youngs Cove position supports quick Maritime deployment and that crews can be operational within minutes of arrival."
+        },
+        {
+          "id": "marinenav-gr8dane",
+          "title": "MarineNav Nova Scotia sales and service",
+          "url": "https://marinenav.ca/support.html",
+          "publisher": "MarineNav",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Authorized affiliate listing",
+          "summary": "MarineNav lists Gr8Dane in Youngs Cove as a Nova Scotia Oceanus ROV sales and service affiliate."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-gr8dane-marine-services-description",
+          "sourceId": "gr8dane-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Gr8Dane Marine Services's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gr8dane-marine-services-capability",
+          "sourceId": "gr8dane-home",
+          "fieldPath": "capabilities.gr8dane-rapid-mobilization-rov-operations.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gr8dane-marine-services-contact",
+          "sourceId": "gr8dane-about",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in Gr8Dane Marine Services's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gr8dane-marine-services-activity",
+          "sourceId": "marinenav-gr8dane",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gr8dane-marine-services-relationship",
+          "sourceId": "marinenav-gr8dane",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited partner or program source directly supports the public relationship and its limited operational description.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "gr8dane-marine-services",
+        "name": "Gr8Dane Marine Services",
+        "legalName": "Gr8Dane Marine Services Inc.",
+        "aliases": [],
+        "description": "Gr8Dane Marine Services is a Nova Scotia ROV and marine-services company providing rapid-mobilization underwater inspection, search, recovery, USBL positioning, side-scan sonar and port-security support across Atlantic Canada.",
+        "websiteUrl": "https://gr8dane.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Youngs Cove",
+          "provinceTerritory": "Nova Scotia",
+          "countryCode": "CA",
+          "latitude": 44.66,
+          "longitude": -65.63,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Portable ROV inspection and operations, USBL positioning, side-scan imaging, recovery, asset-condition documentation and marine support.",
+          "publicContact": "5743 Shore Road, Youngs Cove, NS B0S 1L0; skipper@gr8dane.ca; +1 902-532-8417; 24-hour emergency service.",
+          "currentActivity": "Gr8Dane states that it can mobilize quickly across the Maritimes and be operational within minutes; MarineNav lists the company as its Nova Scotia ROV sales and service affiliate.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "gr8dane-rapid-mobilization-rov-operations",
+          "name": "Rapid-Mobilization ROV Inspection and Recovery",
+          "summary": "Mobilize a portable Oceanus Pro ROV, USBL positioning, side-scan sonar, manipulator and high-definition video for inspection, evidence recovery, search, science, security and marine asset-management missions.",
+          "capabilityType": "Portable ROV inspection, positioning and recovery service",
+          "features": [
+            "Operational within minutes of arrival",
+            "Oceanus Pro ROV rated to 305 metres",
+            "USBL underwater positioning",
+            "Portable side-scan sonar",
+            "Manipulator and wireless video sharing"
+          ],
+          "applications": [
+            "Port and vessel security",
+            "Evidence and victim recovery support",
+            "Hull and infrastructure inspection",
+            "Fisheries and aquaculture",
+            "Scientific and government missions"
+          ],
+          "technicalTags": [
+            "rapid mobilization",
+            "Oceanus Pro",
+            "USBL",
+            "side-scan sonar",
+            "underwater recovery"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "Gr8Dane Marine Services's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Gr8Dane Marine Services's portable field systems, marine logistics or remote-area operating model could support source-bounded underwater awareness in northern environments.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "MarineNav",
+          "relationshipType": "authorized sales and service affiliate",
+          "publicSummary": "MarineNav lists Gr8Dane as its Nova Scotia ROV sales and service affiliate, supporting regional access to Oceanus systems and operator services."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-aquadrone-20260724",
+      "sourceLeadIds": [
+        "lead-aquadrone-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "reviewerRationale": "Aquadrone is recommended for green private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. Aquadrone is a Quebec underwater-robotics company delivering rapid mobile ROV inspection, environmental data collection, emergency recovery and custom intervention-tool development for submerged infrastructure. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The record is sufficiently enriched for substantive review without another source-recovery pause.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Aquadrone, aquadrone, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "aquadrone-home",
+          "title": "Aquadrone underwater intervention",
+          "url": "https://www.aquadrone.ca/en/",
+          "publisher": "Aquadrone",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Company, services and public contact",
+          "summary": "Aquadrone describes Quebec-based ROV inspection, environmental data, underwater exploration and recovery services and publishes its public contact channels."
+        },
+        {
+          "id": "aquadrone-services",
+          "title": "Aquadrone ROV services",
+          "url": "https://www.aquadrone.ca/en/services/",
+          "publisher": "Aquadrone",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Mobile deployment, sensors and custom tools",
+          "summary": "The official services page documents shore, dock and vessel deployment, a mobile intervention unit, environmental collection and custom ROV-compatible tools."
+        },
+        {
+          "id": "aquadrone-about",
+          "title": "About Aquadrone",
+          "url": "https://www.aquadrone.ca/en/about/",
+          "publisher": "Aquadrone",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Operating history and current programs",
+          "summary": "Aquadrone records its 2022 start, mobile intervention unit, operator training and participation in Quebec marine-innovation activities."
+        },
+        {
+          "id": "aquadrone-port-quebec",
+          "title": "ROVs for cleaning underwater structures",
+          "url": "https://www.portquebec.ca/en/innovation/projets-en-action/remotely-operated-vehicles-for-cleaning-underwater-structures/",
+          "publisher": "Port of Québec",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Aquadrone pressure-cleaning innovation",
+          "summary": "The Port of Québec describes Aquadrone's ROV-operated pressure-cleaning technology and its safety, efficiency and infrastructure-maintenance benefits."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-aquadrone-description",
+          "sourceId": "aquadrone-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Aquadrone's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aquadrone-capability",
+          "sourceId": "aquadrone-services",
+          "fieldPath": "capabilities.aquadrone-mobile-rov-intervention.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aquadrone-contact",
+          "sourceId": "aquadrone-services",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in Aquadrone's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aquadrone-activity",
+          "sourceId": "aquadrone-port-quebec",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aquadrone-relationship",
+          "sourceId": "aquadrone-port-quebec",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited partner or program source directly supports the public relationship and its limited operational description.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "aquadrone",
+        "name": "Aquadrone",
+        "legalName": null,
+        "aliases": [],
+        "description": "Aquadrone is a Quebec underwater-robotics company delivering rapid mobile ROV inspection, environmental data collection, emergency recovery and custom intervention-tool development for submerged infrastructure.",
+        "websiteUrl": "https://www.aquadrone.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Saint-Basile-le-Grand",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.533,
+          "longitude": -73.283,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Turnkey underwater inspection, environmental monitoring, emergency response, recovery, operator training and custom ROV tool design and prototyping.",
+          "publicContact": "Saint-Basile-le-Grand, QC; aquadrone.ca@gmail.com; +1 438-492-1789; service across Quebec, Canada and internationally.",
+          "currentActivity": "Aquadrone is developing an ROV-operated pressure-cleaning system through an open-innovation project with 2 Degrés and the Port of Québec.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "aquadrone-mobile-rov-intervention",
+          "name": "Mobile ROV Inspection and Intervention",
+          "summary": "Deploy ROVs from shore, docks or vessels using a mobile intervention unit, then deliver real-time imagery, environmental data, recovery support and purpose-built cleaning, sensing or intervention tools.",
+          "capabilityType": "Mobile ROV inspection and custom intervention service",
+          "features": [
+            "Mobile deployment equipment and field office",
+            "High-resolution real-time video",
+            "Environmental sensors and sampling",
+            "Custom ROV-compatible tool development",
+            "Pressure-cleaning and recovery systems"
+          ],
+          "applications": [
+            "Port and harbour inspection",
+            "Dam, reservoir and submerged-structure assessment",
+            "Emergency search and recovery",
+            "Environmental characterization",
+            "Underwater cleaning and maintenance"
+          ],
+          "technicalTags": [
+            "mobile ROV",
+            "underwater intervention",
+            "custom tooling",
+            "environmental monitoring",
+            "rapid response"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "Aquadrone's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "high"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Port of Québec",
+          "relationshipType": "open-innovation project partner",
+          "publicSummary": "The Port of Québec identifies Aquadrone as the company developing an ROV-operated pressure-cleaning technology for underwater infrastructure through its innovation program."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-sedna-rov-services-20260724",
+      "sourceLeadIds": [
+        "lead-sedna-rov-services-20260724"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The official site presents a strong, concrete Arctic operating profile, but its Canadian Hydrographic Service prime-contract history and mobilization performance are self-reported and were not independently resolved during this batch."
+      ],
+      "reviewerRationale": "Sedna ROV Services is recommended for amber private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. Sedna ROV Services is a 100-percent Inuit-owned Iqaluit marine-technology company providing locally crewed ROV inspections, bathymetry, sea-ice monitoring, wildlife surveys and search-and-rescue support across the Canadian Arctic. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The reviewer should retain the explicit evidence limitation and avoid extending the record beyond the published material.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Sedna ROV Services, sedna-rov-services, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "sedna-home",
+          "title": "Sedna Arctic ROV services",
+          "url": "https://sednarov.ca/",
+          "publisher": "Sedna ROV Services",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Company identity, capability, logistics and contact",
+          "summary": "Sedna identifies an Inuit-owned Iqaluit company operating ROV, bathymetric, sea-ice, wildlife, search-and-rescue and nearshore survey services with local crews."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-sedna-rov-services-description",
+          "sourceId": "sedna-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Sedna ROV Services's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sedna-rov-services-capability",
+          "sourceId": "sedna-home",
+          "fieldPath": "capabilities.sedna-arctic-rapid-deployment-rov.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sedna-rov-services-contact",
+          "sourceId": "sedna-home",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in Sedna ROV Services's profile.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sedna-rov-services-activity",
+          "sourceId": "sedna-home",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "sedna-rov-services",
+        "name": "Sedna ROV Services",
+        "legalName": "Sedna ROV Services Inc.",
+        "aliases": [],
+        "description": "Sedna ROV Services is a 100-percent Inuit-owned Iqaluit marine-technology company providing locally crewed ROV inspections, bathymetry, sea-ice monitoring, wildlife surveys and search-and-rescue support across the Canadian Arctic.",
+        "websiteUrl": "https://sednarov.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Iqaluit",
+          "provinceTerritory": "Nunavut",
+          "countryCode": "CA",
+          "latitude": 63.7467,
+          "longitude": -68.517,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "ROV inspection, bathymetric mapping, sea-ice monitoring, wildlife and habitat surveys, search and rescue, nearshore USV and RPAS mapping.",
+          "publicContact": "3605 William Mackenzie Lane, Iqaluit, NU X0A 2H0; +1 867-222-2055; public project inquiry through sednarov.ca.",
+          "currentActivity": "Sedna advertises an Iqaluit-based 24-hour mobilization posture, 300-metre SRV-8 operations and recent Arctic hydrographic-survey experience.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "sedna-arctic-rapid-deployment-rov",
+          "name": "Arctic Rapid-Deployment ROV Survey Operations",
+          "summary": "Mobilize locally crewed SRV-8 ROV, boat, snow-machine, generator and sonar packages from Iqaluit for under-ice and open-water inspection, survey, search and environmental missions.",
+          "capabilityType": "Arctic ROV inspection and hydrographic survey service",
+          "features": [
+            "Two-pilot SRV-8 system",
+            "Operations to 300 metres",
+            "Boat, snow-machine and field-power logistics",
+            "Bathymetric and multibeam processing",
+            "Local HTO coordination and Arctic crews"
+          ],
+          "applications": [
+            "Hull, dock and mooring inspection",
+            "Sea-ice route monitoring",
+            "Arctic search and recovery",
+            "Wildlife and habitat surveys",
+            "Nearshore hydrographic mapping"
+          ],
+          "technicalTags": [
+            "Arctic ROV",
+            "Inuit-owned",
+            "under-ice inspection",
+            "bathymetry",
+            "rapid mobilization"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems",
+            "aerospace-and-mobility"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "Sedna ROV Services's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Sedna ROV Services's portable field systems, marine logistics or remote-area operating model could support source-bounded underwater awareness in northern environments.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-canadian-underwater-inspection-services-20260724",
+      "sourceLeadIds": [
+        "lead-canadian-underwater-inspection-services-20260724"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 90,
+      "completenessScore": 79,
+      "reviewWarnings": [
+        "The current official site supports identity, location and concrete ROV and sonar services, but provides limited fleet specifications, certifications, operating history and recent project evidence."
+      ],
+      "reviewerRationale": "Canadian Underwater Inspection Services is recommended for amber private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. Canadian Underwater Inspection Services is a Foxboro, Ontario company providing configurable ROV, sonar, commercial-diving, salvage, recovery, confined-space and vessel-support services for underwater engineering and inspection work. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The reviewer should retain the explicit evidence limitation and avoid extending the record beyond the published material.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching Canadian Underwater Inspection Services, canadian-underwater-inspection-services, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "cuis-home",
+          "title": "Canadian Underwater Inspection Services",
+          "url": "https://www.cuis.ca/",
+          "publisher": "Canadian Underwater Inspection Services",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Company, services and contact",
+          "summary": "CUIS identifies its Foxboro base and combined commercial-diving, ROV, sonar, construction, salvage and vessel-support services."
+        },
+        {
+          "id": "cuis-services",
+          "title": "CUIS underwater services",
+          "url": "https://www.cuis.ca/services",
+          "publisher": "Canadian Underwater Inspection Services",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "ROV, sonar, diving and recovery portfolio",
+          "summary": "The official service page lists ROV video inspection, sonar survey, commercial diving, salvage, confined-space and vessel support."
+        },
+        {
+          "id": "cuis-rov",
+          "title": "CUIS remotely operated vehicles",
+          "url": "https://www.cuis.ca/services/rov",
+          "publisher": "Canadian Underwater Inspection Services",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "ROV configurations and customization",
+          "summary": "CUIS states that it operates ROVs of multiple sizes and configurations and can customize systems for client-specific underwater access and inspection needs."
+        },
+        {
+          "id": "cuis-sonar",
+          "title": "CUIS sonar services",
+          "url": "https://www.cuis.ca/services/sonar",
+          "publisher": "Canadian Underwater Inspection Services",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Sonar modalities and ROV navigation",
+          "summary": "CUIS documents single-beam, multibeam, side-scan and imaging sonar for mapping, target search, structures and low-visibility ROV navigation."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-canadian-underwater-inspection-services-description",
+          "sourceId": "cuis-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports Canadian Underwater Inspection Services's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-canadian-underwater-inspection-services-capability",
+          "sourceId": "cuis-services",
+          "fieldPath": "capabilities.cuis-configurable-rov-sonar-inspection.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-canadian-underwater-inspection-services-contact",
+          "sourceId": "cuis-services",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in Canadian Underwater Inspection Services's profile.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-canadian-underwater-inspection-services-activity",
+          "sourceId": "cuis-sonar",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "canadian-underwater-inspection-services",
+        "name": "Canadian Underwater Inspection Services",
+        "legalName": "Canadian Underwater Inspection Services Ltd.",
+        "aliases": [
+          "CUIS"
+        ],
+        "description": "Canadian Underwater Inspection Services is a Foxboro, Ontario company providing configurable ROV, sonar, commercial-diving, salvage, recovery, confined-space and vessel-support services for underwater engineering and inspection work.",
+        "websiteUrl": "https://www.cuis.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Foxboro",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 44.236,
+          "longitude": -77.433,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "ROV and sonar inspection, commercial diving, underwater construction, salvage and recovery, confined-space work, vessel charter and barge services.",
+          "publicContact": "Foxboro, ON K0K 2B0; +1 613-885-3369; public inquiry form and email routes at cuis.ca.",
+          "currentActivity": "CUIS currently advertises multiple configurable ROV classes plus single-beam, multibeam, side-scan and imaging-sonar support for inspection and search missions.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "cuis-configurable-rov-sonar-inspection",
+          "name": "Configurable ROV and Sonar Inspection",
+          "summary": "Select and customize ROVs, imaging sonar and survey systems for safe underwater video inspection, target search, confined-space assessment, salvage and condition-data collection.",
+          "capabilityType": "ROV, sonar and underwater inspection service",
+          "features": [
+            "Multiple ROV sizes and configurations",
+            "Client-specific ROV customization",
+            "Single-beam, multibeam and side-scan sonar",
+            "Imaging sonar for low visibility",
+            "Integrated diving and salvage support"
+          ],
+          "applications": [
+            "Ship-hull and reservoir inspection",
+            "Target search and recovery",
+            "Tunnel, intake and pipeline assessment",
+            "Underwater construction support",
+            "Confined-space inspection"
+          ],
+          "technicalTags": [
+            "configurable ROV",
+            "imaging sonar",
+            "underwater inspection",
+            "salvage",
+            "confined space"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "Canadian Underwater Inspection Services's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-gri-simulations-20260724",
+      "sourceLeadIds": [
+        "lead-gri-simulations-20260724"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 94,
+      "reviewWarnings": [],
+      "reviewerRationale": "GRi Simulations is recommended for green private review because durable public sources establish a Canadian operating identity and a concrete role in the rapid-deployment ROV ecosystem. GRi Simulations is a Mount Pearl engineering and software company developing high-fidelity marine simulation, virtual ROV pilot training, mission-planning, rehearsal and digital-twin tools for subsea, defence and industrial operations. The candidate captures its supported vehicle, inspection, sensing, intervention or training contribution, location, contact path and current activity. The record is sufficiently enriched for substantive review without another source-recovery pause.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or active pending candidate matching GRi Simulations, gri-simulations, its official domain or recorded aliases."
+      },
+      "sources": [
+        {
+          "id": "gri-home",
+          "title": "GRi Simulations marine systems",
+          "url": "https://grisim.com/",
+          "publisher": "GRi Simulations",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Current company and portfolio overview",
+          "summary": "GRi describes high-fidelity real-time simulation, modelling and visualization for critical marine operations and current HarbourSync and vehicle-simulation activity."
+        },
+        {
+          "id": "gri-contact",
+          "title": "GRi Simulations contact",
+          "url": "https://grisim.com/contact/",
+          "publisher": "GRi Simulations",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Mount Pearl office and public contact",
+          "summary": "The official contact page confirms GRi's Mount Pearl address and public telephone and support routes."
+        },
+        {
+          "id": "gri-vrov-brochure",
+          "title": "GRi VROV simulator information",
+          "url": "https://www.grisim.com/wp-content/uploads/2017/04/InfoSheetAll.pdf",
+          "publisher": "GRi Simulations",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "VROV platform, vehicles and LARS training",
+          "summary": "GRi's current downloadable material documents ROV pilot training, competency assurance, mission rehearsal, vehicle models, sonar and launch-and-recovery simulation."
+        },
+        {
+          "id": "gri-acoa-2026",
+          "title": "Government support for GRi Simulations growth",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/07/government-of-canada-announces-support-to-help-st-johns-metro-area-businesses-modernize-compete-and-reach-new-markets0.html",
+          "publisher": "Atlantic Canada Opportunities Agency",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2026-07-16T00:00:00.000Z",
+          "accessedAt": "2026-07-24T12:34:00.000Z",
+          "locator": "Current GRi product-development support",
+          "summary": "ACOA identifies GRi Simulations in Mount Pearl and a 2026 investment supporting new product development and market expansion."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-gri-simulations-description",
+          "sourceId": "gri-home",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The cited official material supports GRi Simulations's Canadian operating identity and the bounded rapid-deployment ROV ecosystem role described in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gri-simulations-capability",
+          "sourceId": "gri-vrov-brochure",
+          "fieldPath": "capabilities.gri-vrov-training-and-mission-rehearsal.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official product or service material supports the named ROV, underwater-inspection or mission-support capability and its principal features and applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gri-simulations-contact",
+          "sourceId": "gri-contact",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The cited source supports the Canadian location and public contact route included in GRi Simulations's profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gri-simulations-activity",
+          "sourceId": "gri-acoa-2026",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The complementary current product, government, procurement or partner source supports the carefully attributed present activity summarized for review.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "gri-simulations",
+        "name": "GRi Simulations",
+        "legalName": "GRi Simulations Inc.",
+        "aliases": [],
+        "description": "GRi Simulations is a Mount Pearl engineering and software company developing high-fidelity marine simulation, virtual ROV pilot training, mission-planning, rehearsal and digital-twin tools for subsea, defence and industrial operations.",
+        "websiteUrl": "https://grisim.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "defence_supplier",
+          "dual_use",
+          "ocean_technology"
+        ],
+        "primaryLocation": {
+          "city": "Mount Pearl",
+          "provinceTerritory": "Newfoundland and Labrador",
+          "countryCode": "CA",
+          "latitude": 47.518,
+          "longitude": -52.805,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "VROV pilot and launch-and-recovery simulation, marine and mining digital twins, IDEA-FDK subsea planning and HarbourSync marine operations software.",
+          "publicContact": "1062 Topsail Road, Mount Pearl, NL A1N 5E6; +1 709-747-5599; support and inquiry portal at grisim.com.",
+          "currentActivity": "A July 2026 ACOA announcement provides GRi Simulations $250,000 to develop products and expand sales in Canada, Europe and Southeast Asia.",
+          "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "gri-vrov-training-and-mission-rehearsal",
+          "name": "VROV Training and Mission-Rehearsal Simulation",
+          "summary": "Train and assess ROV pilots and rehearse launch, recovery, search and intervention missions using high-fidelity vehicle, sonar, manipulator, tether, vessel and environmental simulation.",
+          "capabilityType": "ROV pilot training and mission-rehearsal simulation",
+          "features": [
+            "Physics-based ROV and tether models",
+            "Pilot control-station integration",
+            "Sonar, manipulator and crawler simulation",
+            "Launch and recovery system training",
+            "Scenario randomization and mission rehearsal"
+          ],
+          "applications": [
+            "Small-ROV operator training",
+            "Defence and subsea mission rehearsal",
+            "Competency assurance",
+            "Launch and recovery training",
+            "Subsea access testing and planning"
+          ],
+          "technicalTags": [
+            "VROV",
+            "ROV simulator",
+            "mission rehearsal",
+            "pilot training",
+            "digital twin"
+          ],
+          "technicalDomainSlugs": [
+            "test-training-and-sustainment",
+            "mission-software-and-data",
+            "autonomous-systems"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "GRi Simulations's ROV, underwater-sensing, inspection or mission-support capability could improve rapid collection and interpretation of public-source subsea observations.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "GRi Simulations's vehicle, navigation or operator-support technology could contribute to repeatable uncrewed monitoring workflows when integrated into an approved mission system.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": []
+    }
+  ],
+  "deferred": []
+}

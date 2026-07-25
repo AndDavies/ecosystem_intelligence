@@ -1,10 +1,12 @@
 import type {
   AtlasAlignmentType,
+  AtlasCluster,
   AtlasConfidence,
   AtlasDemandMatch,
   AtlasEntityKind,
   AtlasLocation
 } from "@/types/atlas";
+import { toTitleCase } from "@/lib/utils";
 
 export interface AtlasPublicContact {
   contactPageUrl: string | null;
@@ -44,6 +46,29 @@ export function locationAccuracyLabel(confidence: AtlasLocation["geographicConfi
 
 export function publicSourceCountLabel(count: number) {
   return `${count} public ${count === 1 ? "source" : "sources"}`;
+}
+
+export function clusterBasisLabel(basis: AtlasCluster["clusterBasis"]) {
+  if (basis === "program") return "Grouped by shared program";
+  if (basis === "geographic") return "Grouped by location";
+  if (basis === "technical") return "Grouped by technology";
+  return "Grouped by editorial review";
+}
+
+const organizationKindLabels: Record<AtlasEntityKind, [string, string]> = {
+  company: ["Company", "Companies"],
+  accelerator: ["Accelerator", "Accelerators"],
+  incubator: ["Incubator", "Incubators"],
+  research_test_centre: ["Research and test centre", "Research and test centres"],
+  investor_funder: ["Investor or funder", "Investors and funders"],
+  ecosystem_organization: ["Ecosystem organization", "Ecosystem organizations"],
+  government_innovation_office: ["Government innovation office", "Government innovation offices"]
+};
+
+/** Tolerates unknown values so an unrecognized URL filter cannot break the page. */
+export function organizationKindLabel(entityKind: string, plural = false) {
+  const entry = organizationKindLabels[entityKind as AtlasEntityKind];
+  return entry ? entry[plural ? 1 : 0] : toTitleCase(entityKind);
 }
 
 export function organizationOfferingTitle(entityKind: AtlasEntityKind, name: string) {

@@ -1,0 +1,411 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-refresh-2026-07-24-signals",
+  "runId": "tnm-refresh-2026-07-24",
+  "createdAt": "2026-07-24T11:11:11.000Z",
+  "watermarkStart": "2026-07-16T11:01:36.096Z",
+  "watermarkEnd": "2026-07-24T11:11:11.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 3,
+    "government_procurement": 4,
+    "source_book": 3,
+    "ecosystem_program": 2,
+    "industry_publication": 0,
+    "gmail_newsletter": 4,
+    "linkedin_chrome": 0,
+    "other_discovery": 2
+  },
+  "warnings": [
+    "Gmail newsletter items were read-only discovery inputs and were not used as field-level evidence without durable corroboration.",
+    "Authenticated Chrome and LinkedIn browsing were unavailable, so linkedin_chrome remained at zero and the other source-family controls were expanded.",
+    "NRC Drone Innovation Hub is evidence-backed but deferred as a new organization candidate because production already has an NRC IRAP record on the same nrc.canada.ca domain."
+  ],
+  "signals": [
+    {
+      "signalId": "dnd-uxs-dish-nrc-drone-hub-2026-07-21",
+      "fingerprint": "f16ccd27e00acdd926ece903b0ae02c3063a0ca72f708ad46af6d2a2c036baef",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "DND official UxS DISH launch",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "YMX Innovation Centre",
+        "technology": "uncrewed and counter-uncrewed systems hub",
+        "program": "NEXUS Uncrewed Systems Defence Innovation Secure Hub",
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-07-21",
+        "amount": "$29.6 million over two years",
+        "details": "DND announced a BOREALIS-backed UxS DISH in Mirabel with secure collaboration spaces, specialized testing infrastructure, regulated airspace, and a complementary NRC drone hub connection."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "new_record"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Resolved to the official DND backgrounder naming NEXUS, YMX Innovation Centre, testing infrastructure, regulated airspace, and selected partners."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+          "outcome": "Resolved to the official Aéroports de Montréal YMX Innovation Centre page for the candidate canonical website."
+        }
+      ],
+      "warnings": [
+        "Candidate is amber because reviewers should confirm whether YMX Innovation Centre should be modeled as a research/test-centre record or as location context for NEXUS."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "dnd-borealis-dish-guide-uxs-2026-04-02",
+      "fingerprint": "930e1fbaa2e021d5b8992d41a84b63bd36346fe8c89af0392d8566b3434f6565",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "DND IDEaS BOREALIS DISH program",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/innovation-networks/challenge/from-innovation-to-operational-advantage-defence-innovation-secure-hubs.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "YMX Innovation Centre",
+        "technology": "secure experimentation and validation environments",
+        "program": "Defence Innovation Secure Hubs",
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-04-02",
+        "amount": "up to $50 million across UxS and quantum streams",
+        "details": "The DISH program defines secure mission-oriented environments for government, industry, and academia to collaborate on UxS and quantum research, development, experimentation, testing, integration, and validation."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/innovation-networks/challenge/from-innovation-to-operational-advantage-defence-innovation-secure-hubs.html"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "new_record"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "ymx-innovation-centre-official-profile-2026-07-24",
+      "fingerprint": "e5555ee86301547660cc70b4a9d31348a02124188a7f13bb43b58bbfeb122730",
+      "sourceChannel": "source_book",
+      "sourceFamily": "YMX and Aero Montreal source-book follow-up",
+      "discoveryOrigin": {
+        "url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "YMX Innovation Centre",
+        "technology": "aerospace innovation hub for civil and defence purposes",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "The official ADM page presents YMX Innovation as a hub at YMX that accelerates aerospace transformation for civil and defence purposes."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "new_record"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "The ADM page rendered limited static text through curl, so official DND pages carry the strongest field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "nrc-drone-innovation-hub-program-page-2026-04-17",
+      "fingerprint": "a439bdccc00b1e315ba0588a92ed2cf175c44fbd61c0cec2842b156e845679ca",
+      "sourceChannel": "source_book",
+      "sourceFamily": "NRC defence research source-book row",
+      "discoveryOrigin": {
+        "url": "https://nrc.canada.ca/en/research-development/research-collaboration/programs/drone-innovation-hub",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "National Research Council Drone Innovation Hub",
+        "technology": "drone and counter-drone development and testing",
+        "program": "Drone Innovation Hub",
+        "issuer": "National Research Council Canada",
+        "eventDate": "2026-04-17",
+        "amount": "$105 million over three years",
+        "details": "The NRC page documents a national Drone Innovation Hub for defence, security, and dual-use drone technologies, including facilities, test ranges, simulation environments, and live flight trial pathways."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://nrc.canada.ca/en/research-development/research-collaboration/programs/drone-innovation-hub"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "84682376-3d02-4d51-8e82-fa3c068cf2fe",
+          "slug": "nrc-irap",
+          "matchMethods": [
+            "website_domain"
+          ],
+          "confidence": "moderate",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://nrc.canada.ca/en/research-development/research-collaboration/defence-research-nrc",
+          "outcome": "Found supporting NRC defence-research page, but the same website domain is already attached to NRC IRAP in production."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "DND corroborates the NRC hub as complementary to NEXUS, but does not resolve the database modeling conflict."
+        }
+      ],
+      "warnings": [
+        "Shared nrc.canada.ca domain with NRC IRAP blocks safe new-organization staging under the local duplicate validator."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "Evidence supports the NRC hub, but reviewer/governance modeling is needed before creating a separate NRC-branded research/test-centre record on the same domain as NRC IRAP."
+    },
+    {
+      "signalId": "darit-nexus-participation-2026-07-15",
+      "fingerprint": "048b6fe178f867d3168227e6be3bb58ba4630eee182aca6b98478ab3bbe39014",
+      "sourceChannel": "official_company",
+      "sourceFamily": "DARIT official newsroom",
+      "discoveryOrigin": {
+        "url": "https://www.darit.tech/blog/darit-technologies-partner-dish-nexus",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "DARIT Technologies",
+        "technology": "counter-UxS and robotic autonomous systems",
+        "program": "NEXUS UxS DISH",
+        "issuer": null,
+        "eventDate": "2026-07-15",
+        "amount": "$29.6 million",
+        "details": "DARIT states that it is a partner in the NEXUS UxS DISH at YMX and will contribute a counter-UxS and robotic autonomous systems use case."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.darit.tech/blog/darit-technologies-partner-dish-nexus"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [],
+      "disposition": "deferred",
+      "deferralRationale": "DARIT is useful participant backlog, but this run selected one research/test-centre candidate and did not build separate participant company candidates."
+    },
+    {
+      "signalId": "octasic-nexus-participation-2026-07-15",
+      "fingerprint": "3937911cdb5a728cc64d956020f33063e848ae694a091252a3762ef84aca2d4f",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Octasic official newsroom",
+      "discoveryOrigin": {
+        "url": "https://www.octasic.com/newsroom/octasic-selected-to-help-build-canadas-future-autonomous-defence-ecosystem",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Octasic",
+        "technology": "RF, software-defined radio, and counter-drone technology",
+        "program": "NEXUS UxS DISH",
+        "issuer": null,
+        "eventDate": "2026-07-15",
+        "amount": "$29.6 million",
+        "details": "Octasic states that it was selected for NEXUS and will support RF, SDR, spectrum, and counter-drone work in the Mirabel hub."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.octasic.com/newsroom/octasic-selected-to-help-build-canadas-future-autonomous-defence-ecosystem"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [],
+      "disposition": "deferred",
+      "deferralRationale": "Octasic is useful participant backlog, but this run did not build a separate company candidate or refresh candidate from participant evidence."
+    },
+    {
+      "signalId": "c3rios-rpas-nrc-irap-2026-07-20",
+      "fingerprint": "a045576a79e5d4cf54a133af4bbbd20fdb5c741273812c8d29a940d0ef37d958",
+      "sourceChannel": "official_company",
+      "sourceFamily": "C3RiOS official press page",
+      "discoveryOrigin": {
+        "url": "https://www.c3rios.com/en/press",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "C3RiOS",
+        "technology": "certifiable remotely piloted aircraft systems",
+        "program": "NRC IRAP advisory services",
+        "issuer": "National Research Council Canada",
+        "eventDate": "2026-07-20",
+        "amount": "up to $900,000",
+        "details": "C3RiOS states that it received NRC IRAP advisory services and up to $900,000 to support development of a certifiable remotely piloted aircraft system."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.c3rios.com/en/press"
+      ],
+      "signalType": "financing_or_ownership_event",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [],
+      "disposition": "deferred",
+      "deferralRationale": "C3RiOS may warrant a later company candidate or NRC IRAP relationship note, but it is outside the selected research/test-centre candidate for this run."
+    },
+    {
+      "signalId": "cdr-defence-update-nexus-discovery-2026-07-23",
+      "fingerprint": "b0d3370f62bdc4326703ecb988b581607cb653854322dac8ccc8d0d4c4d9c478",
+      "sourceChannel": "gmail_newsletter",
+      "sourceFamily": "Canadian Defence Review newsletter",
+      "discoveryOrigin": {
+        "url": null,
+        "gmailMessageId": "19f8fccb4f630aa4",
+        "gmailThreadId": "19f8fccb4f630aa4",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Multiple NEXUS participants",
+        "technology": "uncrewed systems and defence innovation",
+        "program": "NEXUS UxS DISH",
+        "issuer": null,
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "The CDR newsletter surfaced current company and program items around Davie Autonomous, Flexrotor, Airbus/Landing Zones, and NEXUS participant activity."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.darit.tech/blog/darit-technologies-partner-dish-nexus",
+        "https://www.octasic.com/newsroom/octasic-selected-to-help-build-canadas-future-autonomous-defence-ecosystem",
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html"
+      ],
+      "signalType": "partnership_or_consortium",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.darit.tech/blog/darit-technologies-partner-dish-nexus",
+          "outcome": "Resolved one newsletter lead to a durable DARIT company page."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.octasic.com/newsroom/octasic-selected-to-help-build-canadas-future-autonomous-defence-ecosystem",
+          "outcome": "Resolved one newsletter lead to a durable Octasic company page."
+        }
+      ],
+      "warnings": [
+        "Newsletter was discovery only and does not support field evidence directly."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "Newsletter leads were resolved to durable sources where possible, but participant company records were queued rather than mixed into the YMX research/test-centre candidate."
+    },
+    {
+      "signalId": "icebreaker-drone-marketplace-2026-07-23",
+      "fingerprint": "f1994de4859b3fcdd9574439ffa06f2a49b3bd32640ddaf1bfc03df8b9752298",
+      "sourceChannel": "gmail_newsletter",
+      "sourceFamily": "The Icebreaker newsletter",
+      "discoveryOrigin": {
+        "url": null,
+        "gmailMessageId": "19f8e71312196e66",
+        "gmailThreadId": "19f8e71312196e66",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": null,
+        "technology": "drone marketplace or supply arrangement",
+        "program": "unresolved drone marketplace",
+        "issuer": "Canadian Armed Forces or Defence Innovation Accelerator",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "The newsletter repeated a drone-marketplace claim from the prior run, but no durable official RFSA, CanadaBuys notice, or DND page was found within the refresh window."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [],
+      "signalType": "marketplace_or_supply_arrangement",
+      "canonicalEvidenceStatus": "unresolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/",
+          "outcome": "Searched CanadaBuys and did not find a durable public RFSA or solicitation matching the newsletter marketplace claim."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence.html",
+          "outcome": "Searched DND public pages and did not find an official marketplace announcement matching the newsletter claim."
+        },
+        {
+          "channel": "gmail_newsletter",
+          "url": null,
+          "outcome": "Compared against the 2026-07-23 signal backlog and confirmed the same newsletter claim remained unresolved."
+        }
+      ],
+      "warnings": [
+        "Same unresolved newsletter-only signal appeared in the prior refresh backlog."
+      ],
+      "disposition": "unresolved",
+      "deferralRationale": "No durable official evidence was found, so the newsletter-only marketplace claim remains discovery backlog and cannot support a candidate."
+    }
+  ]
+}

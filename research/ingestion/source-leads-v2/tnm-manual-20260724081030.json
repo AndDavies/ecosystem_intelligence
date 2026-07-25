@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260724081030-leads",
+  "runId": "tnm-manual-20260724081030",
+  "createdAt": "2026-07-24T08:11:00.000Z",
+  "scope": {
+    "description": "Refresh the existing QinetiQ Target Systems Canada record with concrete aerial and naval target technologies, current official activity, Canadian identity and contact context, and the live naval-target standing offer.",
+    "targetMissionAreaSlugs": [],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "aerospace-and-mobility",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "qinetiq-target-systems-canada-refresh-2026-07-24",
+      "source": {
+        "id": "qinetiq-target-services",
+        "title": "Mission Rehearsal and Operational Readiness — Target Services",
+        "url": "https://www.qinetiq.com/en/what-we-do/services-and-products/mission-rehearsal-and-operational-readiness",
+        "publisher": "QinetiQ",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T08:11:00.000Z",
+        "locator": "Target Services section",
+        "summary": "QinetiQ identifies Alberta, Canada as a target-system manufacturing location and documents aerial, rotary-wing, land, naval and special-mission targets, command and control, scoring, launchers and field services."
+      },
+      "discoveryPath": [
+        "https://www.qinetiq.com/en/what-we-do/services-and-products/mission-rehearsal-and-operational-readiness",
+        "https://www.qinetiq.com/en/what-we-do/test-and-training/threat-representation/target-systems/other-products-and-services/banshee-jet-80",
+        "https://www.qinetiq.com/en/what-we-do/test-and-training/threat-representation/target-systems/uncrewed-surface-targets",
+        "https://www.qinetiq.com/en/what-we-do/test-and-training/threat-representation/target-systems/uncrewed-surface-targets/hammerhead",
+        "https://www.qinetiq.com/en/news/hammerhead-usvs-put-allies-to-the-test",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+        "https://canadabuys.canada.ca/en/node/preview/985258",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=4280571"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official target-services portfolio and product pages; 2026 Hammerhead field deployment; current CanadaBuys standing-offer and company profile records",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.qinetiq.com/en-ca",
+        "websiteDomain": "qinetiq.com",
+        "stableSlug": "qinetiq-target-systems-canada",
+        "legalName": null,
+        "aliases": [
+          "QinetiQ Target Systems Canada",
+          "QTS Canada",
+          "QTSC",
+          "QinetiQ Canada",
+          "QinetiQ Group Canada Inc.",
+          "Meggitt Training Systems Canada Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the current Ontario legal entity name before changing the canonical legalName field."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 99,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "Corporations Canada shows the former federal QinetiQ Target Systems Canada Inc. as discontinued to Ontario; the current CanadaBuys history uses QinetiQ Group Canada Inc. Contracting and operating aliases are retained in profile context, but legalName is deliberately left unchanged pending Ontario-registry confirmation."
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "78532d21-8dfc-470f-9526-0f98c4a57631",
+        "slug": "qinetiq-target-systems-canada",
+        "matchMethods": [
+          "website_domain",
+          "slug",
+          "name",
+          "alias"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435Z"
+      },
+      "signalIds": [
+        "qinetiq-banshee-portfolio-2026-07-24",
+        "qinetiq-naval-targets-2026-07-24",
+        "qinetiq-cobra-gold-2026-07-24",
+        "qinetiq-canada-standing-offer-2026-07-24"
+      ],
+      "refreshSummary": "Add separately reviewable Banshee aerial and Hammerhead/Barracuda naval target capabilities, enrich the company profile with Canadian operating context and current activity, and add its live naval-target standing-offer program.",
+      "intendedChanges": [
+        "Add the Banshee aerial target systems capability.",
+        "Add the Hammerhead and Barracuda uncrewed naval target systems capability.",
+        "Enrich profile data while preserving existing review metadata.",
+        "Add the Canadian naval-target standing-offer program participation."
+      ]
+    }
+  ]
+}

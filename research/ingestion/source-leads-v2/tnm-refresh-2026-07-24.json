@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-refresh-2026-07-24-leads",
+  "runId": "tnm-refresh-2026-07-24",
+  "createdAt": "2026-07-24T11:11:11.000Z",
+  "scope": {
+    "description": "Refresh-batch source leads for Canadian research and test centre coverage, focused on YMX Innovation Centre and NEXUS UxS DISH evidence from official DND, ADM, and durable participant sources.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "research_test_centre"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "ymx-innovation-centre-research-test-centre-2026-07-24",
+      "source": {
+        "id": "ymx-innovation-centre-adm",
+        "title": "YMX Innovation Centre",
+        "url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "publisher": "Aeroports de Montreal",
+        "sourceKind": "research_centre_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T11:11:11.000Z",
+        "locator": "Official YMX Innovation Centre profile",
+        "summary": "The official ADM profile identifies YMX Innovation as an aerospace innovation hub at Mirabel, with defence relevance corroborated by DND's NEXUS/UxS DISH backgrounder."
+      },
+      "discoveryPath": [
+        "https://mail.google.com/mail/#all/19f8fccb4f630aa4",
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2026/07/defence-innovation-secure-hub-system-launch.html",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/innovation-networks/challenge/from-innovation-to-operational-advantage-defence-innovation-secure-hubs.html",
+        "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "https://nrc.canada.ca/en/research-development/research-collaboration/programs/drone-innovation-hub",
+        "https://www.darit.tech/blog/darit-technologies-partner-dish-nexus",
+        "https://www.octasic.com/newsroom/octasic-selected-to-help-build-canadas-future-autonomous-defence-ecosystem"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "DND UxS DISH backgrounder location and testing infrastructure sections; DND DISH guide context and eligible activities; ADM YMX Innovation profile",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "websiteDomain": "admtl.com",
+        "stableSlug": "ymx-innovation-centre",
+        "legalName": null,
+        "aliases": [
+          "YMX Innovation",
+          "YMX Innovation Centre",
+          "YMX Innovation Center",
+          "YMX Innovation campus"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm whether reviewers want YMX Innovation Centre modeled as the research/test-centre record, with NEXUS as a program relationship, or as a location-only relationship under Aéro Montréal."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 90,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Evidence strongly supports the facility and NEXUS activity, but the record boundary between facility, hub, and program needs reviewer confirmation."
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "YMX Innovation Centre",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "test_range",
+        "research_lab",
+        "cluster_operator"
+      ],
+      "websiteUrl": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+      "aliases": [
+        "YMX Innovation",
+        "YMX Innovation Center",
+        "YMX Innovation campus"
+      ],
+      "location": {
+        "city": "Mirabel",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "DND identifies NEXUS as operating primarily from YMX Innovation Centre in Mirabel, with secure collaboration spaces, specialized testing infrastructure, and regulated airspace for development, testing, validation, and integration of uncrewed and counter-uncrewed systems."
+    }
+  ]
+}

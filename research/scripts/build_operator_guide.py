@@ -3,7 +3,9 @@
 
 from pathlib import Path
 import re
+import subprocess
 import sys
+import tempfile
 
 from docx import Document
 from docx.enum.section import WD_SECTION
@@ -12,6 +14,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
+from PIL import Image
 
 
 NAVY = RGBColor(18, 42, 62)
@@ -119,76 +122,151 @@ def configure_document(document: Document) -> None:
         run.font.color.rgb = SLATE
 
 
+def render_mermaid(source: str, output_path: Path, work_dir: Path) -> None:
+    source_path = work_dir / f"{output_path.stem}.mmd"
+    config_path = work_dir / "puppeteer-config.json"
+    source_path.write_text(source, encoding="utf-8")
+    if not config_path.exists():
+        config_path.write_text(
+            '{"executablePath":"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome","args":["--no-sandbox"]}',
+            encoding="utf-8",
+        )
+    command = [
+        "npx",
+        "-y",
+        "@mermaid-js/mermaid-cli",
+        "-p",
+        str(config_path),
+        "-i",
+        str(source_path),
+        "-o",
+        str(output_path),
+        "-b",
+        "transparent",
+        "-s",
+        "2",
+    ]
+    result = subprocess.run(command, capture_output=True, text=True, check=False)
+    if result.returncode != 0 or not output_path.exists():
+        detail = (result.stderr or result.stdout).strip()
+        raise RuntimeError(f"Mermaid rendering failed: {detail}")
+
+
+def add_mermaid_figure(document: Document, source: str, output_path: Path, work_dir: Path, figure_number: int) -> None:
+    render_mermaid(source, output_path, work_dir)
+    with Image.open(output_path) as rendered:
+        aspect = rendered.width / rendered.height
+    width_inches = 6.75
+    height_inches = width_inches / aspect
+    if height_inches > 7.65:
+        height_inches = 7.65
+        width_inches = height_inches * aspect
+    paragraph = document.add_paragraph()
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    paragraph.paragraph_format.space_before = Pt(4)
+    paragraph.paragraph_format.space_after = Pt(2)
+    paragraph.add_run().add_picture(str(output_path), width=Inches(width_inches), height=Inches(height_inches))
+    caption = document.add_paragraph()
+    caption.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    caption.paragraph_format.space_after = Pt(8)
+    run = caption.add_run(f"Workflow {figure_number}")
+    run.bold = True
+    run.font.size = Pt(9)
+    run.font.color.rgb = SLATE
+
+
 def build(markdown_path: Path, docx_path: Path) -> None:
     document = Document()
     configure_document(document)
 
     in_code = False
     code_lines: list[str] = []
+    code_language = ""
     first_h1 = True
+    figure_number = 0
 
-    for raw_line in markdown_path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.rstrip()
-        if line.startswith("```"):
+    with tempfile.TemporaryDirectory(prefix="tnm-operator-guide-", dir=docx_path.parent) as temp_name:
+        mermaid_dir = Path(temp_name)
+        for raw_line in markdown_path.read_text(encoding="utf-8").splitlines():
+            line = raw_line.rstrip()
+            if line.startswith("```"):
+                if in_code:
+                    if code_language == "mermaid":
+                        figure_number += 1
+                        output_path = mermaid_dir / f"workflow-{figure_number:02d}.png"
+                        add_mermaid_figure(document, "\n".join(code_lines), output_path, mermaid_dir, figure_number)
+                    else:
+                        paragraph = document.add_paragraph(style="Code Block")
+                        paragraph.add_run("\n".join(code_lines))
+                        set_cell = OxmlElement("w:shd")
+                        set_cell.set(qn("w:fill"), LIGHT_BLUE)
+                        paragraph._p.get_or_add_pPr().append(set_cell)
+                    code_lines = []
+                    code_language = ""
+                else:
+                    code_language = line[3:].strip().lower()
+                in_code = not in_code
+                continue
             if in_code:
-                paragraph = document.add_paragraph(style="Code Block")
-                paragraph.add_run("\n".join(code_lines))
-                set_cell = OxmlElement("w:shd")
-                set_cell.set(qn("w:fill"), LIGHT_BLUE)
-                paragraph._p.get_or_add_pPr().append(set_cell)
-                code_lines = []
-            in_code = not in_code
-            continue
-        if in_code:
-            code_lines.append(line)
-            continue
-        if not line:
-            continue
+                code_lines.append(line)
+                continue
+            if not line:
+                continue
 
-        if line.startswith("# "):
-            title = line[2:]
-            if first_h1:
-                paragraph = document.add_paragraph(style="Title")
-                paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
-                run = paragraph.add_run(title)
-                run.font.color.rgb = NAVY
-                set_paragraph_border(paragraph)
-                subtitle = document.add_paragraph()
-                subtitle.paragraph_format.space_after = Pt(12)
-                subtitle_run = subtitle.add_run("Autonomous discovery -> enriched private candidates -> human review and publication")
-                subtitle_run.italic = True
-                subtitle_run.font.color.rgb = SLATE
-                first_h1 = False
-            else:
-                document.add_page_break()
-                paragraph = document.add_paragraph(title, style="Heading 1")
-                set_paragraph_border(paragraph)
-            continue
-        if line.startswith("## "):
-            document.add_paragraph(line[3:], style="Heading 2")
-            continue
-        if line.startswith("### "):
-            document.add_paragraph(line[4:], style="Heading 3")
-            continue
-        if line.startswith("- "):
-            paragraph = document.add_paragraph(style="List Bullet")
-            paragraph.paragraph_format.space_after = Pt(3)
-            add_inline_markdown(paragraph, line[2:])
-            continue
-        if line.startswith("> "):
-            table = document.add_table(rows=1, cols=1)
-            table.autofit = True
-            cell = table.cell(0, 0)
-            set_cell_shading(cell, LIGHT_BLUE)
-            paragraph = cell.paragraphs[0]
-            paragraph.paragraph_format.space_after = Pt(0)
-            run = paragraph.add_run(line[2:])
-            run.italic = True
-            run.font.color.rgb = BLUE
-            continue
+            if line.startswith("# "):
+                title = line[2:]
+                if first_h1:
+                    paragraph = document.add_paragraph(style="Title")
+                    paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+                    run = paragraph.add_run(title)
+                    run.font.color.rgb = NAVY
+                    set_paragraph_border(paragraph)
+                    subtitle = document.add_paragraph()
+                    subtitle.paragraph_format.space_after = Pt(12)
+                    subtitle_run = subtitle.add_run("Multi-source discovery and refresh -> enriched private candidates -> human review and publication")
+                    subtitle_run.italic = True
+                    subtitle_run.font.color.rgb = SLATE
+                    first_h1 = False
+                else:
+                    document.add_page_break()
+                    paragraph = document.add_paragraph(title, style="Heading 1")
+                    set_paragraph_border(paragraph)
+                continue
+            if line.startswith("## "):
+                document.add_paragraph(line[3:], style="Heading 2")
+                continue
+            if line.startswith("### "):
+                document.add_paragraph(line[4:], style="Heading 3")
+                continue
+            if line.startswith("- "):
+                paragraph = document.add_paragraph(style="List Bullet")
+                paragraph.paragraph_format.space_after = Pt(3)
+                add_inline_markdown(paragraph, line[2:])
+                continue
+            numbered = re.match(r"^(\d+)\.\s+(.*)$", line)
+            if numbered:
+                paragraph = document.add_paragraph()
+                paragraph.paragraph_format.left_indent = Inches(0.22)
+                paragraph.paragraph_format.first_line_indent = Inches(-0.22)
+                paragraph.paragraph_format.space_after = Pt(3)
+                number_run = paragraph.add_run(f"{numbered.group(1)}. ")
+                number_run.bold = True
+                add_inline_markdown(paragraph, numbered.group(2))
+                continue
+            if line.startswith("> "):
+                table = document.add_table(rows=1, cols=1)
+                table.autofit = True
+                cell = table.cell(0, 0)
+                set_cell_shading(cell, LIGHT_BLUE)
+                paragraph = cell.paragraphs[0]
+                paragraph.paragraph_format.space_after = Pt(0)
+                run = paragraph.add_run(line[2:])
+                run.italic = True
+                run.font.color.rgb = BLUE
+                continue
 
-        paragraph = document.add_paragraph()
-        add_inline_markdown(paragraph, line)
+            paragraph = document.add_paragraph()
+            add_inline_markdown(paragraph, line)
 
     core_properties = document.core_properties
     core_properties.title = "True North Map Research Pipeline Skills - Operator Guide"

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260724122619",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "keyword:rapid-deployment-rov",
+    "reason": "The operator requested a broad Canada-first discovery run for rapid-deployment ROV systems and their enabling field-service, sensing, intervention and training ecosystem.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-24T12:26:19.502Z",
+  "completedAt": "2026-07-24T12:34:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Canada rapid deployment ROV manufacturer portable inspection ROV",
+    "site:canadabuys.canada.ca remotely operated vehicle ROV contract Canada company",
+    "site:oceansupercluster.ca ROV remotely operated vehicle Canadian company",
+    "site:ac-ada.ca members ROV underwater robotics Canada",
+    "MarineNav official ROV Oceanus Pro Canada products contact",
+    "Shark Marine Technologies official ROV Navigator Canada products contact",
+    "Canada ROV services official company underwater inspection portable ROV",
+    "site:asi-group.com ROV fleet rapid deployment Canada",
+    "site:completewaters.com portable ROV services Canada",
+    "site:ven-techsubsea.ca ROV inspection services",
+    "site:aquadrone.ca ROV mobile intervention",
+    "site:sednarov.ca Arctic ROV survey",
+    "site:cuis.ca ROV sonar services",
+    "site:grisim.com VROV simulator",
+    "site:canada.ca GRi Simulations ROV"
+  ],
+  "counters": {
+    "sourcesChecked": 42,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 12,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 18,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 7,
+    "candidatesAmber": 3
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260724122619.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260724122619.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260724122619.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260724122619-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260724122619.json"
+  }
+}

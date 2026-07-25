@@ -1,0 +1,780 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260724141414",
+  "runId": "tnm-manual-20260724141414",
+  "createdAt": "2026-07-24T14:14:14.000Z",
+  "scope": {
+    "description": "CSE Canada demand-focused discovery across official annual reports, privacy impact assessments, government program pages and corroborating search lanes; qualified leads proceed automatically to typed candidate review.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "communications-and-cyber",
+      "mission-software-and-data",
+      "sensing-and-isr"
+    ],
+    "targetOrganizationKinds": [],
+    "targetDemandIssuerTypes": [
+      "department",
+      "public_program",
+      "federal_government"
+    ]
+  },
+  "leads": [
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-critical-infrastructure-cyber-resilience",
+      "source": {
+        "id": "cse-annual-report-2025-2026-critical-infrastructure-cyber-resilience",
+        "title": "Communications Security Establishment Canada Annual Report 2025-2026",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026#critical-infrastructure-cyber-resilience",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+        "summary": "The official unclassified annual report describes CSE and Cyber Centre priorities, investments, operational activity, cyber defence, Arctic security, AI, quantum-resistant cryptography, partnerships and support to government and critical infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-critical-infrastructure-cyber-resilience",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "This is a public operational and capability signal, not a named solicitation or procurement requirement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Critical-infrastructure cyber resilience and response",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "capability_plan",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Canadian government institutions and critical infrastructure face growing state-sponsored and criminal cyber threats, creating a recurring need for technical assessment, incident triage, containment advice, mitigation support and resilient digital foundations."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-national-cyber-threat-notification-early-warning",
+      "source": {
+        "id": "cse-annual-report-2025-2026-national-cyber-threat-notification-and-early-warning",
+        "title": "Communications Security Establishment Canada Annual Report 2025-2026",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026#national-cyber-threat-notification-and-early-warning",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+        "summary": "The official unclassified annual report describes CSE and Cyber Centre priorities, investments, operational activity, cyber defence, Arctic security, AI, quantum-resistant cryptography, partnerships and support to government and critical infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-national-cyber-threat-notification-early-warning",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The evidence describes an operating service and scale, not an open call for suppliers."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "National cyber-threat notification and early warning",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "official_problem_statement",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Canadian organizations need timely, actionable warning of vulnerabilities, incidents and malicious activity across a large and changing threat surface, with delivery mechanisms that reach federal institutions and critical infrastructure operators."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-quantum-resistant-cryptography-readiness",
+      "source": {
+        "id": "cse-annual-report-2025-2026-quantum-resistant-cryptography-readiness",
+        "title": "Communications Security Establishment Canada Annual Report 2025-2026",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026#quantum-resistant-cryptography-readiness",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+        "summary": "The official unclassified annual report describes CSE and Cyber Centre priorities, investments, operational activity, cyber defence, Arctic security, AI, quantum-resistant cryptography, partnerships and support to government and critical infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-quantum-resistant-cryptography-readiness",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The report establishes a strategic priority and partner-readiness need; it does not specify a procurement vehicle or technical standard."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Quantum-resistant cryptography transition readiness",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "strategic_policy",
+      "commitmentLevel": "directional",
+      "candidateRequirements": [
+        "Government and critical-infrastructure operators must understand and manage the future risk that quantum computing poses to current cryptography, including inventory, migration planning, key management and interoperable protection of sensitive information."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-ai-enabled-cyber-threat-analysis",
+      "source": {
+        "id": "cse-annual-report-2025-2026-ai-enabled-sigint-and-cyber-threat-analysis",
+        "title": "Communications Security Establishment Canada Annual Report 2025-2026",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026#ai-enabled-sigint-and-cyber-threat-analysis",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+        "summary": "The official unclassified annual report describes CSE and Cyber Centre priorities, investments, operational activity, cyber defence, Arctic security, AI, quantum-resistant cryptography, partnerships and support to government and critical infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-ai-enabled-cyber-threat-analysis",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "AI is described as an emerging capability priority; the public report does not identify an acquisition program or vendor requirement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "AI-enabled SIGINT and cyber-threat analysis",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "capability_plan",
+      "commitmentLevel": "directional",
+      "candidateRequirements": [
+        "CSE and federal partners face high-volume, complex foreign-intelligence and cyber-threat data that requires faster analysis, reliable triage and decision support while preserving legal, operational and trust constraints."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-arctic-cyber-resilience-and-threat-warning",
+      "source": {
+        "id": "cse-annual-report-2025-2026-arctic-cyber-resilience-and-threat-warning",
+        "title": "Communications Security Establishment Canada Annual Report 2025-2026",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026#arctic-cyber-resilience-and-threat-warning",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+        "summary": "The official unclassified annual report describes CSE and Cyber Centre priorities, investments, operational activity, cyber defence, Arctic security, AI, quantum-resistant cryptography, partnerships and support to government and critical infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-arctic-cyber-resilience-and-threat-warning",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The annual report describes deployed services and partnerships; the advanced-sensor opportunity is a derived market signal, not a public tender."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Arctic cyber resilience, advanced sensors and threat warning",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "capability_plan",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Northern and Arctic systems face geographically dispersed infrastructure, foreign cyber activity and limited response capacity, creating a need for persistent awareness, advanced sensing, partner coordination and resilient services."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-canadian-top-secret-network-modernization",
+      "source": {
+        "id": "cse-canadian-top-secret-network-pia-secure-classified-collaboration-network-modernization",
+        "title": "Canadian Top Secret network",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/canadian-top-secret-network#secure-classified-collaboration-network-modernization",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-05-01T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Description of program and project initiative sections",
+        "summary": "CSE describes the modernization of the Canadian Top Secret network with upgraded networking, infrastructure, storage, email, web, PKI, voice, video teleconferencing and file-sharing services."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/canadian-top-secret-network",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Description of program and project initiative sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/canadian-top-secret-network",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-canadian-top-secret-network-modernization",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "This signal is based on a completed public PIA describing a modernization project; it is not evidence of a currently open procurement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/canadian-top-secret-network",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Secure classified collaboration and Canadian Top Secret network modernization",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "official_problem_statement",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Security and intelligence organizations require resilient, interoperable and secure collaboration services for exchanging and developing intelligence, including modern network, storage, PKI, voice, video and file-sharing functions."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-identity-authentication-access-management",
+      "source": {
+        "id": "cse-identity-access-management-pia-classified-network-identity-and-access-management",
+        "title": "Identity and access management",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/identity-access-management#classified-network-identity-and-access-management",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-05-01T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Program description and project initiative sections",
+        "summary": "CSE describes an identity and access management framework for identifying and authenticating users and provisioning or de-provisioning access on classified networks."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/identity-access-management",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Program description and project initiative sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/identity-access-management",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-identity-authentication-access-management",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The PIA establishes a concrete government program need but not an external supplier request."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/identity-access-management",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Identity, authentication and access management for classified networks",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "official_problem_statement",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Classified networks need authoritative identity, authentication and authorization controls that provision only eligible users, enforce minimum security requirements and promptly remove access when requirements are no longer met."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-government-comsec-key-management",
+      "source": {
+        "id": "cse-gc-kmi-pia-government-comsec-key-management",
+        "title": "Government of Canada Key Management Infrastructure (GC KMI)",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/government-canada-key-management-infrastructure-gc-kmi#government-comsec-key-management",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2021-03-19T00:00:00.000Z",
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Overview and project initiative sections",
+        "summary": "CSE describes GC KMI as the national COMSEC key-management infrastructure protecting sensitive information and supporting the authenticity and confidentiality of government telecommunications."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/government-canada-key-management-infrastructure-gc-kmi",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Overview and project initiative sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/government-canada-key-management-infrastructure-gc-kmi",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-government-comsec-key-management",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The source is a public PIA for an established national authority; it signals enduring capability demand, not a new bid opportunity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/government-canada-key-management-infrastructure-gc-kmi",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Government cryptographic key-management and COMSEC infrastructure",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "official_problem_statement",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Government departments and industries depend on distributed information technology and need trusted cryptographic key-management infrastructure to protect classified or nationally sensitive information and verify communications authenticity."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-major-event-cyber-defence-support",
+      "source": {
+        "id": "cse-annual-report-2025-2026-major-event-and-critical-infrastructure-cyber-defence",
+        "title": "Communications Security Establishment Canada Annual Report 2025-2026",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026#major-event-and-critical-infrastructure-cyber-defence",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+        "summary": "The official unclassified annual report describes CSE and Cyber Centre priorities, investments, operational activity, cyber defence, Arctic security, AI, quantum-resistant cryptography, partnerships and support to government and critical infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-major-event-cyber-defence-support",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "This is a recurring operational support and partnership signal, not a public procurement notice."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Cyber-defence support for major events and critical-infrastructure partners",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "capability_plan",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "High-profile events and their host organizations create concentrated cyber-risk and require coordinated planning, monitoring, incident response, exercises and secure information sharing across federal, provincial, municipal and private partners."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-cse-supply-chain-cyber-risk-assurance",
+      "source": {
+        "id": "cse-annual-report-2025-2026-supply-chain-cyber-risk-assessment-and-assurance",
+        "title": "Communications Security Establishment Canada Annual Report 2025-2026",
+        "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026#supply-chain-cyber-risk-assessment-and-assurance",
+        "publisher": "Communications Security Establishment Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-07-24T14:14:14.000Z",
+        "locator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+        "summary": "The official unclassified annual report describes CSE and Cyber Centre priorities, investments, operational activity, cyber defence, Arctic security, AI, quantum-resistant cryptography, partnerships and support to government and critical infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+        "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Introduction, 2025-2026 highlights, Sections 1 and 2",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+        "websiteDomain": "cse-cst.gc.ca",
+        "stableSlug": "cse-supply-chain-cyber-risk-assurance",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Should the reviewer merge this requirement with an existing public-demand record or keep it as a distinct CSE signal?",
+        "Is a current procurement, challenge or funding vehicle available beyond the public report?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The report provides an operational volume indicator rather than a named acquisition requirement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports/communications-security-establishment-canada-annual-report-2025-2026",
+          "outcome": "Official CSE report or privacy impact assessment established the public demand statement and its operational context."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.cse-cst.gc.ca/en/accountability/transparency/reports",
+          "outcome": "CSE transparency index confirmed the page is part of the durable official report collection."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/services/defence.html",
+          "outcome": "A broader Government of Canada defence search was used to check for a more specific public program or procurement vehicle."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Supply-chain cyber-risk assessment and assurance",
+      "issuerNames": [
+        "Communications Security Establishment Canada",
+        "Canadian Centre for Cyber Security"
+      ],
+      "demandSourceKind": "official_problem_statement",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Government and critical-infrastructure supply chains contain dependencies and exposures that require repeatable assessment, prioritization and mitigation to reduce the risk of compromise through suppliers, software, systems and services."
+      ]
+    }
+  ]
+}

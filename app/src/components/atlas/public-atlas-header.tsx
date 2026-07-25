@@ -9,7 +9,7 @@ import { openBetaUpdates } from "@/lib/product-insights/client";
 
 const navigation = [
   { href: "/", label: "Ecosystem Map", match: (pathname: string) => pathname === "/" },
-  { href: "/regions/canada", label: "Regions", match: (pathname: string) => pathname.startsWith("/regions") },
+  { href: "/regions", label: "Regions", match: (pathname: string) => pathname.startsWith("/regions") },
   { href: "/organizations", label: "Organizations", match: (pathname: string) => pathname.startsWith("/organizations") },
   { href: "/briefs", label: "Defence Briefs", match: (pathname: string) => pathname.startsWith("/briefs") },
   { href: "/about", label: "About", match: (pathname: string) => pathname.startsWith("/about") || pathname.startsWith("/methodology") }

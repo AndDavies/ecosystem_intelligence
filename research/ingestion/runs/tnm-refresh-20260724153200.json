@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-20260724153200",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": [
+      "department",
+      "procurement_authority",
+      "research_innovation_agency",
+      "public_program",
+      "federal_government"
+    ]
+  },
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "defence-industrial-strategy-refresh",
+    "reason": "The operator explicitly scoped this refresh to the CAF Defence Industrial Strategy and its implementation sources, with live matching against existing public-demand records to distinguish new signals from additive enrichments.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-24T14:40:00.000Z",
+  "completedAt": "2026-07-24T15:00:14.002Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 4,
+    "minimumCandidates": 1,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Canada Defence Industrial Strategy sovereign capabilities Build Partner Buy",
+    "Defence Investment Agency delivering Defence Industrial Strategy",
+    "Canadian Defence Industry Resilience CDIR ammunition critical inputs",
+    "NRC Defence Industry Assist BOREALIS secure innovation hubs",
+    "DND 2026-27 departmental plan defence supply chain resilience digital systems",
+    "Defence Industrial Strategy Arctic northern infrastructure workforce security clearances IP ITB"
+  ],
+  "counters": {
+    "sourcesChecked": 16,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 0,
+    "uniqueProspects": 0,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 0,
+    "candidatesGreen": 5,
+    "candidatesAmber": 5,
+    "signalsExtracted": 10,
+    "signalsDispositioned": 10,
+    "sourceFamiliesSearched": 4
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "The strategy contains policy and program signals rather than a single procurement requirement; amber candidates retain explicit merge and evidence warnings.",
+      "The northern support hub refresh targets an existing published demand source and must preserve stable IDs and slugs."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed CAF Defence Industrial Strategy refresh; ten qualified signals were consolidated into nine new demand candidates and one additive demand refresh for private Admin Review.",
+  "outputs": {
+    "prospectInventory": null,
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-20260724153200.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-20260724153200.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-20260724153200.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-refresh-20260724153200.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-20260724153200.json"
+  }
+}

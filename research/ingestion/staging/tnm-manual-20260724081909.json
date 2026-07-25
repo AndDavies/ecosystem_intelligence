@@ -1,0 +1,638 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-24T08:25:04.053Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260724081909",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-kind:company",
+      "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-24T08:19:09.529Z",
+    "completed_at": "2026-07-24T08:22:10.000Z",
+    "agent_version": "tnm-research-pipeline/1.2.0",
+    "source_queries": [
+      "Marconi Technologies official product portfolio and Canadian corporate launch",
+      "Government of Canada Marconi Orion SAFE contract and Polish Cyber Command",
+      "Marconi Archer Swedish FMV field trial and current allied activity"
+    ],
+    "counters": {
+      "sourcesChecked": 7,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 3,
+      "uniqueProspects": 3,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 3,
+      "sourceLanesSearched": 3,
+      "candidatesGreen": 1,
+      "candidatesAmber": 0
+    },
+    "validation_results": {
+      "passed": false,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "completed"
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-marconi-technologies-20260724",
+      "research_run_ref": "tnm-manual-20260724081909",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-marconi-technologies-20260724"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-marconi-technologies-20260724",
+        "sourceLeadIds": [
+          "lead-marconi-technologies-20260724"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Marconi Technologies is recommended for green private review as a newly standalone Canadian defence prime whose inherited but current tactical-communications portfolio is materially important to the map. Official evidence establishes Montréal headquarters, Canadian-majority ownership, three mature product families and a development-stage sensor-fusion platform. Government reporting independently confirms a made-in-Canada Orion contract exceeding C$10 million for Polish Cyber Command. The reviewer should retain the explicit development-stage label for SAMS and leave legalName blank until a registry source resolves the exact Canadian entity.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 95,
+        "reviewWarnings": [
+          "The website footer says Marconi Inc., but this run did not resolve an authoritative corporate-registry record; legalName remains null.",
+          "SAMS is explicitly development-stage. The separate Crypto coming-soon item lacks enough technical detail and is not proposed as a capability."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-24T08:22:10.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live production checks found no published organization or pending candidate matching Marconi Technologies, Marconi, Marconi Inc. or marconi-technologies.com."
+        },
+        "sources": [
+          {
+            "id": "marconi-official-portfolio",
+            "title": "Marconi tactical communications product ecosystem",
+            "url": "https://marconi-technologies.com/",
+            "publisher": "Marconi Technologies",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-24T08:22:10.000Z",
+            "locator": "Mission, About, Orion, Archer, Hunter, SAMS, Crypto and contact sections",
+            "summary": "Marconi describes its Montréal-headquartered identity, tactical communications mission, public contact routes and Orion, Archer, Hunter and development-stage SAMS and cryptographic product lines."
+          },
+          {
+            "id": "marconi-launch-2026",
+            "title": "Marconi Technologies launches as Canadian specialized defence prime",
+            "url": "https://www.newswire.ca/news-releases/defense-sector-announcement-marconi-technologies-launches-as-canada-s-new-specialized-defence-prime-at-montreal-headquarters-reviving-an-iconic-name-in-communications-technology-837726931.html",
+            "publisher": "Marconi Technologies",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-05-19T15:34:00.000Z",
+            "accessedAt": "2026-07-24T08:22:10.000Z",
+            "locator": "Corporate launch, ownership transaction, headquarters and portfolio sections",
+            "summary": "The launch release identifies Marconi as a standalone, Canadian-majority-owned and veteran-run company formed when Canadian investors acquired Ultra I&C's Tactical Communications division, and describes its Montréal headquarters and product portfolio."
+          },
+          {
+            "id": "marconi-orion-poland-2026",
+            "title": "Marconi selected to deliver Orion X650 tactical radios to Polish military",
+            "url": "https://www.newswire.ca/news-releases/marconi-technologies-selected-to-deliver-orion-x650-tactical-radios-to-polish-military-815497174.html",
+            "publisher": "Marconi Technologies",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-06-16T14:13:00.000Z",
+            "accessedAt": "2026-07-24T08:22:10.000Z",
+            "locator": "Contract announcement and Orion X650 technical description",
+            "summary": "Marconi reports a multi-year delivery with Enamor International of Orion X650 high-capacity MANET radios for Poland, following trials using drones, vehicles and fixed positions."
+          },
+          {
+            "id": "pmo-marconi-safe-contract-2026",
+            "title": "Prime Minister readout confirms Marconi Orion contract",
+            "url": "https://www.newswire.ca/news-releases/readout-prime-minister-carney-meets-with-european-council-president-antonio-costa-and-european-commission-president-ursula-von-der-leyen-861641438.html",
+            "publisher": "Prime Minister's Office",
+            "sourceKind": "official_report",
+            "publishedAt": "2026-06-17T00:00:00.000Z",
+            "accessedAt": "2026-07-24T08:22:10.000Z",
+            "locator": "Canada-EU defence procurement announcement",
+            "summary": "The Prime Minister's Office confirms a contract exceeding C$10 million for Montréal-based Marconi to supply made-in-Canada Orion tactical radios to Polish Cyber Command through 2030."
+          },
+          {
+            "id": "marconi-archer-sweden-2026",
+            "title": "Marconi completes Archer troposcatter trials in Sweden",
+            "url": "https://www.newswire.ca/fr/news-releases/marconi-technologies-acheve-une-serie-d-essais-rigoureux-de-diffusion-tropospherique-en-suede-880352069.html",
+            "publisher": "Marconi Technologies",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-06-25T17:29:00.000Z",
+            "accessedAt": "2026-07-24T08:22:10.000Z",
+            "locator": "Swedish FMV evaluation and Archer technical description",
+            "summary": "Marconi reports that Archer sustained a 75-kilometre high-throughput link during a multi-day evaluation with Sweden's FMV and integrated with the Swedish Armed Forces mobile network node."
+          },
+          {
+            "id": "marconi-archer-datasheet",
+            "title": "Archer tactical troposcatter system datasheet",
+            "url": "https://marconi-technologies.com/wp-content/uploads/2026/05/Archer-Datasheet-May_2026_MT.pdf",
+            "publisher": "Marconi Technologies",
+            "sourceKind": "official_company_product",
+            "publishedAt": "2026-05-01T00:00:00.000Z",
+            "accessedAt": "2026-07-24T08:22:10.000Z",
+            "locator": "System capabilities, deployment and performance specifications",
+            "summary": "The official Archer datasheet documents a rapidly deployable tactical troposcatter system for secure beyond-line-of-sight connectivity without satellite or fixed infrastructure."
+          },
+          {
+            "id": "marconi-hunter-datasheet",
+            "title": "Hunter FA-180 tactical SATCOM datasheet",
+            "url": "https://marconi-technologies.com/wp-content/uploads/2026/05/Hunter-FA-180-Datasheet-May_2026_MT.pdf",
+            "publisher": "Marconi Technologies",
+            "sourceKind": "official_company_product",
+            "publishedAt": "2026-05-01T00:00:00.000Z",
+            "accessedAt": "2026-07-24T08:22:10.000Z",
+            "locator": "Terminal capabilities and deployment specifications",
+            "summary": "The official Hunter datasheet supports a rapidly deployable, high-throughput tactical SATCOM terminal designed for multiple bands, constellations and operating environments."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-marconi-identity",
+            "sourceId": "marconi-launch-2026",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The launch release identifies a standalone, Canadian-majority-owned, veteran-run company headquartered in Montréal and formed through acquisition of Ultra I&C's Tactical Communications division.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-location",
+            "sourceId": "marconi-official-portfolio",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "The official website lists Marconi's Canadian location at 5990 Côte-de-Liesse, Mont-Royal, Quebec, Canada.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-profile",
+            "sourceId": "marconi-official-portfolio",
+            "fieldPath": "organization.profileData.portfolioScope",
+            "claimClass": "source_backed",
+            "excerpt": "The official portfolio spans tactical radios, troposcatter, tactical SATCOM, sensor and cyber data fusion, and development-stage encryption.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-orion",
+            "sourceId": "marconi-official-portfolio",
+            "fieldPath": "capabilities.marconi-orion-tactical-radios.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Marconi describes Orion as a high-capacity tactical-radio family with MANET, long-haul and backhaul modes, wideband agility, survivability and AI-assisted spectrum adaptation.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-orion-contract",
+            "sourceId": "pmo-marconi-safe-contract-2026",
+            "fieldPath": "programs.marconi-orion-polish-cyber-command.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The Prime Minister's Office confirms a contract exceeding C$10 million for made-in-Canada Orion tactical radios for Polish Cyber Command, with deliveries through 2030.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-archer",
+            "sourceId": "marconi-archer-datasheet",
+            "fieldPath": "capabilities.marconi-archer-troposcatter.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official Archer material supports beyond-line-of-sight troposcatter connectivity over 200 kilometres without satellites, with rapid setup, auto-alignment, encryption and anti-jamming.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-archer-trial",
+            "sourceId": "marconi-archer-sweden-2026",
+            "fieldPath": "capabilities.1.applications",
+            "claimClass": "source_backed",
+            "excerpt": "Marconi reports a multi-day FMV evaluation in which Archer maintained a 75-kilometre link and integrated with the Swedish Armed Forces mobile network node.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-hunter",
+            "sourceId": "marconi-hunter-datasheet",
+            "fieldPath": "capabilities.marconi-hunter-tactical-satcom.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official Hunter material supports rapidly deployable tactical SATCOM across multiple bands, constellations and orbits, with a toolless manpack and flyaway posture.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-sams",
+            "sourceId": "marconi-official-portfolio",
+            "fieldPath": "capabilities.marconi-sams-sensor-cyber-fusion.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Marconi describes development-stage SAMS as a sensor-agnostic platform that combines sensor and cyber data into a common operational picture with warning and system-health functions.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-enamor-relationship",
+            "sourceId": "marconi-orion-poland-2026",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Marconi identifies Enamor International as its Polish integration partner for multi-year Orion X650 deliveries following in-country trials.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-ultra-relationship",
+            "sourceId": "marconi-launch-2026",
+            "fieldPath": "relationships.1.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "The launch release states that Marconi was formed when a Canadian investor group acquired Ultra I&C's Tactical Communications division from Cobham Ultra.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-fmv-relationship",
+            "sourceId": "marconi-archer-sweden-2026",
+            "fieldPath": "relationships.2.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "The Archer trial release identifies Sweden's FMV as the defence materiel authority participating in the June 2026 multi-day evaluation.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-marconi-contact",
+            "sourceId": "marconi-official-portfolio",
+            "fieldPath": "organization.profileData.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "The official website publishes sales@marconi-technologies.com and the Montréal, Maryland and United Kingdom operating locations.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "marconi-technologies",
+          "name": "Marconi Technologies",
+          "legalName": null,
+          "aliases": [
+            "Marconi",
+            "Marconi Inc.",
+            "Ultra I&C Tactical Communications"
+          ],
+          "description": "Marconi Technologies is a Canadian-majority-owned, veteran-run defence technology company headquartered in Montréal that develops and manufactures tactical communications and networked mission systems for Canadian and allied users.",
+          "websiteUrl": "https://marconi-technologies.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Montréal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "ownershipAndHistory": "Launched in May 2026 as a standalone, Canadian-majority-owned company after a Canadian investor group led by Louis Vachon acquired Ultra I&C's Tactical Communications division from Cobham Ultra; the business identifies itself as a descendant of Canadian Marconi Corporation.",
+            "canadianFootprint": "Headquartered at 5990 Côte-de-Liesse in Mont-Royal, Quebec, with development and manufacturing operations in Canada and additional locations in Germantown, Maryland and Tring, United Kingdom.",
+            "portfolioScope": "Resilient line-of-sight and beyond-line-of-sight tactical communications, high-capacity MANET radios, troposcatter, tactical SATCOM, sensor and cyber data fusion, and development-stage military cryptography.",
+            "currentActivity": "Marconi and Enamor International are scheduled to begin multi-year Orion X650 deliveries for Polish Cyber Command in 2026 under a contract exceeding C$10 million; Archer also completed a multi-day Swedish FMV evaluation in June 2026.",
+            "publicContact": "Sales inquiries: sales@marconi-technologies.com. Public company and product information: https://marconi-technologies.com/.",
+            "evidenceBoundary": "Products, ownership, locations, contract activity and public contacts are source-backed. Mission matches are derived analyst assessments, not procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "marconi-orion-tactical-radios",
+            "name": "Orion Tactical Radio Systems",
+            "summary": "Provide high-throughput, resilient software-defined tactical networking across air, land and maritime operations, including mobile ad hoc networking, long-haul links and backhaul for human-machine teams.",
+            "capabilityType": "Software-defined tactical MANET radio family",
+            "features": [
+              "High-throughput mesh networking",
+              "Wideband frequency agility",
+              "MANET, long-haul and backhaul waveforms",
+              "AI-assisted spectrum adaptation",
+              "X602, X604, X610 and X650 variants"
+            ],
+            "applications": [
+              "Contested tactical command-and-control connectivity",
+              "Human-machine and uncrewed-system teaming",
+              "Mobile 5G-enabled backhaul",
+              "Air, land and maritime data transport"
+            ],
+            "technicalTags": [
+              "tactical radios",
+              "MANET",
+              "software-defined radio",
+              "resilient communications",
+              "human-machine teaming"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "autonomous-systems"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Orion's official UXV-ready and human-machine-teaming posture could provide resilient command, control and data transport for distributed autonomous patrol systems.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Orion's high-throughput mesh and backhaul functions could move time-sensitive sensor and command data among contested edge nodes when fixed infrastructure is unavailable.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "marconi-archer-troposcatter",
+            "name": "Archer Tactical Troposcatter",
+            "summary": "Deliver secure, high-bandwidth beyond-line-of-sight communications over long distances without relying on satellites or fixed infrastructure, using a rapidly deployable tactical troposcatter terminal.",
+            "capabilityType": "Expeditionary troposcatter communications system",
+            "features": [
+              "More than 200-kilometre stated range",
+              "Toolless setup and automatic antenna alignment",
+              "Deployment in 20 minutes or less",
+              "Adaptive coding and frequency diversity",
+              "Encryption and anti-jamming features"
+            ],
+            "applications": [
+              "Beyond-line-of-sight tactical backhaul",
+              "Communications in satellite-denied or degraded environments",
+              "Expeditionary operations in deserts, mountains and polar regions",
+              "Mobile network-node extension"
+            ],
+            "technicalTags": [
+              "troposcatter",
+              "beyond line of sight",
+              "expeditionary communications",
+              "anti-jamming",
+              "tactical backhaul"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Archer could provide long-range, infrastructure-independent backhaul between dispersed edge-processing sites in northern or contested operating environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "slug": "marconi-hunter-tactical-satcom",
+            "name": "Hunter Tactical SATCOM Terminals",
+            "summary": "Provide rapidly deployable high-throughput satellite communications for manpack, expeditionary and forward-operating-base use across multiple bands, constellations and orbital regimes.",
+            "capabilityType": "Deployable tactical satellite communications terminal family",
+            "features": [
+              "Tri-band and multi-bearer readiness",
+              "Multiple constellation and orbit support",
+              "Toolless setup in under five minutes",
+              "High-EIRP high-throughput operation",
+              "Manpack and flyaway configurations"
+            ],
+            "applications": [
+              "Expeditionary satellite communications",
+              "Forward operating base connectivity",
+              "Dispersed multi-domain operations",
+              "Rapidly established beyond-line-of-sight links"
+            ],
+            "technicalTags": [
+              "SATCOM",
+              "tactical terminals",
+              "multi-band",
+              "multi-orbit",
+              "expeditionary communications"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "space-and-earth-observation"
+            ],
+            "missionMatches": []
+          },
+          {
+            "slug": "marconi-sams-sensor-cyber-fusion",
+            "name": "SAMS Sensor and Cyber Data Fusion Platform",
+            "summary": "Development-stage platform intended to combine sensor and cyber data into a common operational picture for threat assessment, warning, system-health monitoring and distributed mission-system resilience.",
+            "capabilityType": "Development-stage sensor and cyber fusion platform",
+            "features": [
+              "Sensor-agnostic data integration",
+              "Common operational picture",
+              "Real-time indication and warning",
+              "System-health monitoring",
+              "Distributed and self-healing architecture"
+            ],
+            "applications": [
+              "Multi-source threat assessment",
+              "Cyber and physical sensor fusion",
+              "Mission-system monitoring",
+              "Operational decision support"
+            ],
+            "technicalTags": [
+              "sensor fusion",
+              "cyber data",
+              "common operational picture",
+              "mission software",
+              "system health"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "sensing-and-isr",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "If delivered as described, SAMS could fuse local sensor and cyber observations into a distributed operational picture at the tactical edge; the product is currently marked coming soon.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [
+          {
+            "slug": "marconi-orion-polish-cyber-command",
+            "name": "Orion X650 Polish Cyber Command Delivery",
+            "programType": "Allied tactical-radio procurement",
+            "websiteUrl": "https://www.newswire.ca/news-releases/readout-prime-minister-carney-meets-with-european-council-president-antonio-costa-and-european-commission-president-ursula-von-der-leyen-861641438.html",
+            "summary": "Multi-year delivery of made-in-Canada Orion X650 high-capacity tactical radios to Polish Cyber Command with Enamor International, under a contract reported by the Government of Canada as exceeding C$10 million and continuing through 2030.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Enamor International",
+            "relationshipType": "delivery_and_integration_partner",
+            "publicSummary": "Marconi identifies Polish defence integrator Enamor International as its partner for Orion X650 delivery to the Polish military following in-country trials."
+          },
+          {
+            "relatedOrganizationName": "Ultra I&C",
+            "relationshipType": "predecessor_business",
+            "publicSummary": "Marconi's standalone business was formed through the Canadian investor acquisition of Ultra I&C's Tactical Communications division from Cobham Ultra."
+          },
+          {
+            "relatedOrganizationName": "Försvarets materielverk",
+            "relationshipType": "technology_evaluation",
+            "publicSummary": "Sweden's defence materiel authority participated in a June 2026 multi-day evaluation of Marconi's Archer troposcatter system between Enköping and Arboga."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-marconi-identity",
+          "sourceId": "marconi-launch-2026",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The launch release identifies a standalone, Canadian-majority-owned, veteran-run company headquartered in Montréal and formed through acquisition of Ultra I&C's Tactical Communications division.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-location",
+          "sourceId": "marconi-official-portfolio",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "The official website lists Marconi's Canadian location at 5990 Côte-de-Liesse, Mont-Royal, Quebec, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-profile",
+          "sourceId": "marconi-official-portfolio",
+          "fieldPath": "organization.profileData.portfolioScope",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio spans tactical radios, troposcatter, tactical SATCOM, sensor and cyber data fusion, and development-stage encryption.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-orion",
+          "sourceId": "marconi-official-portfolio",
+          "fieldPath": "capabilities.marconi-orion-tactical-radios.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Marconi describes Orion as a high-capacity tactical-radio family with MANET, long-haul and backhaul modes, wideband agility, survivability and AI-assisted spectrum adaptation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-orion-contract",
+          "sourceId": "pmo-marconi-safe-contract-2026",
+          "fieldPath": "programs.marconi-orion-polish-cyber-command.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Prime Minister's Office confirms a contract exceeding C$10 million for made-in-Canada Orion tactical radios for Polish Cyber Command, with deliveries through 2030.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-archer",
+          "sourceId": "marconi-archer-datasheet",
+          "fieldPath": "capabilities.marconi-archer-troposcatter.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official Archer material supports beyond-line-of-sight troposcatter connectivity over 200 kilometres without satellites, with rapid setup, auto-alignment, encryption and anti-jamming.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-archer-trial",
+          "sourceId": "marconi-archer-sweden-2026",
+          "fieldPath": "capabilities.1.applications",
+          "claimClass": "source_backed",
+          "excerpt": "Marconi reports a multi-day FMV evaluation in which Archer maintained a 75-kilometre link and integrated with the Swedish Armed Forces mobile network node.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-hunter",
+          "sourceId": "marconi-hunter-datasheet",
+          "fieldPath": "capabilities.marconi-hunter-tactical-satcom.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official Hunter material supports rapidly deployable tactical SATCOM across multiple bands, constellations and orbits, with a toolless manpack and flyaway posture.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-sams",
+          "sourceId": "marconi-official-portfolio",
+          "fieldPath": "capabilities.marconi-sams-sensor-cyber-fusion.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Marconi describes development-stage SAMS as a sensor-agnostic platform that combines sensor and cyber data into a common operational picture with warning and system-health functions.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-enamor-relationship",
+          "sourceId": "marconi-orion-poland-2026",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Marconi identifies Enamor International as its Polish integration partner for multi-year Orion X650 deliveries following in-country trials.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-ultra-relationship",
+          "sourceId": "marconi-launch-2026",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The launch release states that Marconi was formed when a Canadian investor group acquired Ultra I&C's Tactical Communications division from Cobham Ultra.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-fmv-relationship",
+          "sourceId": "marconi-archer-sweden-2026",
+          "fieldPath": "relationships.2.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Archer trial release identifies Sweden's FMV as the defence materiel authority participating in the June 2026 multi-day evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-contact",
+          "sourceId": "marconi-official-portfolio",
+          "fieldPath": "organization.profileData.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "The official website publishes sales@marconi-technologies.com and the Montréal, Maryland and United Kingdom operating locations.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-24T08:22:10.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no published organization or pending candidate matching Marconi Technologies, Marconi, Marconi Inc. or marconi-technologies.com."
+      },
+      "reviewer_rationale": "Marconi Technologies is recommended for green private review as a newly standalone Canadian defence prime whose inherited but current tactical-communications portfolio is materially important to the map. Official evidence establishes Montréal headquarters, Canadian-majority ownership, three mature product families and a development-stage sensor-fusion platform. Government reporting independently confirms a made-in-Canada Orion contract exceeding C$10 million for Polish Cyber Command. The reviewer should retain the explicit development-stage label for SAMS and leave legalName blank until a registry source resolves the exact Canadian entity.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-24T08:25:04.053Z"
+    }
+  ]
+}
