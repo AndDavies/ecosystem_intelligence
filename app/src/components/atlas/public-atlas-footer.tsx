@@ -19,6 +19,7 @@ export function PublicAtlasFooter({ generatedLabel }: { generatedLabel?: string 
           <AnalyticsPreferencesButton className="font-semibold text-white/70 hover:text-[var(--atlas-signal)] hover:underline" />
           <Link href="/privacy" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Privacy</Link>
           <Link href="/methodology" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Methodology</Link>
+          <Link href="/how-it-works" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">How It Works</Link>
           <Link href="/contact" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Contact</Link>
           <Link href="/terms" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Terms</Link>
           <Link href="/briefs" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Canadian Defence Briefs</Link>

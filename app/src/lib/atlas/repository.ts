@@ -621,7 +621,7 @@ export function discoverAtlasSnapshot(snapshot: AtlasSnapshot, rawQuery: string)
     evidenceLinks: uniqueEvidenceLinks(result.organizations),
     summary:
       result.total > 0
-        ? `${result.total} published ${result.total === 1 ? "organization" : "organizations"} match the visible filters. Open a row to inspect the supporting evidence and derived alignment notes.`
+        ? `${result.total} published ${result.total === 1 ? "organization" : "organizations"} match the visible filters. Open a row to inspect the public evidence and our current assessment.`
         : null,
     suggestions:
       result.total > 0

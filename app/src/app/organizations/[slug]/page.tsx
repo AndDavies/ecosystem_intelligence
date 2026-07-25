@@ -7,7 +7,6 @@ import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import {
-  assessmentConfidenceLabel,
   evidenceStrengthLabel,
   locationAccuracyLabel,
   organizationOfferingGap,
@@ -15,6 +14,7 @@ import {
   organizationSnapshotTitle,
   organizationWebsiteLabel,
   publicContactFromProfileData,
+  publicLanguage,
   publicSourceCountLabel
 } from "@/lib/atlas/presentation";
 import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
@@ -124,7 +124,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
               <div className="flex items-center gap-3">
                 <span className="flex size-9 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><ShieldCheck className="size-5" /></span>
                 <div>
-                  <p className="text-sm font-semibold text-[var(--atlas-ink)]">{evidenceStrengthLabel(organization.sourceConfidence)} source support</p>
+                  <p className="text-sm font-semibold text-[var(--atlas-ink)]">{evidenceStrengthLabel(organization.sourceConfidence)} public evidence</p>
                   <p className="text-xs text-[var(--atlas-muted)]">Last verified {formatDate(organization.lastReviewedAt)}</p>
                 </div>
               </div>
@@ -192,14 +192,14 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             )}
           </PublicCard>
 
-          {hasPublishedAlignment ? <PublicCard title="Where It Fits" eyebrow="See which missions and public needs this technology may help address">
+          {hasPublishedAlignment ? <PublicCard title={publicLanguage.technologyDemand} eyebrow="See the missions and released public needs worth exploring">
             {hasMissionMatches ? (
               <div className="space-y-3">
                 {organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => (
                   <article key={match.id} className="rounded-2xl border border-[var(--atlas-violet)]/25 bg-[var(--atlas-violet-soft)] p-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <Link href={`/?mission=${match.missionArea.slug}`} className="text-sm font-bold text-[var(--atlas-violet)] no-underline hover:underline">{match.missionArea.name}</Link>
-                      <span className="rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-semibold text-[var(--atlas-violet)]">{assessmentConfidenceLabel(match.confidence)} confidence</span>
+                      <span className="rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-semibold text-[var(--atlas-violet)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>
                     </div>
                     <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{match.alignmentSummary}</p>
                     <AssessmentSources citations={match.citations} />
@@ -218,7 +218,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                 )))}
               </div>
             ) : null}
-            <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">These connections are interpretations based on public sources. They are not procurement eligibility, endorsement, or classified demand.</p>
+            <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{publicLanguage.demandCaveat}</p>
           </PublicCard> : null}
 
           <PublicCard title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>

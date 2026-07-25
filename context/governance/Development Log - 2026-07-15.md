@@ -512,3 +512,22 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Added regression coverage proving that 1,250 matching organizations all
   reach the map while detailed explorer records remain capped at 200 per
   request.
+
+## Public language, evidence, and How It Works - 2026-07-25
+
+- Added a single public-language contract separating source-backed facts, True
+  North Map assessments, and visible coverage gaps without renaming canonical
+  database or research-pipeline values.
+- Source-gated the administrator Demand Signal editor with an HTTPS released
+  source, exact source locator, concise supporting passage, administrator
+  confirmation, rationale, reviewer identity, and public citations. The public
+  loader and private suggestion engine both fail closed on unverified signals.
+- Backfilled all 24 current published Demand Signals from their existing
+  approved public evidence without hiding a signal or changing 30 published
+  requirements and 85 published technology connections.
+- Reframed public demand and technology pages around what needs to change, what
+  success looks like, where technology may help, what supports the assessment,
+  and what remains unknown.
+- Added the crawlable `/how-it-works` route, structured data, responsive
+  five-step workflow, trust boundary, navigation, sitemap entry, and contextual
+  links from the map, demand, About, and Methodology routes.

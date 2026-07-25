@@ -30,7 +30,8 @@ describe("customer-facing product language", () => {
     const technology = await readFile(path.resolve("src/app/capabilities/[slug]/page.tsx"), "utf8");
     const demand = await readFile(path.resolve("src/app/demand/[slug]/page.tsx"), "utf8");
     const combined = `${organization}\n${technology}\n${demand}`;
-    expect(combined).toContain("Where It Fits");
+    expect(combined).toContain("technologyDemand");
+    expect(combined).toContain("What supports this assessment");
     expect(combined).toContain("Evidence & sources");
     expect(combined).not.toContain("Mission relevance");
     expect(combined).not.toContain("Demand relevance");
@@ -46,13 +47,29 @@ describe("customer-facing product language", () => {
     const pdf = await readFile(path.resolve("src/lib/export/atlas-pdf.tsx"), "utf8");
     const exportRoute = await readFile(path.resolve("src/app/api/export/route.ts"), "utf8");
     expect(pdf).toContain("Technology Profile");
-    expect(pdf).toContain("Where It Fits");
-    expect(pdf).toContain("Source support");
+    expect(pdf).toContain("Where this technology may help");
+    expect(pdf).toContain("Public evidence");
     expect(pdf).not.toContain("Mission relevance");
     expect(pdf).not.toContain("Capability Profile");
     expect(pdf).not.toContain("Reviewed assessments");
     expect(exportRoute).toContain("true-north-map-results.csv");
     expect(exportRoute).toContain("Published technology not found.");
     expect(exportRoute).not.toContain("canadian-ecosystem-atlas-results.csv");
+  });
+
+  it("explains the public journey without exposing implementation language", async () => {
+    const [page, header, sitemap] = await Promise.all([
+      readFile(path.resolve("src/app/how-it-works/page.tsx"), "utf8"),
+      readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8"),
+      readFile(path.resolve("src/app/sitemap.ts"), "utf8")
+    ]);
+    expect(page).toContain("Explore the map");
+    expect(page).toContain("Check the public evidence");
+    expect(page).toContain("Follow released public needs");
+    expect(page).toContain("See where technology may help");
+    expect(page).toContain("Sources create the public record. People review the interpretation.");
+    expect(page).toContain("<ol");
+    expect(header).toContain('href: "/how-it-works"');
+    expect(sitemap).toContain('"/how-it-works"');
   });
 });

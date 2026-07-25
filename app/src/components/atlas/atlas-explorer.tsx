@@ -45,7 +45,6 @@ import {
 import {
   alignmentSubject,
   alignmentTypeLabel,
-  assessmentConfidenceLabel,
   evidenceStrengthLabel,
   locationAccuracyLabel
 } from "@/lib/atlas/presentation";
@@ -455,7 +454,7 @@ export function AtlasExplorer({
           </div>
           <p className="flex items-start gap-3 rounded-[18px] border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-3 text-xs leading-5 text-[var(--atlas-muted)] sm:p-4">
             <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--atlas-violet-soft)] text-[var(--atlas-violet)]"><ShieldCheck className="size-4" /></span>
-            <span><strong className="block text-[var(--atlas-ink-soft)]">Reviewed public sources · transparent gaps · human review</strong><span className="hidden sm:inline">Open a result to inspect what supports the profile and where interpretation begins.</span></span>
+            <span><strong className="block text-[var(--atlas-ink-soft)]">Reviewed public sources · transparent gaps · human review</strong><span className="hidden sm:inline">Open a result to inspect what supports the profile and where interpretation begins. <Link href="/how-it-works" className="font-bold text-[var(--atlas-primary)] underline">See how it works.</Link></span></span>
           </p>
         </div>
       </section>
@@ -632,7 +631,7 @@ export function AtlasExplorer({
                       <th scope="col" className="px-2 py-2.5">Organization</th>
                       <th scope="col" className="px-3 py-2.5">Technology or offering</th>
                       <th scope="col" className="px-3 py-2.5">Region</th>
-                      <th scope="col" className="px-3 py-2.5">Where it fits</th>
+                      <th scope="col" className="px-3 py-2.5">Why it may help</th>
                       <th scope="col" className="px-3 py-2.5">Sources</th>
                       <th scope="col" className="px-3 py-2.5">Last verified</th>
                     </tr>

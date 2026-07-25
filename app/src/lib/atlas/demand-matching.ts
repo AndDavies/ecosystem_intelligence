@@ -24,7 +24,7 @@ export const demandMatchCandidateSchema = z.object({
 export type DemandMatchCandidate = z.infer<typeof demandMatchCandidateSchema>;
 
 type OrganizationInput = Pick<AtlasOrganization, "id" | "slug" | "name" | "capabilities">;
-type DemandInput = Pick<AtlasDemandRequirement, "id" | "slug" | "title" | "problemStatement" | "desiredEndState">;
+type DemandInput = Pick<AtlasDemandRequirement, "id" | "slug" | "title" | "problemStatement" | "desiredEndState" | "source">;
 
 const concepts = [
   { key: "maritime", label: "maritime and undersea operations", terms: ["maritime", "marine", "ocean", "underwater", "undersea", "subsea", "submarine", "submersible", "naval", "uuv", "auv", "sonar"] },
@@ -64,6 +64,7 @@ export function suggestDemandMatches(
     const capabilityConcepts = findConcepts(capabilityText);
 
     return demandRequirements.flatMap((demand): DemandMatchCandidate[] => {
+      if (!demand.source.isSourceVerified) return [];
       if (existingPairs.has(`${capability.id}:${demand.id}`)) return [];
       const demandConcepts = findConcepts(`${demand.title} ${demand.problemStatement} ${demand.desiredEndState}`);
       const titleConcepts = findConcepts(demand.title);

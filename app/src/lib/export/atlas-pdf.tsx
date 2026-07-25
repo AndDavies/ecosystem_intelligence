@@ -1,6 +1,6 @@
 import React from "react";
 import { Document, Link, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
-import { assessmentConfidenceLabel, evidenceStrengthLabel, locationAccuracyLabel, organizationOfferingGap, organizationOfferingTitle, organizationSnapshotTitle } from "@/lib/atlas/presentation";
+import { evidenceStrengthLabel, locationAccuracyLabel, organizationOfferingGap, organizationOfferingTitle, organizationSnapshotTitle } from "@/lib/atlas/presentation";
 import type { AtlasCapability, AtlasOrganization } from "@/types/atlas";
 
 const colors = {
@@ -121,12 +121,12 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
 
             {alignments.length ? <View style={styles.section}>
               <Text style={styles.eyebrow}>Potential mission and demand connections</Text>
-              <Text style={styles.sectionTitle}>Where It Fits</Text>
+              <Text style={styles.sectionTitle}>Where this technology may help</Text>
               {alignments.map((match) => (
                 <View key={match.id} style={styles.derivedCard} wrap={false}>
                   <Text style={{ fontFamily: "Helvetica-Bold" }}>{"missionArea" in match ? match.missionArea.name : match.demandTitle}</Text>
                   <Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text>
-                  <Text style={{ marginTop: 4, fontSize: 7.5 }}>{assessmentConfidenceLabel(match.confidence)} assessment confidence</Text>
+                  <Text style={{ marginTop: 4, fontSize: 7.5 }}>{evidenceStrengthLabel(match.confidence)} public evidence</Text>
                 </View>
               ))}
             </View> : null}
@@ -141,10 +141,10 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
               <ProfileRow label="Categories" value={organization.categories.map((item) => item.replaceAll("_", " ")).join(", ")} />
               <ProfileRow label="Company stage" value={organization.companyStage} />
               <ProfileRow label="Employee range" value={organization.employeeRange} />
-              <ProfileRow label="Source support" value={evidenceStrengthLabel(organization.sourceConfidence)} />
+              <ProfileRow label="Public evidence" value={evidenceStrengthLabel(organization.sourceConfidence)} />
             </View>
             {organization.websiteUrl ? <Link src={organization.websiteUrl} style={styles.sourceLink}>Official website</Link> : null}
-            <Text style={styles.caveat}>Unknown fields are intentionally omitted. “Where It Fits” entries are interpretations based on public sources, not procurement eligibility or endorsement.</Text>
+            <Text style={styles.caveat}>Unknown fields are intentionally omitted. Technology-to-demand connections are reviewed assessments based on public sources, not procurement eligibility or endorsement.</Text>
             <View style={{ marginTop: 12 }}>
               <Sources organization={organization} />
             </View>
@@ -177,12 +177,12 @@ function CapabilityPdf({ organization, capability }: { organization: AtlasOrgani
             </View>
             <View style={styles.section}>
               <Text style={styles.eyebrow}>Potential mission and demand connections</Text>
-              <Text style={styles.sectionTitle}>Where It Fits</Text>
+              <Text style={styles.sectionTitle}>Where this technology may help</Text>
               {alignments.map((match) => (
                 <View key={match.id} style={styles.derivedCard} wrap={false}>
                   <Text style={{ fontFamily: "Helvetica-Bold" }}>{"missionArea" in match ? match.missionArea.name : match.demandTitle}</Text>
                   <Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text>
-                  <Text style={{ marginTop: 4, fontSize: 7.5 }}>{assessmentConfidenceLabel(match.confidence)} assessment confidence</Text>
+                  <Text style={{ marginTop: 4, fontSize: 7.5 }}>{evidenceStrengthLabel(match.confidence)} public evidence</Text>
                 </View>
               ))}
               {!alignments.length ? <Text style={styles.body}>No mission or public-need connection has been published yet. Treat this as a research gap, not a negative signal.</Text> : null}
@@ -192,7 +192,7 @@ function CapabilityPdf({ organization, capability }: { organization: AtlasOrgani
             <View style={styles.paleCard}>
               <Text style={styles.eyebrow}>What supports this</Text>
               <ProfileRow label="Organization" value={organization.name} />
-              <ProfileRow label="Source support" value={evidenceStrengthLabel(capability.sourceConfidence)} />
+              <ProfileRow label="Public evidence" value={evidenceStrengthLabel(capability.sourceConfidence)} />
               <ProfileRow label="TRL" value={capability.technologyReadinessLevel} />
               <ProfileRow label="Maturity" value={capability.maturity} />
               <ProfileRow label="Commercial availability" value={capability.commercialAvailability} />
@@ -255,7 +255,7 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
                 ) : null}
                 {selectedCapability ? <View style={styles.section}>
                   <Text style={styles.eyebrow}>Potential mission and demand connections</Text>
-                  <Text style={styles.sectionTitle}>Where It Fits</Text>
+                  <Text style={styles.sectionTitle}>Where this technology may help</Text>
                   {alignments.map((match) => (
                     <View key={match.id} style={styles.derivedCard} wrap={false}>
                       <Text style={{ fontFamily: "Helvetica-Bold" }}>{"missionArea" in match ? match.missionArea.name : match.demandTitle}</Text>
@@ -277,7 +277,7 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
                   <ProfileRow label="Organization" value={organization.name} />
                   <ProfileRow label="Organization type" value={organization.entityKind.replaceAll("_", " ")} />
                   <ProfileRow label="Headquarters" value={organization.primaryLocation?.name} />
-                  <ProfileRow label="Source support" value={evidenceStrengthLabel(selectedCapability?.sourceConfidence ?? organization.sourceConfidence)} />
+                  <ProfileRow label="Public evidence" value={evidenceStrengthLabel(selectedCapability?.sourceConfidence ?? organization.sourceConfidence)} />
                   <ProfileRow label="Location accuracy" value={organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null} />
                 </View>
                 <Text style={styles.caveat}>Public-source profile. Unknown fields are omitted; analyst assessments are labelled.</Text>

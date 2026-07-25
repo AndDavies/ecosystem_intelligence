@@ -33,4 +33,25 @@ describe("demand signal administration", () => {
     expect(relationshipMigration).toContain("delete from public.demand_source_issuers");
     expect(relationshipMigration).not.toContain("delete from public.demand_requirements");
   });
+
+  it("requires inspectable source evidence before publication", async () => {
+    const [editor, action, migration, rlsMigration] = await Promise.all([
+      readFile(path.resolve("src/components/atlas/demand-signal-editor.tsx"), "utf8"),
+      readFile(path.resolve("src/lib/actions/atlas-demand-signals.ts"), "utf8"),
+      readFile(path.resolve("supabase/migrations/20260725134915_verify_public_demand_sources.sql"), "utf8"),
+      readFile(path.resolve("supabase/migrations/20260725140133_enforce_verified_demand_source_rls.sql"), "utf8")
+    ]);
+    expect(editor).toContain("Relevant source passage");
+    expect(editor).toContain("I reviewed this released public source.");
+    expect(action).toContain("sourceVerified: z.literal(true)");
+    expect(migration).toContain("sourceVerified', 'false') <> 'true");
+    expect(migration).toContain("source_evidence_snippet_id");
+    expect(migration).toContain("source_locator");
+    expect(migration).toContain("field_citations");
+    expect(migration).not.toContain("delete from public.demand_requirements");
+    expect(rlsMigration).toContain('create policy "published demand sources are readable"');
+    expect(rlsMigration).toContain("source_verified_at is not null");
+    expect(rlsMigration).toContain("evidence_record.public_approved");
+    expect(rlsMigration).toContain('create policy "approved published matches are readable"');
+  });
 });

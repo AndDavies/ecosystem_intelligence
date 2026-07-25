@@ -5,7 +5,7 @@ import { BookmarkPlus, Download, ExternalLink } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
-import { assessmentConfidenceLabel, evidenceStrengthLabel, publicSourceCountLabel } from "@/lib/atlas/presentation";
+import { evidenceStrengthLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
 import { absoluteUrl } from "@/lib/site";
 import { formatDate, toTitleCase } from "@/lib/utils";
@@ -119,14 +119,14 @@ function PublicCapabilityPage({
             </div>
           </PublicCard>
 
-          {hasPublishedAlignment ? <PublicCard title="Where It Fits" eyebrow="See the clearest reason to engage">
+          {hasPublishedAlignment ? <PublicCard title={publicLanguage.technologyDemand} eyebrow="See the clearest reason to explore a conversation">
             {capability.missionMatches.length ? (
               <div className="space-y-3">
                 {capability.missionMatches.map((match) => (
                   <article key={match.id} className="rounded-md border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] p-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <Link href={`/?mission=${match.missionArea.slug}`} className="text-sm font-bold text-[var(--atlas-amber)] no-underline hover:underline">{match.missionArea.name}</Link>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--atlas-amber)]">{assessmentConfidenceLabel(match.confidence)} assessment confidence</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--atlas-amber)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>
                     </div>
                     <p className="mt-2 text-xs leading-5 text-[var(--atlas-amber)]">{match.alignmentSummary}</p>
                   </article>
@@ -144,7 +144,7 @@ function PublicCapabilityPage({
                 ))}
               </div>
             ) : null}
-            <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">These connections are interpretations based on public sources. They are not procurement eligibility, endorsement, or classified demand.</p>
+            <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{publicLanguage.demandCaveat}</p>
           </PublicCard> : null}
         </div>
 
@@ -165,7 +165,7 @@ function PublicCapabilityPage({
           </PublicCard>
           <PublicCard title="How well this is supported" eyebrow="What supports this profile">
             <dl className="grid gap-3 text-xs">
-              <div><dt className="text-[var(--atlas-muted)]">Source support</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
+              <div><dt className="text-[var(--atlas-muted)]">Public evidence</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
               <div><dt className="text-[var(--atlas-muted)]">Last verified</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{formatDate(capability.lastReviewedAt)}</dd></div>
               <div><dt className="text-[var(--atlas-muted)]">Technology areas</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{capability.technicalDomains.map((domain) => domain.name).join(", ") || "Not yet mapped"}</dd></div>
             </dl>

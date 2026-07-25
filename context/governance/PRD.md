@@ -3,13 +3,15 @@
 Status: active product requirements
 Last updated: 2026-07-25
 
+Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
+
 ## Product summary
 
 True North Map is the public brand for this free, English-language ecosystem intelligence and mapping service at `https://truenorthmap.ca`. It maps Canada's defence and dual-use ecosystem and helps users move from a region or mission problem to relevant organizations, review the public evidence behind each profile, understand current coverage gaps, and preserve useful records in a private Working List.
 
 The primary journey is:
 
-> Place or public need -> relevant organizations -> technology or offering -> Where It Fits -> Working List or export
+> Place or released public need -> relevant organizations -> technology or offering -> where this technology may help -> Working List or export
 
 The product combines public mapping, decision-useful organization profiles, public Canadian and allied demand signals, and a review-first research pipeline. Agents and deterministic comparisons can stage research suggestions but cannot publish them.
 
@@ -72,7 +74,7 @@ The map must not pad thin regions with synthetic organizations. Every public org
 
 ### Facts and analysis remain separate
 
-Source-backed profile facts and reviewed “Where It Fits” assessments must be visibly distinct. A public-demand assessment is not procurement eligibility, endorsement, or classified demand.
+Source-backed facts, True North Map assessments, and coverage gaps must be visibly distinct. Every public Demand Signal begins with a released public source and an inspectable supporting passage. Technology-to-demand connections are human-reviewed assessments, not procurement eligibility, endorsement, customer interest, or classified demand.
 
 ### Unknown means unknown
 
@@ -96,7 +98,7 @@ the atlas can grow to thousands of records without silently omitting later
 pages from the national view.
 
 Selecting a marker or table row opens one compact organization preview with a
-verified capability, source count, evidence strength or assessment confidence,
+verified capability, source count, public-evidence strength or our assessment,
 last-verified status, and explicit actions to open the full profile, save it, or
 inspect sources. Marker selection never
 publishes, infers, or invents additional facts.
@@ -112,10 +114,11 @@ Automated research can create leads and candidate changes. Only an explicit huma
 | `/` | National ecosystem map with natural-language discovery, structured filters, synchronized map, and evidence table |
 | `/regions/[slug]` | Regional counts, published organizations, reviewed clusters, and explicit gaps |
 | `/organizations` | Published organization directory |
-| `/organizations/[slug]` | Organization profile with technology or offerings, public contact paths, “Where It Fits,” and evidence |
-| `/capabilities/[slug]` | Technology profile with features, uses, maturity, “Where It Fits,” and evidence |
-| `/demand` | Public demand statement index |
-| `/demand/[slug]` | Requirement detail, desired end state, matches, gaps, caveats, and authoritative source |
+| `/organizations/[slug]` | Organization profile with technology or offerings, public contact paths, where the technology may help, and evidence |
+| `/capabilities/[slug]` | Technology profile with features, uses, maturity, where the technology may help, and evidence |
+| `/demand` | Released public needs and reviewed Canadian technology connections |
+| `/demand/[slug]` | Public need, desired outcome, exact source passage, reviewed assessments, gaps, and caveats |
+| `/how-it-works` | Five-step public journey from map discovery through evidence, released needs, reviewed assessments, and conversation |
 | `/account` | Authenticated identity, Working Lists, connection and contribution status, sign-out, and private-data controls |
 | `/collections` | Authenticated private Working Lists |
 | `/collections/[id]` | Saved organization and capability shortlist with lookbook export |

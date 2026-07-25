@@ -52,7 +52,7 @@ export function OrganizationCard({
         <span
           className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.06em] ring-1 ${evidenceToneClass[organization.sourceConfidence]}`}
         >
-          {evidenceStrengthLabel(organization.sourceConfidence)} source support
+          {evidenceStrengthLabel(organization.sourceConfidence)} public evidence
         </span>
       </div>
 

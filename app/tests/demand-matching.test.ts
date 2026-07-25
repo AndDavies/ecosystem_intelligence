@@ -29,7 +29,8 @@ const demand = {
   slug: "persistent-undersea-awareness",
   title: "Persistent undersea awareness",
   problemStatement: "Operators need autonomous underwater surveillance and detection across maritime approaches.",
-  desiredEndState: "Persistent sensing from autonomous undersea systems."
+  desiredEndState: "Persistent sensing from autonomous undersea systems.",
+  source: { isSourceVerified: true }
 } as unknown as AtlasDemandRequirement;
 
 describe("review-first demand matching", () => {
@@ -48,6 +49,11 @@ describe("review-first demand matching", () => {
     const unrelated = { ...demand, id: "40000000-0000-4000-8000-000000000002", title: "Office procurement", problemStatement: "Teams need better furniture purchasing.", desiredEndState: "Faster office fit-outs." };
     expect(suggestDemandMatches([organization], [unrelated])).toHaveLength(0);
     expect(suggestDemandMatches([organization], [demand], new Set([`${organization.capabilities[0].id}:${demand.id}`]))).toHaveLength(0);
+  });
+
+  it("excludes a public need until its released source is verified", () => {
+    const unverified = { ...demand, source: { ...demand.source, isSourceVerified: false } } as AtlasDemandRequirement;
+    expect(suggestDemandMatches([organization], [unverified])).toHaveLength(0);
   });
 
   it("requires the technology to share the demand title's mission anchors", () => {

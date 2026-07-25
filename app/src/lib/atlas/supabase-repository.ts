@@ -33,7 +33,7 @@ const atlasColumns = {
   missionMatches: "id, capability_id, mission_area_id, alignment_summary, match_type, confidence",
   clusters: "id, slug, name, summary, region_slug, cluster_basis",
   capabilityClusters: "ecosystem_cluster_id, capability_id",
-  demandSources: "id, source_id, slug, title, publisher, published_on, classification_label, summary, source_kind, commitment_level",
+  demandSources: "id, source_id, slug, title, publisher, published_on, classification_label, summary, source_kind, commitment_level, source_evidence_snippet_id, source_verified_at, source_verified_by",
   demandRequirements: "id, demand_source_id, slug, title, problem_statement, desired_end_state, public_caveat, display_order",
   demandMatches: "id, capability_id, demand_requirement_id, alignment_summary, rationale, match_type, confidence",
   programs: "id, slug, name, program_type",
@@ -41,7 +41,7 @@ const atlasColumns = {
   fundingEvents: "id, organization_id, event_type, announced_on, amount_value, amount_currency, disclosed_summary",
   mediaAssets: "id, organization_id, asset_type, storage_path, source_url, source_visibility, attribution_text, approval_status, publication_status, created_at",
   sources: "id, title, canonical_url, publisher, source_type, published_at",
-  evidence: "id, source_id, excerpt",
+  evidence: "id, source_id, excerpt, source_locator",
   citations: "id, entity_type, entity_id, field_name, evidence_snippet_id"
 } as const;
 
@@ -490,7 +490,15 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
   demandSourceRows.forEach((row) => {
     const publicSource = sourceById.get(asString(row.source_id));
     const sourceUrl = publicSource ? asNullableString(publicSource.canonical_url) : null;
-    if (!sourceUrl) return;
+    const sourceEvidence = evidenceById.get(asString(row.source_evidence_snippet_id));
+    const isSourceVerified = Boolean(
+      sourceUrl
+      && sourceEvidence
+      && asString(sourceEvidence.source_id) === asString(row.source_id)
+      && asNullableString(row.source_verified_at)
+      && asNullableString(row.source_verified_by)
+    );
+    if (!sourceUrl || !sourceEvidence || !isSourceVerified) return;
     demandSourceMap.set(asString(row.id), {
       id: asString(row.id),
       slug: asString(row.slug),
@@ -501,7 +509,11 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       summary: asString(row.summary),
       sourceUrl,
       sourceKind: asNullableString(row.source_kind),
-      commitmentLevel: asNullableString(row.commitment_level)
+      commitmentLevel: asNullableString(row.commitment_level),
+      sourceLocator: asNullableString(sourceEvidence.source_locator),
+      sourceExcerpt: asString(sourceEvidence.excerpt),
+      sourceVerifiedAt: asString(row.source_verified_at),
+      isSourceVerified
     });
   });
 

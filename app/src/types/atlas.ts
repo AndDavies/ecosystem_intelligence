@@ -160,6 +160,10 @@ export interface AtlasDemandSource {
   sourceUrl: string;
   sourceKind?: string | null;
   commitmentLevel?: string | null;
+  sourceLocator: string | null;
+  sourceExcerpt: string;
+  sourceVerifiedAt: string;
+  isSourceVerified: boolean;
 }
 
 export interface AtlasDemandRequirement {

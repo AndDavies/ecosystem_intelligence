@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ExternalLink, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
-import { assessmentConfidenceLabel } from "@/lib/atlas/presentation";
+import { evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation";
 import { getAtlasDemandBySlug } from "@/lib/atlas/repository";
 
 export const revalidate = 300;
@@ -30,7 +30,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
     <PublicPageShell
       eyebrow={`Public demand signal · ${demand.source.publisher}`}
       title={demand.title}
-      description={demand.problemStatement}
+      description={demand.source.summary}
       backHref="/demand"
       backLabel="All demand signals"
       actions={
@@ -46,10 +46,13 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-5">
-          <PublicCard title="What success looks like" eyebrow="Published outcome">
+          <PublicCard title="What needs to change" eyebrow={publicLanguage.sourceFact}>
+            <p className="text-sm leading-6 text-[var(--atlas-muted)]">{demand.problemStatement}</p>
+          </PublicCard>
+          <PublicCard title="What success looks like" eyebrow={publicLanguage.sourceFact}>
             <p className="text-sm leading-6 text-[var(--atlas-muted)]">{demand.desiredEndState}</p>
           </PublicCard>
-          <PublicCard title="Canadian technologies worth a closer look" eyebrow={`${demand.matches.length} reviewed ${demand.matches.length === 1 ? "match" : "matches"}`}>
+          <PublicCard title="Organizations with technology that may be relevant" eyebrow={`${demand.matches.length} reviewed ${demand.matches.length === 1 ? "assessment" : "assessments"}`}>
             {demand.matches.length ? (
               <div className="divide-y divide-[var(--atlas-border)]">
                 {demand.matches.map(({ organization, capability, match }) => (
@@ -59,15 +62,20 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
                         <Link href={`/organizations/${organization.slug}`} className="text-sm font-bold text-[var(--atlas-primary)] no-underline hover:underline">{organization.name}</Link>
                         <Link href={`/capabilities/${capability.slug}`} className="mt-1 block text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:underline">{capability.name}</Link>
                       </div>
-                      <span className="w-fit rounded bg-[var(--atlas-primary-soft)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-primary)]">{assessmentConfidenceLabel(match.confidence)} fit confidence</span>
+                      <span className="w-fit rounded bg-[var(--atlas-primary-soft)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-primary)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>
                     </div>
-                    <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">{match.alignmentSummary}</p>
+                    <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Why this may be relevant</p>
+                    <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">{match.alignmentSummary}</p>
+                    <div className="mt-3 rounded-xl border border-[var(--atlas-border)] bg-white/70 p-3">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">What supports this assessment</p>
+                      {match.citations.length ? <EvidenceList citations={match.citations} /> : <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">The reviewed technology profile and released public need support this assessment. Open both records before acting.</p>}
+                    </div>
                   </article>
                 ))}
               </div>
             ) : <EmptyCoverage title="No reviewed technology match is published yet" detail="This public problem remains an active research target. A technology will only appear here after a person reviews the evidence and publishes the connection." />}
           </PublicCard>
-          <PublicCard title="Known gaps and caveats" eyebrow="Coverage status">
+          <PublicCard title="What remains unknown" eyebrow={publicLanguage.coverageGap}>
             <ul className="space-y-2 text-xs leading-5 text-[var(--atlas-muted)]">
               <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-coral)]" />An empty result means the research is incomplete, not that Canada lacks relevant technology.</li>
               <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-coral)]" />Public statements do not establish procurement timing, budgets, eligibility, or endorsement.</li>
@@ -77,7 +85,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
         </div>
 
         <aside className="space-y-5">
-          <PublicCard title="Where this signal comes from" eyebrow={demand.source.classificationLabel}>
+          <PublicCard title="Where this public need comes from" eyebrow={publicLanguage.sourceFact}>
             <dl className="grid gap-3 text-xs">
               <div><dt className="text-[var(--atlas-muted)]">Publisher</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{demand.source.publisher}</dd></div>
               {demand.source.sourceKind ? <div><dt className="text-[var(--atlas-muted)]">Signal type</dt><dd className="mt-1 font-semibold capitalize text-[var(--atlas-ink-soft)]">{demand.source.sourceKind.replaceAll("_", " ")}</dd></div> : null}
@@ -86,6 +94,10 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
               <div><dt className="text-[var(--atlas-muted)]">Published</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{demand.source.publishedOn ?? "Date not published"}</dd></div>
             </dl>
             <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{demand.source.summary}</p>
+            <div className="mt-4 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4">
+              <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Relevant passage{demand.source.sourceLocator ? ` · ${demand.source.sourceLocator}` : ""}</p>
+              <blockquote className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{demand.source.sourceExcerpt}</blockquote>
+            </div>
           </PublicCard>
           <PublicCard title="Evidence & sources" eyebrow="Read the public record">
             <EvidenceList citations={demand.citations} />

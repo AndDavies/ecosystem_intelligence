@@ -29,6 +29,9 @@ const demandSignalEditSchema = z.object({
     summary: z.string().trim().min(40).max(5000),
     sourceKind: z.enum(["strategic_policy", "capability_plan", "innovation_challenge", "funding_program", "procurement_notice", "award_or_contract", "official_problem_statement"]),
     commitmentLevel: z.enum(["directional", "programmatic", "procurement"]),
+    sourceLocator: z.string().trim().min(3).max(500),
+    sourceExcerpt: z.string().trim().min(40).max(2000),
+    sourceVerified: z.literal(true),
     requirements: z.array(demandRequirementEditSchema).min(1).max(50)
   })
 });

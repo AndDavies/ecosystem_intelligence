@@ -30,8 +30,8 @@ export default async function DemandIndexPage({
   return (
     <PublicPageShell
       eyebrow="Start with the problem"
-      title="Public demand signals"
-      description="See the problems governments and allies have made public, then explore Canadian technologies connected through a reviewed assessment. Public signals provide context; they are not procurement opportunities."
+      title="What public needs have been released, and where might Canadian technology help?"
+      description="Follow released needs from governments, armed forces, programs, and allied organizations. Then see the Canadian technologies a person has reviewed against that public record."
     >
       {totalMatches === 0 ? (
         <div className="mb-5 flex items-start gap-3 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-4 py-4 text-sm leading-6 text-[var(--atlas-primary)]">
@@ -41,7 +41,7 @@ export default async function DemandIndexPage({
       ) : null}
       <div className="mb-5 flex items-start gap-3 rounded-lg border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
         <ShieldAlert className="mt-0.5 size-4 shrink-0" />
-        <p>Demand records and future mappings are based on published sources. They are not procurement eligibility, endorsement, customer interest, classified demand, or a formal opportunity.</p>
+        <p>Every Demand Signal starts with a released public source. A connection to Canadian technology is our reviewed assessment, not procurement eligibility, endorsement, customer interest, classified demand, or a formal opportunity.</p>
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
         {directory.items.map((demand) => (
@@ -54,13 +54,14 @@ export default async function DemandIndexPage({
             <h2 className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">{demand.title}</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{demand.problemStatement}</p>
             <div className="mt-auto pt-5">
-              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matches.length} reviewed technology {demand.matches.length === 1 ? "match" : "matches"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment under review"}</span></div>
-              <Link href={`/demand/${demand.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">See the problem and potential fits <ArrowRight className="size-3.5" /></Link>
+              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matches.length} reviewed technology {demand.matches.length === 1 ? "connection" : "connections"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment not stated"}</span></div>
+              <Link href={`/demand/${demand.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">See the public need and relevant technology <ArrowRight className="size-3.5" /></Link>
             </div>
           </PublicCard>
         ))}
       </div>
       <PaginationNav path="/demand" page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="public demand signals" />
+      <div className="mt-6 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-5 py-4 text-sm text-[var(--atlas-muted)]">Not sure how sources become assessments? <Link href="/how-it-works" className="font-bold text-[var(--atlas-primary)]">See how True North Map works</Link>.</div>
     </PublicPageShell>
   );
 }

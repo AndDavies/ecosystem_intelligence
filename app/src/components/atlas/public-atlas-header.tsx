@@ -12,6 +12,7 @@ const navigation = [
   { href: "/regions", label: "Regions", match: (pathname: string) => pathname.startsWith("/regions") },
   { href: "/organizations", label: "Organizations", match: (pathname: string) => pathname.startsWith("/organizations") },
   { href: "/briefs", label: "Defence Briefs", match: (pathname: string) => pathname.startsWith("/briefs") },
+  { href: "/how-it-works", label: "How It Works", match: (pathname: string) => pathname.startsWith("/how-it-works") },
   { href: "/about", label: "About", match: (pathname: string) => pathname.startsWith("/about") || pathname.startsWith("/methodology") }
 ];
 
@@ -65,7 +66,7 @@ export function PublicAtlasHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex h-11 items-center rounded-[15px] px-5 text-[14px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline",
+                  "relative flex h-11 items-center rounded-[15px] px-3 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline xl:px-4 xl:text-[14px]",
                   active && "bg-[var(--atlas-ink)] text-white hover:bg-[var(--atlas-ink)] hover:text-white"
                 )}
                 aria-current={active ? "page" : undefined}

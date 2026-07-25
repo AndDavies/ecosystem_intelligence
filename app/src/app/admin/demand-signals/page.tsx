@@ -17,18 +17,27 @@ export default async function AdminDemandSignalsPage({ searchParams }: { searchP
     supabase.from("demand_issuers").select("id, name, jurisdiction").eq("publication_status", "published").order("name"),
     supabase.from("demand_source_issuers").select("demand_source_id, demand_issuer_id, issuer_role").eq("issuer_role", "issuer")
   ]);
+  const evidenceIds = ((sources ?? []) as Row[]).map((source) => String(source.source_evidence_snippet_id ?? "")).filter(Boolean);
+  const { data: evidenceSnippets } = evidenceIds.length
+    ? await supabase.from("evidence_snippets").select("id, excerpt, source_locator").in("id", evidenceIds)
+    : { data: [] as Row[] };
   const canonicalUrlById = new Map(((canonicalSources ?? []) as Row[]).map((source) => [String(source.id), String(source.canonical_url ?? "")]));
   const issuerIdBySourceId = new Map(((sourceIssuers ?? []) as Row[]).map((relationship) => [String(relationship.demand_source_id), String(relationship.demand_issuer_id)]));
+  const evidenceById = new Map(((evidenceSnippets ?? []) as Row[]).map((evidence) => [String(evidence.id), evidence]));
   const issuerOptions: DemandIssuerOption[] = ((issuers ?? []) as Row[]).map((issuer) => ({ id: String(issuer.id), name: String(issuer.name), jurisdiction: String(issuer.jurisdiction) }));
-  const drafts: DemandSignalDraft[] = ((sources ?? []) as Row[]).map((source) => ({
+  const drafts: DemandSignalDraft[] = ((sources ?? []) as Row[]).map((source) => {
+    const evidence = evidenceById.get(String(source.source_evidence_snippet_id ?? ""));
+    return ({
     id: String(source.id), issuerId: issuerIdBySourceId.get(String(source.id)) ?? "", slug: String(source.slug), title: String(source.title), publisher: String(source.publisher),
     canonicalUrl: canonicalUrlById.get(String(source.source_id)) ?? "", publishedOn: String(source.published_on ?? ""), summary: String(source.summary),
     sourceKind: String(source.source_kind), commitmentLevel: String(source.commitment_level),
+    sourceLocator: String(evidence?.source_locator ?? ""), sourceExcerpt: String(evidence?.excerpt ?? ""),
+    sourceVerified: Boolean(source.source_verified_at && source.source_verified_by && evidence),
     requirements: ((requirements ?? []) as Row[]).filter((requirement) => requirement.demand_source_id === source.id).map((requirement) => ({
       id: String(requirement.id), slug: String(requirement.slug), title: String(requirement.title), problemStatement: String(requirement.problem_statement),
       desiredEndState: String(requirement.desired_end_state), publicCaveat: String(requirement.public_caveat), displayOrder: Number(requirement.display_order)
     }))
-  }));
+  }); });
 
   return (
     <PublicPageShell variant="admin" eyebrow="Private editorial workspace" title="Manage demand signals" description="Keep public problem statements accurate, useful, and connected to every reviewed technology match." backHref="/admin" backLabel="Admin home">

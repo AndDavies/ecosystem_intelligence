@@ -15,6 +15,15 @@ export interface AtlasPublicContact {
   linkedInUrl: string | null;
 }
 
+export const publicLanguage = {
+  sourceFact: "Source-backed fact",
+  assessment: "Our assessment",
+  coverageGap: "Coverage gap",
+  evidenceStrength: "How strong is the public evidence?",
+  technologyDemand: "Where this technology may help",
+  demandCaveat: "This is a reviewed public-source assessment. It is not procurement eligibility, endorsement, customer interest, or classified demand."
+} as const;
+
 export function assessmentConfidenceLabel(confidence: AtlasConfidence) {
   if (confidence === "high") return "High";
   if (confidence === "moderate") return "Moderate";

@@ -19,7 +19,7 @@ const subscribedKey = "ecosystem-intelligence-updates-subscribed";
 const dismissForMs = 30 * 24 * 60 * 60 * 1000;
 
 function pathIsPublicBeta(pathname: string) {
-  return pathname === "/" || ["/regions", "/organizations", "/capabilities", "/demand", "/about", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
+  return pathname === "/" || ["/regions", "/organizations", "/capabilities", "/demand", "/briefs", "/about", "/how-it-works", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
 }
 
 export function PublicBetaExperience() {

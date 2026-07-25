@@ -15,7 +15,6 @@ import {
 import {
   alignmentSubject,
   alignmentTypeLabel,
-  assessmentConfidenceLabel,
   evidenceStrengthLabel,
   locationAccuracyLabel
 } from "@/lib/atlas/presentation";
@@ -206,7 +205,7 @@ export function LookbookPeek({
         <span className={cn(
           "rounded-full px-2.5 py-1",
           confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
-        )}>{alignment ? `${assessmentConfidenceLabel(confidence)} fit confidence` : `${evidenceStrengthLabel(confidence)} source support`}</span>
+        )}>{alignment ? `${evidenceStrengthLabel(confidence)} public evidence` : `${evidenceStrengthLabel(confidence)} public evidence`}</span>
         <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
         <span className={cn(
           "rounded-full px-2.5 py-1",
@@ -342,11 +341,11 @@ export function MobileOrganizationCard({
 
           <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[var(--atlas-border)] pt-4 text-xs">
             <div>
-              <span className="block text-[10px] text-[var(--atlas-muted)]">{alignment ? "Fit confidence" : "Source support"}</span>
+              <span className="block text-[10px] text-[var(--atlas-muted)]">{alignment ? "Our assessment" : "Public evidence"}</span>
               <span className={cn(
                 "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
                 confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
-              )}>{alignment ? assessmentConfidenceLabel(confidence) : evidenceStrengthLabel(confidence)}</span>
+              )}>{evidenceStrengthLabel(confidence)}</span>
             </div>
             <div>
               <span className="block text-[10px] text-[var(--atlas-muted)]">Location accuracy</span>
@@ -487,11 +486,11 @@ export function OrganizationRows({
                 <h3 id={`posture-${organization.id}`} className="text-xs font-bold text-[var(--atlas-ink)]">What supports this</h3>
                 <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 text-xs lg:grid-cols-1">
                   <div>
-                    <dt className="text-[10px] text-[var(--atlas-muted)]">{alignment ? "Fit confidence" : "Source support"}</dt>
+                    <dt className="text-[10px] text-[var(--atlas-muted)]">{alignment ? "Our assessment" : "Public evidence"}</dt>
                     <dd className={cn(
                       "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
                       confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
-                    )}>{alignment ? assessmentConfidenceLabel(confidence) : evidenceStrengthLabel(confidence)}</dd>
+                    )}>{evidenceStrengthLabel(confidence)}</dd>
                   </div>
                   <div>
                     <dt className="text-[10px] text-[var(--atlas-muted)]">Location accuracy</dt>

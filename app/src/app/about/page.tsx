@@ -198,7 +198,7 @@ export default function AboutPage() {
             <p className="text-sm font-extrabold text-[var(--atlas-ink)]">Independent, public-source, and built to improve.</p>
             <p className="mt-2 max-w-4xl text-xs leading-6 text-[var(--atlas-muted)] sm:text-sm">True North Map is not an official government, military, procurement, or industry-association directory. Profiles and assessments use reviewed public evidence. They do not indicate eligibility, endorsement, classified demand, or a formal opportunity.</p>
           </div>
-          <Link href="/methodology" className="inline-flex items-center gap-2 text-sm font-bold text-[var(--atlas-primary)] underline">See how review works <ArrowRight className="size-4" /></Link>
+          <div className="flex flex-wrap gap-4"><Link href="/how-it-works" className="inline-flex items-center gap-2 text-sm font-bold text-[var(--atlas-primary)] underline">See how it works <ArrowRight className="size-4" /></Link><Link href="/methodology" className="inline-flex items-center gap-2 text-sm font-bold text-[var(--atlas-primary)] underline">See how review works <ArrowRight className="size-4" /></Link></div>
         </div>
       </section>
     </PublicPageShell>

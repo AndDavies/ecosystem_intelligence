@@ -26,6 +26,9 @@ export type DemandSignalDraft = {
   summary: string;
   sourceKind: string;
   commitmentLevel: string;
+  sourceLocator: string;
+  sourceExcerpt: string;
+  sourceVerified: boolean;
   requirements: DemandRequirementDraft[];
 };
 
@@ -47,6 +50,7 @@ export function DemandSignalEditor({ initial, issuers }: { initial?: DemandSigna
   const [signal, setSignal] = useState<DemandSignalDraft>(initial ?? {
     id: "", issuerId: "", slug: "new-demand-signal", title: "", publisher: "", canonicalUrl: "", publishedOn: "", summary: "",
     sourceKind: "official_problem_statement", commitmentLevel: "directional",
+    sourceLocator: "", sourceExcerpt: "", sourceVerified: false,
     requirements: [{ id: "", slug: "new-demand-requirement", title: "", problemStatement: "", desiredEndState: "", publicCaveat: caveat, displayOrder: 1 }]
   });
 
@@ -75,6 +79,19 @@ export function DemandSignalEditor({ initial, issuers }: { initial?: DemandSigna
         <Field label="Commitment level" help="Directional signals describe a need; programmatic signals have a funded or structured pathway; procurement signals are active buying notices."><select className={fieldClass} value={signal.commitmentLevel} onChange={(event) => update("commitmentLevel", event.target.value)}><option value="directional">Directional</option><option value="programmatic">Programmatic</option><option value="procurement">Procurement</option></select></Field>
       </div>
       <Field label="Why this signal matters"><textarea className={areaClass} value={signal.summary} onChange={(event) => update("summary", event.target.value)} required minLength={40} /></Field>
+
+      <section className="rounded-lg border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
+        <h3 className="text-sm font-bold text-[var(--admin-ink)]">Verify the released public source</h3>
+        <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">Identify the exact passage that states the public need. This evidence appears on the public page and is required before publication.</p>
+        <div className="mt-4 grid gap-4">
+          <Field label="Where the need appears" help="Use a page, section, heading, paragraph, or document reference that another person can find."><input className={fieldClass} value={signal.sourceLocator} onChange={(event) => update("sourceLocator", event.target.value)} required minLength={3} placeholder="Page 12, Operational challenge" /></Field>
+          <Field label="Relevant source passage" help="Quote only the concise passage needed to support the public problem and outcome."><textarea className={areaClass} value={signal.sourceExcerpt} onChange={(event) => update("sourceExcerpt", event.target.value)} required minLength={40} /></Field>
+          <label className="flex items-start gap-3 rounded-md border border-[var(--admin-border)] bg-white p-3 text-xs leading-5 text-[var(--admin-ink-soft)]">
+            <input type="checkbox" className="mt-1 size-4 accent-[var(--admin-action)]" checked={signal.sourceVerified} onChange={(event) => setSignal((current) => ({ ...current, sourceVerified: event.target.checked }))} required />
+            <span><strong className="block text-[var(--admin-ink)]">I reviewed this released public source.</strong>The passage above supports the problem statement and outcome. It is not an inferred, private, or classified need.</span>
+          </label>
+        </div>
+      </section>
 
       <div className="space-y-4">
         {signal.requirements.map((requirement, index) => (

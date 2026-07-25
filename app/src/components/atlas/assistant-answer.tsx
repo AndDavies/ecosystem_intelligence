@@ -198,7 +198,7 @@ export function AssistantAnswer({
       ) : null}
 
       <div className="flex flex-col gap-3 border-t border-[var(--atlas-border)] px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <p className="flex max-w-3xl items-start gap-2 text-[11px] leading-5 text-[var(--atlas-muted)]"><ShieldCheck className="mt-0.5 size-3.5 shrink-0 text-[var(--atlas-primary)]" />Fit is a derived read from reviewed public records. It is not endorsement, eligibility, procurement guidance, or due diligence.</p>
+        <p className="flex max-w-3xl items-start gap-2 text-[11px] leading-5 text-[var(--atlas-muted)]"><ShieldCheck className="mt-0.5 size-3.5 shrink-0 text-[var(--atlas-primary)]" />Our assessment uses reviewed public records. It is not endorsement, eligibility, procurement guidance, or due diligence.</p>
         <div className="flex shrink-0 gap-2">
           <button type="button" onClick={() => trackBetaEvent("feedback", { mode: "assistant", rating: "helpful", outcome: answer.outcome })} className="atlas-secondary-button h-9 gap-2 px-3 text-xs"><ThumbsUp className="size-3.5" />Helpful</button>
           <button type="button" onClick={openBetaFeedback} className="atlas-secondary-button h-9 px-3 text-xs">Something is missing</button>
