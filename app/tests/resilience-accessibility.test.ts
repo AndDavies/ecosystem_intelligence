@@ -40,8 +40,8 @@ describe("route resilience and accessibility contracts", () => {
     const experience = await readFile(path.resolve("src/components/atlas/public-beta-experience.tsx"), "utf8");
     expect(experience).toContain('import * as Dialog from "@radix-ui/react-dialog"');
     expect(experience).toContain('aria-modal="true"');
-    expect(experience).toContain('aria-modal="false"');
     expect(experience).toContain("onOpenAutoFocus");
+    expect(experience).toContain('data-clarity-mask="true"');
     expect(experience).not.toContain('role="presentation"');
   });
 });

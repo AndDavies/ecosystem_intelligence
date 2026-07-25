@@ -22,6 +22,16 @@ The current product and operating system include:
 - Six project-local research skills of record: autonomous coordination, signal refresh, source discovery, candidate building, evidence mapping, and review stewardship.
 - A Monday 06:00 America/Halifax broad discovery run and a weekday 08:00 multi-source refresh run. Both stop at private review intake.
 - Production email separation across Zoho, MailerLite, Resend, and the Supabase consent ledger, with authenticated sending domains and signed lifecycle synchronization.
+- Phase 1 public-product hardening adds page-aware sharing for the map, organizations, technology, regions, public needs, and Defence Briefs; page-specific LinkedIn and X metadata; a centered consent-backed update prompt; and granular analytics choices. Google Analytics and Microsoft Clarity are independently optional, private routes are excluded, free-form inputs are masked, and the privacy page explains each provider and choice.
+
+## Phase 1 public-product hardening boundary
+
+- Supabase remains the authoritative subscriber-consent ledger and MailerLite remains the delivery surface. No second mailing database or campaign composer is introduced.
+- The update prompt waits for meaningful engagement, respects a 30-day dismissal, remains available on demand from the header and footer, and records affirmative consent before MailerLite synchronization.
+- Social-share controls preserve the current filtered map URL when sharing the map and use canonical URLs on record pages. Share actions are recorded as bounded product-learning events without storing social account data.
+- Vercel aggregate performance monitoring remains separate from optional Google product analytics and optional Microsoft experience diagnostics.
+- The uncapped national marker and discovery snapshot is deduplicated within each request instead of being written to one Next.js data-cache item. This avoids the platform 2 MB item limit as the corpus grows; smaller record-detail reads retain five-minute caching.
+- Clarity code is dormant unless `NEXT_PUBLIC_MICROSOFT_CLARITY_ID` is configured. When configured, it loads only after a separate visitor choice and never runs on account, administration, connection, sign-in, submission, or Working List routes.
 
 ## Research and enrichment lifecycle
 

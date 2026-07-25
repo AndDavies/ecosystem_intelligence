@@ -61,7 +61,7 @@ export function ContributionForm({
   }
 
   return (
-    <form onSubmit={submit} className="space-y-4">
+    <form onSubmit={submit} data-clarity-mask="true" className="space-y-4">
       {error ? <div className="rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]">{error}</div> : null}
       <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">Short subject<input name="subject" required minLength={3} maxLength={150} placeholder="Correct headquarters location" className="form-control h-10" /></label>
       <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">Details<textarea name="details" required minLength={10} maxLength={4000} rows={7} placeholder="Describe the claim or correction and identify the exact fields involved." className="form-control h-auto py-3" /></label>

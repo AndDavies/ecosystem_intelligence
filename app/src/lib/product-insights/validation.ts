@@ -56,7 +56,8 @@ export const betaEventNames = [
   "submission",
   "connection",
   "subscription",
-  "feedback"
+  "feedback",
+  "share"
 ] as const;
 
 export type BetaEventName = (typeof betaEventNames)[number];

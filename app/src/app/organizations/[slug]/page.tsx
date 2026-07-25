@@ -6,6 +6,7 @@ import { ArrowRight, BookmarkPlus, Building2, Download, ExternalLink, FileCheck2
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PublicShare } from "@/components/atlas/public-share";
 import {
   evidenceStrengthLabel,
   locationAccuracyLabel,
@@ -20,6 +21,7 @@ import {
 import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
 import { formatDate, toTitleCase } from "@/lib/utils";
 import { absoluteUrl } from "@/lib/site";
+import { socialMetadata } from "@/lib/seo/social";
 
 export const revalidate = 300;
 
@@ -34,7 +36,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const organization = await getAtlasOrganizationBySlug(slug);
   if (!organization) return { title: "Organization not found" };
-  return { title: organization.name, description: organization.description, alternates: { canonical: `/organizations/${organization.slug}` }, openGraph: { title: organization.name, description: organization.description, url: `/organizations/${organization.slug}`, type: "profile" } };
+  const path = `/organizations/${organization.slug}`;
+  const social = socialMetadata({ title: organization.name, description: organization.description, path, eyebrow: "Canadian organization", detail: organization.primaryLocation?.name });
+  return { title: organization.name, description: organization.description, alternates: { canonical: path }, ...social, openGraph: { ...social.openGraph, type: "profile" } };
 }
 
 export default async function OrganizationDossierPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -74,6 +78,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
           <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(`/organizations/${organization.slug}`)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             <BookmarkPlus className="size-4" /> Add to Working List
           </Link>
+          <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} />
           <Link href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             <Download className="size-4" /> Download profile
           </Link>

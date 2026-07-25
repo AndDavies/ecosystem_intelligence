@@ -17,9 +17,9 @@ describe("public-beta validation", () => {
     const parsed = betaSignupSchema.parse({
       email: " Test@Example.ca ",
       consent: true,
-      consentText: "I agree to receive occasional True North Map public-beta updates.",
-      consentVersion: "public-beta-2026-07",
-      source: "public_beta_prompt",
+      consentText: "I agree to receive occasional True North Map updates.",
+      consentVersion: "updates-2026-07-v2",
+      source: "updates_dialog",
       cohort: "launch-week",
       sessionId,
       searchId,
@@ -36,9 +36,9 @@ describe("public-beta validation", () => {
     const parsed = betaSignupSchema.safeParse({
       email: "test@example.ca",
       consent: false,
-      consentText: "I agree to receive occasional True North Map public-beta updates.",
-      consentVersion: "public-beta-2026-07",
-      source: "public_beta_prompt",
+      consentText: "I agree to receive occasional True North Map updates.",
+      consentVersion: "updates-2026-07-v2",
+      source: "updates_dialog",
       landingPath: "/"
     });
     expect(parsed.success).toBe(false);
@@ -62,6 +62,7 @@ describe("public-beta validation", () => {
     expect(betaEventSchema.safeParse({ eventName: "page_view", contextPath: "/organizations/example", sessionId, searchId, metadata: {} }).success).toBe(false);
     expect(betaEventSchema.safeParse({ eventName: "result_select", contextPath: "/", metadata: {} }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "connection", contextPath: "/connect/example", metadata: {} }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ eventName: "share", contextPath: "/briefs/example", metadata: { method: "linkedin" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "email_address", contextPath: "/", metadata: {} }).success).toBe(false);
   });
 

@@ -11,11 +11,14 @@ import {
   Waves
 } from "lucide-react";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
+import { socialMetadata } from "@/lib/seo/social";
 
 export const metadata = {
   title: "Why True North Map Exists",
   description:
-    "Veteran and Combat Systems Engineering Officer Andrew Davies created True North Map to make Canadian defence and dual-use capability easier to see, understand, and connect."
+    "Veteran and Combat Systems Engineering Officer Andrew Davies created True North Map to make Canadian defence and dual-use capability easier to see, understand, and connect.",
+  alternates: { canonical: "/about" },
+  ...socialMetadata({ title: "Why True North Map Exists", description: "The story behind a public map built to make Canadian defence and dual-use capability easier to see, understand, and connect.", path: "/about", eyebrow: "Built for a stronger Canadian ecosystem" })
 };
 
 const story = [

@@ -5,6 +5,7 @@ import { ArrowRight, Building2, Download, Layers3, MapPin } from "lucide-react";
 import { AtlasHeroArt } from "@/components/atlas/atlas-hero-art";
 import { OrganizationCard } from "@/components/atlas/organization-card";
 import { EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PublicShare } from "@/components/atlas/public-share";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { StatTile } from "@/components/ui/stat-tile";
@@ -12,13 +13,17 @@ import { clusterBasisLabel } from "@/lib/atlas/presentation";
 import { getRegionArt } from "@/lib/atlas/region-presentation";
 import { getAtlasRegionBySlug, getAtlasSnapshot } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
+import { socialMetadata } from "@/lib/seo/social";
 
 const ORGANIZATIONS_PER_PAGE = 12;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const result = await getAtlasRegionBySlug(slug);
-  return result ? { title: `${result.region.name} Ecosystem`, description: result.region.description, alternates: { canonical: `/regions/${result.region.slug}` }, openGraph: { title: `${result.region.name} Defence and Dual-Use Ecosystem`, description: result.region.description, url: `/regions/${result.region.slug}` } } : { title: "Region not found" };
+  if (!result) return { title: "Region not found", robots: { index: false, follow: false } };
+  const title = `${result.region.name} Defence and Dual-Use Ecosystem`;
+  const path = `/regions/${result.region.slug}`;
+  return { title: `${result.region.name} Ecosystem`, description: result.region.description, alternates: { canonical: path }, ...socialMetadata({ title, description: result.region.description, path, eyebrow: "Regional ecosystem", detail: `${result.region.organizationCount} published organizations` }) };
 }
 
 export default async function RegionPage({
@@ -75,6 +80,7 @@ export default async function RegionPage({
                     Export report
                   </Link>
                 ) : null}
+                <PublicShare title={`${region.name} Defence and Dual-Use Ecosystem`} description={region.description} path={`/regions/${region.slug}`} />
               </div>
             </div>
             <AtlasHeroArt

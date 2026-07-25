@@ -4,8 +4,10 @@ import { notFound } from "next/navigation";
 import { ExternalLink, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PublicShare } from "@/components/atlas/public-share";
 import { evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation";
 import { getAtlasDemandBySlug } from "@/lib/atlas/repository";
+import { socialMetadata } from "@/lib/seo/social";
 
 export const revalidate = 300;
 
@@ -18,7 +20,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const demand = await getAtlasDemandBySlug(slug);
-  return demand ? { title: demand.title, description: demand.problemStatement, alternates: { canonical: `/demand/${demand.slug}` }, openGraph: { title: demand.title, description: demand.problemStatement, url: `/demand/${demand.slug}` } } : { title: "Demand statement not found" };
+  if (!demand) return { title: "Demand statement not found", robots: { index: false, follow: false } };
+  const path = `/demand/${demand.slug}`;
+  return { title: demand.title, description: demand.problemStatement, alternates: { canonical: path }, ...socialMetadata({ title: demand.title, description: demand.problemStatement, path, eyebrow: "Public demand signal", detail: demand.source.publisher }) };
 }
 
 export default async function DemandPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -33,11 +37,12 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
       description={demand.source.summary}
       backHref="/demand"
       backLabel="All demand signals"
-      actions={
+      actions={<>
+        <PublicShare title={demand.title} description={demand.problemStatement} path={`/demand/${demand.slug}`} />
         <a href={demand.source.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-md bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white no-underline hover:bg-[var(--atlas-primary-hover)] hover:no-underline">
           Read the original source <ExternalLink className="size-4" />
         </a>
-      }
+      </>}
     >
       <div className="flex items-start gap-3 rounded-lg border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
         <ShieldAlert className="mt-0.5 size-4 shrink-0" />

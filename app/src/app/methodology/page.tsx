@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { socialMetadata } from "@/lib/seo/social";
 
 export const metadata = {
   title: "Methodology",
-  description: "How True North Map reviews Canadian organizations, technology, evidence, freshness, and public-source assessments."
+  description: "How True North Map reviews Canadian organizations, technology, evidence, freshness, and public-source assessments.",
+  alternates: { canonical: "/methodology" },
+  ...socialMetadata({ title: "How True North Map Reviews the Evidence", description: "See how Canadian organizations, technologies, public needs, sources, and assessments move through human review.", path: "/methodology", eyebrow: "Evidence and human review" })
 };
 
 const steps = [

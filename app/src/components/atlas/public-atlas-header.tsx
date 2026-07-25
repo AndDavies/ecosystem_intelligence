@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, ChevronUp, Menu, UserRound, X } from "lucide-react";
+import { Bell, ChevronUp, Menu, MessageSquareText, UserRound, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { openBetaUpdates } from "@/lib/product-insights/client";
+import { openBetaFeedback, openBetaUpdates } from "@/lib/product-insights/client";
 
 const navigation = [
   { href: "/", label: "Ecosystem Map", match: (pathname: string) => pathname === "/" },
@@ -130,6 +130,7 @@ export function PublicAtlasHeader() {
               );
             })}
             <button type="button" onClick={() => { openBetaUpdates(); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" />Get updates</button>
+            <button type="button" onClick={() => { openBetaFeedback(); setOpen(false); }} className="atlas-secondary-button inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><MessageSquareText className="size-4" />Give feedback</button>
             {authState === "checking" ? (
               <span className="rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 text-center text-sm font-semibold text-[var(--atlas-muted)]">Checking account…</span>
             ) : (

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Check, ExternalLink, Lightbulb, ShieldCheck, Target } from "lucide-react";
 import { BriefHero } from "@/components/atlas/brief-hero";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PublicShare } from "@/components/atlas/public-share";
 import { JsonLd } from "@/components/seo/json-ld";
 import { briefSectionId, getBriefKeyTakeaways, getBriefPresentation, getBriefReadingMinutes } from "@/lib/atlas/brief-presentation";
 import { getPublishedDefenceBriefBySlug, getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       section: presentation.topic,
       images: presentation.imageSrc ? [{ url: presentation.imageSrc, alt: presentation.imageAlt }] : undefined
     },
-    twitter: presentation.imageSrc ? { card: "summary_large_image", images: [presentation.imageSrc] } : undefined
+    twitter: { card: "summary_large_image", title: brief.seoTitle, description: brief.metaDescription, images: presentation.imageSrc ? [{ url: presentation.imageSrc, alt: presentation.imageAlt }] : undefined }
   };
 }
 
@@ -112,6 +113,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
                 <span>By <Link href="/about" className="font-bold text-[var(--atlas-primary)] underline">{brief.authorName}</Link></span>
                 <span aria-hidden="true">·</span>
                 <time dateTime={brief.updatedAt}>Reviewed {dateFormatter.format(new Date(brief.reviewedAt))}</time>
+                <PublicShare title={brief.title} description={brief.metaDescription} path={`/briefs/${brief.slug}`} className="ml-auto" />
               </div>
             </div>
             <BriefHero presentation={presentation} title={brief.title} priority compact className="h-[260px] min-w-0 rounded-none sm:h-[300px] lg:aspect-auto lg:h-full lg:min-h-[420px]" />

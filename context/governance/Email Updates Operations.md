@@ -28,6 +28,8 @@ Private consent ledger in production
 - Bounce, spam, deletion, and other delivery states remain separate from the local consent status.
 - Account deletion with the unsubscribe option records the withdrawal locally and attempts to suppress the MailerLite subscriber.
 - No public Data API role can read subscriber records.
+- The public signup is a centered, focus-managed dialog. It opens immediately when a visitor chooses `Get updates`, or once after sustained public-page engagement. It never uses exit-intent interception and respects a 30-day dismissal.
+- The signup and feedback forms are explicitly masked from optional experience-recording tools.
 
 ## Required server configuration
 
@@ -56,3 +58,5 @@ Build and send campaigns in MailerLite. Do not add an in-application campaign co
 If a paid newsletter or premium intelligence product is introduced later, keep commercial entitlement and billing outside the consent ledger. The mailing provider may segment delivery, but the production database must continue to record consent and withdrawals.
 
 Campaign sending is available through MailerLite. The monitored mailbox, verified sender, authenticated domain, lawful footer address, API token, delivery group, lifecycle webhook, and current subscriber reconciliation are complete. Sending remains a manual administrator action: test the campaign in Gmail and a non-Gmail client, verify its unsubscribe link and footer, then select only the `True North Map Updates` group.
+
+The existing MailerLite architecture remains appropriate for broader sharing. Do not build a second in-application campaign system or buy another provider plan merely for launch. Reassess the MailerLite tier only when the active subscriber count, monthly send volume, automated sequences, or audience segmentation exceed the current plan.

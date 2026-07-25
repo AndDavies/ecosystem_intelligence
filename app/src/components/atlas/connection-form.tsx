@@ -39,7 +39,7 @@ export function ConnectionForm({ organizationId, organizationName, defaultName }
   if (state === "success") return <div className="rounded-2xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-5 text-sm leading-6 text-[var(--atlas-primary)]"><CheckCircle2 className="mb-2 size-5" /><strong>Request received.</strong> Andrew will privately review the fit and, where appropriate, help coordinate a consent-based introduction. No introduction or endorsement is automatic.</div>;
 
   return (
-    <form onSubmit={submit} className="grid gap-4">
+    <form onSubmit={submit} data-clarity-mask="true" className="grid gap-4">
       {error ? <div role="alert" className="rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]">{error}</div> : null}
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Your name"><input name="requesterName" required minLength={2} maxLength={120} defaultValue={defaultName} className="form-control" /></Field>

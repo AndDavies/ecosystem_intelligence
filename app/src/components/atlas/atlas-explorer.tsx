@@ -36,6 +36,7 @@ import {
   SnapshotMetric
 } from "@/components/atlas/atlas-explorer-results";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
+import { PublicShare } from "@/components/atlas/public-share";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
 import {
   ATLAS_EXPLORER_PAGE_SIZE,
@@ -449,7 +450,10 @@ export function AtlasExplorer({
             </dl>
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--atlas-border)] pt-4">
               <span className="atlas-signal-pill">Updated {formatDate(generatedAt)}</span>
-              <button type="button" onClick={openBetaFeedback} className="hidden text-xs font-bold text-[var(--atlas-ink)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 sm:inline-flex">Tell us what is missing</button>
+              <div className="flex items-center gap-3">
+                <button type="button" onClick={openBetaFeedback} className="hidden text-xs font-bold text-[var(--atlas-ink)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 sm:inline-flex">Tell us what is missing</button>
+                <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, public needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" />
+              </div>
             </div>
           </div>
           <p className="flex items-start gap-3 rounded-[18px] border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-3 text-xs leading-5 text-[var(--atlas-muted)] sm:p-4">
@@ -465,7 +469,7 @@ export function AtlasExplorer({
             <div><p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Ask True North</p><p className="mt-1 text-sm text-[var(--atlas-muted)]">Describe what you need. See the best-supported fits, the evidence behind them, and what remains unknown.</p></div>
             {discovery?.quota ? <p className="text-[11px] font-semibold text-[var(--atlas-muted)]">{discovery.quota.remaining} of {discovery.quota.limit} questions remaining today</p> : null}
           </div>
-          <form onSubmit={submitDiscovery} role="search" aria-label="Search the Canadian ecosystem map">
+          <form onSubmit={submitDiscovery} role="search" aria-label="Search the Canadian ecosystem map" data-clarity-mask="true">
             <div className="relative grid gap-2 sm:block">
               <Search className="pointer-events-none absolute left-4 top-7 size-5 -translate-y-1/2 text-[var(--atlas-muted)] sm:top-1/2" aria-hidden="true" />
               <input

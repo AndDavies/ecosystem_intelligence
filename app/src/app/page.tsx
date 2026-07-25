@@ -6,13 +6,22 @@ import { absoluteUrl } from "@/lib/site";
 import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
 import { ATLAS_EXPLORER_PAGE_SIZE } from "@/lib/atlas/explorer-projection";
 import { getAtlasSnapshot, queryAtlasExplorer } from "@/lib/atlas/repository";
+import { socialMetadata } from "@/lib/seo/social";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "True North Map | Canada’s Defence and Dual-Use Ecosystem Map",
   description:
-    "Find Canadian defence and dual-use teams and technology, see where they fit, and inspect the public evidence behind every profile."
+    "Find Canadian defence and dual-use teams and technology, see where they fit, and inspect the public evidence behind every profile.",
+  alternates: { canonical: "/" },
+  ...socialMetadata({
+    title: "Canada is building more than most people can see.",
+    description: "Discover the companies, technologies, and public needs shaping Canada’s defence and dual-use ecosystem.",
+    path: "/",
+    eyebrow: "Canadian ecosystem map",
+    detail: "Follow the evidence, find the fit, and start the right conversation."
+  })
 };
 
 export default async function PublicAtlasPage({

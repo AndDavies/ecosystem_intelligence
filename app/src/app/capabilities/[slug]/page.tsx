@@ -5,9 +5,11 @@ import { BookmarkPlus, Download, ExternalLink } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PublicShare } from "@/components/atlas/public-share";
 import { evidenceStrengthLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
 import { absoluteUrl } from "@/lib/site";
+import { socialMetadata } from "@/lib/seo/social";
 import { formatDate, toTitleCase } from "@/lib/utils";
 
 export const revalidate = 300;
@@ -26,15 +28,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return { title: "Technology not found", robots: { index: false, follow: false } };
   }
 
+  const path = `/capabilities/${publicCapability.capability.slug}`;
+  const social = socialMetadata({ title: publicCapability.capability.name, description: publicCapability.capability.summary, path, eyebrow: "Canadian technology", detail: publicCapability.organization.name });
   return {
     title: publicCapability.capability.name,
     description: publicCapability.capability.summary,
-    alternates: { canonical: `/capabilities/${publicCapability.capability.slug}` },
-    openGraph: {
-      title: publicCapability.capability.name,
-      description: publicCapability.capability.summary,
-      url: `/capabilities/${publicCapability.capability.slug}`
-    }
+    alternates: { canonical: path },
+    ...social
   };
 }
 
@@ -87,6 +87,7 @@ function PublicCapabilityPage({
           <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             <Download className="size-4" /> Download profile
           </Link>
+          <PublicShare title={capability.name} description={capability.summary} path={`/capabilities/${capability.slug}`} />
           <Link href={`/organizations/${organization.slug}`} className="atlas-primary-button h-10 gap-2 px-4 text-xs">
             Meet {organization.name} <ExternalLink className="size-4" />
           </Link>

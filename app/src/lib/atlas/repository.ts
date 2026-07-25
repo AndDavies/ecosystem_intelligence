@@ -113,12 +113,6 @@ function buildRegions(snapshot: Omit<AtlasSnapshot, "regions">): AtlasRegion[] {
   });
 }
 
-const getCachedSupabaseSnapshot = unstable_cache(
-  async () => loadAtlasSnapshotFromSupabase(),
-  ["ecosystem-intelligence-public-atlas-snapshot-v1"],
-  { revalidate: 300, tags: ["atlas-public"] }
-);
-
 const getCachedAtlasOrganizationBySlug = unstable_cache(
   loadAtlasOrganizationBySlugFromSupabase,
   ["ecosystem-intelligence-organization-detail-v1"],
@@ -150,7 +144,12 @@ export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
     );
   }
 
-  const snapshot = await getCachedSupabaseSnapshot();
+  // The complete national discovery snapshot intentionally contains every
+  // published map marker and can exceed Next.js's 2 MB data-cache item limit.
+  // React cache still deduplicates the load within a request; record-level
+  // routes keep their five-minute caches below. Do not put the full corpus
+  // back into one unstable_cache entry as coverage grows.
+  const snapshot = await loadAtlasSnapshotFromSupabase();
   return {
     ...snapshot,
     regions: buildRegions(snapshot)

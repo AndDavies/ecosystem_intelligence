@@ -6,6 +6,7 @@ import { PaginationNav } from "@/components/ui/pagination-nav";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import { toTitleCase } from "@/lib/utils";
+import { socialMetadata } from "@/lib/seo/social";
 
 // Publication invalidates the shared atlas data cache, but this index must also
 // render per request so a previously generated route cannot hide a new signal.
@@ -13,7 +14,9 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Public Demand Signals",
-  description: "See the public problems Canadian and allied organizations are trying to solve, then explore reviewed Canadian technologies that may fit."
+  description: "See the public problems Canadian and allied organizations are trying to solve, then explore reviewed Canadian technologies that may fit.",
+  alternates: { canonical: "/demand" },
+  ...socialMetadata({ title: "Public Demand Signals", description: "See released public needs, then explore reviewed Canadian technologies that may help.", path: "/demand", eyebrow: "Start with the problem" })
 };
 
 export default async function DemandIndexPage({

@@ -4,17 +4,13 @@ import { ArrowDown, ArrowRight, CheckCircle2, Compass, FileSearch, Handshake, Li
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { absoluteUrl } from "@/lib/site";
+import { socialMetadata } from "@/lib/seo/social";
 
 export const metadata: Metadata = {
   title: "How True North Map Works",
   description: "See how True North Map connects Canadian organizations and technologies to released public needs using inspectable sources, human review, and visible limits.",
   alternates: { canonical: "/how-it-works" },
-  openGraph: {
-    title: "How True North Map Works",
-    description: "Explore Canadian capability, check the public evidence, follow released needs, and see where technology may help.",
-    url: "/how-it-works",
-    type: "website"
-  }
+  ...socialMetadata({ title: "How True North Map Works", description: "Explore Canadian capability, check the public evidence, follow released needs, and see where technology may help.", path: "/how-it-works", eyebrow: "From discovery to conversation" })
 };
 
 const steps = [
@@ -38,9 +34,9 @@ export default function HowItWorksPage() {
         { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "True North Map", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "How It Works", item: absoluteUrl("/how-it-works") }] }
       ]} />
 
-      <ol className="mt-8 grid gap-3 lg:grid-cols-5" aria-label="How True North Map works">
+      <ol className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5" aria-label="How True North Map works">
         {steps.map((step, index) => (
-          <li key={step.number} className="relative flex min-h-64 flex-col rounded-3xl border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-soft)]">
+          <li key={step.number} className="relative flex min-h-60 flex-col rounded-3xl border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-soft)] 2xl:min-h-64">
             <div className="flex items-center justify-between gap-3">
               <span className="flex size-10 items-center justify-center rounded-2xl bg-[var(--atlas-signal)] text-sm font-extrabold text-[var(--atlas-ink)]">{step.number}</span>
               <step.icon className="size-5 text-[var(--atlas-primary)]" aria-hidden="true" />
@@ -48,7 +44,7 @@ export default function HowItWorksPage() {
             <h2 className="mt-6 text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]">{step.title}</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{step.detail}</p>
             <Link href={step.href} className="mt-auto inline-flex items-center gap-1.5 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">{step.action} <ArrowRight className="size-3.5" /></Link>
-            {index < steps.length - 1 ? <ArrowDown className="absolute -bottom-3 left-1/2 z-10 size-6 -translate-x-1/2 rounded-full border border-[var(--atlas-border)] bg-white p-1 text-[var(--atlas-primary)] lg:-right-[18px] lg:bottom-auto lg:left-auto lg:top-8 lg:-translate-x-0 lg:-rotate-90" aria-hidden="true" /> : null}
+            {index < steps.length - 1 ? <ArrowDown className="absolute -right-[18px] top-8 z-10 hidden size-6 -rotate-90 rounded-full border border-[var(--atlas-border)] bg-white p-1 text-[var(--atlas-primary)] 2xl:block" aria-hidden="true" /> : null}
           </li>
         ))}
       </ol>

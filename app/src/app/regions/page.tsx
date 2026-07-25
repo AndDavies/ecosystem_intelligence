@@ -7,8 +7,9 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getRegionArt, regionProvinceLabel } from "@/lib/atlas/region-presentation";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
-import { absoluteUrl, siteName } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 import type { AtlasRegion } from "@/types/atlas";
+import { socialMetadata } from "@/lib/seo/social";
 
 // Publication invalidates the shared atlas data cache, but this index must also
 // render per request so a previously generated route cannot hide new coverage.
@@ -22,15 +23,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/regions" },
-  openGraph: {
-    title,
-    description,
-    url: "/regions",
-    type: "website",
-    siteName,
-    locale: "en_CA"
-  },
-  twitter: { card: "summary_large_image", title, description }
+  ...socialMetadata({ title, description, path: "/regions", eyebrow: "Where Canadian capability sits" })
 };
 
 export default async function RegionsIndexPage() {

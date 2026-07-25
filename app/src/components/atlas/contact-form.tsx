@@ -31,7 +31,7 @@ export function ContactForm() {
   if (state === "success") return <div className="rounded-2xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-5 text-sm leading-6 text-[var(--atlas-primary)]"><CheckCircle2 className="mb-2 size-5" />Your message has been received. Andrew will review it privately.</div>;
 
   return (
-    <form onSubmit={submit} className="grid gap-4">
+    <form onSubmit={submit} data-clarity-mask="true" className="grid gap-4">
       {error ? <div role="alert" className="rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]">{error}</div> : null}
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Name"><input name="senderName" required minLength={2} maxLength={120} autoComplete="name" className="form-control" /></Field>

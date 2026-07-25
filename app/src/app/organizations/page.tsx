@@ -10,6 +10,7 @@ import { organizationKindLabel } from "@/lib/atlas/presentation";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import type { AtlasEntityKind, AtlasOrganization } from "@/types/atlas";
+import { socialMetadata } from "@/lib/seo/social";
 
 // Keep the directory in sync with publication without depending on a cached
 // full-route render from before the latest reviewed records were promoted.
@@ -20,7 +21,9 @@ const SPOTLIGHT_SIZE = 3;
 
 export const metadata: Metadata = {
   title: "Canadian Defence and Dual-Use Organizations",
-  description: "Find Canadian defence and dual-use organizations, see what they build, and inspect the public evidence behind each profile."
+  description: "Find Canadian defence and dual-use organizations, see what they build, and inspect the public evidence behind each profile.",
+  alternates: { canonical: "/organizations" },
+  ...socialMetadata({ title: "Canadian Defence and Dual-Use Organizations", description: "Find Canadian organizations, see what they build, and inspect the public evidence behind each profile.", path: "/organizations", eyebrow: "Canadian ecosystem directory" })
 };
 
 function reviewedTime(value: string | null) {
