@@ -276,11 +276,8 @@ function buildAppliedFilters(snapshot: AtlasSnapshot, query: AtlasQuery) {
   return filters;
 }
 
-export function queryAtlasSnapshot(snapshot: AtlasSnapshot, query: AtlasQuery = {}): AtlasQueryResult {
-  const page = Math.max(1, query.page ?? 1);
-  const pageSize = Math.min(1000, Math.max(1, query.pageSize ?? 25));
-
-  const filtered = snapshot.organizations
+function matchingAtlasOrganizations(snapshot: AtlasSnapshot, query: AtlasQuery = {}) {
+  return snapshot.organizations
     .filter((organization) => !query.query || matchesQuery(organization, query.query))
     .filter((organization) => !query.bounds || inBounds(organization, query.bounds))
     .filter(
@@ -348,6 +345,15 @@ export function queryAtlasSnapshot(snapshot: AtlasSnapshot, query: AtlasQuery = 
         left.name.localeCompare(right.name)
       );
     });
+}
+
+function buildAtlasQueryResult(
+  snapshot: AtlasSnapshot,
+  query: AtlasQuery,
+  filtered: AtlasOrganization[]
+): AtlasQueryResult {
+  const page = Math.max(1, query.page ?? 1);
+  const pageSize = Math.min(1000, Math.max(1, query.pageSize ?? 25));
 
   const start = (page - 1) * pageSize;
   const regionValues = snapshot.organizations
@@ -394,6 +400,10 @@ export function queryAtlasSnapshot(snapshot: AtlasSnapshot, query: AtlasQuery = 
   };
 }
 
+export function queryAtlasSnapshot(snapshot: AtlasSnapshot, query: AtlasQuery = {}): AtlasQueryResult {
+  return buildAtlasQueryResult(snapshot, query, matchingAtlasOrganizations(snapshot, query));
+}
+
 export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResult> {
   return queryAtlasSnapshot(await getAtlasSnapshot(), query);
 }
@@ -404,7 +414,12 @@ export function queryAtlasExplorerSnapshot(
 ): AtlasExplorerQueryResult {
   const pageSize = Math.min(ATLAS_EXPLORER_MAX_PAGE_SIZE, Math.max(1, query.pageSize ?? 25));
   const constrainedQuery = { ...query, pageSize };
-  return projectAtlasExplorerResult(queryAtlasSnapshot(snapshot, constrainedQuery), constrainedQuery);
+  const matches = matchingAtlasOrganizations(snapshot, constrainedQuery);
+  return projectAtlasExplorerResult(
+    buildAtlasQueryResult(snapshot, constrainedQuery, matches),
+    constrainedQuery,
+    matches
+  );
 }
 
 export async function queryAtlasExplorer(query: AtlasQuery = {}): Promise<AtlasExplorerQueryResult> {

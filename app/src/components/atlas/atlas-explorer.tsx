@@ -39,7 +39,8 @@ import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
 import {
   ATLAS_EXPLORER_PAGE_SIZE,
-  projectAtlasExplorerOrganization
+  projectAtlasExplorerOrganization,
+  projectAtlasMapOrganization
 } from "@/lib/atlas/explorer-projection";
 import {
   alignmentSubject,
@@ -182,15 +183,23 @@ export function AtlasExplorer({
     return result.organizations.filter((organization) => visibleIds.has(organization.id));
   }, [result.organizations, viewport]);
 
+  const visibleMapOrganizations = useMemo(() => {
+    if (!viewport) return result.mapOrganizations;
+    const visibleIds = new Set(viewport.organizationIds);
+    return result.mapOrganizations.filter((organization) => visibleIds.has(organization.id));
+  }, [result.mapOrganizations, viewport]);
+
   const visibleEvidence = useMemo(() => {
     const citations = visibleOrganizations.flatMap((organization) => rowEvidence(organization, relevantCapability(organization, filters)));
     return Array.from(new Map(citations.map((citation) => [citation.sourceUrl, citation])).values());
   }, [filters, visibleOrganizations]);
 
-  const selectedOrganization = useMemo(
-    () => result.organizations.find((organization) => organization.id === selectedId) ?? null,
-    [result.organizations, selectedId]
-  );
+  const selectedOrganization = useMemo(() => {
+    const loaded = result.organizations.find((organization) => organization.id === selectedId);
+    if (loaded) return loaded;
+    const detail = selectedId ? organizationDetails[selectedId] : null;
+    return detail ? projectAtlasExplorerOrganization(detail, filters) : null;
+  }, [filters, organizationDetails, result.organizations, selectedId]);
   const selectedCapability = useMemo(
     () => (selectedOrganization ? relevantCapability(selectedOrganization, filters) : null),
     [filters, selectedOrganization]
@@ -278,6 +287,7 @@ export function AtlasExplorer({
         setResult({
           ...initialResult,
           organizations: projectedOrganizations,
+          mapOrganizations: nextDiscovery.organizations.map(projectAtlasMapOrganization),
           total: projectedOrganizations.length,
           page: 1,
           pageSize: Math.max(1, projectedOrganizations.length),
@@ -325,7 +335,7 @@ export function AtlasExplorer({
 
   function updateSelection(id: string, revealInTable = false, source: "map" | "result" = "result") {
     setSelectedId(id);
-    const organization = result.organizations.find((item) => item.id === id);
+    const organization = result.mapOrganizations.find((item) => item.id === id);
     trackBetaEvent(source === "map" ? "marker_select" : "result_select", {
       organization: organization?.slug ?? "unknown",
       source
@@ -339,20 +349,7 @@ export function AtlasExplorer({
     });
   }
 
-  function updateViewport(nextViewport: { bounds: AtlasBounds; organizationIds: string[] }) {
-    setViewport(nextViewport);
-    setSelectedId((current) => current && !nextViewport.organizationIds.includes(current) ? null : current);
-  }
-
-  async function toggleExpanded(organization: AtlasExplorerOrganization, source: "mobile_list" | "table_expand") {
-    setSelectedId(organization.id);
-    trackBetaEvent("result_select", { organization: organization.slug, source });
-    if (expandedId === organization.id) {
-      setExpandedId(null);
-      return;
-    }
-
-    setExpandedId(organization.id);
+  async function loadOrganizationDetail(organization: { id: string; slug: string }) {
     if (organizationDetails[organization.id] || detailLoadingId === organization.id) return;
 
     setDetailLoadingId(organization.id);
@@ -378,6 +375,30 @@ export function AtlasExplorer({
     } finally {
       setDetailLoadingId((current) => current === organization.id ? null : current);
     }
+  }
+
+  function selectMapOrganization(id: string) {
+    updateSelection(id, false, "map");
+    if (result.organizations.some((organization) => organization.id === id) || organizationDetails[id]) return;
+    const marker = result.mapOrganizations.find((organization) => organization.id === id);
+    if (marker) void loadOrganizationDetail(marker);
+  }
+
+  function updateViewport(nextViewport: { bounds: AtlasBounds; organizationIds: string[] }) {
+    setViewport(nextViewport);
+    setSelectedId((current) => current && !nextViewport.organizationIds.includes(current) ? null : current);
+  }
+
+  async function toggleExpanded(organization: AtlasExplorerOrganization, source: "mobile_list" | "table_expand") {
+    setSelectedId(organization.id);
+    trackBetaEvent("result_select", { organization: organization.slug, source });
+    if (expandedId === organization.id) {
+      setExpandedId(null);
+      return;
+    }
+
+    setExpandedId(organization.id);
+    await loadOrganizationDetail(organization);
   }
 
   async function loadMore() {
@@ -502,9 +523,9 @@ export function AtlasExplorer({
           <div className="relative h-[350px] overflow-hidden sm:h-[410px] lg:h-[510px] lg:rounded-[22px] lg:border lg:border-[var(--atlas-border)]">
             {mapEnabled ? (
               <AtlasMap
-                organizations={result.organizations}
+                organizations={result.mapOrganizations}
                 selectedOrganizationId={selectedId}
-                onSelect={(id) => updateSelection(id, true, "map")}
+                onSelect={selectMapOrganization}
                 onViewportChange={updateViewport}
               />
             ) : (
@@ -514,7 +535,7 @@ export function AtlasExplorer({
             )}
 
             <div className="pointer-events-none absolute left-3 top-3 z-[1000] rounded-xl border border-white/80 bg-white/95 px-3 py-2 text-xs font-bold text-[var(--atlas-ink)] shadow-[var(--atlas-shadow-soft)] backdrop-blur sm:left-4 sm:top-4">
-              {viewport ? `${visibleOrganizations.length} ${visibleOrganizations.length === 1 ? "organization" : "organizations"} in view` : "Updating map results…"}
+              {viewport ? `${visibleMapOrganizations.length} ${visibleMapOrganizations.length === 1 ? "organization" : "organizations"} in view` : "Updating map results…"}
             </div>
 
             <div className="absolute right-3 top-3 z-[1000] flex overflow-hidden rounded-xl border border-white/80 bg-white p-0.5 shadow-[var(--atlas-shadow-soft)] lg:hidden">
@@ -540,6 +561,7 @@ export function AtlasExplorer({
           </div>
           <ResultsRail
             organizations={visibleOrganizations}
+            totalInView={visibleMapOrganizations.length}
             filters={filters}
             selectedId={selectedId}
             onSelect={(id) => updateSelection(id, true, "result")}
@@ -552,7 +574,10 @@ export function AtlasExplorer({
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                 <h2 className="text-base font-bold tracking-[-0.01em] text-[var(--atlas-ink)]">Organizations in this map view</h2>
                 <span className="text-xs text-[var(--atlas-muted)]">
-                  {visibleOrganizations.length} {visibleOrganizations.length === 1 ? "organization" : "organizations"}
+                  {visibleMapOrganizations.length} {visibleMapOrganizations.length === 1 ? "organization" : "organizations"} on the map
+                  {visibleOrganizations.length < visibleMapOrganizations.length
+                    ? ` · ${visibleOrganizations.length} detailed results loaded`
+                    : ""}
                 </span>
               </div>
               <p className="mt-1 text-xs text-[var(--atlas-muted)]">

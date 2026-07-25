@@ -72,11 +72,13 @@ export function SnapshotMetric({ value, label }: { value: number; label: string 
 
 export function ResultsRail({
   organizations,
+  totalInView,
   filters,
   selectedId,
   onSelect
 }: {
   organizations: AtlasExplorerOrganization[];
+  totalInView: number;
   filters: AtlasQuery;
   selectedId: string | null;
   onSelect: (id: string) => void;
@@ -85,7 +87,8 @@ export function ResultsRail({
     <aside className="atlas-dark-panel hidden h-[510px] overflow-hidden lg:flex lg:flex-col" aria-label="Organizations in the current map view">
       <div className="border-b border-white/15 px-5 py-5">
         <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-white/60">Organizations in view</p>
-        <p className="mt-2 text-lg font-extrabold tracking-[-0.025em] text-[var(--atlas-signal)]">{organizations.length} reviewed {organizations.length === 1 ? "organization" : "organizations"}</p>
+        <p className="mt-2 text-lg font-extrabold tracking-[-0.025em] text-[var(--atlas-signal)]">{totalInView} reviewed {totalInView === 1 ? "organization" : "organizations"}</p>
+        {organizations.length < totalInView ? <p className="mt-1 text-[11px] text-white/55">{organizations.length} detailed results loaded below.</p> : null}
         <p className="mt-1 text-[11px] text-white/55">Pan or zoom the map to refine this list.</p>
       </div>
       {organizations.length ? (

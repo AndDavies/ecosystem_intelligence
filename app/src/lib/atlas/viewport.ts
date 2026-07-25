@@ -1,6 +1,12 @@
-import type { AtlasBounds, AtlasOrganization } from "@/types/atlas";
+import type { AtlasBounds } from "@/types/atlas";
 
-type MappableOrganization = Pick<AtlasOrganization, "id" | "primaryLocation">;
+type MappableOrganization = {
+  id: string;
+  primaryLocation: {
+    latitude: number | null;
+    longitude: number | null;
+  } | null;
+};
 
 export function isUsableAtlasBounds(bounds: AtlasBounds) {
   const values = [bounds.west, bounds.south, bounds.east, bounds.north];

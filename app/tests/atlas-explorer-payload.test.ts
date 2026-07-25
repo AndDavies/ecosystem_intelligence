@@ -12,9 +12,41 @@ describe("public explorer payload", () => {
     const result = queryAtlasExplorerSnapshot(atlasTestSnapshot, { page: 1, pageSize: 2 });
 
     expect(result.organizations).toHaveLength(2);
+    expect(result.mapOrganizations).toHaveLength(6);
     expect(result.total).toBe(6);
     expect(result.hasMore).toBe(true);
     expect(result.nextPage).toBe(2);
+  });
+
+  it("keeps every matching organization on the map while detail rows stay paginated", () => {
+    const result = queryAtlasExplorerSnapshot(atlasTestSnapshot, {
+      page: 1,
+      pageSize: 1,
+      region: "atlantic-canada"
+    });
+
+    expect(result.organizations).toHaveLength(1);
+    expect(result.mapOrganizations).toHaveLength(result.total);
+    expect(result.mapOrganizations.every((organization) => organization.primaryLocation)).toBe(true);
+  });
+
+  it("does not cap the map collection when the corpus grows beyond request limits", () => {
+    const source = atlasTestSnapshot.organizations[0];
+    const organizations = Array.from({ length: 1_250 }, (_, index) => ({
+      ...source,
+      id: `organization-${index}`,
+      slug: `organization-${index}`,
+      name: `Organization ${index}`
+    }));
+    const result = queryAtlasExplorerSnapshot(
+      { ...atlasTestSnapshot, organizations },
+      { page: 1, pageSize: 1_000 }
+    );
+
+    expect(result.organizations).toHaveLength(200);
+    expect(result.mapOrganizations).toHaveLength(1_250);
+    expect(result.total).toBe(1_250);
+    expect(result.hasMore).toBe(true);
   });
 
   it("projects one relevant capability without profile-only data", () => {

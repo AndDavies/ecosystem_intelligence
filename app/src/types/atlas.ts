@@ -269,6 +269,17 @@ export interface AtlasExplorerOrganization extends Pick<
   capabilities: AtlasExplorerCapability[];
 }
 
+/**
+ * Minimal public record used to render every matching organization on the map
+ * without coupling marker coverage to paginated explorer cards.
+ */
+export interface AtlasMapOrganization extends Pick<
+  AtlasOrganization,
+  "id" | "slug" | "name" | "entityKind"
+> {
+  primaryLocation: Pick<AtlasLocation, "name" | "latitude" | "longitude"> | null;
+}
+
 export type AtlasExplorerCitation = Pick<
   AtlasCitation,
   "id" | "sourceTitle" | "sourceUrl" | "publisher"
@@ -310,6 +321,7 @@ export interface AtlasExplorerCapability extends Pick<
 
 export interface AtlasExplorerQueryResult extends Omit<AtlasQueryResult, "organizations"> {
   organizations: AtlasExplorerOrganization[];
+  mapOrganizations: AtlasMapOrganization[];
   hasMore: boolean;
   nextPage: number | null;
 }

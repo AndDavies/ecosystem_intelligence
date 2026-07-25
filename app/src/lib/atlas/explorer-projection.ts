@@ -5,6 +5,7 @@ import type {
   AtlasExplorerCapability,
   AtlasExplorerOrganization,
   AtlasExplorerQueryResult,
+  AtlasMapOrganization,
   AtlasMissionMatch,
   AtlasOrganization,
   AtlasQuery,
@@ -115,15 +116,33 @@ export function projectAtlasExplorerOrganization(
   };
 }
 
+export function projectAtlasMapOrganization(organization: AtlasOrganization): AtlasMapOrganization {
+  return {
+    id: organization.id,
+    slug: organization.slug,
+    name: organization.name,
+    entityKind: organization.entityKind,
+    primaryLocation: organization.primaryLocation
+      ? {
+          name: organization.primaryLocation.name,
+          latitude: organization.primaryLocation.latitude,
+          longitude: organization.primaryLocation.longitude
+        }
+      : null
+  };
+}
+
 export function projectAtlasExplorerResult(
   result: AtlasQueryResult,
-  query: AtlasQuery = {}
+  query: AtlasQuery = {},
+  mapOrganizations: AtlasOrganization[] = result.organizations
 ): AtlasExplorerQueryResult {
   const loadedThrough = result.page * result.pageSize;
   const hasMore = loadedThrough < result.total;
   return {
     ...result,
     organizations: result.organizations.map((organization) => projectAtlasExplorerOrganization(organization, query)),
+    mapOrganizations: mapOrganizations.map(projectAtlasMapOrganization),
     hasMore,
     nextPage: hasMore ? result.page + 1 : null
   };

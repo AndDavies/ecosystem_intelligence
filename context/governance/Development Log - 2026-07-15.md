@@ -496,3 +496,19 @@ use `ATLAS_DATA_SOURCE=supabase`.
   validated content, at least one approved public source for every published
   brief, reviewer identity and timestamps, stable source and record links, and
   an automatic audit event for every save or publication.
+
+## Complete map coverage with paginated details - 2026-07-25
+
+- Separated the map marker collection from paginated explorer cards. Every
+  matching published organization is now represented by a compact ID, slug,
+  name, type, location, and coordinate payload, while detailed evidence rows
+  retain their bounded page size.
+- Removed the hidden coupling that limited the national map to the first 120
+  detailed results. Marker clustering, viewport counts, and map framing now use
+  the complete matching corpus, including records beyond the first result page.
+- Preserved marker selection for records outside the loaded detail page by
+  fetching the published profile only after selection. No duplicate corpus,
+  database migration, or publication-path change was introduced.
+- Added regression coverage proving that 1,250 matching organizations all
+  reach the map while detailed explorer records remain capped at 200 per
+  request.

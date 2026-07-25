@@ -1,7 +1,7 @@
 # True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
 Status: active product requirements
-Last updated: 2026-07-23
+Last updated: 2026-07-25
 
 ## Product summary
 
@@ -87,6 +87,13 @@ can be used together. On mobile, the same information uses a map/list toggle.
 The table contains only organizations inside the visible map bounds, including
 organizations represented by a visible cluster. Filters, visible-result counts,
 exports, selection state, and URL state remain synchronized.
+
+Map coverage is never limited by result-card pagination. Every matching
+published organization with usable coordinates is delivered through a compact
+marker record and is available to clustering when the map opens. Detailed
+organization cards remain paginated and load full profiles only when needed so
+the atlas can grow to thousands of records without silently omitting later
+pages from the national view.
 
 Selecting a marker or table row opens one compact organization preview with a
 verified capability, source count, evidence strength or assessment confidence,
