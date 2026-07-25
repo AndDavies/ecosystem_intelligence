@@ -314,14 +314,6 @@ function TypedOrganizationCandidateCard({
       </div>
       <p className="mt-4 text-sm leading-6 text-[var(--admin-muted-strong)]">{record.organization.description}</p>
       <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
-      {record.candidateLogo ? <div className="mt-4 rounded-md border border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] p-4 text-xs leading-5 text-[var(--admin-ink-soft)]">
-        <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-evidence)]">Official logo packet</p>
-        {record.candidateLogo.status === "not_found" ? <p className="mt-2">No usable official mark was found: {record.candidateLogo.note}</p> : <>
-          <p className="mt-2"><strong>{record.candidateLogo.status === "ready" ? "Ready for association after publication" : "Visual review required before association"}.</strong> The binary remains private until the organization is public.</p>
-          <p className="mt-1">{record.candidateLogo.confidence} confidence · {record.candidateLogo.selectionMethod}</p>
-          <div className="mt-2 flex flex-wrap gap-3 font-semibold text-[var(--admin-action)]"><a href={record.candidateLogo.sourcePageUrl} target="_blank" rel="noreferrer">Official source page</a><a href={record.candidateLogo.sourceAssetUrl} target="_blank" rel="noreferrer">Resolved logo asset</a></div>
-        </>}
-      </div> : null}
 
       {record.capabilities.map((capability) => (
         <div key={capability.slug} className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
