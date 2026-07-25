@@ -2,7 +2,7 @@
 
 Status: active broader-sharing product and review-first data operation
 
-Last verified: 2026-07-23
+Last verified: 2026-07-25
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -15,6 +15,7 @@ True North Map is an evidence-backed Canadian defence and dual-use ecosystem map
 The current product and operating system include:
 
 - A public map, organization and capability profiles, public-demand records, reviewed capability-demand matches, exports, and Ask True North over the published corpus.
+- A public organization directory and region-browsing surface at `/organizations`, `/regions`, and `/regions/[slug]`. These routes use live published counts, URL-based type and region browsing, pagination, regional context, and explicit coverage caveats without changing record-level evidence or dossier content.
 - Canadian Defence Briefs as a reviewed editorial synthesis surface with administrator-only drafting and publication.
 - A private Admin workflow for intake, candidate review and editing, explicit publication, canonical organization maintenance, demand maintenance, demand matching, evidence, and audit history.
 - Six project-local research skills of record: autonomous coordination, signal refresh, source discovery, candidate building, evidence mapping, and review stewardship.
@@ -58,32 +59,11 @@ Automated deletion is not permitted. Every operation carries a reviewer explanat
 
 `target_entity_id` links a refresh candidate to the existing canonical record. `before_record` is the captured review baseline. `proposed_record.operations` is the exact change set. These fields are review and publication instructions; merely seeing them in JSON does not mean they have been merged into the public record.
 
-## Kraken Robotics refresh: live verified example
+## Kraken Robotics refresh: published example
 
-The multi-source acceptance run `tnm-refresh-2026-07-23` found that the published Kraken Robotics profile represented only KATFISH while official product evidence supported two additional distinct technologies.
+The multi-source refresh run `tnm-refresh-2026-07-23` found durable official evidence for two additional Kraken Robotics technologies alongside KATFISH: `SeaPower Subsea Batteries` and `Kraken Synthetic Aperture Sonar`. The reviewed candidate was subsequently published through the standard human Publish checkpoint. The public Kraken profile now shows all three reviewed technologies.
 
-The staged candidate proposed two `add_child` operations under the existing Kraken organization ID:
-
-1. `SeaPower Subsea Batteries`, mapped to the autonomous-systems technical domain.
-2. `Kraken Synthetic Aperture Sonar`, mapped to the sensing-and-ISR technical domain.
-
-The sources stored in the candidate are Kraken's official SeaPower product page, SeaPower sales announcement, Kraken SAS product page, and newsroom. LinkedIn was retained only as discovery provenance. Five field-evidence items support the two proposed capability operations.
-
-Live production state verified on 2026-07-23:
-
-- Research run ID: `ab3570e2-4887-43e9-b561-9c931f5700d1`, completed.
-- Candidate ID: `60d7eb52-8d62-406e-b2f2-a926db00f335`.
-- Candidate kind: `organization_refresh_bundle` using `organization_refresh_bundle_v1`.
-- Target: Kraken Robotics organization `10000000-0000-4000-8000-000000000001`.
-- Review state: `approved` after a human accept decision.
-- Publication state: `published_at` is null; the candidate has not passed the Publish checkpoint.
-- Canonical Kraken state: unchanged from the captured baseline, with only `KATFISH Towed Synthetic Aperture Sonar` published.
-
-Therefore, the database currently associates the refresh proposal with Kraken through the private candidate's `target_entity_id`, `before_record`, evidence, sources, and operations. It has not yet created SeaPower or Kraken SAS capability rows, canonical source rows, evidence snippets, or field citations. Because the candidate was accepted, it has left the pending `/admin/review` list and should now be selected and published at `/admin/publish`; only that action performs the canonical writes.
-
-The current local application source includes a structured refresh card with target links and before/after operation panels, includes refreshes at the Publication checkpoint, and keeps approved work visible from the Admin overview. The approved Kraken candidate is intentionally still unpublished while this repair is reviewed locally. Production must receive this application build before the Kraken Publish action is used.
-
-Research staging now checks the deployed `/api/system/research-contract` before it writes candidates. Candidate kinds without complete Review and Publish support fail closed, and accepted candidates receive an explicit link to the Publication checkpoint. The two local signal-refresh migration filenames now exactly match the versions already applied to production: `20260723105823` and `20260723111826`.
+This remains the reference example for an additive organization refresh: the candidate targets the existing canonical organization, carries a captured baseline and explicit `add_child` operations, receives human acceptance, and makes canonical source-backed changes only at publication. Research staging still verifies the deployed `/api/system/research-contract` before candidate intake, and candidate kinds without complete Review and Publish support fail closed.
 
 ## Recent live research outcome
 

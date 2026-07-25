@@ -176,6 +176,8 @@ Browser QA should cover:
 
 - `/`
 - `/organizations`
+- `/regions`
+- `/regions/atlantic-canada`
 - `/organizations/kraken-robotics`
 - `/capabilities/kraken-katfish-sas`
 - `/demand`
@@ -189,6 +191,7 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-25`: Refactored public organization and regional discovery without changing canonical record content. `/regions` is now a national-to-regional index, public navigation points to it, regional routes expose geographic context and a region switcher, and the organization directory supports URL-based type and region browsing, recently reviewed records, reusable decision-useful cards, pagination, and visible coverage caveats. These public routes remain runtime-cached rather than bulk statically generated so transient database outages cannot fail production deployments.
 - `2026-07-24`: Reconciled the approved-demand publication path with canonical issuer hierarchy. The National Research Council Canada is now a published child of the Government of Canada for NRC IRAP signals; candidates with an unresolved parent issuer are blocked visibly in the Publication checkpoint and rechecked by the server action before the existing database transaction guard.
 - `2026-07-24`: Hardened organization-candidate publication against normalized alias collisions. Candidate validation now rejects case and punctuation variants, the live publication function deduplicates defensively, and the Photon etc. pending candidate was repaired to one canonical alias without publishing it.
 - `2026-07-24`: Aligned the private demand-matching workspace with the current review workflow, added demand-specific false-positive safeguards, and made every new or existing pending suggestion open with an editable plain-language explanation of why the derived match may be useful to publish. Human review and individual publication remain mandatory.
