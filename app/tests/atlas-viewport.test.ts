@@ -36,6 +36,7 @@ const organizations: AtlasOrganization[] = [
     defencePosture: null,
     dualUsePosture: null,
     profileData: {},
+    logo: null,
     capabilities: [],
     programs: [],
     fundingEvents: [],

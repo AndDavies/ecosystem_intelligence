@@ -1,6 +1,7 @@
 import "server-only";
 
 import { createPublicClient } from "@/lib/supabase/public";
+import { selectPublishedOrganizationLogo } from "@/lib/atlas/organization-logos";
 import type {
   AtlasCapability,
   AtlasCitation,
@@ -38,6 +39,7 @@ const atlasColumns = {
   programs: "id, slug, name, program_type",
   participations: "id, organization_id, program_id, participation_type, cohort_label",
   fundingEvents: "id, organization_id, event_type, announced_on, amount_value, amount_currency, disclosed_summary",
+  mediaAssets: "id, organization_id, asset_type, storage_path, source_url, source_visibility, attribution_text, approval_status, publication_status, created_at",
   sources: "id, title, canonical_url, publisher, source_type, published_at",
   evidence: "id, source_id, excerpt",
   citations: "id, entity_type, entity_id, field_name, evidence_snippet_id"
@@ -47,6 +49,7 @@ type AtlasSnapshotScope = {
   organizationIds?: string[];
   capabilityIds?: string[];
   demandRequirementIds?: string[];
+  includeOrganizationLogos?: boolean;
 };
 
 const noMatchId = "00000000-0000-0000-0000-000000000000";
@@ -155,6 +158,15 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     .eq("publication_status", "published");
   const participationsQuery = supabase.from("program_participations").select(atlasColumns.participations).eq("publication_status", "published");
   const fundingEventsQuery = supabase.from("funding_events").select(atlasColumns.fundingEvents).eq("publication_status", "published");
+  const mediaAssetsQuery = scope?.includeOrganizationLogos
+    ? supabase
+        .from("media_assets")
+        .select(atlasColumns.mediaAssets)
+        .eq("asset_type", "logo")
+        .eq("approval_status", "approved")
+        .eq("publication_status", "published")
+        .in("organization_id", scopedIds(scope.organizationIds))
+    : Promise.resolve({ data: [], error: null });
 
   if (scope?.organizationIds) {
     organizationsQuery.in("id", scopedIds(scope.organizationIds));
@@ -193,6 +205,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     programsResult,
     participationsResult,
     fundingEventsResult,
+    mediaAssetsResult,
     sourcesResult,
     evidenceResult,
     citationsResult
@@ -213,6 +226,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     supabase.from("programs").select(atlasColumns.programs).eq("publication_status", "published"),
     participationsQuery,
     fundingEventsQuery,
+    mediaAssetsQuery,
     supabase.from("sources").select(atlasColumns.sources).eq("visibility", "public").eq("public_approved", true),
     supabase.from("evidence_snippets").select(atlasColumns.evidence).eq("visibility", "public").eq("public_approved", true),
     supabase.from("field_citations").select(atlasColumns.citations)
@@ -235,6 +249,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     [programsResult, "programs"],
     [participationsResult, "program participation"],
     [fundingEventsResult, "funding events"],
+    [mediaAssetsResult, "published organization logos"],
     [sourcesResult, "public sources"],
     [evidenceResult, "public evidence"],
     [citationsResult, "public citations"]
@@ -259,6 +274,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
   const programById = byId(asRows(programsResult.data));
   const participationsByOrganization = groupBy(asRows(participationsResult.data), "organization_id");
   const fundingByOrganization = groupBy(asRows(fundingEventsResult.data), "organization_id");
+  const mediaByOrganization = groupBy(asRows(mediaAssetsResult.data), "organization_id");
   const sourceById = byId(asRows(sourcesResult.data));
   const evidenceById = byId(asRows(evidenceResult.data));
   const citationsByEntity = new Map<string, Row[]>();
@@ -453,6 +469,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       defencePosture: asNullableString(row.defence_posture),
       dualUsePosture: asNullableString(row.dual_use_posture),
       profileData: asObject(row.profile_data),
+      logo: selectPublishedOrganizationLogo(mediaByOrganization.get(id) ?? []),
       capabilities,
       programs,
       fundingEvents: (fundingByOrganization.get(id) ?? []).map((funding) => ({
@@ -578,7 +595,11 @@ export async function loadAtlasOrganizationBySlugFromSupabase(slug: string) {
     .eq("publication_status", "published");
   assertQuery(capabilityResult, "published organization capabilities");
   const capabilityIds = asRows(capabilityResult.data).map((row) => asString(row.id));
-  const snapshot = await loadAtlasSnapshotFromSupabase({ organizationIds: [organizationId], capabilityIds });
+  const snapshot = await loadAtlasSnapshotFromSupabase({
+    organizationIds: [organizationId],
+    capabilityIds,
+    includeOrganizationLogos: true
+  });
   return snapshot.organizations.find((organization) => organization.id === organizationId) ?? null;
 }
 

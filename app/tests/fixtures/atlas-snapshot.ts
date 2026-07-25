@@ -60,6 +60,7 @@ function organization(
     defencePosture: null,
     dualUsePosture: null,
     profileData: {},
+    logo: null,
     capabilities: withUnderwaterCapability
       ? [{
           id: `${id}-capability`,

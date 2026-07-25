@@ -182,6 +182,8 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
 - `organization_relationships`
 - `media_assets`
 
+Approved organization logos use `media_assets` and the existing `atlas-public-media` bucket rather than a separate branding store. Public dossiers select only the newest public, approved, published `logo` row. Official high-confidence marks may be imported directly with immutable checksummed storage paths; uncertain marks remain unpublished for human review. Administrators may replace or remove a mark from the canonical organization editor, with provenance and audit history preserved.
+
 ### Evidence
 
 - `sources`

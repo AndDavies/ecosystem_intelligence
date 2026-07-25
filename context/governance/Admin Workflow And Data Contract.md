@@ -2,7 +2,7 @@
 
 This document is the current operating contract for the private True North Map administration routes. The detailed route-by-route manual is [True North Map Admin Manual](../../output/pdf/True_North_Map_Admin_Manual.pdf).
 
-Last verified: 2026-07-24
+Last verified: 2026-07-25
 
 ## Access
 
@@ -22,7 +22,7 @@ Read organization, technology, public-demand, and reviewed-match counts from the
 | `/admin/review` | Inspect, edit, merge, accept, reject, or defer new-record and refresh candidates; publish a demand match | Research-candidate acceptance stays private; demand-match Publish is immediate |
 | `/admin/publish` | Publish approved organization, demand-signal, organization-refresh, and demand-refresh candidates | Transactional public publication |
 | `/admin/organizations` | Find canonical public records | Read-only list |
-| `/admin/organizations/[id]/edit` | Maintain one published organization dossier | Immediate transactional public update |
+| `/admin/organizations/[id]/edit` | Maintain one published organization dossier and its approved official logo | Immediate transactional public update |
 | `/admin/demand-signals` | Add or maintain official public demand sources and requirements | Immediate transactional public update |
 | `/admin/demand-matches` | Stage plausible technology-to-demand suggestions | Private candidates only |
 | `/admin/insights` | Progress bounded beta workflows and inspect discovery behaviour | Private workflow updates only |
@@ -34,6 +34,7 @@ Read organization, technology, public-demand, and reviewed-match counts from the
 - Demand-signal maintenance updates existing `sources`, `demand_sources`, `demand_source_issuers`, and `demand_requirements` rows transactionally. The selected issuing authority remains explicit. Existing requirement IDs and slugs remain stable, so `capability_demand_matches` and `field_citations` do not detach.
 - Adding a demand requirement creates a new stable row. It does not generate or publish matches automatically.
 - Material writes record the administrator, rationale, and timestamp in `audit_events` or `review_decisions`.
+- Replacing an organization logo normalizes the administrator-supplied official image into the existing public-media bucket, publishes one provenance-backed `media_assets` row, archives the prior active logo, and revalidates the affected dossier. Removing a logo archives its row, removes its storage object, records the action, and restores the neutral public fallback without changing the organization or any related technology record.
 
 ## Demand-match suggestions
 

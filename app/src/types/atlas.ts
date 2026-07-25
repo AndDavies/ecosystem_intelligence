@@ -111,6 +111,14 @@ export interface AtlasFundingEvent {
   citations: AtlasCitation[];
 }
 
+export interface AtlasOrganizationLogo {
+  id: string;
+  publicUrl: string;
+  storagePath: string;
+  sourceUrl: string | null;
+  attributionText: string | null;
+}
+
 export interface AtlasOrganization {
   id: string;
   slug: string;
@@ -134,6 +142,7 @@ export interface AtlasOrganization {
   defencePosture: string | null;
   dualUsePosture: string | null;
   profileData: Record<string, unknown>;
+  logo: AtlasOrganizationLogo | null;
   capabilities: AtlasCapability[];
   programs: AtlasProgramParticipation[];
   fundingEvents: AtlasFundingEvent[];

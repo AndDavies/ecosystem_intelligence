@@ -1,10 +1,13 @@
 "use server";
 
 import { revalidatePath, revalidateTag } from "next/cache";
+import { createHash } from "node:crypto";
 import { redirect } from "next/navigation";
+import sharp from "sharp";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { splitCandidateList } from "@/lib/atlas/candidate-schema";
+import { organizationLogoBucket } from "@/lib/atlas/organization-logos";
 import { createClient } from "@/lib/supabase/server";
 
 const optionalText = (maximum: number) => z.string().trim().max(maximum).transform((value) => value || null);
@@ -58,6 +61,119 @@ const publishedOrganizationContactSchema = z.object({
   linkedInUrl: z.union([z.literal(""), z.string().url().startsWith("https://")]),
   rationale: z.string().trim().min(3).max(2000)
 });
+
+const organizationLogoSchema = z.object({
+  organizationId: z.string().uuid(),
+  sourcePageUrl: z.string().url().startsWith("https://"),
+  sourceAssetUrl: z.string().url().startsWith("https://"),
+  attributionText: z.string().trim().max(500),
+  confidence: z.enum(["high", "medium"])
+});
+
+function logoReturnPath(organizationId: string) {
+  const parsed = z.string().uuid().safeParse(organizationId);
+  return parsed.success ? `/admin/organizations/${parsed.data}/edit` : "/admin/organizations";
+}
+
+async function revalidateOrganizationLogoPaths(organizationId: string, organizationSlug: string) {
+  revalidateTag("atlas-public");
+  revalidatePath("/");
+  revalidatePath("/organizations");
+  revalidatePath(`/organizations/${organizationSlug}`);
+  revalidatePath(`/admin/organizations/${organizationId}/edit`);
+}
+
+export async function replacePublishedOrganizationLogo(formData: FormData) {
+  const user = await requireAtlasStaff("editor");
+  const organizationId = String(formData.get("organizationId") ?? "");
+  const returnPath = logoReturnPath(organizationId);
+  const parsed = organizationLogoSchema.safeParse({
+    organizationId,
+    sourcePageUrl: String(formData.get("sourcePageUrl") ?? "").trim(),
+    sourceAssetUrl: String(formData.get("sourceAssetUrl") ?? "").trim(),
+    attributionText: String(formData.get("attributionText") ?? "").trim(),
+    confidence: String(formData.get("confidence") ?? "")
+  });
+  const file = formData.get("logoFile");
+  if (!parsed.success || !(file instanceof File) || file.size === 0 || file.size > 10 * 1024 * 1024) {
+    redirect(`${returnPath}?error=invalid-logo`);
+  }
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+    redirect(`${returnPath}?error=invalid-logo`);
+  }
+
+  let normalized: Buffer;
+  try {
+    normalized = await sharp(Buffer.from(await file.arrayBuffer()))
+      .rotate()
+      .resize({ width: 1024, height: 512, fit: "inside", withoutEnlargement: true })
+      .webp({ quality: 92, alphaQuality: 100 })
+      .toBuffer();
+  } catch {
+    redirect(`${returnPath}?error=invalid-logo`);
+  }
+
+  const checksum = createHash("sha256").update(normalized).digest("hex");
+  const storagePath = `organizations/${parsed.data.organizationId}/logos/${checksum}.webp`;
+  const supabase = await createClient({ writeCookies: true });
+  const [{ data: organization }, { data: previousAssets }] = await Promise.all([
+    supabase.from("organizations").select("slug").eq("id", parsed.data.organizationId).eq("publication_status", "published").maybeSingle(),
+    supabase.from("media_assets").select("storage_path").eq("organization_id", parsed.data.organizationId).eq("asset_type", "logo").eq("publication_status", "published")
+  ]);
+  if (!organization?.slug) redirect(`${returnPath}?error=logo-update-failed`);
+
+  const { error: uploadError } = await supabase.storage
+    .from(organizationLogoBucket)
+    .upload(storagePath, normalized, { contentType: "image/webp", cacheControl: "31536000", upsert: false });
+  if (uploadError && !uploadError.message.toLowerCase().includes("already exists")) {
+    redirect(`${returnPath}?error=logo-update-failed`);
+  }
+
+  const { error } = await supabase.rpc("replace_published_organization_logo", {
+    p_organization_id: parsed.data.organizationId,
+    p_reviewer_id: user.id,
+    p_storage_path: storagePath,
+    p_source_page_url: parsed.data.sourcePageUrl,
+    p_source_asset_url: parsed.data.sourceAssetUrl,
+    p_selection_method: "administrator_upload",
+    p_confidence: parsed.data.confidence,
+    p_checksum: checksum,
+    p_attribution_text: parsed.data.attributionText
+  });
+  if (error) {
+    if (!uploadError) await supabase.storage.from(organizationLogoBucket).remove([storagePath]);
+    redirect(`${returnPath}?error=logo-update-failed`);
+  }
+
+  const obsoletePaths = (previousAssets ?? [])
+    .map((asset) => asset.storage_path)
+    .filter((path): path is string => Boolean(path && path !== storagePath));
+  if (obsoletePaths.length) await supabase.storage.from(organizationLogoBucket).remove(obsoletePaths);
+  await revalidateOrganizationLogoPaths(parsed.data.organizationId, organization.slug);
+  redirect(`${returnPath}?success=logo-updated`);
+}
+
+export async function removePublishedOrganizationLogo(formData: FormData) {
+  const user = await requireAtlasStaff("editor");
+  const organizationId = String(formData.get("organizationId") ?? "");
+  const parsed = z.string().uuid().safeParse(organizationId);
+  const returnPath = logoReturnPath(organizationId);
+  if (!parsed.success) redirect(`${returnPath}?error=logo-remove-failed`);
+
+  const supabase = await createClient({ writeCookies: true });
+  const { data: organization } = await supabase.from("organizations").select("slug").eq("id", parsed.data).eq("publication_status", "published").maybeSingle();
+  if (!organization?.slug) redirect(`${returnPath}?error=logo-remove-failed`);
+  const { data: storagePaths, error } = await supabase.rpc("remove_published_organization_logo", {
+    p_organization_id: parsed.data,
+    p_reviewer_id: user.id
+  });
+  if (error) redirect(`${returnPath}?error=logo-remove-failed`);
+  if (Array.isArray(storagePaths) && storagePaths.length) {
+    await supabase.storage.from(organizationLogoBucket).remove(storagePaths.filter((path): path is string => typeof path === "string"));
+  }
+  await revalidateOrganizationLogoPaths(parsed.data, organization.slug);
+  redirect(`${returnPath}?success=logo-removed`);
+}
 
 export async function editPublishedOrganizationContact(formData: FormData) {
   const user = await requireAtlasStaff("editor");

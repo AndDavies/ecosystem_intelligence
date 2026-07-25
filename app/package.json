@@ -19,7 +19,8 @@
     "wiki:sources:inventory": "tsx scripts/defence-wiki.ts inventory",
     "wiki:sources:export": "tsx scripts/defence-wiki.ts export",
     "wiki:packets:validate": "tsx scripts/validate-defence-wiki-packets.ts",
-    "data:readiness": "tsx scripts/autonomous-research.ts coverage"
+    "data:readiness": "tsx scripts/autonomous-research.ts coverage",
+    "logos:import": "tsx scripts/import-organization-logos.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.1.20",
@@ -40,6 +41,7 @@
     "react-dom": "^19.0.0",
     "server-only": "0.0.1",
     "shadcn": "^4.6.0",
+    "sharp": "0.34.3",
     "tailwind-merge": "^3.5.0",
     "tw-animate-css": "^1.4.0",
     "zod": "^3.24.2"

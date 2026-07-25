@@ -260,6 +260,182 @@ describe("public atlas database foundation", () => {
     expect(result.rows[0]?.unprotected).toBe(0);
   });
 
+  it("keeps logo media reviewable and restricts mutations to staff or the service importer", async () => {
+    const result = await db.query<{
+      anon_media_read: boolean;
+      anon_media_insert: boolean;
+      authenticated_replace: boolean;
+      authenticated_import: boolean;
+      anon_storage_list_policies: number;
+      replace_security: string;
+      import_security: string;
+    }>(`
+      select
+        has_table_privilege('anon', 'public.media_assets', 'select') as anon_media_read,
+        has_table_privilege('anon', 'public.media_assets', 'insert') as anon_media_insert,
+        has_function_privilege('authenticated', 'public.replace_published_organization_logo(uuid,uuid,text,text,text,text,text,text,text)', 'execute') as authenticated_replace,
+        has_function_privilege('authenticated', 'public.import_published_organization_logo(uuid,text,text,text,text,text,text,text,text)', 'execute') as authenticated_import,
+        (
+          select count(*)::int from pg_policies
+          where schemaname = 'storage' and tablename = 'objects'
+            and roles::text like '%anon%'
+            and cmd = 'SELECT'
+        ) as anon_storage_list_policies,
+        (
+          select prosecdef::text from pg_proc function_record
+          join pg_namespace namespace on namespace.oid = function_record.pronamespace
+          where namespace.nspname = 'public' and function_record.proname = 'replace_published_organization_logo'
+        ) as replace_security,
+        (
+          select prosecdef::text from pg_proc function_record
+          join pg_namespace namespace on namespace.oid = function_record.pronamespace
+          where namespace.nspname = 'public' and function_record.proname = 'import_published_organization_logo'
+        ) as import_security
+    `);
+    expect(result.rows[0]).toEqual({
+      anon_media_read: true,
+      anon_media_insert: false,
+      authenticated_replace: true,
+      authenticated_import: false,
+      anon_storage_list_policies: 0,
+      replace_security: "false",
+      import_security: "false"
+    });
+
+    const publicPolicy = await db.query<{ qual: string }>(`
+      select qual from pg_policies
+      where schemaname = 'public' and tablename = 'media_assets' and policyname = 'approved media is readable'
+    `);
+    expect(publicPolicy.rows[0]?.qual).toContain("approval_status = 'approved'");
+    expect(publicPolicy.rows[0]?.qual).toContain("publication_status = 'published'");
+    expect(publicPolicy.rows[0]?.qual).toContain("source_visibility");
+  });
+
+  it("imports a high-confidence logo atomically with provenance and an audit event", async () => {
+    const organization = await db.query<{ id: string }>(`
+      select id from public.organizations where slug = 'kraken-robotics'
+    `);
+    const organizationId = organization.rows[0]?.id;
+    expect(organizationId).toBeTruthy();
+    const checksum = "a".repeat(64);
+    const storagePath = `organizations/${organizationId}/logos/${checksum}.webp`;
+
+    await db.exec("set role service_role");
+    try {
+      await db.query(
+        `select public.import_published_organization_logo($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+        [
+          organizationId,
+          storagePath,
+          "https://www.krakenrobotics.com/",
+          "https://www.krakenrobotics.com/logo.svg",
+          "json_ld_logo",
+          "high",
+          checksum,
+          "Kraken Robotics official logo",
+          "logo-migration-test"
+        ]
+      );
+
+      await expect(
+        db.query(
+          `select public.import_published_organization_logo($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+          [
+            organizationId,
+            `organizations/${organizationId}/logos/wrong.webp`,
+            "https://www.krakenrobotics.com/",
+            "https://www.krakenrobotics.com/logo.svg",
+            "json_ld_logo",
+            "high",
+            checksum,
+            "Kraken Robotics official logo",
+            "logo-migration-test"
+          ]
+        )
+      ).rejects.toThrow("Invalid immutable organization logo path");
+    } finally {
+      await db.exec("reset role");
+    }
+
+    const result = await db.query<{ media_count: number; audit_count: number }>(`
+      select
+        (select count(*)::int from public.media_assets
+          where organization_id = '${organizationId}'::uuid
+            and asset_type = 'logo'
+            and approval_status = 'approved'
+            and publication_status = 'published') as media_count,
+        (select count(*)::int from public.audit_events
+          where entity_id = '${organizationId}'::uuid
+            and event_type = 'organization_logo_imported'
+            and metadata ->> 'run_id' = 'logo-migration-test') as audit_count
+    `);
+    expect(result.rows[0]).toEqual({ media_count: 1, audit_count: 1 });
+  });
+
+  it("lets the exact administrator replace and remove a logo while preserving the audit trail", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    const organization = await db.query<{ id: string }>(`
+      select id from public.organizations where slug = 'kraken-robotics'
+    `);
+    const organizationId = organization.rows[0]?.id;
+    const checksum = "b".repeat(64);
+    const storagePath = `organizations/${organizationId}/logos/${checksum}.webp`;
+
+    await db.exec(`
+      insert into auth.users (id) values ('${administratorId}'::uuid) on conflict do nothing;
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${administratorId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+      $$;
+      set role authenticated;
+    `);
+    try {
+      await db.query(
+        `select public.replace_published_organization_logo($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+        [
+          organizationId,
+          administratorId,
+          storagePath,
+          "https://www.krakenrobotics.com/",
+          "https://www.krakenrobotics.com/logo.svg",
+          "administrator_upload",
+          "high",
+          checksum,
+          "Kraken Robotics official logo"
+        ]
+      );
+      const removed = await db.query<{ remove_published_organization_logo: string[] }>(
+        `select public.remove_published_organization_logo($1, $2)`,
+        [organizationId, administratorId]
+      );
+      expect(removed.rows[0]?.remove_published_organization_logo).toEqual([storagePath]);
+    } finally {
+      await db.exec(`
+        reset role;
+        create or replace function auth.uid() returns uuid language sql stable as $$ select null::uuid $$;
+        create or replace function auth.jwt() returns jsonb language sql stable as $$ select '{}'::jsonb $$;
+      `);
+    }
+
+    const result = await db.query<{ active_count: number; replacement_audits: number; removal_audits: number }>(`
+      select
+        (select count(*)::int from public.media_assets
+          where organization_id = '${organizationId}'::uuid
+            and asset_type = 'logo' and publication_status = 'published') as active_count,
+        (select count(*)::int from public.audit_events
+          where entity_id = '${organizationId}'::uuid
+            and event_type = 'organization_logo_replaced'
+            and actor_id = '${administratorId}'::uuid) as replacement_audits,
+        (select count(*)::int from public.audit_events
+          where entity_id = '${organizationId}'::uuid
+            and event_type = 'organization_logo_removed'
+            and actor_id = '${administratorId}'::uuid) as removal_audits
+    `);
+    expect(result.rows[0]).toEqual({ active_count: 0, replacement_audits: 1, removal_audits: 1 });
+  });
+
   it("restricts editorial RLS policies to the exact administrator identity", async () => {
     const result = await db.query<{ definition: string }>(`
       select pg_get_functiondef(function_record.oid) as definition

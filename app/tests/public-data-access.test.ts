@@ -16,6 +16,34 @@ describe("public data access", () => {
     expect(publicRepository).toContain("loadAtlasCapabilityBySlugFromSupabase");
     expect(publicRepository).toContain("loadAtlasDemandBySlugFromSupabase");
     expect(publicRepository).toContain('.eq("slug", slug)');
+    expect(publicRepository).toContain("includeOrganizationLogos: true");
+    expect(publicRepository).toContain("selectPublishedOrganizationLogo");
+  });
+
+  it("adds logos only to organization profiles and preserves the existing map and export surfaces", async () => {
+    const publicRepository = await source("src/lib/atlas/supabase-repository.ts");
+    const profile = await source("src/app/organizations/[slug]/page.tsx");
+    const directory = await source("src/components/atlas/organization-card.tsx");
+    const pdf = await source("src/lib/export/atlas-pdf.tsx");
+
+    expect(profile).toContain("organization.logo?.publicUrl");
+    expect(profile).toContain('alt={`${organization.name} logo`}');
+    expect(directory).not.toContain("organization.logo");
+    expect(pdf).not.toContain("organization.logo");
+    expect(publicRepository).toContain("scope?.includeOrganizationLogos");
+  });
+
+  it("keeps organization logo replacement and removal inside the existing administrator editor", async () => {
+    const editPage = await source("src/app/admin/organizations/[id]/edit/page.tsx");
+    const actions = await source("src/lib/actions/atlas-organizations.ts");
+
+    expect(editPage).toContain('title="Organization logo"');
+    expect(editPage).toContain("replacePublishedOrganizationLogo");
+    expect(editPage).toContain("removePublishedOrganizationLogo");
+    expect(actions).toContain('requireAtlasStaff("editor")');
+    expect(actions).toContain('revalidatePath(`/organizations/${organizationSlug}`)');
+    expect(actions).toContain("replace_published_organization_logo");
+    expect(actions).toContain("remove_published_organization_logo");
   });
 
   it("does not load the national snapshot for public profile routes", async () => {

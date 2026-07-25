@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookmarkPlus, Building2, Download, ExternalLink, FileCheck2, Handshake, Linkedin, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
@@ -85,15 +86,25 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
       }
     >
       <JsonLd data={[
-        { "@context": "https://schema.org", "@type": "Organization", name: organization.name, legalName: organization.legalName ?? undefined, url: absoluteUrl(`/organizations/${organization.slug}`), sameAs: organization.websiteUrl ? [organization.websiteUrl] : undefined, description: organization.description, address: organization.primaryLocation ? { "@type": "PostalAddress", addressLocality: organization.primaryLocation.city ?? undefined, addressRegion: organization.primaryLocation.provinceTerritory ?? undefined, addressCountry: "CA" } : undefined },
+        { "@context": "https://schema.org", "@type": "Organization", name: organization.name, legalName: organization.legalName ?? undefined, url: absoluteUrl(`/organizations/${organization.slug}`), sameAs: organization.websiteUrl ? [organization.websiteUrl] : undefined, logo: organization.logo?.publicUrl, description: organization.description, address: organization.primaryLocation ? { "@type": "PostalAddress", addressLocality: organization.primaryLocation.city ?? undefined, addressRegion: organization.primaryLocation.provinceTerritory ?? undefined, addressCountry: "CA" } : undefined },
         { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }] }
       ]} />
       <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
         <aside className="space-y-5 self-start lg:sticky lg:top-24">
           <PublicCard title={organizationSnapshotTitle(organization.entityKind)} eyebrow="What we know">
             <div className="mb-5 flex items-center gap-3 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-primary-soft)] p-3">
-              <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-white text-[var(--atlas-primary)] ring-1 ring-[var(--atlas-primary-border)]" aria-hidden="true">
-                <Building2 className="size-6" aria-hidden="true" />
+              <span className="relative flex h-14 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#c9ccca] p-2 text-[var(--atlas-primary)] ring-1 ring-[var(--atlas-primary-border)]">
+                {organization.logo ? (
+                  <Image
+                    src={organization.logo.publicUrl}
+                    alt={`${organization.name} logo`}
+                    fill
+                    sizes="96px"
+                    className="object-contain p-2"
+                  />
+                ) : (
+                  <Building2 className="size-6" aria-hidden="true" />
+                )}
               </span>
               <div>
                 <p className="text-sm font-semibold text-[var(--atlas-ink)]">{organization.name}</p>

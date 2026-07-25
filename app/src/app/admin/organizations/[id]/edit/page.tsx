@@ -1,11 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-import { AlertTriangle, CircleHelp, ExternalLink } from "lucide-react";
+import { AlertTriangle, Building2, CircleHelp, ExternalLink, Trash2, Upload } from "lucide-react";
 import { notFound } from "next/navigation";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PendingButton } from "@/components/ui/pending-button";
-import { editPublishedOrganization, editPublishedOrganizationContact } from "@/lib/actions/atlas-organizations";
+import { editPublishedOrganization, editPublishedOrganizationContact, removePublishedOrganizationLogo, replacePublishedOrganizationLogo } from "@/lib/actions/atlas-organizations";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
+import { organizationLogoUrl } from "@/lib/atlas/organization-logos";
 import { publicContactFromProfileData } from "@/lib/atlas/presentation";
 import { createClient } from "@/lib/supabase/server";
 
@@ -73,6 +75,15 @@ type DossierRow = {
   citations: RawCitation[];
 };
 
+type RawLogo = {
+  id: string;
+  storage_path: string;
+  source_url: string | null;
+  permission_basis: string | null;
+  attribution_text: string | null;
+  created_at: string;
+};
+
 const entityKinds = [
   ["company", "Company"],
   ["accelerator", "Accelerator"],
@@ -87,7 +98,16 @@ const errorMessages: Record<string, string> = {
   "invalid-edit": "Some required fields are missing or invalid. Check the highlighted section values and try again.",
   "update-failed": "The public record was not changed. Refresh the page and verify that its location, technology, and classification values still exist.",
   "invalid-contact": "Check the contact fields. Public links must use HTTPS, the email must be valid, and an editorial rationale is required.",
-  "contact-update-failed": "The public contact details were not changed. Refresh the page and try again."
+  "contact-update-failed": "The public contact details were not changed. Refresh the page and try again.",
+  "invalid-logo": "Choose a JPEG, PNG, or WebP logo under 10 MB and provide its official HTTPS source links.",
+  "logo-update-failed": "The organization logo was not changed. Refresh the page and try again.",
+  "logo-remove-failed": "The organization logo could not be removed. Refresh the page and try again."
+};
+
+const successMessages: Record<string, string> = {
+  "contact-updated": "Public contact details updated.",
+  "logo-updated": "Organization logo updated and the public profile refreshed.",
+  "logo-removed": "Organization logo removed and the neutral profile mark restored."
 };
 
 export default async function EditPublishedOrganizationPage({
@@ -121,11 +141,21 @@ export default async function EditPublishedOrganizationPage({
     );
   }
 
-  const [{ data: domains }, { data: clusters }, { data: clusterLinks }] = await Promise.all([
+  const [{ data: domains }, { data: clusters }, { data: clusterLinks }, { data: logos }] = await Promise.all([
     supabase.from("technical_domains").select("id, slug, name, summary").eq("publication_status", "published").order("name"),
     supabase.from("ecosystem_clusters").select("id, slug, name, summary, region_slug").eq("publication_status", "published").order("name"),
-    supabase.from("capability_clusters").select("ecosystem_cluster_id").eq("capability_id", capability.id).eq("publication_status", "published")
+    supabase.from("capability_clusters").select("ecosystem_cluster_id").eq("capability_id", capability.id).eq("publication_status", "published"),
+    supabase
+      .from("media_assets")
+      .select("id, storage_path, source_url, permission_basis, attribution_text, created_at")
+      .eq("organization_id", dossier.id)
+      .eq("asset_type", "logo")
+      .eq("approval_status", "approved")
+      .eq("publication_status", "published")
+      .order("created_at", { ascending: false })
+      .limit(1)
   ]);
+  const currentLogo = (logos?.[0] as RawLogo | undefined) ?? null;
   const domainLinks = (dossier.capability_domains ?? []).filter((link) => link.capability_id === capability.id);
   const primaryDomain = domainLinks.find((link) => link.is_primary)?.technical_domain ?? domainLinks[0]?.technical_domain;
   const additionalDomainSlugs = new Set(domainLinks.filter((link) => !link.is_primary).map((link) => link.technical_domain.slug));
@@ -143,7 +173,7 @@ export default async function EditPublishedOrganizationPage({
     <PublicPageShell variant="admin" eyebrow="Published record maintenance" title={`Edit ${dossier.name}`} description="Update the information people use to understand this organization and decide whether to engage. Stable profile links are preserved and every change is recorded." backHref="/admin/organizations" backLabel="Published organizations" actions={<Link href={`/organizations/${dossier.slug}`} target="_blank" className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--admin-border)] bg-white px-3 text-xs font-semibold text-[var(--admin-ink-soft)] no-underline">View public profile <ExternalLink className="size-3.5" /></Link>}>
       <AdminNav />
       {query.error ? <div className="mb-5 rounded-md border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] px-3 py-2 text-sm text-[var(--admin-danger)]">{errorMessages[query.error] ?? "The organization could not be updated."}</div> : null}
-      {query.success ? <div className="mb-5 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] px-3 py-2 text-sm text-[var(--admin-success)]">{query.success === "contact-updated" ? "Public contact details updated." : "Published record updated and public map refreshed."}</div> : null}
+      {query.success ? <div className="mb-5 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] px-3 py-2 text-sm text-[var(--admin-success)]">{successMessages[query.success] ?? "Published record updated and public map refreshed."}</div> : null}
 
       {capabilities.length > 1 ? (
         <div className="mb-5 flex flex-wrap items-center gap-2 rounded-lg border border-[var(--admin-border)] bg-white p-3">
@@ -151,6 +181,46 @@ export default async function EditPublishedOrganizationPage({
           {capabilities.map((item) => <Link key={item.id} href={`/admin/organizations/${dossier.id}/edit?capability=${item.id}`} className={`rounded-md px-3 py-2 text-xs font-semibold no-underline ${item.id === capability.id ? "bg-[var(--admin-action)] text-white" : "bg-[var(--admin-surface-subtle)] text-[var(--admin-ink-soft)]"}`}>{item.name}</Link>)}
         </div>
       ) : null}
+
+      <PublicCard title="Organization logo" eyebrow="Public profile identity">
+        <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)]">
+          <div>
+            <div className="relative flex h-28 w-full items-center justify-center overflow-hidden rounded-xl border border-[var(--admin-border)] bg-[#c9ccca] p-4">
+              {currentLogo ? (
+                <Image src={organizationLogoUrl(currentLogo.storage_path)} alt={`${dossier.name} logo`} fill sizes="220px" className="object-contain p-4" />
+              ) : (
+                <Building2 className="size-10 text-[var(--admin-muted)]" aria-hidden="true" />
+              )}
+            </div>
+            <p className="mt-2 text-xs leading-5 text-[var(--admin-muted)]">{currentLogo ? "Approved logo shown on the public organization profile." : "No approved logo is published. The public profile uses a neutral organization mark."}</p>
+            {currentLogo?.source_url ? <a href={currentLogo.source_url} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[var(--admin-action)]">Open official logo asset <ExternalLink className="size-3" /></a> : null}
+            {currentLogo?.attribution_text ? <p className="mt-1 text-xs text-[var(--admin-muted)]">Attribution: {currentLogo.attribution_text}</p> : null}
+            {currentLogo?.permission_basis ? <details className="mt-2 text-xs text-[var(--admin-muted)]"><summary className="cursor-pointer font-semibold">Source provenance</summary><p className="mt-1 leading-5">{currentLogo.permission_basis}</p></details> : null}
+          </div>
+
+          <div>
+            <form action={replacePublishedOrganizationLogo}>
+              <input type="hidden" name="organizationId" value={dossier.id} />
+              <div className="grid gap-4 md:grid-cols-2">
+                <EditField label="Logo file" help="Upload an official JPEG, PNG, or WebP under 10 MB. The system normalizes it to a transparent WebP within 1024 by 512 pixels."><input name="logoFile" type="file" accept="image/jpeg,image/png,image/webp" required className={fieldClass} /></EditField>
+                <EditField label="Source confidence" help="High is an unambiguous official mark. Medium is acceptable only after you have reviewed the source manually."><select name="confidence" defaultValue="high" className={fieldClass}><option value="high">High</option><option value="medium">Medium</option></select></EditField>
+                <EditField label="Official source page" help="The organization page where the mark was found."><input name="sourcePageUrl" type="url" pattern="https://.*" required defaultValue={dossier.website_url ?? ""} className={fieldClass} /></EditField>
+                <EditField label="Official logo asset URL" help="The direct image URL from the official website."><input name="sourceAssetUrl" type="url" pattern="https://.*" required defaultValue={currentLogo?.source_url ?? ""} className={fieldClass} /></EditField>
+              </div>
+              <EditField label="Attribution (optional)" className="mt-4"><input name="attributionText" maxLength={500} defaultValue={currentLogo?.attribution_text ?? `${dossier.name} official logo`} className={fieldClass} /></EditField>
+              <div className="mt-4 flex flex-wrap justify-end gap-3">
+                <PendingButton type="submit" pendingLabel="Publishing logo…" className="h-11 bg-[var(--admin-action)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-action-hover)]"><Upload className="mr-2 size-4" />Replace logo</PendingButton>
+              </div>
+            </form>
+            {currentLogo ? (
+              <form action={removePublishedOrganizationLogo} className="mt-3 flex justify-end border-t border-[var(--admin-border)] pt-3">
+                <input type="hidden" name="organizationId" value={dossier.id} />
+                <PendingButton type="submit" pendingLabel="Removing logo…" className="h-10 border border-[var(--admin-danger-border)] bg-white px-4 text-xs font-semibold text-[var(--admin-danger)] hover:bg-[var(--admin-danger-soft)]"><Trash2 className="mr-2 size-4" />Remove logo</PendingButton>
+              </form>
+            ) : null}
+          </div>
+        </div>
+      </PublicCard>
 
       <form action={editPublishedOrganizationContact} className="mb-5">
         <input type="hidden" name="organizationId" value={dossier.id} />
