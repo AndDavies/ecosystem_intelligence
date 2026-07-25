@@ -18,7 +18,7 @@ The private defence synthesis layer is intentionally outside the repository at `
 ## Working conventions
 
 - Run standard commands from the repository root. The root `package.json` forwards them to `app/`.
-- Treat `research/ingestion/` as typed v2 private review staging and Supabase project `facoactpdckkhciamflk` as the sole canonical dataset.
+- Treat `research/ingestion/` as immutable typed v2 private-review lineage and Supabase project `facoactpdckkhciamflk` as the sole canonical dataset. Commit validated research artifacts separately from UI or runtime work; local scratch output and raw private material stay ignored.
 - Treat `app/supabase/seed.sql` only as a reproducible migration/test fixture. It is not a runtime source or promotion target.
 - Do not retain alternate schemas, CSV-era seed stores, or legacy ingestion commands inside the deployable application.
 - Put application-specific types and repositories under `app/src/types/atlas.ts` and `app/src/lib/atlas/`.

@@ -1,40 +1,51 @@
-# Research and review workflow
+# Ingestion lineage
 
-Research artifacts are private, review-first inputs. The production Supabase project is the sole source for published records, taxonomy, coverage, duplicate checks, and review state.
+`research/ingestion/` is the repository record of a reviewed, reproducible research handoff. It is not an alternate runtime dataset, a queue, or publication authority. Supabase project `facoactpdckkhciamflk` remains the sole canonical runtime and publication source.
 
-## Current workflow
+## What belongs here
 
-```text
-research/ingestion/runs/                 bounded run manifests
-research/ingestion/briefs/               gap-selection briefs
-research/ingestion/signal-batches-v1/    atomic multi-source signal ledgers
-research/ingestion/source-leads-v2/      typed source leads
-research/ingestion/candidate-batches-v2/ typed candidate bundles
-research/ingestion/reviews-v2/           reviewer packets
-research/ingestion/staging/              non-publishable staging exports
-```
+Commit only validated, typed artifacts that explain how a review candidate was prepared:
 
-Run `pnpm data:readiness`, `pnpm research:coverage`, then `pnpm research:prepare -- --trigger manual`. Complete the generated brief with the skills in `.agents/skills/`, then execute its recorded smoke command.
+| Path | Purpose |
+| --- | --- |
+| `schema/` | Versioned file contracts for the research workflow. |
+| `prospect-inventories-v1/` | Enumerated prospects and coverage selection rationale. |
+| `signal-batches-v1/` | Atomic refresh signals and dispositions. |
+| `source-leads-v2/` | Qualified, deferred, and rejected source leads. |
+| `candidate-batches-v2/` | Reviewable proposed organization, demand, or refresh changes. |
+| `reviews-v2/` and `briefs/` | Human-readable review packets and run summaries. |
+| `staging/` | Validated, non-publishable payloads submitted to private Admin Review. |
+| `runs/` and `reports/` | Deterministic run metadata and validation reports. |
 
-The coordinator validates live taxonomy, coverage, duplicate risk, evidence, and reviewer rationale. Validated new-record and refresh candidates enter the same private Admin Review queue through `public.stage_research_candidates_for_review`. They never update published records and never publish automatically.
+Keep artifacts immutable once staged. A correction or later refresh creates a new run with a new identifier; it does not rewrite prior evidence or publish a record.
 
-Live staging also requires the deployed `https://truenorthmap.ca/api/system/research-contract` response to support every candidate kind and schema version in the export. If the application is older, unavailable, or incompatible, intake stops before `candidate_changes` and the validated artifacts remain file-only until the matching Review and Publish interfaces are deployed.
+## Workflow safeguards
 
-In `refresh_batch` mode, `$tnm-signal-refresh` builds live organization and demand watchlists, extracts and deduplicates atomic signals, resolves durable evidence, and matches each signal to canonical entities before the normal source-lead, candidate, evidence, and review-steward stages. Existing-record matches produce `organization_refresh_bundle_v1` or `demand_refresh_bundle_v1` candidates containing a target ID, baseline `updated_at`, complete before-state, and explicit additive operations. The JSON is a private change proposal, not a merged canonical record.
+Run `pnpm data:readiness`, `pnpm research:coverage`, then `pnpm research:prepare -- --trigger manual`. Complete the generated brief using the project-local skills in `.agents/skills/`, then run the recorded smoke command.
 
-If the production database cannot be reached, the run stops. Bundled records, seed files, remembered taxonomy, and file-only completion are not acceptable substitutes for a production readiness decision.
+The coordinator validates live taxonomy, coverage, duplicate risk, evidence, and reviewer rationale. Validated new-record and refresh candidates enter private Admin Review only through `public.stage_research_candidates_for_review`. They never update published records or publish automatically.
 
-## Contracts
+Before live staging, the importer must confirm that `https://truenorthmap.ca/api/system/research-contract` supports every candidate kind and schema version in the export. If the deployed application is unavailable or incompatible, intake stops before `candidate_changes`; validated files remain evidence only until matching Review and Publish interfaces are deployed.
+
+In `refresh_batch` mode, `$tnm-signal-refresh` resolves durable evidence and matches signals to live entities before the ordinary source-lead, candidate, evidence, and review-steward stages. An existing-record proposal includes its stable target ID, captured baseline, complete before-state, and explicit additive operations. It remains a private change proposal until human publication.
+
+If the production database cannot be reached, the run stops. Bundled records, seed files, remembered taxonomy, and file-only completion are not substitutes for a production readiness decision.
+
+## What does not belong here
+
+Do not commit raw email, private uploads, browser downloads, credentials, copied third-party content, local scratch files, Python bytecode, editor metadata, or generated build output. Use `research/raw/`, the private knowledge base, or ignored `ingestion/local/` and `ingestion/.tmp/` for material that is not a validated handoff.
+
+## Commit discipline
+
+Validate the relevant batch before committing it. Keep a research-artifact commit separate from application, UI, migration, or documentation work unless the change is the shared typed contract itself. A committed artifact documents review provenance only: it never accepts, publishes, or alters canonical tables.
+
+## Contracts and validation
 
 - `research/ingestion/schema/research-run.schema.json`
 - `research/ingestion/schema/research-signal-batch-v1.schema.json`
 - `research/ingestion/schema/source-leads-v2.schema.json`
 - `research/ingestion/schema/research-candidate-batch-v2.schema.json`
-- `app/src/lib/research/pipeline-schema.ts` — executable Zod contract
-- `context/governance/Research Agent Schema And Source Contract.md` — field and evidence policy
+- `app/src/lib/research/pipeline-schema.ts` is the executable Zod contract.
+- `context/governance/Research Agent Schema And Source Contract.md` defines the field and evidence policy.
 
-Every candidate retains canonical public sources, field-level evidence, confidence, duplicate findings, and a generated reviewer rationale. Accepted candidates still require Andrew's separate, explicit Publish action.
-
-## Validation
-
-Run `pnpm release:validate`. The unified gate covers tests, lint, research contracts, live production coverage, and the production build. Historical reports are evidence of past runs, not current operating instructions.
+Run `pnpm release:validate` for the full application, research-contract, live-coverage, and build gate. Historical reports are evidence of prior runs, not current operating instructions.
