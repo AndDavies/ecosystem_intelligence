@@ -12,7 +12,10 @@ import type {
   AtlasQueryResult
 } from "@/types/atlas";
 
-export const ATLAS_EXPLORER_PAGE_SIZE = 120;
+// Rich evidence cards are deliberately paginated. Every matching organization
+// still reaches the map through mapOrganizations, so this limit reduces the
+// initial React payload without reducing national discovery coverage.
+export const ATLAS_EXPLORER_PAGE_SIZE = 36;
 export const ATLAS_EXPLORER_MAX_PAGE_SIZE = 200;
 
 function matchingCapability(organization: AtlasOrganization, query: AtlasQuery) {

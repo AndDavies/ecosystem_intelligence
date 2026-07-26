@@ -62,16 +62,15 @@ import { cn, formatDate, toTitleCase } from "@/lib/utils";
 import type {
   AtlasAssistantPriorTurn,
   AtlasBounds,
-  AtlasDemandRequirement,
+  AtlasExplorerDemandOption,
+  AtlasExplorerFilterOption,
   AtlasDiscoveryResult,
   AtlasExplorerCapability,
   AtlasExplorerOrganization,
   AtlasExplorerQueryResult,
-  AtlasMissionArea,
   AtlasOrganization,
   AtlasQuery,
   AtlasRegion,
-  AtlasTechnicalDomain
 } from "@/types/atlas";
 
 const publicOrganizationTypes = new Set([
@@ -116,9 +115,9 @@ interface AtlasExplorerProps {
   initialFilters: AtlasQuery;
   snapshotMetrics: { organizations: number; capabilities: number; sources: number };
   regions: AtlasRegion[];
-  technicalDomains: AtlasTechnicalDomain[];
-  missionAreas: AtlasMissionArea[];
-  demandRequirements: AtlasDemandRequirement[];
+  technicalDomains: AtlasExplorerFilterOption[];
+  missionAreas: AtlasExplorerFilterOption[];
+  demandRequirements: AtlasExplorerDemandOption[];
   generatedAt: string;
 }
 

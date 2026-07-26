@@ -22,6 +22,7 @@ pnpm lint
 pnpm build
 pnpm data:readiness
 pnpm release:validate
+pnpm launch:validate
 ```
 
 See `context/governance/Project Status.md` for the current product and operating snapshot, `app/README.md` for application development, and `research/README.md` for the evidence workflow.

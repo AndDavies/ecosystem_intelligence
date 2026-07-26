@@ -62,9 +62,9 @@ export default async function PublicAtlasPage({
           ]).map((citation) => citation.sourceUrl)).size
         }}
         regions={snapshot.regions}
-        technicalDomains={snapshot.technicalDomains}
-        missionAreas={snapshot.missionAreas}
-        demandRequirements={snapshot.demandRequirements}
+        technicalDomains={snapshot.technicalDomains.map(({ slug, name }) => ({ slug, name }))}
+        missionAreas={snapshot.missionAreas.map(({ slug, name }) => ({ slug, name }))}
+        demandRequirements={snapshot.demandRequirements.map(({ slug, title }) => ({ slug, title }))}
         generatedAt={snapshot.generatedAt}
       />
     </main>

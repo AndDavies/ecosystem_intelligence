@@ -37,6 +37,17 @@ Place, technology, or public need
 | Contribution and connection | Claim, correct, suggest, contact, or request a human-brokered introduction | Nothing public changes automatically |
 | Admin workspace | Review candidates, publish approved records, maintain dossiers, demand signals, evidence, logos, coverage, and feedback | Private, owner-only, audited |
 
+## Phase 2 release posture
+
+- Every matching published organization remains available to the national map and search through a compact projection. Rich evidence cards load in pages of 36 and full dossiers load only when opened.
+- Public reads retry one transient upstream failure. Warm application instances may serve the last safe public snapshot while an upstream dependency recovers; cold instances continue to fail closed.
+- `/api/health` checks the application and core public record families without returning internal database or provider details.
+- Expected expired or reused refresh tokens are cleared and treated as signed out.
+- The content security policy explicitly permits only the application and required Supabase, MapTiler, OpenStreetMap, Google, Turnstile, Vercel Analytics and consented Clarity endpoints.
+- A daily production job purges expired raw searches after 90 days and detailed workflow events after 30 days.
+- `pnpm launch:validate` performs a deliberately low-rate crawl of every canonical public sitemap URL, checking status, metadata, canonical URLs, social metadata, structured data and image accessibility attributes without creating a load test.
+- The current launch kit lives under `content/launch/phase-2/`; older screenshots and demo material are not release assets.
+
 ## System architecture and source of truth
 
 | Layer | Current responsibility | Must not do |

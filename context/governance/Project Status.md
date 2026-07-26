@@ -14,6 +14,7 @@ True North Map is an evidence-backed Canadian defence and dual-use ecosystem map
 
 The current product and operating system include:
 
+- Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix, rollback runbook and current launch kit now make release validation repeatable.
 - Phase 1B introduces the North Signal identity, a charcoal, warm-white and signal-yellow design system, consistent Barlow and Inter typography, lighter section-based layout, and one public message system across navigation, discovery, evidence, editorial, account, contribution, and trust surfaces. Product behaviour and data contracts are unchanged.
 - The primary navigation is Map, Organizations, Public Needs, Defence Briefs, How It Works, and About. `/demand` remains canonical; Public Needs names the collection while Demand Signal remains the precise label for one source-gated released need.
 

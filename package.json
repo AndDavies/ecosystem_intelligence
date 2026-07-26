@@ -27,6 +27,7 @@
     "data:readiness": "pnpm --dir app data:readiness",
     "logos:import": "pnpm --dir app logos:import",
     "logos:publish-reviewed": "pnpm --dir app logos:publish-reviewed",
+    "launch:validate": "pnpm --dir app launch:validate",
     "release:validate": "pnpm test && pnpm lint && pnpm research:validate && pnpm research:coverage && pnpm build"
   }
 }

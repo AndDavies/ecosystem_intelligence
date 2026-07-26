@@ -679,17 +679,23 @@ export type AtlasRecordSummary = {
 export async function loadPublishedAtlasSlugsFromSupabase() {
   const supabase = createPublicClient();
   const [organizationsResult, capabilitiesResult, demandsResult] = await Promise.all([
-    supabase.from("organizations").select("slug").eq("publication_status", "published"),
-    supabase.from("capabilities").select("slug").eq("publication_status", "published"),
-    supabase.from("demand_requirements").select("slug").eq("publication_status", "published")
+    supabase.from("organizations").select("slug, updated_at, last_reviewed_at").eq("publication_status", "published"),
+    supabase.from("capabilities").select("slug, updated_at, last_reviewed_at").eq("publication_status", "published"),
+    supabase.from("demand_requirements").select("slug, updated_at").eq("publication_status", "published")
   ]);
   assertQuery(organizationsResult, "published organization slugs");
   assertQuery(capabilitiesResult, "published capability slugs");
   assertQuery(demandsResult, "published demand slugs");
   return {
-    organizations: asRows(organizationsResult.data).map((row) => asString(row.slug)).filter(Boolean),
-    capabilities: asRows(capabilitiesResult.data).map((row) => asString(row.slug)).filter(Boolean),
-    demands: asRows(demandsResult.data).map((row) => asString(row.slug)).filter(Boolean)
+    organizations: asRows(organizationsResult.data)
+      .map((row) => ({ slug: asString(row.slug), updatedAt: asNullableString(row.updated_at) ?? asNullableString(row.last_reviewed_at) }))
+      .filter((row) => row.slug),
+    capabilities: asRows(capabilitiesResult.data)
+      .map((row) => ({ slug: asString(row.slug), updatedAt: asNullableString(row.updated_at) ?? asNullableString(row.last_reviewed_at) }))
+      .filter((row) => row.slug),
+    demands: asRows(demandsResult.data)
+      .map((row) => ({ slug: asString(row.slug), updatedAt: asNullableString(row.updated_at) }))
+      .filter((row) => row.slug)
   };
 }
 

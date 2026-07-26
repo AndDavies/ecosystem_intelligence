@@ -24,6 +24,7 @@ import type {
   AtlasSnapshot
 } from "@/types/atlas";
 import { ATLAS_EXPLORER_MAX_PAGE_SIZE, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
+import { withPublicReadRetry } from "@/lib/supabase/public-read";
 
 const regionDefinitions: Array<Omit<AtlasRegion, "organizationCount" | "capabilityCount" | "clusterCount">> = [
   {
@@ -91,6 +92,8 @@ const regionDefinitions: Array<Omit<AtlasRegion, "organizationCount" | "capabili
   }
 ];
 
+let lastSafePublicSnapshot: Omit<AtlasSnapshot, "regions"> | null = null;
+
 function buildRegions(snapshot: Omit<AtlasSnapshot, "regions">): AtlasRegion[] {
   return regionDefinitions.map((definition) => {
     const organizations =
@@ -114,25 +117,25 @@ function buildRegions(snapshot: Omit<AtlasSnapshot, "regions">): AtlasRegion[] {
 }
 
 const getCachedAtlasOrganizationBySlug = unstable_cache(
-  loadAtlasOrganizationBySlugFromSupabase,
+  (slug: string) => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
   ["ecosystem-intelligence-organization-detail-v1"],
   { revalidate: 300, tags: ["atlas-public"] }
 );
 
 const getCachedAtlasCapabilityBySlug = unstable_cache(
-  loadAtlasCapabilityBySlugFromSupabase,
+  (slug: string) => withPublicReadRetry(() => loadAtlasCapabilityBySlugFromSupabase(slug)),
   ["ecosystem-intelligence-capability-detail-v1"],
   { revalidate: 300, tags: ["atlas-public"] }
 );
 
 const getCachedAtlasDemandBySlug = unstable_cache(
-  loadAtlasDemandBySlugFromSupabase,
+  (slug: string) => withPublicReadRetry(() => loadAtlasDemandBySlugFromSupabase(slug)),
   ["ecosystem-intelligence-demand-detail-v1"],
   { revalidate: 300, tags: ["atlas-public"] }
 );
 
 const getCachedPublishedAtlasSlugs = unstable_cache(
-  loadPublishedAtlasSlugsFromSupabase,
+  () => withPublicReadRetry(loadPublishedAtlasSlugsFromSupabase),
   ["ecosystem-intelligence-published-atlas-slugs-v1"],
   { revalidate: 300, tags: ["atlas-public"] }
 );
@@ -149,7 +152,14 @@ export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
   // React cache still deduplicates the load within a request; record-level
   // routes keep their five-minute caches below. Do not put the full corpus
   // back into one unstable_cache entry as coverage grows.
-  const snapshot = await loadAtlasSnapshotFromSupabase();
+  let snapshot: Omit<AtlasSnapshot, "regions">;
+  try {
+    snapshot = await withPublicReadRetry(loadAtlasSnapshotFromSupabase);
+    lastSafePublicSnapshot = snapshot;
+  } catch (error) {
+    if (!lastSafePublicSnapshot) throw error;
+    snapshot = lastSafePublicSnapshot;
+  }
   return {
     ...snapshot,
     regions: buildRegions(snapshot)

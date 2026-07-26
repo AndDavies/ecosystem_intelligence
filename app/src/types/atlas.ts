@@ -330,6 +330,16 @@ export interface AtlasExplorerQueryResult extends Omit<AtlasQueryResult, "organi
   nextPage: number | null;
 }
 
+export type AtlasExplorerFilterOption = {
+  slug: string;
+  name: string;
+};
+
+export type AtlasExplorerDemandOption = {
+  slug: string;
+  title: string;
+};
+
 export interface AtlasDiscoveryResult {
   query: string;
   searchId?: string | null;

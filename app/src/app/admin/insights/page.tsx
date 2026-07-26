@@ -46,6 +46,19 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
         <Metric label="Connection requests" value={connections.data?.length ?? 0} />
       </div>
       <PublicCard title="Workflow funnel" eyebrow="Meaningful events · last 30 days" className="mt-5"><div className="flex flex-wrap gap-2">{["atlas_search", "result_select", "dossier_open", "evidence_open", "export", "save", "submission", "connection", "subscription", "feedback"].map((name) => <span key={name} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] px-3 py-2 text-xs"><strong>{eventCounts.get(name) ?? 0}</strong> {name.replaceAll("_", " ")}</span>)}</div></PublicCard>
+      <PublicCard title="First-week release scorecard" eyebrow="Broader public beta targets" className="mt-5">
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <ScorecardItem label="Qualified sessions" target="300" current="Vercel Analytics" />
+          <ScorecardItem label="Discovery engagement" target="50%" current="GA4 / Vercel" />
+          <ScorecardItem label="Profile reach" target="25%" current={`${eventCounts.get("dossier_open") ?? 0} opens`} />
+          <ScorecardItem label="Zero-result searches" target="Below 25%" current={totalSearches ? `${Math.round((zeroSearches / totalSearches) * 100)}%` : "No data"} />
+          <ScorecardItem label="Update subscribers" target="25" current={String(subscribers.count ?? 0)} />
+          <ScorecardItem label="Useful contributions" target="5" current={String(submissions.data?.length ?? 0)} />
+          <ScorecardItem label="Connection requests" target="3" current={String(connections.data?.length ?? 0)} />
+          <ScorecardItem label="Substantive feedback" target="10" current={String(feedback.data?.length ?? 0)} />
+        </div>
+        <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)]">Session and percentage metrics stay in aggregate analytics. Private workflow records remain in the production consent and operations ledger.</p>
+      </PublicCard>
 
       <section className="mt-7 space-y-4"><SectionHeading title="Connection requests" detail="Human-vetted introductions only." />{connections.data?.length ? connections.data.map((item) => <WorkflowCard key={item.id} workflow="connection" item={item} statuses={["new", "reviewing", "introduced", "declined", "closed"]} title={`${item.requester_name} → ${item.organization_id}`} body={`${item.intent.replaceAll("_", " ")} · ${item.requester_organization ?? "No organization supplied"}\n${item.requester_email}\n\n${item.message}`} />) : <EmptyCoverage title="No connection requests" detail="Authenticated requests will appear here." />}</section>
       <section className="mt-7 space-y-4"><SectionHeading title="Contact inbox" detail="General, partnership, media, and privacy contact." />{contacts.data?.length ? contacts.data.map((item) => <WorkflowCard key={item.id} workflow="contact" item={item} statuses={["new", "reviewing", "replied", "closed", "spam"]} title={`${item.sender_name} · ${item.category}`} body={`${item.sender_email}${item.organization_name ? ` · ${item.organization_name}` : ""}\n\n${item.message}`} />) : <EmptyCoverage title="No contact messages" detail="Public contact will appear here." />}</section>
@@ -57,6 +70,7 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
 }
 
 function Metric({ label, value }: { label: string; value: string | number }) { return <div className="rounded-lg border border-[var(--admin-border)] bg-white p-4"><strong className="text-2xl text-[var(--admin-ink)]">{value}</strong><p className="mt-1 text-xs font-semibold text-[var(--admin-muted)]">{label}</p></div>; }
+function ScorecardItem({ label, target, current }: { label: string; target: string; current: string }) { return <div className="border-l-2 border-[var(--atlas-signal)] pl-3"><p className="text-xs font-bold text-[var(--admin-ink)]">{label}</p><p className="mt-1 text-xs text-[var(--admin-muted)]">Target: {target}</p><p className="text-xs text-[var(--admin-muted-strong)]">Current: {current}</p></div>; }
 function assistantMeta(value: unknown) {
   const filters = value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
   const raw = filters.__assistant;

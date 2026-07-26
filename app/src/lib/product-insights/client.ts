@@ -5,6 +5,24 @@ import type { BetaEventName } from "@/lib/product-insights/validation";
 const cohortKey = "true-north-map-beta-cohort";
 const sessionKey = "true-north-map-beta-session";
 const searchKey = "true-north-map-beta-search";
+const attributionKey = "true-north-map-release-attribution";
+
+function currentReleaseAttribution() {
+  if (typeof window === "undefined") return null;
+  const params = new URLSearchParams(window.location.search);
+  const source = params.get("utm_source")?.slice(0, 80) ?? null;
+  const medium = params.get("utm_medium")?.slice(0, 80) ?? null;
+  const campaign = params.get("utm_campaign")?.slice(0, 120) ?? null;
+  const incoming = source || medium || campaign ? { source, medium, campaign } : null;
+  try {
+    if (incoming) window.sessionStorage.setItem(attributionKey, JSON.stringify(incoming));
+    const value = incoming ?? JSON.parse(window.sessionStorage.getItem(attributionKey) ?? "null") as typeof incoming;
+    if (!value) return null;
+    return [value.source, value.medium].filter(Boolean).join("/").slice(0, 180) || null;
+  } catch {
+    return incoming ? [incoming.source, incoming.medium].filter(Boolean).join("/").slice(0, 180) || null : null;
+  }
+}
 
 function validUuid(value: string | null) {
   return Boolean(value && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value));
@@ -12,7 +30,8 @@ function validUuid(value: string | null) {
 
 export function currentPilotCohort() {
   if (typeof window === "undefined") return null;
-  const queryCohort = new URLSearchParams(window.location.search).get("cohort")?.slice(0, 120) ?? null;
+  const params = new URLSearchParams(window.location.search);
+  const queryCohort = (params.get("cohort") ?? params.get("utm_campaign"))?.slice(0, 120) ?? null;
   try {
     if (queryCohort) window.sessionStorage.setItem(cohortKey, queryCohort);
     return queryCohort ?? window.sessionStorage.getItem(cohortKey);
@@ -60,6 +79,8 @@ export function trackBetaEvent(
   attribution: { searchId?: string | null } = {}
 ) {
   if (typeof window === "undefined") return;
+  const releaseSource = currentReleaseAttribution();
+  const boundedMetadata = Object.fromEntries(Object.entries(metadata).slice(0, releaseSource ? 7 : 8));
   void fetch("/api/beta-events", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -69,7 +90,7 @@ export function trackBetaEvent(
       cohort: currentPilotCohort(),
       sessionId: currentPilotSessionId(),
       searchId: attribution.searchId === undefined ? currentPilotSearchId() : attribution.searchId,
-      metadata
+      metadata: releaseSource ? { ...boundedMetadata, release_source: releaseSource } : boundedMetadata
     }),
     keepalive: true
   }).catch(() => undefined);
