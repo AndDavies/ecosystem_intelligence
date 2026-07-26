@@ -3,7 +3,8 @@ import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shel
 
 export const metadata = {
   title: "Contact",
-  description: "Contact True North Map about partnerships, media, privacy, or the Canadian defence and dual-use ecosystem."
+  description: "Contact True North Map about partnerships, media, privacy, or the Canadian defence and dual-use ecosystem.",
+  alternates: { canonical: "/contact" }
 };
 
 export default function ContactPage() {

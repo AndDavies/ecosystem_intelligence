@@ -1,6 +1,10 @@
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 
-export const metadata = { title: "Terms of use", description: "Terms governing use of the True North Map public beta." };
+export const metadata = {
+  title: "Terms of use",
+  description: "Terms governing use of the True North Map public beta.",
+  alternates: { canonical: "/terms" }
+};
 
 export default function TermsPage() {
   return (

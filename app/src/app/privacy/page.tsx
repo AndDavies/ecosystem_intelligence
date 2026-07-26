@@ -3,7 +3,11 @@ import { BarChart3, Bot, Database, Eye, MailCheck, MousePointer2, ShieldCheck } 
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { AnalyticsPreferencesButton } from "@/components/atlas/public-beta-insights";
 
-export const metadata = { title: "Privacy", description: "How True North Map handles accounts, contributions, connections, messages, feedback, analytics, and retention." };
+export const metadata = {
+  title: "Privacy",
+  description: "How True North Map handles accounts, contributions, connections, messages, feedback, analytics, and retention.",
+  alternates: { canonical: "/privacy" }
+};
 
 export default function PrivacyPage() {
   return (

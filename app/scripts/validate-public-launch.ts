@@ -88,7 +88,9 @@ async function inspectPage(url: string): Promise<PageResult> {
   for (const image of images) {
     const attributes = image[1];
     if (!/\balt=["'][^"']*["']/i.test(attributes)) findings.push({ url, issue: "Image without alt attribute" });
-    if (!/\bwidth=["']?\d+/i.test(attributes) || !/\bheight=["']?\d+/i.test(attributes)) {
+    const layoutReservedByFill = /\bdata-nimg=["']fill["']/i.test(attributes)
+      || (/position:\s*absolute/i.test(attributes) && /height:\s*100%/i.test(attributes) && /width:\s*100%/i.test(attributes));
+    if (!layoutReservedByFill && (!/\bwidth=["']?\d+/i.test(attributes) || !/\bheight=["']?\d+/i.test(attributes))) {
       findings.push({ url, issue: "Image without explicit dimensions" });
     }
   }
@@ -121,8 +123,23 @@ async function main() {
   if (urls.length === 0) throw new Error("Sitemap contains no canonical URLs");
 
   const pages = await mapLimited(urls, concurrency, inspectPage);
+  const supportingListUrls = [...new Set(pages
+    .flatMap((page) => page.internalLinks)
+    .filter((url) => /\/(organizations|demand)\?[^#]*\bpage=\d+/.test(url)))];
+  const supportingPages = await mapLimited(supportingListUrls, concurrency, async (url) => {
+    try {
+      const { response, body } = await fetchWithRetry(url);
+      if (!response.ok) return { url, internalLinks: [] as string[] };
+      const internalLinks = [...body.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)]
+        .map((item) => absoluteInternalLink(item[1]))
+        .filter((item): item is string => Boolean(item));
+      return { url, internalLinks: [...new Set(internalLinks)] };
+    } catch {
+      return { url, internalLinks: [] as string[] };
+    }
+  });
   const sitemapSet = new Set(urls);
-  const linked = new Set(pages.flatMap((page) => page.internalLinks));
+  const linked = new Set([...pages.flatMap((page) => page.internalLinks), ...supportingPages.flatMap((page) => page.internalLinks)]);
   const orphanCandidates = urls.filter((url) => url !== `${baseUrl}/` && !linked.has(url));
   const titleGroups = new Map<string, string[]>();
   for (const page of pages) {
@@ -135,6 +152,7 @@ async function main() {
     generatedAt: new Date().toISOString(),
     baseUrl,
     pagesChecked: pages.length,
+    supportingListPagesChecked: supportingPages.length,
     sitemapInternalLinks: [...linked].filter((url) => sitemapSet.has(url)).length,
     findings,
     orphanCandidates,
