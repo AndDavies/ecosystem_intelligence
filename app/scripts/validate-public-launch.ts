@@ -115,6 +115,34 @@ async function mapLimited<T, R>(values: T[], limit: number, work: (value: T) => 
   return results;
 }
 
+async function collectSupportingListPages(seedUrls: string[]) {
+  const pending = [...new Set(seedUrls)];
+  const seen = new Set<string>();
+  const pages: Array<{ url: string; internalLinks: string[] }> = [];
+  while (pending.length > 0 && seen.size < 50) {
+    const batch = pending.splice(0, concurrency).filter((url) => !seen.has(url));
+    if (batch.length === 0) continue;
+    const results = await mapLimited(batch, concurrency, async (url) => {
+      seen.add(url);
+      try {
+        const { response, body } = await fetchWithRetry(url);
+        if (!response.ok) return { url, internalLinks: [] as string[] };
+        const internalLinks = [...body.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)]
+          .map((item) => absoluteInternalLink(item[1]))
+          .filter((item): item is string => Boolean(item));
+        return { url, internalLinks: [...new Set(internalLinks)] };
+      } catch {
+        return { url, internalLinks: [] as string[] };
+      }
+    });
+    pages.push(...results);
+    for (const link of results.flatMap((page) => page.internalLinks)) {
+      if (/\/(organizations|demand)\?[^#]*\bpage=\d+/.test(link) && !seen.has(link)) pending.push(link);
+    }
+  }
+  return pages;
+}
+
 async function main() {
   const sitemap = await fetchWithRetry(`${baseUrl}/sitemap.xml`);
   if (!sitemap.response.ok) throw new Error(`Sitemap returned ${sitemap.response.status}`);
@@ -126,18 +154,7 @@ async function main() {
   const supportingListUrls = [...new Set(pages
     .flatMap((page) => page.internalLinks)
     .filter((url) => /\/(organizations|demand)\?[^#]*\bpage=\d+/.test(url)))];
-  const supportingPages = await mapLimited(supportingListUrls, concurrency, async (url) => {
-    try {
-      const { response, body } = await fetchWithRetry(url);
-      if (!response.ok) return { url, internalLinks: [] as string[] };
-      const internalLinks = [...body.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)]
-        .map((item) => absoluteInternalLink(item[1]))
-        .filter((item): item is string => Boolean(item));
-      return { url, internalLinks: [...new Set(internalLinks)] };
-    } catch {
-      return { url, internalLinks: [] as string[] };
-    }
-  });
+  const supportingPages = await collectSupportingListPages(supportingListUrls);
   const sitemapSet = new Set(urls);
   const linked = new Set([...pages.flatMap((page) => page.internalLinks), ...supportingPages.flatMap((page) => page.internalLinks)]);
   const orphanCandidates = urls.filter((url) => url !== `${baseUrl}/` && !linked.has(url));
