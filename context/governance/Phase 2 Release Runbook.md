@@ -31,7 +31,7 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 ## Rollback
 
 - Application: promote the recorded pre-Phase 2 Vercel deployment or revert the Phase 2 merge commit.
-- Database: the Phase 2 migration adds a private retention-cleanup function and a daily scheduler entry that calls it. No action is needed during normal operation. During a rollback only, remove the scheduler entry first, then remove the function. This order prevents the scheduler from calling a function that no longer exists.
+- Database: the Phase 2 migration adds a private retention-cleanup function and a daily scheduler entry that calls it. This is necessary to honour the published 30-day detailed-event and 90-day raw-search retention limits. No action is needed during normal operation. During rollback, the acting agent uses the versioned rollback script, verifies the live `cron.job` state, removes the scheduler entry first, then removes the function, and reruns database and release regression checks. This is an agent-owned operation, not a release-owner memory task.
 - Authentication: retain the existing Supabase, Google OAuth and Resend configuration. Phase 2 does not change providers or credentials.
 - Newsletter: revoke or pause MailerLite delivery without changing the production consent ledger.
 

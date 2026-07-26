@@ -3,7 +3,7 @@
 This area holds durable context for people and agents working on True North Map at `truenorthmap.ca`, the public brand for the Ecosystem Intelligence project.
 
 - `governance/` contains the active PRD, project structure, admin workflow contract, research contract, current release plan references, historical audits, and development logs.
-- `.agents/skills/` at the repository root contains the executable project-local research instructions. There is no second legacy skill set under `context/`.
+- `.agents/skills/` at the workspace root contains local operator-only research and visibility instructions. It is ignored by Git and is not part of the deployable public application.
 
 Implementation changes that alter the roadmap or user-facing workflow should update the relevant governance document here.
 

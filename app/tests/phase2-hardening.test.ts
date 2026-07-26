@@ -56,11 +56,20 @@ describe("phase 2 launch hardening", () => {
     expect(authState).toContain("signedOutResponse.cookies.delete");
   });
 
-  it("enforces scheduled telemetry retention without exposing the purge function", async () => {
-    const migration = await readFile(path.resolve("supabase/migrations/20260726100611_phase2_retention_cleanup.sql"), "utf8");
+  it("enforces scheduled telemetry retention and an agent-owned rollback order", async () => {
+    const [migration, rollback, runbook, agentContract] = await Promise.all([
+      readFile(path.resolve("supabase/migrations/20260726100611_phase2_retention_cleanup.sql"), "utf8"),
+      readFile(path.resolve("supabase/rollback/20260726100611_phase2_retention_cleanup.rollback.sql"), "utf8"),
+      readFile(path.resolve("../context/governance/Phase 2 Release Runbook.md"), "utf8"),
+      readFile(path.resolve("../AGENTS.md"), "utf8")
+    ]);
     expect(migration).toContain("true-north-map-purge-expired-product-telemetry");
     expect(migration).toContain("delete from public.pilot_searches where expires_at <= now()");
     expect(migration).toContain("delete from public.pilot_events where expires_at <= now()");
     expect(migration).toContain("revoke all on function private.purge_expired_product_telemetry() from public, anon, authenticated");
+    expect(rollback.indexOf("cron.unschedule")).toBeGreaterThanOrEqual(0);
+    expect(rollback.indexOf("drop function if exists private.purge_expired_product_telemetry")).toBeGreaterThan(rollback.indexOf("cron.unschedule"));
+    expect(runbook).toContain("versioned rollback script");
+    expect(agentContract).toContain("release owner is not expected to remember internal scheduler dependencies");
   });
 });

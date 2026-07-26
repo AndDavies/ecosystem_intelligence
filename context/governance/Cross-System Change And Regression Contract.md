@@ -58,7 +58,7 @@ pnpm visibility:validate
 pnpm launch:validate
 ```
 
-`visibility:validate` applies only when the tracked visibility integration exists in the active checkout. `launch:validate` is a low-rate production-like crawl, not a load test.
+`visibility:validate` is a separate local operator check and applies only when private visibility work changes. `launch:validate` is a low-rate production-like crawl, not a load test.
 
 ### Level C: production-release check
 

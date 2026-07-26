@@ -57,7 +57,7 @@ Place, technology, or public need
 | `app/` | Next.js application, public and private routes, server actions, tests, deployment migrations, runtime integrations | Hold an alternate corpus or publish unreviewed research |
 | Supabase production | Sole canonical runtime for records, taxonomy, evidence, review state, auth, storage, and publication | Accept unreviewed agent output as public data |
 | `research/ingestion/` | Immutable typed lineage for leads, candidates, reviews, staging exports, and runs | Act as a runtime data source or automatic promotion channel |
-| `.agents/skills/` | Executable repository-local research contracts | Replace the live schema or publication authority |
+| `.agents/skills/` | Ignored local operator skills for research and visibility | Enter the public repository, replace the live schema, or gain publication authority |
 | `context/governance/` | Product decisions, operating contracts, release and workflow documentation | Store candidate records or code-generated output |
 | `content/` | Launch, campaign, and non-runtime collateral | Become a source of public record truth |
 | Private Defence Wiki | Private source packets and evergreen synthesis in Andrew's Obsidian vault | Feed raw private material directly to public routes |

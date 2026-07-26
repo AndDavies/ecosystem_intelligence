@@ -89,21 +89,21 @@ No material change is complete merely because one route works locally. It must p
 
 ## Research Skills Of Record
 
-The research system is designed around seven project-local skills. Six are deployed in the current production-aligned repository state; the candidate-logo skill is active integration work in the primary workspace and becomes the seventh deployed skill only when its executable contract, tests, and repository files merge together. Manual runs, scheduled runs, tests, and governance reviews must use repository copies. These canonical instructions supersede cached or globally installed variants, older operator guides, and workflow assumptions embedded in historical artifacts. `app/src/lib/research/pipeline-schema.ts` remains the executable data contract when prose and code differ.
+The research system is designed around seven local operator skills. They are deliberately excluded from Git and the public application repository. Manual runs, scheduled runs, and governance reviews use the installed workspace copies. `app/src/lib/research/pipeline-schema.ts` remains the tracked executable data contract when prose and code differ. Skill content, provider credentials, raw outputs, and local configuration must never be added to a public-site commit.
 
 - `.agents/skills/tnm-autonomous-research/`: live-database coverage, batch planning, limits, and handoffs.
 - `.agents/skills/tnm-signal-refresh/`: multi-source monitoring, atomic-signal extraction, durable-evidence resolution, live entity matching, and refresh handoffs.
 - `.agents/skills/tnm-source-discovery/`: broad prospect enumeration, evidence recovery, durable public-source discovery, and typed leads.
 - `.agents/skills/tnm-candidate-builder/`: qualified-lead conversion into enriched green or amber organization, demand, or relationship candidates.
 - `.agents/skills/tnm-evidence-mapper/`: field evidence, citations, confidence, and derived rationale.
-- `.agents/skills/tnm-candidate-logo/`: official-site logo extraction, private provenance packets, confidence disposition, and candidate identity-media handoff. If the path or corresponding executable contract is absent in a clean checkout, stop before claiming logo-packet completion.
+- `.agents/skills/tnm-candidate-logo/`: official-site logo extraction, private provenance packets, confidence disposition, and candidate identity-media handoff. If the local skill or corresponding executable contract is absent, stop before claiming logo-packet completion.
 - `.agents/skills/tnm-review-steward/`: live taxonomy and duplicate checks, deterministic validation, private review intake, and publication guardrails.
 
 ## Public Visibility Intelligence
 
-`.agents/skills/tnm-visibility/` is the project-local workflow of record for private SEO, GEO, AEO, search-demand, technical-health, content-opportunity, and earned-link analysis. It is separate from the seven research-ingestion skills and never changes their candidate, review, or publication authority.
+`.agents/skills/tnm-visibility/` is the local workflow of record for private SEO, GEO, AEO, search-demand, technical-health, content-opportunity, and earned-link analysis. The skill itself remains local and ignored. It is separate from the seven research-ingestion skills and never changes their candidate, review, or publication authority.
 
-Provider credentials, raw queries, exports, referral detail, snapshots, and reports remain ignored under `research/visibility/local/`. Only an allowlisted, aggregate owner-only dashboard summary may leave that local boundary. Visibility analysis does not write to Supabase, publish content, change provider settings, submit IndexNow or Google Indexing requests, send outreach, buy links, or promote candidates. If the skill or CLI is not present in a clean checkout, treat visibility integration as pending and do not infer readiness from local artifacts.
+Provider credentials, raw queries, exports, referral detail, snapshots, and reports remain ignored under `research/visibility/local/`. Only an allowlisted, aggregate owner-only dashboard summary may leave that local boundary. Visibility analysis does not write to Supabase, publish content, change provider settings, submit IndexNow or Google Indexing requests, send outreach, buy links, or promote candidates. Public application readiness never depends on private visibility tooling.
 
 ## Research Batch Protocol
 
@@ -191,7 +191,9 @@ Before BD sharing, run:
 pnpm release:validate
 ```
 
-This command runs tests, lint, typed v2 research validation, live production coverage checks, and the production build. It requires production database configuration and fails closed when the connection is unavailable.
+This command validates the deployable public application with tests, lint, and the production build. Research and visibility are separate local operator lanes and run their own contract checks whenever those local systems or tracked interoperability contracts change.
+
+For any production database migration or rollback, the acting agent must inspect the live migration and scheduled-job state, execute the versioned operation in dependency order, and rerun the applicable database and full release regression checks. The release owner is not expected to remember internal scheduler dependencies.
 
 Apply the regression matrix in `context/governance/Cross-System Change And Regression Contract.md`. At minimum:
 

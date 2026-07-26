@@ -53,7 +53,7 @@ Research files and private staging
 
 Its local artifacts live under ignored `research/visibility/local/`. The skill does not publish content, change providers, submit indexing requests, send outreach, purchase links, or write to the public corpus. A recommended content or technical change enters the ordinary product or editorial workflow and must pass the cross-system regression contract.
 
-Tracked visibility integration is complete only when a clean checkout contains `.agents/skills/tnm-visibility/`, its CLI and provider/report contracts, root commands, and passing `pnpm visibility:validate`. Private local reports alone do not establish repository or deployment readiness.
+Visibility is an operator-only local system. Its installed skill, credentials, provider exports, query evidence, and generated reports are ignored and never form part of a public application deployment. When visibility work changes, validate it locally and promote only an approved application, content, or editorial change through the ordinary regression workflow.
 
 ## Scheduled and manual operations
 
@@ -69,4 +69,4 @@ Tracked visibility integration is complete only when a clean checkout contains `
 
 - Research changes: `pnpm data:readiness`, `pnpm research:validate`, deployed research-contract compatibility, and review-card inspection.
 - Visibility changes: `pnpm visibility:validate`, then tests, lint, and build for related application work.
-- Production releases: `pnpm release:validate`, relevant browser matrix, `/api/health`, affected public routes, deployment logs, and live database state.
+- Production releases: `pnpm release:validate`, relevant browser matrix, `/api/health`, affected public routes, deployment logs, and live database state. Research and visibility checks remain separate and are required only when those local operator systems or their tracked interoperability contracts change.
