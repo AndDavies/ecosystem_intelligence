@@ -18,6 +18,7 @@ export const betaSignupSchema = z.object({
   sessionId: optionalUuid,
   searchId: optionalUuid,
   landingPath: safePath,
+  captchaToken: z.string().trim().max(4096).optional().default(""),
   website: z.string().max(200).optional().default("")
 });
 
@@ -30,6 +31,7 @@ export const betaFeedbackSchema = z.object({
   cohort: optionalShortText,
   sessionId: optionalUuid,
   searchId: optionalUuid,
+  captchaToken: z.string().trim().max(4096).optional().default(""),
   website: z.string().max(200).optional().default("")
 });
 

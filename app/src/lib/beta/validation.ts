@@ -23,5 +23,6 @@ export const contactMessageSchema = z.object({
   senderEmail: z.string().trim().email().max(320).transform((value) => value.toLowerCase()),
   organizationName: z.union([z.literal(""), z.string().trim().max(180)]).optional().transform((value) => value || null),
   message: z.string().trim().min(20).max(4000),
+  captchaToken: z.string().trim().max(4096).optional().default(""),
   website: z.string().max(200).optional().default("")
 });

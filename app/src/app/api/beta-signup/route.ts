@@ -4,6 +4,7 @@ import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
 import { betaSignupSchema } from "@/lib/product-insights/validation";
 import { privateJson, requestFingerprint } from "@/lib/product-insights/server";
 import { hasMailerLiteEnv, upsertMailerLiteSubscriber } from "@/lib/email/mailerlite";
+import { verifyPublicTurnstileToken } from "@/lib/security/turnstile";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +12,9 @@ export async function POST(request: Request) {
   const parsed = betaSignupSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return privateJson({ error: "Please provide a valid email address and consent." }, { status: 400 });
   if (parsed.data.website) return privateJson({ ok: true }, { status: 202 });
+  if (!await verifyPublicTurnstileToken(parsed.data.captchaToken)) {
+    return privateJson({ error: "Please complete the verification check and try again." }, { status: 400 });
+  }
   if (!hasSupabaseAdminEnv()) return privateJson({ error: "Update signup is not configured." }, { status: 503 });
 
   const supabase = createAdminClient();

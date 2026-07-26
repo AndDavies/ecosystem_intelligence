@@ -42,7 +42,8 @@ Never send authentication mail through MailerLite. Never use the subscriber list
 ## Secret ownership
 
 - Resend SMTP password: Supabase Auth only.
-- Turnstile secret: Supabase Auth only.
+- Supabase Auth Turnstile secret: stored only in Supabase Auth.
+- Public-form Turnstile secret: `TURNSTILE_SECRET_KEY`, server-only in Vercel and local development.
 - Turnstile site key: `NEXT_PUBLIC_TURNSTILE_SITE_KEY` in Vercel and local development.
 - MailerLite token, group ID, and webhook secret: server-only Vercel variables.
 - No provider secret belongs in GitHub, public Vercel variables, browser code, or governance documents.

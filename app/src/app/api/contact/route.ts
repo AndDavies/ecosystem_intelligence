@@ -2,6 +2,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
 import { privateJson, requestFingerprint } from "@/lib/product-insights/server";
 import { contactMessageSchema } from "@/lib/beta/validation";
+import { verifyPublicTurnstileToken } from "@/lib/security/turnstile";
 
 export const dynamic = "force-dynamic";
 
@@ -9,6 +10,9 @@ export async function POST(request: Request) {
   const parsed = contactMessageSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return privateJson({ error: "Please complete the contact form." }, { status: 400 });
   if (parsed.data.website) return privateJson({ ok: true }, { status: 202 });
+  if (!await verifyPublicTurnstileToken(parsed.data.captchaToken)) {
+    return privateJson({ error: "Please complete the verification check and try again." }, { status: 400 });
+  }
   if (!hasSupabaseAdminEnv()) return privateJson({ error: "Contact is temporarily unavailable." }, { status: 503 });
 
   const supabase = createAdminClient();

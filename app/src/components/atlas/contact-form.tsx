@@ -2,10 +2,14 @@
 
 import { FormEvent, useState } from "react";
 import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
+import { TurnstileField } from "@/components/security/turnstile-field";
 
 export function ContactForm() {
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaAttempt, setCaptchaAttempt] = useState(0);
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -16,10 +20,12 @@ export function ContactForm() {
     const response = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(Object.fromEntries(form.entries()))
+      body: JSON.stringify({ ...Object.fromEntries(form.entries()), captchaToken })
     });
     const body = await response.json().catch(() => null) as { error?: string } | null;
     if (!response.ok) {
+      setCaptchaToken("");
+      setCaptchaAttempt((attempt) => attempt + 1);
       setError(body?.error ?? "Your message could not be sent.");
       setState("error");
       return;
@@ -43,7 +49,8 @@ export function ContactForm() {
       </div>
       <Field label="Message"><textarea name="message" required minLength={20} maxLength={4000} rows={7} className="form-control h-auto py-3" placeholder="How can True North Map help?" /></Field>
       <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
-      <button type="submit" disabled={state === "loading"} className="atlas-primary-button h-11 gap-2 px-5 text-sm disabled:opacity-60 sm:w-fit">{state === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Send className="size-4" />}Send message</button>
+      {turnstileSiteKey ? <TurnstileField key={captchaAttempt} siteKey={turnstileSiteKey} onTokenChange={setCaptchaToken} purpose="message" /> : null}
+      <button type="submit" disabled={state === "loading" || Boolean(turnstileSiteKey && !captchaToken)} className="atlas-primary-button h-11 gap-2 px-5 text-sm disabled:opacity-60 sm:w-fit">{state === "loading" ? <LoaderCircle className="size-4 animate-spin" /> : <Send className="size-4" />}Send message</button>
     </form>
   );
 }

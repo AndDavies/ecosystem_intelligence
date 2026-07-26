@@ -203,16 +203,16 @@ Production release:          pnpm release:validate
 
 Public layout and interaction changes add browser checks at 390, 768, 1024, and 1440 pixels. Production release adds `/api/health`, affected routes, live data state, and Vercel build/runtime log checks. Every completion report must state what was and was not tested.
 
-## Current risks and activation gates
+## Operational items and resolved release posture
 
-| Item | Status | Required action |
+| Item | Resolution | Impact and operating rule |
 | --- | --- | --- |
-| Candidate-logo skill | Active local integration | Merge skill, commands, schemas, tests, and documentation together; run research regression |
-| Visibility skill | Active local integration with private evidence | Merge tracked skill/CLI contracts separately from ignored provider data; run visibility and app regression |
-| Microsoft Clarity | Optional and dormant | Configure only with explicit consent/privacy validation |
-| Additional Turnstile on custom forms | Optional hardening | Add server credential and validate without affecting Supabase Auth Turnstile |
-| Public corpus and queues | Live and changing | Read production before claims, launches, or research assignment |
-| Launch outreach and campaigns | Prepared, not autonomous | Andrew authorizes each campaign, post, or outreach action |
+| Candidate-logo skill | Separate research integration lane, not a public-release defect | Merge its skill, schema, tests and lineage artifacts as one research commit only when that active work is complete. The live application continues to use approved `media_assets` records safely in the meantime. |
+| Visibility skill | Separate private-analysis lane, not a runtime dependency | Commit only tracked skill and validation contracts. Keep credentials, provider exports and query evidence ignored and local. A visibility-provider outage cannot affect the public site. |
+| Microsoft Clarity | Intentionally deferred | Google Analytics, first-party funnel events and Vercel performance monitoring cover launch measurement. Deferral reduces privacy and consent complexity with no product impact. |
+| Turnstile on custom forms | Implemented as layered protection | Contact, feedback and update forms now require a browser challenge and server-side token verification in addition to validation, honeypots and rate limits. Supabase Auth keeps its existing Turnstile configuration. |
+| Public corpus and queues | Live operating state, not a defect | Read production before publishing counts, assigning research or starting promotion. This prevents stale documentation from becoming a false release gate. |
+| Launch outreach and campaigns | Ready, owner-triggered | Assets and channel plans may be prepared in advance, but Andrew explicitly authorizes every campaign, post and outreach action. No automation sends autonomously. |
 
 ## Documents of record
 

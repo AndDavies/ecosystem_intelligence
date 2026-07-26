@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Bell, CheckCircle2, FileCheck2, LoaderCircle, MapPinned, MessageSquareText, Send, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { BrandLogo } from "@/components/atlas/brand-logo";
+import { TurnstileField } from "@/components/security/turnstile-field";
 import {
   currentPilotCohort,
   currentPilotSearchId,
@@ -31,6 +32,11 @@ export function PublicBetaExperience() {
   const [feedbackState, setFeedbackState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [signupError, setSignupError] = useState("");
   const [feedbackError, setFeedbackError] = useState("");
+  const [signupCaptchaToken, setSignupCaptchaToken] = useState("");
+  const [feedbackCaptchaToken, setFeedbackCaptchaToken] = useState("");
+  const [signupCaptchaAttempt, setSignupCaptchaAttempt] = useState(0);
+  const [feedbackCaptchaAttempt, setFeedbackCaptchaAttempt] = useState(0);
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const interactionCount = useRef(0);
   const hasScrolled = useRef(false);
   const minimumDelayPassed = useRef(false);
@@ -158,11 +164,14 @@ export function PublicBetaExperience() {
         sessionId: currentPilotSessionId(),
         searchId: currentPilotSearchId(),
         landingPath: window.location.pathname,
+        captchaToken: signupCaptchaToken,
         website: String(form.get("website") ?? "")
       })
     });
     const body = (await response.json().catch(() => null)) as { error?: string } | null;
     if (!response.ok) {
+      setSignupCaptchaToken("");
+      setSignupCaptchaAttempt((attempt) => attempt + 1);
       setSignupError(body?.error ?? "Your signup could not be saved.");
       setSignupState("error");
       return;
@@ -195,11 +204,14 @@ export function PublicBetaExperience() {
         cohort: currentPilotCohort(),
         sessionId: currentPilotSessionId(),
         searchId: currentPilotSearchId(),
+        captchaToken: feedbackCaptchaToken,
         website: String(form.get("website") ?? "")
       })
     });
     const body = (await response.json().catch(() => null)) as { error?: string } | null;
     if (!response.ok) {
+      setFeedbackCaptchaToken("");
+      setFeedbackCaptchaAttempt((attempt) => attempt + 1);
       setFeedbackError(body?.error ?? "Your feedback could not be saved.");
       setFeedbackState("error");
       return;
@@ -273,7 +285,8 @@ export function PublicBetaExperience() {
                   <span>{consentText} <Link href="/privacy" className="font-semibold text-[var(--atlas-primary)] underline">Privacy details</Link></span>
                 </label>
                 <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
-                <button type="submit" disabled={signupState === "loading"} aria-busy={signupState === "loading" || undefined} className="atlas-primary-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60">
+                {turnstileSiteKey ? <TurnstileField key={signupCaptchaAttempt} siteKey={turnstileSiteKey} onTokenChange={setSignupCaptchaToken} purpose="signup" /> : null}
+                <button type="submit" disabled={signupState === "loading" || Boolean(turnstileSiteKey && !signupCaptchaToken)} aria-busy={signupState === "loading" || undefined} className="atlas-primary-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60">
                   {signupState === "loading" ? <LoaderCircle aria-hidden="true" className="size-4 animate-spin" /> : <Bell aria-hidden="true" className="size-4" />}
                   Get updates
                 </button>
@@ -324,9 +337,10 @@ export function PublicBetaExperience() {
                 <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">What did not work, or what was missing?<textarea name="missing" required minLength={3} maxLength={3000} rows={4} placeholder="Missing organizations, information, workflows, comparisons, or day-to-day needs are all useful." className="rounded-xl border border-[var(--atlas-border-strong)] px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]" /></label>
                 <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">Email for follow-up <span className="font-normal text-[var(--atlas-muted)]">(optional)</span><input name="contactEmail" type="email" maxLength={320} autoComplete="email" placeholder="you@organization.ca" className="h-11 rounded-xl border border-[var(--atlas-border-strong)] px-3 text-sm font-normal outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]" /></label>
                 <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
+                {turnstileSiteKey ? <TurnstileField key={feedbackCaptchaAttempt} siteKey={turnstileSiteKey} onTokenChange={setFeedbackCaptchaToken} purpose="feedback" /> : null}
                 <div className="flex flex-col-reverse gap-2 border-t border-[var(--atlas-border)] pt-4 sm:flex-row sm:justify-end">
                   <Dialog.Close asChild><button type="button" className="atlas-secondary-button h-10 px-4 text-sm">Cancel</button></Dialog.Close>
-                  <button type="submit" disabled={feedbackState === "loading"} aria-busy={feedbackState === "loading" || undefined} className="atlas-primary-button h-10 gap-2 px-4 text-sm disabled:opacity-60">
+                  <button type="submit" disabled={feedbackState === "loading" || Boolean(turnstileSiteKey && !feedbackCaptchaToken)} aria-busy={feedbackState === "loading" || undefined} className="atlas-primary-button h-10 gap-2 px-4 text-sm disabled:opacity-60">
                     {feedbackState === "loading" ? <LoaderCircle aria-hidden="true" className="size-4 animate-spin" /> : <Send aria-hidden="true" className="size-4" />}
                     Send feedback
                   </button>
