@@ -116,28 +116,33 @@ function buildRegions(snapshot: Omit<AtlasSnapshot, "regions">): AtlasRegion[] {
   });
 }
 
+// Publication and editorial actions revalidate `atlas-public` immediately.
+// The longer safety TTL prevents crawlers from forcing every record through
+// the database again in the same short window.
+const publicRecordCacheSeconds = 60 * 60;
+
 const getCachedAtlasOrganizationBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
   ["ecosystem-intelligence-organization-detail-v1"],
-  { revalidate: 300, tags: ["atlas-public"] }
+  { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
 );
 
 const getCachedAtlasCapabilityBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasCapabilityBySlugFromSupabase(slug)),
   ["ecosystem-intelligence-capability-detail-v1"],
-  { revalidate: 300, tags: ["atlas-public"] }
+  { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
 );
 
 const getCachedAtlasDemandBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasDemandBySlugFromSupabase(slug)),
   ["ecosystem-intelligence-demand-detail-v1"],
-  { revalidate: 300, tags: ["atlas-public"] }
+  { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
 );
 
 const getCachedPublishedAtlasSlugs = unstable_cache(
   () => withPublicReadRetry(loadPublishedAtlasSlugsFromSupabase),
   ["ecosystem-intelligence-published-atlas-slugs-v1"],
-  { revalidate: 300, tags: ["atlas-public"] }
+  { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
 );
 
 export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
@@ -150,7 +155,7 @@ export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
   // The complete national discovery snapshot intentionally contains every
   // published map marker and can exceed Next.js's 2 MB data-cache item limit.
   // React cache still deduplicates the load within a request; record-level
-  // routes keep their five-minute caches below. Do not put the full corpus
+  // routes use tag-invalidated caches below. Do not put the full corpus
   // back into one unstable_cache entry as coverage grows.
   let snapshot: Omit<AtlasSnapshot, "regions">;
   try {
