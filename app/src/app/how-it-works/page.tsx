@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const steps = [
   { number: "1", title: "Explore the map", detail: "Find companies, organizations, technologies, and programs across Canada.", action: "Explore the map", href: "/", icon: Map },
   { number: "2", title: "Check the public evidence", detail: "Open the sources supporting each profile and technology.", action: "Browse organizations", href: "/organizations", icon: FileSearch },
-  { number: "3", title: "Follow released public needs", detail: "Read public needs issued by governments, armed forces, programs, and allied organizations.", action: "See Demand Signals", href: "/demand", icon: Compass },
+  { number: "3", title: "Follow released public needs", detail: "Read public needs issued by governments, armed forces, programs, and allied organizations.", action: "See public needs", href: "/demand", icon: Compass },
   { number: "4", title: "See where technology may help", detail: "Review source-linked assessments of possible relevance and visible limits.", action: "Learn about the review", href: "/methodology", icon: Lightbulb },
   { number: "5", title: "Start a better conversation", detail: "Save a Working List, suggest a correction, claim a profile, or request a connection.", action: "Contribute a profile", href: "/submit", icon: Handshake }
 ] as const;
@@ -24,9 +24,9 @@ const steps = [
 export default function HowItWorksPage() {
   return (
     <PublicPageShell
-      eyebrow="From discovery to conversation"
+      eyebrow="Evidence-led ecosystem discovery"
       title="See what Canada can build, why it matters, and what to do next."
-      description="True North Map brings organizations, technology, released public needs, and the evidence behind them into one path you can inspect for yourself."
+      description="True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations."
       actions={<Link href="/" className="atlas-primary-button h-11 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>}
     >
       <JsonLd data={[

@@ -21,7 +21,7 @@ export function organizationTechnicalDomains(organization: AtlasOrganization) {
 }
 
 const evidenceToneClass: Record<AtlasConfidence, string> = {
-  high: "bg-[var(--atlas-violet-soft)] text-[var(--atlas-violet)] ring-[var(--atlas-violet)]/25",
+  high: "bg-[var(--atlas-evidence-soft)] text-[var(--atlas-evidence)] ring-[var(--atlas-evidence)]/25",
   moderate: "bg-[var(--atlas-surface-muted)] text-[var(--atlas-ink-soft)] ring-[var(--atlas-border-strong)]",
   needs_review: "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)] ring-[var(--atlas-amber)]/30"
 };

@@ -7,6 +7,7 @@ import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
+import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import {
   evidenceStrengthLabel,
   locationAccuracyLabel,
@@ -66,7 +67,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
       title={organization.name}
       description={organization.description}
       breadcrumbs={[
-        { label: "Ecosystem Map", href: "/" },
+        { label: "Map", href: "/" },
         { label: "Organizations", href: "/organizations" },
         { label: organization.name }
       ]}
@@ -94,6 +95,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
         { "@context": "https://schema.org", "@type": "Organization", name: organization.name, legalName: organization.legalName ?? undefined, url: absoluteUrl(`/organizations/${organization.slug}`), sameAs: organization.websiteUrl ? [organization.websiteUrl] : undefined, logo: organization.logo?.publicUrl, description: organization.description, address: organization.primaryLocation ? { "@type": "PostalAddress", addressLocality: organization.primaryLocation.city ?? undefined, addressRegion: organization.primaryLocation.provinceTerritory ?? undefined, addressCountry: "CA" } : undefined },
         { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }] }
       ]} />
+      <EvidenceLegend compact className="mb-5" />
       <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
         <aside className="space-y-5 self-start lg:sticky lg:top-24">
           <PublicCard title={organizationSnapshotTitle(organization.entityKind)} eyebrow="What we know">
@@ -201,10 +203,10 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             {hasMissionMatches ? (
               <div className="space-y-3">
                 {organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => (
-                  <article key={match.id} className="rounded-2xl border border-[var(--atlas-violet)]/25 bg-[var(--atlas-violet-soft)] p-4">
+                  <article key={match.id} className="rounded-2xl border border-[var(--atlas-evidence)]/25 bg-[var(--atlas-evidence-soft)] p-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <Link href={`/?mission=${match.missionArea.slug}`} className="text-sm font-bold text-[var(--atlas-violet)] no-underline hover:underline">{match.missionArea.name}</Link>
-                      <span className="rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-semibold text-[var(--atlas-violet)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>
+                      <Link href={`/?mission=${match.missionArea.slug}`} className="text-sm font-bold text-[var(--atlas-evidence)] no-underline hover:underline">{match.missionArea.name}</Link>
+                      <span className="rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-semibold text-[var(--atlas-evidence)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>
                     </div>
                     <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{match.alignmentSummary}</p>
                     <AssessmentSources citations={match.citations} />
@@ -231,7 +233,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             {!hasPublishedAlignment && organization.capabilities.length ? (
               <div className="mt-5 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
                 <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">We have not connected this technology to a mission or public need yet.</p>
-                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public demand signals</Link>.</p>
+                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public needs</Link>.</p>
               </div>
             ) : null}
           </PublicCard>

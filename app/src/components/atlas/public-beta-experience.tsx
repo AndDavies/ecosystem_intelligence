@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bell, CheckCircle2, FileCheck2, LoaderCircle, MapPinned, MessageSquareText, Send, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { BrandLogo } from "@/components/atlas/brand-logo";
 import {
   currentPilotCohort,
   currentPilotSearchId,
@@ -238,12 +239,12 @@ export function PublicBetaExperience() {
             onOpenAutoFocus={(event) => {
               if (!updatesOpenedExplicitly.current) event.preventDefault();
             }}
-            className="fixed left-1/2 top-1/2 z-[1250] max-h-[calc(100vh-2rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-[1.75rem] border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:p-7"
+            className="fixed left-1/2 top-1/2 z-[1250] max-h-[calc(100vh-2rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-[18px] border border-[var(--atlas-border)] border-t-[3px] border-t-[var(--atlas-signal)] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:p-7"
           >
           <div className="flex items-start gap-3">
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><Bell aria-hidden="true" className="size-5" /></span>
+            <span className="shrink-0"><BrandLogo compact /></span>
             <div className="min-w-0 flex-1">
-              <p className="atlas-eyebrow">Stay ahead of the map</p>
+              <p className="atlas-eyebrow">Make Canadian capability visible</p>
               <Dialog.Title id="pilot-updates-title" className="mt-1 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-3xl">See what Canada is building next.</Dialog.Title>
             </div>
             <Dialog.Close asChild><button type="button" className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss update signup"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
@@ -313,7 +314,7 @@ export function PublicBetaExperience() {
               <div className="mt-6 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-5 text-center text-sm leading-6 text-[var(--atlas-primary)]">
                 <CheckCircle2 aria-hidden="true" className="mx-auto mb-3 size-7" />
                 Thank you. Your feedback is queued for the product review.
-                <Dialog.Close asChild><button type="button" className="mt-4 block w-full text-xs font-semibold text-[var(--atlas-primary)] underline">Return to the ecosystem map</button></Dialog.Close>
+                <Dialog.Close asChild><button type="button" className="mt-4 block w-full text-xs font-semibold text-[var(--atlas-primary)] underline">Return to the map</button></Dialog.Close>
               </div>
             ) : (
               <form onSubmit={submitFeedback} data-clarity-mask="true" className="mt-5 space-y-4">

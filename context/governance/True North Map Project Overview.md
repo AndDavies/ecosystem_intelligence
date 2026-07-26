@@ -1,17 +1,17 @@
 # True North Map Project Overview
 
 Status: active public product and review-first data operation
-Last reviewed: 2026-07-25
+Last reviewed: 2026-07-26
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
 ## What this project is
 
-True North Map is an independent, evidence-backed Canadian defence and dual-use ecosystem map. It helps people discover organizations and technology, inspect the released public evidence behind them, follow public needs, and decide who may be worth speaking with next.
+True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations.
 
 The project is not a procurement portal, an official government directory, a CRM, or a source of classified information. Its public promise is simpler:
 
-> Map what Canada can build. Connect the people ready to build it. Help the whole ecosystem move together.
+> Make Canadian capability visible.
 
 The primary decision path is:
 
@@ -27,10 +27,10 @@ Place, technology, or public need
 
 | Surface | What a visitor can do | Authority boundary |
 | --- | --- | --- |
-| Atlas (`/`) | Explore Canada, filter the visible map, search in plain language, compare the current viewport, and open dossiers | Published records only |
+| Map (`/`) | Explore Canada, filter the visible map, search in plain language, compare the current viewport, and open dossiers | Published records only |
 | Organizations and Regions | Browse Canadian organizations by geography and type | Published records only; coverage gaps stay visible |
 | Organization and technology dossiers | See what an organization offers, public sources, reviewed technology, and possible relevance | Facts and assessments are labelled separately |
-| Demand Signals | Read a released public need, its supporting source passage, desired outcome, relevant technology, and limits | A public source and human verification are required |
+| Public Needs (`/demand`) | Browse released public needs, then open each individual Demand Signal to inspect its source passage, desired outcome, potentially relevant technology, and limits | A public source and human verification are required |
 | Ask True North | Ask a plain-language question and receive bounded results from the live published corpus | AI explores known records; it does not create facts or procurement decisions |
 | Defence Briefs | Read reviewed, source-linked Canadian defence explainers | Editorial synthesis is distinct from raw private wiki material |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
@@ -75,7 +75,9 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Operational or data term | Public label | Meaning and use |
 | --- | --- | --- |
 | Ecosystem Intelligence | True North Map | The project category remains Ecosystem Intelligence; True North Map is the public product and brand. |
-| Atlas | Ecosystem Map / Explore the map | The national, map-first discovery experience. “Atlas” is acceptable in product context; the action is “Explore the map.” |
+| Atlas | Map / Explore the ecosystem | The national, map-first discovery experience. “Atlas” remains acceptable in technical or historical context, but the public navigation label is “Map.” |
+| Demand collection | Public Needs | The public collection at `/demand`. It groups released needs without changing their canonical URLs or the precise name of an individual record. |
+| Individual released need | Demand Signal | One source-gated public record issued through a released government, armed-force, program, or allied source. |
 | `organization` | Organization, or Company where applicable | One canonical entity record. It can be a company, program, funder, research centre, accelerator, incubator, ecosystem organization, or government innovation office. |
 | `entity_kind` | Company, Accelerator, Incubator, Research and test centre, Investor or funder, Ecosystem organization, Government innovation office | The public organization categories used in filters and directories. |
 | `capability` | Technology, offering, program, facilities and expertise, or investment focus | A reviewed thing an organization provides. The wording varies by organization type so the page says what a visitor is actually looking at. |
@@ -114,6 +116,8 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Global Source Book | Global Source Book | A maintained private inventory of durable source starting points used to find research leads. |
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |
 | `media_assets` and `atlas-public-media` | Approved organization logo or public media | Provenance-backed approved media. Organization logos are only displayed when approved and published. |
+| Evidence-led ecosystem discovery | Product category | The concise public category describing the product without implying procurement authority or a generic AI platform. |
+| North Signal | True North Map identity | The angular N, evidence path, and yellow signal point used in the brand mark, favicon, social assets, and navigation. |
 | Source verification gate | Released-source verification | The demand-specific rule that prevents an unsourced summary from becoming a public Demand Signal. |
 | RLS and explicit Data API grants | Private security controls | Internal database controls. They protect drafts, user data, and staff actions; they are not public marketing language. |
 
@@ -126,6 +130,14 @@ Every public surface should make this distinction legible:
 3. **Coverage gap**: what is missing, unverified, thin, or no longer current.
 
 The standard caveat for Demand Signals and technology connections is: a reviewed public-source assessment is not procurement eligibility, endorsement, customer interest, or classified demand.
+
+The public message system is:
+
+- Brand promise: **Make Canadian capability visible.**
+- Homepage headline: **Canada is building more than most people can see.**
+- Category: **Evidence-led ecosystem discovery**
+- Journey: **Follow the evidence. Find the fit. Start the right conversation.**
+- Trust: **Reviewed public evidence · Transparent gaps · Human review**
 
 ## Operational integrations
 

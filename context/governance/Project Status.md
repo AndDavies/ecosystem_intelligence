@@ -2,7 +2,7 @@
 
 Status: active broader-sharing product and review-first data operation
 
-Last verified: 2026-07-25
+Last verified: 2026-07-26
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -13,6 +13,9 @@ Public brand: [True North Map](https://truenorthmap.ca)
 True North Map is an evidence-backed Canadian defence and dual-use ecosystem map with public organization, technology, demand-signal, Defence Brief, evidence, and private Working List surfaces. Production Supabase is the only source of truth for live records, taxonomy, review state, and publication state. Exact corpus and queue counts must be read from production rather than copied into status documents.
 
 The current product and operating system include:
+
+- Phase 1B introduces the North Signal identity, a charcoal, warm-white and signal-yellow design system, consistent Barlow and Inter typography, lighter section-based layout, and one public message system across navigation, discovery, evidence, editorial, account, contribution, and trust surfaces. Product behaviour and data contracts are unchanged.
+- The primary navigation is Map, Organizations, Public Needs, Defence Briefs, How It Works, and About. `/demand` remains canonical; Public Needs names the collection while Demand Signal remains the precise label for one source-gated released need.
 
 - A public map, organization and capability profiles, public-demand records, reviewed capability-demand matches, exports, and Ask True North over the published corpus.
 - Published organization profiles can display an approved official logo with recorded source provenance. Missing or uncertain marks retain the neutral organization icon, and administrators can replace or remove a logo from the canonical organization editor.

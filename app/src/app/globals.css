@@ -42,14 +42,16 @@
   --atlas-signal-ink: #242827;
   --atlas-coral: var(--atlas-signal);
   --atlas-coral-soft: var(--atlas-signal-soft);
-  --atlas-violet: #126147;
-  --atlas-violet-soft: #e1f0e9;
+  --atlas-evidence: #126147;
+  --atlas-evidence-soft: #e1f0e9;
+  --atlas-violet: var(--atlas-evidence);
+  --atlas-violet-soft: var(--atlas-evidence-soft);
   --atlas-amber: #735100;
   --atlas-amber-soft: #fff6cf;
   --atlas-danger: #9f3027;
   --atlas-danger-soft: #fee8e5;
-  --atlas-shadow-soft: 0 14px 38px rgba(36, 40, 39, 0.07);
-  --atlas-shadow-float: 0 24px 64px rgba(36, 40, 39, 0.15);
+  --atlas-shadow-soft: 0 10px 30px rgba(36, 40, 39, 0.055);
+  --atlas-shadow-float: 0 20px 52px rgba(36, 40, 39, 0.12);
   --background: #f7f7f3;
   --foreground: #242827;
   --card: rgba(255, 255, 255, 0.94);
@@ -142,7 +144,7 @@ body {
   z-index: 50;
   border-bottom: 2px solid var(--atlas-signal);
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 8px 28px rgba(36, 40, 39, 0.05);
+  box-shadow: 0 5px 20px rgba(36, 40, 39, 0.045);
   backdrop-filter: blur(14px);
 }
 
@@ -250,7 +252,7 @@ body {
 
 .atlas-surface-elevated {
   border: 1px solid var(--atlas-border);
-  border-radius: 24px;
+  border-radius: 18px;
   background: var(--atlas-surface);
   box-shadow: var(--atlas-shadow-soft);
 }
@@ -348,7 +350,7 @@ body {
 
 .atlas-dark-panel {
   border: 1px solid #343a37;
-  border-radius: 22px;
+  border-radius: 18px;
   background: var(--atlas-ink);
   color: white;
   box-shadow: var(--atlas-shadow-soft);
@@ -400,8 +402,8 @@ body {
   --admin-action: var(--atlas-ink);
   --admin-action-hover: var(--atlas-primary-hover);
   --admin-action-soft: rgba(36, 40, 39, 0.1);
-  --admin-evidence: var(--atlas-violet);
-  --admin-evidence-soft: var(--atlas-violet-soft);
+  --admin-evidence: var(--atlas-evidence);
+  --admin-evidence-soft: var(--atlas-evidence-soft);
   --admin-evidence-border: #b7d5c9;
   --admin-signal: var(--atlas-ink);
   --admin-signal-soft: var(--atlas-signal-soft);

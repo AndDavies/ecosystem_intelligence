@@ -141,7 +141,7 @@ export function AssistantAnswer({
                     <h3 className="text-base font-extrabold text-[var(--atlas-ink)]">{organization.name}</h3>
                     <span className={cn(
                       "rounded-full px-2.5 py-1 text-[10px] font-bold",
-                      match.fitLevel === "strong" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : match.fitLevel === "plausible" ? "bg-[var(--atlas-violet-soft)] text-[var(--atlas-violet)]" : "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]"
+                      match.fitLevel === "strong" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : match.fitLevel === "plausible" ? "bg-[var(--atlas-evidence-soft)] text-[var(--atlas-evidence)]" : "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]"
                     )}>{match.fitLevel === "strong" ? "Strong fit" : match.fitLevel === "plausible" ? "Plausible fit" : "Adjacent fit"}</span>
                     <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[10px] font-bold text-[var(--atlas-muted)]">{match.evidenceLevel[0].toUpperCase() + match.evidenceLevel.slice(1)} evidence</span>
                   </div>
@@ -178,7 +178,7 @@ export function AssistantAnswer({
       ) : (
         <div className="px-5 py-6 sm:px-6">
           <div className="flex items-start gap-3 rounded-[18px] bg-[var(--atlas-surface-muted)] p-4">
-            <Lightbulb className="mt-0.5 size-5 shrink-0 text-[var(--atlas-violet)]" />
+            <Lightbulb className="mt-0.5 size-5 shrink-0 text-[var(--atlas-evidence)]" />
             <div><h3 className="text-sm font-extrabold text-[var(--atlas-ink)]">A useful gap to investigate</h3><p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">True North Map will not manufacture a match when the published evidence is too thin. Suggest a missing organization or source to improve this view.</p></div>
           </div>
         </div>

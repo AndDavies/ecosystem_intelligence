@@ -37,7 +37,7 @@ export default async function RegionsIndexPage() {
       eyebrow="Where Canadian capability sits"
       title="Explore the ecosystem region by region."
       description="Every region below is built from the same reviewed public records. Counts reflect what has been published so far, so thin coverage stays visible instead of being filled in."
-      breadcrumbs={[{ label: "Ecosystem Map", href: "/" }, { label: "Regions" }]}
+      breadcrumbs={[{ label: "Map", href: "/" }, { label: "Regions" }]}
     >
       <JsonLd
         data={[

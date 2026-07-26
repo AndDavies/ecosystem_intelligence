@@ -6,23 +6,45 @@ describe("customer-facing product language", () => {
   it("leads the ecosystem map with the decision a user can make", async () => {
     const explorer = await readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8");
     const header = await readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8");
+    expect(explorer).toContain('Evidence-led ecosystem discovery');
     expect(explorer).toContain('<span className="atlas-headline-highlight">Canada is building</span> more than most people can see.');
     expect(explorer).not.toContain("\u2014");
-    expect(explorer).toContain("Discover the companies, technologies, and public needs shaping Canada’s defence and dual-use ecosystem.");
-    expect(explorer).toContain("Follow the evidence, find the fit, and start the right conversation.");
-    expect(explorer).toContain("Explore the map");
+    expect(explorer).toContain("Explore the organizations, capabilities and public needs shaping Canada’s defence and dual-use ecosystem.");
+    expect(explorer).toContain("Follow the evidence. Find the fit. Start the right conversation.");
+    expect(explorer).toContain("Explore the ecosystem");
+    expect(explorer).toContain("Browse public needs");
     expect(explorer).toContain("Ask True North");
     expect(explorer).toContain("Do not enter classified, confidential, proprietary, or personal information.");
     expect(explorer).toContain("Technology or offering");
-    expect(header).toContain('label: "Ecosystem Map"');
+    expect(header).toContain('label: "Map"');
+    expect(header).toContain('href: "/demand", label: "Public Needs"');
+    expect(header).not.toContain('{ href: "/regions", label: "Regions" }');
     expect(explorer).not.toContain("Search atlas");
   });
 
-  it("uses the True North Map shield and signal-colour maple leaf as the favicon", async () => {
+  it("uses the North Signal mark as the favicon", async () => {
     const icon = await readFile(path.resolve("src/app/icon.svg"), "utf8");
-    expect(icon).toContain("shield with maple leaf");
+    expect(icon).toContain("True North Map North Signal mark");
     expect(icon).toContain('fill="#242827"');
-    expect(icon).toContain('fill="#f5e900"');
+    expect(icon).toContain('fill="#F5E900"');
+  });
+
+  it("publishes the Phase 1B decision steps, trust strip and dynamic metric labels", async () => {
+    const [explorer, legend] = await Promise.all([
+      readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
+      readFile(path.resolve("src/components/atlas/evidence-legend.tsx"), "utf8")
+    ]);
+    expect(explorer).toContain("Find Canadian capability");
+    expect(explorer).toContain("Explore public needs");
+    expect(explorer).toContain("Inspect the record");
+    expect(explorer).toContain("Build a Working List");
+    expect(explorer).toContain("Reviewed public evidence · Transparent gaps · Human review");
+    expect(explorer).toContain('label="published organization profiles"');
+    expect(explorer).toContain('label="reviewed technologies"');
+    expect(explorer).toContain('label="cited public sources"');
+    expect(legend).toContain("Public-source fact");
+    expect(legend).toContain("Our assessment");
+    expect(legend).toContain("Not yet verified");
   });
 
   it("uses one clear profile and assessment vocabulary", async () => {

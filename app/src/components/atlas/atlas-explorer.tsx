@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -17,7 +18,6 @@ import {
   LoaderCircle,
   Map as MapIcon,
   Search,
-  ShieldCheck,
   SlidersHorizontal,
   X
 } from "lucide-react";
@@ -37,6 +37,7 @@ import {
 } from "@/components/atlas/atlas-explorer-results";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { PublicShare } from "@/components/atlas/public-share";
+import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
 import {
   ATLAS_EXPLORER_PAGE_SIZE,
@@ -82,6 +83,19 @@ const publicOrganizationTypes = new Set([
   "ecosystem_organization",
   "government_innovation_office"
 ]);
+
+const suggestedQuestions = [
+  "Arctic communications capability",
+  "Maritime sensor systems",
+  "Technology for contested logistics"
+] as const;
+
+const decisionSteps = [
+  { number: "01", title: "Find Canadian capability", detail: "Start with what you need or what you are trying to understand.", icon: Search },
+  { number: "02", title: "Explore public needs", detail: "Move from released problems to possible Canadian fits.", icon: Building2 },
+  { number: "03", title: "Inspect the record", detail: "See what supports a profile and where uncertainty remains.", icon: FileCheck2 },
+  { number: "04", title: "Build a Working List", detail: "Carry the right organizations into the next conversation.", icon: BookmarkPlus }
+] as const;
 
 const AtlasMap = dynamic(
   () => import("@/components/atlas/atlas-map").then((module) => module.AtlasMap),
@@ -434,37 +448,31 @@ export function AtlasExplorer({
     : "Open a result to see what an organization offers, where it may fit, and which public sources support the profile.";
 
   return (
-    <div className="atlas-frame pb-8 pt-6 sm:pt-12">
-      <section className="mb-6 grid gap-5 sm:mb-8 sm:gap-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(390px,0.82fr)] lg:items-end">
-        <div className="max-w-4xl">
-          <span className="inline-flex rounded-full bg-[var(--atlas-ink)] px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.11em] text-white">Canadian Public Beta</span>
-          <h1 className="mt-4 max-w-4xl text-[36px] font-extrabold leading-[0.97] tracking-[-0.062em] text-[var(--atlas-ink)] sm:mt-5 sm:text-[52px] lg:text-[58px]"><span className="atlas-headline-highlight">Canada is building</span> more than most people can see.</h1>
-          <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:mt-5 sm:text-base sm:leading-7">Discover the companies, technologies, and public needs shaping Canada’s defence and dual-use ecosystem. Follow the evidence, find the fit, and start the right conversation.</p>
-        </div>
-        <div className="space-y-4">
-          <div className="rounded-[22px] border border-[var(--atlas-border)] bg-white p-4 shadow-[var(--atlas-shadow-soft)] sm:p-5">
-            <dl className="grid grid-cols-3 divide-x divide-[var(--atlas-border)]">
-              <SnapshotMetric value={snapshotMetrics.organizations} label="reviewed organizations" />
-              <SnapshotMetric value={snapshotMetrics.capabilities} label="reviewed technologies" />
-              <SnapshotMetric value={snapshotMetrics.sources} label="public sources" />
-            </dl>
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--atlas-border)] pt-4">
-              <span className="atlas-signal-pill">Updated {formatDate(generatedAt)}</span>
-              <div className="flex items-center gap-3">
-                <button type="button" onClick={openBetaFeedback} className="hidden text-xs font-bold text-[var(--atlas-ink)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 sm:inline-flex">Tell us what is missing</button>
-                <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, public needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" />
-              </div>
-            </div>
+    <div className="atlas-frame pb-8 pt-6 sm:pt-10">
+      <section className="mb-6 grid gap-6 border-b border-[var(--atlas-border)] pb-6 sm:mb-8 sm:pb-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.72fr)] lg:items-stretch">
+        <div className="flex flex-col justify-center py-2 lg:py-5">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="atlas-eyebrow">Evidence-led ecosystem discovery</span>
+            <span className="rounded-full border border-[var(--atlas-border)] bg-white px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Public Beta</span>
           </div>
-          <p className="flex items-start gap-3 rounded-[18px] border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-3 text-xs leading-5 text-[var(--atlas-muted)] sm:p-4">
-            <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--atlas-violet-soft)] text-[var(--atlas-violet)]"><ShieldCheck className="size-4" /></span>
-            <span><strong className="block text-[var(--atlas-ink-soft)]">Reviewed public sources · transparent gaps · human review</strong><span className="hidden sm:inline">Open a result to inspect what supports the profile and where interpretation begins. <Link href="/how-it-works" className="font-bold text-[var(--atlas-primary)] underline">See how it works.</Link></span></span>
-          </p>
+          <h1 className="mt-4 max-w-4xl text-[38px] font-extrabold leading-[0.94] tracking-[-0.064em] text-[var(--atlas-ink)] sm:text-[54px] lg:text-[62px]"><span className="atlas-headline-highlight">Canada is building</span> more than most people can see.</h1>
+          <p className="mt-5 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:text-base sm:leading-7">Explore the organizations, capabilities and public needs shaping Canada’s defence and dual-use ecosystem. Follow the evidence. Find the fit. Start the right conversation.</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="#ask-true-north" className="atlas-signal-button h-11 gap-2 px-5 text-sm">Explore the ecosystem <ArrowRight className="size-4" /></a>
+            <Link href="/demand" className="atlas-primary-button h-11 px-5 text-sm">Browse public needs</Link>
+          </div>
+        </div>
+        <div className="relative min-h-[260px] overflow-hidden rounded-2xl border border-[var(--atlas-border-strong)] bg-[var(--atlas-ink)] shadow-[var(--atlas-shadow-soft)] sm:min-h-[320px] lg:min-h-[360px]">
+          <Image src="/imagery/home-maritime-evidence.webp" alt="Illustration of a Canadian naval vessel moving through Arctic waters with an evidence network connecting industry, communities and defence." fill priority sizes="(min-width: 1024px) 42vw, 100vw" className="object-cover" />
+          <div className="absolute inset-x-0 bottom-0 border-t-2 border-[var(--atlas-signal)] bg-[rgba(36,40,39,0.9)] px-5 py-4 text-white backdrop-blur-sm">
+            <p className="text-sm font-extrabold">Make Canadian capability visible.</p>
+            <p className="mt-1 text-[11px] leading-4 text-white/70">Evidence-led discovery across the country.</p>
+          </div>
         </div>
       </section>
 
-      <section className="overflow-hidden rounded-[26px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
-        <div className="border-b border-[var(--atlas-border)] bg-white p-3 sm:p-5">
+      <section id="ask-true-north" className="scroll-mt-24 overflow-hidden rounded-[18px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <div className="border-t-2 border-[var(--atlas-signal)] bg-white p-3 sm:p-5">
           <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
             <div><p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Ask True North</p><p className="mt-1 text-sm text-[var(--atlas-muted)]">Describe what you need. See the best-supported fits, the evidence behind them, and what remains unknown.</p></div>
             {discovery?.quota ? <p className="text-[11px] font-semibold text-[var(--atlas-muted)]">{discovery.quota.remaining} of {discovery.quota.limit} questions remaining today</p> : null}
@@ -489,6 +497,26 @@ export function AtlasExplorer({
           </form>
           <p className="mt-2 text-[11px] leading-5 text-[var(--atlas-muted)]">Uses reviewed public records only. Do not enter classified, confidential, proprietary, or personal information.</p>
 
+          <div className="mt-3 flex flex-wrap gap-2" aria-label="Suggested questions">
+            {suggestedQuestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => void runDiscovery(suggestion)} className="rounded-full border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-3 py-1.5 text-[10px] font-semibold text-[var(--atlas-muted)] hover:border-[var(--atlas-ink)] hover:text-[var(--atlas-ink)]">{suggestion}</button>)}
+          </div>
+
+          <ol className="mt-5 grid gap-px overflow-hidden rounded-xl border border-[var(--atlas-border)] bg-[var(--atlas-border)] sm:grid-cols-2 xl:grid-cols-4" aria-label="From discovery to action">
+            {decisionSteps.map((step) => <li key={step.number} className="bg-white p-4"><div className="flex items-center justify-between gap-3"><span className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{step.number}</span><step.icon className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" /></div><h2 className="mt-5 text-sm font-extrabold text-[var(--atlas-ink)]">{step.title}</h2><p className="mt-1.5 text-[11px] leading-5 text-[var(--atlas-muted)]">{step.detail}</p></li>)}
+          </ol>
+
+          <div className="mt-5 grid gap-4 border-y border-[var(--atlas-border)] py-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div className="border-l-4 border-[var(--atlas-signal)] pl-4"><p className="text-base font-extrabold text-[var(--atlas-ink)]">Reviewed public evidence · Transparent gaps · Human review</p><p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Open a result to see what supports the profile, where interpretation begins and what remains unknown. <Link href="/how-it-works" className="font-bold text-[var(--atlas-ink)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-2">See how it works.</Link></p></div>
+            <div>
+              <dl className="grid grid-cols-3 divide-x divide-[var(--atlas-border)]">
+                <SnapshotMetric value={snapshotMetrics.organizations} label="published organization profiles" />
+                <SnapshotMetric value={snapshotMetrics.capabilities} label="reviewed technologies" />
+                <SnapshotMetric value={snapshotMetrics.sources} label="cited public sources" />
+              </dl>
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--atlas-border)] pt-3"><span className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">Updated {formatDate(generatedAt)}</span><div className="flex items-center gap-3"><button type="button" onClick={openBetaFeedback} className="hidden text-xs font-bold text-[var(--atlas-ink)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 sm:inline-flex">Tell us what is missing</button><PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, public needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" /></div></div>
+            </div>
+          </div>
+
           <div className="mt-3 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex min-h-9 min-w-0 flex-wrap items-center gap-2">
               {result.appliedFilters.map((filter) => (
@@ -501,7 +529,7 @@ export function AtlasExplorer({
               <button type="button" onClick={() => { setMapEnabled(true); setViewMode("map"); }} className={cn("inline-flex h-9 items-center gap-2 rounded-xl border px-3 text-xs font-bold", viewMode === "map" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")}><MapIcon className="size-4" />Map</button>
               <button type="button" onClick={() => { if (window.matchMedia("(min-width: 1024px)").matches) document.getElementById("atlas-results")?.scrollIntoView({ behavior: "smooth", block: "start" }); else setViewMode("table"); }} className={cn("inline-flex h-9 items-center gap-2 rounded-xl border px-3 text-xs font-bold", viewMode === "table" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")}><List className="size-4" />Table</button>
             </div>
-            <p className="flex max-w-[470px] items-start gap-2 text-xs leading-5 text-[var(--atlas-muted)] lg:justify-end lg:text-right"><Info className="mt-0.5 size-4 shrink-0 text-[var(--atlas-violet)]" aria-hidden="true" /><span>{caveat}</span></p>
+            <p className="flex max-w-[470px] items-start gap-2 text-xs leading-5 text-[var(--atlas-muted)] lg:justify-end lg:text-right"><Info className="mt-0.5 size-4 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" /><span>{caveat}</span></p>
           </div>
 
           {filterPanelOpen ? (
@@ -522,6 +550,7 @@ export function AtlasExplorer({
           {discovery?.interpretation === "no_match" && !discovery.assistant ? <div className="mt-3 rounded-xl border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-3 py-2 text-sm text-[var(--atlas-amber)]">No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing.</div> : null}
         </div>
         {discovery?.assistant ? <div className="bg-[var(--atlas-surface-muted)] px-3 pb-3 sm:px-5 sm:pb-5"><AssistantAnswer discovery={discovery} onSelectOrganization={selectAssistantOrganization} onAskSuggestion={(suggestion) => void runDiscovery(suggestion)} onStartNewQuestion={startNewQuestion} /></div> : null}
+        <EvidenceLegend compact className="px-3 sm:px-5" />
         <div id="ecosystem-map" className={cn("scroll-mt-24 border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-3 lg:p-3", viewMode === "table" && "hidden lg:grid")}>
           <div className="relative h-[350px] overflow-hidden sm:h-[410px] lg:h-[510px] lg:rounded-[22px] lg:border lg:border-[var(--atlas-border)]">
             {mapEnabled ? (

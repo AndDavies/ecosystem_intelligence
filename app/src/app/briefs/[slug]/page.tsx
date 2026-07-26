@@ -96,7 +96,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
       eyebrow={`${presentation.format} · ${presentation.topic}`}
       title={brief.title}
       description={brief.standfirst}
-      breadcrumbs={[{ label: "Ecosystem Map", href: "/" }, { label: "Defence Briefs", href: "/briefs" }, { label: brief.title }]}
+      breadcrumbs={[{ label: "Map", href: "/" }, { label: "Defence Briefs", href: "/briefs" }, { label: brief.title }]}
       pageHeader={(
         <header className="mt-6 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
           <div className="grid min-w-0 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)]">

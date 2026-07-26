@@ -74,7 +74,7 @@ function PublicCapabilityPage({
       title={capability.name}
       description={capability.summary}
       breadcrumbs={[
-        { label: "Ecosystem Map", href: "/" },
+        { label: "Map", href: "/" },
         { label: "Organizations", href: "/organizations" },
         { label: organization.name, href: `/organizations/${organization.slug}` },
         { label: capability.name }
@@ -160,7 +160,7 @@ function PublicCapabilityPage({
             {!hasPublishedAlignment ? (
               <div className="mt-5 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
                 <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">We have not connected this technology to a mission or public need yet.</p>
-                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public demand signals</Link>.</p>
+                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public needs</Link>.</p>
               </div>
             ) : null}
           </PublicCard>

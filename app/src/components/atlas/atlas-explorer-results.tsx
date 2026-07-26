@@ -194,7 +194,7 @@ export function LookbookPeek({
       </div>
 
       <div className="mt-3 rounded-xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-3">
-        <p className="text-[11px] font-semibold text-[var(--atlas-violet)]">
+        <p className="text-[11px] font-semibold text-[var(--atlas-evidence)]">
           {alignment ? alignmentTypeLabel(alignment.matchType) : "Reviewed technology"}
         </p>
         <p className="mt-1 text-xs font-semibold leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Organization profile"}</p>
@@ -436,7 +436,7 @@ export function OrganizationRows({
           {alignment ? (
             <span className={cn(
               "inline-flex rounded px-2 py-1 text-[10px] font-semibold",
-              alignment.matchType === "public_source_alignment" ? "bg-[var(--atlas-violet-soft)] text-[var(--atlas-violet)]" : "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]"
+              alignment.matchType === "public_source_alignment" ? "bg-[var(--atlas-evidence-soft)] text-[var(--atlas-evidence)]" : "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]"
             )}>
               {alignmentTypeLabel(alignment.matchType)}
             </span>

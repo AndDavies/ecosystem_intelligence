@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
+import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation";
@@ -36,7 +37,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
       title={demand.title}
       description={demand.source.summary}
       backHref="/demand"
-      backLabel="All demand signals"
+      backLabel="All public needs"
       actions={<>
         <PublicShare title={demand.title} description={demand.problemStatement} path={`/demand/${demand.slug}`} />
         <a href={demand.source.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-md bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white no-underline hover:bg-[var(--atlas-primary-hover)] hover:no-underline">
@@ -48,6 +49,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
         <ShieldAlert className="mt-0.5 size-4 shrink-0" />
         <p>{demand.publicCaveat}</p>
       </div>
+      <EvidenceLegend compact className="mt-5" />
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-5">

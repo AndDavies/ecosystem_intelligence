@@ -69,16 +69,16 @@ const outcomes = [
 export default function AboutPage() {
   return (
     <PublicPageShell
-      eyebrow="Built from service. Made for contribution."
-      title="The capability is here. The shared picture is not."
-      description="True North Map is my contribution to a problem I kept encountering: Canada has the people, technology, and ambition to build more, but no simple way to see how it all fits together."
+      eyebrow="Evidence-led ecosystem discovery"
+      title="Make Canadian capability visible."
+      description="True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations."
       actions={
         <Link href="/" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">
           Explore the map <ArrowRight className="size-4" />
         </Link>
       }
     >
-      <section className="relative mt-8 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+      <section className="relative mt-8 overflow-hidden rounded-[18px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
         <div className="relative aspect-[16/9] min-h-[220px] sm:aspect-[2/1] lg:aspect-[16/7]">
           <Image
             src="/imagery/about-canada-defence-network.jpg"
@@ -90,7 +90,7 @@ export default function AboutPage() {
           />
         </div>
         <div className="p-5 sm:absolute sm:inset-y-6 sm:left-6 sm:flex sm:w-[48%] sm:items-center sm:p-0 lg:inset-y-8 lg:left-8 lg:w-[44%]">
-          <div className="rounded-[1.5rem] border border-white/70 bg-[rgba(250,250,248,0.94)] p-6 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:p-7 lg:p-8">
+          <div className="rounded-2xl border border-white/70 bg-[rgba(250,250,248,0.94)] p-6 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:p-7 lg:p-8">
             <div className="border-l-4 border-[var(--atlas-signal)] pl-4 sm:pl-5">
               <p className="atlas-eyebrow">Why I built this</p>
               <h2 className="mt-4 max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-[34px] lg:text-[40px]">

@@ -14,26 +14,24 @@ export async function GET(request: Request) {
   const detail = clean(url.searchParams.get("detail"), "Follow the evidence. Find the fit. Start the right conversation.", 140);
 
   return new ImageResponse(
-    <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", overflow: "hidden", background: "#f4f3ef", color: "#232725", padding: "64px 72px", fontFamily: "Arial, sans-serif" }}>
-      <div style={{ position: "absolute", inset: 0, display: "flex", opacity: 0.5, backgroundImage: "radial-gradient(circle at 78% 38%, rgba(245,233,0,.55), transparent 31%), linear-gradient(135deg, transparent 55%, rgba(31,90,67,.10) 55%, rgba(31,90,67,.10) 56%, transparent 56%)" }} />
-      <div style={{ position: "absolute", right: 58, top: 52, width: 238, height: 238, border: "1px solid rgba(31,90,67,.18)", borderRadius: 999, display: "flex" }} />
-      <div style={{ position: "absolute", right: 98, top: 92, width: 158, height: 158, border: "1px solid rgba(31,90,67,.22)", borderRadius: 999, display: "flex" }} />
+    <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", overflow: "hidden", background: "#f7f7f3", color: "#242827", padding: "58px 68px", fontFamily: "Arial, sans-serif", borderTop: "12px solid #f5e900" }}>
+      <div style={{ position: "absolute", right: 0, top: 0, width: 20, height: "100%", background: "#242827", display: "flex" }} />
       <div style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "space-between", width: "100%" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ width: 44, height: 50, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 15, background: "#232725", color: "#f5e900", fontSize: 18, fontWeight: 900, letterSpacing: "-0.04em" }}>TN</div>
+          <img src={`${url.origin}/apple-icon.png`} width="52" height="52" alt="" />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 22, fontWeight: 900, letterSpacing: "-0.02em" }}>TRUE NORTH MAP</span>
-            <span style={{ marginTop: 4, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", color: "#52605a" }}>CANADIAN DEFENCE, CLEARLY MAPPED</span>
+            <span style={{ marginTop: 4, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", color: "#666965" }}>EVIDENCE-LED ECOSYSTEM DISCOVERY</span>
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", maxWidth: 970 }}>
           <span style={{ display: "flex", alignSelf: "flex-start", padding: "8px 14px", borderRadius: 999, background: "#f5e900", fontSize: 14, fontWeight: 900, letterSpacing: "0.08em", textTransform: "uppercase" }}>{eyebrow}</span>
           <div style={{ display: "flex", marginTop: 24, fontSize: title.length > 72 ? 51 : 60, lineHeight: 1.02, letterSpacing: "-0.045em", fontWeight: 900 }}>{title}</div>
-          <div style={{ display: "flex", marginTop: 22, maxWidth: 850, fontSize: 22, lineHeight: 1.35, color: "#52605a" }}>{detail}</div>
+          <div style={{ display: "flex", marginTop: 22, maxWidth: 850, fontSize: 22, lineHeight: 1.35, color: "#666965" }}>{detail}</div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 15, fontWeight: 700, color: "#52605a" }}>
-          <span>Reviewed public sources · transparent gaps · human review</span>
-          <span style={{ color: "#1f5a43" }}>truenorthmap.ca</span>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 15, fontWeight: 700, color: "#666965" }}>
+          <span>Reviewed public evidence · Transparent gaps · Human review</span>
+          <span style={{ color: "#126147" }}>truenorthmap.ca</span>
         </div>
       </div>
     </div>,

@@ -43,7 +43,7 @@ export default async function PublicAtlasPage({
   ]);
 
   return (
-    <main className="atlas-page min-h-screen bg-[#eef7f8] text-[#101828]">
+    <main className="atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)]">
       <PublicAtlasHeader />
       <JsonLd data={{ "@context": "https://schema.org", "@type": "ItemList", name: "Published Canadian defence and dual-use organizations", numberOfItems: snapshot.organizations.length, itemListElement: snapshot.organizations.slice(0, 100).map((organization, index) => ({ "@type": "ListItem", position: index + 1, name: organization.name, url: absoluteUrl(`/organizations/${organization.slug}`) })) }} />
       <AtlasExplorer

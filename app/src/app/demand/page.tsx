@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CircleDashed, FileText, ShieldAlert } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
@@ -13,10 +14,10 @@ import { socialMetadata } from "@/lib/seo/social";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Public Demand Signals",
+  title: "Public Needs",
   description: "See the public problems Canadian and allied organizations are trying to solve, then explore reviewed Canadian technologies that may fit.",
   alternates: { canonical: "/demand" },
-  ...socialMetadata({ title: "Public Demand Signals", description: "See released public needs, then explore reviewed Canadian technologies that may help.", path: "/demand", eyebrow: "Start with the problem" })
+  ...socialMetadata({ title: "Public Needs", description: "See released public needs, then explore reviewed Canadian technologies that may help.", path: "/demand", eyebrow: "Start with the problem" })
 };
 
 export default async function DemandIndexPage({
@@ -32,10 +33,11 @@ export default async function DemandIndexPage({
 
   return (
     <PublicPageShell
-      eyebrow="Start with the problem"
+      eyebrow="Public Needs"
       title="What public needs have been released, and where might Canadian technology help?"
       description="Follow released needs from governments, armed forces, programs, and allied organizations. Then see the Canadian technologies a person has reviewed against that public record."
     >
+      <EvidenceLegend compact className="mb-5" />
       {totalMatches === 0 ? (
         <div className="mb-5 flex items-start gap-3 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-4 py-4 text-sm leading-6 text-[var(--atlas-primary)]">
           <CircleDashed className="mt-0.5 size-5 shrink-0" />
@@ -51,7 +53,7 @@ export default async function DemandIndexPage({
           <PublicCard key={demand.id} className="flex h-full flex-col">
             <div className="flex items-start justify-between gap-4">
               <span className="flex size-10 items-center justify-center rounded-md bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><FileText className="size-5" /></span>
-              <span className="rounded bg-[var(--atlas-violet-soft)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-violet)] ring-1 ring-[var(--atlas-primary-border)]">Demand signal</span>
+              <span className="rounded bg-[var(--atlas-evidence-soft)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-evidence)] ring-1 ring-[var(--atlas-primary-border)]">Demand signal</span>
             </div>
             <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{demand.source.publisher} · {demand.source.sourceKind ? toTitleCase(demand.source.sourceKind) : "Public problem statement"}</p>
             <h2 className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">{demand.title}</h2>
@@ -63,7 +65,7 @@ export default async function DemandIndexPage({
           </PublicCard>
         ))}
       </div>
-      <PaginationNav path="/demand" page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="public demand signals" />
+      <PaginationNav path="/demand" page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="public needs" />
       <div className="mt-6 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-5 py-4 text-sm text-[var(--atlas-muted)]">Not sure how sources become assessments? <Link href="/how-it-works" className="font-bold text-[var(--atlas-primary)]">See how True North Map works</Link>.</div>
     </PublicPageShell>
   );

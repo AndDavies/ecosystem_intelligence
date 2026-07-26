@@ -47,7 +47,7 @@ export default async function RegionPage({
       eyebrow="Regional ecosystem"
       title={region.name}
       breadcrumbs={[
-        { label: "Ecosystem Map", href: "/" },
+        { label: "Map", href: "/" },
         { label: "Regions", href: "/regions" },
         { label: region.name }
       ]}

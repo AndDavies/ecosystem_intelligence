@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     description: "Find Canadian teams and technology, see where they fit, and inspect the public evidence behind every profile.",
     siteName,
     locale: "en_CA",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "True North Map Canadian Public Beta" }]
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "True North Map: Canada is building more than most people can see" }]
   },
-  twitter: { card: "summary_large_image", title: "True North Map Canadian Public Beta", description: "Find Canadian teams and technology, see where they fit, and inspect the public evidence behind every profile.", images: ["/opengraph-image"] }
+  twitter: { card: "summary_large_image", title: "True North Map", description: "Make Canadian capability visible. Follow the evidence, find the fit, and start the right conversation.", images: ["/opengraph-image"] }
 };
 
 export default function RootLayout({

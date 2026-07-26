@@ -1,4 +1,74 @@
-# Defence Briefs design QA
+# True North Map design QA record
+
+## Phase 1B North Signal system - 2026-07-26
+
+### Comparison target
+
+- Source visual truth:
+  - `/var/folders/zy/qv3qyrkj13n26_6wv7xrdndm0000gn/T/codex-clipboard-5e259cdc-6ba8-4419-a112-e58b042295bd.png`
+  - `/Users/andrewdavies/Downloads/ChatGPT Image Jul 25, 2026, 04_50_05 PM.png`
+- Browser-rendered implementation:
+  - `output/phase1b-home-1440.png`
+  - `output/phase1b-home-390.png`
+- Combined comparison: `output/phase1b-design-comparison.png`
+- Route: `http://localhost:3011/`
+- State: anonymous public visitor using current production records.
+
+### Viewport and normalization
+
+- Source homepage mock: `629 x 445` pixels.
+- Implementation desktop capture: `1425 x 990` content pixels from a requested
+  `1440 x 1000` viewport.
+- Implementation mobile capture: `375 x 844` content pixels from a requested
+  `390 x 844` viewport.
+- The combined comparison normalizes both desktop frames to 900 pixels wide.
+  The source is a compact audit mock rather than a pixel-for-pixel page export,
+  so the comparison evaluates visual hierarchy, proportion, colour, imagery,
+  navigation, and decision flow.
+
+### Full and focused comparison
+
+- The implementation preserves the mock's compact white header, yellow active
+  rule, headline-and-maritime split hero, paired calls to action, bounded Ask
+  True North panel, suggested searches, and four-step decision journey.
+- The approved highlight treatment is restored as charcoal type on Signal
+  Yellow, improving contrast over the interim yellow-text treatment.
+- The live trust boundary and dynamic coverage metrics extend the audit mock
+  without displacing the core hero or search journey.
+- The approved maritime image is contained at every breakpoint with fixed
+  responsive dimensions and no observed layout shift.
+- Mobile keeps the hierarchy intact, presents both actions before the image,
+  and uses an accessible menu. `scrollWidth` equals `clientWidth` at 390 pixels.
+
+### Findings and iterations
+
+1. P1: Signal-yellow headline text on the Field canvas did not provide adequate
+   contrast. Fixed by using the approved marker treatment with North Ink text.
+2. P1: Organization profile actions and desktop navigation overflowed at the
+   1024-pixel breakpoint. Fixed by retaining the compact menu and stacked page
+   header until 1280 pixels. Post-fix `scrollWidth` equals `clientWidth`.
+3. P2: The compact evidence legend left an imbalanced empty column at the
+   1024-pixel breakpoint. Fixed by holding the horizontal legend layout until
+   1280 pixels and using three balanced state columns at tablet width.
+4. No actionable P0, P1, or P2 findings remain after the final comparison.
+
+### Verification
+
+- [x] Primary and mobile navigation.
+- [x] Public Needs routes to `/demand`.
+- [x] Signed-out account and admin boundaries redirect safely.
+- [x] Ask True North returns deterministic fallback safely when the model is
+  temporarily unavailable.
+- [x] Mobile map and accessible-list toggle stay synchronized.
+- [x] Update prompt opens as a centered consent-backed dialog.
+- [x] Share dialog exposes LinkedIn, X, and copy-link actions.
+- [x] North Signal remains legible in 16- and 32-pixel renders.
+- [x] No horizontal overflow across the required public routes at 768, 1024,
+  and 1440 pixels after the profile breakpoint repair.
+
+final result: passed
+
+## Defence Briefs design QA
 
 ## Comparison target
 

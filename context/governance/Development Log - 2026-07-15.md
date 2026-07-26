@@ -531,3 +531,24 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Added the crawlable `/how-it-works` route, structured data, responsive
   five-step workflow, trust boundary, navigation, sitemap entry, and contextual
   links from the map, demand, About, and Methodology routes.
+
+## Phase 1B brand system and public experience - 2026-07-26
+
+- Introduced the North Signal identity as responsive SVG marks, a simplified
+  favicon, branded social cards, and accessible header and footer lockups.
+- Standardized the public palette around North Ink, Field, Paper, Signal
+  Yellow, Evidence Green, Quiet Grey, Warning Gold, and Alert Red while keeping
+  temporary aliases for legacy semantic variables.
+- Rebuilt the homepage hierarchy around the approved headline, maritime visual,
+  two clear actions, Ask True North, suggested searches, four decision steps,
+  the public trust boundary, live coverage metrics, and the existing complete
+  map and results experience.
+- Standardized primary navigation around Map, Organizations, Public Needs,
+  Defence Briefs, How It Works, and About. Regions remain available within
+  discovery and the footer. `/demand` and every canonical record URL remain
+  unchanged.
+- Consolidated the first-encounter evidence legend and applied the same brand,
+  spacing, and evidence hierarchy to public discovery, dossier, editorial,
+  contact, contribution, authentication, account, loading, error, and empty
+  states without changing data, analytics, authentication, research, review,
+  publication, map, export, or Working List behaviour.
