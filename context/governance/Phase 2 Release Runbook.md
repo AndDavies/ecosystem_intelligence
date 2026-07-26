@@ -23,6 +23,11 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 5. Check `/api/health`, `/`, `/organizations`, `/demand`, `/briefs`, `/how-it-works`, `/sign-in` and one profile of each public record type.
 6. Verify production security headers, sitemap, robots, social card and analytics consent.
 
+## Optional provider activation
+
+- Microsoft Clarity is intentionally dormant until `NEXT_PUBLIC_MICROSOFT_CLARITY_ID` is configured in Vercel. After activation, confirm the consent boundary, private-route exclusion and masked form fields before relying on diagnostics.
+- Custom Turnstile challenges for contact, feedback and update endpoints require a server-side Cloudflare secret. Authentication Turnstile is already configured through Supabase; public forms remain protected by validation, honeypots and rate limits until the additional credential is available.
+
 ## Rollback
 
 - Application: promote the recorded pre-Phase 2 Vercel deployment or revert the Phase 2 merge commit.
