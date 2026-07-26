@@ -470,7 +470,7 @@ export function AtlasExplorer({
         </div>
       </section>
 
-      <section id="ask-true-north" className="scroll-mt-24 overflow-hidden rounded-[18px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+      <section id="ask-true-north" className="scroll-mt-24 overflow-hidden rounded-[14px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
         <div className="border-t-2 border-[var(--atlas-signal)] bg-white p-3 sm:p-5">
           <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
             <div><p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Ask True North</p><p className="mt-1 text-sm text-[var(--atlas-muted)]">Describe what you need. See the best-supported fits, the evidence behind them, and what remains unknown.</p></div>
@@ -482,25 +482,25 @@ export function AtlasExplorer({
               <input
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
-                className="h-14 w-full rounded-[18px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-4 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:h-16 sm:pr-40 sm:text-base"
+                className="h-14 w-full rounded-[12px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-4 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:h-16 sm:pr-40 sm:text-base"
                 placeholder="What are you trying to build, source, or understand?"
                 aria-label="Search the ecosystem map in natural language"
                 maxLength={500}
               />
-              <button type="submit" className="atlas-primary-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60 sm:absolute sm:right-1.5 sm:top-1/2 sm:h-[52px] sm:w-auto sm:-translate-y-1/2 sm:px-5" disabled={loading}>
+              <button type="submit" className="atlas-signal-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60 sm:absolute sm:right-1.5 sm:top-1/2 sm:h-[52px] sm:w-auto sm:-translate-y-1/2 sm:px-5" disabled={loading}>
                 {loading ? <LoaderCircle className="size-4 animate-spin" /> : null}
                 <span>Explore the map</span>
-                {!loading ? <ArrowRight className="hidden size-4 text-[var(--atlas-signal)] sm:block" /> : null}
+                {!loading ? <ArrowRight className="hidden size-4 sm:block" /> : null}
               </button>
             </div>
           </form>
           <p className="mt-2 text-[11px] leading-5 text-[var(--atlas-muted)]">Uses reviewed public records only. Do not enter classified, confidential, proprietary, or personal information.</p>
 
           <div className="mt-3 flex flex-wrap gap-2" aria-label="Suggested questions">
-            {suggestedQuestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => void runDiscovery(suggestion)} className="rounded-full border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-3 py-1.5 text-[10px] font-semibold text-[var(--atlas-muted)] hover:border-[var(--atlas-ink)] hover:text-[var(--atlas-ink)]">{suggestion}</button>)}
+            {suggestedQuestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => void runDiscovery(suggestion)} className="rounded-[8px] border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-3 py-1.5 text-[10px] font-semibold text-[var(--atlas-muted)] hover:border-[var(--atlas-ink)] hover:text-[var(--atlas-ink)]">{suggestion}</button>)}
           </div>
 
-          <ol className="mt-5 grid gap-px overflow-hidden rounded-xl border border-[var(--atlas-border)] bg-[var(--atlas-border)] sm:grid-cols-2 xl:grid-cols-4" aria-label="From discovery to action">
+          <ol className="mt-5 grid gap-px overflow-hidden rounded-[10px] border border-[var(--atlas-border)] bg-[var(--atlas-border)] sm:grid-cols-2 xl:grid-cols-4" aria-label="From discovery to action">
             {decisionSteps.map((step) => <li key={step.number} className="bg-white p-4"><div className="flex items-center justify-between gap-3"><span className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{step.number}</span><step.icon className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" /></div><h2 className="mt-5 text-sm font-extrabold text-[var(--atlas-ink)]">{step.title}</h2><p className="mt-1.5 text-[11px] leading-5 text-[var(--atlas-muted)]">{step.detail}</p></li>)}
           </ol>
 

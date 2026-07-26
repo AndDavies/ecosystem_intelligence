@@ -72,4 +72,19 @@ describe("phase 2 launch hardening", () => {
     expect(runbook).toContain("versioned rollback script");
     expect(agentContract).toContain("release owner is not expected to remember internal scheduler dependencies");
   });
+
+  it("publishes the launch walkthrough and evidence-aware FAQ with field-guide geometry", async () => {
+    const [howItWorks, explorer, header] = await Promise.all([
+      readFile(path.resolve("src/app/how-it-works/page.tsx"), "utf8"),
+      readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
+      readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8")
+    ]);
+    expect(howItWorks).toContain('"@type": "VideoObject"');
+    expect(howItWorks).toContain('"@type": "FAQPage"');
+    expect(howItWorks).toContain('/video/true-north-map-launch.mp4');
+    expect(howItWorks).toContain("Does AI publish the information?");
+    expect(explorer).toContain('type="submit" className="atlas-signal-button');
+    expect(explorer).toContain('className="rounded-[8px] border');
+    expect(header).toContain('rounded-[8px] px-3');
+  });
 });

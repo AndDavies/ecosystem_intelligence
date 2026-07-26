@@ -61,7 +61,7 @@ export function PublicAtlasHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex h-10 items-center rounded-xl px-3 text-[12px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline xl:px-4 xl:text-[13px]",
+                  "relative flex h-10 items-center rounded-[8px] px-3 text-[12px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline xl:px-4 xl:text-[13px]",
                   active && "text-[var(--atlas-ink)] hover:text-[var(--atlas-ink)]"
                 )}
                 aria-current={active ? "page" : undefined}
@@ -95,7 +95,7 @@ export function PublicAtlasHeader() {
           )}
           <button
             type="button"
-             className="flex size-11 items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] xl:hidden"
+             className="flex size-11 items-center justify-center rounded-[9px] border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] xl:hidden"
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
@@ -115,7 +115,7 @@ export function PublicAtlasHeader() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline",
+                    "rounded-[8px] px-3 py-2.5 text-sm font-medium text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline",
                     active && "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]"
                   )}
                   onClick={() => setOpen(false)}

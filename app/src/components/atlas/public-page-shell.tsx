@@ -48,7 +48,7 @@ export function PublicPageShell({
             </ol>
           </nav>
         ) : (
-          <Link href={backHref} className="inline-flex items-center gap-2 rounded-full px-1 py-1 text-xs font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline">
+          <Link href={backHref} className="inline-flex items-center gap-2 rounded-[6px] px-1 py-1 text-xs font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline">
             <ArrowLeft className="size-4" />
             {backLabel}
           </Link>
