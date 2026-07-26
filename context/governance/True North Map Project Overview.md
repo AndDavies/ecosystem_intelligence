@@ -41,6 +41,7 @@ Place, technology, or public need
 
 - Every matching published organization remains available to the national map and search through a compact projection. Rich evidence cards load in pages of 36 and full dossiers load only when opened.
 - Public reads retry one transient upstream failure. Warm application instances may serve the last safe public snapshot while an upstream dependency recovers; cold instances continue to fail closed.
+- Public dossiers load citations through the selected organizations, technologies, reviewed matches, funding events, and public needs before fetching only their referenced approved evidence and sources. Internal demand-match reviewer rationale never enters the public atlas model, APIs, deterministic search text, or Ask True North catalogue.
 - `/api/health` checks the application and core public record families without returning internal database or provider details.
 - Expected expired or reused refresh tokens are cleared and treated as signed out.
 - The content security policy explicitly permits only the application and required Supabase, MapTiler, OpenStreetMap, Google, Turnstile, Vercel Analytics and consented Clarity endpoints.
@@ -49,6 +50,7 @@ Place, technology, or public need
 - The current launch kit lives under `content/launch/phase-2/`; older screenshots and demo material are not release assets.
 - The North Signal source packet is indexed in `content/brand/True North Map Brand System.md`; production marks live under `app/public/brand/`.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
+- The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 
 ## System architecture and source of truth
 

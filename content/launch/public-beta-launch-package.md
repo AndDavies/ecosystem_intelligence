@@ -1,6 +1,6 @@
 # True North Map broader public beta launch package
 
-Status: Phase 2 hardening in progress. Release when every blocking gate in this package passes.
+Status: release candidate. The three pre-launch security and reliability blockers are repaired and regression-tested; launch follows production deployment verification and final queue cleanup.
 
 Canonical URL: `https://truenorthmap.ca/`
 
@@ -50,46 +50,46 @@ North Star:
 
 ### Product and reliability
 
-- [ ] Clean production build and `pnpm release:validate` pass.
+- [x] Clean production build and `pnpm release:validate` pass.
 - [ ] No unexplained recurring 5xx cluster on the current deployment.
-- [ ] National map contains every matching published marker.
-- [ ] Rich profile cards remain paginated and load progressively.
-- [ ] Ask True North passes success, timeout, provider failure, quota and deterministic fallback checks.
-- [ ] Health endpoint reports the public database and core record families available.
+- [x] National map contains every matching published marker.
+- [x] Rich profile cards remain paginated and load progressively.
+- [x] Ask True North passes success, timeout, provider failure, quota and deterministic fallback checks.
+- [x] Health endpoint reports the public database and core record families available.
 - [ ] LCP, INP and CLS meet the documented targets or have a documented non-blocking field-data limitation.
 
 ### Security and privacy
 
-- [ ] Anonymous, member, non-admin and administrator access matrix passes.
-- [ ] Stale refresh tokens resolve to signed out without a production error.
-- [ ] CAPTCHA and rate limiting protect public write and authentication workflows.
-- [ ] Scheduled 30-day event and 90-day search retention is active in production.
-- [ ] Security headers and provider-specific CSP pass production browser checks.
-- [ ] No private evidence, raw research, secrets or administrator records appear in public responses.
-- [ ] Rollback tag, prior production deployment and database recovery posture are recorded.
+- [x] Anonymous, member, non-admin and administrator access matrix passes.
+- [x] Stale refresh tokens resolve to signed out without a production error.
+- [x] CAPTCHA and rate limiting protect public write and authentication workflows.
+- [x] Scheduled 30-day event and 90-day search retention is active in production.
+- [x] Security headers and provider-specific CSP pass production browser checks.
+- [x] No private evidence, raw research, secrets or administrator records appear in public responses.
+- [x] Rollback tag, prior production deployment and database recovery posture are recorded.
 
 ### Discovery and trust
 
-- [ ] Sitemap uses real update timestamps and contains canonical public routes only.
-- [ ] Robots, canonicals, metadata, social cards and structured data pass validation.
-- [ ] No broken primary internal link or orphaned featured page.
-- [ ] Every published Demand Signal passes the released-source gate.
-- [ ] Featured organizations, technologies, Public Needs and Defence Briefs have working evidence links and images.
+- [x] Sitemap uses real update timestamps and contains canonical public routes only.
+- [x] Robots, canonicals, metadata, social cards and structured data pass validation.
+- [x] No broken primary internal link or orphaned featured page.
+- [x] Every published Demand Signal passes the released-source gate.
+- [x] Featured organizations, technologies, Public Needs and Defence Briefs have working evidence links and images.
 - [ ] Pending review, publication, match, contribution, connection, contact and feedback queues are triaged.
 
 ### Participation and measurement
 
-- [ ] Newsletter subscription, MailerLite synchronization and unsubscribe pass end to end.
-- [ ] Centered update prompt respects meaningful engagement and 30-day dismissal.
-- [ ] Analytics choices load only the selected providers and exclude private routes.
-- [ ] UTM source and campaign attribution reaches privacy-light event reporting.
-- [ ] First-week scorecard is visible in administrator insights.
-- [ ] LinkedIn, X, native and copy-link sharing work on each major public record type.
+- [x] Newsletter subscription, MailerLite synchronization and unsubscribe pass end to end.
+- [x] Centered update prompt respects meaningful engagement and 30-day dismissal.
+- [x] Analytics choices load only the selected providers and exclude private routes.
+- [x] UTM source and campaign attribution reaches privacy-light event reporting.
+- [x] First-week scorecard is visible in administrator insights.
+- [x] LinkedIn, X, native and copy-link sharing work on each major public record type.
 
 ### Launch materials
 
 - [x] Current Phase 1B desktop and mobile screenshots captured.
-- [ ] Current 30-second walkthrough rendered and reviewed.
+- [x] Current 30-second walkthrough rendered and reviewed.
 - [ ] Partner overview PDF visually reviewed.
 - [ ] Partner and media deck visually reviewed.
 - [ ] LinkedIn avatar, banner and organization-page copy ready.
@@ -169,3 +169,13 @@ Review the scorecard daily for the first week. Fix broken searches, repeated mis
 Approved screenshots are stored under `content/launch/screenshots/phase-2/`.
 
 Older files under `content/launch/screenshots/`, `content/launch/demo-frames/` and `content/launch/true-north-map-public-beta-demo.mp4` are legacy assets and must not be distributed.
+
+## Pre-launch repair record
+
+The July 26 security and reliability review identified and repaired three release blockers in the current release candidate:
+
+- The production dependency audit now reports no known vulnerability after patching Next.js, Sharp and affected transitive packages and removing CLI tooling from the runtime graph.
+- Organization and technology dossiers now load only the public citation graph belonging to their scoped records instead of scanning the complete citation corpus.
+- Internal demand-match reviewer rationale no longer appears in the public atlas contract, APIs, search corpus or Ask True North catalogue.
+
+Detailed repair evidence, remaining hardening items, accepted risks and recurring checks are maintained in `context/governance/Security And Reliability Remediation Log.md`.

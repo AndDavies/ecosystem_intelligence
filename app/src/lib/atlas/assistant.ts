@@ -170,7 +170,7 @@ function organizationSearchText(organization: AtlasOrganization) {
       ...capability.technicalTags,
       ...capability.technicalDomains.flatMap((domain) => [domain.name, domain.summary]),
       ...capability.missionMatches.flatMap((match) => [match.missionArea.name, match.missionArea.summary, match.alignmentSummary]),
-      ...capability.demandMatches.flatMap((match) => [match.demandTitle, match.alignmentSummary, match.rationale]),
+      ...capability.demandMatches.flatMap((match) => [match.demandTitle, match.alignmentSummary]),
       ...capability.citations.flatMap((citation) => [citation.sourceTitle, citation.excerpt])
     ]),
     ...organization.citations.flatMap((citation) => [citation.sourceTitle, citation.excerpt])
@@ -259,7 +259,6 @@ export function buildAssistantCatalog(snapshot: AtlasSnapshot, organizations = s
         publicDemand: capability.demandMatches.map((match) => ({
           title: match.demandTitle,
           alignment: match.alignmentSummary,
-          rationale: match.rationale,
           matchType: match.matchType,
           confidence: match.confidence,
           citations: match.citations.map(compactCitation)

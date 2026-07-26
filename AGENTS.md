@@ -191,7 +191,7 @@ Before BD sharing, run:
 pnpm release:validate
 ```
 
-This command validates the deployable public application with tests, lint, and the production build. Research and visibility are separate local operator lanes and run their own contract checks whenever those local systems or tracked interoperability contracts change.
+This command validates the deployable public application with the production dependency security gate, tests, lint, and the production build. Research and visibility are separate local operator lanes and run their own contract checks whenever those local systems or tracked interoperability contracts change. Active security and reliability findings are tracked in `context/governance/Security And Reliability Remediation Log.md`.
 
 For any production database migration or rollback, the acting agent must inspect the live migration and scheduled-job state, execute the versioned operation in dependency order, and rerun the applicable database and full release regression checks. The release owner is not expected to remember internal scheduler dependencies.
 
@@ -223,6 +223,8 @@ Browser QA should cover:
 - `/admin/organizations/[id]/edit`
 
 ## Change Log
+
+- `2026-07-26`: Repaired three pre-launch security and reliability blockers. Patched the production dependency graph and added a repeatable audit gate, replaced unbounded public citation/evidence/source scans with scoped indexed batches, and removed internal demand-match reviewer rationale from the public atlas model, APIs, search text, and Ask True North catalogue while preserving private editorial rationale. Added a durable remediation register for remaining defence-in-depth and operational work.
 
 - `2026-07-26`: Established the whole-project context and regression contract. Canonical governance now maps the North Signal brand packet, production architecture, seven-stage research skill design, private visibility/SEO intelligence boundary, cross-system impact checks, validation tiers, launch assets, and current integration state. Material changes must update affected project documents and pass scoped plus release-level regression before being described as complete.
 

@@ -28,6 +28,7 @@
     "logos:import": "pnpm --dir app logos:import",
     "logos:publish-reviewed": "pnpm --dir app logos:publish-reviewed",
     "launch:validate": "pnpm --dir app launch:validate",
-    "release:validate": "pnpm test && pnpm lint && pnpm build"
+    "security:validate": "pnpm --dir app audit --prod --audit-level high",
+    "release:validate": "pnpm security:validate && pnpm test && pnpm lint && pnpm build"
   }
 }

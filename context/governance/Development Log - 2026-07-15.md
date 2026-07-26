@@ -552,3 +552,23 @@ use `ATLAS_DATA_SOURCE=supabase`.
   contact, contribution, authentication, account, loading, error, and empty
   states without changing data, analytics, authentication, research, review,
   publication, map, export, or Working List behaviour.
+
+## Pre-launch security and reliability remediation - 2026-07-26
+
+- Reproduced the production dependency audit in the clean release worktree and
+  repaired the complete known production graph: Next.js 15.5.22, Sharp 0.35.3,
+  patched transitive PostCSS, WebSocket, and Babel versions, and development-only
+  placement for the `shadcn` CLI. Added `pnpm security:validate` to the release
+  gate so high or critical dependency findings fail closed.
+- Traced the transient capability-route 500 to an unbounded public citation
+  read. Dossiers now select field citations through the exact loaded entity IDs
+  in bounded indexed batches and then load only referenced approved evidence
+  snippets and sources. Full national discovery remains available and the
+  database, RLS, evidence, and publication schemas are unchanged.
+- Removed private demand-match reviewer rationale from the public
+  `AtlasDemandMatch` contract, Supabase projection, deterministic search corpus,
+  Ask True North catalogue, and public API serialization. The private admin and
+  candidate workflow retains its rationale and human-review requirement.
+- Added `Security And Reliability Remediation Log.md` as the durable register
+  for resolved blockers, remaining defence-in-depth work, accepted risks,
+  operational cleanup, recurring checks, and production verification.

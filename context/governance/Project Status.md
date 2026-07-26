@@ -15,6 +15,7 @@ True North Map is an evidence-backed Canadian defence and dual-use ecosystem map
 The current product and operating system include:
 
 - Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix, rollback runbook and current launch kit now make release validation repeatable.
+- Pre-launch security remediation updates the production runtime dependencies, bounds citation and evidence reads to the requested public records, and removes private demand-match reviewer rationale from the public data contract and Ask True North catalogue. `pnpm security:validate` is now a release gate; the durable backlog and verification record live in `Security And Reliability Remediation Log.md`.
 - Phase 1B introduces the North Signal identity, a charcoal, warm-white and signal-yellow design system, consistent Barlow and Inter typography, lighter section-based layout, and one public message system across navigation, discovery, evidence, editorial, account, contribution, and trust surfaces. Product behaviour and data contracts are unchanged.
 - The primary navigation is Map, Organizations, Public Needs, Defence Briefs, How It Works, and About. `/demand` remains canonical; Public Needs names the collection while Demand Signal remains the precise label for one source-gated released need.
 
@@ -103,5 +104,6 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 - `context/governance/Admin Workflow And Data Contract.md` — private review and publication boundary.
 - `context/governance/Skills And Automation Map.md` — canonical skill, operating-mode, and automation map.
 - `context/governance/Cross-System Change And Regression Contract.md` — impact analysis and regression requirements.
+- `context/governance/Security And Reliability Remediation Log.md` — active security, privacy, resilience, dependency, and assurance register.
 - `content/brand/True North Map Brand System.md` — North Signal brand packet and usage rules.
 - `app/src/lib/research/pipeline-schema.ts` — executable research contract when prose and code differ.

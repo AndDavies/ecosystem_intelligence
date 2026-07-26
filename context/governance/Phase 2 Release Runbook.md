@@ -8,11 +8,13 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 
 1. Confirm the protected Phase 2 branch contains only application, migration, launch-asset and governance changes.
 2. Run `pnpm release:validate` with production configuration.
-3. Run the browser matrix at 390, 768, 1024 and 1440 pixels.
-4. Verify the access matrix for anonymous, member, non-admin and administrator roles.
-5. Review current Vercel errors and Supabase security and performance advisors.
-6. Confirm pending publication and participation queues have been triaged.
-7. Confirm the latest production deployment remains available for rollback.
+3. Confirm `pnpm security:validate` reports no high or critical production dependency finding and review lower-severity output.
+4. Run the browser matrix at 390, 768, 1024 and 1440 pixels.
+5. Verify the access matrix for anonymous, member, non-admin and administrator roles.
+6. Inspect one public organization API response for internal review fields and run the low-rate canonical crawl, including any recovered retry warnings.
+7. Review current Vercel errors and Supabase security and performance advisors.
+8. Confirm pending publication and participation queues have been triaged.
+9. Confirm the latest production deployment remains available for rollback.
 
 ## Deployment
 
@@ -45,3 +47,5 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 6. Cosmetic and low-risk content defects.
 
 For a critical issue, stop promotion, preserve logs, roll back the application if necessary and do not retry destructive database operations.
+
+All active findings, accepted risks, repair evidence, and follow-up triggers are recorded in `Security And Reliability Remediation Log.md`.

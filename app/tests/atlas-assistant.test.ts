@@ -107,6 +107,7 @@ describe("Ask True North output guardrails", () => {
       id: snapshot.organizations[0].capabilities[0].id,
       citations: [{ id: capabilityCitation.id }]
     });
+    expect(JSON.stringify(catalog)).not.toContain('"rationale"');
   });
 
   it("preselects the most relevant published organizations without creating a second index", () => {

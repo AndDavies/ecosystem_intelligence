@@ -239,7 +239,7 @@ function matchesQuery(organization: AtlasOrganization, rawQuery: string) {
         (match) => `${match.missionArea.name} ${match.missionArea.summary} ${match.alignmentSummary}`
       ),
       ...capability.demandMatches.map(
-        (match) => `${match.demandTitle} ${match.alignmentSummary} ${match.rationale}`
+        (match) => `${match.demandTitle} ${match.alignmentSummary}`
       )
     ])
   ]

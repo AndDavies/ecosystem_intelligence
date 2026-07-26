@@ -35,7 +35,7 @@ const atlasColumns = {
   capabilityClusters: "ecosystem_cluster_id, capability_id",
   demandSources: "id, source_id, slug, title, publisher, published_on, classification_label, summary, source_kind, commitment_level, source_evidence_snippet_id, source_verified_at, source_verified_by",
   demandRequirements: "id, demand_source_id, slug, title, problem_statement, desired_end_state, public_caveat, display_order",
-  demandMatches: "id, capability_id, demand_requirement_id, alignment_summary, rationale, match_type, confidence",
+  demandMatches: "id, capability_id, demand_requirement_id, alignment_summary, match_type, confidence",
   programs: "id, slug, name, program_type",
   participations: "id, organization_id, program_id, participation_type, cohort_label",
   fundingEvents: "id, organization_id, event_type, announced_on, amount_value, amount_currency, disclosed_summary",
@@ -137,6 +137,77 @@ function assertQuery(result: { error: { message?: string } | null }, label: stri
   }
 }
 
+const publicCitationBatchSize = 100;
+
+function uniqueIds(rows: Row[], key = "id") {
+  return Array.from(new Set(rows.map((row) => asString(row[key])).filter(Boolean)));
+}
+
+function chunks(values: string[], size = publicCitationBatchSize) {
+  return Array.from({ length: Math.ceil(values.length / size) }, (_, index) =>
+    values.slice(index * size, (index + 1) * size)
+  );
+}
+
+async function loadPublicCitationGraph(
+  supabase: ReturnType<typeof createPublicClient>,
+  targets: Array<{ entityType: string; ids: string[] }>,
+  demandSourceRows: Row[]
+) {
+  const citationResults = await Promise.all(
+    targets.flatMap(({ entityType, ids }) =>
+      chunks(Array.from(new Set(ids.filter(Boolean)))).map((batch) =>
+        supabase
+          .from("field_citations")
+          .select(atlasColumns.citations)
+          .eq("entity_type", entityType)
+          .in("entity_id", batch)
+      )
+    )
+  );
+  citationResults.forEach((result) => assertQuery(result, "scoped public citations"));
+  const citationRows = citationResults.flatMap((result) => asRows(result.data));
+
+  const evidenceIds = Array.from(new Set([
+    ...uniqueIds(citationRows, "evidence_snippet_id"),
+    ...uniqueIds(demandSourceRows, "source_evidence_snippet_id")
+  ]));
+  const evidenceResults = await Promise.all(
+    chunks(evidenceIds).map((batch) =>
+      supabase
+        .from("evidence_snippets")
+        .select(atlasColumns.evidence)
+        .in("id", batch)
+        .eq("visibility", "public")
+        .eq("public_approved", true)
+    )
+  );
+  evidenceResults.forEach((result) => assertQuery(result, "scoped public evidence"));
+  const evidenceRows = evidenceResults.flatMap((result) => asRows(result.data));
+
+  const sourceIds = Array.from(new Set([
+    ...uniqueIds(evidenceRows, "source_id"),
+    ...uniqueIds(demandSourceRows, "source_id")
+  ]));
+  const sourceResults = await Promise.all(
+    chunks(sourceIds).map((batch) =>
+      supabase
+        .from("sources")
+        .select(atlasColumns.sources)
+        .in("id", batch)
+        .eq("visibility", "public")
+        .eq("public_approved", true)
+    )
+  );
+  sourceResults.forEach((result) => assertQuery(result, "scoped public sources"));
+
+  return {
+    citations: citationRows,
+    evidence: evidenceRows,
+    sources: sourceResults.flatMap((result) => asRows(result.data))
+  };
+}
+
 export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope): Promise<Omit<AtlasSnapshot, "regions">> {
   const supabase = createPublicClient();
 
@@ -205,10 +276,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     programsResult,
     participationsResult,
     fundingEventsResult,
-    mediaAssetsResult,
-    sourcesResult,
-    evidenceResult,
-    citationsResult
+    mediaAssetsResult
   ] = await Promise.all([
     organizationsQuery,
     supabase.from("locations").select(atlasColumns.locations),
@@ -226,10 +294,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     supabase.from("programs").select(atlasColumns.programs).eq("publication_status", "published"),
     participationsQuery,
     fundingEventsQuery,
-    mediaAssetsQuery,
-    supabase.from("sources").select(atlasColumns.sources).eq("visibility", "public").eq("public_approved", true),
-    supabase.from("evidence_snippets").select(atlasColumns.evidence).eq("visibility", "public").eq("public_approved", true),
-    supabase.from("field_citations").select(atlasColumns.citations)
+    mediaAssetsQuery
   ]);
 
   [
@@ -249,10 +314,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     [programsResult, "programs"],
     [participationsResult, "program participation"],
     [fundingEventsResult, "funding events"],
-    [mediaAssetsResult, "published organization logos"],
-    [sourcesResult, "public sources"],
-    [evidenceResult, "public evidence"],
-    [citationsResult, "public citations"]
+    [mediaAssetsResult, "published organization logos"]
   ].forEach(([result, label]) => assertQuery(result as { error: { message?: string } | null }, String(label)));
 
   const organizationRows = asRows(organizationsResult.data);
@@ -267,19 +329,33 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
   const missionAreaById = byId(missionAreaRows);
   const missionMatchesByCapability = groupBy(asRows(missionMatchesResult.data), "capability_id");
   const demandSourceRows = asRows(demandSourcesResult.data);
-  const demandSourceById = byId(demandSourceRows);
   const demandRequirementRows = asRows(demandRequirementsResult.data);
+  const demandMatchRows = asRows(demandMatchesResult.data);
+  const fundingEventRows = asRows(fundingEventsResult.data);
+  const citationGraph = await loadPublicCitationGraph(
+    supabase,
+    [
+      { entityType: "organization", ids: uniqueIds(organizationRows) },
+      { entityType: "capability", ids: uniqueIds(capabilityRows) },
+      { entityType: "capability_mission_match", ids: uniqueIds(asRows(missionMatchesResult.data)) },
+      { entityType: "capability_demand_match", ids: uniqueIds(demandMatchRows) },
+      { entityType: "funding_event", ids: uniqueIds(fundingEventRows) },
+      { entityType: "demand_requirement", ids: uniqueIds(demandRequirementRows) }
+    ],
+    demandSourceRows
+  );
+  const demandSourceById = byId(demandSourceRows);
   const demandRequirementById = byId(demandRequirementRows);
   const demandMatchesByCapability = groupBy(asRows(demandMatchesResult.data), "capability_id");
   const programById = byId(asRows(programsResult.data));
   const participationsByOrganization = groupBy(asRows(participationsResult.data), "organization_id");
-  const fundingByOrganization = groupBy(asRows(fundingEventsResult.data), "organization_id");
+  const fundingByOrganization = groupBy(fundingEventRows, "organization_id");
   const mediaByOrganization = groupBy(asRows(mediaAssetsResult.data), "organization_id");
-  const sourceById = byId(asRows(sourcesResult.data));
-  const evidenceById = byId(asRows(evidenceResult.data));
+  const sourceById = byId(citationGraph.sources);
+  const evidenceById = byId(citationGraph.evidence);
   const citationsByEntity = new Map<string, Row[]>();
 
-  asRows(citationsResult.data).forEach((row) => {
+  citationGraph.citations.forEach((row) => {
     const key = `${asString(row.entity_type)}:${asString(row.entity_id)}`;
     const current = citationsByEntity.get(key) ?? [];
     current.push(row);
@@ -366,7 +442,6 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       demandSlug: asString(requirement.slug),
       demandTitle: asString(requirement.title),
       alignmentSummary: asString(row.alignment_summary),
-      rationale: asString(row.rationale),
       matchType: row.match_type === "public_source_alignment" ? "public_source_alignment" : "derived",
       confidence: asConfidence(row.confidence),
       citations: getCitations("capability_demand_match", asString(row.id))
@@ -517,7 +592,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     });
   });
 
-  const demandMatches = asRows(demandMatchesResult.data);
+  const demandMatches = demandMatchRows;
   const demandRequirements: AtlasDemandRequirement[] = demandRequirementRows
     .map((row): AtlasDemandRequirement | null => {
       const id = asString(row.id);

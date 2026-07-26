@@ -68,6 +68,8 @@ Before merge to production or wider promotion:
 pnpm release:validate
 ```
 
+`release:validate` begins with the production dependency gate. High or critical known vulnerabilities fail the release before tests and the clean build run. The active finding and remediation history is maintained in `Security And Reliability Remediation Log.md`.
+
 Then complete the relevant browser matrix at 390, 768, 1024, and 1440 pixels, verify access roles, and confirm the production build. After deployment, check `/api/health`, the homepage, affected public routes, sign-in when relevant, Vercel build/runtime logs, and live Supabase state.
 
 ## Research and publication regression

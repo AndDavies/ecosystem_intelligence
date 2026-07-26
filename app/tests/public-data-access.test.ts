@@ -20,6 +20,31 @@ describe("public data access", () => {
     expect(publicRepository).toContain("selectPublishedOrganizationLogo");
   });
 
+  it("loads only the citation graph referenced by the current public scope", async () => {
+    const publicRepository = await source("src/lib/atlas/supabase-repository.ts");
+
+    expect(publicRepository).toContain("loadPublicCitationGraph");
+    expect(publicRepository).toContain('.eq("entity_type", entityType)');
+    expect(publicRepository).toContain('.in("entity_id", batch)');
+    expect(publicRepository).toContain('.in("id", batch)');
+    expect(publicRepository).not.toContain('supabase.from("field_citations").select(atlasColumns.citations)\n  ]');
+  });
+
+  it("does not expose private demand-match rationale through the public model or AI catalogue", async () => {
+    const [publicRepository, atlasTypes, assistant, repository] = await Promise.all([
+      source("src/lib/atlas/supabase-repository.ts"),
+      source("src/types/atlas.ts"),
+      source("src/lib/atlas/assistant.ts"),
+      source("src/lib/atlas/repository.ts")
+    ]);
+
+    expect(publicRepository).not.toContain("demand_requirement_id, alignment_summary, rationale");
+    expect(publicRepository).not.toContain("rationale: asString(row.rationale)");
+    expect(atlasTypes.slice(atlasTypes.indexOf("export interface AtlasDemandMatch"), atlasTypes.indexOf("export interface AtlasCapability"))).not.toContain("rationale");
+    expect(assistant).not.toContain("match.rationale");
+    expect(repository).not.toContain("match.rationale");
+  });
+
   it("adds logos only to organization profiles and preserves the existing map and export surfaces", async () => {
     const publicRepository = await source("src/lib/atlas/supabase-repository.ts");
     const profile = await source("src/app/organizations/[slug]/page.tsx");

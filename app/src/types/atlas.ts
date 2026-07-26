@@ -64,7 +64,6 @@ export interface AtlasDemandMatch {
   demandSlug: string;
   demandTitle: string;
   alignmentSummary: string;
-  rationale: string;
   matchType: AtlasAlignmentType;
   confidence: AtlasConfidence;
   citations: AtlasCitation[];

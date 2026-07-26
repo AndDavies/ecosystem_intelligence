@@ -56,6 +56,29 @@ describe("phase 2 launch hardening", () => {
     expect(authState).toContain("signedOutResponse.cookies.delete");
   });
 
+  it("fails the release gate when high or critical production dependencies are known", async () => {
+    const workspacePackage = JSON.parse(await readFile(path.resolve("../package.json"), "utf8")) as {
+      scripts: Record<string, string>;
+    };
+    const appPackage = JSON.parse(await readFile(path.resolve("package.json"), "utf8")) as {
+      dependencies: Record<string, string>;
+      devDependencies: Record<string, string>;
+      pnpm?: { overrides?: Record<string, string> };
+    };
+
+    expect(workspacePackage.scripts["security:validate"]).toContain("audit --prod --audit-level high");
+    expect(workspacePackage.scripts["release:validate"]).toContain("pnpm security:validate");
+    expect(appPackage.dependencies.next).toBe("^15.5.22");
+    expect(appPackage.dependencies.sharp).toBe("0.35.3");
+    expect(appPackage.dependencies).not.toHaveProperty("shadcn");
+    expect(appPackage.devDependencies).toHaveProperty("shadcn");
+    expect(appPackage.pnpm?.overrides).toMatchObject({
+      postcss: "8.5.18",
+      sharp: "0.35.3",
+      ws: "8.21.0"
+    });
+  });
+
   it("enforces scheduled telemetry retention and an agent-owned rollback order", async () => {
     const [migration, rollback, runbook, agentContract] = await Promise.all([
       readFile(path.resolve("supabase/migrations/20260726100611_phase2_retention_cleanup.sql"), "utf8"),
