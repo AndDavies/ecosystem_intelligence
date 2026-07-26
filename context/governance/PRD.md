@@ -380,10 +380,15 @@ workflow counts are read from production rather than frozen here:
 - structured candidate review, substantive rationale, duplicate resolution,
   one-button atomic publication, direct published-record editing, audit history,
   stable slugs, and cache invalidation
-- six project-local research skills of record, including multi-source signal
-  refresh, live entity matching, typed before/after refresh operations, direct
-  private review intake, stale-baseline rejection, append-only evidence, and
-  explicit human publication
+- six deployed project-local research skills of record plus an active seventh
+  candidate-logo integration, including multi-source signal refresh, live entity
+  matching, typed before/after refresh operations, official-site identity-media
+  provenance, direct private review intake, stale-baseline rejection, append-only
+  evidence, and explicit human publication
+- a separate private visibility-intelligence integration for SEO, GEO, AEO,
+  technical health, search demand, and earned-link analysis; provider credentials,
+  raw exports, queries, referrals, and reports remain ignored local artifacts and
+  never gain publication, provider-write, indexing, outreach, or corpus authority
 - Vercel Web Analytics plus bounded semantic workflow events, private 90-day
   searches, and private 30-day detailed events; paid Speed Insights is deferred
   and Lighthouse is the release performance check

@@ -23,7 +23,7 @@ The current product and operating system include:
 - A public organization directory and region-browsing surface at `/organizations`, `/regions`, and `/regions/[slug]`. These routes use live published counts, URL-based type and region browsing, pagination, regional context, and explicit coverage caveats without changing record-level evidence or dossier content.
 - Canadian Defence Briefs as a reviewed editorial synthesis surface with administrator-only drafting and publication.
 - A private Admin workflow for intake, candidate review and editing, explicit publication, canonical organization maintenance, demand maintenance, demand matching, evidence, and audit history.
-- Six project-local research skills of record: autonomous coordination, signal refresh, source discovery, candidate building, evidence mapping, and review stewardship.
+- Six research skills are deployed in the current production-aligned repository. A seventh candidate-logo stage and the separate private visibility/SEO skill are active integration work in the primary workspace; they are operational only after their skill files, commands, tests, and executable contracts merge together and validate from a clean checkout.
 - A Monday 06:00 America/Halifax broad discovery run and a weekday 08:00 multi-source refresh run. Both stop at private review intake.
 - Production email separation across Zoho, MailerLite, Resend, and the Supabase consent ledger, with authenticated sending domains and signed lifecycle synchronization.
 - Phase 1 public-product hardening adds page-aware sharing for the map, organizations, technology, regions, public needs, and Defence Briefs; page-specific LinkedIn and X metadata; a centered consent-backed update prompt; and granular analytics choices. Google Analytics and Microsoft Clarity are independently optional, private routes are excluded, free-form inputs are masked, and the privacy page explains each provider and choice.
@@ -91,6 +91,8 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 - Keep the weekday refresh source portfolio balanced across official government or procurement sources, company sources, due Source Book entries, and discovery feeds.
 - Keep discovery feeds subordinate to durable evidence and preserve unresolved signals in the deferred backlog.
 - Read queue and corpus state from production before declaring a run or release complete.
+- Preserve active research and visibility work as a separate integration stream from application and launch documentation. Do not copy ignored provider data, credentials, raw queries, local logo binaries, or scratch artifacts into tracked project files.
+- Apply the cross-system regression contract to every material change and update the overview, status, relevant skill contract, brand packet, or launch package when the operating picture changes.
 
 ## Source-of-truth documents
 
@@ -99,4 +101,7 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 - `context/governance/Autonomous Ecosystem Research Pipeline.md` — research orchestration and scheduling.
 - `context/governance/Research Agent Schema And Source Contract.md` — evidence and candidate contracts.
 - `context/governance/Admin Workflow And Data Contract.md` — private review and publication boundary.
+- `context/governance/Skills And Automation Map.md` — canonical skill, operating-mode, and automation map.
+- `context/governance/Cross-System Change And Regression Contract.md` — impact analysis and regression requirements.
+- `content/brand/True North Map Brand System.md` — North Signal brand packet and usage rules.
 - `app/src/lib/research/pipeline-schema.ts` — executable research contract when prose and code differ.

@@ -25,4 +25,11 @@ pnpm release:validate
 pnpm launch:validate
 ```
 
-See `context/governance/Project Status.md` for the current product and operating snapshot, `app/README.md` for application development, and `research/README.md` for the evidence workflow.
+Before material work, read:
+
+- `context/governance/True North Map Project Overview.md`
+- `context/governance/Project Status.md`
+- `context/governance/Cross-System Change And Regression Contract.md`
+- `context/governance/Skills And Automation Map.md`
+
+Use `content/brand/True North Map Brand System.md` for approved brand assets and language, `app/README.md` for application development, and `research/README.md` for the evidence workflow. Run the scoped checks during development and `pnpm release:validate` before production release.

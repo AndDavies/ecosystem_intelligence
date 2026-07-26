@@ -34,6 +34,23 @@ Available artwork:
 - Light, dark, and one-colour variants.
 - Simplified favicon and social-avatar mark.
 
+Canonical asset packet:
+
+| Asset | Repository path | Intended use |
+| --- | --- | --- |
+| Horizontal lockup | `app/public/brand/true-north-map-horizontal.svg` | Desktop header, partner material, wide placements |
+| Stacked wordmark | `app/public/brand/true-north-map-stacked.svg` | Compact editorial and collateral placements |
+| North Signal mark | `app/public/brand/north-signal-mark.svg` | Primary standalone mark on light surfaces |
+| Light mark | `app/public/brand/north-signal-mark-light.svg` | Dark surfaces |
+| Monochrome mark | `app/public/brand/north-signal-mark-monochrome.svg` | One-colour reproduction |
+| Small-size marks | `app/public/brand/north-signal-mark-16.svg`, `north-signal-mark-24.svg`, `north-signal-mark-32.svg` | Favicons and compact interface use |
+| Social avatar | `app/public/brand/true-north-map-social-avatar.svg` | LinkedIn and other account avatars |
+| LinkedIn banner | `content/launch/phase-2/true-north-map-linkedin-banner.png` | True North Map organization page |
+| Partner overview | `content/launch/phase-2/true-north-map-partner-overview.pdf` | One-page external orientation |
+| Partner/media deck | `content/launch/phase-2/true-north-map-partner-media-deck.pptx` | Editable launch and partner presentation |
+
+The raster brand-audit concepts are design inputs, not production marks. The flat SVG packet above is the source of truth. Do not redraw the mark from screenshots or add “Public Beta” to the permanent identity.
+
 ## Colour
 
 | Token | Value | Use |
@@ -50,6 +67,15 @@ Available artwork:
 
 Yellow is a signal, not a canvas. It should draw attention to the next useful
 action or a short piece of meaning.
+
+## Brand regression checks
+
+- Preserve the approved message roles; do not create a competing homepage promise.
+- Use only the canonical marks and tokens above.
+- Check contrast, keyboard focus, favicon legibility, clear space, social crops, and fixed image dimensions.
+- Verify public pages at 390, 768, 1024, and 1440 pixels after shared layout or typography changes.
+- Rebuild current screenshots and launch assets when the visible product changes materially; July 18 assets remain historical only.
+- Keep evidence confidence and uncertainty visually distinct. Brand polish must never make an assessment appear more certain than its sources.
 
 ## Typography and geometry
 

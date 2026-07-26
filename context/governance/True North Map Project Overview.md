@@ -47,6 +47,8 @@ Place, technology, or public need
 - A daily production job purges expired raw searches after 90 days and detailed workflow events after 30 days.
 - `pnpm launch:validate` performs a deliberately low-rate crawl of every canonical public sitemap URL, checking status, metadata, canonical URLs, social metadata, structured data and image accessibility attributes without creating a load test.
 - The current launch kit lives under `content/launch/phase-2/`; older screenshots and demo material are not release assets.
+- The North Signal source packet is indexed in `content/brand/True North Map Brand System.md`; production marks live under `app/public/brand/`.
+- The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 
 ## System architecture and source of truth
 
@@ -76,6 +78,8 @@ Durable public source
 ```
 
 Research agents may find leads, assemble candidate changes, suggest a technology-to-demand connection, and explain the evidence. They may not publish a public organization, capability, Demand Signal, demand match, source, citation, or media asset.
+
+The complete research design uses seven stages: coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. The candidate-logo and private visibility integrations are active local work until their tracked skill files, commands, tests, and executable contracts are present in a clean checkout. This distinction prevents local artifacts from being mistaken for deployed capability.
 
 Demand Signals have an additional public-source gate. A published signal needs an HTTPS canonical released source, issuing authority, source locator, relevant excerpt, at least one public problem statement, a reviewer confirmation, and linked public evidence. Public demand pages and demand-match suggestions exclude a signal that no longer satisfies that gate; it is retained privately for completion rather than deleted.
 
@@ -161,6 +165,7 @@ The public message system is:
 | Zoho Mail | Monitored human correspondence | `andrew@truenorthmap.ca` and operational aliases. |
 | MailerLite | Consent-backed updates and newsletters | Supabase remains the consent ledger; campaigns are not an auth channel. |
 | Resend through Supabase SMTP | Branded sign-in and security email | Transactional authentication only. |
+| Private visibility workflow | Read-only SEO, GEO, AEO, technical-health, search-demand and earned-link intelligence | Raw providers and reports remain ignored locally; recommendations have no publication or outreach authority. |
 
 ## Navigation and security model
 
@@ -181,6 +186,8 @@ pnpm release:validate
 It covers tests, lint, typed research validation, production coverage checks, and the production build. Browser QA must cover the core public routes, protected review routes, map/list accessibility, public sources, Demand Signals, Ask True North fallback, exports, contribution, connection, and account journeys.
 
 For any material data change, verify the affected public profile, capability, demand page, index, sitemap, and source links after human publication. A green candidate file, accepted review item, or successful research run is never evidence of public publication by itself.
+
+For all other changes, use the impact and validation matrix in `Cross-System Change And Regression Contract.md`. It requires task-start context review, affected-system mapping, scoped checks during implementation, release-level regression before production, post-deployment smoke tests, and an explicit record of checks that were not run.
 
 ## Current review findings
 
@@ -208,6 +215,9 @@ For any material data change, verify the affected public profile, capability, de
 | `context/governance/Project Status.md` | Current operating posture and live-workflow notes; confirm time-sensitive details in production |
 | `context/governance/Admin Workflow And Data Contract.md` | Review, publication, demand, and editorial safety rules |
 | `context/governance/Autonomous Ecosystem Research Pipeline.md` | Research orchestration and handoffs |
+| `context/governance/Skills And Automation Map.md` | Research-skill chain, visibility boundary, operating modes, and scheduled operations |
+| `context/governance/Cross-System Change And Regression Contract.md` | Required cross-system impact review and regression levels |
+| `content/brand/True North Map Brand System.md` | Approved North Signal assets, copy, colours, typography, and brand checks |
 | `app/src/lib/research/pipeline-schema.ts` | Executable research contract when code and prose differ |
 | `app/src/lib/atlas/presentation.ts` | Canonical public labels for recurring evidence and assessment language |
 | `app/supabase/migrations/` | Versioned production schema and policy history |

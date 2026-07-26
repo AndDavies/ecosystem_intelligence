@@ -44,6 +44,19 @@ Mission Area / Use Case -> top targets -> why now -> evidence and confidence -> 
 - Update `context/governance/` when implementation changes the roadmap or user-facing workflow.
 - Check git status before editing and never revert unrelated user work.
 
+## Whole-Project Change Contract
+
+Before changing code, data contracts, research skills, public copy, metadata, analytics, launch assets, or operating workflows:
+
+1. Read `context/governance/True North Map Project Overview.md`, `context/governance/Project Status.md`, and `context/governance/Cross-System Change And Regression Contract.md`.
+2. Check the active worktree and production source of truth. Distinguish deployed production state, tracked repository state, active uncommitted work, and private ignored artifacts.
+3. Assess effects across public UX, Supabase and APIs, research and ingestion, Admin Review and Publish, evidence and privacy, analytics, SEO/AEO visibility, brand assets, launch collateral, and governance.
+4. Update every affected contract, skill, changelog, route explanation, or launch asset in the same change. Do not leave stale plans or duplicate instructions behind.
+5. Run scoped tests while developing and the regression level required by the cross-system contract before merge, push, migration, publication, or release.
+6. Report what was tested, what was not tested, and any known exception. A successful build alone is not a complete regression result.
+
+No material change is complete merely because one route works locally. It must preserve the full mission-to-engagement journey, publication boundary, security model, accessibility, analytics consent, metadata, and production build.
+
 ## Data And Evidence Rules
 
 - Public sources are evidence anchors, not proof of classified demand.
@@ -76,14 +89,21 @@ Mission Area / Use Case -> top targets -> why now -> evidence and confidence -> 
 
 ## Research Skills Of Record
 
-The six project-local skills below are the canonical skills of record for the current research and ingestion pipeline. Manual runs, scheduled runs, tests, and governance reviews must use these repository copies. They supersede cached or globally installed variants, older operator-guide instructions, and workflow assumptions embedded in historical run artifacts. `app/src/lib/research/pipeline-schema.ts` remains the executable data contract when prose and code differ.
+The research system is designed around seven project-local skills. Six are deployed in the current production-aligned repository state; the candidate-logo skill is active integration work in the primary workspace and becomes the seventh deployed skill only when its executable contract, tests, and repository files merge together. Manual runs, scheduled runs, tests, and governance reviews must use repository copies. These canonical instructions supersede cached or globally installed variants, older operator guides, and workflow assumptions embedded in historical artifacts. `app/src/lib/research/pipeline-schema.ts` remains the executable data contract when prose and code differ.
 
 - `.agents/skills/tnm-autonomous-research/`: live-database coverage, batch planning, limits, and handoffs.
 - `.agents/skills/tnm-signal-refresh/`: multi-source monitoring, atomic-signal extraction, durable-evidence resolution, live entity matching, and refresh handoffs.
 - `.agents/skills/tnm-source-discovery/`: broad prospect enumeration, evidence recovery, durable public-source discovery, and typed leads.
 - `.agents/skills/tnm-candidate-builder/`: qualified-lead conversion into enriched green or amber organization, demand, or relationship candidates.
 - `.agents/skills/tnm-evidence-mapper/`: field evidence, citations, confidence, and derived rationale.
+- `.agents/skills/tnm-candidate-logo/`: official-site logo extraction, private provenance packets, confidence disposition, and candidate identity-media handoff. If the path or corresponding executable contract is absent in a clean checkout, stop before claiming logo-packet completion.
 - `.agents/skills/tnm-review-steward/`: live taxonomy and duplicate checks, deterministic validation, private review intake, and publication guardrails.
+
+## Public Visibility Intelligence
+
+`.agents/skills/tnm-visibility/` is the project-local workflow of record for private SEO, GEO, AEO, search-demand, technical-health, content-opportunity, and earned-link analysis. It is separate from the seven research-ingestion skills and never changes their candidate, review, or publication authority.
+
+Provider credentials, raw queries, exports, referral detail, snapshots, and reports remain ignored under `research/visibility/local/`. Only an allowlisted, aggregate owner-only dashboard summary may leave that local boundary. Visibility analysis does not write to Supabase, publish content, change provider settings, submit IndexNow or Google Indexing requests, send outreach, buy links, or promote candidates. If the skill or CLI is not present in a clean checkout, treat visibility integration as pending and do not infer readiness from local artifacts.
 
 ## Research Batch Protocol
 
@@ -173,6 +193,16 @@ pnpm release:validate
 
 This command runs tests, lint, typed v2 research validation, live production coverage checks, and the production build. It requires production database configuration and fails closed when the connection is unavailable.
 
+Apply the regression matrix in `context/governance/Cross-System Change And Regression Contract.md`. At minimum:
+
+- run `pnpm test` and `pnpm lint` for application or shared-library changes;
+- run `pnpm research:validate` when research skills, schemas, candidate construction, staging, review, or publication contracts change;
+- run `pnpm visibility:validate` when the visibility skill, CLI, seed panel, provider contract, dashboard projection, or report contract changes, once that integration is present in the active checkout;
+- run `pnpm launch:validate` for public routes, metadata, structured data, social cards, sitemap, internal linking, or canonical changes;
+- run `pnpm release:validate` before a production merge or broader public release;
+- verify affected routes at 390, 768, 1024, and 1440 pixels when public layout or interaction changes;
+- smoke-test `/api/health`, core public routes, production data, and deployment logs after production release.
+
 Browser QA should cover:
 
 - `/`
@@ -191,6 +221,8 @@ Browser QA should cover:
 - `/admin/organizations/[id]/edit`
 
 ## Change Log
+
+- `2026-07-26`: Established the whole-project context and regression contract. Canonical governance now maps the North Signal brand packet, production architecture, seven-stage research skill design, private visibility/SEO intelligence boundary, cross-system impact checks, validation tiers, launch assets, and current integration state. Material changes must update affected project documents and pass scoped plus release-level regression before being described as complete.
 
 - `2026-07-26`: Completed Phase 2 broader-release hardening. The public atlas now sends a compact national marker/search projection while rich cards remain paginated, retries bounded transient public reads, retains a warm in-process safe snapshot for temporary upstream failures, treats invalid refresh tokens as signed-out sessions, exposes a private-detail-free health endpoint, applies a provider-specific CSP, schedules privacy-retention cleanup, preserves bounded campaign attribution, and adds a repeatable low-rate public launch crawl. Current screenshots, a 30-second walkthrough, LinkedIn banner, partner overview, partner/media deck, channel copy, response guide, access matrix, and release runbook replace the legacy launch package.
 - `2026-07-26`: Implemented the Phase 1B North Signal brand system across the public product. Standardized the charcoal, warm-white, and signal-yellow visual language; rebuilt the homepage decision journey and branded social assets; consolidated evidence-state presentation; and renamed the `/demand` collection to Public Needs while retaining Demand Signal for individual source-gated records and preserving every canonical URL, workflow, API, and publication boundary.
