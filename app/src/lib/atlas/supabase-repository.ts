@@ -9,9 +9,11 @@ import type {
   AtlasCitation,
   AtlasCluster,
   AtlasConfidence,
+  AtlasCoverageSummary,
   AtlasDemandMatch,
   AtlasDemandRequirement,
   AtlasDemandSource,
+  AtlasDiscoverySnapshot,
   AtlasEntityKind,
   AtlasLocation,
   AtlasMissionArea,
@@ -45,6 +47,23 @@ const atlasColumns = {
   sources: "id, title, canonical_url, publisher, source_type, published_at",
   evidence: "id, source_id, excerpt, source_locator",
   citations: "id, entity_type, entity_id, field_name, evidence_snippet_id"
+} as const;
+
+const atlasDiscoveryColumns = {
+  organizations: "id, slug, name, description, entity_kind, organization_categories, source_confidence, freshness_status, last_reviewed_at, company_stage",
+  locations: atlasColumns.locations,
+  organizationLocations: atlasColumns.organizationLocations,
+  capabilities: "id, organization_id, slug, name, summary, capability_type, core_features, defence_applications, technical_tags, source_confidence, last_reviewed_at",
+  technicalDomains: atlasColumns.technicalDomains,
+  capabilityDomains: atlasColumns.capabilityDomains,
+  missionAreas: atlasColumns.missionAreas,
+  missionMatches: atlasColumns.missionMatches,
+  clusters: atlasColumns.clusters,
+  demandSources: "id, source_verified_at, source_verified_by",
+  demandRequirements: "id, demand_source_id, slug, title",
+  demandMatches: atlasColumns.demandMatches,
+  programs: atlasColumns.programs,
+  participations: atlasColumns.participations
 } as const;
 
 type AtlasSnapshotScope = {
@@ -137,6 +156,295 @@ function assertQuery(result: { error: { message?: string } | null }, label: stri
   if (result.error) {
     throw new Error(`Failed to load ${label}: ${result.error.message ?? "unknown database error"}`);
   }
+}
+
+/**
+ * Load only the fields needed to search, filter, cluster, and render the
+ * national map. Detailed evidence remains on the bounded organization,
+ * capability, and demand loaders.
+ */
+export async function loadAtlasDiscoverySnapshotFromSupabase(): Promise<Omit<AtlasDiscoverySnapshot, "regions">> {
+  const supabase = createPublicClient();
+  const [
+    organizationsResult,
+    locationsResult,
+    organizationLocationsResult,
+    capabilitiesResult,
+    technicalDomainsResult,
+    capabilityDomainsResult,
+    missionAreasResult,
+    missionMatchesResult,
+    clustersResult,
+    demandSourcesResult,
+    demandRequirementsResult,
+    demandMatchesResult,
+    programsResult,
+    participationsResult
+  ] = await Promise.all([
+    supabase.from("organizations").select(atlasDiscoveryColumns.organizations).eq("publication_status", "published"),
+    supabase.from("locations").select(atlasDiscoveryColumns.locations),
+    supabase.from("organization_locations").select(atlasDiscoveryColumns.organizationLocations).eq("publication_status", "published"),
+    supabase.from("capabilities").select(atlasDiscoveryColumns.capabilities).eq("publication_status", "published"),
+    supabase.from("technical_domains").select(atlasDiscoveryColumns.technicalDomains).eq("publication_status", "published"),
+    supabase.from("capability_domains").select(atlasDiscoveryColumns.capabilityDomains).eq("publication_status", "published"),
+    supabase.from("mission_areas").select(atlasDiscoveryColumns.missionAreas).eq("publication_status", "published"),
+    supabase.from("capability_mission_matches").select(atlasDiscoveryColumns.missionMatches).eq("review_status", "approved").eq("publication_status", "published"),
+    supabase.from("ecosystem_clusters").select(atlasDiscoveryColumns.clusters).eq("publication_status", "published"),
+    supabase.from("demand_sources").select(atlasDiscoveryColumns.demandSources).eq("publication_status", "published"),
+    supabase.from("demand_requirements").select(atlasDiscoveryColumns.demandRequirements).eq("publication_status", "published"),
+    supabase.from("capability_demand_matches").select(atlasDiscoveryColumns.demandMatches).eq("review_status", "approved").eq("publication_status", "published"),
+    supabase.from("programs").select(atlasDiscoveryColumns.programs).eq("publication_status", "published"),
+    supabase.from("program_participations").select(atlasDiscoveryColumns.participations).eq("publication_status", "published")
+  ]);
+
+  [
+    [organizationsResult, "published discovery organizations"],
+    [locationsResult, "discovery locations"],
+    [organizationLocationsResult, "discovery organization locations"],
+    [capabilitiesResult, "published discovery capabilities"],
+    [technicalDomainsResult, "discovery technical domains"],
+    [capabilityDomainsResult, "discovery capability domains"],
+    [missionAreasResult, "discovery mission areas"],
+    [missionMatchesResult, "discovery mission matches"],
+    [clustersResult, "discovery clusters"],
+    [demandSourcesResult, "verified discovery demand sources"],
+    [demandRequirementsResult, "discovery demand requirements"],
+    [demandMatchesResult, "discovery demand matches"],
+    [programsResult, "discovery programs"],
+    [participationsResult, "discovery program participation"]
+  ].forEach(([result, label]) => assertQuery(result as { error: { message?: string } | null }, String(label)));
+
+  const locationById = byId(asRows(locationsResult.data));
+  const locationLinksByOrganization = groupBy(asRows(organizationLocationsResult.data), "organization_id");
+  const capabilitiesByOrganization = groupBy(asRows(capabilitiesResult.data), "organization_id");
+  const technicalDomainRows = asRows(technicalDomainsResult.data);
+  const technicalDomainById = byId(technicalDomainRows);
+  const capabilityDomainsByCapability = groupBy(asRows(capabilityDomainsResult.data), "capability_id");
+  const missionAreaRows = asRows(missionAreasResult.data);
+  const missionAreaById = byId(missionAreaRows);
+  const missionMatchesByCapability = groupBy(asRows(missionMatchesResult.data), "capability_id");
+  const verifiedDemandSourceIds = new Set(
+    asRows(demandSourcesResult.data)
+      .filter((row) => asNullableString(row.source_verified_at) && asNullableString(row.source_verified_by))
+      .map((row) => asString(row.id))
+  );
+  const demandRequirementRows = asRows(demandRequirementsResult.data)
+    .filter((row) => verifiedDemandSourceIds.has(asString(row.demand_source_id)));
+  const demandRequirementById = byId(demandRequirementRows);
+  const demandMatchesByCapability = groupBy(asRows(demandMatchesResult.data), "capability_id");
+  const programById = byId(asRows(programsResult.data));
+  const participationsByOrganization = groupBy(asRows(participationsResult.data), "organization_id");
+
+  const mapLocation = (row: Row): AtlasLocation => {
+    const provinceTerritory = asNullableString(row.province_territory);
+    return {
+      id: asString(row.id),
+      name: asString(row.name),
+      city: asNullableString(row.city),
+      provinceTerritory,
+      countryCode: asString(row.country_code, "CA"),
+      latitude: asNumber(row.latitude),
+      longitude: asNumber(row.longitude),
+      geographicConfidence: ["exact", "city_centroid", "regional"].includes(asString(row.geographic_confidence))
+        ? (asString(row.geographic_confidence) as AtlasLocation["geographicConfidence"])
+        : "unverified",
+      regionSlug: regionSlugForProvince(provinceTerritory)
+    };
+  };
+
+  const technicalDomains: AtlasTechnicalDomain[] = technicalDomainRows.map((row) => ({
+    id: asString(row.id),
+    slug: asString(row.slug),
+    name: asString(row.name),
+    summary: asString(row.summary)
+  }));
+
+  const missionAreas: AtlasMissionArea[] = missionAreaRows.map((row) => ({
+    id: asString(row.id),
+    slug: asString(row.slug),
+    name: asString(row.name),
+    summary: asString(row.summary),
+    sourceConfidence: asConfidence(row.source_confidence)
+  }));
+
+  const capabilities = asRows(capabilitiesResult.data).map((row): AtlasCapability => {
+    const id = asString(row.id);
+    const technicalDomainsForCapability = (capabilityDomainsByCapability.get(id) ?? [])
+      .map((link) => technicalDomainById.get(asString(link.technical_domain_id)))
+      .filter((value): value is Row => Boolean(value))
+      .map((domain) => ({
+        id: asString(domain.id),
+        slug: asString(domain.slug),
+        name: asString(domain.name),
+        summary: asString(domain.summary)
+      }));
+    const missionMatches = (missionMatchesByCapability.get(id) ?? [])
+      .map((match): AtlasMissionMatch | null => {
+        const mission = missionAreaById.get(asString(match.mission_area_id));
+        if (!mission) return null;
+        return {
+          id: asString(match.id),
+          missionArea: {
+            id: asString(mission.id),
+            slug: asString(mission.slug),
+            name: asString(mission.name),
+            summary: asString(mission.summary),
+            sourceConfidence: asConfidence(mission.source_confidence)
+          },
+          alignmentSummary: asString(match.alignment_summary),
+          matchType: match.match_type === "public_source_alignment" ? "public_source_alignment" : "derived",
+          confidence: asConfidence(match.confidence),
+          citations: []
+        };
+      })
+      .filter((value): value is AtlasMissionMatch => Boolean(value));
+    const demandMatches = (demandMatchesByCapability.get(id) ?? [])
+      .map((match): AtlasDemandMatch | null => {
+        const requirement = demandRequirementById.get(asString(match.demand_requirement_id));
+        if (!requirement) return null;
+        return {
+          id: asString(match.id),
+          demandRequirementId: asString(requirement.id),
+          demandSlug: asString(requirement.slug),
+          demandTitle: asString(requirement.title),
+          alignmentSummary: asString(match.alignment_summary),
+          matchType: match.match_type === "public_source_alignment" ? "public_source_alignment" : "derived",
+          confidence: asConfidence(match.confidence),
+          citations: []
+        };
+      })
+      .filter((value): value is AtlasDemandMatch => Boolean(value));
+
+    return {
+      id,
+      organizationId: asString(row.organization_id),
+      slug: asString(row.slug),
+      name: asString(row.name),
+      summary: asString(row.summary),
+      capabilityType: asNullableString(row.capability_type),
+      coreFeatures: asStringArray(row.core_features),
+      technologyReadinessLevel: null,
+      maturity: null,
+      commercialAvailability: null,
+      defenceApplications: asStringArray(row.defence_applications),
+      novelty: [],
+      technicalTags: asStringArray(row.technical_tags),
+      technicalDomains: technicalDomainsForCapability,
+      missionMatches,
+      demandMatches,
+      sourceConfidence: asConfidence(row.source_confidence),
+      lastReviewedAt: asNullableString(row.last_reviewed_at),
+      citations: []
+    };
+  });
+  const capabilityById = new Map(capabilities.map((capability) => [capability.id, capability]));
+
+  const organizations: AtlasOrganization[] = asRows(organizationsResult.data).map((row) => {
+    const id = asString(row.id);
+    const mappedLocations = (locationLinksByOrganization.get(id) ?? [])
+      .map((link) => {
+        const location = locationById.get(asString(link.location_id));
+        return location ? { link, location: mapLocation(location) } : null;
+      })
+      .filter((value): value is { link: Row; location: AtlasLocation } => Boolean(value));
+    const primaryLocation = mappedLocations.find((value) => Boolean(value.link.is_primary))?.location
+      ?? mappedLocations[0]?.location
+      ?? null;
+    const organizationCapabilities = (capabilitiesByOrganization.get(id) ?? [])
+      .map((capability) => capabilityById.get(asString(capability.id)))
+      .filter((value): value is AtlasCapability => Boolean(value));
+    const programs: AtlasProgramParticipation[] = (participationsByOrganization.get(id) ?? [])
+      .map((participation): AtlasProgramParticipation | null => {
+        const program = programById.get(asString(participation.program_id));
+        if (!program) return null;
+        return {
+          id: asString(participation.id),
+          programSlug: asString(program.slug),
+          programName: asString(program.name),
+          programType: asString(program.program_type),
+          participationType: asString(participation.participation_type),
+          cohortLabel: asNullableString(participation.cohort_label)
+        };
+      })
+      .filter((value): value is AtlasProgramParticipation => Boolean(value));
+
+    return {
+      id,
+      slug: asString(row.slug),
+      name: asString(row.name),
+      legalName: null,
+      description: asString(row.description),
+      websiteUrl: null,
+      entityKind: asEntityKind(row.entity_kind),
+      categories: asStringArray(row.organization_categories),
+      sourceConfidence: asConfidence(row.source_confidence),
+      freshnessStatus: ["current", "review_due", "stale"].includes(asString(row.freshness_status))
+        ? (asString(row.freshness_status) as AtlasOrganization["freshnessStatus"])
+        : "review_due",
+      lastReviewedAt: asNullableString(row.last_reviewed_at),
+      primaryLocation,
+      locations: mappedLocations.map((value) => value.location),
+      foundedYear: null,
+      employeeRange: null,
+      companyStage: asNullableString(row.company_stage),
+      ownership: null,
+      commercialStatus: null,
+      disclosedFinancingSummary: null,
+      defencePosture: null,
+      dualUsePosture: null,
+      profileData: {},
+      logo: null,
+      capabilities: organizationCapabilities,
+      programs,
+      fundingEvents: [],
+      citations: []
+    };
+  });
+
+  return {
+    organizations,
+    demandRequirements: demandRequirementRows.map((row) => ({
+      id: asString(row.id),
+      slug: asString(row.slug),
+      title: asString(row.title)
+    })),
+    technicalDomains,
+    missionAreas,
+    clusters: asRows(clustersResult.data).map((row) => ({
+      id: asString(row.id),
+      slug: asString(row.slug),
+      name: asString(row.name),
+      summary: asString(row.summary),
+      regionSlug: asNullableString(row.region_slug),
+      clusterBasis: ["program", "geographic", "technical"].includes(asString(row.cluster_basis))
+        ? (asString(row.cluster_basis) as AtlasCluster["clusterBasis"])
+        : "editorial",
+      capabilityIds: []
+    })),
+    generatedAt: new Date().toISOString(),
+    dataSource: "supabase"
+  };
+}
+
+export async function loadAtlasCoverageSummaryFromSupabase(): Promise<AtlasCoverageSummary> {
+  const supabase = createPublicClient();
+  const [organizationsResult, capabilitiesResult, sourcesResult] = await Promise.all([
+    supabase.from("organizations").select("id", { count: "exact", head: true }).eq("publication_status", "published"),
+    supabase.from("capabilities").select("id", { count: "exact", head: true }).eq("publication_status", "published"),
+    supabase.from("sources").select("id", { count: "exact", head: true }).eq("visibility", "public").eq("public_approved", true)
+  ]);
+  [
+    [organizationsResult, "published organization count"],
+    [capabilitiesResult, "published capability count"],
+    [sourcesResult, "approved public source count"]
+  ].forEach(([result, label]) => assertQuery(result as { error: { message?: string } | null }, String(label)));
+
+  return {
+    organizations: organizationsResult.count ?? 0,
+    capabilities: capabilitiesResult.count ?? 0,
+    sources: sourcesResult.count ?? 0,
+    generatedAt: new Date().toISOString()
+  };
 }
 
 const publicCitationBatchSize = 100;

@@ -37,10 +37,36 @@ describe("phase 2 launch hardening", () => {
       facets: { regions: [], organizationTypes: [], technicalDomains: [], missionAreas: [], demandRequirements: [] }
     }, {}, organizations);
 
-    expect(ATLAS_EXPLORER_PAGE_SIZE).toBeLessThanOrEqual(36);
+    expect(ATLAS_EXPLORER_PAGE_SIZE).toBe(18);
     expect(result.organizations).toHaveLength(ATLAS_EXPLORER_PAGE_SIZE);
     expect(result.mapOrganizations).toHaveLength(1000);
     expect(result.hasMore).toBe(true);
+    expect(Buffer.byteLength(JSON.stringify(result))).toBeLessThan(300_000);
+  });
+
+  it("streams the decision-first shell ahead of the cached national discovery projection", async () => {
+    const [page, hero, repository, supabaseRepository, vercel] = await Promise.all([
+      readFile(path.resolve("src/app/page.tsx"), "utf8"),
+      readFile(path.resolve("src/components/atlas/atlas-home-hero.tsx"), "utf8"),
+      readFile(path.resolve("src/lib/atlas/repository.ts"), "utf8"),
+      readFile(path.resolve("src/lib/atlas/supabase-repository.ts"), "utf8"),
+      readFile(path.resolve("vercel.json"), "utf8")
+    ]);
+    expect(page).toContain("<AtlasHomeHero />");
+    expect(page).toContain("<Suspense fallback={<AtlasHomepageFallback />}");
+    expect(hero).toContain("<Suspense fallback={<CoverageFallback />}");
+    expect(repository).toContain("ecosystem-intelligence-atlas-discovery-v1");
+    expect(repository).toContain('tags: ["atlas-public"]');
+    expect(repository).toContain("queryAtlasExplorerSnapshot(await getAtlasDiscoverySnapshot(), query)");
+    const discoveryLoader = supabaseRepository.slice(
+      supabaseRepository.indexOf("loadAtlasDiscoverySnapshotFromSupabase"),
+      supabaseRepository.indexOf("loadAtlasCoverageSummaryFromSupabase")
+    );
+    expect(discoveryLoader).not.toContain("loadPublicCitationGraph");
+    expect(discoveryLoader).toContain("verifiedDemandSourceIds");
+    expect(discoveryLoader).toContain("source_verified_at");
+    expect(discoveryLoader).toContain("source_verified_by");
+    expect(JSON.parse(vercel)).toMatchObject({ regions: ["sfo1"] });
   });
 
   it("ships a provider-aware security policy and a safe health endpoint", async () => {

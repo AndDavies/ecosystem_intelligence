@@ -5,7 +5,9 @@ import { unstable_cache } from "next/cache";
 import { getAtlasMetroArea, inferAtlasMetroArea, organizationMatchesMetro } from "@/lib/atlas/geography";
 import {
   loadAtlasCapabilityBySlugFromSupabase,
+  loadAtlasCoverageSummaryFromSupabase,
   loadAtlasDemandBySlugFromSupabase,
+  loadAtlasDiscoverySnapshotFromSupabase,
   loadAtlasOrganizationBySlugFromSupabase,
   loadPublishedAtlasSlugsFromSupabase,
   loadAtlasRecordSummariesFromSupabase,
@@ -15,6 +17,8 @@ import {
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 import type {
   AtlasBounds,
+  AtlasCoverageSummary,
+  AtlasDiscoverySnapshot,
   AtlasDiscoveryResult,
   AtlasOrganization,
   AtlasQuery,
@@ -92,9 +96,16 @@ const regionDefinitions: Array<Omit<AtlasRegion, "organizationCount" | "capabili
   }
 ];
 
-let lastSafePublicSnapshot: Omit<AtlasSnapshot, "regions"> | null = null;
+type AtlasQueryableSnapshot = Pick<
+  AtlasDiscoverySnapshot,
+  "organizations" | "demandRequirements" | "technicalDomains" | "missionAreas" | "clusters" | "regions"
+>;
 
-function buildRegions(snapshot: Omit<AtlasSnapshot, "regions">): AtlasRegion[] {
+let lastSafePublicSnapshot: Omit<AtlasSnapshot, "regions"> | null = null;
+let lastSafeDiscoverySnapshot: Omit<AtlasDiscoverySnapshot, "regions"> | null = null;
+let lastSafeCoverageSummary: AtlasCoverageSummary | null = null;
+
+function buildRegions(snapshot: Pick<AtlasQueryableSnapshot, "organizations" | "clusters">): AtlasRegion[] {
   return regionDefinitions.map((definition) => {
     const organizations =
       definition.slug === "canada"
@@ -120,6 +131,19 @@ function buildRegions(snapshot: Omit<AtlasSnapshot, "regions">): AtlasRegion[] {
 // The longer safety TTL prevents crawlers from forcing every record through
 // the database again in the same short window.
 const publicRecordCacheSeconds = 60 * 60;
+const publicDiscoveryCacheSeconds = 5 * 60;
+
+const getCachedAtlasDiscoverySnapshot = unstable_cache(
+  () => withPublicReadRetry(loadAtlasDiscoverySnapshotFromSupabase),
+  ["ecosystem-intelligence-atlas-discovery-v1"],
+  { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
+);
+
+const getCachedAtlasCoverageSummary = unstable_cache(
+  () => withPublicReadRetry(loadAtlasCoverageSummaryFromSupabase),
+  ["ecosystem-intelligence-atlas-coverage-summary-v1"],
+  { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
+);
 
 const getCachedAtlasOrganizationBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
@@ -169,6 +193,34 @@ export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
     ...snapshot,
     regions: buildRegions(snapshot)
   };
+});
+
+export const getAtlasDiscoverySnapshot = cache(async (): Promise<AtlasDiscoverySnapshot> => {
+  requireAtlasPublicEnvironment();
+  let snapshot: Omit<AtlasDiscoverySnapshot, "regions">;
+  try {
+    snapshot = await getCachedAtlasDiscoverySnapshot();
+    lastSafeDiscoverySnapshot = snapshot;
+  } catch (error) {
+    if (!lastSafeDiscoverySnapshot) throw error;
+    snapshot = lastSafeDiscoverySnapshot;
+  }
+  return {
+    ...snapshot,
+    regions: buildRegions(snapshot)
+  };
+});
+
+export const getAtlasCoverageSummary = cache(async (): Promise<AtlasCoverageSummary> => {
+  requireAtlasPublicEnvironment();
+  try {
+    const summary = await getCachedAtlasCoverageSummary();
+    lastSafeCoverageSummary = summary;
+    return summary;
+  } catch (error) {
+    if (!lastSafeCoverageSummary) throw error;
+    return lastSafeCoverageSummary;
+  }
 });
 
 function normalize(value: string) {
@@ -266,7 +318,7 @@ function countFacet(values: string[], labelLookup: (value: string) => string) {
     .sort((left, right) => right.count - left.count || left.label.localeCompare(right.label));
 }
 
-function buildAppliedFilters(snapshot: AtlasSnapshot, query: AtlasQuery) {
+function buildAppliedFilters(snapshot: AtlasQueryableSnapshot, query: AtlasQuery) {
   const filters: AtlasQueryResult["appliedFilters"] = [];
   const add = (key: string, label: string, value?: string) => {
     if (value) filters.push({ key, label, value });
@@ -290,7 +342,7 @@ function buildAppliedFilters(snapshot: AtlasSnapshot, query: AtlasQuery) {
   return filters;
 }
 
-function matchingAtlasOrganizations(snapshot: AtlasSnapshot, query: AtlasQuery = {}) {
+function matchingAtlasOrganizations(snapshot: AtlasQueryableSnapshot, query: AtlasQuery = {}) {
   return snapshot.organizations
     .filter((organization) => !query.query || matchesQuery(organization, query.query))
     .filter((organization) => !query.bounds || inBounds(organization, query.bounds))
@@ -362,7 +414,7 @@ function matchingAtlasOrganizations(snapshot: AtlasSnapshot, query: AtlasQuery =
 }
 
 function buildAtlasQueryResult(
-  snapshot: AtlasSnapshot,
+  snapshot: AtlasQueryableSnapshot,
   query: AtlasQuery,
   filtered: AtlasOrganization[]
 ): AtlasQueryResult {
@@ -423,7 +475,7 @@ export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResu
 }
 
 export function queryAtlasExplorerSnapshot(
-  snapshot: AtlasSnapshot,
+  snapshot: AtlasQueryableSnapshot,
   query: AtlasQuery = {}
 ): AtlasExplorerQueryResult {
   const pageSize = Math.min(ATLAS_EXPLORER_MAX_PAGE_SIZE, Math.max(1, query.pageSize ?? 25));
@@ -437,7 +489,7 @@ export function queryAtlasExplorerSnapshot(
 }
 
 export async function queryAtlasExplorer(query: AtlasQuery = {}): Promise<AtlasExplorerQueryResult> {
-  return queryAtlasExplorerSnapshot(await getAtlasSnapshot(), query);
+  return queryAtlasExplorerSnapshot(await getAtlasDiscoverySnapshot(), query);
 }
 
 function requireAtlasPublicEnvironment() {

@@ -214,6 +214,30 @@ export interface AtlasSnapshot {
   dataSource: "supabase";
 }
 
+/**
+ * Evidence-light national discovery data used by the public map and filters.
+ * Organizations and capabilities retain the searchable fields the explorer
+ * needs, while citations, media, financing, and dossier-only fields remain on
+ * the bounded record loaders.
+ */
+export interface AtlasDiscoverySnapshot {
+  organizations: AtlasOrganization[];
+  demandRequirements: Array<Pick<AtlasDemandRequirement, "id" | "slug" | "title">>;
+  technicalDomains: AtlasTechnicalDomain[];
+  missionAreas: AtlasMissionArea[];
+  clusters: AtlasCluster[];
+  regions: AtlasRegion[];
+  generatedAt: string;
+  dataSource: "supabase";
+}
+
+export interface AtlasCoverageSummary {
+  organizations: number;
+  capabilities: number;
+  sources: number;
+  generatedAt: string;
+}
+
 export interface AtlasBounds {
   west: number;
   south: number;
