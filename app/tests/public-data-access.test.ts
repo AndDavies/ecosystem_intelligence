@@ -24,9 +24,14 @@ describe("public data access", () => {
     const publicRepository = await source("src/lib/atlas/supabase-repository.ts");
 
     expect(publicRepository).toContain("loadPublicCitationGraph");
+    expect(publicRepository).toContain("createAdminClient");
+    expect(publicRepository).toContain("hasSupabaseAdminEnv");
     expect(publicRepository).toContain('.eq("entity_type", entityType)');
     expect(publicRepository).toContain('.in("entity_id", batch)');
     expect(publicRepository).toContain('.in("id", batch)');
+    expect(publicRepository).toContain('.eq("visibility", "public")');
+    expect(publicRepository).toContain('.eq("public_approved", true)');
+    expect(publicRepository).not.toContain("Promise.all(\n    targets.flatMap");
     expect(publicRepository).not.toContain('supabase.from("field_citations").select(atlasColumns.citations)\n  ]');
   });
 

@@ -1,5 +1,7 @@
 import "server-only";
 
+import { createAdminClient } from "@/lib/supabase/admin";
+import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
 import { createPublicClient } from "@/lib/supabase/public";
 import { selectPublishedOrganizationLogo } from "@/lib/atlas/organization-logos";
 import type {
@@ -150,21 +152,25 @@ function chunks(values: string[], size = publicCitationBatchSize) {
 }
 
 async function loadPublicCitationGraph(
-  supabase: ReturnType<typeof createPublicClient>,
   targets: Array<{ entityType: string; ids: string[] }>,
   demandSourceRows: Row[]
 ) {
-  const citationResults = await Promise.all(
-    targets.flatMap(({ entityType, ids }) =>
-      chunks(Array.from(new Set(ids.filter(Boolean)))).map((batch) =>
-        supabase
-          .from("field_citations")
-          .select(atlasColumns.citations)
-          .eq("entity_type", entityType)
-          .in("entity_id", batch)
-      )
-    )
-  );
+  // Every target ID comes from a row already admitted by the published-record
+  // queries above. Hydrate only that evidence with the server-only client so
+  // the field_citations RLS policy does not repeat its cross-table publication
+  // checks for every citation and intermittently exceed the statement timeout.
+  // The explicit ID and approval filters below remain the public boundary.
+  const evidenceClient = hasSupabaseAdminEnv() ? createAdminClient() : createPublicClient();
+  const citationResults = [];
+  for (const { entityType, ids } of targets) {
+    for (const batch of chunks(Array.from(new Set(ids.filter(Boolean))))) {
+      citationResults.push(await evidenceClient
+        .from("field_citations")
+        .select(atlasColumns.citations)
+        .eq("entity_type", entityType)
+        .in("entity_id", batch));
+    }
+  }
   citationResults.forEach((result) => assertQuery(result, "scoped public citations"));
   const citationRows = citationResults.flatMap((result) => asRows(result.data));
 
@@ -172,16 +178,15 @@ async function loadPublicCitationGraph(
     ...uniqueIds(citationRows, "evidence_snippet_id"),
     ...uniqueIds(demandSourceRows, "source_evidence_snippet_id")
   ]));
-  const evidenceResults = await Promise.all(
-    chunks(evidenceIds).map((batch) =>
-      supabase
-        .from("evidence_snippets")
-        .select(atlasColumns.evidence)
-        .in("id", batch)
-        .eq("visibility", "public")
-        .eq("public_approved", true)
-    )
-  );
+  const evidenceResults = [];
+  for (const batch of chunks(evidenceIds)) {
+    evidenceResults.push(await evidenceClient
+      .from("evidence_snippets")
+      .select(atlasColumns.evidence)
+      .in("id", batch)
+      .eq("visibility", "public")
+      .eq("public_approved", true));
+  }
   evidenceResults.forEach((result) => assertQuery(result, "scoped public evidence"));
   const evidenceRows = evidenceResults.flatMap((result) => asRows(result.data));
 
@@ -189,16 +194,15 @@ async function loadPublicCitationGraph(
     ...uniqueIds(evidenceRows, "source_id"),
     ...uniqueIds(demandSourceRows, "source_id")
   ]));
-  const sourceResults = await Promise.all(
-    chunks(sourceIds).map((batch) =>
-      supabase
-        .from("sources")
-        .select(atlasColumns.sources)
-        .in("id", batch)
-        .eq("visibility", "public")
-        .eq("public_approved", true)
-    )
-  );
+  const sourceResults = [];
+  for (const batch of chunks(sourceIds)) {
+    sourceResults.push(await evidenceClient
+      .from("sources")
+      .select(atlasColumns.sources)
+      .in("id", batch)
+      .eq("visibility", "public")
+      .eq("public_approved", true));
+  }
   sourceResults.forEach((result) => assertQuery(result, "scoped public sources"));
 
   return {
@@ -333,7 +337,6 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
   const demandMatchRows = asRows(demandMatchesResult.data);
   const fundingEventRows = asRows(fundingEventsResult.data);
   const citationGraph = await loadPublicCitationGraph(
-    supabase,
     [
       { entityType: "organization", ids: uniqueIds(organizationRows) },
       { entityType: "capability", ids: uniqueIds(capabilityRows) },

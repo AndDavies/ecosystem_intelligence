@@ -565,6 +565,11 @@ use `ATLAS_DATA_SOURCE=supabase`.
   in bounded indexed batches and then load only referenced approved evidence
   snippets and sources. Full national discovery remains available and the
   database, RLS, evidence, and publication schemas are unchanged.
+- Production verification exposed a remaining timeout inside the citation RLS
+  policy even for scoped IDs. Final citation hydration now uses the server-only
+  database client only after public queries establish the allowed record IDs,
+  applies explicit public-approved evidence and source filters, and executes
+  bounded batches sequentially to avoid redundant policy pressure.
 - Removed private demand-match reviewer rationale from the public
   `AtlasDemandMatch` contract, Supabase projection, deterministic search corpus,
   Ask True North catalogue, and public API serialization. The private admin and
