@@ -4,15 +4,18 @@ import { describe, expect, it } from "vitest";
 
 describe("customer-facing product language", () => {
   it("leads the ecosystem map with the decision a user can make", async () => {
-    const explorer = await readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8");
+    const [explorer, hero] = await Promise.all([
+      readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
+      readFile(path.resolve("src/components/atlas/atlas-home-hero.tsx"), "utf8")
+    ]);
     const header = await readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8");
-    expect(explorer).toContain('Evidence-led ecosystem discovery');
-    expect(explorer).toContain('<span className="atlas-headline-highlight">Canada is building</span> more than most people can see.');
-    expect(explorer).not.toContain("\u2014");
-    expect(explorer).toContain("Explore the organizations, capabilities and public needs shaping Canada’s defence and dual-use ecosystem.");
-    expect(explorer).toContain("Follow the evidence. Find the fit. Start the right conversation.");
-    expect(explorer).toContain("Explore the ecosystem");
-    expect(explorer).toContain("Browse public needs");
+    expect(hero).toContain('Evidence-led ecosystem discovery');
+    expect(hero).toContain('<span className="atlas-headline-highlight">Canada is building</span> more than most people can see.');
+    expect(`${hero}\n${explorer}`).not.toContain("\u2014");
+    expect(hero).toContain("Explore the organizations, capabilities and public needs shaping Canada’s defence and dual-use ecosystem.");
+    expect(hero).toContain("Follow the evidence. Find the fit. Start the right conversation.");
+    expect(hero).toContain("Explore the ecosystem");
+    expect(hero).toContain("Browse public needs");
     expect(explorer).toContain("Ask True North");
     expect(explorer).toContain("Do not enter classified, confidential, proprietary, or personal information.");
     expect(explorer).toContain("Technology or offering");

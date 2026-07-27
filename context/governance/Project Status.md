@@ -2,7 +2,7 @@
 
 Status: active broader-sharing product and review-first data operation
 
-Last verified: 2026-07-26
+Last verified: 2026-07-27
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -14,6 +14,8 @@ True North Map is an evidence-backed Canadian defence and dual-use ecosystem map
 
 The current product and operating system include:
 
+- The homepage now renders its value proposition independently of the database read, then streams the national explorer through a bounded loading state. An exact cached summary reports current organizations, technologies, and approved public sources; a compact discovery projection keeps every published organization available to map, clustering, filters, and search while omitting dossier evidence, citations, media, financing, and other profile-only fields. Rich organization evidence loads on selection. This preserves the all-organization national view as the corpus grows without making first paint depend on the complete evidence graph.
+- Public atlas responses use a five-minute CDN cache with ten-minute stale-while-revalidate support, and the Vercel server region is pinned to `sfo1` to reduce round-trip distance to the canonical Supabase `us-west-2` project. The compact demand filter includes only published Demand Signals whose source has recorded human verification.
 - Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix, rollback runbook and current launch kit now make release validation repeatable.
 - Pre-launch security remediation updates the production runtime dependencies, bounds citation and evidence reads to the requested public records, and removes private demand-match reviewer rationale from the public data contract and Ask True North catalogue. `pnpm security:validate` is now a release gate; the durable backlog and verification record live in `Security And Reliability Remediation Log.md`.
 - Phase 1B introduces the North Signal identity, a charcoal, warm-white and signal-yellow design system, consistent Barlow and Inter typography, lighter section-based layout, and one public message system across navigation, discovery, evidence, editorial, account, contribution, and trust surfaces. Product behaviour and data contracts are unchanged.

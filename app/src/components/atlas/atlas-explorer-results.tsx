@@ -103,7 +103,7 @@ export function ResultsRail({
                   <span className="block truncate text-sm font-extrabold tracking-[-0.015em]">{organization.name}</span>
                   <span className={cn("mt-1 block truncate text-[11px]", selected ? "text-[rgba(36,40,39,0.65)]" : "text-white/60")}>{organization.primaryLocation?.name ?? "Location under review"}</span>
                   <span className={cn("mt-1.5 block line-clamp-2 text-[11px] leading-4", selected ? "text-[rgba(36,40,39,0.8)]" : "text-white/80")}>{capability?.name ?? "Technology not yet reviewed"}</span>
-                  <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-[rgba(36,40,39,0.25)] bg-[var(--atlas-ink)] text-white" : "border-white/25 text-white/80")}>{evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · {evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
+                  <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-[rgba(36,40,39,0.25)] bg-[var(--atlas-ink)] text-white" : "border-white/25 text-white/80")}>{evidence.length ? `${evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · ${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Open profile for sources"}</span>
                 </button>
                 <Link href={`/organizations/${organization.slug}`} className={cn("flex items-center justify-center no-underline hover:no-underline", selected ? "text-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
                   <ChevronRight className="size-5" />
@@ -206,7 +206,7 @@ export function LookbookPeek({
           "rounded-full px-2.5 py-1",
           confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
         )}>{alignment ? `${evidenceStrengthLabel(confidence)} public evidence` : `${evidenceStrengthLabel(confidence)} public evidence`}</span>
-        <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
+        <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
         <span className={cn(
           "rounded-full px-2.5 py-1",
           organization.freshnessStatus === "current" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]"
@@ -317,7 +317,7 @@ export function MobileOrganizationCard({
             <span className="mt-1 block text-xs leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Technology not yet reviewed"}</span>
             <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[var(--atlas-muted)]">
               <span>{location?.provinceTerritory ?? "Location under review"}</span>
-              <span>{evidence.length} {evidence.length === 1 ? "source" : "sources"}</span>
+              <span>{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
               <span>Last verified {formatDate(capability?.lastReviewedAt ?? organization.lastReviewedAt)}</span>
             </span>
           </span>
@@ -444,7 +444,7 @@ export function OrganizationRows({
             <span className="inline-flex rounded bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-muted)]">Reviewed profile</span>
           )}
         </td>
-        <td className="px-3 py-3 font-medium text-[var(--atlas-primary)]">{evidence.length} {evidence.length === 1 ? "source" : "sources"}</td>
+        <td className="px-3 py-3 font-medium text-[var(--atlas-primary)]">{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Open profile"}</td>
         <td className="whitespace-nowrap px-3 py-3">{formatDate(capability?.lastReviewedAt ?? organization.lastReviewedAt)}</td>
       </tr>
       {expanded ? (
