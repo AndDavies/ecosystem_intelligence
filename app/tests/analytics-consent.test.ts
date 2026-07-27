@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  analyticsPreferences,
   analyticsConsentStorageKey,
   isAnalyticsEligiblePath,
   legacyAnalyticsConsentStorageKey,
@@ -34,6 +35,15 @@ describe("isAnalyticsEligiblePath", () => {
 });
 
 describe("analytics preferences", () => {
+  it("keeps the compact first choice limited to product analytics", () => {
+    expect(analyticsPreferences(true, false, "2026-07-26T12:00:00.000Z")).toEqual({
+      version: 2,
+      productAnalytics: true,
+      experienceDiagnostics: false,
+      decidedAt: "2026-07-26T12:00:00.000Z"
+    });
+  });
+
   it("parses only the current granular preference contract", () => {
     expect(parseAnalyticsPreferences(JSON.stringify({ version: 2, productAnalytics: true, experienceDiagnostics: false, decidedAt: "2026-07-25T12:00:00.000Z" }))).toMatchObject({ productAnalytics: true, experienceDiagnostics: false });
     expect(parseAnalyticsPreferences("accepted")).toBeNull();

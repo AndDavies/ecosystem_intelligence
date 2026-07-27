@@ -65,13 +65,17 @@ function clearAnalyticsCookies() {
 function useAnalyticsPreferences() {
   const [preferences, setPreferences] = useState<AnalyticsPreferences | null>(null);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
+  const [noticeOpen, setNoticeOpen] = useState(false);
 
   useEffect(() => {
     const stored = readAnalyticsPreferences(window.localStorage);
     setPreferences(stored);
-    setPreferencesOpen(!stored && Boolean(measurementId || clarityProjectId));
+    setNoticeOpen(!stored && Boolean(measurementId));
 
-    const open = () => setPreferencesOpen(true);
+    const open = () => {
+      setNoticeOpen(false);
+      setPreferencesOpen(true);
+    };
     window.addEventListener(analyticsPreferencesEvent, open);
     return () => window.removeEventListener(analyticsPreferencesEvent, open);
   }, []);
@@ -80,12 +84,18 @@ function useAnalyticsPreferences() {
     const shouldUnloadClarity = Boolean(preferences?.experienceDiagnostics && !next.experienceDiagnostics);
     writeAnalyticsPreferences(window.localStorage, next);
     setPreferences(next);
+    setNoticeOpen(false);
     setPreferencesOpen(false);
     window.dispatchEvent(new CustomEvent(analyticsConsentUpdatedEvent, { detail: next }));
     if (shouldUnloadClarity) window.setTimeout(() => window.location.reload(), 0);
   };
 
-  return { preferences, preferencesOpen, setPreferencesOpen, save };
+  const changePreferencesOpen = (next: boolean) => {
+    setPreferencesOpen(next);
+    if (!next && !preferences) setNoticeOpen(Boolean(measurementId));
+  };
+
+  return { preferences, preferencesOpen, noticeOpen, changePreferencesOpen, save };
 }
 
 function GoogleAnalytics({ preferences }: { preferences: AnalyticsPreferences | null }) {
@@ -221,10 +231,7 @@ function AnalyticsPreferencesDialog({
   const save = (product: boolean, experience: boolean) => onSave(analyticsPreferences(product, experience));
 
   return (
-    <Dialog.Root open={open} onOpenChange={(next) => {
-      if (!preferences && !next) return;
-      onOpenChange(next);
-    }}>
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-[1400] bg-[var(--atlas-ink)]/45 backdrop-blur-[2px]" />
         <Dialog.Content
@@ -237,7 +244,7 @@ function AnalyticsPreferencesDialog({
               <p className="atlas-eyebrow">Your privacy choices</p>
               <Dialog.Title className="mt-2 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">Help improve True North Map</Dialog.Title>
             </div>
-            {preferences ? <Dialog.Close asChild><button type="button" className="flex size-9 items-center justify-center rounded-xl text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Close analytics preferences"><X className="size-4" /></button></Dialog.Close> : null}
+            <Dialog.Close asChild><button type="button" className="flex size-9 items-center justify-center rounded-xl text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Close analytics preferences"><X className="size-4" /></button></Dialog.Close>
           </div>
           <Dialog.Description id="analytics-preferences-description" className="mt-4 text-sm leading-6 text-[var(--atlas-muted)]">
             Optional analytics help identify useful pages, broken journeys, and confusing interactions. Private account and administration routes are always excluded. Nothing is used for advertising.
@@ -268,6 +275,25 @@ function AnalyticsPreferencesDialog({
   );
 }
 
+function AnalyticsConsentNotice({ onAccept, onDecline }: { onAccept: () => void; onDecline: () => void }) {
+  return (
+    <aside
+      aria-label="Analytics choice"
+      className="fixed inset-x-3 bottom-3 z-[1390] mx-auto max-w-3xl rounded-2xl border border-[var(--atlas-border)] bg-white/95 px-4 py-3 shadow-[0_12px_32px_rgba(36,40,39,0.16)] backdrop-blur sm:bottom-5 sm:flex sm:items-center sm:gap-5 sm:px-5"
+    >
+      <p className="min-w-0 flex-1 text-xs leading-5 text-[var(--atlas-muted)]">
+        <strong className="text-[var(--atlas-ink)]">Help us improve the map.</strong>{" "}
+        Optional analytics show which public pages and journeys are useful. No advertising profiles or private workflows.{" "}
+        <Link href="/privacy" className="font-semibold text-[var(--atlas-ink)] underline underline-offset-2">Privacy</Link>
+      </p>
+      <div className="mt-3 flex shrink-0 items-center justify-end gap-3 sm:mt-0">
+        <button type="button" onClick={onDecline} className="px-2 py-2 text-xs font-semibold text-[var(--atlas-muted)] hover:text-[var(--atlas-ink)]">No thanks</button>
+        <button type="button" onClick={onAccept} className="atlas-primary-button h-10 px-4 text-xs">Accept analytics</button>
+      </div>
+    </aside>
+  );
+}
+
 function PreferenceRow({ icon: Icon, title, detail, checked, onChange }: { icon: typeof BarChart3; title: string; detail: string; checked: boolean; onChange: (checked: boolean) => void }) {
   return (
     <label className="flex cursor-pointer gap-3 rounded-2xl border border-[var(--atlas-border)] p-4 hover:border-[var(--atlas-primary-border)]">
@@ -285,7 +311,7 @@ export function AnalyticsPreferencesButton({ className = "" }: { className?: str
 export function PublicBetaInsights() {
   const pathname = usePathname();
   const eligible = isAnalyticsEligiblePath(pathname);
-  const { preferences, preferencesOpen, setPreferencesOpen, save } = useAnalyticsPreferences();
+  const { preferences, preferencesOpen, noticeOpen, changePreferencesOpen, save } = useAnalyticsPreferences();
 
   return (
     <>
@@ -296,7 +322,8 @@ export function PublicBetaInsights() {
       {eligible ? <SpeedInsights sampleRate={0.5} /> : null}
       <GoogleAnalytics preferences={preferences} />
       <MicrosoftClarity preferences={preferences} />
-      {eligible && (measurementId || clarityProjectId) ? <AnalyticsPreferencesDialog open={preferencesOpen} preferences={preferences} onOpenChange={setPreferencesOpen} onSave={save} /> : null}
+      {eligible && noticeOpen ? <AnalyticsConsentNotice onAccept={() => save(analyticsPreferences(Boolean(measurementId), false))} onDecline={() => save(analyticsPreferences(false, false))} /> : null}
+      {eligible && (measurementId || clarityProjectId) ? <AnalyticsPreferencesDialog open={preferencesOpen} preferences={preferences} onOpenChange={changePreferencesOpen} onSave={save} /> : null}
     </>
   );
 }

@@ -577,3 +577,7 @@ use `ATLAS_DATA_SOURCE=supabase`.
 - Added `Security And Reliability Remediation Log.md` as the durable register
   for resolved blockers, remaining defence-in-depth work, accepted risks,
   operational cleanup, recurring checks, and production verification.
+- Replaced the automatic full-screen analytics preferences modal with a
+  compact, non-blocking bottom notice. The first encounter now offers only
+  `Accept analytics`, a quiet `No thanks` alternative, and the privacy link;
+  granular preferences remain available from the footer and Privacy page.

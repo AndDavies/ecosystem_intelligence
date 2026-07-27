@@ -224,6 +224,7 @@ Browser QA should cover:
 
 ## Change Log
 
+- `2026-07-26`: Reduced the first-visit analytics consent prompt from a blocking modal to a compact bottom notice with Accept analytics, No thanks, and an inline Privacy link. Google Analytics remains opt-in, private routes remain excluded, experience diagnostics are not silently enabled, and granular preferences remain available from the footer and Privacy page.
 - `2026-07-26`: Repaired three pre-launch security and reliability blockers. Patched the production dependency graph and added a repeatable audit gate, replaced unbounded public citation/evidence/source scans with scoped sequential server-only hydration after published-record admission, and removed internal demand-match reviewer rationale from the public atlas model, APIs, search text, and Ask True North catalogue while preserving private editorial rationale. Added a durable remediation register for remaining defence-in-depth and operational work.
 
 - `2026-07-26`: Established the whole-project context and regression contract. Canonical governance now maps the North Signal brand packet, production architecture, seven-stage research skill design, private visibility/SEO intelligence boundary, cross-system impact checks, validation tiers, launch assets, and current integration state. Material changes must update affected project documents and pass scoped plus release-level regression before being described as complete.
