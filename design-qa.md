@@ -67,6 +67,60 @@
   and 1440 pixels after the profile breakpoint repair.
 
 final result: passed
+
+## Homepage compact split hero revision - 2026-07-28
+
+### Comparison target
+
+- Source visual truth: `/var/folders/zy/qv3qyrkj13n26_6wv7xrdndm0000gn/T/codex-clipboard-48011238-33e5-4d41-b24c-82aea21fb7fa.png`
+- Browser implementation: `output/hero-option-1-1586-final.png`
+- Combined comparison: `output/hero-option-1-comparison-final.png`
+- Comparison viewport: `1586 x 992` CSS pixels at device scale 1.
+- State: anonymous homepage using the current production-backed coverage count.
+
+### Full-view and focused comparison
+
+- The implementation preserves the source's Paper editorial panel, North Ink
+  headline, Signal Yellow opening phrase, public-beta label, live count, paired
+  actions, square-edged maritime image, and image caption.
+- The implementation intentionally constrains the desktop hero to 480 pixels,
+  placing Ask True North materially higher than the taller source mockup. This
+  is the requested deviation and prevents the visual from pushing discovery
+  farther down the page.
+- The approved production image remains sharp, responsive, and uncropped by any
+  rounded mask. No replacement artwork or decorative CSS drawing was added.
+- Focused comparison was not required beyond the full-size combined image: the
+  typography, controls, caption, and image treatment remain readable at the
+  normalized 1586-pixel width.
+
+### Findings and comparison history
+
+1. P1: the first compact implementation clipped the live count and actions at
+   the 1024-pixel breakpoint. Fixed with a wider tablet text track, a smaller
+   tablet display size, and a responsive 55/45 split. Post-fix evidence:
+   `output/hero-option-1-1024-final-v2.png`.
+2. P2: the first 1440-pixel capture left insufficient space below the actions.
+   Fixed by matching the source's approximately 45/55 desktop proportion so the
+   headline returns to three lines. Post-fix evidence:
+   `output/hero-option-1-1440-final-v3.png`.
+3. No actionable P0, P1, or P2 finding remains.
+
+### Responsive, interaction, and regression verification
+
+- Verified at 390, 768, 1024, and 1440 requested pixel widths.
+- No horizontal overflow at any required width.
+- The 1024- and 1440-pixel heroes remain exactly 480 pixels high.
+- Image corner radius is `0px` at every breakpoint.
+- Primary actions remain linked to `#ask-true-north` and `/demand`.
+- The static image remains priority-loaded while the live count and national
+  dataset retain their separate Suspense boundaries.
+- Browser console errors: none.
+- Targeted tests: 14 passed.
+- Full test suite: 181 passed.
+- Lint: passed.
+- Production build: passed.
+
+final result: passed
 ## Defence Briefs design QA
 
 ## Comparison target

@@ -88,13 +88,15 @@ action or a short piece of meaning.
 
 ### Homepage hero
 
-- Use the approved maritime evidence image as a full-bleed visual field with no
-  border, corner radius, card shadow, or framed image treatment.
-- Place the headline, explanation, live coverage count, and actions in a square
-  North Ink editorial panel over the image on desktop. Stack the panel before
-  the image on smaller screens so the decision path remains readable.
+- Use the approved maritime evidence image in a compact square-edged split hero
+  with no corner radius, card shadow, or decorative image border.
+- Place the headline, explanation, live coverage count, and actions in a Paper
+  editorial panel beside the image on desktop. Stack the panel before the image
+  on smaller screens so the decision path remains readable.
 - Keep the headline's three-part reading rhythm and restrict Signal Yellow to
   the opening phrase and primary action.
+- Keep the desktop hero to 480 pixels so discovery remains visible without an
+  oversized image pushing the map farther down the page.
 - Render the static hero immediately. Stream the live coverage count in its own
   boundary and keep national map/search data behind the existing downstream
   loading boundary so corpus growth cannot block the first meaningful view.
