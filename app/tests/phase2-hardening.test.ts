@@ -70,8 +70,9 @@ describe("phase 2 launch hardening", () => {
   });
 
   it("keeps the compact split hero independent from national data loading", async () => {
-    const [hero, page] = await Promise.all([
+    const [hero, explorer, page] = await Promise.all([
       readFile(path.resolve("src/components/atlas/atlas-home-hero.tsx"), "utf8"),
+      readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
       readFile(path.resolve("src/app/page.tsx"), "utf8")
     ]);
 
@@ -81,6 +82,9 @@ describe("phase 2 launch hardening", () => {
     expect(hero).toContain("<AtlasHomeCoverage />");
     expect(hero).not.toContain("rounded-2xl border border-[var(--atlas-border-strong)]");
     expect(hero).not.toContain("lg:min-h-[690px]");
+    expect(hero).toContain('className="atlas-frame pb-2 pt-6 sm:pb-2 sm:pt-8"');
+    expect(explorer).toContain('className="atlas-frame pb-8 pt-2"');
+    expect(page).toContain('className="atlas-frame pb-8 pt-2" aria-live="polite"');
     expect(page.indexOf("<AtlasHomeHero />")).toBeLessThan(page.indexOf("<Suspense fallback={<AtlasHomepageFallback />}"));
   });
 

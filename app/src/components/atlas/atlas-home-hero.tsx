@@ -15,7 +15,7 @@ function CoverageFallback() {
 
 export function AtlasHomeHero() {
   return (
-    <div className="atlas-frame py-6 sm:py-8">
+    <div className="atlas-frame pb-2 pt-6 sm:pb-2 sm:pt-8">
       <section aria-labelledby="home-hero-heading" className="grid overflow-hidden bg-white lg:h-[480px] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <div className="flex flex-col justify-center px-5 py-7 sm:px-8 sm:py-9 lg:px-10 lg:py-8 xl:px-12">
           <div className="flex flex-wrap items-center gap-2">

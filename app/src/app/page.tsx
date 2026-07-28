@@ -70,7 +70,7 @@ async function AtlasHomepageData({ searchParams }: { searchParams: PublicAtlasSe
 
 function AtlasHomepageFallback() {
   return (
-    <div className="atlas-frame pb-8 pt-6 sm:pt-10" aria-live="polite" aria-busy="true">
+    <div className="atlas-frame pb-8 pt-2" aria-live="polite" aria-busy="true">
       <section className="overflow-hidden rounded-[14px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
         <div className="border-t-2 border-[var(--atlas-signal)] p-4 sm:p-5">
           <div className="h-3 w-28 animate-pulse rounded bg-[var(--atlas-border)]" />

@@ -451,7 +451,7 @@ export function AtlasExplorer({
     : "Open a result to see what an organization offers, where it may fit, and which public sources support the profile.";
 
   return (
-    <div className="atlas-frame pb-8 pt-6 sm:pt-10">
+    <div className="atlas-frame pb-8 pt-2">
       <section id="ask-true-north" className="scroll-mt-24 overflow-hidden rounded-[14px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
         <div className="border-t-2 border-[var(--atlas-signal)] bg-white p-3 sm:p-5">
           <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
