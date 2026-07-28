@@ -10,7 +10,8 @@ describe("customer-facing product language", () => {
     ]);
     const header = await readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8");
     expect(hero).toContain('Evidence-led ecosystem discovery');
-    expect(hero).toContain('<span className="atlas-headline-highlight">Canada is building</span> more than most people can see.');
+    expect(hero).toContain('<span className="atlas-headline-highlight">Canada is building</span>');
+    expect(hero).toContain('more than<br /> most people can see.');
     expect(`${hero}\n${explorer}`).not.toContain("\u2014");
     expect(hero).toContain("Explore the organizations, capabilities and public needs shaping Canada’s defence and dual-use ecosystem.");
     expect(hero).toContain("Follow the evidence. Find the fit. Start the right conversation.");

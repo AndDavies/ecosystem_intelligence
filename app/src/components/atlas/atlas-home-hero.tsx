@@ -6,42 +6,48 @@ import { AtlasHomeCoverage } from "@/components/atlas/atlas-home-coverage";
 
 function CoverageFallback() {
   return (
-    <span className="inline-flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-muted)]" aria-live="polite">
-      <span className="size-1.5 animate-pulse rounded-full bg-[var(--atlas-evidence)]" aria-hidden="true" />
-      Loading current national coverage
+    <span className="flex min-h-[30px] items-center gap-4 text-white" aria-live="polite">
+      <span className="h-7 w-14 animate-pulse bg-white/15" aria-hidden="true" />
+      <span className="text-xs font-medium leading-4 text-white/70">Loading current<br />national coverage</span>
     </span>
   );
 }
 
 export function AtlasHomeHero() {
   return (
-    <div className="atlas-frame pt-6 sm:pt-10">
-      <section className="grid gap-6 border-b border-[var(--atlas-border)] pb-6 sm:pb-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.72fr)] lg:items-stretch">
-        <div className="flex flex-col justify-center py-2 lg:py-5">
+    <section aria-labelledby="home-hero-heading" className="grid overflow-hidden bg-[var(--atlas-ink)] lg:min-h-[690px] lg:grid-cols-1 lg:grid-rows-1">
+      <div className="relative col-start-1 row-start-2 min-h-[285px] bg-[var(--atlas-ink)] sm:min-h-[390px] lg:row-start-1 lg:min-h-[690px]">
+        <Image
+          src="/imagery/home-maritime-evidence.webp"
+          alt="Illustration of a Canadian naval vessel moving through Arctic waters with an evidence network connecting industry, communities and defence."
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_35%]"
+        />
+      </div>
+
+      <div className="atlas-frame relative z-10 col-start-1 row-start-1 flex lg:min-h-[690px] lg:items-start lg:pt-[70px]">
+        <div className="w-full bg-[var(--atlas-ink)] px-5 py-7 text-white sm:px-8 sm:py-8 lg:w-[500px] lg:px-8 lg:py-8">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="atlas-eyebrow">Evidence-led ecosystem discovery</span>
-            <span className="rounded-full border border-[var(--atlas-border)] bg-white px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Public Beta</span>
+            <span className="atlas-eyebrow !text-white">Evidence-led ecosystem discovery</span>
+            <span className="rounded-full border border-white/25 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] text-white/70">Public Beta</span>
           </div>
-          <h1 className="mt-4 max-w-4xl text-[38px] font-extrabold leading-[0.94] tracking-[-0.064em] text-[var(--atlas-ink)] sm:text-[54px] lg:text-[62px]"><span className="atlas-headline-highlight">Canada is building</span> more than most people can see.</h1>
-          <p className="mt-5 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:text-base sm:leading-7">Explore the organizations, capabilities and public needs shaping Canada’s defence and dual-use ecosystem. Follow the evidence. Find the fit. Start the right conversation.</p>
-          <div className="mt-5 min-h-5">
+          <h1 id="home-hero-heading" className="mt-4 max-w-[430px] text-[38px] font-extrabold leading-[0.94] tracking-[-0.06em] text-white sm:text-[46px] lg:text-[45px] lg:tracking-[-0.065em]"><span className="atlas-headline-highlight">Canada is building</span><br /> more than<br /> most people can see.</h1>
+          <p className="mt-5 max-w-[420px] text-sm leading-6 text-white/80 sm:text-[15px] sm:leading-6">Explore the organizations, capabilities and public needs shaping Canada’s defence and dual-use ecosystem. Follow the evidence. Find the fit. Start the right conversation.</p>
+
+          <div className="mt-4 border-t border-white/25 pt-4">
             <Suspense fallback={<CoverageFallback />}>
-              <AtlasHomeCoverage />
+              <AtlasHomeCoverage inverted />
             </Suspense>
           </div>
-          <div className="mt-6 flex flex-wrap gap-3">
+
+          <div className="mt-5 flex flex-wrap gap-3">
             <a href="#ask-true-north" className="atlas-signal-button h-11 gap-2 px-5 text-sm">Explore the ecosystem <ArrowRight className="size-4" /></a>
-            <Link href="/demand" className="atlas-primary-button h-11 px-5 text-sm">Browse public needs</Link>
+            <Link href="/demand" className="inline-flex h-11 items-center justify-center rounded-[12px] border border-white/55 px-5 text-sm font-semibold text-white no-underline transition-colors hover:border-white hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Browse public needs</Link>
           </div>
         </div>
-        <div className="relative min-h-[260px] overflow-hidden rounded-2xl border border-[var(--atlas-border-strong)] bg-[var(--atlas-ink)] shadow-[var(--atlas-shadow-soft)] sm:min-h-[320px] lg:min-h-[360px]">
-          <Image src="/imagery/home-maritime-evidence.webp" alt="Illustration of a Canadian naval vessel moving through Arctic waters with an evidence network connecting industry, communities and defence." fill priority sizes="(min-width: 1024px) 42vw, 100vw" className="object-cover" />
-          <div className="absolute inset-x-0 bottom-0 border-t-2 border-[var(--atlas-signal)] bg-[rgba(36,40,39,0.9)] px-5 py-4 text-white backdrop-blur-sm">
-            <p className="text-sm font-extrabold">Make Canadian capability visible.</p>
-            <p className="mt-1 text-[11px] leading-4 text-white/70">Evidence-led discovery across the country.</p>
-          </div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

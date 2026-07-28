@@ -67,7 +67,6 @@
   and 1440 pixels after the profile breakpoint repair.
 
 final result: passed
-
 ## Defence Briefs design QA
 
 ## Comparison target
@@ -125,5 +124,60 @@ final result: passed
 - [x] Replace question-form administration with article editing fields.
 - [x] Verify desktop-responsive and mobile layouts.
 - [x] Preserve public sources, related records, review status, and publication controls.
+
+final result: passed
+
+## Homepage full-bleed hero revision - 2026-07-27
+
+### Comparison target
+
+- Reference: `/var/folders/zy/qv3qyrkj13n26_6wv7xrdndm0000gn/T/codex-clipboard-6b746c90-7879-454c-a796-b06f3f633da9.png`
+- Implementation: `output/hero-phase2-selected-1586-final-v4.png`
+- Combined comparison: `output/hero-phase2-design-comparison-final.png`
+- Comparison viewport: `1586 x 992` CSS pixels at device scale 1.
+- State: signed out, homepage, current production-backed coverage count.
+
+### Result
+
+The implemented hero preserves the North Signal launch direction: full-bleed
+maritime evidence imagery, a square North Ink editorial panel, Signal Yellow
+emphasis, Barlow-led hierarchy, and restrained calls to action. The image and
+panel have zero border radius and no card border or shadow.
+
+Visible differences from the selected mockup are non-blocking:
+
+- The implementation uses the approved production image asset and its natural
+  crop rather than recreating the screenshot composition.
+- The decorative line-and-dot flourish is omitted because it does not add
+  meaning and is not a required brand asset.
+- Existing feedback and search controls remain functional product surfaces
+  rather than being restyled outside the selected hero scope.
+
+No P0, P1, or P2 visual issue remains.
+
+### Responsive verification
+
+Verified at 390, 768, 1024, and 1440 pixel browser widths:
+
+- No horizontal overflow.
+- Zero-radius image and editorial panel at every breakpoint.
+- An intentional responsive headline rhythm.
+- Primary links remain present and point to `#ask-true-north` and `/demand`.
+- Mobile presents the decision copy before the image without clipping.
+- Desktop keeps the panel over the image in a stable 690-pixel hero frame.
+
+### Loading and regression verification
+
+- The static hero image remains priority-loaded with `sizes="100vw"`.
+- The live organization count remains inside its own Suspense boundary.
+- National map and search data remain inside the existing downstream Suspense
+  boundary and do not block the hero shell.
+- Existing map, search, analytics, authentication, and publication contracts
+  were not changed.
+- Browser console errors: none.
+- Targeted hero and public-copy tests: 14 passed.
+- Full unit and integration suite: 181 passed.
+- Lint: passed.
+- Production build: passed.
 
 final result: passed

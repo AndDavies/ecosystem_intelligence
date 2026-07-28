@@ -69,6 +69,20 @@ describe("phase 2 launch hardening", () => {
     expect(JSON.parse(vercel)).toMatchObject({ regions: ["sfo1"] });
   });
 
+  it("keeps the selected full-bleed hero independent from national data loading", async () => {
+    const [hero, page] = await Promise.all([
+      readFile(path.resolve("src/components/atlas/atlas-home-hero.tsx"), "utf8"),
+      readFile(path.resolve("src/app/page.tsx"), "utf8")
+    ]);
+
+    expect(hero).toContain('sizes="100vw"');
+    expect(hero).toContain("priority");
+    expect(hero).toContain("lg:min-h-[690px]");
+    expect(hero).toContain("<AtlasHomeCoverage inverted />");
+    expect(hero).not.toContain("rounded-2xl border border-[var(--atlas-border-strong)]");
+    expect(page.indexOf("<AtlasHomeHero />")).toBeLessThan(page.indexOf("<Suspense fallback={<AtlasHomepageFallback />}"));
+  });
+
   it("ships a provider-aware security policy and a safe health endpoint", async () => {
     const [config, health, authState] = await Promise.all([
       readFile(path.resolve("next.config.ts"), "utf8"),
