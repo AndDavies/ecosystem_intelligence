@@ -85,6 +85,16 @@ describe("admin publication workflow", () => {
     await expect(readFile(path.resolve("supabase/migrations/20260723111800_preserve_nonorganization_candidate_targets.sql"), "utf8")).rejects.toThrow();
   });
 
+  it("keeps refresh publication independent of private helper permissions", async () => {
+    const migration = await readFile(path.resolve("supabase/migrations/20260729133000_remove_refresh_publication_helper_permission_dependency.sql"), "utf8");
+
+    expect(migration).toContain("create or replace function public.publish_reviewed_refresh_candidates");
+    expect(migration).toContain("exact_baseline := case candidate_row.candidate_kind");
+    expect(migration).not.toContain("private.refresh_candidate_baseline_text(");
+    expect(migration).toContain("security invoker");
+    expect(migration).toContain("grant execute on function public.publish_reviewed_refresh_candidates(uuid[], uuid) to authenticated");
+  });
+
   it("lets reviewers enrich complete typed candidates before accepting them", async () => {
     const reviewPage = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
