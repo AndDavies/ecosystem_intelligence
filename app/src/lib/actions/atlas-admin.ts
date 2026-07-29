@@ -10,6 +10,7 @@ import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2,
 import { suggestDemandMatches } from "@/lib/atlas/demand-matching";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { isSupportedResearchCandidateKind, researchCandidateContractIssues } from "@/lib/research/deployment-contract";
+import { researchPublicationErrorRedirect } from "@/lib/research/publication-errors";
 import { createClient } from "@/lib/supabase/server";
 
 const intakeSchema = z.object({
@@ -679,9 +680,8 @@ export async function publishApprovedCandidates(formData: FormData) {
     p_reviewer_id: user.id
   });
   if (error) {
-    const missingIssuer = error.message.match(/^Unknown parent demand issuer ([a-z0-9-]+)\.$/i)?.[1];
-    if (missingIssuer) redirect(`/admin/publish?error=missing-demand-issuer&issuer=${encodeURIComponent(missingIssuer)}`);
-    redirect("/admin/publish?error=publication-failed");
+    console.error("Research publication transaction failed", { code: error.code, message: error.message });
+    redirect(researchPublicationErrorRedirect(error));
   }
   revalidateTag("atlas-public");
   revalidateReviewPaths();

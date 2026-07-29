@@ -33,7 +33,9 @@ type PublishableRow =
 const errorMessages: Record<string, string> = {
   selection: "No approved records were available to publish. Refresh the checkpoint and try again.",
   "publication-failed": "Publication was stopped. No selected record was published. Recheck the approved records and try again.",
-  "missing-demand-issuer": "Publication is paused because a required issuing authority has not been established in the canonical demand hierarchy."
+  "missing-demand-issuer": "Publication is paused because a required issuing authority has not been established in the canonical demand hierarchy.",
+  "stale-refresh": "Publication was safely stopped because a live record changed after its refresh was prepared. Rebuild that refresh from the current profile, review it again, and then publish.",
+  "refresh-baseline": "Publication was safely stopped because a refresh did not preserve the exact record version it reviewed. Rebuild that refresh from the current profile before publishing."
 };
 
 function parsePublishableRows(data: unknown[] | null): PublishableRow[] {
@@ -104,7 +106,7 @@ function publicationDisplay(row: PublishableRow) {
   };
 }
 
-export default async function AdminPublishPage({ searchParams }: { searchParams: Promise<{ error?: string; issuer?: string; success?: string }> }) {
+export default async function AdminPublishPage({ searchParams }: { searchParams: Promise<{ error?: string; issuer?: string; candidate?: string; record?: string; success?: string }> }) {
   await requireAtlasStaff("reviewer");
   const params = await searchParams;
   const database = await createClient();
@@ -141,7 +143,13 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
   return (
     <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Publication checkpoint" description="Review the approved list, then publish it with one explicit action. Publication runs as one transaction and stops entirely if any record fails validation." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
-      {params.error ? <FlashBanner tone="error">{params.error === "missing-demand-issuer" && params.issuer ? `${errorMessages[params.error]} Missing issuer: ${params.issuer.replaceAll("-", " ")}.` : errorMessages[params.error] ?? "Publication could not be completed."}</FlashBanner> : null}
+      {params.error ? <FlashBanner tone="error">{
+        params.error === "missing-demand-issuer" && params.issuer
+          ? `${errorMessages[params.error]} Missing issuer: ${params.issuer.replaceAll("-", " ")}.`
+          : ["stale-refresh", "refresh-baseline"].includes(params.error) && params.record
+            ? `${errorMessages[params.error]} Affected record: ${params.record.replaceAll("-", " ")}.`
+            : errorMessages[params.error] ?? "Publication could not be completed."
+      }</FlashBanner> : null}
       {params.success ? <FlashBanner tone="success">Published {params.success} reviewed {params.success === "1" ? "record" : "records"}. The live records are linked under Recent publications below; no redeploy is required.</FlashBanner> : null}
       {rows.length ? (
         <form action={publishApprovedCandidates}>

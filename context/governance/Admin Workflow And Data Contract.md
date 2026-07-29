@@ -48,7 +48,7 @@ An enrichment run does not edit a published dossier directly. It creates a typed
 
 1. `target_entity_id` identifies the published organization or demand source.
 2. `before_record` captures the canonical rows reviewed by the agent.
-3. `targetMatch.baselineUpdatedAt` records the target's live `updated_at` value.
+3. `targetMatch.baselineUpdatedAt` records the target's live `updated_at` value and must exactly equal the raw timestamp string preserved inside `before_record`, including all PostgreSQL fractional-second digits and timezone text.
 4. `operations` describes only the proposed `set_field`, `add_child`, or `update_child` changes.
 5. Each operation references durable field evidence and includes a reviewer explanation.
 
@@ -58,7 +58,7 @@ The Review action accepts only candidate kinds with complete typed Review and Pu
 
 Before trusted staging, the research importer compares every candidate kind and schema with the deployed `/api/system/research-contract` response. This prevents a database migration or research run from placing a candidate into a queue that the deployed application cannot interpret or publish.
 
-The separate Publish action locks the candidate and target, compares the current target timestamp with the recorded baseline, and fails atomically if the target changed after research. An eligible publication applies only the reviewed operations, preserves existing IDs and slugs, upserts sources, appends evidence snippets and field citations, records the before/operation audit payload, and revalidates affected public routes.
+The separate Publish action locks the candidate and target, uses the immutable `before_record` timestamp as the authoritative baseline, and fails atomically if the target changed after research. Candidate creation, smoke validation, trusted staging, and a database trigger all reject timestamp precision loss before review. A genuinely stale record produces a candidate-specific administrator message and requires a fresh candidate plus human review. An eligible publication applies only the reviewed operations, preserves existing IDs and slugs, upserts sources, appends evidence snippets and field citations, records the before/operation audit payload, and revalidates affected public routes.
 
 The Admin Review UI renders each refresh as a plain-language publication summary followed by structured field changes. New technologies, programs, relationships, and demand statements are labelled as additions; in-place updates show current and proposed values, including added and removed list items. Evidence excerpts and warnings remain readable, while the complete typed payload is available only in a collapsed technical disclosure. Displaying or accepting a refresh never changes the canonical record.
 

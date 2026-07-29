@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { organizationRefreshBundleV1Schema, researchSignalBatchV1Schema } from "../src/lib/research/pipeline-schema";
+import { organizationRefreshBundleV1Schema, refreshCandidateBaselinePrecisionIssue, researchSignalBatchV1Schema } from "../src/lib/research/pipeline-schema";
 import { canonicalizeSignalUrl, consolidateSignals, signalFingerprint, splitCompositeSignalText } from "../src/lib/research/signal-processing";
 
 const timestamp = "2026-07-23T12:00:00.000Z";
@@ -69,6 +69,17 @@ describe("multi-source signal refresh", () => {
     expect(parsed.success).toBe(true);
     const candidate = parsed.success ? parsed.data : null;
     expect(candidate?.operations[0].operation).toBe("add_child");
+  });
+
+  it("requires the live updated_at timestamp to be copied without losing precision", () => {
+    const candidate = refreshCandidate();
+    candidate.beforeRecord.organization.updated_at = "2026-07-23T12:00:00.645435+00:00";
+    candidate.targetMatch.baselineUpdatedAt = "2026-07-23T12:00:00.645Z";
+    const parsed = organizationRefreshBundleV1Schema.parse(candidate);
+    expect(refreshCandidateBaselinePrecisionIssue(parsed)).toContain("changed timestamp precision");
+
+    candidate.targetMatch.baselineUpdatedAt = candidate.beforeRecord.organization.updated_at;
+    expect(refreshCandidateBaselinePrecisionIssue(organizationRefreshBundleV1Schema.parse(candidate))).toBeNull();
   });
 
   it("rejects refresh operations that could target the wrong record or publish an incomplete child", () => {

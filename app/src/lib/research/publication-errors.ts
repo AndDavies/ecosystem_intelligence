@@ -1,0 +1,26 @@
+type PublicationRpcError = {
+  code?: string | null;
+  message?: string | null;
+};
+
+export function researchPublicationErrorRedirect(error: PublicationRpcError) {
+  const message = error.message ?? "";
+  const missingIssuer = message.match(/^Unknown parent demand issuer ([a-z0-9-]+)\.$/i)?.[1];
+  if (missingIssuer) return `/admin/publish?error=missing-demand-issuer&issuer=${encodeURIComponent(missingIssuer)}`;
+
+  const stale = message.match(/^Refresh candidate ([0-9a-f-]+)(?: \(([^)]+)\))? has a stale baseline\.$/i);
+  if (stale) {
+    const params = new URLSearchParams({ error: "stale-refresh", candidate: stale[1] });
+    if (stale[2]) params.set("record", stale[2]);
+    return `/admin/publish?${params.toString()}`;
+  }
+
+  const precision = message.match(/^Refresh candidate ([0-9a-f-]+)(?: \(([^)]+)\))? has inconsistent timestamp precision\.$/i);
+  if (precision) {
+    const params = new URLSearchParams({ error: "refresh-baseline", candidate: precision[1] });
+    if (precision[2]) params.set("record", precision[2]);
+    return `/admin/publish?${params.toString()}`;
+  }
+
+  return "/admin/publish?error=publication-failed";
+}

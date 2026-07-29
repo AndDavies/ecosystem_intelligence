@@ -952,6 +952,7 @@ describe("public atlas database foundation", () => {
 
   it("stages, publishes, and retries an additive organization refresh safely", async () => {
     const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    await db.exec("update public.organizations set updated_at = '2026-07-23T11:59:59.645435+00:00'::timestamptz where slug = 'kraken-robotics'");
     const target = await db.query<{ id: string; slug: string; updated_at: string }>("select id, slug, updated_at::text from public.organizations where slug = 'kraken-robotics'");
     const organization = target.rows[0];
     const reviewerRationale = "Add a newly documented product capability to the existing Kraken Robotics profile using a durable official product source. Review the additive fields, target baseline, evidence, and taxonomy before publication.";
@@ -972,6 +973,15 @@ describe("public atlas database foundation", () => {
     };
     const run = { client_run_id: "tnm-refresh-test-2026-07-23", run_type: "manual", scope: { workflow: "signal_refresh" }, selected_gap: { dimension: "record-refresh" }, started_at: "2026-07-23T12:00:00.000Z", completed_at: "2026-07-23T12:10:00.000Z", agent_version: "test", source_queries: [], counters: {}, validation_results: { passed: true }, stop_reason: "fixture complete" };
     const change = { client_candidate_id: proposedRecord.candidateId, candidate_kind: proposedRecord.candidateKind, schema_version: proposedRecord.schemaVersion, source_lead_ids: proposedRecord.sourceLeadIds, target_entity_type: "organization", target_entity_id: organization.id, proposed_record: proposedRecord, before_record: proposedRecord.beforeRecord, field_evidence: proposedRecord.fieldEvidence, duplicate_check: proposedRecord.duplicateCheck, confidence: proposedRecord.confidence, status: "pending", staged_at: "2026-07-23T12:10:00.000Z" };
+
+    const lossyRecord = structuredClone(proposedRecord);
+    lossyRecord.candidateId = "candidate-kraken-lossy-baseline-test";
+    lossyRecord.targetMatch.baselineUpdatedAt = new Date(organization.updated_at).toISOString();
+    const lossyChange = { ...change, client_candidate_id: lossyRecord.candidateId, proposed_record: lossyRecord };
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify({ ...run, client_run_id: "tnm-lossy-refresh-test-2026-07-23" }), JSON.stringify([lossyChange])]
+    )).rejects.toThrow(/changed timestamp precision/i);
 
     const staged = await db.query<{ staged_count: number; skipped_count: number }>("select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)", [JSON.stringify(run), JSON.stringify([change])]);
     expect(staged.rows[0]).toEqual({ staged_count: 1, skipped_count: 0 });

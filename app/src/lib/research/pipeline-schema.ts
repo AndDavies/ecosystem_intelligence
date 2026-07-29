@@ -232,7 +232,7 @@ const targetMatchSchema = z.object({
   slug: slugSchema,
   matchMethods: z.array(z.enum(["canonical_url", "website_domain", "slug", "legal_name", "alias", "name", "parent_relationship"])).min(1),
   confidence: z.enum(["high", "moderate"]),
-  baselineUpdatedAt: z.string().datetime()
+  baselineUpdatedAt: z.string().datetime({ offset: true })
 });
 
 const recordRefreshLeadSchema = z.object({
@@ -607,6 +607,25 @@ export const demandRefreshBundleV1Schema = z.object({
     if (operation.operation === "set_field" && operation.entityType === "demand_source" && operation.targetId !== candidate.targetMatch.entityId) context.addIssue({ code: z.ZodIssueCode.custom, message: "The field update must target the matched demand source.", path: ["operations", index, "targetId"] });
   });
 });
+
+export function refreshCandidateBaselinePrecisionIssue(
+  candidate: z.infer<typeof organizationRefreshBundleV1Schema> | z.infer<typeof demandRefreshBundleV1Schema>
+) {
+  const beforeRecord = candidate.beforeRecord as Record<string, unknown>;
+  const parentKey = candidate.candidateKind === "organization_refresh_bundle" ? "organization" : "demandSource";
+  const parent = beforeRecord[parentKey];
+  const exactBaseline = parent && typeof parent === "object"
+    ? (parent as Record<string, unknown>).updated_at
+    : null;
+
+  if (typeof exactBaseline !== "string" || exactBaseline.length === 0) {
+    return `Candidate ${candidate.candidateId} is missing beforeRecord.${parentKey}.updated_at.`;
+  }
+  if (candidate.targetMatch.baselineUpdatedAt !== exactBaseline) {
+    return `Candidate ${candidate.candidateId} changed timestamp precision: targetMatch.baselineUpdatedAt must copy beforeRecord.${parentKey}.updated_at byte-for-byte.`;
+  }
+  return null;
+}
 
 export const researchSignalBatchV1Schema = z.object({
   schemaVersion: z.literal("research_signal_batch_v1"),
