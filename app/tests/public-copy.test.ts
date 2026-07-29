@@ -26,11 +26,21 @@ describe("customer-facing product language", () => {
     expect(explorer).not.toContain("Search atlas");
   });
 
-  it("uses the North Signal mark as the favicon", async () => {
-    const icon = await readFile(path.resolve("src/app/icon.svg"), "utf8");
-    expect(icon).toContain("True North Map North Signal mark");
+  it("uses the directional N mark as the favicon and shared identity", async () => {
+    const [icon, logo, appTile, brandComponent] = await Promise.all([
+      readFile(path.resolve("src/app/icon.svg"), "utf8"),
+      readFile(path.resolve("public/brand/north-signal-mark.svg"), "utf8"),
+      readFile(path.resolve("public/brand/true-north-map-app-tile.svg"), "utf8"),
+      readFile(path.resolve("src/components/atlas/brand-logo.tsx"), "utf8")
+    ]);
+    expect(icon).toContain("True North Map directional N mark");
     expect(icon).toContain('fill="#242827"');
     expect(icon).toContain('fill="#F5E900"');
+    expect(icon).not.toContain("<circle");
+    expect(logo).toContain("True North Map directional N mark");
+    expect(appTile).toContain("True North Map app tile");
+    expect(brandComponent).toContain("True North Map");
+    expect(brandComponent).not.toContain('<span className="block">True North</span>');
   });
 
   it("publishes the Phase 1B decision steps, trust strip and dynamic metric labels", async () => {

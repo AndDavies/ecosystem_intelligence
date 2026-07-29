@@ -12,11 +12,10 @@ export function BrandLogo({ compact = false, inverse = false }: { compact?: bool
         className="shrink-0"
       />
       <span
-        className={`font-extrabold uppercase leading-[0.82] tracking-[0.065em] ${compact ? "text-[10px]" : "text-[12px]"} ${inverse ? "text-white" : "text-[var(--atlas-ink)]"}`}
+        className={`whitespace-nowrap font-extrabold uppercase leading-none tracking-[0.045em] ${compact ? "text-[10px]" : "text-[12px]"} ${inverse ? "text-white" : "text-[var(--atlas-ink)]"}`}
         aria-hidden="true"
       >
-        <span className="block">True North</span>
-        <span className="mt-1 block">Map</span>
+        True North Map
       </span>
       <span className="sr-only">True North Map</span>
     </span>

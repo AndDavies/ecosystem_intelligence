@@ -2,6 +2,7 @@
 
 Status: Phase 1B public system
 Approved: 2026-07-26
+Identity revision: 2026-07-29 local review candidate
 
 ## Brand idea
 
@@ -22,9 +23,17 @@ conversation.
 
 ## Identity
 
-The North Signal mark combines an angular N, a white evidence path, and a
-yellow signal point. It represents finding a clear path through scattered
-evidence. The permanent wordmark never includes the Public Beta label.
+The revised True North Map mark is a compact directional N. Its uninterrupted
+black or white structure represents a strong Canadian capability base. A
+separated Signal Yellow corner points north and makes direction, discovery and
+forward movement visible without adding a literal map pin, compass or military
+symbol. The permanent wordmark never includes the Public Beta label.
+
+The approved visual reference for this revision is
+`content/brand/source/true-north-map-logo-master-2026-07-29.png`. Production-ready
+artwork is reconstructed as flat SVG geometry rather than cropped from that
+raster presentation sheet. Until Andrew approves the local website review, this
+packet is a local identity candidate and must not be described as deployed.
 
 Available artwork:
 
@@ -39,17 +48,34 @@ Canonical asset packet:
 | Asset | Repository path | Intended use |
 | --- | --- | --- |
 | Horizontal lockup | `app/public/brand/true-north-map-horizontal.svg` | Desktop header, partner material, wide placements |
+| Horizontal light lockup | `app/public/brand/true-north-map-horizontal-light.svg` | Dark footers, presentation fields, and wide inverse placements |
 | Stacked wordmark | `app/public/brand/true-north-map-stacked.svg` | Compact editorial and collateral placements |
-| North Signal mark | `app/public/brand/north-signal-mark.svg` | Primary standalone mark on light surfaces |
+| Directional N mark | `app/public/brand/north-signal-mark.svg` | Primary standalone mark on light surfaces |
 | Light mark | `app/public/brand/north-signal-mark-light.svg` | Dark surfaces |
 | Monochrome mark | `app/public/brand/north-signal-mark-monochrome.svg` | One-colour reproduction |
 | Small-size marks | `app/public/brand/north-signal-mark-16.svg`, `north-signal-mark-24.svg`, `north-signal-mark-32.svg` | Favicons and compact interface use |
+| App tile | `app/public/brand/true-north-map-app-tile.svg` | App icons and square product placements |
 | Social avatar | `app/public/brand/true-north-map-social-avatar.svg` | LinkedIn and other account avatars |
+| Social avatar PNG | `app/public/brand/true-north-map-social-avatar.png` | 1024 pixel upload-ready social account avatar |
+| Collateral PNG exports | `content/brand/exports/true-north-map-symbol.png`, `true-north-map-horizontal.png`, `true-north-map-stacked.png` | Transparent high-resolution exports for documents and presentations |
 | LinkedIn banner | `content/launch/phase-2/true-north-map-linkedin-banner.png` | True North Map organization page |
 | Partner overview | `content/launch/phase-2/true-north-map-partner-overview.pdf` | One-page external orientation |
 | Partner/media deck | `content/launch/phase-2/true-north-map-partner-media-deck.pptx` | Editable launch and partner presentation |
 
-The raster brand-audit concepts are design inputs, not production marks. The flat SVG packet above is the source of truth. Do not redraw the mark from screenshots or add “Public Beta” to the permanent identity.
+The master reference image records the approved direction, not a distributable
+logo file. The flat SVG packet above is the implementation source of truth. Do
+not crop production marks from the reference sheet, alter the N proportions,
+move or enlarge the Signal Yellow corner, add gradients, or add “Public Beta”
+to the permanent identity.
+
+### Clear space and minimum size
+
+- Preserve clear space equal to at least one quarter of the symbol width.
+- Use the simplified 16, 24 or 32 pixel files for compact interface placements.
+- Do not place the dark mark on a dark image or the light mark on a light field.
+- The yellow corner must remain visible; use the monochrome mark only when
+  colour reproduction is unavailable.
+- Use the horizontal lockup as one line. Do not restack the words independently.
 
 ## Colour
 

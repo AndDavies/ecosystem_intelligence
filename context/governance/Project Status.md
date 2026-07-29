@@ -2,7 +2,7 @@
 
 Status: active broader-sharing product and review-first data operation
 
-Last verified: 2026-07-27
+Last verified: 2026-07-29
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -18,7 +18,7 @@ The current product and operating system include:
 - Public atlas responses use a five-minute CDN cache with ten-minute stale-while-revalidate support, and the Vercel server region is pinned to `sfo1` to reduce round-trip distance to the canonical Supabase `us-west-2` project. The compact demand filter includes only published Demand Signals whose source has recorded human verification.
 - Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix, rollback runbook and current launch kit now make release validation repeatable.
 - Pre-launch security remediation updates the production runtime dependencies, bounds citation and evidence reads to the requested public records, and removes private demand-match reviewer rationale from the public data contract and Ask True North catalogue. `pnpm security:validate` is now a release gate; the durable backlog and verification record live in `Security And Reliability Remediation Log.md`.
-- Phase 1B introduces the North Signal identity, a charcoal, warm-white and signal-yellow design system, consistent Barlow and Inter typography, lighter section-based layout, and one public message system across navigation, discovery, evidence, editorial, account, contribution, and trust surfaces. Product behaviour and data contracts are unchanged.
+- Phase 1B established the charcoal, warm-white and signal-yellow system. A July 29 local review candidate replaces the original path-and-point North Signal artwork with a simpler directional N and separated yellow north corner while retaining the same palette, typography, messaging and product behaviour. It remains local until Andrew approves the website review.
 - The primary navigation is Map, Organizations, Public Needs, Defence Briefs, How It Works, and About. `/demand` remains canonical; Public Needs names the collection while Demand Signal remains the precise label for one source-gated released need.
 
 - A public map, organization and capability profiles, public-demand records, reviewed capability-demand matches, exports, and Ask True North over the published corpus.
@@ -107,5 +107,5 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 - `context/governance/Skills And Automation Map.md` — canonical skill, operating-mode, and automation map.
 - `context/governance/Cross-System Change And Regression Contract.md` — impact analysis and regression requirements.
 - `context/governance/Security And Reliability Remediation Log.md` — active security, privacy, resilience, dependency, and assurance register.
-- `content/brand/True North Map Brand System.md` — North Signal brand packet and usage rules.
+- `content/brand/True North Map Brand System.md` — current brand packet, directional-N local review candidate, and usage rules.
 - `app/src/lib/research/pipeline-schema.ts` — executable research contract when prose and code differ.

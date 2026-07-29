@@ -581,3 +581,16 @@ use `ATLAS_DATA_SOURCE=supabase`.
   compact, non-blocking bottom notice. The first encounter now offers only
   `Accept analytics`, a quiet `No thanks` alternative, and the privacy link;
   granular preferences remain available from the footer and Privacy page.
+
+## Directional N identity review candidate - 2026-07-29
+
+- Reconstructed the July 29 master reference as deterministic SVG artwork
+  rather than cropping raster marks from the presentation sheet.
+- Prepared standalone dark, light and one-colour symbols; 16, 24 and 32 pixel
+  marks; horizontal and stacked lockups; an inverse horizontal lockup; social
+  avatar; app tile; favicon; and Apple touch icon.
+- Updated the local header, footer, dialogs and generated social-card identity
+  while preserving the approved palette, typography, messaging, navigation,
+  analytics, authentication, data, research, review and publication workflows.
+- Kept the candidate isolated from production pending Andrew's local visual
+  review and full regression approval.

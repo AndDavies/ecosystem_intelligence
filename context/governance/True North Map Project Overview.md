@@ -1,7 +1,7 @@
 # True North Map Project Overview
 
 Status: active public product and review-first data operation
-Last reviewed: 2026-07-26
+Last reviewed: 2026-07-29
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -48,7 +48,7 @@ Place, technology, or public need
 - A daily production job purges expired raw searches after 90 days and detailed workflow events after 30 days.
 - `pnpm launch:validate` performs a deliberately low-rate crawl of every canonical public sitemap URL, checking status, metadata, canonical URLs, social metadata, structured data and image accessibility attributes without creating a load test.
 - The current launch kit lives under `content/launch/phase-2/`; older screenshots and demo material are not release assets.
-- The North Signal source packet is indexed in `content/brand/True North Map Brand System.md`; production marks live under `app/public/brand/`.
+- The current production identity and the July 29 directional-N local review candidate are indexed in `content/brand/True North Map Brand System.md`; implementation marks live under `app/public/brand/`, and the candidate must not be called deployed before local approval and release validation.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 
@@ -134,7 +134,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |
 | `media_assets` and `atlas-public-media` | Approved organization logo or public media | Provenance-backed approved media. Organization logos are only displayed when approved and published. |
 | Evidence-led ecosystem discovery | Product category | The concise public category describing the product without implying procurement authority or a generic AI platform. |
-| North Signal | True North Map identity | The angular N, evidence path, and yellow signal point used in the brand mark, favicon, social assets, and navigation. |
+| Directional N / North Signal | True North Map identity | The compact angular N and separated Signal Yellow north corner used in the proposed July 29 mark, favicon, social assets, and navigation. |
 | Source verification gate | Released-source verification | The demand-specific rule that prevents an unsourced summary from becoming a public Demand Signal. |
 | RLS and explicit Data API grants | Private security controls | Internal database controls. They protect drafts, user data, and staff actions; they are not public marketing language. |
 
@@ -219,7 +219,7 @@ For all other changes, use the impact and validation matrix in `Cross-System Cha
 | `context/governance/Autonomous Ecosystem Research Pipeline.md` | Research orchestration and handoffs |
 | `context/governance/Skills And Automation Map.md` | Research-skill chain, visibility boundary, operating modes, and scheduled operations |
 | `context/governance/Cross-System Change And Regression Contract.md` | Required cross-system impact review and regression levels |
-| `content/brand/True North Map Brand System.md` | Approved North Signal assets, copy, colours, typography, and brand checks |
+| `content/brand/True North Map Brand System.md` | Current identity assets, July 29 directional-N review candidate, copy, colours, typography, and brand checks |
 | `app/src/lib/research/pipeline-schema.ts` | Executable research contract when code and prose differ |
 | `app/src/lib/atlas/presentation.ts` | Canonical public labels for recurring evidence and assessment language |
 | `app/supabase/migrations/` | Versioned production schema and policy history |
