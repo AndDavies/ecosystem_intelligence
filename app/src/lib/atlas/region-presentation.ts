@@ -11,57 +11,73 @@ type RegionArt = {
   imageSrc?: string;
   imageAlt?: string;
   imagePosition?: string;
+  imageFit?: "cover" | "contain";
+  showLabel?: boolean;
 };
 
 const regionArt: Record<string, RegionArt> = {
   canada: {
     tone: "general",
     icon: Compass,
-    imageSrc: "/imagery/regions/canada.webp",
-    imageAlt: "Illustrative view of Canada's connected defence and dual-use engineering ecosystem.",
-    imagePosition: "center"
+    imageSrc: "/imagery/regions/canada.webp?v=20260731",
+    imageAlt: "Illustrative map showing Canada within the national ecosystem view.",
+    imagePosition: "center",
+    imageFit: "contain",
+    showLabel: false
   },
   "atlantic-canada": {
     tone: "maritime",
     icon: Ship,
-    imageSrc: "/imagery/regions/atlantic-canada.webp",
-    imageAlt: "Illustrative view of Atlantic marine engineering, shipbuilding, and ocean-technology activity.",
-    imagePosition: "center"
+    imageSrc: "/imagery/regions/atlantic-canada.webp?v=20260731",
+    imageAlt: "Illustrative map highlighting Atlantic Canada within the national ecosystem view.",
+    imagePosition: "center",
+    imageFit: "contain",
+    showLabel: false
   },
   quebec: {
     tone: "industrial",
     icon: Factory,
-    imageSrc: "/imagery/regions/quebec.webp",
-    imageAlt: "Illustrative view of Quebec aerospace assembly and precision manufacturing.",
-    imagePosition: "center"
+    imageSrc: "/imagery/regions/quebec.webp?v=20260731",
+    imageAlt: "Illustrative map highlighting Quebec within the national ecosystem view.",
+    imagePosition: "center",
+    imageFit: "contain",
+    showLabel: false
   },
   ontario: {
     tone: "innovation",
     icon: Lightbulb,
-    imageSrc: "/imagery/regions/ontario.webp",
-    imageAlt: "Illustrative view of Ontario sensor, aerospace, and advanced-manufacturing activity.",
-    imagePosition: "center"
+    imageSrc: "/imagery/regions/ontario.webp?v=20260731",
+    imageAlt: "Illustrative map highlighting Ontario within the national ecosystem view.",
+    imagePosition: "center",
+    imageFit: "contain",
+    showLabel: false
   },
   prairies: {
     tone: "demand",
     icon: Wheat,
-    imageSrc: "/imagery/regions/prairies.webp",
-    imageAlt: "Illustrative view of Prairie autonomous-systems testing and advanced manufacturing.",
-    imagePosition: "center"
+    imageSrc: "/imagery/regions/prairies.webp?v=20260731",
+    imageAlt: "Illustrative map highlighting the Prairies within the national ecosystem view.",
+    imagePosition: "center",
+    imageFit: "contain",
+    showLabel: false
   },
   "british-columbia": {
     tone: "maritime",
     icon: Waves,
-    imageSrc: "/imagery/regions/british-columbia.webp",
-    imageAlt: "Illustrative view of British Columbia shipbuilding, marine engineering, and subsea technology.",
-    imagePosition: "center"
+    imageSrc: "/imagery/regions/british-columbia.webp?v=20260731",
+    imageAlt: "Illustrative map highlighting British Columbia within the national ecosystem view.",
+    imagePosition: "center",
+    imageFit: "contain",
+    showLabel: false
   },
   north: {
     tone: "arctic",
     icon: Snowflake,
-    imageSrc: "/imagery/regions/north.webp",
-    imageAlt: "Illustrative view of Northern communications, logistics, and Arctic operating infrastructure.",
-    imagePosition: "center"
+    imageSrc: "/imagery/regions/north.webp?v=20260731",
+    imageAlt: "Illustrative map highlighting Northern Canada within the national ecosystem view.",
+    imagePosition: "center",
+    imageFit: "contain",
+    showLabel: false
   }
 };
 

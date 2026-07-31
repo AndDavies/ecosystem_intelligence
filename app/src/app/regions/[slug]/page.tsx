@@ -82,6 +82,8 @@ export default async function RegionPage({
               alt={art.imageAlt ?? `Illustrative artwork representing ${region.name}`}
               imageSrc={art.imageSrc}
               imagePosition={art.imagePosition}
+              imageFit={art.imageFit}
+              showLabel={art.showLabel}
               priority
               className="order-1 h-[180px] rounded-none sm:h-[220px] lg:order-2 lg:aspect-auto lg:h-full lg:min-h-[320px]"
             />

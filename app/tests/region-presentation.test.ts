@@ -7,9 +7,11 @@ describe("regional presentation", () => {
 
     for (const slug of slugs) {
       const art = getRegionArt(slug);
-      expect(art.imageSrc).toBe(`/imagery/regions/${slug}.webp`);
-      expect(art.imageAlt).toMatch(/^Illustrative view of /);
+      expect(art.imageSrc).toBe(`/imagery/regions/${slug}.webp?v=20260731`);
+      expect(art.imageAlt).toMatch(/^Illustrative map /);
       expect(art.imagePosition).toBeTruthy();
+      expect(art.imageFit).toBe("contain");
+      expect(art.showLabel).toBe(false);
     }
   });
 

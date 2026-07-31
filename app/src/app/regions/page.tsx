@@ -89,6 +89,8 @@ async function RegionsDirectoryData() {
               alt={nationalArt!.imageAlt ?? `Illustrative artwork representing the ${national.name} view of the ecosystem map`}
               imageSrc={nationalArt!.imageSrc}
               imagePosition={nationalArt!.imagePosition}
+              imageFit={nationalArt!.imageFit}
+              showLabel={nationalArt!.showLabel}
               priority
               className="order-2 h-[200px] rounded-none sm:h-[240px] lg:order-1 lg:aspect-auto lg:h-full lg:min-h-[340px]"
             />
@@ -194,6 +196,8 @@ function RegionCard({ region }: { region: AtlasRegion }) {
         alt={art.imageAlt ?? `Illustrative artwork representing ${region.name}`}
         imageSrc={art.imageSrc}
         imagePosition={art.imagePosition}
+        imageFit={art.imageFit}
+        showLabel={art.showLabel}
       />
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]">
