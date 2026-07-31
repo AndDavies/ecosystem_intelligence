@@ -10,6 +10,7 @@ import type {
   AtlasCluster,
   AtlasConfidence,
   AtlasCoverageSummary,
+  AtlasDemandIndexSnapshot,
   AtlasDemandMatch,
   AtlasDemandRequirement,
   AtlasDemandSource,
@@ -59,6 +60,7 @@ const atlasDiscoveryColumns = {
   missionAreas: atlasColumns.missionAreas,
   missionMatches: atlasColumns.missionMatches,
   clusters: atlasColumns.clusters,
+  capabilityClusters: atlasColumns.capabilityClusters,
   demandSources: "id, source_verified_at, source_verified_by",
   demandRequirements: "id, demand_source_id, slug, title",
   demandMatches: atlasColumns.demandMatches,
@@ -175,6 +177,7 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(): Promise<Omit<Atl
     missionAreasResult,
     missionMatchesResult,
     clustersResult,
+    capabilityClustersResult,
     demandSourcesResult,
     demandRequirementsResult,
     demandMatchesResult,
@@ -190,6 +193,7 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(): Promise<Omit<Atl
     supabase.from("mission_areas").select(atlasDiscoveryColumns.missionAreas).eq("publication_status", "published"),
     supabase.from("capability_mission_matches").select(atlasDiscoveryColumns.missionMatches).eq("review_status", "approved").eq("publication_status", "published"),
     supabase.from("ecosystem_clusters").select(atlasDiscoveryColumns.clusters).eq("publication_status", "published"),
+    supabase.from("capability_clusters").select(atlasDiscoveryColumns.capabilityClusters).eq("publication_status", "published"),
     supabase.from("demand_sources").select(atlasDiscoveryColumns.demandSources).eq("publication_status", "published"),
     supabase.from("demand_requirements").select(atlasDiscoveryColumns.demandRequirements).eq("publication_status", "published"),
     supabase.from("capability_demand_matches").select(atlasDiscoveryColumns.demandMatches).eq("review_status", "approved").eq("publication_status", "published"),
@@ -207,6 +211,7 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(): Promise<Omit<Atl
     [missionAreasResult, "discovery mission areas"],
     [missionMatchesResult, "discovery mission matches"],
     [clustersResult, "discovery clusters"],
+    [capabilityClustersResult, "discovery capability cluster links"],
     [demandSourcesResult, "verified discovery demand sources"],
     [demandRequirementsResult, "discovery demand requirements"],
     [demandMatchesResult, "discovery demand matches"],
@@ -234,6 +239,7 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(): Promise<Omit<Atl
   const demandMatchesByCapability = groupBy(asRows(demandMatchesResult.data), "capability_id");
   const programById = byId(asRows(programsResult.data));
   const participationsByOrganization = groupBy(asRows(participationsResult.data), "organization_id");
+  const capabilityClustersByCluster = groupBy(asRows(capabilityClustersResult.data), "ecosystem_cluster_id");
 
   const mapLocation = (row: Row): AtlasLocation => {
     const provinceTerritory = asNullableString(row.province_territory);
@@ -419,10 +425,106 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(): Promise<Omit<Atl
       clusterBasis: ["program", "geographic", "technical"].includes(asString(row.cluster_basis))
         ? (asString(row.cluster_basis) as AtlasCluster["clusterBasis"])
         : "editorial",
-      capabilityIds: []
+      capabilityIds: (capabilityClustersByCluster.get(asString(row.id)) ?? []).map((link) =>
+        asString(link.capability_id)
+      )
     })),
     generatedAt: new Date().toISOString(),
     dataSource: "supabase"
+  };
+}
+
+/**
+ * Load only the public-need fields required by the collection page. This
+ * intentionally excludes organizations, capabilities, funding, programs, and
+ * the broader citation graph.
+ */
+export async function loadAtlasDemandIndexFromSupabase(): Promise<AtlasDemandIndexSnapshot> {
+  const supabase = createPublicClient();
+  const [demandSourcesResult, demandRequirementsResult, demandMatchesResult] = await Promise.all([
+    supabase
+      .from("demand_sources")
+      .select(atlasColumns.demandSources)
+      .eq("publication_status", "published"),
+    supabase
+      .from("demand_requirements")
+      .select(atlasColumns.demandRequirements)
+      .eq("publication_status", "published"),
+    supabase
+      .from("capability_demand_matches")
+      .select("id, demand_requirement_id")
+      .eq("review_status", "approved")
+      .eq("publication_status", "published")
+  ]);
+
+  [
+    [demandSourcesResult, "published demand index sources"],
+    [demandRequirementsResult, "published demand index requirements"],
+    [demandMatchesResult, "published demand index matches"]
+  ].forEach(([result, label]) =>
+    assertQuery(result as { error: { message?: string } | null }, String(label))
+  );
+
+  const demandSourceRows = asRows(demandSourcesResult.data);
+  const sourceGraph = await loadPublicCitationGraph([], demandSourceRows);
+  const publicSourceById = byId(sourceGraph.sources);
+  const publicEvidenceById = byId(sourceGraph.evidence);
+  const verifiedSourceById = new Map<string, {
+    id: string;
+    publisher: string;
+    sourceKind: string | null;
+    commitmentLevel: string | null;
+  }>();
+
+  demandSourceRows.forEach((row) => {
+    const publicSource = publicSourceById.get(asString(row.source_id));
+    const sourceEvidence = publicEvidenceById.get(asString(row.source_evidence_snippet_id));
+    const sourceUrl = publicSource ? asNullableString(publicSource.canonical_url) : null;
+    const isVerified = Boolean(
+      sourceUrl
+      && sourceEvidence
+      && asString(sourceEvidence.source_id) === asString(row.source_id)
+      && asNullableString(row.source_verified_at)
+      && asNullableString(row.source_verified_by)
+    );
+    if (!isVerified) return;
+    verifiedSourceById.set(asString(row.id), {
+      id: asString(row.id),
+      publisher: asString(row.publisher),
+      sourceKind: asNullableString(row.source_kind),
+      commitmentLevel: asNullableString(row.commitment_level)
+    });
+  });
+
+  const matchCountByRequirement = new Map<string, number>();
+  asRows(demandMatchesResult.data).forEach((row) => {
+    const requirementId = asString(row.demand_requirement_id);
+    matchCountByRequirement.set(requirementId, (matchCountByRequirement.get(requirementId) ?? 0) + 1);
+  });
+
+  const demands = asRows(demandRequirementsResult.data)
+    .map((row) => {
+      const source = verifiedSourceById.get(asString(row.demand_source_id));
+      if (!source) return null;
+      const id = asString(row.id);
+      return {
+        id,
+        slug: asString(row.slug),
+        title: asString(row.title),
+        problemStatement: asString(row.problem_statement),
+        displayOrder: asNumber(row.display_order) ?? 0,
+        matchCount: matchCountByRequirement.get(id) ?? 0,
+        source
+      };
+    })
+    .filter((value): value is NonNullable<typeof value> => Boolean(value))
+    .sort((left, right) => left.displayOrder - right.displayOrder || left.title.localeCompare(right.title));
+
+  return {
+    demands,
+    sourceCount: new Set(demands.map((demand) => demand.source.id)).size,
+    matchCount: demands.reduce((sum, demand) => sum + demand.matchCount, 0),
+    generatedAt: new Date().toISOString()
   };
 }
 

@@ -76,11 +76,11 @@ export function PublicAtlasHeader() {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={openBetaUpdates}
+            onClick={() => openBetaUpdates("newsletter_header")}
             className="atlas-secondary-button !hidden h-11 items-center gap-2 px-4 text-sm sm:!inline-flex"
           >
             <Bell className="size-4" />
-            Get updates
+            North Signal
           </button>
           {authState === "checking" ? (
             <span className="hidden h-11 w-[94px] items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white/70 text-[var(--atlas-muted)] sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
@@ -124,7 +124,7 @@ export function PublicAtlasHeader() {
                 </Link>
               );
             })}
-            <button type="button" onClick={() => { openBetaUpdates(); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" />Get updates</button>
+            <button type="button" onClick={() => { openBetaUpdates("newsletter_header"); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" />North Signal</button>
             <button type="button" onClick={() => { openBetaFeedback(); setOpen(false); }} className="atlas-secondary-button inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><MessageSquareText className="size-4" />Give feedback</button>
             {authState === "checking" ? (
               <span className="rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 text-center text-sm font-semibold text-[var(--atlas-muted)]">Checking account…</span>

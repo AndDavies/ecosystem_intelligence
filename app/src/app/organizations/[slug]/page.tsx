@@ -8,6 +8,7 @@ import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
+import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import {
   evidenceStrengthLabel,
@@ -244,6 +245,8 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
               </div>
             ) : null}
           </PublicCard>
+
+          <NorthSignalInline placement="newsletter_inline_profile" trigger="profile_evidence_context" />
         </div>
       </div>
     </PublicPageShell>

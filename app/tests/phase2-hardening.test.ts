@@ -60,13 +60,59 @@ describe("phase 2 launch hardening", () => {
     expect(repository).toContain("queryAtlasExplorerSnapshot(await getAtlasDiscoverySnapshot(), query)");
     const discoveryLoader = supabaseRepository.slice(
       supabaseRepository.indexOf("loadAtlasDiscoverySnapshotFromSupabase"),
-      supabaseRepository.indexOf("loadAtlasCoverageSummaryFromSupabase")
+      supabaseRepository.indexOf("loadAtlasDemandIndexFromSupabase")
     );
     expect(discoveryLoader).not.toContain("loadPublicCitationGraph");
     expect(discoveryLoader).toContain("verifiedDemandSourceIds");
     expect(discoveryLoader).toContain("source_verified_at");
     expect(discoveryLoader).toContain("source_verified_by");
     expect(JSON.parse(vercel)).toMatchObject({ regions: ["sfo1"] });
+  });
+
+  it("streams collection-page shells while loading only their compact public projections", async () => {
+    const [organizations, regions, regionDetail, demand, repository, supabaseRepository] = await Promise.all([
+      readFile(path.resolve("src/app/organizations/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/regions/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/regions/[slug]/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/demand/page.tsx"), "utf8"),
+      readFile(path.resolve("src/lib/atlas/repository.ts"), "utf8"),
+      readFile(path.resolve("src/lib/atlas/supabase-repository.ts"), "utf8")
+    ]);
+
+    expect(organizations).toContain("getAtlasDiscoverySnapshot()");
+    expect(organizations).toContain("getAtlasCoverageSummary()");
+    expect(organizations).toContain("<Suspense fallback={<OrganizationsDirectoryFallback />}");
+    expect(organizations).not.toContain("getAtlasSnapshot");
+
+    expect(regions).toContain("getAtlasDiscoverySnapshot()");
+    expect(regions).toContain("<Suspense fallback={<RegionsDirectoryFallback />}");
+    expect(regions).not.toContain("getAtlasSnapshot");
+
+    expect(regionDetail).toContain("getAtlasRegionDefinitionBySlug");
+    expect(regionDetail).toContain("getAtlasRegionDirectoryBySlug");
+    expect(regionDetail).toContain("<Suspense fallback={<RegionDirectoryFallback />}");
+    expect(regionDetail).not.toContain("getAtlasRegionBySlug");
+    expect(regionDetail).not.toContain("getAtlasSnapshot");
+
+    expect(demand).toContain("getAtlasDemandIndex()");
+    expect(demand).toContain("<Suspense fallback={<DemandDirectoryFallback />}");
+    expect(demand).not.toContain("getAtlasSnapshot");
+
+    expect(repository).toContain("ecosystem-intelligence-demand-index-v1");
+    expect(repository).toContain('tags: ["atlas-public"]');
+    const demandIndexLoader = supabaseRepository.slice(
+      supabaseRepository.indexOf("loadAtlasDemandIndexFromSupabase"),
+      supabaseRepository.indexOf("loadAtlasCoverageSummaryFromSupabase")
+    );
+    expect(demandIndexLoader).toContain('.from("demand_sources")');
+    expect(demandIndexLoader).toContain('.from("demand_requirements")');
+    expect(demandIndexLoader).toContain('.from("capability_demand_matches")');
+    expect(demandIndexLoader).toContain('.eq("review_status", "approved")');
+    expect(demandIndexLoader).toContain("source_verified_at");
+    expect(demandIndexLoader).toContain("source_verified_by");
+    expect(demandIndexLoader).not.toContain('.from("organizations")');
+    expect(demandIndexLoader).not.toContain('.from("capabilities")');
+    expect(demandIndexLoader).not.toContain('.from("funding_events")');
   });
 
   it("keeps the compact split hero independent from national data loading", async () => {

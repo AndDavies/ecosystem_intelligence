@@ -74,5 +74,5 @@ export async function POST(request: Request) {
     metadata: { source: parsed.data.source }
   });
 
-  return NextResponse.json({ ok: true, message: "You are on the True North Map update list." }, { status: 202, headers: { "Cache-Control": "private, no-store" } });
+  return NextResponse.json({ ok: true, message: "You are subscribed to North Signal." }, { status: 202, headers: { "Cache-Control": "private, no-store" } });
 }

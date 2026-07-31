@@ -17,7 +17,7 @@ export function PublicAtlasFooter({ generatedLabel }: { generatedLabel?: string 
         </div>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <button type="button" onClick={openBetaFeedback} className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-[var(--atlas-signal)] hover:underline"><MessageSquareText className="size-3.5" />Give feedback</button>
-          <button type="button" onClick={openBetaUpdates} className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-[var(--atlas-signal)] hover:underline"><Bell className="size-3.5" />Get updates</button>
+          <button type="button" onClick={() => openBetaUpdates("newsletter_footer")} className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-[var(--atlas-signal)] hover:underline"><Bell className="size-3.5" />North Signal</button>
           <AnalyticsPreferencesButton className="font-semibold text-white/70 hover:text-[var(--atlas-signal)] hover:underline" />
           <Link href="/privacy" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Privacy</Link>
           <Link href="/methodology" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Methodology</Link>

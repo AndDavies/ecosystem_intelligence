@@ -1,11 +1,16 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, CheckCircle2, FileCheck2, LoaderCircle, MapPinned, MessageSquareText, Send, X } from "lucide-react";
+import { Bell, CheckCircle2, LoaderCircle, MessageSquareText, Send, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { BrandLogo } from "@/components/atlas/brand-logo";
+import {
+  NorthSignalSampleLink,
+  NorthSignalIssuePreview,
+  NorthSignalSignupForm,
+  northSignalSubscribedKey
+} from "@/components/atlas/north-signal-signup";
 import { TurnstileField } from "@/components/security/turnstile-field";
 import {
   currentPilotCohort,
@@ -13,34 +18,39 @@ import {
   currentPilotSessionId,
   trackBetaEvent
 } from "@/lib/product-insights/client";
+import type { NorthSignalSignupSource } from "@/lib/product-insights/validation";
 
-const consentText = "I agree to receive occasional True North Map updates. I can unsubscribe at any time.";
-const consentVersion = "updates-2026-07-v2";
 const dismissedKey = "ecosystem-intelligence-updates-dismissed-at";
-const subscribedKey = "ecosystem-intelligence-updates-subscribed";
 const dismissForMs = 30 * 24 * 60 * 60 * 1000;
 
 function pathIsPublicBeta(pathname: string) {
   return pathname === "/" || ["/regions", "/organizations", "/capabilities", "/demand", "/briefs", "/about", "/how-it-works", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
 }
 
+function newsletterEventMetadata(placement: NorthSignalSignupSource, trigger: string, variant: "banner" | "dialog", pathname: string) {
+  return {
+    placement,
+    trigger: trigger.slice(0, 80),
+    variant,
+    device_class: typeof window === "undefined" ? "unknown" : window.innerWidth < 640 ? "mobile" : window.innerWidth < 1024 ? "tablet" : "desktop",
+    content_type: pathname === "/" ? "atlas" : pathname.startsWith("/briefs/") ? "defence_brief" : pathname.startsWith("/organizations/") ? "organization_profile" : "public_page",
+    landing_path: pathname.slice(0, 255)
+  };
+}
+
 export function PublicBetaExperience() {
   const pathname = usePathname();
   const [updatesOpen, setUpdatesOpen] = useState(false);
+  const [mobileBannerOpen, setMobileBannerOpen] = useState(false);
+  const [updatesContext, setUpdatesContext] = useState<{ placement: NorthSignalSignupSource; trigger: string }>({ placement: "newsletter_modal_desktop", trigger: "explicit" });
   const [feedbackOpen, setFeedbackOpen] = useState(false);
-  const [signupState, setSignupState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [feedbackState, setFeedbackState] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [signupError, setSignupError] = useState("");
   const [feedbackError, setFeedbackError] = useState("");
-  const [signupCaptchaToken, setSignupCaptchaToken] = useState("");
   const [feedbackCaptchaToken, setFeedbackCaptchaToken] = useState("");
-  const [signupCaptchaAttempt, setSignupCaptchaAttempt] = useState(0);
   const [feedbackCaptchaAttempt, setFeedbackCaptchaAttempt] = useState(0);
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-  const interactionCount = useRef(0);
-  const hasScrolled = useRef(false);
-  const minimumDelayPassed = useRef(false);
   const automaticPromptSuppressed = useRef(false);
+  const automaticPromptShown = useRef(false);
   const updatesOpenedExplicitly = useRef(false);
   const updatesOpenRef = useRef(false);
   const feedbackOpenRef = useRef(false);
@@ -49,10 +59,17 @@ export function PublicBetaExperience() {
     if (!pathIsPublicBeta(pathname)) return;
     currentPilotCohort();
 
-    const openUpdates = () => {
+    const openUpdates = (event: Event) => {
+      const detail = (event as CustomEvent<{ placement?: NorthSignalSignupSource; trigger?: string }>).detail;
+      const placement = detail?.placement ?? "newsletter_header";
+      const trigger = detail?.trigger ?? "explicit";
       updatesOpenedExplicitly.current = true;
+      setUpdatesContext({ placement, trigger });
       setFeedbackOpen(false);
+      setMobileBannerOpen(false);
       setUpdatesOpen(true);
+      trackBetaEvent("newsletter_impression", newsletterEventMetadata(placement, trigger, "dialog", pathname));
+      trackBetaEvent("newsletter_open", newsletterEventMetadata(placement, trigger, "dialog", pathname));
     };
     const openFeedback = () => {
       setUpdatesOpen(false);
@@ -64,7 +81,7 @@ export function PublicBetaExperience() {
     let alreadySubscribed = false;
     let recentlyDismissed = false;
     try {
-      alreadySubscribed = window.localStorage.getItem(subscribedKey) === "true";
+      alreadySubscribed = window.localStorage.getItem(northSignalSubscribedKey) === "true";
       const dismissedAt = Number(window.localStorage.getItem(dismissedKey) ?? 0);
       recentlyDismissed = dismissedAt > 0 && Date.now() - dismissedAt < dismissForMs;
     } catch {
@@ -72,41 +89,51 @@ export function PublicBetaExperience() {
     }
     automaticPromptSuppressed.current = alreadySubscribed || recentlyDismissed;
 
-    const openAutomaticPrompt = () => {
-      if (automaticPromptSuppressed.current || updatesOpenRef.current || feedbackOpenRef.current) return;
+    const qualifyAutomaticPrompt = (trigger: string) => {
+      if (automaticPromptSuppressed.current || automaticPromptShown.current || updatesOpenRef.current || feedbackOpenRef.current) return;
+      automaticPromptShown.current = true;
       updatesOpenedExplicitly.current = false;
+      if (window.matchMedia("(max-width: 639px)").matches) {
+        setUpdatesContext({ placement: "newsletter_banner_mobile", trigger });
+        setMobileBannerOpen(true);
+        trackBetaEvent("newsletter_impression", newsletterEventMetadata("newsletter_banner_mobile", trigger, "banner", pathname));
+        return;
+      }
+      setUpdatesContext({ placement: "newsletter_modal_desktop", trigger });
       setUpdatesOpen(true);
+      trackBetaEvent("newsletter_impression", newsletterEventMetadata("newsletter_modal_desktop", trigger, "dialog", pathname));
     };
-    const minimumDelay = automaticPromptSuppressed.current
-      ? null
-      : window.setTimeout(() => {
-          minimumDelayPassed.current = true;
-          if (interactionCount.current >= 2 || hasScrolled.current) openAutomaticPrompt();
-        }, 25_000);
-    const fallbackTimer = automaticPromptSuppressed.current ? null : window.setTimeout(openAutomaticPrompt, 75_000);
     const onMeaningfulInteraction = (event: MouseEvent) => {
       const target = event.target instanceof Element ? event.target.closest("a, button") : null;
       if (!target) return;
       const anchor = target instanceof HTMLAnchorElement ? target : target.closest("a");
       if (anchor?.href.includes("/api/export")) trackBetaEvent("export", { type: "download" });
       else if (anchor?.target === "_blank" && anchor.href.startsWith("http")) trackBetaEvent("evidence_open", { destination_host: new URL(anchor.href).hostname });
-      if (automaticPromptSuppressed.current || target.closest("[data-beta-ui]")) return;
-      interactionCount.current += 1;
-      if (interactionCount.current >= 2 && minimumDelayPassed.current) openAutomaticPrompt();
+    };
+    const onMeaningfulEvent = (event: Event) => {
+      const detail = (event as CustomEvent<{ eventName?: string }>).detail;
+      if (detail?.eventName === "evidence_open") qualifyAutomaticPrompt("evidence_opened");
+      if (detail?.eventName === "atlas_search") qualifyAutomaticPrompt("ask_result_viewed");
+    };
+    const onQualifiedJourney = (event: Event) => {
+      const detail = (event as CustomEvent<{ trigger?: string }>).detail;
+      qualifyAutomaticPrompt(detail?.trigger ?? "meaningful_engagement");
     };
     const onScroll = () => {
+      if (!/^\/briefs\/[^/]+$/.test(pathname)) return;
       const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      if (window.scrollY / scrollable < 0.5) return;
-      hasScrolled.current = true;
-      if (minimumDelayPassed.current) openAutomaticPrompt();
+      if (window.scrollY / scrollable < 0.6) return;
+      qualifyAutomaticPrompt("brief_60_percent");
     };
     document.addEventListener("click", onMeaningfulInteraction, true);
+    window.addEventListener("tnm:meaningful-event", onMeaningfulEvent);
+    window.addEventListener("tnm:newsletter-qualify", onQualifiedJourney);
     window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      if (minimumDelay !== null) window.clearTimeout(minimumDelay);
-      if (fallbackTimer !== null) window.clearTimeout(fallbackTimer);
       document.removeEventListener("click", onMeaningfulInteraction, true);
+      window.removeEventListener("tnm:meaningful-event", onMeaningfulEvent);
+      window.removeEventListener("tnm:newsletter-qualify", onQualifiedJourney);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pilot:open-updates", openUpdates);
       window.removeEventListener("pilot:open-feedback", openFeedback);
@@ -131,59 +158,31 @@ export function PublicBetaExperience() {
       // Duplicate protection is best-effort only.
     }
     trackBetaEvent("dossier_open", { slug: pathname.split("/").pop() ?? "unknown" });
+    try {
+      const stored = JSON.parse(window.sessionStorage.getItem("tnm:north-signal-profile-views") ?? "[]") as unknown;
+      const profileViews = Array.isArray(stored) ? stored.filter((value): value is string => typeof value === "string") : [];
+      const updated = Array.from(new Set([...profileViews, pathname])).slice(-10);
+      window.sessionStorage.setItem("tnm:north-signal-profile-views", JSON.stringify(updated));
+      if (updated.length >= 2) window.dispatchEvent(new CustomEvent("tnm:newsletter-qualify", { detail: { trigger: "second_profile" } }));
+    } catch {
+      // High-intent prompting is best-effort when session storage is unavailable.
+    }
   }, [pathname]);
 
   if (!pathIsPublicBeta(pathname)) return null;
 
-  function dismissUpdates() {
+  function dismissUpdates(placement = updatesContext.placement, trigger = updatesContext.trigger) {
     automaticPromptSuppressed.current = true;
     setUpdatesOpen(false);
+    setMobileBannerOpen(false);
+    let subscribed = false;
     try {
+      subscribed = window.localStorage.getItem(northSignalSubscribedKey) === "true";
       window.localStorage.setItem(dismissedKey, String(Date.now()));
     } catch {
       // Dismissal still applies to the current render.
     }
-  }
-
-  async function submitSignup(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const formElement = event.currentTarget;
-    const form = new FormData(formElement);
-    setSignupState("loading");
-    setSignupError("");
-    const response = await fetch("/api/beta-signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        email: String(form.get("email") ?? ""),
-        consent: form.get("consent") === "on",
-        consentText,
-        consentVersion,
-        source: "updates_dialog",
-        cohort: currentPilotCohort(),
-        sessionId: currentPilotSessionId(),
-        searchId: currentPilotSearchId(),
-        landingPath: window.location.pathname,
-        captchaToken: signupCaptchaToken,
-        website: String(form.get("website") ?? "")
-      })
-    });
-    const body = (await response.json().catch(() => null)) as { error?: string } | null;
-    if (!response.ok) {
-      setSignupCaptchaToken("");
-      setSignupCaptchaAttempt((attempt) => attempt + 1);
-      setSignupError(body?.error ?? "Your signup could not be saved.");
-      setSignupState("error");
-      return;
-    }
-    try {
-      window.localStorage.setItem(subscribedKey, "true");
-    } catch {
-      // The server-side consent record is authoritative.
-    }
-    automaticPromptSuppressed.current = true;
-    setSignupState("success");
-    formElement.reset();
+    if (!subscribed) trackBetaEvent("newsletter_dismiss", newsletterEventMetadata(placement, trigger, placement === "newsletter_banner_mobile" ? "banner" : "dialog", pathname));
   }
 
   async function submitFeedback(event: FormEvent<HTMLFormElement>) {
@@ -234,6 +233,28 @@ export function PublicBetaExperience() {
         <span className="[writing-mode:vertical-rl] rotate-180">Feedback</span>
       </button>
 
+      {mobileBannerOpen ? (
+        <aside className="fixed inset-x-3 bottom-3 z-[1200] border border-[var(--atlas-border-strong)] border-l-4 border-l-[var(--atlas-signal)] bg-white p-3 shadow-[var(--atlas-shadow-float)] sm:hidden" aria-label="North Signal weekly briefing">
+          <div className="flex items-start gap-3">
+            <Bell aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-[var(--atlas-ink)]" />
+            <button
+              type="button"
+              className="min-w-0 flex-1 text-left"
+              onClick={() => {
+                setMobileBannerOpen(false);
+                updatesOpenedExplicitly.current = true;
+                setUpdatesOpen(true);
+                trackBetaEvent("newsletter_open", newsletterEventMetadata("newsletter_banner_mobile", updatesContext.trigger, "banner", pathname));
+              }}
+            >
+              <strong className="block text-sm text-[var(--atlas-ink)]">See what Canada is building next.</strong>
+              <span className="mt-0.5 block text-[11px] leading-5 text-[var(--atlas-muted)]">Get the weekly North Signal briefing.</span>
+            </button>
+            <button type="button" onClick={() => dismissUpdates("newsletter_banner_mobile", updatesContext.trigger)} className="flex size-8 shrink-0 items-center justify-center text-[var(--atlas-muted)]" aria-label="Dismiss North Signal invitation"><X aria-hidden="true" className="size-4" /></button>
+          </div>
+        </aside>
+      ) : null}
+
       <Dialog.Root
         open={updatesOpen}
         modal
@@ -251,49 +272,32 @@ export function PublicBetaExperience() {
             onOpenAutoFocus={(event) => {
               if (!updatesOpenedExplicitly.current) event.preventDefault();
             }}
-            className="fixed left-1/2 top-1/2 z-[1250] max-h-[calc(100vh-2rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-[18px] border border-[var(--atlas-border)] border-t-[3px] border-t-[var(--atlas-signal)] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:p-7"
+            className="fixed inset-x-0 bottom-0 z-[1250] max-h-[88vh] overflow-y-auto border border-[var(--atlas-border)] border-t-[3px] border-t-[var(--atlas-signal)] bg-white shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-[640px] sm:-translate-x-1/2 sm:-translate-y-1/2"
           >
-          <div className="flex items-start gap-3">
-            <span className="shrink-0"><BrandLogo compact /></span>
-            <div className="min-w-0 flex-1">
-              <p className="atlas-eyebrow">Make Canadian capability visible</p>
-              <Dialog.Title id="pilot-updates-title" className="mt-1 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-3xl">See what Canada is building next.</Dialog.Title>
-            </div>
-            <Dialog.Close asChild><button type="button" className="flex size-8 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss update signup"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
-          </div>
-          <Dialog.Description id="pilot-updates-description" className={signupState === "success" ? "sr-only" : "mt-4 text-sm leading-6 text-[var(--atlas-muted)]"}>Get a concise note when new verified organizations, Canadian defence analysis, and useful discovery features are ready.</Dialog.Description>
-
-          {signupState === "success" ? (
-            <div className="mt-5 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-4 text-sm leading-6 text-[var(--atlas-primary)]">
-              <CheckCircle2 aria-hidden="true" className="mb-2 size-5" />
-              You are on the update list. We will only send occasional product and coverage updates.
-            </div>
-          ) : (
-            <>
-              <div className="mt-5 grid gap-2 rounded-2xl bg-[var(--atlas-surface-muted)] p-4 text-xs leading-5 text-[var(--atlas-ink-soft)] sm:grid-cols-2">
-                <p className="flex gap-2"><MapPinned className="mt-0.5 size-4 shrink-0 text-[var(--atlas-primary)]" aria-hidden="true" /><span><strong className="block text-[var(--atlas-ink)]">New ecosystem coverage</strong>Companies, technology, and regional gaps worth exploring.</span></p>
-                <p className="flex gap-2"><FileCheck2 className="mt-0.5 size-4 shrink-0 text-[var(--atlas-primary)]" aria-hidden="true" /><span><strong className="block text-[var(--atlas-ink)]">Reviewed defence briefs</strong>Public signals and what they may mean for Canada.</span></p>
+            <div className="grid sm:grid-cols-[220px_minmax(0,1fr)]">
+              <NorthSignalIssuePreview className="hidden sm:flex" />
+              <div className="p-5 sm:p-7">
+                <div className="flex items-start gap-3">
+                  <span className="hidden shrink-0 sm:block"><BrandLogo compact /></span>
+                  <div className="min-w-0 flex-1">
+                    <p className="atlas-eyebrow">North Signal · Weekly briefing</p>
+                    <Dialog.Title id="pilot-updates-title" className="mt-1 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">See what Canada is building next.</Dialog.Title>
+                  </div>
+                  <Dialog.Close asChild><button type="button" className="flex size-8 shrink-0 items-center justify-center rounded-[8px] text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss North Signal signup"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
+                </div>
+                <Dialog.Description id="pilot-updates-description" className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">One concise weekly briefing on newly mapped Canadian capabilities, released public needs, and defence developments worth following.</Dialog.Description>
+                <ul className="mt-4 grid gap-1.5 text-xs leading-5 text-[var(--atlas-ink-soft)]">
+                  <li>Who and what was added to the map.</li>
+                  <li>Public needs and possible Canadian fits.</li>
+                  <li>The week&apos;s defence developments, with original sources.</li>
+                </ul>
+                <p className="mt-3 text-xs font-semibold text-[var(--atlas-muted)]">Weekly. Evidence-led. Unsubscribe anytime.</p>
+                <div className="mt-5">
+                  <NorthSignalSignupForm placement={updatesContext.placement} trigger={updatesContext.trigger} variant={updatesContext.placement === "newsletter_banner_mobile" ? "sheet" : "dialog"} onSuccess={() => { automaticPromptSuppressed.current = true; setMobileBannerOpen(false); }} />
+                </div>
+                <NorthSignalSampleLink className="mt-4" />
               </div>
-              <form onSubmit={submitSignup} data-clarity-mask="true" className="mt-5 space-y-3">
-                {signupError ? <div role="alert" className="rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-xs text-[var(--atlas-danger)]">{signupError}</div> : null}
-                <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">
-                  Email address
-                  <input name="email" type="email" required autoComplete="email" placeholder="you@organization.ca" className="h-11 rounded-xl border border-[var(--atlas-border-strong)] px-3 text-sm font-normal outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]" />
-                </label>
-                <label className="flex items-start gap-2.5 text-[11px] leading-5 text-[var(--atlas-muted)]">
-                  <input name="consent" type="checkbox" required className="mt-1 size-4 accent-[var(--atlas-primary)]" />
-                  <span>{consentText} <Link href="/privacy" className="font-semibold text-[var(--atlas-primary)] underline">Privacy details</Link></span>
-                </label>
-                <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
-                {turnstileSiteKey ? <TurnstileField key={signupCaptchaAttempt} siteKey={turnstileSiteKey} onTokenChange={setSignupCaptchaToken} purpose="signup" /> : null}
-                <button type="submit" disabled={signupState === "loading" || Boolean(turnstileSiteKey && !signupCaptchaToken)} aria-busy={signupState === "loading" || undefined} className="atlas-primary-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60">
-                  {signupState === "loading" ? <LoaderCircle aria-hidden="true" className="size-4 animate-spin" /> : <Bell aria-hidden="true" className="size-4" />}
-                  Get updates
-                </button>
-                <Dialog.Close asChild><button type="button" className="w-full py-1 text-xs font-semibold text-[var(--atlas-muted)] hover:text-[var(--atlas-ink)]">Not now</button></Dialog.Close>
-              </form>
-            </>
-          )}
+            </div>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { betaFeedbackSchema, betaSignupSchema } from "@/lib/product-insights/validation";
+import { betaFeedbackSchema, betaSignupSchema, northSignalConsentText, northSignalConsentVersion } from "@/lib/product-insights/validation";
 import { contactMessageSchema } from "@/lib/beta/validation";
 
 describe("public form Turnstile contracts", () => {
@@ -7,8 +7,9 @@ describe("public form Turnstile contracts", () => {
     expect(betaSignupSchema.parse({
       email: "person@example.ca",
       consent: true,
-      consentText: "I agree to receive occasional product updates.",
-      consentVersion: "updates-v1",
+      consentText: northSignalConsentText,
+      consentVersion: northSignalConsentVersion,
+      source: "newsletter_inline_home",
       landingPath: "/",
       captchaToken: "signup-token"
     }).captchaToken).toBe("signup-token");

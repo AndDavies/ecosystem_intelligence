@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowRight, CircleDashed, FileText, ShieldAlert } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import { PaginationNav } from "@/components/ui/pagination-nav";
-import { getAtlasSnapshot } from "@/lib/atlas/repository";
+import { getAtlasDemandIndex } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import { toTitleCase } from "@/lib/utils";
 import { socialMetadata } from "@/lib/seo/social";
@@ -20,17 +21,9 @@ export const metadata: Metadata = {
   ...socialMetadata({ title: "Public Needs", description: "See released public needs, then explore reviewed Canadian technologies that may help.", path: "/demand", eyebrow: "Start with the problem" })
 };
 
-export default async function DemandIndexPage({
-  searchParams
-}: {
-  searchParams: Promise<{ page?: string }>;
-}) {
-  const snapshot = await getAtlasSnapshot();
-  const params = await searchParams;
-  const directory = paginate(snapshot.demandRequirements, normalizedPage(params.page), 12);
-  const totalMatches = snapshot.demandRequirements.reduce((sum, demand) => sum + demand.matches.length, 0);
-  const demandSourceCount = new Set(snapshot.demandRequirements.map((demand) => demand.source.id)).size;
+type DemandSearchParams = Promise<{ page?: string }>;
 
+export default function DemandIndexPage({ searchParams }: { searchParams: DemandSearchParams }) {
   return (
     <PublicPageShell
       eyebrow="Public Needs"
@@ -38,16 +31,30 @@ export default async function DemandIndexPage({
       description="Follow released needs from governments, armed forces, programs, and allied organizations. Then see the Canadian technologies a person has reviewed against that public record."
     >
       <EvidenceLegend compact className="mb-5" />
-      {totalMatches === 0 ? (
-        <div className="mb-5 flex items-start gap-3 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-4 py-4 text-sm leading-6 text-[var(--atlas-primary)]">
-          <CircleDashed className="mt-0.5 size-5 shrink-0" />
-          <div><p className="font-semibold">The public problems are visible; reviewed technology matches are still being built.</p><p className="mt-1 text-xs leading-5">{demandSourceCount} public {demandSourceCount === 1 ? "source is" : "sources are"} represented through {snapshot.demandRequirements.length} reviewed problem {snapshot.demandRequirements.length === 1 ? "statement" : "statements"}. No organization matches have been published yet.</p></div>
-        </div>
-      ) : null}
       <div className="mb-5 flex items-start gap-3 rounded-lg border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
         <ShieldAlert className="mt-0.5 size-4 shrink-0" />
         <p>Every Demand Signal starts with a released public source. A connection to Canadian technology is our reviewed assessment, not procurement eligibility, endorsement, customer interest, classified demand, or a formal opportunity.</p>
       </div>
+      <Suspense fallback={<DemandDirectoryFallback />}>
+        <DemandDirectoryData searchParams={searchParams} />
+      </Suspense>
+      <div className="mt-6 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-5 py-4 text-sm text-[var(--atlas-muted)]">Not sure how sources become assessments? <Link href="/how-it-works" className="font-bold text-[var(--atlas-primary)]">See how True North Map works</Link>.</div>
+    </PublicPageShell>
+  );
+}
+
+async function DemandDirectoryData({ searchParams }: { searchParams: DemandSearchParams }) {
+  const [snapshot, params] = await Promise.all([getAtlasDemandIndex(), searchParams]);
+  const directory = paginate(snapshot.demands, normalizedPage(params.page), 12);
+
+  return (
+    <>
+      {snapshot.matchCount === 0 ? (
+        <div className="mb-5 flex items-start gap-3 rounded-xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-4 py-4 text-sm leading-6 text-[var(--atlas-primary)]">
+          <CircleDashed className="mt-0.5 size-5 shrink-0" />
+          <div><p className="font-semibold">The public problems are visible; reviewed technology matches are still being built.</p><p className="mt-1 text-xs leading-5">{snapshot.sourceCount} public {snapshot.sourceCount === 1 ? "source is" : "sources are"} represented through {snapshot.demands.length} reviewed problem {snapshot.demands.length === 1 ? "statement" : "statements"}. No organization matches have been published yet.</p></div>
+        </div>
+      ) : null}
       <div className="grid gap-4 lg:grid-cols-2">
         {directory.items.map((demand) => (
           <PublicCard key={demand.id} className="flex h-full flex-col">
@@ -59,14 +66,27 @@ export default async function DemandIndexPage({
             <h2 className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">{demand.title}</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{demand.problemStatement}</p>
             <div className="mt-auto pt-5">
-              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matches.length} reviewed technology {demand.matches.length === 1 ? "connection" : "connections"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment not stated"}</span></div>
+              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matchCount} reviewed technology {demand.matchCount === 1 ? "connection" : "connections"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment not stated"}</span></div>
               <Link href={`/demand/${demand.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">See the public need and relevant technology <ArrowRight className="size-3.5" /></Link>
             </div>
           </PublicCard>
         ))}
       </div>
       <PaginationNav path="/demand" page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="public needs" />
-      <div className="mt-6 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-5 py-4 text-sm text-[var(--atlas-muted)]">Not sure how sources become assessments? <Link href="/how-it-works" className="font-bold text-[var(--atlas-primary)]">See how True North Map works</Link>.</div>
-    </PublicPageShell>
+    </>
+  );
+}
+
+function DemandDirectoryFallback() {
+  return (
+    <div aria-live="polite" aria-busy="true">
+      <p className="sr-only">Loading released public needs</p>
+      <div aria-hidden="true" className="grid animate-pulse gap-4 lg:grid-cols-2">
+        {Array.from({ length: 6 }, (_, index) => (
+          <div key={index} className="h-64 rounded-2xl border border-[var(--atlas-border)] bg-white" />
+        ))}
+      </div>
+      <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading released public needs…</p>
+    </div>
   );
 }

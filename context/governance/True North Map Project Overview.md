@@ -1,7 +1,7 @@
 # True North Map Project Overview
 
 Status: active public product and review-first data operation
-Last reviewed: 2026-07-29
+Last reviewed: 2026-07-31
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -39,7 +39,7 @@ Place, technology, or public need
 
 ## Phase 2 release posture
 
-- Every matching published organization remains available to the national map and search through a compact projection. Rich evidence cards load in pages of 36 and full dossiers load only when opened.
+- Every matching published organization remains available to the national map and search through a compact projection. The same evidence-light projection now powers the Organizations, Regions, and regional collection routes behind streamed page shells; rich evidence remains on bounded dossiers and exports. Public Needs uses a separate source-gated collection index rather than loading the national organization and evidence graph. Rich map cards load in pages of 18 and directory cards remain paginated.
 - Public reads retry one transient upstream failure. Warm application instances may serve the last safe public snapshot while an upstream dependency recovers; cold instances continue to fail closed.
 - Public dossiers load citations through the selected organizations, technologies, reviewed matches, funding events, and public needs before fetching only their referenced approved evidence and sources. Internal demand-match reviewer rationale never enters the public atlas model, APIs, deterministic search text, or Ask True North catalogue.
 - `/api/health` checks the application and core public record families without returning internal database or provider details.
@@ -48,7 +48,7 @@ Place, technology, or public need
 - A daily production job purges expired raw searches after 90 days and detailed workflow events after 30 days.
 - `pnpm launch:validate` performs a deliberately low-rate crawl of every canonical public sitemap URL, checking status, metadata, canonical URLs, social metadata, structured data and image accessibility attributes without creating a load test.
 - The current launch kit lives under `content/launch/phase-2/`; older screenshots and demo material are not release assets.
-- The current production identity and the July 29 directional-N local review candidate are indexed in `content/brand/True North Map Brand System.md`; implementation marks live under `app/public/brand/`, and the candidate must not be called deployed before local approval and release validation.
+- The approved directional-N identity is indexed in `content/brand/True North Map Brand System.md`; production artwork lives under `app/public/brand/`.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 
@@ -58,7 +58,7 @@ Place, technology, or public need
 | --- | --- | --- |
 | `app/` | Next.js application, public and private routes, server actions, tests, deployment migrations, runtime integrations | Hold an alternate corpus or publish unreviewed research |
 | Supabase production | Sole canonical runtime for records, taxonomy, evidence, review state, auth, storage, and publication | Accept unreviewed agent output as public data |
-| `research/ingestion/` | Immutable typed lineage for leads, candidates, reviews, staging exports, and runs | Act as a runtime data source or automatic promotion channel |
+| `research/ingestion/` | Immutable typed lineage for collection plans, claim ledgers, signals, leads, candidates, reviews, staging exports, and runs | Act as a runtime data source or automatic promotion channel |
 | `.agents/skills/` | Ignored local operator skills for research and visibility | Enter the public repository, replace the live schema, or gain publication authority |
 | `context/governance/` | Product decisions, operating contracts, release and workflow documentation | Store candidate records or code-generated output |
 | `content/` | Launch, campaign, and non-runtime collateral | Become a source of public record truth |
@@ -81,7 +81,7 @@ Durable public source
 
 Research agents may find leads, assemble candidate changes, suggest a technology-to-demand connection, and explain the evidence. They may not publish a public organization, capability, Demand Signal, demand match, source, citation, or media asset.
 
-The complete research design uses seven stages: coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. The candidate-logo and private visibility integrations are active local work until their tracked skill files, commands, tests, and executable contracts are present in a clean checkout. This distinction prevents local artifacts from being mistaken for deployed capability.
+The complete research design uses seven stages: claim-led coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. Every new run prepares an intelligence-requirement collection plan, records atomic claims and conflicts, and completes dossier coverage before the ordinary Admin Review intake. Candidate-logo, claim-led OSINT, and private visibility integrations are active local work until their tracked skill files, commands, tests, and executable contracts are present in a clean checkout. This distinction prevents local artifacts from being mistaken for deployed capability.
 
 Demand Signals have an additional public-source gate. A published signal needs an HTTPS canonical released source, issuing authority, source locator, relevant excerpt, at least one public problem statement, a reviewer confirmation, and linked public evidence. Public demand pages and demand-match suggestions exclude a signal that no longer satisfies that gate; it is retained privately for completion rather than deleted.
 
@@ -120,6 +120,8 @@ This table is the shared translation layer. Database and editorial terms remain 
 | `candidate_change` | Under review | A private proposed new record or refresh. It is not published data. |
 | Source lead | Research lead | A private discovery item that still needs qualification and evidence. |
 | `research_run` | Research run | Private audit metadata for an ingestion activity. It is not an approval step or public record. |
+| OSINT collection plan | Research plan | Private run instructions covering intelligence questions, aliases, source lanes, language posture, evidence thresholds, and stop conditions. |
+| Claim ledger and dossier coverage | Research evidence lineage | Private atomic claims, conflicts, supersession, field targets, and coverage states. It is not a public feed or another review queue. |
 | `review_decision` | Review decision | Private editor acceptance, deferral, rejection, or publish decision with an audit trail. |
 | Publish checkpoint / promotion | Publish | The explicit human action that changes canonical public data after review. |
 | `saved_collections` | Working Lists | A user's private shortlist of organizations and technologies for follow-up. |
@@ -134,7 +136,8 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |
 | `media_assets` and `atlas-public-media` | Approved organization logo or public media | Provenance-backed approved media. Organization logos are only displayed when approved and published. |
 | Evidence-led ecosystem discovery | Product category | The concise public category describing the product without implying procurement authority or a generic AI platform. |
-| Directional N / North Signal | True North Map identity | The compact angular N and separated Signal Yellow north corner used in the proposed July 29 mark, favicon, social assets, and navigation. |
+| Directional N symbol | True North Map identity | The compact angular N and separated Signal Yellow north corner used in the logo, favicon, social assets, and navigation. |
+| Update newsletter | North Signal | A concise weekly briefing on newly mapped Canadian capabilities, released public needs, evidence-linked fits, and defence developments worth following. It is consent-backed and delivered through MailerLite. |
 | Source verification gate | Released-source verification | The demand-specific rule that prevents an unsourced summary from becoming a public Demand Signal. |
 | RLS and explicit Data API grants | Private security controls | Internal database controls. They protect drafts, user data, and staff actions; they are not public marketing language. |
 

@@ -127,6 +127,22 @@ action or a short piece of meaning.
   boundary and keep national map/search data behind the existing downstream
   loading boundary so corpus growth cannot block the first meaningful view.
 
+### Regional imagery
+
+- The approved regional image family uses restrained grayscale photography
+  with Signal Yellow as a directional or evidence accent.
+- Canada, Atlantic Canada, Quebec, Ontario, the Prairies, British Columbia and
+  the North each have one 16:9 WebP image under
+  `app/public/imagery/regions/`.
+- Regional images are illustrative orientation, never geographic evidence.
+  Counts, organization locations and coverage statements must continue to come
+  from the canonical published records.
+- Use descriptive alt text, fixed aspect ratios and the shared regional hero
+  component. Unknown regions retain the abstract fallback rather than borrowing
+  another region's image.
+- Do not add text, flags, logos or place labels inside the image asset. Route
+  headings and evidence remain readable HTML outside the artwork.
+
 ## Public navigation
 
 1. Map

@@ -81,6 +81,9 @@ export function trackBetaEvent(
   if (typeof window === "undefined") return;
   const releaseSource = currentReleaseAttribution();
   const boundedMetadata = Object.fromEntries(Object.entries(metadata).slice(0, releaseSource ? 7 : 8));
+  window.dispatchEvent(new CustomEvent("tnm:meaningful-event", {
+    detail: { eventName, metadata: boundedMetadata }
+  }));
   void fetch("/api/beta-events", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -96,8 +99,13 @@ export function trackBetaEvent(
   }).catch(() => undefined);
 }
 
-export function openBetaUpdates() {
-  if (typeof window !== "undefined") window.dispatchEvent(new Event("pilot:open-updates"));
+export function openBetaUpdates(
+  placement: "newsletter_header" | "newsletter_footer" = "newsletter_header",
+  trigger = "explicit"
+) {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("pilot:open-updates", { detail: { placement, trigger } }));
+  }
 }
 
 export function openBetaFeedback() {

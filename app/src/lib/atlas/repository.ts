@@ -7,6 +7,7 @@ import {
   loadAtlasCapabilityBySlugFromSupabase,
   loadAtlasCoverageSummaryFromSupabase,
   loadAtlasDemandBySlugFromSupabase,
+  loadAtlasDemandIndexFromSupabase,
   loadAtlasDiscoverySnapshotFromSupabase,
   loadAtlasOrganizationBySlugFromSupabase,
   loadPublishedAtlasSlugsFromSupabase,
@@ -20,6 +21,7 @@ import type {
   AtlasCoverageSummary,
   AtlasDiscoverySnapshot,
   AtlasDiscoveryResult,
+  AtlasDemandIndexSnapshot,
   AtlasOrganization,
   AtlasQuery,
   AtlasExplorerQueryResult,
@@ -96,6 +98,10 @@ const regionDefinitions: Array<Omit<AtlasRegion, "organizationCount" | "capabili
   }
 ];
 
+export function getAtlasRegionDefinitionBySlug(slug: string) {
+  return regionDefinitions.find((region) => region.slug === slug) ?? null;
+}
+
 type AtlasQueryableSnapshot = Pick<
   AtlasDiscoverySnapshot,
   "organizations" | "demandRequirements" | "technicalDomains" | "missionAreas" | "clusters" | "regions"
@@ -104,6 +110,7 @@ type AtlasQueryableSnapshot = Pick<
 let lastSafePublicSnapshot: Omit<AtlasSnapshot, "regions"> | null = null;
 let lastSafeDiscoverySnapshot: Omit<AtlasDiscoverySnapshot, "regions"> | null = null;
 let lastSafeCoverageSummary: AtlasCoverageSummary | null = null;
+let lastSafeDemandIndex: AtlasDemandIndexSnapshot | null = null;
 
 function buildRegions(snapshot: Pick<AtlasQueryableSnapshot, "organizations" | "clusters">): AtlasRegion[] {
   return regionDefinitions.map((definition) => {
@@ -142,6 +149,12 @@ const getCachedAtlasDiscoverySnapshot = unstable_cache(
 const getCachedAtlasCoverageSummary = unstable_cache(
   () => withPublicReadRetry(loadAtlasCoverageSummaryFromSupabase),
   ["ecosystem-intelligence-atlas-coverage-summary-v1"],
+  { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
+);
+
+const getCachedAtlasDemandIndex = unstable_cache(
+  () => withPublicReadRetry(loadAtlasDemandIndexFromSupabase),
+  ["ecosystem-intelligence-demand-index-v1"],
   { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
 );
 
@@ -220,6 +233,18 @@ export const getAtlasCoverageSummary = cache(async (): Promise<AtlasCoverageSumm
   } catch (error) {
     if (!lastSafeCoverageSummary) throw error;
     return lastSafeCoverageSummary;
+  }
+});
+
+export const getAtlasDemandIndex = cache(async (): Promise<AtlasDemandIndexSnapshot> => {
+  requireAtlasPublicEnvironment();
+  try {
+    const snapshot = await getCachedAtlasDemandIndex();
+    lastSafeDemandIndex = snapshot;
+    return snapshot;
+  } catch (error) {
+    if (!lastSafeDemandIndex) throw error;
+    return lastSafeDemandIndex;
   }
 });
 
@@ -541,6 +566,33 @@ export async function getAtlasRegionBySlug(slug: string) {
 
   return { region, organizations, clusters };
 }
+
+/**
+ * Evidence-light region data for public browsing. Rich evidence remains on
+ * organization dossiers and the existing export loader above.
+ */
+export const getAtlasRegionDirectoryBySlug = cache(async (slug: string) => {
+  const snapshot = await getAtlasDiscoverySnapshot();
+  const region = snapshot.regions.find((item) => item.slug === slug);
+  if (!region) return null;
+
+  const organizations =
+    slug === "canada"
+      ? snapshot.organizations
+      : snapshot.organizations.filter(
+          (organization) => organization.primaryLocation?.regionSlug === slug
+        );
+  const capabilityIds = new Set(
+    organizations.flatMap((organization) => organization.capabilities.map((item) => item.id))
+  );
+  const clusters = snapshot.clusters.filter(
+    (cluster) =>
+      (slug === "canada" || cluster.regionSlug === slug)
+      && cluster.capabilityIds.some((id) => capabilityIds.has(id))
+  );
+
+  return { region, organizations, clusters, regions: snapshot.regions };
+});
 
 function uniqueEvidenceLinks(organizations: AtlasOrganization[]) {
   const links = new Map<string, { title: string; url: string; publisher: string }>();

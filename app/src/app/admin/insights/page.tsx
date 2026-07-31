@@ -19,7 +19,7 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
     admin.from("pilot_feedback").select("id, goal, worked, missing, contact_email, context_path, status, created_at").order("created_at", { ascending: false }).limit(100),
     admin.from("pilot_update_signups").select("id", { count: "exact", head: true }).eq("status", "subscribed"),
     admin.from("pilot_searches").select("id, query_text, interpretation, resolved_filters, result_count, zero_result, context_path, created_at").order("created_at", { ascending: false }).limit(100),
-    admin.from("pilot_events").select("event_name, created_at").gte("created_at", new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()).limit(5000)
+    admin.from("pilot_events").select("event_name, session_id, context_path, metadata, created_at").gte("created_at", new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()).limit(5000)
   ]);
 
   const eventCounts = new Map<string, number>();
@@ -30,6 +30,23 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
   const coverageGaps = assistantSearches.filter((item) => item.outcome === "coverage_gap").length;
   const assistantLatency = assistantSearches.map((item) => item.latencyMs).filter((value): value is number => typeof value === "number");
   const averageLatency = assistantLatency.length ? Math.round(assistantLatency.reduce((sum, value) => sum + value, 0) / assistantLatency.length) : 0;
+  const newsletterStages = ["newsletter_impression", "newsletter_open", "newsletter_form_start", "newsletter_submit", "subscription"] as const;
+  const newsletterStageLabels: Record<(typeof newsletterStages)[number], string> = {
+    newsletter_impression: "Qualified impressions",
+    newsletter_open: "Prompt opened",
+    newsletter_form_start: "Form started",
+    newsletter_submit: "Submit attempted",
+    subscription: "Active subscriber"
+  };
+  const newsletterEvents = (events.data ?? []).filter((event) => newsletterStages.includes(event.event_name as (typeof newsletterStages)[number]));
+  const newsletterPlacements = new Map<string, Map<string, number>>();
+  for (const event of newsletterEvents) {
+    const metadata = event.metadata && typeof event.metadata === "object" && !Array.isArray(event.metadata) ? event.metadata as Record<string, unknown> : {};
+    const placement = typeof metadata.placement === "string" ? metadata.placement : typeof metadata.source === "string" ? metadata.source : "unknown";
+    const counts = newsletterPlacements.get(placement) ?? new Map<string, number>();
+    counts.set(event.event_name, (counts.get(event.event_name) ?? 0) + 1);
+    newsletterPlacements.set(placement, counts);
+  }
 
   return (
     <PublicPageShell variant="admin" eyebrow="Private administration" title="Public-beta operations" description="Review participation, learn from discovery behaviour, and progress private workflows without turning the product into a CRM." actions={<span className="rounded bg-[var(--admin-surface-subtle)] px-3 py-2 text-xs font-semibold text-[var(--admin-muted-strong)]">{user.role} · {user.email}</span>}>
@@ -46,13 +63,27 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
         <Metric label="Connection requests" value={connections.data?.length ?? 0} />
       </div>
       <PublicCard title="Workflow funnel" eyebrow="Meaningful events · last 30 days" className="mt-5"><div className="flex flex-wrap gap-2">{["atlas_search", "result_select", "dossier_open", "evidence_open", "export", "save", "submission", "connection", "subscription", "feedback"].map((name) => <span key={name} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] px-3 py-2 text-xs"><strong>{eventCounts.get(name) ?? 0}</strong> {name.replaceAll("_", " ")}</span>)}</div></PublicCard>
+      <PublicCard title="North Signal conversion" eyebrow="Consent funnel · last 30 days" className="mt-5">
+        <div className="grid gap-px overflow-hidden rounded-md border border-[var(--admin-border)] bg-[var(--admin-border)] sm:grid-cols-5">
+          {newsletterStages.map((stage) => <div key={stage} className="bg-white p-4"><strong className="text-2xl text-[var(--admin-ink)]">{eventCounts.get(stage) ?? 0}</strong><p className="mt-1 text-xs font-semibold text-[var(--admin-muted)]">{newsletterStageLabels[stage]}</p></div>)}
+        </div>
+        {newsletterPlacements.size ? (
+          <div className="mt-5 overflow-x-auto">
+            <table className="min-w-full text-left text-xs">
+              <thead><tr className="border-b border-[var(--admin-border)] text-[var(--admin-muted)]"><th className="px-3 py-2">Placement</th>{newsletterStages.map((stage) => <th key={stage} className="px-3 py-2">{newsletterStageLabels[stage]}</th>)}</tr></thead>
+              <tbody>{Array.from(newsletterPlacements.entries()).sort(([a], [b]) => a.localeCompare(b)).map(([placement, counts]) => <tr key={placement} className="border-b border-[var(--admin-border)]"><td className="px-3 py-2 font-semibold text-[var(--admin-ink)]">{placement.replace(/^newsletter_/, "").replaceAll("_", " ")}</td>{newsletterStages.map((stage) => <td key={stage} className="px-3 py-2 text-[var(--admin-muted-strong)]">{counts.get(stage) ?? 0}</td>)}</tr>)}</tbody>
+            </table>
+          </div>
+        ) : <p className="mt-4 text-xs text-[var(--admin-muted)]">North Signal funnel activity will appear after the updated capture surfaces are live.</p>}
+        <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)]">Events contain placement and device context only. Email addresses remain in the private consent ledger and are never attached to behaviour events.</p>
+      </PublicCard>
       <PublicCard title="First-week release scorecard" eyebrow="Broader public beta targets" className="mt-5">
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           <ScorecardItem label="Qualified sessions" target="300" current="Vercel Analytics" />
           <ScorecardItem label="Discovery engagement" target="50%" current="GA4 / Vercel" />
           <ScorecardItem label="Profile reach" target="25%" current={`${eventCounts.get("dossier_open") ?? 0} opens`} />
           <ScorecardItem label="Zero-result searches" target="Below 25%" current={totalSearches ? `${Math.round((zeroSearches / totalSearches) * 100)}%` : "No data"} />
-          <ScorecardItem label="Update subscribers" target="25" current={String(subscribers.count ?? 0)} />
+          <ScorecardItem label="North Signal subscribers" target="25" current={String(subscribers.count ?? 0)} />
           <ScorecardItem label="Useful contributions" target="5" current={String(submissions.data?.length ?? 0)} />
           <ScorecardItem label="Connection requests" target="3" current={String(connections.data?.length ?? 0)} />
           <ScorecardItem label="Substantive feedback" target="10" current={String(feedback.data?.length ?? 0)} />

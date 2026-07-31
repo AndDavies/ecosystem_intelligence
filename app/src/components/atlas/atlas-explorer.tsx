@@ -35,6 +35,7 @@ import {
   SnapshotMetric
 } from "@/components/atlas/atlas-explorer-results";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
+import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { PublicShare } from "@/components/atlas/public-share";
 import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
@@ -719,6 +720,8 @@ export function AtlasExplorer({
       </section>
 
       <PublicEvidenceLedger citations={visibleEvidence} />
+
+      <NorthSignalInline placement="newsletter_inline_home" trigger="first_discovery_interaction" revealOnEngagement className="mt-6" />
 
       <PublicAtlasFooter generatedLabel={`Snapshot generated ${formatDate(generatedAt)}. Reviewed public sources only; coverage gaps remain explicit.`} />
     </div>

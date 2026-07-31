@@ -5,6 +5,7 @@ import { ArrowRight, Check, ExternalLink, Lightbulb, ShieldCheck, Target } from 
 import { BriefHero } from "@/components/atlas/brief-hero";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
+import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { JsonLd } from "@/components/seo/json-ld";
 import { briefSectionId, getBriefKeyTakeaways, getBriefPresentation, getBriefReadingMinutes } from "@/lib/atlas/brief-presentation";
 import { getPublishedDefenceBriefBySlug, getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
@@ -198,6 +199,8 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-primary)]">About this article</p>
             <p className="mt-3 text-sm leading-7 text-[var(--atlas-ink-soft)]">Written and reviewed by <Link href="/about" className="font-bold text-[var(--atlas-primary)] underline">{brief.authorName}</Link>. Claims are bounded by the public sources above, interpretation is labelled separately, and material gaps remain visible. <Link href="/methodology" className="font-bold text-[var(--atlas-primary)] underline">Read the methodology</Link> or <Link href="/contact" className="font-bold text-[var(--atlas-primary)] underline">request a correction</Link>.</p>
           </footer>
+
+          <NorthSignalInline placement="newsletter_inline_brief" trigger="brief_complete" className="mt-10" />
         </article>
 
         <aside className="space-y-5 lg:sticky lg:top-28">

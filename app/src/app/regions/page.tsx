@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowRight, MapPin } from "lucide-react";
 import { AtlasHeroArt } from "@/components/atlas/atlas-hero-art";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getRegionArt, regionProvinceLabel } from "@/lib/atlas/region-presentation";
-import { getAtlasSnapshot } from "@/lib/atlas/repository";
+import { getAtlasDiscoverySnapshot } from "@/lib/atlas/repository";
 import { absoluteUrl } from "@/lib/site";
 import type { AtlasRegion } from "@/types/atlas";
 import { socialMetadata } from "@/lib/seo/social";
@@ -26,12 +27,7 @@ export const metadata: Metadata = {
   ...socialMetadata({ title, description, path: "/regions", eyebrow: "Where Canadian capability sits" })
 };
 
-export default async function RegionsIndexPage() {
-  const snapshot = await getAtlasSnapshot();
-  const national = snapshot.regions.find((region) => region.slug === "canada");
-  const regions = snapshot.regions.filter((region) => region.slug !== "canada");
-  const covered = regions.filter((region) => region.organizationCount > 0).length;
-
+export default function RegionsIndexPage() {
   return (
     <PublicPageShell
       eyebrow="Where Canadian capability sits"
@@ -39,6 +35,22 @@ export default async function RegionsIndexPage() {
       description="Every region below is built from the same reviewed public records. Counts reflect what has been published so far, so thin coverage stays visible instead of being filled in."
       breadcrumbs={[{ label: "Map", href: "/" }, { label: "Regions" }]}
     >
+      <Suspense fallback={<RegionsDirectoryFallback />}>
+        <RegionsDirectoryData />
+      </Suspense>
+    </PublicPageShell>
+  );
+}
+
+async function RegionsDirectoryData() {
+  const snapshot = await getAtlasDiscoverySnapshot();
+  const national = snapshot.regions.find((region) => region.slug === "canada");
+  const nationalArt = national ? getRegionArt(national.slug) : null;
+  const regions = snapshot.regions.filter((region) => region.slug !== "canada");
+  const covered = regions.filter((region) => region.organizationCount > 0).length;
+
+  return (
+    <>
       <JsonLd
         data={[
           {
@@ -70,11 +82,14 @@ export default async function RegionsIndexPage() {
         <section className="mt-8 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
           <div className="grid min-w-0 lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.9fr)]">
             <AtlasHeroArt
-              tone={getRegionArt(national.slug).tone}
-              icon={getRegionArt(national.slug).icon}
+              tone={nationalArt!.tone}
+              icon={nationalArt!.icon}
               eyebrow="True North Map region"
               label={national.name}
-              alt={`Decorative artwork representing the ${national.name} view of the ecosystem map`}
+              alt={nationalArt!.imageAlt ?? `Illustrative artwork representing the ${national.name} view of the ecosystem map`}
+              imageSrc={nationalArt!.imageSrc}
+              imagePosition={nationalArt!.imagePosition}
+              priority
               className="order-2 h-[200px] rounded-none sm:h-[240px] lg:order-1 lg:aspect-auto lg:h-full lg:min-h-[340px]"
             />
             <div className="order-1 flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:order-2">
@@ -126,7 +141,33 @@ export default async function RegionsIndexPage() {
           coverage is still being built, not that a region lacks capability.
         </p>
       </section>
-    </PublicPageShell>
+    </>
+  );
+}
+
+function RegionsDirectoryFallback() {
+  return (
+    <div className="mt-8" aria-live="polite" aria-busy="true">
+      <p className="sr-only">Loading current regional coverage</p>
+      <div aria-hidden="true" className="animate-pulse">
+        <div className="grid min-h-[340px] overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white lg:grid-cols-2">
+          <div className="bg-[var(--atlas-surface-muted)]" />
+          <div className="space-y-4 p-7 sm:p-9">
+            <div className="h-3 w-28 rounded bg-[var(--atlas-border)]" />
+            <div className="h-10 w-48 rounded bg-[var(--atlas-border)]" />
+            <div className="h-20 rounded bg-[var(--atlas-surface-muted)]" />
+            <div className="h-16 rounded bg-[var(--atlas-surface-muted)]" />
+          </div>
+        </div>
+        <div className="mt-14 h-7 w-56 rounded bg-[var(--atlas-border)]" />
+        <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 6 }, (_, index) => (
+            <div key={index} className="h-80 rounded-[1.6rem] border border-[var(--atlas-border)] bg-white" />
+          ))}
+        </div>
+      </div>
+      <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading regional coverage…</p>
+    </div>
   );
 }
 
@@ -150,7 +191,9 @@ function RegionCard({ region }: { region: AtlasRegion }) {
         compact
         eyebrow="True North Map region"
         label={region.shortName}
-        alt={`Decorative artwork representing ${region.name}`}
+        alt={art.imageAlt ?? `Illustrative artwork representing ${region.name}`}
+        imageSrc={art.imageSrc}
+        imagePosition={art.imagePosition}
       />
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]">

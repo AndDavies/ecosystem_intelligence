@@ -238,6 +238,31 @@ export interface AtlasCoverageSummary {
   generatedAt: string;
 }
 
+/**
+ * Evidence-light public-need record for the collection page. The full source
+ * passage, citations, and matched organization records remain on the bounded
+ * Demand Signal detail loader.
+ */
+export interface AtlasDemandIndexItem {
+  id: string;
+  slug: string;
+  title: string;
+  problemStatement: string;
+  displayOrder: number;
+  matchCount: number;
+  source: Pick<
+    AtlasDemandSource,
+    "id" | "publisher" | "sourceKind" | "commitmentLevel"
+  >;
+}
+
+export interface AtlasDemandIndexSnapshot {
+  demands: AtlasDemandIndexItem[];
+  sourceCount: number;
+  matchCount: number;
+  generatedAt: string;
+}
+
 export interface AtlasBounds {
   west: number;
   south: number;

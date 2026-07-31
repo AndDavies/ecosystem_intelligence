@@ -22,11 +22,12 @@ Never send authentication mail through MailerLite. Never use the subscriber list
 - The six authentication templates are stored in `content/email/auth/` and applied in Supabase.
 - Password, email, sign-in-method, and MFA security notifications are enabled. Phone-change notification remains off because phone authentication is not offered.
 - Passwordless email initiation is protected by a managed Cloudflare Turnstile widget for `truenorthmap.ca` and `localhost`. The public site key is a Vercel and local application variable. The secret is stored only in Supabase Auth.
-- MailerLite uses the `True North Map Updates` group. The production consent ledger has been reconciled to that group, and the lifecycle webhook accepts signed single or batched events.
+- MailerLite uses the dedicated `Ecosystem Intelligence` group for True North Map and North Signal delivery. The production consent ledger is reconciled to that group, and the lifecycle webhook accepts signed single or batched events. Legacy groups are not part of the application workflow.
 - Zoho Mail is live for `andrew@truenorthmap.ca`; `hello@`, `privacy@`, `updates@`, `security@`, and `dmarc@` route to the same monitored mailbox.
 - The obsolete Zoho domain and mailbox were deleted after the replacement domain was verified. The Zoho organization is named `True North Map`, and Andrew Davies is the sole administrator.
 - Zoho MX, SPF, and DKIM are active. A controlled message to Gmail passed SPF, DKIM, and DMARC; a controlled message to the work address was accepted for delivery.
 - MailerLite has an authenticated `truenorthmap.ca` sending domain, a verified `updates@truenorthmap.ca` sender, and `andrew@truenorthmap.ca` as the reply-to address. The obsolete ROOTED sending domain was removed.
+- The North Signal welcome automation uses the verified personal sender `Andrew Davies <andrew@truenorthmap.ca>`; weekly newsletter campaigns remain assigned to `True North Map <updates@truenorthmap.ca>` unless Andrew changes that operating decision.
 - The MailerLite company profile uses the lawful campaign-footer address confirmed by Andrew. Campaign sending is operationally available but remains a deliberate administrator action.
 - Root DMARC is active in monitoring mode at `p=none`, with aggregate reports delivered to `dmarc@truenorthmap.ca`.
 
@@ -77,6 +78,6 @@ Never send authentication mail through MailerLite. Never use the subscriber list
 ## Operational follow-up
 
 1. Review DMARC aggregate reports for two to four weeks before considering an enforcing policy.
-2. Send every new MailerLite campaign to a small test group before scheduling the full `True North Map Updates` group.
+2. Send every new MailerLite campaign to a small test group before scheduling the full `Ecosystem Intelligence` group.
 3. Verify the unsubscribe link, sender, reply-to address, and campaign footer in Gmail and a non-Gmail client before each new template is reused.
-4. Keep campaign sending manual until list growth or operating volume creates a clear need for automation.
+4. Keep weekly campaign sending manual. The only automated marketing message is the single welcome email for a newly consented North Signal subscriber.

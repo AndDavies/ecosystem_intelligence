@@ -5,7 +5,9 @@ import {
   betaDiscoveryRequestSchema,
   betaEventSchema,
   betaFeedbackSchema,
-  betaSignupSchema
+  betaSignupSchema,
+  northSignalConsentText,
+  northSignalConsentVersion
 } from "@/lib/product-insights/validation";
 import { normalizeBetaSearchQuery } from "@/lib/product-insights/server";
 
@@ -17,9 +19,9 @@ describe("public-beta validation", () => {
     const parsed = betaSignupSchema.parse({
       email: " Test@Example.ca ",
       consent: true,
-      consentText: "I agree to receive occasional True North Map updates.",
-      consentVersion: "updates-2026-07-v2",
-      source: "updates_dialog",
+      consentText: northSignalConsentText,
+      consentVersion: northSignalConsentVersion,
+      source: "newsletter_inline_profile",
       cohort: "launch-week",
       sessionId,
       searchId,
@@ -36,9 +38,9 @@ describe("public-beta validation", () => {
     const parsed = betaSignupSchema.safeParse({
       email: "test@example.ca",
       consent: false,
-      consentText: "I agree to receive occasional True North Map updates.",
-      consentVersion: "updates-2026-07-v2",
-      source: "updates_dialog",
+      consentText: northSignalConsentText,
+      consentVersion: northSignalConsentVersion,
+      source: "newsletter_modal_desktop",
       landingPath: "/"
     });
     expect(parsed.success).toBe(false);
@@ -63,7 +65,23 @@ describe("public-beta validation", () => {
     expect(betaEventSchema.safeParse({ eventName: "result_select", contextPath: "/", metadata: {} }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "connection", contextPath: "/connect/example", metadata: {} }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "share", contextPath: "/briefs/example", metadata: { method: "linkedin" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ eventName: "newsletter_impression", contextPath: "/organizations/example", metadata: { placement: "newsletter_inline_profile", device_class: "desktop" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ eventName: "newsletter_error", contextPath: "/", metadata: { placement: "newsletter_modal_desktop", error_class: "network_error" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "email_address", contextPath: "/", metadata: {} }).success).toBe(false);
+  });
+
+  it("accepts only the current North Signal consent and known placements", () => {
+    const base = {
+      email: "test@example.ca",
+      consent: true as const,
+      consentText: northSignalConsentText,
+      consentVersion: northSignalConsentVersion,
+      source: "newsletter_header" as const,
+      landingPath: "/"
+    };
+    expect(betaSignupSchema.safeParse(base).success).toBe(true);
+    expect(betaSignupSchema.safeParse({ ...base, source: "updates_dialog" }).success).toBe(false);
+    expect(betaSignupSchema.safeParse({ ...base, consentText: "Generic updates consent." }).success).toBe(false);
   });
 
   it("accepts a bounded private search context and normalizes spacing", () => {

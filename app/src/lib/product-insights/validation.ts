@@ -8,12 +8,26 @@ const optionalShortText = z.union([z.literal(""), z.string().trim().max(120)]).n
 const optionalEmail = z.union([z.literal(""), z.string().trim().email().max(320)]).optional().transform((value) => value ? value.toLowerCase() : null);
 const optionalUuid = z.union([z.literal(""), z.string().uuid()]).nullish().transform((value) => value || null);
 
+export const northSignalConsentText = "By subscribing, you agree to receive the weekly North Signal email from True North Map. Unsubscribe anytime.";
+export const northSignalConsentVersion = "north-signal-2026-07-v2";
+export const northSignalSignupSources = [
+  "newsletter_header",
+  "newsletter_footer",
+  "newsletter_modal_desktop",
+  "newsletter_banner_mobile",
+  "newsletter_inline_home",
+  "newsletter_inline_brief",
+  "newsletter_inline_profile"
+] as const;
+
+export type NorthSignalSignupSource = (typeof northSignalSignupSources)[number];
+
 export const betaSignupSchema = z.object({
   email: z.string().trim().email().max(320).transform((value) => value.toLowerCase()),
   consent: z.literal(true),
-  consentText: z.string().trim().min(20).max(1000),
-  consentVersion: z.string().trim().min(1).max(40),
-  source: z.string().trim().min(1).max(80).default("pilot_popup"),
+  consentText: z.literal(northSignalConsentText),
+  consentVersion: z.literal(northSignalConsentVersion),
+  source: z.enum(northSignalSignupSources),
   cohort: optionalShortText,
   sessionId: optionalUuid,
   searchId: optionalUuid,
@@ -58,6 +72,12 @@ export const betaEventNames = [
   "submission",
   "connection",
   "subscription",
+  "newsletter_impression",
+  "newsletter_open",
+  "newsletter_form_start",
+  "newsletter_submit",
+  "newsletter_error",
+  "newsletter_dismiss",
   "feedback",
   "share"
 ] as const;

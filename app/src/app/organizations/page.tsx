@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowRight, Building2, Compass, FileText, Layers3, MapPin, X } from "lucide-react";
 import { OrganizationCard } from "@/components/atlas/organization-card";
 import { EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
@@ -7,7 +8,7 @@ import { PaginationNav } from "@/components/ui/pagination-nav";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { StatTile } from "@/components/ui/stat-tile";
 import { organizationKindLabel } from "@/lib/atlas/presentation";
-import { getAtlasSnapshot } from "@/lib/atlas/repository";
+import { getAtlasCoverageSummary, getAtlasDiscoverySnapshot } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import type { AtlasEntityKind, AtlasOrganization } from "@/types/atlas";
 import { socialMetadata } from "@/lib/seo/social";
@@ -32,13 +33,29 @@ function reviewedTime(value: string | null) {
   return Number.isNaN(parsed) ? 0 : parsed;
 }
 
-export default async function OrganizationsPage({
-  searchParams
-}: {
-  searchParams: Promise<{ page?: string; type?: string; region?: string }>;
-}) {
-  const snapshot = await getAtlasSnapshot();
-  const params = await searchParams;
+type OrganizationSearchParams = Promise<{ page?: string; type?: string; region?: string }>;
+
+export default function OrganizationsPage({ searchParams }: { searchParams: OrganizationSearchParams }) {
+  return (
+    <PublicPageShell
+      eyebrow="Find the right Canadian team"
+      title="Organizations"
+      description="Explore reviewed Canadian organizations, see what they build, and decide who deserves a closer look. Gaps stay visible; unsupported details stay out."
+      actions={<Link href="/submit?submissionType=new_organization&targetType=organization&returnTo=%2Forganizations" className="atlas-secondary-button h-10 px-4 text-xs">Suggest an organization</Link>}
+    >
+      <Suspense fallback={<OrganizationsDirectoryFallback />}>
+        <OrganizationsDirectoryData searchParams={searchParams} />
+      </Suspense>
+    </PublicPageShell>
+  );
+}
+
+async function OrganizationsDirectoryData({ searchParams }: { searchParams: OrganizationSearchParams }) {
+  const [snapshot, summary, params] = await Promise.all([
+    getAtlasDiscoverySnapshot(),
+    getAtlasCoverageSummary(),
+    searchParams
+  ]);
   const activeType = params.type?.trim() || undefined;
   const activeRegion = params.region?.trim() || undefined;
   const hasFilters = Boolean(activeType || activeRegion);
@@ -68,20 +85,6 @@ export default async function OrganizationsPage({
   const typeFacets = buildTypeFacets(snapshot.organizations);
   const regionFacets = snapshot.regions.filter((region) => region.slug !== "canada" && region.organizationCount > 0);
   const coveredRegions = regionFacets.length;
-  const technologyCount = new Set(
-    snapshot.organizations.flatMap((organization) => organization.capabilities.map((capability) => capability.id))
-  ).size;
-  const sourceCount = new Set(
-    snapshot.organizations.flatMap((organization) => [
-      ...organization.citations,
-      ...organization.capabilities.flatMap((capability) => [
-        ...capability.citations,
-        ...capability.missionMatches.flatMap((match) => match.citations),
-        ...capability.demandMatches.flatMap((match) => match.citations)
-      ])
-    ]).map((citation) => citation.sourceUrl)
-  ).size;
-
   const browseHref = (next: { type?: string; region?: string }) => {
     const query = new URLSearchParams();
     const type = "type" in next ? next.type : activeType;
@@ -95,15 +98,10 @@ export default async function OrganizationsPage({
   const activeRegionName = snapshot.regions.find((region) => region.slug === activeRegion)?.name ?? activeRegion;
 
   return (
-    <PublicPageShell
-      eyebrow="Find the right Canadian team"
-      title="Organizations"
-      description={`Explore ${snapshot.organizations.length} reviewed organizations, see what they build, and decide who deserves a closer look. Gaps stay visible; unsupported details stay out.`}
-      actions={<Link href="/submit?submissionType=new_organization&targetType=organization&returnTo=%2Forganizations" className="atlas-secondary-button h-10 px-4 text-xs">Suggest an organization</Link>}
-    >
+    <>
       <div className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatTile icon={Building2} label="Reviewed organizations" value={snapshot.organizations.length} />
-        <StatTile icon={Layers3} label="Reviewed capabilities" value={technologyCount} />
+        <StatTile icon={Building2} label="Reviewed organizations" value={summary.organizations} />
+        <StatTile icon={Layers3} label="Reviewed capabilities" value={summary.capabilities} />
         <StatTile
           icon={MapPin}
           label="Regions with published coverage"
@@ -111,7 +109,7 @@ export default async function OrganizationsPage({
           href="/regions"
           linkLabel="Browse regions"
         />
-        <StatTile icon={FileText} label="Public sources behind the profiles" value={sourceCount} />
+        <StatTile icon={FileText} label="Cited public sources" value={summary.sources} />
       </div>
 
       {spotlightActive && directory.page === 1 ? (
@@ -252,7 +250,30 @@ export default async function OrganizationsPage({
           </ul>
         </div>
       </section>
-    </PublicPageShell>
+    </>
+  );
+}
+
+function OrganizationsDirectoryFallback() {
+  return (
+    <div className="mt-7" aria-live="polite" aria-busy="true">
+      <p className="sr-only">Loading the current organization directory</p>
+      <div aria-hidden="true" className="animate-pulse">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {Array.from({ length: 4 }, (_, index) => (
+            <div key={index} className="h-28 rounded-[14px] border border-[var(--atlas-border)] bg-white" />
+          ))}
+        </div>
+        <div className="mt-14 h-7 w-56 rounded bg-[var(--atlas-border)]" />
+        <div className="mt-6 h-24 rounded-[14px] border border-[var(--atlas-border)] bg-white" />
+        <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 6 }, (_, index) => (
+            <div key={index} className="h-64 rounded-2xl border border-[var(--atlas-border)] bg-white" />
+          ))}
+        </div>
+      </div>
+      <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading reviewed organizations…</p>
+    </div>
   );
 }
 

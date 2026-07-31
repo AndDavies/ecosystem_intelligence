@@ -6,6 +6,8 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 type TurnstileOptions = {
   sitekey: string;
   theme: "light";
+  appearance: "interaction-only";
+  size: "flexible";
   callback: (token: string) => void;
   "expired-callback": () => void;
   "error-callback": () => void;
@@ -41,6 +43,8 @@ export function TurnstileField({
     widgetIdRef.current = window.turnstile.render(containerRef.current, {
       sitekey: siteKey,
       theme: "light",
+      appearance: "interaction-only",
+      size: "flexible",
       callback: (token) => {
         onTokenChange(token);
         setStatus(`${purpose.charAt(0).toUpperCase()}${purpose.slice(1)} verified.`);
@@ -73,8 +77,8 @@ export function TurnstileField({
         strategy="afterInteractive"
         onReady={renderWidget}
       />
-      <div ref={containerRef} className="min-h-9" />
-      <p id={statusId} className="text-[11px] leading-5 text-[var(--atlas-muted)]" aria-live="polite">
+      <div ref={containerRef} className="min-h-0" />
+      <p id={statusId} className="sr-only" aria-live="polite">
         {status}
       </p>
     </div>

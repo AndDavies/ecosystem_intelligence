@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { ArrowRight, Building2, Download, Layers3, MapPin } from "lucide-react";
 import { AtlasHeroArt } from "@/components/atlas/atlas-hero-art";
 import { OrganizationCard } from "@/components/atlas/organization-card";
@@ -11,7 +12,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { StatTile } from "@/components/ui/stat-tile";
 import { clusterBasisLabel } from "@/lib/atlas/presentation";
 import { getRegionArt } from "@/lib/atlas/region-presentation";
-import { getAtlasRegionBySlug, getAtlasSnapshot } from "@/lib/atlas/repository";
+import { getAtlasRegionDefinitionBySlug, getAtlasRegionDirectoryBySlug } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import { socialMetadata } from "@/lib/seo/social";
 
@@ -19,11 +20,11 @@ const ORGANIZATIONS_PER_PAGE = 12;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const result = await getAtlasRegionBySlug(slug);
-  if (!result) return { title: "Region not found", robots: { index: false, follow: false } };
-  const title = `${result.region.name} Defence and Dual-Use Ecosystem`;
-  const path = `/regions/${result.region.slug}`;
-  return { title: `${result.region.name} Ecosystem`, description: result.region.description, alternates: { canonical: path }, ...socialMetadata({ title, description: result.region.description, path, eyebrow: "Regional ecosystem", detail: `${result.region.organizationCount} published organizations` }) };
+  const region = getAtlasRegionDefinitionBySlug(slug);
+  if (!region) return { title: "Region not found", robots: { index: false, follow: false } };
+  const title = `${region.name} Defence and Dual-Use Ecosystem`;
+  const path = `/regions/${region.slug}`;
+  return { title: `${region.name} Ecosystem`, description: region.description, alternates: { canonical: path }, ...socialMetadata({ title, description: region.description, path, eyebrow: "Regional ecosystem", detail: "Reviewed public coverage" }) };
 }
 
 export default async function RegionPage({
@@ -34,13 +35,9 @@ export default async function RegionPage({
   searchParams: Promise<{ page?: string }>;
 }) {
   const { slug } = await params;
-  const [result, snapshot, search] = await Promise.all([getAtlasRegionBySlug(slug), getAtlasSnapshot(), searchParams]);
-  if (!result) notFound();
-
-  const { region, organizations, clusters } = result;
+  const region = getAtlasRegionDefinitionBySlug(slug);
+  if (!region) notFound();
   const art = getRegionArt(region.slug);
-  const directory = paginate(organizations, normalizedPage(search.page), ORGANIZATIONS_PER_PAGE);
-  const organizationsHref = region.slug === "canada" ? "/organizations" : `/organizations?region=${region.slug}`;
 
   return (
     <PublicPageShell
@@ -71,15 +68,9 @@ export default async function RegionPage({
                   Explore on the map
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
-                {organizations.length ? (
-                  <Link
-                    href={`/api/export?type=region-report&slug=${region.slug}`}
-                    className="atlas-secondary-button h-11 gap-2 px-5 text-sm"
-                  >
-                    <Download className="size-4" aria-hidden="true" />
-                    Export report
-                  </Link>
-                ) : null}
+                <Suspense fallback={<span aria-hidden="true" className="h-11 w-36 animate-pulse rounded-md bg-[var(--atlas-surface-muted)]" />}>
+                  <RegionExportAction slug={region.slug} />
+                </Suspense>
                 <PublicShare title={`${region.name} Defence and Dual-Use Ecosystem`} description={region.description} path={`/regions/${region.slug}`} />
               </div>
             </div>
@@ -88,14 +79,53 @@ export default async function RegionPage({
               icon={art.icon}
               eyebrow="True North Map region"
               label={region.shortName}
-              alt={`Decorative artwork representing ${region.name}`}
+              alt={art.imageAlt ?? `Illustrative artwork representing ${region.name}`}
+              imageSrc={art.imageSrc}
+              imagePosition={art.imagePosition}
+              priority
               className="order-1 h-[180px] rounded-none sm:h-[220px] lg:order-2 lg:aspect-auto lg:h-full lg:min-h-[320px]"
             />
           </div>
         </header>
       )}
     >
-      <RegionSwitcher regions={snapshot.regions} activeSlug={region.slug} />
+      <Suspense fallback={<RegionDirectoryFallback />}>
+        <RegionDirectoryData slug={region.slug} searchParams={searchParams} />
+      </Suspense>
+    </PublicPageShell>
+  );
+}
+
+async function RegionExportAction({ slug }: { slug: string }) {
+  const result = await getAtlasRegionDirectoryBySlug(slug);
+  if (!result?.organizations.length) return null;
+  return (
+    <Link
+      href={`/api/export?type=region-report&slug=${slug}`}
+      className="atlas-secondary-button h-11 gap-2 px-5 text-sm"
+    >
+      <Download className="size-4" aria-hidden="true" />
+      Export report
+    </Link>
+  );
+}
+
+async function RegionDirectoryData({
+  slug,
+  searchParams
+}: {
+  slug: string;
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const [result, search] = await Promise.all([getAtlasRegionDirectoryBySlug(slug), searchParams]);
+  if (!result) notFound();
+  const { region, organizations, clusters } = result;
+  const directory = paginate(organizations, normalizedPage(search.page), ORGANIZATIONS_PER_PAGE);
+  const organizationsHref = region.slug === "canada" ? "/organizations" : `/organizations?region=${region.slug}`;
+
+  return (
+    <>
+      <RegionSwitcher regions={result.regions} activeSlug={region.slug} />
 
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
         <StatTile
@@ -188,7 +218,30 @@ export default async function RegionPage({
           </div>
         )}
       </section>
-    </PublicPageShell>
+    </>
+  );
+}
+
+function RegionDirectoryFallback() {
+  return (
+    <div className="mt-8" aria-live="polite" aria-busy="true">
+      <p className="sr-only">Loading the current regional directory</p>
+      <div aria-hidden="true" className="animate-pulse">
+        <div className="h-10 rounded-xl bg-[var(--atlas-surface-muted)]" />
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {Array.from({ length: 3 }, (_, index) => (
+            <div key={index} className="h-28 rounded-[14px] border border-[var(--atlas-border)] bg-white" />
+          ))}
+        </div>
+        <div className="mt-12 h-7 w-52 rounded bg-[var(--atlas-border)]" />
+        <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 6 }, (_, index) => (
+            <div key={index} className="h-64 rounded-2xl border border-[var(--atlas-border)] bg-white" />
+          ))}
+        </div>
+      </div>
+      <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading regional organizations…</p>
+    </div>
   );
 }
 
