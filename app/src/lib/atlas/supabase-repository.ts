@@ -1014,7 +1014,13 @@ export async function loadAtlasCapabilityBySlugFromSupabase(slug: string) {
 
   const capabilityId = String(capabilityResult.data.id);
   const organizationId = String(capabilityResult.data.organization_id);
-  const snapshot = await loadAtlasSnapshotFromSupabase({ organizationIds: [organizationId], capabilityIds: [capabilityId] });
+  // Capability profiles show a compact organization identity card, so this
+  // single-record read may include the published, approved logo.
+  const snapshot = await loadAtlasSnapshotFromSupabase({
+    organizationIds: [organizationId],
+    capabilityIds: [capabilityId],
+    includeOrganizationLogos: true
+  });
   const organization = snapshot.organizations.find((item) => item.id === organizationId);
   const capability = organization?.capabilities.find((item) => item.id === capabilityId);
   return organization && capability ? { organization, capability } : null;

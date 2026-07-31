@@ -50,14 +50,17 @@ describe("public data access", () => {
     expect(repository).not.toContain("match.rationale");
   });
 
-  it("adds logos only to organization profiles and preserves the existing map and export surfaces", async () => {
+  it("adds logos only to organization and capability profiles and preserves the existing map and export surfaces", async () => {
     const publicRepository = await source("src/lib/atlas/supabase-repository.ts");
     const profile = await source("src/app/organizations/[slug]/page.tsx");
+    const capabilityProfile = await source("src/app/capabilities/[slug]/page.tsx");
     const directory = await source("src/components/atlas/organization-card.tsx");
     const pdf = await source("src/lib/export/atlas-pdf.tsx");
 
     expect(profile).toContain("organization.logo?.publicUrl");
     expect(profile).toContain('alt={`${organization.name} logo`}');
+    expect(capabilityProfile).toContain("organization.logo");
+    expect(capabilityProfile).toContain('alt={`${organization.name} logo`}');
     expect(directory).not.toContain("organization.logo");
     expect(pdf).not.toContain("organization.logo");
     expect(publicRepository).toContain("scope?.includeOrganizationLogos");

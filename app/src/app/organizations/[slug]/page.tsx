@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookmarkPlus, Building2, Download, ExternalLink, FileCheck2, Handshake, Linkedin, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { AlignmentMatchCard } from "@/components/atlas/alignment-match-card";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
@@ -99,7 +100,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
       <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
         <aside className="space-y-5 self-start lg:sticky lg:top-24">
           <PublicCard title={organizationSnapshotTitle(organization.entityKind)} eyebrow="What we know">
-            <div className="mb-5 flex items-center gap-3 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-primary-soft)] p-3">
+            <div className="mb-5 flex items-center gap-3 rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-primary-soft)] p-3">
               <span className="relative flex h-14 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#c9ccca] p-2 text-[var(--atlas-primary)] ring-1 ring-[var(--atlas-primary-border)]">
                 {organization.logo ? (
                   <Image
@@ -132,7 +133,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                 <span className="flex size-9 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><ShieldCheck className="size-5" /></span>
                 <div>
                   <p className="text-sm font-semibold text-[var(--atlas-ink)]">{evidenceStrengthLabel(organization.sourceConfidence)} public evidence</p>
-                  <p className="text-xs text-[var(--atlas-muted)]">Last verified {formatDate(organization.lastReviewedAt)}</p>
+                  <p className="text-xs text-[var(--atlas-muted)]">Last reviewed {formatDate(organization.lastReviewedAt)}</p>
                 </div>
               </div>
               <p className="mt-3 text-xs leading-5 text-[var(--atlas-muted)]">Unknown fields stay blank. You can see which details come from public sources and which connections are our current interpretation.</p>
@@ -180,7 +181,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                     {capability.defenceApplications.length ? <TagList label="Defence applications" values={capability.defenceApplications} /> : null}
                   </div>
                   <div className="mt-4 flex flex-wrap gap-1.5">
-                    {capability.technicalTags.map((tag) => <span key={tag} className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[10px] font-medium text-[var(--atlas-ink-soft)] ring-1 ring-[var(--atlas-border)]">{toTitleCase(tag)}</span>)}
+                    {capability.technicalTags.map((tag) => <span key={tag} className="rounded-[6px] bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-medium text-[var(--atlas-muted)]">{toTitleCase(tag)}</span>)}
                   </div>
                   <Link href={`/capabilities/${capability.slug}`} className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">
                     Explore this technology <ArrowRight className="size-3.5" />
@@ -188,7 +189,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                 </article>
               ))}
             </div> : (
-              <div className="rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-4">
+              <div className="rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-4">
                 <p className="text-sm font-semibold leading-6 text-[var(--atlas-ink-soft)]">{organizationOfferingGap(organization.entityKind, organization.name)}</p>
                 <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Use the official website for current details, or help us add a source-backed summary.</p>
                 <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold">
@@ -203,25 +204,31 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             {hasMissionMatches ? (
               <div className="space-y-3">
                 {organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => (
-                  <article key={match.id} className="rounded-2xl border border-[var(--atlas-evidence)]/25 bg-[var(--atlas-evidence-soft)] p-4">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <Link href={`/?mission=${match.missionArea.slug}`} className="text-sm font-bold text-[var(--atlas-evidence)] no-underline hover:underline">{match.missionArea.name}</Link>
-                      <span className="rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-semibold text-[var(--atlas-evidence)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>
-                    </div>
-                    <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{match.alignmentSummary}</p>
-                    <AssessmentSources citations={match.citations} />
-                  </article>
+                  <AlignmentMatchCard
+                    key={match.id}
+                    href={`/?mission=${match.missionArea.slug}`}
+                    title={match.missionArea.name}
+                    summary={match.alignmentSummary}
+                    matchType={match.matchType}
+                    confidence={match.confidence}
+                    citations={match.citations}
+                  />
                 )))}
               </div>
             ) : null}
             {hasDemandMatches ? (
               <div className={hasMissionMatches ? "mt-3 space-y-3" : "space-y-3"}>
                 {organization.capabilities.flatMap((capability) => capability.demandMatches.map((match) => (
-                  <article key={match.id} className="rounded-2xl border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-4">
-                    <Link href={`/demand/${match.demandSlug}`} className="text-sm font-bold text-[var(--atlas-primary)] no-underline hover:underline">{match.demandTitle}</Link>
-                    <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{match.alignmentSummary}</p>
-                    <AssessmentSources citations={match.citations} />
-                  </article>
+                  <AlignmentMatchCard
+                    key={match.id}
+                    href={`/demand/${match.demandSlug}`}
+                    title={match.demandTitle}
+                    summary={match.alignmentSummary}
+                    matchType={match.matchType}
+                    confidence={match.confidence}
+                    citations={match.citations}
+                    caveat="Public-source alignment only; not eligibility or endorsement."
+                  />
                 )))}
               </div>
             ) : null}
@@ -231,7 +238,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
           <PublicCard title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
             <EvidenceList citations={citations} />
             {!hasPublishedAlignment && organization.capabilities.length ? (
-              <div className="mt-5 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
+              <div className="mt-5 rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
                 <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">We have not connected this technology to a mission or public need yet.</p>
                 <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public needs</Link>.</p>
               </div>
@@ -267,22 +274,8 @@ function TagList({ label, values }: { label: string; values: string[] }) {
     <div>
       <h4 className="text-xs font-semibold text-[var(--atlas-muted)]">{label}</h4>
       <ul className="mt-2 space-y-1.5 text-xs leading-5 text-[var(--atlas-ink-soft)]">
-        {values.map((value) => <li key={value} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-coral)]" />{value}</li>)}
+        {values.map((value) => <li key={value} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-primary)]" />{value}</li>)}
       </ul>
-    </div>
-  );
-}
-
-function AssessmentSources({ citations }: { citations: Array<{ id: string; sourceUrl: string; sourceTitle: string }> }) {
-  if (!citations.length) return null;
-  return (
-    <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 border-t border-[rgba(36,40,39,0.1)] pt-3 text-[11px]">
-      <span className="font-medium text-[var(--atlas-muted)]">Supporting sources</span>
-      {citations.slice(0, 2).map((citation) => (
-        <a key={citation.id} href={citation.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
-          {citation.sourceTitle}<ExternalLink className="size-3" />
-        </a>
-      ))}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
-import { evidenceStrengthLabel } from "@/lib/atlas/presentation";
+import { evidenceStrengthLabel, organizationKindLabel } from "@/lib/atlas/presentation";
 import { formatDate } from "@/lib/utils";
 import type { AtlasConfidence, AtlasOrganization } from "@/types/atlas";
 
@@ -40,6 +40,11 @@ export function OrganizationCard({
   const demandMatchCount = organizationDemandMatchCount(organization);
   const domains = organizationTechnicalDomains(organization).slice(0, 2);
   const Heading = headingLevel;
+  // Accelerators, investors, and other ecosystem roles are not expected to
+  // publish capability records, so zero counts get an honest scope label
+  // instead of reading like a coverage failure.
+  const ecosystemRoleWithoutRecords =
+    organization.entityKind !== "company" && capabilityCount === 0 && demandMatchCount === 0;
 
   return (
     <article className="group relative flex h-full flex-col rounded-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[0_1px_2px_rgba(36,40,39,0.035)] transition-[translate,box-shadow,border-color] duration-200 focus-within:-translate-y-1 focus-within:border-[var(--atlas-border-strong)] focus-within:shadow-[var(--atlas-shadow-soft)] hover:-translate-y-1 hover:border-[var(--atlas-border-strong)] hover:shadow-[var(--atlas-shadow-soft)]">
@@ -94,13 +99,23 @@ export function OrganizationCard({
 
       <div className="mt-auto border-t border-[var(--atlas-border)] pt-4">
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] font-bold text-[var(--atlas-ink-soft)]">
-          <span>
-            {capabilityCount} reviewed {capabilityCount === 1 ? "technology" : "technologies"}
-          </span>
-          <span aria-hidden="true" className="size-1 rounded-full bg-[var(--atlas-border-strong)]" />
-          <span>
-            {demandMatchCount} public demand {demandMatchCount === 1 ? "match" : "matches"}
-          </span>
+          {ecosystemRoleWithoutRecords ? (
+            <>
+              <span>{organizationKindLabel(organization.entityKind)}</span>
+              <span aria-hidden="true" className="size-1 rounded-full bg-[var(--atlas-border-strong)]" />
+              <span>Profiled for its ecosystem role</span>
+            </>
+          ) : (
+            <>
+              <span>
+                {capabilityCount} reviewed {capabilityCount === 1 ? "capability" : "capabilities"}
+              </span>
+              <span aria-hidden="true" className="size-1 rounded-full bg-[var(--atlas-border-strong)]" />
+              <span>
+                {demandMatchCount} public demand {demandMatchCount === 1 ? "match" : "matches"}
+              </span>
+            </>
+          )}
         </div>
         <div className="mt-2 flex items-center justify-between gap-3">
           <span className="text-[11px] text-[var(--atlas-muted)]">Reviewed {formatDate(organization.lastReviewedAt)}</span>

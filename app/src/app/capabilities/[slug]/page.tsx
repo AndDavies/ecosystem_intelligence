@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookmarkPlus, Download, ExternalLink } from "lucide-react";
+import { ArrowRight, BookmarkPlus, Building2, Download, Handshake } from "lucide-react";
+import { AlignmentMatchCard, evidenceStrengthChipClass } from "@/components/atlas/alignment-match-card";
+import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
-import { evidenceStrengthLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
+import { evidenceStrengthLabel, organizationKindLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
 import { absoluteUrl } from "@/lib/site";
 import { socialMetadata } from "@/lib/seo/social";
@@ -15,7 +18,7 @@ import { formatDate, toTitleCase } from "@/lib/utils";
 export const revalidate = 300;
 
 export async function generateStaticParams() {
-  // Technology profiles render on demand; this keeps a transient upstream
+  // Capability profiles render on demand; this keeps a transient upstream
   // database timeout from failing the whole production build.
   return [];
 }
@@ -25,11 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const publicCapability = await getAtlasCapabilityBySlug(slug);
 
   if (!publicCapability) {
-    return { title: "Technology not found", robots: { index: false, follow: false } };
+    return { title: "Capability not found", robots: { index: false, follow: false } };
   }
 
   const path = `/capabilities/${publicCapability.capability.slug}`;
-  const social = socialMetadata({ title: publicCapability.capability.name, description: publicCapability.capability.summary, path, eyebrow: "Canadian technology", detail: publicCapability.organization.name });
+  const social = socialMetadata({ title: publicCapability.capability.name, description: publicCapability.capability.summary, path, eyebrow: "Canadian capability", detail: publicCapability.organization.name });
   return {
     title: publicCapability.capability.name,
     description: publicCapability.capability.summary,
@@ -70,7 +73,7 @@ function PublicCapabilityPage({
 
   return (
     <PublicPageShell
-      eyebrow="Technology profile"
+      eyebrow="Capability profile"
       title={capability.name}
       description={capability.summary}
       breadcrumbs={[
@@ -81,6 +84,9 @@ function PublicCapabilityPage({
       ]}
       actions={
         <>
+          <Link href={`/connect/${organization.slug}`} className="atlas-primary-button h-10 w-full gap-2 px-4 text-xs sm:w-auto">
+            <Handshake className="size-4" /> Request an introduction
+          </Link>
           <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(`/capabilities/${capability.slug}`)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             <BookmarkPlus className="size-4" /> Add to Working List
           </Link>
@@ -88,8 +94,8 @@ function PublicCapabilityPage({
             <Download className="size-4" /> Download profile
           </Link>
           <PublicShare title={capability.name} description={capability.summary} path={`/capabilities/${capability.slug}`} />
-          <Link href={`/organizations/${organization.slug}`} className="atlas-primary-button h-10 gap-2 px-4 text-xs">
-            Meet {organization.name} <ExternalLink className="size-4" />
+          <Link href={`/organizations/${organization.slug}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+            Explore {organization.name} <ArrowRight className="size-4" />
           </Link>
         </>
       }
@@ -98,9 +104,10 @@ function PublicCapabilityPage({
         { "@context": "https://schema.org", "@type": "Product", name: capability.name, description: capability.summary, brand: { "@type": "Organization", name: organization.name, url: absoluteUrl(`/organizations/${organization.slug}`) }, url: absoluteUrl(`/capabilities/${capability.slug}`) },
         { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(`/capabilities/${capability.slug}`) }] }
       ]} />
-      <div className="grid gap-5 lg:grid-cols-[1.22fr_0.78fr]">
-        <div className="space-y-5">
-          <PublicCard title="Technology overview" eyebrow={capability.capabilityType ?? "What it does"}>
+      <EvidenceLegend compact className="mb-5" />
+      <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
+        <div className="space-y-5 lg:order-2">
+          <PublicCard title="Capability overview" eyebrow={capability.capabilityType ?? "What it does"}>
             <div className="grid gap-5 sm:grid-cols-2">
               <CapabilityList label="Core features" values={capability.coreFeatures} />
               <CapabilityList label="Defence and security uses" values={capability.defenceApplications} />
@@ -115,33 +122,42 @@ function PublicCapabilityPage({
                 </dl>
               </div>
             </div>
-            <div className="mt-5 flex flex-wrap gap-1.5 border-t border-[var(--atlas-border)] pt-4">
-              {capability.technicalTags.map((tag) => <span key={tag} className="rounded bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-medium text-[var(--atlas-muted)]">{toTitleCase(tag)}</span>)}
-            </div>
+            {capability.technicalTags.length ? (
+              <div className="mt-5 flex flex-wrap gap-1.5 border-t border-[var(--atlas-border)] pt-4">
+                {capability.technicalTags.map((tag) => <span key={tag} className="rounded-[6px] bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-medium text-[var(--atlas-muted)]">{toTitleCase(tag)}</span>)}
+              </div>
+            ) : null}
           </PublicCard>
 
           {hasPublishedAlignment ? <PublicCard title={publicLanguage.technologyDemand} eyebrow="See the clearest reason to explore a conversation">
             {capability.missionMatches.length ? (
               <div className="space-y-3">
                 {capability.missionMatches.map((match) => (
-                  <article key={match.id} className="rounded-md border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] p-4">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <Link href={`/?mission=${match.missionArea.slug}`} className="text-sm font-bold text-[var(--atlas-amber)] no-underline hover:underline">{match.missionArea.name}</Link>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--atlas-amber)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>
-                    </div>
-                    <p className="mt-2 text-xs leading-5 text-[var(--atlas-amber)]">{match.alignmentSummary}</p>
-                  </article>
+                  <AlignmentMatchCard
+                    key={match.id}
+                    href={`/?mission=${match.missionArea.slug}`}
+                    title={match.missionArea.name}
+                    summary={match.alignmentSummary}
+                    matchType={match.matchType}
+                    confidence={match.confidence}
+                    citations={match.citations}
+                  />
                 ))}
               </div>
             ) : null}
             {capability.demandMatches.length ? (
               <div className={capability.missionMatches.length ? "mt-3 space-y-3" : "space-y-3"}>
                 {capability.demandMatches.map((match) => (
-                  <article key={match.id} className="rounded-md border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-4">
-                    <Link href={`/demand/${match.demandSlug}`} className="text-sm font-bold text-[var(--atlas-primary)] no-underline hover:underline">{match.demandTitle}</Link>
-                    <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{match.alignmentSummary}</p>
-                    <p className="mt-2 text-[10px] text-[var(--atlas-muted)]">Public-source alignment only; not eligibility or endorsement.</p>
-                  </article>
+                  <AlignmentMatchCard
+                    key={match.id}
+                    href={`/demand/${match.demandSlug}`}
+                    title={match.demandTitle}
+                    summary={match.alignmentSummary}
+                    matchType={match.matchType}
+                    confidence={match.confidence}
+                    citations={match.citations}
+                    caveat="Public-source alignment only; not eligibility or endorsement."
+                  />
                 ))}
               </div>
             ) : null}
@@ -149,16 +165,42 @@ function PublicCapabilityPage({
           </PublicCard> : null}
         </div>
 
-        <aside className="space-y-5">
+        <aside className="space-y-5 self-start lg:order-1 lg:sticky lg:top-24">
           <PublicCard title={organization.name} eyebrow="Who is building it">
-            <p className="text-base font-bold text-[var(--atlas-ink)]">{organization.name}</p>
-            <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">{organization.description}</p>
-            <Link href={`/organizations/${organization.slug}`} className="mt-4 inline-flex text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">Explore the organization</Link>
+            <div className="flex items-center gap-3">
+              <span className="relative flex h-12 w-20 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-[#c9ccca] p-1.5 text-[var(--atlas-primary)] ring-1 ring-[var(--atlas-primary-border)]">
+                {organization.logo ? (
+                  <Image
+                    src={organization.logo.publicUrl}
+                    alt={`${organization.name} logo`}
+                    fill
+                    sizes="80px"
+                    className="object-contain p-1.5"
+                  />
+                ) : (
+                  <Building2 className="size-5" aria-hidden="true" />
+                )}
+              </span>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-[var(--atlas-ink-soft)]">
+                  {organizationKindLabel(organization.entityKind)}
+                  {organization.primaryLocation ? ` · ${organization.primaryLocation.name}` : ""}
+                </p>
+                <p className="mt-1.5">
+                  <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.06em] ring-1 ${evidenceStrengthChipClass[organization.sourceConfidence]}`}>
+                    {evidenceStrengthLabel(organization.sourceConfidence)} public evidence
+                  </span>
+                </p>
+              </div>
+            </div>
+            <Link href={`/organizations/${organization.slug}`} className="atlas-secondary-button mt-4 flex h-10 w-full gap-2 px-4 text-xs">
+              Explore the organization <ArrowRight className="size-4" />
+            </Link>
           </PublicCard>
           <PublicCard title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
             <EvidenceList citations={citations} />
             {!hasPublishedAlignment ? (
-              <div className="mt-5 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
+              <div className="mt-5 rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
                 <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">We have not connected this technology to a mission or public need yet.</p>
                 <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public needs</Link>.</p>
               </div>
@@ -167,7 +209,7 @@ function PublicCapabilityPage({
           <PublicCard title="How well this is supported" eyebrow="What supports this profile">
             <dl className="grid gap-3 text-xs">
               <div><dt className="text-[var(--atlas-muted)]">Public evidence</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
-              <div><dt className="text-[var(--atlas-muted)]">Last verified</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{formatDate(capability.lastReviewedAt)}</dd></div>
+              <div><dt className="text-[var(--atlas-muted)]">Last reviewed</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{formatDate(capability.lastReviewedAt)}</dd></div>
               <div><dt className="text-[var(--atlas-muted)]">Technology areas</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{capability.technicalDomains.map((domain) => domain.name).join(", ") || "Not yet mapped"}</dd></div>
             </dl>
           </PublicCard>

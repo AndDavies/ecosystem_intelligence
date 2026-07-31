@@ -11,7 +11,7 @@ const states = [
 
 export function EvidenceLegend({ compact = false, className }: { compact?: boolean; className?: string }) {
   return (
-    <section className={cn("border-y border-[var(--atlas-border)] bg-white", compact ? "py-4" : "py-5", className)} aria-labelledby="evidence-legend-title">
+    <section className={cn("border-y border-[var(--atlas-border)] bg-white px-4 sm:px-5", compact ? "py-4" : "py-5", className)} aria-labelledby="evidence-legend-title">
       <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
         <div className="shrink-0">
           <p className="atlas-eyebrow">How to read the record</p>

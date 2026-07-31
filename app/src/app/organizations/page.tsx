@@ -99,11 +99,11 @@ export default async function OrganizationsPage({
       eyebrow="Find the right Canadian team"
       title="Organizations"
       description={`Explore ${snapshot.organizations.length} reviewed organizations, see what they build, and decide who deserves a closer look. Gaps stay visible; unsupported details stay out.`}
-      actions={<Link href="/submit?submissionType=new_organization&targetType=organization&returnTo=%2Forganizations" className="inline-flex h-10 items-center rounded-md border border-[var(--atlas-primary)] bg-white px-4 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline">Suggest an organization</Link>}
+      actions={<Link href="/submit?submissionType=new_organization&targetType=organization&returnTo=%2Forganizations" className="atlas-secondary-button h-10 px-4 text-xs">Suggest an organization</Link>}
     >
       <div className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatTile icon={Building2} label="Reviewed organizations" value={snapshot.organizations.length} />
-        <StatTile icon={Layers3} label="Reviewed technologies and offerings" value={technologyCount} />
+        <StatTile icon={Layers3} label="Reviewed capabilities" value={technologyCount} />
         <StatTile
           icon={MapPin}
           label="Regions with published coverage"
@@ -222,7 +222,7 @@ export default async function OrganizationsPage({
         )}
       </section>
 
-      <section className="mt-14 rounded-[2rem] bg-[var(--atlas-ink)] px-6 py-8 text-white sm:px-9 sm:py-10">
+      <section className="mt-14 rounded-[18px] bg-[var(--atlas-ink)] px-6 py-8 text-white sm:px-9 sm:py-10">
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
           <div>
             <Compass className="size-6 text-[var(--atlas-signal)]" aria-hidden="true" />
@@ -242,7 +242,7 @@ export default async function OrganizationsPage({
               <li key={region.slug}>
                 <Link
                   href={`/regions/${region.slug}`}
-                  className="flex h-full items-center justify-between gap-3 rounded-2xl border border-white/15 bg-white/[0.06] px-4 py-3 no-underline transition-colors duration-150 hover:border-white/40 hover:bg-white/[0.1] hover:no-underline"
+                  className="flex h-full items-center justify-between gap-3 rounded-md border border-white/15 bg-white/[0.06] px-4 py-3 no-underline transition-colors duration-150 hover:border-white/40 hover:bg-white/[0.1] hover:no-underline"
                 >
                   <span className="text-sm font-bold text-white/90">{region.name}</span>
                   <span className="shrink-0 text-xs font-bold text-[var(--atlas-signal)]">{region.organizationCount}</span>
