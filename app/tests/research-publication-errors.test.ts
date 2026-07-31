@@ -4,7 +4,7 @@ import { researchPublicationErrorRedirect } from "../src/lib/research/publicatio
 describe("research publication diagnostics", () => {
   it("identifies the stale refresh without exposing candidate payloads", () => {
     expect(researchPublicationErrorRedirect({
-      code: "40001",
+      code: "P0001",
       message: "Refresh candidate 622647bd-e3e6-4caa-a56d-08dee4a61f05 (sample-organization) has a stale baseline."
     })).toBe("/admin/publish?error=stale-refresh&candidate=622647bd-e3e6-4caa-a56d-08dee4a61f05&record=sample-organization");
   });

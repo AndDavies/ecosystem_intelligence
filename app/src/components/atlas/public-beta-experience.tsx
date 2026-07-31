@@ -24,7 +24,7 @@ const dismissedKey = "ecosystem-intelligence-updates-dismissed-at";
 const dismissForMs = 30 * 24 * 60 * 60 * 1000;
 
 function pathIsPublicBeta(pathname: string) {
-  return pathname === "/" || ["/regions", "/organizations", "/capabilities", "/demand", "/briefs", "/about", "/how-it-works", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
+  return pathname === "/" || ["/regions", "/organizations", "/missions", "/capabilities", "/demand", "/briefs", "/about", "/how-it-works", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
 }
 
 function newsletterEventMetadata(placement: NorthSignalSignupSource, trigger: string, variant: "banner" | "dialog", pathname: string) {

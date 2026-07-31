@@ -23,6 +23,7 @@ export function PublicAtlasFooter({ generatedLabel }: { generatedLabel?: string 
           <Link href="/methodology" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Methodology</Link>
           <Link href="/how-it-works" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">How It Works</Link>
           <Link href="/regions" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Regions</Link>
+          <Link href="/missions" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Mission Areas</Link>
           <Link href="/contact" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Contact</Link>
           <Link href="/terms" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Terms</Link>
           <Link href="/briefs" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Canadian Defence Briefs</Link>

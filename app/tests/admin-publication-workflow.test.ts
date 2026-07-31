@@ -87,12 +87,15 @@ describe("admin publication workflow", () => {
 
   it("keeps refresh publication independent of private helper permissions", async () => {
     const migration = await readFile(path.resolve("supabase/migrations/20260729133000_remove_refresh_publication_helper_permission_dependency.sql"), "utf8");
+    const hardening = await readFile(path.resolve("supabase/migrations/20260731193003_soft_beta_security_and_rls_hardening.sql"), "utf8");
 
     expect(migration).toContain("create or replace function public.publish_reviewed_refresh_candidates");
     expect(migration).toContain("exact_baseline := case candidate_row.candidate_kind");
     expect(migration).not.toContain("private.refresh_candidate_baseline_text(");
     expect(migration).toContain("security invoker");
     expect(migration).toContain("grant execute on function public.publish_reviewed_refresh_candidates(uuid[], uuid) to authenticated");
+    expect(hardening).toContain("using errcode = 'P0001'");
+    expect(hardening).not.toContain("using errcode = '40001'");
   });
 
   it("lets reviewers enrich complete typed candidates before accepting them", async () => {

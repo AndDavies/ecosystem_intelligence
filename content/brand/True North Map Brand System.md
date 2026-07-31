@@ -1,8 +1,9 @@
 # True North Map Brand System
 
-Status: Phase 1B public system
+Status: deployed public brand system
 Approved: 2026-07-26
-Identity revision: 2026-07-29 local review candidate
+Identity revision: approved and deployed 2026-07-29
+Last reviewed: 2026-07-31
 
 ## Brand idea
 
@@ -32,14 +33,14 @@ symbol. The permanent wordmark never includes the Public Beta label.
 The approved visual reference for this revision is
 `content/brand/source/true-north-map-logo-master-2026-07-29.png`. Production-ready
 artwork is reconstructed as flat SVG geometry rather than cropped from that
-raster presentation sheet. Until Andrew approves the local website review, this
-packet is a local identity candidate and must not be described as deployed.
+raster presentation sheet. Andrew approved the local website review and the
+directional-N packet is the deployed product identity.
 
 Available artwork:
 
 - Horizontal header lockup.
 - Stacked wordmark.
-- Standalone North Signal mark.
+- Standalone Directional N mark.
 - Light, dark, and one-colour variants.
 - Simplified favicon and social-avatar mark.
 
@@ -50,7 +51,7 @@ Canonical asset packet:
 | Horizontal lockup | `app/public/brand/true-north-map-horizontal.svg` | Desktop header, partner material, wide placements |
 | Horizontal light lockup | `app/public/brand/true-north-map-horizontal-light.svg` | Dark footers, presentation fields, and wide inverse placements |
 | Stacked wordmark | `app/public/brand/true-north-map-stacked.svg` | Compact editorial and collateral placements |
-| Directional N mark | `app/public/brand/north-signal-mark.svg` | Primary standalone mark on light surfaces |
+| Directional N mark | `app/public/brand/north-signal-mark.svg` | Primary standalone mark on light surfaces; the retained filename is an implementation detail |
 | Light mark | `app/public/brand/north-signal-mark-light.svg` | Dark surfaces |
 | Monochrome mark | `app/public/brand/north-signal-mark-monochrome.svg` | One-colour reproduction |
 | Small-size marks | `app/public/brand/north-signal-mark-16.svg`, `north-signal-mark-24.svg`, `north-signal-mark-32.svg` | Favicons and compact interface use |
@@ -58,9 +59,9 @@ Canonical asset packet:
 | Social avatar | `app/public/brand/true-north-map-social-avatar.svg` | LinkedIn and other account avatars |
 | Social avatar PNG | `app/public/brand/true-north-map-social-avatar.png` | 1024 pixel upload-ready social account avatar |
 | Collateral PNG exports | `content/brand/exports/true-north-map-symbol.png`, `true-north-map-horizontal.png`, `true-north-map-stacked.png` | Transparent high-resolution exports for documents and presentations |
-| LinkedIn banner | `content/launch/phase-2/true-north-map-linkedin-banner.png` | True North Map organization page |
-| Partner overview | `content/launch/phase-2/true-north-map-partner-overview.pdf` | One-page external orientation |
-| Partner/media deck | `content/launch/phase-2/true-north-map-partner-media-deck.pptx` | Editable launch and partner presentation |
+| LinkedIn banner | `content/launch/phase-2/true-north-map-linkedin-banner.png` | Historical Phase 2 asset; rebuild with the Directional N before distribution |
+| Partner overview | `content/launch/phase-2/true-north-map-partner-overview.pdf` | Historical Phase 2 asset; rebuild with current interface and identity before distribution |
+| Partner/media deck | `content/launch/phase-2/true-north-map-partner-media-deck.pptx` | Historical Phase 2 asset; rebuild with current interface and identity before distribution |
 
 The master reference image records the approved direction, not a distributable
 logo file. The flat SVG packet above is the implementation source of truth. Do
@@ -101,6 +102,7 @@ action or a short piece of meaning.
 - Check contrast, keyboard focus, favicon legibility, clear space, social crops, and fixed image dimensions.
 - Verify public pages at 390, 768, 1024, and 1440 pixels after shared layout or typography changes.
 - Rebuild current screenshots and launch assets when the visible product changes materially; July 18 assets remain historical only.
+- Treat the North Signal name as the editorial briefing. Call the visual symbol the Directional N even where legacy filenames retain `north-signal-mark`.
 - Keep evidence confidence and uncertainty visually distinct. Brand polish must never make an assessment appear more certain than its sources.
 
 ## Typography and geometry
@@ -132,16 +134,24 @@ action or a short piece of meaning.
 - The approved regional image family uses restrained grayscale photography
   with Signal Yellow as a directional or evidence accent.
 - Canada, Atlantic Canada, Quebec, Ontario, the Prairies, British Columbia and
-  the North each have one 16:9 WebP image under
+  the North each have one 4:3 WebP image under
   `app/public/imagery/regions/`.
 - Regional images are illustrative orientation, never geographic evidence.
   Counts, organization locations and coverage statements must continue to come
   from the canonical published records.
 - Use descriptive alt text, fixed aspect ratios and the shared regional hero
-  component. Unknown regions retain the abstract fallback rather than borrowing
-  another region's image.
+  component. Directory cards use the source-native 4:3 frame so approved art
+  meets every card edge without cropping or empty side gutters. Unknown regions
+  retain the abstract fallback rather than borrowing another region's image.
 - Do not add text, flags, logos or place labels inside the image asset. Route
   headings and evidence remain readable HTML outside the artwork.
+
+### Collection and editorial imagery
+
+- Use imagery where it improves orientation or gives editorial content a clear point of entry: the homepage, Regions, Defence Briefs, About, and individual Brief heroes.
+- Do not add decorative hero images to every directory. Organizations and Public Needs should lead with the task, evidence, and first useful records; additional image weight must earn its place through meaning or navigation value.
+- Prefer Canadian people, engineering, facilities, testing, manufacturing, and operating environments over generic military spectacle.
+- Keep fixed dimensions, descriptive alt text, responsive WebP delivery, and stable layout geometry. Visual polish must not delay the public shell or hide current coverage.
 
 ## Public navigation
 

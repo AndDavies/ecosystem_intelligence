@@ -260,6 +260,57 @@ describe("public atlas database foundation", () => {
     expect(result.rows[0]?.unprotected).toBe(0);
   });
 
+  it("keeps editorial RPCs invoker-mode and removes overlapping permissive policies", async () => {
+    const functions = await db.query<{ name: string; security_definer: boolean }>(`
+      select function_record.proname as name, function_record.prosecdef as security_definer
+      from pg_proc function_record
+      join pg_namespace namespace on namespace.oid = function_record.pronamespace
+      where namespace.nspname = 'public'
+        and function_record.proname in ('upsert_defence_brief', 'upsert_defence_article')
+      order by function_record.proname
+    `);
+    expect(functions.rows).toEqual([
+      { name: "upsert_defence_article", security_definer: false },
+      { name: "upsert_defence_brief", security_definer: false }
+    ]);
+
+    const overlaps = await db.query<{ count: number }>(`
+      with expanded as (
+        select schemaname, tablename, policyname, cmd, unnest(roles) as role_name
+        from pg_policies
+        where schemaname = 'public' and permissive = 'PERMISSIVE'
+      ), normalized as (
+        select schemaname, tablename, role_name,
+          case when cmd = 'ALL' then action else cmd end as action
+        from expanded
+        cross join lateral (values ('SELECT'), ('INSERT'), ('UPDATE'), ('DELETE')) commands(action)
+        where cmd = 'ALL' or cmd = action
+      )
+      select count(*)::int as count
+      from (
+        select schemaname, tablename, role_name, action
+        from normalized
+        group by schemaname, tablename, role_name, action
+        having count(*) > 1
+      ) duplicate_policy_groups
+    `);
+    expect(overlaps.rows[0]?.count).toBe(0);
+
+    const quota = await db.query<{ trigger_count: number; submission_index: string | null }>(`
+      select
+        (
+          select count(*)::int from pg_trigger
+          where not tgisinternal
+            and tgname in ('submissions_member_workflow_quota', 'connection_requests_member_workflow_quota')
+        ) as trigger_count,
+        to_regclass('public.submissions_owner_created_at_idx')::text as submission_index
+    `);
+    expect(quota.rows[0]).toEqual({
+      trigger_count: 2,
+      submission_index: "submissions_owner_created_at_idx"
+    });
+  });
+
   it("keeps logo media reviewable and restricts mutations to staff or the service importer", async () => {
     const result = await db.query<{
       anon_media_read: boolean;

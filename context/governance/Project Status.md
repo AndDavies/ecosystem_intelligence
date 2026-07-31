@@ -1,6 +1,6 @@
 # True North Map Project Status
 
-Status: active broader-sharing product and review-first data operation
+Status: production soft beta and review-first data operation
 
 Last verified: 2026-07-31
 
@@ -12,11 +12,13 @@ Public brand: [True North Map](https://truenorthmap.ca)
 
 True North Map is an evidence-backed Canadian defence and dual-use ecosystem map with public organization, technology, demand-signal, Defence Brief, evidence, and private Working List surfaces. Production Supabase is the only source of truth for live records, taxonomy, review state, and publication state. Exact corpus and queue counts must be read from production rather than copied into status documents.
 
+The tracked public application is aligned with `origin/main` at the July 31 regional-imagery deployment. The production route, compact discovery architecture, directional-N identity, regional illustrations, and North Signal capture journey are live. The product remains in soft beta: it is public and useful, while Andrew is still validating decision journeys, content cadence, contribution quality, and broader-release messaging with real users.
+
 The current product and operating system include:
 
 - The homepage and primary collection routes now render their value proposition independently of database reads, then stream live records through bounded loading states. An exact cached summary reports current organizations, technologies, and approved public sources; a compact discovery projection powers the national map, Organizations, Regions, and regional directories while omitting dossier evidence, citations, media, financing, and other profile-only fields. Public Needs uses a dedicated source-gated index over published demand sources, requirements, and approved matches. Rich evidence loads only on record pages or export. This preserves complete national discovery as the corpus grows without making first paint depend on the complete evidence graph.
 - Public atlas responses use a five-minute CDN cache with ten-minute stale-while-revalidate support, and the Vercel server region is pinned to `sfo1` to reduce round-trip distance to the canonical Supabase `us-west-2` project. The compact demand filter includes only published Demand Signals whose source has recorded human verification.
-- Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix, rollback runbook and current launch kit now make release validation repeatable.
+- Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix and rollback runbook make release validation repeatable. The current broader-beta package now lives under `content/launch/broader-public-beta-2026-08/`; the July 26 kit is historical.
 - Pre-launch security remediation updates the production runtime dependencies, bounds citation and evidence reads to the requested public records, and removes private demand-match reviewer rationale from the public data contract and Ask True North catalogue. `pnpm security:validate` is now a release gate; the durable backlog and verification record live in `Security And Reliability Remediation Log.md`.
 - Phase 1B established the charcoal, warm-white and signal-yellow system. The approved production identity uses a directional N and separated yellow north corner while retaining the same palette, typography, messaging, and product behaviour.
 - The primary navigation is Map, Organizations, Public Needs, Defence Briefs, How It Works, and About. `/demand` remains canonical; Public Needs names the collection while Demand Signal remains the precise label for one source-gated released need.
@@ -24,6 +26,7 @@ The current product and operating system include:
 - A public map, organization and capability profiles, public-demand records, reviewed capability-demand matches, exports, and Ask True North over the published corpus.
 - Published organization profiles can display an approved official logo with recorded source provenance. Missing or uncertain marks retain the neutral organization icon, and administrators can replace or remove a logo from the canonical organization editor.
 - A public organization directory and region-browsing surface at `/organizations`, `/regions`, and `/regions/[slug]`. These routes use live published counts, URL-based type and region browsing, pagination, regional context, and explicit coverage caveats without changing record-level evidence or dossier content.
+- A public Mission Area / Use Case directory at `/missions` and source-aware detail routes at `/missions/[slug]`. Mission pages use only published taxonomy and reviewed relationships, distinguish assessment from released Public Needs, and link visitors into organizations, technologies, Briefs, and Working Lists without creating a second corpus.
 - Seven approved regional map illustrations are integrated in the public presentation layer for Canada, Atlantic Canada, Quebec, Ontario, the Prairies, British Columbia and the North. The responsive WebP assets preserve each highlighted region without cropping, use descriptive map-specific alt text, and retain the existing abstract fallback; they are illustrative and do not change geography, evidence, record counts, metadata or publication state.
 - Canadian Defence Briefs as a reviewed editorial synthesis surface with administrator-only drafting and publication.
 - A private Admin workflow for intake, candidate review and editing, explicit publication, canonical organization maintenance, demand maintenance, demand matching, evidence, and audit history.
@@ -31,6 +34,8 @@ The current product and operating system include:
 - A Monday 06:00 America/Halifax broad discovery run and a weekday 08:00 multi-source refresh run. Both stop at private review intake.
 - Production email separation across Zoho, MailerLite, Resend, and the Supabase consent ledger, with authenticated sending domains and signed lifecycle synchronization.
 - Phase 1 public-product hardening adds page-aware sharing for the map, organizations, technology, regions, public needs, and Defence Briefs; page-specific LinkedIn and X metadata; the consent-backed North Signal capture journey; and granular analytics choices. Google Analytics and Microsoft Clarity are independently optional, private routes are excluded, free-form inputs are masked, and the privacy page explains each provider and choice.
+
+The current local release candidate completes the July 31 implementation sequence through launch collateral and scale hardening. Discovery-table reads now page deterministically so the full published corpus remains available beyond the Data API's per-response row limit; collection counts derive from the same compact snapshot shown to visitors; the Leaflet fallback uses linear-time grid grouping; and `pnpm scale:validate` exercises 5,000 markers. Direct health and launch probes compare public catalogue availability and count consistency without exposing counts or internal details. These Step 6 changes require the normal clean release validation and post-deployment production smoke before they can be described as deployed.
 
 ## Phase 1 public-product hardening boundary
 
@@ -75,9 +80,9 @@ Every new OSINT-enabled run writes a private `research_collection_plan_v1` and `
 
 ## Current worktree and lineage reconciliation
 
-The July 30 worktree is “dirty” because `main` contains intentional changes and new files that have not yet been committed, not because production data is corrupt. The pre-existing changes span North Signal capture and email operations, private visibility tooling, candidate-logo research support, governance updates, and immutable research run lineage. The claim-led OSINT upgrade is being added around those changes without reverting or absorbing them.
+The July 31 worktree is “dirty” because it contains intentional uncommitted research, private visibility, source-book, candidate-logo, lookbook, and immutable run-lineage work, not because the tracked public application or production database is corrupt. Public application releases remain aligned to `main`; the local operator systems stay separate and must be reconciled deliberately rather than included through a blanket stage command.
 
-Files under `research/ingestion/runs/`, `reviews-v2/`, `staging/`, and candidate/lead directories are point-in-time provenance. They remain unchanged after staging and therefore do not mirror later review decisions. A read-only production audit on July 30 found no pending `candidate_changes`; recent July 29 research candidates had already reached published or rejected terminal states. This is expected historical drift, not stale canonical data. Production Supabase remains the only current queue and corpus authority.
+Files under `research/ingestion/runs/`, `reviews-v2/`, `staging/`, and candidate/lead directories are point-in-time provenance. They remain unchanged after staging and therefore do not mirror later review decisions. The July 31 live audit found active candidate, contribution, connection, contact, and feedback work. Exact totals are intentionally not copied here because they may change at any time. Production Supabase remains the only current queue and corpus authority.
 
 ## Database write boundary
 
@@ -92,7 +97,7 @@ Files under `research/ingestion/runs/`, `reviews-v2/`, `staging/`, and candidate
 
 ## Kraken Robotics refresh: published example
 
-The multi-source refresh run `tnm-refresh-2026-07-23` found durable official evidence for two additional Kraken Robotics technologies alongside KATFISH: `SeaPower Subsea Batteries` and `Kraken Synthetic Aperture Sonar`. The reviewed candidate was subsequently published through the standard human Publish checkpoint. The public Kraken profile now shows all three reviewed technologies.
+The multi-source refresh run `tnm-refresh-2026-07-23` found durable official evidence for two additional Kraken Robotics technologies alongside KATFISH: `SeaPower Subsea Batteries` and `Kraken Synthetic Aperture Sonar`. The reviewed candidate was subsequently published through the standard human Publish checkpoint. Later reviewed additions may increase the profile further, so current profile totals must be read live.
 
 This remains the reference example for an additive organization refresh: the candidate targets the existing canonical organization, carries a captured baseline and explicit `add_child` operations, receives human acceptance, and makes canonical source-backed changes only at publication. Research staging still verifies the deployed `/api/system/research-contract` before candidate intake, and candidate kinds without complete Review and Publish support fail closed.
 
@@ -102,13 +107,15 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 
 ## Current operational priorities
 
-- Work approved refresh candidates through the separate Publish checkpoint only after reviewing their explicit operations and evidence.
-- Verify each published refresh on the affected organization, capability, demand, index, and sitemap routes; no redeployment should be required for data visibility.
-- Keep the weekday refresh source portfolio balanced across official government or procurement sources, company sources, due Source Book entries, and discovery feeds.
-- Keep discovery feeds subordinate to durable evidence and preserve unresolved signals in the deferred backlog.
-- Read queue and corpus state from production before declaring a run or release complete.
-- Preserve active research and visibility work as a separate integration stream from application and launch documentation. Do not copy ignored provider data, credentials, raw queries, local logo binaries, or scratch artifacts into tracked project files.
-- Apply the cross-system regression contract to every material change and update the overview, status, relevant skill contract, brand packet, or launch package when the operating picture changes.
+1. Complete clean integrated and release-level regression for the current release candidate, then run the production smoke and count-consistency probes after deployment. Local completion is not production verification.
+2. Triage the live review and participation queues before broader promotion. Work approved research through the separate Publish checkpoint only after reviewing operations and evidence; respond to real connection, contact, contribution, and feedback items through their ordinary workflows.
+3. Review current field LCP, INP, CLS, function errors, direct health, atlas summary, rich-page size, and catalogue-consistency results after the release is live. Keep `REL-2026-003` open until the anonymous cache-header and signed-in-header matrix is verified in production, and keep `REL-2026-004` open until the new retry-warning contract passes a production crawl.
+4. Establish a repeatable Defence Brief and North Signal publishing cadence. Mission routes and related-record links are now available; editorial freshness is the next content trust signal.
+5. Use only the dated broader-beta launch package under `content/launch/broader-public-beta-2026-08/`. Recheck community rules, live proof points, and every outbound URL immediately before distribution.
+6. Continue the open security and resilience register without weakening authorization: stale-publication SQLSTATE, multi-tab auth noise, nonce-based CSP, and field-performance monitoring remain deliberate follow-up work.
+7. Keep discovery feeds subordinate to durable evidence, preserve unresolved signals in the deferred backlog, and read queue and corpus state from production before declaring a run or release complete.
+8. Preserve active research and visibility work as a separate integration stream. Do not copy ignored provider data, credentials, raw queries, local logo binaries, or scratch artifacts into tracked public-site files.
+9. Apply the cross-system regression contract to every material change and update the overview, status, relevant skill contract, brand packet, launch package, and memory extension when the operating picture changes.
 
 ## Source-of-truth documents
 
@@ -120,5 +127,5 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 - `context/governance/Skills And Automation Map.md` — canonical skill, operating-mode, and automation map.
 - `context/governance/Cross-System Change And Regression Contract.md` — impact analysis and regression requirements.
 - `context/governance/Security And Reliability Remediation Log.md` — active security, privacy, resilience, dependency, and assurance register.
-- `content/brand/True North Map Brand System.md` — current brand packet, directional-N local review candidate, and usage rules.
+- `content/brand/True North Map Brand System.md` — current deployed brand packet, directional-N identity, and usage rules.
 - `app/src/lib/research/pipeline-schema.ts` — executable research contract when prose and code differ.

@@ -207,7 +207,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                 {organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => (
                   <AlignmentMatchCard
                     key={match.id}
-                    href={`/?mission=${match.missionArea.slug}`}
+                    href={`/missions/${match.missionArea.slug}`}
                     title={match.missionArea.name}
                     summary={match.alignmentSummary}
                     matchType={match.matchType}

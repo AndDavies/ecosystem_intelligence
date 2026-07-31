@@ -8,6 +8,7 @@ describe("route resilience and accessibility contracts", () => {
       "src/app/error.tsx",
       "src/app/loading.tsx",
       "src/app/organizations/loading.tsx",
+      "src/app/missions/loading.tsx",
       "src/app/demand/loading.tsx",
       "src/app/briefs/loading.tsx",
       "src/app/admin/review/loading.tsx"

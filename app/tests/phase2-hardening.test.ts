@@ -3,6 +3,8 @@ import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { isTransientPublicReadError, withPublicReadRetry } from "@/lib/supabase/public-read";
 import { ATLAS_EXPLORER_PAGE_SIZE, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
+import { collectPagedPublicRows } from "@/lib/atlas/supabase-repository";
+import { groupProjectedPointsByGrid } from "@/lib/atlas/map-clustering";
 import { atlasTestSnapshot } from "./fixtures/atlas-snapshot";
 
 vi.mock("server-only", () => ({}));
@@ -44,6 +46,30 @@ describe("phase 2 launch hardening", () => {
     expect(Buffer.byteLength(JSON.stringify(result))).toBeLessThan(300_000);
   });
 
+  it("retrieves every public discovery row across the database page boundary", async () => {
+    const records = Array.from({ length: 2_505 }, (_, index) => ({ id: `row-${index}` }));
+    const pages: Array<[number, number]> = [];
+    const result = await collectPagedPublicRows(async (from, to) => {
+      pages.push([from, to]);
+      return { data: records.slice(from, to + 1), error: null };
+    }, "scale fixture");
+
+    expect(result.data).toHaveLength(2_505);
+    expect(pages).toEqual([[0, 999], [1_000, 1_999], [2_000, 2_999]]);
+    await expect(collectPagedPublicRows(async () => ({ data: [], error: null }), "invalid fixture", 0))
+      .rejects.toThrow("Invalid page size");
+  });
+
+  it("clusters the Leaflet fallback with a bounded grid pass", () => {
+    const points = Array.from({ length: 5_000 }, (_, index) => ({
+      id: index,
+      projected: { x: index % 1_000, y: Math.floor(index / 1_000) * 70 }
+    }));
+    const groups = groupProjectedPointsByGrid(points);
+    expect(groups.flat()).toHaveLength(points.length);
+    expect(groups.length).toBeLessThan(points.length);
+  });
+
   it("streams the decision-first shell ahead of the cached national discovery projection", async () => {
     const [page, hero, repository, supabaseRepository, vercel] = await Promise.all([
       readFile(path.resolve("src/app/page.tsx"), "utf8"),
@@ -55,7 +81,8 @@ describe("phase 2 launch hardening", () => {
     expect(page).toContain("<AtlasHomeHero />");
     expect(page).toContain("<Suspense fallback={<AtlasHomepageFallback />}");
     expect(hero).toContain("<Suspense fallback={<CoverageFallback />}");
-    expect(repository).toContain("ecosystem-intelligence-atlas-discovery-v1");
+    expect(repository).toContain("loadWarmAtlasDiscoverySnapshot");
+    expect(repository).not.toContain("ecosystem-intelligence-atlas-discovery-v3");
     expect(repository).toContain('tags: ["atlas-public"]');
     expect(repository).toContain("queryAtlasExplorerSnapshot(await getAtlasDiscoverySnapshot(), query)");
     const discoveryLoader = supabaseRepository.slice(
@@ -70,8 +97,9 @@ describe("phase 2 launch hardening", () => {
   });
 
   it("streams collection-page shells while loading only their compact public projections", async () => {
-    const [organizations, regions, regionDetail, demand, repository, supabaseRepository] = await Promise.all([
+    const [organizations, missions, regions, regionDetail, demand, repository, supabaseRepository] = await Promise.all([
       readFile(path.resolve("src/app/organizations/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/missions/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/regions/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/regions/[slug]/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/demand/page.tsx"), "utf8"),
@@ -83,6 +111,9 @@ describe("phase 2 launch hardening", () => {
     expect(organizations).toContain("getAtlasCoverageSummary()");
     expect(organizations).toContain("<Suspense fallback={<OrganizationsDirectoryFallback />}");
     expect(organizations).not.toContain("getAtlasSnapshot");
+
+    expect(missions).toContain("getAtlasMissionIndex()");
+    expect(missions).not.toContain("getAtlasSnapshot");
 
     expect(regions).toContain("getAtlasDiscoverySnapshot()");
     expect(regions).toContain("<Suspense fallback={<RegionsDirectoryFallback />}");
@@ -98,7 +129,7 @@ describe("phase 2 launch hardening", () => {
     expect(demand).toContain("<Suspense fallback={<DemandDirectoryFallback />}");
     expect(demand).not.toContain("getAtlasSnapshot");
 
-    expect(repository).toContain("ecosystem-intelligence-demand-index-v1");
+    expect(repository).toContain("ecosystem-intelligence-demand-index-v2");
     expect(repository).toContain('tags: ["atlas-public"]');
     const demandIndexLoader = supabaseRepository.slice(
       supabaseRepository.indexOf("loadAtlasDemandIndexFromSupabase"),
@@ -143,8 +174,35 @@ describe("phase 2 launch hardening", () => {
     expect(config).toContain("Content-Security-Policy");
     expect(config).toContain("challenges.cloudflare.com");
     expect(config).toContain("facoactpdckkhciamflk.supabase.co");
+    expect(config).toContain("poweredByHeader: false");
+    expect(config).not.toContain("clarity.ms");
+    expect(health).toContain("catalogueConsistent");
+    expect(health).toContain("missionsAvailable");
+    expect(health).toContain("loadAtlasPublicHealthSnapshotFromSupabase");
     expect(health).not.toContain("error.message");
     expect(authState).toContain("signedOutResponse.cookies.delete");
+  });
+
+  it("keeps scale and launch-response budgets inside the release gate", async () => {
+    const [workspacePackage, scaleValidator, launchValidator, operationalChecks] = await Promise.all([
+      readFile(path.resolve("../package.json"), "utf8"),
+      readFile(path.resolve("scripts/validate-atlas-scale.ts"), "utf8"),
+      readFile(path.resolve("scripts/validate-public-launch.ts"), "utf8"),
+      readFile(path.resolve("src/lib/launch/operational-checks.ts"), "utf8")
+    ]);
+    expect(JSON.parse(workspacePackage).scripts["release:validate"]).toContain("pnpm scale:validate");
+    expect(scaleValidator).toContain("const organizationCount = 5_000");
+    expect(scaleValidator).toContain("maxProjectionMs = 300");
+    expect(scaleValidator).toContain("maxSerializedBytes = 1_500_000");
+    expect(launchValidator).toContain("PUBLIC_LAUNCH_MAX_RESPONSE_MS");
+    expect(launchValidator).toContain("PUBLIC_LAUNCH_MAX_HTML_BYTES");
+    expect(launchValidator).toContain("PUBLIC_LAUNCH_MAX_RECOVERED_FAILURES");
+    expect(operationalChecks).toContain("Recovered after initial HTTP");
+    expect(launchValidator).toContain("/api/atlas/summary");
+    expect(launchValidator).toContain("page=1&pageSize=18");
+    expect(launchValidator).toContain("warnings.length > maxRecoveredFailures");
+    expect(launchValidator).toContain('PUBLIC_LAUNCH_MAX_RECOVERED_FAILURES ?? "0"');
+    expect(launchValidator).toContain("responseTimingMs");
   });
 
   it("fails the release gate when high or critical production dependencies are known", async () => {

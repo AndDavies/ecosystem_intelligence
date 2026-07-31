@@ -11,6 +11,7 @@ import { openBetaFeedback, openBetaUpdates } from "@/lib/product-insights/client
 const navigation = [
   { href: "/", label: "Map", match: (pathname: string) => pathname === "/" || pathname.startsWith("/regions") },
   { href: "/organizations", label: "Organizations", match: (pathname: string) => pathname.startsWith("/organizations") },
+  { href: "/missions", label: "Missions", match: (pathname: string) => pathname.startsWith("/missions") },
   { href: "/demand", label: "Public Needs", match: (pathname: string) => pathname.startsWith("/demand") },
   { href: "/briefs", label: "Defence Briefs", match: (pathname: string) => pathname.startsWith("/briefs") },
   { href: "/how-it-works", label: "How It Works", match: (pathname: string) => pathname.startsWith("/how-it-works") },
@@ -53,7 +54,7 @@ export function PublicAtlasHeader() {
           <BrandLogo />
         </Link>
 
-         <nav className="hidden h-full items-center gap-3 xl:flex" aria-label="Public ecosystem map navigation">
+         <nav className="hidden h-full items-center gap-1 2xl:gap-2 xl:flex" aria-label="Public ecosystem map navigation">
           {navigation.map((item) => {
             const active = item.match(pathname);
             return (
@@ -61,7 +62,7 @@ export function PublicAtlasHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex h-10 items-center rounded-[8px] px-3 text-[12px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline xl:px-4 xl:text-[13px]",
+                  "relative flex h-10 items-center rounded-[8px] px-2.5 text-[12px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline 2xl:px-3.5 2xl:text-[13px]",
                   active && "text-[var(--atlas-ink)] hover:text-[var(--atlas-ink)]"
                 )}
                 aria-current={active ? "page" : undefined}

@@ -19,7 +19,7 @@ const regionArt: Record<string, RegionArt> = {
   canada: {
     tone: "general",
     icon: Compass,
-    imageSrc: "/imagery/regions/canada.webp?v=20260731",
+    imageSrc: "/imagery/regions/canada.webp",
     imageAlt: "Illustrative map showing Canada within the national ecosystem view.",
     imagePosition: "center",
     imageFit: "contain",
@@ -28,7 +28,7 @@ const regionArt: Record<string, RegionArt> = {
   "atlantic-canada": {
     tone: "maritime",
     icon: Ship,
-    imageSrc: "/imagery/regions/atlantic-canada.webp?v=20260731",
+    imageSrc: "/imagery/regions/atlantic-canada.webp",
     imageAlt: "Illustrative map highlighting Atlantic Canada within the national ecosystem view.",
     imagePosition: "center",
     imageFit: "contain",
@@ -37,7 +37,7 @@ const regionArt: Record<string, RegionArt> = {
   quebec: {
     tone: "industrial",
     icon: Factory,
-    imageSrc: "/imagery/regions/quebec.webp?v=20260731",
+    imageSrc: "/imagery/regions/quebec.webp",
     imageAlt: "Illustrative map highlighting Quebec within the national ecosystem view.",
     imagePosition: "center",
     imageFit: "contain",
@@ -46,7 +46,7 @@ const regionArt: Record<string, RegionArt> = {
   ontario: {
     tone: "innovation",
     icon: Lightbulb,
-    imageSrc: "/imagery/regions/ontario.webp?v=20260731",
+    imageSrc: "/imagery/regions/ontario.webp",
     imageAlt: "Illustrative map highlighting Ontario within the national ecosystem view.",
     imagePosition: "center",
     imageFit: "contain",
@@ -55,7 +55,7 @@ const regionArt: Record<string, RegionArt> = {
   prairies: {
     tone: "demand",
     icon: Wheat,
-    imageSrc: "/imagery/regions/prairies.webp?v=20260731",
+    imageSrc: "/imagery/regions/prairies.webp",
     imageAlt: "Illustrative map highlighting the Prairies within the national ecosystem view.",
     imagePosition: "center",
     imageFit: "contain",
@@ -64,7 +64,7 @@ const regionArt: Record<string, RegionArt> = {
   "british-columbia": {
     tone: "maritime",
     icon: Waves,
-    imageSrc: "/imagery/regions/british-columbia.webp?v=20260731",
+    imageSrc: "/imagery/regions/british-columbia.webp",
     imageAlt: "Illustrative map highlighting British Columbia within the national ecosystem view.",
     imagePosition: "center",
     imageFit: "contain",
@@ -73,7 +73,7 @@ const regionArt: Record<string, RegionArt> = {
   north: {
     tone: "arctic",
     icon: Snowflake,
-    imageSrc: "/imagery/regions/north.webp?v=20260731",
+    imageSrc: "/imagery/regions/north.webp",
     imageAlt: "Illustrative map highlighting Northern Canada within the national ecosystem view.",
     imagePosition: "center",
     imageFit: "contain",

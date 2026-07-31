@@ -22,6 +22,7 @@ describe("customer-facing product language", () => {
     expect(explorer).toContain("Technology or offering");
     expect(header).toContain('label: "Map"');
     expect(header).toContain('href: "/demand", label: "Public Needs"');
+    expect(header).toContain('href: "/missions", label: "Missions"');
     expect(header).not.toContain('{ href: "/regions", label: "Regions" }');
     expect(explorer).not.toContain("Search atlas");
   });
@@ -77,6 +78,8 @@ describe("customer-facing product language", () => {
     expect(combined).not.toContain("No reviewed mission or public-demand match");
     expect(organization).toContain("Coverage still growing");
     expect(organization).toContain("Suggest a source");
+    expect(organization).toContain("/missions/${match.missionArea.slug}");
+    expect(technology).toContain("/missions/${match.missionArea.slug}");
   });
 
   it("carries the same language into downloadable profiles", async () => {

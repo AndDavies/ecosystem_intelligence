@@ -58,6 +58,11 @@ export interface AtlasMissionMatch {
   citations: AtlasCitation[];
 }
 
+export interface AtlasMissionRecordConnection {
+  missionArea: AtlasMissionArea;
+  capabilityCount: number;
+}
+
 export interface AtlasDemandMatch {
   id: string;
   demandRequirementId: string;
@@ -260,6 +265,53 @@ export interface AtlasDemandIndexSnapshot {
   demands: AtlasDemandIndexItem[];
   sourceCount: number;
   matchCount: number;
+  generatedAt: string;
+}
+
+export interface AtlasMissionIndexItem {
+  missionArea: AtlasMissionArea;
+  organizationCount: number;
+  capabilityCount: number;
+  connectedPublicNeedCount: number;
+  confidenceCounts: Record<AtlasConfidence, number>;
+}
+
+export interface AtlasMissionIndexSnapshot {
+  missions: AtlasMissionIndexItem[];
+  organizationCount: number;
+  capabilityCount: number;
+  generatedAt: string;
+}
+
+export interface AtlasMissionCapabilityConnection extends Pick<
+  AtlasCapability,
+  "id" | "slug" | "name" | "summary" | "sourceConfidence" | "technicalDomains"
+> {
+  assessment: Pick<AtlasMissionMatch, "id" | "alignmentSummary" | "matchType" | "confidence">;
+}
+
+export interface AtlasMissionOrganizationConnection {
+  organization: Pick<
+    AtlasOrganization,
+    | "id"
+    | "slug"
+    | "name"
+    | "description"
+    | "entityKind"
+    | "sourceConfidence"
+    | "freshnessStatus"
+    | "lastReviewedAt"
+    | "primaryLocation"
+  >;
+  capabilities: AtlasMissionCapabilityConnection[];
+  strongestConfidence: AtlasConfidence;
+}
+
+export interface AtlasMissionDetail {
+  missionArea: AtlasMissionArea;
+  organizations: AtlasMissionOrganizationConnection[];
+  publicNeeds: Array<Pick<AtlasDemandRequirement, "id" | "slug" | "title"> & { technologyCount: number }>;
+  capabilityCount: number;
   generatedAt: string;
 }
 

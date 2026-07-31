@@ -8,8 +8,8 @@ import { PublicShare } from "@/components/atlas/public-share";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { JsonLd } from "@/components/seo/json-ld";
 import { briefSectionId, getBriefKeyTakeaways, getBriefPresentation, getBriefReadingMinutes } from "@/lib/atlas/brief-presentation";
-import { getPublishedDefenceBriefBySlug, getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
-import { getAtlasRecordSummaries } from "@/lib/atlas/repository";
+import { getPublishedDefenceBriefBySlug, getPublishedDefenceBriefs, relatedDefenceBriefs } from "@/lib/atlas/briefs";
+import { getAtlasMissionLinksForRecords, getAtlasRecordSummaries } from "@/lib/atlas/repository";
 import { absoluteUrl, siteName } from "@/lib/site";
 
 export const revalidate = 300;
@@ -54,14 +54,19 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
   const presentation = getBriefPresentation(brief);
   const readingMinutes = getBriefReadingMinutes(brief);
   const takeaways = getBriefKeyTakeaways(brief);
-  const summaries = await getAtlasRecordSummaries(brief.links);
+  const [summaries, allBriefs, missionConnections] = await Promise.all([
+    getAtlasRecordSummaries(brief.links),
+    getPublishedDefenceBriefs(),
+    getAtlasMissionLinksForRecords(brief.links)
+  ]);
   const summariesByRecord = new Map(summaries.map((item) => [`${item.type}:${item.id}`, item]));
-  const related = brief.links.flatMap((link) => {
+  const relatedRecords = brief.links.flatMap((link) => {
     const record = summariesByRecord.get(`${link.type}:${link.id}`);
     if (!record) return [];
     const route = link.type === "demand_requirement" ? "demand" : link.type === "organization" ? "organizations" : "capabilities";
     return [{ ...link, href: `/${route}/${record.slug}`, name: record.name }];
   });
+  const relatedBriefs = relatedDefenceBriefs(brief, allBriefs);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -201,6 +206,22 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
           </footer>
 
           <NorthSignalInline placement="newsletter_inline_brief" trigger="brief_complete" className="mt-10" />
+
+          {relatedBriefs.length ? (
+            <section className="mt-12 border-t border-[var(--atlas-border)] pt-9" aria-labelledby="related-analysis-heading">
+              <p className="atlas-eyebrow">Continue the analysis</p>
+              <h2 id="related-analysis-heading" className="mt-3 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">Related Defence Briefs</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {relatedBriefs.map((relatedBrief) => (
+                  <Link key={relatedBrief.id} href={`/briefs/${relatedBrief.slug}`} className="group rounded-2xl border border-[var(--atlas-border)] bg-white p-5 no-underline transition-colors hover:border-[var(--atlas-ink)] hover:no-underline">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{getBriefPresentation(relatedBrief).topic}</span>
+                    <span className="mt-2 block text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{relatedBrief.title}</span>
+                    <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)] group-hover:underline">Read the article <ArrowRight className="size-3.5" aria-hidden="true" /></span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
         </article>
 
         <aside className="space-y-5 lg:sticky lg:top-28">
@@ -223,11 +244,27 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <dl className="mt-5 grid gap-3 border-t border-[var(--atlas-border)] pt-4 text-xs"><div><dt className="text-[var(--atlas-muted)]">Primary reader</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{brief.audience}</dd></div><div><dt className="text-[var(--atlas-muted)]">Last reviewed</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{dateFormatter.format(new Date(brief.reviewedAt))}</dd></div><div><dt className="text-[var(--atlas-muted)]">Evidence</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{brief.sources.length} approved public {brief.sources.length === 1 ? "source" : "sources"}</dd></div></dl>
           </section>
 
-          {related.length ? (
+          {missionConnections.length ? (
+            <section className="rounded-2xl border border-[var(--atlas-border)] bg-white p-5">
+              <p className="atlas-eyebrow">Mission lens</p>
+              <h2 className="mt-2 text-base font-extrabold text-[var(--atlas-ink)]">Explore related use cases</h2>
+              <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">These are reviewed True North Map groupings connected through the records in this article.</p>
+              <div className="mt-4 space-y-2">
+                {missionConnections.slice(0, 4).map((connection) => (
+                  <Link key={connection.missionArea.id} href={`/missions/${connection.missionArea.slug}`} className="flex items-center justify-between gap-3 rounded-xl border border-[var(--atlas-border)] p-3 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:border-[var(--atlas-ink)] hover:no-underline">
+                    <span>{connection.missionArea.name}</span>
+                    <span className="shrink-0 text-[10px] text-[var(--atlas-muted)]">{connection.capabilityCount} {connection.capabilityCount === 1 ? "technology" : "technologies"}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {relatedRecords.length ? (
             <section className="rounded-2xl border border-[var(--atlas-border)] bg-white p-5">
               <p className="atlas-eyebrow">Keep exploring</p>
               <h2 className="mt-2 text-base font-extrabold text-[var(--atlas-ink)]">Move from context to action</h2>
-              <div className="mt-4 space-y-3">{related.map((item) => <Link key={`${item.type}-${item.id}`} href={item.href} className="group block rounded-xl border border-[var(--atlas-border)] p-3 no-underline hover:border-[var(--atlas-ink)] hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.label}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.name}<ArrowRight className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" /></span></Link>)}</div>
+              <div className="mt-4 space-y-3">{relatedRecords.map((item) => <Link key={`${item.type}-${item.id}`} href={item.href} className="group block rounded-xl border border-[var(--atlas-border)] p-3 no-underline hover:border-[var(--atlas-ink)] hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.label}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.name}<ArrowRight className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" /></span></Link>)}</div>
             </section>
           ) : null}
         </aside>

@@ -1,0 +1,125 @@
+# Development Log - 2026-07-31
+
+Status: soft-beta project reconciliation and current-state audit
+
+## Scope
+
+This review reconciled the live True North Map product, tracked repository, active local operator systems, brand and launch assets, production database posture, security register, SEO/AEO validation, and next product priorities. It changed governance and memory only. It did not change application code, production data, Supabase configuration, provider configuration, review decisions, publication state, or campaigns.
+
+## Verified production baseline
+
+- `main` and `origin/main` were aligned at the July 31 regional-imagery deployment when the audit began.
+- Supabase project `facoactpdckkhciamflk` reported `ACTIVE_HEALTHY` in `us-west-2`.
+- `/api/health`, the homepage, Organizations, Regions, Public Needs, Defence Briefs, How It Works, and the Kraken Robotics profile returned successfully.
+- Current public route time to first byte in the direct smoke was roughly 0.12 to 0.42 seconds. Full transfer for the checked pages remained below roughly 0.54 seconds in that sample. This is a dated audit sample, not field Core Web Vitals.
+- `pnpm security:validate` reported no known production dependency vulnerability.
+- `pnpm launch:validate` checked 645 canonical public pages with zero findings, zero orphan candidates, and zero duplicate titles.
+- Browser checks at 390, 768, 1024, and 1440 pixels found no horizontal overflow on the sampled core routes. No console warning or error appeared in the audited public flow.
+- The live response still uses private no-store homepage HTML, exposes `X-Powered-By`, and retains dormant Clarity hosts in the CSP. Those items remain in the security and reliability register.
+
+## Live operational state
+
+A read-only production snapshot found active work in the research-candidate, contribution, connection, contact, feedback, and subscriber surfaces. At audit time there were 50 pending candidate changes, three pending submissions, one new connection request, one new contact message, one pending feedback item, and three subscribed update records. These totals are included only as dated audit evidence. Every agent must re-read production before acting because the queues may change independently of this file.
+
+The canonical published Mission Area / Use Case layer is ready to support a public browsing slice. At audit time the four published mission areas all had substantial reviewed capability coverage. Exact totals remain a live database fact and are not repeated in operating contracts.
+
+## Repository state
+
+The deployable public application was aligned with production. The primary worktree also contained intentional, uncommitted work across:
+
+- claim-led research contracts and OSINT normalization;
+- private visibility tooling and fixtures;
+- Source Book and North Signal source-registry material;
+- candidate-logo preparation;
+- immutable research run, lead, candidate, review, staging, claim-ledger, collection-plan and signal lineage;
+- a large local lookbook/collateral workspace.
+
+This is not evidence of production drift. It is a release-control risk if staged indiscriminately. Application/governance releases, validated research lineage, and private ignored operator artifacts must remain separately reviewed.
+
+## Public experience audit
+
+Accepted audit screenshots are stored in `output/audits/soft-beta-2026-07-31/`.
+
+### 1. Homepage: healthy
+
+The current split hero communicates the product quickly, shows live breadth without blocking first paint, keeps Ask True North immediately adjacent, and uses the brand system consistently. The first desktop viewport establishes value, evidence posture, and the primary action. On mobile, the hero is legible and actions remain visible, but the image pushes Ask True North below the first viewport. This is acceptable because the primary action anchors directly to discovery; it should be monitored rather than redesigned again.
+
+### 2. Organizations: healthy with mobile density friction
+
+The route clearly explains the task and its streamed coverage cards provide useful context. On mobile, the coverage cards consume the initial viewport before the visitor sees a real organization. The next refinement should compress those metrics into a horizontal summary or move the first useful result above part of the snapshot without hiding coverage caveats.
+
+### 3. Regions: healthy with excess introductory height
+
+The approved regional imagery makes the route more memorable and the national-to-regional pattern is easy to understand. The editorial introduction and whitespace are generous enough that the national card begins low in the desktop viewport. Reduce vertical spacing before changing art or adding more decorative content.
+
+### 4. Public Needs: strong trust design
+
+The page explains where a public need comes from and distinguishes fact from assessment before displaying records. The evidence legend and caveat are clear. The long headline and dense legend should be checked whenever mobile copy or icon treatment changes, but there was no sampled overflow.
+
+### 5. Defence Briefs: visually strong, cadence-sensitive
+
+This is the strongest content-led route and a useful acquisition surface. Its future value depends on freshness and internal linking, not another layout change. A repeatable editorial cadence should connect Briefs to Mission Areas, Public Needs, organizations, and North Signal.
+
+### 6. How It Works: healthy
+
+The five-step explanation and evidence boundary make the product understandable to a first-time visitor. It should become the contextual trust destination for the future Mission Area pages and outreach links.
+
+### 7. Organization profile: decision-useful
+
+The Kraken profile shows the intended evidence-led dossier depth, clear actions, approved logo, technology section, evidence states, and breadcrumbs. The action cluster is dense but usable on desktop. Continue to monitor mobile action ordering and only surface fields supported by public evidence.
+
+## Brand and collateral reconciliation
+
+- The Directional N is the approved and deployed True North Map identity.
+- North Signal is the editorial briefing name, not the public name of the logo symbol. Legacy asset filenames may retain `north-signal-mark` for compatibility.
+- North Ink, Field, Paper, Signal Yellow, Evidence Green, Barlow, Inter, restrained rounded geometry, and evidence-first states remain the approved system.
+- Regional imagery is current and deployed.
+- The Phase 2 screenshots, LinkedIn banner, walkthrough, partner overview, and deck predate the Directional N or later interface changes. They are historical references and require a dated replacement package before broad distribution.
+- No additional global aesthetic redesign is recommended. Future imagery should help orientation or editorial understanding rather than decorate directories.
+
+## Security and reliability review
+
+The production dependency gate is clear and the prior citation-scope and public-rationale blockers are deployed. Current Supabase security advisors showed five informational deny-by-default RLS notices and two known warnings: the authenticated security-definer Defence Brief RPC and leaked-password protection. The latter remains an accepted trigger because the public product does not accept passwords.
+
+Supabase performance advisors reported overlapping permissive RLS policies, unused indexes, and an absolute Auth connection strategy. These are not evidence of a current breach or outage. They are recorded in `Security And Reliability Remediation Log.md` with bounded verification triggers.
+
+## Recommended implementation order
+
+1. **Pre-promotion security and operations pass.** Triage the live queues, remove dormant Clarity CSP hosts and `X-Powered-By`, narrow the Defence Brief RPC execution surface, add strict submission payload and per-account limits, and replace the stale-publication retry SQLSTATE.
+2. **Mission Area / Use Case discovery.** Add `/missions` and `/missions/[slug]` using only published mission areas, reviewed capability relationships, current public evidence, visible gaps, and existing organization/technology routes. Do not create a second taxonomy or infer new missions. Link from How It Works, relevant technologies, Public Needs, Briefs, and the map.
+3. **Mobile collection refinement.** Bring the first real organization higher on `/organizations`, reduce Regions introduction height, preserve streamed loading geometry, and rerun the four-width browser matrix.
+4. **Content and internal-link cadence.** Publish a consistent Defence Brief and North Signal rhythm, create source-backed links into Mission Areas and Public Needs, and refresh older high-value pages when new evidence arrives.
+5. **Current launch package and distribution.** Rebuild the LinkedIn banner, screenshots, walkthrough, partner overview, and media deck with the Directional N and current interface. Then run founder-led LinkedIn, included-organization verification, ecosystem partner, media, and builder-community waves with source-specific UTMs.
+6. **Scale follow-up.** Separate the anonymous cacheable public shell from auth-state requests, watch the growing homepage/directory transfer size, and consolidate overlapping public-read/staff RLS policies without weakening authorization.
+
+## Implementation outcome
+
+The six-step sequence was implemented in order in the current local release candidate:
+
+1. **Security and operations:** tightened public payload validation and quotas, reduced fingerprinting and dormant-provider surface, and applied the reviewed RLS/security migration without changing public-data or publication authority.
+2. **Mission discovery:** added `/missions` and `/missions/[slug]` over the existing published Mission Area taxonomy and reviewed relationships, with clear assessment caveats and cross-links into organizations, technologies, Briefs, and Working Lists.
+3. **Mobile and Regions:** compressed the mobile Organizations summary, preserved streamed loading geometry, and corrected regional-card imagery to fill consistent 4:3 card frames without changing the approved art or regional record content.
+4. **Content links:** connected Defence Briefs, organizations, technologies, Public Needs, and Mission Areas using existing reviewed relationships; no new public fact or relationship was inferred.
+5. **Launch package:** rebuilt the broader-beta package under `content/launch/broader-public-beta-2026-08/` with current screenshots, Directional N assets, channel copy, response guide, 30-second walkthrough, partner PDF, and partner/media deck. The earlier Phase 2 package remains historical.
+6. **Scale and operations:** added deterministic paged reads for every discovery relation, same-snapshot public counts, linear-time grid grouping for the fallback map, a 5,000-marker scale gate, direct non-sensitive health checks, and launch probes that compare summary, atlas total, complete markers, and bounded rich results while surfacing recovered retries.
+
+Steps 1 through 5 are functionally complete in the release candidate. Step 6 source work is complete locally but its production-specific cache, crawl-warning, catalogue-consistency, runtime-log, and field-performance checks remain release activities. `REL-2026-003` and `REL-2026-004` are therefore not closed in this log.
+
+## Final local release-candidate verification
+
+The complete six-step release candidate passed the integrated local release gate after the final regional-image and scale changes:
+
+- `pnpm release:validate` passed with no known production dependency vulnerabilities.
+- All 43 test files and 235 tests passed.
+- Lint and the clean Next.js production build passed.
+- The 5,000-organization scale fixture retained all 5,000 map markers, bounded rich cards to 18, serialized below the 1.5 MB budget, and completed both projection and fallback clustering below the 300 ms budget.
+- The four-width browser matrix and sampled public, member, and administrator routes showed no horizontal overflow or broken images. Anonymous private routes retained the normal sign-in boundary.
+- The local health, summary, and atlas probes agreed on catalogue availability and complete marker coverage.
+- The production canonical crawl remained a healthy pre-deployment baseline, but production still returns the prior health response until this release candidate is approved and deployed. Production verification remains required before closing the open reliability items.
+
+## Verification limits
+
+- Screenshot inspection and responsive geometry checks do not prove WCAG conformance or screen-reader quality. Full keyboard, focus, contrast, semantic announcement, and assistive-technology checks remain part of release regression.
+- The direct timing sample is not a Core Web Vitals field dataset and does not substitute for Vercel or Google field measurements.
+- Authenticated member and administrator workflows were not modified or replayed in this documentation-only task.
+- Vercel runtime logs were not changed or cleared; inspect them again immediately before broader promotion.

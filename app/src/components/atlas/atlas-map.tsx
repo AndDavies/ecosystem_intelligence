@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 
 import maplibregl, { type GeoJSONSource, type Map as MapLibreMap } from "maplibre-gl";
 import { useEffect, useRef } from "react";
+import { groupProjectedPointsByGrid } from "@/lib/atlas/map-clustering";
 import { isUsableAtlasBounds, organizationIdsInBounds } from "@/lib/atlas/viewport";
 import type { AtlasBounds, AtlasMapOrganization } from "@/types/atlas";
 
@@ -177,15 +178,7 @@ export function AtlasMap({
       if (location?.latitude === null || location?.latitude === undefined || location.longitude === null || location.longitude === undefined) return [];
       return [{ organization, location, projected: map.project([location.latitude, location.longitude], map.getZoom()) }];
     });
-    const groups: Array<typeof points> = [];
-    for (const point of points) {
-      const nearby = groups.find((group) => {
-        const centre = group.reduce((total, item) => total.add(item.projected), L.point(0, 0)).divideBy(group.length);
-        return centre.distanceTo(point.projected) <= 64;
-      });
-      if (nearby) nearby.push(point);
-      else groups.push([point]);
-    }
+    const groups = groupProjectedPointsByGrid(points);
 
     groups.forEach((group) => {
       if (group.length > 1) {

@@ -148,3 +148,20 @@ const getCachedPublishedDefenceBriefBySlug = unstable_cache(
 export const getPublishedDefenceBriefs = cache(async () => getCachedPublishedDefenceBriefs());
 
 export const getPublishedDefenceBriefBySlug = cache(async (slug: string) => getCachedPublishedDefenceBriefBySlug(slug));
+
+export function relatedDefenceBriefs(current: DefenceBrief, briefs: DefenceBrief[], limit = 3) {
+  const currentLinks = new Set(current.links.map((link) => `${link.type}:${link.id}`));
+  const currentSources = new Set(current.sources.map((source) => source.id));
+
+  return briefs
+    .filter((brief) => brief.id !== current.id)
+    .map((brief) => {
+      const sharedRecords = brief.links.filter((link) => currentLinks.has(`${link.type}:${link.id}`)).length;
+      const sharedSources = brief.sources.filter((source) => currentSources.has(source.id)).length;
+      const sameTopic = brief.topic && brief.topic === current.topic ? 1 : 0;
+      return { brief, score: sharedRecords * 4 + sameTopic * 2 + sharedSources };
+    })
+    .sort((left, right) => right.score - left.score || Date.parse(right.brief.updatedAt) - Date.parse(left.brief.updatedAt))
+    .slice(0, limit)
+    .map(({ brief }) => brief);
+}

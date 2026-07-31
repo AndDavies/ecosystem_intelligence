@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1584, initial-scale=1" />
+    <title>True North Map LinkedIn banner</title>
+    <style>
+      @font-face {
+        font-family: "Barlow";
+        font-style: normal;
+        font-weight: 800;
+        src: local("Barlow ExtraBold"), local("Barlow-ExtraBold");
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        width: 1584px;
+        height: 396px;
+        margin: 0;
+        overflow: hidden;
+        background: #242827;
+      }
+
+      body {
+        color: #ffffff;
+        font-family: Inter, Arial, sans-serif;
+      }
+
+      .banner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        isolation: isolate;
+        background-image:
+          linear-gradient(90deg, rgba(36, 40, 39, 0.98) 0%, rgba(36, 40, 39, 0.93) 42%, rgba(36, 40, 39, 0.26) 72%, rgba(36, 40, 39, 0.08) 100%),
+          url("../../../app/public/imagery/home-maritime-evidence.webp");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .banner::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 6px;
+        background: #f5e900;
+      }
+
+      .content {
+        position: absolute;
+        inset: 44px auto auto 164px;
+        width: 720px;
+      }
+
+      .logo {
+        width: 305px;
+        height: auto;
+        display: block;
+        margin-bottom: 35px;
+      }
+
+      .eyebrow {
+        margin: 0 0 13px;
+        color: #f5e900;
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 670px;
+        font-family: "Barlow", Inter, Arial, sans-serif;
+        font-size: 54px;
+        line-height: 0.98;
+        letter-spacing: -0.035em;
+      }
+
+      p {
+        margin: 22px 0 0;
+        max-width: 650px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 19px;
+        line-height: 1.35;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="banner" aria-label="True North Map launch banner">
+      <section class="content">
+        <img class="logo" src="../../../app/public/brand/true-north-map-horizontal-light.svg" alt="True North Map" />
+        <p class="eyebrow">Evidence-led ecosystem discovery</p>
+        <h1>Make Canadian capability visible.</h1>
+        <p>Follow the evidence. Find the fit. Start the right conversation.</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -198,6 +198,7 @@ function RegionCard({ region }: { region: AtlasRegion }) {
         imagePosition={art.imagePosition}
         imageFit={art.imageFit}
         showLabel={art.showLabel}
+        className="aspect-[4/3] border-b border-[var(--atlas-border)]"
       />
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]">

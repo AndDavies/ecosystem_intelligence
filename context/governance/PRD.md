@@ -1,7 +1,7 @@
 # True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
 Status: active product requirements
-Last updated: 2026-07-25
+Last updated: 2026-07-31
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -11,7 +11,7 @@ True North Map is the public brand for this free, English-language ecosystem int
 
 The primary journey is:
 
-> Place or released public need -> relevant organizations -> technology or offering -> where this technology may help -> Working List or export
+> Mission Area / Use Case, place, technology area, or released public need -> relevant organizations -> technology or offering -> evidence and reviewed relevance -> Working List, export, correction, or introduction
 
 The product combines public mapping, decision-useful organization profiles, public Canadian and allied demand signals, and a review-first research pipeline. Agents and deterministic comparisons can stage research suggestions but cannot publish them.
 
@@ -342,11 +342,11 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
 - Duplicate submissions, missing coordinates, unavailable images, stale sources, failed agents, and empty regions have safe states.
 - Public discovery meets WCAG AA keyboard, contrast, and non-map navigation requirements.
 - Target performance is p75 LCP under 2.5 seconds on broadband, filter feedback under 300 ms after data load, and responsive clusters for at least 1,000 points.
-- Public Beta requires at least 30 reviewed records, zero scaffold records, complete RLS tests, passing automated/browser tests, and privacy review. Corpus expansion proceeds separately through the evidence and human-publication workflow.
+- Public Beta requires zero scaffold records, complete RLS tests, passing automated and browser checks, a successful privacy review, and no unsupported featured claim. Corpus expansion proceeds continuously through the evidence and human-publication workflow rather than a fixed release count.
 
 ## Delivery status
 
-Current implementation status updated on 2026-07-23. Exact live corpus and
+Current implementation status updated on 2026-07-31. Exact live corpus and
 workflow counts are read from production rather than frozen here:
 
 - clean schema, explicit grants, RLS, storage policy, validated seed, migration
@@ -355,9 +355,9 @@ workflow counts are read from production rather than frozen here:
   continued expansion is evidence-backed and human-published
 - authoritative public-demand sources and reviewed technology-to-demand matches
   retain specific rationales and evidence inherited from both sides
-- independent Field Atlas visual system using a warm neutral canvas, spruce
-  primary actions, coral selection, violet analyst-assessment states, and
-  rounded public surfaces
+- deployed True North Map identity using the directional N, North Ink, Field,
+  Paper, Signal Yellow, Evidence Green, Barlow display type, Inter body type,
+  restrained rounded geometry, and evidence-first public states
 - national ecosystem map with constrained discovery, organization-type filters, synchronized
   URL state, numbered map clusters, viewport-bounded evidence table, compact
   organization preview, and visible-result export
@@ -380,8 +380,8 @@ workflow counts are read from production rather than frozen here:
 - structured candidate review, substantive rationale, duplicate resolution,
   one-button atomic publication, direct published-record editing, audit history,
   stable slugs, and cache invalidation
-- six deployed project-local research skills of record plus an active seventh
-  candidate-logo integration, including multi-source signal refresh, live entity
+- seven project-local research skills of record, including candidate-logo
+  disposition, multi-source signal refresh, live entity
   matching, typed before/after refresh operations, official-site identity-media
   provenance, direct private review intake, stale-baseline rejection, append-only
   evidence, and explicit human publication
@@ -398,6 +398,13 @@ workflow counts are read from production rather than frozen here:
   for ordinary non-campaign searches, plus organization-type language for
   company, investor, accelerator, incubator, research-centre, ecosystem, and
   government-office discovery
+- evidence-light streamed collection routes for Organizations, Regions,
+  regional directories, and Public Needs, preserving immediate branded context,
+  complete national discovery, pagination, and bounded rich-evidence loading
+- seven reviewed regional illustrations for Canada, Atlantic Canada, Quebec,
+  Ontario, the Prairies, British Columbia, and the North
+- North Signal as the named weekly editorial briefing, with contextual signup,
+  consent-led MailerLite delivery, private issue preparation, and manual editorial sending
 
 Verified for the broader public-beta release:
 

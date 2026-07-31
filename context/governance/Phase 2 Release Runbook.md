@@ -1,29 +1,33 @@
 # Phase 2 broader-release runbook
 
+Last reviewed: 2026-07-31
+
+Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.
+
 ## Release authority
 
 Andrew Davies is the release owner. A successful build or migration does not authorize public content publication, outreach or campaign sending by itself.
 
 ## Before deployment
 
-1. Confirm the protected Phase 2 branch contains only application, migration, launch-asset and governance changes.
-2. Run `pnpm release:validate` with production configuration.
+1. Confirm `main` is aligned with `origin/main` and stage only the intended application, migration, launch-asset and governance changes. Keep local research, visibility, raw lineage, provider data and large draft collateral out of the release commit.
+2. Run `pnpm release:validate` with production configuration. Its current contract includes the 5,000-marker scale gate; run `pnpm scale:validate` directly when diagnosing scale failures.
 3. Confirm `pnpm security:validate` reports no high or critical production dependency finding and review lower-severity output.
 4. Run the browser matrix at 390, 768, 1024 and 1440 pixels.
 5. Verify the access matrix for anonymous, member, non-admin and administrator roles.
-6. Inspect one public organization API response for internal review fields and run the low-rate canonical crawl, including any recovered retry warnings.
+6. Inspect one public organization API response for internal review fields and run the low-rate canonical crawl, including any recovered retry warnings. Verify that `/api/atlas/summary` organization count, `/api/atlas` total, and the complete marker collection agree while rich results remain at or below the requested page size.
 7. Review current Vercel errors and Supabase security and performance advisors.
 8. Confirm pending publication and participation queues have been triaged.
 9. Confirm the latest production deployment remains available for rollback.
 
 ## Deployment
 
-1. Push the protected branch and verify its Vercel preview.
-2. Apply the reviewed retention migration to project `facoactpdckkhciamflk`.
-3. Verify the scheduled job and execute the purge function once in a transaction-safe validation.
-4. Merge the approved branch to `main` and confirm the Vercel production deployment.
-5. Check `/api/health`, `/`, `/organizations`, `/demand`, `/briefs`, `/how-it-works`, `/sign-in` and one profile of each public record type.
-6. Verify production security headers, sitemap, robots, social card and analytics consent.
+1. Commit the approved release directly to `main` after local review and required validation.
+2. Apply any reviewed migration to project `facoactpdckkhciamflk` in version order, then verify its live state. Skip this step when the release has no database change.
+3. When a scheduler or private function changes, verify the job and its rollback dependency explicitly. Do not rely on Andrew to remember an internal database dependency.
+4. Push `main` once and confirm the single Vercel production deployment.
+5. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/briefs`, `/how-it-works`, `/sign-in` and one profile of each public record type.
+6. Verify production security headers, sitemap, robots, social card and analytics consent, then inspect current Vercel and Supabase logs or advisors relevant to the change.
 
 ## Provider status
 
@@ -49,3 +53,9 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 For a critical issue, stop promotion, preserve logs, roll back the application if necessary and do not retry destructive database operations.
 
 All active findings, accepted risks, repair evidence, and follow-up triggers are recorded in `Security And Reliability Remediation Log.md`.
+
+## Current broader-beta release candidate
+
+- Current collateral is under `content/launch/broader-public-beta-2026-08/` and includes reviewed current-interface screenshots, a Directional N banner and avatar, a 30-second walkthrough, a one-page partner PDF, partner/media deck, response guide, channel copy, and source notes.
+- Discovery reads now use deterministic paging, same-snapshot collection counts, linear-time fallback grouping, and a 5,000-marker regression gate. These changes are implemented in the local release candidate; production closure requires deployment plus the health, catalogue-consistency, cache-header, crawl-warning, and field-performance checks above.
+- `REL-2026-003` and `REL-2026-004` remain open until their production verification triggers pass. Do not mark either deployed based on local tests alone.

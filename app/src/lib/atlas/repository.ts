@@ -22,6 +22,10 @@ import type {
   AtlasDiscoverySnapshot,
   AtlasDiscoveryResult,
   AtlasDemandIndexSnapshot,
+  AtlasMissionDetail,
+  AtlasMissionIndexSnapshot,
+  AtlasMissionRecordConnection,
+  AtlasConfidence,
   AtlasOrganization,
   AtlasQuery,
   AtlasExplorerQueryResult,
@@ -109,6 +113,8 @@ type AtlasQueryableSnapshot = Pick<
 
 let lastSafePublicSnapshot: Omit<AtlasSnapshot, "regions"> | null = null;
 let lastSafeDiscoverySnapshot: Omit<AtlasDiscoverySnapshot, "regions"> | null = null;
+let lastSafeDiscoverySnapshotAt = 0;
+let pendingDiscoverySnapshot: Promise<Omit<AtlasDiscoverySnapshot, "regions">> | null = null;
 let lastSafeCoverageSummary: AtlasCoverageSummary | null = null;
 let lastSafeDemandIndex: AtlasDemandIndexSnapshot | null = null;
 
@@ -140,21 +146,34 @@ function buildRegions(snapshot: Pick<AtlasQueryableSnapshot, "organizations" | "
 const publicRecordCacheSeconds = 60 * 60;
 const publicDiscoveryCacheSeconds = 5 * 60;
 
-const getCachedAtlasDiscoverySnapshot = unstable_cache(
-  () => withPublicReadRetry(loadAtlasDiscoverySnapshotFromSupabase),
-  ["ecosystem-intelligence-atlas-discovery-v1"],
-  { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
-);
+async function loadWarmAtlasDiscoverySnapshot() {
+  const now = Date.now();
+  if (lastSafeDiscoverySnapshot && now - lastSafeDiscoverySnapshotAt < publicDiscoveryCacheSeconds * 1_000) {
+    return lastSafeDiscoverySnapshot;
+  }
+  if (!pendingDiscoverySnapshot) {
+    pendingDiscoverySnapshot = withPublicReadRetry(loadAtlasDiscoverySnapshotFromSupabase)
+      .then((snapshot) => {
+        lastSafeDiscoverySnapshot = snapshot;
+        lastSafeDiscoverySnapshotAt = Date.now();
+        return snapshot;
+      })
+      .finally(() => {
+        pendingDiscoverySnapshot = null;
+      });
+  }
+  return pendingDiscoverySnapshot;
+}
 
 const getCachedAtlasCoverageSummary = unstable_cache(
   () => withPublicReadRetry(loadAtlasCoverageSummaryFromSupabase),
-  ["ecosystem-intelligence-atlas-coverage-summary-v1"],
+  ["ecosystem-intelligence-atlas-coverage-summary-v3"],
   { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
 );
 
 const getCachedAtlasDemandIndex = unstable_cache(
   () => withPublicReadRetry(loadAtlasDemandIndexFromSupabase),
-  ["ecosystem-intelligence-demand-index-v1"],
+  ["ecosystem-intelligence-demand-index-v2"],
   { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
 );
 
@@ -178,8 +197,8 @@ const getCachedAtlasDemandBySlug = unstable_cache(
 
 const getCachedPublishedAtlasSlugs = unstable_cache(
   () => withPublicReadRetry(loadPublishedAtlasSlugsFromSupabase),
-  ["ecosystem-intelligence-published-atlas-slugs-v1"],
-  { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
+  ["ecosystem-intelligence-published-atlas-slugs-v3"],
+  { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
 );
 
 export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
@@ -212,7 +231,10 @@ export const getAtlasDiscoverySnapshot = cache(async (): Promise<AtlasDiscoveryS
   requireAtlasPublicEnvironment();
   let snapshot: Omit<AtlasDiscoverySnapshot, "regions">;
   try {
-    snapshot = await getCachedAtlasDiscoverySnapshot();
+    // Keep the uncapped national discovery object out of Next's 2 MB data
+    // cache. A short in-process warm cache deduplicates server work without
+    // imposing a platform item-size ceiling as the corpus grows.
+    snapshot = await loadWarmAtlasDiscoverySnapshot();
     lastSafeDiscoverySnapshot = snapshot;
   } catch (error) {
     if (!lastSafeDiscoverySnapshot) throw error;
@@ -247,6 +269,170 @@ export const getAtlasDemandIndex = cache(async (): Promise<AtlasDemandIndexSnaps
     return lastSafeDemandIndex;
   }
 });
+
+const missionConfidenceOrder: Record<AtlasConfidence, number> = {
+  high: 0,
+  moderate: 1,
+  needs_review: 2
+};
+
+export function buildAtlasMissionIndex(snapshot: AtlasDiscoverySnapshot): AtlasMissionIndexSnapshot {
+  const missions = snapshot.missionAreas.map((missionArea) => {
+    const organizations = new Set<string>();
+    const capabilities = new Set<string>();
+    const publicNeeds = new Set<string>();
+    const confidenceCounts: Record<AtlasConfidence, number> = { high: 0, moderate: 0, needs_review: 0 };
+
+    for (const organization of snapshot.organizations) {
+      for (const capability of organization.capabilities) {
+        const match = capability.missionMatches.find((candidate) => candidate.missionArea.id === missionArea.id);
+        if (!match) continue;
+        organizations.add(organization.id);
+        capabilities.add(capability.id);
+        confidenceCounts[match.confidence] += 1;
+        capability.demandMatches.forEach((demand) => publicNeeds.add(demand.demandRequirementId));
+      }
+    }
+
+    return {
+      missionArea,
+      organizationCount: organizations.size,
+      capabilityCount: capabilities.size,
+      connectedPublicNeedCount: publicNeeds.size,
+      confidenceCounts
+    };
+  }).sort((left, right) => right.organizationCount - left.organizationCount || left.missionArea.name.localeCompare(right.missionArea.name));
+
+  return {
+    missions,
+    organizationCount: new Set(
+      snapshot.organizations
+        .filter((organization) => organization.capabilities.some((capability) => capability.missionMatches.length > 0))
+        .map((organization) => organization.id)
+    ).size,
+    capabilityCount: new Set(
+      snapshot.organizations.flatMap((organization) =>
+        organization.capabilities.filter((capability) => capability.missionMatches.length > 0).map((capability) => capability.id)
+      )
+    ).size,
+    generatedAt: snapshot.generatedAt
+  };
+}
+
+export function buildAtlasMissionDetail(snapshot: AtlasDiscoverySnapshot, slug: string): AtlasMissionDetail | null {
+  const missionArea = snapshot.missionAreas.find((mission) => mission.slug === slug);
+  if (!missionArea) return null;
+  const sourceCapabilityById = new Map(
+    snapshot.organizations.flatMap((organization) => organization.capabilities.map((capability) => [capability.id, capability] as const))
+  );
+
+  const organizations = snapshot.organizations.flatMap((organization) => {
+    const capabilities = organization.capabilities.flatMap((capability) => {
+      const assessment = capability.missionMatches.find((match) => match.missionArea.id === missionArea.id);
+      if (!assessment) return [];
+      return [{
+        id: capability.id,
+        slug: capability.slug,
+        name: capability.name,
+        summary: capability.summary,
+        sourceConfidence: capability.sourceConfidence,
+        technicalDomains: capability.technicalDomains,
+        assessment: {
+          id: assessment.id,
+          alignmentSummary: assessment.alignmentSummary,
+          matchType: assessment.matchType,
+          confidence: assessment.confidence
+        }
+      }];
+    });
+    if (!capabilities.length) return [];
+    const strongestConfidence = capabilities
+      .map((capability) => capability.assessment.confidence)
+      .sort((left, right) => missionConfidenceOrder[left] - missionConfidenceOrder[right])[0];
+    return [{
+      organization: {
+        id: organization.id,
+        slug: organization.slug,
+        name: organization.name,
+        description: organization.description,
+        entityKind: organization.entityKind,
+        sourceConfidence: organization.sourceConfidence,
+        freshnessStatus: organization.freshnessStatus,
+        lastReviewedAt: organization.lastReviewedAt,
+        primaryLocation: organization.primaryLocation
+      },
+      capabilities,
+      strongestConfidence
+    }];
+  }).sort((left, right) =>
+    missionConfidenceOrder[left.strongestConfidence] - missionConfidenceOrder[right.strongestConfidence]
+      || left.organization.name.localeCompare(right.organization.name)
+  );
+
+  const publicNeedTechnologyCounts = new Map<string, Set<string>>();
+  organizations.forEach((connection) => connection.capabilities.forEach((capability) => {
+    const sourceCapability = sourceCapabilityById.get(capability.id);
+    sourceCapability?.demandMatches.forEach((match) => {
+      const ids = publicNeedTechnologyCounts.get(match.demandRequirementId) ?? new Set<string>();
+      ids.add(capability.id);
+      publicNeedTechnologyCounts.set(match.demandRequirementId, ids);
+    });
+  }));
+
+  return {
+    missionArea,
+    organizations,
+    publicNeeds: snapshot.demandRequirements
+      .filter((demand) => publicNeedTechnologyCounts.has(demand.id))
+      .map((demand) => ({ ...demand, technologyCount: publicNeedTechnologyCounts.get(demand.id)?.size ?? 0 }))
+      .sort((left, right) => right.technologyCount - left.technologyCount || left.title.localeCompare(right.title)),
+    capabilityCount: new Set(organizations.flatMap((connection) => connection.capabilities.map((capability) => capability.id))).size,
+    generatedAt: snapshot.generatedAt
+  };
+}
+
+export const getAtlasMissionIndex = cache(async () => buildAtlasMissionIndex(await getAtlasDiscoverySnapshot()));
+
+export const getAtlasMissionBySlug = cache(async (slug: string) =>
+  buildAtlasMissionDetail(await getAtlasDiscoverySnapshot(), slug)
+);
+
+export function buildAtlasMissionLinksForRecords(
+  snapshot: AtlasDiscoverySnapshot,
+  records: Array<{ type: AtlasRecordSummary["type"]; id: string }>
+): AtlasMissionRecordConnection[] {
+  const organizationIds = new Set(records.filter((record) => record.type === "organization").map((record) => record.id));
+  const capabilityIds = new Set(records.filter((record) => record.type === "capability").map((record) => record.id));
+  const publicNeedIds = new Set(records.filter((record) => record.type === "demand_requirement").map((record) => record.id));
+  const capabilitiesByMission = new Map<string, Set<string>>();
+
+  for (const organization of snapshot.organizations) {
+    for (const capability of organization.capabilities) {
+      const recordTouchesCapability = organizationIds.has(organization.id)
+        || capabilityIds.has(capability.id)
+        || capability.demandMatches.some((match) => publicNeedIds.has(match.demandRequirementId));
+      if (!recordTouchesCapability) continue;
+      for (const match of capability.missionMatches) {
+        const ids = capabilitiesByMission.get(match.missionArea.id) ?? new Set<string>();
+        ids.add(capability.id);
+        capabilitiesByMission.set(match.missionArea.id, ids);
+      }
+    }
+  }
+
+  return snapshot.missionAreas
+    .flatMap((missionArea) => {
+      const capabilities = capabilitiesByMission.get(missionArea.id);
+      return capabilities?.size ? [{ missionArea, capabilityCount: capabilities.size }] : [];
+    })
+    .sort((left, right) => right.capabilityCount - left.capabilityCount || left.missionArea.name.localeCompare(right.missionArea.name));
+}
+
+export async function getAtlasMissionLinksForRecords(
+  records: Array<{ type: AtlasRecordSummary["type"]; id: string }>
+) {
+  return buildAtlasMissionLinksForRecords(await getAtlasDiscoverySnapshot(), records);
+}
 
 function normalize(value: string) {
   return value.trim().toLowerCase().replaceAll("_", " ");

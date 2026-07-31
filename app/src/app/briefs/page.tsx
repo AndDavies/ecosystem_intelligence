@@ -38,6 +38,10 @@ export default async function DefenceBriefsPage() {
   const briefs = await getPublishedDefenceBriefs();
   const [featured, ...latest] = briefs;
   const topics = [...new Set(briefs.map((brief) => getBriefPresentation(brief).topic))];
+  const latestReviewedAt = briefs.reduce<string | null>((latestDate, brief) => {
+    if (!latestDate) return brief.reviewedAt;
+    return Date.parse(brief.reviewedAt) > Date.parse(latestDate) ? brief.reviewedAt : latestDate;
+  }, null);
 
   return (
     <PublicPageShell
@@ -79,6 +83,11 @@ export default async function DefenceBriefsPage() {
           itemListElement: briefs.map((brief, index) => ({ "@type": "ListItem", position: index + 1, url: absoluteUrl(`/briefs/${brief.slug}`), name: brief.title }))
         }
       }} />
+
+      <p className="mt-6 border-y border-[var(--atlas-border)] py-3 text-xs font-semibold text-[var(--atlas-muted)]">
+        {briefs.length} reviewed {briefs.length === 1 ? "article" : "articles"}
+        {latestReviewedAt ? ` · Latest review ${dateFormatter.format(new Date(latestReviewedAt))}` : ""}
+      </p>
 
       {featured ? (
         <section className="mt-8 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">

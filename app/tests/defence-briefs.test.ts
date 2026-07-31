@@ -11,8 +11,18 @@ describe("Canadian Defence Briefs", () => {
     expect(detail).toContain("Recommended next step");
     expect(detail).not.toContain("Question ");
     expect(detail).toContain("Public sources");
+    expect(detail).toContain("Related Defence Briefs");
+    expect(detail).toContain("Explore related use cases");
     expect(detail).toContain('"TechArticle" : "Article"');
     expect(detail).toContain('"@type": "BreadcrumbList"');
+  });
+
+  it("keeps the archive current and connected to mission-led discovery", async () => {
+    const index = await readFile(path.resolve("src/app/briefs/page.tsx"), "utf8");
+    const detail = await readFile(path.resolve("src/app/briefs/[slug]/page.tsx"), "utf8");
+    expect(index).toContain("Latest review");
+    expect(detail).toContain("getAtlasMissionLinksForRecords");
+    expect(detail).toContain('href={`/missions/${connection.missionArea.slug}`}');
   });
 
   it("uses a narrative article editor rather than a question form", async () => {

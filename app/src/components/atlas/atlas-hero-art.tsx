@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export type AtlasHeroTone = "arctic" | "industrial" | "innovation" | "maritime" | "demand" | "general";
 
@@ -80,7 +81,12 @@ export function AtlasHeroArt({
   );
 
   const background = imageSrc && imageFit === "contain" ? "bg-[#f6f5f1]" : `bg-gradient-to-br ${toneClass[tone]}`;
-  const classNames = `pointer-events-none relative isolate w-full min-w-0 overflow-hidden ${background} ${compact ? "aspect-[16/9]" : "aspect-[16/7] min-h-[220px]"} ${className}`;
+  const classNames = cn(
+    "pointer-events-none relative isolate w-full min-w-0 overflow-hidden",
+    background,
+    compact ? "aspect-[16/9]" : "aspect-[16/7] min-h-[220px]",
+    className
+  );
 
   if (imageSrc) {
     return <div className={classNames}>{art}</div>;

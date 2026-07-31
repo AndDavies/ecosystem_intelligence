@@ -85,6 +85,10 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
   const typeFacets = buildTypeFacets(snapshot.organizations);
   const regionFacets = snapshot.regions.filter((region) => region.slug !== "canada" && region.organizationCount > 0);
   const coveredRegions = regionFacets.length;
+  const publishedOrganizationCount = snapshot.organizations.length;
+  const publishedCapabilityCount = new Set(
+    snapshot.organizations.flatMap((organization) => organization.capabilities.map((capability) => capability.id))
+  ).size;
   const browseHref = (next: { type?: string; region?: string }) => {
     const query = new URLSearchParams();
     const type = "type" in next ? next.type : activeType;
@@ -99,9 +103,16 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
 
   return (
     <>
-      <div className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatTile icon={Building2} label="Reviewed organizations" value={summary.organizations} />
-        <StatTile icon={Layers3} label="Reviewed capabilities" value={summary.capabilities} />
+      <dl className="mt-6 grid grid-cols-2 border-y border-[var(--atlas-border)] sm:hidden">
+        <CompactDirectoryStat label="Organizations" value={publishedOrganizationCount} />
+        <CompactDirectoryStat label="Technologies" value={publishedCapabilityCount} />
+        <CompactDirectoryStat label="Covered regions" value={coveredRegions} href="/regions" />
+        <CompactDirectoryStat label="Public sources" value={summary.sources} />
+      </dl>
+
+      <div className="mt-7 hidden gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-4">
+        <StatTile icon={Building2} label="Reviewed organizations" value={publishedOrganizationCount} />
+        <StatTile icon={Layers3} label="Reviewed capabilities" value={publishedCapabilityCount} />
         <StatTile
           icon={MapPin}
           label="Regions with published coverage"
@@ -113,7 +124,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
       </div>
 
       {spotlightActive && directory.page === 1 ? (
-        <section className="mt-14">
+        <section className="mt-10 sm:mt-14">
           <SectionHeading
             eyebrow="Latest review activity"
             title="Recently reviewed"
@@ -127,7 +138,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
         </section>
       ) : null}
 
-      <section className="mt-14">
+      <section className="mt-10 sm:mt-14">
         <SectionHeading
           eyebrow="Full directory"
           title="Browse the directory"
@@ -259,12 +270,17 @@ function OrganizationsDirectoryFallback() {
     <div className="mt-7" aria-live="polite" aria-busy="true">
       <p className="sr-only">Loading the current organization directory</p>
       <div aria-hidden="true" className="animate-pulse">
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-2 border-y border-[var(--atlas-border)] sm:hidden">
+          {Array.from({ length: 4 }, (_, index) => (
+            <div key={index} className="h-[74px] border-[var(--atlas-border)] bg-white odd:border-r [&:nth-child(-n+2)]:border-b" />
+          ))}
+        </div>
+        <div className="hidden gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-4">
           {Array.from({ length: 4 }, (_, index) => (
             <div key={index} className="h-28 rounded-[14px] border border-[var(--atlas-border)] bg-white" />
           ))}
         </div>
-        <div className="mt-14 h-7 w-56 rounded bg-[var(--atlas-border)]" />
+        <div className="mt-10 h-7 w-56 rounded bg-[var(--atlas-border)] sm:mt-14" />
         <div className="mt-6 h-24 rounded-[14px] border border-[var(--atlas-border)] bg-white" />
         <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {Array.from({ length: 6 }, (_, index) => (
@@ -273,6 +289,31 @@ function OrganizationsDirectoryFallback() {
         </div>
       </div>
       <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading reviewed organizations…</p>
+    </div>
+  );
+}
+
+function CompactDirectoryStat({
+  label,
+  value,
+  href
+}: {
+  label: string;
+  value: number;
+  href?: string;
+}) {
+  return (
+    <div className="border-[var(--atlas-border)] px-3.5 py-3 odd:border-r [&:nth-child(-n+2)]:border-b">
+      <dt className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">{label}</dt>
+      <dd className="mt-1 text-2xl font-extrabold leading-none tracking-[-0.04em] text-[var(--atlas-ink)]">
+        {href ? (
+          <Link href={href} className="underline-offset-4 hover:underline" aria-label={`${value} ${label.toLowerCase()}; browse regions`}>
+            {value}
+          </Link>
+        ) : (
+          value
+        )}
+      </dd>
     </div>
   );
 }

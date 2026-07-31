@@ -1,10 +1,10 @@
 # True North Map broader public beta launch package
 
-Status: release candidate. The three pre-launch security and reliability blockers are repaired and regression-tested; launch follows production deployment verification and final queue cleanup.
+Status: live soft beta. The public product and repaired security blockers are deployed; broader promotion follows live queue triage, field-performance review, and replacement of stale launch collateral.
 
 Canonical URL: `https://truenorthmap.ca/`
 
-Campaign: `broader_public_beta_2026_07`
+Next campaign: `broader_public_beta_2026_08`
 
 ## Release position
 
@@ -26,15 +26,7 @@ Trust boundary:
 
 > Reviewed public evidence · Transparent gaps · Human review
 
-Use durable rounded proof points in external copy:
-
-- More than 250 reviewed Canadian organizations.
-- More than 240 reviewed technologies and offerings.
-- More than 380 cited public sources.
-- 30 released public needs represented in the current corpus.
-- Eight Canadian Defence Briefs built from reviewed public evidence.
-
-Read current production totals before interviews or media responses. Never hard-code live counts into operating contracts.
+Use live rounded proof points only after reading production immediately before publication. Never hard-code corpus, queue, subscriber, or coverage totals into operating contracts, reusable channel copy, or collateral.
 
 ## Founder story
 
@@ -51,12 +43,12 @@ North Star:
 ### Product and reliability
 
 - [x] Clean production build and `pnpm release:validate` pass.
-- [ ] No unexplained recurring 5xx cluster on the current deployment.
+- [x] No primary-route error was observed in the July 31 production smoke and health review; inspect Vercel runtime logs again immediately before the campaign.
 - [x] National map contains every matching published marker.
 - [x] Rich profile cards remain paginated and load progressively.
 - [x] Ask True North passes success, timeout, provider failure, quota and deterministic fallback checks.
 - [x] Health endpoint reports the public database and core record families available.
-- [ ] LCP, INP and CLS meet the documented targets or have a documented non-blocking field-data limitation.
+- [ ] Field LCP, INP and CLS meet the documented targets or have a documented non-blocking field-data limitation.
 
 ### Security and privacy
 
@@ -75,7 +67,7 @@ North Star:
 - [x] No broken primary internal link or orphaned featured page.
 - [x] Every published Demand Signal passes the released-source gate.
 - [x] Featured organizations, technologies, Public Needs and Defence Briefs have working evidence links and images.
-- [ ] Pending review, publication, match, contribution, connection, contact and feedback queues are triaged.
+- [ ] Pending review, publication, match, contribution, connection, contact and feedback queues are triaged against current production state.
 
 ### Participation and measurement
 
@@ -88,12 +80,12 @@ North Star:
 
 ### Launch materials
 
-- [x] Current Phase 1B desktop and mobile screenshots captured.
+- [x] Current Directional N desktop and mobile screenshots captured under `content/launch/broader-public-beta-2026-08/screenshots/`.
 - [x] Current 30-second walkthrough rendered and reviewed.
-- [ ] Partner overview PDF visually reviewed.
-- [ ] Partner and media deck visually reviewed.
-- [ ] LinkedIn avatar, banner and organization-page copy ready.
-- [ ] Founder, direct, organization, partner, media and community copy ready.
+- [x] Partner overview PDF rebuilt and visually reviewed against the current product.
+- [x] Partner and media deck rebuilt and visually reviewed against the current product.
+- [x] Directional N LinkedIn avatar, banner and organization-page copy ready.
+- [x] Founder, direct, organization, partner, media and community copy ready.
 - [ ] Every community's current promotion rules rechecked on posting day.
 
 ## Three-wave release
@@ -128,7 +120,7 @@ Primary action: **Review the evidence architecture and try the product against a
 
 ## UTM convention
 
-`https://truenorthmap.ca/?utm_source={source}&utm_medium={medium}&utm_campaign=broader_public_beta_2026_07`
+`https://truenorthmap.ca/?utm_source={source}&utm_medium={medium}&utm_campaign=broader_public_beta_2026_08`
 
 Never place names, email addresses, organization names or other personal identifiers in UTM values.
 
@@ -166,9 +158,20 @@ Review the scorecard daily for the first week. Fix broken searches, repeated mis
 
 ## Current release visuals
 
-Approved screenshots are stored under `content/launch/screenshots/phase-2/`.
+The current release package is `content/launch/broader-public-beta-2026-08/`. Its README, source notes, current desktop/mobile screenshots, Directional N social assets, 30-second walkthrough, partner overview PDF, partner/media deck, response guide, and channel copy are the distribution sources of record.
 
-Older files under `content/launch/screenshots/`, `content/launch/demo-frames/` and `content/launch/true-north-map-public-beta-demo.mp4` are legacy assets and must not be distributed.
+Files under `content/launch/screenshots/phase-2/`, `content/launch/phase-2/`, `content/launch/screenshots/`, `content/launch/demo-frames/`, and `content/launch/true-north-map-public-beta-demo.mp4` are historical assets and must not be distributed as current.
+
+## July 31 soft-beta checkpoint
+
+- `main` and `origin/main` are aligned with the deployed directional-N, North Signal, performance, and regional-imagery work.
+- The production health endpoint and primary public routes returned 200 during the current review.
+- The compact discovery architecture keeps the full published national corpus available to the map and search while paginating rich details.
+- Organizations, Regions, regional directories, and Public Needs now stream an immediate branded shell before their compact public index resolves.
+- The live review and participation queues contain active work and must be read and triaged directly in production before broader promotion.
+- Mission Area / Use Case browsing and detail routes now complete the intended mission-to-target entry point without a second taxonomy or corpus.
+- The current release candidate pages every discovery relation deterministically, derives visible counts from the same compact snapshot, uses linear fallback grouping, and includes a 5,000-marker scale gate.
+- Before broader distribution, deploy once, verify health and catalogue consistency, review the production canonical crawl and runtime logs, and read every live queue directly. Production verification remains pending for `REL-2026-003` and `REL-2026-004`.
 
 ## Pre-launch repair record
 
