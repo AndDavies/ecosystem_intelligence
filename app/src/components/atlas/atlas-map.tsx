@@ -104,11 +104,13 @@ function supportsMapLibre() {
 
 export function AtlasMap({
   organizations,
+  initialBounds,
   selectedOrganizationId,
   onSelect,
   onViewportChange
 }: {
   organizations: AtlasMapOrganization[];
+  initialBounds?: AtlasBounds;
   selectedOrganizationId: string | null;
   onSelect: (organizationId: string) => void;
   onViewportChange: (viewport: { bounds: AtlasBounds; organizationIds: string[] }) => void;
@@ -124,6 +126,7 @@ export function AtlasMap({
   const onViewportChangeRef = useRef(onViewportChange);
   const organizationsRef = useRef(organizations);
   const selectedIdRef = useRef(selectedOrganizationId);
+  const initialBoundsRef = useRef<AtlasBounds | null>(initialBounds && isUsableAtlasBounds(initialBounds) ? initialBounds : null);
 
   organizationsRef.current = organizations;
   selectedIdRef.current = selectedOrganizationId;
@@ -256,6 +259,31 @@ export function AtlasMap({
     );
   }
 
+  function frameInitialLeafletView() {
+    const L = leafletModuleRef.current;
+    const map = leafletMapRef.current;
+    if (!L || !map) return;
+    const requestedBounds = initialBoundsRef.current;
+    initialBoundsRef.current = null;
+    if (requestedBounds) {
+      map.fitBounds(
+        L.latLngBounds(
+          [requestedBounds.south, requestedBounds.west],
+          [requestedBounds.north, requestedBounds.east]
+        ),
+        { padding: [24, 24], animate: false }
+      );
+      return;
+    }
+    const selected = organizationsRef.current.find((organization) => organization.id === selectedIdRef.current);
+    const location = selected?.primaryLocation;
+    if (location?.longitude !== null && location?.longitude !== undefined && location.latitude !== null && location.latitude !== undefined) {
+      map.setView([location.latitude, location.longitude], 5, { animate: false });
+      return;
+    }
+    frameLeafletResults();
+  }
+
   function frameMapLibreResults(map: MapLibreMap) {
     const coordinates = organizationCoordinates(organizationsRef.current);
     if (coordinates.length === 0) {
@@ -277,6 +305,28 @@ export function AtlasMap({
       new maplibregl.LngLatBounds(coordinates[0], coordinates[0])
     );
     map.fitBounds(bounds, { padding: 48, maxZoom: 6, duration: 0 });
+  }
+
+  function frameInitialMapLibreView(map: MapLibreMap) {
+    const requestedBounds = initialBoundsRef.current;
+    initialBoundsRef.current = null;
+    if (requestedBounds) {
+      map.fitBounds(
+        [
+          [requestedBounds.west, requestedBounds.south],
+          [requestedBounds.east, requestedBounds.north]
+        ],
+        { padding: 24, duration: 0 }
+      );
+      return;
+    }
+    const selected = organizationsRef.current.find((organization) => organization.id === selectedIdRef.current);
+    const location = selected?.primaryLocation;
+    if (location?.longitude !== null && location?.longitude !== undefined && location.latitude !== null && location.latitude !== undefined) {
+      map.jumpTo({ center: [location.longitude, location.latitude], zoom: 5 });
+      return;
+    }
+    frameMapLibreResults(map);
   }
 
   useEffect(() => {
@@ -322,7 +372,7 @@ export function AtlasMap({
       map.on("moveend", () => scheduleLeafletViewport());
       map.on("zoomend", drawLeafletPoints);
       drawLeafletPoints();
-      frameLeafletResults();
+      frameInitialLeafletView();
       window.requestAnimationFrame(() => scheduleLeafletViewport(0));
     }
 
@@ -369,7 +419,7 @@ export function AtlasMap({
     map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-left");
 
     map.on("load", () => {
-      frameMapLibreResults(map);
+      frameInitialMapLibreView(map);
       map.addSource(sourceId, {
         type: "geojson",
         data: featureCollection(organizationsRef.current),

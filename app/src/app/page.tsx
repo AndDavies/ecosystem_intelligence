@@ -119,6 +119,8 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <LandingProductPreview />
+
       <section className="atlas-frame pb-16 sm:pb-20" aria-labelledby="example-heading">
         <div className="overflow-hidden rounded-[16px] bg-[var(--atlas-ink)] px-6 py-10 text-white sm:px-10 sm:py-12 lg:px-12">
           <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-signal)]">Follow the evidence</p>
@@ -147,7 +149,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <LandingProductPreview />
       <LandingEditorialPaths />
 
       <section className="relative isolate overflow-hidden bg-[var(--atlas-ink)] py-16 text-white sm:py-20">

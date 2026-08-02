@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight, FileSearch2, Radar, ScanSearch } from "lucide-react";
 import { AtlasExplorer } from "@/components/atlas/atlas-explorer";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -9,7 +7,7 @@ import { absoluteUrl } from "@/lib/site";
 import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
 import { guidedSearchExampleFromSearchParams } from "@/lib/atlas/guided-search";
 import { ATLAS_EXPLORER_PAGE_SIZE } from "@/lib/atlas/explorer-projection";
-import { getAtlasCoverageSummary, getAtlasDiscoverySnapshot, queryAtlasExplorerSnapshot } from "@/lib/atlas/repository";
+import { getAtlasDiscoverySnapshot, queryAtlasExplorerSnapshot } from "@/lib/atlas/repository";
 import { socialMetadata } from "@/lib/seo/social";
 
 export const dynamic = "force-dynamic";
@@ -47,7 +45,7 @@ async function AtlasMapData({ searchParams }: { searchParams: MapSearchParams })
   params.delete("start");
 
   const query = atlasQueryFromSearchParams(params);
-  const [snapshot, summary] = await Promise.all([getAtlasDiscoverySnapshot(), getAtlasCoverageSummary()]);
+  const snapshot = await getAtlasDiscoverySnapshot();
   const result = queryAtlasExplorerSnapshot(snapshot, { ...query, page: 1, pageSize: ATLAS_EXPLORER_PAGE_SIZE });
 
   return (
@@ -67,7 +65,6 @@ async function AtlasMapData({ searchParams }: { searchParams: MapSearchParams })
       <AtlasExplorer
         initialResult={result}
         initialFilters={query}
-        snapshotMetrics={{ organizations: summary.organizations, capabilities: summary.capabilities, sources: summary.sources }}
         regions={snapshot.regions}
         technicalDomains={snapshot.technicalDomains.map(({ slug, name }) => ({ slug, name }))}
         missionAreas={snapshot.missionAreas.map(({ slug, name }) => ({ slug, name }))}
@@ -82,13 +79,27 @@ async function AtlasMapData({ searchParams }: { searchParams: MapSearchParams })
 
 function MapFallback() {
   return (
-    <div className="atlas-frame pb-8 pt-5" aria-live="polite" aria-busy="true">
-      <section className="overflow-hidden rounded-[14px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
-        <div className="border-t-2 border-[var(--atlas-signal)] p-4 sm:p-5">
-          <div className="h-3 w-28 animate-pulse rounded bg-[var(--atlas-border)]" />
-          <div className="mt-3 h-14 animate-pulse rounded-[12px] bg-[var(--atlas-surface-muted)] sm:h-16" />
+    <div className="atlas-frame pb-8 pt-3 sm:pt-4" aria-live="polite" aria-busy="true">
+      <section className="overflow-hidden border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <div className="border-t-2 border-[var(--atlas-signal)] p-3 sm:p-4">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <div className="h-3 w-36 animate-pulse rounded bg-[var(--atlas-border)]" />
+              <div className="mt-2 h-3 w-64 max-w-[70vw] animate-pulse rounded bg-[var(--atlas-surface-muted)]" />
+            </div>
+            <div className="hidden h-10 w-28 animate-pulse rounded-[12px] bg-[var(--atlas-surface-muted)] sm:block" />
+          </div>
+          <div className="mt-3 h-14 animate-pulse rounded-[12px] bg-[var(--atlas-surface-muted)]" />
+          <div className="mt-3 flex gap-2">
+            <div className="h-9 w-24 animate-pulse rounded-full bg-[var(--atlas-surface-muted)]" />
+            <div className="h-9 w-20 animate-pulse rounded-full bg-[var(--atlas-surface-muted)]" />
+            <div className="h-9 w-28 animate-pulse rounded-full bg-[var(--atlas-surface-muted)]" />
+          </div>
         </div>
-        <div className="h-[420px] animate-pulse border-t border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)]" />
+        <div className="grid min-h-[560px] animate-pulse border-t border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] lg:h-[max(560px,calc(100dvh-250px))] lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-3 lg:p-3">
+          <div className="bg-[var(--atlas-border)]/45 lg:rounded-[14px]" />
+          <div className="hidden bg-[var(--atlas-ink)] lg:block lg:rounded-[14px]" />
+        </div>
       </section>
       <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading the current national map…</p>
     </div>
@@ -99,28 +110,6 @@ export default function MapPage({ searchParams }: { searchParams: MapSearchParam
   return (
     <main className="atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)]">
       <PublicAtlasHeader />
-      <section className="border-b border-[var(--atlas-border)] bg-white" aria-labelledby="map-heading">
-        <div className="atlas-frame py-8 sm:py-10">
-          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1.08fr)] lg:items-end">
-            <div>
-              <p className="atlas-eyebrow">Map the Canadian ecosystem</p>
-              <h1 id="map-heading" className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.02] tracking-[-0.045em] sm:text-5xl"><span className="atlas-headline-highlight">Start with a need.</span> Follow the evidence.</h1>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--atlas-muted)]">Describe what you are trying to build, source or understand. Search every published organization and technology, inspect what supports each possible fit, then save the strongest candidates to a Working List.</p>
-            </div>
-            <div className="lg:pb-1">
-              <div className="flex flex-wrap gap-3">
-                <Link href="/map?start=need#ask-true-north" className="atlas-signal-button min-h-12 gap-2 rounded-full px-5 text-sm">Describe a need <ArrowRight className="size-4" /></Link>
-                <Link href="/how-it-works" className="atlas-secondary-button min-h-12 gap-2 rounded-full px-5 text-sm">How it works <ArrowRight className="size-4" /></Link>
-              </div>
-              <div className="mt-5 flex flex-wrap gap-2" aria-label="Ways to begin">
-                <Link href="/map?example=modular-naval" className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[var(--atlas-surface-muted)] px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-signal-soft)]"><ScanSearch className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />Try a guided example</Link>
-                <Link href="/demand" className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[var(--atlas-surface-muted)] px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-signal-soft)]"><FileSearch2 className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />Follow a public need</Link>
-                <Link href="/missions" className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[var(--atlas-surface-muted)] px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-signal-soft)]"><Radar className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />Explore a mission</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <Suspense fallback={<MapFallback />}>
         <AtlasMapData searchParams={searchParams} />
       </Suspense>

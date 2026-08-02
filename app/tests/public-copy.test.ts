@@ -4,21 +4,20 @@ import { describe, expect, it } from "vitest";
 
 describe("customer-facing product language", () => {
   it("leads the ecosystem map with the decision a user can make", async () => {
-    const [explorer, hero] = await Promise.all([
+    const [explorer, landing] = await Promise.all([
       readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
-      readFile(path.resolve("src/components/atlas/atlas-home-hero.tsx"), "utf8")
+      readFile(path.resolve("src/app/page.tsx"), "utf8")
     ]);
     const header = await readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8");
-    expect(hero).toContain('Evidence-led ecosystem discovery');
-    expect(hero).toContain('<span className="atlas-headline-highlight">Canada is building</span>');
-    expect(hero).toContain('more than<br /> most people can see.');
-    expect(`${hero}\n${explorer}`).not.toContain("\u2014");
-    expect(hero).toContain("Explore the organizations, capabilities and public needs shaping Canada’s defence and dual-use ecosystem.");
-    expect(hero).toContain("Follow the evidence. Find the fit. Start the right conversation.");
-    expect(hero).toContain("Explore the ecosystem");
-    expect(hero).toContain("Browse public needs");
-    expect(explorer).toContain("Ask True North");
-    expect(explorer).toContain("Do not enter classified, confidential, proprietary, or personal information.");
+    expect(landing).toContain('Evidence-led ecosystem discovery');
+    expect(landing).toContain('Canada is building more than most people can see.');
+    expect(`${landing}\n${explorer}`).not.toContain("\u2014");
+    expect(landing).toContain("Find Canadian organizations and capabilities relevant to a mission, project or released public need.");
+    expect(landing).toContain("Describe a need");
+    expect(landing).toContain("Explore the map");
+    expect(landing).toContain("See how it works");
+    expect(explorer).toContain("Search by need, mission, technology or place.");
+    expect(explorer).toContain("Do not enter classified, confidential, proprietary or personal information.");
     expect(explorer).toContain("Technology or offering");
     expect(header).toContain('label: "Map"');
     expect(header).toContain('href: "/demand", label: "Public Needs"');
@@ -45,18 +44,19 @@ describe("customer-facing product language", () => {
   });
 
   it("publishes the Phase 1B decision steps, trust strip and dynamic metric labels", async () => {
-    const [explorer, legend] = await Promise.all([
-      readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
+    const [landing, dynamicLanding, legend] = await Promise.all([
+      readFile(path.resolve("src/app/page.tsx"), "utf8"),
+      readFile(path.resolve("src/components/atlas/guided-landing-dynamic.tsx"), "utf8"),
       readFile(path.resolve("src/components/atlas/evidence-legend.tsx"), "utf8")
     ]);
-    expect(explorer).toContain("Find Canadian capability");
-    expect(explorer).toContain("Explore public needs");
-    expect(explorer).toContain("Inspect the record");
-    expect(explorer).toContain("Build a Working List");
-    expect(explorer).toContain("Reviewed public evidence · Transparent gaps · Human review");
-    expect(explorer).toContain('label="published organization profiles"');
-    expect(explorer).toContain('label="reviewed technologies"');
-    expect(explorer).toContain('label="cited public sources"');
+    expect(landing).toContain("Find organizations for a need");
+    expect(landing).toContain("Follow a public need");
+    expect(landing).toContain("Understand a mission landscape");
+    expect(landing).toContain("Build a Working List");
+    expect(landing).toContain("Reviewed public evidence. Transparent gaps. Human review.");
+    expect(dynamicLanding).toContain('label="Published organizations"');
+    expect(dynamicLanding).toContain('label="Reviewed technologies"');
+    expect(dynamicLanding).toContain('label="Cited public sources"');
     expect(legend).toContain("publicLanguage.sourceFact");
     expect(legend).toContain("publicLanguage.assessment");
     expect(legend).toContain("publicLanguage.coverageGap");

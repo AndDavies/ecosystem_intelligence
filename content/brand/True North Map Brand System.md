@@ -143,8 +143,8 @@ action or a short piece of meaning.
 ### Guided landing and map workspace
 
 - `/` is the guided public entrance. It moves from the hero and exact coverage
-  strip into three clear starting jobs, a dark evidence-led worked example, a
-  real published product specimen, selected Mission Areas and Defence Briefs,
+  strip into three clear starting jobs, a real published product specimen, a
+  dark evidence-led worked example, selected Mission Areas and Defence Briefs,
   North Signal, contribution, independence, and trust questions.
 - The starting-job cards are functional choices, not decorative dashboard
   tiles. Use one Signal Yellow primary card, two Paper secondary cards, solid
@@ -152,10 +152,18 @@ action or a short piece of meaning.
 - The worked example uses the North Ink field, selected-concept pills, a clear
   five-step path, and one prominent guided-search action. Its result is a
   private evidence-backed Working List, not an automated recommendation.
-- `/map` is the atlas workspace. Its compact introduction leads with **Start
-  with a need. Follow the evidence.**, explains the task in one paragraph, and
-  offers guided need, Public Need, Mission Area, and How It Works entry points
-  without delaying the map or changing its loading contract.
+- The landing specimen uses the real published Kraken Robotics and KATFISH
+  record with a lightweight static map capture. It does not initialize
+  MapLibre or compete with the live atlas for first-page performance.
+- `/map` is the compact atlas workspace. Lead with **Map Canadian capability**
+  and **Search by need, mission, technology or place.**, then place the live
+  map immediately after the compact search, starting-point and filter controls.
+  Do not place a marketing hero or explanatory section before the tool.
+- At desktop widths, pair the active canvas with a fixed 380-pixel internally
+  scrolling results rail and keep the synchronized accessible evidence table
+  below the workspace. On mobile, use an explicit Map/List control and
+  collapsed, preview and expanded results-sheet states. Preserve the shared
+  URL state and never shrink desktop controls into unreadable mobile density.
 - The coverage band directly below the hero uses one separator between each
   adjacent item at every breakpoint. The final freshness statement must not
   create a doubled rule beside the last metric.

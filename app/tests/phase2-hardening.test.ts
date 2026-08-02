@@ -156,7 +156,9 @@ describe("phase 2 launch hardening", () => {
     expect(page).not.toContain("getAtlasDiscoverySnapshot");
     expect(page).toContain("<LandingCoverage />");
     expect(mapPage).toContain("getAtlasDiscoverySnapshot()");
-    expect(explorer).toContain('className="atlas-frame pb-8 pt-2"');
+    expect(explorer).toContain('className="atlas-frame pb-8 pt-3 sm:pt-4"');
+    expect(explorer).toContain("lg:grid-cols-[minmax(0,1fr)_380px]");
+    expect(explorer).toContain("lg:h-[max(560px,calc(100dvh-250px))]");
     expect(mapPage).toContain("MapFallback");
   });
 
@@ -251,7 +253,7 @@ describe("phase 2 launch hardening", () => {
     expect(howItWorks).toContain('/video/true-north-map-launch.mp4');
     expect(howItWorks).toContain("Does AI publish the information?");
     expect(explorer).toContain('type="submit" className="atlas-signal-button');
-    expect(explorer).toContain('className="rounded-[8px] border');
+    expect(explorer).toContain('className="min-h-9 shrink-0 rounded-full border');
     expect(header).toContain('rounded-[8px] px-3');
   });
 });

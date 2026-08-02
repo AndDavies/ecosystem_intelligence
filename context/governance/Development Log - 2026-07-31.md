@@ -6,6 +6,45 @@ Status: soft-beta project reconciliation and current-state audit
 
 This review reconciled the live True North Map product, tracked repository, active local operator systems, brand and launch assets, production database posture, security register, SEO/AEO validation, and next product priorities. It changed governance and memory only. It did not change application code, production data, Supabase configuration, provider configuration, review decisions, publication state, or campaigns.
 
+## August 2 map-first workspace release
+
+The approved focused recomposition keeps `/` as the guided service entrance and
+`/map` as the canonical atlas workspace while making the product itself visible
+sooner. The real published Kraken Robotics and KATFISH specimen now precedes
+the landing worked example and uses a static map capture; the landing page
+initializes no MapLibre instance. The earlier large `/map` introduction is
+removed. Search, starting points, filters, sharing, export and evidence guidance
+now form one compact control field immediately followed by the live map.
+
+Desktop uses a fixed 380-pixel internally scrolling results rail beside the
+map and retains the accessible evidence table below. Mobile adds an explicit
+Map/List control and collapsed, preview and expanded synchronized result-sheet
+states. Bounds deep links frame the requested geography, selected records are
+injected into the synchronized rail and table even when they fall outside the
+initial rich-result page, and ordinary URL state survives refresh, sharing,
+profile navigation, browser Back, sign-in and Working List handoffs. The
+deterministic guided example still canonicalizes to an ordinary `/map` URL only
+after successful loading and never calls `/api/discover` or consumes quota.
+
+Release evidence:
+
+- Signed-out browser review passed at 390, 768, 1024 and 1440 pixels with no
+  horizontal overflow. The active map began at 631, 507, 433 and 418 pixels
+  respectively. Canvas heights were 464, 563, 534 and 624 pixels.
+- At 1440 by 900, 482 pixels of active map canvas remained visible in the first
+  viewport. The 380-pixel rail scrolled internally while the map, rail, selected
+  preview and accessible table remained synchronized.
+- Loading, bounds, `start=need`, deterministic example, selected organization,
+  mobile sheet states, Map/List, refresh, sharing, profile return, browser Back,
+  sign-in return and Working List return paths passed local browser checks.
+- `pnpm test` passed 46 files and 250 tests. `pnpm lint`,
+  `pnpm launch:validate`, `pnpm scale:validate` and
+  `pnpm release:validate` passed. The release gate reported no known production
+  dependency vulnerabilities and completed the optimized production build.
+- No Supabase migration, data publication, research skill, scheduled task,
+  provider configuration, analytics event, authentication contract or
+  campaign changed.
+
 ## August 2 guided-entry release
 
 The approved guided landing replaces the former atlas-first root without changing the canonical data, review, publication, consent, authentication, or analytics authority. `/` now leads visitors from a need, released Public Need, or Mission Area through a quota-free deterministic example and a real published specimen; `/map` owns the national atlas, Ask True North, filters, shareable state, and Working List handoffs. The worked example ends in an evidence-backed shortlist and Working List rather than a generic instruction to continue exploring.
@@ -37,9 +76,9 @@ Ask True North now defaults to `gpt-5.6-luna`. A controlled live structured-outp
 
 The first production smoke exposed `DYNAMIC_SERVER_USAGE` on dossier routes because the new safe `returnTo` query state was being read inside their earlier on-demand static rendering contract. Organization and capability dossiers now render dynamically while their bounded record loaders retain the existing five-minute server cache. This preserves safe map context without loading the national snapshot or allowing a query-dependent page to enter the static cache.
 
-## August 1 local UX candidate
+## August 1 pre-release UX candidate
 
-The current local candidate refines the approved landing and `/map` handoff without changing the public-data, publication, authentication, consent, or analytics authority. The landing uses visitor-facing **Search focus** controls for a fixed deterministic example; it carries only allowlisted focus IDs into a normal refreshable `/map` state, never calls Ask True North, and does not consume its quota. The map now presents the selected focus as removable controls and preserves safe local context through profile, evidence, Working List, and sign-in actions. Public evidence language is normalized to Source-backed fact, Our assessment, Coverage gap, Evidence strength, and Last reviewed. This candidate is not a deployment record; its focused, release-level, and four-width browser checks remain required before release.
+This historical candidate refined the approved landing and `/map` handoff without changing the public-data, publication, authentication, consent, or analytics authority. The landing uses visitor-facing **Search focus** controls for a fixed deterministic example; it carries only allowlisted focus IDs into a normal refreshable `/map` state, never calls Ask True North, and does not consume its quota. The map presents the selected focus as removable controls and preserves safe local context through profile, evidence, Working List, and sign-in actions. Public evidence language is normalized to Source-backed fact, Our assessment, Coverage gap, Evidence strength, and Last reviewed. The August 2 map-first workspace release above supersedes its local-candidate status.
 
 ### August 1 local verification update
 

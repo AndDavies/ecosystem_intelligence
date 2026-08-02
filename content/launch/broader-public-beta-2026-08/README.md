@@ -20,12 +20,19 @@ portal, a statement of eligibility, or a source of classified information.
 ## Current product journey
 
 ```text
-Mission Area or Use Case
-  -> organizations and technologies that may be relevant
-  -> public evidence, strength and visible gaps
-  -> released Public Needs and reviewed assessments
-  -> Working List or a better-informed conversation
+Choose a need, Public Need, Mission Area, or direct map entry
+  -> open the compact map-first workspace
+  -> compare synchronized organizations and technologies
+  -> inspect public evidence, assessments, strength, and visible gaps
+  -> save a Working List or begin a better-informed conversation
 ```
+
+The guided landing shows one real published Kraken Robotics and KATFISH
+specimen before explaining the deterministic example. The landing uses a static
+map capture and does not initialize the live map. `/map` opens directly into the
+working atlas, with the live national map, synchronized desktop results rail,
+accessible evidence table, and mobile Map/List and result-sheet states. Shared
+links preserve filters, bounds, selection, and safe return paths.
 
 Mission Areas organize reviewed capability relationships. They are a discovery
 and assessment layer, not a claim of customer demand. Public Needs are grounded

@@ -115,8 +115,8 @@ Automated research can create leads and candidate changes. Only an explicit huma
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Guided public landing page that introduces evidence-led discovery and hands off to the canonical map workspace |
-| `/map` | National ecosystem atlas and Ask True North workspace with structured filters, synchronized map, and evidence table |
+| `/` | Guided public landing page that introduces evidence-led discovery, shows one real published specimen without initializing MapLibre, and hands off to the canonical map workspace |
+| `/map` | Compact map-first national atlas and Ask True North workspace with structured filters, shareable bounds and selection, a synchronized 380-pixel desktop rail, mobile result sheet, and accessible evidence table |
 | `/regions/[slug]` | Regional counts, published organizations, reviewed clusters, and explicit gaps |
 | `/organizations` | Published organization directory |
 | `/organizations/[slug]` | Organization profile with technology or offerings, public contact paths, where the technology may help, and evidence |
@@ -146,11 +146,15 @@ The first view must:
 - make the search field and current filters obvious
 - show published counts rather than market-size claims
 - keep the map useful for orientation without making it the only navigation surface
-- keep a bounded table visible below the map on desktop and tablet, containing only entities represented inside the map viewport
+- place the live map in the first `/map` viewport, with no marketing or explanatory section before it at 1024 pixels
+- reserve at least half of a 1440 by 900 desktop viewport for active map canvas
+- keep a fixed 380-pixel, internally scrolling synchronized results rail beside the desktop map
+- keep a bounded accessible table below the desktop workspace, containing only entities represented inside the map viewport
 - synchronize marker selection, table-row selection, and a compact lookbook preview
 - let a user expand a table row to see the current rationale, evidence links, confidence, and map precision
 - progressively disclose demand and evidence detail after a relevant filter or selection
-- work on mobile through a map/list toggle, with the list as the complete accessible result set for the current viewport
+- work on mobile through an explicit map/list toggle and collapsed, preview, and expanded synchronized result-sheet states, with the list as the complete accessible result set for the current viewport
+- preserve bounds, filters, selection, view mode, sharing, profile return paths, browser history, sign-in returns, and Working List handoffs in ordinary `/map` URL state
 
 Natural-language discovery may only:
 

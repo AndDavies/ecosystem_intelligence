@@ -57,7 +57,7 @@ describe("guided public landing", () => {
     ]);
     expect(landing).toContain("Describe a need");
     expect(landing).toContain("Turn an uncertain requirement into a defensible shortlist.");
-    expect(preview).toContain("See where capability may fit and why.");
+    expect(preview).toContain("See where capability is and why it may matter.");
     expect(preview).toContain("publicLanguage.sourceFact");
     expect(preview).toContain("publicLanguage.coverageGap");
     expect(legend).toContain("publicLanguage.sourceFact");
@@ -85,13 +85,39 @@ describe("guided public landing", () => {
     expect(dynamicLanding).toContain("lg:border-l-0");
   });
 
-  it("gives the atlas workspace a guided route introduction without changing its data flow", async () => {
-    const map = await read("src/app/map/page.tsx");
-    expect(map).toContain("Map the Canadian ecosystem");
-    expect(map).toContain("Start with a need.");
-    expect(map).toContain("Try a guided example");
-    expect(map).toContain("Follow a public need");
-    expect(map).toContain("Explore a mission");
+  it("puts the live atlas workspace ahead of explanatory content", async () => {
+    const [map, explorer, results, atlasMap] = await Promise.all([
+      read("src/app/map/page.tsx"),
+      read("src/components/atlas/atlas-explorer.tsx"),
+      read("src/components/atlas/atlas-explorer-results.tsx"),
+      read("src/components/atlas/atlas-map.tsx")
+    ]);
+    expect(map).not.toContain("Map the Canadian ecosystem");
     expect(map).toContain("<AtlasExplorer");
+    expect(map).toContain("<Suspense fallback={<MapFallback />}");
+    expect(explorer).toContain("Search by need, mission, technology or place.");
+    expect(explorer).toContain("lg:grid-cols-[minmax(0,1fr)_380px]");
+    expect(explorer).toContain("lg:h-[max(560px,calc(100dvh-250px))]");
+    expect(explorer).toContain("initialBounds={initialFilters.bounds}");
+    expect(atlasMap).toContain("frameInitialMapLibreView");
+    expect(atlasMap).toContain("frameInitialLeafletView");
+    expect(explorer).toContain("MobileResultsSheet");
+    expect(explorer).toContain("<List className=\"size-4\" />List");
+    expect(results).toContain('export type MobileResultsSheetState = "collapsed" | "preview" | "expanded"');
+    expect(results).toContain("MobileSelectedPreview");
+    expect(results).toContain("h-full min-h-0 overflow-hidden lg:flex lg:flex-col");
+  });
+
+  it("shows the real reviewed product specimen before the quota-free worked example without loading MapLibre", async () => {
+    const [landing, preview] = await Promise.all([
+      read("src/app/page.tsx"),
+      read("src/components/atlas/guided-landing-dynamic.tsx")
+    ]);
+    expect(landing.indexOf("<LandingProductPreview />")).toBeLessThan(landing.indexOf('aria-labelledby="example-heading"'));
+    expect(preview).toContain('/imagery/landing-atlas-preview.webp');
+    expect(preview).toContain("{organizationName}");
+    expect(preview).toContain("{capability.name}");
+    expect(preview).not.toContain("LandingMapPreview");
+    expect(preview).not.toContain('@/components/atlas/atlas-map');
   });
 });

@@ -4,7 +4,7 @@ Status: canonical operating contract
 
 Effective: 2026-07-26
 
-Last reviewed: 2026-07-31
+Last reviewed: 2026-08-02
 
 Owner: Andrew Davies
 
@@ -33,7 +33,7 @@ True North Map is one product made from several connected systems. A change that
 | Change area | Also inspect | Required documentation | Minimum verification |
 | --- | --- | --- | --- |
 | Public layout, navigation, or copy | Accessibility, responsive layout, analytics event continuity, SEO metadata, screenshots, launch copy | Overview, status, brand packet when language or identity changes | Unit tests, lint, affected routes at 390/768/1024/1440, keyboard and overflow checks |
-| Organization, capability, region, mission, map, or search | Compact national projection, deterministic Data API paging, pagination, filters, URL state, API shape, Ask True North eligibility, exports | Overview and relevant data/admin contract | Tests, lint, 5,000-marker scale gate where map loading changes, public summary/atlas count comparison, API and route smoke |
+| Organization, capability, region, mission, map, or search | Compact national projection, deterministic Data API paging, pagination, filters, URL state, API shape, Ask True North eligibility, exports | Overview and relevant data/admin contract | Tests, lint, 5,000-marker scale gate where map loading changes, public summary/atlas count comparison, API and route smoke; verify first-viewport map geometry, the 380-pixel desktop rail, mobile sheet states, Map/List control, and accessible table when `/map` changes |
 | Supabase schema, RLS, storage, or server action | Anonymous/member/admin matrix, migrations, review and publish, caching and revalidation, private-data exposure | Admin/Data Contract, Status, migration notes | Migration/RLS tests, release validation, security advisors, production smoke |
 | Research schema or skill | All downstream skills, executable pipeline schema, deployed research contract, Admin Review and Publish support | AGENTS, pipeline docs, skill references, status | Data readiness, research validation, smoke/staging compatibility, review-card inspection |
 | Publication or Admin Review | Candidate display, evidence, duplicate handling, stable IDs, route revalidation, audit events | Admin/Data Contract and status | Unit/integration tests, accepted-to-publish flow, affected public routes |
@@ -82,6 +82,13 @@ pnpm release:validate
 `release:validate` begins with the production dependency gate. High or critical known vulnerabilities fail the release before tests and the clean build run. The active finding and remediation history is maintained in `Security And Reliability Remediation Log.md`.
 
 Then complete the relevant browser matrix at 390, 768, 1024, and 1440 pixels, verify access roles, and confirm the production build. After deployment, check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, the homepage, affected public routes, sign-in when relevant, Vercel build/runtime logs, and live Supabase state. The summary organization count, atlas total, and complete marker collection must agree; rich records must remain bounded to the requested page size.
+
+For a landing or map-workspace release, also verify that `/` initializes no
+MapLibre instance, `/map` places the live map in the first viewport, bounds and
+selected-record deep links survive refresh and sharing, the deterministic
+guided example does not call Ask True North or consume quota, and profile,
+browser-Back, sign-in, and Working List return paths preserve ordinary map
+state.
 
 ## Research and publication regression
 

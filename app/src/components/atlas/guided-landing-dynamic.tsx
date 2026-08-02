@@ -19,7 +19,6 @@ import {
 import { useEffect, useState } from "react";
 import { BriefHero } from "@/components/atlas/brief-hero";
 import { LandingEntryLink } from "@/components/atlas/landing-entry-link";
-import { LandingMapPreview } from "@/components/atlas/landing-map-preview";
 import { evidenceStrengthLabel, locationAccuracyLabel, publicLanguage } from "@/lib/atlas/presentation";
 import { formatDate } from "@/lib/utils";
 import type { AtlasConfidence, AtlasCoverageSummary, AtlasMapOrganization, AtlasMissionIndexItem } from "@/types/atlas";
@@ -88,18 +87,26 @@ export function LandingProductPreview() {
     <section className="border-y border-[var(--atlas-border)] bg-white py-16 sm:py-20" aria-labelledby="preview-heading">
       <div className="atlas-frame">
         <div className="mb-8 max-w-3xl sm:mb-10">
-          <p className="atlas-eyebrow">Follow one record</p>
-          <h2 id="preview-heading" className="mt-4 text-4xl font-extrabold tracking-[-0.045em] sm:text-5xl">See where capability may fit and why.</h2>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--atlas-muted)]">Here is how one reviewed record presents what the public record says, where the technology may fit and what remains unknown.</p>
+          <p className="atlas-eyebrow">See a reviewed result</p>
+          <h2 id="preview-heading" className="mt-4 text-4xl font-extrabold tracking-[-0.045em] sm:text-5xl">See where capability is and why it may matter.</h2>
+          <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--atlas-muted)]">Move from a location on the map into a reviewed technology record. See what the public record says, where the technology may fit and what remains unknown.</p>
         </div>
-        <div className="overflow-hidden rounded-[16px] border border-[var(--atlas-border)] bg-white p-5 sm:p-8 lg:p-10">
-        <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-10">
-          <div>
-            <p className="atlas-eyebrow">Selected organization</p>
-            <p className="mt-4 max-w-xl text-base leading-7 text-[var(--atlas-muted)]">The map provides the spatial cue. The record beside it carries the reviewed technology, evidence and visible limits.</p>
-            <div className="mt-6 overflow-hidden rounded-[12px]"><LandingMapPreview organization={organization} callout={{ name: organizationName, locationName, locationAccuracy }} /></div>
+        <div className="overflow-hidden rounded-[16px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+          <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] sm:aspect-[16/7]">
+            <Image
+              src="/imagery/landing-atlas-preview.webp"
+              alt="True North Map showing reviewed Canadian organizations across the national map."
+              fill
+              sizes="(min-width: 1480px) 1400px, 100vw"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-x-4 bottom-4 border-l-4 border-[var(--atlas-signal)] bg-white/95 px-4 py-3 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:inset-x-auto sm:left-6 sm:max-w-[320px]">
+              <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-evidence)]">Selected on the map</p>
+              <p className="mt-1 text-base font-extrabold text-[var(--atlas-ink)]">{organizationName}</p>
+              <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">{locationName} · {locationAccuracy} location</p>
+            </div>
           </div>
-          <div>
+          <div className="p-5 sm:p-8 lg:p-10">
             <div className="flex flex-col gap-5 border-b border-[var(--atlas-border)] pb-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-5">
                 {logoUrl ? <span className="relative flex h-20 w-40 shrink-0 items-center justify-center rounded-[10px] border border-[var(--atlas-border)] bg-white p-3"><Image src={logoUrl} alt={`${organizationName} logo`} fill sizes="160px" className="object-contain p-3" /></span> : null}
@@ -111,7 +118,6 @@ export function LandingProductPreview() {
             <div className="grid gap-4 lg:grid-cols-3"><EvidenceCard icon={CheckCircle2} heading="What the public record says" label={publicLanguage.sourceFact} text={capability.summary} tone="fact" /><EvidenceCard icon={ShieldCheck} heading="Where it may fit" label={publicLanguage.assessment} text={capability.assessment} tone="assessment" /><EvidenceCard icon={Layers3} heading="What remains unknown" label={publicLanguage.coverageGap} text={coverageGap} tone="gap" /></div>
             <div className="mt-7 grid border-t border-[var(--atlas-border)] sm:grid-cols-3"><Link href={`/organizations/${organizationSlug}`} className="flex min-h-12 items-center justify-center gap-2 border-b border-[var(--atlas-border)] px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-surface-muted)] sm:border-b-0 sm:border-r">Open profile <ArrowRight className="size-4" /></Link><Link href={`/capabilities/${capability.slug}#evidence`} className="flex min-h-12 items-center justify-center gap-2 border-b border-[var(--atlas-border)] px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-surface-muted)] sm:border-b-0 sm:border-r">Inspect evidence <ArrowRight className="size-4" /></Link><Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(`/capabilities/${capability.slug}`)}`} className="flex min-h-12 items-center justify-center gap-2 px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-surface-muted)]">Add to Working List <ArrowRight className="size-4" /></Link></div>
           </div>
-        </div>
         </div>
       </div>
     </section>

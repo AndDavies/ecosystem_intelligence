@@ -7,9 +7,11 @@ import {
   Building2,
   ChevronDown,
   ChevronRight,
+  ChevronUp,
   ExternalLink,
   FileCheck2,
   LoaderCircle,
+  Minus,
   X
 } from "lucide-react";
 import {
@@ -88,7 +90,7 @@ export function ResultsRail({
   onSelect: (id: string) => void;
 }) {
   return (
-    <aside className="atlas-dark-panel hidden h-[510px] overflow-hidden lg:flex lg:flex-col" aria-label="Organizations in the current map view">
+    <aside data-results-rail className="atlas-dark-panel hidden h-full min-h-0 overflow-hidden lg:flex lg:flex-col" aria-label="Organizations in the current map view">
       <div className="border-b border-white/15 px-5 py-5">
         <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-white/60">Organizations in view</p>
         <p className="mt-2 text-lg font-extrabold tracking-[-0.025em] text-[var(--atlas-signal)]">{totalInView} reviewed {totalInView === 1 ? "organization" : "organizations"}</p>
@@ -121,6 +123,142 @@ export function ResultsRail({
         <div className="flex flex-1 items-center justify-center px-8 text-center text-sm leading-6 text-white/60">No published organizations are visible in this map area.</div>
       )}
     </aside>
+  );
+}
+
+export type MobileResultsSheetState = "collapsed" | "preview" | "expanded";
+
+export function MobileResultsSheet({
+  state,
+  organizations,
+  totalInView,
+  filters,
+  selectedId,
+  selectedOrganization,
+  selectedCapability,
+  detailLoading,
+  returnTo,
+  onStateChange,
+  onSelect
+}: {
+  state: MobileResultsSheetState;
+  organizations: AtlasExplorerOrganization[];
+  totalInView: number;
+  filters: AtlasQuery;
+  selectedId: string | null;
+  selectedOrganization: AtlasExplorerOrganization | null;
+  selectedCapability: AtlasExplorerCapability | null;
+  detailLoading: boolean;
+  returnTo: string;
+  onStateChange: (state: MobileResultsSheetState) => void;
+  onSelect: (id: string) => void;
+}) {
+  const previewOrganizations = state === "preview" ? organizations.slice(0, 4) : organizations;
+  return (
+    <section
+      id="mobile-results-sheet"
+      className={cn(
+        "absolute inset-x-2 bottom-2 z-[1002] flex min-h-16 flex-col overflow-hidden rounded-[16px] border border-white/85 bg-[var(--atlas-ink)] text-white shadow-[var(--atlas-shadow-float)] transition-[height] duration-200 lg:hidden",
+        state === "collapsed" && "h-16",
+        state === "preview" && "h-[44%]",
+        state === "expanded" && "h-[calc(100%_-_1rem)]"
+      )}
+      aria-label="Organizations in the current map view"
+    >
+      <div className="flex min-h-16 shrink-0 items-center justify-between gap-3 border-b border-white/15 px-3">
+        <div className="min-w-0">
+          <p className="truncate text-sm font-extrabold text-white">
+            <span className="sm:hidden">{totalInView} in view</span>
+            <span className="hidden sm:inline">{totalInView} {totalInView === 1 ? "organization" : "organizations"} in view</span>
+          </p>
+          <p className="mt-0.5 text-[10px] text-white/58">Select a result to inspect it on the map.</p>
+        </div>
+        <div className="flex shrink-0 rounded-full border border-white/20 bg-white/[0.08] p-0.5" aria-label="Results sheet size">
+          <button type="button" onClick={() => onStateChange("collapsed")} className={cn("inline-flex size-9 items-center justify-center rounded-full text-white/70", state === "collapsed" && "bg-white text-[var(--atlas-ink)]")} aria-label="Collapse results" aria-pressed={state === "collapsed"}><ChevronDown className="size-4" /></button>
+          <button type="button" onClick={() => onStateChange("preview")} className={cn("inline-flex size-9 items-center justify-center rounded-full text-white/70", state === "preview" && "bg-white text-[var(--atlas-ink)]")} aria-label="Preview results" aria-pressed={state === "preview"}><Minus className="size-4" /></button>
+          <button type="button" onClick={() => onStateChange("expanded")} className={cn("inline-flex size-9 items-center justify-center rounded-full text-white/70", state === "expanded" && "bg-white text-[var(--atlas-ink)]")} aria-label="Expand results" aria-pressed={state === "expanded"}><ChevronUp className="size-4" /></button>
+        </div>
+      </div>
+      {state !== "collapsed" ? (
+        state === "preview" && selectedOrganization ? (
+          <MobileSelectedPreview
+            organization={selectedOrganization}
+            capability={selectedCapability}
+            filters={filters}
+            detailLoading={detailLoading}
+            returnTo={returnTo}
+          />
+        ) : organizations.length ? (
+          <ol className="min-h-0 flex-1 overflow-y-auto overscroll-contain" aria-label="Map results">
+            {previewOrganizations.map((organization, index) => {
+              const capability = relevantCapability(organization, filters);
+              const evidence = rowEvidence(organization, capability);
+              const selected = organization.id === selectedId;
+              return (
+                <li key={organization.id} className={cn("border-b border-white/15", selected && "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]")}>
+                  <button type="button" onClick={() => onSelect(organization.id)} className="grid w-full grid-cols-[32px_minmax(0,1fr)_auto] gap-3 px-3 py-3 text-left">
+                    <span className={cn("flex size-8 items-center justify-center rounded-full border text-xs font-bold", selected ? "border-[var(--atlas-ink)]/25" : "border-white/25 text-white/75")}>{index + 1}</span>
+                    <span className="min-w-0">
+                      <span className="block truncate text-sm font-extrabold">{organization.name}</span>
+                      <span className={cn("mt-1 block truncate text-[11px]", selected ? "text-[var(--atlas-ink)]/65" : "text-white/58")}>{capability?.name ?? "Technology not yet reviewed"}</span>
+                    </span>
+                    <span className={cn("self-center rounded-full border px-2 py-1 text-[9px] font-bold", selected ? "border-[var(--atlas-ink)]/20" : "border-white/20 text-white/70")}>{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Profile"}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        ) : (
+          <div className="flex flex-1 items-center justify-center px-8 text-center text-sm leading-6 text-white/60">No published organizations are visible in this map area.</div>
+        )
+      ) : null}
+    </section>
+  );
+}
+
+function MobileSelectedPreview({
+  organization,
+  capability,
+  filters,
+  detailLoading,
+  returnTo
+}: {
+  organization: AtlasExplorerOrganization;
+  capability: AtlasExplorerCapability | null;
+  filters: AtlasQuery;
+  detailLoading: boolean;
+  returnTo: string;
+}) {
+  const evidence = rowEvidence(organization, capability);
+  const alignment = selectedAlignment(capability, filters);
+  const summary = alignment?.alignmentSummary ?? capability?.summary ?? organization.description;
+  const confidence = alignment?.confidence ?? capability?.sourceConfidence ?? organization.sourceConfidence;
+  return (
+    <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3">
+      <div className="rounded-[12px] bg-white p-4 text-[var(--atlas-ink)]">
+        <div className="flex items-start gap-3">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[var(--atlas-evidence-soft)] text-[var(--atlas-evidence)]" aria-hidden="true"><Building2 className="size-5" /></span>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-base font-extrabold">{organization.name}</p>
+            <p className="mt-1 truncate text-xs text-[var(--atlas-muted)]">{organization.primaryLocation?.name ?? "Location under review"}</p>
+          </div>
+          {detailLoading ? <LoaderCircle className="mt-1 size-4 animate-spin text-[var(--atlas-evidence)]" aria-label="Loading the complete organization profile" /> : null}
+        </div>
+        <div className="mt-3 border-l-2 border-[var(--atlas-signal)] pl-3">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-evidence)]">{alignment ? alignmentTypeLabel(alignment.matchType) : "Reviewed technology"}</p>
+          <p className="mt-1 text-sm font-extrabold">{capability?.name ?? "Organization profile"}</p>
+          <p className="mt-1 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{summary}</p>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-1.5 text-[10px] font-semibold">
+          <span className="rounded-full bg-[var(--atlas-evidence-soft)] px-2.5 py-1 text-[var(--atlas-evidence)]">{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(confidence)}</span>
+          <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-2">
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className="atlas-primary-button h-10 gap-1.5 px-2 text-xs">View profile <ArrowRight className="size-3.5" /></Link>
+          <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-1.5 px-2 text-xs"><BookmarkPlus className="size-3.5" />Working List</Link>
+        </div>
+      </div>
+    </div>
   );
 }
 
