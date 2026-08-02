@@ -89,24 +89,24 @@ describe("public data access", () => {
     expect(detailSection.slice(0, detailSection.indexOf("export async function getAtlasRegionBySlug"))).not.toContain("getAtlasSnapshot()");
   });
 
-  it("caches stable public pages while leaving search-param indexes live", async () => {
+  it("caches stable public pages while leaving search-param routes live", async () => {
     const stablePages = await Promise.all([
-      source("src/app/organizations/[slug]/page.tsx"),
-      source("src/app/capabilities/[slug]/page.tsx"),
       source("src/app/demand/[slug]/page.tsx"),
       source("src/app/briefs/page.tsx"),
       source("src/app/briefs/[slug]/page.tsx")
     ]);
-    const liveIndexes = await Promise.all([
+    const liveRoutes = await Promise.all([
+      source("src/app/organizations/[slug]/page.tsx"),
+      source("src/app/capabilities/[slug]/page.tsx"),
       source("src/app/map/page.tsx"),
       source("src/app/organizations/page.tsx"),
       source("src/app/demand/page.tsx")
     ]);
 
     stablePages.forEach((page) => expect(page).toContain("export const revalidate = 300"));
-    stablePages.slice(0, 3).forEach((page) => expect(page).toContain("generateStaticParams"));
-    expect(stablePages[4]).toContain("generateStaticParams");
-    liveIndexes.forEach((page) => expect(page).toContain('export const dynamic = "force-dynamic"'));
+    expect(stablePages[0]).toContain("generateStaticParams");
+    expect(stablePages[2]).toContain("generateStaticParams");
+    liveRoutes.forEach((page) => expect(page).toContain('export const dynamic = "force-dynamic"'));
     const landing = await source("src/app/page.tsx");
     expect(landing).toContain("export const revalidate = 300");
     expect(landing).not.toContain('export const dynamic = "force-dynamic"');

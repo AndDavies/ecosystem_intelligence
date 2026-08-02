@@ -14,6 +14,8 @@ The final design pass preserves the bounded 480-pixel maritime hero, highlighted
 
 Ask True North now defaults to `gpt-5.6-luna`. A controlled live structured-output call passed with the existing Responses API contract, low reasoning effort, known-record boundary, deterministic preselection and deterministic fallback unchanged. No new index, web tool, saved model response, database migration, or publication path was introduced.
 
+The first production smoke exposed `DYNAMIC_SERVER_USAGE` on dossier routes because the new safe `returnTo` query state was being read inside their earlier on-demand static rendering contract. Organization and capability dossiers now render dynamically while their bounded record loaders retain the existing five-minute server cache. This preserves safe map context without loading the national snapshot or allowing a query-dependent page to enter the static cache.
+
 ## August 1 local UX candidate
 
 The current local candidate refines the approved landing and `/map` handoff without changing the public-data, publication, authentication, consent, or analytics authority. The landing uses visitor-facing **Search focus** controls for a fixed deterministic example; it carries only allowlisted focus IDs into a normal refreshable `/map` state, never calls Ask True North, and does not consume its quota. The map now presents the selected focus as removable controls and preserves safe local context through profile, evidence, Working List, and sign-in actions. Public evidence language is normalized to Source-backed fact, Our assessment, Coverage gap, Evidence strength, and Last reviewed. This candidate is not a deployment record; its focused, release-level, and four-width browser checks remain required before release.

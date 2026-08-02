@@ -41,6 +41,8 @@ The current local release candidate completes the July 31 implementation sequenc
 
 The guided landing tells one decision story: describe a need, review the interpretation, compare possible fits, weigh evidence and gaps, and build a Working List for the conversation ahead. The hero retains the approved bounded maritime split, highlighted opening phrase, caption cutout and live coverage band; the three starting jobs, evidence example, product specimen, Mission Areas, Briefs, North Signal and trust sections follow the current brand hierarchy. The compact `/map` introduction provides guided entry points without changing the atlas loading path. Responsive separators, pills, icons, whitespace and social actions follow the August 2 brand contract.
 
+Organization and capability dossiers render dynamically because they accept safe, shareable map-return context. Their bounded slug loaders remain cached for five minutes, so this avoids query-dependent static-cache failures without loading the national snapshot or weakening the public-data boundary.
+
 ## Phase 1 public-product hardening boundary
 
 - Supabase remains the authoritative subscriber-consent ledger and MailerLite remains the delivery surface. No second mailing database or campaign composer is introduced.

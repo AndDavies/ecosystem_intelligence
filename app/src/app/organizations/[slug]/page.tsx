@@ -27,14 +27,9 @@ import { formatDate, toTitleCase } from "@/lib/utils";
 import { absoluteUrl } from "@/lib/site";
 import { socialMetadata } from "@/lib/seo/social";
 
-export const revalidate = 300;
-
-export async function generateStaticParams() {
-  // Profile pages render on demand so a transient database timeout cannot
-  // take down the entire production build. They remain crawlable and retain
-  // the five-minute ISR policy after the first request.
-  return [];
-}
+// Safe map-return context is query-string state. Render the route dynamically
+// while the bounded dossier loader retains its five-minute server cache.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
