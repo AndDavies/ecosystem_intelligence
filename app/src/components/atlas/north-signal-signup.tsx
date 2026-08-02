@@ -52,7 +52,8 @@ function deviceClass() {
 }
 
 function contentType(pathname: string) {
-  if (pathname === "/") return "atlas";
+  if (pathname === "/") return "landing";
+  if (pathname === "/map") return "atlas";
   if (pathname.startsWith("/briefs/")) return "defence_brief";
   if (pathname.startsWith("/organizations/")) return "organization_profile";
   return "public_page";
@@ -83,11 +84,13 @@ export function NorthSignalSignupForm({
   placement,
   trigger,
   variant,
+  tone = "light",
   onSuccess
 }: {
   placement: NorthSignalSignupSource;
   trigger: string;
   variant: NorthSignalVariant;
+  tone?: "light" | "dark";
   onSuccess?: () => void;
 }) {
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -186,7 +189,7 @@ export function NorthSignalSignupForm({
           placeholder="you@organization.ca"
           onFocus={markStarted}
           onChange={markStarted}
-          className="h-11 min-w-0 rounded-[8px] border border-[var(--atlas-border-strong)] bg-white px-3 text-sm outline-none focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)]"
+          className="h-11 min-w-0 rounded-[8px] border border-[var(--atlas-border-strong)] bg-white px-3 text-sm text-[var(--atlas-ink)] outline-none focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)]"
         />
         <button
           type="submit"
@@ -195,13 +198,13 @@ export function NorthSignalSignupForm({
           className="atlas-signal-button h-11 gap-2 px-4 text-sm disabled:opacity-60"
         >
           {state === "loading" ? <LoaderCircle aria-hidden="true" className="size-4 animate-spin" /> : <Mail aria-hidden="true" className="size-4" />}
-          Send me North Signal
+          Get North Signal
         </button>
       </div>
       <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
       {turnstileSiteKey ? <TurnstileField key={captchaAttempt} siteKey={turnstileSiteKey} onTokenChange={setCaptchaToken} purpose="subscription" /> : null}
-      <p className="text-[11px] leading-5 text-[var(--atlas-muted)]">
-        {northSignalConsentText} <Link href="/privacy" className="font-semibold text-[var(--atlas-primary)] underline">Privacy details.</Link>
+      <p className={cn("text-[11px] leading-5", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>
+        {northSignalConsentText} <Link href="/privacy" className={cn("font-semibold underline", tone === "dark" ? "text-white" : "text-[var(--atlas-primary)]")}>Privacy details.</Link>
       </p>
     </form>
   );
@@ -211,11 +214,13 @@ export function NorthSignalInline({
   placement,
   trigger = "contextual_inline",
   revealOnEngagement = false,
+  tone = "light",
   className
 }: {
-  placement: Extract<NorthSignalSignupSource, "newsletter_inline_home" | "newsletter_inline_brief" | "newsletter_inline_profile">;
+  placement: Extract<NorthSignalSignupSource, "newsletter_inline_home" | "newsletter_inline_map" | "newsletter_inline_brief" | "newsletter_inline_profile">;
   trigger?: string;
   revealOnEngagement?: boolean;
+  tone?: "light" | "dark";
   className?: string;
 }) {
   const [revealed, setRevealed] = useState(!revealOnEngagement);
@@ -249,15 +254,15 @@ export function NorthSignalInline({
   if (!revealed) return null;
 
   return (
-    <section ref={containerRef} aria-labelledby={`north-signal-title-${placement}`} className={cn("border-y border-[var(--atlas-border)] bg-[var(--atlas-signal-soft)] px-5 py-6 sm:px-7", className)}>
+    <section ref={containerRef} aria-labelledby={`north-signal-title-${placement}`} className={cn("px-5 py-6 sm:px-7", tone === "light" && "border-y border-[var(--atlas-border)] bg-[var(--atlas-signal-soft)]", tone === "dark" && "text-white", className)}>
       <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-center">
         <div>
-          <p className="atlas-eyebrow">North Signal · Weekly briefing</p>
-          <h2 id={`north-signal-title-${placement}`} className="mt-2 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">See what Canada is building next.</h2>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-[var(--atlas-ink-soft)]">One concise weekly briefing on newly mapped Canadian capabilities, released public needs, and defence developments worth following.</p>
-          <p className="mt-2 text-xs font-semibold text-[var(--atlas-muted)]">Weekly. Evidence-led. Unsubscribe anytime. <Link href="/briefs" className="text-[var(--atlas-primary)] underline">Read a sample</Link>.</p>
+          <p className={cn("atlas-eyebrow", tone === "dark" && "!text-[var(--atlas-signal)]")}>North Signal · Weekly briefing</p>
+          <h2 id={`north-signal-title-${placement}`} className={cn("mt-2 text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl", tone === "dark" ? "text-white" : "text-[var(--atlas-ink)]")}>See what Canada is building next.</h2>
+          <p className={cn("mt-3 max-w-xl text-base leading-7", tone === "dark" ? "text-white/80" : "text-[var(--atlas-ink-soft)]")}>One concise weekly briefing on newly mapped Canadian capabilities, released public needs and the connections worth watching.</p>
+          <p className={cn("mt-3 text-xs font-semibold", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>Weekly. Evidence-led. Unsubscribe anytime.</p>
         </div>
-        <NorthSignalSignupForm placement={placement} trigger={trigger} variant="inline" />
+        <NorthSignalSignupForm placement={placement} trigger={trigger} variant="inline" tone={tone} />
       </div>
     </section>
   );

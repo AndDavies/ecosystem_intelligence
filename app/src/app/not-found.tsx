@@ -12,7 +12,7 @@ export default function NotFound() {
           <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Page not found</p>
           <h1 className="mt-2 text-2xl font-bold tracking-[-0.03em] text-[var(--atlas-ink)]">We could not find that page.</h1>
           <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">Return to the map to find Canadian organizations, technology, public needs and the evidence behind each profile.</p>
-          <Link href="/" className="atlas-signal-button mt-6 h-11 px-5 text-sm">Explore the ecosystem</Link>
+          <Link href="/map" className="atlas-signal-button mt-6 h-11 px-5 text-sm">Explore the ecosystem</Link>
         </section>
       </div>
     </main>

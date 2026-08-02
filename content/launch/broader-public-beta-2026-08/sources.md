@@ -8,6 +8,7 @@ This package uses only current application assets and current local product capt
 - `app/public/brand/true-north-map-horizontal-light.svg`
 - `app/public/brand/true-north-map-social-avatar.png`
 - `app/public/imagery/home-maritime-evidence.webp`
+- `true-north-map-x-header.png` is a text-free, X-safe companion header derived from the current LinkedIn banner's visual direction. It is profile artwork, not product evidence or a claim about a real vessel, mission or program.
 
 ## Product captures
 

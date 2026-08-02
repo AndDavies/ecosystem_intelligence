@@ -30,7 +30,7 @@ export default async function MissionsPage() {
       eyebrow="Mission Areas and Use Cases"
       title="Start with the mission."
       description="Explore the operational problems and use cases True North Map uses to organize reviewed Canadian technology. Move from the outcome you need to the organizations and capabilities worth inspecting."
-      breadcrumbs={[{ label: "Map", href: "/" }, { label: "Mission Areas" }]}
+      breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Mission Areas" }]}
     >
       <JsonLd data={[
         {

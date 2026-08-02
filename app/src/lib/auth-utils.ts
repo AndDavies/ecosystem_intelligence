@@ -1,12 +1,13 @@
 import { siteUrl } from "@/lib/site";
 
+import { safeLocalReturnPath } from "@/lib/safe-return";
+
 export const googleOAuthQueryParams = {
   prompt: "select_account"
 } as const;
 
 export function safeAuthNextPath(value: string | undefined, fallback = "/collections") {
-  if (!value || !value.startsWith("/") || value.startsWith("//")) return fallback;
-  return value;
+  return safeLocalReturnPath(value, fallback);
 }
 
 export function getAuthBaseUrl(

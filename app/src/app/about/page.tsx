@@ -73,7 +73,7 @@ export default function AboutPage() {
       title="Make Canadian capability visible."
       description="True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations."
       actions={
-        <Link href="/" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">
+        <Link href="/map" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">
           Explore the map <ArrowRight className="size-4" />
         </Link>
       }
@@ -185,7 +185,7 @@ export default function AboutPage() {
         <div className="p-7 sm:p-9 lg:p-11">
           <p className="text-base leading-8 text-[var(--atlas-ink-soft)]">This is a long-term project. The map will never become useful by pretending every gap is filled or every possible fit is certain. It becomes useful through reviewed evidence, honest limits, contributions from the ecosystem, and a steady commitment to making Canadian capability easier to see.</p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <Link href="/" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">Explore the map <ArrowRight className="size-4" /></Link>
+            <Link href="/map" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">Explore the map <ArrowRight className="size-4" /></Link>
             <Link href="/submit" className="atlas-secondary-button h-11 px-5 text-sm no-underline hover:no-underline">Add what Canada is building</Link>
             <a href="mailto:andrew@truenorthmap.ca" className="atlas-secondary-button h-11 px-5 text-sm no-underline hover:no-underline">Contact Andrew</a>
           </div>

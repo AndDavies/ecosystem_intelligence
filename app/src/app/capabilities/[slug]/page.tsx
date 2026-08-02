@@ -11,6 +11,7 @@ import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shel
 import { PublicShare } from "@/components/atlas/public-share";
 import { evidenceStrengthLabel, organizationKindLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
+import { safeAtlasReturn } from "@/lib/atlas/return-path";
 import { absoluteUrl } from "@/lib/site";
 import { socialMetadata } from "@/lib/seo/social";
 import { formatDate, toTitleCase } from "@/lib/utils";
@@ -41,17 +42,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function CapabilityPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function CapabilityPage({
+  params,
+  searchParams
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ returnTo?: string }>;
+}) {
   const { slug } = await params;
+  const query = await searchParams;
   const publicCapability = await getAtlasCapabilityBySlug(slug);
   if (!publicCapability) notFound();
 
-  return <PublicCapabilityPage organization={publicCapability.organization} capability={publicCapability.capability} />;
+  return <PublicCapabilityPage organization={publicCapability.organization} capability={publicCapability.capability} mapReturnTo={safeAtlasReturn(query.returnTo)} />;
 }
 
 function PublicCapabilityPage({
   organization,
-  capability
+  capability,
+  mapReturnTo
 }: {
   organization: Awaited<ReturnType<typeof getAtlasCapabilityBySlug>> extends infer T
     ? T extends { organization: infer O }
@@ -63,6 +72,7 @@ function PublicCapabilityPage({
       ? C
       : never
     : never;
+  mapReturnTo: string;
 }) {
   const citations = [
     ...capability.citations,
@@ -70,6 +80,7 @@ function PublicCapabilityPage({
     ...capability.demandMatches.flatMap((match) => match.citations)
   ];
   const hasPublishedAlignment = capability.missionMatches.length > 0 || capability.demandMatches.length > 0;
+  const capabilityPath = `/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
 
   return (
     <PublicPageShell
@@ -77,9 +88,9 @@ function PublicCapabilityPage({
       title={capability.name}
       description={capability.summary}
       breadcrumbs={[
-        { label: "Map", href: "/" },
+        { label: "Map", href: mapReturnTo },
         { label: "Organizations", href: "/organizations" },
-        { label: organization.name, href: `/organizations/${organization.slug}` },
+        { label: organization.name, href: `/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}` },
         { label: capability.name }
       ]}
       actions={
@@ -87,14 +98,14 @@ function PublicCapabilityPage({
           <Link href={`/connect/${organization.slug}`} className="atlas-primary-button h-10 w-full gap-2 px-4 text-xs sm:w-auto">
             <Handshake className="size-4" /> Request an introduction
           </Link>
-          <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(`/capabilities/${capability.slug}`)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+          <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             <BookmarkPlus className="size-4" /> Add to Working List
           </Link>
           <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             <Download className="size-4" /> Download profile
           </Link>
           <PublicShare title={capability.name} description={capability.summary} path={`/capabilities/${capability.slug}`} />
-          <Link href={`/organizations/${organization.slug}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             Explore {organization.name} <ArrowRight className="size-4" />
           </Link>
         </>
@@ -102,7 +113,7 @@ function PublicCapabilityPage({
     >
       <JsonLd data={[
         { "@context": "https://schema.org", "@type": "Product", name: capability.name, description: capability.summary, brand: { "@type": "Organization", name: organization.name, url: absoluteUrl(`/organizations/${organization.slug}`) }, url: absoluteUrl(`/capabilities/${capability.slug}`) },
-        { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(`/capabilities/${capability.slug}`) }] }
+        { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(`/capabilities/${capability.slug}`) }] }
       ]} />
       <EvidenceLegend compact className="mb-5" />
       <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
@@ -193,11 +204,11 @@ function PublicCapabilityPage({
                 </p>
               </div>
             </div>
-            <Link href={`/organizations/${organization.slug}`} className="atlas-secondary-button mt-4 flex h-10 w-full gap-2 px-4 text-xs">
+            <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} className="atlas-secondary-button mt-4 flex h-10 w-full gap-2 px-4 text-xs">
               Explore the organization <ArrowRight className="size-4" />
             </Link>
           </PublicCard>
-          <PublicCard title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
+          <PublicCard id="evidence" title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
             <EvidenceList citations={citations} />
             {!hasPublishedAlignment ? (
               <div className="mt-5 rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
@@ -208,7 +219,7 @@ function PublicCapabilityPage({
           </PublicCard>
           <PublicCard title="How well this is supported" eyebrow="What supports this profile">
             <dl className="grid gap-3 text-xs">
-              <div><dt className="text-[var(--atlas-muted)]">Public evidence</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
+              <div><dt className="text-[var(--atlas-muted)]">{publicLanguage.evidenceStrength}</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
               <div><dt className="text-[var(--atlas-muted)]">Last reviewed</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{formatDate(capability.lastReviewedAt)}</dd></div>
               <div><dt className="text-[var(--atlas-muted)]">Technology areas</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{capability.technicalDomains.map((domain) => domain.name).join(", ") || "Not yet mapped"}</dd></div>
             </dl>

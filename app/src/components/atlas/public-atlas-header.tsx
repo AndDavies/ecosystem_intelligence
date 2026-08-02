@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { openBetaFeedback, openBetaUpdates } from "@/lib/product-insights/client";
 
 const navigation = [
-  { href: "/", label: "Map", match: (pathname: string) => pathname === "/" || pathname.startsWith("/regions") },
+  { href: "/map", label: "Map", match: (pathname: string) => pathname === "/map" },
   { href: "/organizations", label: "Organizations", match: (pathname: string) => pathname.startsWith("/organizations") },
   { href: "/missions", label: "Missions", match: (pathname: string) => pathname.startsWith("/missions") },
   { href: "/demand", label: "Public Needs", match: (pathname: string) => pathname.startsWith("/demand") },

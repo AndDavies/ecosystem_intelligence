@@ -11,6 +11,7 @@ import type {
   AtlasQuery,
   AtlasQueryResult
 } from "@/types/atlas";
+import { capabilityMatchesGuidedSearchFocus } from "@/lib/atlas/guided-search";
 
 // Rich evidence cards are deliberately paginated. Every matching organization
 // still reaches the map through mapOrganizations, so this limit reduces the
@@ -20,6 +21,7 @@ export const ATLAS_EXPLORER_MAX_PAGE_SIZE = 200;
 
 function matchingCapability(organization: AtlasOrganization, query: AtlasQuery) {
   return organization.capabilities.find((capability) => {
+    if (query.focus?.length && !query.focus.some((focus) => capabilityMatchesGuidedSearchFocus(capability, focus))) return false;
     if (query.domain && !capability.technicalDomains.some((domain) => domain.slug === query.domain)) return false;
     if (query.mission && !capability.missionMatches.some((match) => match.missionArea.slug === query.mission)) return false;
     if (query.demand && !capability.demandMatches.some((match) => match.demandSlug === query.demand)) return false;
@@ -129,7 +131,8 @@ export function projectAtlasMapOrganization(organization: AtlasOrganization): At
       ? {
           name: organization.primaryLocation.name,
           latitude: organization.primaryLocation.latitude,
-          longitude: organization.primaryLocation.longitude
+          longitude: organization.primaryLocation.longitude,
+          geographicConfidence: organization.primaryLocation.geographicConfidence
         }
       : null
   };

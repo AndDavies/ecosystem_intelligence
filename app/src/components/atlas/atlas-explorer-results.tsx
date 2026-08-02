@@ -16,14 +16,17 @@ import {
   alignmentSubject,
   alignmentTypeLabel,
   evidenceStrengthLabel,
-  locationAccuracyLabel
+  locationAccuracyLabel,
+  publicLanguage
 } from "@/lib/atlas/presentation";
+import { capabilityMatchesGuidedSearchFocus } from "@/lib/atlas/guided-search";
 import { cn, formatDate, toTitleCase } from "@/lib/utils";
 import type { AtlasExplorerCapability, AtlasExplorerOrganization, AtlasQuery } from "@/types/atlas";
 
 export function relevantCapability(organization: AtlasExplorerOrganization, filters: AtlasQuery): AtlasExplorerCapability | null {
   return (
     organization.capabilities.find((capability) => {
+      if (filters.focus?.length && !filters.focus.some((focus) => capabilityMatchesGuidedSearchFocus(capability, focus))) return false;
       if (filters.domain && !capability.technicalDomains.some((domain) => domain.slug === filters.domain)) return false;
       if (filters.mission && !capability.missionMatches.some((match) => match.missionArea.slug === filters.mission)) return false;
       if (filters.demand && !capability.demandMatches.some((match) => match.demandSlug === filters.demand)) return false;
@@ -74,12 +77,14 @@ export function ResultsRail({
   totalInView,
   filters,
   selectedId,
+  returnTo,
   onSelect
 }: {
   organizations: AtlasExplorerOrganization[];
   totalInView: number;
   filters: AtlasQuery;
   selectedId: string | null;
+  returnTo: string;
   onSelect: (id: string) => void;
 }) {
   return (
@@ -105,7 +110,7 @@ export function ResultsRail({
                   <span className={cn("mt-1.5 block line-clamp-2 text-[11px] leading-4", selected ? "text-[rgba(36,40,39,0.8)]" : "text-white/80")}>{capability?.name ?? "Technology not yet reviewed"}</span>
                   <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-[rgba(36,40,39,0.25)] bg-[var(--atlas-ink)] text-white" : "border-white/25 text-white/80")}>{evidence.length ? `${evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · ${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Open profile for sources"}</span>
                 </button>
-                <Link href={`/organizations/${organization.slug}`} className={cn("flex items-center justify-center no-underline hover:no-underline", selected ? "text-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
+                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className={cn("flex items-center justify-center no-underline hover:no-underline", selected ? "text-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
                   <ChevronRight className="size-5" />
                 </Link>
               </li>
@@ -149,11 +154,13 @@ export function LookbookPeek({
   organization,
   capability,
   filters,
+  returnTo,
   onClose
 }: {
   organization: AtlasExplorerOrganization;
   capability: AtlasExplorerCapability | null;
   filters: AtlasQuery;
+  returnTo: string;
   onClose: () => void;
 }) {
   const evidence = rowEvidence(organization, capability);
@@ -205,7 +212,7 @@ export function LookbookPeek({
         <span className={cn(
           "rounded-full px-2.5 py-1",
           confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
-        )}>{alignment ? `${evidenceStrengthLabel(confidence)} public evidence` : `${evidenceStrengthLabel(confidence)} public evidence`}</span>
+        )}>{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(confidence)}</span>
         <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
         <span className={cn(
           "rounded-full px-2.5 py-1",
@@ -215,32 +222,26 @@ export function LookbookPeek({
 
       <div className="mt-4 grid grid-cols-2 gap-2">
         <Link
-          href={`/organizations/${organization.slug}`}
+          href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`}
           className="atlas-primary-button col-span-2 h-10 gap-2 px-3 text-xs"
         >
           View profile
           <ArrowRight className="size-3.5" />
         </Link>
         <Link
-          href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent("/")}`}
+          href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`}
           className="atlas-secondary-button h-10 gap-1.5 px-2 text-[11px]"
         >
           <BookmarkPlus className="size-3.5" />
           Add to Working List
         </Link>
-        {evidence[0] ? (
-          <a
-            href={evidence[0].sourceUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="atlas-secondary-button h-10 gap-1.5 px-2 text-[11px]"
-          >
-            Source
-            <ExternalLink className="size-3.5" />
-          </a>
-        ) : (
-          <span className="inline-flex h-10 items-center justify-center rounded-xl bg-[var(--atlas-surface-muted)] px-2 text-[11px] font-semibold text-[var(--atlas-muted)]">No public link</span>
-        )}
+        <Link
+          href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`}
+          className="atlas-secondary-button h-10 gap-1.5 px-2 text-[11px]"
+        >
+          Inspect evidence
+          <ExternalLink className="size-3.5" />
+        </Link>
       </div>
     </aside>
   );
@@ -285,6 +286,7 @@ export function MobileOrganizationCard({
   selected,
   detailLoading,
   detailError,
+  returnTo,
   onToggle
 }: {
   organization: AtlasExplorerOrganization;
@@ -294,6 +296,7 @@ export function MobileOrganizationCard({
   selected: boolean;
   detailLoading: boolean;
   detailError?: string;
+  returnTo: string;
   onToggle: () => void;
 }) {
   const evidence = rowEvidence(organization, capability);
@@ -341,7 +344,7 @@ export function MobileOrganizationCard({
 
           <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[var(--atlas-border)] pt-4 text-xs">
             <div>
-              <span className="block text-[10px] text-[var(--atlas-muted)]">{alignment ? "Our assessment" : "Public evidence"}</span>
+              <span className="block text-[10px] text-[var(--atlas-muted)]">{alignment ? publicLanguage.assessment : publicLanguage.evidenceStrength}</span>
               <span className={cn(
                 "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
                 confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
@@ -359,7 +362,11 @@ export function MobileOrganizationCard({
               <ExternalLink className="mt-0.5 size-3 shrink-0" />
             </a>
           ) : null}
-          <Link href={`/organizations/${organization.slug}`} className="atlas-primary-button mt-4 h-10 w-full gap-2 px-3 text-xs">
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
+            Inspect evidence
+            <ExternalLink className="size-3" />
+          </Link>
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className="atlas-primary-button mt-4 h-10 w-full gap-2 px-3 text-xs">
             Explore the organization
             <ExternalLink className="size-3.5" />
           </Link>
@@ -377,6 +384,7 @@ export function OrganizationRows({
   selected,
   detailLoading,
   detailError,
+  returnTo,
   rowRef,
   onSelect,
   onToggleExpanded
@@ -388,6 +396,7 @@ export function OrganizationRows({
   selected: boolean;
   detailLoading: boolean;
   detailError?: string;
+  returnTo: string;
   rowRef: (node: HTMLTableRowElement | null) => void;
   onSelect: () => void;
   onToggleExpanded: () => void;
@@ -486,7 +495,7 @@ export function OrganizationRows({
                 <h3 id={`posture-${organization.id}`} className="text-xs font-bold text-[var(--atlas-ink)]">What supports this</h3>
                 <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 text-xs lg:grid-cols-1">
                   <div>
-                    <dt className="text-[10px] text-[var(--atlas-muted)]">{alignment ? "Our assessment" : "Public evidence"}</dt>
+                    <dt className="text-[10px] text-[var(--atlas-muted)]">{alignment ? publicLanguage.assessment : publicLanguage.evidenceStrength}</dt>
                     <dd className={cn(
                       "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
                       confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
@@ -497,9 +506,13 @@ export function OrganizationRows({
                     <dd className="mt-1 font-medium text-[var(--atlas-ink-soft)]">{location ? locationAccuracyLabel(location.geographicConfidence) : "Not verified"}</dd>
                   </div>
                 </dl>
-                <Link href={`/organizations/${organization.slug}`} className="atlas-primary-button mt-4 h-9 w-full gap-2 px-3 text-xs">
+                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className="atlas-primary-button mt-4 h-9 w-full gap-2 px-3 text-xs">
                   Explore the organization
                   <ExternalLink className="size-3.5" />
+                </Link>
+                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
+                  Inspect evidence
+                  <ExternalLink className="size-3" />
                 </Link>
               </section>
             </div>

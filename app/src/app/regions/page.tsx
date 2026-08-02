@@ -33,7 +33,7 @@ export default function RegionsIndexPage() {
       eyebrow="Where Canadian capability sits"
       title="Explore the ecosystem region by region."
       description="Every region below is built from the same reviewed public records. Counts reflect what has been published so far, so thin coverage stays visible instead of being filled in."
-      breadcrumbs={[{ label: "Map", href: "/" }, { label: "Regions" }]}
+      breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Regions" }]}
     >
       <Suspense fallback={<RegionsDirectoryFallback />}>
         <RegionsDirectoryData />
@@ -57,7 +57,7 @@ async function RegionsDirectoryData() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/") },
+              { "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") },
               { "@type": "ListItem", position: 2, name: "Regions", item: absoluteUrl("/regions") }
             ]
           },

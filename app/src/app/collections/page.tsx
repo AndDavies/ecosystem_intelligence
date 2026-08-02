@@ -3,6 +3,7 @@ import { FolderLock, Plus, Save } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { addSavedCollectionItem, createSavedCollection } from "@/lib/actions/collections";
 import { requireAtlasUser } from "@/lib/atlas/auth";
+import { safeAtlasReturn } from "@/lib/atlas/return-path";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function CollectionsPage({
@@ -10,17 +11,22 @@ export default async function CollectionsPage({
 }: {
   searchParams: Promise<{ addType?: string; addId?: string; returnTo?: string; error?: string }>;
 }) {
-  const user = await requireAtlasUser("/collections");
   const params = await searchParams;
+  const addType = params.addType === "organization" || params.addType === "capability" ? params.addType : null;
+  const addId = /^[0-9a-f-]{36}$/i.test(params.addId ?? "") ? params.addId ?? null : null;
+  const returnTo = safeAtlasReturn(params.returnTo, "/collections");
+  const authParams = new URLSearchParams();
+  if (addType) authParams.set("addType", addType);
+  if (addId) authParams.set("addId", addId);
+  if (params.returnTo) authParams.set("returnTo", returnTo);
+  if (params.error) authParams.set("error", params.error);
+  const user = await requireAtlasUser(authParams.size ? `/collections?${authParams.toString()}` : "/collections");
   const supabase = await createClient();
   const { data: collections } = await supabase
     .from("saved_collections")
     .select("id, name, description, created_at, updated_at")
     .eq("owner_id", user.id)
     .order("updated_at", { ascending: false });
-  const addType = params.addType === "organization" || params.addType === "capability" ? params.addType : null;
-  const addId = /^[0-9a-f-]{36}$/i.test(params.addId ?? "") ? params.addId ?? null : null;
-
   return (
     <PublicPageShell
       eyebrow="Private workspace"
@@ -39,7 +45,7 @@ export default async function CollectionsPage({
                   <input type="hidden" name="collectionId" value={collection.id} />
                   <input type="hidden" name="entityType" value={addType} />
                   <input type="hidden" name="entityId" value={addId} />
-                  <input type="hidden" name="returnTo" value={params.returnTo ?? `/collections/${collection.id}`} />
+                  <input type="hidden" name="returnTo" value={returnTo} />
                   <button type="submit" className="flex w-full items-center justify-between rounded-md border border-[var(--atlas-primary-border)] bg-white px-4 py-3 text-left text-sm font-semibold text-[var(--atlas-ink-soft)] hover:border-[var(--atlas-primary)]">
                     {collection.name}<Save className="size-4 text-[var(--atlas-primary)]" />
                   </button>

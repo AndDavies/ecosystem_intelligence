@@ -71,16 +71,16 @@ describe("phase 2 launch hardening", () => {
   });
 
   it("streams the decision-first shell ahead of the cached national discovery projection", async () => {
-    const [page, hero, repository, supabaseRepository, vercel] = await Promise.all([
+    const [page, mapPage, repository, supabaseRepository, vercel] = await Promise.all([
       readFile(path.resolve("src/app/page.tsx"), "utf8"),
-      readFile(path.resolve("src/components/atlas/atlas-home-hero.tsx"), "utf8"),
+      readFile(path.resolve("src/app/map/page.tsx"), "utf8"),
       readFile(path.resolve("src/lib/atlas/repository.ts"), "utf8"),
       readFile(path.resolve("src/lib/atlas/supabase-repository.ts"), "utf8"),
       readFile(path.resolve("vercel.json"), "utf8")
     ]);
-    expect(page).toContain("<AtlasHomeHero />");
-    expect(page).toContain("<Suspense fallback={<AtlasHomepageFallback />}");
-    expect(hero).toContain("<Suspense fallback={<CoverageFallback />}");
+    expect(page).toContain("<LandingCoverage />");
+    expect(page).toContain("Canada is building");
+    expect(mapPage).toContain("<Suspense fallback={<MapFallback />}");
     expect(repository).toContain("loadWarmAtlasDiscoverySnapshot");
     expect(repository).not.toContain("ecosystem-intelligence-atlas-discovery-v3");
     expect(repository).toContain('tags: ["atlas-public"]');
@@ -146,23 +146,18 @@ describe("phase 2 launch hardening", () => {
     expect(demandIndexLoader).not.toContain('.from("funding_events")');
   });
 
-  it("keeps the compact split hero independent from national data loading", async () => {
-    const [hero, explorer, page] = await Promise.all([
-      readFile(path.resolve("src/components/atlas/atlas-home-hero.tsx"), "utf8"),
+  it("keeps the guided landing shell independent from national data loading", async () => {
+    const [explorer, page, mapPage] = await Promise.all([
       readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
-      readFile(path.resolve("src/app/page.tsx"), "utf8")
+      readFile(path.resolve("src/app/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/map/page.tsx"), "utf8")
     ]);
-
-    expect(hero).toContain('sizes="(min-width: 1280px) 55vw, (min-width: 1024px) 45vw, 100vw"');
-    expect(hero).toContain("priority");
-    expect(hero).toContain("lg:h-[480px]");
-    expect(hero).toContain("<AtlasHomeCoverage />");
-    expect(hero).not.toContain("rounded-2xl border border-[var(--atlas-border-strong)]");
-    expect(hero).not.toContain("lg:min-h-[690px]");
-    expect(hero).toContain('className="atlas-frame pb-2 pt-6 sm:pb-2 sm:pt-8"');
+    expect(page).toContain("export const revalidate = 300");
+    expect(page).not.toContain("getAtlasDiscoverySnapshot");
+    expect(page).toContain("<LandingCoverage />");
+    expect(mapPage).toContain("getAtlasDiscoverySnapshot()");
     expect(explorer).toContain('className="atlas-frame pb-8 pt-2"');
-    expect(page).toContain('className="atlas-frame pb-8 pt-2" aria-live="polite"');
-    expect(page.indexOf("<AtlasHomeHero />")).toBeLessThan(page.indexOf("<Suspense fallback={<AtlasHomepageFallback />}"));
+    expect(mapPage).toContain("MapFallback");
   });
 
   it("ships a provider-aware security policy and a safe health endpoint", async () => {

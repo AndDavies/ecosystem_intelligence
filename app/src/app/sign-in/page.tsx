@@ -40,7 +40,7 @@ export default async function SignInPage({
               <li key={item} className="flex items-center gap-2"><CheckCircle2 className="size-4 text-[var(--atlas-primary)]" />{item}</li>
             ))}
           </ul>
-          <Link href="/" className="mt-7 inline-flex text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">Continue without signing in</Link>
+          <Link href="/map" className="mt-7 inline-flex text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">Continue without signing in</Link>
         </section>
 
         <section className="rounded-xl border border-[var(--atlas-border)] bg-white p-6 shadow-[0_12px_34px_rgba(16,24,40,0.08)] sm:p-8">

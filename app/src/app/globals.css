@@ -138,6 +138,15 @@ body {
   background: var(--atlas-canvas);
 }
 
+.tnm-landing h1,
+.tnm-landing h2,
+.tnm-landing h3,
+.tnm-landing h4,
+.tnm-landing .atlas-eyebrow,
+.tnm-landing nav {
+  font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+}
+
 .atlas-header {
   position: sticky;
   top: 0;
@@ -359,10 +368,16 @@ body {
 .atlas-headline-highlight {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-  background: var(--atlas-signal);
+  background: linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 64%,
+    var(--atlas-signal) 64%,
+    var(--atlas-signal) 100%
+  );
   color: var(--atlas-ink);
-  margin-left: -0.08em;
-  padding: 0 0.08em 0.035em;
+  margin-left: -0.04em;
+  padding-inline: 0.04em;
 }
 
 .atlas-signal-pill {

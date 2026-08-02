@@ -57,9 +57,9 @@ describe("customer-facing product language", () => {
     expect(explorer).toContain('label="published organization profiles"');
     expect(explorer).toContain('label="reviewed technologies"');
     expect(explorer).toContain('label="cited public sources"');
-    expect(legend).toContain("Public-source fact");
-    expect(legend).toContain("Our assessment");
-    expect(legend).toContain("Not yet verified");
+    expect(legend).toContain("publicLanguage.sourceFact");
+    expect(legend).toContain("publicLanguage.assessment");
+    expect(legend).toContain("publicLanguage.coverageGap");
   });
 
   it("uses one clear profile and assessment vocabulary", async () => {

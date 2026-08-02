@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+import { safeLocalReturnPath } from "@/lib/safe-return";
 import { requireAtlasUser } from "@/lib/atlas/auth";
 import { createClient } from "@/lib/supabase/server";
 
@@ -20,8 +21,7 @@ const itemSchema = z.object({
 });
 
 function safeReturn(value: string | undefined, fallback: string) {
-  if (!value || !value.startsWith("/") || value.startsWith("//")) return fallback;
-  return value;
+  return safeLocalReturnPath(value, fallback);
 }
 
 export async function createSavedCollection(formData: FormData) {

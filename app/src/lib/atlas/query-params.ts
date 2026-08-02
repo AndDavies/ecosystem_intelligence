@@ -1,4 +1,5 @@
 import type { AtlasBounds, AtlasQuery } from "@/types/atlas";
+import { normalizeGuidedSearchFocus } from "@/lib/atlas/guided-search";
 
 function positiveInteger(value: string | null, fallback: number) {
   const parsed = Number.parseInt(value ?? "", 10);
@@ -17,6 +18,8 @@ function parseBounds(value: string | null): AtlasBounds | undefined {
 
 export function atlasQueryFromSearchParams(searchParams: URLSearchParams): AtlasQuery {
   const read = (name: string) => searchParams.get(name)?.trim() || undefined;
+  const view = read("view");
+  const selected = read("selected");
   return {
     query: read("q"),
     bounds: parseBounds(searchParams.get("bounds")),
@@ -29,6 +32,9 @@ export function atlasQueryFromSearchParams(searchParams: URLSearchParams): Atlas
     demand: read("demand"),
     stage: read("stage"),
     program: read("program"),
+    focus: normalizeGuidedSearchFocus(searchParams.getAll("focus")),
+    view: view === "map" || view === "table" ? view : undefined,
+    selected: selected && /^[0-9a-f-]{36}$/i.test(selected) ? selected : undefined,
     page: positiveInteger(searchParams.get("page"), 1),
     pageSize: positiveInteger(searchParams.get("pageSize"), 25)
   };
@@ -49,6 +55,10 @@ export function atlasQueryToSearchParams(query: AtlasQuery) {
   set("demand", query.demand);
   set("stage", query.stage);
   set("program", query.program);
+  const focus = normalizeGuidedSearchFocus(query.focus);
+  if (focus.length) set("focus", focus.join(","));
+  set("view", query.view);
+  set("selected", query.selected);
   if (query.bounds) {
     set("bounds", [query.bounds.west, query.bounds.south, query.bounds.east, query.bounds.north].join(","));
   }

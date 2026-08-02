@@ -30,6 +30,7 @@ declare global {
 
 const measurementId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 const clarityProjectId = process.env.NEXT_PUBLIC_MICROSOFT_CLARITY_ID;
+const landingEntryPaths = new Set(["need", "public_need", "mission", "map", "example", "brief", "north_signal"]);
 
 function contentType(pathname: string) {
   if (/^\/briefs\/[^/]+$/.test(pathname)) return "brief";
@@ -140,6 +141,17 @@ function GoogleAnalytics({ preferences }: { preferences: AnalyticsPreferences | 
       window.sessionStorage.setItem(entryKey, "1");
     }
   }, [enabled, pathname]);
+
+  useEffect(() => {
+    if (!measurementId || !enabled) return;
+    const onLandingEntry = (event: Event) => {
+      const entryPath = (event as CustomEvent<{ entryPath?: string }>).detail?.entryPath;
+      if (!entryPath || !landingEntryPaths.has(entryPath)) return;
+      window.gtag?.("event", "tnm_landing_entry", { entry_path: entryPath });
+    };
+    window.addEventListener("tnm:landing-entry", onLandingEntry);
+    return () => window.removeEventListener("tnm:landing-entry", onLandingEntry);
+  }, [enabled]);
 
   useEffect(() => {
     if (!measurementId || !enabled || !window.gtag) return;

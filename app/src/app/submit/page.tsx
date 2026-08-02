@@ -1,10 +1,10 @@
 import { ContributionForm } from "@/components/atlas/contribution-form";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { requireAtlasUser } from "@/lib/atlas/auth";
+import { safeLocalReturnPath } from "@/lib/safe-return";
 
 function safeReturn(value: string | undefined) {
-  if (!value || !value.startsWith("/") || value.startsWith("//")) return "/";
-  return value;
+  return safeLocalReturnPath(value, "/");
 }
 
 export default async function SubmitContributionPage({

@@ -22,6 +22,7 @@ import {
   publicSourceCountLabel
 } from "@/lib/atlas/presentation";
 import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
+import { safeAtlasReturn } from "@/lib/atlas/return-path";
 import { formatDate, toTitleCase } from "@/lib/utils";
 import { absoluteUrl } from "@/lib/site";
 import { socialMetadata } from "@/lib/seo/social";
@@ -44,10 +45,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: organization.name, description: organization.description, alternates: { canonical: path }, ...social, openGraph: { ...social.openGraph, type: "profile" } };
 }
 
-export default async function OrganizationDossierPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function OrganizationDossierPage({
+  params,
+  searchParams
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ returnTo?: string }>;
+}) {
   const { slug } = await params;
+  const query = await searchParams;
   const organization = await getAtlasOrganizationBySlug(slug);
   if (!organization) notFound();
+  const mapReturnTo = safeAtlasReturn(query.returnTo);
+  const profilePath = `/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
 
   const citations = [
     ...organization.citations,
@@ -69,7 +79,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
       title={organization.name}
       description={organization.description}
       breadcrumbs={[
-        { label: "Map", href: "/" },
+        { label: "Map", href: mapReturnTo },
         { label: "Organizations", href: "/organizations" },
         { label: organization.name }
       ]}
@@ -78,7 +88,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
           <Link href={`/connect/${organization.slug}`} className="atlas-primary-button h-10 gap-2 px-4 text-xs">
             <Handshake className="size-4" /> Request an introduction
           </Link>
-          <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(`/organizations/${organization.slug}`)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+          <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             <BookmarkPlus className="size-4" /> Add to Working List
           </Link>
           <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} />
@@ -95,7 +105,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
     >
       <JsonLd data={[
         { "@context": "https://schema.org", "@type": "Organization", name: organization.name, legalName: organization.legalName ?? undefined, url: absoluteUrl(`/organizations/${organization.slug}`), sameAs: organization.websiteUrl ? [organization.websiteUrl] : undefined, logo: organization.logo?.publicUrl, description: organization.description, address: organization.primaryLocation ? { "@type": "PostalAddress", addressLocality: organization.primaryLocation.city ?? undefined, addressRegion: organization.primaryLocation.provinceTerritory ?? undefined, addressCountry: "CA" } : undefined },
-        { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }] }
+        { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }] }
       ]} />
       <EvidenceLegend compact className="mb-5" />
       <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
@@ -133,8 +143,8 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
               <div className="flex items-center gap-3">
                 <span className="flex size-9 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><ShieldCheck className="size-5" /></span>
                 <div>
-                  <p className="text-sm font-semibold text-[var(--atlas-ink)]">{evidenceStrengthLabel(organization.sourceConfidence)} public evidence</p>
-                  <p className="text-xs text-[var(--atlas-muted)]">Last reviewed {formatDate(organization.lastReviewedAt)}</p>
+                  <p className="text-sm font-semibold text-[var(--atlas-ink)]">{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(organization.sourceConfidence)}</p>
+                  <p className="text-xs text-[var(--atlas-muted)]">{publicLanguage.lastReviewed} {formatDate(organization.lastReviewedAt)}</p>
                 </div>
               </div>
               <p className="mt-3 text-xs leading-5 text-[var(--atlas-muted)]">Unknown fields stay blank. You can see which details come from public sources and which connections are our current interpretation.</p>
@@ -156,7 +166,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             <p className="mt-3 text-xs leading-5 text-[var(--atlas-muted)]">We only publish official, source-supported contact details. True North Map can help route a relevant introduction without exposing private information.</p>
           </PublicCard>
 
-          <Link href={`/submit?submissionType=correction&targetType=organization&targetId=${organization.id}&returnTo=${encodeURIComponent(`/organizations/${organization.slug}`)}`} className="atlas-secondary-button flex h-12 w-full items-center justify-between px-4 text-sm">
+          <Link href={`/submit?submissionType=correction&targetType=organization&targetId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-secondary-button flex h-12 w-full items-center justify-between px-4 text-sm">
             Suggest a correction
             <FileCheck2 className="size-4 text-[var(--atlas-primary)]" />
           </Link>
@@ -170,11 +180,11 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <h3 className="text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">
-                        <Link href={`/capabilities/${capability.slug}`} className="no-underline hover:text-[var(--atlas-primary)] hover:no-underline">{capability.name}</Link>
+                        <Link href={`/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} className="no-underline hover:text-[var(--atlas-primary)] hover:no-underline">{capability.name}</Link>
                       </h3>
                       {capability.capabilityType ? <p className="mt-1 text-xs text-[var(--atlas-muted)]">{capability.capabilityType}</p> : null}
                     </div>
-                    <span className="w-fit rounded-full bg-[var(--atlas-primary-soft)] px-2.5 py-1 text-[10px] font-semibold text-[var(--atlas-primary)]">{evidenceStrengthLabel(capability.sourceConfidence)} evidence</span>
+                    <span className="w-fit rounded-full bg-[var(--atlas-primary-soft)] px-2.5 py-1 text-[10px] font-semibold text-[var(--atlas-primary)]">{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(capability.sourceConfidence)}</span>
                   </div>
                   <p className="mt-3 text-sm leading-6 text-[var(--atlas-ink-soft)]">{capability.summary}</p>
                   <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -184,7 +194,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {capability.technicalTags.map((tag) => <span key={tag} className="rounded-[6px] bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-medium text-[var(--atlas-muted)]">{toTitleCase(tag)}</span>)}
                   </div>
-                  <Link href={`/capabilities/${capability.slug}`} className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">
+                  <Link href={`/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">
                     Explore this technology <ArrowRight className="size-3.5" />
                   </Link>
                 </article>
@@ -195,7 +205,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
                 <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Use the official website for current details, or help us add a source-backed summary.</p>
                 <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold">
                   {organization.websiteUrl ? <a href={organization.websiteUrl} target="_blank" rel="noreferrer" className="text-[var(--atlas-primary)] no-underline hover:underline">Visit the official website</a> : null}
-                  <Link href={`/submit?submissionType=correction&targetType=organization&targetId=${organization.id}&returnTo=${encodeURIComponent(`/organizations/${organization.slug}`)}`} className="text-[var(--atlas-primary)] no-underline hover:underline">Suggest a source</Link>
+                  <Link href={`/submit?submissionType=correction&targetType=organization&targetId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="text-[var(--atlas-primary)] no-underline hover:underline">Suggest a source</Link>
                 </div>
               </div>
             )}
@@ -236,7 +246,7 @@ export default async function OrganizationDossierPage({ params }: { params: Prom
             <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{publicLanguage.demandCaveat}</p>
           </PublicCard> : null}
 
-          <PublicCard title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
+          <PublicCard id="evidence" title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
             <EvidenceList citations={citations} />
             {!hasPublishedAlignment && organization.capabilities.length ? (
               <div className="mt-5 rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">

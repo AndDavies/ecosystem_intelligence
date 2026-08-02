@@ -65,10 +65,12 @@ function citationMap(organizations: AtlasOrganization[]) {
 
 export function AssistantFallback({
   reason,
-  quota
+  quota,
+  returnTo = "/map"
 }: {
   reason: AtlasAssistantFallbackReason;
   quota?: AtlasAssistantQuota;
+  returnTo?: string;
 }) {
   return (
     <aside className="mt-4 flex flex-col gap-3 rounded-[20px] border border-[var(--atlas-amber)]/30 bg-[var(--atlas-amber-soft)] p-4 sm:flex-row sm:items-center sm:justify-between" aria-live="polite">
@@ -77,7 +79,7 @@ export function AssistantFallback({
         <p className="text-xs leading-5 text-[var(--atlas-ink-soft)]">{fallbackCopy[reason]}</p>
       </div>
       {reason === "quota" && !quota?.signedIn ? (
-        <Link href="/sign-in?next=%2F" className="atlas-secondary-button h-9 shrink-0 px-3 text-xs">Sign in to continue</Link>
+        <Link href={`/sign-in?next=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-9 shrink-0 px-3 text-xs">Sign in to continue</Link>
       ) : null}
     </aside>
   );
@@ -85,11 +87,13 @@ export function AssistantFallback({
 
 export function AssistantAnswer({
   discovery,
+  returnTo,
   onSelectOrganization,
   onAskSuggestion,
   onStartNewQuestion
 }: {
   discovery: AtlasDiscoveryResult;
+  returnTo: string;
   onSelectOrganization: (organizationId: string) => void;
   onAskSuggestion: (question: string) => void;
   onStartNewQuestion: () => void;
@@ -160,8 +164,9 @@ export function AssistantAnswer({
                 </div>
                 <div className="flex flex-col gap-2 lg:border-l lg:border-[var(--atlas-border)] lg:pl-4">
                   <button type="button" onClick={() => onSelectOrganization(organization.id)} className="atlas-primary-button h-10 gap-2 px-3 text-xs">Show on map <ArrowRight className="size-3.5" /></button>
-                  <Link href={`/organizations/${organization.slug}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Open profile <ExternalLink className="size-3.5" /></Link>
-                  <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent("/")}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs"><BookmarkPlus className="size-3.5" />Working List</Link>
+                  <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Open profile <ExternalLink className="size-3.5" /></Link>
+                  <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Inspect evidence <ExternalLink className="size-3.5" /></Link>
+                  <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs"><BookmarkPlus className="size-3.5" />Working List</Link>
                   {citations.length ? (
                     <div className="mt-1 border-t border-[var(--atlas-border)] pt-3">
                       <p className="text-[10px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">Public sources</p>

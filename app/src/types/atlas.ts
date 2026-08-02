@@ -322,6 +322,18 @@ export interface AtlasBounds {
   north: number;
 }
 
+/**
+ * Stable, visitor-facing concepts used only by the deterministic modular-naval
+ * guided search. These IDs are deliberately distinct from internal taxonomy
+ * names so the public language can stay clear without inventing taxonomy.
+ */
+export type AtlasGuidedSearchFocus =
+  | "modular-systems"
+  | "naval-integration"
+  | "underwater-sensing"
+  | "testing"
+  | "sustainment";
+
 export interface AtlasQuery {
   query?: string;
   bounds?: AtlasBounds;
@@ -334,6 +346,9 @@ export interface AtlasQuery {
   demand?: string;
   stage?: string;
   program?: string;
+  focus?: AtlasGuidedSearchFocus[];
+  view?: "map" | "table";
+  selected?: string;
   page?: number;
   pageSize?: number;
 }
@@ -381,7 +396,7 @@ export interface AtlasMapOrganization extends Pick<
   AtlasOrganization,
   "id" | "slug" | "name" | "entityKind"
 > {
-  primaryLocation: Pick<AtlasLocation, "name" | "latitude" | "longitude"> | null;
+  primaryLocation: Pick<AtlasLocation, "name" | "latitude" | "longitude" | "geographicConfidence"> | null;
 }
 
 export type AtlasExplorerCitation = Pick<

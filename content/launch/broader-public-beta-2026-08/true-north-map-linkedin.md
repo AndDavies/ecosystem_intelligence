@@ -1,5 +1,21 @@
 # True North Map LinkedIn page copy
 
+## Profile
+
+- Official Page: `https://www.linkedin.com/company/true-north-map-ca`
+- Public URL: `true-north-map-ca`
+- Website: `https://truenorthmap.ca`
+- Industry: Information Services
+- Organization type: Privately Held
+- Administrator: Andrew Davies, sole Super Admin
+- Avatar: `true-north-map-social-avatar.png` (uploaded)
+- Banner: `linkedin-banner.png` (uploaded)
+
+The Page is owned and published through Andrew's personal LinkedIn profile.
+Do not add administrators, paid media administrators or integrations without
+Andrew's explicit approval. The avatar and banner were confirmed in the
+member-facing Page view before launch.
+
 ## About
 
 True North Map is an independent, evidence-led discovery platform that helps

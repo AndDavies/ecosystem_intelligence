@@ -69,6 +69,14 @@ function answer(overrides: Partial<RawAssistantAnswer> = {}): RawAssistantAnswer
 }
 
 describe("Ask True North output guardrails", () => {
+  it("defaults to GPT-5.6 Luna while preserving the server-only model override", async () => {
+    vi.stubEnv("OPENAI_MODEL", "");
+    vi.resetModules();
+    const { ATLAS_ASSISTANT_MODEL } = await import("@/lib/atlas/assistant");
+    expect(ATLAS_ASSISTANT_MODEL).toBe("gpt-5.6-luna");
+    vi.unstubAllEnvs();
+  });
+
   it("keeps a strong fit only when it has strong evidence, two support points, and no material gap", () => {
     const finalized = finalizeAssistantAnswer(citedSnapshot(), answer());
     expect(finalized.outcome).toBe("exact_match");

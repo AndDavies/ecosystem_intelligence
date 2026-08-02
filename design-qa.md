@@ -235,3 +235,70 @@ Verified at 390, 768, 1024, and 1440 pixel browser widths:
 - Production build: passed.
 
 final result: passed
+
+# Guided Landing Page Design QA
+
+## Source of visual truth
+
+The approved consecutive landing-page frames established section order,
+narrative hierarchy and component relationships during local review. They were
+reference material rather than tracked production assets or a pixel-perfect,
+fixed-height specification. The implementation and the canonical brand contract
+are now the repository sources of truth.
+
+## Implementation evidence
+
+- Local route: `http://localhost:3014/`
+- Atlas route: `http://localhost:3014/map`
+- Desktop landing capture: `/tmp/tnm-guided-landing-top.png`
+- Worked-example capture: `/tmp/tnm-guided-landing-flow.png`
+- Responsive captures: `/tmp/tnm-landing-390-cdp-final.png`, `/tmp/tnm-landing-768.png`, `/tmp/tnm-landing-1024.png`, `/tmp/tnm-landing-1440.png`
+
+## Comparison review
+
+- The landing page preserves the approved three-act sequence while allowing the page to scroll naturally.
+- The hero keeps one obvious yellow primary action, one secondary map action and one contextual explanation link.
+- Coverage appears immediately after the hero and uses current production counts.
+- The three job choices are separate from the hero and retain one action each.
+- The dark worked example is visually distinct, readable without miniature copy and converts to a standard shareable `/map` state.
+- The product specimen uses the published Kraken Robotics and KATFISH records and separates fact, assessment and gap states.
+- Mission Areas, Defence Briefs, North Signal, contribution, founder context and four FAQs remain separate sections with clear purposes.
+- Signal Yellow remains directional rather than decorative.
+
+## Responsive and interaction review
+
+Chrome device-metric review covered 390, 768, 1024 and 1440 pixels. At every width:
+
+- document horizontal overflow: false;
+- body copy base size: 16px;
+- primary action height: 48px;
+- mobile navigation replaces desktop navigation below the desktop breakpoint;
+- the hero, job choices, worked example and product specimen stack without shrinking explanatory copy.
+
+The in-app browser also verified:
+
+- the brand logo returns to `/` and Map links to `/map`;
+- the guided example changes `/map?example=modular-naval` into `/map?q=modular+naval+systems` after the ordinary atlas state loads;
+- the example displays in the normal Ask True North field without calling the discovery endpoint or using normal question quota;
+- no application error appeared in the browser console;
+- the four FAQ controls use native keyboard-operable disclosure elements;
+- legacy root atlas parameters redirect to `/map` while campaign-only landing parameters remain on `/`.
+
+## Iterations completed
+
+1. Moved middleware into the active `src/` application tree after live QA showed that legacy query redirects were not executing.
+2. Reduced the mobile headline floor and made it safely breakable.
+3. Separated the Public Beta label from the eyebrow so neither becomes compressed on mobile.
+4. Reduced mobile hero padding so the coverage strip begins within the first 844-pixel viewport.
+5. Restarted the local development server after production-build validation to clear the expected Next.js dev/build manifest collision.
+
+## Validation
+
+- `pnpm test`: 248 tests passed.
+- `pnpm lint`: passed.
+- `pnpm scale:validate`: passed with 5,000 markers.
+- `pnpm build`: passed; `/` is static and `/map` is dynamic.
+- `pnpm launch:validate`: 790 production pages, zero findings, zero warnings and zero orphan candidates.
+- `pnpm release:validate`: passed, including production dependency audit with no known vulnerabilities.
+
+final result: passed

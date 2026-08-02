@@ -98,7 +98,7 @@ describe("public data access", () => {
       source("src/app/briefs/[slug]/page.tsx")
     ]);
     const liveIndexes = await Promise.all([
-      source("src/app/page.tsx"),
+      source("src/app/map/page.tsx"),
       source("src/app/organizations/page.tsx"),
       source("src/app/demand/page.tsx")
     ]);
@@ -107,6 +107,9 @@ describe("public data access", () => {
     stablePages.slice(0, 3).forEach((page) => expect(page).toContain("generateStaticParams"));
     expect(stablePages[4]).toContain("generateStaticParams");
     liveIndexes.forEach((page) => expect(page).toContain('export const dynamic = "force-dynamic"'));
+    const landing = await source("src/app/page.tsx");
+    expect(landing).toContain("export const revalidate = 300");
+    expect(landing).not.toContain('export const dynamic = "force-dynamic"');
   });
 
   it("resolves brief and Working List links without the national snapshot", async () => {

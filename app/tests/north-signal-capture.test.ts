@@ -10,7 +10,7 @@ describe("North Signal capture", () => {
       readFile(path.resolve("src/lib/product-insights/validation.ts"), "utf8")
     ]);
 
-    expect(signup).toContain("Send me North Signal");
+    expect(signup).toContain("Get North Signal");
     expect(signup).toContain("consent: true");
     expect(signup).not.toContain('type="checkbox"');
     expect(signup).toContain("newsletter_form_start");
@@ -36,7 +36,8 @@ describe("North Signal capture", () => {
   });
 
   it("places contextual signup surfaces on the highest-intent public pages", async () => {
-    const [home, organization, brief, header, footer] = await Promise.all([
+    const [landing, map, organization, brief, header, footer] = await Promise.all([
+      readFile(path.resolve("src/app/page.tsx"), "utf8"),
       readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
       readFile(path.resolve("src/app/organizations/[slug]/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/briefs/[slug]/page.tsx"), "utf8"),
@@ -44,7 +45,8 @@ describe("North Signal capture", () => {
       readFile(path.resolve("src/components/atlas/public-atlas-footer.tsx"), "utf8")
     ]);
 
-    expect(home).toContain('placement="newsletter_inline_home"');
+    expect(landing).toContain('placement="newsletter_inline_home"');
+    expect(map).toContain('placement="newsletter_inline_map"');
     expect(organization).toContain('placement="newsletter_inline_profile"');
     expect(brief).toContain('placement="newsletter_inline_brief"');
     expect(header).toContain("North Signal");

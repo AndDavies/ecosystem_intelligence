@@ -1,12 +1,13 @@
 import { CircleHelp, FileCheck2, SearchCheck, ShieldCheck, TimerReset } from "lucide-react";
+import { publicLanguage } from "@/lib/atlas/presentation";
 import { cn } from "@/lib/utils";
 
 const states = [
-  { label: "Public-source fact", detail: "A released source supports the statement.", icon: FileCheck2, tone: "evidence" },
-  { label: "Our assessment", detail: "A person reviewed where the evidence may point.", icon: SearchCheck, tone: "signal" },
+  { label: publicLanguage.sourceFact, detail: "A released source supports the statement.", icon: FileCheck2, tone: "evidence" },
+  { label: publicLanguage.assessment, detail: "A person reviewed where the evidence may point.", icon: SearchCheck, tone: "signal" },
   { label: "Evidence strength", detail: "The label reflects the quality and depth of public support.", icon: ShieldCheck, tone: "evidence" },
   { label: "Last reviewed", detail: "The date shows when the record was checked most recently.", icon: TimerReset, tone: "neutral" },
-  { label: "Not yet verified", detail: "Missing information stays visible instead of being invented.", icon: CircleHelp, tone: "warning" }
+  { label: publicLanguage.coverageGap, detail: "Missing information stays visible instead of being invented.", icon: CircleHelp, tone: "warning" }
 ] as const;
 
 export function EvidenceLegend({ compact = false, className }: { compact?: boolean; className?: string }) {
@@ -27,7 +28,7 @@ export function EvidenceLegend({ compact = false, className }: { compact?: boole
                 state.tone === "warning" && "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]",
                 state.tone === "neutral" && "bg-[var(--atlas-surface-muted)] text-[var(--atlas-muted)]"
               )}><state.icon className="size-3.5" aria-hidden="true" /></span>
-              <span><strong className="block text-[11px] text-[var(--atlas-ink)]">{state.label}</strong><span className="mt-0.5 block text-[10px] leading-4 text-[var(--atlas-muted)]">{state.detail}</span></span>
+              <span><strong className="block text-[13px] leading-5 text-[var(--atlas-ink)]">{state.label}</strong><span className="mt-0.5 block text-[13px] leading-5 text-[var(--atlas-muted)]">{state.detail}</span></span>
             </li>
           ))}
         </ul>

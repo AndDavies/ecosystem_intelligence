@@ -16,6 +16,7 @@ export const northSignalSignupSources = [
   "newsletter_modal_desktop",
   "newsletter_banner_mobile",
   "newsletter_inline_home",
+  "newsletter_inline_map",
   "newsletter_inline_brief",
   "newsletter_inline_profile"
 ] as const;

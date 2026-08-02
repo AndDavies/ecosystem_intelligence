@@ -19,7 +19,8 @@ export const publicLanguage = {
   sourceFact: "Source-backed fact",
   assessment: "Our assessment",
   coverageGap: "Coverage gap",
-  evidenceStrength: "How strong is the public evidence?",
+  evidenceStrength: "Evidence strength",
+  lastReviewed: "Last reviewed",
   technologyDemand: "Where this technology may help",
   demandCaveat: "This is a reviewed public-source assessment. It is not procurement eligibility, endorsement, customer interest, or classified demand."
 } as const;

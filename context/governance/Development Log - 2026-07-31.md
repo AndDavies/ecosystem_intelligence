@@ -6,6 +6,25 @@ Status: soft-beta project reconciliation and current-state audit
 
 This review reconciled the live True North Map product, tracked repository, active local operator systems, brand and launch assets, production database posture, security register, SEO/AEO validation, and next product priorities. It changed governance and memory only. It did not change application code, production data, Supabase configuration, provider configuration, review decisions, publication state, or campaigns.
 
+## August 2 guided-entry release
+
+The approved guided landing replaces the former atlas-first root without changing the canonical data, review, publication, consent, authentication, or analytics authority. `/` now leads visitors from a need, released Public Need, or Mission Area through a quota-free deterministic example and a real published specimen; `/map` owns the national atlas, Ask True North, filters, shareable state, and Working List handoffs. The worked example ends in an evidence-backed shortlist and Working List rather than a generic instruction to continue exploring.
+
+The final design pass preserves the bounded 480-pixel maritime hero, highlighted opening phrase, Paper caption cutout, exact live coverage band, three distinct starting-job cards, selected-concept pills, prominent guided-search action, compact map introduction, and secondary LinkedIn/X footer pills. A responsive separator correction ensures the final freshness statement does not create a doubled grey rule. The brand contract now records these choices rather than the earlier filter-only pill rule.
+
+Ask True North now defaults to `gpt-5.6-luna`. A controlled live structured-output call passed with the existing Responses API contract, low reasoning effort, known-record boundary, deterministic preselection and deterministic fallback unchanged. No new index, web tool, saved model response, database migration, or publication path was introduced.
+
+## August 1 local UX candidate
+
+The current local candidate refines the approved landing and `/map` handoff without changing the public-data, publication, authentication, consent, or analytics authority. The landing uses visitor-facing **Search focus** controls for a fixed deterministic example; it carries only allowlisted focus IDs into a normal refreshable `/map` state, never calls Ask True North, and does not consume its quota. The map now presents the selected focus as removable controls and preserves safe local context through profile, evidence, Working List, and sign-in actions. Public evidence language is normalized to Source-backed fact, Our assessment, Coverage gap, Evidence strength, and Last reviewed. This candidate is not a deployment record; its focused, release-level, and four-width browser checks remain required before release.
+
+### August 1 local verification update
+
+- Independent read-only QA identified and the candidate corrected two release blockers before final verification: unsafe backslash/control-character return paths across profile, Working List, sign-in, and contribution flows; and missing URL serialization when the map viewport changed. Return paths now use one same-origin guard, while viewport changes replace rather than append history and retain current bounds in shareable map context.
+- `pnpm release:validate` passed: production dependency audit, 46 test files / 246 tests, lint, 5,000-marker scale validation, and optimized production build all completed successfully.
+- Browser checks on `/` and the guided `/map` state at 390, 768, 1024, and 1440 pixels found no horizontal overflow. The controls report their `aria-pressed` state, meet the 44px target, disable the CTA at zero selections, strip the temporary `example` parameter after the map is ready, retain map focus/bounds in return links, and let visitors remove a focus chip. Normal `/map` retains the ordinary, non-guided orientation.
+- The production-base `pnpm launch:validate` did not complete: the current production crawl aborted on a timed-out request. This checkout’s new `/map` route is also not yet deployed (the production route returned 404 in the direct check), so a clean post-deployment launch crawl remains required. No deployment or production state changed in this verification.
+
 ## Verified production baseline
 
 - `main` and `origin/main` were aligned at the July 31 regional-imagery deployment when the audit began.

@@ -15,7 +15,7 @@ import type {
   AtlasSnapshot
 } from "@/types/atlas";
 
-export const ATLAS_ASSISTANT_MODEL = process.env.OPENAI_MODEL?.trim() || "gpt-5.6-terra";
+export const ATLAS_ASSISTANT_MODEL = process.env.OPENAI_MODEL?.trim() || "gpt-5.6-luna";
 export const ATLAS_ASSISTANT_ANONYMOUS_LIMIT = 3;
 export const ATLAS_ASSISTANT_MEMBER_LIMIT = 20;
 export const ATLAS_ASSISTANT_CANDIDATE_LIMIT = 16;

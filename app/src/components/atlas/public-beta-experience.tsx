@@ -48,6 +48,7 @@ export function PublicBetaExperience() {
   const [feedbackError, setFeedbackError] = useState("");
   const [feedbackCaptchaToken, setFeedbackCaptchaToken] = useState("");
   const [feedbackCaptchaAttempt, setFeedbackCaptchaAttempt] = useState(0);
+  const [landingFeedbackVisible, setLandingFeedbackVisible] = useState(pathname !== "/");
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const automaticPromptSuppressed = useRef(false);
   const automaticPromptShown = useRef(false);
@@ -149,6 +150,17 @@ export function PublicBetaExperience() {
   }, [feedbackOpen]);
 
   useEffect(() => {
+    if (pathname !== "/") {
+      setLandingFeedbackVisible(true);
+      return;
+    }
+    const updateVisibility = () => setLandingFeedbackVisible(window.scrollY > Math.max(420, window.innerHeight * 0.75));
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", updateVisibility);
+  }, [pathname]);
+
+  useEffect(() => {
     if (!pathname.startsWith("/organizations/")) return;
     const key = `pilot-dossier-view:${pathname}`;
     try {
@@ -227,10 +239,13 @@ export function PublicBetaExperience() {
           setUpdatesOpen(false);
           setFeedbackOpen(true);
         }}
-        className="fixed right-0 top-[58%] z-[80] hidden w-10 -translate-y-1/2 flex-col items-center gap-2 rounded-l-2xl border border-r-0 border-[var(--atlas-primary)] bg-[var(--atlas-primary)] px-2 py-3 text-xs font-semibold text-white shadow-[var(--atlas-shadow-float)] transition hover:bg-[var(--atlas-primary-hover)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(31,90,67,0.22)] sm:inline-flex"
+        aria-label="Open feedback form"
+        className={pathname === "/"
+          ? `fixed bottom-5 right-5 z-[80] hidden min-h-11 items-center gap-2 rounded-[12px] border border-[var(--atlas-border-strong)] bg-white px-4 text-sm font-bold text-[var(--atlas-ink)] shadow-[var(--atlas-shadow-float)] transition duration-200 hover:border-[var(--atlas-evidence)] hover:text-[var(--atlas-evidence)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(18,97,71,0.18)] sm:inline-flex ${landingFeedbackVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"}`
+          : "fixed right-0 top-[58%] z-[80] hidden w-10 -translate-y-1/2 flex-col items-center gap-2 rounded-l-2xl border border-r-0 border-[var(--atlas-primary)] bg-[var(--atlas-primary)] px-2 py-3 text-xs font-semibold text-white shadow-[var(--atlas-shadow-float)] transition hover:bg-[var(--atlas-primary-hover)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(31,90,67,0.22)] sm:inline-flex"}
       >
         <MessageSquareText aria-hidden="true" className="size-4" />
-        <span className="[writing-mode:vertical-rl] rotate-180">Feedback</span>
+        <span className={pathname === "/" ? "" : "[writing-mode:vertical-rl] rotate-180"}>Feedback</span>
       </button>
 
       {mobileBannerOpen ? (

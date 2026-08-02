@@ -67,7 +67,7 @@ export default async function MissionDetailPage({
       title={result.missionArea.name}
       description={result.missionArea.summary}
       breadcrumbs={[
-        { label: "Map", href: "/" },
+        { label: "Map", href: "/map" },
         { label: "Mission Areas", href: "/missions" },
         { label: result.missionArea.name }
       ]}

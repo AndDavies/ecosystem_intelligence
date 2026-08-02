@@ -22,6 +22,8 @@ describe("public account safeguards", () => {
     expect(safeAuthNextPath("/account?reauth=delete")).toBe("/account?reauth=delete");
     expect(safeAuthNextPath("https://example.com")).toBe("/collections");
     expect(safeAuthNextPath("//example.com")).toBe("/collections");
+    expect(safeAuthNextPath("/\\\\example.com")).toBe("/collections");
+    expect(safeAuthNextPath("/\u0000example.com")).toBe("/collections");
   });
 
   it("uses the canonical domain for production authentication callbacks", () => {

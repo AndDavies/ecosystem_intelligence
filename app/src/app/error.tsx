@@ -22,7 +22,7 @@ export default function ErrorPage({ reset }: { error: Error & { digest?: string 
             <RotateCcw aria-hidden="true" className="size-4" />
             Try again
           </button>
-          <Link href="/" className="atlas-secondary-button h-11 px-4 text-sm no-underline hover:no-underline">
+          <Link href="/map" className="atlas-secondary-button h-11 px-4 text-sm no-underline hover:no-underline">
             Return to the map
           </Link>
         </div>

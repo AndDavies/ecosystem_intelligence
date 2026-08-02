@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-07-31
+Last reviewed: 2026-08-02
 
 ## Brand idea
 
@@ -58,6 +58,7 @@ Canonical asset packet:
 | App tile | `app/public/brand/true-north-map-app-tile.svg` | App icons and square product placements |
 | Social avatar | `app/public/brand/true-north-map-social-avatar.svg` | LinkedIn and other account avatars |
 | Social avatar PNG | `app/public/brand/true-north-map-social-avatar.png` | 1024 pixel upload-ready social account avatar |
+| X profile header | `content/launch/broader-public-beta-2026-08/true-north-map-x-header.png` | Text-free companion header with a protected left avatar area |
 | Collateral PNG exports | `content/brand/exports/true-north-map-symbol.png`, `true-north-map-horizontal.png`, `true-north-map-stacked.png` | Transparent high-resolution exports for documents and presentations |
 | LinkedIn banner | `content/launch/phase-2/true-north-map-linkedin-banner.png` | Historical Phase 2 asset; rebuild with the Directional N before distribution |
 | Partner overview | `content/launch/phase-2/true-north-map-partner-overview.pdf` | Historical Phase 2 asset; rebuild with current interface and identity before distribution |
@@ -110,7 +111,9 @@ action or a short piece of meaning.
 - Barlow: headlines, metrics, navigation, and concise labels.
 - Inter: body copy, forms, tables, evidence, and long-form reading.
 - Rounded geometry remains part of the identity, generally 12 to 18 pixels.
-- Pills are reserved for filters and status labels.
+- Pills are used for filters, status labels, selected concepts, social actions,
+  and compact directional calls to action. Major editorial actions remain
+  rectangular so Signal Yellow and the primary journey retain hierarchy.
 - Prefer aligned sections, fine rules, and restrained shadows over stacked
   floating cards.
 
@@ -123,11 +126,37 @@ action or a short piece of meaning.
   on smaller screens so the decision path remains readable.
 - Keep the headline's three-part reading rhythm and restrict Signal Yellow to
   the opening phrase and primary action.
+- Continue the image field into a 64-pixel Paper caption cutout beneath the
+  desktop image. Use it for the brand promise and one short supporting line;
+  do not add another card, border, or shadow.
 - Keep the desktop hero to 480 pixels so discovery remains visible without an
   oversized image pushing the map farther down the page.
 - Render the static hero immediately. Stream the live coverage count in its own
   boundary and keep national map/search data behind the existing downstream
   loading boundary so corpus growth cannot block the first meaningful view.
+
+### Guided landing and map workspace
+
+- `/` is the guided public entrance. It moves from the hero and exact coverage
+  strip into three clear starting jobs, a dark evidence-led worked example, a
+  real published product specimen, selected Mission Areas and Defence Briefs,
+  North Signal, contribution, independence, and trust questions.
+- The starting-job cards are functional choices, not decorative dashboard
+  tiles. Use one Signal Yellow primary card, two Paper secondary cards, solid
+  icon fields, concise copy, and pill-shaped directional actions.
+- The worked example uses the North Ink field, selected-concept pills, a clear
+  five-step path, and one prominent guided-search action. Its result is a
+  private evidence-backed Working List, not an automated recommendation.
+- `/map` is the atlas workspace. Its compact introduction leads with **Start
+  with a need. Follow the evidence.**, explains the task in one paragraph, and
+  offers guided need, Public Need, Mission Area, and How It Works entry points
+  without delaying the map or changing its loading contract.
+- The coverage band directly below the hero uses one separator between each
+  adjacent item at every breakpoint. The final freshness statement must not
+  create a doubled rule beside the last metric.
+- Use compact LinkedIn and X social-action pills in the footer with the plain
+  invitation **Follow us on...**. Social controls remain secondary to the
+  page's task and evidence actions.
 
 ### Regional imagery
 
@@ -157,10 +186,11 @@ action or a short piece of meaning.
 
 1. Map
 2. Organizations
-3. Public Needs
-4. Defence Briefs
-5. How It Works
-6. About
+3. Missions
+4. Public Needs
+5. Defence Briefs
+6. How It Works
+7. About
 
 `/demand` remains the canonical collection URL. **Public Needs** names the
 collection; **Demand Signal** names one source-gated released record. Regions
@@ -170,11 +200,11 @@ remain available through the map, organization browsing, and footer.
 
 | State | Public meaning |
 | --- | --- |
-| Public-source fact | A claim supported by a released or official source |
+| Source-backed fact | A claim supported by a released or official source |
 | Our assessment | A human-reviewed interpretation, not a direct source claim |
 | Evidence strength | How well the public record supports the displayed claim |
 | Last reviewed | When the record was last checked |
-| Not yet verified | Information that remains missing or uncertain |
+| Coverage gap | Information that remains missing or uncertain |
 
 Every public-demand connection keeps the procurement, endorsement, eligibility,
 customer-interest, and classified-information caveats. Visual confidence must

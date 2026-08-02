@@ -39,6 +39,7 @@ import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { PublicShare } from "@/components/atlas/public-share";
 import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
+import { guidedSearchFocusForId, guidedSearchFromQuery, guidedSearchQuestion } from "@/lib/atlas/guided-search";
 import {
   ATLAS_EXPLORER_PAGE_SIZE,
   projectAtlasExplorerOrganization,
@@ -110,6 +111,11 @@ const AtlasMap = dynamic(
 
 type ViewMode = "map" | "table";
 
+function mapPathForQuery(query: AtlasQuery) {
+  const params = atlasQueryToSearchParams(query);
+  return params.size ? `/map?${params.toString()}` : "/map";
+}
+
 interface AtlasExplorerProps {
   initialResult: AtlasExplorerQueryResult;
   initialFilters: AtlasQuery;
@@ -119,6 +125,8 @@ interface AtlasExplorerProps {
   missionAreas: AtlasExplorerFilterOption[];
   demandRequirements: AtlasExplorerDemandOption[];
   generatedAt: string;
+  canonicalizeExample?: boolean;
+  focusNeedOnMount?: boolean;
 }
 
 function filterWithout(filters: AtlasQuery, key: string): AtlasQuery {
@@ -134,6 +142,8 @@ function filterWithout(filters: AtlasQuery, key: string): AtlasQuery {
   if (key === "demand") delete next.demand;
   if (key === "stage") delete next.stage;
   if (key === "program") delete next.program;
+  if (key === "focus") delete next.focus;
+  if (key === "selected") delete next.selected;
   return next;
 }
 
@@ -145,16 +155,18 @@ export function AtlasExplorer({
   technicalDomains,
   missionAreas,
   demandRequirements,
-  generatedAt
+  generatedAt,
+  canonicalizeExample = false,
+  focusNeedOnMount = false
 }: AtlasExplorerProps) {
   const [filters, setFilters] = useState<AtlasQuery>(initialFilters);
   const [result, setResult] = useState(initialResult);
   const [question, setQuestion] = useState(initialFilters.query ?? "");
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(initialFilters.selected ?? null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
-  const [viewMode, setViewMode] = useState<ViewMode>("table");
-  const [mapEnabled, setMapEnabled] = useState(false);
+  const [viewMode, setViewMode] = useState<ViewMode>(initialFilters.view ?? "table");
+  const [mapEnabled, setMapEnabled] = useState(initialFilters.view === "map");
   const [viewport, setViewport] = useState<{ bounds: AtlasBounds; organizationIds: string[] } | null>(null);
   const [loading, setLoading] = useState(false);
   const [discovery, setDiscovery] = useState<AtlasDiscoveryResult | null>(null);
@@ -167,10 +179,44 @@ export function AtlasExplorer({
   const rowRefs = useRef(new Map<string, HTMLTableRowElement>());
 
   useEffect(() => {
-    if (!window.matchMedia("(min-width: 1024px)").matches) return;
-    setMapEnabled(true);
-    setViewMode("map");
+    if (canonicalizeExample) {
+      const params = atlasQueryToSearchParams(initialFilters);
+      window.history.replaceState(null, "", params.size ? `/map?${params.toString()}` : "/map");
+    }
+    if (focusNeedOnMount) {
+      window.requestAnimationFrame(() => {
+        document.getElementById("ask-true-north")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        document.getElementById("atlas-question")?.focus();
+      });
+    }
+  }, [canonicalizeExample, focusNeedOnMount, initialFilters]);
+
+  useEffect(() => {
+    const restoreFromHistory = () => window.location.reload();
+    window.addEventListener("popstate", restoreFromHistory);
+    return () => window.removeEventListener("popstate", restoreFromHistory);
   }, []);
+
+  useEffect(() => {
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
+    if (!initialFilters.view) {
+      setMapEnabled(true);
+      setViewMode("map");
+    }
+  }, [initialFilters.view]);
+
+  function writeMapState(nextFilters: AtlasQuery, mode: "push" | "replace" = "push") {
+    const path = mapPathForQuery(nextFilters);
+    window.history[mode === "push" ? "pushState" : "replaceState"](null, "", path);
+  }
+
+  function changeViewMode(nextView: ViewMode) {
+    setMapEnabled(nextView === "map" || mapEnabled);
+    setViewMode(nextView);
+    const nextFilters = { ...filters, view: nextView, selected: selectedId ?? undefined };
+    setFilters(nextFilters);
+    writeMapState(nextFilters);
+  }
 
   const exportHref = useMemo(() => {
     const params = atlasQueryToSearchParams({
@@ -244,15 +290,15 @@ export function AtlasExplorer({
       if (!response.ok) throw new Error("The ecosystem map could not be refreshed.");
       const nextResult = (await response.json()) as AtlasExplorerQueryResult;
       setResult(nextResult);
-      setFilters({ ...nextFilters, page: 1 });
+      const refreshedFilters = { ...nextFilters, page: 1, selected: undefined };
+      setFilters(refreshedFilters);
       setViewport(null);
       setSelectedId(null);
       setExpandedId(null);
       setOrganizationDetails({});
       setDetailErrors({});
       if (options.updateQuestion) setQuestion(nextFilters.query ?? "");
-      const browserParams = atlasQueryToSearchParams(nextFilters);
-      window.history.replaceState(null, "", browserParams.size ? `/?${browserParams.toString()}` : "/");
+      writeMapState(refreshedFilters);
     } catch (loadError) {
       setError(loadError instanceof Error ? loadError.message : "The ecosystem map could not be refreshed.");
     } finally {
@@ -319,7 +365,7 @@ export function AtlasExplorer({
         setOrganizationDetails({});
         setDetailErrors({});
         setAssistantTurns((turns) => [...turns, { query, organizationIds: nextDiscovery.organizationIds }].slice(-3));
-        window.history.replaceState(null, "", "/");
+        window.history.replaceState(null, "", "/map");
         setLoading(false);
       } else {
         await load(nextDiscovery.filters, { preserveDiscovery: true });
@@ -346,12 +392,15 @@ export function AtlasExplorer({
   function selectAssistantOrganization(id: string) {
     setMapEnabled(true);
     setViewMode("map");
-    updateSelection(id, true, "result");
+    updateSelection(id, true, "result", "map");
     window.requestAnimationFrame(() => document.getElementById("ecosystem-map")?.scrollIntoView({ behavior: "smooth", block: "center" }));
   }
 
-  function updateSelection(id: string, revealInTable = false, source: "map" | "result" = "result") {
+  function updateSelection(id: string, revealInTable = false, source: "map" | "result" = "result", nextView = viewMode) {
     setSelectedId(id);
+    const nextFilters = { ...filters, view: nextView, selected: id, bounds: viewport?.bounds };
+    setFilters(nextFilters);
+    writeMapState(nextFilters);
     const organization = result.mapOrganizations.find((item) => item.id === id);
     trackBetaEvent(source === "map" ? "marker_select" : "result_select", {
       organization: organization?.slug ?? "unknown",
@@ -403,12 +452,26 @@ export function AtlasExplorer({
   }
 
   function updateViewport(nextViewport: { bounds: AtlasBounds; organizationIds: string[] }) {
+    const nextSelectedId = selectedId && nextViewport.organizationIds.includes(selectedId) ? selectedId : null;
+    const nextFilters = {
+      ...filters,
+      bounds: nextViewport.bounds,
+      view: viewMode,
+      selected: nextSelectedId ?? undefined
+    };
     setViewport(nextViewport);
-    setSelectedId((current) => current && !nextViewport.organizationIds.includes(current) ? null : current);
+    setSelectedId(nextSelectedId);
+    setFilters(nextFilters);
+    // Panning is a refinement of the current map view, not a new history step.
+    // Replace keeps Back useful while making copied and return URLs reproducible.
+    writeMapState(nextFilters, "replace");
   }
 
   async function toggleExpanded(organization: AtlasExplorerOrganization, source: "mobile_list" | "table_expand") {
     setSelectedId(organization.id);
+    const nextFilters = { ...filters, view: viewMode, selected: organization.id, bounds: viewport?.bounds };
+    setFilters(nextFilters);
+    writeMapState(nextFilters);
     trackBetaEvent("result_select", { organization: organization.slug, source });
     if (expandedId === organization.id) {
       setExpandedId(null);
@@ -450,9 +513,40 @@ export function AtlasExplorer({
   const caveat = filters.demand
     ? "Potential demand connections are interpretations based on published sources, not eligibility, endorsement, or procurement guidance."
     : "Open a result to see what an organization offers, where it may fit, and which public sources support the profile.";
+  const guidedSearch = guidedSearchFromQuery(filters);
+  const mapReturnTo = mapPathForQuery({
+    ...filters,
+    bounds: viewport?.bounds,
+    view: viewMode,
+    selected: selectedId ?? undefined
+  });
+
+  function removeGuidedFocus(focusId: NonNullable<AtlasQuery["focus"]>[number]) {
+    const nextFocus = filters.focus?.filter((item) => item !== focusId) ?? [];
+    void load({
+      ...filters,
+      focus: nextFocus.length ? nextFocus : undefined,
+      selected: undefined,
+      page: 1
+    });
+  }
 
   return (
     <div className="atlas-frame pb-8 pt-2">
+      {guidedSearch ? (
+        <section className="mb-4 rounded-[14px] border border-[var(--atlas-border-strong)] bg-[var(--atlas-signal-soft)] px-4 py-5 sm:px-5" aria-labelledby="guided-search-title">
+          <p className="text-sm font-extrabold text-[var(--atlas-evidence)]">You’re reviewing a guided search.</p>
+          <h1 id="guided-search-title" className="mt-2 text-xl font-extrabold tracking-[-0.025em] text-[var(--atlas-ink)] sm:text-2xl">{guidedSearchQuestion}</h1>
+          <p className="mt-2 max-w-4xl text-sm leading-6 text-[var(--atlas-ink-soft)]">These results are drawn from published records connected to the selected search focus. Open a result to see why it appears, what supports the connection and what remains unknown.</p>
+          <div className="mt-4 flex flex-wrap gap-2" aria-label="Selected search focus">
+            {guidedSearch.focus.map((focusId) => {
+              const focus = guidedSearchFocusForId(focusId);
+              return <button key={focus.id} type="button" onClick={() => removeGuidedFocus(focus.id)} className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[var(--atlas-evidence)]/30 bg-white px-3 py-1.5 text-xs font-semibold text-[var(--atlas-ink)] hover:border-[var(--atlas-evidence)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]" aria-label={`Remove ${focus.label} from the guided search`}>{focus.label}<X className="size-3.5" aria-hidden="true" /></button>;
+            })}
+          </div>
+          <p className="mt-4 text-sm leading-6 text-[var(--atlas-ink-soft)]">Published organizations are shown because they connect to one or more selected concepts. Open a result to see what it offers, why it appears and what supports the record.</p>
+        </section>
+      ) : null}
       <section id="ask-true-north" className="scroll-mt-24 overflow-hidden rounded-[14px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
         <div className="border-t-2 border-[var(--atlas-signal)] bg-white p-3 sm:p-5">
           <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
@@ -463,6 +557,7 @@ export function AtlasExplorer({
             <div className="relative grid gap-2 sm:block">
               <Search className="pointer-events-none absolute left-4 top-7 size-5 -translate-y-1/2 text-[var(--atlas-muted)] sm:top-1/2" aria-hidden="true" />
               <input
+                id="atlas-question"
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
                 className="h-14 w-full rounded-[12px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-4 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:h-16 sm:pr-40 sm:text-base"
@@ -508,8 +603,8 @@ export function AtlasExplorer({
               ))}
               {result.appliedFilters.length === 0 ? <span className="inline-flex h-9 items-center rounded-xl border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-ink-soft)]">Canada-wide view</span> : null}
               <button type="button" onClick={() => setFilterPanelOpen((value) => !value)} className="atlas-secondary-button h-9 gap-2 px-3 text-xs" aria-expanded={filterPanelOpen}><SlidersHorizontal className="size-4" />Filters</button>
-              <button type="button" onClick={() => { setMapEnabled(true); setViewMode("map"); }} className={cn("inline-flex h-9 items-center gap-2 rounded-xl border px-3 text-xs font-bold", viewMode === "map" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")}><MapIcon className="size-4" />Map</button>
-              <button type="button" onClick={() => { if (window.matchMedia("(min-width: 1024px)").matches) document.getElementById("atlas-results")?.scrollIntoView({ behavior: "smooth", block: "start" }); else setViewMode("table"); }} className={cn("inline-flex h-9 items-center gap-2 rounded-xl border px-3 text-xs font-bold", viewMode === "table" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")}><List className="size-4" />Table</button>
+              <button type="button" onClick={() => changeViewMode("map")} className={cn("inline-flex h-9 items-center gap-2 rounded-xl border px-3 text-xs font-bold", viewMode === "map" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")}><MapIcon className="size-4" />Map</button>
+              <button type="button" onClick={() => { if (window.matchMedia("(min-width: 1024px)").matches) document.getElementById("atlas-results")?.scrollIntoView({ behavior: "smooth", block: "start" }); else changeViewMode("table"); }} className={cn("inline-flex h-9 items-center gap-2 rounded-xl border px-3 text-xs font-bold", viewMode === "table" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")}><List className="size-4" />Table</button>
             </div>
             <p className="flex max-w-[470px] items-start gap-2 text-xs leading-5 text-[var(--atlas-muted)] lg:justify-end lg:text-right"><Info className="mt-0.5 size-4 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" /><span>{caveat}</span></p>
           </div>
@@ -528,10 +623,10 @@ export function AtlasExplorer({
           ) : null}
 
           {error ? <div className="mt-3 flex items-start gap-2 rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]" role="alert"><CircleAlert className="mt-0.5 size-4 shrink-0" />{error}</div> : null}
-          {discovery?.fallbackReason ? <AssistantFallback reason={discovery.fallbackReason} quota={discovery.quota} /> : null}
+          {discovery?.fallbackReason ? <AssistantFallback reason={discovery.fallbackReason} quota={discovery.quota} returnTo={mapReturnTo} /> : null}
           {discovery?.interpretation === "no_match" && !discovery.assistant ? <div className="mt-3 rounded-xl border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-3 py-2 text-sm text-[var(--atlas-amber)]">No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing.</div> : null}
         </div>
-        {discovery?.assistant ? <div className="bg-[var(--atlas-surface-muted)] px-3 pb-3 sm:px-5 sm:pb-5"><AssistantAnswer discovery={discovery} onSelectOrganization={selectAssistantOrganization} onAskSuggestion={(suggestion) => void runDiscovery(suggestion)} onStartNewQuestion={startNewQuestion} /></div> : null}
+          {discovery?.assistant ? <div className="bg-[var(--atlas-surface-muted)] px-3 pb-3 sm:px-5 sm:pb-5"><AssistantAnswer discovery={discovery} returnTo={mapReturnTo} onSelectOrganization={selectAssistantOrganization} onAskSuggestion={(suggestion) => void runDiscovery(suggestion)} onStartNewQuestion={startNewQuestion} /></div> : null}
         <EvidenceLegend compact className="px-3 sm:px-5" />
         <div id="ecosystem-map" className={cn("scroll-mt-24 border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-3 lg:p-3", viewMode === "table" && "hidden lg:grid")}>
           <div className="relative h-[350px] overflow-hidden sm:h-[410px] lg:h-[510px] lg:rounded-[22px] lg:border lg:border-[var(--atlas-border)]">
@@ -556,7 +651,7 @@ export function AtlasExplorer({
               <button
                 type="button"
                 className="inline-flex h-9 items-center gap-2 rounded px-3 text-xs font-semibold text-[var(--atlas-ink-soft)] hover:bg-[var(--atlas-signal-soft)]"
-                onClick={() => setViewMode("table")}
+                onClick={() => changeViewMode("table")}
                 aria-label="Show accessible results list"
               >
                 <List className="size-4" />
@@ -569,7 +664,13 @@ export function AtlasExplorer({
                 organization={selectedOrganization}
                 capability={selectedCapability}
                 filters={filters}
-                onClose={() => setSelectedId(null)}
+                returnTo={mapReturnTo}
+                onClose={() => {
+                  setSelectedId(null);
+                  const nextFilters = { ...filters, view: viewMode, selected: undefined, bounds: viewport?.bounds };
+                  setFilters(nextFilters);
+                  writeMapState(nextFilters);
+                }}
               />
             ) : null}
           </div>
@@ -578,6 +679,7 @@ export function AtlasExplorer({
             totalInView={visibleMapOrganizations.length}
             filters={filters}
             selectedId={selectedId}
+            returnTo={mapReturnTo}
             onSelect={(id) => updateSelection(id, true, "result")}
           />
         </div>
@@ -608,8 +710,7 @@ export function AtlasExplorer({
                 type="button"
                 className="inline-flex h-9 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-ink-soft)] shadow-sm hover:bg-[var(--atlas-surface-muted)] lg:hidden"
                 onClick={() => {
-                  setMapEnabled(true);
-                  setViewMode("map");
+                  changeViewMode("map");
                 }}
                 aria-label="Return to map"
               >
@@ -632,6 +733,7 @@ export function AtlasExplorer({
                     selected={selectedId === organization.id}
                     detailLoading={detailLoadingId === organization.id}
                     detailError={detailErrors[organization.id]}
+                    returnTo={mapReturnTo}
                     onToggle={() => {
                       void toggleExpanded(organization, "mobile_list");
                     }}
@@ -662,6 +764,7 @@ export function AtlasExplorer({
                         selected={selectedId === organization.id}
                         detailLoading={detailLoadingId === organization.id}
                         detailError={detailErrors[organization.id]}
+                        returnTo={mapReturnTo}
                         rowRef={(node) => {
                           if (node) rowRefs.current.set(organization.id, node);
                           else rowRefs.current.delete(organization.id);
@@ -693,7 +796,7 @@ export function AtlasExplorer({
                   </button>
                 </div>
               ) : (
-                <button type="button" className="mt-5 text-sm font-semibold text-[var(--atlas-primary)] hover:underline lg:hidden" onClick={() => setViewMode("map")}>
+                <button type="button" className="mt-5 text-sm font-semibold text-[var(--atlas-primary)] hover:underline lg:hidden" onClick={() => changeViewMode("map")}>
                   Return to map
                 </button>
               )}
@@ -721,7 +824,7 @@ export function AtlasExplorer({
 
       <PublicEvidenceLedger citations={visibleEvidence} />
 
-      <NorthSignalInline placement="newsletter_inline_home" trigger="first_discovery_interaction" revealOnEngagement className="mt-6" />
+      <NorthSignalInline placement="newsletter_inline_map" trigger="first_discovery_interaction" revealOnEngagement className="mt-6" />
 
       <PublicAtlasFooter generatedLabel={`Snapshot generated ${formatDate(generatedAt)}. Reviewed public sources only; coverage gaps remain explicit.`} />
     </div>

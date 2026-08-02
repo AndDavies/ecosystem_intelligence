@@ -37,6 +37,7 @@ subject to human review.
 - `screenshots/`: current desktop and mobile product views.
 - `true-north-map-walkthrough.mp4`: current 30-second product walkthrough.
 - `linkedin-banner.html` and `linkedin-banner.png`: editable Directional N LinkedIn banner and rendered asset.
+- `true-north-map-x-header.png`: text-free X profile header that carries the same Directional N visual direction.
 - `true-north-map-social-avatar.png`: current social avatar.
 - `partner-overview.html` and `partner-overview.pdf`: editable one-page partner overview and rendered PDF.
 - `partner-and-media-deck.mjs` and `partner-and-media-deck.pptx`: editable partner and media deck source and presentation.
@@ -44,6 +45,7 @@ subject to human review.
 - `video-frame.html`, `video-storyboard.md` and `build-walkthrough.sh`: reproducible walkthrough source.
 - `founder-linkedin.md`: Andrew's founder-led launch post.
 - `true-north-map-linkedin.md`: organization-page About and launch copy.
+- `true-north-map-x.md`: X profile, launch-post and link conventions.
 - `direct-outreach.md`: personal outreach message.
 - `included-organization.md`: profile notification copy.
 - `ecosystem-media-community.md`: partner, media and community copy.
@@ -60,6 +62,7 @@ subject to human review.
 - Call the weekly briefing **North Signal**.
 - Keep facts, reviewed assessments and unverified gaps visibly distinct.
 - Give each message one clear action.
+- Keep account access with Andrew, publish manually, and do not auto-cross-post or buy reach during the first 60 days.
 - Check each community's current self-promotion rules before posting.
 
 ## Primary launch action

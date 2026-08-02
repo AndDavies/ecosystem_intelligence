@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 };
 
 const steps = [
-  { number: "1", title: "Explore the map", detail: "Find companies, organizations, technologies, and programs across Canada.", action: "Explore the map", href: "/", icon: Map },
+  { number: "1", title: "Explore the map", detail: "Find organizations, technologies, programs, and other ecosystem contributors across Canada.", action: "Explore the map", href: "/map", icon: Map },
   { number: "2", title: "Check the public evidence", detail: "Open the sources supporting each profile and technology.", action: "Browse organizations", href: "/organizations", icon: FileSearch },
   { number: "3", title: "Follow released public needs", detail: "Read public needs issued by governments, armed forces, programs, and allied organizations.", action: "See public needs", href: "/demand", icon: Compass },
   { number: "4", title: "See where technology may help", detail: "Review source-linked assessments of possible relevance and visible limits.", action: "Learn about the review", href: "/methodology", icon: Lightbulb },
-  { number: "5", title: "Start a better conversation", detail: "Save a Working List, suggest a correction, claim a profile, or request a connection.", action: "Contribute a profile", href: "/submit", icon: Handshake }
+  { number: "5", title: "Start a better conversation", detail: "Build a private Working List, suggest a correction, claim a profile, or request a connection.", action: "Contribute a profile", href: "/submit", icon: Handshake }
 ] as const;
 
 const frequentlyAskedQuestions = [
@@ -74,7 +74,7 @@ export default function HowItWorksPage() {
       eyebrow="Evidence-led ecosystem discovery"
       title="See what Canada can build, why it matters, and what to do next."
       description="True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations."
-      actions={<Link href="/" className="atlas-primary-button h-11 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>}
+      actions={<Link href="/map" className="atlas-primary-button h-11 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>}
     >
       <JsonLd data={[
         { "@context": "https://schema.org", "@type": "WebPage", name: "How True North Map Works", description: metadata.description, url: absoluteUrl("/how-it-works") },
@@ -113,7 +113,7 @@ export default function HowItWorksPage() {
           <p className="atlas-eyebrow">A 30-second orientation</p>
           <h2 id="launch-video-title" className="mt-3 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-3xl">See how the map moves from a question to useful evidence.</h2>
           <p className="mt-4 text-sm leading-6 text-[var(--atlas-muted)]">Watch the short walkthrough, then explore the map with a capability, region, organization, or public need in mind.</p>
-          <Link href="/" className="atlas-signal-button mt-6 h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>
+          <Link href="/map" className="atlas-signal-button mt-6 h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>
         </div>
         <div className="overflow-hidden rounded-[14px] border border-[var(--atlas-border-strong)] bg-[var(--atlas-ink)] shadow-[var(--atlas-shadow-soft)]">
           <video

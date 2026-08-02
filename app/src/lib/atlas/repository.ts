@@ -3,6 +3,7 @@ import "server-only";
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { getAtlasMetroArea, inferAtlasMetroArea, organizationMatchesMetro } from "@/lib/atlas/geography";
+import { organizationMatchesGuidedSearchFocus } from "@/lib/atlas/guided-search";
 import {
   loadAtlasCapabilityBySlugFromSupabase,
   loadAtlasCoverageSummaryFromSupabase,
@@ -556,6 +557,7 @@ function buildAppliedFilters(snapshot: AtlasQueryableSnapshot, query: AtlasQuery
 function matchingAtlasOrganizations(snapshot: AtlasQueryableSnapshot, query: AtlasQuery = {}) {
   return snapshot.organizations
     .filter((organization) => !query.query || matchesQuery(organization, query.query))
+    .filter((organization) => !query.focus?.length || organizationMatchesGuidedSearchFocus(organization, query.focus))
     .filter((organization) => !query.bounds || inBounds(organization, query.bounds))
     .filter(
       (organization) =>

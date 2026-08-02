@@ -1,7 +1,7 @@
 # True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
 Status: active product requirements
-Last updated: 2026-07-31
+Last updated: 2026-08-01
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -103,6 +103,10 @@ last-verified status, and explicit actions to open the full profile, save it, or
 inspect sources. Marker selection never
 publishes, infers, or invents additional facts.
 
+### Guided search is deterministic before Ask True North
+
+The landing page may offer a fixed public example with visitor-adjustable **Search focus** controls. The only serializable values are an allowlisted set of stable focus IDs; the normal `/map` URL is refreshable and shareable, and the example parameter is removed only after the ordinary published-atlas state has loaded. This deterministic handoff never calls `/api/discover`, OpenAI, or the Ask True North quota path. It preserves a safe local return URL through profile, evidence, sign-in, and Working List actions without exposing private collection or account state.
+
 ### Human publication boundary
 
 Automated research can create leads and candidate changes. Only an explicit human-reviewed promotion can change canonical published records.
@@ -111,7 +115,8 @@ Automated research can create leads and candidate changes. Only an explicit huma
 
 | Route | Purpose |
 | --- | --- |
-| `/` | National ecosystem map with natural-language discovery, structured filters, synchronized map, and evidence table |
+| `/` | Guided public landing page that introduces evidence-led discovery and hands off to the canonical map workspace |
+| `/map` | National ecosystem atlas and Ask True North workspace with structured filters, synchronized map, and evidence table |
 | `/regions/[slug]` | Regional counts, published organizations, reviewed clusters, and explicit gaps |
 | `/organizations` | Published organization directory |
 | `/organizations/[slug]` | Organization profile with technology or offerings, public contact paths, where the technology may help, and evidence |
@@ -157,7 +162,7 @@ Natural-language discovery may only:
 - show source support separately from derived fit and link every reason to an approved public citation
 - expose an exact match, closest-supported result, or coverage gap without manufacturing certainty
 
-It must never invent an organization or fact. Ask True North uses the OpenAI Responses API with strict structured output, no web tools, no saved model response, a server-validated known-ID boundary, and the canonical published Supabase snapshot. A deterministic relevance pass selects a bounded set of current published records for each question before model ranking; it is not a second index, and newly published records remain immediately eligible. Anonymous visitors receive three questions per rolling 24 hours and signed-in users receive 20. Follow-up context is temporary browser state only. Quota, timeout, refusal, missing-key, dependency, authentication, API-quota, rate-limit, model-access, network, and invalid-output failures are recorded as sanitized operational classes and fall back to deterministic discovery rather than failing the map. Ambiguous questions return suggested filters.
+It must never invent an organization or fact. Ask True North uses the OpenAI Responses API with `gpt-5.6-luna` as the default model, strict structured output, low reasoning effort, no web tools, no saved model response, a server-validated known-ID boundary, and the canonical published Supabase snapshot. The model remains server-configurable through `OPENAI_MODEL`, but every replacement must preserve structured output and the same published-record guardrails. A deterministic relevance pass selects a bounded set of current published records for each question before model ranking; it is not a second index, and newly published records remain immediately eligible. Anonymous visitors receive three questions per rolling 24 hours and signed-in users receive 20. Follow-up context is temporary browser state only. Quota, timeout, refusal, missing-key, dependency, authentication, API-quota, rate-limit, model-access, network, and invalid-output failures are recorded as sanitized operational classes and fall back to deterministic discovery rather than failing the map. Ambiguous questions return suggested filters.
 
 ## Canonical data model
 

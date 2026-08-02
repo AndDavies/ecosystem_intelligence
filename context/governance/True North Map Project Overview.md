@@ -1,7 +1,7 @@
 # True North Map Project Overview
 
 Status: production soft beta and review-first data operation
-Last reviewed: 2026-07-31
+Last reviewed: 2026-08-02
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -27,12 +27,14 @@ Place, technology, or public need
 
 | Surface | What a visitor can do | Authority boundary |
 | --- | --- | --- |
-| Map (`/`) | Explore Canada, filter the visible map, search in plain language, compare the current viewport, and open dossiers | Published records only |
+| Guided landing (`/`) | Choose a need, released Public Need, or Mission Area; see how evidence becomes a defensible shortlist; and continue into the right workflow | Cacheable public shell and published records only; account state hydrates client-side |
+| Map (`/map`) | Explore Canada, filter the visible map, search in plain language, compare the current viewport, and open dossiers | Published records only |
 | Organizations and Regions | Browse Canadian organizations by geography and type | Published records only; coverage gaps stay visible |
 | Mission Areas / Use Cases (`/missions`) | Start with an operational problem, inspect reviewed technology relationships, and continue into organizations, technologies, Briefs, or a Working List | Mission relationships are reviewed assessments; they are not released Public Needs or procurement direction |
 | Organization and technology dossiers | See what an organization offers, public sources, reviewed technology, and possible relevance | Facts and assessments are labelled separately |
 | Public Needs (`/demand`) | Browse released public needs, then open each individual Demand Signal to inspect its source passage, desired outcome, potentially relevant technology, and limits | A public source and human verification are required |
 | Ask True North | Ask a plain-language question and receive bounded results from the live published corpus | AI explores known records; it does not create facts or procurement decisions |
+| Guided example focus | Search focus | Five visitor-adjustable, allowlisted concepts carried into a deterministic, ordinary `/map` URL. The handoff reads only published records and never calls Ask True North or consumes its quota. |
 | Defence Briefs | Read reviewed, source-linked Canadian defence explainers | Editorial synthesis is distinct from raw private wiki material |
 | North Signal | Subscribe to a concise weekly briefing about newly mapped capability, released public needs, reviewed connections, and defence developments worth following | Supabase records consent; MailerLite delivers; Andrew reviews and sends every issue |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
@@ -117,7 +119,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | `evidence_snippet` | Relevant source passage | The excerpt and locator that show where a public source supports a claim. |
 | `field_citation` | What supports this profile / assessment | The connection from a specific public field or assessment to its source passage. |
 | Source-backed fact | Source-backed fact | What an organization, issuer, or released source actually says. It is not the product's interpretation. |
-| `source_confidence` | How strong is the public evidence? | Strong, moderate, or limited. This describes the support available in public sources, not the quality of an organization. |
+| `source_confidence` | Evidence strength | Strong, moderate, or limited. This describes the support available in public sources, not the quality of an organization. |
 | `freshness` | Last reviewed / source freshness | Whether a record is current, due for review, or stale. |
 | Coverage gap | Coverage gap / What remains unknown | A visible limit: missing, thin, stale, or unverified information. It is not negative evidence about an organization. |
 | `candidate_change` | Under review | A private proposed new record or refresh. It is not published data. |
@@ -172,7 +174,7 @@ The public message system is:
 | Vercel | Application hosting, deployment, analytics, DNS | Server secrets stay out of the client and repository. |
 | Supabase | Canonical data, RLS, Auth, Storage, audit, review workflow | Production source of truth. New exposed tables require explicit grants and RLS. |
 | MapTiler / MapLibre | Map presentation | Coordinates remain standard and portable. |
-| OpenAI Responses API | Ask True North structured ranking and summary | No web browsing, second corpus, automatic publication, or uncited fact creation. |
+| OpenAI Responses API | Ask True North structured ranking and summary using `gpt-5.6-luna` by default | No web browsing, second corpus, automatic publication, or uncited fact creation. The model remains server-configurable without changing the published corpus boundary. |
 | Zoho Mail | Monitored human correspondence | `andrew@truenorthmap.ca` and operational aliases. |
 | MailerLite | Consent-backed updates and newsletters | Supabase remains the consent ledger; campaigns are not an auth channel. |
 | Resend through Supabase SMTP | Branded sign-in and security email | Transactional authentication only. |
@@ -180,6 +182,7 @@ The public message system is:
 
 ## Navigation and security model
 
+- Primary public navigation is Map, Organizations, Missions, Public Needs, Defence Briefs, How It Works, and About. The landing page is a guided entry point; `/map` remains the canonical atlas and Ask True North workspace.
 - Public browsing, profiles, sources, Defence Briefs, and eligible exports are open.
 - Google OAuth and passwordless email are available for private actions such as Working Lists, claims, corrections, connection requests, and account management.
 - The admin workspace is not linked publicly, is `noindex`, and fails closed to the designated administrator identity, exact email, and controlled application metadata.
