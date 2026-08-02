@@ -108,16 +108,21 @@ describe("guided public landing", () => {
     expect(results).toContain("h-full min-h-0 overflow-hidden lg:flex lg:flex-col");
   });
 
-  it("shows the real reviewed product specimen before the quota-free worked example without loading MapLibre", async () => {
-    const [landing, preview] = await Promise.all([
+  it("shows the real reviewed product specimen before the quota-free worked example in a fixed MapTiler view", async () => {
+    const [landing, preview, mapPreview, atlasMap] = await Promise.all([
       read("src/app/page.tsx"),
-      read("src/components/atlas/guided-landing-dynamic.tsx")
+      read("src/components/atlas/guided-landing-dynamic.tsx"),
+      read("src/components/atlas/landing-map-preview.tsx"),
+      read("src/components/atlas/atlas-map.tsx")
     ]);
     expect(landing.indexOf("<LandingProductPreview />")).toBeLessThan(landing.indexOf('aria-labelledby="example-heading"'));
-    expect(preview).toContain('/imagery/landing-atlas-preview.webp');
+    expect(preview).toContain("<LandingMapPreview organization={organization} />");
     expect(preview).toContain("{organizationName}");
     expect(preview).toContain("{capability.name}");
-    expect(preview).not.toContain("LandingMapPreview");
-    expect(preview).not.toContain('@/components/atlas/atlas-map');
+    expect(mapPreview).toContain("selectedOrganizationId={organization.id}");
+    expect(mapPreview).toContain("interactive={false}");
+    expect(atlasMap).toContain("interactive = true");
+    expect(atlasMap).toContain("if (interactive) map.addControl");
+    expect(atlasMap).toContain("if (interactive) {");
   });
 });

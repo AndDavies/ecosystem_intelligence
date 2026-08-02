@@ -83,12 +83,12 @@ pnpm release:validate
 
 Then complete the relevant browser matrix at 390, 768, 1024, and 1440 pixels, verify access roles, and confirm the production build. After deployment, check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, the homepage, affected public routes, sign-in when relevant, Vercel build/runtime logs, and live Supabase state. The summary organization count, atlas total, and complete marker collection must agree; rich records must remain bounded to the requested page size.
 
-For a landing or map-workspace release, also verify that `/` initializes no
-MapLibre instance, `/map` places the live map in the first viewport, bounds and
-selected-record deep links survive refresh and sharing, the deterministic
-guided example does not call Ask True North or consume quota, and profile,
-browser-Back, sign-in, and Working List return paths preserve ordinary map
-state.
+For a landing or map-workspace release, also verify that `/` loads only the
+lazy fixed non-interactive MapTiler specimen, `/map` places the fully interactive
+live map in the first viewport, bounds and selected-record deep links survive
+refresh and sharing, the deterministic guided example does not call Ask True
+North or consume quota, and profile, browser-Back, sign-in, and Working List
+return paths preserve ordinary map state.
 
 ## Research and publication regression
 

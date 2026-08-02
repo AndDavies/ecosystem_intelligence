@@ -11,8 +11,8 @@ This review reconciled the live True North Map product, tracked repository, acti
 The approved focused recomposition keeps `/` as the guided service entrance and
 `/map` as the canonical atlas workspace while making the product itself visible
 sooner. The real published Kraken Robotics and KATFISH specimen now precedes
-the landing worked example and uses a static map capture; the landing page
-initializes no MapLibre instance. The earlier large `/map` introduction is
+the landing worked example and uses a lazy fixed MapTiler view with Kraken
+selected and every interaction disabled. The earlier large `/map` introduction is
 removed. Search, starting points, filters, sharing, export and evidence guidance
 now form one compact control field immediately followed by the live map.
 

@@ -153,8 +153,10 @@ action or a short piece of meaning.
   five-step path, and one prominent guided-search action. Its result is a
   private evidence-backed Working List, not an automated recommendation.
 - The landing specimen uses the real published Kraken Robotics and KATFISH
-  record with a lightweight static map capture. It does not initialize
-  MapLibre or compete with the live atlas for first-page performance.
+  record with a lazy fixed MapTiler view. Kraken is visibly selected, while
+  zoom, pan, markers, controls, tooltips, and other map interactions remain
+  disabled so the specimen reads as a spatial illustration rather than a
+  second atlas workspace.
 - `/map` is the compact atlas workspace. Lead with **Map Canadian capability**
   and **Search by need, mission, technology or place.**, then place the live
   map immediately after the compact search, starting-point and filter controls.

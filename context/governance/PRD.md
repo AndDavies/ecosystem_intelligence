@@ -115,7 +115,7 @@ Automated research can create leads and candidate changes. Only an explicit huma
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Guided public landing page that introduces evidence-led discovery, shows one real published specimen without initializing MapLibre, and hands off to the canonical map workspace |
+| `/` | Guided public landing page that introduces evidence-led discovery, shows one real published specimen in a fixed non-interactive MapTiler view, and hands off to the canonical map workspace |
 | `/map` | Compact map-first national atlas and Ask True North workspace with structured filters, shareable bounds and selection, a synchronized 380-pixel desktop rail, mobile result sheet, and accessible evidence table |
 | `/regions/[slug]` | Regional counts, published organizations, reviewed clusters, and explicit gaps |
 | `/organizations` | Published organization directory |

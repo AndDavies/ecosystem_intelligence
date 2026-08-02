@@ -107,13 +107,17 @@ export function AtlasMap({
   initialBounds,
   selectedOrganizationId,
   onSelect,
-  onViewportChange
+  onViewportChange,
+  interactive = true,
+  ariaLabel
 }: {
   organizations: AtlasMapOrganization[];
   initialBounds?: AtlasBounds;
   selectedOrganizationId: string | null;
   onSelect: (organizationId: string) => void;
   onViewportChange: (viewport: { bounds: AtlasBounds; organizationIds: string[] }) => void;
+  interactive?: boolean;
+  ariaLabel?: string;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
@@ -194,25 +198,26 @@ export function AtlasMap({
         instruction.textContent = "Click to zoom in";
         instruction.className = "block text-[11px]";
         label.append(count, instruction);
-        L.marker(centre, {
+        const marker = L.marker(centre, {
           icon: L.divIcon({
             className: "atlas-leaflet-cluster-icon",
             html: `<span>${group.length}</span>`,
             iconSize: [42, 42],
             iconAnchor: [21, 21]
           }),
-          keyboard: true,
+          keyboard: interactive,
           title: `${group.length} organizations. Click to zoom in.`
-        })
-          .bindTooltip(label, { direction: "top" })
-          .on("click", () => {
+        });
+        if (interactive) {
+          marker.bindTooltip(label, { direction: "top" }).on("click", () => {
             if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
               map.setView(centre, Math.min(map.getZoom() + 2, 12), { animate: true });
             } else {
               map.fitBounds(bounds, { padding: [54, 54], maxZoom: Math.min(map.getZoom() + 3, 12), animate: true });
             }
-          })
-          .addTo(layer);
+          });
+        }
+        marker.addTo(layer);
         return;
       }
 
@@ -226,16 +231,16 @@ export function AtlasMap({
       tooltipMeta.className = "block text-[11px] capitalize";
       tooltip.append(tooltipName, tooltipMeta);
 
-      L.circleMarker([location.latitude!, location.longitude!], {
+      const marker = L.circleMarker([location.latitude!, location.longitude!], {
         radius: selected ? 10 : 8,
         color: selected ? mapColors.cluster : mapColors.outline,
         weight: selected ? 4 : 3,
         fillColor: selected ? mapColors.selected : mapColors.marker,
-        fillOpacity: 0.96
-      })
-        .bindTooltip(tooltip, { direction: "top" })
-        .on("click", () => onSelectRef.current(organization.id))
-        .addTo(layer);
+        fillOpacity: 0.96,
+        interactive
+      });
+      if (interactive) marker.bindTooltip(tooltip, { direction: "top" }).on("click", () => onSelectRef.current(organization.id));
+      marker.addTo(layer);
     });
   }
 
@@ -348,6 +353,12 @@ export function AtlasMap({
       const map = module.map(containerRef.current, {
         zoomControl: false,
         attributionControl: true,
+        dragging: interactive,
+        touchZoom: interactive,
+        doubleClickZoom: interactive,
+        scrollWheelZoom: interactive,
+        boxZoom: interactive,
+        keyboard: interactive,
         zoomSnap: 0.25,
         maxBounds: module.latLngBounds([38, -145], [85, -45]),
         minZoom: 2,
@@ -366,7 +377,7 @@ export function AtlasMap({
           }
         )
         .addTo(map);
-      module.control.zoom({ position: "bottomright" }).addTo(map);
+      if (interactive) module.control.zoom({ position: "bottomright" }).addTo(map);
       leafletMapRef.current = map;
       leafletLayerRef.current = module.layerGroup().addTo(map);
       map.on("moveend", () => scheduleLeafletViewport());
@@ -401,7 +412,8 @@ export function AtlasMap({
           [-145, 38],
           [-45, 85]
         ],
-        attributionControl: false
+        attributionControl: false,
+        interactive
       });
     } catch {
       void initializeLeafletFallback();
@@ -415,7 +427,7 @@ export function AtlasMap({
       };
     }
 
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+    if (interactive) map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
     map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-left");
 
     map.on("load", () => {
@@ -468,80 +480,82 @@ export function AtlasMap({
         }
       });
 
-      map.on("click", "organization-clusters", async (event) => {
-        const feature = map.queryRenderedFeatures(event.point, { layers: ["organization-clusters"] })[0];
-        const clusterId = Number(feature?.properties?.cluster_id);
-        const source = map.getSource(sourceId) as GeoJSONSource;
-        if (!Number.isFinite(clusterId) || feature?.geometry.type !== "Point") return;
-        const zoom = await source.getClusterExpansionZoom(clusterId);
-        const coordinates = feature.geometry.coordinates as [number, number];
-        map.easeTo({ center: coordinates, zoom });
-      });
+      if (interactive) {
+        map.on("click", "organization-clusters", async (event) => {
+          const feature = map.queryRenderedFeatures(event.point, { layers: ["organization-clusters"] })[0];
+          const clusterId = Number(feature?.properties?.cluster_id);
+          const source = map.getSource(sourceId) as GeoJSONSource;
+          if (!Number.isFinite(clusterId) || feature?.geometry.type !== "Point") return;
+          const zoom = await source.getClusterExpansionZoom(clusterId);
+          const coordinates = feature.geometry.coordinates as [number, number];
+          map.easeTo({ center: coordinates, zoom });
+        });
 
-      map.on("click", "organization-points", (event) => {
-        const id = String(event.features?.[0]?.properties?.id ?? "");
-        if (!id) return;
-        hoverPopupRef.current?.remove();
-        hoverPopupRef.current = null;
-        onSelectRef.current(id);
-      });
+        map.on("click", "organization-points", (event) => {
+          const id = String(event.features?.[0]?.properties?.id ?? "");
+          if (!id) return;
+          hoverPopupRef.current?.remove();
+          hoverPopupRef.current = null;
+          onSelectRef.current(id);
+        });
 
-      map.on("mouseenter", "organization-points", (event) => {
-        map.getCanvas().style.cursor = "pointer";
-        const feature = event.features?.[0];
-        if (feature?.geometry.type !== "Point") return;
-        const name = String(feature.properties?.name ?? "Organization");
-        const entityKind = String(feature.properties?.entityKind ?? "organization").replaceAll("_", " ");
-        const location = String(feature.properties?.location ?? "Location under review");
-        const label = document.createElement("div");
-        const labelName = document.createElement("strong");
-        const labelMeta = document.createElement("span");
-        labelName.textContent = name;
-        labelMeta.textContent = `${entityKind} · ${location}`;
-        label.append(labelName, labelMeta);
-        hoverPopupRef.current?.remove();
-        hoverPopupRef.current = new maplibregl.Popup({
-          closeButton: false,
-          closeOnClick: false,
-          offset: 14,
-          className: "atlas-marker-label"
-        })
-          .setLngLat(feature.geometry.coordinates as [number, number])
-          .setDOMContent(label)
-          .addTo(map);
-      });
-      map.on("mouseleave", "organization-points", () => {
-        map.getCanvas().style.cursor = "";
-        hoverPopupRef.current?.remove();
-        hoverPopupRef.current = null;
-      });
-      map.on("mouseenter", "organization-clusters", (event) => {
-        map.getCanvas().style.cursor = "pointer";
-        const feature = event.features?.[0];
-        if (feature?.geometry.type !== "Point") return;
-        const pointCount = Number(feature.properties?.point_count ?? 0);
-        const label = document.createElement("div");
-        const labelCount = document.createElement("strong");
-        const labelInstruction = document.createElement("span");
-        labelCount.textContent = `${pointCount} organizations`;
-        labelInstruction.textContent = "Click to zoom in";
-        label.append(labelCount, labelInstruction);
-        hoverPopupRef.current?.remove();
-        hoverPopupRef.current = new maplibregl.Popup({
-          closeButton: false,
-          closeOnClick: false,
-          offset: 22,
-          className: "atlas-marker-label"
-        })
-          .setLngLat(feature.geometry.coordinates as [number, number])
-          .setDOMContent(label)
-          .addTo(map);
-      });
-      map.on("mouseleave", "organization-clusters", () => {
-        map.getCanvas().style.cursor = "";
-        hoverPopupRef.current?.remove();
-        hoverPopupRef.current = null;
-      });
+        map.on("mouseenter", "organization-points", (event) => {
+          map.getCanvas().style.cursor = "pointer";
+          const feature = event.features?.[0];
+          if (feature?.geometry.type !== "Point") return;
+          const name = String(feature.properties?.name ?? "Organization");
+          const entityKind = String(feature.properties?.entityKind ?? "organization").replaceAll("_", " ");
+          const location = String(feature.properties?.location ?? "Location under review");
+          const label = document.createElement("div");
+          const labelName = document.createElement("strong");
+          const labelMeta = document.createElement("span");
+          labelName.textContent = name;
+          labelMeta.textContent = `${entityKind} · ${location}`;
+          label.append(labelName, labelMeta);
+          hoverPopupRef.current?.remove();
+          hoverPopupRef.current = new maplibregl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            offset: 14,
+            className: "atlas-marker-label"
+          })
+            .setLngLat(feature.geometry.coordinates as [number, number])
+            .setDOMContent(label)
+            .addTo(map);
+        });
+        map.on("mouseleave", "organization-points", () => {
+          map.getCanvas().style.cursor = "";
+          hoverPopupRef.current?.remove();
+          hoverPopupRef.current = null;
+        });
+        map.on("mouseenter", "organization-clusters", (event) => {
+          map.getCanvas().style.cursor = "pointer";
+          const feature = event.features?.[0];
+          if (feature?.geometry.type !== "Point") return;
+          const pointCount = Number(feature.properties?.point_count ?? 0);
+          const label = document.createElement("div");
+          const labelCount = document.createElement("strong");
+          const labelInstruction = document.createElement("span");
+          labelCount.textContent = `${pointCount} organizations`;
+          labelInstruction.textContent = "Click to zoom in";
+          label.append(labelCount, labelInstruction);
+          hoverPopupRef.current?.remove();
+          hoverPopupRef.current = new maplibregl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            offset: 22,
+            className: "atlas-marker-label"
+          })
+            .setLngLat(feature.geometry.coordinates as [number, number])
+            .setDOMContent(label)
+            .addTo(map);
+        });
+        map.on("mouseleave", "organization-clusters", () => {
+          map.getCanvas().style.cursor = "";
+          hoverPopupRef.current?.remove();
+          hoverPopupRef.current = null;
+        });
+      }
 
       map.once("idle", () => publishMapLibreViewport(map));
     });
@@ -637,8 +651,8 @@ export function AtlasMap({
     <div
       ref={containerRef}
       className="h-full min-h-[290px] w-full bg-[var(--atlas-surface-muted)] sm:min-h-[330px] lg:min-h-[350px]"
-      role="region"
-      aria-label={`Map showing ${organizations.length} published ${organizations.length === 1 ? "organization" : "organizations"}. Numbered groups can be selected to zoom in and separate nearby organizations. The synchronized results list provides the same organizations without requiring the map.`}
+      role={interactive ? "region" : "img"}
+      aria-label={ariaLabel ?? `Map showing ${organizations.length} published ${organizations.length === 1 ? "organization" : "organizations"}. Numbered groups can be selected to zoom in and separate nearby organizations. The synchronized results list provides the same organizations without requiring the map.`}
     />
   );
 }

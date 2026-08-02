@@ -19,6 +19,7 @@ import {
 import { useEffect, useState } from "react";
 import { BriefHero } from "@/components/atlas/brief-hero";
 import { LandingEntryLink } from "@/components/atlas/landing-entry-link";
+import { LandingMapPreview } from "@/components/atlas/landing-map-preview";
 import { evidenceStrengthLabel, locationAccuracyLabel, publicLanguage } from "@/lib/atlas/presentation";
 import { formatDate } from "@/lib/utils";
 import type { AtlasConfidence, AtlasCoverageSummary, AtlasMapOrganization, AtlasMissionIndexItem } from "@/types/atlas";
@@ -93,13 +94,7 @@ export function LandingProductPreview() {
         </div>
         <div className="overflow-hidden rounded-[16px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
           <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] sm:aspect-[16/7]">
-            <Image
-              src="/imagery/landing-atlas-preview.webp"
-              alt="True North Map showing reviewed Canadian organizations across the national map."
-              fill
-              sizes="(min-width: 1480px) 1400px, 100vw"
-              className="object-cover object-center"
-            />
+            <LandingMapPreview organization={organization} />
             <div className="absolute inset-x-4 bottom-4 border-l-4 border-[var(--atlas-signal)] bg-white/95 px-4 py-3 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:inset-x-auto sm:left-6 sm:max-w-[320px]">
               <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-evidence)]">Selected on the map</p>
               <p className="mt-1 text-base font-extrabold text-[var(--atlas-ink)]">{organizationName}</p>
