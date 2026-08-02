@@ -41,6 +41,12 @@ The current local release candidate completes the July 31 implementation sequenc
 
 The guided landing tells one decision story: describe a need, review the interpretation, compare possible fits, weigh evidence and gaps, and build a Working List for the conversation ahead. The hero retains the approved bounded maritime split, highlighted opening phrase, caption cutout and live coverage band; the three starting jobs, evidence example, product specimen, Mission Areas, Briefs, North Signal and trust sections follow the current brand hierarchy. The compact `/map` introduction provides guided entry points without changing the atlas loading path. Responsive separators, pills, icons, whitespace and social actions follow the August 2 brand contract.
 
+The shared public header now applies the approved Barlow navigation face
+directly, so `/`, `/map`, and public detail routes cannot diverge through
+route-level font inheritance. The brand folder contains one canonical brand
+system document plus approved artwork and exports; the superseded COVE-era
+brand audit has been removed.
+
 Organization and capability dossiers render dynamically because they accept safe, shareable map-return context. Their bounded slug loaders remain cached for five minutes, so this avoids query-dependent static-cache failures without loading the national snapshot or weakening the public-data boundary.
 
 ## Phase 1 public-product hardening boundary
@@ -81,6 +87,12 @@ The refresh path is additive in v1. A refresh candidate may propose:
 - `update_child` for an existing capability or demand requirement while preserving its stable ID and slug.
 
 Automated deletion is not permitted. Every operation carries a reviewer explanation and field-level evidence IDs. Discovery-only newsletter or social material may explain how a lead was found, but it cannot support a public field unless resolved to durable evidence.
+
+The trusted staging worker has the minimum execute privilege required by the
+refresh-baseline trigger's private immutable parser. Anonymous and ordinary
+authenticated roles remain denied. On 2026-08-02 this repaired the previously
+rolled-back North Vector Dynamics refresh intake; the validated candidate is
+pending in Admin Review with eight proposed operations and no public effect.
 
 Every new OSINT-enabled run writes a private `research_collection_plan_v1` and `research_claim_ledger_v1`. The ledger is run lineage, not another database or review queue. It stores atomic claims, canonical URLs, locators, temporal scope, source independence, contradictions, supersession, candidate field targets, and a twelve-dimension dossier coverage vector. Smoke validation requires every source-backed candidate field to map to a durable ledger claim before the existing trusted intake can create a pending review row.
 

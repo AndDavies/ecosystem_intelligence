@@ -102,6 +102,9 @@ action or a short piece of meaning.
 - Use only the canonical marks and tokens above.
 - Check contrast, keyboard focus, favicon legibility, clear space, social crops, and fixed image dimensions.
 - Verify public pages at 390, 768, 1024, and 1440 pixels after shared layout or typography changes.
+- Compare the shared header across `/`, `/map`, and at least one public detail
+  route whenever landing-page typography changes; navigation must not shift
+  between routes.
 - Rebuild current screenshots and launch assets when the visible product changes materially; July 18 assets remain historical only.
 - Treat the North Signal name as the editorial briefing. Call the visual symbol the Directional N even where legacy filenames retain `north-signal-mark`.
 - Keep evidence confidence and uncertainty visually distinct. Brand polish must never make an assessment appear more certain than its sources.
@@ -110,6 +113,8 @@ action or a short piece of meaning.
 
 - Barlow: headlines, metrics, navigation, and concise labels.
 - Inter: body copy, forms, tables, evidence, and long-form reading.
+- The shared public header owns its Barlow typography explicitly. Route-level
+  wrappers must not change the navigation face or weight through inheritance.
 - Rounded geometry remains part of the identity, generally 12 to 18 pixels.
 - Pills are used for filters, status labels, selected concepts, social actions,
   and compact directional calls to action. Major editorial actions remain

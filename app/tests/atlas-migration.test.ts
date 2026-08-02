@@ -655,6 +655,9 @@ describe("public atlas database foundation", () => {
       authenticated_publish: boolean;
       anon_research_publish: boolean;
       authenticated_research_publish: boolean;
+      anon_refresh_helper: boolean;
+      authenticated_refresh_helper: boolean;
+      service_refresh_helper: boolean;
       client_candidate_id: string | null;
       reviewer_rationale: string | null;
     }>(`
@@ -666,6 +669,9 @@ describe("public atlas database foundation", () => {
         has_function_privilege('authenticated', 'public.publish_reviewed_organization_candidates(uuid[], uuid)', 'execute') as authenticated_publish,
         has_function_privilege('anon', 'public.publish_reviewed_research_candidates(uuid[], uuid)', 'execute') as anon_research_publish,
         has_function_privilege('authenticated', 'public.publish_reviewed_research_candidates(uuid[], uuid)', 'execute') as authenticated_research_publish,
+        has_function_privilege('anon', 'private.refresh_candidate_baseline_text(text, jsonb)', 'execute') as anon_refresh_helper,
+        has_function_privilege('authenticated', 'private.refresh_candidate_baseline_text(text, jsonb)', 'execute') as authenticated_refresh_helper,
+        has_function_privilege('service_role', 'private.refresh_candidate_baseline_text(text, jsonb)', 'execute') as service_refresh_helper,
         (
           select data_type from information_schema.columns
           where table_schema = 'public' and table_name = 'candidate_changes' and column_name = 'client_candidate_id'
@@ -683,6 +689,9 @@ describe("public atlas database foundation", () => {
       authenticated_publish: true,
       anon_research_publish: false,
       authenticated_research_publish: true,
+      anon_refresh_helper: false,
+      authenticated_refresh_helper: false,
+      service_refresh_helper: true,
       client_candidate_id: "text",
       reviewer_rationale: "text"
     });

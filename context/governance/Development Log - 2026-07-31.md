@@ -14,6 +14,27 @@ The final design pass preserves the bounded 480-pixel maritime hero, highlighted
 
 Ask True North now defaults to `gpt-5.6-luna`. A controlled live structured-output call passed with the existing Responses API contract, low reasoning effort, known-record boundary, deterministic preselection and deterministic fallback unchanged. No new index, web tool, saved model response, database migration, or publication path was introduced.
 
+### August 2 shared-brand and research-intake repair
+
+- The shared public header now owns the approved Barlow navigation typography.
+  Landing, map, and public detail routes no longer depend on route-wrapper
+  inheritance, so the navigation face, size, and weight remain stable between
+  pages.
+- `content/brand/True North Map Brand System.md` remains the single canonical
+  brand document. The obsolete April COVE brand audit was removed; approved
+  source artwork and historical evidence assets were retained.
+- Refresh staging was failing closed because the trusted `service_role` intake
+  called the private immutable baseline parser through a trigger without the
+  parser's execute privilege. Migration
+  `20260802154301_grant_refresh_staging_helper_to_service_role.sql` grants only
+  that function to `service_role`; `anon` and `authenticated` remain denied,
+  and review, approval, publication, and canonical-record authority are
+  unchanged.
+- The validated North Vector Dynamics refresh was then staged through
+  `public.stage_research_candidates_for_review`. Production verification found
+  one pending refresh card with eight proposed operations. No candidate was
+  accepted or published.
+
 The first production smoke exposed `DYNAMIC_SERVER_USAGE` on dossier routes because the new safe `returnTo` query state was being read inside their earlier on-demand static rendering contract. Organization and capability dossiers now render dynamically while their bounded record loaders retain the existing five-minute server cache. This preserves safe map context without loading the national snapshot or allowing a query-dependent page to enter the static cache.
 
 ## August 1 local UX candidate

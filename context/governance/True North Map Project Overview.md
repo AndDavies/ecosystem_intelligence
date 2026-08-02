@@ -88,6 +88,12 @@ Research agents may find leads, assemble candidate changes, suggest a technology
 
 The complete research design uses seven stages: claim-led coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. Every new run prepares an intelligence-requirement collection plan, records atomic claims and conflicts, and completes dossier coverage before the ordinary Admin Review intake. The canonical skill implementations remain intentionally local and ignored. A clean public checkout must still contain the compatible executable schema, commands, migrations, tests, and deployed Admin Review and Publish support before a skill can stage its output. This distinction prevents local capability from being mistaken for deployed authority.
 
+Refresh intake remains a security-invoker path. The trusted `service_role`
+worker may execute the public staging RPC and the private immutable baseline
+parser invoked by its validation trigger. No public or signed-in browser role
+may execute either intake path, and this narrow dependency grants no review,
+approval, publication, or canonical-record authority.
+
 Demand Signals have an additional public-source gate. A published signal needs an HTTPS canonical released source, issuing authority, source locator, relevant excerpt, at least one public problem statement, a reviewer confirmation, and linked public evidence. Public demand pages and demand-match suggestions exclude a signal that no longer satisfies that gate; it is retained privately for completion rather than deleted.
 
 ## Terms and language map

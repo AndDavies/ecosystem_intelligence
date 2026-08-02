@@ -14,6 +14,7 @@ describe("guided public landing", () => {
     expect(map).toContain('export const dynamic = "force-dynamic"');
     expect(header).toContain('{ href: "/map", label: "Map"');
     expect(header).toContain('<Link href="/"');
+    expect(header).toContain("font-[family-name:var(--font-barlow)]");
     expect(middleware).toContain("legacyAtlasParameters");
     expect(middleware).toContain('destination.pathname = "/map"');
   });

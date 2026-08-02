@@ -98,6 +98,16 @@ describe("admin publication workflow", () => {
     expect(hardening).not.toContain("using errcode = '40001'");
   });
 
+  it("grants the trusted staging worker only the private refresh baseline parser it invokes", async () => {
+    const migration = await readFile(path.resolve("supabase/migrations/20260802154301_grant_refresh_staging_helper_to_service_role.sql"), "utf8");
+
+    expect(migration).toContain("grant execute on function private.refresh_candidate_baseline_text(text, jsonb)");
+    expect(migration).toContain("to service_role");
+    expect(migration).toContain("from public, anon, authenticated");
+    expect(migration).not.toContain("security definer");
+    expect(migration).not.toContain("public.stage_research_candidates_for_review");
+  });
+
   it("lets reviewers enrich complete typed candidates before accepting them", async () => {
     const reviewPage = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
