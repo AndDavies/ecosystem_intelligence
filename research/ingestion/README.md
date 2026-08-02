@@ -9,6 +9,8 @@ Commit only validated, typed artifacts that explain how a review candidate was p
 | Path | Purpose |
 | --- | --- |
 | `schema/` | Versioned file contracts for the research workflow. |
+| `collection-plans-v1/` | Intelligence requirements, named subjects, priority questions, source lanes, and stop conditions. |
+| `claim-ledgers-v1/` | Atomic claims, source independence, conflicts, candidate targets, and dossier coverage. |
 | `prospect-inventories-v1/` | Enumerated prospects and coverage selection rationale. |
 | `signal-batches-v1/` | Atomic refresh signals and dispositions. |
 | `source-leads-v2/` | Qualified, deferred, and rejected source leads. |
@@ -21,7 +23,7 @@ Keep artifacts immutable once staged. A correction or later refresh creates a ne
 
 ## Workflow safeguards
 
-Run `pnpm data:readiness`, `pnpm research:coverage`, then `pnpm research:prepare -- --trigger manual`. Complete the generated brief using the project-local skills in `.agents/skills/`, then run the recorded smoke command.
+Run `pnpm data:readiness`, `pnpm research:coverage`, then `pnpm research:prepare -- --trigger manual`. Complete the generated brief, collection plan, and claim ledger using the project-local skills in `.agents/skills/`, then run the recorded smoke command with `--collection-plan` and `--claims`.
 
 The coordinator validates live taxonomy, coverage, duplicate risk, evidence, and reviewer rationale. Validated new-record and refresh candidates enter private Admin Review only through `public.stage_research_candidates_for_review`. They never update published records or publish automatically.
 
@@ -42,6 +44,8 @@ Validate the relevant batch before committing it. Keep a research-artifact commi
 ## Contracts and validation
 
 - `research/ingestion/schema/research-run.schema.json`
+- `research/ingestion/schema/research-collection-plan-v1.schema.json`
+- `research/ingestion/schema/research-claim-ledger-v1.schema.json`
 - `research/ingestion/schema/research-signal-batch-v1.schema.json`
 - `research/ingestion/schema/source-leads-v2.schema.json`
 - `research/ingestion/schema/research-candidate-batch-v2.schema.json`

@@ -41,7 +41,7 @@
     "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "httpsUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
     "confidence": { "enum": ["high", "moderate", "needs_review"] },
-    "discoveryLane": { "enum": ["official_directory", "government_awards", "government_program", "procurement", "accelerator_cohort", "investor_portfolio", "industry_association", "conference_directory", "company_newsroom", "broad_web"] },
+    "discoveryLane": { "enum": ["official_directory", "corporate_registry", "patent_ip", "proactive_disclosure", "lobbying_registry", "government_awards", "government_program", "procurement", "accelerator_cohort", "investor_portfolio", "industry_association", "conference_directory", "company_newsroom", "technical_documentation", "customer_partner", "bilingual_web", "broad_web"] },
     "recoveryAttempt": { "type": "object", "required": ["lane", "url", "outcome"], "properties": { "lane": { "$ref": "#/$defs/discoveryLane" }, "url": { "$ref": "#/$defs/httpsUrl" }, "outcome": { "type": "string", "minLength": 20 } } },
     "organizationKind": { "enum": ["company", "accelerator", "incubator", "research_test_centre", "investor_funder", "ecosystem_organization", "government_innovation_office"] },
     "organizationCategory": { "enum": ["commercial_company", "defence_supplier", "dual_use", "venture_capital", "corporate_venture", "public_funder", "dual_use_accelerator", "ocean_technology", "university_affiliated", "test_range", "research_lab", "cluster_operator", "industry_association", "government_program_operator"] },

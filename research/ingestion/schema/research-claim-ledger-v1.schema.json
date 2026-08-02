@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://truenorthmap.ca/schemas/research-claim-ledger-v1.schema.json",
+  "title": "True North Map OSINT Claim Ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "ledgerId", "runId", "createdAt", "completedAt", "status", "claims", "subjects", "warnings"],
+  "properties": {
+    "schemaVersion": { "const": "research_claim_ledger_v1" },
+    "ledgerId": { "$ref": "#/$defs/slug" },
+    "runId": { "$ref": "#/$defs/slug" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "completedAt": { "type": ["string", "null"], "format": "date-time" },
+    "status": { "enum": ["collecting", "complete"] },
+    "claims": { "type": "array", "maxItems": 500, "items": { "$ref": "#/$defs/claim" } },
+    "subjects": { "type": "array", "maxItems": 75, "items": { "$ref": "#/$defs/subject" } },
+    "warnings": { "type": "array", "maxItems": 100, "items": { "type": "string", "minLength": 10 } }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "httpsUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "coverageDimension": { "enum": ["identity_ownership", "canadian_presence", "offering_mandate", "technical_specifications", "maturity_deployment", "customers_contracts_programs", "procurement_demand", "partnerships_financing", "public_contacts", "current_activity", "source_diversity", "contradictions"] },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claimId", "subjectId", "subjectType", "predicate", "value", "unit", "material", "temporal", "source", "status", "independentClaimIds", "contradictsClaimIds", "supersedesClaimIds", "disposition", "candidateTargets", "analystNote"],
+      "properties": {
+        "claimId": { "$ref": "#/$defs/slug" },
+        "subjectId": { "$ref": "#/$defs/slug" },
+        "subjectType": { "enum": ["organization", "technology", "demand", "signal", "program", "relationship"] },
+        "predicate": { "type": "string", "minLength": 3 },
+        "value": { "type": "string", "minLength": 1 },
+        "unit": { "type": ["string", "null"] },
+        "material": { "type": "boolean" },
+        "temporal": { "type": "object", "required": ["observedAt", "publishedAt", "effectiveFrom", "effectiveTo"] },
+        "source": { "type": "object", "required": ["sourceId", "originalUrl", "canonicalUrl", "locator", "sourceChannel", "sourceFamily", "sourcePosture", "independenceKey"], "properties": { "originalUrl": { "$ref": "#/$defs/httpsUrl" }, "canonicalUrl": { "$ref": "#/$defs/httpsUrl" } } },
+        "status": { "enum": ["supported", "corroborated", "conflicted", "superseded", "discovery_only", "unresolved"] },
+        "independentClaimIds": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
+        "contradictsClaimIds": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
+        "supersedesClaimIds": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
+        "disposition": { "enum": ["candidate_field", "review_warning", "deferred_backlog", "rejected"] },
+        "candidateTargets": { "type": "array", "items": { "type": "object", "required": ["candidateId", "fieldPath", "operationId"] } },
+        "analystNote": { "type": "string", "minLength": 10 }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subjectId", "subjectType", "name", "candidateIds", "coverage", "saturation"],
+      "properties": {
+        "subjectId": { "$ref": "#/$defs/slug" },
+        "subjectType": { "enum": ["organization", "technology", "demand", "signal", "program", "relationship"] },
+        "name": { "type": "string", "minLength": 2 },
+        "candidateIds": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
+        "coverage": { "type": "array", "minItems": 12, "maxItems": 12, "items": { "type": "object", "required": ["dimension", "status", "claimIds", "attempts", "note"], "properties": { "dimension": { "$ref": "#/$defs/coverageDimension" }, "status": { "enum": ["covered", "partial", "not_found", "not_applicable"] }, "claimIds": { "type": "array" }, "attempts": { "type": "array" }, "note": { "type": "string", "minLength": 10 } } } },
+        "saturation": { "type": "object", "required": ["additionalSearchYield", "newClaimsFromLastTwoLanes", "stopReason"] }
+      }
+    }
+  }
+}

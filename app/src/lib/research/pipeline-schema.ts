@@ -74,6 +74,10 @@ const httpsUrlSchema = z.string().url().startsWith("https://");
 const confidenceSchema = z.enum(["high", "moderate", "needs_review"]);
 const discoveryLaneSchema = z.enum([
   "official_directory",
+  "corporate_registry",
+  "patent_ip",
+  "proactive_disclosure",
+  "lobbying_registry",
   "government_awards",
   "government_program",
   "procurement",
@@ -82,6 +86,9 @@ const discoveryLaneSchema = z.enum([
   "industry_association",
   "conference_directory",
   "company_newsroom",
+  "technical_documentation",
+  "customer_partner",
+  "bilingual_web",
   "broad_web"
 ]);
 export const signalSourceChannelValues = [
@@ -109,6 +116,222 @@ export const signalTypeValues = [
 const signalSourceChannelSchema = z.enum(signalSourceChannelValues);
 const signalTypeSchema = z.enum(signalTypeValues);
 const nullableDateTimeSchema = z.string().datetime().nullable();
+
+export const osintSubjectTypeValues = [
+  "organization",
+  "technology",
+  "demand",
+  "signal",
+  "program",
+  "relationship"
+] as const;
+
+export const osintCoverageDimensionValues = [
+  "identity_ownership",
+  "canadian_presence",
+  "offering_mandate",
+  "technical_specifications",
+  "maturity_deployment",
+  "customers_contracts_programs",
+  "procurement_demand",
+  "partnerships_financing",
+  "public_contacts",
+  "current_activity",
+  "source_diversity",
+  "contradictions"
+] as const;
+
+export const osintCollectionLaneValues = [
+  "official_site",
+  "technical_documents",
+  "corporate_registry",
+  "patent_ip",
+  "government_procurement",
+  "proactive_disclosure",
+  "customer_partner_program",
+  "industry_publication",
+  "ecosystem_directory",
+  "authenticated_discovery_feed",
+  "bilingual_public_web"
+] as const;
+
+const osintSubjectTypeSchema = z.enum(osintSubjectTypeValues);
+const osintCoverageDimensionSchema = z.enum(osintCoverageDimensionValues);
+const osintCollectionLaneSchema = z.enum(osintCollectionLaneValues);
+const osintSourcePostureSchema = z.enum(["evidence_anchor", "strong_corroboration", "discovery_only"]);
+
+export const researchCollectionPlanV1Schema = z.object({
+  schemaVersion: z.literal("research_collection_plan_v1"),
+  planId: slugSchema,
+  runId: slugSchema,
+  createdAt: z.string().datetime(),
+  status: z.enum(["active", "complete"]),
+  intelligenceRequirement: z.string().trim().min(40).max(3000),
+  targetSubjects: z.array(z.object({
+    subjectId: slugSchema,
+    subjectType: osintSubjectTypeSchema,
+    name: z.string().trim().min(2).max(240),
+    aliases: z.array(z.string().trim().min(2).max(240)).max(30),
+    canonicalIdentifiers: z.array(z.string().trim().min(2).max(500)).max(30)
+  })).max(75),
+  priorityQuestions: z.array(z.object({
+    questionId: slugSchema,
+    subjectType: osintSubjectTypeSchema,
+    question: z.string().trim().min(20).max(1000),
+    targetFieldPaths: z.array(z.string().trim().min(3).max(300)).min(1).max(20),
+    evidenceThreshold: z.enum(["one_anchor", "anchor_plus_independent_corroboration"])
+  })).min(3).max(30),
+  collectionLanes: z.array(z.object({
+    lane: osintCollectionLaneSchema,
+    purpose: z.string().trim().min(20).max(1000),
+    sourcePosture: osintSourcePostureSchema,
+    queryPatterns: z.array(z.string().trim().min(3).max(500)).min(1).max(30),
+    expectedClaims: z.array(z.string().trim().min(5).max(300)).min(1).max(20)
+  })).min(3).max(osintCollectionLaneValues.length),
+  languagePlan: z.object({
+    languages: z.array(z.enum(["en", "fr"])).min(1).max(2),
+    frenchSearchRequired: z.boolean(),
+    exceptionReason: z.string().trim().min(20).max(1000).nullable()
+  }),
+  coverageDimensions: z.array(osintCoverageDimensionSchema).length(osintCoverageDimensionValues.length),
+  stopConditions: z.array(z.string().trim().min(20).max(1000)).min(2).max(20),
+  prohibitedActions: z.array(z.enum([
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ])).min(5)
+}).superRefine((plan, context) => {
+  const unique = <T>(values: T[]) => new Set(values).size === values.length;
+  if (!unique(plan.priorityQuestions.map((question) => question.questionId))) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Collection-plan question IDs must be unique.", path: ["priorityQuestions"] });
+  }
+  if (!unique(plan.collectionLanes.map((lane) => lane.lane))) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Collection-plan lanes must be unique.", path: ["collectionLanes"] });
+  }
+  if (!unique(plan.coverageDimensions) || osintCoverageDimensionValues.some((dimension) => !plan.coverageDimensions.includes(dimension))) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Collection plan must include every OSINT coverage dimension exactly once.", path: ["coverageDimensions"] });
+  }
+  if (plan.languagePlan.frenchSearchRequired && !plan.languagePlan.languages.includes("fr")) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "French-required collection plans must include fr.", path: ["languagePlan", "languages"] });
+  }
+  if (!plan.languagePlan.frenchSearchRequired && !plan.languagePlan.exceptionReason) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "A collection plan that omits French search needs a reason.", path: ["languagePlan", "exceptionReason"] });
+  }
+});
+
+const researchClaimSchema = z.object({
+  claimId: slugSchema,
+  subjectId: slugSchema,
+  subjectType: osintSubjectTypeSchema,
+  predicate: z.string().trim().min(3).max(240),
+  value: z.string().trim().min(1).max(4000),
+  unit: z.string().trim().min(1).max(120).nullable(),
+  material: z.boolean(),
+  temporal: z.object({
+    observedAt: z.string().datetime(),
+    publishedAt: nullableDateTimeSchema,
+    effectiveFrom: nullableDateTimeSchema,
+    effectiveTo: nullableDateTimeSchema
+  }),
+  source: z.object({
+    sourceId: slugSchema,
+    originalUrl: httpsUrlSchema,
+    canonicalUrl: httpsUrlSchema,
+    locator: z.string().trim().min(2).max(500),
+    sourceChannel: signalSourceChannelSchema,
+    sourceFamily: z.string().trim().min(3).max(120),
+    sourcePosture: osintSourcePostureSchema,
+    independenceKey: z.string().trim().min(3).max(500)
+  }),
+  status: z.enum(["supported", "corroborated", "conflicted", "superseded", "discovery_only", "unresolved"]),
+  independentClaimIds: z.array(slugSchema).max(20),
+  contradictsClaimIds: z.array(slugSchema).max(20),
+  supersedesClaimIds: z.array(slugSchema).max(20),
+  disposition: z.enum(["candidate_field", "review_warning", "deferred_backlog", "rejected"]),
+  candidateTargets: z.array(z.object({
+    candidateId: slugSchema,
+    fieldPath: z.string().trim().min(3).max(300),
+    operationId: slugSchema.nullable()
+  })).max(30),
+  analystNote: z.string().trim().min(10).max(2000)
+}).superRefine((claim, context) => {
+  if (claim.source.sourcePosture === "discovery_only" && !["discovery_only", "unresolved"].includes(claim.status)) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Discovery-only sources cannot support or corroborate a field claim.", path: ["status"] });
+  }
+  if (claim.status === "corroborated" && claim.independentClaimIds.length === 0) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Corroborated claims need at least one independent claim.", path: ["independentClaimIds"] });
+  }
+  if (claim.status === "conflicted" && claim.contradictsClaimIds.length === 0) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Conflicted claims need an explicit contradiction link.", path: ["contradictsClaimIds"] });
+  }
+  if (claim.status === "superseded" && claim.supersedesClaimIds.length === 0) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Superseded claims need an explicit supersession link.", path: ["supersedesClaimIds"] });
+  }
+  if (claim.disposition === "candidate_field" && claim.candidateTargets.length === 0) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Candidate-field claims need a candidate target.", path: ["candidateTargets"] });
+  }
+  if (claim.material && claim.candidateTargets.length === 0 && !["review_warning", "deferred_backlog", "rejected"].includes(claim.disposition)) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Every material claim needs a candidate target or explicit non-field disposition.", path: ["disposition"] });
+  }
+});
+
+export const researchClaimLedgerV1Schema = z.object({
+  schemaVersion: z.literal("research_claim_ledger_v1"),
+  ledgerId: slugSchema,
+  runId: slugSchema,
+  createdAt: z.string().datetime(),
+  completedAt: nullableDateTimeSchema,
+  status: z.enum(["collecting", "complete"]),
+  claims: z.array(researchClaimSchema).max(500),
+  subjects: z.array(z.object({
+    subjectId: slugSchema,
+    subjectType: osintSubjectTypeSchema,
+    name: z.string().trim().min(2).max(240),
+    candidateIds: z.array(slugSchema).max(20),
+    coverage: z.array(z.object({
+      dimension: osintCoverageDimensionSchema,
+      status: z.enum(["covered", "partial", "not_found", "not_applicable"]),
+      claimIds: z.array(slugSchema).max(100),
+      attempts: z.array(z.string().trim().min(10).max(1000)).max(20),
+      note: z.string().trim().min(10).max(1000)
+    })).length(osintCoverageDimensionValues.length),
+    saturation: z.object({
+      additionalSearchYield: z.enum(["high", "medium", "low", "zero"]),
+      newClaimsFromLastTwoLanes: z.number().int().min(0).max(500),
+      stopReason: z.string().trim().min(20).max(1000)
+    })
+  })).max(75),
+  warnings: z.array(z.string().trim().min(10).max(1000)).max(100)
+}).superRefine((ledger, context) => {
+  const claimIds = new Set(ledger.claims.map((claim) => claim.claimId));
+  if (claimIds.size !== ledger.claims.length) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Claim IDs must be unique.", path: ["claims"] });
+  }
+  ledger.claims.forEach((claim, index) => {
+    for (const linkedId of [...claim.independentClaimIds, ...claim.contradictsClaimIds, ...claim.supersedesClaimIds]) {
+      if (!claimIds.has(linkedId)) context.addIssue({ code: z.ZodIssueCode.custom, message: `Claim ${claim.claimId} links to missing claim ${linkedId}.`, path: ["claims", index] });
+    }
+  });
+  ledger.subjects.forEach((subject, subjectIndex) => {
+    const dimensions = subject.coverage.map((item) => item.dimension);
+    if (new Set(dimensions).size !== dimensions.length || osintCoverageDimensionValues.some((dimension) => !dimensions.includes(dimension))) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: `Subject ${subject.subjectId} must assess every coverage dimension exactly once.`, path: ["subjects", subjectIndex, "coverage"] });
+    }
+    subject.coverage.forEach((item, coverageIndex) => {
+      if (["covered", "partial"].includes(item.status) && item.claimIds.length === 0) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "Covered or partial dimensions need claim IDs.", path: ["subjects", subjectIndex, "coverage", coverageIndex, "claimIds"] });
+      }
+      if (item.claimIds.some((claimId) => !claimIds.has(claimId))) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "Coverage references a missing claim.", path: ["subjects", subjectIndex, "coverage", coverageIndex, "claimIds"] });
+      }
+    });
+  });
+  if (ledger.status === "complete" && !ledger.completedAt) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Completed claim ledgers need completedAt.", path: ["completedAt"] });
+  }
+});
 
 const sourceSchema = z.object({
   id: slugSchema,
@@ -365,6 +588,25 @@ const relationshipSchema = z.object({
   publicSummary: z.string().trim().min(40).max(4000)
 });
 
+const candidateLogoSchema = z.discriminatedUnion("status", [
+  z.object({
+    status: z.enum(["ready", "review_required"]),
+    confidence: z.enum(["high", "medium"]),
+    sourcePageUrl: httpsUrlSchema,
+    sourceAssetUrl: httpsUrlSchema,
+    selectionMethod: z.string().trim().min(2).max(240),
+    sourceChecksum: z.string().regex(/^[a-f0-9]{64}$/),
+    normalizedChecksum: z.string().regex(/^[a-f0-9]{64}$/),
+    packetPath: z.string().trim().min(5).max(1000),
+    note: z.string().trim().min(10).max(1000)
+  }),
+  z.object({
+    status: z.literal("not_found"),
+    checkedAt: z.string().datetime(),
+    note: z.string().trim().min(1).max(1000)
+  })
+]);
+
 const candidateCommon = {
   candidateId: slugSchema,
   sourceLeadIds: z.array(slugSchema).min(1),
@@ -405,7 +647,8 @@ export const organizationBundleV2Schema = z.object({
   }),
   capabilities: z.array(capabilitySchema).max(10),
   programs: z.array(programSchema).max(20),
-  relationships: z.array(relationshipSchema).max(50)
+  relationships: z.array(relationshipSchema).max(50),
+  candidateLogo: candidateLogoSchema.optional()
 }).superRefine((candidate, context) => {
   const normalizedAliases = new Map<string, string>();
   candidate.organization.aliases.forEach((alias, index) => {
@@ -654,11 +897,31 @@ export const researchSignalBatchV1Schema = z.object({
       issuer: z.string().trim().min(2).max(240).nullable(),
       eventDate: z.string().date().nullable(),
       amount: z.string().trim().min(1).max(120).nullable(),
-      details: z.string().trim().min(30).max(4000)
+      details: z.string().trim().min(30).max(4000),
+      observedAt: z.string().datetime().optional(),
+      effectiveDate: z.string().date().nullable().optional(),
+      actors: z.array(z.object({
+        name: z.string().trim().min(2).max(240),
+        role: z.enum(["issuer", "buyer", "supplier", "partner", "funder", "recipient", "operator", "other"])
+      })).max(30).optional(),
+      procurement: z.object({
+        noticeId: z.string().trim().min(2).max(240).nullable(),
+        contractId: z.string().trim().min(2).max(240).nullable(),
+        stage: z.enum(["forecast", "planned", "open", "amended", "awarded", "cancelled", "closed"]).nullable(),
+        amendmentNumber: z.string().trim().min(1).max(120).nullable(),
+        buyer: z.string().trim().min(2).max(240).nullable(),
+        supplier: z.string().trim().min(2).max(240).nullable(),
+        value: z.string().trim().min(1).max(120).nullable(),
+        currency: z.string().trim().length(3).nullable(),
+        closingAt: nullableDateTimeSchema
+      }).optional(),
+      changeSummary: z.string().trim().min(20).max(2000).optional()
     }),
     redirectUrls: z.array(httpsUrlSchema).max(20),
     canonicalUrls: z.array(httpsUrlSchema).max(20),
     signalType: signalTypeSchema,
+    sourceClusterId: slugSchema.optional(),
+    supersedesSignalIds: z.array(slugSchema).max(20).optional(),
     canonicalEvidenceStatus: z.enum(["resolved", "unresolved", "not_required_duplicate"]),
     liveEntityMatches: z.array(targetMatchSchema).max(10),
     intendedOutcomes: z.array(z.enum(["new_record", "organization_refresh", "demand_refresh", "demand_match", "deferred"])).min(1),
@@ -742,6 +1005,7 @@ export const researchRunSchema = z.object({
     score: z.number().int().min(0).max(1000)
   }),
   status: z.enum(["queued", "running", "completed", "failed", "stopped"]),
+  osintArtifactsRequired: z.boolean().optional(),
   startedAt: z.string().datetime(),
   completedAt: z.string().datetime().nullable(),
   limits: z.object({
@@ -771,7 +1035,10 @@ export const researchRunSchema = z.object({
     candidatesAmber: z.number().int().min(0).optional(),
     signalsExtracted: z.number().int().min(0).max(50).optional(),
     signalsDispositioned: z.number().int().min(0).max(50).optional(),
-    sourceFamiliesSearched: z.number().int().min(0).max(8).optional()
+    sourceFamiliesSearched: z.number().int().min(0).max(8).optional(),
+    claimsCollected: z.number().int().min(0).max(500).optional(),
+    claimsConflicted: z.number().int().min(0).max(500).optional(),
+    coverageSubjects: z.number().int().min(0).max(75).optional()
   }),
   underTargetReason: z.string().trim().min(20).max(2000).nullable().optional(),
   exhaustionEvidence: z.object({
@@ -788,8 +1055,11 @@ export const researchRunSchema = z.object({
   errors: z.array(z.string()),
   stopReason: z.string().trim().min(3).max(1000).nullable(),
   outputs: z.object({
+    collectionPlan: z.string().nullable().optional(),
+    claimLedger: z.string().nullable().optional(),
     prospectInventory: z.string().nullable().optional(),
     signalBatch: z.string().nullable().optional(),
+    candidateLogoPacket: z.string().nullable().optional(),
     sourceLeadBatch: z.string().nullable(),
     candidateBatch: z.string().nullable(),
     reviewPacket: z.string().nullable(),
@@ -798,6 +1068,8 @@ export const researchRunSchema = z.object({
 });
 
 export type SourceLeadBatchV2 = z.infer<typeof sourceLeadBatchV2Schema>;
+export type ResearchCollectionPlanV1 = z.infer<typeof researchCollectionPlanV1Schema>;
+export type ResearchClaimLedgerV1 = z.infer<typeof researchClaimLedgerV1Schema>;
 export type ResearchProspectInventoryV1 = z.infer<typeof researchProspectInventoryV1Schema>;
 export type OrganizationBundleV2 = z.infer<typeof organizationBundleV2Schema>;
 export type DemandSignalBundleV1 = z.infer<typeof demandSignalBundleV1Schema>;
@@ -818,6 +1090,9 @@ export function reviewCandidateIntakeIssues(candidate: ReviewCandidate) {
 
 export function researchRunCompletionIssues(run: ResearchRun) {
   const errors: string[] = [];
+  if (run.status === "completed" && run.osintArtifactsRequired && (!run.outputs.collectionPlan || !run.outputs.claimLedger)) {
+    errors.push(`Run ${run.runId} requires a collection plan and claim ledger before completion.`);
+  }
   const minimumCandidates = run.limits.minimumCandidates ?? 1;
   const targetCandidates = run.limits.targetCandidates ?? minimumCandidates;
   const minimumProspects = run.limits.minimumProspects ?? 1;

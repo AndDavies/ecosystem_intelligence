@@ -24,6 +24,11 @@ For Global Source Book work, keep building the address book. Do not stop at an a
 - `standards_body`
 - `industry_association`
 - `official_report`
+- `corporate_registry`
+- `patent_ip`
+- `proactive_disclosure`
+- `technical_documentation`
+- `customer_partner_program`
 
 ## Source Rules
 
@@ -39,6 +44,7 @@ For Global Source Book work, keep building the address book. Do not stop at an a
 
 - `discovery_batch`: enumerate 40-75 unique prospects across at least six lanes before deep qualification; target 10 review candidates and require eight unless concrete exhaustion is recorded.
 - `deep_dossier`: research 1-5 named organizations across at least three complementary lanes; prioritize portfolio depth and field evidence.
+- Every newly prepared mode completes its generated `research_collection_plan_v1` and maintains `research_claim_ledger_v1`; source leads and candidates are outputs of that claim-led work, not substitutes for it.
 
 ## Source Ranking
 
@@ -55,9 +61,16 @@ Use at least six in a broad run:
 - accelerator cohorts and investor portfolios
 - industry associations and conference or exhibitor directories
 - company newsrooms and partner pages
+- official sitemaps, documentation portals, PDFs, datasheets, and manuals
+- corporate registry and patent/IP searches using legal names, aliases, parents, subsidiaries, and assignees
+- proactive disclosure plus procurement notice, contract, amendment, award, cancellation, and closure searches
+- customer, prime, integrator, exercise, trial, program, and funding pages
+- English/French public-web and government terminology variants
 - broad web search used to resolve canonical sources
 
 Record every prospect as selected, queued, duplicate, or rejected. Queue plausible unused prospects for the next run.
+
+Record every material source assertion as an atomic claim with original and canonical URLs, locator, date, units, source-independence key, conflict or supersession links, and candidate target or backlog disposition. Syndicated copies of one announcement remain one source family. Social and newsletter discoveries never become candidate evidence without a durable resolved source.
 
 ## Evidence Recovery
 

@@ -139,6 +139,29 @@ describe("autonomous ecosystem research schemas", () => {
     expect(organizationBundleV2Schema.safeParse(investor).success).toBe(false);
   });
 
+  it("keeps private candidate-logo provenance inside the organization contract", () => {
+    const candidate = organizationCandidate("company");
+    Object.assign(candidate, {
+      candidateLogo: {
+        status: "ready",
+        confidence: "high",
+        sourcePageUrl: "https://sample.ca",
+        sourceAssetUrl: "https://sample.ca/assets/logo.svg",
+        selectionMethod: "official-site image discovery",
+        sourceChecksum: "a".repeat(64),
+        normalizedChecksum: "b".repeat(64),
+        packetPath: "research/ingestion/local/candidate-logos/sample/logo.source.json",
+        note: "Official mark retained in the private candidate packet."
+      }
+    });
+    const parsed = organizationBundleV2Schema.parse(candidate);
+    expect(parsed.candidateLogo?.status).toBe("ready");
+
+    const incomplete = structuredClone(candidate) as typeof candidate & { candidateLogo: Record<string, unknown> };
+    delete incomplete.candidateLogo.sourceChecksum;
+    expect(organizationBundleV2Schema.safeParse(incomplete).success).toBe(false);
+  });
+
   it("rejects organization candidates that cannot be published to the Canadian map", () => {
     const withoutCoordinates = structuredClone(organizationCandidate("company"));
     const incompleteLocation = withoutCoordinates.organization.primaryLocation as {

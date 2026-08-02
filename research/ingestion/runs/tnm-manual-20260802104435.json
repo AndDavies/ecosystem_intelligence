@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260802104435",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-02T10:44:35.937Z",
+  "completedAt": "2026-08-02T11:02:50.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "site:northvectordynamics.com \"North Vector Dynamics\"",
+    "site:northvectordynamics.com CM-70 OR CI-60 OR SHIELD OR ARCTOS",
+    "\"North Vector Dynamics\" technical specifications CM-70 CI-60 SHIELD",
+    "site:ourcommons.ca \"North Vector Dynamics\"",
+    "site:search.open.canada.ca \"North Vector Dynamics\"",
+    "site:canada.ca \"North Vector Dynamics\" DRDC OR IDEaS",
+    "\"North Vector Dynamics\" contrat RDDC OR IDEeS",
+    "\"North Vector Dynamics\" Convergence MIL-V",
+    "\"North Vector Dynamics\" DRDC propulsion",
+    "site:one9.ca \"North Vector Dynamics\"",
+    "\"North Vector Dynamics\" Calgary CityNews Janes BetaKit",
+    "\"North Vector Dynamics\" systèmes anti-drones OR contre-UAS",
+    "\"North Vector Dynamics\" patent OR brevet",
+    "site:linkedin.com/company/northvectordynamics CM-70 OR CI-60 OR SHIELD"
+  ],
+  "counters": {
+    "sourcesChecked": 16,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 7,
+    "sourceLanesSearched": 7,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0,
+    "claimsCollected": 17,
+    "claimsConflicted": 1,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "CM-70 current product-page specifications differ from a dated May 2026 Janes report; proposed values use the current official page and preserve the conflict for review.",
+      "Tech Horizons and CSG financing remains discovery-only because a durable company or investor source was not recovered.",
+      "ARCTOS is marked coming soon and remains a deferred product watch item rather than a capability candidate.",
+      "The Convergence MIL-V relationship is a prototype-integration report, not evidence of Canadian Armed Forces procurement, contract, customer status, or operational deployment."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the named-company deep dossier: one existing published record was matched intentionally, its current official product portfolio and public relationships were assessed across seven complementary lanes, and one additive refresh candidate was prepared for private human review.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260802104435.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260802104435.json",
+    "prospectInventory": null,
+    "signalBatch": null,
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260802104435.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260802104435.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260802104435.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260802104435.json"
+  }
+}

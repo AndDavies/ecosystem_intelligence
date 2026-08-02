@@ -31,6 +31,36 @@
     "source": { "type": "object", "required": ["id", "title", "url", "publisher", "sourceKind", "publishedAt", "accessedAt", "locator", "summary"] },
     "fieldEvidence": { "type": "object", "required": ["id", "sourceId", "fieldPath", "claimClass", "excerpt", "confidence"] },
     "duplicateCheck": { "type": "object", "required": ["status", "checkedAt", "methods", "matches", "note"], "properties": { "status": { "enum": ["clear", "possible_match", "exact_duplicate"] } } },
+    "candidateLogo": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "confidence", "sourcePageUrl", "sourceAssetUrl", "selectionMethod", "sourceChecksum", "normalizedChecksum", "packetPath", "note"],
+          "properties": {
+            "status": { "enum": ["ready", "review_required"] },
+            "confidence": { "enum": ["high", "medium"] },
+            "sourcePageUrl": { "$ref": "#/$defs/httpsUrl" },
+            "sourceAssetUrl": { "$ref": "#/$defs/httpsUrl" },
+            "selectionMethod": { "type": "string", "minLength": 2, "maxLength": 240 },
+            "sourceChecksum": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "normalizedChecksum": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "packetPath": { "type": "string", "minLength": 5, "maxLength": 1000 },
+            "note": { "type": "string", "minLength": 10, "maxLength": 1000 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "checkedAt", "note"],
+          "properties": {
+            "status": { "const": "not_found" },
+            "checkedAt": { "type": "string", "format": "date-time" },
+            "note": { "type": "string", "minLength": 1, "maxLength": 1000 }
+          }
+        }
+      ]
+    },
     "publicationLocation": {
       "type": "object",
       "additionalProperties": false,
@@ -74,7 +104,8 @@
             "organization": { "type": "object", "required": ["slug", "name", "legalName", "aliases", "description", "websiteUrl", "entityKind", "categories", "primaryLocation", "profileData"], "properties": { "primaryLocation": { "$ref": "#/$defs/publicationLocation" } } },
             "capabilities": { "type": "array" },
             "programs": { "type": "array" },
-            "relationships": { "type": "array" }
+            "relationships": { "type": "array" },
+            "candidateLogo": { "$ref": "#/$defs/candidateLogo" }
           }
         }
       ]

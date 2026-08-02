@@ -1,0 +1,808 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260802104435-claim-ledger",
+  "runId": "tnm-manual-20260802104435",
+  "createdAt": "2026-08-02T10:44:35.937Z",
+  "completedAt": "2026-08-02T10:58:40.000Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-nvd-profile-portfolio",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "current company identity and portfolio scope",
+      "value": "North Vector Dynamics is a Calgary, Canadian-owned and controlled defence technology company specializing in precision interception, autonomy, and advanced propulsion, with current work spanning counter-UAS solutions and hypersonics.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-company-profile",
+        "originalUrl": "https://www.northvectordynamics.com/about-us",
+        "canonicalUrl": "https://www.northvectordynamics.com/about-us",
+        "locator": "About and company-scope sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/about-us"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.set-nvd-profile-data.after.portfolioScope",
+          "operationId": "set-nvd-profile-data"
+        }
+      ],
+      "analystNote": "The current company profile supports the bounded identity and portfolio statement. It does not support claimed fielding, procurement, or named customers."
+    },
+    {
+      "claimId": "claim-nvd-profile-contact",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "public organization contact route",
+      "value": "North Vector publishes contact@northvectordynamics.com and a Calgary telephone number for public inquiries and media requests.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-company-profile",
+        "originalUrl": "https://www.northvectordynamics.com/about-us",
+        "canonicalUrl": "https://www.northvectordynamics.com/about-us",
+        "locator": "Public contact section",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/about-us"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.set-nvd-profile-data.after.publicContact",
+          "operationId": "set-nvd-profile-data"
+        }
+      ],
+      "analystNote": "Only organization-level public contact information is recorded; no personal contact data or unverified addresses are proposed."
+    },
+    {
+      "claimId": "claim-nvd-current-activity",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "current public research activity",
+      "value": "North Vector states that DRDC awarded it a four-year C$4.2M contract to advance propulsion and hypersonic technologies, while the official site currently presents CM-70, CI-60 counter-UAS, CI-60 Target, and SHIELD product pages.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": "2025-08-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-drdc-hypersonic-news",
+        "originalUrl": "https://www.northvectordynamics.com/post/north-vector-dynamics-secures-4-2-million-contract-with-national-defence-for-hypersonic-propulsion",
+        "canonicalUrl": "https://www.northvectordynamics.com/post/north-vector-dynamics-secures-4-2-million-contract-with-national-defence-for-hypersonic-propulsion",
+        "locator": "Announcement text dated August 23, 2025",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/post/hypersonic-propulsion-contract"
+      },
+      "status": "corroborated",
+      "independentClaimIds": [
+        "claim-nvd-drdc-independent"
+      ],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.set-nvd-profile-data.after.currentActivity",
+          "operationId": "set-nvd-profile-data"
+        }
+      ],
+      "analystNote": "The profile update identifies publicly reported research and current company portfolio coverage, not a government procurement or an operational deployment."
+    },
+    {
+      "claimId": "claim-nvd-ideas-boundary",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "IDEaS concept-development contribution",
+      "value": "The Government of Canada records a DND IDEaS Concept Development contribution of up to C$2M to North Vector Dynamics Inc., operating as Think Solutions Engineering, for a low-cost aerial counter-UAS platform through September 2027.",
+      "unit": "CAD",
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": "2024-09-18T00:00:00.000Z",
+        "effectiveTo": "2027-09-30T00:00:00.000Z"
+      },
+      "source": {
+        "sourceId": "nvd-government-ideas",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+        "locator": "Agreement CD3-002 recipient, purpose, amount, dates, and amendment",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/CD3-002"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.set-nvd-profile-data.after.evidenceBoundary",
+          "operationId": "set-nvd-profile-data"
+        }
+      ],
+      "analystNote": "The grant record supports legal-name and funding-program context. It is not evidence of a procurement award, customer adoption, or operational deployment."
+    },
+    {
+      "claimId": "claim-nvd-cm70-current-spec",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "CM-70 current published specifications",
+      "value": "North Vector's current CM-70 product page lists 3 kg mass, 0.9 m length, 3.5 km range, 900 km/h speed, semi-active laser guidance, a forward-fragmentation warhead, and ground, vehicle, or airborne deployment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-cm70-product",
+        "originalUrl": "https://www.northvectordynamics.com/cm-70",
+        "canonicalUrl": "https://www.northvectordynamics.com/cm-70",
+        "locator": "Specifications, highlights, and tactical launcher sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/cm-70"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [
+        "claim-nvd-cm70-janes-earlier-spec"
+      ],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.update-nvd-cm70.after",
+          "operationId": "update-nvd-cm70"
+        }
+      ],
+      "analystNote": "The current official product page is used as the candidate's current specification source. A dated earlier figure set is logged separately for reviewer awareness."
+    },
+    {
+      "claimId": "claim-nvd-ci60-cuas",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "CI-60 counter-UAS product",
+      "value": "North Vector describes CI-60 counter-UAS as a 0.8 kg electric interceptor with a 0.5 m wingspan, 2 km published range, more than 225 km/h speed, 70-second endurance, onboard AI and near-IR guidance, and field-assembled rail launch for Class I drone threats.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-ci60-cuas-product",
+        "originalUrl": "https://www.northvectordynamics.com/spike-cuas",
+        "canonicalUrl": "https://www.northvectordynamics.com/spike-cuas",
+        "locator": "CI-60 counter-UAS specifications, highlights, and launch interface",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/spike-cuas"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.add-nvd-ci60-cuas.value",
+          "operationId": "add-nvd-ci60-cuas"
+        }
+      ],
+      "analystNote": "This is a distinct official product page and role from both the CI-60 Target configuration and CM-70. No deployment or procurement is inferred."
+    },
+    {
+      "claimId": "claim-nvd-ci60-target",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "CI-60 Target training system",
+      "value": "North Vector describes CI-60 Target as a 0.7 kg aerial target with a 0.5 m wingspan, 6 km published range, more than 225 km/h speed, 70-second endurance, programmable missions, and field-assembled rail launch for SHORAD and counter-UAS training.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-ci60-target-product",
+        "originalUrl": "https://www.northvectordynamics.com/spike-target",
+        "canonicalUrl": "https://www.northvectordynamics.com/spike-target",
+        "locator": "CI-60 Target specifications, threat-simulation, and training sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/spike-target"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.add-nvd-ci60-target.value",
+          "operationId": "add-nvd-ci60-target"
+        }
+      ],
+      "analystNote": "The CI-60 Target page supports a training-role record, not customer, event, or operational-use claims."
+    },
+    {
+      "claimId": "claim-nvd-shield",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "SHIELD counter-UAS system",
+      "value": "North Vector describes SHIELD as a modular VTOL counter-UAS system with hybrid-electric propulsion, EO/IR sensing and laser designation, airborne detection and tracking, 27 kg maximum take-off weight, 5-plus-hour endurance, and a 40 km telemetry range.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-shield-product",
+        "originalUrl": "https://www.northvectordynamics.com/shield-cuas",
+        "canonicalUrl": "https://www.northvectordynamics.com/shield-cuas",
+        "locator": "SHIELD platform characteristics, specifications, and system description",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/shield-cuas"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.add-nvd-shield.value",
+          "operationId": "add-nvd-shield"
+        }
+      ],
+      "analystNote": "The source supports current company-published system detail. It does not establish tested or fielded performance."
+    },
+    {
+      "claimId": "claim-nvd-drdc-company",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "DRDC hypersonic-propulsion research contract",
+      "value": "North Vector states that Defence Research and Development Canada awarded it a four-year, C$4.2M contract to advance propulsion and hypersonic technologies.",
+      "unit": "CAD",
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": "2025-08-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-drdc-hypersonic-news",
+        "originalUrl": "https://www.northvectordynamics.com/post/north-vector-dynamics-secures-4-2-million-contract-with-national-defence-for-hypersonic-propulsion",
+        "canonicalUrl": "https://www.northvectordynamics.com/post/north-vector-dynamics-secures-4-2-million-contract-with-national-defence-for-hypersonic-propulsion",
+        "locator": "Announcement text dated August 23, 2025",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/post/hypersonic-propulsion-contract"
+      },
+      "status": "corroborated",
+      "independentClaimIds": [
+        "claim-nvd-drdc-independent"
+      ],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.add-nvd-drdc-hypersonic-contract.value",
+          "operationId": "add-nvd-drdc-hypersonic-contract"
+        }
+      ],
+      "analystNote": "The program candidate preserves the claim as public research and development activity rather than treating it as a counter-UAS procurement or fielding event."
+    },
+    {
+      "claimId": "claim-nvd-drdc-independent",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "independent DRDC contract corroboration",
+      "value": "CityNews reports that North Vector will partner with DRDC to design and test propulsion concepts for vehicles capable of travelling above Mach 5 under a C$4.2M federal contract.",
+      "unit": "CAD",
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": "2025-09-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-drdc-citynews",
+        "originalUrl": "https://calgary.citynews.ca/2025/09/23/calgary-aerospace-startup/",
+        "canonicalUrl": "https://calgary.citynews.ca/2025/09/23/calgary-aerospace-startup/",
+        "locator": "Contract, DRDC partnership, design, and testing paragraphs",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "calgary.citynews.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "calgary.citynews.ca/2025/09/23/calgary-aerospace-startup"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.add-nvd-drdc-hypersonic-contract.value",
+          "operationId": "add-nvd-drdc-hypersonic-contract"
+        }
+      ],
+      "analystNote": "Independent reporting supplies corroboration of the value and design-and-test scope. It remains bounded to public research work."
+    },
+    {
+      "claimId": "claim-nvd-parliamentary-rnd",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "public parliamentary R&D statement",
+      "value": "North Vector's November 2025 parliamentary submission identifies CI-60 and CM-70 as core products and says the company is executing a four-year, C$4.2M DRDC contract for propulsion and hypersonic technologies.",
+      "unit": "CAD",
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-parliamentary-submission",
+        "originalUrl": "https://www.ourcommons.ca/Content/Committee/451/INDU/Brief/BR13796160/br-external/NorthVectorDynamics-e.pdf",
+        "canonicalUrl": "https://www.ourcommons.ca/Content/Committee/451/INDU/Brief/BR13796160/br-external/NorthVectorDynamics-e.pdf",
+        "locator": "November 2025 submission pages 1 to 2, products and current R&D",
+        "sourceChannel": "official_company",
+        "sourceFamily": "ourcommons.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "ourcommons.ca/BR13796160"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.add-nvd-drdc-hypersonic-contract.value",
+          "operationId": "add-nvd-drdc-hypersonic-contract"
+        }
+      ],
+      "analystNote": "This is a company-authored submission in an official public repository. It corroborates the reported R&D activity but is not treated as independent of the company announcement."
+    },
+    {
+      "claimId": "claim-nvd-one9-company",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "ONE9 founding-investor relationship",
+      "value": "North Vector's May 2025 release identifies ONE9 as a founding investor that helped shape the company's mission and market entry.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": "2025-06-05T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-one9-company-news",
+        "originalUrl": "https://www.northvectordynamics.com/post/north-vector-dynamics-emerges-from-stealth-to-tackle-uas-threats-with-made-in-canada-solutions",
+        "canonicalUrl": "https://www.northvectordynamics.com/post/north-vector-dynamics-emerges-from-stealth-to-tackle-uas-threats-with-made-in-canada-solutions",
+        "locator": "May 2025 announcement, Backed by Canadian Innovation Leaders section",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/post/emerges-from-stealth"
+      },
+      "status": "corroborated",
+      "independentClaimIds": [
+        "claim-nvd-one9-portfolio"
+      ],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.add-nvd-one9-investor.value",
+          "operationId": "add-nvd-one9-investor"
+        }
+      ],
+      "analystNote": "The relationship is directly stated by the company and corroborated by the investor's current portfolio. No undisclosed financing amount or ownership term is inferred."
+    },
+    {
+      "claimId": "claim-nvd-one9-portfolio",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "ONE9 current portfolio listing",
+      "value": "ONE9's current Venture portfolio lists North Vector Dynamics as a company developing advanced and cost-effective counter-uncrewed aerial systems solutions.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-one9-venture-portfolio",
+        "originalUrl": "https://www.one9.ca/venture",
+        "canonicalUrl": "https://www.one9.ca/venture",
+        "locator": "Venture investment portfolio listing",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "one9.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "one9.ca/venture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.add-nvd-one9-investor.value",
+          "operationId": "add-nvd-one9-investor"
+        }
+      ],
+      "analystNote": "The investor page independently confirms a current portfolio relationship, while terms remain undisclosed."
+    },
+    {
+      "claimId": "claim-nvd-convergence-mil-v",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "Convergence MIL-V prototype integration",
+      "value": "Ottawa Business Journal reports that North Vector Dynamics was one of Convergence Design Services' MIL-V prototype partners and supplied a precision-guided missile for the prototype vehicle.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": "2026-05-25T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-convergence-mil-v",
+        "originalUrl": "https://obj.ca/arnprior-firm-to-unveil-all-canadian-military-vehicle/",
+        "canonicalUrl": "https://obj.ca/arnprior-firm-to-unveil-all-canadian-military-vehicle/",
+        "locator": "MIL-V partner-firm and North Vector contribution paragraphs",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "obj.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "obj.ca/arnprior-mil-v"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+          "fieldPath": "operations.add-nvd-convergence-mil-v.value",
+          "operationId": "add-nvd-convergence-mil-v"
+        }
+      ],
+      "analystNote": "This is retained as a reported prototype integration relationship only. It is not a government procurement or operational deployment claim."
+    },
+    {
+      "claimId": "claim-nvd-cm70-janes-earlier-spec",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "CM-70 earlier reported specifications",
+      "value": "A May 2026 Janes article reports CM-70 as approximately 2 kg and 0.72 m with 3.5 km range and speed above 1,000 km/h, differing from the current official product page's 3 kg, 0.9 m, and 900 km/h figures.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": "2026-05-06T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-janes-cm70-2026",
+        "originalUrl": "https://www.janes.com/defence-intelligence-insights/defence-news/industry/north-vector-dynamics-aims-to-bring-missile-production-to-canada",
+        "canonicalUrl": "https://www.janes.com/defence-intelligence-insights/defence-news/industry/north-vector-dynamics-aims-to-bring-missile-production-to-canada",
+        "locator": "Product description and April 2026 executive interview",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "janes.com",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "janes.com/north-vector-missile-production"
+      },
+      "status": "conflicted",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [
+        "claim-nvd-cm70-current-spec"
+      ],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "The figure difference could reflect a product revision, different variant, or older page state. The candidate uses the current official page but requires reviewer awareness."
+    },
+    {
+      "claimId": "claim-nvd-arctos-coming-soon",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "ARCTOS product status",
+      "value": "North Vector's ARCTOS page is marked Coming soon and provides no public technical specifications or product detail sufficient for canonical capability creation.",
+      "unit": null,
+      "material": false,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-arctos-coming-soon",
+        "originalUrl": "https://www.northvectordynamics.com/arctos-m-cuas",
+        "canonicalUrl": "https://www.northvectordynamics.com/arctos-m-cuas",
+        "locator": "ARCTOS page heading and Coming soon label",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "northvectordynamics.com/arctos-m-cuas"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "This becomes a durable follow-up trail only. No capability is proposed until North Vector publishes concrete information."
+    },
+    {
+      "claimId": "claim-nvd-tech-horizons-discovery",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "unresolved Tech Horizons financing discovery",
+      "value": "A Czechoslovak Group LinkedIn post and secondary reporting indicate that Tech Horizons invested in North Vector Dynamics, but this run did not recover a durable company or investor source sufficient to create a financing field or relationship.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-02T10:53:32.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "nvd-tech-horizons-linkedin-discovery",
+        "originalUrl": "https://th.linkedin.com/company/czechoslovak-group",
+        "canonicalUrl": "https://th.linkedin.com/company/czechoslovak-group",
+        "locator": "Czechoslovak Group post referring to a Tech Horizons investment in North Vector Dynamics",
+        "sourceChannel": "linkedin_chrome",
+        "sourceFamily": "linkedin.com",
+        "sourcePosture": "discovery_only",
+        "independenceKey": "linkedin.com/company/czechoslovak-group"
+      },
+      "status": "discovery_only",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Discovery-only financial assertions are not canonical evidence. The unresolved trail is retained for a future durable investor or company announcement search."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "name": "North Vector Dynamics",
+      "candidateIds": [
+        "candidate-north-vector-dynamics-refresh-20260802"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-profile-portfolio"
+          ],
+          "attempts": [],
+          "note": "The current official profile supports Calgary presence, Canadian ownership and control, and the bounded company role; ownership terms beyond that statement are not inferred."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-profile-portfolio",
+            "claim-nvd-ideas-boundary"
+          ],
+          "attempts": [],
+          "note": "The company profile and Government of Canada contribution record independently locate the company and legal recipient in Calgary, Alberta."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-profile-portfolio",
+            "claim-nvd-cm70-current-spec",
+            "claim-nvd-ci60-cuas",
+            "claim-nvd-ci60-target",
+            "claim-nvd-shield"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes a concrete counter-UAS and air-defence portfolio with separate product roles."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-cm70-current-spec",
+            "claim-nvd-ci60-cuas",
+            "claim-nvd-ci60-target",
+            "claim-nvd-shield"
+          ],
+          "attempts": [],
+          "note": "Current official product pages provide bounded technical details for all proposed capability operations."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-nvd-current-activity",
+            "claim-nvd-drdc-company",
+            "claim-nvd-arctos-coming-soon"
+          ],
+          "attempts": [],
+          "note": "Public research activity and current product pages are established, but public evidence does not establish certification, contract delivery, or operational deployment for the proposed systems."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-drdc-company",
+            "claim-nvd-drdc-independent",
+            "claim-nvd-parliamentary-rnd",
+            "claim-nvd-ideas-boundary"
+          ],
+          "attempts": [],
+          "note": "The candidate records a separate public DRDC research contract and preserves the existing IDEaS contribution boundary without inferring customer or delivery status."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-nvd-ideas-boundary",
+            "claim-nvd-drdc-company"
+          ],
+          "attempts": [
+            "Government grant, official company news, public parliamentary record, and broad-web searches were checked for a public procurement award or named operational customer."
+          ],
+          "note": "The Government of Canada evidence supports IDEaS concept development and company-reported DRDC R&D. No candidate field represents a public procurement, requirement, or operational adoption."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-one9-company",
+            "claim-nvd-one9-portfolio",
+            "claim-nvd-convergence-mil-v",
+            "claim-nvd-tech-horizons-discovery"
+          ],
+          "attempts": [],
+          "note": "ONE9 is supported by company and investor evidence; Convergence MIL-V is a reported prototype integration; Tech Horizons remains explicitly discovery-only."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-profile-contact"
+          ],
+          "attempts": [],
+          "note": "The candidate records only organization-level public inquiry and media routes from the official website."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-current-activity",
+            "claim-nvd-drdc-company",
+            "claim-nvd-drdc-independent"
+          ],
+          "attempts": [],
+          "note": "Dated company and independent sources establish ongoing public research activity and a current official product portfolio."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-profile-portfolio",
+            "claim-nvd-cm70-current-spec",
+            "claim-nvd-drdc-independent",
+            "claim-nvd-ideas-boundary",
+            "claim-nvd-one9-portfolio",
+            "claim-nvd-convergence-mil-v"
+          ],
+          "attempts": [],
+          "note": "Official company product and news pages are complemented by a Government of Canada record, a current investor portfolio, independent local reporting, and independent partner-integration reporting."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "covered",
+          "claimIds": [
+            "claim-nvd-cm70-current-spec",
+            "claim-nvd-cm70-janes-earlier-spec"
+          ],
+          "attempts": [
+            "Official product pages, Janes, Government of Canada sources, parliamentary material, French-language search results, investor sources, and partner reporting were compared for dates, configuration changes, and unsupported claims."
+          ],
+          "note": "A dated CM-70 specification variation is explicit. The current official product page is proposed for current data and the older Janes figures are retained as a reviewer warning."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official product, company-news, government, investor, parliamentary, independent-industry, bilingual, and patent/IP lanes were searched. The final bilingual and patent/IP lanes produced no additional durable field-level evidence, while all concrete findings were either proposed, deferred, or recorded as a source conflict."
+      }
+    }
+  ],
+  "warnings": [
+    "CM-70 current product-page specifications differ from a dated May 2026 Janes report; proposed values use the current official page and preserve the conflict for review.",
+    "Tech Horizons and CSG financing remains discovery-only because a durable company or investor source was not recovered.",
+    "ARCTOS is marked coming soon and remains a deferred product watch item rather than a capability candidate.",
+    "The Convergence MIL-V relationship is a prototype-integration report, not evidence of Canadian Armed Forces procurement, contract, customer status, or operational deployment."
+  ]
+}

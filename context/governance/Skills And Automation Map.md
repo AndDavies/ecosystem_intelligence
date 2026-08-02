@@ -2,19 +2,26 @@
 
 Status: current architecture and integration map
 
-Last reviewed: 2026-07-26
+Last reviewed: 2026-07-31
+
+## Current integration state
+
+- The seven research skills, North Signal editorial skill, and visibility skill are canonical local operator systems under `.agents/skills/`. They are intentionally ignored and are not deployed with the public website.
+- The public repository carries only their approved interoperability surface: typed schemas, safe commands, tests, migrations, Admin Review and Publish support, and governance contracts.
+- The July 31 primary worktree contains active uncommitted research, visibility, Source Book, and lineage work. That does not change the production application until a deliberately selected compatible public contract is validated, committed separately, and deployed.
+- Supabase remains the only canonical queue and corpus. A local candidate, review report, issue packet, visibility report, or staging export is never evidence of a live or published state.
 
 ## Research and ingestion skill chain
 
 | Skill | Job | Primary input | Reviewable output | Authority boundary |
 | --- | --- | --- | --- | --- |
-| `tnm-autonomous-research` | Chooses live coverage gaps, prepares bounded runs, enforces limits, and coordinates handoffs | Production coverage, taxonomy, run mode | Completed run manifest and verified Admin Review intake | Coordinates only; never publishes |
+| `tnm-autonomous-research` | Chooses live gaps, prepares collection plans and claim ledgers, enforces coverage and limits, and coordinates handoffs | Production coverage, taxonomy, run mode | Completed run, collection plan, claim ledger, and verified Admin Review intake | Coordinates only; never publishes |
 | `tnm-signal-refresh` | Monitors official and discovery sources for changes to known records and public demand | Live watchlist and bounded source portfolio | Atomic signal batch plus new-record or refresh leads | Discovery feeds cannot support public fields without durable corroboration |
-| `tnm-source-discovery` | Builds broad prospect inventories and durable source leads | Source Book, official sources, government/program sources, broad discovery | Typed qualified, deferred, or rejected source leads | Qualification authorizes drafting only |
+| `tnm-source-discovery` | Builds alias sets, prospect inventories, atomic claims, and durable source leads across bilingual and specialized OSINT lanes | Collection plan, Source Book, official, registry/IP, government/program, technical, and broad discovery sources | Typed qualified, deferred, or rejected source leads plus claim lineage | Qualification authorizes drafting only |
 | `tnm-candidate-builder` | Converts every qualified lead into the supported organization, demand, or refresh bundle | Qualified lead and live duplicate/taxonomy checks | Green or amber typed private candidate | Unknown fields stay null; unsupported candidate kinds stop |
-| `tnm-evidence-mapper` | Adds field evidence, citations, source confidence, and conservative derived relevance | Typed candidate and durable sources | Traceable claims and labelled assessments | Source-backed facts remain separate from Derived Reads |
+| `tnm-evidence-mapper` | Maps ledger claims to fields, checks source independence and conflicts, completes dossier coverage, and adds conservative derived relevance | Typed candidate, claim ledger, and durable sources | Traceable claims, coverage vector, conflicts, and labelled assessments | Source-backed facts remain separate from Derived Reads |
 | `tnm-candidate-logo` | Locates an official-site logo and records private provenance for an organization candidate | Organization candidate and official website | `ready`, `review_required`, or `not_found` logo packet | No public media upload or publication during research |
-| `tnm-review-steward` | Validates schema, taxonomy, duplicates, evidence, deployed compatibility, and private intake | Complete candidate batch and run artifacts | Pending `candidate_changes` row visible in Admin Review | Stops before accept or Publish |
+| `tnm-review-steward` | Validates schema, taxonomy, duplicates, claim lineage, dossier coverage, deployed compatibility, and private intake | Complete candidate batch, collection plan, claim ledger, and run artifacts | Pending `candidate_changes` row visible in Admin Review | Stops before accept or Publish |
 
 The executable contract in `app/src/lib/research/pipeline-schema.ts` wins when prose and code differ. A clean checkout must contain the skill, its references, commands, tests, and compatible deployed application contract before that stage can be claimed operational.
 
@@ -46,27 +53,37 @@ Research files and private staging
 - Google Search Console and GA4 owned-property evidence;
 - PageSpeed and public-route technical checks;
 - Bing and Ahrefs imports;
-- explicitly capped DataForSEO validation;
+- a locally approved, explicitly capped weekly DataForSEO seed panel with 24-hour retry deduplication;
 - SEO, GEO, and AEO opportunity analysis;
 - answer quality, internal-link, and earned-link recommendations;
 - an allowlisted aggregate owner-only dashboard projection.
 
 Its local artifacts live under ignored `research/visibility/local/`. The skill does not publish content, change providers, submit indexing requests, send outreach, purchase links, or write to the public corpus. A recommended content or technical change enters the ordinary product or editorial workflow and must pass the cross-system regression contract.
 
-Visibility is an operator-only local system. Its installed skill, credentials, provider exports, query evidence, and generated reports are ignored and never form part of a public application deployment. When visibility work changes, validate it locally and promote only an approved application, content, or editorial change through the ordinary regression workflow.
+Visibility is an operator-only local system. Its installed skill, credentials, provider exports, query evidence, and generated reports are ignored and never form part of a public application deployment. Every reporting lens refreshes configured read-only providers and synchronizes a sanitized summary; the scheduled Monday run uses `visibility:validate`, preflight, and a strict refresh that fails closed for incomplete Search Console, GA4, PageSpeed, technical-sample, or configured-dashboard evidence while retaining a clearly labelled monitoring snapshot. Bing, Ahrefs, Trends, and DataForSEO remain optional contextual sources and must be marked available, partial, stale, or unavailable rather than zero. When visibility work changes, validate it locally and promote only an approved application, content, or editorial change through the ordinary regression workflow.
+
+The next enrichment layer keeps the same boundary: Search Console uses a three-day reporting cutoff and contributes bounded daily/device/country/search-appearance aggregates; GA4 contributes only consented public-route acquisition categories, public landing-path outcomes, and allowlisted interaction totals; CrUX History, Bing crawl/link data, a local Generative AI report import, and an optional operator-owned Search Console BigQuery aggregate bridge remain read-only inputs. Individual identities, raw referrers, raw queries, event parameters, and session trails never enter the owner-only dashboard.
+
+## North Signal editorial skill
+
+`tnm-north-signal` is a separate private weekly editorial workflow. It reads published production changes and reviews external discovery leads from the approved Inoreader portfolio, selected Gmail labels, and bounded web research. Every external item must resolve to its original durable source before inclusion.
+
+Its output is a private, validated issue candidate under ignored `research/north-signal/local/`. It does not modify Supabase, create public records, change subscriber consent, or create and send a MailerLite campaign. Andrew reviews the issue and manually controls delivery.
 
 ## Scheduled and manual operations
 
 | Operation | Normal cadence | Writes | Human gate |
 | --- | --- | --- | --- |
-| Broad discovery | Weekly or manual | Typed research lineage and private candidates | Review and Publish |
-| Signal refresh | Weekday or manual | Atomic signals and private refresh candidates | Review and Publish |
-| Visibility baseline or weekly report | Manual or scheduled private run | Ignored local snapshots/reports and optional sanitized owner-only summary | Product/editorial prioritization |
+| Broad discovery | Weekly or manual | Collection plan, claim ledger, typed research lineage, and private candidates | Review and Publish |
+| Signal refresh | Weekday or manual | Collection plan, claim ledger, atomic signals, and private refresh candidates | Review and Publish |
+| North Signal issue preparation | Weekly or manual | Ignored private issue packet and validation report | Andrew edits and sends through MailerLite |
+| Visibility baseline or weekly report | Manual or scheduled private run; every report lens refreshes configured read-only providers, and Monday uses strict validation plus the locally approved nine-task DataForSEO panel when standing approval is enabled | Ignored local snapshots/reports and a synchronized sanitized owner-only summary | Product/editorial prioritization; provider spend remains capped and local |
 | Privacy retention | Daily production job | Deletes expired detailed telemetry under the published retention policy | Versioned migration and release review |
 | Public launch crawl | Before release or metadata changes | Validation output only | Release owner decides go/no-go |
 
 ## Required checks
 
-- Research changes: `pnpm data:readiness`, `pnpm research:validate`, deployed research-contract compatibility, and review-card inspection.
+- Research changes: skill `quick_validate.py`, focused OSINT and pipeline tests, `pnpm data:readiness`, `pnpm research:validate`, deployed research-contract compatibility, and review-card inspection.
 - Visibility changes: `pnpm visibility:validate`, then tests, lint, and build for related application work.
+- North Signal changes: skill validation, source-registry validation, issue-packet validation, link checks, and application tests for any related signup copy or interaction changes.
 - Production releases: `pnpm release:validate`, relevant browser matrix, `/api/health`, affected public routes, deployment logs, and live database state. Research and visibility checks remain separate and are required only when those local operator systems or their tracked interoperability contracts change.

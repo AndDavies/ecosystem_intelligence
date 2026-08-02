@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://truenorthmap.ca/schemas/research-collection-plan-v1.schema.json",
+  "title": "True North Map OSINT Collection Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "planId", "runId", "createdAt", "status", "intelligenceRequirement", "targetSubjects", "priorityQuestions", "collectionLanes", "languagePlan", "coverageDimensions", "stopConditions", "prohibitedActions"],
+  "properties": {
+    "schemaVersion": { "const": "research_collection_plan_v1" },
+    "planId": { "$ref": "#/$defs/slug" },
+    "runId": { "$ref": "#/$defs/slug" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["active", "complete"] },
+    "intelligenceRequirement": { "type": "string", "minLength": 40, "maxLength": 3000 },
+    "targetSubjects": { "type": "array", "maxItems": 75, "items": { "type": "object", "required": ["subjectId", "subjectType", "name", "aliases", "canonicalIdentifiers"] } },
+    "priorityQuestions": { "type": "array", "minItems": 3, "maxItems": 30, "items": { "type": "object", "required": ["questionId", "subjectType", "question", "targetFieldPaths", "evidenceThreshold"] } },
+    "collectionLanes": { "type": "array", "minItems": 3, "maxItems": 11, "items": { "type": "object", "required": ["lane", "purpose", "sourcePosture", "queryPatterns", "expectedClaims"] } },
+    "languagePlan": { "type": "object", "required": ["languages", "frenchSearchRequired", "exceptionReason"] },
+    "coverageDimensions": { "type": "array", "minItems": 12, "maxItems": 12, "uniqueItems": true, "items": { "$ref": "#/$defs/coverageDimension" } },
+    "stopConditions": { "type": "array", "minItems": 2 },
+    "prohibitedActions": { "type": "array", "minItems": 5, "uniqueItems": true }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "coverageDimension": { "enum": ["identity_ownership", "canadian_presence", "offering_mandate", "technical_specifications", "maturity_deployment", "customers_contracts_programs", "procurement_demand", "partnerships_financing", "public_contacts", "current_activity", "source_diversity", "contradictions"] }
+  }
+}

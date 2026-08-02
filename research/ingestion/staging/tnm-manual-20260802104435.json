@@ -1,0 +1,965 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-08-02T15:49:00.253Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260802104435",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-kind:company",
+      "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-08-02T10:44:35.937Z",
+    "completed_at": "2026-08-02T11:02:50.000Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "site:northvectordynamics.com \"North Vector Dynamics\"",
+      "site:northvectordynamics.com CM-70 OR CI-60 OR SHIELD OR ARCTOS",
+      "\"North Vector Dynamics\" technical specifications CM-70 CI-60 SHIELD",
+      "site:ourcommons.ca \"North Vector Dynamics\"",
+      "site:search.open.canada.ca \"North Vector Dynamics\"",
+      "site:canada.ca \"North Vector Dynamics\" DRDC OR IDEaS",
+      "\"North Vector Dynamics\" contrat RDDC OR IDEeS",
+      "\"North Vector Dynamics\" Convergence MIL-V",
+      "\"North Vector Dynamics\" DRDC propulsion",
+      "site:one9.ca \"North Vector Dynamics\"",
+      "\"North Vector Dynamics\" Calgary CityNews Janes BetaKit",
+      "\"North Vector Dynamics\" systèmes anti-drones OR contre-UAS",
+      "\"North Vector Dynamics\" patent OR brevet",
+      "site:linkedin.com/company/northvectordynamics CM-70 OR CI-60 OR SHIELD"
+    ],
+    "counters": {
+      "sourcesChecked": 16,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 1,
+      "uniqueProspects": 1,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 7,
+      "sourceLanesSearched": 7,
+      "candidatesGreen": 1,
+      "candidatesAmber": 0,
+      "claimsCollected": 17,
+      "claimsConflicted": 1,
+      "coverageSubjects": 1
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "CM-70 current product-page specifications differ from a dated May 2026 Janes report; proposed values use the current official page and preserve the conflict for review.",
+        "Tech Horizons and CSG financing remains discovery-only because a durable company or investor source was not recovered.",
+        "ARCTOS is marked coming soon and remains a deferred product watch item rather than a capability candidate.",
+        "The Convergence MIL-V relationship is a prototype-integration report, not evidence of Canadian Armed Forces procurement, contract, customer status, or operational deployment."
+      ]
+    },
+    "stop_reason": "Completed the named-company deep dossier: one existing published record was matched intentionally, its current official product portfolio and public relationships were assessed across seven complementary lanes, and one additive refresh candidate was prepared for private human review."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-north-vector-dynamics-refresh-20260802",
+      "research_run_ref": "tnm-manual-20260802104435",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-north-vector-dynamics-refresh-20260802"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-north-vector-dynamics-refresh-20260802",
+        "sourceLeadIds": [
+          "lead-north-vector-dynamics-refresh-20260802"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "North Vector Dynamics is already published, but its record has only the CM-70 capability and an IDEaS contribution relationship. The company now has current, concrete product pages for CI-60 counter-UAS, CI-60 Target, and SHIELD, as well as a fuller CM-70 specification. Its company announcement, a 2025 parliamentary submission, and CityNews support a bounded four-year C$4.2M DRDC hypersonic-propulsion research contract. ONE9's official portfolio and North Vector's announcement support a founding-investor relationship; Ottawa Business Journal supports a separate Convergence MIL-V prototype-integration relationship. The candidate preserves the existing organization and CM-70 IDs, adds only source-backed operations, and keeps dated, ambiguous, or discovery-only claims out of canonical fields.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 95,
+        "reviewWarnings": [
+          "North Vector's current CM-70 page lists 3 kg, 0.9 m, 3.5 km, and 900 km/h, while a dated May 2026 Janes article reports earlier 2 kg, 0.72 m, and greater-than-1,000 km/h figures. The proposed specifications use the current official page and retain the discrepancy for review.",
+          "Tech Horizons and CSG financing appears in secondary and LinkedIn discovery material, but no durable company or investor source was recovered in this run. No financing field or relationship is proposed.",
+          "ARCTOS is marked coming soon on the official site and has no concrete public specifications. It is deliberately not added as a capability.",
+          "Ottawa Business Journal documents a MIL-V prototype integration with Convergence Design Services; it is not evidence of a Canadian Armed Forces procurement, contract, or operational deployment."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-02T10:53:32.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+              "name": "North Vector Dynamics",
+              "matchedBy": "intentional published refresh target via exact website domain, canonical URL, slug, legal name, aliases, and name"
+            }
+          ],
+          "note": "The sole organization match is the intended published North Vector Dynamics record. Live checks found no existing CI-60, SHIELD, DRDC hypersonic-contract, ONE9, or Convergence MIL-V child record under this organization."
+        },
+        "sources": [
+          {
+            "id": "nvd-company-profile",
+            "title": "About North Vector Dynamics",
+            "url": "https://www.northvectordynamics.com/about-us",
+            "publisher": "North Vector Dynamics",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "About, company scope, Calgary location, and public contact sections",
+            "summary": "North Vector's official company profile identifies a Calgary, Canadian-owned and controlled defence technology company specializing in precision interception, autonomy, and advanced propulsion, and provides public contact routes."
+          },
+          {
+            "id": "nvd-cm70-product",
+            "title": "CM-70 counter-UAS interceptor",
+            "url": "https://www.northvectordynamics.com/cm-70",
+            "publisher": "North Vector Dynamics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "CM-70 specifications, highlights, and tactical launcher sections",
+            "summary": "North Vector publishes current CM-70 specifications of 3 kg, 0.9 m, 3.5 km range, 900 km/h, semi-active laser guidance, and a forward-fragmentation warhead, with ground, vehicle, and airborne deployment options."
+          },
+          {
+            "id": "nvd-ci60-cuas-product",
+            "title": "CI-60 counter-UAS system",
+            "url": "https://www.northvectordynamics.com/spike-cuas",
+            "publisher": "North Vector Dynamics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "CI-60 counter-UAS specifications, highlights, and modular launch interface",
+            "summary": "North Vector describes the CI-60 as a 0.8 kg electric counter-UAS interceptor with a 0.5 m wingspan, 2 km published range, more than 225 km/h speed, onboard AI and near-IR guidance, and field-assembled rail launch."
+          },
+          {
+            "id": "nvd-ci60-target-product",
+            "title": "CI-60 Target aerial target system",
+            "url": "https://www.northvectordynamics.com/spike-target",
+            "publisher": "North Vector Dynamics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "CI-60 Target specifications, threat-simulation, training, and modular launch interface sections",
+            "summary": "North Vector describes CI-60 Target as a 0.7 kg, 0.5 m wingspan aerial target with 6 km published range and more than 225 km/h speed for programmable, threat-representative SHORAD and counter-UAS training."
+          },
+          {
+            "id": "nvd-shield-product",
+            "title": "SHIELD counter-UAS system",
+            "url": "https://www.northvectordynamics.com/shield-cuas",
+            "publisher": "North Vector Dynamics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "SHIELD platform characteristics, specifications, and expeditionary counter-UAS sections",
+            "summary": "North Vector describes SHIELD as a modular VTOL counter-UAS system with hybrid-electric propulsion, EO/IR sensing and laser designation, 27 kg maximum take-off weight, 5-plus-hour endurance, and a 40 km telemetry range."
+          },
+          {
+            "id": "nvd-drdc-hypersonic-news",
+            "title": "North Vector Dynamics secures $4.2-million contract with National Defence for hypersonic propulsion",
+            "url": "https://www.northvectordynamics.com/post/north-vector-dynamics-secures-4-2-million-contract-with-national-defence-for-hypersonic-propulsion",
+            "publisher": "North Vector Dynamics",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-08-23T00:00:00.000Z",
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "Announcement text dated August 23, 2025",
+            "summary": "North Vector states that Defence Research and Development Canada awarded it a four-year, C$4.2M contract to advance propulsion and hypersonic technologies; the company presents this as research activity alongside counter-UAS and short-range air-defence work."
+          },
+          {
+            "id": "nvd-drdc-citynews",
+            "title": "Calgary startup wins $4.2M contract to develop hypersonic propulsion",
+            "url": "https://calgary.citynews.ca/2025/09/23/calgary-aerospace-startup/",
+            "publisher": "CityNews Calgary",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2025-09-23T00:00:00.000Z",
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "Contract, DRDC partnership, propulsion-design, and testing paragraphs",
+            "summary": "CityNews reports that North Vector secured a C$4.2M federal contract and will partner with DRDC to design and test propulsion concepts for vehicles capable of travelling above Mach 5."
+          },
+          {
+            "id": "nvd-parliamentary-submission",
+            "title": "Building Sovereign and Resilient Defence Capabilities through Advanced Canadian Technology",
+            "url": "https://www.ourcommons.ca/Content/Committee/451/INDU/Brief/BR13796160/br-external/NorthVectorDynamics-e.pdf",
+            "publisher": "North Vector Dynamics submission to the House of Commons Standing Committee on Industry and Technology",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "November 2025 submission, pages 1 to 2, products and current R&D sections",
+            "summary": "North Vector's public parliamentary submission identifies CI-60 and CM-70 as core products and says the company is executing a four-year, C$4.2M DRDC contract for propulsion and hypersonic technologies."
+          },
+          {
+            "id": "nvd-government-ideas",
+            "title": "Low-Cost Aerial CUAS Platform with Variable Air-to-Air Defeat Munitions",
+            "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+            "publisher": "Government of Canada Grants and Contributions",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "Agreement CD3-002, recipient legal and operating names, purpose, amount, dates, and amendment",
+            "summary": "The Government of Canada records a DND IDEaS Concept Development contribution of up to C$2M to North Vector Dynamics Inc., operating as Think Solutions Engineering, for a low-cost aerial counter-UAS platform through September 2027."
+          },
+          {
+            "id": "nvd-one9-venture-portfolio",
+            "title": "ONE9 Venture portfolio",
+            "url": "https://www.one9.ca/venture",
+            "publisher": "ONE9",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "Investment portfolio section listing North Vector Dynamics and its counter-UAS focus",
+            "summary": "ONE9's current venture portfolio lists North Vector Dynamics as a company developing advanced and cost-effective counter-uncrewed aerial systems solutions."
+          },
+          {
+            "id": "nvd-one9-company-news",
+            "title": "North Vector Dynamics emerges from stealth to tackle UAS threats with Made-in-Canada solutions",
+            "url": "https://www.northvectordynamics.com/post/north-vector-dynamics-emerges-from-stealth-to-tackle-uas-threats-with-made-in-canada-solutions",
+            "publisher": "North Vector Dynamics",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-06-05T00:00:00.000Z",
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "May 29, 2025 release text on incubator, investor, and market-entry relationship",
+            "summary": "North Vector's May 2025 release states that it was incubated by Think Solutions and backed by ONE9, which it identifies as a founding investor that supported the company's mission and market entry."
+          },
+          {
+            "id": "nvd-convergence-mil-v",
+            "title": "Arnprior firm brings together 13 companies to build all-Canadian military vehicle",
+            "url": "https://obj.ca/arnprior-firm-to-unveil-all-canadian-military-vehicle/",
+            "publisher": "Ottawa Business Journal",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2026-05-25T00:00:00.000Z",
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "MIL-V partner-firm and North Vector contribution paragraphs",
+            "summary": "Ottawa Business Journal reports that North Vector Dynamics was one of Convergence Design Services' MIL-V partners and supplied a precision-guided missile for the Canadian prototype vehicle."
+          },
+          {
+            "id": "nvd-janes-cm70-2026",
+            "title": "North Vector Dynamics aims to bring missile production to Canada",
+            "url": "https://www.janes.com/defence-intelligence-insights/defence-news/industry/north-vector-dynamics-aims-to-bring-missile-production-to-canada",
+            "publisher": "Janes",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2026-05-06T00:00:00.000Z",
+            "accessedAt": "2026-08-02T10:53:32.000Z",
+            "locator": "Product description and April 2026 executive interview",
+            "summary": "A May 2026 Janes article reports earlier CM-70 dimensions, mass, and speed figures that differ from North Vector's current product page, so it is retained as a dated source conflict rather than used for proposed specifications."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-nvd-profile-portfolio",
+            "sourceId": "nvd-company-profile",
+            "fieldPath": "operations.set-nvd-profile-data.after.portfolioScope",
+            "claimClass": "source_backed",
+            "excerpt": "North Vector's official profile states that it is a Calgary, Canadian-owned and controlled defence technology company specializing in precision interception, autonomy, and advanced propulsion, with work from counter-UAS solutions to hypersonics.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-profile-contact",
+            "sourceId": "nvd-company-profile",
+            "fieldPath": "operations.set-nvd-profile-data.after.publicContact",
+            "claimClass": "source_backed",
+            "excerpt": "North Vector's official company page publishes a general contact email address and telephone number for inquiries and media requests.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-current-activity",
+            "sourceId": "nvd-drdc-hypersonic-news",
+            "fieldPath": "operations.set-nvd-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "North Vector says DRDC awarded it a four-year C$4.2M contract to advance propulsion and hypersonic technologies, while its current product pages identify a broader counter-UAS portfolio.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-ideas-boundary",
+            "sourceId": "nvd-government-ideas",
+            "fieldPath": "operations.set-nvd-profile-data.after.evidenceBoundary",
+            "claimClass": "source_backed",
+            "excerpt": "The Government of Canada contribution record identifies an IDEaS Concept Development project, amount, dates, legal recipient, and desired counter-UAS outcomes, but it does not establish procurement or operational adoption.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-cm70-current-spec",
+            "sourceId": "nvd-cm70-product",
+            "fieldPath": "operations.update-nvd-cm70.after",
+            "claimClass": "source_backed",
+            "excerpt": "The current CM-70 page lists 3 kg mass, 0.9 m length, 3.5 km range, 900 km/h speed, semi-active laser guidance, a forward-fragmentation warhead, and ground, vehicle, or airborne launch configurations.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-ci60-cuas",
+            "sourceId": "nvd-ci60-cuas-product",
+            "fieldPath": "operations.add-nvd-ci60-cuas.value",
+            "claimClass": "source_backed",
+            "excerpt": "North Vector describes CI-60 counter-UAS as a 0.8 kg electric, compact-lifting-body interceptor with a 2 km published range, onboard AI and near-IR guidance, field-assembled rail launch, and a Class I drone focus.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-ci60-target",
+            "sourceId": "nvd-ci60-target-product",
+            "fieldPath": "operations.add-nvd-ci60-target.value",
+            "claimClass": "source_backed",
+            "excerpt": "North Vector describes CI-60 Target as a 0.7 kg aerial target with a 6 km published range, programmable missions, threat-representative drone profiles, and field-assembled rail launch for SHORAD and counter-UAS training.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-shield",
+            "sourceId": "nvd-shield-product",
+            "fieldPath": "operations.add-nvd-shield.value",
+            "claimClass": "source_backed",
+            "excerpt": "North Vector describes SHIELD as a modular VTOL counter-UAS system with hybrid-electric propulsion, EO/IR sensing and laser designation, airborne detection and tracking, 5-plus-hour endurance, and 40 km telemetry range.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-drdc-company",
+            "sourceId": "nvd-drdc-hypersonic-news",
+            "fieldPath": "operations.add-nvd-drdc-hypersonic-contract.value",
+            "claimClass": "source_backed",
+            "excerpt": "North Vector's official announcement says DRDC awarded it a four-year C$4.2M contract to advance propulsion and hypersonic technologies.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-drdc-independent",
+            "sourceId": "nvd-drdc-citynews",
+            "fieldPath": "operations.add-nvd-drdc-hypersonic-contract.value",
+            "claimClass": "source_backed",
+            "excerpt": "CityNews reports that North Vector will partner with DRDC to design and test propulsion concepts for vehicles capable of travelling above Mach 5 under a C$4.2M federal contract.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-nvd-one9-company",
+            "sourceId": "nvd-one9-company-news",
+            "fieldPath": "operations.add-nvd-one9-investor.value",
+            "claimClass": "source_backed",
+            "excerpt": "North Vector's May 2025 release says ONE9 is a founding investor that helped shape the company's mission and market entry.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-one9-portfolio",
+            "sourceId": "nvd-one9-venture-portfolio",
+            "fieldPath": "operations.add-nvd-one9-investor.value",
+            "claimClass": "source_backed",
+            "excerpt": "ONE9's current venture portfolio lists North Vector Dynamics and describes it as developing advanced and cost-effective counter-uncrewed aerial systems solutions.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-nvd-convergence-mil-v",
+            "sourceId": "nvd-convergence-mil-v",
+            "fieldPath": "operations.add-nvd-convergence-mil-v.value",
+            "claimClass": "source_backed",
+            "excerpt": "Ottawa Business Journal reports that North Vector was one of Convergence's MIL-V partners and supplied a precision-guided missile for the prototype vehicle.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+          "slug": "north-vector-dynamics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-30T11:49:04.408421+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+            "slug": "north-vector-dynamics",
+            "name": "North Vector Dynamics",
+            "legal_name": "North Vector Dynamics Inc.",
+            "website_url": "https://www.northvectordynamics.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-30T11:49:04.408421+00:00",
+            "profile_data": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "currentActivity": "A Department of National Defence contribution record, amended in March 2026, provides up to $2 million through the IDEaS Concept Development program for North Vector's low-cost aerial counter-UAS platform through September 2027.",
+              "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity.",
+              "reviewed_candidate_id": "b1eae6e4-8213-4e15-9015-20e9c0399623",
+              "research_schema_version": "organization_bundle_v2"
+            }
+          },
+          "capabilities": [
+            {
+              "id": "a7148f55-4905-404e-aff9-ffbb53e2773d",
+              "slug": "north-vector-cm-70-counter-uas-interceptor",
+              "name": "CM-70 counter-UAS interceptor",
+              "summary": "The CM-70 is a compact guided interceptor designed for ground, vehicle or airborne deployment against small uncrewed aircraft, using a semi-active laser-guidance architecture within a wider counter-UAS concept.",
+              "capabilityType": "Compact guided counter-UAS interceptor",
+              "features": [
+                "Semi-active laser guidance",
+                "Ground, vehicle and air-launch configurations",
+                "Compact interceptor form factor",
+                "Designed for Group I-III UAS threats"
+              ],
+              "applications": [
+                "Point defence against small UAS",
+                "Mobile-force protection",
+                "Critical-infrastructure defence",
+                "Layered counter-UAS systems"
+              ],
+              "technicalTags": [
+                "counter-UAS",
+                "guided interceptor",
+                "semi-active laser guidance",
+                "air defence",
+                "autonomous systems"
+              ]
+            }
+          ],
+          "programs": [],
+          "relationships": [
+            {
+              "id": "6f05ca44-6905-4f43-a234-95169015460d",
+              "related_organization_name": "Department of National Defence",
+              "relationship_type": "IDEaS Concept Development recipient",
+              "public_summary": "The federal grants database records a Department of National Defence IDEaS contribution to North Vector Dynamics Inc. for a low-cost aerial counter-UAS platform; this is not represented as procurement or operational adoption.",
+              "publication_status": "published"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-nvd-profile-data",
+            "evidenceIds": [
+              "evidence-nvd-profile-portfolio",
+              "evidence-nvd-profile-contact",
+              "evidence-nvd-current-activity",
+              "evidence-nvd-ideas-boundary"
+            ],
+            "reviewerExplanation": "Preserve the existing private review metadata and add a current public portfolio, organization-level contact path, and bounded activity narrative. The resulting boundary distinguishes product-page claims, research activity, concept-development funding, prototype integration, and unresolved financing material.",
+            "entityType": "organization",
+            "targetId": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "currentActivity": "A Department of National Defence contribution record, amended in March 2026, provides up to $2 million through the IDEaS Concept Development program for North Vector's low-cost aerial counter-UAS platform through September 2027.",
+              "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity.",
+              "reviewed_candidate_id": "b1eae6e4-8213-4e15-9015-20e9c0399623",
+              "research_schema_version": "organization_bundle_v2"
+            },
+            "after": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "currentActivity": "North Vector's August 2025 announcement says DRDC awarded it a four-year C$4.2M hypersonic-propulsion research contract. Its current official product pages identify CM-70, CI-60 counter-UAS, CI-60 Target, and SHIELD; a separate Government of Canada IDEaS contribution supports a low-cost aerial counter-UAS concept-development project through September 2027.",
+              "portfolioScope": "The current official portfolio comprises the CM-70 precision-guided counter-UAS interceptor, CI-60 counter-UAS and target configurations, and SHIELD counter-UAS system. ARCTOS is marked coming soon and is deliberately excluded from this refresh.",
+              "publicContact": "North Vector publishes public inquiry and media contact routes, including contact@northvectordynamics.com and a Calgary telephone number, on its official website.",
+              "evidenceBoundary": "Public evidence supports the bounded company, current portfolio, current product-page specifications, IDEaS concept-development funding, DRDC research activity, ONE9 investor relationship, and reported Convergence MIL-V prototype integration. Product specifications are company-published and may change; no field asserts procurement eligibility, customer interest, operational adoption, or classified demand. Tech Horizons and CSG financing remains discovery-only until a durable primary source is recovered.",
+              "reviewed_candidate_id": "b1eae6e4-8213-4e15-9015-20e9c0399623",
+              "research_schema_version": "organization_bundle_v2"
+            }
+          },
+          {
+            "operation": "update_child",
+            "operationId": "update-nvd-cm70",
+            "evidenceIds": [
+              "evidence-nvd-cm70-current-spec"
+            ],
+            "reviewerExplanation": "Refresh the published CM-70 capability in place with the current official specification and deployment detail, preserving the existing capability ID and slug. The dated Janes variation remains a reviewer warning rather than a field value.",
+            "entityType": "capability",
+            "targetId": "a7148f55-4905-404e-aff9-ffbb53e2773d",
+            "before": {
+              "id": "a7148f55-4905-404e-aff9-ffbb53e2773d",
+              "slug": "north-vector-cm-70-counter-uas-interceptor",
+              "name": "CM-70 counter-UAS interceptor",
+              "summary": "The CM-70 is a compact guided interceptor designed for ground, vehicle or airborne deployment against small uncrewed aircraft, using a semi-active laser-guidance architecture within a wider counter-UAS concept.",
+              "capabilityType": "Compact guided counter-UAS interceptor",
+              "features": [
+                "Semi-active laser guidance",
+                "Ground, vehicle and air-launch configurations",
+                "Compact interceptor form factor",
+                "Designed for Group I-III UAS threats"
+              ],
+              "applications": [
+                "Point defence against small UAS",
+                "Mobile-force protection",
+                "Critical-infrastructure defence",
+                "Layered counter-UAS systems"
+              ],
+              "technicalTags": [
+                "counter-UAS",
+                "guided interceptor",
+                "semi-active laser guidance",
+                "air defence",
+                "autonomous systems"
+              ]
+            },
+            "after": {
+              "id": "a7148f55-4905-404e-aff9-ffbb53e2773d",
+              "slug": "north-vector-cm-70-counter-uas-interceptor",
+              "name": "CM-70 counter-UAS interceptor",
+              "summary": "CM-70 is a 3 kg, 0.9 m precision-guided counter-UAS missile for short-range Group I-III drone interception. North Vector publishes a 3.5 km range, 900 km/h speed, semi-active laser guidance, forward-fragmentation warhead, and ground, vehicle, or airborne launch options.",
+              "capabilityType": "Short-range counter-UAS precision-guided interceptor",
+              "features": [
+                "3 kg mass and 0.9 m published length",
+                "3.5 km published range and 900 km/h published speed",
+                "Semi-active laser guidance with radio-silent autonomous guidance",
+                "Forward-fragmentation warhead",
+                "Ground, vehicle, and airborne launch compatibility"
+              ],
+              "applications": [
+                "Short-range interception of Group I-III drone threats",
+                "Critical-infrastructure and frontline-position protection",
+                "Ground, vehicle, or airborne counter-UAS deployment",
+                "Integration into allied counter-UAS systems"
+              ],
+              "technicalTags": [
+                "counter-UAS",
+                "precision-guided missile",
+                "semi-active laser guidance",
+                "short-range air defence",
+                "low-cost interceptor",
+                "GPS-denied operations"
+              ]
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-nvd-ci60-cuas",
+            "evidenceIds": [
+              "evidence-nvd-ci60-cuas"
+            ],
+            "reviewerExplanation": "Add CI-60 counter-UAS as a distinct official product, separate from the CI-60 target configuration and the existing CM-70 interceptor. The record reflects published specifications and intended roles only, not fielding or procurement.",
+            "entityType": "capability",
+            "parentId": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+            "value": {
+              "slug": "north-vector-ci-60-counter-uas-system",
+              "name": "CI-60 counter-UAS system",
+              "summary": "CI-60 is a compact, electric counter-UAS interceptor designed for Class I drone threats. North Vector publishes a 0.8 kg mass, 0.5 m wingspan, 2 km range, more than 225 km/h speed, 70-second endurance, onboard AI and near-IR guidance, and rail-launch options.",
+              "capabilityType": "Electric counter-UAS kinetic interceptor",
+              "features": [
+                "0.8 kg mass and 0.5 m wingspan",
+                "2 km published range, more than 225 km/h speed, and 70-second endurance",
+                "Onboard AI and near-IR guidance",
+                "Compact lifting-body design with electric propulsion",
+                "Ground or air launch from a field-assembled lightweight rail"
+              ],
+              "applications": [
+                "Class I drone threat neutralization",
+                "Base-defence and frontline counter-UAS use cases",
+                "Standalone or existing counter-UAS-system integration",
+                "Rapid field deployment from ground or air launch positions"
+              ],
+              "technicalTags": [
+                "counter-UAS",
+                "interceptor drone",
+                "near-IR guidance",
+                "onboard AI",
+                "electric propulsion",
+                "rail launcher"
+              ],
+              "technicalDomainSlugs": [
+                "autonomous-systems",
+                "aerospace-and-mobility",
+                "sensing-and-isr"
+              ],
+              "missionMatches": []
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-nvd-ci60-target",
+            "evidenceIds": [
+              "evidence-nvd-ci60-target"
+            ],
+            "reviewerExplanation": "Add the CI-60 Target configuration separately because the official page describes a threat-simulation and training system rather than the CI-60 counter-UAS interceptor role. No actual training customer or deployment is asserted.",
+            "entityType": "capability",
+            "parentId": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+            "value": {
+              "slug": "north-vector-ci-60-target-system",
+              "name": "CI-60 Target aerial target system",
+              "summary": "CI-60 Target is a subscale aerial target for threat-representative counter-UAS and SHORAD training. North Vector publishes a 0.7 kg mass, 0.5 m wingspan, 6 km range, more than 225 km/h speed, 70-second endurance, and programmable missions through a standard ground-control station.",
+              "capabilityType": "Programmable aerial target and counter-UAS training system",
+              "features": [
+                "0.7 kg mass and 0.5 m wingspan",
+                "6 km published range, more than 225 km/h speed, and 70-second endurance",
+                "Programmable missions through a standard ground-control station",
+                "Modern drone-profile threat simulation",
+                "Field-assembled lightweight rail launch"
+              ],
+              "applications": [
+                "Threat-representative SHORAD training",
+                "Counter-UAS live-fire and exercise training",
+                "Land, naval, and air-force training contexts",
+                "High-volume, attritable aerial-target events"
+              ],
+              "technicalTags": [
+                "aerial target",
+                "counter-UAS training",
+                "SHORAD training",
+                "threat simulation",
+                "programmable missions",
+                "rail launcher"
+              ],
+              "technicalDomainSlugs": [
+                "test-training-and-sustainment",
+                "autonomous-systems",
+                "aerospace-and-mobility"
+              ],
+              "missionMatches": []
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-nvd-shield",
+            "evidenceIds": [
+              "evidence-nvd-shield"
+            ],
+            "reviewerExplanation": "Add SHIELD as a separate official system-level capability because it combines a VTOL platform, interceptors, and programmable decoys with detection and tracking functions. The record retains the company's published systems description without claiming fielded performance.",
+            "entityType": "capability",
+            "parentId": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+            "value": {
+              "slug": "north-vector-shield-counter-uas-system",
+              "name": "SHIELD counter-UAS system",
+              "summary": "SHIELD is a modular VTOL counter-UAS system that North Vector describes as combining a launch platform, precision-guided interceptors, and programmable decoys with airborne detection, identification, tracking, EO/IR sensing, and laser designation.",
+              "capabilityType": "Modular VTOL counter-UAS detection and interception system",
+              "features": [
+                "Hybrid-electric VTOL platform",
+                "Airborne detection, identification, tracking, and launch node",
+                "EO/IR sensing with laser designation",
+                "27 kg maximum take-off weight and 6 kg maximum payload",
+                "5-plus-hour published endurance and 40 km published telemetry range"
+              ],
+              "applications": [
+                "Expeditionary counter-UAS operations",
+                "Airborne drone detection and tracking",
+                "Ground or ship-launched counter-UAS deployment",
+                "Land, air, and naval force protection contexts"
+              ],
+              "technicalTags": [
+                "counter-UAS",
+                "VTOL",
+                "EO/IR sensing",
+                "laser designation",
+                "hybrid electric",
+                "airborne tracking",
+                "programmable decoys"
+              ],
+              "technicalDomainSlugs": [
+                "autonomous-systems",
+                "sensing-and-isr",
+                "aerospace-and-mobility"
+              ],
+              "missionMatches": []
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-nvd-drdc-hypersonic-contract",
+            "evidenceIds": [
+              "evidence-nvd-drdc-company",
+              "evidence-nvd-drdc-independent"
+            ],
+            "reviewerExplanation": "Add the public DRDC research contract as a distinct, date-bounded program record rather than implying that the work is a product deployment or a procurement award for the counter-UAS portfolio.",
+            "entityType": "program",
+            "parentId": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+            "value": {
+              "slug": "north-vector-drdc-hypersonic-propulsion-contract",
+              "name": "DRDC Hypersonic Propulsion Research Contract",
+              "programType": "Defence research and development contract",
+              "operatorName": "Defence Research and Development Canada",
+              "websiteUrl": "https://www.northvectordynamics.com/post/north-vector-dynamics-secures-4-2-million-contract-with-national-defence-for-hypersonic-propulsion",
+              "summary": "North Vector Dynamics states that DRDC awarded it a four-year, C$4.2M contract to advance propulsion and hypersonic technologies. CityNews independently reports that the work includes design and testing of propulsion concepts for vehicles capable of travelling above Mach 5.",
+              "participationType": "contract recipient and propulsion-technology developer",
+              "cohortLabel": null
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-nvd-one9-investor",
+            "evidenceIds": [
+              "evidence-nvd-one9-company",
+              "evidence-nvd-one9-portfolio"
+            ],
+            "reviewerExplanation": "Add the disclosed founding-investor relationship with ONE9. Both the company's dated announcement and ONE9's current portfolio support the relationship, while the candidate avoids undisclosed funding amount, valuation, or ownership terms.",
+            "entityType": "relationship",
+            "parentId": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+            "value": {
+              "relatedOrganizationName": "ONE9",
+              "relationshipType": "Founding investor",
+              "publicSummary": "North Vector's May 2025 release identifies ONE9 as a founding investor that helped shape its mission and market entry. ONE9's current Venture portfolio separately lists North Vector Dynamics as a counter-UAS investment; neither source discloses funding amount or ownership terms."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-nvd-convergence-mil-v",
+            "evidenceIds": [
+              "evidence-nvd-convergence-mil-v"
+            ],
+            "reviewerExplanation": "Add the reported Convergence MIL-V prototype-integration relationship with an explicit non-procurement boundary. This retains a useful public ecosystem connection without turning a partner demonstration into a government adoption claim.",
+            "entityType": "relationship",
+            "parentId": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+            "value": {
+              "relatedOrganizationName": "Convergence Design Services",
+              "relationshipType": "MIL-V prototype integration partner",
+              "publicSummary": "Ottawa Business Journal reports that North Vector Dynamics was one of Convergence Design Services' MIL-V prototype partners and supplied a precision-guided missile. This records reported technology integration for a prototype, not a Canadian Armed Forces procurement, contract, or operational deployment."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement",
+          "ecosystem_program",
+          "industry_publication"
+        ],
+        "signalIds": [
+          "north-vector-product-portfolio-2026-08-02",
+          "north-vector-drdc-hypersonic-contract-2025-08-23",
+          "north-vector-one9-investment-2025-05-29",
+          "north-vector-convergence-mil-v-integration-2026-05-25"
+        ],
+        "corroboration": [
+          {
+            "claim": "North Vector's current portfolio includes separate CM-70, CI-60 counter-UAS, CI-60 Target, and SHIELD systems, while ARCTOS remains a coming-soon item without a candidate operation.",
+            "sourceIds": [
+              "nvd-cm70-product",
+              "nvd-ci60-cuas-product",
+              "nvd-ci60-target-product",
+              "nvd-shield-product"
+            ]
+          },
+          {
+            "claim": "The DRDC hypersonic-propulsion work is a four-year, C$4.2M public research contract; independent reporting confirms a design-and-test scope rather than a product-procurement claim.",
+            "sourceIds": [
+              "nvd-drdc-hypersonic-news",
+              "nvd-drdc-citynews",
+              "nvd-parliamentary-submission"
+            ]
+          },
+          {
+            "claim": "ONE9's founding-investor relationship is supported by North Vector's dated announcement and ONE9's current portfolio listing, without material terms being inferred.",
+            "sourceIds": [
+              "nvd-one9-company-news",
+              "nvd-one9-venture-portfolio"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+          "slug": "north-vector-dynamics",
+          "name": "North Vector Dynamics",
+          "legal_name": "North Vector Dynamics Inc.",
+          "website_url": "https://www.northvectordynamics.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-30T11:49:04.408421+00:00",
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "currentActivity": "A Department of National Defence contribution record, amended in March 2026, provides up to $2 million through the IDEaS Concept Development program for North Vector's low-cost aerial counter-UAS platform through September 2027.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity.",
+            "reviewed_candidate_id": "b1eae6e4-8213-4e15-9015-20e9c0399623",
+            "research_schema_version": "organization_bundle_v2"
+          }
+        },
+        "capabilities": [
+          {
+            "id": "a7148f55-4905-404e-aff9-ffbb53e2773d",
+            "slug": "north-vector-cm-70-counter-uas-interceptor",
+            "name": "CM-70 counter-UAS interceptor",
+            "summary": "The CM-70 is a compact guided interceptor designed for ground, vehicle or airborne deployment against small uncrewed aircraft, using a semi-active laser-guidance architecture within a wider counter-UAS concept.",
+            "capabilityType": "Compact guided counter-UAS interceptor",
+            "features": [
+              "Semi-active laser guidance",
+              "Ground, vehicle and air-launch configurations",
+              "Compact interceptor form factor",
+              "Designed for Group I-III UAS threats"
+            ],
+            "applications": [
+              "Point defence against small UAS",
+              "Mobile-force protection",
+              "Critical-infrastructure defence",
+              "Layered counter-UAS systems"
+            ],
+            "technicalTags": [
+              "counter-UAS",
+              "guided interceptor",
+              "semi-active laser guidance",
+              "air defence",
+              "autonomous systems"
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "id": "6f05ca44-6905-4f43-a234-95169015460d",
+            "related_organization_name": "Department of National Defence",
+            "relationship_type": "IDEaS Concept Development recipient",
+            "public_summary": "The federal grants database records a Department of National Defence IDEaS contribution to North Vector Dynamics Inc. for a low-cost aerial counter-UAS platform; this is not represented as procurement or operational adoption.",
+            "publication_status": "published"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-nvd-profile-portfolio",
+          "sourceId": "nvd-company-profile",
+          "fieldPath": "operations.set-nvd-profile-data.after.portfolioScope",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector's official profile states that it is a Calgary, Canadian-owned and controlled defence technology company specializing in precision interception, autonomy, and advanced propulsion, with work from counter-UAS solutions to hypersonics.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-profile-contact",
+          "sourceId": "nvd-company-profile",
+          "fieldPath": "operations.set-nvd-profile-data.after.publicContact",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector's official company page publishes a general contact email address and telephone number for inquiries and media requests.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-current-activity",
+          "sourceId": "nvd-drdc-hypersonic-news",
+          "fieldPath": "operations.set-nvd-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector says DRDC awarded it a four-year C$4.2M contract to advance propulsion and hypersonic technologies, while its current product pages identify a broader counter-UAS portfolio.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-ideas-boundary",
+          "sourceId": "nvd-government-ideas",
+          "fieldPath": "operations.set-nvd-profile-data.after.evidenceBoundary",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada contribution record identifies an IDEaS Concept Development project, amount, dates, legal recipient, and desired counter-UAS outcomes, but it does not establish procurement or operational adoption.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-cm70-current-spec",
+          "sourceId": "nvd-cm70-product",
+          "fieldPath": "operations.update-nvd-cm70.after",
+          "claimClass": "source_backed",
+          "excerpt": "The current CM-70 page lists 3 kg mass, 0.9 m length, 3.5 km range, 900 km/h speed, semi-active laser guidance, a forward-fragmentation warhead, and ground, vehicle, or airborne launch configurations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-ci60-cuas",
+          "sourceId": "nvd-ci60-cuas-product",
+          "fieldPath": "operations.add-nvd-ci60-cuas.value",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector describes CI-60 counter-UAS as a 0.8 kg electric, compact-lifting-body interceptor with a 2 km published range, onboard AI and near-IR guidance, field-assembled rail launch, and a Class I drone focus.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-ci60-target",
+          "sourceId": "nvd-ci60-target-product",
+          "fieldPath": "operations.add-nvd-ci60-target.value",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector describes CI-60 Target as a 0.7 kg aerial target with a 6 km published range, programmable missions, threat-representative drone profiles, and field-assembled rail launch for SHORAD and counter-UAS training.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-shield",
+          "sourceId": "nvd-shield-product",
+          "fieldPath": "operations.add-nvd-shield.value",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector describes SHIELD as a modular VTOL counter-UAS system with hybrid-electric propulsion, EO/IR sensing and laser designation, airborne detection and tracking, 5-plus-hour endurance, and 40 km telemetry range.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-drdc-company",
+          "sourceId": "nvd-drdc-hypersonic-news",
+          "fieldPath": "operations.add-nvd-drdc-hypersonic-contract.value",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector's official announcement says DRDC awarded it a four-year C$4.2M contract to advance propulsion and hypersonic technologies.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-drdc-independent",
+          "sourceId": "nvd-drdc-citynews",
+          "fieldPath": "operations.add-nvd-drdc-hypersonic-contract.value",
+          "claimClass": "source_backed",
+          "excerpt": "CityNews reports that North Vector will partner with DRDC to design and test propulsion concepts for vehicles capable of travelling above Mach 5 under a C$4.2M federal contract.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-nvd-one9-company",
+          "sourceId": "nvd-one9-company-news",
+          "fieldPath": "operations.add-nvd-one9-investor.value",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector's May 2025 release says ONE9 is a founding investor that helped shape the company's mission and market entry.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-one9-portfolio",
+          "sourceId": "nvd-one9-venture-portfolio",
+          "fieldPath": "operations.add-nvd-one9-investor.value",
+          "claimClass": "source_backed",
+          "excerpt": "ONE9's current venture portfolio lists North Vector Dynamics and describes it as developing advanced and cost-effective counter-uncrewed aerial systems solutions.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nvd-convergence-mil-v",
+          "sourceId": "nvd-convergence-mil-v",
+          "fieldPath": "operations.add-nvd-convergence-mil-v.value",
+          "claimClass": "source_backed",
+          "excerpt": "Ottawa Business Journal reports that North Vector was one of Convergence's MIL-V partners and supplied a precision-guided missile for the prototype vehicle.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-02T10:53:32.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+            "name": "North Vector Dynamics",
+            "matchedBy": "intentional published refresh target via exact website domain, canonical URL, slug, legal name, aliases, and name"
+          }
+        ],
+        "note": "The sole organization match is the intended published North Vector Dynamics record. Live checks found no existing CI-60, SHIELD, DRDC hypersonic-contract, ONE9, or Convergence MIL-V child record under this organization."
+      },
+      "reviewer_rationale": "North Vector Dynamics is already published, but its record has only the CM-70 capability and an IDEaS contribution relationship. The company now has current, concrete product pages for CI-60 counter-UAS, CI-60 Target, and SHIELD, as well as a fuller CM-70 specification. Its company announcement, a 2025 parliamentary submission, and CityNews support a bounded four-year C$4.2M DRDC hypersonic-propulsion research contract. ONE9's official portfolio and North Vector's announcement support a founding-investor relationship; Ottawa Business Journal supports a separate Convergence MIL-V prototype-integration relationship. The candidate preserves the existing organization and CM-70 IDs, adds only source-backed operations, and keeps dated, ambiguous, or discovery-only claims out of canonical fields.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-08-02T15:49:00.253Z"
+    }
+  ]
+}

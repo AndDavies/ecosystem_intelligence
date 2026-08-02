@@ -4,8 +4,12 @@ import { createClient } from "@supabase/supabase-js";
 import {
   formatZodIssues,
   demandIssuerTypeValues,
+  osintCollectionLaneValues,
+  osintCoverageDimensionValues,
   organizationKindValues,
+  researchClaimLedgerV1Schema,
   researchCandidateBatchV2Schema,
+  researchCollectionPlanV1Schema,
   researchSignalBatchV1Schema,
   researchProspectInventoryV1Schema,
   reviewCandidateIntakeIssues,
@@ -13,6 +17,8 @@ import {
   researchRunSchema,
   sourceLeadBatchV2Schema,
   type ResearchCandidateBatchV2,
+  type ResearchClaimLedgerV1,
+  type ResearchCollectionPlanV1,
   type ResearchProspectInventoryV1,
   type ResearchRun,
   type ResearchSignalBatchV1,
@@ -36,6 +42,8 @@ const candidateDir = path.join(ingestionRoot, "candidate-batches-v2");
 const reviewDir = path.join(ingestionRoot, "reviews-v2");
 const stagingDir = path.join(ingestionRoot, "staging");
 const signalDir = path.join(ingestionRoot, "signal-batches-v1");
+const collectionPlanDir = path.join(ingestionRoot, "collection-plans-v1");
+const claimLedgerDir = path.join(ingestionRoot, "claim-ledgers-v1");
 
 interface ExistingIdentity {
   id: string;
@@ -63,7 +71,7 @@ interface ResearchCoverageSnapshot {
 }
 
 interface ValidationReport {
-  kind: "run" | "prospect_inventory" | "source_leads" | "candidate_batch" | "signal_batch";
+  kind: "run" | "collection_plan" | "claim_ledger" | "prospect_inventory" | "source_leads" | "candidate_batch" | "signal_batch";
   filePath: string;
   id: string;
   errors: string[];
@@ -104,6 +112,10 @@ function urlDomain(value: string | null | undefined) {
 
 function relative(filePath: string) {
   return path.relative(workspaceRoot, filePath);
+}
+
+function isActiveReviewCandidateStatus(status: string | undefined) {
+  return status === "pending" || status === "approved";
 }
 
 let researchCoveragePromise: Promise<ResearchCoverageSnapshot> | null = null;
@@ -288,7 +300,8 @@ async function collectExistingIdentities(options: { excludePath?: string; exclud
     identities.set(key, identity);
   };
 
-  for (const organization of (await loadResearchCoverage()).organizations) add(organization);
+  const coverage = await loadResearchCoverage();
+  for (const organization of coverage.organizations) add(organization);
 
   for (const filePath of await listJsonFiles(candidateDir)) {
     if (filePath === options.excludePath) continue;
@@ -297,6 +310,7 @@ async function collectExistingIdentities(options: { excludePath?: string; exclud
     if (parsed.data.runId === options.excludeRunId) continue;
     for (const candidate of parsed.data.candidates) {
       if (candidate.candidateKind !== "organization_bundle") continue;
+      if (!isActiveReviewCandidateStatus(coverage.candidateStatuses[candidate.candidateId])) continue;
       add({
         id: candidate.candidateId,
         name: candidate.organization.name,
@@ -340,6 +354,7 @@ async function buildCoverage() {
     const parsed = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(filePath));
     if (!parsed.success) continue;
     for (const candidate of parsed.data.candidates) {
+      if (!isActiveReviewCandidateStatus(atlas.candidateStatuses[candidate.candidateId])) continue;
       if (candidate.candidateKind === "organization_bundle") {
         if (publishedOrganizationSlugs.has(candidate.organization.slug)) continue;
         pendingKinds[candidate.organization.entityKind] += 1;
@@ -504,21 +519,21 @@ function formatCoverage(coverage: Awaited<ReturnType<typeof buildCoverage>>) {
     `- Published capabilities in current atlas: ${coverage.publishedCapabilities}`,
     `- Published demand requirements: ${coverage.publishedDemandRequirements}`,
     "",
-    "| Organization kind | Published | Pending v2 |",
+    "| Organization kind | Published | Active review |",
     "| --- | ---: | ---: |",
     ...organizationKindValues.map((kind) => `| ${kind} | ${coverage.publishedKinds[kind]} | ${coverage.pendingKinds[kind]} |`),
     "",
     `Missing kinds: ${coverage.missingKinds.join(", ") || "none"}`,
     "",
-    "| Supply mission lane | Published matches | Pending matches |",
+    "| Supply mission lane | Published matches | Active-review matches |",
     "| --- | ---: | ---: |",
     ...coverage.missionAreas.map((mission) => `| ${mission.slug} | ${coverage.publishedMissionCounts[mission.slug]} | ${coverage.pendingMissionCounts[mission.slug]} |`),
     "",
-    "| Technical domain | Published capabilities | Pending capabilities |",
+    "| Technical domain | Published capabilities | Active-review capabilities |",
     "| --- | ---: | ---: |",
     ...coverage.technicalDomains.map((domain) => `| ${domain.slug} | ${coverage.publishedDomainCounts[domain.slug]} | ${coverage.pendingDomainCounts[domain.slug]} |`),
     "",
-    "| Public-demand issuer type | Published sources | Pending sources |",
+    "| Public-demand issuer type | Published sources | Active-review sources |",
     "| --- | ---: | ---: |",
     ...demandIssuerTypeValues.map((issuerType) => `| ${issuerType} | ${coverage.publishedIssuerCounts[issuerType]} | ${coverage.pendingIssuerCounts[issuerType]} |`),
     "",
@@ -580,10 +595,85 @@ async function prepareRun(args: string[]) {
   const minimumCandidates = refreshBatch ? 1 : deepDossier ? 1 : bootstrap ? 4 : Math.min(8, targetCandidates);
   const minimumProspects = refreshBatch ? 1 : deepDossier ? 1 : bootstrap ? 20 : 40;
   const minimumSourceLanes = refreshBatch ? 4 : deepDossier ? 3 : bootstrap ? 4 : 6;
+  const collectionPlanPath = path.join(collectionPlanDir, `${runId}.json`);
+  const claimLedgerPath = path.join(claimLedgerDir, `${runId}.json`);
+  const collectionPlan: ResearchCollectionPlanV1 = researchCollectionPlanV1Schema.parse({
+    schemaVersion: "research_collection_plan_v1",
+    planId: `${runId}-collection-plan`,
+    runId,
+    createdAt: startedAt,
+    status: "active",
+    intelligenceRequirement: `Resolve the identity, Canadian relevance, concrete offerings or public needs, technical detail, maturity, current activity, relationships, and material contradictions needed to address ${selectedGap.dimension}: ${selectedGap.reason}`,
+    targetSubjects: [],
+    priorityQuestions: [
+      {
+        questionId: "identity-canadian-presence",
+        subjectType: "organization",
+        question: "What is the canonical organization identity, ownership context, aliases, and evidence of an active Canadian operating presence?",
+        targetFieldPaths: ["organization.name", "organization.aliases", "organization.primaryLocation", "organization.profileData"],
+        evidenceThreshold: "one_anchor"
+      },
+      {
+        questionId: "technology-detail-maturity",
+        subjectType: "technology",
+        question: "What concrete products, systems, specifications, applications, integration boundaries, maturity, and deployment evidence are publicly supportable?",
+        targetFieldPaths: ["capabilities.*.summary", "capabilities.*.features", "capabilities.*.applications", "organization.profileData"],
+        evidenceThreshold: "anchor_plus_independent_corroboration"
+      },
+      {
+        questionId: "contracts-procurement-demand",
+        subjectType: "signal",
+        question: "Which contracts, procurement lifecycle events, public programs, customer activity, partnerships, and official demand statements materially change the record?",
+        targetFieldPaths: ["programs.*.summary", "relationships.*.publicSummary", "demandSource.summary", "requirements.*.problemStatement"],
+        evidenceThreshold: "anchor_plus_independent_corroboration"
+      },
+      {
+        questionId: "conflicts-and-gaps",
+        subjectType: "signal",
+        question: "Which material claims conflict, remain unresolved, have been superseded, or require a visible reviewer warning rather than a canonical field?",
+        targetFieldPaths: ["reviewWarnings", "reviewerRationale"],
+        evidenceThreshold: "one_anchor"
+      }
+    ],
+    collectionLanes: osintCollectionLaneValues.map((lane) => ({
+      lane,
+      purpose: lane === "authenticated_discovery_feed"
+        ? "Find named leads and recent activity in authenticated newsletters or targeted social pages, then resolve every material assertion to durable evidence."
+        : `Collect durable ${lane.replaceAll("_", " ")} evidence or an independently attributable corroborating source for material claims.`,
+      sourcePosture: lane === "authenticated_discovery_feed"
+        ? "discovery_only"
+        : ["industry_publication", "ecosystem_directory"].includes(lane)
+          ? "strong_corroboration"
+          : "evidence_anchor",
+      queryPatterns: [
+        `${selectedGap.dimension} Canada ${lane.replaceAll("_", " ")}`,
+        `${selectedGap.dimension} Canada français ${lane.replaceAll("_", " ")}`
+      ],
+      expectedClaims: ["identity or actor role", "technology, demand, program, contract, relationship, or current-activity detail"]
+    })),
+    languagePlan: { languages: ["en", "fr"], frenchSearchRequired: true, exceptionReason: null },
+    coverageDimensions: [...osintCoverageDimensionValues],
+    stopConditions: [
+      "Stop a subject only after the coverage vector records every dimension as covered, partial, not found, or not applicable with supporting claims or search attempts.",
+      "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new material claims and all contradictions are dispositioned."
+    ],
+    prohibitedActions: ["social_interaction", "access_control_bypass", "personal_data_collection", "canonical_database_write", "candidate_approval_or_publication"]
+  });
+  const claimLedger: ResearchClaimLedgerV1 = researchClaimLedgerV1Schema.parse({
+    schemaVersion: "research_claim_ledger_v1",
+    ledgerId: `${runId}-claim-ledger`,
+    runId,
+    createdAt: startedAt,
+    completedAt: null,
+    status: "collecting",
+    claims: [],
+    subjects: [],
+    warnings: []
+  });
   const run: ResearchRun = {
     schemaVersion: "research_run_v1",
     runId,
-    agentVersion: "tnm-research-pipeline/1.2.0",
+    agentVersion: "tnm-research-pipeline/1.3.0",
     trigger,
     mode: bootstrap ? "bootstrap" : deepDossier ? "deep_dossier" : refreshBatch ? "refresh_batch" : requestedMode === "gap-targeted" ? "gap_targeted" : "discovery_batch",
     scope: {
@@ -595,6 +685,7 @@ async function prepareRun(args: string[]) {
     },
     selectedGap,
     status: "running",
+    osintArtifactsRequired: true,
     startedAt,
     completedAt: null,
     limits: {
@@ -624,14 +715,26 @@ async function prepareRun(args: string[]) {
       candidatesAmber: 0,
       signalsExtracted: refreshBatch ? 0 : undefined,
       signalsDispositioned: refreshBatch ? 0 : undefined,
-      sourceFamiliesSearched: refreshBatch ? 0 : undefined
+      sourceFamiliesSearched: refreshBatch ? 0 : undefined,
+      claimsCollected: 0,
+      claimsConflicted: 0,
+      coverageSubjects: 0
     },
     underTargetReason: null,
     exhaustionEvidence: null,
     validation: { passed: false, errors: [], warnings: [] },
     errors: [],
     stopReason: null,
-    outputs: { prospectInventory: null, signalBatch: null, sourceLeadBatch: null, candidateBatch: null, reviewPacket: null, stagingExport: null }
+    outputs: {
+      collectionPlan: relative(collectionPlanPath),
+      claimLedger: relative(claimLedgerPath),
+      prospectInventory: null,
+      signalBatch: null,
+      sourceLeadBatch: null,
+      candidateBatch: null,
+      reviewPacket: null,
+      stagingExport: null
+    }
   };
 
   const brief = [
@@ -648,28 +751,38 @@ async function prepareRun(args: string[]) {
     `- Minimum source lanes: ${run.limits.minimumSourceLanes}`,
     `- Minimum completed candidates: ${run.limits.minimumCandidates}`,
     `- Target candidates: ${run.limits.targetCandidates}`,
+    `- Collection plan: ${run.outputs.collectionPlan}`,
+    `- Claim ledger: ${run.outputs.claimLedger}`,
     "",
     "## Required sequence",
     "",
-    refreshBatch ? "1. Apply $tnm-signal-refresh and build live published-record and public-demand watchlists before searching." : "1. Expand and rank the Source Book within the 30-minute sub-limit.",
-    refreshBatch ? "2. Search at least four source families, inspect no more than 50 source items, extract atomic signals, and disposition every signal." : `2. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} productive source lanes in a prospect inventory.`,
-    "3. Select the strongest prospects and create typed source leads from durable public sources.",
-    "4. Use evidence recovery across at least three distinct lanes before deferring a plausible prospect for thin evidence.",
-    "5. Apply evidence and duplicate gates. Qualified leads continue automatically; do not pause for source-lead approval.",
-    "6. Build enriched typed candidates in green or amber review tiers. Amber candidates keep non-blocking gaps as explicit reviewer warnings.",
-    "7. If the batch remains below its minimum, record a specific underTargetReason and exhaustionEvidence before completion.",
-    "8. Run `pnpm research:smoke -- --run <run> --prospects <prospects> --leads <leads> --candidates <candidates>`.",
-    "9. Confirm candidates appear in Admin Review, then stop. Do not approve or publish.",
+    "1. Complete the generated intelligence-requirement collection plan before broad searching; add named subjects, aliases, identifiers, and target-specific query patterns as they become known.",
+    refreshBatch ? "2. Apply $tnm-signal-refresh and build live published-record and public-demand watchlists before searching." : "2. Expand and rank the Source Book within the 30-minute sub-limit.",
+    refreshBatch ? "3. Search at least four source families, inspect no more than 50 source items, extract atomic signals, and disposition every signal." : `3. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} productive source lanes in a prospect inventory.`,
+    "4. Record atomic claims, canonical URLs, source-independence keys, temporal scope, conflicts, supersession, and candidate targets in the claim ledger while researching.",
+    "5. Select the strongest prospects and create typed source leads from durable public sources. Use English and French aliases and queries where relevant.",
+    "6. Use evidence recovery across at least three distinct lanes before deferring a plausible prospect for thin evidence.",
+    "7. Complete every subject's coverage vector and saturation assessment. Qualified leads continue automatically; do not pause for source-lead approval.",
+    "8. Build enriched typed candidates in green or amber review tiers. Amber candidates keep non-blocking gaps and claim conflicts as explicit reviewer warnings.",
+    "9. If the batch remains below its minimum, record a specific underTargetReason and exhaustionEvidence before completion.",
+    "10. Run `pnpm research:smoke -- --run <run> --collection-plan <collection-plan> --claims <claim-ledger> --prospects <prospects> --leads <leads> --candidates <candidates>`; refresh batches also pass `--signals <signals>`.",
+    "11. Confirm candidates appear in Admin Review, then stop. Do not approve or publish.",
     "",
     formatCoverage(coverage)
   ].join("\n");
 
   await mkdir(runDir, { recursive: true });
   await mkdir(briefDir, { recursive: true });
+  await mkdir(collectionPlanDir, { recursive: true });
+  await mkdir(claimLedgerDir, { recursive: true });
   await writeFile(runPath, `${JSON.stringify(run, null, 2)}\n`, "utf8");
+  await writeFile(collectionPlanPath, `${JSON.stringify(collectionPlan, null, 2)}\n`, "utf8");
+  await writeFile(claimLedgerPath, `${JSON.stringify(claimLedger, null, 2)}\n`, "utf8");
   await writeFile(path.join(briefDir, `${runId}.md`), `${brief}\n`, "utf8");
   console.log(`Created ${relative(runPath)}`);
   console.log(`Created ${relative(path.join(briefDir, `${runId}.md`))}`);
+  console.log(`Created ${relative(collectionPlanPath)}`);
+  console.log(`Created ${relative(claimLedgerPath)}`);
   console.log(`Selected gap: ${selectedGap.dimension}`);
 }
 
@@ -694,6 +807,49 @@ async function validateSignalFile(filePath: string): Promise<ValidationReport> {
       qualified: selected.length,
       deferred: batch.signals.filter((signal) => ["deferred", "unresolved"].includes(signal.disposition)).length,
       sourceFamilies: Object.values(batch.sourceFamilyCounters).filter((count) => count > 0).length
+    }
+  };
+}
+
+async function validateCollectionPlanFile(filePath: string): Promise<ValidationReport> {
+  const parsed = researchCollectionPlanV1Schema.safeParse(await readJson<unknown>(filePath));
+  if (!parsed.success) {
+    return { kind: "collection_plan", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
+  }
+  const plan = parsed.data;
+  return {
+    kind: "collection_plan",
+    filePath,
+    id: plan.planId,
+    errors: [],
+    warnings: plan.targetSubjects.length === 0 ? ["Collection plan has no named target subjects yet."] : [],
+    counts: {
+      subjects: plan.targetSubjects.length,
+      questions: plan.priorityQuestions.length,
+      lanes: plan.collectionLanes.length,
+      dimensions: plan.coverageDimensions.length
+    }
+  };
+}
+
+async function validateClaimLedgerFile(filePath: string): Promise<ValidationReport> {
+  const parsed = researchClaimLedgerV1Schema.safeParse(await readJson<unknown>(filePath));
+  if (!parsed.success) {
+    return { kind: "claim_ledger", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
+  }
+  const ledger = parsed.data;
+  return {
+    kind: "claim_ledger",
+    filePath,
+    id: ledger.ledgerId,
+    errors: [],
+    warnings: ledger.warnings,
+    counts: {
+      claims: ledger.claims.length,
+      subjects: ledger.subjects.length,
+      conflicts: ledger.claims.filter((claim) => claim.status === "conflicted").length,
+      discoveryOnly: ledger.claims.filter((claim) => claim.status === "discovery_only").length,
+      unresolved: ledger.claims.filter((claim) => claim.status === "unresolved").length
     }
   };
 }
@@ -977,6 +1133,8 @@ async function validateArtifacts(args: string[]) {
     ? positional.map((filePath) => path.resolve(workspaceRoot, filePath))
     : [
         ...(await listJsonFiles(runDir)),
+        ...(await listJsonFiles(collectionPlanDir)),
+        ...(await listJsonFiles(claimLedgerDir)),
         ...(await listJsonFiles(prospectDir)),
         ...(await listJsonFiles(sourceLeadDir)),
         ...(await listJsonFiles(candidateDir)),
@@ -986,6 +1144,8 @@ async function validateArtifacts(args: string[]) {
   for (const filePath of files) {
     const value = asRecord(await readJson<unknown>(filePath));
     if (value.schemaVersion === "research_run_v1") reports.push(await validateRunFile(filePath));
+    else if (value.schemaVersion === "research_collection_plan_v1") reports.push(await validateCollectionPlanFile(filePath));
+    else if (value.schemaVersion === "research_claim_ledger_v1") reports.push(await validateClaimLedgerFile(filePath));
     else if (value.schemaVersion === "research_prospect_inventory_v1") reports.push(await validateProspectFile(filePath));
     else if (value.schemaVersion === "source_lead_batch_v2") reports.push(await validateSourceLeadFile(filePath));
     else if (value.schemaVersion === "research_candidate_batch_v2") reports.push(await validateCandidateFile(filePath));
@@ -1171,6 +1331,10 @@ async function importStaging(stagingPath: string) {
 async function smoke(args: string[]) {
   const { options } = parseOptions(args);
   const runPath = path.resolve(workspaceRoot, options.get("run") ?? "");
+  const collectionPlanPathOption = options.get("collection-plan");
+  const collectionPlanPath = collectionPlanPathOption ? path.resolve(workspaceRoot, collectionPlanPathOption) : null;
+  const claimLedgerPathOption = options.get("claims");
+  const claimLedgerPath = claimLedgerPathOption ? path.resolve(workspaceRoot, claimLedgerPathOption) : null;
   const prospectPathOption = options.get("prospects");
   const prospectPath = prospectPathOption ? path.resolve(workspaceRoot, prospectPathOption) : null;
   const signalPathOption = options.get("signals");
@@ -1182,20 +1346,67 @@ async function smoke(args: string[]) {
   }
 
   const runReport = await validateRunFile(runPath);
+  const collectionPlanReport = collectionPlanPath ? await validateCollectionPlanFile(collectionPlanPath) : null;
+  const claimLedgerReport = claimLedgerPath ? await validateClaimLedgerFile(claimLedgerPath) : null;
   const leadReport = await validateSourceLeadFile(leadPath);
   const candidateReport = await validateCandidateFile(candidatePath);
   const prospectReport = prospectPath ? await validateProspectFile(prospectPath) : null;
   const signalReport = signalPath ? await validateSignalFile(signalPath) : null;
-  const reports = [runReport, ...(prospectReport ? [prospectReport] : []), ...(signalReport ? [signalReport] : []), leadReport, candidateReport];
+  const reports = [
+    runReport,
+    ...(collectionPlanReport ? [collectionPlanReport] : []),
+    ...(claimLedgerReport ? [claimLedgerReport] : []),
+    ...(prospectReport ? [prospectReport] : []),
+    ...(signalReport ? [signalReport] : []),
+    leadReport,
+    candidateReport
+  ];
   const run = researchRunSchema.safeParse(await readJson<unknown>(runPath));
+  const collectionPlan = collectionPlanPath ? researchCollectionPlanV1Schema.safeParse(await readJson<unknown>(collectionPlanPath)) : null;
+  const claimLedger = claimLedgerPath ? researchClaimLedgerV1Schema.safeParse(await readJson<unknown>(claimLedgerPath)) : null;
   const batch = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(candidatePath));
   const prospects = prospectPath ? researchProspectInventoryV1Schema.safeParse(await readJson<unknown>(prospectPath)) : null;
   const signals = signalPath ? researchSignalBatchV1Schema.safeParse(await readJson<unknown>(signalPath)) : null;
   if (run.success && run.data.status !== "completed") runReport.errors.push("Smoke-test run must have status completed.");
+  if (run.success && run.data.osintArtifactsRequired && !collectionPlanPath) runReport.errors.push("OSINT-enabled smoke test requires --collection-plan.");
+  if (run.success && run.data.osintArtifactsRequired && !claimLedgerPath) runReport.errors.push("OSINT-enabled smoke test requires --claims.");
   if (run.success && run.data.mode === "discovery_batch" && !prospectPath) runReport.errors.push("Discovery-batch smoke test requires --prospects.");
   if (run.success && run.data.mode === "refresh_batch" && !signalPath) runReport.errors.push("Refresh-batch smoke test requires --signals.");
   if (batch.success && batch.data.candidates.length < 1) candidateReport.errors.push("Smoke test must create at least one review-ready candidate.");
   if (run.success && batch.success && run.data.counters.candidatesCreated !== batch.data.candidates.length) runReport.errors.push("Run candidate counter does not match candidate batch size.");
+  if (run.success && collectionPlan?.success) {
+    if (collectionPlan.data.runId !== run.data.runId) collectionPlanReport?.errors.push("Collection plan runId does not match the research run.");
+    if (collectionPlan.data.status !== "complete") collectionPlanReport?.errors.push("Smoke-test collection plan must have status complete.");
+    if (run.data.outputs.collectionPlan && relative(collectionPlanPath as string) !== run.data.outputs.collectionPlan) runReport.errors.push("Run collection-plan output does not match the smoke-test artifact.");
+  }
+  if (run.success && claimLedger?.success) {
+    if (claimLedger.data.runId !== run.data.runId) claimLedgerReport?.errors.push("Claim ledger runId does not match the research run.");
+    if (claimLedger.data.status !== "complete") claimLedgerReport?.errors.push("Smoke-test claim ledger must have status complete.");
+    if (run.data.outputs.claimLedger && relative(claimLedgerPath as string) !== run.data.outputs.claimLedger) runReport.errors.push("Run claim-ledger output does not match the smoke-test artifact.");
+    if ((run.data.counters.claimsCollected ?? 0) !== claimLedger.data.claims.length) runReport.errors.push("Run claim counter does not match claim ledger.");
+    if ((run.data.counters.claimsConflicted ?? 0) !== claimLedger.data.claims.filter((claim) => claim.status === "conflicted").length) runReport.errors.push("Run conflicted-claim counter does not match claim ledger.");
+    if ((run.data.counters.coverageSubjects ?? 0) !== claimLedger.data.subjects.length) runReport.errors.push("Run coverage-subject counter does not match claim ledger.");
+  }
+  if (batch.success && claimLedger?.success) {
+    const candidateIds = new Set(batch.data.candidates.map((candidate) => candidate.candidateId));
+    for (const claim of claimLedger.data.claims) {
+      for (const target of claim.candidateTargets) {
+        if (!candidateIds.has(target.candidateId)) claimLedgerReport?.errors.push(`Claim ${claim.claimId} targets unknown candidate ${target.candidateId}.`);
+      }
+    }
+    for (const candidate of batch.data.candidates) {
+      if (!claimLedger.data.subjects.some((subject) => subject.candidateIds.includes(candidate.candidateId))) {
+        claimLedgerReport?.errors.push(`Candidate ${candidate.candidateId} has no dossier coverage subject.`);
+      }
+      for (const evidence of candidate.fieldEvidence.filter((item) => item.claimClass === "source_backed")) {
+        const mapped = claimLedger.data.claims.some((claim) =>
+          claim.source.sourceId === evidence.sourceId
+          && claim.candidateTargets.some((target) => target.candidateId === candidate.candidateId && target.fieldPath === evidence.fieldPath)
+        );
+        if (!mapped) claimLedgerReport?.errors.push(`Candidate ${candidate.candidateId} evidence ${evidence.id} is not mapped through the claim ledger.`);
+      }
+    }
+  }
   if (run.success && prospects?.success) {
     if (prospects.data.runId !== run.data.runId) prospectReport?.errors.push("Prospect inventory runId does not match the research run.");
     if ((run.data.counters.uniqueProspects ?? 0) !== prospects.data.prospects.length) runReport.errors.push("Run unique-prospect counter does not match prospect inventory size.");

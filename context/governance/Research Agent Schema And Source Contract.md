@@ -13,9 +13,11 @@ The promotion path is:
 
 ```mermaid
 flowchart LR
-  A["Saturation gap"] --> P["Broad prospect inventory"]
+  A["Saturation gap"] --> I["Intelligence requirement and collection plan"]
+  I --> P["Broad prospect inventory"]
   P --> B["Durable source lead"]
-  B --> C["Green or amber candidate change"]
+  B --> L["Atomic claim ledger and dossier coverage"]
+  L --> C["Green or amber candidate change"]
   C --> D["Schema and evidence validation"]
   D --> E["Human review decision"]
   E --> F["Explicit promotion"]
@@ -46,6 +48,18 @@ Rules:
 3. Reputable industry publication with a direct company or program reference.
 4. Social media and video only as a path to durable sources.
 5. Secondary summaries only when they lead to better evidence.
+
+Use specialized Canadian OSINT lanes when relevant: corporate registries for identity and status; patent/IP sources for published technical claims and assignee trails; CanadaBuys and proactive disclosure for procurement lifecycle; official customer, prime, program, exercise, trial, or funding pages for independent corroboration; official sitemaps, documents, PDFs, datasheets, manuals, and bilingual search for technical depth. Lobbying records, patents, job postings, newsletters, and social posts retain their specific limitations and never prove contract award, product maturity, or customer interest by implication.
+
+## Collection plan, claims, and coverage
+
+Every new run prepared by the current coordinator uses:
+
+- `research_collection_plan_v1` for the intelligence requirement, named subjects and aliases, priority questions, target fields, English/French search posture, source lanes, evidence thresholds, stop conditions, and prohibited actions;
+- `research_claim_ledger_v1` for atomic subject-predicate-value claims, units and dates, original and canonical URLs, source independence, corroboration, contradictions, supersession, dispositions, and candidate targets;
+- a twelve-dimension dossier coverage vector for identity/ownership, Canadian presence, offering/mandate, technical specifications, maturity/deployment, customers/contracts/programs, procurement/demand, partnerships/financing, public contacts, current activity, source diversity, and contradictions.
+
+Syndicated copies of one release are one source family. Discovery-only material cannot become source-backed field evidence. Every source-backed candidate evidence item must match a ledger claim by candidate ID, field path, and source ID. Conflicting values remain visible as reviewer warnings until resolved or explicitly deferred.
 
 Reject or defer:
 

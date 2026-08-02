@@ -11,6 +11,8 @@ Global Source Book expansion is intentionally uncapped. Keep adding useful durab
 - `known-sources.csv`: structured source book for publications, company pages, press rooms, government pages, YouTube channels, social accounts, conferences, research labs, procurement portals, and other repeatable research sources.
 - `newsletter-subscriptions.csv`: optional manual signup and verification tracker for source newsletters and mailing lists.
 - `source-search-playbook.md`: plain-language search tactics, source rules, and notes about how to use the source book.
+- `north-signal-sources.csv`: versioned editorial discovery registry for the weekly North Signal briefing.
+- `north-signal-feeds.opml`: importable copy of the approved Inoreader starter portfolio.
 
 ## Known-source fields
 
@@ -40,3 +42,5 @@ Source Book expansion has a 30-minute sub-limit inside each 90-minute run, but n
 8. Move approved leads only through the current v2 candidate and private Admin Review workflow; do not recreate retired file-based promotion paths.
 
 The source book is not the database. It is the reusable map of where to look.
+
+The North Signal registry is also not a public-evidence corpus. RSS feeds, newsletters, and aggregators surface possible developments. The independent `tnm-north-signal` editorial workflow must resolve every selected item to an original durable source before it can appear in a private issue candidate.
