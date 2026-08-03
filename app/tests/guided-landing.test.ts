@@ -83,8 +83,11 @@ describe("guided public landing", () => {
     expect(landing).toContain("Find Canadian organizations and capabilities relevant to a mission, project or released public need.");
     expect(landing).toContain("Public sources cited");
     expect(landing).toContain("Facts and assessments kept separate");
+    expect(landing).toContain("<LandingCoverageOverlay />");
+    expect(landing).not.toContain("<LandingCoverage />");
+    expect(dynamicLanding).toContain('aria-label="Current published coverage"');
+    expect(dynamicLanding).not.toContain("Updated as reviewed records are published.");
     expect(landing).not.toContain("build a Working List for the conversations worth pursuing next");
-    expect(dynamicLanding).toContain("lg:border-l-0");
   });
 
   it("puts the live atlas workspace ahead of explanatory content", async () => {

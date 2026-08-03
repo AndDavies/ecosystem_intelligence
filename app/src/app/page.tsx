@@ -12,7 +12,7 @@ import {
   Search,
   ShieldCheck
 } from "lucide-react";
-import { LandingCoverage, LandingEditorialPaths, LandingProductPreview } from "@/components/atlas/guided-landing-dynamic";
+import { LandingCoverageOverlay, LandingEditorialPaths, LandingProductPreview } from "@/components/atlas/guided-landing-dynamic";
 import { LandingFaq } from "@/components/atlas/landing-faq";
 import { LandingEntryLink, LandingHashBridge, LandingNorthSignalAttribution } from "@/components/atlas/landing-entry-link";
 import { GuidedSearchFocus } from "@/components/atlas/guided-search-focus";
@@ -95,6 +95,7 @@ export default function LandingPage() {
                 sizes="(min-width: 1480px) 880px, (min-width: 1280px) calc(100vw - 600px), 100vw"
                 className="object-cover object-[56%_52%]"
               />
+              <LandingCoverageOverlay />
             </div>
             <figcaption className="flex min-h-16 items-center gap-4 bg-white px-6 py-3 text-[var(--atlas-ink)] sm:px-8">
               <span className="h-0.5 w-7 shrink-0 bg-[var(--atlas-signal)]" aria-hidden="true" />
@@ -103,8 +104,6 @@ export default function LandingPage() {
           </figure>
         </div>
       </section>
-
-      <LandingCoverage />
 
       <section className="atlas-frame pb-16 pt-10 sm:pb-20 sm:pt-12" aria-labelledby="choose-heading">
         <div className="mx-auto max-w-2xl text-center">

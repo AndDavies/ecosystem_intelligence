@@ -15,10 +15,10 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Canadian Defence Signals",
-  description: "A weekday, source-linked scan of Canadian defence capability, public needs, procurement, funding, testing, and allied developments.",
+  description: "A daily, source-linked scan of Canadian defence capability, public needs, procurement, funding, testing, and allied developments.",
   alternates: { canonical: "/signals" },
   openGraph: { title: "Canadian Defence Signals", description: "See what changed, why it may matter, what remains unknown, and where to continue in True North Map.", url: "/signals", type: "website", siteName, locale: "en_CA" },
-  twitter: { card: "summary_large_image", title: "Canadian Defence Signals", description: "A source-linked weekday scan of developments that may shape Canadian defence capability." }
+  twitter: { card: "summary_large_image", title: "Canadian Defence Signals", description: "A source-linked daily scan of developments that may shape Canadian defence capability." }
 };
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA", { dateStyle: "long" });

@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-02
+Last reviewed: 2026-08-03
 
 ## Brand idea
 
@@ -128,9 +128,11 @@ action or a short piece of meaning.
 
 - Use the approved maritime evidence image in a compact square-edged split hero
   with no corner radius, card shadow, or decorative image border.
-- Place the headline, explanation, live coverage count, and actions in a Paper
-  editorial panel beside the image on desktop. Stack the panel before the image
-  on smaller screens so the decision path remains readable.
+- Place the headline, explanation, and actions in a Paper editorial panel beside
+  the image on desktop. Keep the three live coverage measures in one restrained
+  Paper overlay within the image field rather than a separate page-width band.
+  On mobile, use a compact three-column overlay that does not add hero height or
+  obscure the primary decision path.
 - Keep the headline's three-part reading rhythm and restrict Signal Yellow to
   the opening phrase and primary action.
 - Continue the image field into a 64-pixel Paper caption cutout beneath the
@@ -138,14 +140,14 @@ action or a short piece of meaning.
   do not add another card, border, or shadow.
 - Keep the desktop hero to 480 pixels so discovery remains visible without an
   oversized image pushing the map farther down the page.
-- Render the static hero immediately. Stream the live coverage count in its own
-  boundary and keep national map/search data behind the existing downstream
+- Render the static hero immediately. Stream the live coverage measures in their
+  own fixed-geometry overlay boundary and keep national map/search data behind the existing downstream
   loading boundary so corpus growth cannot block the first meaningful view.
 
 ### Guided landing and map workspace
 
-- `/` is the guided public entrance. It moves from the hero and exact coverage
-  strip into three clear starting jobs, a real published product specimen, a
+- `/` is the guided public entrance. It moves from the hero and compact live
+  coverage overlay into three clear starting jobs, a real published product specimen, a
   dark evidence-led worked example, selected Mission Areas and Defence Briefs,
   North Signal, contribution, independence, and trust questions.
 - The starting-job cards are functional choices, not decorative dashboard
@@ -168,9 +170,10 @@ action or a short piece of meaning.
   below the workspace. On mobile, use an explicit Map/List control and
   collapsed, preview and expanded results-sheet states. Preserve the shared
   URL state and never shrink desktop controls into unreadable mobile density.
-- The coverage band directly below the hero uses one separator between each
-  adjacent item at every breakpoint. The final freshness statement must not
-  create a doubled rule beside the last metric.
+- The hero coverage overlay shows only published organizations, reviewed
+  technologies, and cited public sources. It omits a freshness sentence, uses
+  fine separators only in its vertical desktop form, and becomes a compact
+  three-column image overlay on smaller screens without increasing hero height.
 - Use compact LinkedIn and X social-action pills in the footer with the plain
   invitation **Follow us on...**. Social controls remain secondary to the
   page's task and evidence actions.

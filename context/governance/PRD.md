@@ -111,7 +111,7 @@ The landing page may offer a fixed public example with visitor-adjustable **Sear
 
 Automated research can create leads and candidate changes. Only an explicit human-reviewed promotion can change canonical published records.
 
-The isolated Canadian Defence Signals editorial surface is the narrow exception: the approved weekday automation may publish a validated `daily_signals_packet_v1` only to dedicated `signal_*` tables. It cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read and links the durable public sources.
+The isolated Canadian Defence Signals editorial surface is the narrow exception: the approved daily 07:00 Atlantic automation may publish a validated `daily_signals_packet_v1` only to dedicated `signal_*` tables. It cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read and links the durable public sources, and a no-publish day is valid when the evidence or significance gate is not met.
 
 ## Public information architecture
 
@@ -125,7 +125,7 @@ The isolated Canadian Defence Signals editorial surface is the narrow exception:
 | `/capabilities/[slug]` | Technology profile with features, uses, maturity, where the technology may help, and evidence |
 | `/demand` | Released public needs and reviewed Canadian technology connections |
 | `/demand/[slug]` | Public need, desired outcome, exact source passage, reviewed assessments, gaps, and caveats |
-| `/signals` | Archive of weekday, source-linked Canadian Defence Signals editions |
+| `/signals` | Archive of daily, source-linked Canadian Defence Signals editions |
 | `/signals/[slug]` | Descriptive immutable edition URL with public facts, automated reads, unknowns, next steps, sources, and links into published atlas records |
 | `/how-it-works` | Five-step public journey from map discovery through evidence, released needs, reviewed assessments, and conversation |
 | `/account` | Authenticated identity, Working Lists, connection and contribution status, sign-out, and private-data controls |

@@ -69,13 +69,13 @@ function useLandingData() {
   return { data, failed };
 }
 
-export function LandingCoverage() {
+export function LandingCoverageOverlay() {
   const { data, failed } = useLandingData();
-  if (!data) return <div className="h-[126px] animate-pulse border-b border-[var(--atlas-border)] bg-white sm:h-[88px]" aria-label={failed ? "Coverage is temporarily unavailable" : "Loading current coverage"} />;
-  return <section className="border-b border-[var(--atlas-border)] bg-white"><div className="atlas-frame grid gap-0 py-3 sm:grid-cols-2 sm:py-4 lg:grid-cols-[1fr_1fr_1fr_1.12fr] lg:items-center"><Metric icon={Building2} value={data.summary.organizations} label="Published organizations" /><Metric icon={Cpu} value={data.summary.capabilities} label="Reviewed technologies" /><Metric icon={FileText} value={data.summary.sources} label="Cited public sources" /><p className="flex min-h-[58px] items-center gap-4 border-t border-[var(--atlas-border)] pt-4 text-sm font-medium leading-6 text-[var(--atlas-muted)] sm:border-l sm:border-t-0 sm:px-5 sm:pt-0 lg:border-l-0 lg:px-7"><span className="size-2.5 shrink-0 rounded-full bg-[var(--atlas-evidence)]" />Updated as reviewed records are published.</p></div></section>;
+  if (!data) return <div className="absolute inset-x-3 top-3 z-10 h-[68px] animate-pulse bg-white/90 shadow-[var(--atlas-shadow-soft)] sm:inset-x-auto sm:right-5 sm:top-5 sm:h-[190px] sm:w-[224px]" aria-label={failed ? "Coverage is temporarily unavailable" : "Loading current coverage"} />;
+  return <aside aria-label="Current published coverage" className="absolute inset-x-3 top-3 z-10 grid grid-cols-3 overflow-hidden bg-white/95 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:inset-x-auto sm:right-5 sm:top-5 sm:w-[224px] sm:grid-cols-1 sm:divide-y sm:divide-[var(--atlas-border)]"><Metric icon={Building2} value={data.summary.organizations} label="Published organizations" /><Metric icon={Cpu} value={data.summary.capabilities} label="Reviewed technologies" /><Metric icon={FileText} value={data.summary.sources} label="Cited public sources" /></aside>;
 }
 
-function Metric({ icon: Icon, value, label }: { icon: typeof Building2; value: number; label: string }) { return <div className="flex min-h-[58px] items-center gap-4 border-b border-[var(--atlas-border)] py-3 sm:border-b-0 sm:px-5 lg:border-r lg:px-7"><Icon className="size-7 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" /><div><strong className="block font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.04em]">{value.toLocaleString("en-CA")}</strong><span className="mt-0.5 block text-sm text-[var(--atlas-muted)]">{label}</span></div></div>; }
+function Metric({ icon: Icon, value, label }: { icon: typeof Building2; value: number; label: string }) { return <div className="flex min-w-0 items-center justify-center gap-2 px-2 py-2.5 sm:min-h-[63px] sm:justify-start sm:gap-3 sm:px-4 sm:py-3"><Icon className="size-4 shrink-0 text-[var(--atlas-evidence)] sm:size-5" aria-hidden="true" /><div className="min-w-0"><strong className="block font-[family-name:var(--font-barlow)] text-lg font-extrabold leading-none tracking-[-0.04em] sm:text-xl">{value.toLocaleString("en-CA")}</strong><span className="mt-1 block text-[9px] leading-3 text-[var(--atlas-muted)] sm:text-[11px] sm:leading-4">{label}</span></div></div>; }
 
 export function LandingProductPreview() {
   const { data, failed } = useLandingData();

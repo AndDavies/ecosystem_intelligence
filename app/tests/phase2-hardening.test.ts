@@ -78,7 +78,7 @@ describe("phase 2 launch hardening", () => {
       readFile(path.resolve("src/lib/atlas/supabase-repository.ts"), "utf8"),
       readFile(path.resolve("vercel.json"), "utf8")
     ]);
-    expect(page).toContain("<LandingCoverage />");
+    expect(page).toContain("<LandingCoverageOverlay />");
     expect(page).toContain("Canada is building");
     expect(mapPage).toContain("<Suspense fallback={<MapFallback />}");
     expect(repository).toContain("loadWarmAtlasDiscoverySnapshot");
@@ -157,7 +157,7 @@ describe("phase 2 launch hardening", () => {
     ]);
     expect(page).toContain("export const revalidate = 300");
     expect(page).not.toContain("getAtlasDiscoverySnapshot");
-    expect(page).toContain("<LandingCoverage />");
+    expect(page).toContain("<LandingCoverageOverlay />");
     expect(mapPage).toContain("getAtlasDiscoverySnapshot()");
     expect(explorer).toContain('className="atlas-frame pb-8 pt-3 sm:pt-4"');
     expect(explorer).toContain("lg:grid-cols-[minmax(0,1fr)_380px]");

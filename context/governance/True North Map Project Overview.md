@@ -1,7 +1,7 @@
 # True North Map Project Overview
 
 Status: production soft beta and review-first data operation
-Last reviewed: 2026-08-02
+Last reviewed: 2026-08-03
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -36,7 +36,7 @@ Place, technology, or public need
 | Ask True North | Ask a plain-language question and receive bounded results from the live published corpus | AI explores known records; it does not create facts or procurement decisions |
 | Guided example | Adjust a search focus and open a defensible example path | Five visitor-adjustable, allowlisted concepts carried into a deterministic, ordinary `/map` URL. The handoff reads only published records and never calls Ask True North or consumes its quota. |
 | Defence Briefs | Read reviewed, source-linked Canadian defence explainers | Editorial synthesis is distinct from raw private wiki material |
-| Canadian Defence Signals | Follow a weekday, source-linked read of developments that may change what Canadian teams should inspect next | Automated interpretation is visibly separated from the public record; original durable sources remain linked |
+| Canadian Defence Signals | Follow a daily, source-linked read of developments that may change what Canadian teams should inspect next | Automated interpretation is visibly separated from the public record; original durable sources remain linked |
 | North Signal | Subscribe to a concise weekly briefing about newly mapped capability, released public needs, reviewed connections, and defence developments worth following | Supabase records consent; MailerLite delivers; Andrew reviews and sends every issue |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
 | Contribution and connection | Claim, correct, suggest, contact, or request a human-brokered introduction | Nothing public changes automatically |
@@ -149,7 +149,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Ask True North | Ask True North | Constrained AI-assisted discovery over the current published corpus. It exposes uncertainty and falls back to deterministic results when needed. |
 | Assistant fit level | Strong fit, plausible fit, adjacent fit | A ranking aid for known records. It is neither a source claim nor a procurement recommendation. |
 | Defence Brief | Canadian Defence Brief | A reviewed, source-linked public explainer or time-bounded analysis. |
-| Daily update / news roundup | Canadian Defence Signals | A weekday source-linked edition at a descriptive, immutable `/signals/[slug]` URL. Each item labels the public fact, automated read, unknowns, and next step. |
+| Daily update / news roundup | Canadian Defence Signals | A daily source-linked edition at a descriptive, immutable `/signals/[slug]` URL. Each item labels the public fact, automated read, unknowns, and next step. A no-publish day is valid when the evidence or significance gate is not met. |
 | `Derived Read` in a Brief | True North Map assessment / Derived Read | A labelled interpretation in editorial content. It must remain distinct from the underlying factual record. |
 | Global Source Book | Global Source Book | A maintained private inventory of durable source starting points used to find research leads. |
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |

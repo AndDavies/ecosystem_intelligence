@@ -29,7 +29,7 @@ export default async function AdminSignalsPage({ searchParams }: { searchParams:
   const operationsReady = !runResult.error && !draftResult.error;
   const editionRows = (editions ?? []) as Row[];
   const itemRows = (items ?? []) as Row[];
-  return <PublicPageShell variant="admin" eyebrow="Automated editorial workspace" title="Canadian Defence Signals" description="Inspect weekday scan health, correct published copy, archive an edition, and copy private social drafts. Signals never write to the core organization, technology, Public Need, evidence, or match tables." backHref="/admin" backLabel="Admin home">
+  return <PublicPageShell variant="admin" eyebrow="Automated editorial workspace" title="Canadian Defence Signals" description="Inspect daily scan health, correct published copy, archive an edition, and copy private social drafts. Signals never write to the core organization, technology, Public Need, evidence, or match tables." backHref="/admin" backLabel="Admin home">
     <AdminNav />
     {params.success ? <div className="mb-5 rounded-xl border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] px-4 py-3 text-sm text-[var(--admin-success)]">Signals saved and public routes refreshed.</div> : null}
     {params.error ? <div className="mb-5 rounded-xl border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] px-4 py-3 text-sm text-[var(--admin-danger)]">The change was not saved. Check the required lengths and try again.</div> : null}
