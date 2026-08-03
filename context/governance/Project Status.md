@@ -133,9 +133,9 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 
 ## Current operational priorities
 
-1. Complete clean integrated and release-level regression for the current release candidate, then run the production smoke and count-consistency probes after deployment. Local completion is not production verification.
+1. Complete the authenticated Codex Security assessment. The current release is deployed and has passed the complete Node 24 release gate, GitHub Release Validation, CodeQL, production smoke, catalogue-consistency probes, and a paced 794-page canonical crawl with no findings or recovered warnings.
 2. Triage the live review and participation queues before broader promotion. Work approved research through the separate Publish checkpoint only after reviewing operations and evidence; respond to real connection, contact, contribution, and feedback items through their ordinary workflows.
-3. Review current field LCP, INP, CLS, function errors, direct health, atlas summary, rich-page size, and catalogue-consistency results after the release is live. Keep `REL-2026-003` open until the anonymous cache-header and signed-in-header matrix is verified in production, and keep `REL-2026-004` open until the new retry-warning contract passes a production crawl.
+3. Review current field LCP, INP, CLS, function errors, direct health, atlas summary, rich-page size, and catalogue-consistency results during the broader-release window. Keep `REL-2026-003` open until the anonymous cache-header and signed-in-header matrix is verified in production; `REL-2026-004` is now closed by the production crawl.
 4. Establish a repeatable Defence Brief and North Signal publishing cadence. Mission routes and related-record links are now available; editorial freshness is the next content trust signal.
 5. Use only the dated broader-beta launch package under `content/launch/broader-public-beta-2026-08/`. Recheck community rules, live proof points, and every outbound URL immediately before distribution.
 6. Continue the open security and resilience register without weakening authorization: stale-publication SQLSTATE, multi-tab auth noise, nonce-based CSP, and field-performance monitoring remain deliberate follow-up work.
