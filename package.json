@@ -29,7 +29,7 @@
     "logos:publish-reviewed": "pnpm --dir app logos:publish-reviewed",
     "scale:validate": "pnpm --dir app scale:validate",
     "launch:validate": "pnpm --dir app launch:validate",
-    "security:validate": "pnpm --dir app audit --prod --audit-level high",
+    "security:validate": "pnpm --dir app audit --audit-level high",
     "release:validate": "pnpm security:validate && pnpm test && pnpm lint && pnpm scale:validate && pnpm build"
   }
 }

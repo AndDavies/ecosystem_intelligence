@@ -215,7 +215,7 @@ describe("phase 2 launch hardening", () => {
       pnpm?: { overrides?: Record<string, string> };
     };
 
-    expect(workspacePackage.scripts["security:validate"]).toContain("audit --prod --audit-level high");
+    expect(workspacePackage.scripts["security:validate"]).toContain("audit --audit-level high");
     expect(workspacePackage.scripts["release:validate"]).toContain("pnpm security:validate");
     expect(appPackage.dependencies.next).toBe("^15.5.22");
     expect(appPackage.dependencies.sharp).toBe("0.35.3");

@@ -81,7 +81,7 @@ The first production smoke exposed `DYNAMIC_SERVER_USAGE` on dossier routes beca
 
 - National discovery is assembled from deterministic 1,000-row relation pages, with each bounded page stored under the shared `atlas-public` five-minute cache tag. This preserves the complete map without storing the uncapped corpus in one provider-limited item.
 - Public reads keep one retry and now add a short randomized delay. Middleware is restricted to the legacy root bridge and routes that actually require authentication refresh or protection.
-- The application and CI runtime is pinned to Node 24. GitHub Actions runs the complete release gate on `main`; CodeQL, Dependabot, dependency auditing, secret scanning, and push protection provide supply-chain checks.
+- The application and CI runtime is pinned to Node 24. GitHub Actions runs the complete release gate on `main`; CodeQL, complete dependency auditing, Dependabot vulnerability alerts, secret scanning, and push protection provide supply-chain checks without automated update branches.
 - Local migration and rollback filenames now match the applied production Supabase versions exactly. No SQL was executed and no database object changed.
 - Superseded launch exports, generated reports, and the private newsletter export were removed from the current tracked tree. Historical governance is isolated under `context/archive/governance/`; the current broader-beta kit remains the only active launch package.
 - A production-only Vercel Firewall observation rule for unusually frequent `/organizations` GET traffic is staged with a log-only action. It is not active until the owner explicitly reviews and publishes it.
@@ -103,7 +103,7 @@ This historical candidate refined the approved landing and `/map` handoff withou
 - Supabase project `facoactpdckkhciamflk` reported `ACTIVE_HEALTHY` in `us-west-2`.
 - `/api/health`, the homepage, Organizations, Regions, Public Needs, Defence Briefs, How It Works, and the Kraken Robotics profile returned successfully.
 - Current public route time to first byte in the direct smoke was roughly 0.12 to 0.42 seconds. Full transfer for the checked pages remained below roughly 0.54 seconds in that sample. This is a dated audit sample, not field Core Web Vitals.
-- `pnpm security:validate` reported no known production dependency vulnerability.
+- `pnpm security:validate` reports on the complete production and development dependency graph.
 - `pnpm launch:validate` checked 645 canonical public pages with zero findings, zero orphan candidates, and zero duplicate titles.
 - Browser checks at 390, 768, 1024, and 1440 pixels found no horizontal overflow on the sampled core routes. No console warning or error appeared in the audited public flow.
 - The live response still uses private no-store homepage HTML, exposes `X-Powered-By`, and retains dormant Clarity hosts in the CSP. Those items remain in the security and reliability register.

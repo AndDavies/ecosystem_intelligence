@@ -47,7 +47,7 @@ True North Map is one product made from several connected systems. A change that
 
 ## Validation levels
 
-All application and release commands run on the repository-pinned Node 24 runtime. Local results produced by an unsupported Node version are not release evidence. GitHub Actions reruns the complete release gate on `main`; CodeQL and Dependabot supplement rather than replace the required functional, browser, data-boundary, and production checks below.
+All application and release commands run on the repository-pinned Node 24 runtime. Local results produced by an unsupported Node version are not release evidence. GitHub Actions reruns the complete release gate on `main`; CodeQL and Dependabot vulnerability alerts supplement rather than replace the required functional, browser, data-boundary, and production checks below. Automated dependency-update branches remain disabled under the approved main-only release workflow.
 
 ### Level A: scoped development check
 
