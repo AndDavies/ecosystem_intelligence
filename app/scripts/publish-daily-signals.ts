@@ -1,0 +1,106 @@
+import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import path from "node:path";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import sharp from "sharp";
+import { dailySignalsPacketSchema } from "../src/lib/signals/contract";
+import { assertSignalsEditorialVoice } from "../src/lib/signals/editorial-voice";
+import { loadScriptEnv } from "./load-env";
+
+loadScriptEnv();
+
+async function storeHeroImage(image: NonNullable<ReturnType<typeof dailySignalsPacketSchema.parse>["heroImage"]>, slug: string, supabase: SupabaseClient) {
+  const response = await fetch(image.imageUrl, {
+    headers: { "User-Agent": "True North Map Signals/1.0 (+https://truenorthmap.ca/signals)" },
+    signal: AbortSignal.timeout(15_000)
+  });
+  if (!response.ok) throw new Error(`Hero image returned HTTP ${response.status}.`);
+  const mimeType = response.headers.get("content-type")?.split(";")[0]?.trim();
+  if (!mimeType || !["image/jpeg", "image/png", "image/webp"].includes(mimeType)) throw new Error(`Hero image type is not supported: ${mimeType ?? "unknown"}.`);
+  const declaredBytes = Number(response.headers.get("content-length") ?? "0");
+  if (declaredBytes > 10_485_760) throw new Error("Hero image exceeds the 10 MB source limit.");
+  const sourceBytes = Buffer.from(await response.arrayBuffer());
+  if (sourceBytes.byteLength > 10_485_760) throw new Error("Hero image exceeds the 10 MB source limit.");
+  const normalized = await sharp(sourceBytes).rotate().resize(1600, 900, { fit: "cover", position: "attention", withoutEnlargement: true }).webp({ quality: 84 }).toBuffer();
+  const checksum = createHash("sha256").update(normalized).digest("hex");
+  const storagePath = `signals/${slug}/${checksum}.webp`;
+  const { error } = await supabase.storage.from("brief-images").upload(storagePath, normalized, { contentType: "image/webp", cacheControl: "31536000", upsert: false });
+  if (error && !/already exists|duplicate/i.test(error.message)) throw error;
+  const { data } = supabase.storage.from("brief-images").getPublicUrl(storagePath);
+  return { storagePath, publicUrl: data.publicUrl };
+}
+
+async function main() {
+const fileArg = process.argv.find((arg) => arg.startsWith("--file="))?.slice(7);
+const apply = process.argv.includes("--apply");
+if (!fileArg) throw new Error("Use --file=/absolute/or/relative/path.json. Add --apply only after validation.");
+const packet = dailySignalsPacketSchema.parse(JSON.parse(await readFile(path.resolve(fileArg), "utf8")));
+assertSignalsEditorialVoice(packet);
+const orderedItems = [...packet.items].sort((left, right) => left.storyPosition - right.storyPosition);
+
+if (!apply) {
+  console.log(JSON.stringify({ ok: true, mode: "dry-run", editorialVoice: "passed", runId: packet.runId, slug: packet.slug, items: packet.items.length, sourceFamilies: packet.sourceFamilyCount }, null, 2));
+  process.exit(0);
+}
+
+const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+if (!url || !key) throw new Error("Publication requires NEXT_PUBLIC_SUPABASE_URL and the local-only SUPABASE_SERVICE_ROLE_KEY.");
+const supabase = createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
+const { data: existing } = await supabase.from("signal_editions").select("id, slug").eq("run_id", packet.runId).maybeSingle();
+if (existing) {
+  console.log(JSON.stringify({ ok: true, mode: "idempotent", editionId: existing.id, slug: existing.slug }, null, 2));
+  process.exit(0);
+}
+
+const cutoff = new Date(Date.now() - 30 * 86400_000).toISOString();
+const { data: recentItems } = await supabase.from("signal_items").select("event_fingerprint, material_update, created_at").in("event_fingerprint", packet.items.map((item) => item.eventFingerprint)).gte("created_at", cutoff);
+for (const item of packet.items) {
+  if ((recentItems ?? []).some((row) => row.event_fingerprint === item.eventFingerprint) && !item.materialUpdate) throw new Error(`Repeated event without a material-update disposition: ${item.eventFingerprint}`);
+}
+
+await supabase.from("signal_runs").insert({ run_id: packet.runId, status: "started", inspected_count: packet.inspectedCount, selected_count: packet.items.length, source_family_count: packet.sourceFamilyCount });
+let editionId: string | null = null;
+let heroStoragePath: string | null = null;
+try {
+  const storedHero = packet.heroImage ? await storeHeroImage(packet.heroImage, packet.slug, supabase) : null;
+  heroStoragePath = storedHero?.storagePath ?? null;
+  const { data: edition, error: editionError } = await supabase.from("signal_editions").insert({ slug: packet.slug, edition_date: packet.editionDate, title: packet.title, executive_summary: packet.executiveSummary, hero_image_path: storedHero?.publicUrl ?? null, hero_image_source_url: packet.heroImage?.sourcePageUrl ?? null, hero_image_alt: packet.heroImage?.alt ?? null, hero_image_attribution: packet.heroImage?.attribution ?? null, automation_disclosure: packet.disclosure, run_id: packet.runId, publication_status: "archived" }).select("id").single();
+  if (editionError || !edition) throw editionError ?? new Error("Edition insert returned no ID.");
+  editionId = String(edition.id);
+  const itemIds = new Map<string, string>();
+  for (const [position, item] of orderedItems.entries()) {
+    const { data: insertedItem, error } = await supabase.from("signal_items").insert({ edition_id: editionId, slug: item.slug, position: position + 1, title: item.title, lane: item.lane, tags: item.tags, bottom_line: item.bottomLine, executive_summary: item.executiveSummary, source_fact: item.sourceFact, automated_read: item.automatedRead, unknowns: item.unknowns, next_step: item.nextStep, confidence: item.confidence, event_fingerprint: item.eventFingerprint, content_hash: item.contentHash, material_update: item.materialUpdate }).select("id").single();
+    if (error || !insertedItem) throw error ?? new Error(`Item insert failed: ${item.slug}`);
+    itemIds.set(item.slug, String(insertedItem.id));
+    for (const [sourceOrder, source] of item.sources.entries()) {
+      const { data: savedSource, error: sourceError } = await supabase.from("signal_sources").upsert({ canonical_url: source.canonicalUrl, title: source.title, publisher: source.publisher, published_at: source.publishedAt, source_family: source.sourceFamily, authority: source.authority, evidence_locator: source.evidenceLocator, evidence_excerpt: source.evidenceExcerpt, content_hash: source.contentHash, accessed_at: new Date().toISOString(), updated_at: new Date().toISOString() }, { onConflict: "canonical_url" }).select("id").single();
+      if (sourceError || !savedSource) throw sourceError ?? new Error(`Source insert failed: ${source.canonicalUrl}`);
+      const { error: joinError } = await supabase.from("signal_item_sources").insert({ item_id: insertedItem.id, source_id: savedSource.id, is_primary: sourceOrder === 0, display_order: sourceOrder });
+      if (joinError) throw joinError;
+    }
+    if (item.recordLinks.length) {
+      const { error: linkError } = await supabase.from("signal_record_links").insert(item.recordLinks.map((link, index) => ({ item_id: insertedItem.id, record_type: link.recordType, record_id: link.recordId, relationship_label: link.relationshipLabel, public_href: link.publicHref, display_order: index })));
+      if (linkError) throw linkError;
+    }
+  }
+  if (packet.socialDrafts.length) {
+    const { error } = await supabase.from("signal_social_drafts").insert(packet.socialDrafts.map((draft) => ({ edition_id: editionId, item_id: draft.itemSlug ? itemIds.get(draft.itemSlug) ?? null : null, platform: draft.platform, draft_text: draft.text })));
+    if (error) throw error;
+  }
+  const { error: publishError } = await supabase.from("signal_editions").update({ publication_status: "published", published_at: new Date().toISOString(), updated_at: new Date().toISOString() }).eq("id", editionId);
+  if (publishError) throw publishError;
+  await supabase.from("signal_runs").update({ status: "published", edition_id: editionId, completed_at: new Date().toISOString(), report: { slug: packet.slug, item_count: packet.items.length, hero_image: Boolean(storedHero), editorial_voice: "passed" } }).eq("run_id", packet.runId);
+  console.log(JSON.stringify({ ok: true, mode: "published", editionId, slug: packet.slug, url: `https://truenorthmap.ca/signals/${packet.slug}` }, null, 2));
+} catch (error) {
+  if (editionId) await supabase.from("signal_editions").delete().eq("id", editionId);
+  if (heroStoragePath) await supabase.storage.from("brief-images").remove([heroStoragePath]);
+  await supabase.from("signal_runs").update({ status: "failed", completed_at: new Date().toISOString(), report: { error: error instanceof Error ? error.message : String(error) } }).eq("run_id", packet.runId);
+  throw error;
+}
+}
+
+void main().catch((error) => {
+  console.error(error instanceof Error ? error.message : String(error));
+  process.exitCode = 1;
+});

@@ -36,6 +36,7 @@ Place, technology, or public need
 | Ask True North | Ask a plain-language question and receive bounded results from the live published corpus | AI explores known records; it does not create facts or procurement decisions |
 | Guided example | Adjust a search focus and open a defensible example path | Five visitor-adjustable, allowlisted concepts carried into a deterministic, ordinary `/map` URL. The handoff reads only published records and never calls Ask True North or consumes its quota. |
 | Defence Briefs | Read reviewed, source-linked Canadian defence explainers | Editorial synthesis is distinct from raw private wiki material |
+| Canadian Defence Signals | Follow a weekday, source-linked read of developments that may change what Canadian teams should inspect next | Automated interpretation is visibly separated from the public record; original durable sources remain linked |
 | North Signal | Subscribe to a concise weekly briefing about newly mapped capability, released public needs, reviewed connections, and defence developments worth following | Supabase records consent; MailerLite delivers; Andrew reviews and sends every issue |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
 | Contribution and connection | Claim, correct, suggest, contact, or request a human-brokered introduction | Nothing public changes automatically |
@@ -69,6 +70,7 @@ Place, technology, or public need
 | `app/` | Next.js application, public and private routes, server actions, tests, deployment migrations, runtime integrations | Hold an alternate corpus or publish unreviewed research |
 | Supabase production | Sole canonical runtime for records, taxonomy, evidence, review state, auth, storage, and publication | Accept unreviewed agent output as public data |
 | `research/ingestion/` | Immutable typed lineage for collection plans, claim ledgers, signals, leads, candidates, reviews, staging exports, and runs | Act as a runtime data source or automatic promotion channel |
+| `research/signals/local/` | Ignored daily Signals packets, source ledgers, and run reports | Enter Git, replace durable sources, or become a second core corpus |
 | `.agents/skills/` | Ignored local operator skills for research and visibility | Enter the public repository, replace the live schema, or gain publication authority |
 | `context/governance/` | Product decisions, operating contracts, release and workflow documentation | Store candidate records or code-generated output |
 | `content/` | Launch, campaign, and non-runtime collateral | Become a source of public record truth |
@@ -147,6 +149,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Ask True North | Ask True North | Constrained AI-assisted discovery over the current published corpus. It exposes uncertainty and falls back to deterministic results when needed. |
 | Assistant fit level | Strong fit, plausible fit, adjacent fit | A ranking aid for known records. It is neither a source claim nor a procurement recommendation. |
 | Defence Brief | Canadian Defence Brief | A reviewed, source-linked public explainer or time-bounded analysis. |
+| Daily update / news roundup | Canadian Defence Signals | A weekday source-linked edition at a descriptive, immutable `/signals/[slug]` URL. Each item labels the public fact, automated read, unknowns, and next step. |
 | `Derived Read` in a Brief | True North Map assessment / Derived Read | A labelled interpretation in editorial content. It must remain distinct from the underlying factual record. |
 | Global Source Book | Global Source Book | A maintained private inventory of durable source starting points used to find research leads. |
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |
@@ -193,7 +196,7 @@ The public message system is:
 
 ## Navigation and security model
 
-- Primary public navigation is Map, Organizations, Missions, Public Needs, Defence Briefs, How It Works, and About. The landing page is a guided entry point; `/map` remains the canonical atlas and Ask True North workspace.
+- Primary public navigation is Map, Organizations, Missions, Public Needs, Signals, Defence Briefs, How It Works, and About. The landing page is a guided entry point; `/map` remains the canonical atlas and Ask True North workspace.
 - Public browsing, profiles, sources, Defence Briefs, and eligible exports are open.
 - Google OAuth and passwordless email are available for private actions such as Working Lists, claims, corrections, connection requests, and account management.
 - The admin workspace is not linked publicly, is `noindex`, and fails closed to the designated administrator identity, exact email, and controlled application metadata.

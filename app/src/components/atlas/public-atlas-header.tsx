@@ -13,6 +13,7 @@ const navigation = [
   { href: "/organizations", label: "Organizations", match: (pathname: string) => pathname.startsWith("/organizations") },
   { href: "/missions", label: "Missions", match: (pathname: string) => pathname.startsWith("/missions") },
   { href: "/demand", label: "Public Needs", match: (pathname: string) => pathname.startsWith("/demand") },
+  { href: "/signals", label: "Signals", match: (pathname: string) => pathname.startsWith("/signals") },
   { href: "/briefs", label: "Defence Briefs", match: (pathname: string) => pathname.startsWith("/briefs") },
   { href: "/how-it-works", label: "How It Works", match: (pathname: string) => pathname.startsWith("/how-it-works") },
   { href: "/about", label: "About", match: (pathname: string) => pathname.startsWith("/about") || pathname.startsWith("/methodology") }

@@ -1,7 +1,7 @@
 # True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
 Status: active product requirements
-Last updated: 2026-08-01
+Last updated: 2026-08-03
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -111,6 +111,8 @@ The landing page may offer a fixed public example with visitor-adjustable **Sear
 
 Automated research can create leads and candidate changes. Only an explicit human-reviewed promotion can change canonical published records.
 
+The isolated Canadian Defence Signals editorial surface is the narrow exception: the approved weekday automation may publish a validated `daily_signals_packet_v1` only to dedicated `signal_*` tables. It cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read and links the durable public sources.
+
 ## Public information architecture
 
 | Route | Purpose |
@@ -123,6 +125,8 @@ Automated research can create leads and candidate changes. Only an explicit huma
 | `/capabilities/[slug]` | Technology profile with features, uses, maturity, where the technology may help, and evidence |
 | `/demand` | Released public needs and reviewed Canadian technology connections |
 | `/demand/[slug]` | Public need, desired outcome, exact source passage, reviewed assessments, gaps, and caveats |
+| `/signals` | Archive of weekday, source-linked Canadian Defence Signals editions |
+| `/signals/[slug]` | Descriptive immutable edition URL with public facts, automated reads, unknowns, next steps, sources, and links into published atlas records |
 | `/how-it-works` | Five-step public journey from map discovery through evidence, released needs, reviewed assessments, and conversation |
 | `/account` | Authenticated identity, Working Lists, connection and contribution status, sign-out, and private-data controls |
 | `/collections` | Authenticated private Working Lists |
@@ -200,6 +204,14 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
 - `funding_events`
 - `organization_relationships`
 - `media_assets`
+
+### Automated editorial Signals
+
+- `signal_editions` — descriptive immutable canonical editions and correction timestamps
+- `signal_items` — five to eight bounded developments with fact/read/gap/next-step separation
+- `signal_sources` and `signal_item_sources` — original durable HTTPS evidence and locators
+- `signal_record_links` — optional links to already-published organizations, technologies, Public Needs, and Mission Areas
+- `signal_runs` and `signal_social_drafts` — owner-only operational status and unsent copy protected by RLS and denied to anonymous users
 
 Approved organization logos use `media_assets` and the existing `atlas-public-media` bucket rather than a separate branding store. Public dossiers select only the newest public, approved, published `logo` row. Official high-confidence marks may be imported directly with immutable checksummed storage paths; uncertain marks remain unpublished for human review. Administrators may replace or remove a mark from the canonical organization editor, with provenance and audit history preserved.
 

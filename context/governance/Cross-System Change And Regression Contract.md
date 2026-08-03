@@ -44,6 +44,7 @@ True North Map is one product made from several connected systems. A change that
 | SEO, AEO, structured data, or sharing | Canonicals, sitemap freshness, robots, internal links, social image crops, visible-source claims | Visibility skill/report contract, brand packet, launch package | Visibility validation, low-rate launch crawl, structured-data and share preview checks |
 | Brand asset or launch collateral | Approved copy, typography, contrast, favicon, social cards, stale screenshots | Brand System, launch README, project report | Asset dimensions, responsive rendering, PDF/video inspection, metadata previews |
 | Defence Brief or editorial content | Public sources, Derived Reads, related records, hero image, Article schema, private wiki boundary | Brief/editorial contract and status | Source/link checks, Article metadata, mobile reading layout, admin edit/publish |
+| Canadian Defence Signals | Durable sources, fact/read separation, unknowns, duplicate fingerprint, immutable descriptive slug, private social drafts, no core-corpus write | Overview, status, Daily Signals skill and route contract | Packet validation, migration/RLS chain, idempotent dry run, metadata, sitemap, admin correction/archive, 390/768/1024/1440 reading layout |
 
 ## Validation levels
 
@@ -86,6 +87,8 @@ pnpm release:validate
 `release:validate` begins with the production dependency gate. High or critical known vulnerabilities fail the release before tests and the clean build run. The active finding and remediation history is maintained in `Security And Reliability Remediation Log.md`.
 
 Then complete the relevant browser matrix at 390, 768, 1024, and 1440 pixels, verify access roles, and confirm the production build. After deployment, check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, the homepage, affected public routes, sign-in when relevant, Vercel build/runtime logs, and live Supabase state. The summary organization count, atlas total, and complete marker collection must agree; rich records must remain bounded to the requested page size.
+
+For a Daily Signals release, also verify `/signals`, the descriptive edition URL, every original source link, Article and ItemList JSON-LD, sitemap inclusion, anonymous read versus non-staff write denial, administrator correction and archive, unchanged core-corpus counts, private-only social drafts, and an idempotent rerun. Never activate the schedule before the compatible migration and application are live.
 
 For a landing or map-workspace release, also verify that `/` loads only the
 lazy fixed non-interactive MapTiler specimen, `/map` places the fully interactive

@@ -2,7 +2,7 @@
 
 Status: current architecture and integration map
 
-Last reviewed: 2026-07-31
+Last reviewed: 2026-08-03
 
 ## Current integration state
 
@@ -70,6 +70,10 @@ The next enrichment layer keeps the same boundary: Search Console uses a three-d
 
 Its output is a private, validated issue candidate under ignored `research/north-signal/local/`. It does not modify Supabase, create public records, change subscriber consent, or create and send a MailerLite campaign. Andrew reviews the issue and manually controls delivery.
 
+## Daily Signals editorial skill
+
+`tnm-daily-signals` is an isolated local weekday workflow. It resolves feed, newsletter, and search leads to original durable sources; validates a five-to-eight-item `daily_signals_packet_v1`; and may publish only through `app/scripts/publish-daily-signals.ts` to dedicated `signal_*` tables. It treats a no-publish day as valid, keeps social drafts private, and never changes the core corpus or posts externally. Published Signals may inform the weekly North Signal issue, but Andrew still reviews and sends the weekly MailerLite campaign manually. Automation `true-north-map-daily-signals` is created in a paused state and must remain paused until the compatible migration and application are verified in production.
+
 ## Scheduled and manual operations
 
 | Operation | Normal cadence | Writes | Human gate |
@@ -77,6 +81,7 @@ Its output is a private, validated issue candidate under ignored `research/north
 | Broad discovery | Weekly or manual | Collection plan, claim ledger, typed research lineage, and private candidates | Review and Publish |
 | Signal refresh | Weekday or manual | Collection plan, claim ledger, atomic signals, and private refresh candidates | Review and Publish |
 | North Signal issue preparation | Weekly or manual | Ignored private issue packet and validation report | Andrew edits and sends through MailerLite |
+| Canadian Defence Signals scan | Weekdays at 07:00 Atlantic after release activation | Validated edition in isolated `signal_*` tables plus private run and social-draft rows | Deterministic source/significance contract; no core-corpus or external-post authority |
 | Visibility baseline or weekly report | Manual or scheduled private run; every report lens refreshes configured read-only providers, and Monday uses strict validation plus the locally approved nine-task DataForSEO panel when standing approval is enabled | Ignored local snapshots/reports and a synchronized sanitized owner-only summary | Product/editorial prioritization; provider spend remains capped and local |
 | Privacy retention | Daily production job | Deletes expired detailed telemetry under the published retention policy | Versioned migration and release review |
 | Public launch crawl | Before release or metadata changes | Validation output only | Release owner decides go/no-go |
@@ -86,4 +91,5 @@ Its output is a private, validated issue candidate under ignored `research/north
 - Research changes: skill `quick_validate.py`, focused OSINT and pipeline tests, `pnpm data:readiness`, `pnpm research:validate`, deployed research-contract compatibility, and review-card inspection.
 - Visibility changes: `pnpm visibility:validate`, then tests, lint, and build for related application work.
 - North Signal changes: skill validation, source-registry validation, issue-packet validation, link checks, and application tests for any related signup copy or interaction changes.
+- Daily Signals changes: packet validation, complete migration/RLS fixture, dry-run publisher, immutable-slug and duplicate checks, route metadata/sitemap, admin correction/archive, private social drafts, unchanged core-corpus counts, and responsive public reading QA.
 - Production releases: `pnpm release:validate`, relevant browser matrix, `/api/health`, affected public routes, deployment logs, and live database state. Research and visibility checks remain separate and are required only when those local operator systems or their tracked interoperability contracts change.

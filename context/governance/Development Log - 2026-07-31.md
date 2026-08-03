@@ -1,5 +1,11 @@
 # Development Log - 2026-07-31
 
+## August 3 Canadian Defence Signals foundation
+
+Implemented an isolated weekday Signals publishing system without changing the canonical research or atlas publication authority. It includes descriptive immutable `/signals/[slug]` URLs, a public archive, source-fact versus automated-read separation, unknowns, next steps, evidence strength, original source links, existing-record navigation, Article and ItemList metadata, sitemap discovery, an administrator correction/archive route, private run health and social drafts, and an idempotent publisher.
+
+The ignored `tnm-daily-signals` skill requires five to eight distinct developments from at least three source families, resolves discovery feeds to durable sources, rejects unsupported repeats, accepts no-publish days, and enforces an executive field-guide narrative before dry-run or publication. Weekly North Signal remains human-reviewed and manually sent. The complete Node 24 release gate passed with 256 tests, lint, dependency audit, 5,000-marker scale validation, and the production build. The schema and follow-up foreign-key indexes are reconciled to the live migration ledger, the first approved edition is published, and the application is deployed. No schedule, social post, MailerLite send, or core-corpus write occurred.
+
 Status: soft-beta project reconciliation and current-state audit
 
 ## Scope

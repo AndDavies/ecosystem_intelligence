@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BarChart3, BookOpenText, Building2, ClipboardCheck, FileInput, LayoutDashboard, MailCheck, MessagesSquare, RadioTower, Send, Waves } from "lucide-react";
+import { BarChart3, BookOpenText, Building2, ClipboardCheck, FileInput, LayoutDashboard, MailCheck, MessagesSquare, RadioTower, Rss, Send, Waves } from "lucide-react";
 
 const items = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
@@ -10,6 +10,7 @@ const items = [
   { href: "/admin/demand-signals", label: "Demand signals", icon: Waves },
   { href: "/admin/demand-matches", label: "Demand matches", icon: RadioTower },
   { href: "/admin/briefs", label: "Defence briefs", icon: BookOpenText },
+  { href: "/admin/signals", label: "Signals", icon: Rss },
   { href: "/admin/subscribers", label: "Subscribers", icon: MailCheck },
   { href: "/admin/insights", label: "Public beta", icon: MessagesSquare },
   { href: "/admin/coverage", label: "Coverage", icon: BarChart3 }
