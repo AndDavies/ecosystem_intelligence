@@ -8,11 +8,16 @@ import {
 
 const baseUrl = (process.env.PUBLIC_LAUNCH_BASE_URL ?? "https://truenorthmap.ca").replace(/\/$/, "");
 const reportPath = process.env.PUBLIC_LAUNCH_REPORT;
-const concurrency = Math.max(1, Math.min(4, Number(process.env.PUBLIC_LAUNCH_CONCURRENCY ?? "2")));
-const requestSpacingMs = Math.max(0, Number(process.env.PUBLIC_LAUNCH_REQUEST_SPACING_MS ?? "125"));
+const concurrency = Math.max(1, Math.min(4, Number(process.env.PUBLIC_LAUNCH_CONCURRENCY ?? "1")));
+const requestSpacingMs = Math.max(0, Number(process.env.PUBLIC_LAUNCH_REQUEST_SPACING_MS ?? "300"));
 const maxResponseMs = Math.max(1_000, Number(process.env.PUBLIC_LAUNCH_MAX_RESPONSE_MS ?? "10000"));
 const maxHtmlBytes = Math.max(100_000, Number(process.env.PUBLIC_LAUNCH_MAX_HTML_BYTES ?? "2000000"));
 const maxRecoveredFailures = Math.max(0, Number(process.env.PUBLIC_LAUNCH_MAX_RECOVERED_FAILURES ?? "0"));
+const operationalUrls = {
+  health: `${baseUrl}/api/health`,
+  summary: `${baseUrl}/api/atlas/summary`,
+  atlas: `${baseUrl}/api/atlas?page=1&pageSize=18`
+};
 
 type Finding = LaunchFinding;
 type PageResult = {
@@ -181,6 +186,13 @@ async function collectSupportingListPages(seedUrls: string[]) {
 }
 
 async function main() {
+  // Warm the compact national projection before the canonical crawl. This
+  // avoids turning a release check into a cold-cache stampede against the
+  // public database while still checking the operational endpoints again
+  // after the complete crawl.
+  const prewarm = await fetchLaunchResource(operationalUrls.atlas);
+  if (!prewarm.response.ok) throw new Error(`Atlas prewarm returned ${prewarm.response.status}`);
+
   const sitemap = await fetchLaunchResource(`${baseUrl}/sitemap.xml`);
   if (!sitemap.response.ok) throw new Error(`Sitemap returned ${sitemap.response.status}`);
   const sitemapXml = sitemap.body;
@@ -201,11 +213,6 @@ async function main() {
     titleGroups.set(page.title, [...(titleGroups.get(page.title) ?? []), page.url]);
   }
   const duplicateTitles = [...titleGroups.entries()].filter(([, matching]) => matching.length > 1);
-  const operationalUrls = {
-    health: `${baseUrl}/api/health`,
-    summary: `${baseUrl}/api/atlas/summary`,
-    atlas: `${baseUrl}/api/atlas?page=1&pageSize=18`
-  };
   const operationalResponses = await Promise.all([
     fetchLaunchResource(operationalUrls.health),
     fetchLaunchResource(operationalUrls.summary),
