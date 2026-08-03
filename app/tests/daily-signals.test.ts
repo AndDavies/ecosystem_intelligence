@@ -34,8 +34,9 @@ describe("daily Signals contract", () => {
   });
 
   it("keeps RLS, stable slugs, admin correction, public routes and private social drafts explicit", async () => {
-    const [migration, archive, detail, admin, publisher, header, sitemap] = await Promise.all([
-      readFile(path.resolve("supabase/migrations/20260803110242_add_daily_signals.sql"), "utf8"),
+    const [migration, rlsFix, archive, detail, admin, publisher, header, sitemap] = await Promise.all([
+      readFile(path.resolve("supabase/migrations/20260803140603_add_daily_signals.sql"), "utf8"),
+      readFile(path.resolve("supabase/migrations/20260803142218_reconcile_daily_signal_read_policies.sql"), "utf8"),
       readFile(path.resolve("src/app/signals/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/signals/[slug]/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/admin/signals/page.tsx"), "utf8"),
@@ -48,6 +49,8 @@ describe("daily Signals contract", () => {
     expect(migration).toContain("create table public.signal_runs");
     expect(migration).toContain("create table public.signal_social_drafts");
     expect(migration).toContain("atlas administrator reads signal runs");
+    expect(rlsFix).toContain("for select to anon using (publication_status = 'published')");
+    expect(rlsFix).toContain("authenticated reads published or staff signal editions");
     expect(migration).not.toContain("create table private.signal_runs");
     expect(migration).not.toContain("insert into public.organizations");
     expect(archive).toContain("source-linked");

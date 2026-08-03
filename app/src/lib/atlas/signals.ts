@@ -105,8 +105,8 @@ async function loadPublishedSignalBySlug(slug: string) {
   return (await hydrate([data as Row]))[0] ?? null;
 }
 
-const cachedSignals = unstable_cache(loadPublishedSignals, ["published-signals-v1"], { revalidate: 300, tags: ["signals-public"] });
-const cachedSignalBySlug = unstable_cache(loadPublishedSignalBySlug, ["published-signal-v1"], { revalidate: 300, tags: ["signals-public"] });
+const cachedSignals = unstable_cache(loadPublishedSignals, ["published-signals-v2"], { revalidate: 300, tags: ["signals-public"] });
+const cachedSignalBySlug = unstable_cache(loadPublishedSignalBySlug, ["published-signal-v2"], { revalidate: 300, tags: ["signals-public"] });
 
 export const getPublishedSignals = cache(async (limit = 30) => process.env.NODE_ENV === "development" ? loadPublishedSignals(limit) : cachedSignals(limit));
 export const getPublishedSignalBySlug = cache(async (slug: string) => process.env.NODE_ENV === "development" ? loadPublishedSignalBySlug(slug) : cachedSignalBySlug(slug));
