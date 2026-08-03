@@ -47,6 +47,8 @@ True North Map is one product made from several connected systems. A change that
 
 ## Validation levels
 
+All application and release commands run on the repository-pinned Node 24 runtime. Local results produced by an unsupported Node version are not release evidence. GitHub Actions reruns the complete release gate on `main`; CodeQL and Dependabot supplement rather than replace the required functional, browser, data-boundary, and production checks below.
+
 ### Level A: scoped development check
 
 Run the smallest relevant tests after each coherent edit. Do not wait until the end to discover cross-system breakage.
@@ -128,3 +130,7 @@ Every material handoff must state:
 - whether a migration, publication, campaign, outreach, or provider write still requires Andrew's approval.
 
 A test that was not run must never be described as passing.
+
+Migration review must compare repository filenames with the live Supabase migration ledger. A filename-only reconciliation to an already applied version must not execute or reapply SQL. Any actual production migration or rollback still follows the dependency-aware database contract in `AGENTS.md`.
+
+Public discovery-cache changes must prove that every published organization remains in the compact map/search projection, that no individual cache item grows beyond its provider limit, and that `atlas-public` revalidation invalidates every page used to assemble the snapshot.

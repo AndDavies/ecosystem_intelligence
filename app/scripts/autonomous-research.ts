@@ -19,10 +19,8 @@ import {
   type ResearchCandidateBatchV2,
   type ResearchClaimLedgerV1,
   type ResearchCollectionPlanV1,
-  type ResearchProspectInventoryV1,
   type ResearchRun,
   type ResearchSignalBatchV1,
-  type SourceLeadBatchV2
 } from "../src/lib/research/pipeline-schema";
 import { buildDefaultResearchRunId } from "../src/lib/research/run-id";
 import { parseSourceBookCsv, rankSourceBookRows } from "../src/lib/research/source-ranking";
@@ -91,10 +89,6 @@ const kindCoverageTargets: Record<(typeof organizationKindValues)[number], numbe
 
 function asRecord(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
-}
-
-function asString(value: unknown) {
-  return typeof value === "string" ? value.trim() : "";
 }
 
 function normalizeName(value: string) {

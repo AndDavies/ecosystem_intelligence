@@ -34,10 +34,6 @@ function asString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
 
-function asObject(value: unknown): Row {
-  return value !== null && typeof value === "object" && !Array.isArray(value) ? value as Row : {};
-}
-
 function asStringArray(value: unknown) {
   return Array.isArray(value) ? value.map(String).map((item) => item.trim()).filter(Boolean) : [];
 }
@@ -76,7 +72,13 @@ function groupBy(rows: Row[], key: string) {
   return grouped;
 }
 
-async function readAll(client: SupabaseClient, table: string, configure?: (query: any) => any) {
+type PublicTableQuery = ReturnType<ReturnType<SupabaseClient["from"]>["select"]>;
+
+async function readAll(
+  client: SupabaseClient,
+  table: string,
+  configure?: (query: PublicTableQuery) => PublicTableQuery
+) {
   const rows: Row[] = [];
   for (let from = 0; ; from += PAGE_SIZE) {
     let query = client.from(table).select("*").order("id", { ascending: true });

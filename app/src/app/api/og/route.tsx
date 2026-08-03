@@ -18,6 +18,7 @@ export async function GET(request: Request) {
       <div style={{ position: "absolute", right: 0, top: 0, width: 20, height: "100%", background: "#242827", display: "flex" }} />
       <div style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "space-between", width: "100%" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse requires a directly renderable image element. */}
           <img src={`${url.origin}/apple-icon.png`} width="52" height="52" alt="" />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 22, fontWeight: 900, letterSpacing: "-0.02em" }}>TRUE NORTH MAP</span>

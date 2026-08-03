@@ -119,8 +119,8 @@ describe("review-first demand matching", () => {
   it("keeps generation private and publication behind an explicit reviewer RPC", async () => {
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
     const review = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
-    const migration = await readFile(path.resolve("supabase/migrations/20260719174445_reviewable_demand_match_workflow.sql"), "utf8");
-    const candidateKindMigration = await readFile(path.resolve("supabase/migrations/20260719183500_allow_demand_match_candidates.sql"), "utf8");
+    const migration = await readFile(path.resolve("supabase/migrations/20260719174933_reviewable_demand_match_workflow.sql"), "utf8");
+    const candidateKindMigration = await readFile(path.resolve("supabase/migrations/20260719181901_allow_demand_match_candidates.sql"), "utf8");
     expect(action).toContain('candidate_kind: "demand_match_bundle"');
     expect(action).toContain('status: "pending"');
     expect(review).toContain("Publish match");

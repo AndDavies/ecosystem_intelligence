@@ -56,7 +56,7 @@ describe("North Signal capture", () => {
   it("keeps subscriber identity out of bounded funnel events", async () => {
     const [signup, migration, insights] = await Promise.all([
       readFile(path.resolve("src/components/atlas/north-signal-signup.tsx"), "utf8"),
-      readFile(path.resolve("supabase/migrations/20260730083014_north_signal_capture_funnel.sql"), "utf8"),
+      readFile(path.resolve("supabase/migrations/20260730084549_north_signal_capture_funnel.sql"), "utf8"),
       readFile(path.resolve("src/app/admin/insights/page.tsx"), "utf8")
     ]);
 

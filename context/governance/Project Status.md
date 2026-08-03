@@ -43,9 +43,10 @@ The guided landing tells one decision story: describe a need, inspect a real pub
 
 `/map` is now a compact map-first workspace rather than a marketing page followed by a tool. The live map begins inside the first viewport, with a fixed 380-pixel internally scrolling results rail on desktop and the accessible evidence table immediately below. Mobile uses an explicit Map/List control and collapsed, preview, and expanded synchronized result-sheet states. Bounds deep links frame the requested geography; selected markers, rail records, mobile previews and table rows remain synchronized; refresh, sharing, profile navigation, browser Back, sign-in returns and Working List handoffs preserve ordinary URL state. Responsive separators, pills, icons, whitespace and social actions follow the August 2 brand contract.
 
-The shared public header now applies the approved Barlow navigation face
+The shared public header now applies the approved Inter interface face
 directly, so `/`, `/map`, and public detail routes cannot diverge through
-route-level font inheritance. The brand folder contains one canonical brand
+route-level font inheritance. Barlow remains reserved for the logo, hero,
+editorial headings, and selected brand display moments. The brand folder contains one canonical brand
 system document plus approved artwork and exports; the superseded COVE-era
 brand audit has been removed.
 
@@ -59,7 +60,12 @@ Organization and capability dossiers render dynamically because they accept safe
 - The first private North Signal test issue was prepared on July 30 from published production changes and durable source resolution. The reusable weekly MailerLite template remains a manual, administrator-sent campaign surface, and the editorial skill still stops before campaign creation or sending. Separately, the single-message North Signal welcome workflow is now active for future members of the dedicated `Ecosystem Intelligence` group. Its branded July 31 live-trigger Gmail test passed sender, copy, link, unsubscribe, SPF, DKIM, and DMARC checks. The temporary test membership was removed afterward, leaving the three consent-backed production subscribers and every legacy audience untouched.
 - Social-share controls preserve the current filtered map URL when sharing the map and use canonical URLs on record pages. Share actions are recorded as bounded product-learning events without storing social account data.
 - Vercel aggregate performance monitoring remains separate from optional Google product analytics and optional Microsoft experience diagnostics.
-- The uncapped national marker and discovery snapshot is deduplicated within each request instead of being written to one Next.js data-cache item. This avoids the platform 2 MB item limit as the corpus grows; smaller record-detail reads retain five-minute caching.
+- The uncapped national marker and discovery snapshot is assembled from deterministic 1,000-row table pages. Each page is a separate five-minute, tag-invalidated Next.js cache item, so the complete map remains available without creating a single cache entry that can exceed the platform limit. Request memoization still prevents duplicate assembly work, and smaller record-detail reads retain five-minute caching.
+- Public-read recovery retains one bounded retry and now adds a short randomized delay to avoid synchronized retry bursts.
+- Middleware is limited to the root compatibility bridge and routes that require authentication refresh or protection. Public collection and dossier traffic no longer crosses the middleware boundary unnecessarily.
+- Node 24 is the application and CI contract. GitHub Actions runs `pnpm release:validate` on `main`, CodeQL scans JavaScript and TypeScript, Dependabot monitors `/app`, and secret scanning and push protection remain enabled.
+- Repository migration filenames now match the live Supabase migration versions exactly. This was a ledger and test-fixture reconciliation only; no production migration was executed or altered.
+- Superseded launch exports and historical reports were removed from the active release surface. The current kit remains `content/launch/broader-public-beta-2026-08/`, and superseded governance files are clearly isolated under `context/archive/governance/`.
 - Clarity code is dormant unless `NEXT_PUBLIC_MICROSOFT_CLARITY_ID` is configured. When configured, it loads only after a separate visitor choice and never runs on account, administration, connection, sign-in, submission, or Working List routes.
 
 ## Research and enrichment lifecycle

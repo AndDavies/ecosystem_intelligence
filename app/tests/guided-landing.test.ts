@@ -14,9 +14,11 @@ describe("guided public landing", () => {
     expect(map).toContain('export const dynamic = "force-dynamic"');
     expect(header).toContain('{ href: "/map", label: "Map"');
     expect(header).toContain('<Link href="/"');
-    expect(header).toContain("font-[family-name:var(--font-barlow)]");
+    expect(header).toContain("font-[family-name:var(--font-inter)]");
     expect(middleware).toContain("legacyAtlasParameters");
     expect(middleware).toContain('destination.pathname = "/map"');
+    expect(middleware).toContain('"/account/:path*"');
+    expect(middleware).not.toContain('"/((?!_next/static');
   });
 
   it("uses a quota-free deterministic guided example and canonicalizes it", async () => {

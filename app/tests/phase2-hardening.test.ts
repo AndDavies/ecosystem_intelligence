@@ -82,6 +82,8 @@ describe("phase 2 launch hardening", () => {
     expect(page).toContain("Canada is building");
     expect(mapPage).toContain("<Suspense fallback={<MapFallback />}");
     expect(repository).toContain("loadWarmAtlasDiscoverySnapshot");
+    expect(repository).toContain("getCachedAtlasDiscoveryTablePage");
+    expect(repository).toContain("ecosystem-intelligence-atlas-discovery-table-page-v1");
     expect(repository).not.toContain("ecosystem-intelligence-atlas-discovery-v3");
     expect(repository).toContain('tags: ["atlas-public"]');
     expect(repository).toContain("queryAtlasExplorerSnapshot(await getAtlasDiscoverySnapshot(), query)");
@@ -109,6 +111,7 @@ describe("phase 2 launch hardening", () => {
 
     expect(organizations).toContain("getAtlasDiscoverySnapshot()");
     expect(organizations).toContain("getAtlasCoverageSummary()");
+    expect(organizations).toContain("export const revalidate = 300");
     expect(organizations).toContain("<Suspense fallback={<OrganizationsDirectoryFallback />}");
     expect(organizations).not.toContain("getAtlasSnapshot");
 
@@ -227,8 +230,8 @@ describe("phase 2 launch hardening", () => {
 
   it("enforces scheduled telemetry retention and an agent-owned rollback order", async () => {
     const [migration, rollback, runbook, agentContract] = await Promise.all([
-      readFile(path.resolve("supabase/migrations/20260726100611_phase2_retention_cleanup.sql"), "utf8"),
-      readFile(path.resolve("supabase/rollback/20260726100611_phase2_retention_cleanup.rollback.sql"), "utf8"),
+      readFile(path.resolve("supabase/migrations/20260726105731_phase2_retention_cleanup.sql"), "utf8"),
+      readFile(path.resolve("supabase/rollback/20260726105731_phase2_retention_cleanup.rollback.sql"), "utf8"),
       readFile(path.resolve("../context/governance/Phase 2 Release Runbook.md"), "utf8"),
       readFile(path.resolve("../AGENTS.md"), "utf8")
     ]);

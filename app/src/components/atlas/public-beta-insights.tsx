@@ -107,8 +107,8 @@ function GoogleAnalytics({ preferences }: { preferences: AnalyticsPreferences | 
   useEffect(() => {
     if (!measurementId || !enabled) return;
     window.dataLayer = window.dataLayer ?? [];
-    window.gtag = window.gtag ?? function gtag() {
-      window.dataLayer?.push(arguments);
+    window.gtag = window.gtag ?? function gtag(...args: unknown[]) {
+      window.dataLayer?.push(args);
     };
     window.gtag("consent", "default", {
       analytics_storage: "granted",

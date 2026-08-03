@@ -1,4 +1,4 @@
--- Agent-operated rollback for 20260726100611_phase2_retention_cleanup.sql.
+-- Agent-operated rollback for 20260726105731_phase2_retention_cleanup.sql.
 -- The scheduled caller must be removed before its target function.
 
 do $rollback$

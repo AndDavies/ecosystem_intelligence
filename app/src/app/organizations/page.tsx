@@ -13,9 +13,10 @@ import { normalizedPage, paginate } from "@/lib/pagination";
 import type { AtlasEntityKind, AtlasOrganization } from "@/types/atlas";
 import { socialMetadata } from "@/lib/seo/social";
 
-// Keep the directory in sync with publication without depending on a cached
-// full-route render from before the latest reviewed records were promoted.
-export const dynamic = "force-dynamic";
+// Publication actions invalidate `atlas-public`; a short route revalidation
+// window lets anonymous directory requests use the shared public cache without
+// making reviewed records stale for long.
+export const revalidate = 300;
 
 const PER_PAGE = 24;
 const SPOTLIGHT_SIZE = 3;

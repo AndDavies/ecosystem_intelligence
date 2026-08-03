@@ -99,7 +99,7 @@ describe("admin publication workflow", () => {
   });
 
   it("grants the trusted staging worker only the private refresh baseline parser it invokes", async () => {
-    const migration = await readFile(path.resolve("supabase/migrations/20260802154301_grant_refresh_staging_helper_to_service_role.sql"), "utf8");
+    const migration = await readFile(path.resolve("supabase/migrations/20260802154618_grant_refresh_staging_helper_to_service_role.sql"), "utf8");
 
     expect(migration).toContain("grant execute on function private.refresh_candidate_baseline_text(text, jsonb)");
     expect(migration).toContain("to service_role");
@@ -120,14 +120,14 @@ describe("admin publication workflow", () => {
     expect(action).toContain("parseOrganizationBundleV2");
   });
 
-  it("keeps data-driven public indexes dynamic and revalidates detail routes after publication", async () => {
+  it("keeps public indexes current and revalidates detail routes after publication", async () => {
     const demandPage = await readFile(path.resolve("src/app/demand/page.tsx"), "utf8");
     const organizationsPage = await readFile(path.resolve("src/app/organizations/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
 
     expect(demandPage).toContain('export const dynamic = "force-dynamic"');
     expect(demandPage).not.toContain("five public NATO problem families");
-    expect(organizationsPage).toContain('export const dynamic = "force-dynamic"');
+    expect(organizationsPage).toContain("export const revalidate = 300");
     expect(action).toContain('revalidatePath("/organizations/[slug]", "page")');
     expect(action).toContain('revalidatePath("/demand/[slug]", "page")');
   });
@@ -145,7 +145,7 @@ describe("admin publication workflow", () => {
   it("supports source-backed public contact editing and explains editorial taxonomy in plain language", async () => {
     const editPage = await readFile(path.resolve("src/app/admin/organizations/[id]/edit/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/atlas-organizations.ts"), "utf8");
-    const migration = await readFile(path.resolve("supabase/migrations/20260719173304_add_public_contact_to_organization_editor.sql"), "utf8");
+    const migration = await readFile(path.resolve("supabase/migrations/20260719174251_add_public_contact_to_organization_editor.sql"), "utf8");
 
     expect(editPage).toContain("editPublishedOrganizationContact");
     expect(editPage).toContain("Save public contact");

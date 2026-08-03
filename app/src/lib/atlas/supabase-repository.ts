@@ -163,6 +163,69 @@ function assertQuery(result: { error: { message?: string } | null }, label: stri
 type PublicPageResult = { data: unknown; error: { message?: string } | null };
 const publicDiscoveryPageSize = 1_000;
 
+export type AtlasDiscoveryTable =
+  | "organizations"
+  | "locations"
+  | "organization_locations"
+  | "capabilities"
+  | "technical_domains"
+  | "capability_domains"
+  | "mission_areas"
+  | "capability_mission_matches"
+  | "ecosystem_clusters"
+  | "capability_clusters"
+  | "demand_sources"
+  | "demand_requirements"
+  | "capability_demand_matches"
+  | "programs"
+  | "program_participations";
+
+export type AtlasDiscoveryPageLoader = (
+  table: AtlasDiscoveryTable,
+  from: number,
+  to: number
+) => PromiseLike<PublicPageResult>;
+
+export function loadAtlasDiscoveryTablePageFromSupabase(
+  table: AtlasDiscoveryTable,
+  from: number,
+  to: number
+): PromiseLike<PublicPageResult> {
+  const supabase = createPublicClient();
+  switch (table) {
+    case "organizations":
+      return supabase.from("organizations").select(atlasDiscoveryColumns.organizations).eq("publication_status", "published").order("id").range(from, to);
+    case "locations":
+      return supabase.from("locations").select(atlasDiscoveryColumns.locations).order("id").range(from, to);
+    case "organization_locations":
+      return supabase.from("organization_locations").select(atlasDiscoveryColumns.organizationLocations).eq("publication_status", "published").order("organization_id").order("location_id").range(from, to);
+    case "capabilities":
+      return supabase.from("capabilities").select(atlasDiscoveryColumns.capabilities).eq("publication_status", "published").order("id").range(from, to);
+    case "technical_domains":
+      return supabase.from("technical_domains").select(atlasDiscoveryColumns.technicalDomains).eq("publication_status", "published").order("id").range(from, to);
+    case "capability_domains":
+      return supabase.from("capability_domains").select(atlasDiscoveryColumns.capabilityDomains).eq("publication_status", "published").order("capability_id").order("technical_domain_id").range(from, to);
+    case "mission_areas":
+      return supabase.from("mission_areas").select(atlasDiscoveryColumns.missionAreas).eq("publication_status", "published").order("id").range(from, to);
+    case "capability_mission_matches":
+      return supabase.from("capability_mission_matches").select(atlasDiscoveryColumns.missionMatches).eq("review_status", "approved").eq("publication_status", "published").order("id").range(from, to);
+    case "ecosystem_clusters":
+      return supabase.from("ecosystem_clusters").select(atlasDiscoveryColumns.clusters).eq("publication_status", "published").order("id").range(from, to);
+    case "capability_clusters":
+      return supabase.from("capability_clusters").select(atlasDiscoveryColumns.capabilityClusters).eq("publication_status", "published").order("ecosystem_cluster_id").order("capability_id").range(from, to);
+    case "demand_sources":
+      return supabase.from("demand_sources").select(atlasDiscoveryColumns.demandSources).eq("publication_status", "published").order("id").range(from, to);
+    case "demand_requirements":
+      return supabase.from("demand_requirements").select(atlasDiscoveryColumns.demandRequirements).eq("publication_status", "published").order("id").range(from, to);
+    case "capability_demand_matches":
+      return supabase.from("capability_demand_matches").select(atlasDiscoveryColumns.demandMatches).eq("review_status", "approved").eq("publication_status", "published").order("id").range(from, to);
+    case "programs":
+      return supabase.from("programs").select(atlasDiscoveryColumns.programs).eq("publication_status", "published").order("id").range(from, to);
+    case "program_participations":
+      return supabase.from("program_participations").select(atlasDiscoveryColumns.participations).eq("publication_status", "published").order("id").range(from, to);
+  }
+}
+
 export async function collectPagedPublicRows(
   loadPage: (from: number, to: number) => PromiseLike<PublicPageResult>,
   label: string,
@@ -187,8 +250,9 @@ export async function collectPagedPublicRows(
  * national map. Detailed evidence remains on the bounded organization,
  * capability, and demand loaders.
  */
-export async function loadAtlasDiscoverySnapshotFromSupabase(): Promise<Omit<AtlasDiscoverySnapshot, "regions">> {
-  const supabase = createPublicClient();
+export async function loadAtlasDiscoverySnapshotFromSupabase(
+  loadPage: AtlasDiscoveryPageLoader = loadAtlasDiscoveryTablePageFromSupabase
+): Promise<Omit<AtlasDiscoverySnapshot, "regions">> {
   const [
     organizationsResult,
     locationsResult,
@@ -207,63 +271,63 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(): Promise<Omit<Atl
     participationsResult
   ] = await Promise.all([
     collectPagedPublicRows(
-      (from, to) => supabase.from("organizations").select(atlasDiscoveryColumns.organizations).eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("organizations", from, to),
       "published discovery organizations"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("locations").select(atlasDiscoveryColumns.locations).order("id").range(from, to),
+      (from, to) => loadPage("locations", from, to),
       "discovery locations"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("organization_locations").select(atlasDiscoveryColumns.organizationLocations).eq("publication_status", "published").order("organization_id").order("location_id").range(from, to),
+      (from, to) => loadPage("organization_locations", from, to),
       "discovery organization locations"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("capabilities").select(atlasDiscoveryColumns.capabilities).eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("capabilities", from, to),
       "published discovery capabilities"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("technical_domains").select(atlasDiscoveryColumns.technicalDomains).eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("technical_domains", from, to),
       "discovery technical domains"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("capability_domains").select(atlasDiscoveryColumns.capabilityDomains).eq("publication_status", "published").order("capability_id").order("technical_domain_id").range(from, to),
+      (from, to) => loadPage("capability_domains", from, to),
       "discovery capability domains"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("mission_areas").select(atlasDiscoveryColumns.missionAreas).eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("mission_areas", from, to),
       "discovery mission areas"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("capability_mission_matches").select(atlasDiscoveryColumns.missionMatches).eq("review_status", "approved").eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("capability_mission_matches", from, to),
       "discovery mission matches"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("ecosystem_clusters").select(atlasDiscoveryColumns.clusters).eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("ecosystem_clusters", from, to),
       "discovery clusters"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("capability_clusters").select(atlasDiscoveryColumns.capabilityClusters).eq("publication_status", "published").order("ecosystem_cluster_id").order("capability_id").range(from, to),
+      (from, to) => loadPage("capability_clusters", from, to),
       "discovery capability cluster links"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("demand_sources").select(atlasDiscoveryColumns.demandSources).eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("demand_sources", from, to),
       "verified discovery demand sources"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("demand_requirements").select(atlasDiscoveryColumns.demandRequirements).eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("demand_requirements", from, to),
       "discovery demand requirements"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("capability_demand_matches").select(atlasDiscoveryColumns.demandMatches).eq("review_status", "approved").eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("capability_demand_matches", from, to),
       "discovery demand matches"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("programs").select(atlasDiscoveryColumns.programs).eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("programs", from, to),
       "discovery programs"
     ),
     collectPagedPublicRows(
-      (from, to) => supabase.from("program_participations").select(atlasDiscoveryColumns.participations).eq("publication_status", "published").order("id").range(from, to),
+      (from, to) => loadPage("program_participations", from, to),
       "discovery program participation"
     )
   ]);
@@ -859,7 +923,6 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     ],
     demandSourceRows
   );
-  const demandSourceById = byId(demandSourceRows);
   const demandRequirementById = byId(demandRequirementRows);
   const demandMatchesByCapability = groupBy(asRows(demandMatchesResult.data), "capability_id");
   const programById = byId(asRows(programsResult.data));

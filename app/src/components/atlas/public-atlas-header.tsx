@@ -48,7 +48,7 @@ export function PublicAtlasHeader() {
   }, [pathname]);
 
   return (
-    <header className="atlas-header border-b-2 border-[var(--atlas-signal)] font-[family-name:var(--font-barlow)]">
+    <header className="atlas-header border-b-2 border-[var(--atlas-signal)] font-[family-name:var(--font-inter)]">
       <div className="atlas-frame flex h-[70px] items-center justify-between gap-4 lg:h-[76px]">
         <Link href="/" className="flex min-w-0 items-center no-underline" aria-label="True North Map home">
           <BrandLogo />

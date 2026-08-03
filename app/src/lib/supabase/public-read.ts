@@ -14,12 +14,29 @@ export function isTransientPublicReadError(error: unknown) {
   return transientPatterns.some((pattern) => pattern.test(message));
 }
 
-export async function withPublicReadRetry<T>(operation: () => Promise<T>, delayMs = 125): Promise<T> {
+type PublicReadRetryOptions = {
+  baseDelayMs?: number;
+  jitterMs?: number;
+  random?: () => number;
+};
+
+function retryDelay(options: number | PublicReadRetryOptions) {
+  if (typeof options === "number") return Math.max(0, options);
+  const baseDelayMs = Math.max(0, options.baseDelayMs ?? 200);
+  const jitterMs = Math.max(0, options.jitterMs ?? 300);
+  const random = options.random ?? Math.random;
+  return baseDelayMs + Math.floor(random() * jitterMs);
+}
+
+export async function withPublicReadRetry<T>(
+  operation: () => Promise<T>,
+  options: number | PublicReadRetryOptions = {}
+): Promise<T> {
   try {
     return await operation();
   } catch (error) {
     if (!isTransientPublicReadError(error)) throw error;
-    await new Promise((resolve) => setTimeout(resolve, delayMs));
+    await new Promise((resolve) => setTimeout(resolve, retryDelay(options)));
     return operation();
   }
 }

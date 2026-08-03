@@ -1,4 +1,4 @@
-import type { DefenceBrief, DefenceBriefSection } from "@/lib/atlas/briefs";
+import type { DefenceBrief } from "@/lib/atlas/briefs";
 import { seededDefenceBriefImages } from "@/lib/atlas/brief-images";
 
 const image = (objectName: string) => seededDefenceBriefImages.find((item) => item.objectName === objectName)?.value;

@@ -41,7 +41,7 @@
 - Added administrator-only authoring at `/admin/briefs`. Editors can create, revise, archive, or publish a brief, select approved public sources, add links to organizations, technologies, and demand signals, and record a review rationale.
 - Added dedicated `wiki_pages`, `wiki_page_sources`, and `wiki_page_record_links` tables. Public access is restricted to published rows; source packets, private markdown, raw newsletter material, and compiler notes never enter the public runtime.
 - Added Article and BreadcrumbList JSON-LD, unique metadata, canonical URLs, sitemap entries, visible authorship/review dates, source links, and labelled `Derived Read` sections. Question-led sections improve clarity for human search and answer systems, but remain people-first and evidence-bounded rather than keyword or FAQ-schema driven.
-- Applied and verified production migrations `20260721114356_add_canadian_defence_briefs` and `20260721115301_fix_defence_brief_public_rls`. The latter corrected anonymous read access by separating public RLS policies from private staff-helper calls.
+- Applied and verified production migrations `20260721115126_add_canadian_defence_briefs` and `20260721115318_fix_defence_brief_public_rls`. The latter corrected anonymous read access by separating public RLS policies from private staff-helper calls.
 - Production commit: `ae1eeca` (`feat: publish Canadian defence briefs`). Final verification: 106 tests passed; lint, build, release validation, public RLS, sitemap entries, and live `/briefs` routes all passed.
 
 ## Public atlas foundation

@@ -3,11 +3,8 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  ChevronDown,
-  ChevronRight,
   CircleAlert,
   Download,
-  ExternalLink,
   FileSearch2,
   Filter,
   Info,
@@ -47,12 +44,6 @@ import {
   projectAtlasExplorerOrganization,
   projectAtlasMapOrganization
 } from "@/lib/atlas/explorer-projection";
-import {
-  alignmentSubject,
-  alignmentTypeLabel,
-  evidenceStrengthLabel,
-  locationAccuracyLabel
-} from "@/lib/atlas/presentation";
 import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
 import {
   currentPilotCohort,
@@ -61,14 +52,13 @@ import {
   rememberBetaSearchId,
   trackBetaEvent
 } from "@/lib/product-insights/client";
-import { cn, formatDate, toTitleCase } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import type {
   AtlasAssistantPriorTurn,
   AtlasBounds,
   AtlasExplorerDemandOption,
   AtlasExplorerFilterOption,
   AtlasDiscoveryResult,
-  AtlasExplorerCapability,
   AtlasExplorerOrganization,
   AtlasExplorerQueryResult,
   AtlasOrganization,

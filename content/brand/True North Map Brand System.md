@@ -111,9 +111,11 @@ action or a short piece of meaning.
 
 ## Typography and geometry
 
-- Barlow: headlines, metrics, navigation, and concise labels.
-- Inter: body copy, forms, tables, evidence, and long-form reading.
-- The shared public header owns its Barlow typography explicitly. Route-level
+- Barlow: deliberate brand-display moments such as hero headlines, major
+  editorial statements, and selected metrics.
+- Inter: navigation, body copy, interface labels, forms, tables, evidence, and
+  long-form reading.
+- The shared public header owns its Inter typography explicitly. Route-level
   wrappers must not change the navigation face or weight through inheritance.
 - Rounded geometry remains part of the identity, generally 12 to 18 pixels.
 - Pills are used for filters, status labels, selected concepts, social actions,

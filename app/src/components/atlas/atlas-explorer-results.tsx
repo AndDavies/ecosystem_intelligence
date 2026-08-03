@@ -443,7 +443,7 @@ export function MobileOrganizationCard({
   const confidence = alignment?.confidence ?? capability?.sourceConfidence ?? organization.sourceConfidence;
 
   return (
-    <li className={cn("bg-white", selected && "bg-[var(--atlas-coral-soft)]")}>
+    <li className={cn("bg-white", selected && "bg-[var(--atlas-signal-soft)]")}>
       <button
         type="button"
         className="w-full px-4 py-4 text-left"
@@ -550,8 +550,8 @@ export function OrganizationRows({
         ref={rowRef}
         className={cn(
           "cursor-pointer border-b border-[var(--atlas-border)] bg-white text-xs text-[var(--atlas-ink-soft)] outline-none hover:bg-[var(--atlas-surface-muted)] focus-visible:bg-[var(--atlas-surface-muted)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--atlas-primary)]",
-          selected && "bg-[var(--atlas-coral-soft)]",
-          expanded && "border-x border-x-[var(--atlas-coral)] border-t border-t-[var(--atlas-coral)]"
+          selected && "bg-[var(--atlas-signal-soft)]",
+          expanded && "border-x border-x-[var(--atlas-signal)] border-t border-t-[var(--atlas-signal)]"
         )}
         onClick={onSelect}
         onKeyDown={(event) => {
@@ -595,7 +595,7 @@ export function OrganizationRows({
         <td className="whitespace-nowrap px-3 py-3">{formatDate(capability?.lastReviewedAt ?? organization.lastReviewedAt)}</td>
       </tr>
       {expanded ? (
-        <tr className="border-x border-b border-[var(--atlas-coral)] bg-[var(--atlas-surface-muted)]">
+        <tr className="border-x border-b border-[var(--atlas-signal)] bg-[var(--atlas-surface-muted)]">
           <td colSpan={7} className="p-0">
             {detailLoading ? <p className="flex items-center gap-2 border-b border-[var(--atlas-border)] px-4 py-3 text-xs font-semibold text-[var(--atlas-muted)]"><LoaderCircle className="size-3.5 animate-spin" />Loading the complete profile…</p> : null}
             {detailError ? <p className="border-b border-[var(--atlas-border)] px-4 py-3 text-xs font-semibold text-[var(--atlas-danger)]">{detailError} The reviewed preview remains available below.</p> : null}

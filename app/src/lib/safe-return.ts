@@ -1,5 +1,7 @@
 const trustedOrigin = "https://truenorthmap.ca";
-const unsafePathCharacters = /[\\\u0000-\u001F\u007F]/;
+function hasUnsafePathCharacters(value: string) {
+  return [...value].some((character) => character === "\\" || character.charCodeAt(0) < 32 || character.charCodeAt(0) === 127);
+}
 
 /**
  * Keep server redirects and navigation context on this site. A leading slash
@@ -7,7 +9,7 @@ const unsafePathCharacters = /[\\\u0000-\u001F\u007F]/;
  * authority separators in a special URL.
  */
 export function safeLocalReturnPath(value: string | undefined, fallback: string) {
-  if (!value || !value.startsWith("/") || value.startsWith("//") || unsafePathCharacters.test(value)) return fallback;
+  if (!value || !value.startsWith("/") || value.startsWith("//") || hasUnsafePathCharacters(value)) return fallback;
 
   try {
     return new URL(value, trustedOrigin).origin === trustedOrigin ? value : fallback;

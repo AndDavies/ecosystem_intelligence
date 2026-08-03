@@ -84,7 +84,7 @@ describe("Canadian Defence Briefs", () => {
   it("keeps publication behind the exact administrator boundary", async () => {
     const page = await readFile(path.resolve("src/app/admin/briefs/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/briefs-admin.ts"), "utf8");
-    const migration = await readFile(path.resolve("supabase/migrations/20260721114356_add_canadian_defence_briefs.sql"), "utf8");
+    const migration = await readFile(path.resolve("supabase/migrations/20260721115126_add_canadian_defence_briefs.sql"), "utf8");
     expect(page).toContain('requireAtlasStaff("admin")');
     expect(action).toContain('requireAtlasStaff("admin")');
     expect(migration).toContain("private.is_atlas_staff()");

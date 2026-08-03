@@ -84,9 +84,9 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
           </PublicCard>
           <PublicCard title="What remains unknown" eyebrow={publicLanguage.coverageGap}>
             <ul className="space-y-2 text-xs leading-5 text-[var(--atlas-muted)]">
-              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-coral)]" />An empty result means the research is incomplete, not that Canada lacks relevant technology.</li>
-              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-coral)]" />Public statements do not establish procurement timing, budgets, eligibility, or endorsement.</li>
-              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-coral)]" />Every future assessment must remain source-linked and open to editorial review.</li>
+              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-signal)]" />An empty result means the research is incomplete, not that Canada lacks relevant technology.</li>
+              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-signal)]" />Public statements do not establish procurement timing, budgets, eligibility, or endorsement.</li>
+              <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-signal)]" />Every future assessment must remain source-linked and open to editorial review.</li>
             </ul>
           </PublicCard>
         </div>

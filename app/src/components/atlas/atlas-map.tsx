@@ -347,10 +347,10 @@ export function AtlasMap({
     let cancelled = false;
 
     async function initializeLeafletFallback() {
-      const module = await import("leaflet");
+      const leaflet = await import("leaflet");
       if (cancelled || !containerRef.current) return;
-      leafletModuleRef.current = module;
-      const map = module.map(containerRef.current, {
+      leafletModuleRef.current = leaflet;
+      const map = leaflet.map(containerRef.current, {
         zoomControl: false,
         attributionControl: true,
         dragging: interactive,
@@ -360,13 +360,13 @@ export function AtlasMap({
         boxZoom: interactive,
         keyboard: interactive,
         zoomSnap: 0.25,
-        maxBounds: module.latLngBounds([38, -145], [85, -45]),
+        maxBounds: leaflet.latLngBounds([38, -145], [85, -45]),
         minZoom: 2,
         maxZoom: 14
       });
       const mapTilerKey = process.env.NEXT_PUBLIC_MAPTILER_KEY?.trim();
       const mapTilerMapId = process.env.NEXT_PUBLIC_MAPTILER_MAP_ID?.trim() || "dataviz-light";
-      module
+      leaflet
         .tileLayer(
           mapTilerKey
             ? `https://api.maptiler.com/maps/${encodeURIComponent(mapTilerMapId)}/256/{z}/{x}/{y}.png?key=${encodeURIComponent(mapTilerKey)}`
@@ -377,9 +377,9 @@ export function AtlasMap({
           }
         )
         .addTo(map);
-      if (interactive) module.control.zoom({ position: "bottomright" }).addTo(map);
+      if (interactive) leaflet.control.zoom({ position: "bottomright" }).addTo(map);
       leafletMapRef.current = map;
-      leafletLayerRef.current = module.layerGroup().addTo(map);
+      leafletLayerRef.current = leaflet.layerGroup().addTo(map);
       map.on("moveend", () => scheduleLeafletViewport());
       map.on("zoomend", drawLeafletPoints);
       drawLeafletPoints();
@@ -587,6 +587,9 @@ export function AtlasMap({
     source?.setData(featureCollection(organizations));
     frameMapLibreResults(map);
     map.once("idle", () => publishMapLibreViewport(map));
+    // Drawing helpers read current values from refs; including their unstable
+    // identities would recreate this effect without changing the source data.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizations]);
 
   useEffect(() => {
@@ -601,6 +604,9 @@ export function AtlasMap({
     });
     observer.observe(container);
     return () => observer.disconnect();
+    // Viewport schedulers read the live map refs and are intentionally not
+    // dependencies of the one-time ResizeObserver registration.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -637,6 +643,8 @@ export function AtlasMap({
     const location = selected?.primaryLocation;
     if (location?.longitude === null || location?.longitude === undefined || location.latitude === null || location.latitude === undefined) return;
     map.easeTo({ center: [location.longitude, location.latitude], duration: 300 });
+    // Drawing reads the current organization collection from refs.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOrganizationId]);
 
   useEffect(() => {

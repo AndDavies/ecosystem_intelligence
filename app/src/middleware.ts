@@ -33,5 +33,8 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"]
+  // Middleware executes before cache. Keep the compatibility redirect at the
+  // service entrance and session refresh only on private workflows so public
+  // catalogue and record requests can be served directly from the CDN.
+  matcher: ["/", "/account/:path*", "/admin/:path*", "/collections/:path*", "/connect/:path*", "/submit/:path*"]
 };

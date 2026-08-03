@@ -10,6 +10,7 @@ import {
   loadAtlasDemandBySlugFromSupabase,
   loadAtlasDemandIndexFromSupabase,
   loadAtlasDiscoverySnapshotFromSupabase,
+  loadAtlasDiscoveryTablePageFromSupabase,
   loadAtlasOrganizationBySlugFromSupabase,
   loadPublishedAtlasSlugsFromSupabase,
   loadAtlasRecordSummariesFromSupabase,
@@ -147,13 +148,20 @@ function buildRegions(snapshot: Pick<AtlasQueryableSnapshot, "organizations" | "
 const publicRecordCacheSeconds = 60 * 60;
 const publicDiscoveryCacheSeconds = 5 * 60;
 
+const getCachedAtlasDiscoveryTablePage = unstable_cache(
+  (table: Parameters<typeof loadAtlasDiscoveryTablePageFromSupabase>[0], from: number, to: number) =>
+    withPublicReadRetry(() => Promise.resolve(loadAtlasDiscoveryTablePageFromSupabase(table, from, to))),
+  ["ecosystem-intelligence-atlas-discovery-table-page-v1"],
+  { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
+) as typeof loadAtlasDiscoveryTablePageFromSupabase;
+
 async function loadWarmAtlasDiscoverySnapshot() {
   const now = Date.now();
   if (lastSafeDiscoverySnapshot && now - lastSafeDiscoverySnapshotAt < publicDiscoveryCacheSeconds * 1_000) {
     return lastSafeDiscoverySnapshot;
   }
   if (!pendingDiscoverySnapshot) {
-    pendingDiscoverySnapshot = withPublicReadRetry(loadAtlasDiscoverySnapshotFromSupabase)
+    pendingDiscoverySnapshot = loadAtlasDiscoverySnapshotFromSupabase(getCachedAtlasDiscoveryTablePage)
       .then((snapshot) => {
         lastSafeDiscoverySnapshot = snapshot;
         lastSafeDiscoverySnapshotAt = Date.now();
@@ -232,9 +240,10 @@ export const getAtlasDiscoverySnapshot = cache(async (): Promise<AtlasDiscoveryS
   requireAtlasPublicEnvironment();
   let snapshot: Omit<AtlasDiscoverySnapshot, "regions">;
   try {
-    // Keep the uncapped national discovery object out of Next's 2 MB data
-    // cache. A short in-process warm cache deduplicates server work without
-    // imposing a platform item-size ceiling as the corpus grows.
+    // Assemble the uncapped national discovery object from independently
+    // cached 1,000-row source pages. This keeps every cache item below the
+    // platform's 2 MB ceiling while avoiding a complete database rebuild on
+    // every cold function instance.
     snapshot = await loadWarmAtlasDiscoverySnapshot();
     lastSafeDiscoverySnapshot = snapshot;
   } catch (error) {
