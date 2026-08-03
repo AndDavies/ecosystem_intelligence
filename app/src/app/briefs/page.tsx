@@ -125,7 +125,7 @@ export default async function DefenceBriefsPage() {
             {latest.map((brief) => {
               const presentation = getBriefPresentation(brief);
               return (
-                <article key={brief.id} className="group overflow-hidden rounded-[1.6rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)] transition-transform duration-200 hover:-translate-y-1">
+                <article key={brief.id} className="group overflow-hidden rounded-[1.6rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
                   <BriefHero presentation={presentation} title={brief.title} compact />
                   <div className="flex min-h-[300px] flex-col p-6">
                     <BriefMeta brief={brief} />

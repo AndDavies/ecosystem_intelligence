@@ -36,14 +36,15 @@ export function SignalArchiveBrowser({ editions, featuredId }: { editions: Signa
 
     {visibleEditions.length ? <div className="grid gap-5 pt-6 lg:grid-cols-2">{visibleEditions.map((edition) => {
       const tags = collectSignalTags(edition.items).slice(0, 5);
-      return <article key={edition.id} className="group relative flex min-h-[280px] flex-col overflow-hidden rounded-2xl border border-[var(--atlas-border)] bg-white p-6 shadow-[0_18px_44px_rgba(36,40,39,0.06)] transition hover:-translate-y-0.5 hover:border-[var(--atlas-border-strong)] hover:shadow-[0_22px_52px_rgba(36,40,39,0.1)]">
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-[var(--atlas-signal)]" />
-        <div className="flex flex-wrap items-center justify-between gap-3"><time dateTime={edition.editionDate} className="inline-flex items-center gap-2 text-xs font-bold text-[var(--atlas-muted)]"><CalendarDays className="size-4 text-[var(--atlas-primary)]" />{dateFormatter.format(new Date(`${edition.editionDate}T12:00:00Z`))}</time><span className="text-[10px] font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-primary)]">{edition.items.length} source-linked signals</span></div>
+      return <article key={edition.id} className="relative flex min-h-[280px] flex-col overflow-hidden rounded-2xl bg-white p-6 shadow-[0_18px_44px_rgba(36,40,39,0.06)] transition-shadow duration-200 hover:shadow-[0_22px_52px_rgba(36,40,39,0.1)]">
+        <div className="flex flex-wrap items-center gap-3"><time dateTime={edition.editionDate} className="inline-flex items-center gap-2 text-xs font-bold text-[var(--atlas-muted)]"><CalendarDays className="size-4 text-[var(--atlas-primary)]" />{dateFormatter.format(new Date(`${edition.editionDate}T12:00:00Z`))}</time></div>
         <h3 className="mt-5 text-2xl font-extrabold leading-tight tracking-[-0.035em]">{edition.title}</h3>
         <p className="mt-3 line-clamp-3 text-sm leading-6 text-[var(--atlas-muted)]">{edition.executiveSummary}</p>
-        <div className="mt-5 flex flex-wrap gap-2">{tags.map((tag) => <SignalTagPill key={tag} tag={tag} />)}</div>
-        <Link href={`/signals/${edition.slug}`} className="mt-auto inline-flex min-h-11 items-center gap-2 pt-6 text-sm font-extrabold text-[var(--atlas-primary)] no-underline group-hover:underline">Read edition <ArrowRight className="size-4" /></Link>
+        <div className="mt-auto grid gap-5 pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+          <div className="flex min-w-0 flex-wrap gap-2">{tags.map((tag) => <SignalTagPill key={tag} tag={tag} />)}</div>
+          <Link href={`/signals/${edition.slug}`} className="atlas-pill atlas-pill-blue atlas-pill-link min-h-11 w-fit shrink-0 gap-2 px-4 py-2 text-sm font-extrabold no-underline transition-colors hover:bg-[var(--atlas-ink)] hover:text-white hover:no-underline">Read the signal <ArrowRight className="size-4" /></Link>
+        </div>
       </article>;
-    })}</div> : <div className="rounded-2xl border border-dashed border-[var(--atlas-border-strong)] bg-white px-6 py-12 text-center"><p className="text-sm font-extrabold">{filtering ? "No Signals match this search yet." : "Earlier Signals will appear here."}</p><p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[var(--atlas-muted)]">{filtering ? "Try a broader term or clear the selected tag." : "The archive grows only when the source and significance gates support a useful edition."}</p></div>}
+    })}</div> : <div className="rounded-2xl bg-white px-6 py-12 text-center"><p className="text-sm font-extrabold">{filtering ? "No Signals match this search yet." : "Earlier Signals will appear here."}</p><p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[var(--atlas-muted)]">{filtering ? "Try a broader term or clear the selected tag." : "The archive grows only when the source and significance gates support a useful edition."}</p></div>}
   </section>;
 }

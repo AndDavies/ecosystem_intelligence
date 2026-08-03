@@ -89,12 +89,18 @@ to the permanent identity.
 | Signal Yellow | `#F5E900` | Primary actions, active states, short highlights, evidence paths |
 | Signal Wash | `#FFFBD2` | Low-intensity signal background |
 | Evidence Green | `#126147` | Public evidence and verified-source states |
+| Editorial Blue | `#E8F1F4` | Editorial structure, summaries, source panels, navigation and environment tags |
 | Quiet Grey | `#666965` | Supporting copy and secondary metadata |
 | Warning Gold | `#735100` | Review and caution states |
 | Alert Red | `#9F3027` | Errors and destructive actions |
 
 Yellow is a signal, not a canvas. It should draw attention to the next useful
 action or a short piece of meaning.
+
+Editorial Blue is a calm organizing colour, not an evidence or status signal.
+Use it to separate reading structure, source actions and contextual navigation
+from Signal Yellow actions and Evidence Green facts. Its interactive shade is
+`#DCEBED`.
 
 ## Brand regression checks
 
@@ -117,12 +123,44 @@ action or a short piece of meaning.
   long-form reading.
 - The shared public header owns its Inter typography explicitly. Route-level
   wrappers must not change the navigation face or weight through inheritance.
-- Rounded geometry remains part of the identity, generally 12 to 18 pixels.
+- Rounded geometry remains part of the identity. Use 18 pixels for primary
+  editorial and feature cards, 12 to 16 pixels for supporting content panels
+  and controls, and a full pill radius only for compact labels, tags, filters,
+  social actions, and directional links. Do not mix sharp cards into a rounded
+  page family or make every surface a pill.
 - Pills are used for filters, status labels, selected concepts, social actions,
   and compact directional calls to action. Major editorial actions remain
   rectangular so Signal Yellow and the primary journey retain hierarchy.
+- Public surfaces remain predominantly borderless. Keyword and taxonomy pills,
+  plus pill-shaped links, use one quiet one-pixel neutral edge so adjacent
+  colours remain legible and actions stay identifiable.
 - Prefer aligned sections, fine rules, and restrained shadows over stacked
   floating cards.
+- Keep public cards and buttons spatially stable on hover. Use a subtle tonal
+  shift, shadow refinement, underline or CTA colour change instead of lifting
+  the component or moving its arrow.
+
+### Tonal surface and edge system
+
+- Field is the page canvas; Paper is the primary reading surface; Signal Wash
+  marks the most important editorial conclusion; Editorial Blue organizes
+  context, summaries, sources and navigation; quiet greys carry secondary
+  structure. Evidence Green remains reserved for evidence and verified-source
+  meaning rather than general decoration.
+- Use colour-on-colour separation, whitespace and restrained shadow before
+  drawing a container edge. Feature cards, article entries, newsletter bands
+  and explanatory panels normally have no visible border.
+- Borders are a semantic exception: use one quiet neutral pixel around keyword
+  or taxonomy pills when adjacent tones need separation, and around pill-shaped
+  links when the control must read immediately as an action. Do not use Signal
+  Yellow as a decorative card outline.
+- Article and archive cards stay on their assigned surface colour when hovered.
+  A small shadow or tonal change may reinforce interactivity, but only the
+  actual link or link pill receives the stronger colour response.
+- Signals use the shared tonal vocabulary consistently: environment tags use
+  Editorial Blue, activity and decision tags use Signal Yellow, and technology
+  tags use a soft Evidence Green treatment. These meanings should be reused on
+  other public routes rather than introducing route-specific tag colours.
 
 ### Homepage hero
 

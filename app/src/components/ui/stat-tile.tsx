@@ -56,7 +56,7 @@ export function StatTile({
       href={href}
       className={cn(
         shell,
-        "group no-underline transition-[translate,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-[var(--atlas-border-strong)] hover:shadow-[var(--atlas-shadow-soft)] hover:no-underline"
+        "group no-underline transition-[box-shadow,border-color] duration-200 hover:border-[var(--atlas-border-strong)] hover:shadow-[var(--atlas-shadow-soft)] hover:no-underline"
       )}
     >
       {body}

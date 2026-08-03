@@ -254,7 +254,7 @@ export function NorthSignalInline({
   if (!revealed) return null;
 
   return (
-    <section ref={containerRef} aria-labelledby={`north-signal-title-${placement}`} className={cn("px-5 py-6 sm:px-7", tone === "light" && "border-y border-[var(--atlas-border)] bg-[var(--atlas-signal-soft)]", tone === "dark" && "text-white", className)}>
+    <section ref={containerRef} aria-labelledby={`north-signal-title-${placement}`} className={cn("overflow-hidden rounded-[18px] px-5 py-6 sm:px-7", tone === "light" && "bg-[var(--atlas-signal-soft)]", tone === "dark" && "text-white", className)}>
       <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-center">
         <div>
           <p className={cn("atlas-eyebrow", tone === "dark" && "!text-[var(--atlas-signal)]")}>North Signal · Weekly briefing</p>

@@ -47,7 +47,7 @@ export function OrganizationCard({
     organization.entityKind !== "company" && capabilityCount === 0 && demandMatchCount === 0;
 
   return (
-    <article className="group relative flex h-full flex-col rounded-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[0_1px_2px_rgba(36,40,39,0.035)] transition-[translate,box-shadow,border-color] duration-200 focus-within:-translate-y-1 focus-within:border-[var(--atlas-border-strong)] focus-within:shadow-[var(--atlas-shadow-soft)] hover:-translate-y-1 hover:border-[var(--atlas-border-strong)] hover:shadow-[var(--atlas-shadow-soft)]">
+    <article className="group relative flex h-full flex-col rounded-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[0_1px_2px_rgba(36,40,39,0.035)] transition-[box-shadow,border-color] duration-200 focus-within:border-[var(--atlas-border-strong)] focus-within:shadow-[var(--atlas-shadow-soft)] hover:border-[var(--atlas-border-strong)] hover:shadow-[var(--atlas-shadow-soft)]">
       <div className="flex items-start justify-between gap-3">
         {eyebrow ? (
           <p className="text-[10px] font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-primary)]">{eyebrow}</p>
@@ -121,7 +121,7 @@ export function OrganizationCard({
           <span className="text-[11px] text-[var(--atlas-muted)]">Reviewed {formatDate(organization.lastReviewedAt)}</span>
           <span className="inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)]">
             View profile
-            <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+            <ArrowRight className="size-3.5" aria-hidden="true" />
           </span>
         </div>
       </div>

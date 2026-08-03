@@ -111,7 +111,7 @@ The landing page may offer a fixed public example with visitor-adjustable **Sear
 
 Automated research can create leads and candidate changes. Only an explicit human-reviewed promotion can change canonical published records.
 
-The isolated Canadian Defence Signals editorial surface is the narrow exception: the approved daily 07:00 Atlantic automation may publish a validated `daily_signals_packet_v1` only to dedicated `signal_*` tables. It cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read and links the durable public sources, and a no-publish day is valid when the evidence or significance gate is not met.
+The isolated Canadian Defence Signals editorial surface is the narrow exception: the approved daily 07:00 Atlantic automation may publish a validated `daily_signals_packet_v1` only to dedicated `signal_*` tables and one normalized cited image under `brief-images/signals/`. It cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read, links the durable public sources, and displays an article-specific image traced to one of those sources. Generic publisher backgrounds, logos, unrelated stock, generated imagery, and image-less editions fail the publication gate. A no-publish day is valid when the evidence, significance, or image gate is not met.
 
 ## Public information architecture
 
@@ -377,8 +377,10 @@ workflow counts are read from production rather than frozen here:
 - authoritative public-demand sources and reviewed technology-to-demand matches
   retain specific rationales and evidence inherited from both sides
 - deployed True North Map identity using the directional N, North Ink, Field,
-  Paper, Signal Yellow, Evidence Green, Barlow display type, Inter body type,
-  restrained rounded geometry, and evidence-first public states
+  Paper, Signal Yellow, Evidence Green, Editorial Blue, Barlow display type,
+  Inter body type, restrained rounded geometry, borderless tonal surfaces,
+  quiet bordered pills for taxonomy and links, stationary hover states, and
+  evidence-first public states
 - national ecosystem map with constrained discovery, organization-type filters, synchronized
   URL state, numbered map clusters, viewport-bounded evidence table, compact
   organization preview, and visible-result export

@@ -21,6 +21,13 @@ The current product and operating system include:
 - Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix and rollback runbook make release validation repeatable. The current broader-beta package now lives under `content/launch/broader-public-beta-2026-08/`; the July 26 kit is historical.
 - Pre-launch security remediation updates the production runtime dependencies, bounds citation and evidence reads to the requested public records, and removes private demand-match reviewer rationale from the public data contract and Ask True North catalogue. `pnpm security:validate` is now a release gate; the durable backlog and verification record live in `Security And Reliability Remediation Log.md`.
 - Phase 1B established the charcoal, warm-white and signal-yellow system. The approved production identity uses a directional N and separated yellow north corner while retaining the same palette, typography, messaging, and product behaviour.
+- The Signals archive and edition template now establish the next shared public
+  surface standard: wide consistent editorial frames, rounded tonal cards with
+  no decorative outlines, Editorial Blue for reading structure, bounded colour
+  roles for tags, and thin neutral borders only where pills or links need edge
+  definition. Cards remain stationary on hover while the actionable link gains
+  emphasis. The rule is documented for future route-by-route refreshes; this
+  release does not otherwise redesign every public route.
 - The primary navigation is Map, Organizations, Missions, Public Needs, Signals, Defence Briefs, How It Works, and About. `/demand` remains canonical; Public Needs names the collection while Demand Signal remains the precise label for one source-gated released need.
 
 - A public map, organization and capability profiles, public-demand records, reviewed capability-demand matches, exports, and Ask True North over the published corpus.
@@ -29,7 +36,14 @@ The current product and operating system include:
 - A public Mission Area / Use Case directory at `/missions` and source-aware detail routes at `/missions/[slug]`. Mission pages use only published taxonomy and reviewed relationships, distinguish assessment from released Public Needs, and link visitors into organizations, technologies, Briefs, and Working Lists without creating a second corpus.
 - Seven approved regional map illustrations are integrated in the public presentation layer for Canada, Atlantic Canada, Quebec, Ontario, the Prairies, British Columbia and the North. The responsive WebP assets preserve each highlighted region without cropping, use descriptive map-specific alt text, and retain the existing abstract fallback; they are illustrative and do not change geography, evidence, record counts, metadata or publication state.
 - Canadian Defence Briefs as a reviewed editorial synthesis surface with administrator-only drafting and publication.
-- Canadian Defence Signals as an isolated daily automated editorial surface running at 07:00 Atlantic. Descriptive immutable URLs, source links, visible uncertainty, correction timestamps, RLS, admin archive/correction tools, run health, and private social drafts are live. Automatic authority is limited to dedicated `signal_*` tables, and the executive field-guide editorial gate must pass before publication; a no-publish day is valid.
+- Canadian Defence Signals as an isolated daily automated editorial surface running at 07:00 Atlantic. Descriptive immutable URLs, source links, visible uncertainty, correction timestamps, RLS, admin archive/correction tools, run health, and private social drafts are live. Every edition now requires one visually verified, article-specific image from a cited durable source; the publisher stores a normalized 1600 x 900 WebP under `brief-images/signals/`, and all six published editions use that consistent path without changing their content or URLs. Automatic authority is limited to dedicated `signal_*` tables and that storage prefix, and the executive field-guide, evidence, significance, and image gates must pass before publication; a no-publish day is valid.
+- The public Signals archive and reusable `/signals/[slug]` template present
+  each edition as an executive briefing: a split masthead, generated briefing
+  snapshot and contents, anchored section navigation, consistent article cards,
+  direct LinkedIn and X sharing, source actions, continuation links, related
+  editions, North Signal signup, and a quiet end-of-article editorial note.
+  Article content remains generated by the existing Daily Signals contract; no
+  article-specific layout or copy is hardcoded.
 - A private Admin workflow for intake, candidate review and editing, explicit publication, canonical organization maintenance, demand maintenance, demand matching, evidence, and audit history.
 - Seven project-local research skills are the current research and ingestion skills of record. North Signal, Daily Signals, and private visibility are separate local operator systems. Daily Signals alone has narrowly scoped authority to its isolated tables after deterministic validation; it gains no core research, review, or publication authority.
 - A Monday 06:00 America/Halifax broad discovery run and a weekday 08:00 multi-source refresh run. Both stop at private review intake.

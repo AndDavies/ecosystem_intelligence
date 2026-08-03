@@ -163,7 +163,7 @@ export default function AboutPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {outcomes.map((outcome) => (
-              <article key={outcome.eyebrow} className="group rounded-3xl border border-[var(--atlas-border)] bg-white p-6 shadow-[var(--atlas-shadow-soft)] transition-transform duration-200 hover:-translate-y-1">
+              <article key={outcome.eyebrow} className="group rounded-3xl border border-[var(--atlas-border)] bg-white p-6 shadow-[var(--atlas-shadow-soft)]">
                 <div className="flex size-11 items-center justify-center rounded-2xl bg-[var(--atlas-signal-soft)] text-[var(--atlas-primary)]">
                   <outcome.icon className="size-5" />
                 </div>

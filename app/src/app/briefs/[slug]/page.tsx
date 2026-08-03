@@ -266,7 +266,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <section className="rounded-2xl border border-[var(--atlas-border)] bg-white p-5">
               <p className="atlas-eyebrow">Keep exploring</p>
               <h2 className="mt-2 text-base font-extrabold text-[var(--atlas-ink)]">Move from context to action</h2>
-              <div className="mt-4 space-y-3">{relatedRecords.map((item) => <Link key={`${item.type}-${item.id}`} href={item.href} className="group block rounded-xl border border-[var(--atlas-border)] p-3 no-underline hover:border-[var(--atlas-ink)] hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.label}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.name}<ArrowRight className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" /></span></Link>)}</div>
+              <div className="mt-4 space-y-3">{relatedRecords.map((item) => <Link key={`${item.type}-${item.id}`} href={item.href} className="group block rounded-xl border border-[var(--atlas-border)] p-3 no-underline hover:border-[var(--atlas-ink)] hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.label}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.name}<ArrowRight className="size-3.5 shrink-0" /></span></Link>)}</div>
             </section>
           ) : null}
         </aside>

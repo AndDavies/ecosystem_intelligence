@@ -37,11 +37,16 @@ export function getSignalTagLabel(tag: SignalTag) {
   return getSignalTagDefinition(tag)?.label ?? tag;
 }
 
-export function getSignalTagTone(tag: SignalTag) {
+export function getSignalTagTone(tag: SignalTag, surface: "paper" | "signal" = "paper") {
   const group = getSignalTagDefinition(tag)?.group;
-  if (group === "environment") return "border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]";
-  if (group === "activity") return "border-[var(--atlas-signal)] bg-[var(--atlas-signal-soft)] text-[var(--atlas-ink)]";
-  return "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]";
+  if (surface === "signal") {
+    if (group === "environment") return "atlas-pill-paper";
+    if (group === "activity") return "atlas-pill-signal";
+    return "atlas-pill-blue";
+  }
+  if (group === "environment") return "atlas-pill-blue";
+  if (group === "activity") return "atlas-pill-signal-soft";
+  return "atlas-pill-evidence";
 }
 
 export function collectSignalTags(items: Array<{ tags: SignalTag[] }>) {

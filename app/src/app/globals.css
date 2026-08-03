@@ -42,10 +42,18 @@
   --atlas-signal-ink: #242827;
   --atlas-evidence: #126147;
   --atlas-evidence-soft: #e1f0e9;
+  --atlas-blue-soft: #e8f1f4;
+  --atlas-blue-soft-hover: #dcebed;
   --atlas-amber: #735100;
   --atlas-amber-soft: #fff6cf;
   --atlas-danger: #9f3027;
   --atlas-danger-soft: #fee8e5;
+  --atlas-tonal-paper: #ffffff;
+  --atlas-tonal-muted: #f1f1ed;
+  --atlas-tonal-signal: #fffbd2;
+  --atlas-tonal-evidence: #e1f0e9;
+  --atlas-tonal-blue: #e8f1f4;
+  --atlas-tonal-ink: #242827;
   --atlas-shadow-soft: 0 10px 30px rgba(36, 40, 39, 0.055);
   --atlas-shadow-float: 0 20px 52px rgba(36, 40, 39, 0.12);
   --background: #f7f7f3;
@@ -261,6 +269,95 @@ body {
   box-shadow: var(--atlas-shadow-soft);
 }
 
+.atlas-page:not(.atlas-admin-shell) .atlas-surface,
+.atlas-page:not(.atlas-admin-shell) .atlas-surface-elevated {
+  border: 0;
+}
+
+/* Public editorial surfaces use adjacent colour fields instead of decorative
+   outlines. Forms, tables, maps, validation states and admin controls retain
+   their functional boundaries. */
+.atlas-tonal-surface {
+  border: 0;
+  border-radius: 18px;
+}
+
+.atlas-tonal-paper {
+  background: var(--atlas-tonal-paper);
+}
+
+.atlas-tonal-muted {
+  background: var(--atlas-tonal-muted);
+}
+
+.atlas-tonal-signal {
+  background: var(--atlas-tonal-signal);
+}
+
+.atlas-tonal-evidence {
+  background: var(--atlas-tonal-evidence);
+}
+
+.atlas-tonal-blue {
+  background: var(--atlas-tonal-blue);
+}
+
+.atlas-tonal-ink {
+  background: var(--atlas-tonal-ink);
+  color: white;
+}
+
+/* Shared borderless pills keep colour roles consistent across public routes. */
+.atlas-pill {
+  align-items: center;
+  border: 0;
+  border-radius: 999px;
+  display: inline-flex;
+}
+
+.atlas-pill-paper {
+  background: var(--atlas-tonal-paper);
+  color: var(--atlas-ink);
+}
+
+.atlas-pill-muted {
+  background: var(--atlas-tonal-muted);
+  color: var(--atlas-ink);
+}
+
+.atlas-pill-signal {
+  background: var(--atlas-signal);
+  color: var(--atlas-ink);
+}
+
+.atlas-pill-signal-soft {
+  background: var(--atlas-signal-soft);
+  color: var(--atlas-ink);
+}
+
+.atlas-pill-evidence {
+  background: var(--atlas-evidence-soft);
+  color: var(--atlas-evidence);
+}
+
+.atlas-pill-blue {
+  background: var(--atlas-blue-soft);
+  color: var(--atlas-ink);
+}
+
+.atlas-pill-blue:hover {
+  background: var(--atlas-blue-soft-hover);
+}
+
+/* Keyword tags and directional link pills need a quiet edge for separation. */
+.atlas-pill-tag {
+  border: 1px solid rgba(36, 40, 39, 0.16);
+}
+
+.atlas-pill-link {
+  border: 1px solid var(--atlas-border-strong);
+}
+
 .atlas-page .rounded-md {
   border-radius: 0.75rem;
 }
@@ -291,33 +388,29 @@ body {
     background-color 190ms ease,
     border-color 190ms ease,
     box-shadow 190ms ease,
-    color 190ms ease,
-    transform 190ms ease;
+    color 190ms ease;
 }
 
 .atlas-primary-button {
-  border: 1px solid var(--atlas-primary);
+  border: 0;
   background: var(--atlas-primary);
   color: #fff;
 }
 
 .atlas-primary-button:hover {
-  border-color: var(--atlas-primary-hover);
   background: var(--atlas-primary-hover);
   box-shadow: 0 10px 24px rgba(36, 40, 39, 0.18);
   text-decoration: none;
-  transform: translateY(-1px);
 }
 
 .atlas-secondary-button {
-  border: 1px solid var(--atlas-border-strong);
-  background: var(--atlas-surface);
+  border: 0;
+  background: var(--atlas-primary-soft);
   color: var(--atlas-ink-soft);
 }
 
 .atlas-secondary-button:hover {
-  border-color: var(--atlas-ink);
-  background: var(--atlas-surface-muted);
+  background: #e3e4de;
   color: var(--atlas-ink);
   text-decoration: none;
 }
@@ -334,7 +427,7 @@ body {
 
 .atlas-signal-button {
   align-items: center;
-  border: 1px solid var(--atlas-signal);
+  border: 0;
   border-radius: 12px;
   background: var(--atlas-signal);
   color: var(--atlas-signal-ink);
@@ -342,18 +435,16 @@ body {
   font-weight: 750;
   justify-content: center;
   text-decoration: none;
-  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  transition: background-color 180ms ease, border-color 180ms ease;
 }
 
 .atlas-signal-button:hover {
-  border-color: var(--atlas-signal-hover);
   background: var(--atlas-signal-hover);
   text-decoration: none;
-  transform: translateY(-1px);
 }
 
 .atlas-dark-panel {
-  border: 1px solid #343a37;
+  border: 0;
   border-radius: 18px;
   background: var(--atlas-ink);
   color: white;

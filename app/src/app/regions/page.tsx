@@ -186,7 +186,7 @@ function RegionCard({ region }: { region: AtlasRegion }) {
   const art = getRegionArt(region.slug);
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-[var(--atlas-border)] bg-white shadow-[0_1px_2px_rgba(36,40,39,0.035)] transition-[translate,box-shadow,border-color] duration-200 focus-within:-translate-y-1 focus-within:border-[var(--atlas-border-strong)] focus-within:shadow-[var(--atlas-shadow-soft)] hover:-translate-y-1 hover:border-[var(--atlas-border-strong)] hover:shadow-[var(--atlas-shadow-soft)]">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-[var(--atlas-border)] bg-white shadow-[0_1px_2px_rgba(36,40,39,0.035)] transition-[box-shadow,border-color] duration-200 focus-within:border-[var(--atlas-border-strong)] focus-within:shadow-[var(--atlas-shadow-soft)] hover:border-[var(--atlas-border-strong)] hover:shadow-[var(--atlas-shadow-soft)]">
       <AtlasHeroArt
         tone={art.tone}
         icon={art.icon}
@@ -221,7 +221,7 @@ function RegionCard({ region }: { region: AtlasRegion }) {
         </dl>
         <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)]">
           {region.organizationCount ? "Explore the region" : "See the coverage gap"}
-          <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+          <ArrowRight className="size-3.5" aria-hidden="true" />
         </span>
       </div>
     </article>

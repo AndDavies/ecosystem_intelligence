@@ -1,5 +1,17 @@
 # Development Log - 2026-07-31
 
+## August 3 Canadian Defence Signals editorial experience
+
+Rebuilt the reusable `/signals/[slug]` presentation as a wide executive briefing without changing the autonomous content contract, source data, publication workflow, newsletter workflow, or core atlas. Each edition now uses a split editorial masthead, generated Bottom Line and table of contents, accessible anchored navigation, consistent article-entry cards, original-source actions, direct LinkedIn and X sharing, contextual continuation, related editions, North Signal signup, and a quiet full-width editorial note at the end. Existing and future source images render through the same normalized edition and item-image fields when available.
+
+Reconciled the Signals archive and article route with the shared public style contract. Added Editorial Blue `#E8F1F4` and its interaction shade `#DCEBED`; assigned bounded tonal roles to environment, activity, and technology tags; removed decorative yellow and grey card outlines; retained a quiet one-pixel edge only for taxonomy pills and pill-shaped links; standardized 18-pixel editorial rounding; and replaced moving hover treatments with stationary shadow, tone, and link-colour responses. The active brand system now makes this the reference for later route-by-route visual alignment rather than silently changing every public route in one release.
+
+## August 3 Canadian Defence Signals image gate
+
+Made cited editorial imagery a required part of every repeatable Daily Signals run. The project-local skill now extracts publisher-declared images from the cited article set, reports all admissible candidates for visual comparison, rejects generic publisher share backgrounds, logos, unrelated stock and undersized assets, and records the selected image URL, cited source page, factual alt text and publisher attribution. The executable packet schema rejects image-less editions, while the publisher always normalizes the source asset to a 1600 x 900 WebP under `brief-images/signals/` before the edition can publish.
+
+Added a narrow, idempotent `--replace-hero` repair path for published editions that predate the image gate. Five July 29 to August 2 backfill editions passed the schema, editorial and image checks and were amended with sourced bucket images; the August 3 edition's existing cited Kraken image was also migrated from an application-local path into the same normalized bucket contract. All six slugs, text, items, original sources, atlas links, publication status and publication dates were unchanged. The active 07:00 Atlantic automation now enforces and verifies the same source, relevance, normalization and no-image-no-publish contract. The core atlas, research queues, review authority, MailerLite and social platforms were not modified.
+
 ## August 3 Canadian Defence Signals foundation
 
 Implemented an isolated daily Signals publishing system without changing the canonical research or atlas publication authority. It includes descriptive immutable `/signals/[slug]` URLs, a public archive, source-fact versus automated-read separation, unknowns, next steps, evidence strength, original source links, existing-record navigation, Article and ItemList metadata, sitemap discovery, an administrator correction/archive route, private run health and social drafts, and an idempotent publisher.

@@ -42,6 +42,23 @@ describe("frontend architecture contracts", () => {
     expect(reviewPage).not.toMatch(/#[0-9a-fA-F]{6}/);
   });
 
+  it("uses borderless tonal public surfaces without weakening operational controls", async () => {
+    const globals = await readFile(path.resolve("src/app/globals.css"), "utf8");
+
+    expect(globals).toContain("--atlas-tonal-signal:");
+    expect(globals).toContain("--atlas-blue-soft: #e8f1f4");
+    expect(globals).toContain("--atlas-blue-soft-hover: #dcebed");
+    expect(globals).toContain(".atlas-pill-blue");
+    expect(globals).toContain(".atlas-pill-tag");
+    expect(globals).toContain(".atlas-pill-link");
+    expect(globals).not.toContain("transform: translateY(-1px)");
+    expect(globals).toContain(".atlas-page:not(.atlas-admin-shell) .atlas-surface");
+    expect(globals).toContain(".atlas-tonal-surface");
+    expect(globals).toContain("@utility form-control");
+    expect(globals).toContain("border: 1px solid var(--atlas-border-strong)");
+    expect(globals).toContain(".atlas-admin-shell");
+  });
+
   it("lets long discovery filters grow without overlapping map controls", async () => {
     const explorer = await readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8");
 

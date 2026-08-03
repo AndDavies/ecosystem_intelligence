@@ -62,8 +62,16 @@ subject to human review.
 
 - Read current production totals from the live product. Do not paste a fixed
   corpus count into launch copy.
-- Use the Directional N artwork and the approved North Ink, Field and Signal
-  Yellow palette.
+- Use the Directional N artwork and the approved North Ink, Field, Paper,
+  Signal Yellow, Evidence Green and Editorial Blue palette. Editorial Blue is
+  for reading structure, not evidence or status.
+- Use borderless tonal feature cards with the established 18-pixel rounding;
+  use 12-to-16-pixel corners for supporting panels. Reserve full pills for
+  compact labels and actions, with a quiet neutral one-pixel edge only where a
+  taxonomy pill or pill link needs definition.
+- Keep hover states spatially stable. Refine the shadow, tone or actual link
+  colour without lifting cards, changing a white card's base colour, or moving
+  an arrow.
 - Call `/demand` **Public Needs** at collection level and **Demand Signal** for
   one released, source-gated record.
 - Call the weekly briefing **North Signal**.

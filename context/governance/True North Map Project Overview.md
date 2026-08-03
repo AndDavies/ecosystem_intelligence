@@ -36,7 +36,7 @@ Place, technology, or public need
 | Ask True North | Ask a plain-language question and receive bounded results from the live published corpus | AI explores known records; it does not create facts or procurement decisions |
 | Guided example | Adjust a search focus and open a defensible example path | Five visitor-adjustable, allowlisted concepts carried into a deterministic, ordinary `/map` URL. The handoff reads only published records and never calls Ask True North or consumes its quota. |
 | Defence Briefs | Read reviewed, source-linked Canadian defence explainers | Editorial synthesis is distinct from raw private wiki material |
-| Canadian Defence Signals | Follow a daily, source-linked read of developments that may change what Canadian teams should inspect next | Automated interpretation is visibly separated from the public record; original durable sources remain linked |
+| Canadian Defence Signals | Follow a daily, source-linked read of developments that may change what Canadian teams should inspect next | Automated interpretation is visibly separated from the public record; original durable sources remain linked; every edition image comes from one of those cited pages and is stored as a normalized public asset |
 | North Signal | Subscribe to a concise weekly briefing about newly mapped capability, released public needs, reviewed connections, and defence developments worth following | Supabase records consent; MailerLite delivers; Andrew reviews and sends every issue |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
 | Contribution and connection | Claim, correct, suggest, contact, or request a human-brokered introduction | Nothing public changes automatically |
@@ -60,6 +60,14 @@ Place, technology, or public need
 - Middleware now runs only where it has an actual routing or authentication responsibility: the legacy root atlas bridge and private account, collection, contribution, connection, and administrator surfaces. Public catalogue and dossier reads do not pay an unnecessary middleware invocation.
 - Repository migration filenames match the applied production Supabase ledger exactly. This reconciliation changed no database object and did not reapply a migration.
 - The approved directional-N identity is deployed and indexed in `content/brand/True North Map Brand System.md`; production artwork lives under `app/public/brand/`. North Signal names the editorial briefing, not the logo symbol.
+- The current public surface contract uses borderless tonal cards, 18-pixel
+  editorial corners, smaller 12-to-16-pixel supporting corners, and full pills
+  only for compact labels and actions. Editorial Blue `#E8F1F4` organizes
+  summaries, sources and navigation without implying evidence strength;
+  keyword pills and pill links alone retain a quiet one-pixel neutral edge.
+  Hover states refine tone, shadow or link colour without moving cards or
+  arrows. This contract now governs Signals and is the reference for the
+  planned route-by-route visual reconciliation.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 
@@ -149,7 +157,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Ask True North | Ask True North | Constrained AI-assisted discovery over the current published corpus. It exposes uncertainty and falls back to deterministic results when needed. |
 | Assistant fit level | Strong fit, plausible fit, adjacent fit | A ranking aid for known records. It is neither a source claim nor a procurement recommendation. |
 | Defence Brief | Canadian Defence Brief | A reviewed, source-linked public explainer or time-bounded analysis. |
-| Daily update / news roundup | Canadian Defence Signals | A daily source-linked edition at a descriptive, immutable `/signals/[slug]` URL. Each item labels the public fact, automated read, unknowns, and next step. A no-publish day is valid when the evidence or significance gate is not met. |
+| Daily update / news roundup | Canadian Defence Signals | A daily source-linked edition at a descriptive, immutable `/signals/[slug]` URL. Each item labels the public fact, automated read, unknowns, and next step. Every published edition also requires one relevant image from a cited article, normalized into True North Map's public media bucket. A no-publish day is valid when the evidence, significance, or image gate is not met. |
 | `Derived Read` in a Brief | True North Map assessment / Derived Read | A labelled interpretation in editorial content. It must remain distinct from the underlying factual record. |
 | Global Source Book | Global Source Book | A maintained private inventory of durable source starting points used to find research leads. |
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |

@@ -16,7 +16,7 @@ export const dailySignalsPacketSchema = z.object({
   schemaVersion: z.literal("daily_signals_packet_v1"), runId: z.string().trim().min(8).max(160),
   editionDate: z.string().date(), slug, title: z.string().trim().min(12).max(180), executiveSummary: z.string().trim().min(400).max(1800),
   disclosure: z.string().trim().min(40).max(500), inspectedCount: z.number().int().min(0), sourceFamilyCount: z.number().int().min(3),
-  heroImage: heroImage.nullable().default(null),
+  heroImage,
   items: z.array(item).min(5).max(8),
   socialDrafts: z.array(z.object({ platform: z.enum(["linkedin", "x"]), itemSlug: z.string().nullable().default(null), text: z.string().trim().min(20).max(5000) })).max(20).default([])
 }).superRefine((packet, ctx) => {
@@ -30,7 +30,7 @@ export const dailySignalsPacketSchema = z.object({
   });
   const expectedPositions = Array.from({ length: packet.items.length }, (_, index) => index + 1);
   if (expectedPositions.some((position) => !positions.has(position))) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["items"], message: "Story positions must form a contiguous sequence from 1 through the item count." });
-  if (packet.heroImage && !packet.items.some((entry) => entry.sources.some((entrySource) => entrySource.canonicalUrl === packet.heroImage?.sourcePageUrl))) {
+  if (!packet.items.some((entry) => entry.sources.some((entrySource) => entrySource.canonicalUrl === packet.heroImage.sourcePageUrl))) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["heroImage", "sourcePageUrl"], message: "The hero image must resolve to one of the edition's durable source pages." });
   }
 });
