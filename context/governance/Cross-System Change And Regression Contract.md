@@ -49,6 +49,8 @@ True North Map is one product made from several connected systems. A change that
 
 All application and release commands run on the repository-pinned Node 24 runtime. Local results produced by an unsupported Node version are not release evidence. GitHub Actions reruns the complete release gate on `main`; CodeQL and Dependabot vulnerability alerts supplement rather than replace the required functional, browser, data-boundary, and production checks below. Automated dependency-update branches remain disabled under the approved main-only release workflow.
 
+Clean CI builds must not require privileged production database credentials. The release workflow receives only the Supabase URL and publishable browser key through GitHub repository variables. Service-role, provider, research, visibility, MailerLite, OpenAI and Turnstile secrets remain outside GitHub. Public record routes that cannot safely enumerate static parameters use on-demand rendering with the same bounded revalidation contract.
+
 ### Level A: scoped development check
 
 Run the smallest relevant tests after each coherent edit. Do not wait until the end to discover cross-system breakage.

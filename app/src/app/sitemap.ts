@@ -3,6 +3,11 @@ import { getPublishedAtlasSlugs } from "@/lib/atlas/repository";
 import { getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
 import { absoluteUrl } from "@/lib/site";
 
+// The canonical sitemap is sourced from the live publication ledger. Generate
+// it at request time so clean CI builds never need production credentials;
+// the underlying slug and Brief loaders remain bounded and cached.
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [slugs, briefs] = await Promise.all([getPublishedAtlasSlugs(), getPublishedDefenceBriefs()]);
   const releaseUpdatedAt = new Date("2026-07-26T00:00:00-03:00");

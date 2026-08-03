@@ -17,8 +17,10 @@ export const revalidate = 300;
 const dateFormatter = new Intl.DateTimeFormat("en-CA", { dateStyle: "long" });
 
 export async function generateStaticParams() {
-  const briefs = await getPublishedDefenceBriefs();
-  return briefs.map((brief) => ({ slug: brief.slug }));
+  // Keep clean CI builds independent from production database credentials.
+  // Published briefs render on demand and retain the same five-minute ISR
+  // contract after their first request.
+  return [];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

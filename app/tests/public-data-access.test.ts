@@ -105,6 +105,7 @@ describe("public data access", () => {
     stablePages.forEach((page) => expect(page).toContain("export const revalidate = 300"));
     expect(stablePages[0]).toContain("generateStaticParams");
     expect(stablePages[2]).toContain("generateStaticParams");
+    expect(stablePages[2]).toContain("return []");
     liveRoutes.forEach((page) => expect(page).toContain('export const dynamic = "force-dynamic"'));
     const organizations = await source("src/app/organizations/page.tsx");
     expect(organizations).toContain("export const revalidate = 300");
@@ -112,6 +113,8 @@ describe("public data access", () => {
     const landing = await source("src/app/page.tsx");
     expect(landing).toContain("export const revalidate = 300");
     expect(landing).not.toContain('export const dynamic = "force-dynamic"');
+    const sitemap = await source("src/app/sitemap.ts");
+    expect(sitemap).toContain('export const dynamic = "force-dynamic"');
   });
 
   it("resolves brief and Working List links without the national snapshot", async () => {
