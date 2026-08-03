@@ -37,7 +37,9 @@ function match(html: string, expression: RegExp) {
 }
 
 function decode(value: string) {
-  return value.replaceAll("&amp;", "&").replaceAll("&quot;", '"').replaceAll("&#39;", "'");
+  // Decode the escape character last so values such as `&amp;quot;` are not
+  // unintentionally decoded twice.
+  return value.replaceAll("&quot;", '"').replaceAll("&#39;", "'").replaceAll("&amp;", "&");
 }
 
 function percentile(values: number[], quantile: number) {

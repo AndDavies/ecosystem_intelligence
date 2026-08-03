@@ -205,6 +205,7 @@ describe("phase 2 launch hardening", () => {
     expect(launchValidator).toContain('PUBLIC_LAUNCH_CONCURRENCY ?? "1"');
     expect(launchValidator).toContain('PUBLIC_LAUNCH_REQUEST_SPACING_MS ?? "300"');
     expect(launchValidator).toContain("Atlas prewarm returned");
+    expect(launchValidator.indexOf('replaceAll("&quot;"')).toBeLessThan(launchValidator.indexOf('replaceAll("&amp;"'));
     expect(launchValidator).toContain("responseTimingMs");
   });
 
