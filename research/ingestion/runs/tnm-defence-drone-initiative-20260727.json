@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-defence-drone-initiative-20260727",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": [
+      "department",
+      "procurement_authority"
+    ]
+  },
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "public-demand:defence-drone-initiative",
+    "reason": "The named Government of Canada program creates a concrete, current public procurement and capability signal for Canadian uncrewed and autonomous systems that is not present as a live demand source.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-27T07:57:30.094Z",
+  "completedAt": "2026-07-27T08:00:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "Defence Drone Initiative Canada July 2026",
+    "Government of Canada launches Defence Drone Initiative",
+    "Defence Drone Initiative Canada industry analysis",
+    "W8703-270055 Defence Drone Initiative DDI Marketplace"
+  ],
+  "counters": {
+    "sourcesChecked": 4,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 3,
+    "sourceLanesSearched": 3,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "prospectInventory": null,
+    "signalBatch": null,
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-defence-drone-initiative-20260727.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-defence-drone-initiative-20260727.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-defence-drone-initiative-20260727.md",
+    "stagingExport": "research/ingestion/staging/tnm-defence-drone-initiative-20260727.json"
+  }
+}

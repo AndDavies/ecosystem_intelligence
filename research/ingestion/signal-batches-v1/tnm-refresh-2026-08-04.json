@@ -1,0 +1,442 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-refresh-2026-08-04",
+  "runId": "tnm-refresh-2026-08-04",
+  "createdAt": "2026-08-04T15:05:32.911Z",
+  "watermarkStart": "2026-07-22T18:57:18.967Z",
+  "watermarkEnd": "2026-08-04T15:05:32.911Z",
+  "sourceFamilyCounters": {
+    "official_company": 2,
+    "government_procurement": 1,
+    "source_book": 1,
+    "ecosystem_program": 2,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "This named-record enrichment intentionally backfills durable relationship evidence predating the seven-day overlap because the relationships are absent from the live record.",
+    "No Gmail or authenticated social material is used as evidence; durable company, partner, government, association, Source Book, and bilingual sources resolved the material claims.",
+    "NEXUS participation does not establish a Marconi funding share, contract, procurement eligibility, endorsement, customer interest, classified access, or CAF adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "marconi-nexus-participation-2026-07-14",
+      "fingerprint": "36d9e9f5c52949708a19917aaedece0b0e135421009bd073e2ac84d35162a38a",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "DND NEXUS UxS DISH backgrounder",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Marconi Technologies",
+        "technology": null,
+        "program": "NEXUS Uncrewed Systems Defence Innovation Secure Hub",
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-07-14",
+        "amount": "CAD 29.6 million over two years for the consortium",
+        "details": "DND names Marconi Technologies as a key participant in the selected Espace Aéro-led NEXUS consortium based primarily at YMX Innovation Centre.",
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "effectiveDate": "2026-07-14",
+        "actors": [
+          {
+            "name": "Marconi Technologies",
+            "role": "partner"
+          }
+        ],
+        "changeSummary": "Add a bounded public relationship recording Marconi's named NEXUS consortium participation."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "marconi-nexus-participation-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T10:01:42.056602+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Resolved the signal to the durable canonical source at https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html."
+        }
+      ],
+      "warnings": [
+        "The public source does not identify a Marconi work package, direct funding allocation, procurement award, or CAF adoption."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "marconi-ara-partnership-2026-05-26",
+      "fingerprint": "d40a604e38c9e0e38c52f9ec34822c41bbed71004480b35693b0cc88de6be559",
+      "sourceChannel": "official_company",
+      "sourceFamily": "ARA Robotics official partner news",
+      "discoveryOrigin": {
+        "url": "https://www.ara-uas.com/latest-news",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Marconi Technologies",
+        "technology": "Integrated autonomous and secure-communications solutions",
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-05-26",
+        "amount": null,
+        "details": "ARA Robotics announces a strategic partnership with Marconi Technologies combining uncrewed systems and autonomous platforms with secure communications and mission-critical systems.",
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "effectiveDate": "2026-05-26",
+        "actors": [
+          {
+            "name": "Marconi Technologies",
+            "role": "partner"
+          }
+        ],
+        "changeSummary": "Add a bounded public relationship recording the Marconi and ARA Robotics development partnership."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.ara-uas.com/latest-news"
+      ],
+      "signalType": "partnership_or_consortium",
+      "sourceClusterId": "marconi-ara-partnership-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T10:01:42.056602+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.ara-uas.com/latest-news",
+          "outcome": "Resolved the signal to the durable canonical source at https://www.ara-uas.com/latest-news."
+        }
+      ],
+      "warnings": [
+        "The durable partner page does not establish a deployed product, customer, contract value, or delivery milestone."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "marconi-nexus-participation-fr-2026-07-14",
+      "fingerprint": "d150068eee719f821a14bf953dab7fc70c302994592943b6f52d699326365c08",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "DND French NEXUS backgrounder",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Marconi Technologies",
+        "technology": null,
+        "program": "Carrefour national d’accélération des capacités UxS",
+        "issuer": "Ministère de la Défense nationale",
+        "eventDate": "2026-07-14",
+        "amount": "CAD 29.6 million over two years for the consortium",
+        "details": "The French DND backgrounder names Marconi Technologies in the same selected NEXUS consortium participant list as the English page.",
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "effectiveDate": "2026-07-14",
+        "actors": [
+          {
+            "name": "Marconi Technologies",
+            "role": "other"
+          }
+        ],
+        "changeSummary": "Retain the French canonical URL as same-family corroboration without creating a second operation."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "marconi-nexus-participation-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T10:01:42.056602+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html",
+          "outcome": "Resolved the signal to the durable canonical source at https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html."
+        }
+      ],
+      "warnings": [
+        "This is bilingual corroboration from the same DND source family, not an independent event."
+      ],
+      "disposition": "duplicate",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "marconi-nexus-cadsi-2026-07-15",
+      "fingerprint": "e608a82294753c72ef2015906d47c303877edfb296f3110b0de20c07a9d9ca95",
+      "sourceChannel": "source_book",
+      "sourceFamily": "CADSI due association source",
+      "discoveryOrigin": {
+        "url": "https://www.defenceandsecurity.ca/fr/member-news/darit-technologies-is-a-partner-in-dish-nexus",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Marconi Technologies",
+        "technology": null,
+        "program": "NEXUS Uncrewed Systems Defence Innovation Secure Hub",
+        "issuer": "DARIT Technologies via CADSI Member News",
+        "eventDate": "2026-07-15",
+        "amount": "CAD 29.6 million over two years for the consortium",
+        "details": "CADSI-hosted DARIT member news independently lists Marconi Technologies among the Canadian SMEs in the NEXUS coalition.",
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "effectiveDate": "2026-07-15",
+        "actors": [
+          {
+            "name": "Marconi Technologies",
+            "role": "other"
+          }
+        ],
+        "changeSummary": "Use as independent corroboration for the single NEXUS relationship operation."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.defenceandsecurity.ca/fr/member-news/darit-technologies-is-a-partner-in-dish-nexus"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "marconi-nexus-participation-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T10:01:42.056602+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.defenceandsecurity.ca/fr/member-news/darit-technologies-is-a-partner-in-dish-nexus",
+          "outcome": "Resolved the signal to the durable canonical source at https://www.defenceandsecurity.ca/fr/member-news/darit-technologies-is-a-partner-in-dish-nexus."
+        }
+      ],
+      "warnings": [
+        "The source corroborates membership but does not establish Marconi's work package or funding share."
+      ],
+      "disposition": "duplicate",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "marconi-safe-orion-contract-already-current-2026-06-15",
+      "fingerprint": "a8e14c5256584212c2b43f1b2ff9a24304ba692c997efd720a7b1ea30bda2978",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Prime Minister of Canada contract readout",
+      "discoveryOrigin": {
+        "url": "https://www.pm.gc.ca/en/news/readouts/2026/06/15/prime-minister-carney-meets-european-council-president-antonio-costa-and",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Marconi Technologies",
+        "technology": "ORION tactical radios",
+        "program": "Security Action for Europe",
+        "issuer": "Prime Minister of Canada",
+        "eventDate": "2026-06-15",
+        "amount": "more than CAD 10 million",
+        "details": "The PMO confirms Marconi's ORION contract for Polish Cyber Command, Enamor partnership, and deliveries through 2030, all of which are already represented in the live record.",
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "effectiveDate": "2026-06-15",
+        "actors": [
+          {
+            "name": "Marconi Technologies",
+            "role": "other"
+          }
+        ],
+        "procurement": {
+          "noticeId": null,
+          "contractId": null,
+          "stage": "awarded",
+          "amendmentNumber": null,
+          "buyer": "Polish Cyber Command",
+          "supplier": "Marconi Technologies",
+          "value": "more than 10 million",
+          "currency": "CAD",
+          "closingAt": null
+        },
+        "changeSummary": "No candidate operation; the live profile already contains this contract and delivery context."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.pm.gc.ca/en/news/readouts/2026/06/15/prime-minister-carney-meets-european-council-president-antonio-costa-and"
+      ],
+      "signalType": "contract_or_award",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T10:01:42.056602+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.pm.gc.ca/en/news/readouts/2026/06/15/prime-minister-carney-meets-european-council-president-antonio-costa-and",
+          "outcome": "Resolved the signal to the durable canonical source at https://www.pm.gc.ca/en/news/readouts/2026/06/15/prime-minister-carney-meets-european-council-president-antonio-costa-and."
+        }
+      ],
+      "warnings": [
+        "Do not duplicate the published contract activity or Enamor relationship."
+      ],
+      "disposition": "already_current",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "marconi-official-portfolio-already-current-2026-08-04",
+      "fingerprint": "dc7607e1b776318dd8eb52bdcfc9322f87ae7d37c77fd9ed080c573600912709",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Marconi official product site",
+      "discoveryOrigin": {
+        "url": "https://marconi-technologies.com/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Marconi Technologies",
+        "technology": "Orion, Archer, Hunter, SAMS, and development-stage cryptography",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "The current official product and location pages remain consistent with the four published Marconi capabilities and existing Montréal operating profile.",
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Marconi Technologies",
+            "role": "other"
+          }
+        ],
+        "changeSummary": "No capability operation; current public product detail is already represented."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://marconi-technologies.com/"
+      ],
+      "signalType": "technology_update",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T10:01:42.056602+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://marconi-technologies.com/",
+          "outcome": "Resolved the signal to the durable canonical source at https://marconi-technologies.com/."
+        }
+      ],
+      "warnings": [
+        "The Marconi Inc. footer remains an unresolved legal-name cue and does not support changing legalName."
+      ],
+      "disposition": "already_current",
+      "deferralRationale": null
+    }
+  ]
+}

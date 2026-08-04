@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260804132035",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "research_test_centre"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "published-record-refresh:ymx-innovation-centre",
+    "reason": "Current official ADM, Espace Aéro, Mirabel, and DND sources add material YMX program and activity detail beyond the published record, including ARCTIC hydrogen research, Protospace, advanced-air-mobility activity, and the current UxS DISH context.",
+    "score": 995
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-04T13:20:35.454Z",
+  "completedAt": "2026-08-04T13:21:13.834Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "Live production duplicate and target snapshot for YMX Innovation Centre / ymx-innovation-centre",
+    "ADM YMX Innovation Centre official profile and current strategic partnerships",
+    "ADM Aéroports de Montréal April 14 2026 strategic partnerships release: ARCTIC, Protospace, NRC Drone Innovation Centre, Volatus, and WatchOut",
+    "Espace Aéro Mirabel hub page: YMX ownership, collaborative model, four civil and defence sectors, and controlled-goods conditions",
+    "Ville de Mirabel April 15 2026 French advanced-air-mobility workshop at Centre YMX Innovation",
+    "DND UxS DISH English and French backgrounders: NEXUS location, current mandate, $29.6 million contribution, and consortium context"
+  ],
+  "counters": {
+    "sourcesChecked": 6,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 0,
+    "uniqueProspects": 0,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 0,
+    "sourceLanesSearched": 6,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "claimsCollected": 10,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": "Deep dossier mode intentionally consolidates the named published organization’s additive evidence delta into one refresh candidate.",
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "YMX Innovation Centre is already published; the candidate is an additive refresh and is not a new organization record.",
+      "ADM describes ARCTIC, Protospace, and other strategic initiatives at the YMX campus; the reviewer should confirm which initiatives belong as nested programs versus relationships.",
+      "Public-source evidence describes innovation, testing, and collaboration activity only; it does not establish classified access, procurement eligibility, endorsement, or customer interest."
+    ]
+  },
+  "errors": [],
+  "stopReason": "One amber organization refresh candidate is validated for private Admin Review; no canonical record was changed.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260804132035.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260804132035.json",
+    "prospectInventory": null,
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260804132035.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260804132035.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260804132035-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260804132035.json"
+  }
+}

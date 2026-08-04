@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260731205844",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to find reviewable Canadian ROV companies and ROV-enabling technology firms while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-07-31T20:58:44.634Z",
+  "completedAt": "2026-07-31T21:14:43.289Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Canada ROV companies remotely operated vehicle underwater inspection",
+    "entreprises canadiennes véhicules téléguidés sous-marins inspection",
+    "site:canada.ca Aurora ROV Systems National Defence",
+    "site:canadabuys.canada.ca ROV underwater inspection supplier Canada",
+    "site:oceansupercluster.ca ROV sonar Canada project",
+    "site:.ca ROV services commercial diving Canada",
+    "site:.ca underwater drone Canada infrastructure inspection",
+    "site:linkedin.com/company Canadian underwater inspection ROV resolved to official site",
+    "Canadian ROV service provider official product technical documentation",
+    "entreprise canadienne drone sous-marin ROV technologie inspection",
+    "Canada company partner announcement ROV underwater inspection",
+    "Canada ROV procurement government or municipal public record"
+  ],
+  "counters": {
+    "sourcesChecked": 67,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 3,
+    "prospectsDiscovered": 50,
+    "uniqueProspects": 50,
+    "prospectsQueued": 37,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 9,
+    "candidatesGreen": 2,
+    "candidatesAmber": 8,
+    "claimsCollected": 60,
+    "claimsConflicted": 0,
+    "coverageSubjects": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "8 amber candidates require explicit reviewer confirmation of their recorded evidence boundaries before publication."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the ten-candidate target after qualifying a 50-prospect Canadian ROV-company inventory across 9 source lanes; 37 plausible unused prospects remain queued for later evidence-led batches.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260731205844.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260731205844.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260731205844.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260731205844.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260731205844.json",
+    "reviewPacket": null,
+    "stagingExport": null,
+    "candidateLogoPacket": "research/ingestion/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260731205844.json"
+  }
+}

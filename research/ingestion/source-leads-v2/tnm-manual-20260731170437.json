@@ -1,0 +1,882 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260731170437",
+  "runId": "tnm-manual-20260731170437",
+  "createdAt": "2026-07-31T17:17:46.350Z",
+  "scope": {
+    "description": "Ten qualified Canadian company leads selected from a 50-prospect, multi-lane inventory. Each qualified lead proceeds automatically to an enriched private candidate with a concrete capability, current activity, public relationship, field evidence and explicit review boundary.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-3-ci-manufacturing",
+      "source": {
+        "id": "3-ci-manufacturing-profile",
+        "title": "3-Ci company and Canadian manufacturing profile",
+        "url": "https://3-ci.com/",
+        "publisher": "3-Ci Manufacturing",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Company, industry and Calgary-location sections",
+        "summary": "3-Ci describes Calgary-based custom cable, connector and machining capability serving defence, UAV and USV applications."
+      },
+      "discoveryPath": [
+        "https://3-ci.com/",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, industry and Calgary-location sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://3-ci.com/",
+        "websiteDomain": "3-ci.com",
+        "stableSlug": "3-ci-manufacturing",
+        "legalName": "3-Ci Manufacturing Inc.",
+        "aliases": [
+          "3-CI"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 93,
+      "completenessScore": 86,
+      "reviewWarnings": [
+        "The public sources establish industrial capability and RDII support, but do not identify a specific Canadian Armed Forces platform or procurement; those claims are intentionally excluded."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://3-ci.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://3-ci.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "3-Ci Manufacturing",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://3-ci.com/",
+      "aliases": [
+        "3-CI"
+      ],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Rugged cable and wiring systems",
+      "roleSpecificEvidence": "3-Ci Manufacturing is a Calgary manufacturer of custom overmolded cable assemblies, connectors and precision-machined components for rugged industrial, aerospace, defence and uncrewed-system applications. 3-Ci designs and manufactures custom overmolded cable assemblies, connectors and wiring systems intended for harsh environments, including defence, UAV and USV applications. PrairiesCan lists 3-Ci Manufacturing as a 2026 Regional Defence Investment Initiative recipient expanding production capacity for military-grade cable and wiring systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-canadian-uavs",
+      "source": {
+        "id": "canadian-uavs-profile",
+        "title": "Canadian UAVs company profile",
+        "url": "https://www.canadianuavs.ca/about-canadian-uavs",
+        "publisher": "Canadian UAVs",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Company, commercial and military-use sections",
+        "summary": "Canadian UAVs describes its Canadian drone solutions and commercial and military-use focus."
+      },
+      "discoveryPath": [
+        "https://www.canadianuavs.ca/about-canadian-uavs",
+        "https://www.canadianuavs.ca/",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, commercial and military-use sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canadianuavs.ca/",
+        "websiteDomain": "canadianuavs.ca",
+        "stableSlug": "canadian-uavs",
+        "legalName": "Canadian UAVs Inc.",
+        "aliases": [
+          "CUAVs"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "The candidate records public platform and programme information only; it does not assert a particular customer mission, flight approval, or operational fielding beyond the cited sources."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.canadianuavs.ca/about-canadian-uavs",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.canadianuavs.ca/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Canadian UAVs",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.canadianuavs.ca/",
+      "aliases": [
+        "CUAVs"
+      ],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "BVLOS reconnaissance and situational-awareness platform",
+      "roleSpecificEvidence": "Canadian UAVs is a Calgary remotely piloted aircraft company providing fixed-wing and multi-rotor drone systems, beyond-visual-line-of-sight operations and aerial-intelligence services for commercial and military applications. Canadian UAVs provides deployable remotely piloted aircraft and intelligence services designed for long-endurance, beyond-visual-line-of-sight reconnaissance and situational-awareness operations. PrairiesCan's 2026 RDII backgrounder identifies Canadian UAVs' project to deliver a deployable drone platform and intelligence suite for defence and security reconnaissance and situational awareness."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-microlynx-systems",
+      "source": {
+        "id": "microlynx-systems-profile",
+        "title": "Microlynx company profile",
+        "url": "https://microlynxsystems.com/",
+        "publisher": "Microlynx Systems",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Company and Calgary contact sections",
+        "summary": "Microlynx identifies itself as a Calgary electronics and software development company."
+      },
+      "discoveryPath": [
+        "https://microlynxsystems.com/",
+        "https://microlynxsystems.com/othradar.html",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company and Calgary contact sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://microlynxsystems.com/",
+        "websiteDomain": "microlynxsystems.com",
+        "stableSlug": "microlynx-systems",
+        "legalName": "Microlynx Systems Ltd.",
+        "aliases": [
+          "Microlynx"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 97,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "The government source describes the RDII project scope; this candidate does not infer installation status, operational readiness, or NORAD deployment beyond that public project."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://microlynxsystems.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://microlynxsystems.com/othradar.html",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Microlynx Systems",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://microlynxsystems.com/",
+      "aliases": [
+        "Microlynx"
+      ],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "M4000 over-the-horizon radar transmitter system",
+      "roleSpecificEvidence": "Microlynx Systems is a Calgary electronics and software-development company that develops high-frequency transmitter, amplification, filtering and control systems for over-the-horizon radar applications. Microlynx's M4000 system integrates waveform generation, high-power amplification, filtering, communications and control for high-frequency over-the-horizon radar transmit sites. PrairiesCan's 2026 RDII backgrounder identifies Microlynx's project to improve high-power RF amplifiers supporting Polar Over the Horizon Radar and Arctic domain awareness."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-mro-electronic-supply",
+      "source": {
+        "id": "mro-electronic-supply-profile",
+        "title": "MRO Electronic Supply capability profile",
+        "url": "https://mroelectronics.com/",
+        "publisher": "MRO Electronic Supply",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Company, certifications and sector sections",
+        "summary": "MRO describes Canadian rugged electronics manufacturing for aerospace, defence and other harsh-environment sectors."
+      },
+      "discoveryPath": [
+        "https://mroelectronics.com/",
+        "https://mroelectronics.com/connect-with-us/",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, certifications and sector sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://mroelectronics.com/",
+        "websiteDomain": "mroelectronics.com",
+        "stableSlug": "mro-electronic-supply",
+        "legalName": "MRO Electronic Supply Ltd.",
+        "aliases": [
+          "MRO Electronics"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 94,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The candidate preserves public manufacturing and funding information and does not infer a contract, customer or end platform from the named expansion project."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://mroelectronics.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://mroelectronics.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "MRO Electronic Supply",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://mroelectronics.com/",
+      "aliases": [
+        "MRO Electronics"
+      ],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Rugged wire harness and electronics box builds",
+      "roleSpecificEvidence": "MRO Electronic Supply is a Calgary Canadian small business that manufactures custom complex wire harnesses, cable assemblies, overmolded systems, racks and box builds for harsh-environment aerospace, defence and industrial applications. MRO produces custom complex wire harnesses, cable assemblies, overmolded systems and rack or box builds for demanding aerospace, defence and industrial environments. PrairiesCan's 2026 RDII backgrounder identifies MRO's Defence Capacity Expansion Project for advanced manufacturing, quality assurance and defence electronics."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-technalogix",
+      "source": {
+        "id": "technalogix-profile",
+        "title": "Technalogix Canadian RF manufacturing profile",
+        "url": "https://technalogix.com/",
+        "publisher": "Technalogix",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Company, Central Alberta and manufacturing sections",
+        "summary": "Technalogix identifies Central Alberta operations and Canadian design, manufacturing and assembly of transmitters and amplifiers."
+      },
+      "discoveryPath": [
+        "https://technalogix.com/",
+        "https://technalogix.com/pages/ism",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, Central Alberta and manufacturing sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://technalogix.com/",
+        "websiteDomain": "technalogix.com",
+        "stableSlug": "technalogix",
+        "legalName": "Technalogix Ltd.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The candidate records equipment and RDII project scope but does not treat commercial product claims as proof of a deployed defence system."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://technalogix.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://technalogix.com/pages/ism",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Technalogix",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://technalogix.com/",
+      "aliases": [],
+      "location": {
+        "city": "Red Deer",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "High-frequency radar power amplifiers",
+      "roleSpecificEvidence": "Technalogix is a Central Alberta manufacturer of radio-frequency transmitters, modulators, filters and high-power amplifiers, including systems described for industrial, scientific, medical and defence applications. Technalogix designs and manufactures Canadian RF transmitters and high-power amplifiers, including amplifier products described for radar, airspace and waterway monitoring applications. PrairiesCan's 2026 RDII backgrounder identifies Technalogix's project to design, build and test high-frequency power-amplifier products for wide-area airspace and waterway monitoring, including Arctic conditions."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-vizworx",
+      "source": {
+        "id": "vizworx-profile",
+        "title": "VizworX technology and company profile",
+        "url": "https://vizworx.com/",
+        "publisher": "VizworX",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Official company and capability navigation",
+        "summary": "VizworX presents software, visualization, immersive-reality and artificial-intelligence capability for complex operational information."
+      },
+      "discoveryPath": [
+        "https://vizworx.com/",
+        "https://vizworx.com/what-we-do/ar-vr-mr",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company and capability navigation",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://vizworx.com/",
+        "websiteDomain": "vizworx.com",
+        "stableSlug": "vizworx",
+        "legalName": "VizworX Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 94,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The government source supports the project's stated commercialization path, while deployment, performance and end-user claims remain outside the candidate."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://vizworx.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://vizworx.com/what-we-do/ar-vr-mr",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "VizworX",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://vizworx.com/",
+      "aliases": [],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Virtual Operations Environment",
+      "roleSpecificEvidence": "VizworX is a Calgary technology company building interactive visualization, artificial-intelligence, immersive-reality and software applications for complex operational data and decision support. VizworX is commercializing a Virtual Operations Environment that combines maps, live feeds and tracked data in a collaborative 3D communications and mission-planning environment. PrairiesCan's 2026 RDII backgrounder identifies VizworX's project to commercialize the Virtual Operations Environment from an advanced prototype to a deployable defence system."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-logican-technologies",
+      "source": {
+        "id": "logican-technologies-profile",
+        "title": "Logican Technologies company profile",
+        "url": "https://www.logican.com/about/",
+        "publisher": "Logican Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Company, Edmonton facility and market sections",
+        "summary": "Logican identifies an Edmonton electronics-manufacturing facility providing onshore Canadian production for regulated sectors including military and communications."
+      },
+      "discoveryPath": [
+        "https://www.logican.com/about/",
+        "https://www.logican.com/industries/",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "communications-and-cyber",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, Edmonton facility and market sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.logican.com/",
+        "websiteDomain": "logican.com",
+        "stableSlug": "logican-technologies",
+        "legalName": "Logican Technologies Inc.",
+        "aliases": [
+          "Logican"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "bilingual_web",
+      "inclusionScore": 97,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "The public release supports the stated manufacturing scope but does not identify individual platform integrations, programme delivery dates or specific contract awards."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.logican.com/about/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.logican.com/industries/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Logican Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.logican.com/",
+      "aliases": [
+        "Logican"
+      ],
+      "location": {
+        "city": "Edmonton",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Secure defence-electronics manufacturing",
+      "roleSpecificEvidence": "Logican Technologies is an Edmonton electronics-manufacturing company providing domestic design support, assembly, integration and lifecycle support for highly regulated, communications and defence products. Logican provides onshore electronics manufacturing, automated assembly and product-testing capability for defence electronics, including systems for maritime sensing, communications and control applications. PrairiesCan's February 2026 RDII announcement identifies Logican's expansion of advanced manufacturing for defence technologies including sonar, submarine tracking, naval communications and defence electronic control systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-galaxia-mission-systems",
+      "source": {
+        "id": "galaxia-mission-systems-profile",
+        "title": "Galaxia orbital-compute company profile",
+        "url": "https://gx.space/",
+        "publisher": "Galaxia",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Company, Halifax and mission-critical operations sections",
+        "summary": "Galaxia identifies itself as a Halifax space-computation company building intelligent satellites and edge-compute platforms."
+      },
+      "discoveryPath": [
+        "https://gx.space/",
+        "https://gx.space/galaxia-awarded-2-5m-contract-by-department-of-national-defence-to-advance-canadas-space-data-infrastructure/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, Halifax and mission-critical operations sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://gx.space/",
+        "websiteDomain": "gx.space",
+        "stableSlug": "galaxia-mission-systems",
+        "legalName": "Galaxia Mission Systems Inc.",
+        "aliases": [
+          "Galaxia"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 97,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "Company-reported defence project information is retained as public activity context; the candidate does not assert classified performance, mission outcomes or operational service."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://gx.space/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://gx.space/galaxia-awarded-2-5m-contract-by-department-of-national-defence-to-advance-canadas-space-data-infrastructure/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Galaxia Mission Systems",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://gx.space/",
+      "aliases": [
+        "Galaxia"
+      ],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Orbital edge-compute infrastructure",
+      "roleSpecificEvidence": "Galaxia Mission Systems is a Halifax space-technology company developing intelligent satellite compute platforms, software-defined spacecraft and mission infrastructure for government, defence and commercial customers. Galaxia designs and operates intelligent satellite and orbital edge-compute platforms for sovereign missions, including software-defined spacecraft, hosted payloads and mission delivery. ACOA's 2026 Nova Scotia RDII announcement lists GALAXIA Mission Systems among businesses receiving support to develop and manufacture critical equipment and technologies, while Galaxia publicly reports a DND space-data-infrastructure project."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-atlantic-hardchrome",
+      "source": {
+        "id": "atlantic-hardchrome-profile",
+        "title": "Atlantic Hardchrome company profile",
+        "url": "https://atlantichardchrome.com/",
+        "publisher": "Atlantic Hardchrome",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Company, Dartmouth location and aerospace-defence client sections",
+        "summary": "Atlantic Hardchrome describes Dartmouth machining, grinding, repair, plating and inspection capability serving aerospace and defence sectors."
+      },
+      "discoveryPath": [
+        "https://atlantichardchrome.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, Dartmouth location and aerospace-defence client sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://atlantichardchrome.com/",
+        "websiteDomain": "atlantichardchrome.com",
+        "stableSlug": "atlantic-hardchrome",
+        "legalName": "Atlantic Hardchrome Limited",
+        "aliases": [
+          "Atlantic Hardchrome Limited"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 94,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The RDII source supports planning for specialized submarine-control components, not a confirmed production or repair contract; the candidate preserves that distinction."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://atlantichardchrome.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://atlantichardchrome.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Atlantic Hardchrome",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://atlantichardchrome.com/",
+      "aliases": [
+        "Atlantic Hardchrome Limited"
+      ],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Submarine-control component manufacturing and repair",
+      "roleSpecificEvidence": "Atlantic Hardchrome is a Dartmouth industrial manufacturer providing machining, grinding, CNC work, repair, plating and inspection services for aerospace, defence and other complex industrial components. Atlantic Hardchrome provides precision machining, grinding, repair, plating and inspection services; its 2026 RDII project concerns manufacturing, testing and repair planning for specialized submarine-control-system components. ACOA's February 2026 RDII backgrounder identifies Atlantic Hardchrome's project to develop a plan for manufacturing, testing and repairing specialized components for submarine control systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-leeway-marine",
+      "source": {
+        "id": "leeway-marine-profile",
+        "title": "Leeway Marine company profile",
+        "url": "https://leewaymarine.ca/about",
+        "publisher": "Leeway Marine",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:17:46.350Z",
+        "locator": "Company mandate, naval expertise and service sections",
+        "summary": "Leeway Marine describes ship ownership, operation and management with naval experience supporting complex training and security exercises at sea."
+      },
+      "discoveryPath": [
+        "https://leewaymarine.ca/about",
+        "https://leewaymarine.ca/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company mandate, naval expertise and service sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://leewaymarine.ca/",
+        "websiteDomain": "leewaymarine.ca",
+        "stableSlug": "leeway-marine",
+        "legalName": "Leeway Marine Ltd.",
+        "aliases": [
+          "LeeWay Marine"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 91,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Public sources support maritime capability and RDII participation, but do not establish a specific defence customer or the maturity of any uncrewed vessel beyond the bounded official description."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://leewaymarine.ca/about",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://leewaymarine.ca/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Leeway Marine",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://leewaymarine.ca/",
+      "aliases": [
+        "LeeWay Marine"
+      ],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "ASV Viper maritime autonomy capability",
+      "roleSpecificEvidence": "Leeway Marine is a Nova Scotia ship owner, operator and manager providing marine support, security and training services, including autonomous surface-vessel capability for complex operations at sea. Leeway Marine operates maritime support and training services and publicly describes autonomous surface-vessel capability alongside naval expertise for complex security and training exercises at sea. ACOA's 2026 Nova Scotia RDII announcement lists Leeway Marine among businesses receiving support to develop and manufacture critical equipment and technologies in the provincial defence supply chain."
+    }
+  ]
+}

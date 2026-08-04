@@ -1,0 +1,3597 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260731170437-claim-ledger",
+  "runId": "tnm-manual-20260731170437",
+  "createdAt": "2026-07-31T17:04:37.033Z",
+  "completedAt": "2026-07-31T17:17:46.350Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-3-ci-manufacturing-description",
+      "subjectId": "subject-3-ci-manufacturing",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "3-Ci Manufacturing is a Calgary manufacturer of custom overmolded cable assemblies, connectors and precision-machined components for rugged industrial, aerospace, defence and uncrewed-system applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "3-ci-manufacturing-profile",
+        "originalUrl": "https://3-ci.com/",
+        "canonicalUrl": "https://3-ci.com/",
+        "locator": "Company, industry and Calgary-location sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "3-ci.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "3-ci.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-3-ci-manufacturing",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for 3-Ci Manufacturing; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-3-ci-manufacturing-location",
+      "subjectId": "subject-3-ci-manufacturing",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "3-Ci Manufacturing has a documented Canadian operating presence in Calgary, Alberta.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "3-ci-manufacturing-profile",
+        "originalUrl": "https://3-ci.com/",
+        "canonicalUrl": "https://3-ci.com/",
+        "locator": "Company, industry and Calgary-location sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "3-ci.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "3-ci.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-3-ci-manufacturing",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for 3-Ci Manufacturing; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-3-ci-manufacturing-capability",
+      "subjectId": "subject-3-ci-manufacturing",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "3-Ci designs and manufactures custom overmolded cable assemblies, connectors and wiring systems intended for harsh environments, including defence, UAV and USV applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "3-ci-manufacturing-product",
+        "originalUrl": "https://3-ci.com/",
+        "canonicalUrl": "https://3-ci.com/",
+        "locator": "Cable-assembly, harsh-environment and defence-application sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "3-ci.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "3-ci.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-3-ci-manufacturing",
+          "fieldPath": "capabilities.3-ci-rugged-cable-and-wiring-systems.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for 3-Ci Manufacturing; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-3-ci-manufacturing-technical",
+      "subjectId": "subject-3-ci-manufacturing",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Custom overmolded cables; Connector and cable assemblies; Harsh-environment engineering; Precision-machined components",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "3-ci-manufacturing-product",
+        "originalUrl": "https://3-ci.com/",
+        "canonicalUrl": "https://3-ci.com/",
+        "locator": "Cable-assembly, harsh-environment and defence-application sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "3-ci.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "3-ci.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-3-ci-manufacturing",
+          "fieldPath": "capabilities.3-ci-rugged-cable-and-wiring-systems.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for 3-Ci Manufacturing; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-3-ci-manufacturing-activity",
+      "subjectId": "subject-3-ci-manufacturing",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "PrairiesCan lists 3-Ci Manufacturing as a 2026 Regional Defence Investment Initiative recipient expanding production capacity for military-grade cable and wiring systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "3-ci-manufacturing-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "3-Ci Manufacturing project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-3-ci-manufacturing",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for 3-Ci Manufacturing; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-3-ci-manufacturing-relationship",
+      "subjectId": "subject-3-ci-manufacturing",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "PrairiesCan identifies 3-Ci Manufacturing as receiving repayable RDII support to expand production capacity for military-grade cable and wiring systems; the record does not infer any specific procurement outcome.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "3-ci-manufacturing-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "3-Ci Manufacturing project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-3-ci-manufacturing",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for 3-Ci Manufacturing; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-canadian-uavs-description",
+      "subjectId": "subject-canadian-uavs",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Canadian UAVs is a Calgary remotely piloted aircraft company providing fixed-wing and multi-rotor drone systems, beyond-visual-line-of-sight operations and aerial-intelligence services for commercial and military applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "canadian-uavs-profile",
+        "originalUrl": "https://www.canadianuavs.ca/about-canadian-uavs",
+        "canonicalUrl": "https://www.canadianuavs.ca/about-canadian-uavs",
+        "locator": "Company, commercial and military-use sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canadianuavs.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canadianuavs.ca/about-canadian-uavs"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-uavs",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Canadian UAVs; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-canadian-uavs-location",
+      "subjectId": "subject-canadian-uavs",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Canadian UAVs has a documented Canadian operating presence in Calgary, Alberta.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "canadian-uavs-profile",
+        "originalUrl": "https://www.canadianuavs.ca/about-canadian-uavs",
+        "canonicalUrl": "https://www.canadianuavs.ca/about-canadian-uavs",
+        "locator": "Company, commercial and military-use sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canadianuavs.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canadianuavs.ca/about-canadian-uavs"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-uavs",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Canadian UAVs; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-canadian-uavs-capability",
+      "subjectId": "subject-canadian-uavs",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Canadian UAVs provides deployable remotely piloted aircraft and intelligence services designed for long-endurance, beyond-visual-line-of-sight reconnaissance and situational-awareness operations.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "canadian-uavs-product",
+        "originalUrl": "https://www.canadianuavs.ca/",
+        "canonicalUrl": "https://www.canadianuavs.ca/",
+        "locator": "Aircraft, operations and services sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canadianuavs.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canadianuavs.ca/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-uavs",
+          "fieldPath": "capabilities.canadian-uavs-bvlos-reconnaissance-platform.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Canadian UAVs; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-canadian-uavs-technical",
+      "subjectId": "subject-canadian-uavs",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "BVLOS operations; Fixed-wing and multi-rotor platforms; Aerial reconnaissance; Situational-awareness data services",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "canadian-uavs-product",
+        "originalUrl": "https://www.canadianuavs.ca/",
+        "canonicalUrl": "https://www.canadianuavs.ca/",
+        "locator": "Aircraft, operations and services sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canadianuavs.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canadianuavs.ca/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-uavs",
+          "fieldPath": "capabilities.canadian-uavs-bvlos-reconnaissance-platform.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Canadian UAVs; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-canadian-uavs-activity",
+      "subjectId": "subject-canadian-uavs",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "PrairiesCan's 2026 RDII backgrounder identifies Canadian UAVs' project to deliver a deployable drone platform and intelligence suite for defence and security reconnaissance and situational awareness.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "canadian-uavs-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "Canadian UAVs project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-uavs",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Canadian UAVs; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-canadian-uavs-relationship",
+      "subjectId": "subject-canadian-uavs",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "PrairiesCan lists Canadian UAVs as an RDII recipient for a deployable drone and intelligence-suite project; no operational acquisition is inferred.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "canadian-uavs-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "Canadian UAVs project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-uavs",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Canadian UAVs; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-microlynx-systems-description",
+      "subjectId": "subject-microlynx-systems",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Microlynx Systems is a Calgary electronics and software-development company that develops high-frequency transmitter, amplification, filtering and control systems for over-the-horizon radar applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "microlynx-systems-profile",
+        "originalUrl": "https://microlynxsystems.com/",
+        "canonicalUrl": "https://microlynxsystems.com/",
+        "locator": "Company and Calgary contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "microlynxsystems.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "microlynxsystems.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-microlynx-systems",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Microlynx Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-microlynx-systems-location",
+      "subjectId": "subject-microlynx-systems",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Microlynx Systems has a documented Canadian operating presence in Calgary, Alberta.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "microlynx-systems-profile",
+        "originalUrl": "https://microlynxsystems.com/",
+        "canonicalUrl": "https://microlynxsystems.com/",
+        "locator": "Company and Calgary contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "microlynxsystems.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "microlynxsystems.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-microlynx-systems",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Microlynx Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-microlynx-systems-capability",
+      "subjectId": "subject-microlynx-systems",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Microlynx's M4000 system integrates waveform generation, high-power amplification, filtering, communications and control for high-frequency over-the-horizon radar transmit sites.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "microlynx-systems-product",
+        "originalUrl": "https://microlynxsystems.com/othradar.html",
+        "canonicalUrl": "https://microlynxsystems.com/othradar.html",
+        "locator": "M4000 system architecture, amplifier and control sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "microlynxsystems.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "microlynxsystems.com/othradar.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-microlynx-systems",
+          "fieldPath": "capabilities.microlynx-m4000-over-the-horizon-radar-transmitter.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Microlynx Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-microlynx-systems-technical",
+      "subjectId": "subject-microlynx-systems",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "3–30 MHz transmitter architecture; High-power amplifier and filter; Waveform generation; GPS-synchronized control and monitoring",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "microlynx-systems-product",
+        "originalUrl": "https://microlynxsystems.com/othradar.html",
+        "canonicalUrl": "https://microlynxsystems.com/othradar.html",
+        "locator": "M4000 system architecture, amplifier and control sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "microlynxsystems.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "microlynxsystems.com/othradar.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-microlynx-systems",
+          "fieldPath": "capabilities.microlynx-m4000-over-the-horizon-radar-transmitter.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Microlynx Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-microlynx-systems-activity",
+      "subjectId": "subject-microlynx-systems",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "PrairiesCan's 2026 RDII backgrounder identifies Microlynx's project to improve high-power RF amplifiers supporting Polar Over the Horizon Radar and Arctic domain awareness.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "microlynx-systems-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "Microlynx Systems project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-microlynx-systems",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Microlynx Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-microlynx-systems-relationship",
+      "subjectId": "subject-microlynx-systems",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "PrairiesCan identifies Microlynx as an RDII recipient improving high-power RF amplifiers for Polar Over the Horizon Radar; the record does not claim the company's system has been commissioned.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "microlynx-systems-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "Microlynx Systems project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-microlynx-systems",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Microlynx Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-mro-electronic-supply-description",
+      "subjectId": "subject-mro-electronic-supply",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "MRO Electronic Supply is a Calgary Canadian small business that manufactures custom complex wire harnesses, cable assemblies, overmolded systems, racks and box builds for harsh-environment aerospace, defence and industrial applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "mro-electronic-supply-profile",
+        "originalUrl": "https://mroelectronics.com/",
+        "canonicalUrl": "https://mroelectronics.com/",
+        "locator": "Company, certifications and sector sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "mroelectronics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "mroelectronics.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-mro-electronic-supply",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for MRO Electronic Supply; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-mro-electronic-supply-location",
+      "subjectId": "subject-mro-electronic-supply",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "MRO Electronic Supply has a documented Canadian operating presence in Calgary, Alberta.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "mro-electronic-supply-contact",
+        "originalUrl": "https://mroelectronics.com/connect-with-us/",
+        "canonicalUrl": "https://mroelectronics.com/connect-with-us/",
+        "locator": "Calgary address and public-contact section",
+        "sourceChannel": "official_company",
+        "sourceFamily": "mroelectronics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "mroelectronics.com/connect-with-us/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-mro-electronic-supply",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for MRO Electronic Supply; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-mro-electronic-supply-capability",
+      "subjectId": "subject-mro-electronic-supply",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "MRO produces custom complex wire harnesses, cable assemblies, overmolded systems and rack or box builds for demanding aerospace, defence and industrial environments.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "mro-electronic-supply-product",
+        "originalUrl": "https://mroelectronics.com/",
+        "canonicalUrl": "https://mroelectronics.com/",
+        "locator": "Wire harness, cable assembly, overmolding and box-build sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "mroelectronics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "mroelectronics.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-mro-electronic-supply",
+          "fieldPath": "capabilities.mro-rugged-wire-harness-and-box-builds.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for MRO Electronic Supply; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-mro-electronic-supply-technical",
+      "subjectId": "subject-mro-electronic-supply",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Complex wire harnesses; Custom cable assemblies; Overmolding; Racks and box builds",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "mro-electronic-supply-product",
+        "originalUrl": "https://mroelectronics.com/",
+        "canonicalUrl": "https://mroelectronics.com/",
+        "locator": "Wire harness, cable assembly, overmolding and box-build sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "mroelectronics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "mroelectronics.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-mro-electronic-supply",
+          "fieldPath": "capabilities.mro-rugged-wire-harness-and-box-builds.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for MRO Electronic Supply; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-mro-electronic-supply-activity",
+      "subjectId": "subject-mro-electronic-supply",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "PrairiesCan's 2026 RDII backgrounder identifies MRO's Defence Capacity Expansion Project for advanced manufacturing, quality assurance and defence electronics.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "mro-electronic-supply-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "MRO Electronic Supply project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-mro-electronic-supply",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for MRO Electronic Supply; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-mro-electronic-supply-relationship",
+      "subjectId": "subject-mro-electronic-supply",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "PrairiesCan lists MRO Electronic Supply as an RDII recipient for its Defence Capacity Expansion Project, without identifying a particular defence customer or product award.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "mro-electronic-supply-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "MRO Electronic Supply project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-mro-electronic-supply",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for MRO Electronic Supply; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-technalogix-description",
+      "subjectId": "subject-technalogix",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Technalogix is a Central Alberta manufacturer of radio-frequency transmitters, modulators, filters and high-power amplifiers, including systems described for industrial, scientific, medical and defence applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "technalogix-profile",
+        "originalUrl": "https://technalogix.com/",
+        "canonicalUrl": "https://technalogix.com/",
+        "locator": "Company, Central Alberta and manufacturing sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "technalogix.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "technalogix.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-technalogix",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Technalogix; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-technalogix-location",
+      "subjectId": "subject-technalogix",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Technalogix has a documented Canadian operating presence in Red Deer, Alberta.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "technalogix-profile",
+        "originalUrl": "https://technalogix.com/",
+        "canonicalUrl": "https://technalogix.com/",
+        "locator": "Company, Central Alberta and manufacturing sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "technalogix.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "technalogix.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-technalogix",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Technalogix; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-technalogix-capability",
+      "subjectId": "subject-technalogix",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Technalogix designs and manufactures Canadian RF transmitters and high-power amplifiers, including amplifier products described for radar, airspace and waterway monitoring applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "technalogix-product",
+        "originalUrl": "https://technalogix.com/pages/ism",
+        "canonicalUrl": "https://technalogix.com/pages/ism",
+        "locator": "Industrial, scientific, medical and military radar sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "technalogix.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "technalogix.com/pages/ism"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-technalogix",
+          "fieldPath": "capabilities.technalogix-high-frequency-radar-amplifiers.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Technalogix; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-technalogix-technical",
+      "subjectId": "subject-technalogix",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "High-power RF amplifiers; Transmitters and modulators; Filters and RF components; Canadian design and manufacturing",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "technalogix-product",
+        "originalUrl": "https://technalogix.com/pages/ism",
+        "canonicalUrl": "https://technalogix.com/pages/ism",
+        "locator": "Industrial, scientific, medical and military radar sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "technalogix.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "technalogix.com/pages/ism"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-technalogix",
+          "fieldPath": "capabilities.technalogix-high-frequency-radar-amplifiers.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Technalogix; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-technalogix-activity",
+      "subjectId": "subject-technalogix",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "PrairiesCan's 2026 RDII backgrounder identifies Technalogix's project to design, build and test high-frequency power-amplifier products for wide-area airspace and waterway monitoring, including Arctic conditions.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "technalogix-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "Technalogix project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-technalogix",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Technalogix; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-technalogix-relationship",
+      "subjectId": "subject-technalogix",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "PrairiesCan lists Technalogix as an RDII recipient for high-frequency power-amplifier development; no specific monitoring deployment or procurement is inferred.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "technalogix-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "Technalogix project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-technalogix",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Technalogix; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-vizworx-description",
+      "subjectId": "subject-vizworx",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "VizworX is a Calgary technology company building interactive visualization, artificial-intelligence, immersive-reality and software applications for complex operational data and decision support.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "vizworx-profile",
+        "originalUrl": "https://vizworx.com/",
+        "canonicalUrl": "https://vizworx.com/",
+        "locator": "Official company and capability navigation",
+        "sourceChannel": "official_company",
+        "sourceFamily": "vizworx.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "vizworx.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-vizworx",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for VizworX; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-vizworx-location",
+      "subjectId": "subject-vizworx",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "VizworX has a documented Canadian operating presence in Calgary, Alberta.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "vizworx-profile",
+        "originalUrl": "https://vizworx.com/",
+        "canonicalUrl": "https://vizworx.com/",
+        "locator": "Official company and capability navigation",
+        "sourceChannel": "official_company",
+        "sourceFamily": "vizworx.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "vizworx.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-vizworx",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for VizworX; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-vizworx-capability",
+      "subjectId": "subject-vizworx",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "VizworX is commercializing a Virtual Operations Environment that combines maps, live feeds and tracked data in a collaborative 3D communications and mission-planning environment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "vizworx-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "VizworX project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-vizworx",
+          "fieldPath": "capabilities.vizworx-virtual-operations-environment.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for VizworX; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-vizworx-technical",
+      "subjectId": "subject-vizworx",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Collaborative 3D visualization; Live-feed and data integration; Mission planning and task coordination; AR, VR, MR and AI capabilities",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "vizworx-product",
+        "originalUrl": "https://vizworx.com/what-we-do/ar-vr-mr",
+        "canonicalUrl": "https://vizworx.com/what-we-do/ar-vr-mr",
+        "locator": "AR, VR and MR capability section",
+        "sourceChannel": "official_company",
+        "sourceFamily": "vizworx.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "vizworx.com/what-we-do/ar-vr-mr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-vizworx",
+          "fieldPath": "capabilities.vizworx-virtual-operations-environment.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for VizworX; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-vizworx-activity",
+      "subjectId": "subject-vizworx",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "PrairiesCan's 2026 RDII backgrounder identifies VizworX's project to commercialize the Virtual Operations Environment from an advanced prototype to a deployable defence system.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "vizworx-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "VizworX project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-vizworx",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for VizworX; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-vizworx-relationship",
+      "subjectId": "subject-vizworx",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "PrairiesCan lists VizworX as an RDII recipient to commercialize its Virtual Operations Environment; the record does not infer operational acceptance or deployment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-05-12T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "vizworx-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "VizworX project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-vizworx",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for VizworX; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-logican-technologies-description",
+      "subjectId": "subject-logican-technologies",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Logican Technologies is an Edmonton electronics-manufacturing company providing domestic design support, assembly, integration and lifecycle support for highly regulated, communications and defence products.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "logican-technologies-profile",
+        "originalUrl": "https://www.logican.com/about/",
+        "canonicalUrl": "https://www.logican.com/about/",
+        "locator": "Company, Edmonton facility and market sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "logican.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.logican.com/about/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-logican-technologies",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Logican Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-logican-technologies-location",
+      "subjectId": "subject-logican-technologies",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Logican Technologies has a documented Canadian operating presence in Edmonton, Alberta.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "logican-technologies-profile",
+        "originalUrl": "https://www.logican.com/about/",
+        "canonicalUrl": "https://www.logican.com/about/",
+        "locator": "Company, Edmonton facility and market sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "logican.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.logican.com/about/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-logican-technologies",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Logican Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-logican-technologies-capability",
+      "subjectId": "subject-logican-technologies",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Logican provides onshore electronics manufacturing, automated assembly and product-testing capability for defence electronics, including systems for maritime sensing, communications and control applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "logican-technologies-product",
+        "originalUrl": "https://www.logican.com/industries/",
+        "canonicalUrl": "https://www.logican.com/industries/",
+        "locator": "Military, communications and electronics-manufacturing sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "logican.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.logican.com/industries/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-logican-technologies",
+          "fieldPath": "capabilities.logican-secure-defence-electronics-manufacturing.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Logican Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-logican-technologies-technical",
+      "subjectId": "subject-logican-technologies",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Onshore Canadian electronics assembly; Automated manufacturing; Product testing; Secure supply-chain and lifecycle support",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "logican-technologies-product",
+        "originalUrl": "https://www.logican.com/industries/",
+        "canonicalUrl": "https://www.logican.com/industries/",
+        "locator": "Military, communications and electronics-manufacturing sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "logican.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.logican.com/industries/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-logican-technologies",
+          "fieldPath": "capabilities.logican-secure-defence-electronics-manufacturing.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Logican Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-logican-technologies-activity",
+      "subjectId": "subject-logican-technologies",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "PrairiesCan's February 2026 RDII announcement identifies Logican's expansion of advanced manufacturing for defence technologies including sonar, submarine tracking, naval communications and defence electronic control systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "logican-technologies-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html",
+        "locator": "Logican Technologies RDII project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-logican-technologies",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Logican Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-logican-technologies-relationship",
+      "subjectId": "subject-logican-technologies",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "PrairiesCan identifies Logican Technologies as an RDII recipient expanding domestic manufacturing and testing for defence electronics, without asserting a specific operational contract.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "logican-technologies-rdii",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html",
+        "locator": "Logican Technologies RDII project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-logican-technologies",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Logican Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-galaxia-mission-systems-description",
+      "subjectId": "subject-galaxia-mission-systems",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Galaxia Mission Systems is a Halifax space-technology company developing intelligent satellite compute platforms, software-defined spacecraft and mission infrastructure for government, defence and commercial customers.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "galaxia-mission-systems-profile",
+        "originalUrl": "https://gx.space/",
+        "canonicalUrl": "https://gx.space/",
+        "locator": "Company, Halifax and mission-critical operations sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "gx.space",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "gx.space/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-galaxia-mission-systems",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Galaxia Mission Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-galaxia-mission-systems-location",
+      "subjectId": "subject-galaxia-mission-systems",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Galaxia Mission Systems has a documented Canadian operating presence in Halifax, Nova Scotia.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "galaxia-mission-systems-profile",
+        "originalUrl": "https://gx.space/",
+        "canonicalUrl": "https://gx.space/",
+        "locator": "Company, Halifax and mission-critical operations sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "gx.space",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "gx.space/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-galaxia-mission-systems",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Galaxia Mission Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-galaxia-mission-systems-capability",
+      "subjectId": "subject-galaxia-mission-systems",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Galaxia designs and operates intelligent satellite and orbital edge-compute platforms for sovereign missions, including software-defined spacecraft, hosted payloads and mission delivery.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2025-09-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "galaxia-mission-systems-product",
+        "originalUrl": "https://gx.space/galaxia-awarded-2-5m-contract-by-department-of-national-defence-to-advance-canadas-space-data-infrastructure/",
+        "canonicalUrl": "https://gx.space/galaxia-awarded-2-5m-contract-by-department-of-national-defence-to-advance-canadas-space-data-infrastructure/",
+        "locator": "CTOS, edge-computing and mission-platform sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "gx.space",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "gx.space/galaxia-awarded-2-5m-contract-by-department-of-national-defence-to-advance-canadas-space-data-infrastructure/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-galaxia-mission-systems",
+          "fieldPath": "capabilities.galaxia-orbital-edge-compute-infrastructure.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Galaxia Mission Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-galaxia-mission-systems-technical",
+      "subjectId": "subject-galaxia-mission-systems",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Software-defined satellites; On-orbit edge computing; Mission design, build and operations; Hosted payload and data-relay infrastructure",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2025-09-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "galaxia-mission-systems-product",
+        "originalUrl": "https://gx.space/galaxia-awarded-2-5m-contract-by-department-of-national-defence-to-advance-canadas-space-data-infrastructure/",
+        "canonicalUrl": "https://gx.space/galaxia-awarded-2-5m-contract-by-department-of-national-defence-to-advance-canadas-space-data-infrastructure/",
+        "locator": "CTOS, edge-computing and mission-platform sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "gx.space",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "gx.space/galaxia-awarded-2-5m-contract-by-department-of-national-defence-to-advance-canadas-space-data-infrastructure/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-galaxia-mission-systems",
+          "fieldPath": "capabilities.galaxia-orbital-edge-compute-infrastructure.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Galaxia Mission Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-galaxia-mission-systems-activity",
+      "subjectId": "subject-galaxia-mission-systems",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "ACOA's 2026 Nova Scotia RDII announcement lists GALAXIA Mission Systems among businesses receiving support to develop and manufacture critical equipment and technologies, while Galaxia publicly reports a DND space-data-infrastructure project.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "galaxia-mission-systems-rdii",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+        "locator": "GALAXIA Mission Systems recipient listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-galaxia-mission-systems",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Galaxia Mission Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-galaxia-mission-systems-relationship",
+      "subjectId": "subject-galaxia-mission-systems",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "ACOA lists GALAXIA Mission Systems in the 2026 Nova Scotia RDII recipient group; Galaxia's public material separately describes defence-oriented space infrastructure activity without implying operational adoption.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "galaxia-mission-systems-rdii",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+        "locator": "GALAXIA Mission Systems recipient listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-galaxia-mission-systems",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Galaxia Mission Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-atlantic-hardchrome-description",
+      "subjectId": "subject-atlantic-hardchrome",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Atlantic Hardchrome is a Dartmouth industrial manufacturer providing machining, grinding, CNC work, repair, plating and inspection services for aerospace, defence and other complex industrial components.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "atlantic-hardchrome-profile",
+        "originalUrl": "https://atlantichardchrome.com/",
+        "canonicalUrl": "https://atlantichardchrome.com/",
+        "locator": "Company, Dartmouth location and aerospace-defence client sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "atlantichardchrome.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "atlantichardchrome.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-atlantic-hardchrome",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Atlantic Hardchrome; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-atlantic-hardchrome-location",
+      "subjectId": "subject-atlantic-hardchrome",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Atlantic Hardchrome has a documented Canadian operating presence in Dartmouth, Nova Scotia.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "atlantic-hardchrome-profile",
+        "originalUrl": "https://atlantichardchrome.com/",
+        "canonicalUrl": "https://atlantichardchrome.com/",
+        "locator": "Company, Dartmouth location and aerospace-defence client sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "atlantichardchrome.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "atlantichardchrome.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-atlantic-hardchrome",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Atlantic Hardchrome; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-atlantic-hardchrome-capability",
+      "subjectId": "subject-atlantic-hardchrome",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Atlantic Hardchrome provides precision machining, grinding, repair, plating and inspection services; its 2026 RDII project concerns manufacturing, testing and repair planning for specialized submarine-control-system components.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "atlantic-hardchrome-rdii",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "locator": "Atlantic Hardchrome project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-atlantic-hardchrome",
+          "fieldPath": "capabilities.atlantic-hardchrome-submarine-control-component-services.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Atlantic Hardchrome; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-atlantic-hardchrome-technical",
+      "subjectId": "subject-atlantic-hardchrome",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "CNC machining; Grinding and repair; Hard-chrome plating; Non-destructive testing and inspection",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "atlantic-hardchrome-product",
+        "originalUrl": "https://atlantichardchrome.com/",
+        "canonicalUrl": "https://atlantichardchrome.com/",
+        "locator": "CNC, repair, plating and NDT service sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "atlantichardchrome.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "atlantichardchrome.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-atlantic-hardchrome",
+          "fieldPath": "capabilities.atlantic-hardchrome-submarine-control-component-services.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Atlantic Hardchrome; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-atlantic-hardchrome-activity",
+      "subjectId": "subject-atlantic-hardchrome",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "ACOA's February 2026 RDII backgrounder identifies Atlantic Hardchrome's project to develop a plan for manufacturing, testing and repairing specialized components for submarine control systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "atlantic-hardchrome-rdii",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "locator": "Atlantic Hardchrome project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-atlantic-hardchrome",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Atlantic Hardchrome; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-atlantic-hardchrome-relationship",
+      "subjectId": "subject-atlantic-hardchrome",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "ACOA identifies Atlantic Hardchrome as an RDII recipient for a specialized submarine-control-component product plan; the candidate does not infer a procurement, class of vessel or completed repair programme.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "atlantic-hardchrome-rdii",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "locator": "Atlantic Hardchrome project listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-atlantic-hardchrome",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Atlantic Hardchrome; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-leeway-marine-description",
+      "subjectId": "subject-leeway-marine",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Leeway Marine is a Nova Scotia ship owner, operator and manager providing marine support, security and training services, including autonomous surface-vessel capability for complex operations at sea.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "leeway-marine-profile",
+        "originalUrl": "https://leewaymarine.ca/about",
+        "canonicalUrl": "https://leewaymarine.ca/about",
+        "locator": "Company mandate, naval expertise and service sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "leewaymarine.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "leewaymarine.ca/about"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-leeway-marine",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Leeway Marine; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-leeway-marine-location",
+      "subjectId": "subject-leeway-marine",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Leeway Marine has a documented Canadian operating presence in Halifax, Nova Scotia.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "leeway-marine-profile",
+        "originalUrl": "https://leewaymarine.ca/about",
+        "canonicalUrl": "https://leewaymarine.ca/about",
+        "locator": "Company mandate, naval expertise and service sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "leewaymarine.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "leewaymarine.ca/about"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-leeway-marine",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Leeway Marine; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-leeway-marine-capability",
+      "subjectId": "subject-leeway-marine",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Leeway Marine operates maritime support and training services and publicly describes autonomous surface-vessel capability alongside naval expertise for complex security and training exercises at sea.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "leeway-marine-product",
+        "originalUrl": "https://leewaymarine.ca/",
+        "canonicalUrl": "https://leewaymarine.ca/",
+        "locator": "Vessel, operations and autonomous-systems sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "leewaymarine.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "leewaymarine.ca/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-leeway-marine",
+          "fieldPath": "capabilities.leeway-asv-viper-maritime-autonomy.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Leeway Marine; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-leeway-marine-technical",
+      "subjectId": "subject-leeway-marine",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Autonomous surface-vessel operations; Ship ownership and management; Naval training support; Maritime security exercises",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "leeway-marine-product",
+        "originalUrl": "https://leewaymarine.ca/",
+        "canonicalUrl": "https://leewaymarine.ca/",
+        "locator": "Vessel, operations and autonomous-systems sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "leewaymarine.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "leewaymarine.ca/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-leeway-marine",
+          "fieldPath": "capabilities.leeway-asv-viper-maritime-autonomy.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Leeway Marine; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-leeway-marine-activity",
+      "subjectId": "subject-leeway-marine",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "ACOA's 2026 Nova Scotia RDII announcement lists Leeway Marine among businesses receiving support to develop and manufacture critical equipment and technologies in the provincial defence supply chain.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "leeway-marine-rdii",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+        "locator": "Leeway Marine recipient listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-leeway-marine",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Leeway Marine; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-leeway-marine-relationship",
+      "subjectId": "subject-leeway-marine",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "ACOA includes Leeway Marine in its 2026 Nova Scotia RDII recipient list; the public release does not identify a particular procurement or military deployment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T17:17:46.350Z",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "leeway-marine-rdii",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+        "locator": "Leeway Marine recipient listing",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-leeway-marine",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Leeway Marine; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "subject-3-ci-manufacturing",
+      "subjectType": "organization",
+      "name": "3-Ci Manufacturing",
+      "candidateIds": [
+        "candidate-3-ci-manufacturing"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-3-ci-manufacturing-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-3-ci-manufacturing-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-3-ci-manufacturing-description",
+            "claim-3-ci-manufacturing-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-3-ci-manufacturing-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-3-ci-manufacturing-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-3-ci-manufacturing-activity",
+            "claim-3-ci-manufacturing-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-3-ci-manufacturing-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-3-ci-manufacturing-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-3-ci-manufacturing-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-3-ci-manufacturing-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-3-ci-manufacturing-description",
+            "claim-3-ci-manufacturing-location",
+            "claim-3-ci-manufacturing-capability",
+            "claim-3-ci-manufacturing-technical",
+            "claim-3-ci-manufacturing-activity",
+            "claim-3-ci-manufacturing-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-canadian-uavs",
+      "subjectType": "organization",
+      "name": "Canadian UAVs",
+      "candidateIds": [
+        "candidate-canadian-uavs"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-canadian-uavs-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-canadian-uavs-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-canadian-uavs-description",
+            "claim-canadian-uavs-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-canadian-uavs-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-canadian-uavs-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-canadian-uavs-activity",
+            "claim-canadian-uavs-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-canadian-uavs-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-canadian-uavs-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-canadian-uavs-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-canadian-uavs-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-canadian-uavs-description",
+            "claim-canadian-uavs-location",
+            "claim-canadian-uavs-capability",
+            "claim-canadian-uavs-technical",
+            "claim-canadian-uavs-activity",
+            "claim-canadian-uavs-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-microlynx-systems",
+      "subjectType": "organization",
+      "name": "Microlynx Systems",
+      "candidateIds": [
+        "candidate-microlynx-systems"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-microlynx-systems-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-microlynx-systems-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-microlynx-systems-description",
+            "claim-microlynx-systems-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-microlynx-systems-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-microlynx-systems-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-microlynx-systems-activity",
+            "claim-microlynx-systems-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-microlynx-systems-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-microlynx-systems-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-microlynx-systems-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-microlynx-systems-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-microlynx-systems-description",
+            "claim-microlynx-systems-location",
+            "claim-microlynx-systems-capability",
+            "claim-microlynx-systems-technical",
+            "claim-microlynx-systems-activity",
+            "claim-microlynx-systems-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-mro-electronic-supply",
+      "subjectType": "organization",
+      "name": "MRO Electronic Supply",
+      "candidateIds": [
+        "candidate-mro-electronic-supply"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-mro-electronic-supply-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-mro-electronic-supply-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-mro-electronic-supply-description",
+            "claim-mro-electronic-supply-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-mro-electronic-supply-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-mro-electronic-supply-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-mro-electronic-supply-activity",
+            "claim-mro-electronic-supply-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-mro-electronic-supply-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-mro-electronic-supply-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-mro-electronic-supply-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-mro-electronic-supply-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-mro-electronic-supply-description",
+            "claim-mro-electronic-supply-location",
+            "claim-mro-electronic-supply-capability",
+            "claim-mro-electronic-supply-technical",
+            "claim-mro-electronic-supply-activity",
+            "claim-mro-electronic-supply-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-technalogix",
+      "subjectType": "organization",
+      "name": "Technalogix",
+      "candidateIds": [
+        "candidate-technalogix"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-technalogix-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-technalogix-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-technalogix-description",
+            "claim-technalogix-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-technalogix-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-technalogix-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-technalogix-activity",
+            "claim-technalogix-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-technalogix-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-technalogix-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-technalogix-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-technalogix-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-technalogix-description",
+            "claim-technalogix-location",
+            "claim-technalogix-capability",
+            "claim-technalogix-technical",
+            "claim-technalogix-activity",
+            "claim-technalogix-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-vizworx",
+      "subjectType": "organization",
+      "name": "VizworX",
+      "candidateIds": [
+        "candidate-vizworx"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-vizworx-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-vizworx-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-vizworx-description",
+            "claim-vizworx-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-vizworx-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-vizworx-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-vizworx-activity",
+            "claim-vizworx-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-vizworx-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-vizworx-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-vizworx-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-vizworx-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-vizworx-description",
+            "claim-vizworx-location",
+            "claim-vizworx-capability",
+            "claim-vizworx-technical",
+            "claim-vizworx-activity",
+            "claim-vizworx-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-logican-technologies",
+      "subjectType": "organization",
+      "name": "Logican Technologies",
+      "candidateIds": [
+        "candidate-logican-technologies"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-logican-technologies-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-logican-technologies-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-logican-technologies-description",
+            "claim-logican-technologies-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-logican-technologies-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-logican-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-logican-technologies-activity",
+            "claim-logican-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-logican-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-logican-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-logican-technologies-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-logican-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-logican-technologies-description",
+            "claim-logican-technologies-location",
+            "claim-logican-technologies-capability",
+            "claim-logican-technologies-technical",
+            "claim-logican-technologies-activity",
+            "claim-logican-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-galaxia-mission-systems",
+      "subjectType": "organization",
+      "name": "Galaxia Mission Systems",
+      "candidateIds": [
+        "candidate-galaxia-mission-systems"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-galaxia-mission-systems-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-galaxia-mission-systems-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-galaxia-mission-systems-description",
+            "claim-galaxia-mission-systems-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-galaxia-mission-systems-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-galaxia-mission-systems-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-galaxia-mission-systems-activity",
+            "claim-galaxia-mission-systems-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-galaxia-mission-systems-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-galaxia-mission-systems-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-galaxia-mission-systems-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-galaxia-mission-systems-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-galaxia-mission-systems-description",
+            "claim-galaxia-mission-systems-location",
+            "claim-galaxia-mission-systems-capability",
+            "claim-galaxia-mission-systems-technical",
+            "claim-galaxia-mission-systems-activity",
+            "claim-galaxia-mission-systems-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-atlantic-hardchrome",
+      "subjectType": "organization",
+      "name": "Atlantic Hardchrome",
+      "candidateIds": [
+        "candidate-atlantic-hardchrome"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-description",
+            "claim-atlantic-hardchrome-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-atlantic-hardchrome-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-activity",
+            "claim-atlantic-hardchrome-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-atlantic-hardchrome-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-atlantic-hardchrome-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-description",
+            "claim-atlantic-hardchrome-location",
+            "claim-atlantic-hardchrome-capability",
+            "claim-atlantic-hardchrome-technical",
+            "claim-atlantic-hardchrome-activity",
+            "claim-atlantic-hardchrome-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-leeway-marine",
+      "subjectType": "organization",
+      "name": "Leeway Marine",
+      "candidateIds": [
+        "candidate-leeway-marine"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-leeway-marine-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-leeway-marine-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-leeway-marine-description",
+            "claim-leeway-marine-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-leeway-marine-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-leeway-marine-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-leeway-marine-activity",
+            "claim-leeway-marine-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-leeway-marine-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-leeway-marine-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-leeway-marine-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-leeway-marine-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-leeway-marine-description",
+            "claim-leeway-marine-location",
+            "claim-leeway-marine-capability",
+            "claim-leeway-marine-technical",
+            "claim-leeway-marine-activity",
+            "claim-leeway-marine-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    }
+  ],
+  "warnings": [
+    "Two candidates retain amber warnings because public award records do not disclose a supported challenge or company performance statements remain self-reported; every candidate retains an explicit evidence boundary.",
+    "Mission-area matches are derived assessments and do not establish procurement eligibility, endorsement, customer interest, classified demand or operational adoption.",
+    "Social and LinkedIn results were used only to expand search trails and were not promoted into field evidence without durable corroboration."
+  ]
+}

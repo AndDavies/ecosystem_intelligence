@@ -1,0 +1,2093 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-25T12:19:23.328Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260725121411",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-kind:company",
+      "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-25T12:14:11.527Z",
+    "completed_at": "2026-07-25T12:19:00.642Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "Official company capability and newsroom research",
+      "Government IDEaS and CanadaBuys discovery research",
+      "CADSI, conference and Source Book discovery",
+      "Targeted LinkedIn company search via authenticated Chrome",
+      "Broad web research for Canadian strategic-technology companies"
+    ],
+    "counters": {
+      "sourcesChecked": 50,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 50,
+      "uniqueProspects": 50,
+      "prospectsQueued": 40,
+      "recoveryAttempts": 150,
+      "sourceLanesSearched": 8,
+      "candidatesGreen": 0,
+      "candidatesAmber": 10
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "All candidates are amber because their field evidence is anchored in official company materials; secondary sources remain discovery context until corroborated."
+      ]
+    },
+    "stop_reason": "Completed a bounded ten-candidate review batch; queued prospects remain for subsequent batches."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-osi-maritime-systems",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-osi-maritime-systems"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-osi-maritime-systems",
+        "sourceLeadIds": [
+          "lead-osi-maritime-systems"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "OSI Maritime Systems is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Integrated naval navigation and tactical systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "osi-maritime-systems-official",
+            "title": "OSI Maritime Systems official capability profile",
+            "url": "https://osimaritime.com/",
+            "publisher": "OSI Maritime Systems",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes OSI Maritime Systems and its public offering: Integrated naval navigation, tactical bridge and command-and-control systems for surface ships, submarines and small craft."
+          },
+          {
+            "id": "osi-maritime-systems-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "osi-maritime-systems-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-osi-maritime-systems-description",
+            "sourceId": "osi-maritime-systems-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes OSI Maritime Systems as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-osi-maritime-systems-capability",
+            "sourceId": "osi-maritime-systems-official",
+            "fieldPath": "capabilities.osi-maritime-systems-integrated-naval-navigation-and-tactical-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Integrated naval navigation and tactical systems offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "osi-maritime-systems",
+          "name": "OSI Maritime Systems",
+          "legalName": null,
+          "aliases": [],
+          "description": "Integrated naval navigation, tactical bridge and command-and-control systems for surface ships, submarines and small craft.",
+          "websiteUrl": "https://osimaritime.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Burnaby",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 49.2488,
+            "longitude": -122.9805,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Integrated naval navigation and tactical systems",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://osimaritime.com/",
+          "sourceAssetUrl": "https://osimaritime.wpengine.com/wp-content/uploads/2023/10/OSI-CMYK-logo-Converted-01.jpg",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "69d45534a3d3e9c11dab56b39b3776b00bfd9fec9e5ce80b814b986cf19fc97c",
+          "normalizedChecksum": "4f398261e6227b63f0a3c8178f12dec13793349fb52a580841bda31a0aa19c8b",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121411/candidate-osi-maritime-systems/logo.source.json",
+          "note": "847x512 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "osi-maritime-systems-integrated-naval-navigation-and-tactical-systems",
+            "name": "Integrated naval navigation and tactical systems",
+            "summary": "Integrated naval navigation, tactical bridge and command-and-control systems for surface ships, submarines and small craft.",
+            "capabilityType": "Integrated naval navigation and tactical systems",
+            "features": [
+              "Integrated naval navigation and tactical systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Integrated naval navigation and tactical systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-osi-maritime-systems-description",
+          "sourceId": "osi-maritime-systems-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes OSI Maritime Systems as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-osi-maritime-systems-capability",
+          "sourceId": "osi-maritime-systems-official",
+          "fieldPath": "capabilities.osi-maritime-systems-integrated-naval-navigation-and-tactical-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Integrated naval navigation and tactical systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "OSI Maritime Systems is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Integrated naval navigation and tactical systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    },
+    {
+      "client_candidate_id": "candidate-volatus-aerospace",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-volatus-aerospace"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-volatus-aerospace",
+        "sourceLeadIds": [
+          "lead-volatus-aerospace"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Volatus Aerospace is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Uncrewed aerial systems and aerial intelligence. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "volatus-aerospace-official",
+            "title": "Volatus Aerospace official capability profile",
+            "url": "https://volatusaerospace.com/",
+            "publisher": "Volatus Aerospace",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Volatus Aerospace and its public offering: Canadian uncrewed aircraft, aerial intelligence and remotely piloted systems company supporting industrial and public-safety operations."
+          },
+          {
+            "id": "volatus-aerospace-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "volatus-aerospace-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-volatus-aerospace-description",
+            "sourceId": "volatus-aerospace-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Volatus Aerospace as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-volatus-aerospace-capability",
+            "sourceId": "volatus-aerospace-official",
+            "fieldPath": "capabilities.volatus-aerospace-uncrewed-aerial-systems-and-aerial-intelligence.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Uncrewed aerial systems and aerial intelligence offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "volatus-aerospace",
+          "name": "Volatus Aerospace",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian uncrewed aircraft, aerial intelligence and remotely piloted systems company supporting industrial and public-safety operations.",
+          "websiteUrl": "https://volatusaerospace.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Mirabel",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.6501,
+            "longitude": -74.0837,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Uncrewed aerial systems and aerial intelligence",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://volatusaerospace.com/",
+          "sourceAssetUrl": "https://volatusaerospace.com/wp-content/uploads/2026/06/VolatusAerospace_Vertical2-scaled.jpg",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "67cdb1098cc86eddeb17e86156fe88f23f05e0d5917ba115d8599c6370a79358",
+          "normalizedChecksum": "83908e3aed5daa3c2be4486ca8047d0a82292f05c2fd17df60b63002dc4dfe3f",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121411/candidate-volatus-aerospace/logo.source.json",
+          "note": "512x512 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "volatus-aerospace-uncrewed-aerial-systems-and-aerial-intelligence",
+            "name": "Uncrewed aerial systems and aerial intelligence",
+            "summary": "Canadian uncrewed aircraft, aerial intelligence and remotely piloted systems company supporting industrial and public-safety operations.",
+            "capabilityType": "Uncrewed aerial systems and aerial intelligence",
+            "features": [
+              "Uncrewed aerial systems and aerial intelligence",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Uncrewed aerial systems and aerial intelligence offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-volatus-aerospace-description",
+          "sourceId": "volatus-aerospace-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Volatus Aerospace as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-volatus-aerospace-capability",
+          "sourceId": "volatus-aerospace-official",
+          "fieldPath": "capabilities.volatus-aerospace-uncrewed-aerial-systems-and-aerial-intelligence.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Uncrewed aerial systems and aerial intelligence offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Volatus Aerospace is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Uncrewed aerial systems and aerial intelligence. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    },
+    {
+      "client_candidate_id": "candidate-ghgsat",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-ghgsat"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-ghgsat",
+        "sourceLeadIds": [
+          "lead-ghgsat"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "GHGSat is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Satellite-based remote sensing and analytics. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "ghgsat-official",
+            "title": "GHGSat official capability profile",
+            "url": "https://www.ghgsat.com/",
+            "publisher": "GHGSat",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes GHGSat and its public offering: Montreal satellite-data company that operates and develops emissions-monitoring spacecraft and related analytics services."
+          },
+          {
+            "id": "ghgsat-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "ghgsat-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-ghgsat-description",
+            "sourceId": "ghgsat-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes GHGSat as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ghgsat-capability",
+            "sourceId": "ghgsat-official",
+            "fieldPath": "capabilities.ghgsat-satellite-based-remote-sensing-and-analytics.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Satellite-based remote sensing and analytics offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "ghgsat",
+          "name": "GHGSat",
+          "legalName": null,
+          "aliases": [],
+          "description": "Montreal satellite-data company that operates and develops emissions-monitoring spacecraft and related analytics services.",
+          "websiteUrl": "https://www.ghgsat.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Satellite-based remote sensing and analytics",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-25T12:19:12.844Z",
+          "note": "No acceptable official-logo candidate found."
+        },
+        "capabilities": [
+          {
+            "slug": "ghgsat-satellite-based-remote-sensing-and-analytics",
+            "name": "Satellite-based remote sensing and analytics",
+            "summary": "Montreal satellite-data company that operates and develops emissions-monitoring spacecraft and related analytics services.",
+            "capabilityType": "Satellite-based remote sensing and analytics",
+            "features": [
+              "Satellite-based remote sensing and analytics",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Satellite-based remote sensing and analytics offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-ghgsat-description",
+          "sourceId": "ghgsat-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes GHGSat as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ghgsat-capability",
+          "sourceId": "ghgsat-official",
+          "fieldPath": "capabilities.ghgsat-satellite-based-remote-sensing-and-analytics.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Satellite-based remote sensing and analytics offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "GHGSat is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Satellite-based remote sensing and analytics. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    },
+    {
+      "client_candidate_id": "candidate-kepler-communications",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-kepler-communications"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-kepler-communications",
+        "sourceLeadIds": [
+          "lead-kepler-communications"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Kepler Communications is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Space data-relay and satellite communications. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "kepler-communications-official",
+            "title": "Kepler Communications official capability profile",
+            "url": "https://www.kepler.space/",
+            "publisher": "Kepler Communications",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Kepler Communications and its public offering: Toronto satellite communications company developing high-speed data-relay services and space-network infrastructure."
+          },
+          {
+            "id": "kepler-communications-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "kepler-communications-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-kepler-communications-description",
+            "sourceId": "kepler-communications-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Kepler Communications as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-kepler-communications-capability",
+            "sourceId": "kepler-communications-official",
+            "fieldPath": "capabilities.kepler-communications-space-data-relay-and-satellite-communications.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Space data-relay and satellite communications offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "kepler-communications",
+          "name": "Kepler Communications",
+          "legalName": null,
+          "aliases": [],
+          "description": "Toronto satellite communications company developing high-speed data-relay services and space-network infrastructure.",
+          "websiteUrl": "https://www.kepler.space/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Toronto",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6532,
+            "longitude": -79.3832,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Space data-relay and satellite communications",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://kepler.space/",
+          "sourceAssetUrl": "https://kepler.space/wp-content/uploads/2023/06/Mask-group-4.png",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "6879a24df7dc91edc57ce192f956e47d7b986ed59e542cf031741129b9db7c76",
+          "normalizedChecksum": "896ade34591dd86dc4b00ac2c96804c4f32b845c3325a8ec7b0a0d6f4c3cc47f",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121411/candidate-kepler-communications/logo.source.json",
+          "note": "154x24 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "kepler-communications-space-data-relay-and-satellite-communications",
+            "name": "Space data-relay and satellite communications",
+            "summary": "Toronto satellite communications company developing high-speed data-relay services and space-network infrastructure.",
+            "capabilityType": "Space data-relay and satellite communications",
+            "features": [
+              "Space data-relay and satellite communications",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Space data-relay and satellite communications offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-kepler-communications-description",
+          "sourceId": "kepler-communications-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Kepler Communications as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-kepler-communications-capability",
+          "sourceId": "kepler-communications-official",
+          "fieldPath": "capabilities.kepler-communications-space-data-relay-and-satellite-communications.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Space data-relay and satellite communications offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Kepler Communications is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Space data-relay and satellite communications. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    },
+    {
+      "client_candidate_id": "candidate-norsat-international",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-norsat-international"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-norsat-international",
+        "sourceLeadIds": [
+          "lead-norsat-international"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Norsat International is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Satellite communications equipment. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "norsat-international-official",
+            "title": "Norsat International official capability profile",
+            "url": "https://www.norsat.com/",
+            "publisher": "Norsat International",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Norsat International and its public offering: Richmond communications company producing satellite communications equipment and connectivity products for remote, maritime and public-sector users."
+          },
+          {
+            "id": "norsat-international-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "norsat-international-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-norsat-international-description",
+            "sourceId": "norsat-international-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Norsat International as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-norsat-international-capability",
+            "sourceId": "norsat-international-official",
+            "fieldPath": "capabilities.norsat-international-satellite-communications-equipment.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Satellite communications equipment offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "norsat-international",
+          "name": "Norsat International",
+          "legalName": null,
+          "aliases": [],
+          "description": "Richmond communications company producing satellite communications equipment and connectivity products for remote, maritime and public-sector users.",
+          "websiteUrl": "https://www.norsat.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Richmond",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 49.1666,
+            "longitude": -123.1336,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Satellite communications equipment",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.norsat.com/",
+          "sourceAssetUrl": "https://www.norsat.com/cdn/shop/files/Norsat_cmyk-logo_sml_110x.png?v=1614344187",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "e274491d1c2a86211f887742b175349dbfd35c362f2b366f04c773af70765270",
+          "normalizedChecksum": "f5dde0255e9617fb4d299edae4930c94073f31e8d2125093f37a1c36cea4ad58",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121411/candidate-norsat-international/logo.source.json",
+          "note": "110x32 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "norsat-international-satellite-communications-equipment",
+            "name": "Satellite communications equipment",
+            "summary": "Richmond communications company producing satellite communications equipment and connectivity products for remote, maritime and public-sector users.",
+            "capabilityType": "Satellite communications equipment",
+            "features": [
+              "Satellite communications equipment",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Satellite communications equipment offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-norsat-international-description",
+          "sourceId": "norsat-international-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Norsat International as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-norsat-international-capability",
+          "sourceId": "norsat-international-official",
+          "fieldPath": "capabilities.norsat-international-satellite-communications-equipment.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Satellite communications equipment offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Norsat International is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Satellite communications equipment. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    },
+    {
+      "client_candidate_id": "candidate-canadensys-aerospace",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-canadensys-aerospace"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-canadensys-aerospace",
+        "sourceLeadIds": [
+          "lead-canadensys-aerospace"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Canadensys Aerospace is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Space mission systems and robotics. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "canadensys-aerospace-official",
+            "title": "Canadensys Aerospace official capability profile",
+            "url": "https://canadensys.com/",
+            "publisher": "Canadensys Aerospace",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Canadensys Aerospace and its public offering: Canadian space-systems company building lunar, planetary and Earth-orbit mission hardware, services and robotics."
+          },
+          {
+            "id": "canadensys-aerospace-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "canadensys-aerospace-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-canadensys-aerospace-description",
+            "sourceId": "canadensys-aerospace-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Canadensys Aerospace as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-canadensys-aerospace-capability",
+            "sourceId": "canadensys-aerospace-official",
+            "fieldPath": "capabilities.canadensys-aerospace-space-mission-systems-and-robotics.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Space mission systems and robotics offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "canadensys-aerospace",
+          "name": "Canadensys Aerospace",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian space-systems company building lunar, planetary and Earth-orbit mission hardware, services and robotics.",
+          "websiteUrl": "https://canadensys.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Bolton",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.8807,
+            "longitude": -79.7373,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Space mission systems and robotics",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-25T12:19:12.844Z",
+          "note": "No eligible high- or medium-confidence official logo was returned."
+        },
+        "capabilities": [
+          {
+            "slug": "canadensys-aerospace-space-mission-systems-and-robotics",
+            "name": "Space mission systems and robotics",
+            "summary": "Canadian space-systems company building lunar, planetary and Earth-orbit mission hardware, services and robotics.",
+            "capabilityType": "Space mission systems and robotics",
+            "features": [
+              "Space mission systems and robotics",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Space mission systems and robotics offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-canadensys-aerospace-description",
+          "sourceId": "canadensys-aerospace-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Canadensys Aerospace as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-canadensys-aerospace-capability",
+          "sourceId": "canadensys-aerospace-official",
+          "fieldPath": "capabilities.canadensys-aerospace-space-mission-systems-and-robotics.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Space mission systems and robotics offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Canadensys Aerospace is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Space mission systems and robotics. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    },
+    {
+      "client_candidate_id": "candidate-space-flight-laboratory",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-space-flight-laboratory"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-space-flight-laboratory",
+        "sourceLeadIds": [
+          "lead-space-flight-laboratory"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Space Flight Laboratory is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Small-satellite missions and operations. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "space-flight-laboratory-official",
+            "title": "Space Flight Laboratory official capability profile",
+            "url": "https://www.utias-sfl.net/",
+            "publisher": "Space Flight Laboratory",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Space Flight Laboratory and its public offering: Toronto small-satellite developer and mission-services provider with spacecraft design, integration and operations capability."
+          },
+          {
+            "id": "space-flight-laboratory-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "space-flight-laboratory-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-space-flight-laboratory-description",
+            "sourceId": "space-flight-laboratory-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Space Flight Laboratory as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-capability",
+            "sourceId": "space-flight-laboratory-official",
+            "fieldPath": "capabilities.space-flight-laboratory-small-satellite-missions-and-operations.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Small-satellite missions and operations offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "space-flight-laboratory",
+          "name": "Space Flight Laboratory",
+          "legalName": null,
+          "aliases": [],
+          "description": "Toronto small-satellite developer and mission-services provider with spacecraft design, integration and operations capability.",
+          "websiteUrl": "https://www.utias-sfl.net/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Toronto",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6532,
+            "longitude": -79.3832,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Small-satellite missions and operations",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://www.utias-sfl.net/",
+          "sourceAssetUrl": "https://www.utias-sfl.net/wp-content/uploads/logo2024.webp",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "fad65ca768fbc9d37b38cef710a75b1b448f7485764f2c56951c197ff669600e",
+          "normalizedChecksum": "8997f53b32ffd69edca889082b780ed4e8f3a46b7f41e6a3e48855538051e1c2",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121411/candidate-space-flight-laboratory/logo.source.json",
+          "note": "168x98 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "space-flight-laboratory-small-satellite-missions-and-operations",
+            "name": "Small-satellite missions and operations",
+            "summary": "Toronto small-satellite developer and mission-services provider with spacecraft design, integration and operations capability.",
+            "capabilityType": "Small-satellite missions and operations",
+            "features": [
+              "Small-satellite missions and operations",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Small-satellite missions and operations offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-space-flight-laboratory-description",
+          "sourceId": "space-flight-laboratory-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Space Flight Laboratory as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-capability",
+          "sourceId": "space-flight-laboratory-official",
+          "fieldPath": "capabilities.space-flight-laboratory-small-satellite-missions-and-operations.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Small-satellite missions and operations offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Space Flight Laboratory is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Small-satellite missions and operations. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    },
+    {
+      "client_candidate_id": "candidate-maritime-launch-services",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-maritime-launch-services"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-maritime-launch-services",
+        "sourceLeadIds": [
+          "lead-maritime-launch-services"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Maritime Launch Services is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Canadian launch and spaceport services. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "maritime-launch-services-official",
+            "title": "Maritime Launch Services official capability profile",
+            "url": "https://www.maritimelaunch.com/",
+            "publisher": "Maritime Launch Services",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Maritime Launch Services and its public offering: Nova Scotia launch-services company developing Canadian commercial spaceport and launch capability."
+          },
+          {
+            "id": "maritime-launch-services-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "maritime-launch-services-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-maritime-launch-services-description",
+            "sourceId": "maritime-launch-services-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Maritime Launch Services as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-maritime-launch-services-capability",
+            "sourceId": "maritime-launch-services-official",
+            "fieldPath": "capabilities.maritime-launch-services-canadian-launch-and-spaceport-services.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Canadian launch and spaceport services offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "maritime-launch-services",
+          "name": "Maritime Launch Services",
+          "legalName": null,
+          "aliases": [],
+          "description": "Nova Scotia launch-services company developing Canadian commercial spaceport and launch capability.",
+          "websiteUrl": "https://www.maritimelaunch.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Halifax",
+            "provinceTerritory": "Nova Scotia",
+            "countryCode": "CA",
+            "latitude": 44.6488,
+            "longitude": -63.5752,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Canadian launch and spaceport services",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.maritimelaunch.com/",
+          "sourceAssetUrl": "https://www.maritimelaunch.com/_next/image?url=%2Fapi%2Fmedia%2Ffile%2FAbacus%2520Media%2520Image.png%3Fprefix%3Duploads&w=1920&q=75",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "1ffb4cab8cb95150a844328fd92c7bc7466d3bcd86b2862ea37d9833d25c4a68",
+          "normalizedChecksum": "0059fc2c66315722c8547e69856e722632bf89b0dde01885505db343d18efc14",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121411/candidate-maritime-launch-services/logo.source.json",
+          "note": "975x512 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "maritime-launch-services-canadian-launch-and-spaceport-services",
+            "name": "Canadian launch and spaceport services",
+            "summary": "Nova Scotia launch-services company developing Canadian commercial spaceport and launch capability.",
+            "capabilityType": "Canadian launch and spaceport services",
+            "features": [
+              "Canadian launch and spaceport services",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Canadian launch and spaceport services offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-maritime-launch-services-description",
+          "sourceId": "maritime-launch-services-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Maritime Launch Services as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-maritime-launch-services-capability",
+          "sourceId": "maritime-launch-services-official",
+          "fieldPath": "capabilities.maritime-launch-services-canadian-launch-and-spaceport-services.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Canadian launch and spaceport services offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Maritime Launch Services is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Canadian launch and spaceport services. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    },
+    {
+      "client_candidate_id": "candidate-c6-launch-systems",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-c6-launch-systems"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-c6-launch-systems",
+        "sourceLeadIds": [
+          "lead-c6-launch-systems"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "C6 Launch Systems is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Launch vehicle systems and propulsion. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "c6-launch-systems-official",
+            "title": "C6 Launch Systems official capability profile",
+            "url": "https://www.c6launch.com/",
+            "publisher": "C6 Launch Systems",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes C6 Launch Systems and its public offering: Canadian space-launch company developing scalable launch systems and supporting propulsion technology."
+          },
+          {
+            "id": "c6-launch-systems-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "c6-launch-systems-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-c6-launch-systems-description",
+            "sourceId": "c6-launch-systems-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes C6 Launch Systems as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-c6-launch-systems-capability",
+            "sourceId": "c6-launch-systems-official",
+            "fieldPath": "capabilities.c6-launch-systems-launch-vehicle-systems-and-propulsion.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Launch vehicle systems and propulsion offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "c6-launch-systems",
+          "name": "C6 Launch Systems",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian space-launch company developing scalable launch systems and supporting propulsion technology.",
+          "websiteUrl": "https://www.c6launch.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Toronto",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6532,
+            "longitude": -79.3832,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Launch vehicle systems and propulsion",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.c6launch.com/",
+          "sourceAssetUrl": "https://www.c6launch.com/content/themes/wordpress-template/images/linkedin-logo.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "f6fae1ade82bf82d309ca9c0d1ae538f45a25a001b0116d8ecf9d61b15ede9ad",
+          "normalizedChecksum": "6e91ca941e044c791cf7809a35307521e385c192d05b5752f4d1f8ae6937c6d3",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121411/candidate-c6-launch-systems/logo.source.json",
+          "note": "513x512 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "c6-launch-systems-launch-vehicle-systems-and-propulsion",
+            "name": "Launch vehicle systems and propulsion",
+            "summary": "Canadian space-launch company developing scalable launch systems and supporting propulsion technology.",
+            "capabilityType": "Launch vehicle systems and propulsion",
+            "features": [
+              "Launch vehicle systems and propulsion",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Launch vehicle systems and propulsion offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-c6-launch-systems-description",
+          "sourceId": "c6-launch-systems-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes C6 Launch Systems as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-c6-launch-systems-capability",
+          "sourceId": "c6-launch-systems-official",
+          "fieldPath": "capabilities.c6-launch-systems-launch-vehicle-systems-and-propulsion.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Launch vehicle systems and propulsion offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "C6 Launch Systems is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Launch vehicle systems and propulsion. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    },
+    {
+      "client_candidate_id": "candidate-reaction-dynamics",
+      "research_run_ref": "tnm-manual-20260725121411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-reaction-dynamics"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-reaction-dynamics",
+        "sourceLeadIds": [
+          "lead-reaction-dynamics"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Reaction Dynamics is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Space launch vehicles and propulsion. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:19:00.642Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "reaction-dynamics-official",
+            "title": "Reaction Dynamics official capability profile",
+            "url": "https://reactiondynamics.space/",
+            "publisher": "Reaction Dynamics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Reaction Dynamics and its public offering: Quebec aerospace company developing launch-vehicle technology and propulsion systems for space access."
+          },
+          {
+            "id": "reaction-dynamics-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "reaction-dynamics-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:19:00.642Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-reaction-dynamics-description",
+            "sourceId": "reaction-dynamics-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Reaction Dynamics as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-reaction-dynamics-capability",
+            "sourceId": "reaction-dynamics-official",
+            "fieldPath": "capabilities.reaction-dynamics-space-launch-vehicles-and-propulsion.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Space launch vehicles and propulsion offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "reaction-dynamics",
+          "name": "Reaction Dynamics",
+          "legalName": null,
+          "aliases": [],
+          "description": "Quebec aerospace company developing launch-vehicle technology and propulsion systems for space access.",
+          "websiteUrl": "https://reactiondynamics.space/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Saint-Jean-sur-Richelieu",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.3078,
+            "longitude": -73.2626,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Space launch vehicles and propulsion",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://www.reactiondynamics.space/en/home",
+          "sourceAssetUrl": "https://www.datocms-assets.com/166697/1779296477-logo_hanwha-ocean_200526.svg?w=400&fit=max&auto=format",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "585546ebafab923076bbc0f9652dcefa457168129cd824be3dd08f20e6da3aa2",
+          "normalizedChecksum": "b87d993a98c3ec7721e984d53dfd43f2c5ac7e5278ed912cfaf4c32e08ecba2e",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121411/candidate-reaction-dynamics/logo.source.json",
+          "note": "400x111 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "reaction-dynamics-space-launch-vehicles-and-propulsion",
+            "name": "Space launch vehicles and propulsion",
+            "summary": "Quebec aerospace company developing launch-vehicle technology and propulsion systems for space access.",
+            "capabilityType": "Space launch vehicles and propulsion",
+            "features": [
+              "Space launch vehicles and propulsion",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Space launch vehicles and propulsion offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-reaction-dynamics-description",
+          "sourceId": "reaction-dynamics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Reaction Dynamics as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-reaction-dynamics-capability",
+          "sourceId": "reaction-dynamics-official",
+          "fieldPath": "capabilities.reaction-dynamics-space-launch-vehicles-and-propulsion.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Space launch vehicles and propulsion offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:00.642Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Reaction Dynamics is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Space launch vehicles and propulsion. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:19:23.329Z"
+    }
+  ]
+}

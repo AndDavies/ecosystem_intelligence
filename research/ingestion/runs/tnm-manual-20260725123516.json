@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260725123516",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-25T12:35:16.908Z",
+  "completedAt": "2026-07-25T12:35:17.287Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Official company capability and newsroom research",
+    "Government IDEaS and CanadaBuys discovery research",
+    "CADSI, conference and Source Book discovery",
+    "Targeted LinkedIn company search via authenticated Chrome",
+    "Broad web research for Canadian strategic-technology companies"
+  ],
+  "counters": {
+    "sourcesChecked": 50,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 50,
+    "uniqueProspects": 50,
+    "prospectsQueued": 40,
+    "recoveryAttempts": 150,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 0,
+    "candidatesAmber": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "All candidates are amber because their field evidence is anchored in official company materials; secondary sources remain discovery context until corroborated."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed a bounded ten-candidate review batch; queued prospects remain for subsequent batches.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260725123516.json",
+    "signalBatch": null,
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260725123516.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260725123516.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

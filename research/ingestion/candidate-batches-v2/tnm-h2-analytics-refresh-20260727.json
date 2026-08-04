@@ -1,0 +1,284 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-h2-analytics-refresh-20260727",
+  "runId": "tnm-h2-analytics-refresh-20260727",
+  "createdAt": "2026-07-27T10:47:00.000Z",
+  "title": "H2 Analytics deep-dossier refresh",
+  "status": "candidate",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "published-record-refresh:h2-analytics",
+    "reason": "The published H2 Analytics record predates the current amended DND EASE contract, detailed official product workflow and separately documented NRC IRAP live-virtual-constructive simulation integration.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-h2-analytics-refresh-20260727.json",
+  "guardrailNotes": [
+    "This is an additive refresh of an existing published organization. No canonical organization, capability, program, relationship or citation changes occur until a human reviewer accepts and explicitly publishes this candidate.",
+    "The public DND contract, NRC contribution and parliamentary testimony establish public activity and context only; they do not establish classified requirements, endorsement or future procurement eligibility.",
+    "CAE LinkedIn material is retained solely as discovery provenance for a possible collective-training teaming agreement. It is not field-level evidence in this candidate."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-h2-analytics-deep-refresh-20260727",
+      "sourceLeadIds": ["lead-h2-analytics-2026-deep-refresh"],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [
+        "CAE's CANSEC 2026 LinkedIn post describes a teaming agreement with H2 Analytics to pursue CAF collective-training opportunities, but no durable CAE or DND announcement was recovered; it remains discovery provenance only.",
+        "CanadaBuys confirms the DND award, buyer, procurement method, dates and amended value but does not disclose operational outcomes, end users or classified requirements.",
+        "Secondary Ottawa Business Journal performance claims were used only to guide recovery and are not proposed as canonical facts."
+      ],
+      "reviewerRationale": "H2 Analytics is already published, but the profile can now be made substantially more useful without changing its identity or stable capability ID. Its current official product page documents the EASE workflow from creating exercise entities and AI-enabled intelligence injects through simulation and tracker integration, real-time exercise control and assessment. CanadaBuys records an amended C$1,352,462.75 directed DND software contract for EASE through November 2026, while an NRC IRAP record identifies a C$299,562 contribution to integrate simulation capabilities into EASE for readiness training. The candidate adds only those additive, source-backed updates. It deliberately excludes the CAE LinkedIn teaming claim from canonical data until a durable corporate or government source is available.",
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-27T10:47:00.000Z",
+        "methods": ["canonical_url", "website_domain", "slug", "legal_name", "alias", "fuzzy_name"],
+        "matches": [
+          {
+            "id": "476738d7-1aef-4230-9631-63f6cbf8e192",
+            "name": "H2 Analytics",
+            "matchedBy": "intended published refresh target via exact name, legal name, aliases, slug and website domain"
+          }
+        ],
+        "note": "The sole match is the intentional live organization target. The published EASE capability and DND relationship are preserved and no matching DND-contract or NRC-IRAP program record exists."
+      },
+      "sources": [
+        {
+          "id": "h2-ease-official-product",
+          "title": "EASE Platform",
+          "url": "https://www.h2analytics.ca/ease-platform/",
+          "publisher": "H2 Analytics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-27T10:47:00.000Z",
+          "locator": "Create, Generate, Integrate, Monitor and Evaluate sections",
+          "summary": "H2's official product page describes EASE as a platform for building and managing intelligence-driven exercises with entity templates, AI-enabled intelligence traffic, simulation and tracker integration, real-time exercise control and post-exercise reporting."
+        },
+        {
+          "id": "h2-dnd-ease-contract-2026",
+          "title": "Exercise Architect Suite (EASE) — Contract History",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428966-000",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-11-19T00:00:00.000Z",
+          "accessedAt": "2026-07-27T10:47:00.000Z",
+          "locator": "Contract CW2428966, amendment, supplier, procurement method, value, duration and buying organization",
+          "summary": "CanadaBuys records a directed, non-competitive EASE software contract awarded to H2 Analytics Inc., with DND as buying organization, an amended total value of C$1,352,462.75 and a term through November 18, 2026."
+        },
+        {
+          "id": "h2-nrc-irap-lvc-module",
+          "title": "Integrated LVC/simulation module — NRC IRAP contribution",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019001%2Ccurrent",
+          "publisher": "National Research Council Canada",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2024-06-03T00:00:00.000Z",
+          "accessedAt": "2026-07-27T10:47:00.000Z",
+          "locator": "Agreement 1019001, recipient, contribution value, dates and description",
+          "summary": "An NRC IRAP contribution record lists H2 Analytics Inc. as recipient of C$299,562 to integrate simulation capabilities into EASE to improve readiness training, with an amended agreement period ending March 31, 2026."
+        },
+        {
+          "id": "h2-house-indu-testimony",
+          "title": "Evidence — Standing Committee on Industry and Technology, Meeting 15",
+          "url": "https://www.ourcommons.ca/documentviewer/en/45-1/INDU/meeting-15/evidence",
+          "publisher": "House of Commons of Canada",
+          "sourceKind": "official_report",
+          "publishedAt": "2025-11-19T00:00:00.000Z",
+          "accessedAt": "2026-07-27T10:47:00.000Z",
+          "locator": "Hugo Hodgett testimony, paragraphs 2371–2378",
+          "summary": "In official parliamentary testimony, H2 CEO Hugo Hodgett described H2 as an Ottawa-based technology company supporting the Canadian Forces, RCMP, federal departments and Canadian allies; this is retained as attributable public context."
+        },
+        {
+          "id": "h2-obj-independent-profile",
+          "title": "Here are five of the hottest Ottawa startups in defence and cybersecurity",
+          "url": "https://obj.ca/five-hottest-ottawa-startups-in-defence-and-cybersecurity/",
+          "publisher": "Ottawa Business Journal",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2025-11-03T00:00:00.000Z",
+          "accessedAt": "2026-07-27T10:47:00.000Z",
+          "locator": "H2 Analytics profile",
+          "summary": "Ottawa Business Journal and Invest Ottawa independently profile EASE as scenario-driven training software for military, intelligence, law-enforcement and public-safety customers, with detailed performance claims attributed to that publication."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-h2-ease-updated-capability",
+          "sourceId": "h2-ease-official-product",
+          "fieldPath": "operations.update-h2-ease-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "H2's official EASE page supports a workflow that creates exercise entities, generates intelligence traffic with AI-enabled tools, integrates external simulations and trackers, controls exercise flow in real time, and evaluates performance through detailed reports.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-h2-dnd-ease-contract",
+          "sourceId": "h2-dnd-ease-contract-2026",
+          "fieldPath": "operations.add-h2-dnd-ease-contract.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys identifies CW2428966 as a directed, non-competitive EASE software contract awarded to H2 Analytics Inc. with DND as buyer, amended to C$1,352,462.75 and scheduled through November 18, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-h2-nrc-irap-module",
+          "sourceId": "h2-nrc-irap-lvc-module",
+          "fieldPath": "operations.add-h2-nrc-irap-lvc-module.value",
+          "claimClass": "source_backed",
+          "excerpt": "NRC's public contribution record names H2 Analytics Inc. as the recipient of C$299,562 to integrate simulation capabilities into EASE to improve readiness training under agreement 1019001.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-h2-profile-activity",
+          "sourceId": "h2-dnd-ease-contract-2026",
+          "fieldPath": "operations.set-h2-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The DND contract record establishes a current EASE award through November 2026; the NRC record separately documents the completed or time-bounded funded LVC-integration effort. The parliamentary testimony provides attributable public context for H2's support of Canadian government and allied customers.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "476738d7-1aef-4230-9631-63f6cbf8e192",
+        "slug": "h2-analytics",
+        "matchMethods": ["website_domain", "slug", "legal_name", "name", "alias"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-22T12:55:17.521280Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "476738d7-1aef-4230-9631-63f6cbf8e192",
+          "slug": "h2-analytics",
+          "name": "H2 Analytics",
+          "legal_name": "H2 Analytics Inc.",
+          "website_url": "https://www.h2analytics.ca/",
+          "publication_status": "published",
+          "updated_at": "2026-07-22T12:55:17.521280Z",
+          "profile_data": {
+            "publicContact": "304-1400 Blair Towers Place Ottawa Ontario K1J 9B8 | https://www.h2analytics.ca/contact-us/",
+            "currentActivity": "A current CanadaBuys contract records a Department of National Defence purchase of EASE, while an NRC IRAP contribution supports integration of live-virtual-constructive simulation capabilities into the platform.",
+            "portfolioSummary": ["Exercise Architect Suite (EASE)"],
+            "possibleMissionAreaRelevance": ["edge-data-processing"],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "id": "17d035f4-6c98-4786-a270-0d268edfb904",
+            "slug": "exercise-architect-suite",
+            "name": "Exercise Architect Suite (EASE)",
+            "summary": "EASE helps exercise staffs create entities, generate intelligence injects and reports, schedule event traffic, manage evolving scenarios, and integrate live, virtual, and constructive inputs for realistic intelligence-driven training.",
+            "capabilityType": "AI-enabled exercise planning and simulation platform",
+            "features": ["exercise entity templates", "AI-enabled inject and report generation", "scenario scheduling", "intelligence traffic management", "live-virtual-constructive integration"],
+            "applications": ["military exercise design", "intelligence training", "command-post simulation", "readiness assessment"],
+            "technicalTags": ["training simulation", "exercise management", "C4ISR", "generative AI"]
+          }
+        ],
+        "programs": []
+      },
+      "operations": [
+        {
+          "operationId": "set-h2-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "476738d7-1aef-4230-9631-63f6cbf8e192",
+          "field": "profile_data",
+          "before": {
+            "publicContact": "304-1400 Blair Towers Place Ottawa Ontario K1J 9B8 | https://www.h2analytics.ca/contact-us/",
+            "currentActivity": "A current CanadaBuys contract records a Department of National Defence purchase of EASE, while an NRC IRAP contribution supports integration of live-virtual-constructive simulation capabilities into the platform.",
+            "portfolioSummary": ["Exercise Architect Suite (EASE)"],
+            "possibleMissionAreaRelevance": ["edge-data-processing"],
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand."
+          },
+          "after": {
+            "publicContact": "304-1400 Blair Towers Place Ottawa Ontario K1J 9B8 | https://www.h2analytics.ca/contact-us/",
+            "currentActivity": "CanadaBuys records an amended C$1,352,462.75 DND EASE software contract through November 2026. An NRC IRAP contribution separately supported integration of simulation capabilities into EASE for readiness training. In November 2025 parliamentary testimony, H2's CEO described the Ottawa company as supporting the Canadian Forces, RCMP, federal departments and allies abroad.",
+            "portfolioSummary": ["Exercise Architect Suite (EASE)", "EASE simulation and tracker integration"],
+            "possibleMissionAreaRelevance": ["edge-data-processing"],
+            "evidenceBoundary": "Identity, capability, Canadian public-contract and innovation-program activity are source-backed. Mission relevance is derived analyst context and is not procurement eligibility, endorsement, customer interest or a classified requirement. A CAE LinkedIn teaming claim is discovery-only pending durable corporate or government corroboration."
+          },
+          "evidenceIds": ["evidence-h2-profile-activity", "evidence-h2-dnd-ease-contract", "evidence-h2-nrc-irap-module"],
+          "reviewerExplanation": "Keep the existing contact and mission-boundary context while replacing generic current-activity text with current public DND-contract detail, specific NRC innovation support and clearly attributed parliamentary context."
+        },
+        {
+          "operationId": "update-h2-ease-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "17d035f4-6c98-4786-a270-0d268edfb904",
+          "before": {
+            "id": "17d035f4-6c98-4786-a270-0d268edfb904",
+            "slug": "exercise-architect-suite",
+            "name": "Exercise Architect Suite (EASE)",
+            "summary": "EASE helps exercise staffs create entities, generate intelligence injects and reports, schedule event traffic, manage evolving scenarios, and integrate live, virtual, and constructive inputs for realistic intelligence-driven training.",
+            "capabilityType": "AI-enabled exercise planning and simulation platform",
+            "features": ["exercise entity templates", "AI-enabled inject and report generation", "scenario scheduling", "intelligence traffic management", "live-virtual-constructive integration"],
+            "applications": ["military exercise design", "intelligence training", "command-post simulation", "readiness assessment"],
+            "technicalTags": ["training simulation", "exercise management", "C4ISR", "generative AI"]
+          },
+          "after": {
+            "id": "17d035f4-6c98-4786-a270-0d268edfb904",
+            "slug": "exercise-architect-suite",
+            "name": "Exercise Architect Suite (EASE)",
+            "summary": "EASE is an AI-enabled exercise planning and simulation platform for creating intelligence-driven scenarios, generating and scheduling intelligence traffic, integrating external simulations and trackers, controlling exercise flow and evaluating performance against training objectives.",
+            "capabilityType": "AI-enabled exercise planning and simulation platform",
+            "features": ["customizable exercise-entity and target-system templates", "AI-enabled intelligence inject, report and synthetic-data generation", "intelligence-traffic scheduling and Master Scenario Events List collaboration", "external commercial and government simulation or tracker integration", "condition-triggered injects, real-time exercise control and post-exercise performance reporting"],
+            "applications": ["military and intelligence exercise design", "intelligence analyst and collector training", "command-post and collective-training simulation", "live-virtual-constructive readiness training", "post-exercise assessment and debrief"],
+            "technicalTags": ["training simulation", "exercise management", "C4ISR", "generative AI", "synthetic intelligence data", "live-virtual-constructive", "scenario orchestration"]
+          },
+          "evidenceIds": ["evidence-h2-ease-updated-capability"],
+          "reviewerExplanation": "Update the existing EASE capability in place with its current official product workflow and preserve its stable ID and slug; this does not infer operational performance or a specific customer outcome."
+        },
+        {
+          "operationId": "add-h2-dnd-ease-contract",
+          "operation": "add_child",
+          "entityType": "program",
+          "parentId": "476738d7-1aef-4230-9631-63f6cbf8e192",
+          "value": {
+            "slug": "h2-dnd-ease-software-contract-cw2428966",
+            "name": "DND EASE Software Contract",
+            "programType": "Directed software contract",
+            "operatorName": "Department of National Defence and Public Services and Procurement Canada",
+            "websiteUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428966-000",
+            "summary": "Directed, non-competitive EASE software contract CW2428966 awarded to H2 Analytics Inc. with DND as the buying organization, awarded November 19, 2025, amended to C$1,352,462.75 and scheduled through November 18, 2026.",
+            "participationType": "software supplier and contract recipient",
+            "cohortLabel": "CW2428966"
+          },
+          "evidenceIds": ["evidence-h2-dnd-ease-contract"],
+          "reviewerExplanation": "Add the active public DND EASE contract as a separately reviewable program participation, retaining the existing DND relationship and avoiding any claim about an undisclosed end-user scope or outcome."
+        },
+        {
+          "operationId": "add-h2-nrc-irap-lvc-module",
+          "operation": "add_child",
+          "entityType": "program",
+          "parentId": "476738d7-1aef-4230-9631-63f6cbf8e192",
+          "value": {
+            "slug": "h2-nrc-irap-integrated-lvc-simulation-module",
+            "name": "NRC IRAP Integrated LVC/Simulation Module",
+            "programType": "Innovation contribution project",
+            "operatorName": "National Research Council Canada Industrial Research Assistance Program",
+            "websiteUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019001%2Ccurrent",
+            "summary": "NRC IRAP contribution agreement 1019001 awarded to H2 Analytics Inc. to integrate simulation capabilities into EASE for readiness training, valued at C$299,562 with an amended agreement period from June 3, 2024 to March 31, 2026.",
+            "participationType": "contribution recipient and technology developer",
+            "cohortLabel": "1019001"
+          },
+          "evidenceIds": ["evidence-h2-nrc-irap-module"],
+          "reviewerExplanation": "Add the specific public NRC IRAP product-development contribution as a separate program record so the reviewer can assess the LVC-integration lineage apart from the DND software contract."
+        }
+      ],
+      "sourceChannels": ["official_company", "government_procurement", "ecosystem_program", "industry_publication", "other_discovery"],
+      "signalIds": ["h2-ease-official-product-2026", "h2-dnd-ease-contract-amendment-2026", "h2-nrc-irap-lvc-module-2026", "h2-indu-testimony-2025", "h2-cae-linkedin-discovery-2026"],
+      "corroboration": [
+        {
+          "claim": "H2's published EASE product is a concrete intelligence-training and simulation platform with current public DND procurement and separately documented public support for simulation-capability integration.",
+          "sourceIds": ["h2-ease-official-product", "h2-dnd-ease-contract-2026", "h2-nrc-irap-lvc-module"]
+        },
+        {
+          "claim": "H2 has attributable public Canadian defence-sector context, with an official parliamentary record and independent Ottawa-sector coverage complementing the primary product and government records.",
+          "sourceIds": ["h2-house-indu-testimony", "h2-obj-independent-profile"]
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

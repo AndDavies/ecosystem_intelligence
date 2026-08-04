@@ -1,0 +1,1657 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-28T12:13:58.860Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260728120011",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "investor_funder"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "organization-kind:investor_funder",
+      "reason": "The initially selected government-innovation-office gap was saturated when checked live. This fallback expands the still-shallow investor-funder layer with evidence-backed Canadian venture-capital profiles relevant to strategic technology coverage.",
+      "score": 790
+    },
+    "status": "completed",
+    "started_at": "2026-07-28T12:00:11.948Z",
+    "completed_at": "2026-07-28T12:12:00.000Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "Official Canadian venture-capital mandates and portfolios",
+      "Official investor portfolio research for strategic technology coverage",
+      "Government innovation-program discovery context",
+      "Investor and ecosystem source-book backlog review",
+      "Industry association and conference discovery lanes",
+      "Targeted broad-web research for Canadian venture-capital firms"
+    ],
+    "counters": {
+      "sourcesChecked": 64,
+      "leadsQualified": 8,
+      "leadsDeferred": 20,
+      "candidatesCreated": 8,
+      "duplicatesBlocked": 12,
+      "prospectsDiscovered": 40,
+      "uniqueProspects": 40,
+      "prospectsQueued": 20,
+      "recoveryAttempts": 24,
+      "sourceLanesSearched": 10,
+      "candidatesGreen": 0,
+      "candidatesAmber": 8
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "All eight candidates are amber because the official mandate and portfolio evidence is strong while their preferred city-level headquarters placement remains reviewer-confirmed.",
+        "The initial government-innovation-office coverage gap was saturated in production, so the run switched to a documented investor-funder fallback rather than creating duplicate records."
+      ]
+    },
+    "stop_reason": "Completed the minimum eight-candidate discovery batch after live confirmation that the initially selected government-innovation-office lane was already saturated."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-mistral-venture-partners-20260728",
+      "research_run_ref": "tnm-manual-20260728120011",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-mistral-venture-partners-20260728"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-mistral-venture-partners-20260728",
+        "sourceLeadIds": [
+          "lead-mistral-venture-partners-20260728"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Mistral Venture Partners is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 88,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "This candidate maps a public investment thesis to technology coverage. It does not claim defence procurement eligibility, customer relationships, or a specific defence investment.",
+          "The organization is mapped to a Canadian city centroid using public office context; reviewers should confirm the preferred headquarters or regional placement before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-28T12:05:46.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Mistral Venture Partners at the time of this run."
+        },
+        "sources": [
+          {
+            "id": "mistral-venture-partners-profile-source",
+            "title": "Mistral Venture Partners official profile",
+            "url": "https://www.mistral.vc/",
+            "publisher": "Mistral Venture Partners",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official investment thesis, team, public contact, and portfolio overview",
+            "summary": "Official Mistral Venture Partners material describes its investment approach, operating role, and public portfolio context used for this private-review candidate."
+          },
+          {
+            "id": "mistral-venture-partners-portfolio-source",
+            "title": "Mistral Venture Partners portfolio",
+            "url": "https://www.mistral.vc/portfolio-collection",
+            "publisher": "Mistral Venture Partners",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official portfolio and publicly described investment focus",
+            "summary": "Mistral Venture Partners's official portfolio identifies public investment relationships and technology themes relevant to this private-review candidate."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-mistral-venture-partners-description",
+            "sourceId": "mistral-venture-partners-profile-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Mistral Venture Partners's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-mistral-venture-partners-mandate",
+            "sourceId": "mistral-venture-partners-profile-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Invest in pre-seed and seed enterprise-AI founders in Canada and the United States, pairing capital with founder-operating experience and product-market-fit support.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-mistral-venture-partners-portfolio",
+            "sourceId": "mistral-venture-partners-portfolio-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Mistral's official portfolio collection documents a portfolio of companies selected under its enterprise-AI, Canada-and-United-States investment focus.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-mistral-venture-partners-location",
+            "sourceId": "mistral-venture-partners-profile-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Ottawa, Ontario coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "mistral-venture-partners",
+          "name": "Mistral Venture Partners",
+          "legalName": null,
+          "aliases": [],
+          "description": "Early-stage venture-capital firm investing in enterprise artificial-intelligence companies and helping founders progress toward product-market fit across Canada and the United States.",
+          "websiteUrl": "https://www.mistral.vc/",
+          "entityKind": "investor_funder",
+          "categories": [
+            "venture_capital"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Invest in pre-seed and seed enterprise-AI founders in Canada and the United States, pairing capital with founder-operating experience and product-market-fit support.",
+            "investmentFocus": "Enterprise AI investment",
+            "evidenceBoundary": "Investment identity, mandate, and portfolio relationship are supported by official public material. Technology relevance is a coverage interpretation and does not assert procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-28T12:10:55.043Z",
+          "note": "No acceptable official-logo candidate found."
+        },
+        "capabilities": [],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Mistral Venture Partners portfolio companies",
+            "relationshipType": "portfolio_investor",
+            "publicSummary": "Mistral's official portfolio collection documents a portfolio of companies selected under its enterprise-AI, Canada-and-United-States investment focus."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-mistral-venture-partners-description",
+          "sourceId": "mistral-venture-partners-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Mistral Venture Partners's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-mistral-venture-partners-mandate",
+          "sourceId": "mistral-venture-partners-profile-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Invest in pre-seed and seed enterprise-AI founders in Canada and the United States, pairing capital with founder-operating experience and product-market-fit support.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-mistral-venture-partners-portfolio",
+          "sourceId": "mistral-venture-partners-portfolio-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Mistral's official portfolio collection documents a portfolio of companies selected under its enterprise-AI, Canada-and-United-States investment focus.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-mistral-venture-partners-location",
+          "sourceId": "mistral-venture-partners-profile-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Ottawa, Ontario coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-28T12:05:46.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Mistral Venture Partners at the time of this run."
+      },
+      "reviewer_rationale": "Mistral Venture Partners is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-28T12:13:58.860Z"
+    },
+    {
+      "client_candidate_id": "candidate-yaletown-partners-20260728",
+      "research_run_ref": "tnm-manual-20260728120011",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-yaletown-partners-20260728"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-yaletown-partners-20260728",
+        "sourceLeadIds": [
+          "lead-yaletown-partners-20260728"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Yaletown Partners is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 88,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "This candidate maps a public investment thesis to technology coverage. It does not claim defence procurement eligibility, customer relationships, or a specific defence investment.",
+          "The organization is mapped to a Canadian city centroid using public office context; reviewers should confirm the preferred headquarters or regional placement before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-28T12:05:46.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Yaletown Partners at the time of this run."
+        },
+        "sources": [
+          {
+            "id": "yaletown-partners-profile-source",
+            "title": "Yaletown Partners official profile",
+            "url": "https://yaletown.com/",
+            "publisher": "Yaletown Partners",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official investment thesis, team, public contact, and portfolio overview",
+            "summary": "Official Yaletown Partners material describes its investment approach, operating role, and public portfolio context used for this private-review candidate."
+          },
+          {
+            "id": "yaletown-partners-portfolio-source",
+            "title": "Yaletown Partners portfolio",
+            "url": "https://yaletown.com/portfolio",
+            "publisher": "Yaletown Partners",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official portfolio and publicly described investment focus",
+            "summary": "Yaletown Partners's official portfolio identifies public investment relationships and technology themes relevant to this private-review candidate."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-yaletown-partners-description",
+            "sourceId": "yaletown-partners-profile-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Yaletown Partners's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-yaletown-partners-mandate",
+            "sourceId": "yaletown-partners-profile-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Finance and support emerging-growth technology companies whose software, data, device, automation, and digital-infrastructure products modernize traditional industries and create transformative growth.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-yaletown-partners-portfolio",
+            "sourceId": "yaletown-partners-portfolio-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Yaletown's official portfolio identifies investments in software, data, device, edge-video, cybersecurity, robotics, quantum, and industrial technology companies.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-yaletown-partners-location",
+            "sourceId": "yaletown-partners-profile-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Vancouver, British Columbia coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "yaletown-partners",
+          "name": "Yaletown Partners",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian technology investment firm supporting emerging-growth companies that modernize industrial sectors through software, data, devices, artificial intelligence, automation, and digital infrastructure.",
+          "websiteUrl": "https://yaletown.com/",
+          "entityKind": "investor_funder",
+          "categories": [
+            "venture_capital"
+          ],
+          "primaryLocation": {
+            "city": "Vancouver",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 49.2827,
+            "longitude": -123.1207,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Finance and support emerging-growth technology companies whose software, data, device, automation, and digital-infrastructure products modernize traditional industries and create transformative growth.",
+            "investmentFocus": "Industrial technology growth investment",
+            "evidenceBoundary": "Investment identity, mandate, and portfolio relationship are supported by official public material. Technology relevance is a coverage interpretation and does not assert procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://yaletown.com/",
+          "sourceAssetUrl": "https://cdn.prod.website-files.com/6690523127b5837d3d9e6f29/66ba6b54f9aba3de3b603ceb_yaletown_logo_white.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "20405e2fb276a68c05ced22eca584cf37aaf2d39fa8ad1efd18b577aa8793a84",
+          "normalizedChecksum": "76a621af8ef302a4c7b93e40b489d440961be43d1353af9bef54b661d69d3573",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260728120011/candidate-yaletown-partners-20260728/logo.source.json",
+          "note": "1024x284 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Yaletown Partners portfolio companies",
+            "relationshipType": "portfolio_investor",
+            "publicSummary": "Yaletown's official portfolio identifies investments in software, data, device, edge-video, cybersecurity, robotics, quantum, and industrial technology companies."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-yaletown-partners-description",
+          "sourceId": "yaletown-partners-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Yaletown Partners's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-yaletown-partners-mandate",
+          "sourceId": "yaletown-partners-profile-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Finance and support emerging-growth technology companies whose software, data, device, automation, and digital-infrastructure products modernize traditional industries and create transformative growth.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-yaletown-partners-portfolio",
+          "sourceId": "yaletown-partners-portfolio-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Yaletown's official portfolio identifies investments in software, data, device, edge-video, cybersecurity, robotics, quantum, and industrial technology companies.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-yaletown-partners-location",
+          "sourceId": "yaletown-partners-profile-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Vancouver, British Columbia coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-28T12:05:46.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Yaletown Partners at the time of this run."
+      },
+      "reviewer_rationale": "Yaletown Partners is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-28T12:13:58.860Z"
+    },
+    {
+      "client_candidate_id": "candidate-real-ventures-20260728",
+      "research_run_ref": "tnm-manual-20260728120011",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-real-ventures-20260728"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-real-ventures-20260728",
+        "sourceLeadIds": [
+          "lead-real-ventures-20260728"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Real Ventures is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 88,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "This candidate maps a public investment thesis to technology coverage. It does not claim defence procurement eligibility, customer relationships, or a specific defence investment.",
+          "The organization is mapped to a Canadian city centroid using public office context; reviewers should confirm the preferred headquarters or regional placement before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-28T12:05:46.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Real Ventures at the time of this run."
+        },
+        "sources": [
+          {
+            "id": "real-ventures-profile-source",
+            "title": "Real Ventures official profile",
+            "url": "https://realventures.com/",
+            "publisher": "Real Ventures",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official investment thesis, team, public contact, and portfolio overview",
+            "summary": "Official Real Ventures material describes its investment approach, operating role, and public portfolio context used for this private-review candidate."
+          },
+          {
+            "id": "real-ventures-portfolio-source",
+            "title": "Real Ventures portfolio",
+            "url": "https://realventures.com/portfolio/",
+            "publisher": "Real Ventures",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official portfolio and publicly described investment focus",
+            "summary": "Real Ventures's official portfolio identifies public investment relationships and technology themes relevant to this private-review candidate."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-real-ventures-description",
+            "sourceId": "real-ventures-profile-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Real Ventures's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-real-ventures-mandate",
+            "sourceId": "real-ventures-profile-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Support early-stage Canadian technology founders from the beginning of company building, contributing capital, operating support, community, and long-term relationships as companies scale.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-real-ventures-portfolio",
+            "sourceId": "real-ventures-portfolio-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Real Ventures' official portfolio lists Xanadu among technology companies it supports and describes the portfolio across AI, robotics, security, infrastructure, and other technology sectors.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-real-ventures-location",
+            "sourceId": "real-ventures-profile-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Montreal, Quebec coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "real-ventures",
+          "name": "Real Ventures",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian early-stage venture-capital firm supporting technology founders from initial company formation through scale-up, with a broad portfolio spanning artificial intelligence, robotics, security, infrastructure, quantum, and other technology sectors.",
+          "websiteUrl": "https://realventures.com/",
+          "entityKind": "investor_funder",
+          "categories": [
+            "venture_capital"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Support early-stage Canadian technology founders from the beginning of company building, contributing capital, operating support, community, and long-term relationships as companies scale.",
+            "investmentFocus": "Early-stage Canadian technology investment",
+            "evidenceBoundary": "Investment identity, mandate, and portfolio relationship are supported by official public material. Technology relevance is a coverage interpretation and does not assert procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://realventures.com/",
+          "sourceAssetUrl": "https://realventures.com/wp-content/uploads/2024/01/image-3.png",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "68eb28b7802264dfe3f669a42d31647c8ca21b9684e6814de6af1a6fad26f4a1",
+          "normalizedChecksum": "aef5674fda820bfdaa5c3058cb7352f3638cf0e62654c84de4ed2a964b2ff158",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260728120011/candidate-real-ventures-20260728/logo.source.json",
+          "note": "73x53 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Xanadu",
+            "relationshipType": "portfolio_investor",
+            "publicSummary": "Real Ventures' official portfolio lists Xanadu among technology companies it supports and describes the portfolio across AI, robotics, security, infrastructure, and other technology sectors."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-real-ventures-description",
+          "sourceId": "real-ventures-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Real Ventures's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-real-ventures-mandate",
+          "sourceId": "real-ventures-profile-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Support early-stage Canadian technology founders from the beginning of company building, contributing capital, operating support, community, and long-term relationships as companies scale.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-real-ventures-portfolio",
+          "sourceId": "real-ventures-portfolio-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Real Ventures' official portfolio lists Xanadu among technology companies it supports and describes the portfolio across AI, robotics, security, infrastructure, and other technology sectors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-real-ventures-location",
+          "sourceId": "real-ventures-profile-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Montreal, Quebec coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-28T12:05:46.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Real Ventures at the time of this run."
+      },
+      "reviewer_rationale": "Real Ventures is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-28T12:13:58.860Z"
+    },
+    {
+      "client_candidate_id": "candidate-golden-ventures-20260728",
+      "research_run_ref": "tnm-manual-20260728120011",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-golden-ventures-20260728"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-golden-ventures-20260728",
+        "sourceLeadIds": [
+          "lead-golden-ventures-20260728"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Golden Ventures is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 88,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "This candidate maps a public investment thesis to technology coverage. It does not claim defence procurement eligibility, customer relationships, or a specific defence investment.",
+          "The organization is mapped to a Canadian city centroid using public office context; reviewers should confirm the preferred headquarters or regional placement before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-28T12:05:46.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Golden Ventures at the time of this run."
+        },
+        "sources": [
+          {
+            "id": "golden-ventures-profile-source",
+            "title": "Golden Ventures official profile",
+            "url": "https://www.golden.ventures/",
+            "publisher": "Golden Ventures",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official investment thesis, team, public contact, and portfolio overview",
+            "summary": "Official Golden Ventures material describes its investment approach, operating role, and public portfolio context used for this private-review candidate."
+          },
+          {
+            "id": "golden-ventures-portfolio-source",
+            "title": "Golden Ventures portfolio",
+            "url": "https://www.golden.ventures/portfolio",
+            "publisher": "Golden Ventures",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official portfolio and publicly described investment focus",
+            "summary": "Golden Ventures's official portfolio identifies public investment relationships and technology themes relevant to this private-review candidate."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-golden-ventures-description",
+            "sourceId": "golden-ventures-profile-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Golden Ventures's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-golden-ventures-mandate",
+            "sourceId": "golden-ventures-profile-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Invest early at pre-seed through seed-plus stages, using founder and operator experience to support North American technology teams and their growth from initial company building onward.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-golden-ventures-portfolio",
+            "sourceId": "golden-ventures-portfolio-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Golden Ventures' official portfolio identifies SkyWatch as a satellite-data and intelligence marketplace and shows the fund's documented investment in it.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-golden-ventures-location",
+            "sourceId": "golden-ventures-profile-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Toronto, Ontario coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "golden-ventures",
+          "name": "Golden Ventures",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian seed-stage venture-capital firm investing across North America, with an official portfolio that includes Canadian technology companies in satellite intelligence, autonomy, quantum computing, artificial intelligence, fintech, and software.",
+          "websiteUrl": "https://www.golden.ventures/",
+          "entityKind": "investor_funder",
+          "categories": [
+            "venture_capital"
+          ],
+          "primaryLocation": {
+            "city": "Toronto",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6532,
+            "longitude": -79.3832,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Invest early at pre-seed through seed-plus stages, using founder and operator experience to support North American technology teams and their growth from initial company building onward.",
+            "investmentFocus": "Pre-seed and seed technology investment",
+            "evidenceBoundary": "Investment identity, mandate, and portfolio relationship are supported by official public material. Technology relevance is a coverage interpretation and does not assert procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://www.golden.ventures/",
+          "sourceAssetUrl": "https://cdn.prod.website-files.com/603457336b1b2f0fd60d1aa8/6043d4622cf1ba75c17cae1b_GV-Logo.svg",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "04efdad17b47bba2d2834053428ae93f157959ff5ce568d669bbaa0250702006",
+          "normalizedChecksum": "1c5bbcff31fa4c1c084e399d60777664227675e1fcaf54ca9af24d13af1a6cb6",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260728120011/candidate-golden-ventures-20260728/logo.source.json",
+          "note": "214x60 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "SkyWatch",
+            "relationshipType": "portfolio_investor",
+            "publicSummary": "Golden Ventures' official portfolio identifies SkyWatch as a satellite-data and intelligence marketplace and shows the fund's documented investment in it."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-golden-ventures-description",
+          "sourceId": "golden-ventures-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Golden Ventures's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-golden-ventures-mandate",
+          "sourceId": "golden-ventures-profile-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Invest early at pre-seed through seed-plus stages, using founder and operator experience to support North American technology teams and their growth from initial company building onward.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-golden-ventures-portfolio",
+          "sourceId": "golden-ventures-portfolio-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Golden Ventures' official portfolio identifies SkyWatch as a satellite-data and intelligence marketplace and shows the fund's documented investment in it.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-golden-ventures-location",
+          "sourceId": "golden-ventures-profile-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Toronto, Ontario coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-28T12:05:46.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Golden Ventures at the time of this run."
+      },
+      "reviewer_rationale": "Golden Ventures is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-28T12:13:58.860Z"
+    },
+    {
+      "client_candidate_id": "candidate-framework-venture-partners-20260728",
+      "research_run_ref": "tnm-manual-20260728120011",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-framework-venture-partners-20260728"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-framework-venture-partners-20260728",
+        "sourceLeadIds": [
+          "lead-framework-venture-partners-20260728"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "FRAMEWORK Venture Partners is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 88,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "This candidate maps a public investment thesis to technology coverage. It does not claim defence procurement eligibility, customer relationships, or a specific defence investment.",
+          "The organization is mapped to a Canadian city centroid using public office context; reviewers should confirm the preferred headquarters or regional placement before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-28T12:05:46.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for FRAMEWORK Venture Partners at the time of this run."
+        },
+        "sources": [
+          {
+            "id": "framework-venture-partners-profile-source",
+            "title": "FRAMEWORK Venture Partners official profile",
+            "url": "https://www.framework.vc/en/",
+            "publisher": "FRAMEWORK Venture Partners",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official investment thesis, team, public contact, and portfolio overview",
+            "summary": "Official FRAMEWORK Venture Partners material describes its investment approach, operating role, and public portfolio context used for this private-review candidate."
+          },
+          {
+            "id": "framework-venture-partners-portfolio-source",
+            "title": "FRAMEWORK Venture Partners portfolio",
+            "url": "https://www.framework.vc/en/",
+            "publisher": "FRAMEWORK Venture Partners",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official portfolio and publicly described investment focus",
+            "summary": "FRAMEWORK Venture Partners's official portfolio identifies public investment relationships and technology themes relevant to this private-review candidate."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-framework-venture-partners-description",
+            "sourceId": "framework-venture-partners-profile-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "FRAMEWORK Venture Partners's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-framework-venture-partners-mandate",
+            "sourceId": "framework-venture-partners-profile-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Invest in late-seed and Series A/B technology companies building vertical SaaS and AI-powered platforms, helping founders scale through an active, data-driven engagement model.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-framework-venture-partners-portfolio",
+            "sourceId": "framework-venture-partners-portfolio-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "FRAMEWORK's official portfolio lists Botpress among companies backed in its vertical SaaS and AI investment focus.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-framework-venture-partners-location",
+            "sourceId": "framework-venture-partners-profile-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Toronto, Ontario coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "framework-venture-partners",
+          "name": "FRAMEWORK Venture Partners",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian and United States venture-capital firm investing from late seed through Series B in vertical SaaS and artificial-intelligence platforms, combining capital with a data-driven and hands-on founder support model.",
+          "websiteUrl": "https://www.framework.vc/en/",
+          "entityKind": "investor_funder",
+          "categories": [
+            "venture_capital"
+          ],
+          "primaryLocation": {
+            "city": "Toronto",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6532,
+            "longitude": -79.3832,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Invest in late-seed and Series A/B technology companies building vertical SaaS and AI-powered platforms, helping founders scale through an active, data-driven engagement model.",
+            "investmentFocus": "Vertical SaaS and AI investment",
+            "evidenceBoundary": "Investment identity, mandate, and portfolio relationship are supported by official public material. Technology relevance is a coverage interpretation and does not assert procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.framework.vc/en/",
+          "sourceAssetUrl": "https://www.framework.vc/framework-logo-small.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "7510325168e4a3a4f31840d7bcfde8392f177b0bfb541a0b969b20b1f80f33c8",
+          "normalizedChecksum": "2ae51dad28224fa6cce470cba14446ee6b42d597a873e9742103149f76dc41c1",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260728120011/candidate-framework-venture-partners-20260728/logo.source.json",
+          "note": "802x385 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Botpress",
+            "relationshipType": "portfolio_investor",
+            "publicSummary": "FRAMEWORK's official portfolio lists Botpress among companies backed in its vertical SaaS and AI investment focus."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-framework-venture-partners-description",
+          "sourceId": "framework-venture-partners-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "FRAMEWORK Venture Partners's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-framework-venture-partners-mandate",
+          "sourceId": "framework-venture-partners-profile-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Invest in late-seed and Series A/B technology companies building vertical SaaS and AI-powered platforms, helping founders scale through an active, data-driven engagement model.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-framework-venture-partners-portfolio",
+          "sourceId": "framework-venture-partners-portfolio-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FRAMEWORK's official portfolio lists Botpress among companies backed in its vertical SaaS and AI investment focus.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-framework-venture-partners-location",
+          "sourceId": "framework-venture-partners-profile-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Toronto, Ontario coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-28T12:05:46.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for FRAMEWORK Venture Partners at the time of this run."
+      },
+      "reviewer_rationale": "FRAMEWORK Venture Partners is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-28T12:13:58.860Z"
+    },
+    {
+      "client_candidate_id": "candidate-evok-innovations-20260728",
+      "research_run_ref": "tnm-manual-20260728120011",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-evok-innovations-20260728"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-evok-innovations-20260728",
+        "sourceLeadIds": [
+          "lead-evok-innovations-20260728"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Evok Innovations is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 88,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "This candidate maps a public investment thesis to technology coverage. It does not claim defence procurement eligibility, customer relationships, or a specific defence investment.",
+          "The organization is mapped to a Canadian city centroid using public office context; reviewers should confirm the preferred headquarters or regional placement before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-28T12:05:46.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Evok Innovations at the time of this run."
+        },
+        "sources": [
+          {
+            "id": "evok-innovations-profile-source",
+            "title": "Evok Innovations official profile",
+            "url": "https://www.evokinnovations.com/",
+            "publisher": "Evok Innovations",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official investment thesis, team, public contact, and portfolio overview",
+            "summary": "Official Evok Innovations material describes its investment approach, operating role, and public portfolio context used for this private-review candidate."
+          },
+          {
+            "id": "evok-innovations-portfolio-source",
+            "title": "Evok Innovations portfolio",
+            "url": "https://www.evokinnovations.com/portfolio",
+            "publisher": "Evok Innovations",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official portfolio and publicly described investment focus",
+            "summary": "Evok Innovations's official portfolio identifies public investment relationships and technology themes relevant to this private-review candidate."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-evok-innovations-description",
+            "sourceId": "evok-innovations-profile-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Evok Innovations's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-evok-innovations-mandate",
+            "sourceId": "evok-innovations-profile-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Invest in early- to mid-stage hard-technology companies developing practical solutions for heavy industry, energy, mining, industrial optimization, and resilient infrastructure in Canada and the United States.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-evok-innovations-portfolio",
+            "sourceId": "evok-innovations-portfolio-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Evok's official portfolio identifies Sanctuary AI as a portfolio company and describes its AI-driven robotics work for industrial and logistics environments.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-evok-innovations-location",
+            "sourceId": "evok-innovations-profile-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Vancouver, British Columbia coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "evok-innovations",
+          "name": "Evok Innovations",
+          "legalName": null,
+          "aliases": [],
+          "description": "Vancouver-based venture-capital firm investing in hard-technology companies that improve heavy industry, energy, mining, industrial optimization, infrastructure resilience, and related operational technologies.",
+          "websiteUrl": "https://www.evokinnovations.com/",
+          "entityKind": "investor_funder",
+          "categories": [
+            "venture_capital"
+          ],
+          "primaryLocation": {
+            "city": "Vancouver",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 49.2827,
+            "longitude": -123.1207,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Invest in early- to mid-stage hard-technology companies developing practical solutions for heavy industry, energy, mining, industrial optimization, and resilient infrastructure in Canada and the United States.",
+            "investmentFocus": "Industrial hard-technology investment",
+            "evidenceBoundary": "Investment identity, mandate, and portfolio relationship are supported by official public material. Technology relevance is a coverage interpretation and does not assert procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://www.evokinnovations.com/",
+          "sourceAssetUrl": "https://static.wixstatic.com/media/33bfab_5aa0bb2d1d8d466facc3fd921f27b051~mv2.png/v1/fill/w_217,h_76,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo_padding.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "36835d3ee3dc9f0b46563622e1f604653a44f67de5ceb78dbe40213b322db21e",
+          "normalizedChecksum": "0ccffbb59d76ed33e7047d4c293587883d652b4d1d02409e22dafb7405d90072",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260728120011/candidate-evok-innovations-20260728/logo.source.json",
+          "note": "217x76 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Sanctuary AI",
+            "relationshipType": "portfolio_investor",
+            "publicSummary": "Evok's official portfolio identifies Sanctuary AI as a portfolio company and describes its AI-driven robotics work for industrial and logistics environments."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-evok-innovations-description",
+          "sourceId": "evok-innovations-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Evok Innovations's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-evok-innovations-mandate",
+          "sourceId": "evok-innovations-profile-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Invest in early- to mid-stage hard-technology companies developing practical solutions for heavy industry, energy, mining, industrial optimization, and resilient infrastructure in Canada and the United States.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-evok-innovations-portfolio",
+          "sourceId": "evok-innovations-portfolio-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Evok's official portfolio identifies Sanctuary AI as a portfolio company and describes its AI-driven robotics work for industrial and logistics environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-evok-innovations-location",
+          "sourceId": "evok-innovations-profile-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Vancouver, British Columbia coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-28T12:05:46.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Evok Innovations at the time of this run."
+      },
+      "reviewer_rationale": "Evok Innovations is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-28T12:13:58.860Z"
+    },
+    {
+      "client_candidate_id": "candidate-luge-capital-20260728",
+      "research_run_ref": "tnm-manual-20260728120011",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-luge-capital-20260728"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-luge-capital-20260728",
+        "sourceLeadIds": [
+          "lead-luge-capital-20260728"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Luge Capital is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 88,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "This candidate maps a public investment thesis to technology coverage. It does not claim defence procurement eligibility, customer relationships, or a specific defence investment.",
+          "The organization is mapped to a Canadian city centroid using public office context; reviewers should confirm the preferred headquarters or regional placement before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-28T12:05:46.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Luge Capital at the time of this run."
+        },
+        "sources": [
+          {
+            "id": "luge-capital-profile-source",
+            "title": "Luge Capital official profile",
+            "url": "https://www.luge.vc/",
+            "publisher": "Luge Capital",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official investment thesis, team, public contact, and portfolio overview",
+            "summary": "Official Luge Capital material describes its investment approach, operating role, and public portfolio context used for this private-review candidate."
+          },
+          {
+            "id": "luge-capital-portfolio-source",
+            "title": "Luge Capital portfolio",
+            "url": "https://www.luge.vc/portfolio/",
+            "publisher": "Luge Capital",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official portfolio and publicly described investment focus",
+            "summary": "Luge Capital's official portfolio identifies public investment relationships and technology themes relevant to this private-review candidate."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-luge-capital-description",
+            "sourceId": "luge-capital-profile-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Luge Capital's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-luge-capital-mandate",
+            "sourceId": "luge-capital-profile-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Invest in early-stage fintech and AI companies shaping financial services in Canada and the United States, pairing capital with sector networks and operating expertise.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-luge-capital-portfolio",
+            "sourceId": "luge-capital-portfolio-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Luge's official portfolio lists Flare Systems as a digital-risk and fraud-monitoring company alongside fintech, financial-data, cyber-risk, and insurance-technology investments.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-luge-capital-location",
+            "sourceId": "luge-capital-profile-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Montreal, Quebec coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "luge-capital",
+          "name": "Luge Capital",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian fintech-focused venture-capital fund investing in early-stage companies that modernize financial services through software, data infrastructure, cybersecurity, compliance, payments, insurance technology, and applied artificial intelligence.",
+          "websiteUrl": "https://www.luge.vc/",
+          "entityKind": "investor_funder",
+          "categories": [
+            "venture_capital"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Invest in early-stage fintech and AI companies shaping financial services in Canada and the United States, pairing capital with sector networks and operating expertise.",
+            "investmentFocus": "Fintech and cyber-risk investment",
+            "evidenceBoundary": "Investment identity, mandate, and portfolio relationship are supported by official public material. Technology relevance is a coverage interpretation and does not assert procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.luge.vc/",
+          "sourceAssetUrl": "https://www.luge.vc/wp-content/uploads/2018/10/luge-capital-logo-footer.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "253965667c571abe65951cdf901facd6001505f2fbbcb7198c6d90d273fa35c2",
+          "normalizedChecksum": "dff639e1571818c45512d0df5f25da0a5e3213af72bec60f8a846af25f78efdd",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260728120011/candidate-luge-capital-20260728/logo.source.json",
+          "note": "160x85 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Flare Systems",
+            "relationshipType": "portfolio_investor",
+            "publicSummary": "Luge's official portfolio lists Flare Systems as a digital-risk and fraud-monitoring company alongside fintech, financial-data, cyber-risk, and insurance-technology investments."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-luge-capital-description",
+          "sourceId": "luge-capital-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Luge Capital's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-luge-capital-mandate",
+          "sourceId": "luge-capital-profile-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Invest in early-stage fintech and AI companies shaping financial services in Canada and the United States, pairing capital with sector networks and operating expertise.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-luge-capital-portfolio",
+          "sourceId": "luge-capital-portfolio-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Luge's official portfolio lists Flare Systems as a digital-risk and fraud-monitoring company alongside fintech, financial-data, cyber-risk, and insurance-technology investments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-luge-capital-location",
+          "sourceId": "luge-capital-profile-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Montreal, Quebec coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-28T12:05:46.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for Luge Capital at the time of this run."
+      },
+      "reviewer_rationale": "Luge Capital is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-28T12:13:58.860Z"
+    },
+    {
+      "client_candidate_id": "candidate-arctern-ventures-20260728",
+      "research_run_ref": "tnm-manual-20260728120011",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-arctern-ventures-20260728"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-arctern-ventures-20260728",
+        "sourceLeadIds": [
+          "lead-arctern-ventures-20260728"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "ArcTern Ventures is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 88,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "This candidate maps a public investment thesis to technology coverage. It does not claim defence procurement eligibility, customer relationships, or a specific defence investment.",
+          "The organization is mapped to a Canadian city centroid using public office context; reviewers should confirm the preferred headquarters or regional placement before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-28T12:05:46.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for ArcTern Ventures at the time of this run."
+        },
+        "sources": [
+          {
+            "id": "arctern-ventures-profile-source",
+            "title": "ArcTern Ventures official profile",
+            "url": "https://www.arcternventures.com/",
+            "publisher": "ArcTern Ventures",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official investment thesis, team, public contact, and portfolio overview",
+            "summary": "Official ArcTern Ventures material describes its investment approach, operating role, and public portfolio context used for this private-review candidate."
+          },
+          {
+            "id": "arctern-ventures-portfolio-source",
+            "title": "ArcTern Ventures portfolio",
+            "url": "https://www.arcternventures.com/portfolio/",
+            "publisher": "ArcTern Ventures",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-07-28T12:05:46.000Z",
+            "locator": "Official portfolio and publicly described investment focus",
+            "summary": "ArcTern Ventures's official portfolio identifies public investment relationships and technology themes relevant to this private-review candidate."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-arctern-ventures-description",
+            "sourceId": "arctern-ventures-profile-source",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "ArcTern Ventures's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-arctern-ventures-mandate",
+            "sourceId": "arctern-ventures-profile-source",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Invest in founders developing scalable climate and sustainability technologies across clean energy, efficiency, circular economy, advanced manufacturing, materials, mobility, and related industrial transformation areas.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-arctern-ventures-portfolio",
+            "sourceId": "arctern-ventures-portfolio-source",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "ArcTern's official portfolio and investment-focus material documents investments in companies applying technology to climate, sustainability, industrial efficiency, and advanced manufacturing challenges.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-arctern-ventures-location",
+            "sourceId": "arctern-ventures-profile-source",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "derived",
+            "excerpt": "The Toronto, Ontario coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+            "confidence": "needs_review"
+          }
+        ],
+        "organization": {
+          "slug": "arctern-ventures",
+          "name": "ArcTern Ventures",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian climate-technology venture-capital firm investing in sustainability, clean energy, energy efficiency, advanced manufacturing, materials, mobility, and technologies that address climate and industrial transformation.",
+          "websiteUrl": "https://www.arcternventures.com/",
+          "entityKind": "investor_funder",
+          "categories": [
+            "venture_capital"
+          ],
+          "primaryLocation": {
+            "city": "Toronto",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6532,
+            "longitude": -79.3832,
+            "geographicConfidence": "regional"
+          },
+          "profileData": {
+            "mandate": "Invest in founders developing scalable climate and sustainability technologies across clean energy, efficiency, circular economy, advanced manufacturing, materials, mobility, and related industrial transformation areas.",
+            "investmentFocus": "Climate and industrial technology investment",
+            "evidenceBoundary": "Investment identity, mandate, and portfolio relationship are supported by official public material. Technology relevance is a coverage interpretation and does not assert procurement eligibility, endorsement, customer interest, or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-28T12:10:57.417Z",
+          "note": "The automated candidate was a B Corp certification badge rather than an ArcTern identity mark, so no acceptable official-logo candidate is retained."
+        },
+        "capabilities": [],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "ArcTern Ventures portfolio companies",
+            "relationshipType": "portfolio_investor",
+            "publicSummary": "ArcTern's official portfolio and investment-focus material documents investments in companies applying technology to climate, sustainability, industrial efficiency, and advanced manufacturing challenges."
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-arctern-ventures-description",
+          "sourceId": "arctern-ventures-profile-source",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "ArcTern Ventures's official material supports the public investor identity and the bounded investment-role description prepared for review.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-arctern-ventures-mandate",
+          "sourceId": "arctern-ventures-profile-source",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Invest in founders developing scalable climate and sustainability technologies across clean energy, efficiency, circular economy, advanced manufacturing, materials, mobility, and related industrial transformation areas.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-arctern-ventures-portfolio",
+          "sourceId": "arctern-ventures-portfolio-source",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ArcTern's official portfolio and investment-focus material documents investments in companies applying technology to climate, sustainability, industrial efficiency, and advanced manufacturing challenges.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-arctern-ventures-location",
+          "sourceId": "arctern-ventures-profile-source",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "derived",
+          "excerpt": "The Toronto, Ontario coordinate is a conservative Canadian city-centroid placement based on the fund's public operating context and must be confirmed during review.",
+          "confidence": "needs_review"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-28T12:05:46.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live organization and current candidate checks found no normalized-name, slug, or official-domain match for ArcTern Ventures at the time of this run."
+      },
+      "reviewer_rationale": "ArcTern Ventures is recommended for private review because its official material establishes a Canadian venture-capital role, a concrete investment mandate, and a public portfolio relationship relevant to the national technology ecosystem. Its technology emphasis can improve capital-ecosystem visibility around strategic industrial, software, AI, cyber, climate, or advanced-manufacturing sectors without overstating any defence relationship. The record is intentionally amber: the mandate and portfolio are durable public evidence, while the city-level map placement should remain reviewer-confirmed before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-28T12:13:58.860Z"
+    }
+  ]
+}

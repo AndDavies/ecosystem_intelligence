@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-refresh-2026-07-29",
+  "runId": "tnm-refresh-2026-07-29",
+  "createdAt": "2026-07-29T11:05:19.000Z",
+  "scope": "Weekday refresh prospects from the seven-day overlap: published-company activity, CanadaBuys awards, current DND innovation-program material, and due Canadian Source Book entries.",
+  "prospects": [
+    {
+      "id": "prospect-volatus-canary-refresh",
+      "name": "Volatus Aerospace Canary RPAS and DFO award",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://volatusaerospace.com/insights/canadas-next-chapter-in-autonomous-aviation/",
+      "discoverySourceUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2459625-000",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Published Volatus Aerospace has a current official RPAS acceptance announcement and a related CanadaBuys supplier-name award that support a narrowly bounded organization refresh.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://volatusaerospace.com/insights/canadas-next-chapter-in-autonomous-aviation/",
+          "outcome": "Recovered Volatus's July 8 official announcement that Transport Canada accepted its Canary RPAS under the Pre-Validated Declaration process."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2459625-000",
+          "outcome": "Recovered the July 9 CanadaBuys record naming Volatus Drones Canada for a DFO Maritimes RPAS contract; supplier-name relationship is retained as a reviewer question."
+        }
+      ]
+    },
+    {
+      "id": "prospect-borealis-office-boundary",
+      "name": "BOREALIS government innovation office",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "government_innovation_office",
+      "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/borealis.html",
+      "discoverySourceUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "Current official BOREALIS material is strong, but it overlaps existing DRDC, IDEaS and published public-demand modelling and needs a human record-boundary decision before candidate intake.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/borealis.html",
+          "outcome": "Confirmed BOREALIS's public mandate, Joint Program Office and Defence Innovation Secure Hubs program relationship."
+        }
+      ]
+    },
+    {
+      "id": "prospect-defence-drone-initiative-current-demand",
+      "name": "Defence Drone Initiative Marketplace",
+      "proposedEntityType": "demand_signal",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/government-of-canada-launches-defence-drone-initiative-to-strengthen-canadas-sovereign-defence-capabilities.html",
+      "discoverySourceUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/government-of-canada-launches-defence-drone-initiative-to-strengthen-canadas-sovereign-defence-capabilities.html",
+      "discoveryLane": "procurement",
+      "countryCode": "CA",
+      "fitSummary": "The official July 23 launch is already represented by the published Defence Drone Initiative Marketplace demand source and does not need a duplicate refresh this cycle.",
+      "disposition": "duplicate",
+      "rejectionReason": "The live demand source defence-drone-initiative already records this launch; no distinct new claim or additive change was found.",
+      "recoveryAttempts": []
+    },
+    {
+      "id": "prospect-cove-source-book-follow-up",
+      "name": "COVE Source Book follow-up",
+      "proposedEntityType": "program",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://coveocean.com/",
+      "discoverySourceUrl": "https://coveocean.com/",
+      "discoveryLane": "official_directory",
+      "countryCode": "CA",
+      "fitSummary": "The due high-priority Canadian ocean-technology Source Book entry was checked as an ecosystem discovery lane; no independently reviewable material change was recovered inside this refresh window.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": []
+    }
+  ]
+}

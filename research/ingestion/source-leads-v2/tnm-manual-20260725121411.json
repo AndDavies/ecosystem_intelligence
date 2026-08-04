@@ -1,0 +1,854 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260725121411",
+  "runId": "tnm-manual-20260725121411",
+  "createdAt": "2026-07-25T12:19:00.642Z",
+  "scope": {
+    "description": "Canadian company leads from a multi-source discovery run. Qualified leads continue automatically into private candidates; LinkedIn/social and directories are discovery inputs only until durable evidence is resolved.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "mission-software-and-data"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-osi-maritime-systems",
+      "source": {
+        "id": "osi-maritime-systems-official",
+        "title": "OSI Maritime Systems official capability profile",
+        "url": "https://osimaritime.com/",
+        "publisher": "OSI Maritime Systems",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes OSI Maritime Systems and its public offering: Integrated naval navigation, tactical bridge and command-and-control systems for surface ships, submarines and small craft."
+      },
+      "discoveryPath": [
+        "https://osimaritime.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://osimaritime.com/",
+        "websiteDomain": "osimaritime.com",
+        "stableSlug": "osi-maritime-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://osimaritime.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "OSI Maritime Systems",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://osimaritime.com/",
+      "aliases": [],
+      "location": {
+        "city": "Burnaby",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Integrated naval navigation and tactical systems",
+      "roleSpecificEvidence": "Integrated naval navigation, tactical bridge and command-and-control systems for surface ships, submarines and small craft."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-volatus-aerospace",
+      "source": {
+        "id": "volatus-aerospace-official",
+        "title": "Volatus Aerospace official capability profile",
+        "url": "https://volatusaerospace.com/",
+        "publisher": "Volatus Aerospace",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Volatus Aerospace and its public offering: Canadian uncrewed aircraft, aerial intelligence and remotely piloted systems company supporting industrial and public-safety operations."
+      },
+      "discoveryPath": [
+        "https://volatusaerospace.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://volatusaerospace.com/",
+        "websiteDomain": "volatusaerospace.com",
+        "stableSlug": "volatus-aerospace",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://volatusaerospace.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Volatus Aerospace",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://volatusaerospace.com/",
+      "aliases": [],
+      "location": {
+        "city": "Mirabel",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Uncrewed aerial systems and aerial intelligence",
+      "roleSpecificEvidence": "Canadian uncrewed aircraft, aerial intelligence and remotely piloted systems company supporting industrial and public-safety operations."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-ghgsat",
+      "source": {
+        "id": "ghgsat-official",
+        "title": "GHGSat official capability profile",
+        "url": "https://www.ghgsat.com/",
+        "publisher": "GHGSat",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes GHGSat and its public offering: Montreal satellite-data company that operates and develops emissions-monitoring spacecraft and related analytics services."
+      },
+      "discoveryPath": [
+        "https://www.ghgsat.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.ghgsat.com/",
+        "websiteDomain": "www.ghgsat.com",
+        "stableSlug": "ghgsat",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.ghgsat.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "GHGSat",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.ghgsat.com/",
+      "aliases": [],
+      "location": {
+        "city": "Montreal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Satellite-based remote sensing and analytics",
+      "roleSpecificEvidence": "Montreal satellite-data company that operates and develops emissions-monitoring spacecraft and related analytics services."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-kepler-communications",
+      "source": {
+        "id": "kepler-communications-official",
+        "title": "Kepler Communications official capability profile",
+        "url": "https://www.kepler.space/",
+        "publisher": "Kepler Communications",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Kepler Communications and its public offering: Toronto satellite communications company developing high-speed data-relay services and space-network infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.kepler.space/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.kepler.space/",
+        "websiteDomain": "www.kepler.space",
+        "stableSlug": "kepler-communications",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.kepler.space/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Kepler Communications",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.kepler.space/",
+      "aliases": [],
+      "location": {
+        "city": "Toronto",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Space data-relay and satellite communications",
+      "roleSpecificEvidence": "Toronto satellite communications company developing high-speed data-relay services and space-network infrastructure."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-norsat-international",
+      "source": {
+        "id": "norsat-international-official",
+        "title": "Norsat International official capability profile",
+        "url": "https://www.norsat.com/",
+        "publisher": "Norsat International",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Norsat International and its public offering: Richmond communications company producing satellite communications equipment and connectivity products for remote, maritime and public-sector users."
+      },
+      "discoveryPath": [
+        "https://www.norsat.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.norsat.com/",
+        "websiteDomain": "www.norsat.com",
+        "stableSlug": "norsat-international",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.norsat.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Norsat International",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.norsat.com/",
+      "aliases": [],
+      "location": {
+        "city": "Richmond",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Satellite communications equipment",
+      "roleSpecificEvidence": "Richmond communications company producing satellite communications equipment and connectivity products for remote, maritime and public-sector users."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-canadensys-aerospace",
+      "source": {
+        "id": "canadensys-aerospace-official",
+        "title": "Canadensys Aerospace official capability profile",
+        "url": "https://canadensys.com/",
+        "publisher": "Canadensys Aerospace",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Canadensys Aerospace and its public offering: Canadian space-systems company building lunar, planetary and Earth-orbit mission hardware, services and robotics."
+      },
+      "discoveryPath": [
+        "https://canadensys.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://canadensys.com/",
+        "websiteDomain": "canadensys.com",
+        "stableSlug": "canadensys-aerospace",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "conference_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://canadensys.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Canadensys Aerospace",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://canadensys.com/",
+      "aliases": [],
+      "location": {
+        "city": "Bolton",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Space mission systems and robotics",
+      "roleSpecificEvidence": "Canadian space-systems company building lunar, planetary and Earth-orbit mission hardware, services and robotics."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-space-flight-laboratory",
+      "source": {
+        "id": "space-flight-laboratory-official",
+        "title": "Space Flight Laboratory official capability profile",
+        "url": "https://www.utias-sfl.net/",
+        "publisher": "Space Flight Laboratory",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Space Flight Laboratory and its public offering: Toronto small-satellite developer and mission-services provider with spacecraft design, integration and operations capability."
+      },
+      "discoveryPath": [
+        "https://www.utias-sfl.net/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.utias-sfl.net/",
+        "websiteDomain": "www.utias-sfl.net",
+        "stableSlug": "space-flight-laboratory",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.utias-sfl.net/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Space Flight Laboratory",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.utias-sfl.net/",
+      "aliases": [],
+      "location": {
+        "city": "Toronto",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Small-satellite missions and operations",
+      "roleSpecificEvidence": "Toronto small-satellite developer and mission-services provider with spacecraft design, integration and operations capability."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-maritime-launch-services",
+      "source": {
+        "id": "maritime-launch-services-official",
+        "title": "Maritime Launch Services official capability profile",
+        "url": "https://www.maritimelaunch.com/",
+        "publisher": "Maritime Launch Services",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Maritime Launch Services and its public offering: Nova Scotia launch-services company developing Canadian commercial spaceport and launch capability."
+      },
+      "discoveryPath": [
+        "https://www.maritimelaunch.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.maritimelaunch.com/",
+        "websiteDomain": "www.maritimelaunch.com",
+        "stableSlug": "maritime-launch-services",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "broad_web",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.maritimelaunch.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Maritime Launch Services",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.maritimelaunch.com/",
+      "aliases": [],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Canadian launch and spaceport services",
+      "roleSpecificEvidence": "Nova Scotia launch-services company developing Canadian commercial spaceport and launch capability."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-c6-launch-systems",
+      "source": {
+        "id": "c6-launch-systems-official",
+        "title": "C6 Launch Systems official capability profile",
+        "url": "https://www.c6launch.com/",
+        "publisher": "C6 Launch Systems",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes C6 Launch Systems and its public offering: Canadian space-launch company developing scalable launch systems and supporting propulsion technology."
+      },
+      "discoveryPath": [
+        "https://www.c6launch.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.c6launch.com/",
+        "websiteDomain": "www.c6launch.com",
+        "stableSlug": "c6-launch-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.c6launch.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "C6 Launch Systems",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.c6launch.com/",
+      "aliases": [],
+      "location": {
+        "city": "Toronto",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Launch vehicle systems and propulsion",
+      "roleSpecificEvidence": "Canadian space-launch company developing scalable launch systems and supporting propulsion technology."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-reaction-dynamics",
+      "source": {
+        "id": "reaction-dynamics-official",
+        "title": "Reaction Dynamics official capability profile",
+        "url": "https://reactiondynamics.space/",
+        "publisher": "Reaction Dynamics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:19:00.642Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Reaction Dynamics and its public offering: Quebec aerospace company developing launch-vehicle technology and propulsion systems for space access."
+      },
+      "discoveryPath": [
+        "https://reactiondynamics.space/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://reactiondynamics.space/",
+        "websiteDomain": "reactiondynamics.space",
+        "stableSlug": "reaction-dynamics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://reactiondynamics.space/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Reaction Dynamics",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://reactiondynamics.space/",
+      "aliases": [],
+      "location": {
+        "city": "Saint-Jean-sur-Richelieu",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Space launch vehicles and propulsion",
+      "roleSpecificEvidence": "Quebec aerospace company developing launch-vehicle technology and propulsion systems for space access."
+    }
+  ]
+}

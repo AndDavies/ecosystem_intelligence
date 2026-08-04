@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260729075223",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company",
+      "investor_funder"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "existing-record-enrichment:portfolio-and-training-relationships",
+    "reason": "Live ONE9 and CAE records omit current durable public evidence about portfolio relationships, defence-entrepreneur infrastructure, and next-generation fighter-training collaboration.",
+    "score": 910
+  },
+  "status": "completed",
+  "startedAt": "2026-07-29T07:52:23.702Z",
+  "completedAt": "2026-07-29T07:54:56.000Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 4,
+    "minimumCandidates": 1,
+    "targetCandidates": 2
+  },
+  "sourceQueries": [
+    "label:Newsletters/Defence after:2026/07/21 before:2026/07/30 -in:spam -in:trash",
+    "site:one9.ca ONE9 Capability Labs portfolio Kensington official",
+    "site:investottawa.ca ONE9 Capability Labs Area X.O official",
+    "CAE Leonardo M-346 fighter training July 2026 official",
+    "site:canada.ca Defence Drone Initiative official overlap check"
+  ],
+  "counters": {
+    "sourcesChecked": 12,
+    "leadsQualified": 2,
+    "leadsDeferred": 0,
+    "candidatesCreated": 2,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 4,
+    "uniqueProspects": 4,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 9,
+    "sourceLanesSearched": 4,
+    "candidatesGreen": 1,
+    "candidatesAmber": 1,
+    "signalsExtracted": 4,
+    "signalsDispositioned": 4,
+    "sourceFamiliesSearched": 6
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260729075223.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260729075223.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260729075223.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260729075223.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260729075223.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260729075223.json"
+  }
+}

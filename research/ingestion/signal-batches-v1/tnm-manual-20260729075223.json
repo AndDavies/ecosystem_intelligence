@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260729075223-signals",
+  "runId": "tnm-manual-20260729075223",
+  "createdAt": "2026-07-29T07:54:56.000Z",
+  "watermarkStart": "2026-07-22T07:52:23.702Z",
+  "watermarkEnd": "2026-07-29T07:54:56.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 3,
+    "government_procurement": 1,
+    "source_book": 2,
+    "ecosystem_program": 1,
+    "industry_publication": 1,
+    "gmail_newsletter": 2,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Gmail newsletters were read-only discovery inputs. No newsletter assertion is used as field evidence without a durable official or reputable public source.",
+    "This run is restricted to existing production records; it creates no new organization or demand-source candidate.",
+    "The Defence Drone Initiative government source was checked during the overlap window and dispositioned already_current because its demand records are already published."
+  ],
+  "signals": [
+    {
+      "signalId": "one9-official-portfolio-expansion-2026-07-29",
+      "fingerprint": "7382e160c2593f0bd3e3e0e85cd66caa4411a2e7df748a26b48249fa8ba68ac4",
+      "sourceChannel": "official_company",
+      "sourceFamily": "ONE9 official portfolio and Source Book due-source refresh",
+      "discoveryOrigin": {
+        "url": "https://www.one9.ca/",
+        "gmailMessageId": "19fa8326077e1d5a",
+        "gmailThreadId": "19fa8326077e1d5a",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ONE9",
+        "technology": null,
+        "program": "ONE9 investment portfolio",
+        "issuer": "ONE9",
+        "eventDate": null,
+        "amount": null,
+        "details": "ONE9's current official portfolio identifies Stirling X, Slingshot Aerospace, goTenna, Hidden Level, Tomahawk Robotics, and Strider Technologies in addition to North Vector Dynamics, the only portfolio relationship currently stored."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": ["https://www.one9.ca/", "https://www.one9.ca/portfolio-series"],
+      "signalType": "program_or_cohort_participation",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "slug": "one9",
+          "matchMethods": ["slug", "name", "website_domain"],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-22T20:10:50.204397Z"
+        }
+      ],
+      "intendedOutcomes": ["organization_refresh"],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.one9.ca/",
+          "outcome": "Resolved the current portfolio list and one-line technology descriptions directly from ONE9's official website."
+        },
+        {
+          "channel": "source_book",
+          "url": "https://www.one9.ca/portfolio-series",
+          "outcome": "Checked the current first-party portfolio series as an additional durable route for portfolio and technology context."
+        }
+      ],
+      "warnings": ["Portfolio relationships indicate public investment association only; they do not imply current ownership percentage, procurement success, or endorsement."],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "one9-invest-ottawa-area-xo-partnership-2025-09-03",
+      "fingerprint": "9e5c7379d8bb4f75f746b5cf85d00a09f9c3e1be0a985395232bd0613070255c",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Invest Ottawa official announcement and ONE9 Capability Labs",
+      "discoveryOrigin": {
+        "url": "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/",
+        "gmailMessageId": "19fa8326077e1d5a",
+        "gmailThreadId": "19fa8326077e1d5a",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ONE9",
+        "technology": null,
+        "program": "ONE9 and Invest Ottawa defence entrepreneur partnership",
+        "issuer": "Invest Ottawa",
+        "eventDate": "2025-09-03",
+        "amount": null,
+        "details": "ONE9 and Invest Ottawa announced a collaboration involving Area X.O to help defence and security entrepreneurs test, validate, demonstrate, commercialize, and connect with end-users, customers, and investors."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/",
+        "https://www.one9.ca/capabilitylabs"
+      ],
+      "signalType": "partnership_or_consortium",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "slug": "one9",
+          "matchMethods": ["slug", "name", "website_domain"],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-22T20:10:50.204397Z"
+        }
+      ],
+      "intendedOutcomes": ["organization_refresh"],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/",
+          "outcome": "Resolved the partnership, Area X.O role, named support activities, and date through Invest Ottawa's official announcement."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.one9.ca/capabilitylabs",
+          "outcome": "Confirmed the complementary official Capability Labs operating model for validation, operationalization, and startup support."
+        }
+      ],
+      "warnings": ["The relationship supports entrepreneur development and testing; it is not evidence that every supported technology is procurement-ready or selected by government."],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "cae-leonardo-m346-training-collaboration-2026-07-22",
+      "fingerprint": "e7ba0e52d67b82fe3b4f79e40cafa14c29d91085fe281c8da657cb859b570a9d",
+      "sourceChannel": "official_company",
+      "sourceFamily": "CAE-issued release recovered through CDR and corroborated by aviation press",
+      "discoveryOrigin": {
+        "url": "https://www.newswire.ca/news-releases/cae-and-leonardo-expand-collaboration-to-advance-m-346-training-and-develop-next-generation-integrated-training-capabilities-836414999.html",
+        "gmailMessageId": "19f8fccb4f630aa4",
+        "gmailThreadId": "19f8fccb4f630aa4",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "CAE",
+        "technology": "M-346 Integrated Training System",
+        "program": "CAE and Leonardo next-generation fighter training collaboration",
+        "issuer": "CAE Inc.",
+        "eventDate": "2026-07-22",
+        "amount": null,
+        "details": "CAE and Leonardo expanded their M-346 Integrated Training System collaboration to include a technology roadmap for Block 20, live-virtual-constructive and live-synthetic-integration environments, AI-enabled systems, and increasingly autonomous mission environments."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.newswire.ca/news-releases/cae-and-leonardo-expand-collaboration-to-advance-m-346-training-and-develop-next-generation-integrated-training-capabilities-836414999.html",
+        "https://www.ainonline.com/aviation-news/defense/2026-07-22/leonardo-increases-collaborations-cae-lockheed-martin"
+      ],
+      "signalType": "partnership_or_consortium",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+          "slug": "cae",
+          "matchMethods": ["slug", "legal_name", "website_domain"],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T10:01:42.056602Z"
+        }
+      ],
+      "intendedOutcomes": ["organization_refresh"],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.newswire.ca/news-releases/cae-and-leonardo-expand-collaboration-to-advance-m-346-training-and-develop-next-generation-integrated-training-capabilities-836414999.html",
+          "outcome": "Resolved the CAE-issued announcement, named parties, M-346 ITS roadmap, LVC and LSI scope, and AI-enabled training context."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.ainonline.com/aviation-news/defense/2026-07-22/leonardo-increases-collaborations-cae-lockheed-martin",
+          "outcome": "Recovered independent aviation-industry reporting of the expanded CAE and Leonardo training collaboration."
+        }
+      ],
+      "warnings": ["The announcement describes collaboration and a technology roadmap; it does not disclose a Canadian procurement award or a customer-specific implementation."],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "defence-drone-initiative-overlap-2026-07-23",
+      "fingerprint": "06cd3026accd93991cde1d86a6d4619bb02676634c128952334a08eef54a9cda",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "National Defence official program overlap check",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html",
+        "gmailMessageId": "19f8e71312196e66",
+        "gmailThreadId": "19f8e71312196e66",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": null,
+        "technology": "uncrewed and autonomous systems",
+        "program": "Defence Drone Initiative",
+        "issuer": "National Defence and Defence Investment Agency",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "The official Defence Drone Initiative establishes a competitive supply arrangement and development, testing, adaptation, production, acquisition, and integration pathways for uncrewed and autonomous systems."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": ["https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html"],
+      "signalType": "marketplace_or_supply_arrangement",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": ["deferred"],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html",
+          "outcome": "Confirmed the current official program text and compared it with the live coverage report showing three published Defence Drone Initiative requirements."
+        }
+      ],
+      "warnings": [],
+      "disposition": "already_current",
+      "deferralRationale": "The official demand is already represented in production and is retained only as a refresh-overlap disposition; no duplicate demand candidate is created."
+    }
+  ]
+}

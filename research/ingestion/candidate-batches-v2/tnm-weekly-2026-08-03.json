@@ -1,0 +1,2093 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-weekly-2026-08-03",
+  "runId": "tnm-weekly-2026-08-03",
+  "title": "Canadian deep-strike gap discovery batch",
+  "status": "candidate",
+  "createdAt": "2026-08-03T02:44:22.490Z",
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "unmatched-demand:deep-strike",
+    "reason": "The public deep strike demand requirement has no reviewed capability match in the local atlas.",
+    "score": 850
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-weekly-2026-08-03.json",
+  "guardrailNotes": [
+    "Private Admin Review material only; this workflow does not accept, approve, publish or write canonical ecosystem tables.",
+    "Mission matches are explicitly derived. Public programme, contract and partnership evidence is bounded and never treated as classified demand, procurement eligibility, endorsement or operational adoption.",
+    "Raw provider and discovery material stays private; only durable public URLs and sanitized field-level evidence are included in the review packet."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-darit-technologies",
+      "sourceLeadIds": [
+        "lead-darit-technologies"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "DARIT Technologies is recommended as a private green candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. DARIT Technologies is a Sherbrooke, Quebec technology company describing artificial-intelligence and computer-vision systems for detecting and classifying small uncrewed aircraft in complex environments. DARIT's current public material presents a Canadian counter-UAS technology activity, while a 2026 Government of Canada announcement identifies DARIT among Urban Sandbox C-UAS prize winners. The relationship is retained as public programme evidence, not proof of operational adoption. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 91,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "darit-technologies-official",
+          "title": "DARIT Technologies official site",
+          "url": "https://www.darit.tech/",
+          "publisher": "DARIT Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Company overview and public counter-UAS technology description",
+          "summary": "DARIT's official site describes its Canadian company identity and public technology work in artificial intelligence, computer vision and counter-uncrewed-aircraft detection."
+        },
+        {
+          "id": "darit-technologies-program",
+          "title": "DARIT Technologies wins first place in Urban Sandbox C-UAS 2025",
+          "url": "https://www.darit.tech/blog/darit-technologies-remporte-la-premiere-place-au-urban-sandbox-c-uas-2025-du-programme-idees",
+          "publisher": "DARIT Technologies",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2025-12-15T00:00:00.000Z",
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "French-language programme result and company announcement",
+          "summary": "DARIT's French-language company announcement reports a first-place result in the IDEaS Urban Sandbox C-UAS activity; the claim is bounded to the public announcement."
+        },
+        {
+          "id": "darit-technologies-government",
+          "title": "Government announces prize winners of urban drone-detection trials",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/02/minister-mcguinty-congratulates-innovators-announces-175m-prize-winners-of-urban-drone-detection-trials-in-ottawa.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-02-18T00:00:00.000Z",
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Urban Sandbox C-UAS winners",
+          "summary": "The Department of National Defence publicly identifies DARIT Technologies among the prize winners of urban counter-drone detection trials in Ottawa."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-darit-technologies-description",
+          "sourceId": "darit-technologies-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "DARIT Technologies's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-darit-technologies-location",
+          "sourceId": "darit-technologies-program",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports DARIT Technologies's operating presence in Sherbrooke, Quebec, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-darit-technologies-capability",
+          "sourceId": "darit-technologies-official",
+          "fieldPath": "capabilities.darit-technologies-ai-enabled-counter-uncrewed-aircraft-detection-and-classification.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports AI-enabled counter-uncrewed-aircraft detection and classification as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-darit-technologies-features",
+          "sourceId": "darit-technologies-official",
+          "fieldPath": "capabilities.darit-technologies-ai-enabled-counter-uncrewed-aircraft-detection-and-classification.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of AI-enabled counter-uncrewed-aircraft detection and classification; the feature list is intentionally limited to public wording.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-darit-technologies-activity",
+          "sourceId": "darit-technologies-program",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "DARIT's current public material presents a Canadian counter-UAS technology activity, while a 2026 Government of Canada announcement identifies DARIT among Urban Sandbox C-UAS prize winners. The relationship is retained as public programme evidence, not proof of operational adoption.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-darit-technologies-contact",
+          "sourceId": "darit-technologies-program",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for DARIT Technologies; no personal contact data is collected.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-darit-technologies-mission",
+          "sourceId": "darit-technologies-official",
+          "fieldPath": "capabilities.darit-technologies-ai-enabled-counter-uncrewed-aircraft-detection-and-classification.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described AI-enabled counter-uncrewed-aircraft detection and classification could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        },
+        {
+          "id": "evidence-darit-technologies-relationship",
+          "sourceId": "darit-technologies-government",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "A Department of National Defence announcement identifies DARIT Technologies among prize winners from public Urban Sandbox counter-drone detection trials; this is programme evidence and not a current procurement or deployment claim.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "darit-technologies",
+        "name": "DARIT Technologies",
+        "legalName": null,
+        "aliases": [
+          "DARIT",
+          "DARIT Technologies Inc."
+        ],
+        "description": "DARIT Technologies is a Sherbrooke, Quebec technology company describing artificial-intelligence and computer-vision systems for detecting and classifying small uncrewed aircraft in complex environments.",
+        "websiteUrl": "https://www.darit.tech/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Sherbrooke",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.4042,
+          "longitude": -71.8929,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "DARIT's current public material presents a Canadian counter-UAS technology activity, while a 2026 Government of Canada announcement identifies DARIT among Urban Sandbox C-UAS prize winners. The relationship is retained as public programme evidence, not proof of operational adoption.",
+          "publicContactPath": "Use the official DARIT Technologies website at https://www.darit.tech/ for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "darit-technologies-ai-enabled-counter-uncrewed-aircraft-detection-and-classification",
+          "name": "AI-enabled counter-uncrewed-aircraft detection and classification",
+          "summary": "DARIT Technologies publicly describes ai-enabled counter-uncrewed-aircraft detection and classification for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Counter-uncrewed-aircraft sensing and classification",
+          "features": [
+            "Computer-vision detection",
+            "AI-assisted classification",
+            "Small-drone monitoring"
+          ],
+          "applications": [
+            "Counter-UAS situational awareness",
+            "Perimeter monitoring",
+            "Airspace security assessment"
+          ],
+          "technicalTags": [
+            "counter-UAS",
+            "computer vision",
+            "airspace monitoring"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described AI-enabled counter-uncrewed-aircraft detection and classification could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Department of National Defence",
+          "relationshipType": "Public innovation-trial prize",
+          "publicSummary": "A Department of National Defence announcement identifies DARIT Technologies among prize winners from public Urban Sandbox counter-drone detection trials; this is programme evidence and not a current procurement or deployment claim."
+        }
+      ],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://www.darit.tech/",
+        "sourceAssetUrl": "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/themes/2165768655/settings_images/2c577cd-c736-aa51-717c-765430071d3_Robin_Radar_Systems_-_Black-2.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "a1fa3bf1da8fe4753109a00eb64d28df19d7d45dcaba29407c9241907b3ba83a",
+        "normalizedChecksum": "cd039a0720a68f6c6f4e96cbd726993a5d324428040dca29918eaddb404d837d",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-weekly-2026-08-03/candidate-darit-technologies/logo.source.json",
+        "note": "1024x482 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-prandtl-dynamics",
+      "sourceLeadIds": [
+        "lead-prandtl-dynamics"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Prandtl Dynamics is recommended as a private green candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. Prandtl Dynamics is an Ontario aerospace technology company developing acoustic and machine-learning sensing approaches for detecting, locating and identifying small uncrewed aircraft. Prandtl's official material and public intellectual-property record describe acoustic counter-UAS sensing work. A Canadian defence announcement also identifies the company in the Urban Sandbox C-UAS prize context; the public record does not establish a continuing operational contract. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 91,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "prandtl-dynamics-official",
+          "title": "Prandtl Dynamics official site",
+          "url": "https://prandtldynamics.com/",
+          "publisher": "Prandtl Dynamics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Company overview and acoustic sensing capability",
+          "summary": "Prandtl Dynamics presents an Ontario company developing acoustic sensing and machine-learning approaches for small uncrewed-aircraft detection and identification."
+        },
+        {
+          "id": "prandtl-dynamics-ip",
+          "title": "Canadian trademark record for Prandtl Dynamics",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/pdf/2450211?lang=eng",
+          "publisher": "Canadian Intellectual Property Office",
+          "sourceKind": "official_report",
+          "publishedAt": "2025-10-01T00:00:00.000Z",
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Applicant and goods/services record",
+          "summary": "The Canadian Intellectual Property Office record names Prandtl Dynamics Inc. in Richmond Hill, Ontario and records a counter-UAS-related technology mark."
+        },
+        {
+          "id": "prandtl-dynamics-government",
+          "title": "Government announces prize winners of urban drone-detection trials",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/02/minister-mcguinty-congratulates-innovators-announces-175m-prize-winners-of-urban-drone-detection-trials-in-ottawa.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-02-18T00:00:00.000Z",
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Urban Sandbox C-UAS winners",
+          "summary": "The Department of National Defence publicly identifies Prandtl Dynamics among prize winners of urban counter-drone detection trials in Ottawa."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-prandtl-dynamics-description",
+          "sourceId": "prandtl-dynamics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Prandtl Dynamics's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-prandtl-dynamics-location",
+          "sourceId": "prandtl-dynamics-ip",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports Prandtl Dynamics's operating presence in Richmond Hill, Ontario, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-prandtl-dynamics-capability",
+          "sourceId": "prandtl-dynamics-official",
+          "fieldPath": "capabilities.prandtl-dynamics-acoustic-counter-uas-detection-and-identification.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports Acoustic counter-UAS detection and identification as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-prandtl-dynamics-features",
+          "sourceId": "prandtl-dynamics-official",
+          "fieldPath": "capabilities.prandtl-dynamics-acoustic-counter-uas-detection-and-identification.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of Acoustic counter-UAS detection and identification; the feature list is intentionally limited to public wording.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-prandtl-dynamics-activity",
+          "sourceId": "prandtl-dynamics-ip",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Prandtl's official material and public intellectual-property record describe acoustic counter-UAS sensing work. A Canadian defence announcement also identifies the company in the Urban Sandbox C-UAS prize context; the public record does not establish a continuing operational contract.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-prandtl-dynamics-contact",
+          "sourceId": "prandtl-dynamics-ip",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for Prandtl Dynamics; no personal contact data is collected.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-prandtl-dynamics-mission",
+          "sourceId": "prandtl-dynamics-official",
+          "fieldPath": "capabilities.prandtl-dynamics-acoustic-counter-uas-detection-and-identification.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described Acoustic counter-UAS detection and identification could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        },
+        {
+          "id": "evidence-prandtl-dynamics-relationship",
+          "sourceId": "prandtl-dynamics-government",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "A Department of National Defence announcement identifies Prandtl Dynamics among prize winners from public Urban Sandbox counter-drone detection trials; it is bounded programme evidence rather than proof of operational adoption.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "prandtl-dynamics",
+        "name": "Prandtl Dynamics",
+        "legalName": null,
+        "aliases": [
+          "Prandtl Dynamics Inc.",
+          "Prandtl"
+        ],
+        "description": "Prandtl Dynamics is an Ontario aerospace technology company developing acoustic and machine-learning sensing approaches for detecting, locating and identifying small uncrewed aircraft.",
+        "websiteUrl": "https://prandtldynamics.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Richmond Hill",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.8828,
+          "longitude": -79.4403,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Prandtl's official material and public intellectual-property record describe acoustic counter-UAS sensing work. A Canadian defence announcement also identifies the company in the Urban Sandbox C-UAS prize context; the public record does not establish a continuing operational contract.",
+          "publicContactPath": "Use the official Prandtl Dynamics website at https://prandtldynamics.com/ for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "prandtl-dynamics-acoustic-counter-uas-detection-and-identification",
+          "name": "Acoustic counter-UAS detection and identification",
+          "summary": "Prandtl Dynamics publicly describes acoustic counter-uas detection and identification for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Acoustic sensing and machine-learning classification",
+          "features": [
+            "Acoustic array sensing",
+            "Machine-learning classification",
+            "Drone detection and identification"
+          ],
+          "applications": [
+            "Counter-UAS detection",
+            "Low-signature airspace monitoring",
+            "Site protection assessment"
+          ],
+          "technicalTags": [
+            "acoustic sensing",
+            "counter-UAS",
+            "machine learning"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Acoustic counter-UAS detection and identification could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Department of National Defence",
+          "relationshipType": "Public innovation-trial prize",
+          "publicSummary": "A Department of National Defence announcement identifies Prandtl Dynamics among prize winners from public Urban Sandbox counter-drone detection trials; it is bounded programme evidence rather than proof of operational adoption."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://prandtl.com/",
+        "sourceAssetUrl": "https://prandtl.com/assets/img/logo.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "bfb664a7718f0219cc1ab2772bf42d8224f849b3d6656533a166deb9f8352ffe",
+        "normalizedChecksum": "52fdd1d98250d10e8ef2095a6d3e2aa6e8bf06e920ae22ed5b2e4e02699c23a6",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-weekly-2026-08-03/candidate-prandtl-dynamics/logo.source.json",
+        "note": "360x344 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-objexis",
+      "sourceLeadIds": [
+        "lead-objexis"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "OBJEXIS is recommended as a private green candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. OBJEXIS is an Oakville, Ontario technology company describing AI-enabled sensing and analytics for detecting and classifying uncrewed aircraft and other objects in complex airspace. OBJEXIS's current public pages describe an Oakville-based AI and sensing company, and the Department of National Defence publicly names OBJEXIS in the Urban Sandbox C-UAS prize context. That public trial result is retained without inferring a current contract or deployment. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 91,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "objexis-official",
+          "title": "OBJEXIS about page",
+          "url": "https://www.objexis.ai/about.html",
+          "publisher": "OBJEXIS",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "About page and company identity",
+          "summary": "OBJEXIS describes an Oakville, Ontario company applying artificial intelligence and sensing analytics to complex object and airspace detection."
+        },
+        {
+          "id": "objexis-contact",
+          "title": "OBJEXIS contact page",
+          "url": "https://www.objexis.ai/contact.html",
+          "publisher": "OBJEXIS",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Canadian office and public contact path",
+          "summary": "OBJEXIS's public contact page provides the Canadian company contact path and supports the bounded Oakville operating presence used in this candidate."
+        },
+        {
+          "id": "objexis-government",
+          "title": "Government announces prize winners of urban drone-detection trials",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/02/minister-mcguinty-congratulates-innovators-announces-175m-prize-winners-of-urban-drone-detection-trials-in-ottawa.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-02-18T00:00:00.000Z",
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Urban Sandbox C-UAS winners",
+          "summary": "The Department of National Defence publicly identifies OBJEXIS among prize winners of urban counter-drone detection trials in Ottawa."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-objexis-description",
+          "sourceId": "objexis-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "OBJEXIS's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-objexis-location",
+          "sourceId": "objexis-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports OBJEXIS's operating presence in Oakville, Ontario, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-objexis-capability",
+          "sourceId": "objexis-official",
+          "fieldPath": "capabilities.objexis-ai-enabled-airspace-object-detection-and-classification.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports AI-enabled airspace object detection and classification as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-objexis-features",
+          "sourceId": "objexis-official",
+          "fieldPath": "capabilities.objexis-ai-enabled-airspace-object-detection-and-classification.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of AI-enabled airspace object detection and classification; the feature list is intentionally limited to public wording.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-objexis-activity",
+          "sourceId": "objexis-contact",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "OBJEXIS's current public pages describe an Oakville-based AI and sensing company, and the Department of National Defence publicly names OBJEXIS in the Urban Sandbox C-UAS prize context. That public trial result is retained without inferring a current contract or deployment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-objexis-contact",
+          "sourceId": "objexis-contact",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for OBJEXIS; no personal contact data is collected.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-objexis-mission",
+          "sourceId": "objexis-official",
+          "fieldPath": "capabilities.objexis-ai-enabled-airspace-object-detection-and-classification.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described AI-enabled airspace object detection and classification could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        },
+        {
+          "id": "evidence-objexis-relationship",
+          "sourceId": "objexis-government",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "A Department of National Defence announcement identifies OBJEXIS among prize winners from public Urban Sandbox counter-drone detection trials; it is programme evidence and does not establish operational adoption.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "objexis",
+        "name": "OBJEXIS",
+        "legalName": null,
+        "aliases": [
+          "OBJEXIS Inc.",
+          "Objexis"
+        ],
+        "description": "OBJEXIS is an Oakville, Ontario technology company describing AI-enabled sensing and analytics for detecting and classifying uncrewed aircraft and other objects in complex airspace.",
+        "websiteUrl": "https://www.objexis.ai/about.html",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Oakville",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4675,
+          "longitude": -79.6877,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "OBJEXIS's current public pages describe an Oakville-based AI and sensing company, and the Department of National Defence publicly names OBJEXIS in the Urban Sandbox C-UAS prize context. That public trial result is retained without inferring a current contract or deployment.",
+          "publicContactPath": "Use the official OBJEXIS website at https://www.objexis.ai/about.html for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "objexis-ai-enabled-airspace-object-detection-and-classification",
+          "name": "AI-enabled airspace object detection and classification",
+          "summary": "OBJEXIS publicly describes ai-enabled airspace object detection and classification for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Multi-sensor airspace analytics",
+          "features": [
+            "AI object classification",
+            "Multi-sensor data analysis",
+            "Counter-UAS situational awareness"
+          ],
+          "applications": [
+            "Airspace monitoring",
+            "Counter-UAS assessment",
+            "Critical-site security"
+          ],
+          "technicalTags": [
+            "artificial intelligence",
+            "counter-UAS",
+            "object detection"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described AI-enabled airspace object detection and classification could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Department of National Defence",
+          "relationshipType": "Public innovation-trial prize",
+          "publicSummary": "A Department of National Defence announcement identifies OBJEXIS among prize winners from public Urban Sandbox counter-drone detection trials; it is programme evidence and does not establish operational adoption."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.objexis.ai/about.html",
+        "sourceAssetUrl": "https://www.objexis.ai/img/Amprius-Darkmodelogotransparent.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "2e559c23fde361936c72e5a4b51c86ead03b5e7cb3846b88429dce448d732f48",
+        "normalizedChecksum": "db474cf607561ccfea9c1e496da9900839a07e30ecac751d1b82e16c096a164e",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-weekly-2026-08-03/candidate-objexis/logo.source.json",
+        "note": "1024x477 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-ravelin-dynamics",
+      "sourceLeadIds": [
+        "lead-ravelin-dynamics"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Ravelin Dynamics is recommended as a private amber candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. Ravelin Dynamics is a St. John's, Newfoundland and Labrador defence-technology company describing radar-independent airspace surveillance and cueing for counter-air and counter-UAS missions. Ravelin's current public site describes a Newfoundland and Labrador company developing radar-independent airspace surveillance and defence cueing. The public material is treated as a capability anchor; current customer, programme and operational-adoption status remain reviewer questions. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The public capability description is company-authored and the current customer, programme and operational-adoption status could not be independently confirmed; retain the bounded wording until reviewer corroboration."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "ravelin-dynamics-official",
+          "title": "Ravelin Dynamics official site",
+          "url": "https://www.ravelindynamics.com/",
+          "publisher": "Ravelin Dynamics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Company overview and airspace surveillance capability",
+          "summary": "Ravelin Dynamics describes a Canadian defence-technology company focused on radar-independent airspace surveillance, tracking and cueing."
+        },
+        {
+          "id": "ravelin-dynamics-program",
+          "title": "IDEaS counter-uncrewed-aerial-systems sandbox challenge",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2026-01-20T00:00:00.000Z",
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Challenge scope and public problem statement",
+          "summary": "The Government of Canada challenge page provides durable public counter-UAS problem context used for derived fit; it does not assert Ravelin participation."
+        },
+        {
+          "id": "ravelin-dynamics-sourcebook",
+          "title": "Defence Ideas programme overview",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "IDEaS programme overview",
+          "summary": "The IDEaS programme overview is a government discovery and context source for Canadian defence innovation; it is not a company-specific award or customer claim."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-ravelin-dynamics-description",
+          "sourceId": "ravelin-dynamics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Ravelin Dynamics's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ravelin-dynamics-location",
+          "sourceId": "ravelin-dynamics-program",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports Ravelin Dynamics's operating presence in St. John's, Newfoundland and Labrador, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ravelin-dynamics-capability",
+          "sourceId": "ravelin-dynamics-official",
+          "fieldPath": "capabilities.ravelin-dynamics-radar-independent-airspace-surveillance-and-cueing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports Radar-independent airspace surveillance and cueing as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ravelin-dynamics-features",
+          "sourceId": "ravelin-dynamics-official",
+          "fieldPath": "capabilities.ravelin-dynamics-radar-independent-airspace-surveillance-and-cueing.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of Radar-independent airspace surveillance and cueing; the feature list is intentionally limited to public wording.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ravelin-dynamics-activity",
+          "sourceId": "ravelin-dynamics-program",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Ravelin's current public site describes a Newfoundland and Labrador company developing radar-independent airspace surveillance and defence cueing. The public material is treated as a capability anchor; current customer, programme and operational-adoption status remain reviewer questions.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ravelin-dynamics-contact",
+          "sourceId": "ravelin-dynamics-program",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for Ravelin Dynamics; no personal contact data is collected.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ravelin-dynamics-mission",
+          "sourceId": "ravelin-dynamics-official",
+          "fieldPath": "capabilities.ravelin-dynamics-radar-independent-airspace-surveillance-and-cueing.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described Radar-independent airspace surveillance and cueing could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        }
+      ],
+      "organization": {
+        "slug": "ravelin-dynamics",
+        "name": "Ravelin Dynamics",
+        "legalName": null,
+        "aliases": [
+          "Ravelin Dynamics Inc.",
+          "Ravelin"
+        ],
+        "description": "Ravelin Dynamics is a St. John's, Newfoundland and Labrador defence-technology company describing radar-independent airspace surveillance and cueing for counter-air and counter-UAS missions.",
+        "websiteUrl": "https://www.ravelindynamics.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "St. John's",
+          "provinceTerritory": "Newfoundland and Labrador",
+          "countryCode": "CA",
+          "latitude": 47.5615,
+          "longitude": -52.7126,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Ravelin's current public site describes a Newfoundland and Labrador company developing radar-independent airspace surveillance and defence cueing. The public material is treated as a capability anchor; current customer, programme and operational-adoption status remain reviewer questions.",
+          "publicContactPath": "Use the official Ravelin Dynamics website at https://www.ravelindynamics.com/ for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "ravelin-dynamics-radar-independent-airspace-surveillance-and-cueing",
+          "name": "Radar-independent airspace surveillance and cueing",
+          "summary": "Ravelin Dynamics publicly describes radar-independent airspace surveillance and cueing for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Passive airspace sensing and defence cueing",
+          "features": [
+            "Passive signal sensing",
+            "Airspace track generation",
+            "Defence cueing workflows"
+          ],
+          "applications": [
+            "Airspace situational awareness",
+            "Counter-UAS monitoring",
+            "Remote-site surveillance"
+          ],
+          "technicalTags": [
+            "airspace surveillance",
+            "passive sensing",
+            "counter-UAS"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Radar-independent airspace surveillance and cueing could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.ravelindynamics.com/",
+        "sourceAssetUrl": "https://ravelindynamics.com/og-image.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "7dd0fdbb8d0b707c4fd965eebebe3f442951324be74ab9affeead00f66523531",
+        "normalizedChecksum": "0f153c54e3840aef2c2ee15dbc443e5383c879936b10a8b0c31421fb8ff7109a",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-weekly-2026-08-03/candidate-ravelin-dynamics/logo.source.json",
+        "note": "975x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-borealis-propulsion",
+      "sourceLeadIds": [
+        "lead-borealis-propulsion"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Borealis Propulsion is recommended as a private amber candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. Borealis Propulsion is a Vancouver aerospace company describing liquid and electric propulsion products, kick-stage systems and propulsion manufacturing for space missions. Borealis Propulsion's current public material presents a Vancouver-headquartered space-propulsion company with Canadian manufacturing and R&D activity. The record captures publicly described propulsion products only and does not infer launch contracts, flight heritage or defence adoption. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Company pages support the propulsion portfolio and Vancouver presence, but an independent current contract or flight-heritage source was not recovered in this batch; verify legal identity and maturity before publication."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "borealis-propulsion-official",
+          "title": "Borealis Propulsion official site",
+          "url": "https://borealispropulsion.com/",
+          "publisher": "Borealis Propulsion",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Company overview and propulsion portfolio",
+          "summary": "Borealis Propulsion describes a Vancouver aerospace company developing liquid and electric propulsion systems, kick stages and related manufacturing."
+        },
+        {
+          "id": "borealis-propulsion-space",
+          "title": "Canadian Space Agency",
+          "url": "https://www.asc-csa.gc.ca/eng/",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Canadian space ecosystem context",
+          "summary": "The Canadian Space Agency provides durable public space-programme context for the derived mission fit; it is not evidence of a Borealis contract or endorsement."
+        },
+        {
+          "id": "borealis-propulsion-sourcebook",
+          "title": "Defence Ideas programme overview",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Strategic-technology discovery context",
+          "summary": "The IDEaS programme overview was searched for Canadian strategic-technology context and is not used as a company-specific relationship claim."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-borealis-propulsion-description",
+          "sourceId": "borealis-propulsion-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Borealis Propulsion's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-borealis-propulsion-location",
+          "sourceId": "borealis-propulsion-space",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports Borealis Propulsion's operating presence in Vancouver, British Columbia, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-borealis-propulsion-capability",
+          "sourceId": "borealis-propulsion-official",
+          "fieldPath": "capabilities.borealis-propulsion-liquid-and-electric-in-space-propulsion-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports Liquid and electric in-space propulsion systems as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-borealis-propulsion-features",
+          "sourceId": "borealis-propulsion-official",
+          "fieldPath": "capabilities.borealis-propulsion-liquid-and-electric-in-space-propulsion-systems.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of Liquid and electric in-space propulsion systems; the feature list is intentionally limited to public wording.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-borealis-propulsion-activity",
+          "sourceId": "borealis-propulsion-space",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Borealis Propulsion's current public material presents a Vancouver-headquartered space-propulsion company with Canadian manufacturing and R&D activity. The record captures publicly described propulsion products only and does not infer launch contracts, flight heritage or defence adoption.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-borealis-propulsion-contact",
+          "sourceId": "borealis-propulsion-space",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for Borealis Propulsion; no personal contact data is collected.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-borealis-propulsion-mission",
+          "sourceId": "borealis-propulsion-official",
+          "fieldPath": "capabilities.borealis-propulsion-liquid-and-electric-in-space-propulsion-systems.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described Liquid and electric in-space propulsion systems could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        }
+      ],
+      "organization": {
+        "slug": "borealis-propulsion",
+        "name": "Borealis Propulsion",
+        "legalName": null,
+        "aliases": [
+          "Borealis Propulsion & Manufacturing",
+          "Borealis Propulsion Inc."
+        ],
+        "description": "Borealis Propulsion is a Vancouver aerospace company describing liquid and electric propulsion products, kick-stage systems and propulsion manufacturing for space missions.",
+        "websiteUrl": "https://borealispropulsion.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Borealis Propulsion's current public material presents a Vancouver-headquartered space-propulsion company with Canadian manufacturing and R&D activity. The record captures publicly described propulsion products only and does not infer launch contracts, flight heritage or defence adoption.",
+          "publicContactPath": "Use the official Borealis Propulsion website at https://borealispropulsion.com/ for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "borealis-propulsion-liquid-and-electric-in-space-propulsion-systems",
+          "name": "Liquid and electric in-space propulsion systems",
+          "summary": "Borealis Propulsion publicly describes liquid and electric in-space propulsion systems for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Space propulsion and kick-stage manufacturing",
+          "features": [
+            "Liquid propulsion",
+            "Electric propulsion",
+            "Kick-stage architecture"
+          ],
+          "applications": [
+            "Orbital manoeuvring",
+            "Small-satellite missions",
+            "Spacecraft propulsion integration"
+          ],
+          "technicalTags": [
+            "space propulsion",
+            "kick stage",
+            "aerospace manufacturing"
+          ],
+          "technicalDomainSlugs": [
+            "aerospace-and-mobility",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "The publicly described Liquid and electric in-space propulsion systems could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://borealispropulsion.com/",
+        "sourceAssetUrl": "https://borealispropulsion.com/assets/images/brand/BPL_White.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "d8d7a4e5409a4484b4cdcfe4433ee236a13f1eb3e0e17a5a6bca9d9fedfc0409",
+        "normalizedChecksum": "db03d8d2ede17ee3db7132090155f1e9e4b61b7e4b645d6e41beac2b3114a44e",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-weekly-2026-08-03/candidate-borealis-propulsion/logo.source.json",
+        "note": "1024x396 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-space-engine-systems",
+      "sourceLeadIds": [
+        "lead-space-engine-systems"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Space Engine Systems is recommended as a private amber candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. Space Engine Systems is an Edmonton aerospace company describing reusable multi-fuel propulsion and air-breathing engine technology for spaceplane and hypersonic research applications. Space Engine Systems' current public pages identify an Edmonton aerospace company and describe reusable multi-fuel engine research, quality credentials and controlled-goods participation. The candidate does not infer demonstrated flight performance or a current defence requirement. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The public performance and maturity claims are company-authored; retain them as bounded research context and seek independent test, contract or flight evidence before publication."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "space-engine-systems-official",
+          "title": "Space Engine Systems about page",
+          "url": "https://www.spaceenginesystems.com/about",
+          "publisher": "Space Engine Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Company identity, Edmonton base and engine programme",
+          "summary": "Space Engine Systems describes an Edmonton aerospace company developing reusable multi-fuel propulsion and air-breathing engine technology."
+        },
+        {
+          "id": "space-engine-systems-home",
+          "title": "Space Engine Systems home page",
+          "url": "https://www.spaceenginesystems.com/home",
+          "publisher": "Space Engine Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Public technology and quality statements",
+          "summary": "The company's public home page presents the propulsion portfolio and aerospace applications used for the bounded capability description."
+        },
+        {
+          "id": "space-engine-systems-space",
+          "title": "Canadian Space Agency",
+          "url": "https://www.asc-csa.gc.ca/eng/",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Canadian space ecosystem context",
+          "summary": "The Canadian Space Agency provides public Canadian space-programme context for a derived mission mapping and is not a company-specific contract claim."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-space-engine-systems-description",
+          "sourceId": "space-engine-systems-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Space Engine Systems's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-space-engine-systems-location",
+          "sourceId": "space-engine-systems-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports Space Engine Systems's operating presence in Edmonton, Alberta, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-space-engine-systems-capability",
+          "sourceId": "space-engine-systems-official",
+          "fieldPath": "capabilities.space-engine-systems-reusable-multi-fuel-air-breathing-propulsion.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports Reusable multi-fuel air-breathing propulsion as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-space-engine-systems-features",
+          "sourceId": "space-engine-systems-official",
+          "fieldPath": "capabilities.space-engine-systems-reusable-multi-fuel-air-breathing-propulsion.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of Reusable multi-fuel air-breathing propulsion; the feature list is intentionally limited to public wording.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-space-engine-systems-activity",
+          "sourceId": "space-engine-systems-home",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Space Engine Systems' current public pages identify an Edmonton aerospace company and describe reusable multi-fuel engine research, quality credentials and controlled-goods participation. The candidate does not infer demonstrated flight performance or a current defence requirement.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-space-engine-systems-contact",
+          "sourceId": "space-engine-systems-home",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for Space Engine Systems; no personal contact data is collected.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-space-engine-systems-mission",
+          "sourceId": "space-engine-systems-official",
+          "fieldPath": "capabilities.space-engine-systems-reusable-multi-fuel-air-breathing-propulsion.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described Reusable multi-fuel air-breathing propulsion could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        }
+      ],
+      "organization": {
+        "slug": "space-engine-systems",
+        "name": "Space Engine Systems",
+        "legalName": null,
+        "aliases": [
+          "SES",
+          "Space Engine Systems Inc."
+        ],
+        "description": "Space Engine Systems is an Edmonton aerospace company describing reusable multi-fuel propulsion and air-breathing engine technology for spaceplane and hypersonic research applications.",
+        "websiteUrl": "https://www.spaceenginesystems.com/about",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Edmonton",
+          "provinceTerritory": "Alberta",
+          "countryCode": "CA",
+          "latitude": 53.5461,
+          "longitude": -113.4938,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Space Engine Systems' current public pages identify an Edmonton aerospace company and describe reusable multi-fuel engine research, quality credentials and controlled-goods participation. The candidate does not infer demonstrated flight performance or a current defence requirement.",
+          "publicContactPath": "Use the official Space Engine Systems website at https://www.spaceenginesystems.com/about for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "space-engine-systems-reusable-multi-fuel-air-breathing-propulsion",
+          "name": "Reusable multi-fuel air-breathing propulsion",
+          "summary": "Space Engine Systems publicly describes reusable multi-fuel air-breathing propulsion for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Reusable aerospace propulsion and test systems",
+          "features": [
+            "Multi-fuel propulsion",
+            "Air-breathing engine research",
+            "Reusable spaceplane-oriented architecture"
+          ],
+          "applications": [
+            "Hypersonic research",
+            "Reusable launch concepts",
+            "Aerospace propulsion testing"
+          ],
+          "technicalTags": [
+            "propulsion",
+            "hypersonics",
+            "spaceplane"
+          ],
+          "technicalDomainSlugs": [
+            "aerospace-and-mobility",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "The publicly described Reusable multi-fuel air-breathing propulsion could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.spaceenginesystems.com/about",
+        "sourceAssetUrl": "https://images.squarespace-cdn.com/content/v1/60ef3e7142afc8513f43b34e/853ccd42-379d-4da5-b957-ba63cde4e444/SES_logo_no_background_V2.png?format=1500w",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "bc92603d65ffeb44c02af5e25636395c6792f158926bd86cbb1c94fc809249ae",
+        "normalizedChecksum": "4b5b28763e43b3dd5e1878a35c0f62f54b5b67ac4ac23184141d72f02daa0c1c",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-weekly-2026-08-03/candidate-space-engine-systems/logo.source.json",
+        "note": "960x237 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-aerialx",
+      "sourceLeadIds": [
+        "lead-aerialx"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "AerialX is recommended as a private amber candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. AerialX is a Vancouver uncrewed-aircraft company describing counter-drone detection, investigation and defeat systems alongside tactical microdrone platforms. AerialX's current public pages describe a Vancouver company working across counter-drone detection, defeat and tactical microdrone systems. The record preserves the company's public product framing without asserting regulatory approval, operational deployment or customer adoption. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The product and application descriptions are company-authored and include regulated-use implications; reviewer confirmation of legal entity, current product status and public deployment evidence is required."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "aerialx-official",
+          "title": "AerialX about page",
+          "url": "https://www.aerialx.com/about/",
+          "publisher": "AerialX",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Company identity and counter-drone portfolio",
+          "summary": "AerialX describes a Vancouver uncrewed-aircraft company working on counter-drone detection, defeat and tactical microdrone systems."
+        },
+        {
+          "id": "aerialx-home",
+          "title": "AerialX official site",
+          "url": "https://www.aerialx.com/",
+          "publisher": "AerialX",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Public systems and application overview",
+          "summary": "AerialX's official site presents the public systems portfolio and application framing used in this bounded candidate."
+        },
+        {
+          "id": "aerialx-contact",
+          "title": "AerialX contact page",
+          "url": "https://www.aerialx.com/contacts/",
+          "publisher": "AerialX",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Public company contact path",
+          "summary": "AerialX's contact page provides a durable public contact path for the Vancouver company; it does not establish a contract or deployment."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-aerialx-description",
+          "sourceId": "aerialx-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "AerialX's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aerialx-location",
+          "sourceId": "aerialx-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports AerialX's operating presence in Vancouver, British Columbia, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aerialx-capability",
+          "sourceId": "aerialx-official",
+          "fieldPath": "capabilities.aerialx-counter-drone-detection-and-defeat-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports Counter-drone detection and defeat systems as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aerialx-features",
+          "sourceId": "aerialx-official",
+          "fieldPath": "capabilities.aerialx-counter-drone-detection-and-defeat-systems.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of Counter-drone detection and defeat systems; the feature list is intentionally limited to public wording.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aerialx-activity",
+          "sourceId": "aerialx-home",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "AerialX's current public pages describe a Vancouver company working across counter-drone detection, defeat and tactical microdrone systems. The record preserves the company's public product framing without asserting regulatory approval, operational deployment or customer adoption.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aerialx-contact",
+          "sourceId": "aerialx-home",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for AerialX; no personal contact data is collected.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aerialx-mission",
+          "sourceId": "aerialx-official",
+          "fieldPath": "capabilities.aerialx-counter-drone-detection-and-defeat-systems.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described Counter-drone detection and defeat systems could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        }
+      ],
+      "organization": {
+        "slug": "aerialx",
+        "name": "AerialX",
+        "legalName": null,
+        "aliases": [
+          "AerialX Drone Solutions",
+          "AerialX Inc."
+        ],
+        "description": "AerialX is a Vancouver uncrewed-aircraft company describing counter-drone detection, investigation and defeat systems alongside tactical microdrone platforms.",
+        "websiteUrl": "https://www.aerialx.com/about/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "AerialX's current public pages describe a Vancouver company working across counter-drone detection, defeat and tactical microdrone systems. The record preserves the company's public product framing without asserting regulatory approval, operational deployment or customer adoption.",
+          "publicContactPath": "Use the official AerialX website at https://www.aerialx.com/about/ for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "aerialx-counter-drone-detection-and-defeat-systems",
+          "name": "Counter-drone detection and defeat systems",
+          "summary": "AerialX publicly describes counter-drone detection and defeat systems for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Uncrewed-aircraft countermeasure systems",
+          "features": [
+            "Counter-drone detection",
+            "Kinetic defeat concept",
+            "Tactical microdrone systems"
+          ],
+          "applications": [
+            "Counter-UAS assessment",
+            "Site defence exercises",
+            "Tactical uncrewed-aircraft operations"
+          ],
+          "technicalTags": [
+            "counter-UAS",
+            "drone systems",
+            "tactical autonomy"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Counter-drone detection and defeat systems could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-08-03T02:44:23.214Z",
+        "note": "No eligible high- or medium-confidence official logo was returned."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-dartmouth-ocean-technologies",
+      "sourceLeadIds": [
+        "lead-dartmouth-ocean-technologies"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Dartmouth Ocean Technologies is recommended as a private amber candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. Dartmouth Ocean Technologies is a Dartmouth, Nova Scotia ocean-technology company developing eDNA samplers, lab-on-chip sensors and underwater environmental-monitoring systems. Dartmouth Ocean Technologies' current public pages describe a Nova Scotia ocean-technology company building eDNA samplers and lab-on-chip underwater sensing tools. The candidate is relevant to underwater monitoring but does not imply defence deployment or a classified requirement. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The company and ocean-cluster sources support the technical direction, but an independent current defence customer or procurement signal was not recovered; keep the mission fit derived."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "dartmouth-ocean-technologies-official",
+          "title": "Dartmouth Ocean Technologies about page",
+          "url": "https://www.dartmouthocean.com/about-us/",
+          "publisher": "Dartmouth Ocean Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Company identity and underwater sensing portfolio",
+          "summary": "Dartmouth Ocean Technologies describes a Dartmouth, Nova Scotia company developing eDNA samplers and lab-on-chip ocean sensors."
+        },
+        {
+          "id": "dartmouth-ocean-technologies-home",
+          "title": "Dartmouth Ocean Technologies official site",
+          "url": "https://www.dartmouthocean.com/",
+          "publisher": "Dartmouth Ocean Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Current products and marine applications",
+          "summary": "The official site presents the current underwater sensing and marine-monitoring portfolio used in the candidate."
+        },
+        {
+          "id": "dartmouth-ocean-technologies-ocean",
+          "title": "Canada's Ocean Supercluster annual report",
+          "url": "https://oceansupercluster.ca/wp-content/uploads/2022/09/OSC_Annual-Report_Sept-12.pdf",
+          "publisher": "Canada's Ocean Supercluster",
+          "sourceKind": "official_report",
+          "publishedAt": "2022-09-12T00:00:00.000Z",
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Member and project ecosystem context",
+          "summary": "The Canada Ocean Supercluster annual report provides durable Canadian ocean-technology ecosystem context; it is not treated as proof of a current Dartmouth contract."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-dartmouth-ocean-technologies-description",
+          "sourceId": "dartmouth-ocean-technologies-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Dartmouth Ocean Technologies's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dartmouth-ocean-technologies-location",
+          "sourceId": "dartmouth-ocean-technologies-home",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports Dartmouth Ocean Technologies's operating presence in Dartmouth, Nova Scotia, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dartmouth-ocean-technologies-capability",
+          "sourceId": "dartmouth-ocean-technologies-official",
+          "fieldPath": "capabilities.dartmouth-ocean-technologies-underwater-environmental-sensing-and-edna-sampling.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports Underwater environmental sensing and eDNA sampling as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dartmouth-ocean-technologies-features",
+          "sourceId": "dartmouth-ocean-technologies-official",
+          "fieldPath": "capabilities.dartmouth-ocean-technologies-underwater-environmental-sensing-and-edna-sampling.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of Underwater environmental sensing and eDNA sampling; the feature list is intentionally limited to public wording.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dartmouth-ocean-technologies-activity",
+          "sourceId": "dartmouth-ocean-technologies-home",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Dartmouth Ocean Technologies' current public pages describe a Nova Scotia ocean-technology company building eDNA samplers and lab-on-chip underwater sensing tools. The candidate is relevant to underwater monitoring but does not imply defence deployment or a classified requirement.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dartmouth-ocean-technologies-contact",
+          "sourceId": "dartmouth-ocean-technologies-home",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for Dartmouth Ocean Technologies; no personal contact data is collected.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dartmouth-ocean-technologies-mission",
+          "sourceId": "dartmouth-ocean-technologies-official",
+          "fieldPath": "capabilities.dartmouth-ocean-technologies-underwater-environmental-sensing-and-edna-sampling.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described Underwater environmental sensing and eDNA sampling could contribute to underwater monitoring decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        }
+      ],
+      "organization": {
+        "slug": "dartmouth-ocean-technologies",
+        "name": "Dartmouth Ocean Technologies",
+        "legalName": null,
+        "aliases": [
+          "DOT",
+          "Dartmouth Ocean Technologies Inc."
+        ],
+        "description": "Dartmouth Ocean Technologies is a Dartmouth, Nova Scotia ocean-technology company developing eDNA samplers, lab-on-chip sensors and underwater environmental-monitoring systems.",
+        "websiteUrl": "https://www.dartmouthocean.com/about-us/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Dartmouth",
+          "provinceTerritory": "Nova Scotia",
+          "countryCode": "CA",
+          "latitude": 44.6713,
+          "longitude": -63.5772,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Dartmouth Ocean Technologies' current public pages describe a Nova Scotia ocean-technology company building eDNA samplers and lab-on-chip underwater sensing tools. The candidate is relevant to underwater monitoring but does not imply defence deployment or a classified requirement.",
+          "publicContactPath": "Use the official Dartmouth Ocean Technologies website at https://www.dartmouthocean.com/about-us/ for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "dartmouth-ocean-technologies-underwater-environmental-sensing-and-edna-sampling",
+          "name": "Underwater environmental sensing and eDNA sampling",
+          "summary": "Dartmouth Ocean Technologies publicly describes underwater environmental sensing and edna sampling for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Ocean sensing and lab-on-chip instrumentation",
+          "features": [
+            "Environmental DNA sampling",
+            "Lab-on-chip sensing",
+            "Underwater deployment"
+          ],
+          "applications": [
+            "Underwater monitoring",
+            "Marine ecosystem assessment",
+            "Autonomous ocean-data collection"
+          ],
+          "technicalTags": [
+            "ocean technology",
+            "eDNA",
+            "underwater sensing"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "The publicly described Underwater environmental sensing and eDNA sampling could contribute to underwater monitoring decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.dartmouthocean.com/about-us/",
+        "sourceAssetUrl": "https://www.dartmouthocean.com/wp-content/uploads/2025/04/DOT-Logo-For-OI24-Remarketing.jpg",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "6369b2c466b847580e2124cfa3dd202efe03c82417f7d3a991021e60c10a4b75",
+        "normalizedChecksum": "db0e383f79c7819c4e79326db94237ff60ea420c2a1acc7efcddcde28839338d",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-weekly-2026-08-03/candidate-dartmouth-ocean-technologies/logo.source.json",
+        "note": "512x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-qii-ai",
+      "sourceLeadIds": [
+        "lead-qii-ai"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Qii.AI is recommended as a private amber candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. Qii.AI is a Toronto engineering-software company developing virtual inspection, 3D defect intelligence and machine-learning tools that turn expert inspection data into repeatable asset analytics. Qii.AI's current public pages describe a Toronto virtual-inspection platform that combines engineering expertise, 3D models and machine learning. A Canada Ocean Supercluster project page publicly describes Qii.AI's participation in an AI ROV ship-modelling and detection project; the record does not infer current procurement or naval deployment beyond that public project evidence. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The public project evidence is time-bounded and the company-authored product pages contain broad performance framing; reviewers should confirm current legal identity, product status and the precise project relationship before publication."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "qii-ai-official",
+          "title": "Qii.AI official site",
+          "url": "https://qii.ai/",
+          "publisher": "Qii.AI",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Virtual inspection and company mission",
+          "summary": "Qii.AI describes a Toronto engineering-domain-transfer platform that combines virtual inspection, machine learning and 3D defect intelligence."
+        },
+        {
+          "id": "qii-ai-technology",
+          "title": "Qii.AI AI inspection page",
+          "url": "https://qii.ai/ai/",
+          "publisher": "Qii.AI",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "3D models, analytics and ground-truth workflow",
+          "summary": "Qii.AI's technical page describes 3D model processing, defect analytics, databases of record and human-in-the-loop training workflows."
+        },
+        {
+          "id": "qii-ai-ocean",
+          "title": "Canada's Ocean Supercluster announces AI ROV ship modelling project",
+          "url": "https://oceansupercluster.ca/project/canadas-ocean-supercluster-announces-8m-ai-rov-ship-modeling-and-detection-project/",
+          "publisher": "Canada's Ocean Supercluster",
+          "sourceKind": "official_report",
+          "publishedAt": "2023-09-12T00:00:00.000Z",
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Project partners and inspection-data workflow",
+          "summary": "The Canada Ocean Supercluster project page names Qii.AI in a public AI ROV ship-modelling and detection project with Canadian ocean and defence participants."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-qii-ai-description",
+          "sourceId": "qii-ai-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Qii.AI's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-qii-ai-location",
+          "sourceId": "qii-ai-technology",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports Qii.AI's operating presence in Toronto, Ontario, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-qii-ai-capability",
+          "sourceId": "qii-ai-official",
+          "fieldPath": "capabilities.qii-ai-ai-assisted-virtual-inspection-and-3d-defect-intelligence.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports AI-assisted virtual inspection and 3D defect intelligence as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-qii-ai-features",
+          "sourceId": "qii-ai-official",
+          "fieldPath": "capabilities.qii-ai-ai-assisted-virtual-inspection-and-3d-defect-intelligence.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of AI-assisted virtual inspection and 3D defect intelligence; the feature list is intentionally limited to public wording.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-qii-ai-activity",
+          "sourceId": "qii-ai-technology",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Qii.AI's current public pages describe a Toronto virtual-inspection platform that combines engineering expertise, 3D models and machine learning. A Canada Ocean Supercluster project page publicly describes Qii.AI's participation in an AI ROV ship-modelling and detection project; the record does not infer current procurement or naval deployment beyond that public project evidence.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-qii-ai-contact",
+          "sourceId": "qii-ai-technology",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for Qii.AI; no personal contact data is collected.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-qii-ai-mission",
+          "sourceId": "qii-ai-official",
+          "fieldPath": "capabilities.qii-ai-ai-assisted-virtual-inspection-and-3d-defect-intelligence.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described AI-assisted virtual inspection and 3D defect intelligence could contribute to underwater monitoring decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        },
+        {
+          "id": "evidence-qii-ai-relationship",
+          "sourceId": "qii-ai-ocean",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "A Canada Ocean Supercluster project page names Qii.AI as a collaborator in an AI ROV ship-modelling and detection project; this is time-bounded public project evidence, not proof of a current procurement or naval deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "qii-ai",
+        "name": "Qii.AI",
+        "legalName": null,
+        "aliases": [
+          "Qii AI",
+          "Qii.AI Inc."
+        ],
+        "description": "Qii.AI is a Toronto engineering-software company developing virtual inspection, 3D defect intelligence and machine-learning tools that turn expert inspection data into repeatable asset analytics.",
+        "websiteUrl": "https://qii.ai/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Qii.AI's current public pages describe a Toronto virtual-inspection platform that combines engineering expertise, 3D models and machine learning. A Canada Ocean Supercluster project page publicly describes Qii.AI's participation in an AI ROV ship-modelling and detection project; the record does not infer current procurement or naval deployment beyond that public project evidence.",
+          "publicContactPath": "Use the official Qii.AI website at https://qii.ai/ for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "qii-ai-ai-assisted-virtual-inspection-and-3d-defect-intelligence",
+          "name": "AI-assisted virtual inspection and 3D defect intelligence",
+          "summary": "Qii.AI publicly describes ai-assisted virtual inspection and 3d defect intelligence for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Inspection AI and three-dimensional asset analytics",
+          "features": [
+            "3D model inspection",
+            "Defect segmentation and measurement",
+            "Human-in-the-loop machine learning"
+          ],
+          "applications": [
+            "Ship and infrastructure inspection",
+            "Condition reporting",
+            "Remote asset assessment"
+          ],
+          "technicalTags": [
+            "inspection AI",
+            "3D analytics",
+            "asset intelligence"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "The publicly described AI-assisted virtual inspection and 3D defect intelligence could contribute to underwater monitoring decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canada's Ocean Supercluster",
+          "relationshipType": "Public project collaboration",
+          "publicSummary": "A Canada Ocean Supercluster project page names Qii.AI as a collaborator in an AI ROV ship-modelling and detection project; this is time-bounded public project evidence, not proof of a current procurement or naval deployment."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://qii.ai/",
+        "sourceAssetUrl": "https://qii.ai/wp-content/uploads/2025/03/bitmap.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "ba20d4ab4952a92e2eb1c04303e3e9ddcef5314eca21a34c57540b0c3fc81441",
+        "normalizedChecksum": "d8b5da248faacd0ee2b1a6b15d37b4f1d79760fdb3ed9f077de4e038fe6b24a2",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-weekly-2026-08-03/candidate-qii-ai/logo.source.json",
+        "note": "400x400 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-apis-dynamics",
+      "sourceLeadIds": [
+        "lead-apis-dynamics"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "APIS Dynamics is recommended as a private amber candidate because durable public evidence supports a Canadian operating presence and a concrete capability relevant to the unmatched deep-strike demand gap. APIS Dynamics is a Toronto uncrewed-systems company developing control software, vehicle integration and flight-test services for autonomous aircraft and other uncrewed platforms. APIS Dynamics' current public site describes a Toronto uncrewed-systems company combining control software, integration and flight-test operations. The public record supports a bounded technology and test role; it does not establish a current defence contract or operational adoption. The candidate keeps mission fit derived, keeps procurement and deployment uncertainty visible, and avoids implying classified demand, endorsement or operational adoption. Review the legal identity, capability boundary, current activity, source independence and any relationship wording before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The public capability and test-site descriptions are company-authored; verify the legal entity, current test-site status and independent customer or programme evidence before publication."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-03T02:44:22.490Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organizations and current pending candidate identities were checked before construction; no exact name, legal-name, domain, slug or alias match was found. Human review must recheck before publication."
+      },
+      "sources": [
+        {
+          "id": "apis-dynamics-official",
+          "title": "APIS Dynamics official site",
+          "url": "https://apisdynamics.ca/",
+          "publisher": "APIS Dynamics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Company identity and uncrewed-systems capability",
+          "summary": "APIS Dynamics describes a Toronto company working on uncrewed vehicle control software, integration and flight-test operations."
+        },
+        {
+          "id": "apis-dynamics-test",
+          "title": "APIS Dynamics test and operations material",
+          "url": "https://apisdynamics.ca/",
+          "publisher": "APIS Dynamics",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Public test-site and operations description",
+          "summary": "The official APIS site provides the public test and integration context used for the bounded capability statement."
+        },
+        {
+          "id": "apis-dynamics-program",
+          "title": "Defence Ideas programme overview",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-03T02:44:22.490Z",
+          "locator": "Canadian defence innovation context",
+          "summary": "The IDEaS overview provides Canadian defence-innovation context for a derived mission fit and is not a company-specific award or customer claim."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-apis-dynamics-description",
+          "sourceId": "apis-dynamics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "APIS Dynamics's official public material supports its Canadian identity and the bounded capability description used in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apis-dynamics-location",
+          "sourceId": "apis-dynamics-test",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Durable public material supports APIS Dynamics's operating presence in Toronto, Ontario, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apis-dynamics-capability",
+          "sourceId": "apis-dynamics-official",
+          "fieldPath": "capabilities.apis-dynamics-uncrewed-vehicle-control-and-flight-test-integration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports Uncrewed vehicle control and flight-test integration as a bounded public offering; no uncited performance or customer claim is added.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apis-dynamics-features",
+          "sourceId": "apis-dynamics-official",
+          "fieldPath": "capabilities.apis-dynamics-uncrewed-vehicle-control-and-flight-test-integration.features",
+          "claimClass": "source_backed",
+          "excerpt": "The official material supports the listed features of Uncrewed vehicle control and flight-test integration; the feature list is intentionally limited to public wording.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apis-dynamics-activity",
+          "sourceId": "apis-dynamics-test",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "APIS Dynamics' current public site describes a Toronto uncrewed-systems company combining control software, integration and flight-test operations. The public record supports a bounded technology and test role; it does not establish a current defence contract or operational adoption.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apis-dynamics-contact",
+          "sourceId": "apis-dynamics-test",
+          "fieldPath": "organization.profileData.publicContactPath",
+          "claimClass": "source_backed",
+          "excerpt": "The official public website provides a durable contact path for APIS Dynamics; no personal contact data is collected.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apis-dynamics-mission",
+          "sourceId": "apis-dynamics-official",
+          "fieldPath": "capabilities.apis-dynamics-uncrewed-vehicle-control-and-flight-test-integration.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The publicly described Uncrewed vehicle control and flight-test integration could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+          "confidence": "needs_review"
+        }
+      ],
+      "organization": {
+        "slug": "apis-dynamics",
+        "name": "APIS Dynamics",
+        "legalName": null,
+        "aliases": [
+          "APIS",
+          "APIS Dynamics Inc."
+        ],
+        "description": "APIS Dynamics is a Toronto uncrewed-systems company developing control software, vehicle integration and flight-test services for autonomous aircraft and other uncrewed platforms.",
+        "websiteUrl": "https://apisdynamics.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "APIS Dynamics' current public site describes a Toronto uncrewed-systems company combining control software, integration and flight-test operations. The public record supports a bounded technology and test role; it does not establish a current defence contract or operational adoption.",
+          "publicContactPath": "Use the official APIS Dynamics website at https://apisdynamics.ca/ for a public company contact path; no personal contact details were collected.",
+          "evidenceBoundary": "Public sources support the identity, location and bounded offering. Mission mappings are derived, while procurement eligibility, customer interest, classified demand and operational adoption remain unproven unless separately cited.",
+          "reviewPosture": "Private Admin Review only; reviewers should confirm legal identity, current activity, source independence and any relationship before publication."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "apis-dynamics-uncrewed-vehicle-control-and-flight-test-integration",
+          "name": "Uncrewed vehicle control and flight-test integration",
+          "summary": "APIS Dynamics publicly describes uncrewed vehicle control and flight-test integration for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+          "capabilityType": "Autonomous vehicle software and test operations",
+          "features": [
+            "Uncrewed vehicle control",
+            "Autonomy integration",
+            "Flight-test operations"
+          ],
+          "applications": [
+            "Autonomous aircraft testing",
+            "Mission-system integration",
+            "Uncrewed platform evaluation"
+          ],
+          "technicalTags": [
+            "uncrewed systems",
+            "flight testing",
+            "autonomy"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Uncrewed vehicle control and flight-test integration could contribute to autonomous patrol, sensing or mission-data decisions. This is a derived mapping for reviewer assessment and does not establish classified demand, procurement eligibility, endorsement or operational adoption.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://apisdynamics.ca/",
+        "sourceAssetUrl": "https://apisdynamics.ca/static/assets/img/favicon.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "807a9142f1140408de828b6146b919b5471254b6f39e7dcaf65ea5175d574fd8",
+        "normalizedChecksum": "e97107e8718955b92b79fcba9ad32646974aa42d1ee79283482d29b9434d0a25",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-weekly-2026-08-03/candidate-apis-dynamics/logo.source.json",
+        "note": "413x414 normalized WebP retained in the private candidate packet."
+      }
+    }
+  ],
+  "deferred": []
+}

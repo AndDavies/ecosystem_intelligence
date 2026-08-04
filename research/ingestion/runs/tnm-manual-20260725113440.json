@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260725113440",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "research_test_centre"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:research_test_centre",
+    "reason": "3 published or pending research test centre records cover only 25% of the working saturation target of 12.",
+    "score": 888
+  },
+  "status": "completed",
+  "startedAt": "2026-07-25T10:00:00.000Z",
+  "completedAt": "2026-07-25T11:30:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Canadian research test centres defence aerospace maritime dual-use",
+    "David Florida Laboratory spacecraft assembly integration testing Canada",
+    "Canadian ocean observatories maritime research test facilities",
+    "Canadian advanced manufacturing and mobility research centres",
+    "Canadian national research facilities advanced materials and sensors",
+    "Canadian autonomous systems and DIANA test centres",
+    "Canadian university defence and dual-use applied research centres"
+  ],
+  "counters": {
+    "sourcesChecked": 60,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 6,
+    "prospectsDiscovered": 50,
+    "uniqueProspects": 50,
+    "prospectsQueued": 30,
+    "recoveryAttempts": 39,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 7,
+    "candidatesAmber": 3
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Three candidates have non-blocking parent-boundary or broad-mandate questions and are routed to amber review."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed discovery batch with 50 prospects across eight source lanes, ten qualified research and test centre leads, and ten candidates for private Admin Review.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260725113440.json",
+    "signalBatch": null,
+    "candidateLogoPacket": "research/ingestion/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260725113440.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260725113440.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260725113440.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260725113440.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260725113440.json"
+  }
+}

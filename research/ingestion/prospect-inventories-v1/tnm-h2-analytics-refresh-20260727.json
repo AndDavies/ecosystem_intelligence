@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-h2-analytics-refresh-20260727-prospects",
+  "runId": "tnm-h2-analytics-refresh-20260727",
+  "createdAt": "2026-07-27T10:47:00.000Z",
+  "scope": "Named-organization deep dossier refresh for published H2 Analytics Inc., covering its EASE product, current Department of National Defence procurement, NRC IRAP-supported live-virtual-constructive simulation work, and independently reported defence-sector activity.",
+  "prospects": [
+    {
+      "id": "prospect-h2-analytics-refresh",
+      "name": "H2 Analytics",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.h2analytics.ca/",
+      "discoverySourceUrl": "https://www.h2analytics.ca/ease-platform/",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Published Ottawa company H2 Analytics has durable new public evidence for its EASE platform's detailed product workflow, an amended DND contract, NRC IRAP-supported LVC integration, and current Canadian defence-sector participation.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.h2analytics.ca/ease-platform/",
+          "outcome": "The official EASE product page resolves a concrete workflow for AI-enabled entity and intelligence-inject generation, external simulation integration, exercise control and after-action assessment."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428966-000",
+          "outcome": "CanadaBuys confirms the amended value, term, supplier, procurement method and DND buying organization for the current EASE software contract."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019001%2Ccurrent",
+          "outcome": "The NRC IRAP contribution record identifies a funded integrated LVC or simulation module for EASE, including value, period, legal recipient and purpose."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://obj.ca/five-hottest-ottawa-startups-in-defence-and-cybersecurity/",
+          "outcome": "An Ottawa Business Journal and Invest Ottawa feature independently corroborates H2's Ottawa presence, EASE market, customer segments and growth milestones; individual performance counts remain attributed to that publication."
+        }
+      ]
+    },
+    {
+      "id": "prospect-h2-dnd-ease-contract",
+      "name": "H2 Analytics DND EASE contract",
+      "proposedEntityType": "program",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428966-000",
+      "discoverySourceUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428966-000",
+      "discoveryLane": "government_awards",
+      "countryCode": "CA",
+      "fitSummary": "CanadaBuys identifies a current, amended DND software contract for H2 Analytics' EASE platform; the public contract is retained inside the company's refresh bundle rather than becoming a standalone candidate.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_awards",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428966-000",
+          "outcome": "The public record resolves contract number, vendor, buyer, procurement method, amendment, total value and term."
+        }
+      ]
+    },
+    {
+      "id": "prospect-h2-nrc-irap-lvc-module",
+      "name": "H2 Analytics NRC IRAP integrated LVC/simulation module",
+      "proposedEntityType": "program",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019001%2Ccurrent",
+      "discoverySourceUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019001%2Ccurrent",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "NRC IRAP identifies a specific H2 Analytics contribution to integrate simulation capabilities into EASE for readiness training; it is retained as a nested program in the published H2 refresh bundle.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019001%2Ccurrent",
+          "outcome": "The official grants record resolves the legal recipient, agreement value, period, program, amendment history and intended EASE simulation-integration outcome."
+        }
+      ]
+    }
+  ]
+}

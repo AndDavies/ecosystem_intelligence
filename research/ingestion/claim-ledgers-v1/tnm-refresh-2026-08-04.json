@@ -1,0 +1,436 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-refresh-2026-08-04-claim-ledger",
+  "runId": "tnm-refresh-2026-08-04",
+  "createdAt": "2026-08-04T15:05:32.911Z",
+  "completedAt": "2026-08-04T15:05:32.911Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-marconi-nexus-dnd-en",
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "is a key participant in the selected NEXUS consortium",
+      "value": "DND identifies Marconi Technologies as a key participant in the selected Espace Aéro-led consortium establishing the NEXUS Uncrewed Systems Defence Innovation Secure Hub at YMX Innovation Centre.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "publishedAt": "2026-07-14T00:00:00.000Z",
+        "effectiveFrom": "2026-07-14T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "dnd-nexus-marconi-2026-en",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "locator": "dnd-nexus-backgrounder-en-selected-consortium",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "dnd-nexus-backgrounder-en-selected-consortium",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "dnd:nexus:selected-consortium:2026-07-14"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "marconi-technologies-refresh-20260804",
+          "fieldPath": "operations.add-marconi-nexus-relationship.value",
+          "operationId": "add-marconi-nexus-relationship"
+        }
+      ],
+      "analystNote": "The source establishes named consortium participation, not a direct Marconi funding allocation, procurement award, work package, or CAF adoption."
+    },
+    {
+      "claimId": "claim-marconi-nexus-dnd-fr",
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "is also named in the French NEXUS consortium record",
+      "value": "The French DND backgrounder also names Marconi Technologies among the key participants in the selected consortium for the national UxS capability acceleration hub.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "publishedAt": "2026-07-14T00:00:00.000Z",
+        "effectiveFrom": "2026-07-14T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "dnd-nexus-marconi-2026-fr",
+        "originalUrl": "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html",
+        "canonicalUrl": "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html",
+        "locator": "dnd-nexus-backgrounder-fr-selected-consortium",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "dnd-nexus-backgrounder-fr-selected-consortium",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "dnd:nexus:selected-consortium:2026-07-14"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "marconi-technologies-refresh-20260804",
+          "fieldPath": "operations.add-marconi-nexus-relationship.value",
+          "operationId": "add-marconi-nexus-relationship"
+        }
+      ],
+      "analystNote": "This bilingual source is the same DND evidence family as the English page and is not counted as independent corroboration."
+    },
+    {
+      "claimId": "claim-marconi-nexus-cadsi",
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "is independently listed among NEXUS coalition SMEs",
+      "value": "CADSI-hosted member news from DARIT Technologies independently lists Marconi Technologies among the Canadian SMEs participating in the NEXUS coalition based at YMX Innovation Centre.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "publishedAt": "2026-07-15T00:00:00.000Z",
+        "effectiveFrom": "2026-07-15T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "cadsi-darit-nexus-partners-2026",
+        "originalUrl": "https://www.defenceandsecurity.ca/fr/member-news/darit-technologies-is-a-partner-in-dish-nexus",
+        "canonicalUrl": "https://www.defenceandsecurity.ca/fr/member-news/darit-technologies-is-a-partner-in-dish-nexus",
+        "locator": "darit-nexus-member-news",
+        "sourceChannel": "source_book",
+        "sourceFamily": "darit-nexus-member-news",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "darit:nexus:member-news:2026-07-15"
+      },
+      "status": "corroborated",
+      "independentClaimIds": [
+        "claim-marconi-nexus-dnd-en"
+      ],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "marconi-technologies-refresh-20260804",
+          "fieldPath": "operations.add-marconi-nexus-relationship.value",
+          "operationId": "add-marconi-nexus-relationship"
+        }
+      ],
+      "analystNote": "DARIT's participant list corroborates membership but does not establish Marconi's specific work package or receipt of hub funding."
+    },
+    {
+      "claimId": "claim-marconi-ara-partnership",
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has a strategic development partnership with ARA Robotics",
+      "value": "ARA Robotics announces a strategic partnership with Marconi Technologies intended to combine ARA uncrewed aerial systems and autonomous-platform expertise with Marconi secure communications and mission-critical systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "publishedAt": "2026-05-26T00:00:00.000Z",
+        "effectiveFrom": "2026-05-26T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "ara-marconi-partnership-2026",
+        "originalUrl": "https://www.ara-uas.com/latest-news",
+        "canonicalUrl": "https://www.ara-uas.com/latest-news",
+        "locator": "ara-official-marconi-partnership",
+        "sourceChannel": "official_company",
+        "sourceFamily": "ara-official-marconi-partnership",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "ara:marconi:partnership:2026-05-26"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "marconi-technologies-refresh-20260804",
+          "fieldPath": "operations.add-marconi-ara-relationship.value",
+          "operationId": "add-marconi-ara-relationship"
+        }
+      ],
+      "analystNote": "The durable ARA page supports a strategic development relationship, but not a deployed product, contract value, customer, or delivery milestone."
+    },
+    {
+      "claimId": "claim-marconi-current-portfolio",
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "continues to describe the published tactical communications portfolio",
+      "value": "Marconi's official site continues to describe Orion tactical radios, Archer troposcatter, Hunter tactical SATCOM, development-stage SAMS, and development-stage cryptographic work from its Montréal headquarters.",
+      "unit": null,
+      "material": false,
+      "temporal": {
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "marconi-official-portfolio-2026",
+        "originalUrl": "https://marconi-technologies.com/",
+        "canonicalUrl": "https://marconi-technologies.com/",
+        "locator": "marconi-official-current-portfolio",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi-official-current-portfolio",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "marconi:official-site:portfolio:2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "These details are already represented in the published organization and capabilities, so no duplicate operation is proposed."
+    },
+    {
+      "claimId": "claim-marconi-legal-name-boundary",
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has an unresolved public legal-name boundary",
+      "value": "The official website footer uses Marconi Inc., while no authoritative Canadian corporate-registry record resolving that exact name to the published Marconi Technologies identity was recovered in this run.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "marconi-official-portfolio-2026",
+        "originalUrl": "https://marconi-technologies.com/",
+        "canonicalUrl": "https://marconi-technologies.com/",
+        "locator": "marconi-official-footer",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi-official-footer",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "marconi:official-site:footer:2026"
+      },
+      "status": "unresolved",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [
+        {
+          "candidateId": "marconi-technologies-refresh-20260804",
+          "fieldPath": "reviewWarnings",
+          "operationId": null
+        }
+      ],
+      "analystNote": "LegalName remains unchanged and null; the unresolved footer wording is preserved for reviewer awareness."
+    },
+    {
+      "claimId": "claim-marconi-safe-contract-already-current",
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has a government-confirmed ORION contract already represented in the live record",
+      "value": "The Prime Minister's Office states that Marconi received a contract exceeding C$10 million to supply made-in-Canada ORION tactical radios to Polish Cyber Command, with deliveries expected through 2030 and Enamor International as partner.",
+      "unit": "CAD",
+      "material": false,
+      "temporal": {
+        "observedAt": "2026-08-04T15:05:32.911Z",
+        "publishedAt": "2026-06-15T00:00:00.000Z",
+        "effectiveFrom": "2026-06-15T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "pmo-marconi-safe-contract-2026",
+        "originalUrl": "https://www.pm.gc.ca/en/news/readouts/2026/06/15/prime-minister-carney-meets-european-council-president-antonio-costa-and",
+        "canonicalUrl": "https://www.pm.gc.ca/en/news/readouts/2026/06/15/prime-minister-carney-meets-european-council-president-antonio-costa-and",
+        "locator": "pmo-marconi-safe-contract",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "pmo-marconi-safe-contract",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "pmo:marconi:safe-contract:2026-06-15"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "The contract, Enamor relationship, delivery window, and Canadian supplier-base context are already represented, so no redundant operation is proposed."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "name": "Marconi Technologies",
+      "candidateIds": [
+        "marconi-technologies-refresh-20260804"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-marconi-current-portfolio",
+            "claim-marconi-legal-name-boundary"
+          ],
+          "attempts": [
+            "Checked the live organization row, official Marconi site, federal registry search results, and acquisition announcement."
+          ],
+          "note": "The published identity and website are stable, but the Marconi Inc. footer has not been resolved to an authoritative legal-name record."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-current-portfolio",
+            "claim-marconi-safe-contract-already-current"
+          ],
+          "attempts": [
+            "Checked the official Montréal address and the Prime Minister's Montréal-based company description in English and French."
+          ],
+          "note": "The active Montréal headquarters and Canadian manufacturing context remain well supported."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-current-portfolio"
+          ],
+          "attempts": [
+            "Reviewed the official mission and current product sections."
+          ],
+          "note": "The resilient tactical communications and mission-systems mandate is already represented in the published record."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-current-portfolio"
+          ],
+          "attempts": [
+            "Reviewed the current Orion, Archer, Hunter, SAMS, cryptography, and datasheet routes; no material specification change was found."
+          ],
+          "note": "The current product-family detail remains represented; this refresh does not duplicate it."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-marconi-current-portfolio",
+            "claim-marconi-safe-contract-already-current"
+          ],
+          "attempts": [
+            "Compared official product maturity wording, the existing Polish delivery timeline, and NEXUS program context."
+          ],
+          "note": "Fielded tactical communications and the Polish delivery program are supported; SAMS and cryptography remain development-stage."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-nexus-dnd-en",
+            "claim-marconi-nexus-cadsi",
+            "claim-marconi-safe-contract-already-current"
+          ],
+          "attempts": [
+            "Checked DND NEXUS, CADSI member news, PMO contract evidence, and the published relationship baseline."
+          ],
+          "note": "The record can add NEXUS participation while retaining the already-published Poland and Enamor context."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-marconi-nexus-dnd-en",
+            "claim-marconi-safe-contract-already-current"
+          ],
+          "attempts": [
+            "Checked DND's competitive consortium description and PMO contract readout; no new Marconi-specific CanadaBuys award was recovered."
+          ],
+          "note": "NEXUS participation and the Polish award are public program and contract context, not evidence of a direct NEXUS award to Marconi or future procurement eligibility."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-ara-partnership",
+            "claim-marconi-nexus-dnd-en",
+            "claim-marconi-nexus-cadsi"
+          ],
+          "attempts": [
+            "Checked ARA's official partner page, DND's selected consortium list, CADSI member news, and the existing Marconi relationships."
+          ],
+          "note": "Two omitted public relationships are supported; no new financing claim is proposed."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-marconi-current-portfolio"
+          ],
+          "attempts": [
+            "Checked the official website's demo, location, and public-navigation routes; no new contact field beyond the published record was required."
+          ],
+          "note": "The official site remains the public contact route and the published sales contact is unchanged."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-nexus-dnd-en",
+            "claim-marconi-ara-partnership",
+            "claim-marconi-safe-contract-already-current"
+          ],
+          "attempts": [
+            "Reviewed official company, partner, federal program, contract, association, French-language, and event surfaces."
+          ],
+          "note": "Current activity includes two omitted relationships plus already-published contract and evaluation context."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-nexus-dnd-en",
+            "claim-marconi-nexus-cadsi",
+            "claim-marconi-ara-partnership",
+            "claim-marconi-safe-contract-already-current"
+          ],
+          "attempts": [
+            "Used Marconi, ARA Robotics, DND English and French, PMO, CADSI/DARIT, Source Book, and broad-web lanes."
+          ],
+          "note": "Evidence spans company, partner, federal government, bilingual government, association-member, and Source Book families."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-marconi-legal-name-boundary",
+            "claim-marconi-nexus-dnd-en",
+            "claim-marconi-nexus-cadsi"
+          ],
+          "attempts": [
+            "Compared the official-site footer with the published legalName and compared DND and DARIT consortium language for role and funding boundaries."
+          ],
+          "note": "No relationship conflict was found, but legal name and Marconi's precise NEXUS work package and funding share remain unresolved."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 1,
+        "stopReason": "After official company, government, partner, Source Book, bilingual, registry, and industry lanes, the last two complementary lanes added only role-boundary corroboration and no further material change."
+      }
+    }
+  ],
+  "warnings": [
+    "The live target is already published; this ledger supports one additive organization refresh candidate rather than a new organization record.",
+    "The NEXUS funding amount applies to the consortium and must not be represented as a Marconi award or allocation.",
+    "Social and search-result surfaces were discovery only and were not used as field evidence.",
+    "The legal name remains unresolved because the official footer says Marconi Inc. but no authoritative registry match was recovered."
+  ]
+}

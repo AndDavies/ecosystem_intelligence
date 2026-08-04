@@ -1,0 +1,285 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-refresh-2026-08-04",
+  "runId": "tnm-refresh-2026-08-04",
+  "title": "Marconi Technologies additive relationship refresh",
+  "status": "candidate",
+  "createdAt": "2026-08-04T15:05:32.911Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "published-record-refresh:marconi-technologies",
+    "reason": "Current durable public sources support two material relationships absent from the published Marconi Technologies record.",
+    "score": 995
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-refresh-2026-08-04.json",
+  "guardrailNotes": [
+    "This is one private additive organization refresh candidate for the existing published Marconi Technologies record; it does not create a duplicate organization.",
+    "NEXUS participation and the ARA partnership are proposed only as evidence-bounded relationships; product, funding, contract, procurement, and deployment claims remain unchanged unless explicitly supported.",
+    "Public program participation does not establish procurement eligibility, endorsement, customer interest, classified access, direct funding, or operational adoption."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "marconi-technologies-refresh-20260804",
+      "sourceLeadIds": [
+        "lead-marconi-nexus-ara-refresh-20260804"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Marconi Technologies is already published with a strong identity, tactical-communications portfolio, Polish ORION contract, Enamor relationship, and Swedish Archer evaluation. This additive refresh proposes two omitted, durable public relationships. DND's English and French NEXUS backgrounders name Marconi as a key participant in the selected Espace Aéro-led UxS DISH consortium, independently corroborated by DARIT member news hosted by CADSI. ARA Robotics' official news page separately announces a strategic partnership combining uncrewed platforms with Marconi's secure communications and mission-critical systems. The refresh is amber because neither source set identifies Marconi's precise NEXUS work package or funding share, and ARA publishes no product configuration, customer, contract value, or delivery milestone. The reviewer should keep these as bounded relationships, leave legalName null, and avoid inferring procurement eligibility, endorsement, classified access, contract status, or operational adoption.",
+      "reviewTier": "amber",
+      "inclusionScore": 96,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "This is an additive refresh to published Marconi Technologies record a65636c7-19d2-4f42-83a7-e692780d38de, not a new organization.",
+        "DND names Marconi as a key NEXUS participant but does not publish a Marconi-specific work package, funding share, procurement award, or CAF deployment.",
+        "ARA's official page supports a strategic partnership but not a product configuration, customer, contract value, delivery milestone, or operational deployment.",
+        "The official website footer says Marconi Inc.; no authoritative Canadian registry record was recovered, so legalName remains null."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-04T15:05:32.911Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "a65636c7-19d2-4f42-83a7-e692780d38de",
+            "name": "Marconi Technologies",
+            "matchedBy": "intentional published refresh target via exact UUID, slug, name, and website domain"
+          }
+        ],
+        "note": "The only identity match is the intentional published Marconi Technologies target; no second organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "dnd-nexus-marconi-2026-en",
+          "title": "Uncrewed Systems Defence Innovation Secure Hub",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2026-07-14T00:00:00.000Z",
+          "accessedAt": "2026-08-04T15:05:32.911Z",
+          "locator": "Selected Consortium and National UxS Capability Acceleration Hub sections",
+          "summary": "DND identifies Marconi Technologies as a key participant in the selected Espace Aéro-led NEXUS consortium and describes the hub's uncrewed-systems mandate."
+        },
+        {
+          "id": "dnd-nexus-marconi-2026-fr",
+          "title": "Carrefour sécurisé de l’innovation pour la défense consacré aux systèmes sans pilote",
+          "url": "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html",
+          "publisher": "Ministère de la Défense nationale",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2026-07-14T00:00:00.000Z",
+          "accessedAt": "2026-08-04T15:05:32.911Z",
+          "locator": "Consortium sélectionné and Carrefour national d'accélération des capacités UxS sections",
+          "summary": "The French DND backgrounder also identifies Marconi Technologies as a key participant in the selected NEXUS consortium and describes the hub's scope."
+        },
+        {
+          "id": "cadsi-darit-nexus-partners-2026",
+          "title": "DARIT Technologies is a partner in DISH NEXuS",
+          "url": "https://www.defenceandsecurity.ca/fr/member-news/darit-technologies-is-a-partner-in-dish-nexus",
+          "publisher": "Canadian Association of Defence and Security Industries",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2026-07-15T00:00:00.000Z",
+          "accessedAt": "2026-08-04T15:05:32.911Z",
+          "locator": "Member News article, selected coalition and SME participant paragraph",
+          "summary": "CADSI-hosted member news from DARIT independently lists Marconi among the Canadian SMEs in the NEXUS coalition and describes the hub's YMX operating context."
+        },
+        {
+          "id": "ara-marconi-partnership-2026",
+          "title": "ARA Robotics and Marconi Technologies Partner to Advance Next-Generation Autonomous and Defense Technologies",
+          "url": "https://www.ara-uas.com/latest-news",
+          "publisher": "ARA Robotics",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-05-26T00:00:00.000Z",
+          "accessedAt": "2026-08-04T15:05:32.911Z",
+          "locator": "Latest News entry dated May 26, 2026",
+          "summary": "ARA Robotics announces a strategic partnership with Marconi Technologies combining uncrewed platforms with secure communications and mission-critical systems."
+        },
+        {
+          "id": "marconi-official-portfolio-2026",
+          "title": "Marconi tactical communications product ecosystem",
+          "url": "https://marconi-technologies.com/",
+          "publisher": "Marconi Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-04T15:05:32.911Z",
+          "locator": "Mission, product, location, event, and footer sections",
+          "summary": "Marconi's official site continues to describe its tactical communications portfolio and Montréal headquarters while its footer uses the name Marconi Inc."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-marconi-nexus-dnd-en",
+          "sourceId": "dnd-nexus-marconi-2026-en",
+          "fieldPath": "operations.add-marconi-nexus-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND identifies Marconi Technologies among the key participants in the selected Espace Aéro-led consortium establishing the NEXUS national uncrewed-systems capability hub.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-nexus-dnd-fr",
+          "sourceId": "dnd-nexus-marconi-2026-fr",
+          "fieldPath": "operations.add-marconi-nexus-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "The French DND backgrounder also names Marconi Technologies in the selected consortium participant list for the national UxS capability acceleration hub.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-nexus-cadsi",
+          "sourceId": "cadsi-darit-nexus-partners-2026",
+          "fieldPath": "operations.add-marconi-nexus-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "CADSI-hosted member news from DARIT independently lists Marconi Technologies among the Canadian SMEs in the NEXUS coalition based at YMX Innovation Centre.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-marconi-ara-partnership",
+          "sourceId": "ara-marconi-partnership-2026",
+          "fieldPath": "operations.add-marconi-ara-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "ARA Robotics announces a strategic partnership combining its uncrewed aerial systems and autonomous-platform expertise with Marconi secure communications and mission-critical systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-legal-name-boundary",
+          "sourceId": "marconi-official-portfolio-2026",
+          "fieldPath": "reviewWarnings",
+          "claimClass": "source_backed",
+          "excerpt": "The official website footer uses Marconi Inc., but this run did not recover an authoritative Canadian registry record resolving that wording to a legal entity.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+        "slug": "marconi-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T10:01:42.056602+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "name": "Marconi Technologies",
+          "legal_name": null,
+          "website_url": "https://marconi-technologies.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "Sales inquiries: sales@marconi-technologies.com. Public company and product information: https://marconi-technologies.com/.",
+            "portfolioScope": "Resilient line-of-sight and beyond-line-of-sight tactical communications, high-capacity MANET radios, troposcatter, tactical SATCOM, sensor and cyber data fusion, and development-stage military cryptography.",
+            "currentActivity": "Marconi and Enamor International are scheduled to begin multi-year Orion X650 deliveries for Polish Cyber Command in 2026 under a contract exceeding C$10 million; Archer also completed a multi-day Swedish FMV evaluation in June 2026.",
+            "evidenceBoundary": "Products, ownership, locations, contract activity and public contacts are source-backed. Mission matches are derived analyst assessments, not procurement eligibility, endorsement, customer interest or classified demand.",
+            "canadianFootprint": "Headquartered at 5990 Côte-de-Liesse in Mont-Royal, Quebec, with development and manufacturing operations in Canada and additional locations in Germantown, Maryland and Tring, United Kingdom.",
+            "ownershipAndHistory": "Launched in May 2026 as a standalone, Canadian-majority-owned company after a Canadian investor group led by Louis Vachon acquired Ultra I&C's Tactical Communications division from Cobham Ultra; the business identifies itself as a descendant of Canadian Marconi Corporation.",
+            "reviewed_candidate_id": "1f34cbfa-571f-49fe-9531-7cb2fc2bf439",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "publication_status": "published",
+          "updated_at": "2026-07-24T10:01:42.056602+00:00"
+        },
+        "relationships": [
+          {
+            "id": "d6c29291-ea3c-472d-b553-7fbf5c79b864",
+            "related_organization_name": "Enamor International",
+            "relationship_type": "delivery_and_integration_partner",
+            "public_summary": "Marconi identifies Polish defence integrator Enamor International as its partner for Orion X650 delivery to the Polish military following in-country trials.",
+            "publication_status": "published"
+          },
+          {
+            "id": "22f1a615-717a-4bb0-94e6-f8c61cfbef34",
+            "related_organization_name": "Försvarets materielverk",
+            "relationship_type": "technology_evaluation",
+            "public_summary": "Sweden's defence materiel authority participated in a June 2026 multi-day evaluation of Marconi's Archer troposcatter system between Enköping and Arboga.",
+            "publication_status": "published"
+          },
+          {
+            "id": "86ca447f-e7b3-456e-aab2-4c074e40b5a4",
+            "related_organization_name": "Ultra I&C",
+            "relationship_type": "predecessor_business",
+            "public_summary": "Marconi's standalone business was formed through the Canadian investor acquisition of Ultra I&C's Tactical Communications division from Cobham Ultra.",
+            "publication_status": "published"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-marconi-nexus-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "value": {
+            "relatedOrganizationName": "NEXUS Uncrewed Systems Defence Innovation Secure Hub",
+            "relationshipType": "selected consortium participant",
+            "publicSummary": "DND names Marconi Technologies as a key participant in the selected Espace Aéro-led NEXUS consortium established to advance Canadian uncrewed and autonomous systems development, testing, validation, and integration."
+          },
+          "evidenceIds": [
+            "evidence-marconi-nexus-dnd-en",
+            "evidence-marconi-nexus-dnd-fr",
+            "evidence-marconi-nexus-cadsi"
+          ],
+          "reviewerExplanation": "Add the official named consortium participation while keeping program funding, work-package, procurement, and deployment boundaries explicit."
+        },
+        {
+          "operationId": "add-marconi-ara-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "value": {
+            "relatedOrganizationName": "ARA Robotics",
+            "relationshipType": "strategic technology development partner",
+            "publicSummary": "ARA Robotics announced a strategic partnership with Marconi Technologies to combine uncrewed aerial systems and autonomous-platform expertise with secure communications and mission-critical systems for defence, security, and critical-infrastructure applications."
+          },
+          "evidenceIds": [
+            "evidence-marconi-ara-partnership"
+          ],
+          "reviewerExplanation": "Add the official partner relationship conservatively without creating an unsupported product, customer, contract, delivery, or deployment claim."
+        }
+      ],
+      "sourceChannels": [
+        "ecosystem_program",
+        "source_book",
+        "official_company"
+      ],
+      "signalIds": [
+        "marconi-nexus-participation-2026-07-14",
+        "marconi-ara-partnership-2026-05-26"
+      ],
+      "corroboration": [
+        {
+          "claim": "Marconi is a named participant in the selected NEXUS UxS DISH consortium.",
+          "sourceIds": [
+            "dnd-nexus-marconi-2026-en",
+            "dnd-nexus-marconi-2026-fr",
+            "cadsi-darit-nexus-partners-2026"
+          ]
+        },
+        {
+          "claim": "ARA Robotics officially announced a strategic development partnership with Marconi Technologies.",
+          "sourceIds": [
+            "ara-marconi-partnership-2026"
+          ]
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

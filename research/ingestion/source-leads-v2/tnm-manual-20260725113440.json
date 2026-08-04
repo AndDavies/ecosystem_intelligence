@@ -1,0 +1,896 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260725113440",
+  "runId": "tnm-manual-20260725113440",
+  "createdAt": "2026-07-25T11:30:00.000Z",
+  "scope": {
+    "description": "Qualified Canadian research and test centre leads from official government, university, national-lab, maritime, aerospace, digital and dual-use facility sources. Qualified leads continue automatically into enriched candidates with no source-lead approval pause.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "research_test_centre"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-david-florida-laboratory",
+      "source": {
+        "id": "david-florida-laboratory-primary",
+        "title": "David Florida Laboratory",
+        "url": "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp",
+        "publisher": "Canadian Space Agency",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "Canada's spacecraft assembly, integration and environmental testing centre supporting satellites, spacecraft components, telecommunications and remote-sensing missions from Ottawa."
+      },
+      "discoveryPath": [
+        "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp",
+        "https://open.canada.ca/data/en/dataset/f813a44d-4cca-4647-a576-41312d8578c5"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "David Florida Laboratory",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp",
+        "websiteDomain": "www.asc-csa.gc.ca",
+        "stableSlug": "david-florida-laboratory",
+        "legalName": null,
+        "aliases": [
+          "DFL",
+          "Canadian Space Agency David Florida Laboratory"
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://open.canada.ca/data/en/dataset/f813a44d-4cca-4647-a576-41312d8578c5",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "David Florida Laboratory",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "research_lab",
+        "test_range"
+      ],
+      "websiteUrl": "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp",
+      "aliases": [
+        "DFL",
+        "Canadian Space Agency David Florida Laboratory"
+      ],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Provide spacecraft assembly, integration, qualification and environmental testing capacity for Canadian and international space hardware, including vibration, thermal, electromagnetic and related test services that support space and remote-sensing missions."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-innovation-centre-of-the-north",
+      "source": {
+        "id": "innovation-centre-of-the-north-primary",
+        "title": "Innovation Centre of the North",
+        "url": "https://icondiana.ca/",
+        "publisher": "Innovation Centre of the North",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "Canadian dual-use innovation and validation network providing research, development and testing services across multiple environments, with unmanned and autonomous systems and access to private airports."
+      },
+      "discoveryPath": [
+        "https://icondiana.ca/",
+        "https://icondiana.ca/about/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Innovation Centre of the North",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://icondiana.ca/",
+        "websiteDomain": "icondiana.ca",
+        "stableSlug": "innovation-centre-of-the-north",
+        "legalName": null,
+        "aliases": [
+          "ICON",
+          "ICON DIANA"
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 80,
+      "reviewWarnings": [
+        "ICON is a distributed network rather than a single-site laboratory; reviewers should confirm the preferred primary location and avoid implying that every listed test environment is co-located."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://icondiana.ca/",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://icondiana.ca/about/",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Innovation Centre of the North",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "test_range",
+        "cluster_operator",
+        "research_lab"
+      ],
+      "websiteUrl": "https://icondiana.ca/",
+      "aliases": [
+        "ICON",
+        "ICON DIANA"
+      ],
+      "location": {
+        "city": "Sault Ste. Marie",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Provide Canadian dual-use research, development, validation and demonstration environments for emerging technologies, including unmanned and autonomous systems, interoperability and responsible-use testing across a distributed national network."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-ocean-networks-canada",
+      "source": {
+        "id": "ocean-networks-canada-primary",
+        "title": "Ocean Networks Canada",
+        "url": "https://www.oceannetworks.ca/",
+        "publisher": "Ocean Networks Canada",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "University of Victoria ocean-observatory research and data infrastructure operating deep-sea, coastal and land-based observatories across Pacific, Arctic and Atlantic environments."
+      },
+      "discoveryPath": [
+        "https://www.oceannetworks.ca/",
+        "https://www.oceannetworks.ca/what-we-deliver/ocean-observatories/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "mission-software-and-data",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Ocean Networks Canada",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.oceannetworks.ca/",
+        "websiteDomain": "www.oceannetworks.ca",
+        "stableSlug": "ocean-networks-canada",
+        "legalName": null,
+        "aliases": [
+          "ONC",
+          "Oceans 3.0"
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.oceannetworks.ca/",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.oceannetworks.ca/what-we-deliver/ocean-observatories/",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Ocean Networks Canada",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "research_lab",
+        "ocean_technology",
+        "university_affiliated"
+      ],
+      "websiteUrl": "https://www.oceannetworks.ca/",
+      "aliases": [
+        "ONC",
+        "Oceans 3.0"
+      ],
+      "location": {
+        "city": "Victoria",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Operate ocean observatory infrastructure, instruments, remote data services and analytics that support persistent monitoring of ocean physics, chemistry, biology and geology, safer shipping, climate resilience and Arctic and maritime situational awareness."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-ocean-frontier-institute",
+      "source": {
+        "id": "ocean-frontier-institute-primary",
+        "title": "Ocean Frontier Institute",
+        "url": "https://oceanfrontierinstitute.com/",
+        "publisher": "Ocean Frontier Institute",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "Atlantic Canadian ocean research institute linking universities, government and industry to develop sustainable ocean technology, marine observation and data-driven solutions in a changing ocean."
+      },
+      "discoveryPath": [
+        "https://oceanfrontierinstitute.com/",
+        "https://www.dal.ca/sites/ofi.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "mission-software-and-data",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Ocean Frontier Institute",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://oceanfrontierinstitute.com/",
+        "websiteDomain": "oceanfrontierinstitute.com",
+        "stableSlug": "ocean-frontier-institute",
+        "legalName": null,
+        "aliases": [
+          "OFI"
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://oceanfrontierinstitute.com/",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.dal.ca/sites/ofi.html",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Ocean Frontier Institute",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "research_lab",
+        "ocean_technology",
+        "university_affiliated"
+      ],
+      "websiteUrl": "https://oceanfrontierinstitute.com/",
+      "aliases": [
+        "OFI"
+      ],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Coordinate interdisciplinary ocean research, technology development and industry collaboration across marine observation, ocean data, climate resilience, sustainable operations and Atlantic and Arctic ocean systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-canadian-light-source",
+      "source": {
+        "id": "canadian-light-source-primary",
+        "title": "Canadian Light Source",
+        "url": "https://www.lightsource.ca/about/about-us.php",
+        "publisher": "Canadian Light Source",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "Canada's national synchrotron research facility providing beamlines, advanced materials characterization, imaging and experimental infrastructure for academic, government and industrial users."
+      },
+      "discoveryPath": [
+        "https://www.lightsource.ca/about/about-us.php",
+        "https://www.lightsource.ca/facilities/laboratories-equipment.php"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Canadian Light Source",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.lightsource.ca/about/about-us.php",
+        "websiteDomain": "www.lightsource.ca",
+        "stableSlug": "canadian-light-source",
+        "legalName": null,
+        "aliases": [
+          "CLS",
+          "Canadian Light Source Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 80,
+      "reviewWarnings": [
+        "CLS is a broad national science facility rather than a defence-specific centre; the reviewer should retain only strategic-materials and advanced-characterization relevance supported by public evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.lightsource.ca/about/about-us.php",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.lightsource.ca/facilities/laboratories-equipment.php",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Canadian Light Source",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "research_lab",
+        "university_affiliated",
+        "test_range"
+      ],
+      "websiteUrl": "https://www.lightsource.ca/about/about-us.php",
+      "aliases": [
+        "CLS",
+        "Canadian Light Source Inc."
+      ],
+      "location": {
+        "city": "Saskatoon",
+        "provinceTerritory": "Saskatchewan",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Operate a national synchrotron facility and user laboratories that enable advanced materials characterization, imaging, energy, manufacturing and industrial research through high-brightness X-ray and infrared beamlines."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-triumf",
+      "source": {
+        "id": "triumf-primary",
+        "title": "TRIUMF official profile",
+        "url": "https://triumf.ca/about/",
+        "publisher": "TRIUMF",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "Canada's particle accelerator centre and national laboratory with advanced accelerator, isotope, materials and applied-technology infrastructure and a broad university and industry collaboration network."
+      },
+      "discoveryPath": [
+        "https://triumf.ca/about/",
+        "https://triumf.ca/partners/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "TRIUMF",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://triumf.ca/about/",
+        "websiteDomain": "triumf.ca",
+        "stableSlug": "triumf",
+        "legalName": null,
+        "aliases": [
+          "Canada's Particle Accelerator Centre"
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 80,
+      "reviewWarnings": [
+        "TRIUMF's public mandate is broad science and isotope research; defence relevance is a derived strategic-technology fit, not a stated CAF requirement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://triumf.ca/about/",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://triumf.ca/partners/",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "TRIUMF",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "research_lab",
+        "university_affiliated"
+      ],
+      "websiteUrl": "https://triumf.ca/about/",
+      "aliases": [
+        "Canada's Particle Accelerator Centre"
+      ],
+      "location": {
+        "city": "Vancouver",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Operate national accelerator and experimental infrastructure supporting particle and nuclear physics, isotope science, materials and applied technology research, with collaborative pathways to industry and advanced technology development."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-mcmaster-automotive-resource-centre",
+      "source": {
+        "id": "mcmaster-automotive-resource-centre-primary",
+        "title": "McMaster Automotive Resource Centre",
+        "url": "https://macautocentre.com/",
+        "publisher": "McMaster Automotive Resource Centre",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "Applied automotive and mobility research and test facility connecting university researchers and industry through vehicle systems, electrification, materials, manufacturing and validation infrastructure."
+      },
+      "discoveryPath": [
+        "https://macautocentre.com/",
+        "https://macautocentre.com/facilities/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "advanced-manufacturing-and-integration",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "McMaster Automotive Resource Centre",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://macautocentre.com/",
+        "websiteDomain": "macautocentre.com",
+        "stableSlug": "mcmaster-automotive-resource-centre",
+        "legalName": null,
+        "aliases": [
+          "MARC"
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://macautocentre.com/",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://macautocentre.com/facilities/",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "McMaster Automotive Resource Centre",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "research_lab",
+        "test_range",
+        "university_affiliated"
+      ],
+      "websiteUrl": "https://macautocentre.com/",
+      "aliases": [
+        "MARC"
+      ],
+      "location": {
+        "city": "Hamilton",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Provide applied mobility research, prototyping and validation capacity in vehicle systems, electrification, materials, manufacturing and testing for industry and academic collaborators."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-centre-advanced-manufacturing-design-technologies",
+      "source": {
+        "id": "centre-advanced-manufacturing-design-technologies-primary",
+        "title": "Centre for Advanced Manufacturing and Design Technologies",
+        "url": "https://www.sheridancollege.ca/research/centres/camdt",
+        "publisher": "Sheridan College",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "Applied research and technology centre supporting advanced manufacturing, automation, robotics, design, digital production and industrial prototyping for Canadian industry."
+      },
+      "discoveryPath": [
+        "https://www.sheridancollege.ca/research/centres/camdt",
+        "https://www.sheridancollege.ca/research"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "autonomous-systems",
+        "aerospace-and-mobility"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Centre for Advanced Manufacturing and Design Technologies",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.sheridancollege.ca/research/centres/camdt",
+        "websiteDomain": "www.sheridancollege.ca",
+        "stableSlug": "centre-advanced-manufacturing-design-technologies",
+        "legalName": null,
+        "aliases": [
+          "CAMDT"
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.sheridancollege.ca/research/centres/camdt",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.sheridancollege.ca/research",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Centre for Advanced Manufacturing and Design Technologies",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "research_lab",
+        "test_range",
+        "university_affiliated"
+      ],
+      "websiteUrl": "https://www.sheridancollege.ca/research/centres/camdt",
+      "aliases": [
+        "CAMDT"
+      ],
+      "location": {
+        "city": "Brampton",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Deliver applied research, prototyping, testing and technology-transfer services in advanced manufacturing, automation, robotics, industrial design, digital production and process improvement."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-cardd-tech",
+      "source": {
+        "id": "cardd-tech-primary",
+        "title": "Centre for Applied Research in Defence and Dual-use Technologies",
+        "url": "https://www.ualberta.ca/en/engineering/research/centres-and-institutes/centre-for-applied-research-in-defence-and-dual-use-technologies.html",
+        "publisher": "University of Alberta",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "University of Alberta applied research centre focused on defence and dual-use technologies, translating engineering and scientific research into operationally relevant systems and commercialization pathways."
+      },
+      "discoveryPath": [
+        "https://www.ualberta.ca/en/engineering/research/centres-and-institutes/centre-for-applied-research-in-defence-and-dual-use-technologies.html",
+        "https://www.ualberta.ca/en/engineering/research/index.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "communications-and-cyber",
+        "sensing-and-isr",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Centre for Applied Research in Defence and Dual-use Technologies",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.ualberta.ca/en/engineering/research/centres-and-institutes/centre-for-applied-research-in-defence-and-dual-use-technologies.html",
+        "websiteDomain": "www.ualberta.ca",
+        "stableSlug": "cardd-tech",
+        "legalName": null,
+        "aliases": [
+          "CARDD-Tech"
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.ualberta.ca/en/engineering/research/centres-and-institutes/centre-for-applied-research-in-defence-and-dual-use-technologies.html",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.ualberta.ca/en/engineering/research/index.html",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Centre for Applied Research in Defence and Dual-use Technologies",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "research_lab",
+        "university_affiliated",
+        "cluster_operator"
+      ],
+      "websiteUrl": "https://www.ualberta.ca/en/engineering/research/centres-and-institutes/centre-for-applied-research-in-defence-and-dual-use-technologies.html",
+      "aliases": [
+        "CARDD-Tech"
+      ],
+      "location": {
+        "city": "Edmonton",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Coordinate applied defence and dual-use research across engineering and science disciplines, connecting university expertise with government, industry and commercialization partners for mission-relevant technology development."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-cmc-microsystems",
+      "source": {
+        "id": "cmc-microsystems-primary",
+        "title": "CMC Microsystems",
+        "url": "https://www.cmc.ca/",
+        "publisher": "CMC Microsystems",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T11:30:00.000Z",
+        "locator": "Official profile and mandate",
+        "summary": "Canadian shared research infrastructure and technology-transfer organization providing microelectronics, photonics, MEMS, embedded systems and advanced fabrication access to academic and industrial users."
+      },
+      "discoveryPath": [
+        "https://www.cmc.ca/",
+        "https://www.cmc.ca/about/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "sensing-and-isr",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "CMC Microsystems",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cmc.ca/",
+        "websiteDomain": "www.cmc.ca",
+        "stableSlug": "cmc-microsystems",
+        "legalName": null,
+        "aliases": [
+          "CMC",
+          "CMC Microsystems National Design Network"
+        ]
+      },
+      "followUpQuestions": [
+        "Should this centre be a distinct map node or represented under its parent institution?",
+        "Which current facilities, partners or technology programs should be refreshed next?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.cmc.ca/",
+          "outcome": "The canonical official profile establishes the centre identity, mandate and Canadian operating location."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.cmc.ca/about/",
+          "outcome": "A complementary official source corroborates facilities, research infrastructure, partners or current operating context."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/en/about/our-mandate-mission/our-mandate-mission",
+          "outcome": "A durable Canadian defence ecosystem source was checked to situate the centre within the wider national strategic-technology landscape."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "CMC Microsystems",
+      "proposedKind": "research_test_centre",
+      "proposedCategories": [
+        "research_lab",
+        "test_range",
+        "university_affiliated"
+      ],
+      "websiteUrl": "https://www.cmc.ca/",
+      "aliases": [
+        "CMC",
+        "CMC Microsystems National Design Network"
+      ],
+      "location": {
+        "city": "Kingston",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Provide shared design, fabrication, prototyping, packaging and test infrastructure for microelectronics, photonics, MEMS, embedded systems and advanced hardware research across Canadian universities and industry."
+    }
+  ]
+}

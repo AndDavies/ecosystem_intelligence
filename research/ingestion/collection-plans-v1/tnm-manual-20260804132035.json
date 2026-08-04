@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260804132035-collection-plan",
+  "runId": "tnm-manual-20260804132035",
+  "createdAt": "2026-08-04T13:20:35.454Z",
+  "status": "complete",
+  "intelligenceRequirement": "Determine whether current durable public evidence materially enriches the published YMX Innovation Centre record, especially its operating context, current programs, advanced-air-mobility activity, UxS DISH role, and relationships, while preserving the boundary between the YMX facility, NEXUS, Aéro Montréal, Espace Aéro, and participating organizations.",
+  "targetSubjects": [
+    {
+      "subjectId": "ymx-innovation-centre",
+      "subjectType": "organization",
+      "name": "YMX Innovation Centre",
+      "aliases": [
+        "YMX Innovation",
+        "YMX Innovation Center",
+        "YMX Innovation campus",
+        "Centre YMX Innovation",
+        "Centre d'innovation YMX",
+        "YMX International Aerocity of Mirabel"
+      ],
+      "canonicalIdentifiers": [
+        "slug:ymx-innovation-centre",
+        "website:https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "facility:9800 Rue Irénée-Vachon, Mirabel, Quebec J7N 3C5",
+        "program:nexus-uxs-dish",
+        "program:arctic-hydrogen-propulsion-centre",
+        "program:airbus-protospace-ymx"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+        "question": "What is the canonical YMX facility identity, ownership and operator context, aliases, location, and evidence of an active Canadian operating presence?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.aliases",
+        "organization.primaryLocation",
+        "organization.profileData"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "technology-detail-maturity",
+      "subjectType": "technology",
+        "question": "What concrete facility mandate, testing or collaboration functions, strategic sectors, and maturity or deployment evidence are publicly supportable for YMX?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications",
+        "organization.profileData"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "contracts-procurement-demand",
+      "subjectType": "signal",
+        "question": "Which current programs, consortium relationships, public investments, partner activity, and official demand or procurement context materially change the published record?",
+      "targetFieldPaths": [
+        "programs.*.summary",
+        "relationships.*.publicSummary",
+        "demandSource.summary",
+        "requirements.*.problemStatement"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "conflicts-and-gaps",
+      "subjectType": "signal",
+        "question": "Which claims distinguish the YMX facility from NEXUS, the UxS DISH consortium, Aéro Montréal, Espace Aéro, or campus partners, and which require a visible reviewer warning rather than a canonical field?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve YMX ownership, facility identity, mandate, current program pages, and official activity from ADM and its canonical YMX surfaces.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "YMX Innovation Centre ADM official profile Mirabel",
+        "YMX Innovation official strategic programs ARCTIC Protospace"
+      ],
+      "expectedClaims": ["facility identity and ownership", "current programs and activity"]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Check durable technical or program documentation for testing, experimentation, controlled-goods, and innovation functions relevant to the YMX facility.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "YMX Innovation Centre testing experimentation regulated airspace",
+        "Centre d'innovation YMX essais expérimentation espace aérien réglementé"
+      ],
+      "expectedClaims": ["facility functions and boundaries", "maturity or deployment context"]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Trace YMX's current strategic programs, consortium roles, and partner activity through ADM, Espace Aéro, DND, H2CanFly, and named participants.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "YMX Innovation H2CanFly ARCTIC Espace Aéro",
+        "YMX Innovation Centre NEXUS UxS DISH consortium partners"
+      ],
+      "expectedClaims": ["program and relationship identity", "partner and consortium activity"]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Use the attributable ADM/CNW release as durable corroboration for current campus programs and strategic partnerships without treating syndicated text as independent evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Aéroports de Montréal YMX Innovation strategic partnerships April 2026",
+        "ADM YMX Innovation ARCTIC Protospace Volatus WatchOut"
+      ],
+      "expectedClaims": ["dated current-activity claims", "campus program announcements"]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Resolve the Mirabel hub's operating model and sectors through Espace Aéro's public innovation-zone profile.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Espace Aéro Mirabel YMX Innovation Centre hub",
+        "Espace Aéro YMX Centre d'innovation Mirabel secteurs"
+      ],
+      "expectedClaims": ["ownership and collaborative model", "strategic sectors and operating conditions"]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Search English and French official public sources for the same facility and program terms, including the City of Mirabel and DND French release, to detect translation or boundary differences.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Centre YMX Innovation Mirabel mobilité aérienne avancée avril 2026",
+        "Centre d'innovation YMX CSID UxS CNACU Mirabel"
+      ],
+      "expectedClaims": ["French-language current activity", "bilingual terminology and contradiction checks"]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop a subject only after the coverage vector records every dimension as covered, partial, not found, or not applicable with supporting claims or search attempts.",
+    "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new material claims and all contradictions are dispositioned."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

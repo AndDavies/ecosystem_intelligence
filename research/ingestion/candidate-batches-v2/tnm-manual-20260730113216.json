@@ -1,0 +1,2303 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260730113216",
+  "runId": "tnm-manual-20260730113216",
+  "title": "New Canadian defence and strategic-technology companies",
+  "status": "candidate",
+  "createdAt": "2026-07-30T11:44:07.035Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260730113216.json",
+  "guardrailNotes": [
+    "Private Admin Review material only; this run does not accept, publish or write candidates into canonical organization, capability, relationship or evidence tables.",
+    "Official company evidence is paired with government, NATO, parliamentary, validation or named partner corroboration; social and newsletter sources remain discovery-only.",
+    "Every mission match is labelled derived and no contract, cohort or partnership is represented as procurement eligibility, endorsement, classified demand or operational adoption."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-tightbeam-photonics",
+      "sourceLeadIds": [
+        "lead-tightbeam-photonics"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Tightbeam Photonics is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Deployable optical ground stations with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The candidate excludes uncited link-performance claims and treats the NRC contribution and NATO DIANA participation as innovation activity rather than evidence of an operational deployment. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "The candidate excludes uncited link-performance claims and treats the NRC contribution and NATO DIANA participation as innovation activity rather than evidence of an operational deployment."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "tightbeam-photonics-profile",
+          "title": "Tightbeam Photonics",
+          "url": "https://tightbeam.ca/",
+          "publisher": "Tightbeam Photonics",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Company, technology and contact sections",
+          "summary": "The official site identifies a Toronto company building deployable optical ground stations and integrated-photonics technology for space-to-ground communications."
+        },
+        {
+          "id": "tightbeam-photonics-product",
+          "title": "Optical ground stations",
+          "url": "https://tightbeam.ca/optical-ground-stations",
+          "publisher": "Tightbeam Photonics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Optical ground-station architecture",
+          "summary": "The official product page describes compact ground stations, a packaged silicon-photonic receiver, adaptive optics and efficient coupling into single-mode fibre."
+        },
+        {
+          "id": "tightbeam-photonics-grant",
+          "title": "Q-PHASICS ground-station contribution",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-03-27T00:00:00.000Z",
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "NRC contribution 172-2025-2026-Q4-1040983",
+          "summary": "The federal record identifies Tightbeam Photonics Inc. in Toronto and a 2026-2029 NRC IRAP contribution for a quantum-photonic adaptive system-on-chip ground station."
+        },
+        {
+          "id": "tightbeam-photonics-diana",
+          "title": "NATO DIANA 2026 cohort",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "publisher": "NATO DIANA",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Space operations cohort",
+          "summary": "NATO DIANA lists Tightbeam Photonics as a Canadian 2026 cohort company working to reduce the cost of space-to-ground laser communications."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-tightbeam-photonics-description",
+          "sourceId": "tightbeam-photonics-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Tightbeam Photonics is a Toronto photonics company developing compact, deployable optical ground stations and integrated photonic receivers for high-capacity laser communications between space and ground.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tightbeam-photonics-location",
+          "sourceId": "tightbeam-photonics-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Tightbeam Photonics has a documented Canadian operating presence in Toronto, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tightbeam-photonics-capability",
+          "sourceId": "tightbeam-photonics-product",
+          "fieldPath": "capabilities.tightbeam-deployable-optical-ground-stations.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Tightbeam develops mobile and modular optical ground stations built around packaged silicon-photonic receivers, adaptive optics and single-mode-fibre coupling for space-to-ground laser communications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tightbeam-photonics-features",
+          "sourceId": "tightbeam-photonics-product",
+          "fieldPath": "capabilities.tightbeam-deployable-optical-ground-stations.features",
+          "claimClass": "source_backed",
+          "excerpt": "Mobile and modular ground-station form factors; Packaged silicon-photonic receiver; Adaptive-optics integration; Single-mode-fibre optical coupling",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tightbeam-photonics-activity",
+          "sourceId": "tightbeam-photonics-grant",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "An NRC IRAP contribution awarded in March 2026 supports Tightbeam's Q-PHASICS quantum-photonic adaptive system-on-chip ground-station project through July 2029, while NATO DIANA lists the company in its 2026 Canadian cohort for reducing the cost of space-to-ground laser communications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tightbeam-photonics-relationship",
+          "sourceId": "tightbeam-photonics-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada's grants database records an NRC IRAP contribution to Tightbeam Photonics Inc. for the Q-PHASICS ground-station project; the candidate does not infer procurement or operational adoption.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tightbeam-photonics-mission",
+          "sourceId": "tightbeam-photonics-product",
+          "fieldPath": "capabilities.tightbeam-deployable-optical-ground-stations.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Deployable optical ground stations could increase high-capacity downlink options for northern sensing missions where terrestrial backhaul is constrained; weather availability and operational integration remain unverified.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "tightbeam-photonics",
+        "name": "Tightbeam Photonics",
+        "legalName": "Tightbeam Photonics Inc.",
+        "aliases": [
+          "Tightbeam"
+        ],
+        "description": "Tightbeam Photonics is a Toronto photonics company developing compact, deployable optical ground stations and integrated photonic receivers for high-capacity laser communications between space and ground.",
+        "websiteUrl": "https://tightbeam.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "An NRC IRAP contribution awarded in March 2026 supports Tightbeam's Q-PHASICS quantum-photonic adaptive system-on-chip ground-station project through July 2029, while NATO DIANA lists the company in its 2026 Canadian cohort for reducing the cost of space-to-ground laser communications.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "tightbeam-deployable-optical-ground-stations",
+          "name": "Deployable optical ground stations",
+          "summary": "Tightbeam develops mobile and modular optical ground stations built around packaged silicon-photonic receivers, adaptive optics and single-mode-fibre coupling for space-to-ground laser communications.",
+          "capabilityType": "Deployable optical communications ground segment",
+          "features": [
+            "Mobile and modular ground-station form factors",
+            "Packaged silicon-photonic receiver",
+            "Adaptive-optics integration",
+            "Single-mode-fibre optical coupling"
+          ],
+          "applications": [
+            "Space-to-ground laser communications",
+            "Rapidly deployable satellite ground segments",
+            "High-capacity data downlink",
+            "Resilient remote communications"
+          ],
+          "technicalTags": [
+            "free-space optical communications",
+            "integrated photonics",
+            "adaptive optics",
+            "optical ground station",
+            "laser communications"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "communications-and-cyber",
+            "sensing-and-isr"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Deployable optical ground stations could increase high-capacity downlink options for northern sensing missions where terrestrial backhaul is constrained; weather availability and operational integration remain unverified.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "A compact optical receiver could support movement of high-volume sensor data from satellites to distributed processing nodes; this is a derived fit assessment rather than a documented CAF deployment.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "National Research Council Canada",
+          "relationshipType": "NRC IRAP contribution recipient",
+          "publicSummary": "The Government of Canada's grants database records an NRC IRAP contribution to Tightbeam Photonics Inc. for the Q-PHASICS ground-station project; the candidate does not infer procurement or operational adoption."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://tightbeam.ca/",
+        "sourceAssetUrl": "https://img1.wsimg.com/isteam/ip/38793208-9566-46f3-ae45-84616b9ad6ac/1000012343.png/:/rs=h:173,cg:true,m/qt=q:95",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "d78d7514357444952a8ced02cb4a7903474cdee27f5aba5b40b8bcd5621046c1",
+        "normalizedChecksum": "1baa36f852fd19e8882670426b82dc969266a371b91ca37e0c33b1c6051b6687",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730113216/candidate-tightbeam-photonics/logo.source.json",
+        "note": "514x173 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-copsys-technologies",
+      "sourceLeadIds": [
+        "lead-copsys-technologies"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Copsys Technologies is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures CIDS self-sensing marine coating with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The candidate describes CIDS functions supported by public sources but excludes unverified lifecycle-cost, signature and comparative-performance claims. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "The candidate describes CIDS functions supported by public sources but excludes unverified lifecycle-cost, signature and comparative-performance claims."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "copsys-technologies-profile",
+          "title": "Copsys Technologies",
+          "url": "https://copsys.ca/",
+          "publisher": "Copsys Technologies",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Company and CIDS overview",
+          "summary": "The official site presents Copsys as a Canadian marine-technology company developing an integrated detection and protection system for corrosion and biofouling."
+        },
+        {
+          "id": "copsys-technologies-product",
+          "title": "CIDS self-sensing coating",
+          "url": "https://copsys.ca/",
+          "publisher": "Copsys Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "CIDS product and application sections",
+          "summary": "Copsys describes a monitored protective coating that combines corrosion localization, cathodic protection and antifouling functions for marine assets."
+        },
+        {
+          "id": "copsys-technologies-province",
+          "title": "Provincial support for Copsys commercialization",
+          "url": "https://www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/",
+          "publisher": "Government of Newfoundland and Labrador",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-01-22T00:00:00.000Z",
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Copsys Technologies funding entry",
+          "summary": "The province announced $450,000 for Copsys to commercialize a system that identifies early signs of corrosion and stress on ships and other marine assets."
+        },
+        {
+          "id": "copsys-technologies-directory",
+          "title": "Copsys Technologies member profile",
+          "url": "https://members.technl.ca/memberdirectory/Find?term=Copsys+Technologies",
+          "publisher": "techNL",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Copsys Technologies listing",
+          "summary": "The techNL member directory identifies Copsys Technologies at the Co. Innovation Centre in St. John's, Newfoundland and Labrador."
+        },
+        {
+          "id": "copsys-technologies-diana",
+          "title": "NATO DIANA 2026 cohort",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "publisher": "NATO DIANA",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Critical infrastructure cohort",
+          "summary": "NATO DIANA lists Copsys Technologies Inc. as a Canadian 2026 cohort company addressing corrosion and biofouling."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-copsys-technologies-description",
+          "sourceId": "copsys-technologies-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Copsys Technologies is a St. John's marine-technology company developing a self-sensing protective coating that detects and locates corrosion while providing antifouling and cathodic protection for ships and other marine assets.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-copsys-technologies-location",
+          "sourceId": "copsys-technologies-directory",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Copsys Technologies has a documented Canadian operating presence in St. John's, Newfoundland and Labrador.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-copsys-technologies-capability",
+          "sourceId": "copsys-technologies-product",
+          "fieldPath": "capabilities.copsys-cids-self-sensing-marine-coating.summary",
+          "claimClass": "source_backed",
+          "excerpt": "CIDS integrates protective coating, corrosion sensing and location, antifouling and cathodic-protection functions into a monitored surface system for ships, offshore assets and other critical infrastructure.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-copsys-technologies-features",
+          "sourceId": "copsys-technologies-product",
+          "fieldPath": "capabilities.copsys-cids-self-sensing-marine-coating.features",
+          "claimClass": "source_backed",
+          "excerpt": "Distributed corrosion detection and localization; Protective coating with cathodic action; Antifouling functionality; Condition-monitoring data output",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-copsys-technologies-activity",
+          "sourceId": "copsys-technologies-province",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Newfoundland and Labrador announced $450,000 in commercialization assistance to Copsys in January 2026, and NATO DIANA lists the company in its 2026 Canadian cohort for corrosion and biofouling mitigation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-copsys-technologies-relationship",
+          "sourceId": "copsys-technologies-province",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The provincial government announced commercialization assistance for Copsys's corrosion-detection technology for ships and marine assets; this is represented as public support, not procurement or adoption.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-copsys-technologies-mission",
+          "sourceId": "copsys-technologies-product",
+          "fieldPath": "capabilities.copsys-cids-self-sensing-marine-coating.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "A self-sensing hull and structure coating could improve maintenance awareness and availability for platforms supporting underwater surveillance; the mission connection is derived and not a claimed sensor payload.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "copsys-technologies",
+        "name": "Copsys Technologies",
+        "legalName": "Copsys Technologies Inc.",
+        "aliases": [
+          "Copsys"
+        ],
+        "description": "Copsys Technologies is a St. John's marine-technology company developing a self-sensing protective coating that detects and locates corrosion while providing antifouling and cathodic protection for ships and other marine assets.",
+        "websiteUrl": "https://copsys.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "St. John's",
+          "provinceTerritory": "Newfoundland and Labrador",
+          "countryCode": "CA",
+          "latitude": 47.5615,
+          "longitude": -52.7126,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Newfoundland and Labrador announced $450,000 in commercialization assistance to Copsys in January 2026, and NATO DIANA lists the company in its 2026 Canadian cohort for corrosion and biofouling mitigation.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "copsys-cids-self-sensing-marine-coating",
+          "name": "CIDS self-sensing marine coating",
+          "summary": "CIDS integrates protective coating, corrosion sensing and location, antifouling and cathodic-protection functions into a monitored surface system for ships, offshore assets and other critical infrastructure.",
+          "capabilityType": "Self-sensing corrosion and biofouling protection system",
+          "features": [
+            "Distributed corrosion detection and localization",
+            "Protective coating with cathodic action",
+            "Antifouling functionality",
+            "Condition-monitoring data output"
+          ],
+          "applications": [
+            "Naval hull condition monitoring",
+            "Commercial vessel maintenance",
+            "Offshore structure protection",
+            "Critical marine infrastructure"
+          ],
+          "technicalTags": [
+            "corrosion sensing",
+            "smart coating",
+            "antifouling",
+            "condition monitoring",
+            "marine materials"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "A self-sensing hull and structure coating could improve maintenance awareness and availability for platforms supporting underwater surveillance; the mission connection is derived and not a claimed sensor payload.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Newfoundland and Labrador",
+          "relationshipType": "commercialization assistance recipient",
+          "publicSummary": "The provincial government announced commercialization assistance for Copsys's corrosion-detection technology for ships and marine assets; this is represented as public support, not procurement or adoption."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-30T11:44:12.778Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-niricson",
+      "sourceLeadIds": [
+        "lead-niricson"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Niricson is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures AUTOSPEX infrastructure inspection platform with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The defence-airstrip application is supported by the current federal contribution record, while deployment scale and inspection-accuracy claims remain bounded to the cited public evidence. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 97,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The defence-airstrip application is supported by the current federal contribution record, while deployment scale and inspection-accuracy claims remain bounded to the cited public evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "niricson-profile",
+          "title": "Niricson infrastructure intelligence",
+          "url": "https://www.niricson.com/",
+          "publisher": "Niricson",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Company, platform and contact sections",
+          "summary": "Niricson identifies itself as a Vancouver company providing AI-enabled condition assessment for large concrete infrastructure."
+        },
+        {
+          "id": "niricson-product",
+          "title": "AUTOSPEX and sensor systems",
+          "url": "https://www.niricson.com/",
+          "publisher": "Niricson",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "AUTOSPEX, DRONIC and NCX Mini sections",
+          "summary": "The official site describes defect detection, quantification and tracking using visual, thermal and acoustic data collected by drones and inspection devices."
+        },
+        {
+          "id": "niricson-grant",
+          "title": "AI airfield pavement distress mapping contribution",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-02-01T00:00:00.000Z",
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "NRC contribution 172-2025-2026-Q4-1040970",
+          "summary": "The federal record identifies Niricson Software Inc. in Vancouver and a 2026-2027 contribution for AI-based pavement distress mapping at civilian airports and defence airstrips."
+        },
+        {
+          "id": "niricson-isc",
+          "title": "Innovating infrastructure maintenance with Niricson",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/our-stories/innovating-infrastructure-maintenance-niricson",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Federal testing-partner and platform overview",
+          "summary": "Innovative Solutions Canada describes federal matching and testing involving Public Services and Procurement Canada, Shared Services Canada and Transport Canada."
+        },
+        {
+          "id": "niricson-diana",
+          "title": "NATO DIANA 2026 cohort",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "publisher": "NATO DIANA",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Critical infrastructure cohort",
+          "summary": "NATO DIANA lists Niricson as a Canadian 2026 cohort company focused on infrastructure inspection and monitoring."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-niricson-description",
+          "sourceId": "niricson-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Niricson is a Vancouver infrastructure-intelligence company using artificial intelligence and multimodal inspection data to detect, quantify and track defects in concrete assets, airfield pavements, bridges and dams.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-niricson-location",
+          "sourceId": "niricson-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Niricson has a documented Canadian operating presence in Vancouver, British Columbia.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-niricson-capability",
+          "sourceId": "niricson-product",
+          "fieldPath": "capabilities.niricson-autospex-infrastructure-inspection.summary",
+          "claimClass": "source_backed",
+          "excerpt": "AUTOSPEX fuses visual, thermal and acoustic inspection data, including drone-collected imagery and impact-acoustic measurements, to map defects and compare asset condition over time.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-niricson-features",
+          "sourceId": "niricson-product",
+          "fieldPath": "capabilities.niricson-autospex-infrastructure-inspection.features",
+          "claimClass": "source_backed",
+          "excerpt": "Visual, thermal and acoustic data fusion; Automated defect detection and quantification; Geospatial condition mapping; Longitudinal change tracking",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-niricson-activity",
+          "sourceId": "niricson-grant",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "A current NRC IRAP contribution supports Niricson's 2026-2027 development of an AI platform for airfield pavement distress mapping for civilian airports and defence airstrips, following federal innovation testing with PSPC, Shared Services Canada and Transport Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-niricson-relationship",
+          "sourceId": "niricson-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada's grants database records an NRC IRAP contribution to Niricson Software Inc. for AI-based airfield pavement distress mapping; the candidate does not infer procurement beyond that contribution.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-niricson-mission",
+          "sourceId": "niricson-product",
+          "fieldPath": "capabilities.niricson-autospex-infrastructure-inspection.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Drone-enabled repeat inspection could support persistent monitoring of airfields and other dispersed infrastructure; the mapping is derived and does not establish operational CAF use.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "niricson",
+        "name": "Niricson",
+        "legalName": "Niricson Software Inc.",
+        "aliases": [
+          "Niricson Software"
+        ],
+        "description": "Niricson is a Vancouver infrastructure-intelligence company using artificial intelligence and multimodal inspection data to detect, quantify and track defects in concrete assets, airfield pavements, bridges and dams.",
+        "websiteUrl": "https://www.niricson.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "A current NRC IRAP contribution supports Niricson's 2026-2027 development of an AI platform for airfield pavement distress mapping for civilian airports and defence airstrips, following federal innovation testing with PSPC, Shared Services Canada and Transport Canada.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "niricson-autospex-infrastructure-inspection",
+          "name": "AUTOSPEX infrastructure inspection platform",
+          "summary": "AUTOSPEX fuses visual, thermal and acoustic inspection data, including drone-collected imagery and impact-acoustic measurements, to map defects and compare asset condition over time.",
+          "capabilityType": "AI-enabled multimodal infrastructure inspection",
+          "features": [
+            "Visual, thermal and acoustic data fusion",
+            "Automated defect detection and quantification",
+            "Geospatial condition mapping",
+            "Longitudinal change tracking"
+          ],
+          "applications": [
+            "Airfield pavement inspection",
+            "Bridge and dam assessment",
+            "Remote concrete-asset monitoring",
+            "Maintenance prioritization"
+          ],
+          "technicalTags": [
+            "infrastructure inspection",
+            "computer vision",
+            "thermal imaging",
+            "acoustic sensing",
+            "uncrewed aerial systems"
+          ],
+          "technicalDomainSlugs": [
+            "mission-software-and-data",
+            "sensing-and-isr",
+            "autonomous-systems"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Drone-enabled repeat inspection could support persistent monitoring of airfields and other dispersed infrastructure; the mapping is derived and does not establish operational CAF use.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Automated fusion and geospatial analysis of visual, thermal and acoustic data aligns with distributed inspection-data processing, subject to deployment architecture and security validation.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "National Research Council Canada",
+          "relationshipType": "NRC IRAP contribution recipient",
+          "publicSummary": "The Government of Canada's grants database records an NRC IRAP contribution to Niricson Software Inc. for AI-based airfield pavement distress mapping; the candidate does not infer procurement beyond that contribution."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.niricson.com/",
+        "sourceAssetUrl": "https://i0.wp.com/niricson.com/wp-content/uploads/2022/05/cropped-Original-1.png?fit=512%2C512&ssl=1",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "5f10972243c60b8e103b053229aa81561de2c82453e55790fec3ef3122e095db",
+        "normalizedChecksum": "8616be402145a14b730929a71979beff82040881c9359f5c808172cd1e9c0bac",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730113216/candidate-niricson/logo.source.json",
+        "note": "512x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-exonetik",
+      "sourceLeadIds": [
+        "lead-exonetik"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Exonetik is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Magnetorheological actuator systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The CSA contribution is historical and current Bell Flight work is described by Exonetik; a reviewer should preserve those date and attribution boundaries and avoid inferring a defence deployment. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 88,
+      "completenessScore": 83,
+      "reviewWarnings": [
+        "The CSA contribution is historical and current Bell Flight work is described by Exonetik; a reviewer should preserve those date and attribution boundaries and avoid inferring a defence deployment."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "exonetik-about",
+          "title": "About Exonetik",
+          "url": "https://www.exonetik.com/about-us",
+          "publisher": "Exonetik",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Company history and Sherbrooke location",
+          "summary": "Exonetik identifies itself as a 2013 University of Sherbrooke spin-off developing magnetorheological actuation technology in Sherbrooke, Quebec."
+        },
+        {
+          "id": "exonetik-technology",
+          "title": "Exonetik magnetorheological technology",
+          "url": "https://www.exonetik.com/technology",
+          "publisher": "Exonetik",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Actuator principles and application examples",
+          "summary": "The official technology page describes magnetorheological actuator principles and applications in robotics, aerospace and haptic systems, including work with Bell Flight."
+        },
+        {
+          "id": "exonetik-csa",
+          "title": "Lightweight actuators for collaborative space robots",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2019-2020-Q1-04244%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2019-06-06T00:00:00.000Z",
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Canadian Space Agency contribution 003-2019-2020-Q1-04244",
+          "summary": "The federal contribution record identifies Exonetik Inc. and funding for lightweight, high-performance actuators for collaborative space robots."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-exonetik-description",
+          "sourceId": "exonetik-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Exonetik is a Sherbrooke advanced-motion company developing magnetorheological actuators and control systems for haptics, robotics, aerospace and space applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-exonetik-location",
+          "sourceId": "exonetik-about",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Exonetik has a documented Canadian operating presence in Sherbrooke, Quebec.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-exonetik-capability",
+          "sourceId": "exonetik-technology",
+          "fieldPath": "capabilities.exonetik-magnetorheological-actuators.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Exonetik develops compact actuators whose output force is controlled by changing the properties of magnetorheological fluid, enabling controllable resistance, force feedback and lightweight robotic joints.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-exonetik-features",
+          "sourceId": "exonetik-technology",
+          "fieldPath": "capabilities.exonetik-magnetorheological-actuators.features",
+          "claimClass": "source_backed",
+          "excerpt": "Electronically controllable resistive force; Compact direct-drive mechanical architecture; Force-feedback and haptic-control integration; Robotic and aerospace actuator configurations",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-exonetik-activity",
+          "sourceId": "exonetik-technology",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Exonetik's official materials describe work with Bell Flight on haptic-feedback technology, while Canadian Space Agency contribution records document earlier development of lightweight magnetorheological actuators for collaborative space robots.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-exonetik-relationship",
+          "sourceId": "exonetik-csa",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "A Canadian Space Agency contribution record identifies Exonetik Inc. as the recipient of funding to develop lightweight, high-performance actuators for collaborative space robots; the record is historical and is not represented as a current procurement.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-exonetik-mission",
+          "sourceId": "exonetik-technology",
+          "fieldPath": "capabilities.exonetik-magnetorheological-actuators.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Compact controllable actuators could support manipulation or control subsystems on autonomous platforms; this component-level fit is derived and requires platform-specific integration evidence.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "exonetik",
+        "name": "Exonetik",
+        "legalName": "Exonetik Inc.",
+        "aliases": [],
+        "description": "Exonetik is a Sherbrooke advanced-motion company developing magnetorheological actuators and control systems for haptics, robotics, aerospace and space applications.",
+        "websiteUrl": "https://www.exonetik.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Sherbrooke",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.4042,
+          "longitude": -71.8929,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Exonetik's official materials describe work with Bell Flight on haptic-feedback technology, while Canadian Space Agency contribution records document earlier development of lightweight magnetorheological actuators for collaborative space robots.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "exonetik-magnetorheological-actuators",
+          "name": "Magnetorheological actuator systems",
+          "summary": "Exonetik develops compact actuators whose output force is controlled by changing the properties of magnetorheological fluid, enabling controllable resistance, force feedback and lightweight robotic joints.",
+          "capabilityType": "Magnetorheological actuation and haptic-control technology",
+          "features": [
+            "Electronically controllable resistive force",
+            "Compact direct-drive mechanical architecture",
+            "Force-feedback and haptic-control integration",
+            "Robotic and aerospace actuator configurations"
+          ],
+          "applications": [
+            "Robotic manipulators",
+            "Aircraft control interfaces",
+            "Haptic training systems",
+            "Space robotics"
+          ],
+          "technicalTags": [
+            "magnetorheological fluid",
+            "actuation",
+            "haptics",
+            "robotics",
+            "aerospace controls"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "aerospace-and-mobility",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Compact controllable actuators could support manipulation or control subsystems on autonomous platforms; this component-level fit is derived and requires platform-specific integration evidence.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "space technology contribution recipient",
+          "publicSummary": "A Canadian Space Agency contribution record identifies Exonetik Inc. as the recipient of funding to develop lightweight, high-performance actuators for collaborative space robots; the record is historical and is not represented as a current procurement."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-30T11:44:12.782Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-fireswarm-solutions",
+      "sourceLeadIds": [
+        "lead-fireswarm-solutions"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "FireSwarm Solutions is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Coordinated ultra-heavy-lift aerial system with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Payload, endurance and response-performance statements remain company-reported; the candidate uses only bounded functional descriptions and treats accelerator and competition participation as maturity signals. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "Payload, endurance and response-performance statements remain company-reported; the candidate uses only bounded functional descriptions and treats accelerator and competition participation as maturity signals."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "fireswarm-solutions-profile",
+          "title": "FireSwarm autonomous aerial systems",
+          "url": "https://www.fireswarmsolutions.com/",
+          "publisher": "FireSwarm Solutions",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Technology, applications and partner sections",
+          "summary": "The official site describes coordinated ultra-heavy-lift drones, autonomy software, wildfire suppression and dual-use logistics in smoke and difficult terrain."
+        },
+        {
+          "id": "fireswarm-solutions-contact",
+          "title": "FireSwarm locations",
+          "url": "https://www.fireswarmsolutions.com/contact",
+          "publisher": "FireSwarm Solutions",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Canadian operating locations",
+          "summary": "The company lists Canadian operating locations in Squamish, Ottawa and Toronto."
+        },
+        {
+          "id": "fireswarm-solutions-diana",
+          "title": "NATO DIANA 2026 cohort",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "publisher": "NATO DIANA",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Extreme environments cohort",
+          "summary": "NATO DIANA lists FireSwarm Solutions as a Canadian cohort company developing DASA-controlled ultra-heavy-lift drones for extreme environments."
+        },
+        {
+          "id": "fireswarm-solutions-chamber",
+          "title": "FireSwarm Solutions member profile",
+          "url": "https://www.squamishchamber.com/member/fireswarm-solutions-inc/",
+          "publisher": "Squamish Chamber of Commerce",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Member profile",
+          "summary": "The local chamber identifies FireSwarm Solutions Inc. as a Squamish company developing drone-based aerial wildfire suppression systems."
+        },
+        {
+          "id": "fireswarm-solutions-xprize",
+          "title": "XPRIZE Wildfire semifinalist teams",
+          "url": "https://assets-us-01.kc-usercontent.com/5cb25086-82d2-4c89-94f0-8450813a0fd3/e72df17b-b6b4-4eb2-9e94-aba84300f2a3/XPWF_SemifinalistTeams_7.11.25.pdf",
+          "publisher": "XPRIZE",
+          "sourceKind": "official_report",
+          "publishedAt": "2025-07-11T00:00:00.000Z",
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "FireSwarm Solutions team entry",
+          "summary": "XPRIZE lists FireSwarm Solutions among the semifinalist teams in its wildfire competition."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-fireswarm-solutions-description",
+          "sourceId": "fireswarm-solutions-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "FireSwarm Solutions is a Canadian autonomous-aviation company developing coordinated ultra-heavy-lift uncrewed aircraft for wildfire suppression, emergency response and dual-use logistics in hazardous environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-fireswarm-solutions-location",
+          "sourceId": "fireswarm-solutions-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "FireSwarm Solutions has a documented Canadian operating presence in Squamish, British Columbia.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-fireswarm-solutions-capability",
+          "sourceId": "fireswarm-solutions-profile",
+          "fieldPath": "capabilities.fireswarm-heavy-lift-autonomous-aerial-system.summary",
+          "claimClass": "source_backed",
+          "excerpt": "FireSwarm is developing heavy-lift uncrewed aircraft coordinated by autonomy software to deliver suppression payloads and logistics support in smoke, low visibility and difficult terrain.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-fireswarm-solutions-features",
+          "sourceId": "fireswarm-solutions-profile",
+          "fieldPath": "capabilities.fireswarm-heavy-lift-autonomous-aerial-system.features",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra-heavy-lift uncrewed aircraft; Multi-aircraft coordination software; Low-visibility and terrain-aware operation; Modular suppression and logistics payloads",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-fireswarm-solutions-activity",
+          "sourceId": "fireswarm-solutions-diana",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "NATO DIANA lists FireSwarm in its 2026 Canadian cohort for DASA-controlled ultra-heavy-lift drones in extreme environments, following its selection as an XPRIZE Wildfire semifinalist and public Canadian parliamentary discussion of the technology's maturity.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-fireswarm-solutions-relationship",
+          "sourceId": "fireswarm-solutions-diana",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "NATO DIANA lists FireSwarm Solutions as a 2026 Canadian cohort company developing DASA-controlled ultra-heavy-lift drones; cohort participation is not represented as procurement or operational endorsement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-fireswarm-solutions-mission",
+          "sourceId": "fireswarm-solutions-profile",
+          "fieldPath": "capabilities.fireswarm-heavy-lift-autonomous-aerial-system.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Coordinated heavy-lift aircraft and low-visibility autonomy could support remote logistics and monitoring missions; the mapping is derived and does not establish a military deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "fireswarm-solutions",
+        "name": "FireSwarm Solutions",
+        "legalName": "FireSwarm Solutions Inc.",
+        "aliases": [
+          "FireSwarm"
+        ],
+        "description": "FireSwarm Solutions is a Canadian autonomous-aviation company developing coordinated ultra-heavy-lift uncrewed aircraft for wildfire suppression, emergency response and dual-use logistics in hazardous environments.",
+        "websiteUrl": "https://www.fireswarmsolutions.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Squamish",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.7016,
+          "longitude": -123.1558,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "NATO DIANA lists FireSwarm in its 2026 Canadian cohort for DASA-controlled ultra-heavy-lift drones in extreme environments, following its selection as an XPRIZE Wildfire semifinalist and public Canadian parliamentary discussion of the technology's maturity.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "fireswarm-heavy-lift-autonomous-aerial-system",
+          "name": "Coordinated ultra-heavy-lift aerial system",
+          "summary": "FireSwarm is developing heavy-lift uncrewed aircraft coordinated by autonomy software to deliver suppression payloads and logistics support in smoke, low visibility and difficult terrain.",
+          "capabilityType": "Autonomous heavy-lift uncrewed aerial system",
+          "features": [
+            "Ultra-heavy-lift uncrewed aircraft",
+            "Multi-aircraft coordination software",
+            "Low-visibility and terrain-aware operation",
+            "Modular suppression and logistics payloads"
+          ],
+          "applications": [
+            "Wildfire initial attack",
+            "Emergency logistics",
+            "Remote resupply",
+            "Hazardous-environment aerial operations"
+          ],
+          "technicalTags": [
+            "heavy-lift UAS",
+            "multi-agent autonomy",
+            "wildfire suppression",
+            "aerial logistics",
+            "hazardous environments"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "aerospace-and-mobility",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Coordinated heavy-lift aircraft and low-visibility autonomy could support remote logistics and monitoring missions; the mapping is derived and does not establish a military deployment.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Heavy-lift autonomous logistics may be relevant to northern response and resupply, subject to cold-weather performance and communications validation.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "NATO Defence Innovation Accelerator for the North Atlantic",
+          "relationshipType": "2026 accelerator cohort company",
+          "publicSummary": "NATO DIANA lists FireSwarm Solutions as a 2026 Canadian cohort company developing DASA-controlled ultra-heavy-lift drones; cohort participation is not represented as procurement or operational endorsement."
+        }
+      ],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://www.fireswarmsolutions.com/",
+        "sourceAssetUrl": "https://images.squarespace-cdn.com/content/v1/652448e51f989406d0bdfae1/42d40109-16fa-4c85-ae63-ce8841254ba7/Part+of+the+DIANA+Network+Logo_white+%281%29.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "4b57303f3609ee66058509bfbf1424aedb4432e9585487f12008f680ab833436",
+        "normalizedChecksum": "18d4312da748ee92e827017cd399154893e4946d1a96f7b76003cb93119d5bcc",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730113216/candidate-fireswarm-solutions/logo.source.json",
+        "note": "1024x285 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-gbatteries-energy-canada",
+      "sourceLeadIds": [
+        "lead-gbatteries-energy-canada"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "GBatteries Energy Canada is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Adaptive fast-charging battery system with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Energy-density, charge-time, cycle-life, patent and testing-scale metrics on the company site are self-reported and are excluded from the candidate's core capability claim pending independent technical validation. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "Energy-density, charge-time, cycle-life, patent and testing-scale metrics on the company site are self-reported and are excluded from the candidate's core capability claim pending independent technical validation."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "gbatteries-energy-canada-profile",
+          "title": "GBatteries battery platform",
+          "url": "https://www.gbatteries.com/",
+          "publisher": "GBatteries",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Technology and platform overview",
+          "summary": "GBatteries describes adaptive charging controls and lithium-metal cell development for fast-charging, high-energy battery applications."
+        },
+        {
+          "id": "gbatteries-energy-canada-contact",
+          "title": "GBatteries contact",
+          "url": "https://www.gbatteries.com/contact",
+          "publisher": "GBatteries",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Ottawa address",
+          "summary": "The company lists an Ottawa operating address at 1431 Merivale Road."
+        },
+        {
+          "id": "gbatteries-energy-canada-nrcan",
+          "title": "Reducing the cost of lithium-ion battery manufacturing",
+          "url": "https://natural-resources.canada.ca/funding-partnerships/reducing-cost-lithium-ion-battery-manufacturing",
+          "publisher": "Natural Resources Canada",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Project description and funding",
+          "summary": "Natural Resources Canada describes GBatteries' chemistry-agnostic adaptive battery-management protocol using AI and electrochemistry, supported through Impact Canada."
+        },
+        {
+          "id": "gbatteries-energy-canada-diana",
+          "title": "NATO DIANA 2026 cohort",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "publisher": "NATO DIANA",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Energy and power cohort",
+          "summary": "NATO DIANA lists GBatteries Energy Canada Inc. for a smart pulse battery charger designed for cold-weather uncrewed-system operations."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-gbatteries-energy-canada-description",
+          "sourceId": "gbatteries-energy-canada-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "GBatteries Energy Canada is an Ottawa battery-technology company developing adaptive charging controls and lithium-metal cells for high-energy, fast-charging applications including cold-weather uncrewed systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gbatteries-energy-canada-location",
+          "sourceId": "gbatteries-energy-canada-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "GBatteries Energy Canada has a documented Canadian operating presence in Ottawa, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gbatteries-energy-canada-capability",
+          "sourceId": "gbatteries-energy-canada-profile",
+          "fieldPath": "capabilities.gbatteries-adaptive-fast-charging-system.summary",
+          "claimClass": "source_backed",
+          "excerpt": "GBatteries combines chemistry-aware charging controls with battery-cell development to adjust charge pulses in real time, with current dual-use work focused on cold-weather energy availability for uncrewed systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gbatteries-energy-canada-features",
+          "sourceId": "gbatteries-energy-canada-nrcan",
+          "fieldPath": "capabilities.gbatteries-adaptive-fast-charging-system.features",
+          "claimClass": "source_backed",
+          "excerpt": "Adaptive pulse-charging control; Chemistry-aware battery management; Lithium-metal cell development; Cold-weather uncrewed-system application",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gbatteries-energy-canada-activity",
+          "sourceId": "gbatteries-energy-canada-diana",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "NATO DIANA lists GBatteries Energy Canada in its 2026 cohort for a smart pulse battery charger supporting cold-weather uncrewed-system operations, building on federally funded adaptive battery-management work documented by Natural Resources Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gbatteries-energy-canada-relationship",
+          "sourceId": "gbatteries-energy-canada-nrcan",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Natural Resources Canada documents public funding for GBatteries' chemistry-agnostic adaptive charging controls; the relationship is represented as an innovation project rather than product certification or procurement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-gbatteries-energy-canada-mission",
+          "sourceId": "gbatteries-energy-canada-profile",
+          "fieldPath": "capabilities.gbatteries-adaptive-fast-charging-system.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Faster, adaptive charging could improve sortie availability for electric uncrewed platforms; actual endurance, environmental qualification and platform compatibility require verification.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "gbatteries-energy-canada",
+        "name": "GBatteries Energy Canada",
+        "legalName": "GBatteries Energy Canada Inc.",
+        "aliases": [
+          "GBatteries"
+        ],
+        "description": "GBatteries Energy Canada is an Ottawa battery-technology company developing adaptive charging controls and lithium-metal cells for high-energy, fast-charging applications including cold-weather uncrewed systems.",
+        "websiteUrl": "https://www.gbatteries.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "NATO DIANA lists GBatteries Energy Canada in its 2026 cohort for a smart pulse battery charger supporting cold-weather uncrewed-system operations, building on federally funded adaptive battery-management work documented by Natural Resources Canada.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "gbatteries-adaptive-fast-charging-system",
+          "name": "Adaptive fast-charging battery system",
+          "summary": "GBatteries combines chemistry-aware charging controls with battery-cell development to adjust charge pulses in real time, with current dual-use work focused on cold-weather energy availability for uncrewed systems.",
+          "capabilityType": "Adaptive battery charging and lithium-metal energy system",
+          "features": [
+            "Adaptive pulse-charging control",
+            "Chemistry-aware battery management",
+            "Lithium-metal cell development",
+            "Cold-weather uncrewed-system application"
+          ],
+          "applications": [
+            "Uncrewed-system charging",
+            "Cold-weather field energy",
+            "Electric mobility",
+            "High-energy portable power"
+          ],
+          "technicalTags": [
+            "battery management",
+            "pulse charging",
+            "lithium metal",
+            "cold-weather power",
+            "uncrewed systems"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "advanced-manufacturing-and-integration",
+            "aerospace-and-mobility"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Faster, adaptive charging could improve sortie availability for electric uncrewed platforms; actual endurance, environmental qualification and platform compatibility require verification.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "The DIANA cold-weather charging focus may be relevant to persistent northern uncrewed operations, but field performance and operational integration are not established.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Natural Resources Canada",
+          "relationshipType": "Impact Canada project recipient",
+          "publicSummary": "Natural Resources Canada documents public funding for GBatteries' chemistry-agnostic adaptive charging controls; the relationship is represented as an innovation project rather than product certification or procurement."
+        }
+      ],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://www.gbatteries.com/",
+        "sourceAssetUrl": "https://cdn.prod.website-files.com/648e62826195cd6c5c823020/648e69c46cc3ae780937e95e_logo-standard-white.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "6e1d1375a90d6717a77c01b3a349d4b4a0aa210007a1e3016c4481772847c5a0",
+        "normalizedChecksum": "f78c6574ce0e4827cf9a2b0c18571ef1be3e6b8bd77673dfa559d739fcdf2c60",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730113216/candidate-gbatteries-energy-canada/logo.source.json",
+        "note": "1024x246 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-volta-space-technologies",
+      "sourceLeadIds": [
+        "lead-volta-space-technologies"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Volta Space Technologies is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures LightPort optical wireless power system with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Receiver mass, aperture, delivered-power and persistence claims on the company site are self-reported; the candidate retains the architecture but excludes those metrics from the core claim. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "Receiver mass, aperture, delivered-power and persistence claims on the company site are self-reported; the candidate retains the architecture but excludes those metrics from the core claim."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "volta-space-technologies-technology",
+          "title": "Volta wireless power technology",
+          "url": "https://www.voltaspace.co/technology",
+          "publisher": "Volta Space Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "LightPort receiver and system applications",
+          "summary": "Volta describes an optical wireless-power architecture using a remote source and compact receiver for lunar, orbital and terrestrial platforms."
+        },
+        {
+          "id": "volta-space-technologies-registry",
+          "title": "Federal corporation details for Volta Space Technologies Inc.",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=12519194&p=&wbdisable=true",
+          "publisher": "Corporations Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Corporate identity and registered office",
+          "summary": "Corporations Canada identifies active corporation Volta Space Technologies Inc. with a Montreal registered office."
+        },
+        {
+          "id": "volta-space-technologies-csa",
+          "title": "Preparing the future of Moon exploration",
+          "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-06-09T00:00:00.000Z",
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Lunar power architecture contracts",
+          "summary": "The Canadian Space Agency identifies Volta among companies awarded contracts in a two-million-dollar initiative to study lunar power architectures."
+        },
+        {
+          "id": "volta-space-technologies-stdp",
+          "title": "STDP AO 9 contributions",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "award_or_contract",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Volta POWERD contribution",
+          "summary": "The Canadian Space Agency lists a contribution to Volta in Montreal for POWERD, a scalable optical wireless-power receiver."
+        },
+        {
+          "id": "volta-space-technologies-diana",
+          "title": "NATO DIANA 2026 cohort",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "publisher": "NATO DIANA",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Energy and power cohort",
+          "summary": "NATO DIANA lists Volta as a Canadian cohort company working on persistent drone flight and emergency power in extremely cold environments."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-volta-space-technologies-description",
+          "sourceId": "volta-space-technologies-registry",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Volta Space Technologies is a Montreal space-power company developing optical wireless power systems that transmit energy to compact receivers on lunar, orbital, aerial and remote terrestrial platforms.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-volta-space-technologies-location",
+          "sourceId": "volta-space-technologies-registry",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Volta Space Technologies has a documented Canadian operating presence in Montreal, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-volta-space-technologies-capability",
+          "sourceId": "volta-space-technologies-technology",
+          "fieldPath": "capabilities.volta-lightport-wireless-power-receiver.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Volta's system couples a directed optical power source with a compact LightPort receiver to deliver energy without a physical tether to spacecraft, drones, uncrewed vehicles and remote sensors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-volta-space-technologies-features",
+          "sourceId": "volta-space-technologies-stdp",
+          "fieldPath": "capabilities.volta-lightport-wireless-power-receiver.features",
+          "claimClass": "source_backed",
+          "excerpt": "Directed optical power transfer; Compact platform-mounted receiver; Wireless charging across standoff distance; Lunar, orbital and terrestrial configurations",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-volta-space-technologies-activity",
+          "sourceId": "volta-space-technologies-csa",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency awarded Volta a 2026 contract within a lunar power-architecture study and separately lists a Space Technology Development Program contribution for its POWERD optical wireless-power receiver.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-volta-space-technologies-relationship",
+          "sourceId": "volta-space-technologies-csa",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency identifies Volta among Canadian companies awarded contracts to study lunar power architectures; the candidate does not infer selection for a flight mission or operational deployment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-volta-space-technologies-mission",
+          "sourceId": "volta-space-technologies-technology",
+          "fieldPath": "capabilities.volta-lightport-wireless-power-receiver.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Wireless power delivery could extend operation of remote sensors or uncrewed platforms in northern environments; range, weather tolerance and safety require mission-specific validation.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "volta-space-technologies",
+        "name": "Volta Space Technologies",
+        "legalName": "Volta Space Technologies Inc.",
+        "aliases": [
+          "Volta Space",
+          "Volta"
+        ],
+        "description": "Volta Space Technologies is a Montreal space-power company developing optical wireless power systems that transmit energy to compact receivers on lunar, orbital, aerial and remote terrestrial platforms.",
+        "websiteUrl": "https://www.voltaspace.co/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Montreal",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.5019,
+          "longitude": -73.5674,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "The Canadian Space Agency awarded Volta a 2026 contract within a lunar power-architecture study and separately lists a Space Technology Development Program contribution for its POWERD optical wireless-power receiver.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "volta-lightport-wireless-power-receiver",
+          "name": "LightPort optical wireless power system",
+          "summary": "Volta's system couples a directed optical power source with a compact LightPort receiver to deliver energy without a physical tether to spacecraft, drones, uncrewed vehicles and remote sensors.",
+          "capabilityType": "Optical wireless power transmission and reception",
+          "features": [
+            "Directed optical power transfer",
+            "Compact platform-mounted receiver",
+            "Wireless charging across standoff distance",
+            "Lunar, orbital and terrestrial configurations"
+          ],
+          "applications": [
+            "Lunar infrastructure power",
+            "Persistent uncrewed-system operation",
+            "Emergency remote power",
+            "Satellite and sensor energy delivery"
+          ],
+          "technicalTags": [
+            "wireless power",
+            "optical power beaming",
+            "lunar systems",
+            "persistent UAS",
+            "remote energy"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "autonomous-systems",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Wireless power delivery could extend operation of remote sensors or uncrewed platforms in northern environments; range, weather tolerance and safety require mission-specific validation.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Remote recharging could increase persistence for electric uncrewed systems, but the candidate does not claim a demonstrated CAF deployment.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "lunar power study contract recipient",
+          "publicSummary": "The Canadian Space Agency identifies Volta among Canadian companies awarded contracts to study lunar power architectures; the candidate does not infer selection for a flight mission or operational deployment."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.voltaspace.co/",
+        "sourceAssetUrl": "https://images.squarespace-cdn.com/content/v1/65590f3c26c7de56533abae2/08530af7-1a13-4342-9190-6b8cc77bc04d/Dark+backgrounds+circular+coloured+logo.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "99a035c9d0c850aa662cbd9b048ecc09b987025773b7f2190a3b46c8b3de9b53",
+        "normalizedChecksum": "e435523b280a2c93e933716eb41ee388b5b7cffbb550bbfd946cee5c4cf40814",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730113216/candidate-volta-space-technologies/logo.source.json",
+        "note": "509x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-north-vector-dynamics",
+      "sourceLeadIds": [
+        "lead-north-vector-dynamics"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "North Vector Dynamics is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures CM-70 counter-UAS interceptor with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Range, speed, mass and target-class specifications are company-published and should be checked by the reviewer before any performance metrics are added to the canonical record. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "Range, speed, mass and target-class specifications are company-published and should be checked by the reviewer before any performance metrics are added to the canonical record."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "north-vector-dynamics-about",
+          "title": "North Vector Dynamics",
+          "url": "https://www.northvectordynamics.com/about-us",
+          "publisher": "North Vector Dynamics",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Company identity and operating focus",
+          "summary": "North Vector describes itself as a Canadian-owned and controlled Calgary defence company building low-cost autonomous defence systems."
+        },
+        {
+          "id": "north-vector-dynamics-product",
+          "title": "CM-70 counter-UAS interceptor",
+          "url": "https://www.northvectordynamics.com/cm-70",
+          "publisher": "North Vector Dynamics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "CM-70 architecture and deployment options",
+          "summary": "The official product page describes a compact semi-active-laser-guided counter-UAS interceptor for ground, vehicle and airborne deployment against Group I-III threats."
+        },
+        {
+          "id": "north-vector-dynamics-grant",
+          "title": "Low-cost aerial counter-UAS platform contribution",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-03-18T00:00:00.000Z",
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "DND contribution 018-2025-2026-Q4-06-CD3002",
+          "summary": "The federal record identifies North Vector Dynamics Inc. in Calgary and an amended IDEaS Concept Development contribution for a low-cost aerial counter-UAS platform."
+        },
+        {
+          "id": "north-vector-dynamics-brief",
+          "title": "North Vector Dynamics parliamentary brief",
+          "url": "https://www.ourcommons.ca/Content/Committee/451/INDU/Brief/BR13796160/br-external/NorthVectorDynamics-e.pdf",
+          "publisher": "House of Commons of Canada",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Company submission on counter-UAS industrial capability",
+          "summary": "A parliamentary committee brief provides attributable company evidence about North Vector's Canadian counter-UAS development and industrial context."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-north-vector-dynamics-description",
+          "sourceId": "north-vector-dynamics-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector Dynamics is a Calgary defence company developing compact, low-cost counter-uncrewed-aircraft interceptors and related autonomous systems for rapidly deployed protection against small drone threats.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-north-vector-dynamics-location",
+          "sourceId": "north-vector-dynamics-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "North Vector Dynamics has a documented Canadian operating presence in Calgary, Alberta.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-north-vector-dynamics-capability",
+          "sourceId": "north-vector-dynamics-product",
+          "fieldPath": "capabilities.north-vector-cm-70-counter-uas-interceptor.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The CM-70 is a compact guided interceptor designed for ground, vehicle or airborne deployment against small uncrewed aircraft, using a semi-active laser-guidance architecture within a wider counter-UAS concept.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-north-vector-dynamics-features",
+          "sourceId": "north-vector-dynamics-product",
+          "fieldPath": "capabilities.north-vector-cm-70-counter-uas-interceptor.features",
+          "claimClass": "source_backed",
+          "excerpt": "Semi-active laser guidance; Ground, vehicle and air-launch configurations; Compact interceptor form factor; Designed for Group I-III UAS threats",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-north-vector-dynamics-activity",
+          "sourceId": "north-vector-dynamics-grant",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "A Department of National Defence contribution record, amended in March 2026, provides up to $2 million through the IDEaS Concept Development program for North Vector's low-cost aerial counter-UAS platform through September 2027.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-north-vector-dynamics-relationship",
+          "sourceId": "north-vector-dynamics-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The federal grants database records a Department of National Defence IDEaS contribution to North Vector Dynamics Inc. for a low-cost aerial counter-UAS platform; this is not represented as procurement or operational adoption.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-north-vector-dynamics-mission",
+          "sourceId": "north-vector-dynamics-product",
+          "fieldPath": "capabilities.north-vector-cm-70-counter-uas-interceptor.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "A compact mobile counter-UAS interceptor could protect autonomous patrol nodes and deployed formations from small-drone threats; the fit is derived and no operational deployment is asserted.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "north-vector-dynamics",
+        "name": "North Vector Dynamics",
+        "legalName": "North Vector Dynamics Inc.",
+        "aliases": [
+          "NVD"
+        ],
+        "description": "North Vector Dynamics is a Calgary defence company developing compact, low-cost counter-uncrewed-aircraft interceptors and related autonomous systems for rapidly deployed protection against small drone threats.",
+        "websiteUrl": "https://www.northvectordynamics.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Calgary",
+          "provinceTerritory": "Alberta",
+          "countryCode": "CA",
+          "latitude": 51.0447,
+          "longitude": -114.0719,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "A Department of National Defence contribution record, amended in March 2026, provides up to $2 million through the IDEaS Concept Development program for North Vector's low-cost aerial counter-UAS platform through September 2027.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "north-vector-cm-70-counter-uas-interceptor",
+          "name": "CM-70 counter-UAS interceptor",
+          "summary": "The CM-70 is a compact guided interceptor designed for ground, vehicle or airborne deployment against small uncrewed aircraft, using a semi-active laser-guidance architecture within a wider counter-UAS concept.",
+          "capabilityType": "Compact guided counter-UAS interceptor",
+          "features": [
+            "Semi-active laser guidance",
+            "Ground, vehicle and air-launch configurations",
+            "Compact interceptor form factor",
+            "Designed for Group I-III UAS threats"
+          ],
+          "applications": [
+            "Point defence against small UAS",
+            "Mobile-force protection",
+            "Critical-infrastructure defence",
+            "Layered counter-UAS systems"
+          ],
+          "technicalTags": [
+            "counter-UAS",
+            "guided interceptor",
+            "semi-active laser guidance",
+            "air defence",
+            "autonomous systems"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "aerospace-and-mobility"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "A compact mobile counter-UAS interceptor could protect autonomous patrol nodes and deployed formations from small-drone threats; the fit is derived and no operational deployment is asserted.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Department of National Defence",
+          "relationshipType": "IDEaS Concept Development recipient",
+          "publicSummary": "The federal grants database records a Department of National Defence IDEaS contribution to North Vector Dynamics Inc. for a low-cost aerial counter-UAS platform; this is not represented as procurement or operational adoption."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-30T11:44:12.780Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-pleora-technologies",
+      "sourceLeadIds": [
+        "lead-pleora-technologies"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Pleora Technologies is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Real-time military imaging connectivity with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Official evidence establishes military-market products and quality scope but no named current CAF customer or deployment; the NRC contribution is historical and should remain dated. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 89,
+      "completenessScore": 85,
+      "reviewWarnings": [
+        "Official evidence establishes military-market products and quality scope but no named current CAF customer or deployment; the NRC contribution is historical and should remain dated."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "pleora-technologies-profile",
+          "title": "Pleora real-time imaging connectivity",
+          "url": "https://www.pleora.com/",
+          "publisher": "Pleora Technologies",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Products, technology and market overview",
+          "summary": "Pleora describes hardware and software for real-time imaging connectivity and processing across defence, medical and industrial applications."
+        },
+        {
+          "id": "pleora-technologies-contact",
+          "title": "Pleora contact",
+          "url": "https://www.pleora.com/contact-us/",
+          "publisher": "Pleora Technologies",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Kanata office and legal identity",
+          "summary": "Pleora lists Pleora Technologies Inc. at 450 March Road in Kanata, Ontario."
+        },
+        {
+          "id": "pleora-technologies-military",
+          "title": "Machine vision for military imaging",
+          "url": "https://www.pleora.com/resources/articles/machine-vision-brings-cost-performance-advantages-military-imaging/",
+          "publisher": "Pleora Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Military vehicle imaging architecture",
+          "summary": "Pleora describes GigE Vision transport, local situational-awareness video and alignment with VIVOE, NGVA and VICTORY-style vehicle architectures."
+        },
+        {
+          "id": "pleora-technologies-iso",
+          "title": "Pleora ISO 9001 certification",
+          "url": "https://www.pleora.com/wp-content/uploads/2024/10/FM-744188-001.pdf",
+          "publisher": "BSI",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Certification scope",
+          "summary": "The certification scope covers design and manufacture of sensor-networking products for military, medical and industrial applications."
+        },
+        {
+          "id": "pleora-technologies-grant",
+          "title": "Pleora AI visual inspection contribution",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-987160%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "NRC contribution 172-2021-2022-Q4-987160",
+          "summary": "The federal grants record identifies Pleora Technologies Inc. in Ottawa and NRC support for an AI-based visual inspection platform."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-pleora-technologies-description",
+          "sourceId": "pleora-technologies-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Pleora Technologies is an Ottawa-area imaging-connectivity company providing hardware and software that moves, processes and integrates real-time sensor video for defence, medical and industrial systems.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-pleora-technologies-location",
+          "sourceId": "pleora-technologies-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Pleora Technologies has a documented Canadian operating presence in Ottawa, Ontario.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-pleora-technologies-capability",
+          "sourceId": "pleora-technologies-military",
+          "fieldPath": "capabilities.pleora-real-time-military-imaging-connectivity.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Pleora supplies embedded interfaces, external frame grabbers and the eBUS software development kit for low-latency transport and processing of sensor imagery across vehicle, platform and command-system networks.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-pleora-technologies-features",
+          "sourceId": "pleora-technologies-military",
+          "fieldPath": "capabilities.pleora-real-time-military-imaging-connectivity.features",
+          "claimClass": "source_backed",
+          "excerpt": "GigE Vision video transport; Embedded and external sensor interfaces; eBUS software development kit; Standards-oriented vehicle video distribution",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-pleora-technologies-activity",
+          "sourceId": "pleora-technologies-iso",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Pleora's current ISO 9001 certification covers the design and manufacture of sensor-networking products for military, medical and industrial applications; an older NRC IRAP contribution documents public support for an AI-based visual inspection platform.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-pleora-technologies-relationship",
+          "sourceId": "pleora-technologies-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "A federal grants record identifies Pleora Technologies Inc. as an NRC IRAP recipient for an AI visual-inspection platform; the historical contribution is not represented as a current defence contract.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-pleora-technologies-mission",
+          "sourceId": "pleora-technologies-military",
+          "fieldPath": "capabilities.pleora-real-time-military-imaging-connectivity.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Low-latency sensor transport and local video processing could support edge exploitation of electro-optical feeds; the mapping is derived and deployment-specific security remains unverified.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "pleora-technologies",
+        "name": "Pleora Technologies",
+        "legalName": "Pleora Technologies Inc.",
+        "aliases": [
+          "Pleora"
+        ],
+        "description": "Pleora Technologies is an Ottawa-area imaging-connectivity company providing hardware and software that moves, processes and integrates real-time sensor video for defence, medical and industrial systems.",
+        "websiteUrl": "https://www.pleora.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Pleora's current ISO 9001 certification covers the design and manufacture of sensor-networking products for military, medical and industrial applications; an older NRC IRAP contribution documents public support for an AI-based visual inspection platform.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "pleora-real-time-military-imaging-connectivity",
+          "name": "Real-time military imaging connectivity",
+          "summary": "Pleora supplies embedded interfaces, external frame grabbers and the eBUS software development kit for low-latency transport and processing of sensor imagery across vehicle, platform and command-system networks.",
+          "capabilityType": "Real-time sensor-video networking and processing",
+          "features": [
+            "GigE Vision video transport",
+            "Embedded and external sensor interfaces",
+            "eBUS software development kit",
+            "Standards-oriented vehicle video distribution"
+          ],
+          "applications": [
+            "Military vehicle situational awareness",
+            "Electro-optical sensor integration",
+            "Remote imaging",
+            "Machine-vision processing"
+          ],
+          "technicalTags": [
+            "GigE Vision",
+            "sensor networking",
+            "frame grabber",
+            "video processing",
+            "vehicle architecture"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "mission-software-and-data",
+            "communications-and-cyber"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Low-latency sensor transport and local video processing could support edge exploitation of electro-optical feeds; the mapping is derived and deployment-specific security remains unverified.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Standards-based imaging interfaces could integrate sensors into autonomous or crewed patrol platforms, subject to platform qualification.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "National Research Council Canada",
+          "relationshipType": "NRC IRAP contribution recipient",
+          "publicSummary": "A federal grants record identifies Pleora Technologies Inc. as an NRC IRAP recipient for an AI visual-inspection platform; the historical contribution is not represented as a current defence contract."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.pleora.com/",
+        "sourceAssetUrl": "https://www.pleora.com/wp-content/uploads/2021/11/pleora-logo.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "a91b5b7563702e69654d64512a93ecb4f0bf2e109ab6be5da45fb763e9d643fe",
+        "normalizedChecksum": "5c526691c114aa67dda7c36dacd750289dcc5cd3d966a345fddef1cf64a7abd2",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730113216/candidate-pleora-technologies/logo.source.json",
+        "note": "494x225 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-marecomms",
+      "sourceLeadIds": [
+        "lead-marecomms"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Marecomms is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Underwater acoustic networking with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The candidate captures functions supported by the company and federal contribution record but excludes uncited range, throughput and performance comparisons. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 97,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "The candidate captures functions supported by the company and federal contribution record but excludes uncited range, throughput and performance comparisons."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T11:44:07.035Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "marecomms-profile",
+          "title": "Marecomms underwater wireless technology",
+          "url": "https://www.marecomms.com/",
+          "publisher": "Marecomms",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Company, AQUABAND, ROAM and contact sections",
+          "summary": "Marecomms identifies a Halifax company founded in 2017 and describes underwater acoustic networking for data, video and autonomous underwater systems."
+        },
+        {
+          "id": "marecomms-grant",
+          "title": "Underwater horizontal video compression contribution",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-05-01T00:00:00.000Z",
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "NRC contribution 172-2025-2026-Q1-1030291",
+          "summary": "The federal record identifies Marecomms Inc. in Halifax and a 2025-2026 NRC IRAP contribution for advanced source compression for underwater horizontal video."
+        },
+        {
+          "id": "marecomms-pier",
+          "title": "Marecomms member profile",
+          "url": "https://www.thepierhfx.com/pier_members/marecomms/",
+          "publisher": "The PIER at the Seaport",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Member profile",
+          "summary": "The Halifax ocean-innovation hub describes Marecomms and its underwater wireless communications focus."
+        },
+        {
+          "id": "marecomms-industry",
+          "title": "Marecomms moves into commercialization phase",
+          "url": "https://otcns.ca/news/2022-02-21/marecomms-moves-into-commercialization-phase",
+          "publisher": "Ocean Technology Council of Nova Scotia",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2022-02-21T00:00:00.000Z",
+          "accessedAt": "2026-07-30T11:44:07.035Z",
+          "locator": "Commercialization announcement",
+          "summary": "The industry association documents Marecomms' transition toward commercialization of its underwater communications technology."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-marecomms-description",
+          "sourceId": "marecomms-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Marecomms is a Halifax ocean-communications company developing software-defined underwater acoustic modems and networking technology for video, data and coordinated autonomous underwater systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marecomms-location",
+          "sourceId": "marecomms-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Marecomms has a documented Canadian operating presence in Halifax, Nova Scotia.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marecomms-capability",
+          "sourceId": "marecomms-profile",
+          "fieldPath": "capabilities.marecomms-underwater-acoustic-networking.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Marecomms develops AQUABAND and ROAM acoustic communications technology for encrypted underwater data, video and multi-node networking in channels affected by Doppler, multipath and limited bandwidth.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marecomms-features",
+          "sourceId": "marecomms-profile",
+          "fieldPath": "capabilities.marecomms-underwater-acoustic-networking.features",
+          "claimClass": "source_backed",
+          "excerpt": "Adaptive acoustic communications; Encrypted underwater links; Doppler and multipath mitigation; Multi-node and AUV-swarm networking",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marecomms-activity",
+          "sourceId": "marecomms-grant",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "An NRC IRAP contribution running from May 2025 to March 2026 supports Marecomms' advanced source-compression work for horizontal underwater video, extending its documented commercialization of acoustic communications technology.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marecomms-relationship",
+          "sourceId": "marecomms-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada's grants database records an NRC IRAP contribution to Marecomms Inc. for advanced source compression for underwater horizontal video; the candidate does not infer defence procurement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marecomms-mission",
+          "sourceId": "marecomms-profile",
+          "fieldPath": "capabilities.marecomms-underwater-acoustic-networking.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Adaptive encrypted acoustic links could relay sensor data and coordinate underwater platforms for surveillance missions; the mapping is derived and no CAF deployment is asserted.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "marecomms",
+        "name": "Marecomms",
+        "legalName": "Marecomms Inc.",
+        "aliases": [
+          "Marecomms Underwater Wireless"
+        ],
+        "description": "Marecomms is a Halifax ocean-communications company developing software-defined underwater acoustic modems and networking technology for video, data and coordinated autonomous underwater systems.",
+        "websiteUrl": "https://www.marecomms.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Halifax",
+          "provinceTerritory": "Nova Scotia",
+          "countryCode": "CA",
+          "latitude": 44.6488,
+          "longitude": -63.5752,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "An NRC IRAP contribution running from May 2025 to March 2026 supports Marecomms' advanced source-compression work for horizontal underwater video, extending its documented commercialization of acoustic communications technology.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "marecomms-underwater-acoustic-networking",
+          "name": "Underwater acoustic networking",
+          "summary": "Marecomms develops AQUABAND and ROAM acoustic communications technology for encrypted underwater data, video and multi-node networking in channels affected by Doppler, multipath and limited bandwidth.",
+          "capabilityType": "Software-defined underwater acoustic communications",
+          "features": [
+            "Adaptive acoustic communications",
+            "Encrypted underwater links",
+            "Doppler and multipath mitigation",
+            "Multi-node and AUV-swarm networking"
+          ],
+          "applications": [
+            "AUV coordination",
+            "Underwater ISR data relay",
+            "Marine robotics",
+            "Subsea video and sensor communications"
+          ],
+          "technicalTags": [
+            "underwater acoustics",
+            "acoustic modem",
+            "AUV swarm",
+            "subsea networking",
+            "video compression"
+          ],
+          "technicalDomainSlugs": [
+            "communications-and-cyber",
+            "autonomous-systems",
+            "sensing-and-isr"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "Adaptive encrypted acoustic links could relay sensor data and coordinate underwater platforms for surveillance missions; the mapping is derived and no CAF deployment is asserted.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Multi-node acoustic networking could support coordinated AUV patrols where radio-frequency links are unavailable, subject to range and integration validation.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "National Research Council Canada",
+          "relationshipType": "NRC IRAP contribution recipient",
+          "publicSummary": "The Government of Canada's grants database records an NRC IRAP contribution to Marecomms Inc. for advanced source compression for underwater horizontal video; the candidate does not infer defence procurement."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-30T11:44:12.784Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    }
+  ],
+  "deferred": []
+}

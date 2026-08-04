@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260729075223",
+  "runId": "tnm-manual-20260729075223",
+  "createdAt": "2026-07-29T07:54:56.000Z",
+  "scope": {
+    "description": "Existing-record enrichment leads for published ONE9 and CAE records, resolved through official portfolio, company-issued news, ecosystem-program, Source Book, newsletter-discovery, government-overlap, and independent-publication lanes.",
+    "targetMissionAreaSlugs": ["autonomous-patrol-and-monitoring", "edge-data-processing"],
+    "targetTechnicalDomainSlugs": ["autonomous-systems", "mission-software-and-data", "aerospace-and-mobility", "test-training-and-sustainment", "communications-and-cyber"],
+    "targetOrganizationKinds": ["company", "investor_funder"],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-one9-portfolio-and-area-xo-refresh",
+      "source": {
+        "id": "one9-official-portfolio-source",
+        "title": "ONE9 national security investment platform and portfolio",
+        "url": "https://www.one9.ca/",
+        "publisher": "ONE9",
+        "sourceKind": "investor_portfolio",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T07:54:56.000Z",
+        "locator": "Investment Portfolio and Capability Labs sections",
+        "summary": "ONE9's official site identifies its current security and defence investment portfolio and describes Capability Labs as a bridge between end-users, startups, technology validation, and venture investment."
+      },
+      "discoveryPath": [
+        "https://www.one9.ca/",
+        "https://www.one9.ca/capabilitylabs",
+        "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/"
+      ],
+      "possibleMissionAreaSlugs": ["autonomous-patrol-and-monitoring", "edge-data-processing"],
+      "possibleTechnicalDomainSlugs": ["autonomous-systems", "mission-software-and-data", "communications-and-cyber"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "ONE9 official portfolio and Capability Labs pages plus Invest Ottawa's official September 2025 partnership release",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.one9.ca/",
+        "websiteDomain": "one9.ca",
+        "stableSlug": "one9",
+        "legalName": null,
+        "aliases": ["ONE9 Capability Labs", "ONE9 and Invest Ottawa"]
+      },
+      "followUpQuestions": [
+        "Should every official portfolio company remain visible as a relationship, including the disclosed Tomahawk Robotics exit?",
+        "Should the Invest Ottawa relationship be retained as an ecosystem partnership rather than a program child?"
+      ],
+      "discoveryLane": "investor_portfolio",
+      "inclusionScore": 92,
+      "completenessScore": 90,
+      "reviewWarnings": ["Tomahawk Robotics is marked as an exit on ONE9's official portfolio and must remain explicitly labelled as a former portfolio company."],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+        "slug": "one9",
+        "matchMethods": ["slug", "name", "website_domain"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-22T20:10:50.204397Z"
+      },
+      "signalIds": ["one9-official-portfolio-expansion-2026-07-29", "one9-invest-ottawa-area-xo-partnership-2025-09-03"],
+      "refreshSummary": "The current ONE9 record stores only one portfolio company. Official sources support six additional portfolio relationships, an Invest Ottawa and Area X.O partnership, and a fuller evidence-bounded summary of Capability Labs.",
+      "intendedChanges": [
+        "Expand the profile portfolio summary from one to seven official portfolio names.",
+        "Add six missing portfolio or former-portfolio relationships.",
+        "Add the official Invest Ottawa and Area X.O defence-entrepreneur partnership.",
+        "Refine current activity to explain Capability Labs without implying procurement selection."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-cae-leonardo-m346-refresh",
+      "source": {
+        "id": "cae-leonardo-m346-source",
+        "title": "CAE and Leonardo expand collaboration on M-346 training",
+        "url": "https://www.newswire.ca/news-releases/cae-and-leonardo-expand-collaboration-to-advance-m-346-training-and-develop-next-generation-integrated-training-capabilities-836414999.html",
+        "publisher": "CAE Inc.",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-07-22T00:00:00.000Z",
+        "accessedAt": "2026-07-29T07:54:56.000Z",
+        "locator": "Collaboration, technology-roadmap, LVC, LSI, Block 20, and AI-enabled training statements",
+        "summary": "CAE and Leonardo announced an expanded M-346 Integrated Training System collaboration spanning advanced fighter training, Block 20, LVC and LSI environments, AI-enabled systems, and increasingly autonomous missions."
+      },
+      "discoveryPath": [
+        "https://www.cae.com/defense-security/who-we-are",
+        "https://www.newswire.ca/news-releases/cae-and-leonardo-expand-collaboration-to-advance-m-346-training-and-develop-next-generation-integrated-training-capabilities-836414999.html",
+        "https://www.ainonline.com/aviation-news/defense/2026-07-22/leonardo-increases-collaborations-cae-lockheed-martin"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": ["aerospace-and-mobility", "test-training-and-sustainment", "mission-software-and-data"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "CAE-issued July 22 announcement corroborated by independent aviation-industry reporting",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.newswire.ca/news-releases/cae-and-leonardo-expand-collaboration-to-advance-m-346-training-and-develop-next-generation-integrated-training-capabilities-836414999.html",
+        "websiteDomain": "cae.com",
+        "stableSlug": "cae",
+        "legalName": "CAE Inc.",
+        "aliases": ["CAE", "CAE and Leonardo M-346 ITS collaboration"]
+      },
+      "followUpQuestions": [
+        "Should the Leonardo collaboration remain a current relationship and profile activity rather than a separate capability?",
+        "Should a later customer-specific award trigger a separate dated program update?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 89,
+      "completenessScore": 84,
+      "reviewWarnings": ["The agreement is a collaboration and technology roadmap, not a disclosed Canadian procurement award or customer-specific implementation."],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+        "slug": "cae",
+        "matchMethods": ["slug", "legal_name", "website_domain"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T10:01:42.056602Z"
+      },
+      "signalIds": ["cae-leonardo-m346-training-collaboration-2026-07-22"],
+      "refreshSummary": "CAE's current portfolio-level training coverage remains valid; the July 22 announcement adds a distinct Leonardo relationship and current M-346 LVC, LSI, Block 20, AI-enabled, and autonomous-mission training roadmap.",
+      "intendedChanges": [
+        "Add Leonardo as a current M-346 integrated-training collaboration relationship.",
+        "Update current activity with the July 2026 training-roadmap scope and a clear no-award evidence boundary."
+      ]
+    }
+  ]
+}

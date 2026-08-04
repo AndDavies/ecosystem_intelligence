@@ -1,0 +1,1566 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260725123516",
+  "runId": "tnm-manual-20260725123516",
+  "title": "Canadian company discovery batch 4",
+  "status": "candidate",
+  "createdAt": "2026-07-25T12:35:17.287Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260725123516.json",
+  "guardrailNotes": [
+    "Private review material only; no candidate is published by this workflow.",
+    "Official company pages are the field-evidence anchors. Discovery sources are not upgraded into claims without durable corroboration."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-ideon-technologies",
+      "sourceLeadIds": [
+        "lead-ideon-technologies"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "IDEON Technologies is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Subsurface sensing and AI. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "ideon-technologies-official",
+          "title": "IDEON Technologies official capability profile",
+          "url": "https://ideon.ai/",
+          "publisher": "IDEON Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes IDEON Technologies and its public offering: Canadian subsurface-intelligence company using muon tomography and AI for remote sensing and resource characterization."
+        },
+        {
+          "id": "ideon-technologies-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "ideon-technologies-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-ideon-technologies-description",
+          "sourceId": "ideon-technologies-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes IDEON Technologies as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ideon-technologies-capability",
+          "sourceId": "ideon-technologies-official",
+          "fieldPath": "capabilities.ideon-technologies-subsurface-sensing-and-ai.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Subsurface sensing and AI offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "ideon-technologies",
+        "name": "IDEON Technologies",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian subsurface-intelligence company using muon tomography and AI for remote sensing and resource characterization.",
+        "websiteUrl": "https://ideon.ai/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Subsurface sensing and AI",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "ideon-technologies-subsurface-sensing-and-ai",
+          "name": "Subsurface sensing and AI",
+          "summary": "Canadian subsurface-intelligence company using muon tomography and AI for remote sensing and resource characterization.",
+          "capabilityType": "Subsurface sensing and AI",
+          "features": [
+            "Subsurface sensing and AI",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Subsurface sensing and AI offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://ideon.ai/",
+        "sourceAssetUrl": "https://ideon.ai/wp-content/uploads/2025/02/GGIA-Logo1.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "81002d3766f37e6e91f39f9f1a108d60ea1a30e033b860ed53ddff41a6265772",
+        "normalizedChecksum": "e0e2733c6a64ab939684e2ef1e65ca5422ec48531b699526da3f8d4468657b80",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123516/candidate-ideon-technologies/logo.source.json",
+        "note": "973x355 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-minesense",
+      "sourceLeadIds": [
+        "lead-minesense"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "MineSense is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Industrial sensing and data analytics. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "minesense-official",
+          "title": "MineSense official capability profile",
+          "url": "https://minesense.com/",
+          "publisher": "MineSense",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes MineSense and its public offering: Canadian industrial-sensing company providing sensor and data systems for material characterization and operational decision support."
+        },
+        {
+          "id": "minesense-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "minesense-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-minesense-description",
+          "sourceId": "minesense-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes MineSense as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-minesense-capability",
+          "sourceId": "minesense-official",
+          "fieldPath": "capabilities.minesense-industrial-sensing-and-data-analytics.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Industrial sensing and data analytics offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "minesense",
+        "name": "MineSense",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian industrial-sensing company providing sensor and data systems for material characterization and operational decision support.",
+        "websiteUrl": "https://minesense.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Industrial sensing and data analytics",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "minesense-industrial-sensing-and-data-analytics",
+          "name": "Industrial sensing and data analytics",
+          "summary": "Canadian industrial-sensing company providing sensor and data systems for material characterization and operational decision support.",
+          "capabilityType": "Industrial sensing and data analytics",
+          "features": [
+            "Industrial sensing and data analytics",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Industrial sensing and data analytics offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://minesense.com/",
+        "sourceAssetUrl": "https://minesense.com/wp-content/uploads/2021/03/minesense-small-logowhite-2.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "8db2820c8ae8086fcb76628cce0d2b7a80c330efe39cca763eec2b91e7ca76f3",
+        "normalizedChecksum": "b650c1f205de7fbf205b5fd6ed2393b4ca25738fb2bd5e829ab6d75266120ab4",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123516/candidate-minesense/logo.source.json",
+        "note": "200x136 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-geologicai",
+      "sourceLeadIds": [
+        "lead-geologicai"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "GeologicAI is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: AI-enabled geoscience robotics. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "geologicai-official",
+          "title": "GeologicAI official capability profile",
+          "url": "https://geologicai.com/",
+          "publisher": "GeologicAI",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes GeologicAI and its public offering: Canadian AI and robotics company developing automated core analysis and geoscience data systems."
+        },
+        {
+          "id": "geologicai-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "geologicai-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-geologicai-description",
+          "sourceId": "geologicai-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes GeologicAI as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-geologicai-capability",
+          "sourceId": "geologicai-official",
+          "fieldPath": "capabilities.geologicai-ai-enabled-geoscience-robotics.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named AI-enabled geoscience robotics offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "geologicai",
+        "name": "GeologicAI",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian AI and robotics company developing automated core analysis and geoscience data systems.",
+        "websiteUrl": "https://geologicai.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "AI-enabled geoscience robotics",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "geologicai-ai-enabled-geoscience-robotics",
+          "name": "AI-enabled geoscience robotics",
+          "summary": "Canadian AI and robotics company developing automated core analysis and geoscience data systems.",
+          "capabilityType": "AI-enabled geoscience robotics",
+          "features": [
+            "AI-enabled geoscience robotics",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described AI-enabled geoscience robotics offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.geologicai.com/",
+        "sourceAssetUrl": "https://www.geologicai.com/wp-content/uploads/2025/09/corephototransition.webp",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "3f09932109a6817dbbfd5a623a2c75e5d1e3188762b44977979d67583c3982c8",
+        "normalizedChecksum": "39ccecc365e0091ae370f8bd8efe2100ee945e86cb10007de525f0167e4a2368",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123516/candidate-geologicai/logo.source.json",
+        "note": "841x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-equispheres",
+      "sourceLeadIds": [
+        "lead-equispheres"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Equispheres is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Metal powders for additive manufacturing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "equispheres-official",
+          "title": "Equispheres official capability profile",
+          "url": "https://equispheres.com/",
+          "publisher": "Equispheres",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Equispheres and its public offering: Canadian materials company producing metal powders for additive manufacturing and advanced industrial applications."
+        },
+        {
+          "id": "equispheres-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "equispheres-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-equispheres-description",
+          "sourceId": "equispheres-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Equispheres as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-equispheres-capability",
+          "sourceId": "equispheres-official",
+          "fieldPath": "capabilities.equispheres-metal-powders-for-additive-manufacturing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Metal powders for additive manufacturing offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "equispheres",
+        "name": "Equispheres",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian materials company producing metal powders for additive manufacturing and advanced industrial applications.",
+        "websiteUrl": "https://equispheres.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Metal powders for additive manufacturing",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "equispheres-metal-powders-for-additive-manufacturing",
+          "name": "Metal powders for additive manufacturing",
+          "summary": "Canadian materials company producing metal powders for additive manufacturing and advanced industrial applications.",
+          "capabilityType": "Metal powders for additive manufacturing",
+          "features": [
+            "Metal powders for additive manufacturing",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Metal powders for additive manufacturing offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://equispheres.com/",
+        "sourceAssetUrl": "https://equispheres.com/wp-content/uploads/2017/01/cropped-equispheres-logo.jpg",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "baaf1e20ed59b2cb19c8d60fdecb6c4a3ab199fee9c50d65e006bd7019edeaf3",
+        "normalizedChecksum": "a7aafa7fbc7c896817b7cf321c3efc91e40b338784a3afb5b611e186378a8058",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123516/candidate-equispheres/logo.source.json",
+        "note": "512x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-mosaic-manufacturing",
+      "sourceLeadIds": [
+        "lead-mosaic-manufacturing"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Mosaic Manufacturing is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Automated additive manufacturing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "mosaic-manufacturing-official",
+          "title": "Mosaic Manufacturing official capability profile",
+          "url": "https://www.mosaicmfg.com/",
+          "publisher": "Mosaic Manufacturing",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Mosaic Manufacturing and its public offering: Canadian advanced-manufacturing company developing automated multi-material 3D printing systems."
+        },
+        {
+          "id": "mosaic-manufacturing-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "mosaic-manufacturing-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-mosaic-manufacturing-description",
+          "sourceId": "mosaic-manufacturing-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Mosaic Manufacturing as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-mosaic-manufacturing-capability",
+          "sourceId": "mosaic-manufacturing-official",
+          "fieldPath": "capabilities.mosaic-manufacturing-automated-additive-manufacturing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Automated additive manufacturing offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "mosaic-manufacturing",
+        "name": "Mosaic Manufacturing",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian advanced-manufacturing company developing automated multi-material 3D printing systems.",
+        "websiteUrl": "https://www.mosaicmfg.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Automated additive manufacturing",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "mosaic-manufacturing-automated-additive-manufacturing",
+          "name": "Automated additive manufacturing",
+          "summary": "Canadian advanced-manufacturing company developing automated multi-material 3D printing systems.",
+          "capabilityType": "Automated additive manufacturing",
+          "features": [
+            "Automated additive manufacturing",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Automated additive manufacturing offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://mosaicmfg.com/",
+        "sourceAssetUrl": "https://mosaicmfg.com/wp-content/uploads/2025/06/admin-logo@2x.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "93d461e86578dd6b5560eefef44e7c739841c9b7ceb0c4f00ceb55f6c837e793",
+        "normalizedChecksum": "21cac5fa4891d25166b98d0a80c198815af2b5d0c014b96a8f7f4d5e88a7b5fd",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123516/candidate-mosaic-manufacturing/logo.source.json",
+        "note": "259x84 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-terrasense-analytics",
+      "sourceLeadIds": [
+        "lead-terrasense-analytics"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "TerraSense Analytics is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Geospatial sensing and analysis. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "terrasense-analytics-official",
+          "title": "TerraSense Analytics official capability profile",
+          "url": "https://terrasense.ca/",
+          "publisher": "TerraSense Analytics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes TerraSense Analytics and its public offering: Canadian geospatial company developing remote-sensing and terrain-analysis services for complex environments."
+        },
+        {
+          "id": "terrasense-analytics-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "terrasense-analytics-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-terrasense-analytics-description",
+          "sourceId": "terrasense-analytics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes TerraSense Analytics as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-terrasense-analytics-capability",
+          "sourceId": "terrasense-analytics-official",
+          "fieldPath": "capabilities.terrasense-analytics-geospatial-sensing-and-analysis.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Geospatial sensing and analysis offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "terrasense-analytics",
+        "name": "TerraSense Analytics",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian geospatial company developing remote-sensing and terrain-analysis services for complex environments.",
+        "websiteUrl": "https://terrasense.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Geospatial sensing and analysis",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "terrasense-analytics-geospatial-sensing-and-analysis",
+          "name": "Geospatial sensing and analysis",
+          "summary": "Canadian geospatial company developing remote-sensing and terrain-analysis services for complex environments.",
+          "capabilityType": "Geospatial sensing and analysis",
+          "features": [
+            "Geospatial sensing and analysis",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Geospatial sensing and analysis offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:35:19.565Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-virtual-marine-technology",
+      "sourceLeadIds": [
+        "lead-virtual-marine-technology"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Virtual Marine Technology is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Marine simulation and training. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "virtual-marine-technology-official",
+          "title": "Virtual Marine Technology official capability profile",
+          "url": "https://virtualmarine.ca/",
+          "publisher": "Virtual Marine Technology",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Virtual Marine Technology and its public offering: Canadian marine-simulation company providing training and simulation systems for offshore and maritime operations."
+        },
+        {
+          "id": "virtual-marine-technology-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "virtual-marine-technology-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-virtual-marine-technology-description",
+          "sourceId": "virtual-marine-technology-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Virtual Marine Technology as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-virtual-marine-technology-capability",
+          "sourceId": "virtual-marine-technology-official",
+          "fieldPath": "capabilities.virtual-marine-technology-marine-simulation-and-training.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Marine simulation and training offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "virtual-marine-technology",
+        "name": "Virtual Marine Technology",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian marine-simulation company providing training and simulation systems for offshore and maritime operations.",
+        "websiteUrl": "https://virtualmarine.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "St. John's",
+          "provinceTerritory": "Newfoundland and Labrador",
+          "countryCode": "CA",
+          "latitude": 47.5615,
+          "longitude": -52.7126,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Marine simulation and training",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "virtual-marine-technology-marine-simulation-and-training",
+          "name": "Marine simulation and training",
+          "summary": "Canadian marine-simulation company providing training and simulation systems for offshore and maritime operations.",
+          "capabilityType": "Marine simulation and training",
+          "features": [
+            "Marine simulation and training",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Marine simulation and training offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://www.virtualmarine.ca/",
+        "sourceAssetUrl": "https://static1.squarespace.com/static/650c0efc7f01d95f401233fb/t/651d4e44db40063e65276097/1696419396712/VMCustomers-1.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "c3f16fd86d16c90b1e1dd13b5eb351c30f3089ccc5790fcc36067ad7cf8cfac1",
+        "normalizedChecksum": "b7ae8eab33905d1cdb09477607c5f8deb262eb093a933e1036a53879ca6c65e2",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123516/candidate-virtual-marine-technology/logo.source.json",
+        "note": "160x70 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-de-havilland-aircraft-canada",
+      "sourceLeadIds": [
+        "lead-de-havilland-aircraft-canada"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "De Havilland Aircraft of Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Aircraft manufacturing and sustainment. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "de-havilland-aircraft-canada-official",
+          "title": "De Havilland Aircraft of Canada official capability profile",
+          "url": "https://dehavilland.com/",
+          "publisher": "De Havilland Aircraft of Canada",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes De Havilland Aircraft of Canada and its public offering: Canadian aircraft manufacturer producing and supporting regional and specialized aircraft platforms."
+        },
+        {
+          "id": "de-havilland-aircraft-canada-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "de-havilland-aircraft-canada-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-de-havilland-aircraft-canada-description",
+          "sourceId": "de-havilland-aircraft-canada-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes De Havilland Aircraft of Canada as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-de-havilland-aircraft-canada-capability",
+          "sourceId": "de-havilland-aircraft-canada-official",
+          "fieldPath": "capabilities.de-havilland-aircraft-canada-aircraft-manufacturing-and-sustainment.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Aircraft manufacturing and sustainment offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "de-havilland-aircraft-canada",
+        "name": "De Havilland Aircraft of Canada",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aircraft manufacturer producing and supporting regional and specialized aircraft platforms.",
+        "websiteUrl": "https://dehavilland.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Calgary",
+          "provinceTerritory": "Alberta",
+          "countryCode": "CA",
+          "latitude": 51.0447,
+          "longitude": -114.0719,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Aircraft manufacturing and sustainment",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "de-havilland-aircraft-canada-aircraft-manufacturing-and-sustainment",
+          "name": "Aircraft manufacturing and sustainment",
+          "summary": "Canadian aircraft manufacturer producing and supporting regional and specialized aircraft platforms.",
+          "capabilityType": "Aircraft manufacturing and sustainment",
+          "features": [
+            "Aircraft manufacturing and sustainment",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Aircraft manufacturing and sustainment offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://dehavilland.com/",
+        "sourceAssetUrl": "https://dehavilland.com/wp-content/uploads/2023/03/dhc_logo_red.svg",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "e0f0f4b0490366e6f08e08e63806de62b6b11e4bff85f90d85476e4b11269a11",
+        "normalizedChecksum": "6213b7ba87893ccea98cf1583445d8616b97b520d4877caa1bd102840a33be9e",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123516/candidate-de-havilland-aircraft-canada/logo.source.json",
+        "note": "304x60 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-kf-aerospace",
+      "sourceLeadIds": [
+        "lead-kf-aerospace"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "KF Aerospace is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Aircraft maintenance and special-mission support. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "kf-aerospace-official",
+          "title": "KF Aerospace official capability profile",
+          "url": "https://kfaero.ca/",
+          "publisher": "KF Aerospace",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes KF Aerospace and its public offering: Canadian aerospace company providing aircraft maintenance, modification, training and special-mission support."
+        },
+        {
+          "id": "kf-aerospace-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "kf-aerospace-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-kf-aerospace-description",
+          "sourceId": "kf-aerospace-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes KF Aerospace as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-kf-aerospace-capability",
+          "sourceId": "kf-aerospace-official",
+          "fieldPath": "capabilities.kf-aerospace-aircraft-maintenance-and-special-mission-support.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Aircraft maintenance and special-mission support offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "kf-aerospace",
+        "name": "KF Aerospace",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aerospace company providing aircraft maintenance, modification, training and special-mission support.",
+        "websiteUrl": "https://kfaero.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Kelowna",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.888,
+          "longitude": -119.496,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Aircraft maintenance and special-mission support",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "kf-aerospace-aircraft-maintenance-and-special-mission-support",
+          "name": "Aircraft maintenance and special-mission support",
+          "summary": "Canadian aerospace company providing aircraft maintenance, modification, training and special-mission support.",
+          "capabilityType": "Aircraft maintenance and special-mission support",
+          "features": [
+            "Aircraft maintenance and special-mission support",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Aircraft maintenance and special-mission support offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://www.kfaero.ca/",
+        "sourceAssetUrl": "https://www.kfaero.ca/wp-content/uploads/2021/03/logo.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "6cbbff927472f3e45542bfd4cc16c88b9faecd8a0a7bd937088c4a8e9be90d8d",
+        "normalizedChecksum": "43017c83f1b4e0f966e2f8660c42724a9d55203dcae6e3d90c728ea6e99770fd",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123516/candidate-kf-aerospace/logo.source.json",
+        "note": "340x80 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-cascade-aerospace",
+      "sourceLeadIds": [
+        "lead-cascade-aerospace"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Cascade Aerospace is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Aerospace sustainment and modification. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:35:17.287Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "cascade-aerospace-official",
+          "title": "Cascade Aerospace official capability profile",
+          "url": "https://www.cascadeaerospace.com/",
+          "publisher": "Cascade Aerospace",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Cascade Aerospace and its public offering: Canadian aerospace company providing aircraft maintenance, modification and in-service support."
+        },
+        {
+          "id": "cascade-aerospace-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "cascade-aerospace-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:35:17.287Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-cascade-aerospace-description",
+          "sourceId": "cascade-aerospace-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Cascade Aerospace as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cascade-aerospace-capability",
+          "sourceId": "cascade-aerospace-official",
+          "fieldPath": "capabilities.cascade-aerospace-aerospace-sustainment-and-modification.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Aerospace sustainment and modification offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "cascade-aerospace",
+        "name": "Cascade Aerospace",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aerospace company providing aircraft maintenance, modification and in-service support.",
+        "websiteUrl": "https://www.cascadeaerospace.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Abbotsford",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.0504,
+          "longitude": -122.3045,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Aerospace sustainment and modification",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "cascade-aerospace-aerospace-sustainment-and-modification",
+          "name": "Aerospace sustainment and modification",
+          "summary": "Canadian aerospace company providing aircraft maintenance, modification and in-service support.",
+          "capabilityType": "Aerospace sustainment and modification",
+          "features": [
+            "Aerospace sustainment and modification",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Aerospace sustainment and modification offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.cascadeaerospace.com/",
+        "sourceAssetUrl": "https://www.cascadeaerospace.com/img/Logo.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "a78f1a1162f82ccb6ce22cd41f74636f6fbe838c9193e7f2945ad90e47a39674",
+        "normalizedChecksum": "2099d8d184bf4978681c8ea1a640d1b8ab4aa9d4c7bc251040acdf1b94e7f69e",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123516/candidate-cascade-aerospace/logo.source.json",
+        "note": "232x118 normalized WebP retained in the private candidate packet."
+      }
+    }
+  ],
+  "deferred": []
+}

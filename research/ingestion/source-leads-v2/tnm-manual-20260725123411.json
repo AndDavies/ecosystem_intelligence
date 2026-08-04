@@ -1,0 +1,854 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260725123411",
+  "runId": "tnm-manual-20260725123411",
+  "createdAt": "2026-07-25T12:34:23.007Z",
+  "scope": {
+    "description": "Canadian company leads from a multi-source discovery run. Qualified leads continue automatically into private candidates; LinkedIn/social and directories are discovery inputs only until durable evidence is resolved.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "mission-software-and-data"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-solace",
+      "source": {
+        "id": "solace-official",
+        "title": "Solace official capability profile",
+        "url": "https://solace.com/",
+        "publisher": "Solace",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Solace and its public offering: Canadian software company providing event-driven integration and messaging technology for distributed systems."
+      },
+      "discoveryPath": [
+        "https://solace.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://solace.com/",
+        "websiteDomain": "solace.com",
+        "stableSlug": "solace",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://solace.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Solace",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://solace.com/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Event-driven data integration",
+      "roleSpecificEvidence": "Canadian software company providing event-driven integration and messaging technology for distributed systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-ranovus",
+      "source": {
+        "id": "ranovus-official",
+        "title": "Ranovus official capability profile",
+        "url": "https://ranovus.com/",
+        "publisher": "Ranovus",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Ranovus and its public offering: Canadian photonics company developing optical interconnect and communications technology for data infrastructure."
+      },
+      "discoveryPath": [
+        "https://ranovus.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://ranovus.com/",
+        "websiteDomain": "ranovus.com",
+        "stableSlug": "ranovus",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://ranovus.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Ranovus",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://ranovus.com/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Optical communications technology",
+      "roleSpecificEvidence": "Canadian photonics company developing optical interconnect and communications technology for data infrastructure."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-peraso",
+      "source": {
+        "id": "peraso-official",
+        "title": "Peraso official capability profile",
+        "url": "https://perasoinc.com/",
+        "publisher": "Peraso",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Peraso and its public offering: Canadian semiconductor company developing millimetre-wave wireless technology and chipsets."
+      },
+      "discoveryPath": [
+        "https://perasoinc.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://perasoinc.com/",
+        "websiteDomain": "perasoinc.com",
+        "stableSlug": "peraso",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://perasoinc.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Peraso",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://perasoinc.com/",
+      "aliases": [],
+      "location": {
+        "city": "Toronto",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Millimetre-wave wireless systems",
+      "roleSpecificEvidence": "Canadian semiconductor company developing millimetre-wave wireless technology and chipsets."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-thinkrf",
+      "source": {
+        "id": "thinkrf-official",
+        "title": "thinkRF official capability profile",
+        "url": "https://thinkrf.com/",
+        "publisher": "thinkRF",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes thinkRF and its public offering: Canadian RF-technology company providing spectrum-analysis and software-defined radio systems."
+      },
+      "discoveryPath": [
+        "https://thinkrf.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://thinkrf.com/",
+        "websiteDomain": "thinkrf.com",
+        "stableSlug": "thinkrf",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "conference_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://thinkrf.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "thinkRF",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://thinkrf.com/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "RF spectrum analysis and SDR",
+      "roleSpecificEvidence": "Canadian RF-technology company providing spectrum-analysis and software-defined radio systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-cmc-electronics",
+      "source": {
+        "id": "cmc-electronics-official",
+        "title": "CMC Electronics official capability profile",
+        "url": "https://cmcelectronics.ca/",
+        "publisher": "CMC Electronics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes CMC Electronics and its public offering: Canadian aerospace company providing avionics, cockpit systems, simulation and mission equipment."
+      },
+      "discoveryPath": [
+        "https://cmcelectronics.ca/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://cmcelectronics.ca/",
+        "websiteDomain": "cmcelectronics.ca",
+        "stableSlug": "cmc-electronics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://cmcelectronics.ca/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "CMC Electronics",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://cmcelectronics.ca/",
+      "aliases": [],
+      "location": {
+        "city": "Montreal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Avionics and mission systems",
+      "roleSpecificEvidence": "Canadian aerospace company providing avionics, cockpit systems, simulation and mission equipment."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-firan-technology-group",
+      "source": {
+        "id": "firan-technology-group-official",
+        "title": "Firan Technology Group official capability profile",
+        "url": "https://ftgcorp.com/",
+        "publisher": "Firan Technology Group",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Firan Technology Group and its public offering: Canadian electronics manufacturer producing printed circuits and electronic subsystems for aerospace and defence markets."
+      },
+      "discoveryPath": [
+        "https://ftgcorp.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://ftgcorp.com/",
+        "websiteDomain": "ftgcorp.com",
+        "stableSlug": "firan-technology-group",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "broad_web",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://ftgcorp.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Firan Technology Group",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://ftgcorp.com/",
+      "aliases": [],
+      "location": {
+        "city": "Toronto",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Aerospace electronics manufacturing",
+      "roleSpecificEvidence": "Canadian electronics manufacturer producing printed circuits and electronic subsystems for aerospace and defence markets."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-airboss-of-america",
+      "source": {
+        "id": "airboss-of-america-official",
+        "title": "AirBoss of America official capability profile",
+        "url": "https://airboss.com/",
+        "publisher": "AirBoss of America",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes AirBoss of America and its public offering: Canadian advanced-materials company providing protective products, rubber compounds and specialized manufacturing."
+      },
+      "discoveryPath": [
+        "https://airboss.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://airboss.com/",
+        "websiteDomain": "airboss.com",
+        "stableSlug": "airboss-of-america",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://airboss.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "AirBoss of America",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://airboss.com/",
+      "aliases": [],
+      "location": {
+        "city": "Newmarket",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Protective materials and manufacturing",
+      "roleSpecificEvidence": "Canadian advanced-materials company providing protective products, rubber compounds and specialized manufacturing."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-imt-defence",
+      "source": {
+        "id": "imt-defence-official",
+        "title": "IMT Defence official capability profile",
+        "url": "https://imtdefence.com/",
+        "publisher": "IMT Defence",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes IMT Defence and its public offering: Canadian defence manufacturer producing artillery, mortar and ammunition-related systems and components."
+      },
+      "discoveryPath": [
+        "https://imtdefence.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://imtdefence.com/",
+        "websiteDomain": "imtdefence.com",
+        "stableSlug": "imt-defence",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://imtdefence.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "IMT Defence",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://imtdefence.com/",
+      "aliases": [],
+      "location": {
+        "city": "Ingersoll",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Defence manufacturing and munitions systems",
+      "roleSpecificEvidence": "Canadian defence manufacturer producing artillery, mortar and ammunition-related systems and components."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-curtiss-wright-indal",
+      "source": {
+        "id": "curtiss-wright-indal-official",
+        "title": "Curtiss-Wright Indal official capability profile",
+        "url": "https://www.curtisswright.com/company/locations/indal-technologies-canada.html",
+        "publisher": "Curtiss-Wright Indal",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Curtiss-Wright Indal and its public offering: Canadian naval-systems business providing aircraft handling, stabilization and mission-support equipment."
+      },
+      "discoveryPath": [
+        "https://www.curtisswright.com/company/locations/indal-technologies-canada.html",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.curtisswright.com/company/locations/indal-technologies-canada.html",
+        "websiteDomain": "www.curtisswright.com",
+        "stableSlug": "curtiss-wright-indal",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.curtisswright.com/company/locations/indal-technologies-canada.html",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Curtiss-Wright Indal",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.curtisswright.com/company/locations/indal-technologies-canada.html",
+      "aliases": [],
+      "location": {
+        "city": "Mississauga",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Naval aircraft handling systems",
+      "roleSpecificEvidence": "Canadian naval-systems business providing aircraft handling, stabilization and mission-support equipment."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-elbit-systems-canada",
+      "source": {
+        "id": "elbit-systems-canada-official",
+        "title": "Elbit Systems Canada official capability profile",
+        "url": "https://elbitsystems.com/canada/",
+        "publisher": "Elbit Systems Canada",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:34:23.007Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Elbit Systems Canada and its public offering: Canadian defence-systems company providing airborne, land, electro-optical and training technologies."
+      },
+      "discoveryPath": [
+        "https://elbitsystems.com/canada/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://elbitsystems.com/canada/",
+        "websiteDomain": "elbitsystems.com",
+        "stableSlug": "elbit-systems-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://elbitsystems.com/canada/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Elbit Systems Canada",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://elbitsystems.com/canada/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Defence mission systems",
+      "roleSpecificEvidence": "Canadian defence-systems company providing airborne, land, electro-optical and training technologies."
+    }
+  ]
+}

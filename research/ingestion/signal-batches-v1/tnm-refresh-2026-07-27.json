@@ -1,0 +1,477 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-refresh-2026-07-27-signals",
+  "runId": "tnm-refresh-2026-07-27",
+  "createdAt": "2026-07-27T11:13:03.799Z",
+  "watermarkStart": "2026-07-17T11:24:00.000Z",
+  "watermarkEnd": "2026-07-27T11:13:03.799Z",
+  "sourceFamilyCounters": {
+    "official_company": 4,
+    "government_procurement": 8,
+    "source_book": 6,
+    "ecosystem_program": 4,
+    "industry_publication": 2,
+    "gmail_newsletter": 5,
+    "linkedin_chrome": 0,
+    "other_discovery": 3
+  },
+  "warnings": [
+    "Gmail newsletter items were read-only discovery inputs and were not used as field-level evidence without durable corroboration.",
+    "Authenticated Chrome and LinkedIn browsing were unavailable, so linkedin_chrome remained at zero and the remaining source-family controls were expanded.",
+    "DIA and BOREALIS are strong evidence trails but were deferred from new organization staging because shared canada.ca domains collide with existing published government-innovation-office records."
+  ],
+  "signals": [
+    {
+      "signalId": "invest-ottawa-national-defence-innovation-hub-2026-07-27",
+      "fingerprint": "49e88708f35e76485d15935ac7e45da662dccb9b9e654e2409331fbbc1a6e91a",
+      "sourceChannel": "other_discovery",
+      "sourceFamily": "Invest Ottawa defence innovation hub page",
+      "discoveryOrigin": {
+        "url": "https://www.investottawa.ca/dihub/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Invest Ottawa",
+        "technology": "regional defence innovation hub strategy and task force",
+        "program": "Canada's National Defence Innovation Hub",
+        "issuer": null,
+        "eventDate": "2026-07-27",
+        "amount": "up to $3 billion public and private capital target",
+        "details": "Invest Ottawa presents Canada’s National Defence Innovation Hub and a five-year Ottawa-Gatineau strategy to unite government, academia, industry and investors, expand test infrastructure, improve procurement and export pathways, and position the region for allied defence and dual-use technology."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.investottawa.ca/dihub/"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "74ea0730-a290-451f-91d1-804dd619bd88",
+          "slug": "invest-ottawa",
+          "matchMethods": [
+            "slug",
+            "name",
+            "website_domain"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T07:28:43.196119Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "other_discovery",
+          "url": "https://www.investottawa.ca/dihub/",
+          "outcome": "Resolved the current defence innovation hub strategy, implementation task force, lead partners and Invest Ottawa role to the canonical public page."
+        },
+        {
+          "channel": "source_book",
+          "url": "https://www.investottawa.ca/",
+          "outcome": "Matched the signal to the existing published Invest Ottawa organization by exact website domain, name and slug."
+        }
+      ],
+      "warnings": [],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "defence-investment-agency-official-profile-2026-07-20",
+      "fingerprint": "4b04ed587980659f0ecfd97274e0fa5dce3697e02a0275f53729719ee29f14a2",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Defence Investment Agency official pages",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/defence-investment-agency/corporate/about.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Defence Investment Agency",
+        "technology": "centralized defence procurement modernization",
+        "program": "Delivering the Defence Industrial Strategy",
+        "issuer": "Government of Canada",
+        "eventDate": "2026-07-20",
+        "amount": null,
+        "details": "The official DIA profile describes a special operating agency within PSPC that reduces procurement delays, tests new procurement approaches, strengthens industrial innovation and partnerships, and supports CAF and Coast Guard capability delivery."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/defence-investment-agency.html",
+        "https://www.canada.ca/en/defence-investment-agency/corporate/about.html",
+        "https://www.canada.ca/en/defence-investment-agency/corporate/delivering-defence-industrial-strategy.html"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "The candidate-worthy organization uses canada.ca, which collides with existing published government innovation office records under the local duplicate validator."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "Evidence supports a future government-innovation-office organization or refresh, but shared Canada.ca domain modeling must be resolved before a new organization bundle can safely stage."
+    },
+    {
+      "signalId": "borealis-official-profile-2026-07-14",
+      "fingerprint": "a11586b0ad1e9fe07de3b3bfd95e5bbf174cbaa6ab6b65b2905d80ec5072ed35",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "BOREALIS official program page",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/programs/borealis.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Bureau of Research, Engineering and Advanced Leadership in Innovation and Science",
+        "technology": "mission-driven defence and national security innovation",
+        "program": "BOREALIS",
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-07-14",
+        "amount": "$68.2 million over three years",
+        "details": "The BOREALIS page describes an innovation bureau that aligns federal innovation programs toward mission needs, connects government, academia and industry, and supports Defence Innovation Secure Hubs."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/programs/borealis.html",
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "The organization uses canada.ca and is housed at DRDC, which is already a published government innovation office."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "BOREALIS is strong evidence for later modeling, but this run avoids a new canada.ca organization bundle until reviewers decide whether to model it separately from DRDC and IDEaS."
+    },
+    {
+      "signalId": "dnd-uxs-dish-borealis-nexus-2026-07-14",
+      "fingerprint": "364dfc5a3f8a09af942be1342ae6c949bdd87cce353c51e1236bb68e535a317c",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "DND UxS DISH launch and backgrounder",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Aéro Montréal and Espace Aéro",
+        "technology": "uncrewed systems defence innovation secure hub",
+        "program": "NEXUS UxS DISH",
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-07-14",
+        "amount": "$29.6 million over two years",
+        "details": "DND announced an Espace Aéro-led consortium selected to establish the UxS DISH at YMX, with BOREALIS supporting secure collaboration, testing, validation and integration of uncrewed systems technologies."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/minister-mcguinty-announces-new-drone-production-in-quebec.html"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "acd8686c-f889-4383-8c81-6de09fdaa309",
+          "slug": "aero-montreal",
+          "matchMethods": [
+            "name",
+            "website_domain"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T08:27:58.746479Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "Aéro Montréal is already published and the July 24 refresh memory says not to duplicate NEXUS/YMX work."
+      ],
+      "disposition": "already_current",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "ideas-marketplace-2026-video-2026-07-15",
+      "fingerprint": "e84c76b9c5faf5382b965db48f630c597cfa7c3da8b18cce6b589a2fff1143e2",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "IDEaS Marketplace official video",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/video/defence-ideas/ideas-marketplace-2026-post-event-video.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Innovation for Defence Excellence and Security",
+        "technology": "marketplace for defence innovators and buyers",
+        "program": "IDEaS Marketplace 2026",
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-07-15",
+        "amount": null,
+        "details": "The official IDEaS Marketplace post-event video describes in-person collaboration among buyers and innovators, prototype development support, and defence innovation engagement."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/corporate/video/defence-ideas/ideas-marketplace-2026-post-event-video.html"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "4dd43ab1-7baf-4533-8cf7-d35d1234745c",
+          "slug": "ideas",
+          "matchMethods": [
+            "slug",
+            "website_domain"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T07:44:33.468601Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [],
+      "disposition": "already_current",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "dnd-departmental-plan-ideas-test-drives-2026-07-23",
+      "fingerprint": "42844b1eaf1b26be31164c0ad16762bfb69cc2be3280e927d096cb22ba7938cf",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "DND 2026-27 Departmental Plan",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Innovation for Defence Excellence and Security",
+        "technology": "advanced solution test drives and transition into operational capability",
+        "program": "IDEaS",
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-07-23",
+        "amount": "$1 billion over 20 years",
+        "details": "The DND 2026-27 Departmental Plan describes IDEaS as a long-term investment enabling Canadian innovators to test advanced solutions in real-world environments and transition them into operational capability."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html"
+      ],
+      "signalType": "official_demand_statement",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "4dd43ab1-7baf-4533-8cf7-d35d1234745c",
+          "slug": "ideas",
+          "matchMethods": [
+            "slug",
+            "website_domain"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T07:44:33.468601Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [],
+      "disposition": "already_current",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "nrc-defence-research-drone-hub-2026-07-27",
+      "fingerprint": "7587d0d6afa256ebff6d40a28203f1fe3cc3752d0577ef7669c45acd229a3fa5",
+      "sourceChannel": "source_book",
+      "sourceFamily": "NRC defence research source-book row",
+      "discoveryOrigin": {
+        "url": "https://nrc.canada.ca/en/research-development/research-collaboration/defence-research-nrc",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "National Research Council Canada",
+        "technology": "drone technologies, digital twins and virtual testing",
+        "program": "Defence research at the NRC",
+        "issuer": "National Research Council Canada",
+        "eventDate": "2026-07-27",
+        "amount": null,
+        "details": "NRC defence research pages identify Defence Industry Assist, drone technologies, virtual testing and defence-security transportation systems as current public defence research lanes."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://nrc.canada.ca/en/research-development/research-collaboration/defence-research-nrc"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "84682376-3d02-4d51-8e82-fa3c068cf2fe",
+          "slug": "nrc-irap",
+          "matchMethods": [
+            "website_domain"
+          ],
+          "confidence": "moderate",
+          "baselineUpdatedAt": "2026-07-21T07:28:43.196119Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "Prior automation memory says NRC Drone Innovation Hub remains deferred because nrc.canada.ca is already attached to NRC IRAP."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "The NRC material is useful refresh evidence, but the current modeling conflict needs reviewer resolution before staging a separate NRC-branded hub or research-centre candidate."
+    },
+    {
+      "signalId": "cdr-defence-update-canadian-items-2026-07-23",
+      "fingerprint": "a95640ae8db2744c3b2ca55fdf947d4be84d24217f262d5a7a503eb7dc6aafc2",
+      "sourceChannel": "gmail_newsletter",
+      "sourceFamily": "Canadian Defence Review newsletter",
+      "discoveryOrigin": {
+        "url": "https://canadiandefencereview.com/",
+        "gmailMessageId": "19f8fccb4f630aa4",
+        "gmailThreadId": "19f8fccb4f630aa4",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Multiple Canadian defence companies",
+        "technology": "UAS, submarine sustainment, MRO and defence industrial updates",
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "The CDR newsletter surfaced Canadian defence items including Davie Autonomous, Flexrotor, Airbus/Landing Zones, Magellan, Babcock and NEXUS-related activity; newsletter content was retained as discovery provenance only."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "https://www.investottawa.ca/dihub/"
+      ],
+      "signalType": "partnership_or_consortium",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Resolved the NEXUS/BOREALIS portion to durable official DND evidence."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.investottawa.ca/dihub/",
+          "outcome": "Resolved broader hub context to the Invest Ottawa defence innovation hub page."
+        }
+      ],
+      "warnings": [
+        "Gmail and newsletter content is discovery only, not field evidence."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "The newsletter contained multiple useful trails, but only the Invest Ottawa hub signal was converted into a current run candidate after durable corroboration."
+    },
+    {
+      "signalId": "quebec-aerospace-strategy-defence-uas-2026-refresh",
+      "fingerprint": "0a0b768d66bb89026519a67763afc8e13ff072bb4aa5111439d2390d03d91939",
+      "sourceChannel": "source_book",
+      "sourceFamily": "Quebec aerospace strategy source-book follow-up",
+      "discoveryOrigin": {
+        "url": "https://www.quebec.ca/en/gouvernement/ministeres-organismes/economie/publications/quebec-aerospace-strategy-horizon-2026",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Ministère de l'Économie, de l'Innovation et de l'Énergie",
+        "technology": "aerospace, security and defence, unmanned aircraft systems",
+        "program": "Québec Aerospace Strategy Horizon 2026",
+        "issuer": "Government of Québec",
+        "eventDate": "2025-02-20",
+        "amount": "$334 million financial framework",
+        "details": "The Québec aerospace strategy identifies innovation, security and defence sector strengthening, and unmanned aircraft systems development as strategic priorities for the province."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.quebec.ca/en/gouvernement/ministeres-organismes/economie/publications/quebec-aerospace-strategy-horizon-2026",
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/minister-mcguinty-announces-new-drone-production-in-quebec.html"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "Useful for a future Quebec government innovation-office lead, but not enough ministry-level profile evidence was completed inside this run."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "The Quebec ministry appears relevant to defence innovation through aerospace and UxS activity, but it remains queued until official ministry identity, contact, and duplicate checks are completed."
+    },
+    {
+      "signalId": "defensescoop-diu-acquisition-newsletter-2026-07-27",
+      "fingerprint": "5afe1c4ab617c0dd349766f1297ece69c8b4d0874d0aa06526cea3d494902aa4",
+      "sourceChannel": "gmail_newsletter",
+      "sourceFamily": "DefenseScoop newsletter",
+      "discoveryOrigin": {
+        "url": "https://defensescoop.com/",
+        "gmailMessageId": "19fa2b561b091ecb",
+        "gmailThreadId": "19fa2b561b091ecb",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Defense Innovation Unit",
+        "technology": "novel acquisition and defence innovation",
+        "program": "DIU military deputy interview",
+        "issuer": "U.S. Department of Defense",
+        "eventDate": "2026-07-27",
+        "amount": null,
+        "details": "The DefenseScoop newsletter surfaced U.S. DIU and SOF acquisition activity; it was treated as allied discovery context and not converted into Canadian field evidence."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.diu.mil/"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "Allied discovery item was outside the Canada-first refresh candidate selected for this run."
+      ],
+      "disposition": "irrelevant",
+      "deferralRationale": null
+    }
+  ]
+}

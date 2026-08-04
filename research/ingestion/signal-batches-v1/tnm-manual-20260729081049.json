@@ -1,0 +1,683 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260729081049",
+  "runId": "tnm-manual-20260729081049",
+  "createdAt": "2026-07-29T08:15:04.048Z",
+  "watermarkStart": "2026-07-22T08:15:04.048Z",
+  "watermarkEnd": "2026-07-29T08:15:04.048Z",
+  "sourceFamilyCounters": {
+    "official_company": 10,
+    "government_procurement": 2,
+    "source_book": 10,
+    "ecosystem_program": 2,
+    "industry_publication": 8,
+    "gmail_newsletter": 20,
+    "linkedin_chrome": 6,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Gmail newsletters, LinkedIn posts, social surfaces, and search results were used only for discovery; every changed field resolves to durable official evidence."
+  ],
+  "signals": [
+    {
+      "signalId": "kognitiv-spark-refresh-2026-07-29",
+      "fingerprint": "f448ef97439f7456ab4d0310d7a97949f252864da8525695dc59d31d63e3ad1a",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.kognitivspark.com/press-releases",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Kognitiv Spark",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Kognitiv Spark's current RemoteSpark releases add browser-based expert access, multiparty collaboration, Magic Leap 2 support, mixed-reality PDF viewing, improved low-bandwidth performance, security enhancements, and a structured adoption program through KognitivU."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.kognitivspark.com/press-releases"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "929abf28-47c3-4aad-968c-6b294524f38d",
+          "slug": "kognitiv-spark",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.kognitivspark.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "kongsberg-geospatial-refresh-2026-07-29",
+      "fingerprint": "87eb66824a9221cc4e85712a994d61e44d330f8e9a812d790f6e8fcc1534e7e0",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.kongsberggeospatial.com/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Kongsberg Geospatial",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Kongsberg Geospatial's current portfolio extends beyond IRIS terminal airspace visualization to real-time geospatial command-and-control, beyond-visual-line-of-sight airspace awareness, sensor integration, and mission visualization for uncrewed and defence operations."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.kongsberggeospatial.com/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000004",
+          "slug": "kongsberg-geospatial",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.kongsberggeospatial.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "mannarino-systems-software-refresh-2026-07-29",
+      "fingerprint": "1030c0547110fc99ea2dc3e34c915adc3aaeb355e12b1490d39504620dcb1a2d",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.mss.ca/content/uploads/latest/MANNARINOTrainingPortfolio.pdf",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MANNARINO Systems & Software",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-04-21",
+        "amount": null,
+        "details": "MANNARINO's 2026 training portfolio documents instruction on airborne software and electronic-hardware assurance, ARINC 653 interfaces, aerospace certification, cybersecurity, and securing safety-critical embedded systems using artificial intelligence."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.mss.ca/content/uploads/latest/MANNARINOTrainingPortfolio.pdf"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "2ffcb30b-5975-4baa-ba42-1355f2c2970a",
+          "slug": "mannarino-systems-software",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.mss.ca/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "mda-space-refresh-2026-07-29",
+      "fingerprint": "1fea7216e460b307345bf7382156f4568abe1977ba4b11d7c9e1bd4bad9c2528",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://mda.space/chorus/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MDA Space",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "MDA Space now schedules CHORUS for late-2026 launch, combining C-band and X-band synthetic-aperture-radar satellites for 700-kilometre broad-area coverage, sub-metre spotlight imagery, faster tasking, near-real-time machine-learning exploitation, maritime surveillance, and defence applications."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://mda.space/chorus/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000002",
+          "slug": "mda-space",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T07:44:33.468Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://mda.space/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "mds-aero-support-refresh-2026-07-29",
+      "fingerprint": "a7dd53ee49ce7ca82d33fa227a141cf2ffd44cb84103953bb646e919f46ea993",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://mdsaero.com/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MDS Aero Support",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "MDS Aero Support continues to provide turnkey gas-turbine engine and component test facilities spanning engineering, controls, instrumentation, data acquisition, construction, commissioning, operations, and long-term support from its Canadian operating base."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://mdsaero.com/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "115b4b5c-e0e4-45fa-9fef-31e16329be30",
+          "slug": "mds-aero-support",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://mdsaero.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "mission-control-refresh-2026-07-29",
+      "fingerprint": "2b7eed59b6da13d77b96633ee74e776f512058604db3aeff52b64ffa1019014f",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://missioncontrolspace.com/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Mission Control",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Mission Control's current portfolio centres on Spacefarer AI for building, validating, targeting, deploying, and inspecting artificial-intelligence models on spaceflight processors, supported by mission operations, lunar and planetary robotics, and in-space autonomy expertise."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://missioncontrolspace.com/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d7e29ee5-b9c8-4fbc-a038-3df5b4ad1899",
+          "slug": "mission-control",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://missioncontrolspace.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "nautel-sonar-refresh-2026-07-29",
+      "fingerprint": "941cbc9f197c48e8806ee87c691c229f2291974fad0e0850f3199aa33662fdc3",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://nautelsonar.com/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Nautel Sonar",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Nautel Sonar's current portfolio covers compact broadband amplifiers, hull-mounted sonar subsystems, transducers, and naval echo sounders, with recent technical milestones and 2026 Navy Tech and Seabed Defence and DEFSEC West activity."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://nautelsonar.com/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+          "slug": "nautel-sonar",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://nautelsonar.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "nordspace-refresh-2026-07-29",
+      "fingerprint": "db17f7e55c07c2e5b2e5b08f05a286f0eb5728193fb12dab1f954590e3b32f87",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.nordspace.com/news",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "NordSpace",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "NordSpace received an $8.33-million DND IDEaS award for its Tundra orbital launch vehicle, opened a 60,000-square-foot Rocket Factory 1, launched a Space Systems Lab and dual-use demonstration satellite program, and received IDEaS support for very-low-Earth-orbit sensing and connectivity."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.nordspace.com/news"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f966b0a8-eac2-4496-b4dd-249655bff773",
+          "slug": "nordspace",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://nordspace.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "calian-advanced-technologies-refresh-2026-07-29",
+      "fingerprint": "3d8b9c784b2caeabd59706652dd56ad6c0a0644d7050c685b0727692b5b779b0",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.calian.com/resources/news-media/calian-announces-athora-to-accelerate-sovereign-defence-capability-in-canada/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Calian Advanced Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-05-25",
+        "amount": null,
+        "details": "Calian launched ATHORA, a sovereign open system-of-systems interoperability and orchestration platform intended to connect platforms, communications, sensors, and mission systems across C5ISRT environments, initially with Evertz Microsystems as a foundational partner."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.calian.com/resources/news-media/calian-announces-athora-to-accelerate-sovereign-defence-capability-in-canada/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "334169c4-ac7e-4fca-b97d-25c11b84abfd",
+          "slug": "calian-advanced-technologies",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T07:44:33.468Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.calian.com/defence/advanced-manufacturing/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "gastops-refresh-2026-07-29",
+      "fingerprint": "674918c053f827503930d2e26285ed32fa3902d4881db7fbd8879c51bc0d7e5e",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.gastops.com/news-resources/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Gastops",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Gastops launched FluidSIGHT real-time oil-condition monitoring, received an IDEaS Test Drives contract, validated ChipCHECK for the F135 engine, delivered its 20,000th MetalSCAN sensor, and signed a TKMS teaming agreement for a proposed Canadian submarine centre of excellence."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.gastops.com/news-resources/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "03b47cff-a0ad-46cf-873a-639ca0792e9c",
+          "slug": "gastops",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T08:27:58.746Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.gastops.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

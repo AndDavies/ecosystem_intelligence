@@ -1,0 +1,854 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260725122029",
+  "runId": "tnm-manual-20260725122029",
+  "createdAt": "2026-07-25T12:20:38.093Z",
+  "scope": {
+    "description": "Canadian company leads from a multi-source discovery run. Qualified leads continue automatically into private candidates; LinkedIn/social and directories are discovery inputs only until durable evidence is resolved.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "mission-software-and-data"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-marinelabs",
+      "source": {
+        "id": "marinelabs-official",
+        "title": "MarineLabs official capability profile",
+        "url": "https://www.marinelabs.io/",
+        "publisher": "MarineLabs",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes MarineLabs and its public offering: Canadian ocean-data company operating marine weather and intelligence services for coastal and offshore decision-making."
+      },
+      "discoveryPath": [
+        "https://www.marinelabs.io/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.marinelabs.io/",
+        "websiteDomain": "www.marinelabs.io",
+        "stableSlug": "marinelabs",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.marinelabs.io/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "MarineLabs",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.marinelabs.io/",
+      "aliases": [],
+      "location": {
+        "city": "Victoria",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Marine weather intelligence and sensing",
+      "roleSpecificEvidence": "Canadian ocean-data company operating marine weather and intelligence services for coastal and offshore decision-making."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-rutter",
+      "source": {
+        "id": "rutter-official",
+        "title": "Rutter official capability profile",
+        "url": "https://rutter.ca/",
+        "publisher": "Rutter",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Rutter and its public offering: Newfoundland marine-technology company providing radar-based systems and analytics for vessel safety and ocean observation."
+      },
+      "discoveryPath": [
+        "https://rutter.ca/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://rutter.ca/",
+        "websiteDomain": "rutter.ca",
+        "stableSlug": "rutter",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "conference_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://rutter.ca/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Rutter",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://rutter.ca/",
+      "aliases": [],
+      "location": {
+        "city": "St. John's",
+        "provinceTerritory": "Newfoundland and Labrador",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Marine radar analytics and sensing",
+      "roleSpecificEvidence": "Newfoundland marine-technology company providing radar-based systems and analytics for vessel safety and ocean observation."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-blue-ocean-gear",
+      "source": {
+        "id": "blue-ocean-gear-official",
+        "title": "Blue Ocean Gear official capability profile",
+        "url": "https://blueoceangear.com/",
+        "publisher": "Blue Ocean Gear",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Blue Ocean Gear and its public offering: Halifax ocean-technology company developing connected gear-tracking and marine-data tools for remote operations."
+      },
+      "discoveryPath": [
+        "https://blueoceangear.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://blueoceangear.com/",
+        "websiteDomain": "blueoceangear.com",
+        "stableSlug": "blue-ocean-gear",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://blueoceangear.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Blue Ocean Gear",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://blueoceangear.com/",
+      "aliases": [],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Connected maritime tracking systems",
+      "roleSpecificEvidence": "Halifax ocean-technology company developing connected gear-tracking and marine-data tools for remote operations."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-sea-canada",
+      "source": {
+        "id": "sea-canada-official",
+        "title": "SEA Canada official capability profile",
+        "url": "https://www.canadasea.ca/",
+        "publisher": "SEA Canada",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes SEA Canada and its public offering: Canadian maritime systems company providing defence maritime support, integration and ship equipment services."
+      },
+      "discoveryPath": [
+        "https://www.canadasea.ca/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canadasea.ca/",
+        "websiteDomain": "www.canadasea.ca",
+        "stableSlug": "sea-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "broad_web",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.canadasea.ca/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "SEA Canada",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.canadasea.ca/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Naval systems integration and sustainment",
+      "roleSpecificEvidence": "Canadian maritime systems company providing defence maritime support, integration and ship equipment services."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-canadian-maritime-engineering",
+      "source": {
+        "id": "canadian-maritime-engineering-official",
+        "title": "Canadian Maritime Engineering official capability profile",
+        "url": "https://www.canadianmaritimeengineering.com/",
+        "publisher": "Canadian Maritime Engineering",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Canadian Maritime Engineering and its public offering: Canadian marine engineering and sustainment company supporting naval and commercial vessel systems."
+      },
+      "discoveryPath": [
+        "https://www.canadianmaritimeengineering.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canadianmaritimeengineering.com/",
+        "websiteDomain": "www.canadianmaritimeengineering.com",
+        "stableSlug": "canadian-maritime-engineering",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.canadianmaritimeengineering.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Canadian Maritime Engineering",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.canadianmaritimeengineering.com/",
+      "aliases": [],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Marine engineering and sustainment",
+      "roleSpecificEvidence": "Canadian marine engineering and sustainment company supporting naval and commercial vessel systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-c-tow-marine",
+      "source": {
+        "id": "c-tow-marine-official",
+        "title": "C-Tow Marine official capability profile",
+        "url": "https://c-tow.ca/",
+        "publisher": "C-Tow Marine",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes C-Tow Marine and its public offering: Canadian autonomous-marine-systems company developing uncrewed surface-vessel and ocean-data capabilities."
+      },
+      "discoveryPath": [
+        "https://c-tow.ca/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://c-tow.ca/",
+        "websiteDomain": "c-tow.ca",
+        "stableSlug": "c-tow-marine",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://c-tow.ca/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "C-Tow Marine",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://c-tow.ca/",
+      "aliases": [],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Autonomous surface vessels and ocean data",
+      "roleSpecificEvidence": "Canadian autonomous-marine-systems company developing uncrewed surface-vessel and ocean-data capabilities."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-bmt-canada",
+      "source": {
+        "id": "bmt-canada-official",
+        "title": "BMT Canada official capability profile",
+        "url": "https://www.bmt.org/locations/canada/",
+        "publisher": "BMT Canada",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes BMT Canada and its public offering: Canadian naval architecture and engineering business supporting maritime design, safety and complex vessel programmes."
+      },
+      "discoveryPath": [
+        "https://www.bmt.org/locations/canada/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.bmt.org/locations/canada/",
+        "websiteDomain": "www.bmt.org",
+        "stableSlug": "bmt-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.bmt.org/locations/canada/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "BMT Canada",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.bmt.org/locations/canada/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Naval architecture and maritime engineering",
+      "roleSpecificEvidence": "Canadian naval architecture and engineering business supporting maritime design, safety and complex vessel programmes."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-mecanica-scientific-services",
+      "source": {
+        "id": "mecanica-scientific-services-official",
+        "title": "Mecanica Scientific Services official capability profile",
+        "url": "https://mecanicass.com/",
+        "publisher": "Mecanica Scientific Services",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Mecanica Scientific Services and its public offering: Canadian maritime engineering company providing naval systems, simulation and technical support services."
+      },
+      "discoveryPath": [
+        "https://mecanicass.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://mecanicass.com/",
+        "websiteDomain": "mecanicass.com",
+        "stableSlug": "mecanica-scientific-services",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://mecanicass.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Mecanica Scientific Services",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://mecanicass.com/",
+      "aliases": [],
+      "location": {
+        "city": "Montreal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Maritime systems engineering and simulation",
+      "roleSpecificEvidence": "Canadian maritime engineering company providing naval systems, simulation and technical support services."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-clear-seas-research",
+      "source": {
+        "id": "clear-seas-research-official",
+        "title": "Clear Seas Research official capability profile",
+        "url": "https://clearseas.org/",
+        "publisher": "Clear Seas Research",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Clear Seas Research and its public offering: Canadian marine research company providing evidence, analytics and tools for safer and more sustainable marine transportation."
+      },
+      "discoveryPath": [
+        "https://clearseas.org/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://clearseas.org/",
+        "websiteDomain": "clearseas.org",
+        "stableSlug": "clear-seas-research",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://clearseas.org/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Clear Seas Research",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://clearseas.org/",
+      "aliases": [],
+      "location": {
+        "city": "Vancouver",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Marine risk and traffic analytics",
+      "roleSpecificEvidence": "Canadian marine research company providing evidence, analytics and tools for safer and more sustainable marine transportation."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-adaptive-marine-solutions",
+      "source": {
+        "id": "adaptive-marine-solutions-official",
+        "title": "Adaptive Marine Solutions official capability profile",
+        "url": "https://adaptivemarine.com/",
+        "publisher": "Adaptive Marine Solutions",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:20:38.093Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Adaptive Marine Solutions and its public offering: Canadian marine company providing engineering, marine systems and support services for complex operating environments."
+      },
+      "discoveryPath": [
+        "https://adaptivemarine.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://adaptivemarine.com/",
+        "websiteDomain": "adaptivemarine.com",
+        "stableSlug": "adaptive-marine-solutions",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "conference_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://adaptivemarine.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Adaptive Marine Solutions",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://adaptivemarine.com/",
+      "aliases": [],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Marine systems engineering",
+      "roleSpecificEvidence": "Canadian marine company providing engineering, marine systems and support services for complex operating environments."
+    }
+  ]
+}

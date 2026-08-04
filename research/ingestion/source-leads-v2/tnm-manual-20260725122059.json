@@ -1,0 +1,854 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260725122059",
+  "runId": "tnm-manual-20260725122059",
+  "createdAt": "2026-07-25T12:21:08.119Z",
+  "scope": {
+    "description": "Canadian company leads from a multi-source discovery run. Qualified leads continue automatically into private candidates; LinkedIn/social and directories are discovery inputs only until durable evidence is resolved.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "mission-software-and-data"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-field-effect",
+      "source": {
+        "id": "field-effect-official",
+        "title": "Field Effect official capability profile",
+        "url": "https://fieldeffect.com/",
+        "publisher": "Field Effect",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Field Effect and its public offering: Ottawa cybersecurity company providing managed detection, response and security operations technology."
+      },
+      "discoveryPath": [
+        "https://fieldeffect.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://fieldeffect.com/",
+        "websiteDomain": "fieldeffect.com",
+        "stableSlug": "field-effect",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://fieldeffect.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Field Effect",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://fieldeffect.com/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Managed detection and response",
+      "roleSpecificEvidence": "Ottawa cybersecurity company providing managed detection, response and security operations technology."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-crypto4a",
+      "source": {
+        "id": "crypto4a-official",
+        "title": "Crypto4A official capability profile",
+        "url": "https://crypto4a.com/",
+        "publisher": "Crypto4A",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Crypto4A and its public offering: Canadian cybersecurity company developing cryptographic hardware, key-management and post-quantum security products."
+      },
+      "discoveryPath": [
+        "https://crypto4a.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://crypto4a.com/",
+        "websiteDomain": "crypto4a.com",
+        "stableSlug": "crypto4a",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "broad_web",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://crypto4a.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Crypto4A",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://crypto4a.com/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Cryptographic key management and HSMs",
+      "roleSpecificEvidence": "Canadian cybersecurity company developing cryptographic hardware, key-management and post-quantum security products."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-isara",
+      "source": {
+        "id": "isara-official",
+        "title": "ISARA official capability profile",
+        "url": "https://www.isara.com/",
+        "publisher": "ISARA",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes ISARA and its public offering: Canadian security company providing quantum-safe cryptography and migration services."
+      },
+      "discoveryPath": [
+        "https://www.isara.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.isara.com/",
+        "websiteDomain": "www.isara.com",
+        "stableSlug": "isara",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.isara.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "ISARA",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.isara.com/",
+      "aliases": [],
+      "location": {
+        "city": "Waterloo",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Post-quantum cryptography",
+      "roleSpecificEvidence": "Canadian security company providing quantum-safe cryptography and migration services."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-esentire",
+      "source": {
+        "id": "esentire-official",
+        "title": "eSentire official capability profile",
+        "url": "https://www.esentire.com/",
+        "publisher": "eSentire",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes eSentire and its public offering: Canadian cybersecurity company providing managed detection and response technology and services."
+      },
+      "discoveryPath": [
+        "https://www.esentire.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.esentire.com/",
+        "websiteDomain": "www.esentire.com",
+        "stableSlug": "esentire",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.esentire.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "eSentire",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.esentire.com/",
+      "aliases": [],
+      "location": {
+        "city": "Waterloo",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Cyber threat detection and response",
+      "roleSpecificEvidence": "Canadian cybersecurity company providing managed detection and response technology and services."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-trojai",
+      "source": {
+        "id": "trojai-official",
+        "title": "TrojAI official capability profile",
+        "url": "https://troj.ai/",
+        "publisher": "TrojAI",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes TrojAI and its public offering: Canadian AI-security company developing tools to test, secure and monitor machine-learning systems."
+      },
+      "discoveryPath": [
+        "https://troj.ai/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://troj.ai/",
+        "websiteDomain": "troj.ai",
+        "stableSlug": "trojai",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://troj.ai/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "TrojAI",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://troj.ai/",
+      "aliases": [],
+      "location": {
+        "city": "Saint John",
+        "provinceTerritory": "New Brunswick",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "AI assurance and model security",
+      "roleSpecificEvidence": "Canadian AI-security company developing tools to test, secure and monitor machine-learning systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-cybeats",
+      "source": {
+        "id": "cybeats-official",
+        "title": "Cybeats official capability profile",
+        "url": "https://cybeats.com/",
+        "publisher": "Cybeats",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Cybeats and its public offering: Canadian cybersecurity company developing software supply-chain security and software-bill-of-materials management products."
+      },
+      "discoveryPath": [
+        "https://cybeats.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://cybeats.com/",
+        "websiteDomain": "cybeats.com",
+        "stableSlug": "cybeats",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://cybeats.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Cybeats",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://cybeats.com/",
+      "aliases": [],
+      "location": {
+        "city": "Toronto",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Software supply-chain security",
+      "roleSpecificEvidence": "Canadian cybersecurity company developing software supply-chain security and software-bill-of-materials management products."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-qohash",
+      "source": {
+        "id": "qohash-official",
+        "title": "Qohash official capability profile",
+        "url": "https://qohash.com/",
+        "publisher": "Qohash",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Qohash and its public offering: Canadian cybersecurity company developing data-security and sensitive-data visibility software."
+      },
+      "discoveryPath": [
+        "https://qohash.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://qohash.com/",
+        "websiteDomain": "qohash.com",
+        "stableSlug": "qohash",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://qohash.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Qohash",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://qohash.com/",
+      "aliases": [],
+      "location": {
+        "city": "Montreal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Data security and governance",
+      "roleSpecificEvidence": "Canadian cybersecurity company developing data-security and sensitive-data visibility software."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-flare",
+      "source": {
+        "id": "flare-official",
+        "title": "Flare official capability profile",
+        "url": "https://flare.io/",
+        "publisher": "Flare",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Flare and its public offering: Canadian cyber-threat intelligence company providing monitoring of external and illicit digital-risk signals."
+      },
+      "discoveryPath": [
+        "https://flare.io/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://flare.io/",
+        "websiteDomain": "flare.io",
+        "stableSlug": "flare",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "conference_directory",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://flare.io/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Flare",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://flare.io/",
+      "aliases": [],
+      "location": {
+        "city": "Montreal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "External cyber-threat intelligence",
+      "roleSpecificEvidence": "Canadian cyber-threat intelligence company providing monitoring of external and illicit digital-risk signals."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-picomole",
+      "source": {
+        "id": "picomole-official",
+        "title": "Picomole official capability profile",
+        "url": "https://picomole.com/",
+        "publisher": "Picomole",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Picomole and its public offering: Canadian cybersecurity company providing attack-surface intelligence and digital-risk analysis."
+      },
+      "discoveryPath": [
+        "https://picomole.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://picomole.com/",
+        "websiteDomain": "picomole.com",
+        "stableSlug": "picomole",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://picomole.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Picomole",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://picomole.com/",
+      "aliases": [],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Attack-surface intelligence",
+      "roleSpecificEvidence": "Canadian cybersecurity company providing attack-surface intelligence and digital-risk analysis."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-magnet-forensics",
+      "source": {
+        "id": "magnet-forensics-official",
+        "title": "Magnet Forensics official capability profile",
+        "url": "https://www.magnetforensics.com/",
+        "publisher": "Magnet Forensics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-25T12:21:08.119Z",
+        "locator": "Official company overview and capability material",
+        "summary": "Official company material describes Magnet Forensics and its public offering: Canadian digital-investigation company developing tools for collecting and analysing digital evidence."
+      },
+      "discoveryPath": [
+        "https://www.magnetforensics.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "https://defenceandsecurity.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official company overview and capability material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.magnetforensics.com/",
+        "websiteDomain": "www.magnetforensics.com",
+        "stableSlug": "magnet-forensics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the preferred legal name and current operating address before publication.",
+        "Confirm whether a further government award, contract or partner source should be attached during review."
+      ],
+      "discoveryLane": "broad_web",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Primary evidence is the company's public material; government and association lanes are discovery context only and are not field evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.magnetforensics.com/",
+          "outcome": "Official company material was reviewed for the public identity, Canadian operating location and concrete technical offering."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "The IDEaS programme and its innovation landscape were searched as a government discovery lane; it is not treated as proof of a company-specific award."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://defenceandsecurity.ca/",
+          "outcome": "Canadian defence-industry association material was searched as a discovery and context lane; no association statement is used as field evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Magnet Forensics",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.magnetforensics.com/",
+      "aliases": [],
+      "location": {
+        "city": "Waterloo",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Digital forensics and investigations",
+      "roleSpecificEvidence": "Canadian digital-investigation company developing tools for collecting and analysing digital evidence."
+    }
+  ]
+}

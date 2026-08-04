@@ -1,0 +1,945 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260731194240",
+  "runId": "tnm-manual-20260731194240",
+  "createdAt": "2026-07-31T20:11:14.864Z",
+  "scope": {
+    "description": "Ten qualified Canadian company leads selected from a 50-prospect, multi-lane inventory. Each qualified lead proceeds automatically to an enriched private candidate with a concrete capability, current activity, public relationship, field evidence and explicit review boundary.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-earthdaily-analytics",
+      "source": {
+        "id": "earthdaily-analytics-profile",
+        "title": "About EarthDaily",
+        "url": "https://earthdaily.com/about",
+        "publisher": "EarthDaily Analytics",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Company purpose, system and history sections",
+        "summary": "The official profile describes an end-to-end Earth-observation company combining a satellite constellation, processing pipelines and industry-focused analytics."
+      },
+      "discoveryPath": [
+        "https://earthdaily.com/about",
+        "https://ised-isde.canada.ca/cipo/trademark-search/2225451",
+        "https://docs.earthdaily.com/data/edc-product-introduction/",
+        "https://earthdaily.com/blog/earthdaily-constellation-entering-commercial-operations-with-successful-launch-iii",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q1-00002%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company purpose, system and history sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://earthdaily.com/",
+        "websiteDomain": "earthdaily.com",
+        "stableSlug": "earthdaily-analytics",
+        "legalName": "EarthDaily Analytics Corp.",
+        "aliases": [
+          "EarthDaily",
+          "UrtheCast (historical identity)"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The constellation had reached the satellite count required for commercial operations but remained in commissioning in the cited July 2026 release; UrtheCast is retained only as a historical identity and is not presented as a separate current company."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://earthdaily.com/about",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://docs.earthdaily.com/data/edc-product-introduction/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://earthdaily.com/blog/earthdaily-constellation-entering-commercial-operations-with-successful-launch-iii",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "EarthDaily Analytics",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://earthdaily.com/",
+      "aliases": [
+        "EarthDaily",
+        "UrtheCast (historical identity)"
+      ],
+      "location": {
+        "city": "Vancouver",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "EarthDaily Constellation change intelligence",
+      "roleSpecificEvidence": "EarthDaily Analytics is a Vancouver Earth-observation company developing and commissioning an integrated satellite constellation, ground processing, analysis-ready imagery and geospatial analytics for broad-area change detection. EarthDaily combines a multispectral satellite constellation, cloud-native processing and AI-ready imagery products to support repeatable broad-area change detection and geospatial analysis. EarthDaily reported initial contact with EDC-08 after its July 7, 2026 launch, while EDC-02 through EDC-07 were returning initial imagery and progressing through commissioning; a separate Canadian Space Agency contribution supports an on-orbit thermal-imager demonstration through March 2027."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-obruta-space-solutions",
+      "source": {
+        "id": "obruta-space-solutions-profile",
+        "title": "About Obruta",
+        "url": "https://www.obruta.com/about",
+        "publisher": "Obruta Space Solutions",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Mission, team and Ottawa location sections",
+        "summary": "The official profile identifies an Ottawa company focused on spacecraft rendezvous, proximity operations and docking."
+      },
+      "discoveryPath": [
+        "https://www.obruta.com/about",
+        "https://www.obruta.com/products",
+        "https://ntrs.nasa.gov/api/citations/20250005900/downloads/draft_astrobee_isparo_2025.pdf?attachment=true",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00015%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Mission, team and Ottawa location sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.obruta.com/",
+        "websiteDomain": "obruta.com",
+        "stableSlug": "obruta-space-solutions",
+        "legalName": "Obruta Space Solutions Corp.",
+        "aliases": [
+          "Obruta"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "reviewWarnings": [
+        "Obruta flight software was demonstrated with Astrobee robots in the ISS environment, but the complete commercial RPOD hardware kit is still being validated and must not be described as flight-proven."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.obruta.com/about",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.obruta.com/products",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://ntrs.nasa.gov/api/citations/20250005900/downloads/draft_astrobee_isparo_2025.pdf?attachment=true",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Obruta Space Solutions",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.obruta.com/",
+      "aliases": [
+        "Obruta"
+      ],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Autonomous RPOD Kit",
+      "roleSpecificEvidence": "Obruta Space Solutions is an Ottawa space-technology company developing autonomous rendezvous, proximity-operations and docking systems for on-orbit servicing and logistics. Obruta's RPOD Kit combines spacecraft hardware and autonomous flight software for cooperative rendezvous, proximity operations and docking, including navigation-sensor fusion, safe-abort logic and mission optimization. NASA documentation records an autonomous docking experiment on the International Space Station in May 2025 using Obruta flight software, while Canadian Space Agency contributions support POLAR simulation work through July 2026 and modular RPOD-system validation through September 2027."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-lux-aerobot",
+      "source": {
+        "id": "lux-aerobot-trade",
+        "title": "Stratospheric balloon company finds space opportunities",
+        "url": "https://www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html",
+        "publisher": "Trade Commissioner Service of Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Company, platform and Canadian-operations sections",
+        "summary": "The Government of Canada profile describes Lux as an Alma-based designer, manufacturer and operator of high-altitude platforms at approximately eighteen to twenty-five kilometres for defence and civil remote sensing."
+      },
+      "discoveryPath": [
+        "https://www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html",
+        "https://www.luxaerobot.com/about-us/",
+        "https://www.luxaerobot.com/industries/defence-and-space/",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, platform and Canadian-operations sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.luxaerobot.com/",
+        "websiteDomain": "luxaerobot.com",
+        "stableSlug": "lux-aerobot",
+        "legalName": "Lux Aérobot inc.",
+        "aliases": [
+          "Lux",
+          "9388-3387 Québec inc. operating as Lux Aerobot (historical public-contract identity)"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "Federal records use both Lux Aérobot inc. and an earlier 9388-3387 Québec inc. operating identity; the legal lineage should be confirmed, and the company-reported Australian defence customer is excluded pending customer corroboration."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.luxaerobot.com/about-us/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Lux Aerobot",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.luxaerobot.com/",
+      "aliases": [
+        "Lux",
+        "9388-3387 Québec inc. operating as Lux Aerobot (historical public-contract identity)"
+      ],
+      "location": {
+        "city": "Alma",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Stratospheric Earth-observation platform",
+      "roleSpecificEvidence": "Lux Aerobot is an Alma, Quebec high-altitude-platform company that designs, manufactures and operates stratospheric balloon systems and converts their payload data into near-real-time geospatial intelligence. Lux Aerobot integrates high-altitude balloon platforms, remote-sensing payloads, flight operations and geospatial analytics to collect and deliver persistent regional observations from the stratosphere. A current federal IRAP record supports automatic altitude-control development using coaxial propulsion, efficient motor control and renewable energy, while the company continues to advertise flight-operations roles and active high-altitude platform services."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-c-com-satellite-systems",
+      "source": {
+        "id": "c-com-satellite-systems-profile",
+        "title": "About C-COM Satellite Systems",
+        "url": "https://www.c-comsat.com/about/",
+        "publisher": "C-COM Satellite Systems",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Company history and iNetVu overview",
+        "summary": "The official profile identifies an Ottawa company established in 1997 and describes its commercial auto-pointing mobile satellite antenna portfolio."
+      },
+      "discoveryPath": [
+        "https://www.c-comsat.com/about/",
+        "https://www.c-comsat.com/product-category/",
+        "https://www.c-comsat.com/wp-content/uploads/2026/07/H1-2026-Financial-NR.pdf",
+        "https://www.c-comsat.com/news/",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1011327%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "space-and-earth-observation",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company history and iNetVu overview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.c-comsat.com/",
+        "websiteDomain": "c-comsat.com",
+        "stableSlug": "c-com-satellite-systems",
+        "legalName": "C-COM Satellite Systems Inc.",
+        "aliases": [
+          "C-COM",
+          "TSXV: CMI",
+          "OTCQB: CYSNF"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "reviewWarnings": [
+        "The eleven-thousand-system installed-base claim applies to the commercial iNetVu portfolio; electronically steered arrays, beamformer chips and newer LEO-tracking products remain development or commercialization work and must not inherit that maturity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.c-comsat.com/about/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.c-comsat.com/product-category/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.c-comsat.com/news/",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "C-COM Satellite Systems",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.c-comsat.com/",
+      "aliases": [
+        "C-COM",
+        "TSXV: CMI",
+        "OTCQB: CYSNF"
+      ],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "iNetVu mobile satellite terminals",
+      "roleSpecificEvidence": "C-COM Satellite Systems is an Ottawa satellite-communications equipment company that designs auto-pointing mobile antennas and related control systems for remote, emergency, government and military connectivity. C-COM's iNetVu portfolio includes driveaway, flyaway, manpack and fixed motorized terminals that automatically acquire satellite links across Ka, Ku, C and X bands. C-COM's July 2026 first-half release reports an installed base above eleven thousand systems in more than one hundred countries, and its current newsroom documents continuing terminal orders and development of transportable LEO-tracking and electronically steered antenna technology."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-spacebridge",
+      "source": {
+        "id": "spacebridge-profile",
+        "title": "About SpaceBridge",
+        "url": "https://spacebridge.com/about-us/",
+        "publisher": "SpaceBridge",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Company history, headquarters and product-system overview",
+        "summary": "The official profile identifies SpaceBridge Inc., formerly Advantech Wireless, as a Montreal-headquartered satellite-network technology provider."
+      },
+      "discoveryPath": [
+        "https://spacebridge.com/about-us/",
+        "https://spacebridge.com/product/unihub/",
+        "https://spacebridge.com/wp-content/uploads/2026/05/SpaceBridge-Systems-and-Solutions-Interactive-PDF-20260514.pdf",
+        "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "space-and-earth-observation",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company history, headquarters and product-system overview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://spacebridge.com/",
+        "websiteDomain": "spacebridge.com",
+        "stableSlug": "spacebridge",
+        "legalName": "SpaceBridge Inc.",
+        "aliases": [
+          "Advantech Wireless Inc. (former name)"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Baylin acquired portions of the former Advantech Wireless business in 2018, while current SpaceBridge products and contracts continue under SpaceBridge Inc.; reviewers must attribute only current evidence and confirm corporate lineage and registry status."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://spacebridge.com/about-us/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://spacebridge.com/wp-content/uploads/2026/05/SpaceBridge-Systems-and-Solutions-Interactive-PDF-20260514.pdf",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "SpaceBridge",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://spacebridge.com/",
+      "aliases": [
+        "Advantech Wireless Inc. (former name)"
+      ],
+      "location": {
+        "city": "Saint-Laurent",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Multi-waveform VSAT network platform",
+      "roleSpecificEvidence": "SpaceBridge is a Montreal-area satellite-network equipment company developing VSAT hubs, terminals, modems and managed-network systems for commercial, government, defence and critical-connectivity applications. SpaceBridge combines compact and scalable VSAT hubs, satellite routers, network management and dynamic waveform allocation for GEO and non-geostationary broadband, mobility and tactical networks. SpaceBridge launched its compact UniHUB platform in March 2026 and received a $1.25 million Canada Economic Development contribution running through December 2027 to expand satellite-communications-system capacity for defence markets."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-qeynet",
+      "source": {
+        "id": "qeynet-profile",
+        "title": "QEYnet satellite quantum communications",
+        "url": "https://qeynet.com/",
+        "publisher": "QEYnet",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Mission, solution and company sections",
+        "summary": "The official site describes a Canadian company developing microsatellite-enabled quantum key distribution using free-space optical links."
+      },
+      "discoveryPath": [
+        "https://qeynet.com/",
+        "https://qeynet.com/faq",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/ws3841869660-cw2305654-acm167768211-001"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "space-and-earth-observation",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Mission, solution and company sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://qeynet.com/",
+        "websiteDomain": "qeynet.com",
+        "stableSlug": "qeynet",
+        "legalName": "QEYnet Inc.",
+        "aliases": [
+          "QEYnet"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 95,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "QEYnet has delivered test hardware and secured funded government and orbital demonstrations, but it does not yet operate the proposed global QKD constellation; security claims are bounded to the cited demonstration objectives."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://qeynet.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://qeynet.com/faq",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "QEYnet",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://qeynet.com/",
+      "aliases": [
+        "QEYnet"
+      ],
+      "location": {
+        "city": "Vaughan",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Low-cost satellite quantum-key-distribution receiver",
+      "roleSpecificEvidence": "QEYnet is an Ontario quantum-communications company developing compact satellite quantum-key-distribution receivers and free-space Earth-to-space key exchange for secure satellite communications. QEYnet develops a compact quantum receiver and supporting free-space optical architecture intended to distribute and refresh encryption keys between ground sites and satellites. A Canadian Space Agency agreement provides approximately $1.4 million for a low-cost Earth-to-space quantum-key-distribution demonstration through December 2026, and a separate federal testing contract confirms the Ontario operating address and government-test posture."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-starspec-technologies",
+      "source": {
+        "id": "starspec-technologies-profile",
+        "title": "StarSpec Technologies",
+        "url": "https://www.starspectechnologies.com/",
+        "publisher": "StarSpec Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Company, product and innovation overview",
+        "summary": "The official site describes an Ontario space-systems company providing space hardware, qualification services and data solutions."
+      },
+      "discoveryPath": [
+        "https://www.starspectechnologies.com/",
+        "https://www.starspectechnologies.com/contact",
+        "https://www.starspectechnologies.com/products-services",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent",
+        "https://science.nasa.gov/mission/excite/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "advanced-manufacturing-and-integration",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, product and innovation overview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.starspectechnologies.com/",
+        "websiteDomain": "starspectechnologies.com",
+        "stableSlug": "starspec-technologies",
+        "legalName": "StarSpec Technologies Inc.",
+        "aliases": [
+          "StarSpec",
+          "Star Spec Technologies Inc. (government-record spacing)"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "bilingual_web",
+      "inclusionScore": 94,
+      "completenessScore": 87,
+      "reviewWarnings": [
+        "Official sources support the product specifications and active demonstration program, but current orbital status and launch timing are unresolved; Corporations Canada also renders a filing warning alongside an active status and recent returns, requiring reviewer recheck."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.starspectechnologies.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.starspectechnologies.com/products-services",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "StarSpec Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.starspectechnologies.com/",
+      "aliases": [
+        "StarSpec",
+        "Star Spec Technologies Inc. (government-record spacing)"
+      ],
+      "location": {
+        "city": "Ayr",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "High-precision small-satellite ADCS",
+      "roleSpecificEvidence": "StarSpec Technologies is an Ontario space-systems company developing high-precision attitude-determination and control hardware, rapid space-qualification methods, balloon platforms and geospatial software. StarSpec integrates sub-arcsecond star cameras, cogless reaction wheels and onboard attitude-control electronics for high-precision small-satellite pointing and imaging missions. An active $2 million Canadian Space Agency contribution supports the InspireSAT 12U ADCS demonstration through December 2026, and ISED lists a December 2025 StarSpec satellite-spectrum application as under consideration."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-sbquantum",
+      "source": {
+        "id": "sbquantum-profile",
+        "title": "SBQuantum quantum diamond sensing",
+        "url": "https://sbquantum.com/",
+        "publisher": "SBQuantum",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Company, technology and application sections",
+        "summary": "The official site identifies a Sherbrooke quantum-sensing company and describes diamond magnetometers, magnetic mapping, navigation and defence applications."
+      },
+      "discoveryPath": [
+        "https://sbquantum.com/",
+        "https://nrc.canada.ca/en/stories/diamond-based-quantum-sensors-add-sparkle-earth-space-exploration",
+        "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445882-001"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "space-and-earth-observation",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, technology and application sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://sbquantum.com/",
+        "websiteDomain": "sbquantum.com",
+        "stableSlug": "sbquantum",
+        "legalName": "13717658 Canada Inc.",
+        "aliases": [
+          "SB Quantum",
+          "SBQ",
+          "SB Technologies Inc. (former name)"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 98,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "The orbital sensor is deployed but still being commissioned and evaluated for future World Magnetic Model collection; public records also show a 13717658 versus 13717674 Canada Inc. identifier discrepancy that requires reviewer confirmation."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://sbquantum.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://nrc.canada.ca/en/stories/diamond-based-quantum-sensors-add-sparkle-earth-space-exploration",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "SBQuantum",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://sbquantum.com/",
+      "aliases": [
+        "SB Quantum",
+        "SBQ",
+        "SB Technologies Inc. (former name)"
+      ],
+      "location": {
+        "city": "Sherbrooke",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Quantum diamond magnetic intelligence",
+      "roleSpecificEvidence": "SBQuantum is a Sherbrooke quantum-sensing company developing nitrogen-vacancy diamond magnetometers and magnetic-mapping software for navigation, geophysical, defence, public-safety and space applications. SBQuantum combines compact nitrogen-vacancy diamond magnetometers with compensation, mapping and interpretation software to measure magnetic fields for navigation and object or subsurface detection. The U.S. National Geospatial-Intelligence Agency documents deployment of an SBQuantum and Spire diamond magnetometer on a MagQuest CubeSat in 2026, while CanadaBuys records a $2.24 million MagAware contract running from April to October 2026."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-korrai",
+      "source": {
+        "id": "korrai-profile",
+        "title": "About KorrAI",
+        "url": "https://www.korrai.com/about-us",
+        "publisher": "KorrAI",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Company mission, history and platform sections",
+        "summary": "KorrAI describes a risk-intelligence company built on satellite ground-deformation monitoring and multi-source site assessment."
+      },
+      "discoveryPath": [
+        "https://www.korrai.com/about-us",
+        "https://www.korrai.com/privacy-policy",
+        "https://www.korrai.com/platform/evidence-layers/ground-deformation-layer",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q2-1019987%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company mission, history and platform sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.korrai.com/",
+        "websiteDomain": "korrai.com",
+        "stableSlug": "korrai",
+        "legalName": "KorrAI Technologies Ltd.",
+        "aliases": [
+          "KorrAI Technologies"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 97,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "The current TRAIL platform is broader than the cited smartEarth Open Ground Motion Service project; the candidate separates the current product description from the bounded government-funded project and excludes unverified performance marketing."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.korrai.com/about-us",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.korrai.com/platform/evidence-layers/ground-deformation-layer",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "KorrAI",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.korrai.com/",
+      "aliases": [
+        "KorrAI Technologies"
+      ],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "TRAIL satellite-InSAR risk intelligence",
+      "roleSpecificEvidence": "KorrAI is a Halifax geospatial-risk company combining satellite interferometric radar, ground sensors and AI-assisted analysis for wide-area infrastructure, terrain and ground-motion assessment. KorrAI's platform combines satellite InSAR, optical imagery, GNSS observations, site records and risk models to monitor ground deformation and assemble traceable infrastructure-risk assessments. The Canadian Space Agency's smartEarth portfolio lists KorrAI developing a Web-based Open Ground Motion Service for near-real-time permafrost-related infrastructure monitoring, while its current platform continues to combine InSAR, GNSS and multi-source risk evidence."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-asl-environmental-sciences",
+      "source": {
+        "id": "asl-environmental-sciences-team",
+        "title": "ASL Environmental Sciences team",
+        "url": "https://aslenv.com/team.html",
+        "publisher": "ASL Environmental Sciences",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T20:11:14.864Z",
+        "locator": "Company scale, mandate and remote-sensing team",
+        "summary": "The official team page identifies an employee-owned company with decades of oceanographic, remote-sensing, instrumentation and consulting experience."
+      },
+      "discoveryPath": [
+        "https://aslenv.com/team.html",
+        "https://aslenv.com/general.html",
+        "https://aslenv.com/ice_services.html",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company scale, mandate and remote-sensing team",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.aslenv.com/",
+        "websiteDomain": "aslenv.com",
+        "stableSlug": "asl-environmental-sciences",
+        "legalName": "ASL Environmental Sciences Inc.",
+        "aliases": [
+          "ASL",
+          "ASL Borstad Remote Sensing"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 98,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "DeCAF-RRT is an active development project and must not be described as an operational CAF system; ASL's broader ice, oceanographic and remote-sensing experience is represented separately from the specific toolkit's maturity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://aslenv.com/team.html",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "ASL Environmental Sciences",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.aslenv.com/",
+      "aliases": [
+        "ASL",
+        "ASL Borstad Remote Sensing"
+      ],
+      "location": {
+        "city": "Saanichton",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "DeCAF Rapid Response Toolkit",
+      "roleSpecificEvidence": "ASL Environmental Sciences is an employee-owned British Columbia science and technology company providing oceanographic instrumentation, Arctic and ice services, and optical and radar Earth-observation analytics. ASL's DeCAF work applies satellite time-series, radar and optical imagery, machine learning and automated change detection to identify landscape disturbances and support wide-area monitoring. A 2025-2027 Canadian Space Agency agreement provides $250,000 for DeCAF-RRT, a wide-area satellite Earth-observation monitoring tool, and the CSA smartEarth portfolio separately describes the toolkit's intended Canadian Arctic and CAF situational-awareness use."
+    }
+  ]
+}

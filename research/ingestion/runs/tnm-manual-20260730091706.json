@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260730091706",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "government_innovation_office"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:government_innovation_office",
+    "reason": "4 published or pending government innovation office records cover only 40% of the working saturation target of 10.",
+    "score": 850
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-07-30T09:17:06.506Z",
+  "completedAt": "2026-07-30T09:31:20.414Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Canada provincial innovation agency official program",
+    "provincial Crown innovation agency Canada commercialization funding",
+    "regional development agency Canada innovation technology adoption",
+    "agence innovation provinciale Canada financement commercialisation",
+    "site:canada.ca regional defence investment initiative Atlantic Canada",
+    "site:saskatchewan.ca Innovation Saskatchewan fund research commercialization",
+    "site:princeedwardisland.ca Innovation PEI aerospace defence innovation fund",
+    "site:gnb.ca Opportunities New Brunswick Crown agency",
+    "site:investquebec.com innovation productivité financement",
+    "site:oc-innovation.ca government program delivery OVIN",
+    "site:albertainnovates.ca governance ecosystem partnerships",
+    "site:innovatebc.ca Crown agency Integrated Marketplace"
+  ],
+  "counters": {
+    "sourcesChecked": 70,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 10,
+    "prospectsDiscovered": 50,
+    "uniqueProspects": 50,
+    "prospectsQueued": 30,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 6,
+    "candidatesAmber": 4,
+    "claimsCollected": 50,
+    "claimsConflicted": 0,
+    "coverageSubjects": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Four candidates require explicit human confirmation of organization kind because their public investment or broad business-development roles overlap another taxonomy class."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the ten-candidate target after qualifying a 50-prospect, multi-lane inventory; thirty unused prospects remain queued for subsequent evidence-led batches.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260730091706.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260730091706.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260730091706.json",
+    "signalBatch": null,
+    "candidateLogoPacket": "research/ingestion/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260730091706.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260730091706.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260730091706.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260730091706.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260730091706.json"
+  }
+}

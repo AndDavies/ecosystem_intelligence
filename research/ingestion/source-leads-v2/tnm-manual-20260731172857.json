@@ -1,0 +1,901 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260731172857",
+  "runId": "tnm-manual-20260731172857",
+  "createdAt": "2026-07-31T17:40:12.882Z",
+  "scope": {
+    "description": "Ten qualified Canadian company leads selected from a 50-prospect, multi-lane inventory. Each qualified lead proceeds automatically to an enriched private candidate with a concrete capability, current activity, public relationship, field evidence and explicit review boundary.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-zero-point-cryogenics",
+      "source": {
+        "id": "zero-point-cryogenics-profile",
+        "title": "Zero Point Cryogenics company profile and Edmonton contact",
+        "url": "https://www.zpcryo.com/",
+        "publisher": "Zero Point Cryogenics",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "Company overview and footer contact",
+        "summary": "The official site identifies Zero Point Cryogenics Inc. and its Edmonton, Alberta address."
+      },
+      "discoveryPath": [
+        "https://www.zpcryo.com/",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "advanced-manufacturing-and-integration",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company overview and footer contact",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.zpcryo.com/",
+        "websiteDomain": "zpcryo.com",
+        "stableSlug": "zero-point-cryogenics",
+        "legalName": "Zero Point Cryogenics Inc.",
+        "aliases": [
+          "ZPC"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 97,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The public RDII announcement establishes a defence-prototype and quantum-technology commercialization project, not a fielded Canadian Armed Forces quantum system."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.zpcryo.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.zpcryo.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Zero Point Cryogenics",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.zpcryo.com/",
+      "aliases": [
+        "ZPC"
+      ],
+      "location": {
+        "city": "Edmonton",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Sub-kelvin cryogenic systems",
+      "roleSpecificEvidence": "Zero Point Cryogenics is an Edmonton manufacturer of customizable dilution refrigerators and cryogenic equipment for quantum and low-temperature research. Zero Point Cryogenics designs customizable dilution refrigerators, continuous-cold systems and related cryogenic equipment, including platforms with optical, RF and DC wiring support. PrairiesCan announced a $5 million RDII investment for Zero Point Cryogenics to commercialize sub-kelvin cryogenics for defence prototypes and mission-critical quantum sensing, computing and communications systems."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-mathers-logistics",
+      "source": {
+        "id": "mathers-logistics-profile",
+        "title": "I. H. Mathers logistics and Dartmouth operations",
+        "url": "https://ihmathers.com/",
+        "publisher": "I. H. Mathers",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "Company overview and Dartmouth contact sections",
+        "summary": "The official site identifies Mathers Logistics as an I. H. Mathers subsidiary and gives a Dartmouth, Nova Scotia operating address."
+      },
+      "discoveryPath": [
+        "https://ihmathers.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company overview and Dartmouth contact sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://ihmathers.com/",
+        "websiteDomain": "ihmathers.com",
+        "stableSlug": "mathers-logistics",
+        "legalName": "Mathers Logistics Ltd.",
+        "aliases": [
+          "I. H. Mathers"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 93,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "The public source establishes defence-logistics growth and heavy-lift investment but does not identify a specific CAF customer, logistics operation or cargo type."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://ihmathers.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://ihmathers.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Mathers Logistics",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://ihmathers.com/",
+      "aliases": [
+        "I. H. Mathers"
+      ],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Heavy-lift cargo and project logistics",
+      "roleSpecificEvidence": "Mathers Logistics is the project-logistics and freight-forwarding arm of I. H. Mathers, providing cargo handling, secure warehousing, marine agency and customs support from Dartmouth, Nova Scotia. Mathers Logistics provides project planning, freight forwarding, cargo handling, secure warehousing, marine agency and customs brokerage for complex land, air and sea logistics operations. ACOA announced a repayable RDII investment for Mathers Logistics to purchase specialized heavy-lift equipment and support growth in defence logistics."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-l-m-highland-outfitters",
+      "source": {
+        "id": "l-m-highland-outfitters-heritage",
+        "title": "L & M Highland Outfitters heritage and Dartmouth operation",
+        "url": "https://landmhighland.ca/pages/our-heritage",
+        "publisher": "L & M Highland Outfitters",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "Our History section",
+        "summary": "The official heritage page says operations relocated to Dartmouth, Nova Scotia and describes L & M's work with military Highland units, the RCMP and non-Highland military units."
+      },
+      "discoveryPath": [
+        "https://landmhighland.ca/pages/our-heritage",
+        "https://landmhighland.ca/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Our History section",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://landmhighland.ca/",
+        "websiteDomain": "landmhighland.ca",
+        "stableSlug": "l-m-highland-outfitters",
+        "legalName": null,
+        "aliases": [
+          "L&M Highland",
+          "L and M Highland Outfitters"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 94,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "The government source confirms a significant Canadian defence contract but does not disclose its customer, scope, value or products; those details are intentionally not inferred."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://landmhighland.ca/pages/our-heritage",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://landmhighland.ca/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "L & M Highland Outfitters",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://landmhighland.ca/",
+      "aliases": [
+        "L&M Highland",
+        "L and M Highland Outfitters"
+      ],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Specialized military leather goods and accoutrements",
+      "roleSpecificEvidence": "L & M Highland Outfitters is a Dartmouth, Nova Scotia manufacturer and supplier of leather Highland wear, military leather accessories, pipe-band accoutrements and specialized products for public-safety and military customers. L & M Highland Outfitters makes leather military accessories, belts, crossbelts, carriers, bagpipe bags and specialized Highland and ceremonial products for military and public-safety users. ACOA announced RDII support for L & M Highland Outfitters to buy automated sewing equipment, improve productivity and fulfill a significant Canadian defence contract."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-milaero-electronics-atlantic",
+      "source": {
+        "id": "milaero-electronics-atlantic-contact",
+        "title": "MilAero Electronics Atlantic Dartmouth contact",
+        "url": "https://mil-aero.com/contact-us/",
+        "publisher": "MilAero Electronics Atlantic",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "Contact page",
+        "summary": "The official contact page identifies MilAero Electronics Atlantic Inc. at 81 Mount Hope Avenue in Dartmouth, Nova Scotia."
+      },
+      "discoveryPath": [
+        "https://mil-aero.com/contact-us/",
+        "https://mil-aero.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "advanced-manufacturing-and-integration",
+        "aerospace-and-mobility"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Contact page",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://mil-aero.com/",
+        "websiteDomain": "mil-aero.com",
+        "stableSlug": "milaero-electronics-atlantic",
+        "legalName": "MilAero Electronics Atlantic Inc.",
+        "aliases": [
+          "MilAero"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "reviewWarnings": [
+        "MilAero's public material supports its stated aerospace and defence market and controlled-goods posture, but this candidate does not attribute a specific military platform or contract."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://mil-aero.com/contact-us/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://mil-aero.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "MilAero Electronics Atlantic",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://mil-aero.com/",
+      "aliases": [
+        "MilAero"
+      ],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Aerospace and defence electrical assemblies",
+      "roleSpecificEvidence": "MilAero Electronics Atlantic is a Dartmouth manufacturer and integrator of high-performance electrical assemblies for aerospace, defence, marine and industrial markets. MilAero manufactures and integrates cable and wire harnesses, fibre-optic assemblies, flexible RF coaxial cables and electromechanical enclosures, with testing and repair support. ACOA announced RDII and RTRI support for MilAero to acquire equipment, develop and test technology, implement software, expand facilities and workforce, and scale operations."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-survival-systems-limited",
+      "source": {
+        "id": "survival-systems-limited-profile",
+        "title": "Survival Systems company profile and Dartmouth contact",
+        "url": "https://survivalsystemsgroup.com/",
+        "publisher": "Survival Systems Limited",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "Company overview and footer contact",
+        "summary": "The official site identifies Survival Systems Limited and its Dartmouth, Nova Scotia address."
+      },
+      "discoveryPath": [
+        "https://survivalsystemsgroup.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "aerospace-and-mobility"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company overview and footer contact",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://survivalsystemsgroup.com/",
+        "websiteDomain": "survivalsystemsgroup.com",
+        "stableSlug": "survival-systems-limited",
+        "legalName": "Survival Systems Limited",
+        "aliases": [
+          "SSL",
+          "Survival Systems"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 97,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The candidate reflects the company's published safety-training and simulation products and federal industrial support; it does not infer current CAF procurement from historical or testimonial references."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://survivalsystemsgroup.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://survivalsystemsgroup.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Survival Systems Limited",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://survivalsystemsgroup.com/",
+      "aliases": [
+        "SSL",
+        "Survival Systems"
+      ],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Safety-training and environmental simulation systems",
+      "roleSpecificEvidence": "Survival Systems Limited is a Dartmouth designer and manufacturer of advanced safety-training, helicopter-underwater-escape and environmental simulation systems. Survival Systems designs and manufactures helicopter-underwater-escape trainers, environmental simulation systems, survival training theatres, lifting systems and fire-and-rescue simulators. ACOA announced RDII and RTRI support for Survival Systems' new equipment, technology development and testing, software implementation, facility expansion and workforce growth."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-gsts",
+      "source": {
+        "id": "gsts-profile",
+        "title": "GSTS company and maritime-intelligence profile",
+        "url": "https://gsts.ca/",
+        "publisher": "GSTS",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "About and solution overview sections",
+        "summary": "GSTS identifies Global Spatial Technology Solutions as a provider of digital solutions for defence, security and supply-chain decision making."
+      },
+      "discoveryPath": [
+        "https://gsts.ca/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "sensing-and-isr",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "About and solution overview sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://gsts.ca/",
+        "websiteDomain": "gsts.ca",
+        "stableSlug": "gsts",
+        "legalName": "Global Spatial Technology Solutions",
+        "aliases": [
+          "Global Spatial Technology Solutions",
+          "OCIANA"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 98,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "The cited sources establish a defence and security market, OCIANA product capabilities and government growth support, but do not identify a named Canadian defence customer or mission deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://gsts.ca/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://gsts.ca/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "GSTS",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://gsts.ca/",
+      "aliases": [
+        "Global Spatial Technology Solutions",
+        "OCIANA"
+      ],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "OCIANA maritime intelligence platform",
+      "roleSpecificEvidence": "GSTS is a Canadian maritime AI company developing the OCIANA platform for risk management, intelligence and operational optimization across defence, security, commercial maritime and supply-chain environments. OCIANA applies artificial intelligence and big-data analytics to maritime risk assessment, operational intelligence, compliance, planning and multi-party coordination. ACOA announced RDII and RTRI support for GSTS' technology development, software implementation, facility expansion and workforce growth to scale operations."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-stelia-north-america",
+      "source": {
+        "id": "stelia-north-america-profile",
+        "title": "Stelia North America company profile",
+        "url": "https://www.stelia-northamerica.com/",
+        "publisher": "Stelia North America",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "Company overview and Lunenburg and Mirabel sections",
+        "summary": "The official site identifies Stelia North America as an Airbus Atlantic company operating in Lunenburg, Nova Scotia and Mirabel, Quebec for aerospace, defence and space programs."
+      },
+      "discoveryPath": [
+        "https://www.stelia-northamerica.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-lunenburg.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company overview and Lunenburg and Mirabel sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.stelia-northamerica.com/",
+        "websiteDomain": "stelia-northamerica.com",
+        "stableSlug": "stelia-north-america",
+        "legalName": null,
+        "aliases": [
+          "STELIA NA",
+          "Composites Atlantic"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "bilingual_web",
+      "inclusionScore": 99,
+      "completenessScore": 97,
+      "reviewWarnings": [
+        "Stelia's official site names defence programmes and customers, but this candidate limits its canonical claims to public manufacturing capabilities and does not infer the company role on any unlisted programme component."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.stelia-northamerica.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.stelia-northamerica.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-lunenburg.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Stelia North America",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.stelia-northamerica.com/",
+      "aliases": [
+        "STELIA NA",
+        "Composites Atlantic"
+      ],
+      "location": {
+        "city": "Lunenburg",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Advanced aerospace and defence composite structures",
+      "roleSpecificEvidence": "Stelia North America is an Airbus Atlantic company designing, developing and manufacturing advanced composite structures for aerospace, defence and space programs from Lunenburg, Nova Scotia and Mirabel, Quebec. Stelia North America designs and manufactures advanced composite structures using automated fibre placement, filament winding, hand lay-up, resin-transfer processes, tooling, assembly and non-destructive inspection. ACOA announced more than $600,000 in RDII support for Stelia to install advanced manufacturing and inspection equipment, including CNC machines, a robotic sanding cell, a process oven, measuring equipment and a 3D printer."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-atreides",
+      "source": {
+        "id": "atreides-company",
+        "title": "Atreides mission intelligence company profile",
+        "url": "https://atreides.io/",
+        "publisher": "Atreides",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "Mission and platform overview",
+        "summary": "The official site describes Atreides' mission of transforming multi-domain fragmented data into mission-ready insight."
+      },
+      "discoveryPath": [
+        "https://atreides.io/",
+        "https://ca.linkedin.com/company/atreides",
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "communications-and-cyber",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Mission and platform overview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://atreides.io/",
+        "websiteDomain": "atreides.io",
+        "stableSlug": "atreides",
+        "legalName": null,
+        "aliases": [
+          "Atreides Insights",
+          "Atreides Mission Systems"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "Location is corroborated by the public company profile on LinkedIn and public company directories, while technology and activity fields rely on the official Atreides site and PacifiCan; no classified use or operational customer is asserted."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://atreides.io/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://atreides.io/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Atreides",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://atreides.io/",
+      "aliases": [
+        "Atreides Insights",
+        "Atreides Mission Systems"
+      ],
+      "location": {
+        "city": "Victoria",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Mission intelligence and edge decision-support systems",
+      "roleSpecificEvidence": "Atreides is a Victoria, British Columbia intelligence-software company that converts multi-domain, fragmented data into structured mission-ready insight for high-consequence decisions. Atreides provides a behavioural-intelligence suite for structured insight from fragmented data and deployable mission systems that combine secure communications, edge processing and interfaces for field intelligence operations. PacifiCan announced a $2,486,128 RDII investment for Atreides to commercialize an AI-powered platform improving how unmanned systems collect, share and analyze land, air and maritime data."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-dishon-limited",
+      "source": {
+        "id": "dishon-limited-profile",
+        "title": "Dishon Limited company profile",
+        "url": "https://www.dishoncnc.com/",
+        "publisher": "Dishon Limited",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "Company overview",
+        "summary": "The official site identifies Dishon as a supplier of complex precision machine components and assemblies for aerospace, space, nuclear and subsea industries."
+      },
+      "discoveryPath": [
+        "https://www.dishoncnc.com/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/04/government-of-canada-supports-aerospace-and-space-innovation-to-strengthen-security-boost-prosperity-and-enhance-sovereign-capabilities.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company overview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.dishoncnc.com/",
+        "websiteDomain": "dishoncnc.com",
+        "stableSlug": "dishon-limited",
+        "legalName": "Dishon Limited",
+        "aliases": [
+          "Dishon"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "reviewWarnings": [
+        "The public material supports aerospace and military-aviation market relevance and manufacturing expansion but does not identify a particular Canadian defence platform or contract."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.dishoncnc.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.dishoncnc.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/04/government-of-canada-supports-aerospace-and-space-innovation-to-strengthen-security-boost-prosperity-and-enhance-sovereign-capabilities.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Dishon Limited",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.dishoncnc.com/",
+      "aliases": [
+        "Dishon"
+      ],
+      "location": {
+        "city": "Vaughan",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Precision aerospace component manufacturing",
+      "roleSpecificEvidence": "Dishon Limited is a Vaughan precision-engineering and manufacturing company supplying complex machined components and assemblies for aerospace, space, nuclear and subsea industries. Dishon provides CNC turning, horizontal and vertical milling, electrical-discharge machining, grinding, honing and lapping for high-complexity precision components, assemblies and kits. FedDev Ontario announced a $7.5 million investment for Dishon's new Vaughan advanced-manufacturing facility, including machining and precision-measurement equipment to scale high-precision component production."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-arcane-aerospace",
+      "source": {
+        "id": "arcane-aerospace-registry",
+        "title": "Arcane Aerospace federal corporation profile",
+        "url": "https://b2bhint.com/en/company/ca-fd/arcane-aerospace-inc--17322879",
+        "publisher": "B2BHint Canada Federal Companies",
+        "sourceKind": "reputable_industry_publication",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:40:12.882Z",
+        "locator": "Corporate number 17322879 and legal address",
+        "summary": "The public corporation directory identifies active federal corporation Arcane Aerospace Inc. / Arcane Aérospatiale Inc. with a Calgary, Alberta legal address. This source is corroboration for identity and location only."
+      },
+      "discoveryPath": [
+        "https://b2bhint.com/en/company/ca-fd/arcane-aerospace-inc--17322879",
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Corporate number 17322879 and legal address",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://arcaneaerospace.com/",
+        "websiteDomain": "arcaneaerospace.com",
+        "stableSlug": "arcane-aerospace",
+        "legalName": "Arcane Aerospace Inc.",
+        "aliases": [
+          "Arcane Aérospatiale Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 91,
+      "completenessScore": 81,
+      "reviewWarnings": [
+        "The federal project is strong durable evidence, but the presently reachable company website did not resolve during research and a public corporate directory lists a Calgary registered office while the RDII project is B.C.-focused. Verify current operating location, public contact route and technical product detail before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://b2bhint.com/en/company/ca-fd/arcane-aerospace-inc--17322879",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Arcane Aerospace",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://arcaneaerospace.com/",
+      "aliases": [
+        "Arcane Aérospatiale Inc."
+      ],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "In-orbit satellite technology",
+      "roleSpecificEvidence": "Arcane Aerospace is an active federally incorporated Canadian aerospace company with a public project to develop next-generation satellite technology for in-orbit operations. Arcane Aerospace is developing next-generation satellite technology for in-orbit operations under a Government of Canada RDII project. PacifiCan announced a $3,015,000 RDII investment for Arcane Aerospace to develop next-generation satellite technology for in-orbit operations supporting modernization of Canada's defence capabilities and systems."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-refresh-2026-08-04",
+  "runId": "tnm-refresh-2026-08-04",
+  "createdAt": "2026-08-04T15:05:32.911Z",
+  "scope": "Named existing-record refresh for published Marconi Technologies, limited to durable relationship and current-activity evidence that is absent from the live canonical profile.",
+  "prospects": [
+    {
+      "id": "prospect-marconi-technologies-refresh",
+      "name": "Marconi Technologies existing-record enrichment",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://marconi-technologies.com/",
+      "discoverySourceUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "The published Marconi record is identity-complete but lacks official NEXUS consortium participation and an ARA Robotics development partnership supported by durable DND, partner, and association evidence.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Recovered DND's named selected-consortium list and NEXUS program boundary, including Marconi Technologies."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.ara-uas.com/latest-news",
+          "outcome": "Recovered ARA Robotics' official strategic-partnership summary naming Marconi and the parties' complementary technical roles."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.defenceandsecurity.ca/fr/member-news/darit-technologies-is-a-partner-in-dish-nexus",
+          "outcome": "Recovered CADSI-hosted member news independently listing Marconi among NEXUS coalition SMEs."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://marconi-technologies.com/",
+          "outcome": "Rechecked the official product, location, event, and legal-name cues against the published baseline; no redundant product operation is needed."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html",
+          "outcome": "Recovered the official French consortium list and CNACU program description; it belongs to the same DND source family."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.pm.gc.ca/en/news/readouts/2026/06/15/prime-minister-carney-meets-european-council-president-antonio-costa-and",
+          "outcome": "Confirmed that the ORION Poland contract and Enamor relationship are already represented and should not be duplicated."
+        }
+      ]
+    }
+  ]
+}

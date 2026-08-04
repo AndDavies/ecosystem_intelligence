@@ -1,0 +1,2120 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260731171909",
+  "runId": "tnm-manual-20260731171909",
+  "title": "New Canadian defence and strategic-technology companies",
+  "status": "candidate",
+  "createdAt": "2026-07-31T17:28:11.625Z",
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "unmatched-demand:deep-strike",
+    "reason": "The public deep strike demand requirement has no reviewed capability match in the local atlas.",
+    "score": 850
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260731171909.json",
+  "guardrailNotes": [
+    "Private Admin Review material only; this run does not accept, publish or write candidates into canonical organization, capability, relationship or evidence tables.",
+    "Official company evidence is paired with government, NATO, parliamentary, validation or named partner corroboration; social and newsletter sources remain discovery-only.",
+    "Every mission match is labelled derived and no contract, cohort or partnership is represented as procurement eligibility, endorsement, classified demand or operational adoption."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-ascension-automation-solutions",
+      "sourceLeadIds": [
+        "lead-ascension-automation-solutions"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Ascension Automation Solutions is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Robotic and machine-vision automation systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The cited public material establishes industrial automation and government-backed expansion, but does not identify a Canadian Armed Forces customer, platform or operational deployment. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "The cited public material establishes industrial automation and government-backed expansion, but does not identify a Canadian Armed Forces customer, platform or operational deployment."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "ascension-automation-solutions-profile",
+          "title": "Ascension Automation company and Cambridge profile",
+          "url": "https://www.ascensionas.ca/",
+          "publisher": "Ascension Automation Solutions",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Company services and Cambridge contact sections",
+          "summary": "Ascension describes its Cambridge operation and industrial-automation practice."
+        },
+        {
+          "id": "ascension-automation-solutions-product",
+          "title": "Ascension Automation robotics and machine-vision services",
+          "url": "https://www.ascensionas.ca/",
+          "publisher": "Ascension Automation Solutions",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Robot programming, machine vision, welding, bin picking and inspection sections",
+          "summary": "The official site lists robot and controls programming, machine vision, welding systems, bin picking and inspection services."
+        },
+        {
+          "id": "ascension-automation-solutions-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Ascension Automation Solutions project listing",
+          "summary": "FedDev Ontario describes support for a Cambridge industrial-automation business establishing a new local fully automated production hub."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-ascension-automation-solutions-description",
+          "sourceId": "ascension-automation-solutions-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Ascension Automation Solutions is a Cambridge, Ontario industrial-automation company that designs, builds, commissions and supports robotic, machine-vision and controls systems for manufacturing environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ascension-automation-solutions-location",
+          "sourceId": "ascension-automation-solutions-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Ascension Automation Solutions has a documented Canadian operating presence in Cambridge, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ascension-automation-solutions-capability",
+          "sourceId": "ascension-automation-solutions-product",
+          "fieldPath": "capabilities.ascension-robotic-machine-vision-automation.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Ascension Automation provides end-to-end industrial automation including robot and controls programming, machine vision, welding systems, bin-picking, inspection and product-development services.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ascension-automation-solutions-features",
+          "sourceId": "ascension-automation-solutions-product",
+          "fieldPath": "capabilities.ascension-robotic-machine-vision-automation.features",
+          "claimClass": "source_backed",
+          "excerpt": "Robot and controls programming; Machine-vision systems; Welding and bin-picking cells; System integration and commissioning",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ascension-automation-solutions-activity",
+          "sourceId": "ascension-automation-solutions-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents an investment in Ascension Automation's new fully automated production hub and identifies its industrial-automation specialization, including robotics, system design, build, commissioning and service.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ascension-automation-solutions-relationship",
+          "sourceId": "ascension-automation-solutions-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents public support for Ascension Automation's fully automated production hub; this is capacity-expansion evidence, not a defence procurement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ascension-automation-solutions-mission",
+          "sourceId": "ascension-automation-solutions-product",
+          "fieldPath": "capabilities.ascension-robotic-machine-vision-automation.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Robotics and vision-integration expertise could be relevant to domestic production and sustainment of autonomous systems; this is a derived industrial fit, not a defence deployment claim.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "ascension-automation-solutions",
+        "name": "Ascension Automation Solutions",
+        "legalName": "Ascension Automation Solutions Ltd.",
+        "aliases": [
+          "Ascension Automation"
+        ],
+        "description": "Ascension Automation Solutions is a Cambridge, Ontario industrial-automation company that designs, builds, commissions and supports robotic, machine-vision and controls systems for manufacturing environments.",
+        "websiteUrl": "https://www.ascensionas.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Cambridge",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.3616,
+          "longitude": -80.3144,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents an investment in Ascension Automation's new fully automated production hub and identifies its industrial-automation specialization, including robotics, system design, build, commissioning and service.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "ascension-robotic-machine-vision-automation",
+          "name": "Robotic and machine-vision automation systems",
+          "summary": "Ascension Automation provides end-to-end industrial automation including robot and controls programming, machine vision, welding systems, bin-picking, inspection and product-development services.",
+          "capabilityType": "Industrial robotics, controls and machine-vision integration",
+          "features": [
+            "Robot and controls programming",
+            "Machine-vision systems",
+            "Welding and bin-picking cells",
+            "System integration and commissioning"
+          ],
+          "applications": [
+            "Automated manufacturing",
+            "Quality inspection",
+            "Material handling",
+            "Controlled production environments"
+          ],
+          "technicalTags": [
+            "industrial robotics",
+            "machine vision",
+            "controls",
+            "automation integration"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Robotics and vision-integration expertise could be relevant to domestic production and sustainment of autonomous systems; this is a derived industrial fit, not a defence deployment claim.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario's July 2026 backgrounder documents public support for Ascension Automation's fully automated production hub; this is capacity-expansion evidence, not a defence procurement."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.ascensionas.ca/",
+        "sourceAssetUrl": "https://static.wixstatic.com/media/38db9b_187f59b50a6e47b9bbf2e12ee0e8cef7~mv2.png/v1/fill/w_265,h_85,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AAS%20Website.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "e637cedf3076d6c39c541550c499459c2cf99c37f653326c44259b31568e0000",
+        "normalizedChecksum": "78a2d41a4bcb1b6bff2f5eab9884adbb46349ef94995156188c202d57843a968",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-ascension-automation-solutions/logo.source.json",
+        "note": "265x85 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-eclipse-automation",
+      "sourceLeadIds": [
+        "lead-eclipse-automation"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Eclipse Automation is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Digital factory automation and integration with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Eclipse publicly serves aerospace and defence among wider industrial sectors, but the candidate does not infer a particular defence program, customer or deployment. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 91,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "Eclipse publicly serves aerospace and defence among wider industrial sectors, but the candidate does not infer a particular defence program, customer or deployment."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "eclipse-automation-profile",
+          "title": "Eclipse Automation company profile",
+          "url": "https://www.eclipseautomation.com/",
+          "publisher": "Eclipse Automation",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Factory automation and company overview",
+          "summary": "Eclipse identifies itself as a factory-automation company delivering automation, tooling and integration."
+        },
+        {
+          "id": "eclipse-automation-product",
+          "title": "Eclipse Automation digital factory capability",
+          "url": "https://www.eclipseautomation.com/",
+          "publisher": "Eclipse Automation",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Automation lifecycle and digital-factory sections",
+          "summary": "The official site describes integrated automation, engineering, simulation, digital-twin and factory-to-IT integration capabilities."
+        },
+        {
+          "id": "eclipse-automation-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Eclipse Automation project listing",
+          "summary": "FedDev Ontario describes Eclipse's planned Center of Innovation for real-time manufacturing data and AI."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-eclipse-automation-description",
+          "sourceId": "eclipse-automation-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Eclipse Automation is a Cambridge-headquartered factory-automation company that designs and builds integrated automation systems, tooling, production integration and digital-factory services.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-eclipse-automation-location",
+          "sourceId": "eclipse-automation-feddev",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Eclipse Automation has a documented Canadian operating presence in Cambridge, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-eclipse-automation-capability",
+          "sourceId": "eclipse-automation-product",
+          "fieldPath": "capabilities.eclipse-digital-factory-automation.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Eclipse builds integrated factory-automation systems and supports digital manufacturing through engineering, tooling, integration, simulation, data-driven optimization and post-launch support.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-eclipse-automation-features",
+          "sourceId": "eclipse-automation-product",
+          "fieldPath": "capabilities.eclipse-digital-factory-automation.features",
+          "claimClass": "source_backed",
+          "excerpt": "Custom automation systems; Tooling and integration; Digital-twin and simulation services; Factory-to-IT integration",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-eclipse-automation-activity",
+          "sourceId": "eclipse-automation-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents a Center of Innovation intended to digitize Eclipse Automation's manufacturing environment through real-time data and AI.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-eclipse-automation-relationship",
+          "sourceId": "eclipse-automation-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario documents public support for Eclipse Automation's digital-manufacturing modernization; the source does not establish a defence contract.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-eclipse-automation-mission",
+          "sourceId": "eclipse-automation-product",
+          "fieldPath": "capabilities.eclipse-digital-factory-automation.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Integrated automation and digital-manufacturing capabilities could support domestic production workflows for autonomous systems; this is a derived supply-chain alignment only.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "eclipse-automation",
+        "name": "Eclipse Automation",
+        "legalName": "Eclipse Automation Inc.",
+        "aliases": [
+          "Eclipse"
+        ],
+        "description": "Eclipse Automation is a Cambridge-headquartered factory-automation company that designs and builds integrated automation systems, tooling, production integration and digital-factory services.",
+        "websiteUrl": "https://www.eclipseautomation.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Cambridge",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.3616,
+          "longitude": -80.3144,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents a Center of Innovation intended to digitize Eclipse Automation's manufacturing environment through real-time data and AI.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "eclipse-digital-factory-automation",
+          "name": "Digital factory automation and integration",
+          "summary": "Eclipse builds integrated factory-automation systems and supports digital manufacturing through engineering, tooling, integration, simulation, data-driven optimization and post-launch support.",
+          "capabilityType": "Integrated factory automation and digital manufacturing",
+          "features": [
+            "Custom automation systems",
+            "Tooling and integration",
+            "Digital-twin and simulation services",
+            "Factory-to-IT integration"
+          ],
+          "applications": [
+            "Advanced manufacturing",
+            "Controlled production",
+            "Production-line modernization",
+            "Industrial systems integration"
+          ],
+          "technicalTags": [
+            "factory automation",
+            "digital twin",
+            "industrial integration",
+            "manufacturing data"
+          ],
+          "technicalDomainSlugs": [
+            "advanced-manufacturing-and-integration",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Integrated automation and digital-manufacturing capabilities could support domestic production workflows for autonomous systems; this is a derived supply-chain alignment only.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario documents public support for Eclipse Automation's digital-manufacturing modernization; the source does not establish a defence contract."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.eclipseautomation.com/",
+        "sourceAssetUrl": "https://www.eclipseautomation.com/wp-content/uploads/cropped-Eclipse-Logo_Yellow-White-Small.webp",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "d546aa907dfb0bb98066a1a97643f20b9629597bb25e25881b390a9053478429",
+        "normalizedChecksum": "45e96973348529aee110e2a58c7dd38c86833023be75e4a9c23ba82c95af486e",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-eclipse-automation/logo.source.json",
+        "note": "240x163 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-labscubed",
+      "sourceLeadIds": [
+        "lead-labscubed"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "LabsCubed is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Automated polymer and rubber materials testing with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The public sources support materials-testing capability and a current expansion project, but do not identify a defence customer or a materials qualification for a named military system. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 88,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "The public sources support materials-testing capability and a current expansion project, but do not identify a defence customer or a materials qualification for a named military system."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "labscubed-profile",
+          "title": "LabsCubed company profile",
+          "url": "https://labscubed.com/",
+          "publisher": "LabsCubed",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Automated testing and company sections",
+          "summary": "LabsCubed presents automated tensile and tear-testing systems for polymer and rubber labs."
+        },
+        {
+          "id": "labscubed-product",
+          "title": "LabsCubed automated tensile-testing systems",
+          "url": "https://labscubed.com/",
+          "publisher": "LabsCubed",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Automated tensile and rubber-testing sections",
+          "summary": "The official site describes automated testing workflows and ASTM and ISO specimen support."
+        },
+        {
+          "id": "labscubed-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "LabsCubed project listing",
+          "summary": "FedDev Ontario describes LabsCubed's automated high-volume materials-testing expansion."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-labscubed-description",
+          "sourceId": "labscubed-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "LabsCubed is a Kitchener company developing automated materials-testing systems for polymer and rubber laboratories.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-labscubed-location",
+          "sourceId": "labscubed-feddev",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "LabsCubed has a documented Canadian operating presence in Kitchener, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-labscubed-capability",
+          "sourceId": "labscubed-product",
+          "fieldPath": "capabilities.labscubed-automated-materials-testing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "LabsCubed develops automated tensile and tear-testing systems for polymers and elastomers, with unattended specimen handling and support for ASTM and ISO test geometries.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-labscubed-features",
+          "sourceId": "labscubed-product",
+          "fieldPath": "capabilities.labscubed-automated-materials-testing.features",
+          "claimClass": "source_backed",
+          "excerpt": "Automated tensile testing; Automated rubber tear testing; ASTM and ISO specimen support; Unattended specimen handling",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-labscubed-activity",
+          "sourceId": "labscubed-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents LabsCubed's plan to expand its automated high-volume materials-testing systems into global markets.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-labscubed-relationship",
+          "sourceId": "labscubed-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario documents public support for LabsCubed's automated materials-testing expansion; the source establishes a capacity and commercialization activity, not a defence contract.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-labscubed-mission",
+          "sourceId": "labscubed-product",
+          "fieldPath": "capabilities.labscubed-automated-materials-testing.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Automated materials testing could support quality assurance for components used in autonomous systems; the mission relevance is derived and no program-specific application is asserted.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "labscubed",
+        "name": "LabsCubed",
+        "legalName": "LabsCubed Inc.",
+        "aliases": [
+          "Labs Cubed"
+        ],
+        "description": "LabsCubed is a Kitchener company developing automated materials-testing systems for polymer and rubber laboratories.",
+        "websiteUrl": "https://labscubed.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Kitchener",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4516,
+          "longitude": -80.4925,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents LabsCubed's plan to expand its automated high-volume materials-testing systems into global markets.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "labscubed-automated-materials-testing",
+          "name": "Automated polymer and rubber materials testing",
+          "summary": "LabsCubed develops automated tensile and tear-testing systems for polymers and elastomers, with unattended specimen handling and support for ASTM and ISO test geometries.",
+          "capabilityType": "Automated materials-testing equipment",
+          "features": [
+            "Automated tensile testing",
+            "Automated rubber tear testing",
+            "ASTM and ISO specimen support",
+            "Unattended specimen handling"
+          ],
+          "applications": [
+            "Materials qualification",
+            "Manufacturing quality assurance",
+            "Polymer testing",
+            "Elastomer testing"
+          ],
+          "technicalTags": [
+            "materials testing",
+            "tensile testing",
+            "polymer",
+            "elastomer",
+            "laboratory automation"
+          ],
+          "technicalDomainSlugs": [
+            "advanced-manufacturing-and-integration",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Automated materials testing could support quality assurance for components used in autonomous systems; the mission relevance is derived and no program-specific application is asserted.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario documents public support for LabsCubed's automated materials-testing expansion; the source establishes a capacity and commercialization activity, not a defence contract."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://labscubed.com/",
+        "sourceAssetUrl": "https://labscubed.com/assets/img/logo.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "15223d521b5d0309e8f6e5850c6ac7dea309e016a20450b94d8b699cc431ab06",
+        "normalizedChecksum": "d4b79a07cd65a10c280a0d69238ff6abc868732b219670674265698818a3dfb3",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-labscubed/logo.source.json",
+        "note": "564x140 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-navitas-vehicle-systems",
+      "sourceLeadIds": [
+        "lead-navitas-vehicle-systems"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Navitas Vehicle Systems is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Electric drivetrain and motor systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The cited evidence establishes commercial electrification capability and current government-supported growth, but does not establish a defence vehicle program or military customer. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 89,
+      "completenessScore": 87,
+      "reviewWarnings": [
+        "The cited evidence establishes commercial electrification capability and current government-supported growth, but does not establish a defence vehicle program or military customer."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "navitas-vehicle-systems-profile",
+          "title": "Navitas Vehicle Systems company profile",
+          "url": "https://navitasvs.com/",
+          "publisher": "Navitas Vehicle Systems",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Company and product overview",
+          "summary": "Navitas presents electric vehicle drivetrain and electrification products."
+        },
+        {
+          "id": "navitas-vehicle-systems-product",
+          "title": "Navitas electric drivetrain systems",
+          "url": "https://navitasvs.com/",
+          "publisher": "Navitas Vehicle Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Electric vehicle and drivetrain sections",
+          "summary": "The official site presents electric drivetrain and vehicle-electrification offerings."
+        },
+        {
+          "id": "navitas-vehicle-systems-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Navitas Vehicle Systems project listing",
+          "summary": "FedDev Ontario identifies Navitas as a Waterloo manufacturer of electric drivetrain technologies and related electrification solutions."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-navitas-vehicle-systems-description",
+          "sourceId": "navitas-vehicle-systems-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Navitas Vehicle Systems is a Waterloo company that manufactures electric drivetrains, electric motors and related electrification systems for low-speed and light-industrial vehicles.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-navitas-vehicle-systems-location",
+          "sourceId": "navitas-vehicle-systems-feddev",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Navitas Vehicle Systems has a documented Canadian operating presence in Waterloo, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-navitas-vehicle-systems-capability",
+          "sourceId": "navitas-vehicle-systems-product",
+          "fieldPath": "capabilities.navitas-electric-drivetrain-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Navitas develops electric drivetrain technologies, electric motors and related electrification solutions for low-speed and light-industrial vehicle applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-navitas-vehicle-systems-features",
+          "sourceId": "navitas-vehicle-systems-product",
+          "fieldPath": "capabilities.navitas-electric-drivetrain-systems.features",
+          "claimClass": "source_backed",
+          "excerpt": "Electric drivetrain systems; Electric motors; Vehicle electrification integration; Low-speed vehicle applications",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-navitas-vehicle-systems-activity",
+          "sourceId": "navitas-vehicle-systems-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents Navitas Vehicle Systems' advanced-manufacturing, product innovation, workforce-development and market-expansion activity.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-navitas-vehicle-systems-relationship",
+          "sourceId": "navitas-vehicle-systems-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario documents support for Navitas Vehicle Systems' manufacturing and product-development expansion; the source does not establish a defence procurement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-navitas-vehicle-systems-mission",
+          "sourceId": "navitas-vehicle-systems-product",
+          "fieldPath": "capabilities.navitas-electric-drivetrain-systems.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Electric drivetrain integration could support future low-speed autonomous or remote mobility systems; this is a derived technical relevance assessment only.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "navitas-vehicle-systems",
+        "name": "Navitas Vehicle Systems",
+        "legalName": "Navitas Vehicle Systems Ltd.",
+        "aliases": [
+          "Navitas VS"
+        ],
+        "description": "Navitas Vehicle Systems is a Waterloo company that manufactures electric drivetrains, electric motors and related electrification systems for low-speed and light-industrial vehicles.",
+        "websiteUrl": "https://navitasvs.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Waterloo",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4643,
+          "longitude": -80.5204,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents Navitas Vehicle Systems' advanced-manufacturing, product innovation, workforce-development and market-expansion activity.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "navitas-electric-drivetrain-systems",
+          "name": "Electric drivetrain and motor systems",
+          "summary": "Navitas develops electric drivetrain technologies, electric motors and related electrification solutions for low-speed and light-industrial vehicle applications.",
+          "capabilityType": "Electric vehicle drivetrain and motor systems",
+          "features": [
+            "Electric drivetrain systems",
+            "Electric motors",
+            "Vehicle electrification integration",
+            "Low-speed vehicle applications"
+          ],
+          "applications": [
+            "Light industrial vehicles",
+            "Off-road mobility",
+            "Fleet electrification",
+            "Special-purpose vehicles"
+          ],
+          "technicalTags": [
+            "electric drivetrain",
+            "electric motor",
+            "vehicle electrification",
+            "mobility"
+          ],
+          "technicalDomainSlugs": [
+            "aerospace-and-mobility",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Electric drivetrain integration could support future low-speed autonomous or remote mobility systems; this is a derived technical relevance assessment only.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario documents support for Navitas Vehicle Systems' manufacturing and product-development expansion; the source does not establish a defence procurement."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://navitasvs.com/",
+        "sourceAssetUrl": "https://navitasvs.com/res/pub/Logos/navitas-logo-tagline-ko.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "ae997a55d83b230ae63600a21aa716e1176ff5239e8023c89232f707dd9982f6",
+        "normalizedChecksum": "d107a6a7982f535363f8a1dee53e7233e644c5b48edb83a49014091f61d351cf",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-navitas-vehicle-systems/logo.source.json",
+        "note": "640x223 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-qorsa-corporation",
+      "sourceLeadIds": [
+        "lead-qorsa-corporation"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Qorsa Corporation is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Quantum-resilient AI and cybersecurity platform with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Qorsa's public technology positioning is retained as a bounded capability description; the candidate does not claim an operational government deployment or independently verified security performance. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "Qorsa's public technology positioning is retained as a bounded capability description; the candidate does not claim an operational government deployment or independently verified security performance."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "qorsa-corporation-profile",
+          "title": "Qorsa quantum-resilient technology company profile",
+          "url": "https://qorsa.com/",
+          "publisher": "Qorsa",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Company profile and Waterloo contact sections",
+          "summary": "Qorsa identifies a Canadian company at a Waterloo address developing quantum-proof AI solutions."
+        },
+        {
+          "id": "qorsa-corporation-product",
+          "title": "Qorsa AI and quantum-resilient cybersecurity platform",
+          "url": "https://qorsa.com/",
+          "publisher": "Qorsa",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Atlas AI and CasQade platform sections",
+          "summary": "The official site describes applied AI tools and a cryptographically agile framework for post-quantum security."
+        },
+        {
+          "id": "qorsa-corporation-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Qorsa Corporation project listing",
+          "summary": "FedDev Ontario describes Qorsa's quantum-safe AI platform for government, defence and regulated enterprise environments."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-qorsa-corporation-description",
+          "sourceId": "qorsa-corporation-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Qorsa is a Waterloo Canadian technology company developing quantum-resilient artificial-intelligence and cybersecurity products for long-term protection of critical systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qorsa-corporation-location",
+          "sourceId": "qorsa-corporation-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Qorsa Corporation has a documented Canadian operating presence in Waterloo, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qorsa-corporation-capability",
+          "sourceId": "qorsa-corporation-product",
+          "fieldPath": "capabilities.qorsa-quantum-resilient-ai-cybersecurity.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Qorsa's public platform combines applied AI with cryptographically agile, post-quantum cybersecurity components intended to protect sensitive information and critical systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qorsa-corporation-features",
+          "sourceId": "qorsa-corporation-product",
+          "fieldPath": "capabilities.qorsa-quantum-resilient-ai-cybersecurity.features",
+          "claimClass": "source_backed",
+          "excerpt": "Cryptographically agile security; Post-quantum resilience; Applied AI tools; Critical-system protection",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qorsa-corporation-activity",
+          "sourceId": "qorsa-corporation-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents Qorsa's development and deployment of a quantum-safe AI platform for sensitive information and critical systems in government, defence and regulated-enterprise environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qorsa-corporation-relationship",
+          "sourceId": "qorsa-corporation-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario documents public support for Qorsa's quantum-safe AI platform; this supports current development activity and does not establish a procurement award.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qorsa-corporation-mission",
+          "sourceId": "qorsa-corporation-product",
+          "fieldPath": "capabilities.qorsa-quantum-resilient-ai-cybersecurity.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Quantum-resilient cybersecurity and AI tools could support secure processing in distributed mission networks; this is a derived alignment and not evidence of a Canadian defence deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "qorsa-corporation",
+        "name": "Qorsa Corporation",
+        "legalName": "Qorsa Corporation",
+        "aliases": [
+          "Qorsa",
+          "Qorsa Corp"
+        ],
+        "description": "Qorsa is a Waterloo Canadian technology company developing quantum-resilient artificial-intelligence and cybersecurity products for long-term protection of critical systems.",
+        "websiteUrl": "https://qorsa.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Waterloo",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4643,
+          "longitude": -80.5204,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents Qorsa's development and deployment of a quantum-safe AI platform for sensitive information and critical systems in government, defence and regulated-enterprise environments.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "qorsa-quantum-resilient-ai-cybersecurity",
+          "name": "Quantum-resilient AI and cybersecurity platform",
+          "summary": "Qorsa's public platform combines applied AI with cryptographically agile, post-quantum cybersecurity components intended to protect sensitive information and critical systems.",
+          "capabilityType": "Post-quantum cybersecurity and applied-AI platform",
+          "features": [
+            "Cryptographically agile security",
+            "Post-quantum resilience",
+            "Applied AI tools",
+            "Critical-system protection"
+          ],
+          "applications": [
+            "Sensitive information protection",
+            "Critical systems",
+            "Government and regulated enterprise",
+            "Cybersecurity modernization"
+          ],
+          "technicalTags": [
+            "post-quantum cryptography",
+            "cybersecurity",
+            "artificial intelligence",
+            "cryptographic agility"
+          ],
+          "technicalDomainSlugs": [
+            "communications-and-cyber",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Quantum-resilient cybersecurity and AI tools could support secure processing in distributed mission networks; this is a derived alignment and not evidence of a Canadian defence deployment.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario documents public support for Qorsa's quantum-safe AI platform; this supports current development activity and does not establish a procurement award."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://qorsa.com/",
+        "sourceAssetUrl": "https://qorsa.com/wp-content/uploads/2025/04/Qorsa_logo_light_HR.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "b342e9e72200f0d6374b8c5d64f7072683493df8b9ea297b11d4727b551fe0f4",
+        "normalizedChecksum": "911215b1edde3195c532bed04229461a38026123e78f39733662ecccdb05416c",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-qorsa-corporation/logo.source.json",
+        "note": "512x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-vuereal",
+      "sourceLeadIds": [
+        "lead-vuereal"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "VueReal is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures MicroSolid semiconductor-device printing platform with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The candidate captures publicly described microLED and micro semiconductor technology, but does not assert use in a defence sensor, platform or program. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 93,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "The candidate captures publicly described microLED and micro semiconductor technology, but does not assert use in a defence sensor, platform or program."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "vuereal-profile",
+          "title": "VueReal company and microtechnology profile",
+          "url": "https://vuereal.com/",
+          "publisher": "VueReal",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Company and platform overview",
+          "summary": "VueReal presents a microtechnology company focused on microLED and micro semiconductor device fabrication."
+        },
+        {
+          "id": "vuereal-product",
+          "title": "VueReal MicroSolid Printing platform",
+          "url": "https://vuereal.com/",
+          "publisher": "VueReal",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "MicroSolid Printing technology sections",
+          "summary": "The official site describes MicroSolid Printing, micro-device cartridges, substrate processing, data analytics and manufacturing tools."
+        },
+        {
+          "id": "vuereal-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "VueReal project listing",
+          "summary": "FedDev Ontario describes VueReal's specialized semiconductor production-equipment investment and Waterloo capacity expansion."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-vuereal-description",
+          "sourceId": "vuereal-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "VueReal is a Waterloo microtechnology company developing manufacturing systems for microLED displays and micro semiconductor devices.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-vuereal-location",
+          "sourceId": "vuereal-feddev",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "VueReal has a documented Canadian operating presence in Waterloo, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-vuereal-capability",
+          "sourceId": "vuereal-product",
+          "fieldPath": "capabilities.vuereal-microsolid-semiconductor-printing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "VueReal's MicroSolid Printing platform supports microLED and micro semiconductor device fabrication through micro-device cartridges, substrate processing, data analytics and turnkey manufacturing tools.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-vuereal-features",
+          "sourceId": "vuereal-product",
+          "fieldPath": "capabilities.vuereal-microsolid-semiconductor-printing.features",
+          "claimClass": "source_backed",
+          "excerpt": "MicroLED device fabrication; Micro-device cartridges; Substrate processing and bonding; Manufacturing data analytics",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-vuereal-activity",
+          "sourceId": "vuereal-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents VueReal's Waterloo semiconductor-manufacturing expansion and investment in specialized production equipment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-vuereal-relationship",
+          "sourceId": "vuereal-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario documents support for VueReal's Canadian semiconductor-manufacturing capacity expansion; it is not evidence of a defence contract.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-vuereal-mission",
+          "sourceId": "vuereal-product",
+          "fieldPath": "capabilities.vuereal-microsolid-semiconductor-printing.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "MicroLED and micro semiconductor fabrication could be relevant to future sensing and display supply chains; the mission relationship is derived and no defence application is asserted.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "vuereal",
+        "name": "VueReal",
+        "legalName": "VueReal Inc.",
+        "aliases": [
+          "Vue Real"
+        ],
+        "description": "VueReal is a Waterloo microtechnology company developing manufacturing systems for microLED displays and micro semiconductor devices.",
+        "websiteUrl": "https://vuereal.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Waterloo",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4643,
+          "longitude": -80.5204,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents VueReal's Waterloo semiconductor-manufacturing expansion and investment in specialized production equipment.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "vuereal-microsolid-semiconductor-printing",
+          "name": "MicroSolid semiconductor-device printing platform",
+          "summary": "VueReal's MicroSolid Printing platform supports microLED and micro semiconductor device fabrication through micro-device cartridges, substrate processing, data analytics and turnkey manufacturing tools.",
+          "capabilityType": "MicroLED and micro semiconductor manufacturing platform",
+          "features": [
+            "MicroLED device fabrication",
+            "Micro-device cartridges",
+            "Substrate processing and bonding",
+            "Manufacturing data analytics"
+          ],
+          "applications": [
+            "Micro displays",
+            "Optical sensing",
+            "Autonomy and AI hardware",
+            "Semiconductor manufacturing"
+          ],
+          "technicalTags": [
+            "microLED",
+            "semiconductor",
+            "microfabrication",
+            "display technology",
+            "manufacturing tools"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "MicroLED and micro semiconductor fabrication could be relevant to future sensing and display supply chains; the mission relationship is derived and no defence application is asserted.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario documents support for VueReal's Canadian semiconductor-manufacturing capacity expansion; it is not evidence of a defence contract."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://vuereal.com/",
+        "sourceAssetUrl": "https://vuereal.com/wp-content/uploads/2024/09/vuereal-logo_1.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "2dbf1406a1f95b4df6c5e8541ff41c3b2c42862e3d3029ddb10befdfdd8c5af1",
+        "normalizedChecksum": "db73ff7beeb48c28e02dd167193636f2360ff51f22bf65e09ea1f20c23b10011",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-vuereal/logo.source.json",
+        "note": "258x236 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-xltool-inc",
+      "sourceLeadIds": [
+        "lead-xltool-inc"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "XLTool Inc. is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Precision tooling, die and CNC manufacturing with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The FedDev statement supports XLTool's intended market expansion, not a completed defence market entry, procurement award or named customer relationship. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "The FedDev statement supports XLTool's intended market expansion, not a completed defence market entry, procurement award or named customer relationship."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "xltool-inc-profile",
+          "title": "XLTool company and Kitchener manufacturing profile",
+          "url": "https://www.xltool.com/",
+          "publisher": "XLTool Inc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Company overview and Kitchener production-facility sections",
+          "summary": "XLTool identifies an Ontario tool-and-die and machining operation in Kitchener."
+        },
+        {
+          "id": "xltool-inc-product",
+          "title": "XLTool machining, tooling and fabrication capabilities",
+          "url": "https://www.xltool.com/",
+          "publisher": "XLTool Inc.",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Tool builds, design, CNC machining and fabrication sections",
+          "summary": "The official site describes custom tooling, metal stamping dies, 3-D design, multi-axis CNC machining and fabrication."
+        },
+        {
+          "id": "xltool-inc-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "XLTool project listing",
+          "summary": "FedDev Ontario states that XLTool's project supports entry into defence, aerospace and advanced-manufacturing markets."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-xltool-inc-description",
+          "sourceId": "xltool-inc-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "XLTool Inc. is a Kitchener advanced-manufacturing company designing and building metal-stamping dies, tooling, fabrications and precision-machined parts.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xltool-inc-location",
+          "sourceId": "xltool-inc-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "XLTool Inc. has a documented Canadian operating presence in Kitchener, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xltool-inc-capability",
+          "sourceId": "xltool-inc-product",
+          "fieldPath": "capabilities.xltool-precision-tooling-and-cnc-manufacturing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "XLTool designs and builds metal-stamping dies, custom tooling, fabrications and precision components, with 3-, 4- and 5-axis CNC machining, 3-D design and quality-control capabilities.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xltool-inc-features",
+          "sourceId": "xltool-inc-product",
+          "fieldPath": "capabilities.xltool-precision-tooling-and-cnc-manufacturing.features",
+          "claimClass": "source_backed",
+          "excerpt": "Tool and die builds; 3-D design and simulation; 3-, 4- and 5-axis CNC machining; Fabrication and quality control",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xltool-inc-activity",
+          "sourceId": "xltool-inc-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents XLTool's modernization and domestic technical-capability expansion supporting entry into defence, aerospace and other advanced-manufacturing markets.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xltool-inc-relationship",
+          "sourceId": "xltool-inc-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario documents public support for XLTool's modernization and planned expansion into defence and aerospace markets; it does not establish an awarded defence contract.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xltool-inc-mission",
+          "sourceId": "xltool-inc-product",
+          "fieldPath": "capabilities.xltool-precision-tooling-and-cnc-manufacturing.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Precision tooling and machining could support domestic manufacture of parts for autonomous-system supply chains; this is a derived manufacturing fit rather than a documented defence program.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "xltool-inc",
+        "name": "XLTool Inc.",
+        "legalName": "XLTool Inc.",
+        "aliases": [
+          "XL Tool",
+          "XLTool"
+        ],
+        "description": "XLTool Inc. is a Kitchener advanced-manufacturing company designing and building metal-stamping dies, tooling, fabrications and precision-machined parts.",
+        "websiteUrl": "https://www.xltool.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Kitchener",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4516,
+          "longitude": -80.4925,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents XLTool's modernization and domestic technical-capability expansion supporting entry into defence, aerospace and other advanced-manufacturing markets.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "xltool-precision-tooling-and-cnc-manufacturing",
+          "name": "Precision tooling, die and CNC manufacturing",
+          "summary": "XLTool designs and builds metal-stamping dies, custom tooling, fabrications and precision components, with 3-, 4- and 5-axis CNC machining, 3-D design and quality-control capabilities.",
+          "capabilityType": "Precision tooling, die and CNC manufacturing",
+          "features": [
+            "Tool and die builds",
+            "3-D design and simulation",
+            "3-, 4- and 5-axis CNC machining",
+            "Fabrication and quality control"
+          ],
+          "applications": [
+            "Advanced manufacturing",
+            "Aerospace supply-chain entry",
+            "Nuclear-quality production",
+            "Precision components"
+          ],
+          "technicalTags": [
+            "tool and die",
+            "CNC machining",
+            "metal stamping",
+            "fabrication",
+            "quality control"
+          ],
+          "technicalDomainSlugs": [
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Precision tooling and machining could support domestic manufacture of parts for autonomous-system supply chains; this is a derived manufacturing fit rather than a documented defence program.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario documents public support for XLTool's modernization and planned expansion into defence and aerospace markets; it does not establish an awarded defence contract."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.xltool.com/",
+        "sourceAssetUrl": "https://www.xltool.com/images_header/header_xltech_logo.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "4bd6da2636b000f4de659eee4a25010b5a1fa012f10fc75cfc4cc68c09b29df4",
+        "normalizedChecksum": "d943146c701e067ac52f4f4a001aa1f25b61dc6d82143fa6936c9c4c538e1d4e",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-xltool-inc/logo.source.json",
+        "note": "118x38 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-nv-piping-systems",
+      "sourceLeadIds": [
+        "lead-nv-piping-systems"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "NV Piping Systems is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Pressure-piping and process-skid fabrication with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The public backgrounder names defence as a prospective sector; it does not identify a particular defence product, ship class, program or contract. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 91,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The public backgrounder names defence as a prospective sector; it does not identify a particular defence product, ship class, program or contract."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "nv-piping-systems-profile",
+          "title": "NV Piping Systems company profile",
+          "url": "https://www.nvps.ca/",
+          "publisher": "NV Piping Systems",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Company and Cambridge contact sections",
+          "summary": "NV Piping Systems identifies its Cambridge operating location and custom industrial fabrication focus."
+        },
+        {
+          "id": "nv-piping-systems-product",
+          "title": "NV Piping Systems products and services",
+          "url": "https://www.nvps.ca/",
+          "publisher": "NV Piping Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Products and Services section",
+          "summary": "The company presents custom pressure-piping, process-equipment and fabrication services."
+        },
+        {
+          "id": "nv-piping-systems-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "NV Piping Systems project listing",
+          "summary": "FedDev Ontario describes capacity growth for custom stainless-steel and nickel-alloy pressure piping, including new domestic sectors such as defence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-nv-piping-systems-description",
+          "sourceId": "nv-piping-systems-feddev",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "NV Piping Systems is a Cambridge manufacturer of custom stainless-steel and nickel-alloy pressure-piping systems, vessel internals, frames, skids and pipe supports.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nv-piping-systems-location",
+          "sourceId": "nv-piping-systems-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "NV Piping Systems has a documented Canadian operating presence in Cambridge, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nv-piping-systems-capability",
+          "sourceId": "nv-piping-systems-product",
+          "fieldPath": "capabilities.nvps-pressure-piping-and-process-skid-fabrication.summary",
+          "claimClass": "source_backed",
+          "excerpt": "NV Piping Systems fabricates custom stainless-steel and nickel-alloy pressure piping, vessel-internal distributors, structural frames, skids and pipe supports for industrial applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nv-piping-systems-features",
+          "sourceId": "nv-piping-systems-product",
+          "fieldPath": "capabilities.nvps-pressure-piping-and-process-skid-fabrication.features",
+          "claimClass": "source_backed",
+          "excerpt": "Stainless-steel pressure piping; Nickel-alloy piping; Process skids and frames; Vessel-internal distributors",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nv-piping-systems-activity",
+          "sourceId": "nv-piping-systems-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents NV Piping Systems' capacity and competitiveness expansion for new domestic sectors including defence.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nv-piping-systems-relationship",
+          "sourceId": "nv-piping-systems-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario documents NV Piping Systems' capacity expansion for new domestic sectors including defence; the source does not establish a defence procurement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-nv-piping-systems-mission",
+          "sourceId": "nv-piping-systems-product",
+          "fieldPath": "capabilities.nvps-pressure-piping-and-process-skid-fabrication.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Specialized pressure-piping and metal-fabrication capability could be relevant to maritime or sustainment supply chains; this is a derived capability fit and does not assert naval program use.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "nv-piping-systems",
+        "name": "NV Piping Systems",
+        "legalName": "NV Piping Systems Inc.",
+        "aliases": [
+          "NVPS"
+        ],
+        "description": "NV Piping Systems is a Cambridge manufacturer of custom stainless-steel and nickel-alloy pressure-piping systems, vessel internals, frames, skids and pipe supports.",
+        "websiteUrl": "https://www.nvps.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Cambridge",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.3616,
+          "longitude": -80.3144,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents NV Piping Systems' capacity and competitiveness expansion for new domestic sectors including defence.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "nvps-pressure-piping-and-process-skid-fabrication",
+          "name": "Pressure-piping and process-skid fabrication",
+          "summary": "NV Piping Systems fabricates custom stainless-steel and nickel-alloy pressure piping, vessel-internal distributors, structural frames, skids and pipe supports for industrial applications.",
+          "capabilityType": "Custom pressure-piping and process-equipment fabrication",
+          "features": [
+            "Stainless-steel pressure piping",
+            "Nickel-alloy piping",
+            "Process skids and frames",
+            "Vessel-internal distributors"
+          ],
+          "applications": [
+            "Industrial process systems",
+            "Domestic manufacturing supply chains",
+            "Specialized equipment fabrication",
+            "New domestic sectors"
+          ],
+          "technicalTags": [
+            "pressure piping",
+            "nickel alloy",
+            "stainless steel",
+            "process skid",
+            "fabrication"
+          ],
+          "technicalDomainSlugs": [
+            "advanced-manufacturing-and-integration",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "underwater-isr",
+              "alignmentSummary": "Specialized pressure-piping and metal-fabrication capability could be relevant to maritime or sustainment supply chains; this is a derived capability fit and does not assert naval program use.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario documents NV Piping Systems' capacity expansion for new domestic sectors including defence; the source does not establish a defence procurement."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.nvps.ca/",
+        "sourceAssetUrl": "https://www.nvps.ca/images/footer-logo.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "0055c2d64dbe7ddc29666cd1519d1da9327f1c489eabe9c9e9b4c6717a673170",
+        "normalizedChecksum": "ec1610a2140248d664948a67e02fdcbafba471b9ce2e309ed0c7b978ce7e53b7",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-nv-piping-systems/logo.source.json",
+        "note": "147x157 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-trylon-tsf",
+      "sourceLeadIds": [
+        "lead-trylon-tsf"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Trylon TSF is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Wireless, fibre and grid infrastructure systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The evidence supports dual-use communications and grid infrastructure; any relevance to defence or remote mission networks remains derived and requires reviewer judgement. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 89,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "The evidence supports dual-use communications and grid infrastructure; any relevance to defence or remote mission networks remains derived and requires reviewer judgement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "trylon-tsf-profile",
+          "title": "Trylon TSF Canadian company profile",
+          "url": "https://www.trylon.com/",
+          "publisher": "Trylon TSF",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Company story and Elmira headquarters sections",
+          "summary": "Trylon identifies Trylon TSF Inc. in Elmira, Ontario and its critical-infrastructure scope."
+        },
+        {
+          "id": "trylon-tsf-product",
+          "title": "Trylon wireless, fibre and electrical infrastructure services",
+          "url": "https://www.trylon.com/",
+          "publisher": "Trylon TSF",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Wireless, fibre, transmission and satellite infrastructure sections",
+          "summary": "The official site describes engineering, manufacturing, construction and digital-infrastructure services across wireless, fibre, grid and satellite environments."
+        },
+        {
+          "id": "trylon-tsf-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Trylon TSF project listing",
+          "summary": "FedDev Ontario describes an investment to increase domestic production of steel components for electrical-grid expansion."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-trylon-tsf-description",
+          "sourceId": "trylon-tsf-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Trylon TSF is an Elmira infrastructure company providing engineering, manufacturing, construction and project services for wireless, fibre, electrical-transmission and satellite-earth-station infrastructure.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-trylon-tsf-location",
+          "sourceId": "trylon-tsf-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Trylon TSF has a documented Canadian operating presence in Elmira, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-trylon-tsf-capability",
+          "sourceId": "trylon-tsf-product",
+          "fieldPath": "capabilities.trylon-wireless-fibre-and-grid-infrastructure.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Trylon provides engineering, structural-steel manufacturing, construction, survey and project services for wireless sites, fibre networks, electrical transmission and distribution infrastructure and satellite earth stations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-trylon-tsf-features",
+          "sourceId": "trylon-tsf-product",
+          "fieldPath": "capabilities.trylon-wireless-fibre-and-grid-infrastructure.features",
+          "claimClass": "source_backed",
+          "excerpt": "Wireless site structures; Fibre planning and design; Satellite earth-station infrastructure; Transmission and substation steel",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-trylon-tsf-activity",
+          "sourceId": "trylon-tsf-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents Trylon TSF's advanced-equipment adoption to expand production of steel components for grid infrastructure.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-trylon-tsf-relationship",
+          "sourceId": "trylon-tsf-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario documents Trylon TSF's domestic manufacturing expansion for electrical-grid infrastructure; it does not establish a defence contract.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-trylon-tsf-mission",
+          "sourceId": "trylon-tsf-product",
+          "fieldPath": "capabilities.trylon-wireless-fibre-and-grid-infrastructure.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Wireless, fibre and satellite-infrastructure engineering could support distributed communications and data infrastructure; this is a derived alignment, not a defence network claim.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "trylon-tsf",
+        "name": "Trylon TSF",
+        "legalName": "Trylon TSF Inc.",
+        "aliases": [
+          "Trylon"
+        ],
+        "description": "Trylon TSF is an Elmira infrastructure company providing engineering, manufacturing, construction and project services for wireless, fibre, electrical-transmission and satellite-earth-station infrastructure.",
+        "websiteUrl": "https://www.trylon.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Elmira",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.596,
+          "longitude": -80.557,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents Trylon TSF's advanced-equipment adoption to expand production of steel components for grid infrastructure.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "trylon-wireless-fibre-and-grid-infrastructure",
+          "name": "Wireless, fibre and grid infrastructure systems",
+          "summary": "Trylon provides engineering, structural-steel manufacturing, construction, survey and project services for wireless sites, fibre networks, electrical transmission and distribution infrastructure and satellite earth stations.",
+          "capabilityType": "Critical communications and electrical infrastructure engineering",
+          "features": [
+            "Wireless site structures",
+            "Fibre planning and design",
+            "Satellite earth-station infrastructure",
+            "Transmission and substation steel"
+          ],
+          "applications": [
+            "Remote connectivity",
+            "Electrical-grid infrastructure",
+            "Wireless networks",
+            "Critical-infrastructure construction"
+          ],
+          "technicalTags": [
+            "wireless infrastructure",
+            "fibre",
+            "satellite earth station",
+            "transmission tower",
+            "LiDAR survey"
+          ],
+          "technicalDomainSlugs": [
+            "communications-and-cyber",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Wireless, fibre and satellite-infrastructure engineering could support distributed communications and data infrastructure; this is a derived alignment, not a defence network claim.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario documents Trylon TSF's domestic manufacturing expansion for electrical-grid infrastructure; it does not establish a defence contract."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.trylon.com/",
+        "sourceAssetUrl": "https://www.trylon.com/assets/images/Logo/Logo%20TRYLONRisorsa%20317.svg",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "0654f925cc72551b0e06a7783a66a1328f41d47867480abd67e5e815ad204ac4",
+        "normalizedChecksum": "32eaa631217308dbc91e30da2f09d1d5d6af7768292e813fc241117cd1b0c412",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-trylon-tsf/logo.source.json",
+        "note": "100x91 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-slacan-industries",
+      "sourceLeadIds": [
+        "lead-slacan-industries"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "SLACAN Industries is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Utility, transmission and communications hardware with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. SLACAN's evidence supports critical electrical and communications infrastructure, while the potential defence relevance is an explicitly derived judgement for reviewer evaluation. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 88,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "SLACAN's evidence supports critical electrical and communications infrastructure, while the potential defence relevance is an explicitly derived judgement for reviewer evaluation."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:28:11.625Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "slacan-industries-profile",
+          "title": "SLACAN company profile",
+          "url": "https://www.slacan.com/",
+          "publisher": "SLACAN Industries",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Company and product overview",
+          "summary": "SLACAN presents its Canadian utility, transmission and communications manufacturing portfolio."
+        },
+        {
+          "id": "slacan-industries-product",
+          "title": "SLACAN utility and communications hardware",
+          "url": "https://www.slacan.com/",
+          "publisher": "SLACAN Industries",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "Distribution, EHV transmission, pole-line and substation product sections",
+          "summary": "The official site describes a portfolio of distribution, transmission, pole-line, substation and structural-steel solutions."
+        },
+        {
+          "id": "slacan-industries-feddev",
+          "title": "FedDev Ontario Waterloo and Brant investment backgrounder",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-23T00:00:00.000Z",
+          "accessedAt": "2026-07-31T17:28:11.625Z",
+          "locator": "SLACAN Industries project listing",
+          "summary": "FedDev Ontario describes SLACAN's domestic-manufacturing upgrade through advanced automation and digital tools."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-slacan-industries-description",
+          "sourceId": "slacan-industries-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "SLACAN Industries is a Brantford designer and manufacturer of electrical-utility, transmission, communications and structural-steel hardware.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-slacan-industries-location",
+          "sourceId": "slacan-industries-feddev",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "SLACAN Industries has a documented Canadian operating presence in Brantford, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-slacan-industries-capability",
+          "sourceId": "slacan-industries-product",
+          "fieldPath": "capabilities.slacan-utility-and-communications-hardware.summary",
+          "claimClass": "source_backed",
+          "excerpt": "SLACAN designs and manufactures distribution, EHV transmission and custom pole-line hardware, substation components and structural-steel solutions for electrical-utility and communications infrastructure.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-slacan-industries-features",
+          "sourceId": "slacan-industries-product",
+          "fieldPath": "capabilities.slacan-utility-and-communications-hardware.features",
+          "claimClass": "source_backed",
+          "excerpt": "Distribution hardware; EHV transmission hardware; Substation components; Custom structural-steel solutions",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-slacan-industries-activity",
+          "sourceId": "slacan-industries-feddev",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario's July 2026 backgrounder documents SLACAN's manufacturing upgrade through advanced automation and digital tools.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-slacan-industries-relationship",
+          "sourceId": "slacan-industries-feddev",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev Ontario documents SLACAN's domestic manufacturing modernization; the source does not state a defence procurement or customer.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-slacan-industries-mission",
+          "sourceId": "slacan-industries-product",
+          "fieldPath": "capabilities.slacan-utility-and-communications-hardware.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Communications-infrastructure hardware could support resilient physical connectivity for distributed systems; this is a derived infrastructure alignment, not a defence-system assertion.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "slacan-industries",
+        "name": "SLACAN Industries",
+        "legalName": "Slacan Industries Inc.",
+        "aliases": [
+          "Slacan"
+        ],
+        "description": "SLACAN Industries is a Brantford designer and manufacturer of electrical-utility, transmission, communications and structural-steel hardware.",
+        "websiteUrl": "https://www.slacan.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Brantford",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.1394,
+          "longitude": -80.2644,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "FedDev Ontario's July 2026 backgrounder documents SLACAN's manufacturing upgrade through advanced automation and digital tools.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "slacan-utility-and-communications-hardware",
+          "name": "Utility, transmission and communications hardware",
+          "summary": "SLACAN designs and manufactures distribution, EHV transmission and custom pole-line hardware, substation components and structural-steel solutions for electrical-utility and communications infrastructure.",
+          "capabilityType": "Electrical-utility and communications infrastructure hardware",
+          "features": [
+            "Distribution hardware",
+            "EHV transmission hardware",
+            "Substation components",
+            "Custom structural-steel solutions"
+          ],
+          "applications": [
+            "Electrical transmission",
+            "Communications infrastructure",
+            "Substations",
+            "Critical infrastructure"
+          ],
+          "technicalTags": [
+            "transmission hardware",
+            "substation",
+            "pole line",
+            "communications infrastructure",
+            "structural steel"
+          ],
+          "technicalDomainSlugs": [
+            "communications-and-cyber",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Communications-infrastructure hardware could support resilient physical connectivity for distributed systems; this is a derived infrastructure alignment, not a defence-system assertion.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "FedDev Ontario funding recipient",
+          "publicSummary": "FedDev Ontario documents SLACAN's domestic manufacturing modernization; the source does not state a defence procurement or customer."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.slacan.com/",
+        "sourceAssetUrl": "https://www.slacan.com/application/files/4215/8350/6446/slacan_logo_blue.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "f0075870fdf22803017961d835ecadf4b615c779d5b28950c69f14cc2207466a",
+        "normalizedChecksum": "94375e875bb565b01cb92441c08d1cf64652370aa9693102322ccf2bbe31a4be",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731171909/candidate-slacan-industries/logo.source.json",
+        "note": "203x52 normalized WebP retained in the private candidate packet."
+      }
+    }
+  ],
+  "deferred": []
+}

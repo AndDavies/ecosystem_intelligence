@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-defence-drone-initiative-20260727",
+  "runId": "tnm-defence-drone-initiative-20260727",
+  "createdAt": "2026-07-27T08:00:00.000Z",
+  "scope": {
+    "description": "Named public-demand dossier for the Government of Canada's Defence Drone Initiative, combining the official release, a CanadaBuys marketplace trace, related official drone-innovation context, and independent secondary coverage.",
+    "targetMissionAreaSlugs": ["autonomous-patrol-and-monitoring", "underwater-isr"],
+    "targetTechnicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "aerospace-and-mobility", "advanced-manufacturing-and-integration"],
+    "targetOrganizationKinds": [],
+    "targetDemandIssuerTypes": ["department", "procurement_authority"]
+  },
+  "leads": [
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-defence-drone-initiative-marketplace",
+      "source": {
+        "id": "ddi-official-release",
+        "title": "Government of Canada launches Defence Drone Initiative to strengthen Canada's sovereign defence capabilities",
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/government-of-canada-launches-defence-drone-initiative-to-strengthen-canadas-sovereign-defence-capabilities.html",
+        "publisher": "National Defence",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-07-23T00:00:00.000Z",
+        "accessedAt": "2026-07-27T08:00:00.000Z",
+        "locator": "News release: initial capability areas, Request for Supply Arrangement, supplier qualification and timing",
+        "summary": "National Defence announced the Defence Drone Initiative as a program and supplier marketplace intended to accelerate Canadian uncrewed and autonomous systems for the Canadian Armed Forces and Canadian Coast Guard."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/government-of-canada-launches-defence-drone-initiative-to-strengthen-canadas-sovereign-defence-capabilities.html",
+        "https://canadabuys.canada.ca/en/node/preview/1481685",
+        "https://www.techtimes.com/articles/321561/20260725/canada-opens-defence-drone-marketplace-rolling-supplier-qualification.htm"
+      ],
+      "possibleMissionAreaSlugs": ["autonomous-patrol-and-monitoring", "underwater-isr"],
+      "possibleTechnicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "aerospace-and-mobility", "advanced-manufacturing-and-integration"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "The release identifies the DDI, its six initial capability areas, the RFSA process, and its stated purpose of connecting operational needs with Canadian industrial capacity.",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/government-of-canada-launches-defence-drone-initiative-to-strengthen-canadas-sovereign-defence-capabilities.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "defence-drone-initiative",
+        "legalName": null,
+        "aliases": ["DDI", "Defence Drone Initiative Marketplace"]
+      },
+      "followUpQuestions": [
+        "Should this marketplace and program remain a distinct public demand source alongside broader Defence Industrial Strategy demand records?",
+        "Which future CanadaBuys amendments, solicitations, awards, or supplier announcements should be added as refresh evidence?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 97,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "Qualification under the RFSA does not itself create a contract, supplier endorsement, or procurement eligibility conclusion.",
+        "The published capability areas are a public program signal and may be amended as the marketplace evolves."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/government-of-canada-launches-defence-drone-initiative-to-strengthen-canadas-sovereign-defence-capabilities.html",
+          "outcome": "Official National Defence release established the program, user communities, capability areas, supplier process, and public caveat on qualification."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/node/preview/1481685",
+          "outcome": "CanadaBuys trace independently confirmed the W8703-270055 Defence Drone Initiative Marketplace tender title and public publication date."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.techtimes.com/articles/321561/20260725/canada-opens-defence-drone-marketplace-rolling-supplier-qualification.htm",
+          "outcome": "Independent coverage corroborated the marketplace framing and was retained as secondary context only; canonical claims remain tied to government sources."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Defence Drone Initiative Marketplace",
+      "issuerNames": ["Department of National Defence", "Defence Investment Agency"],
+      "demandSourceKind": "procurement_notice",
+      "commitmentLevel": "procurement",
+      "candidateRequirements": [
+        "Canada seeks a qualified supplier marketplace that can support testing, prototype development, limited acquisition, and potential production of uncrewed and autonomous systems for CAF and Canadian Coast Guard operational needs.",
+        "The public program identifies low-cost tactical ISR drones, ground logistics systems, uncrewed maritime surface and underwater systems, counter-drone interceptors, standardized drone munitions, and deep precision strike systems as initial capability areas."
+      ]
+    }
+  ]
+}

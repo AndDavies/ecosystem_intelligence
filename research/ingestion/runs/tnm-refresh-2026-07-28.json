@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-2026-07-28",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "government_innovation_office"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:government_innovation_office",
+    "reason": "4 published or pending government innovation office records cover only 40% of the working saturation target of 10.",
+    "score": 850
+  },
+  "status": "completed",
+  "startedAt": "2026-07-28T08:23:08.807Z",
+  "completedAt": "2026-07-28T08:32:54.000Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 4,
+    "minimumCandidates": 1,
+    "targetCandidates": 3
+  },
+  "sourceQueries": [
+    "label:Newsletters/Defence newer_than:10d -in:spam -in:trash",
+    "Magellan Aerospace Canada F414 sustainment MOU official Canada July 2026",
+    "Babcock Canada Victoria In-Service Support Contract extension July 2026 official government",
+    "Canada invests 34 million Pratt Whitney Canada engine modernization July 2026 official",
+    "Targeted LinkedIn search: Magellan Aerospace F414 Canada"
+  ],
+  "counters": {
+    "sourcesChecked": 11,
+    "leadsQualified": 2,
+    "leadsDeferred": 2,
+    "candidatesCreated": 2,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 4,
+    "uniqueProspects": 4,
+    "prospectsQueued": 2,
+    "recoveryAttempts": 9,
+    "sourceLanesSearched": 4,
+    "candidatesGreen": 1,
+    "candidatesAmber": 1,
+    "signalsExtracted": 4,
+    "signalsDispositioned": 4,
+    "sourceFamiliesSearched": 6
+  },
+  "underTargetReason": "The requested enrichment-only scope yielded two evidence-backed existing-record refreshes. Pratt & Whitney Canada and Davie Autonomous Inc. were intentionally deferred because neither has a published organization target; creating them would exceed the run scope.",
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-refresh-2026-07-28.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-2026-07-28.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-2026-07-28.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-2026-07-28.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-refresh-2026-07-28.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-2026-07-28.json"
+  }
+}

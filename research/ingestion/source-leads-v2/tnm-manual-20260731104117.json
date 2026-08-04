@@ -1,0 +1,903 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260731104117",
+  "runId": "tnm-manual-20260731104117",
+  "createdAt": "2026-07-31T10:56:35.820Z",
+  "scope": {
+    "description": "Ten qualified Canadian incubator leads selected from a multi-lane inventory. Qualified leads proceed automatically to enriched private candidates while taxonomy overlaps and current-program caveats remain visible for review.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "incubator"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-ceim",
+      "source": {
+        "id": "ceim-profile",
+        "title": "CEIM technology incubator",
+        "url": "https://www.ceim.org/en/",
+        "publisher": "CEIM",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "Mission and support sections",
+        "summary": "CEIM identifies itself as a Montreal technology incubator and accelerator supporting innovative young companies across multiple technology sectors."
+      },
+      "discoveryPath": [
+        "https://www.ceim.org/en/",
+        "https://www.quebec.ca/entreprises-et-travailleurs-autonomes/demarrer-entreprise/incubateurs-accelerateurs"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Mission and support sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.ceim.org/en/",
+        "websiteDomain": "www.ceim.org",
+        "stableSlug": "ceim",
+        "legalName": "Centre d'entreprises et d'innovation de Montréal",
+        "aliases": [
+          "Centre d'entreprises et d'innovation de Montréal"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 94,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "CEIM operates as both an incubator and accelerator; the proposed kind follows its long-form founder support, while reviewers should retain this hybrid operating-model boundary."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.ceim.org/en/",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.quebec.ca/entreprises-et-travailleurs-autonomes/demarrer-entreprise/incubateurs-accelerateurs",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://www.ceim.org/en/",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "CEIM",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "cluster_operator"
+      ],
+      "websiteUrl": "https://www.ceim.org/en/",
+      "aliases": [
+        "Centre d'entreprises et d'innovation de Montréal"
+      ],
+      "location": {
+        "city": "Montreal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "CEIM is a Montreal technology incubator and accelerator providing tailored advisory support to innovative young companies across digital technology, life sciences, creative industries, cleantech and advanced manufacturing. CEIM provides tailored coaching and advisory support for innovative young companies, including market validation, commercialization, financing and international business development."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-spark-centre",
+      "source": {
+        "id": "spark-centre-profile",
+        "title": "Spark Centre technology business incubator",
+        "url": "https://sparkcentre.org/",
+        "publisher": "Spark Centre",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "About and sector-support sections",
+        "summary": "Spark describes itself as a business incubator for early-stage and growing innovation and technology companies."
+      },
+      "discoveryPath": [
+        "https://sparkcentre.org/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2024/06/entrepreneurs-in-eastern-ontario-and-georgian-bay-to-benefit-from-expanded-business-services.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "About and sector-support sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://sparkcentre.org/",
+        "websiteDomain": "sparkcentre.org",
+        "stableSlug": "spark-centre",
+        "legalName": "Spark Commercialization and Innovation Centre",
+        "aliases": [
+          "Spark Commercialization and Innovation Centre"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 93,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "Spark uses both incubator and accelerator language. The record is limited to organization-level services and the cited program, not to individual client outcomes."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://sparkcentre.org/",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2024/06/entrepreneurs-in-eastern-ontario-and-georgian-bay-to-benefit-from-expanded-business-services.html",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://sparkcentre.org/",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Spark Centre",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "cluster_operator"
+      ],
+      "websiteUrl": "https://sparkcentre.org/",
+      "aliases": [
+        "Spark Commercialization and Innovation Centre"
+      ],
+      "location": {
+        "city": "Oshawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Spark Centre is an Oshawa technology business incubator that provides structured programs, advisory services, investor-network access and workspace support for early-stage and growing innovation companies. Spark Centre's public programming provides structured advisory, workshops, network access and commercialization support for early-stage and growing technology entrepreneurs."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-emera-ideahub",
+      "source": {
+        "id": "emera-ideahub-profile",
+        "title": "Emera ideaHUB about",
+        "url": "https://dalideahub.ca/about/about-us/",
+        "publisher": "Emera ideaHUB",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "Purpose and incubation model",
+        "summary": "Emera ideaHUB describes itself as an incubator for physical-product innovation serving early-stage deep-tech founders."
+      },
+      "discoveryPath": [
+        "https://dalideahub.ca/about/about-us/",
+        "https://dalideahub.ca/programs/ideabridge/",
+        "https://www.dal.ca/faculty/engineering/idea-project/emera-idea-building.html",
+        "https://www.dal.ca/about/mission-vision-values/community-hub/public-resources/emera-ideahub.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Purpose and incubation model",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://dalideahub.ca/",
+        "websiteDomain": "dalideahub.ca",
+        "stableSlug": "emera-ideahub",
+        "legalName": null,
+        "aliases": [
+          "Emera IdeaHub",
+          "Emera IDEA Hub"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 96,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The hub's focus is physical-product deep tech; the candidate does not infer that all resident ventures or sectors are defence-aligned."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://dalideahub.ca/about/about-us/",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.dal.ca/faculty/engineering/idea-project/emera-idea-building.html",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://dalideahub.ca/programs/ideabridge/",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Emera ideaHUB",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "university_affiliated"
+      ],
+      "websiteUrl": "https://dalideahub.ca/",
+      "aliases": [
+        "Emera IdeaHub",
+        "Emera IDEA Hub"
+      ],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Emera ideaHUB is a Halifax deep-tech incubator for physical-product ventures, providing prototyping infrastructure, engineering expertise, founder programs and commercialization support across cleantech, ocean technology, medtech and robotics. ideaBRIDGE supports ventures with working prototypes through dedicated workspace, mechanical and electrical labs, design and engineering advice, and preparation for manufacturing, customer pilots and commercialization."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-venn-innovation",
+      "source": {
+        "id": "venn-innovation-profile",
+        "title": "Venn Innovation leadership and mission",
+        "url": "https://www.venninnovation.com/en/venn-leadership",
+        "publisher": "Venn Innovation",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "Who we are and mission sections",
+        "summary": "Venn describes its New Brunswick technology-company growth mandate, professional-development programming and mentoring and advisory services."
+      },
+      "discoveryPath": [
+        "https://www.venninnovation.com/en/venn-leadership",
+        "https://www.venninnovation.com/en/venn-garage",
+        "https://nbif.ca/wp-content/uploads/2026/02/NBIF-Impact-Report_EN_FINAL.pdf",
+        "https://www.venninnovation.com/en/contact-venn"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Who we are and mission sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.venninnovation.com/en/",
+        "websiteDomain": "www.venninnovation.com",
+        "stableSlug": "venn-innovation",
+        "legalName": "Venn Innovation Inc.",
+        "aliases": [
+          "Venn"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 92,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "Venn's wider ecosystem role extends beyond incubation. The candidate confines the proposed record to the organization and its named Garage program."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.venninnovation.com/en/venn-leadership",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://nbif.ca/wp-content/uploads/2026/02/NBIF-Impact-Report_EN_FINAL.pdf",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://www.venninnovation.com/en/venn-garage",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Venn Innovation",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "cluster_operator"
+      ],
+      "websiteUrl": "https://www.venninnovation.com/en/",
+      "aliases": [
+        "Venn"
+      ],
+      "location": {
+        "city": "Moncton",
+        "provinceTerritory": "New Brunswick",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Venn Innovation is a Moncton technology-innovation organization operating an incubator program for early-stage New Brunswick technology ventures, with coaching, mentors, workspace and commercialization support. The Venn Garage is a tailored incubator program for New Brunswick technology startups with milestone-based coaching, mentor access, early-adopter and funding preparation, and shared workspace access."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-planet-hatch",
+      "source": {
+        "id": "planet-hatch-profile",
+        "title": "Planet Hatch entrepreneurial hub",
+        "url": "https://planethatch.com/",
+        "publisher": "Planet Hatch",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "Hub and startup-support sections",
+        "summary": "Planet Hatch describes a Fredericton entrepreneurial hub providing co-working and startup support through tailored programming and business-growth services."
+      },
+      "discoveryPath": [
+        "https://planethatch.com/",
+        "https://news.planethatch.com/planet-hatch-business-immigrant-program",
+        "https://nbif.ca/wp-content/uploads/2026/02/NBIF-Impact-Report_EN_FINAL.pdf"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Hub and startup-support sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://planethatch.com/",
+        "websiteDomain": "planethatch.com",
+        "stableSlug": "planet-hatch",
+        "legalName": null,
+        "aliases": [
+          "Planet Hatch Fredericton"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "bilingual_web",
+      "inclusionScore": 86,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Planet Hatch's publicly described program mix includes a broader entrepreneur hub and newcomer support. Reviewers should confirm whether its profile should retain the incubator kind or be reclassified as an ecosystem organization."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://planethatch.com/",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://nbif.ca/wp-content/uploads/2026/02/NBIF-Impact-Report_EN_FINAL.pdf",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://news.planethatch.com/planet-hatch-business-immigrant-program",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Planet Hatch",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "cluster_operator"
+      ],
+      "websiteUrl": "https://planethatch.com/",
+      "aliases": [
+        "Planet Hatch Fredericton"
+      ],
+      "location": {
+        "city": "Fredericton",
+        "provinceTerritory": "New Brunswick",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Planet Hatch is a Fredericton entrepreneurial hub and incubation space supporting startups through co-working, tailored programs, business-growth services, mentorship and local ecosystem connections. Planet Hatch's Business Immigrant Essentials program provides cohort learning, workshops, business counselling, networks and continuing startup support for newcomer entrepreneurs in New Brunswick."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-connexionworks",
+      "source": {
+        "id": "connexionworks-profile",
+        "title": "ConnexionWorks business services",
+        "url": "https://www.connexionworks.ca/mentorship",
+        "publisher": "ConnexionWorks",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "Mentorship and business-advice sections",
+        "summary": "ConnexionWorks describes mentoring, coaching, business advice and professional connections for entrepreneurs, including those in its incubator programs."
+      },
+      "discoveryPath": [
+        "https://www.connexionworks.ca/mentorship",
+        "https://www.canada.ca/fr/promotion-economique-canada-atlantique/campagnes/impacts/connexionworks.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Mentorship and business-advice sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.connexionworks.ca/",
+        "websiteDomain": "www.connexionworks.ca",
+        "stableSlug": "connexionworks",
+        "legalName": "ConnexionWorks Inc.",
+        "aliases": [
+          "Connexion Works"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "conference_directory",
+      "inclusionScore": 85,
+      "completenessScore": 83,
+      "reviewWarnings": [
+        "ConnexionWorks supports entrepreneurs across sectors and participant groups. The candidate does not imply technology-sector specialization or defence relevance without further evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.connexionworks.ca/mentorship",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/fr/promotion-economique-canada-atlantique/campagnes/impacts/connexionworks.html",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://www.connexionworks.ca/mentorship",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "ConnexionWorks",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "cluster_operator"
+      ],
+      "websiteUrl": "https://www.connexionworks.ca/",
+      "aliases": [
+        "Connexion Works"
+      ],
+      "location": {
+        "city": "Saint John",
+        "provinceTerritory": "New Brunswick",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "ConnexionWorks is a Saint John entrepreneur-support organization operating incubator programs, workspace, mentorship, coaching and business-advice services for local founders and startups. ConnexionWorks provides mentors, coaching, business advice, professional connections and formal industry-mentor relationships to founders in its incubator programs."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-the-forge-mcmaster",
+      "source": {
+        "id": "the-forge-mcmaster-profile",
+        "title": "The Forge at McMaster",
+        "url": "https://theforge.mcmaster.ca/",
+        "publisher": "The Forge",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "Startup-incubator overview",
+        "summary": "The Forge identifies itself as McMaster's startup incubator and describes mentorship, workspace, founder resources and innovation infrastructure."
+      },
+      "discoveryPath": [
+        "https://theforge.mcmaster.ca/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2018/12/feddev-ontario-supports-new-innovative-collaboration-space-at-mcmaster-university.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Startup-incubator overview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://theforge.mcmaster.ca/",
+        "websiteDomain": "theforge.mcmaster.ca",
+        "stableSlug": "the-forge-mcmaster",
+        "legalName": null,
+        "aliases": [
+          "McMaster's Startup Incubator",
+          "McMaster The Forge"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "broad_web",
+      "inclusionScore": 95,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "The Forge operates as both an incubator and accelerator. Its record is limited to its public founder-support and maker-space role, not to individual startup claims."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://theforge.mcmaster.ca/",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2018/12/feddev-ontario-supports-new-innovative-collaboration-space-at-mcmaster-university.html",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://theforge.mcmaster.ca/",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "The Forge",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "university_affiliated"
+      ],
+      "websiteUrl": "https://theforge.mcmaster.ca/",
+      "aliases": [
+        "McMaster's Startup Incubator",
+        "McMaster The Forge"
+      ],
+      "location": {
+        "city": "Hamilton",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "The Forge is McMaster University's startup incubator in Hamilton, providing mentorship, workspace, founder resources and access to innovation and advanced-manufacturing infrastructure for early-stage ventures. The Forge's business incubator provides venture support, mentors, advisory resources, workspace and access to the McMaster Innovation Park environment for early-stage startups."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-icube-utm",
+      "source": {
+        "id": "icube-utm-profile",
+        "title": "ICUBE UTM home of entrepreneurship",
+        "url": "https://icubeutm.ca/",
+        "publisher": "ICUBE UTM",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "Organization and support sections",
+        "summary": "ICUBE describes itself as the UTM home for social entrepreneurship and early-stage startups, with programs, mentorship and co-working support."
+      },
+      "discoveryPath": [
+        "https://icubeutm.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Organization and support sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://icubeutm.ca/",
+        "websiteDomain": "icubeutm.ca",
+        "stableSlug": "icube-utm",
+        "legalName": null,
+        "aliases": [
+          "ICUBE",
+          "University of Toronto Mississauga ICUBE"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 89,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "ICUBE's stated focus includes social entrepreneurship and general early-stage ventures; it should not be presented as a defence-specific program."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://icubeutm.ca/",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://icubeutm.ca/",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://icubeutm.ca/",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "ICUBE UTM",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "university_affiliated"
+      ],
+      "websiteUrl": "https://icubeutm.ca/",
+      "aliases": [
+        "ICUBE",
+        "University of Toronto Mississauga ICUBE"
+      ],
+      "location": {
+        "city": "Mississauga",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "ICUBE UTM is the University of Toronto Mississauga entrepreneurship hub for social entrepreneurs and early-stage startups, providing programs, workshops, mentorship, co-working space and venture-growth support. ICUBE's Ideation Lab is a one-year program for teams with an identified business idea or early startup, complemented by mentorship, workshops and co-working resources."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-quantino",
+      "source": {
+        "id": "quantino-profile",
+        "title": "Quantino about",
+        "url": "https://www.quantino.ca/en/about/",
+        "publisher": "Quantino",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "Specialization and purpose sections",
+        "summary": "Quantino identifies itself as an INO-powered high-technology incubator specializing in optics, photonics, hardware, medical and quantum technologies."
+      },
+      "discoveryPath": [
+        "https://www.quantino.ca/en/about/",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2024/03/government-of-canada-invests-in-quantum-sector-with-support-for-quantino-business-incubator.html",
+        "https://www.quantino.ca/en/contact/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Specialization and purpose sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.quantino.ca/en/",
+        "websiteDomain": "www.quantino.ca",
+        "stableSlug": "quantino",
+        "legalName": null,
+        "aliases": [
+          "Quantino by INO"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 97,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "Quantino's quantum and photonics focus supports strategic-technology coverage, but no candidate field asserts a particular defence customer, program or use case."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.quantino.ca/en/about/",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2024/03/government-of-canada-invests-in-quantum-sector-with-support-for-quantino-business-incubator.html",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://www.quantino.ca/en/about/",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Quantino",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "research_lab"
+      ],
+      "websiteUrl": "https://www.quantino.ca/en/",
+      "aliases": [
+        "Quantino by INO"
+      ],
+      "location": {
+        "city": "Quebec City",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "Quantino is a Quebec City high-technology incubator powered by INO, specializing in optics, photonics, hardware, medical and quantum technologies and providing startups access to facilities, equipment and expert support. Quantino provides high-technology startups with access to facilities, state-of-the-art technology and expert support for optics, photonics, hardware, medical and quantum ventures."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-gb-accelerator",
+      "source": {
+        "id": "gb-accelerator-profile",
+        "title": "GB Accelerator",
+        "url": "https://gbaccelerator.ca/",
+        "publisher": "GB Accelerator",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T10:56:35.820Z",
+        "locator": "Organization overview",
+        "summary": "GB Accelerator presents an entrepreneur-support organization serving the Georgian Bay region."
+      },
+      "discoveryPath": [
+        "https://gbaccelerator.ca/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2024/06/entrepreneurs-in-eastern-ontario-and-georgian-bay-to-benefit-from-expanded-business-services.html",
+        "https://gbaccelerator.ca/contact"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Organization overview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://gbaccelerator.ca/",
+        "websiteDomain": "gbaccelerator.ca",
+        "stableSlug": "gb-accelerator",
+        "legalName": "Georgian Bay Business Accelerator",
+        "aliases": [
+          "Georgian Bay Business Accelerator"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm incubator as the primary organization kind where the operator also describes accelerator, investor, workspace or ecosystem functions.",
+        "Keep program participation separate from any derived defence or strategic-technology relevance for individual cohort companies."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 91,
+      "completenessScore": 87,
+      "reviewWarnings": [
+        "GB Accelerator self-identifies as both an incubator and accelerator. Its proposed kind reflects the federal description, while reviewers should retain the hybrid classification context."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://gbaccelerator.ca/",
+          "outcome": "Reviewed the canonical accelerator profile for identity, Canadian operating presence, mandate and role."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2024/06/entrepreneurs-in-eastern-ontario-and-georgian-bay-to-benefit-from-expanded-business-services.html",
+          "outcome": "Reviewed a durable government, university or official partner source for institutional role and independent corroboration."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://gbaccelerator.ca/",
+          "outcome": "Reviewed the current official program or cohort pathway for a concrete acceleration activity and bounded delivery description."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "GB Accelerator",
+      "proposedKind": "incubator",
+      "proposedCategories": [
+        "dual_use_accelerator",
+        "cluster_operator"
+      ],
+      "websiteUrl": "https://gbaccelerator.ca/",
+      "aliases": [
+        "Georgian Bay Business Accelerator"
+      ],
+      "location": {
+        "city": "Collingwood",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "GB Accelerator is a Collingwood non-profit technology incubator and accelerator providing professional services, training, mentoring and individualized programming to support clean and advanced-technology businesses. GB Accelerator provides professional services, training, mentoring and individualized programming for clean and advanced-technology businesses in the Georgian Bay region."
+    }
+  ]
+}

@@ -1,0 +1,1554 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260725122130",
+  "runId": "tnm-manual-20260725122130",
+  "title": "Canadian company discovery batch 5",
+  "status": "candidate",
+  "createdAt": "2026-07-25T12:21:39.328Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260725122130.json",
+  "guardrailNotes": [
+    "Private review material only; no candidate is published by this workflow.",
+    "Official company pages are the field-evidence anchors. Discovery sources are not upgraded into claims without durable corroboration."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-d-wave-quantum",
+      "sourceLeadIds": [
+        "lead-d-wave-quantum"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "D-Wave Quantum is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Quantum computing and optimisation. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "d-wave-quantum-official",
+          "title": "D-Wave Quantum official capability profile",
+          "url": "https://www.dwavequantum.com/",
+          "publisher": "D-Wave Quantum",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes D-Wave Quantum and its public offering: Canadian-rooted quantum-computing company providing quantum hardware, cloud access and optimisation software."
+        },
+        {
+          "id": "d-wave-quantum-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "d-wave-quantum-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-d-wave-quantum-description",
+          "sourceId": "d-wave-quantum-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes D-Wave Quantum as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-d-wave-quantum-capability",
+          "sourceId": "d-wave-quantum-official",
+          "fieldPath": "capabilities.d-wave-quantum-quantum-computing-and-optimisation.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Quantum computing and optimisation offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "d-wave-quantum",
+        "name": "D-Wave Quantum",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian-rooted quantum-computing company providing quantum hardware, cloud access and optimisation software.",
+        "websiteUrl": "https://www.dwavequantum.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Burnaby",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2488,
+          "longitude": -122.9805,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Quantum computing and optimisation",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "d-wave-quantum-quantum-computing-and-optimisation",
+          "name": "Quantum computing and optimisation",
+          "summary": "Canadian-rooted quantum-computing company providing quantum hardware, cloud access and optimisation software.",
+          "capabilityType": "Quantum computing and optimisation",
+          "features": [
+            "Quantum computing and optimisation",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Quantum computing and optimisation offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.dwavequantum.com/",
+        "sourceAssetUrl": "https://www.dwavequantum.com/media/j31olsrx/d-wave-corporate-logo-full-color-light.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "ed9fde53e46d7107534136bdd10668437fb28122a35e1d69ac9c8dc90f565a49",
+        "normalizedChecksum": "802915aaa023ed19764d0830525cc9659d522f3d6a871754db93deb924e75ba1",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725122130/candidate-d-wave-quantum/logo.source.json",
+        "note": "660x86 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-xanadu",
+      "sourceLeadIds": [
+        "lead-xanadu"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Xanadu is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Photonic quantum computing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "xanadu-official",
+          "title": "Xanadu official capability profile",
+          "url": "https://www.xanadu.ai/",
+          "publisher": "Xanadu",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Xanadu and its public offering: Canadian quantum-technology company developing photonic quantum-computing hardware and software."
+        },
+        {
+          "id": "xanadu-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "xanadu-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-xanadu-description",
+          "sourceId": "xanadu-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Xanadu as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-xanadu-capability",
+          "sourceId": "xanadu-official",
+          "fieldPath": "capabilities.xanadu-photonic-quantum-computing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Photonic quantum computing offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "xanadu",
+        "name": "Xanadu",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian quantum-technology company developing photonic quantum-computing hardware and software.",
+        "websiteUrl": "https://www.xanadu.ai/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Photonic quantum computing",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "xanadu-photonic-quantum-computing",
+          "name": "Photonic quantum computing",
+          "summary": "Canadian quantum-technology company developing photonic quantum-computing hardware and software.",
+          "capabilityType": "Photonic quantum computing",
+          "features": [
+            "Photonic quantum computing",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Photonic quantum computing offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:21:40.663Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-photonic",
+      "sourceLeadIds": [
+        "lead-photonic"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Photonic is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Fault-tolerant quantum computing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "photonic-official",
+          "title": "Photonic official capability profile",
+          "url": "https://photonic.com/",
+          "publisher": "Photonic",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Photonic and its public offering: Canadian quantum company developing fault-tolerant quantum-computing technology based on silicon spin-photon interfaces."
+        },
+        {
+          "id": "photonic-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "photonic-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-photonic-description",
+          "sourceId": "photonic-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Photonic as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-photonic-capability",
+          "sourceId": "photonic-official",
+          "fieldPath": "capabilities.photonic-fault-tolerant-quantum-computing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Fault-tolerant quantum computing offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "photonic",
+        "name": "Photonic",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian quantum company developing fault-tolerant quantum-computing technology based on silicon spin-photon interfaces.",
+        "websiteUrl": "https://photonic.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Fault-tolerant quantum computing",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "photonic-fault-tolerant-quantum-computing",
+          "name": "Fault-tolerant quantum computing",
+          "summary": "Canadian quantum company developing fault-tolerant quantum-computing technology based on silicon spin-photon interfaces.",
+          "capabilityType": "Fault-tolerant quantum computing",
+          "features": [
+            "Fault-tolerant quantum computing",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Fault-tolerant quantum computing offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://photonic.com/",
+        "sourceAssetUrl": "https://photonic.com/wp-content/uploads/2025/11/Hyperion-Research-Logo.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "8c6f0fee68be07d93a3c1e2c11a312b4702267a620713e39897172f27d203ca0",
+        "normalizedChecksum": "a9a61d220c91afdbd101c99ffc88bd85342b90a536726290521b72795be64daf",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725122130/candidate-photonic/logo.source.json",
+        "note": "707x120 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-nord-quantique",
+      "sourceLeadIds": [
+        "lead-nord-quantique"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Nord Quantique is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Quantum error correction hardware. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "nord-quantique-official",
+          "title": "Nord Quantique official capability profile",
+          "url": "https://nordquantique.ca/",
+          "publisher": "Nord Quantique",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Nord Quantique and its public offering: Canadian quantum-hardware company developing error-corrected quantum computing technology."
+        },
+        {
+          "id": "nord-quantique-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "nord-quantique-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-nord-quantique-description",
+          "sourceId": "nord-quantique-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Nord Quantique as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-nord-quantique-capability",
+          "sourceId": "nord-quantique-official",
+          "fieldPath": "capabilities.nord-quantique-quantum-error-correction-hardware.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Quantum error correction hardware offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "nord-quantique",
+        "name": "Nord Quantique",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian quantum-hardware company developing error-corrected quantum computing technology.",
+        "websiteUrl": "https://nordquantique.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Sherbrooke",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.4,
+          "longitude": -71.8833,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Quantum error correction hardware",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "nord-quantique-quantum-error-correction-hardware",
+          "name": "Quantum error correction hardware",
+          "summary": "Canadian quantum-hardware company developing error-corrected quantum computing technology.",
+          "capabilityType": "Quantum error correction hardware",
+          "features": [
+            "Quantum error correction hardware",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Quantum error correction hardware offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.nordquantique.com/",
+        "sourceAssetUrl": "https://www.nordquantique.com/wp-content/uploads/2026/03/NORDQUANTIQUE_LOGO_HORIZ_web_new.svg",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "176f13a404bc6faf8fd7310e02b484188de32433d59ac849d336246ff825bc0d",
+        "normalizedChecksum": "6f904996a7c1f5eac524223acfaaf4cdc410cc5c60c8102d5b32ea8b723ef051",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725122130/candidate-nord-quantique/logo.source.json",
+        "note": "1024x240 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-anyon-systems",
+      "sourceLeadIds": [
+        "lead-anyon-systems"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Anyon Systems is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Superconducting quantum computing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "anyon-systems-official",
+          "title": "Anyon Systems official capability profile",
+          "url": "https://anyonsys.com/",
+          "publisher": "Anyon Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Anyon Systems and its public offering: Canadian quantum-computing company developing superconducting quantum hardware and related software."
+        },
+        {
+          "id": "anyon-systems-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "anyon-systems-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-anyon-systems-description",
+          "sourceId": "anyon-systems-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Anyon Systems as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-anyon-systems-capability",
+          "sourceId": "anyon-systems-official",
+          "fieldPath": "capabilities.anyon-systems-superconducting-quantum-computing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Superconducting quantum computing offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "anyon-systems",
+        "name": "Anyon Systems",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian quantum-computing company developing superconducting quantum hardware and related software.",
+        "websiteUrl": "https://anyonsys.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Montreal",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.5019,
+          "longitude": -73.5674,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Superconducting quantum computing",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "anyon-systems-superconducting-quantum-computing",
+          "name": "Superconducting quantum computing",
+          "summary": "Canadian quantum-computing company developing superconducting quantum hardware and related software.",
+          "capabilityType": "Superconducting quantum computing",
+          "features": [
+            "Superconducting quantum computing",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Superconducting quantum computing offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://anyonsys.com/en",
+        "sourceAssetUrl": "https://anyonsys.com/assets/logo_pure-white.svg?v=fe7c695",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "8ecaffd8ca2929839627f261a7649a84e5b234a65e264a1a144511a0f30f0b3b",
+        "normalizedChecksum": "0b99642488d82912e862c8652e916ab393c7af6bf2aeaad3e4d2ab6aca67f6a1",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725122130/candidate-anyon-systems/logo.source.json",
+        "note": "1024x205 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-sanctuary-ai",
+      "sourceLeadIds": [
+        "lead-sanctuary-ai"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Sanctuary AI is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: General-purpose robotic systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "sanctuary-ai-official",
+          "title": "Sanctuary AI official capability profile",
+          "url": "https://sanctuary.ai/",
+          "publisher": "Sanctuary AI",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Sanctuary AI and its public offering: Canadian robotics company developing general-purpose humanoid robots and associated AI control systems."
+        },
+        {
+          "id": "sanctuary-ai-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "sanctuary-ai-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-sanctuary-ai-description",
+          "sourceId": "sanctuary-ai-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Sanctuary AI as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sanctuary-ai-capability",
+          "sourceId": "sanctuary-ai-official",
+          "fieldPath": "capabilities.sanctuary-ai-general-purpose-robotic-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named General-purpose robotic systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "sanctuary-ai",
+        "name": "Sanctuary AI",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian robotics company developing general-purpose humanoid robots and associated AI control systems.",
+        "websiteUrl": "https://sanctuary.ai/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "General-purpose robotic systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "sanctuary-ai-general-purpose-robotic-systems",
+          "name": "General-purpose robotic systems",
+          "summary": "Canadian robotics company developing general-purpose humanoid robots and associated AI control systems.",
+          "capabilityType": "General-purpose robotic systems",
+          "features": [
+            "General-purpose robotic systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described General-purpose robotic systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://sanctuary.ai/",
+        "sourceAssetUrl": "https://sanctuary.ai/wp-content/uploads/2026/02/sanctuary-emblem-black.svg",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "2b05d2b28182e2d65c1df49da255b5ec073e548d1bea1dec7fa00cb685d7093a",
+        "normalizedChecksum": "0bf1730e5afb00f41c946542a255164adcd9c9558c5e21a02d461aa60a133e4f",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725122130/candidate-sanctuary-ai/logo.source.json",
+        "note": "22x22 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-apera-ai",
+      "sourceLeadIds": [
+        "lead-apera-ai"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Apera AI is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: 4D vision for industrial robotics. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "apera-ai-official",
+          "title": "Apera AI official capability profile",
+          "url": "https://www.apera.ai/",
+          "publisher": "Apera AI",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Apera AI and its public offering: Canadian automation company developing 4D vision systems for robotic inspection, bin-picking and industrial handling."
+        },
+        {
+          "id": "apera-ai-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "apera-ai-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-apera-ai-description",
+          "sourceId": "apera-ai-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Apera AI as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apera-ai-capability",
+          "sourceId": "apera-ai-official",
+          "fieldPath": "capabilities.apera-ai-4d-vision-for-industrial-robotics.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named 4D vision for industrial robotics offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "apera-ai",
+        "name": "Apera AI",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian automation company developing 4D vision systems for robotic inspection, bin-picking and industrial handling.",
+        "websiteUrl": "https://www.apera.ai/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "4D vision for industrial robotics",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "apera-ai-4d-vision-for-industrial-robotics",
+          "name": "4D vision for industrial robotics",
+          "summary": "Canadian automation company developing 4D vision systems for robotic inspection, bin-picking and industrial handling.",
+          "capabilityType": "4D vision for industrial robotics",
+          "features": [
+            "4D vision for industrial robotics",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described 4D vision for industrial robotics offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:21:40.662Z",
+        "note": "Could not read official website: HTTP Error 403: Forbidden"
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-general-fusion",
+      "sourceLeadIds": [
+        "lead-general-fusion"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "General Fusion is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Fusion energy systems engineering. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "general-fusion-official",
+          "title": "General Fusion official capability profile",
+          "url": "https://generalfusion.com/",
+          "publisher": "General Fusion",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes General Fusion and its public offering: Canadian energy-technology company developing magnetized-target fusion systems and associated advanced engineering."
+        },
+        {
+          "id": "general-fusion-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "general-fusion-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-general-fusion-description",
+          "sourceId": "general-fusion-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes General Fusion as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-general-fusion-capability",
+          "sourceId": "general-fusion-official",
+          "fieldPath": "capabilities.general-fusion-fusion-energy-systems-engineering.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Fusion energy systems engineering offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "general-fusion",
+        "name": "General Fusion",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian energy-technology company developing magnetized-target fusion systems and associated advanced engineering.",
+        "websiteUrl": "https://generalfusion.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Richmond",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.1666,
+          "longitude": -123.1336,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Fusion energy systems engineering",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "general-fusion-fusion-energy-systems-engineering",
+          "name": "Fusion energy systems engineering",
+          "summary": "Canadian energy-technology company developing magnetized-target fusion systems and associated advanced engineering.",
+          "capabilityType": "Fusion energy systems engineering",
+          "features": [
+            "Fusion energy systems engineering",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Fusion energy systems engineering offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://generalfusion.com/",
+        "sourceAssetUrl": "https://generalfusion.com/wp-content/uploads/2026/04/GF_Logo_WhiteOnRed.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "0c5d0a66a42c93546ffdb13ef44389c2d74fad30abd5061f88ad150864abc4f5",
+        "normalizedChecksum": "14b90419cf1d0be42840d45c4f60fa888924156ac4f575ed11259b30f4c15242",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725122130/candidate-general-fusion/logo.source.json",
+        "note": "1024x333 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-tangent-animation",
+      "sourceLeadIds": [
+        "lead-tangent-animation"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Tangent Animation is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Simulation and digital-twin systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "tangent-animation-official",
+          "title": "Tangent Animation official capability profile",
+          "url": "https://tangentspace.ca/",
+          "publisher": "Tangent Animation",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Tangent Animation and its public offering: Canadian technology company providing simulation, visualization and digital-twin services for complex operations."
+        },
+        {
+          "id": "tangent-animation-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "tangent-animation-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-tangent-animation-description",
+          "sourceId": "tangent-animation-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Tangent Animation as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tangent-animation-capability",
+          "sourceId": "tangent-animation-official",
+          "fieldPath": "capabilities.tangent-animation-simulation-and-digital-twin-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Simulation and digital-twin systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "tangent-animation",
+        "name": "Tangent Animation",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian technology company providing simulation, visualization and digital-twin services for complex operations.",
+        "websiteUrl": "https://tangentspace.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Simulation and digital-twin systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "tangent-animation-simulation-and-digital-twin-systems",
+          "name": "Simulation and digital-twin systems",
+          "summary": "Canadian technology company providing simulation, visualization and digital-twin services for complex operations.",
+          "capabilityType": "Simulation and digital-twin systems",
+          "features": [
+            "Simulation and digital-twin systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Simulation and digital-twin systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:21:40.666Z",
+        "note": "Could not read official website: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-cognitive-3d",
+      "sourceLeadIds": [
+        "lead-cognitive-3d"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Cognitive 3D is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Spatial analytics for immersive systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:21:39.328Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "cognitive-3d-official",
+          "title": "Cognitive 3D official capability profile",
+          "url": "https://cognitive3d.com/",
+          "publisher": "Cognitive 3D",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Cognitive 3D and its public offering: Canadian spatial-analytics company providing data and analysis for immersive and simulation applications."
+        },
+        {
+          "id": "cognitive-3d-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "cognitive-3d-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:21:39.328Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-cognitive-3d-description",
+          "sourceId": "cognitive-3d-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Cognitive 3D as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cognitive-3d-capability",
+          "sourceId": "cognitive-3d-official",
+          "fieldPath": "capabilities.cognitive-3d-spatial-analytics-for-immersive-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Spatial analytics for immersive systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "cognitive-3d",
+        "name": "Cognitive 3D",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian spatial-analytics company providing data and analysis for immersive and simulation applications.",
+        "websiteUrl": "https://cognitive3d.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Spatial analytics for immersive systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "cognitive-3d-spatial-analytics-for-immersive-systems",
+          "name": "Spatial analytics for immersive systems",
+          "summary": "Canadian spatial-analytics company providing data and analysis for immersive and simulation applications.",
+          "capabilityType": "Spatial analytics for immersive systems",
+          "features": [
+            "Spatial analytics for immersive systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Spatial analytics for immersive systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://cognitive3d.com/",
+        "sourceAssetUrl": "https://cognitive3d.com/logo/aperture-square-512x512.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "ccd9acd2efa2c1d6eea811c04f639aea8692ce566cd462f8b55add751de67c92",
+        "normalizedChecksum": "5be277e249e27f0441c80021cbff15d5fa9cd15242c6eade8f90b64a878f85fd",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725122130/candidate-cognitive-3d/logo.source.json",
+        "note": "737x512 normalized WebP retained in the private candidate packet."
+      }
+    }
+  ],
+  "deferred": []
+}

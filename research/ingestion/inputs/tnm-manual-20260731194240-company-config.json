@@ -1,0 +1,483 @@
+{
+  "selected": [
+    {
+      "id": "earthdaily-analytics",
+      "name": "EarthDaily Analytics",
+      "legalName": "EarthDaily Analytics Corp.",
+      "aliases": ["EarthDaily", "UrtheCast (historical identity)"],
+      "website": "https://earthdaily.com/",
+      "city": "Vancouver",
+      "province": "British Columbia",
+      "latitude": 49.2827,
+      "longitude": -123.1207,
+      "description": "EarthDaily Analytics is a Vancouver Earth-observation company developing and commissioning an integrated satellite constellation, ground processing, analysis-ready imagery and geospatial analytics for broad-area change detection.",
+      "capability": {
+        "slug": "earthdaily-constellation-change-intelligence",
+        "name": "EarthDaily Constellation change intelligence",
+        "summary": "EarthDaily combines a multispectral satellite constellation, cloud-native processing and AI-ready imagery products to support repeatable broad-area change detection and geospatial analysis.",
+        "capabilityType": "Satellite Earth-observation data and geospatial analytics",
+        "features": ["Five-metre multispectral imagery", "Twenty-two spectral bands", "Cloud-native analysis-ready data", "Broad-area change-detection workflows"],
+        "applications": ["Maritime awareness", "Infrastructure monitoring", "Wildfire and flood assessment", "Environmental and land-use change detection"],
+        "technicalTags": ["Earth observation", "multispectral imaging", "change detection", "geospatial analytics", "satellite constellation"],
+        "technicalDomainSlugs": ["space-and-earth-observation", "sensing-and-isr", "mission-software-and-data"],
+        "missionMatches": [
+          ["arctic-domain-awareness", "Daily, standardized multispectral collection and change analysis could support wide-area monitoring of northern terrain, infrastructure and maritime approaches; this is a derived fit and not a disclosed CAF deployment.", "high"],
+          ["autonomous-patrol-and-monitoring", "Cloud-native imagery and event-oriented change detection could provide observations to persistent monitoring workflows, subject to collection availability and operational integration.", "moderate"]
+        ]
+      },
+      "currentActivity": "EarthDaily reported initial contact with EDC-08 after its July 7, 2026 launch, while EDC-02 through EDC-07 were returning initial imagery and progressing through commissioning; a separate Canadian Space Agency contribution supports an on-orbit thermal-imager demonstration through March 2027.",
+      "relationship": {
+        "relatedOrganizationName": "Canadian Space Agency",
+        "relationshipType": "Space Technology Development Program contribution recipient",
+        "publicSummary": "The Government of Canada records an active Canadian Space Agency contribution to EarthDaily Analytics Corp. for an on-orbit broadband multispectral thermal-imager demonstration; the candidate does not infer government adoption of the broader constellation."
+      },
+      "tier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "warning": "The constellation had reached the satellite count required for commercial operations but remained in commissioning in the cited July 2026 release; UrtheCast is retained only as a historical identity and is not presented as a separate current company.",
+      "sourceKeys": {"description": "profile", "location": "registry", "capability": "product", "technical": "product", "activity": "launch", "relationship": "grant"},
+      "sources": [
+        ["profile", "About EarthDaily", "https://earthdaily.com/about", "EarthDaily Analytics", "official_organization_profile", "Company purpose, system and history sections", "The official profile describes an end-to-end Earth-observation company combining a satellite constellation, processing pipelines and industry-focused analytics.", "official_company", "evidence_anchor", null],
+        ["registry", "EARTHDAILY ANALYTICS trademark registration", "https://ised-isde.canada.ca/cipo/trademark-search/2225451", "Canadian Intellectual Property Office", "government_service_page", "Registered owner and Vancouver address", "The federal trademark record identifies EarthDaily Analytics Corp. and a Vancouver, British Columbia registered address.", "government_procurement", "strong_corroboration", "2026-06-05T00:00:00.000Z"],
+        ["product", "EarthDaily Constellation product introduction", "https://docs.earthdaily.com/data/edc-product-introduction/", "EarthDaily Analytics", "official_company_product", "Mission-at-a-glance and AI-ready data sections", "EarthDaily documents a systematic multispectral Earth-observation mission with standardized cloud-native products and twenty-two spectral bands for repeatable analysis.", "official_company", "evidence_anchor", null],
+        ["launch", "EarthDaily Constellation entering commercial operations with Launch III", "https://earthdaily.com/blog/earthdaily-constellation-entering-commercial-operations-with-successful-launch-iii", "EarthDaily Analytics", "official_company_news", "EDC-08 launch and EDC-02 through EDC-07 commissioning update", "EarthDaily reports initial contact with EDC-08 and initial imagery from six earlier spacecraft while the constellation progresses toward commercial operations.", "official_company", "evidence_anchor", "2026-07-09T00:00:00.000Z"],
+        ["grant", "EarthDaily on-orbit thermal-imager contribution", "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q1-00002%2Ccurrent", "Government of Canada", "award_or_contract", "CSA agreement 22STDPP07", "The federal record identifies EarthDaily Analytics Corp. in Vancouver and a 2025-2027 contribution for an on-orbit broadband multispectral thermal-imager demonstration.", "government_procurement", "evidence_anchor", "2025-06-01T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "obruta-space-solutions",
+      "name": "Obruta Space Solutions",
+      "legalName": "Obruta Space Solutions Corp.",
+      "aliases": ["Obruta"],
+      "website": "https://www.obruta.com/",
+      "city": "Ottawa",
+      "province": "Ontario",
+      "latitude": 45.4215,
+      "longitude": -75.6972,
+      "description": "Obruta Space Solutions is an Ottawa space-technology company developing autonomous rendezvous, proximity-operations and docking systems for on-orbit servicing and logistics.",
+      "capability": {
+        "slug": "obruta-autonomous-rpod-kit",
+        "name": "Autonomous RPOD Kit",
+        "summary": "Obruta's RPOD Kit combines spacecraft hardware and autonomous flight software for cooperative rendezvous, proximity operations and docking, including navigation-sensor fusion, safe-abort logic and mission optimization.",
+        "capabilityType": "Autonomous spacecraft rendezvous and docking system",
+        "features": ["Autonomous rendezvous and docking software", "Navigation-sensor data fusion", "Built-in safe-abort logic", "Compatibility with chemical and electric propulsion"],
+        "applications": ["Satellite inspection", "Orbital refuelling", "Life extension and repair", "Space-domain awareness and debris-removal missions"],
+        "technicalTags": ["RPOD", "spacecraft autonomy", "computer vision", "guidance navigation and control", "on-orbit servicing"],
+        "technicalDomainSlugs": ["space-and-earth-observation", "autonomous-systems", "sensing-and-isr", "mission-software-and-data"],
+        "missionMatches": [
+          ["autonomous-patrol-and-monitoring", "Autonomous inspection, proximity operations and sensor-driven docking are relevant to persistent robotic monitoring in orbit; this is a derived mission fit rather than a disclosed CAF deployment.", "high"],
+          ["edge-data-processing", "Onboard computer vision, guidance and safe-abort logic require local processing for time-sensitive spacecraft control, subject to the hardware maturity boundary in the cited evidence.", "moderate"]
+        ]
+      },
+      "currentActivity": "NASA documentation records an autonomous docking experiment on the International Space Station in May 2025 using Obruta flight software, while Canadian Space Agency contributions support POLAR simulation work through July 2026 and modular RPOD-system validation through September 2027.",
+      "relationship": {
+        "relatedOrganizationName": "Canadian Space Agency",
+        "relationshipType": "Space Technology Development Program contribution recipient",
+        "publicSummary": "The Government of Canada records current Canadian Space Agency contributions for Obruta's RPOD simulation, validation and testing work; these awards do not establish procurement or operational adoption."
+      },
+      "tier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "warning": "Obruta flight software was demonstrated with Astrobee robots in the ISS environment, but the complete commercial RPOD hardware kit is still being validated and must not be described as flight-proven.",
+      "sourceKeys": {"description": "profile", "location": "profile", "capability": "product", "technical": "product", "activity": "nasa", "relationship": "grant"},
+      "sources": [
+        ["profile", "About Obruta", "https://www.obruta.com/about", "Obruta Space Solutions", "official_organization_profile", "Mission, team and Ottawa location sections", "The official profile identifies an Ottawa company focused on spacecraft rendezvous, proximity operations and docking.", "official_company", "evidence_anchor", null],
+        ["product", "Obruta RPOD Kit", "https://www.obruta.com/products", "Obruta Space Solutions", "official_company_product", "RPOD Kit hardware, software, features and applications", "The product page describes a cooperative-docking kit combining hardware, autonomous software, sensor fusion, abort logic and mission optimization.", "official_company", "evidence_anchor", null],
+        ["nasa", "Astrobee contribution to collaborative ISS free-flyer robot research", "https://ntrs.nasa.gov/api/citations/20250005900/downloads/draft_astrobee_isparo_2025.pdf?attachment=true", "NASA", "official_report", "Obruta autonomous docking experiment section", "NASA documentation records Obruta vision and guidance software autonomously docking one Astrobee free-flyer with another on the International Space Station in May 2025.", "government_procurement", "strong_corroboration", "2025-06-01T00:00:00.000Z"],
+        ["grant", "Modular and Scalable RPOD System contribution", "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00015%2Ccurrent", "Government of Canada", "award_or_contract", "CSA agreement 25STDPX32", "The federal record identifies Obruta Space Solutions Corp. in Ottawa and a 2025-2027 contribution for modular RPOD-system validation and testing.", "government_procurement", "evidence_anchor", "2025-09-04T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "lux-aerobot",
+      "name": "Lux Aerobot",
+      "legalName": "Lux Aérobot inc.",
+      "aliases": ["Lux", "9388-3387 Québec inc. operating as Lux Aerobot (historical public-contract identity)"],
+      "website": "https://www.luxaerobot.com/",
+      "city": "Alma",
+      "province": "Quebec",
+      "latitude": 48.5505,
+      "longitude": -71.6528,
+      "description": "Lux Aerobot is an Alma, Quebec high-altitude-platform company that designs, manufactures and operates stratospheric balloon systems and converts their payload data into near-real-time geospatial intelligence.",
+      "capability": {
+        "slug": "lux-stratospheric-earth-observation-platform",
+        "name": "Stratospheric Earth-observation platform",
+        "summary": "Lux Aerobot integrates high-altitude balloon platforms, remote-sensing payloads, flight operations and geospatial analytics to collect and deliver persistent regional observations from the stratosphere.",
+        "capabilityType": "High-altitude persistent remote-sensing platform",
+        "features": ["Eighteen-to-twenty-five-kilometre operating altitude", "Platform and payload integration", "Near-real-time imagery delivery", "AI and machine-learning geospatial analysis"],
+        "applications": ["Coastal and maritime monitoring", "Wildfire mapping", "Remote infrastructure observation", "Wide-area persistent surveillance"],
+        "technicalTags": ["high-altitude platform", "stratospheric balloon", "remote sensing", "geospatial analytics", "persistent observation"],
+        "technicalDomainSlugs": ["space-and-earth-observation", "sensing-and-isr", "autonomous-systems", "mission-software-and-data"],
+        "missionMatches": [
+          ["arctic-domain-awareness", "Long-endurance high-altitude sensing could support regional observation where terrestrial infrastructure is sparse, subject to northern environmental qualification and airspace approvals.", "moderate"],
+          ["autonomous-patrol-and-monitoring", "Altitude-controlled balloon platforms and near-real-time geospatial delivery could support persistent monitoring of broad areas; this remains a derived defence fit.", "high"]
+        ]
+      },
+      "currentActivity": "A current federal IRAP record supports automatic altitude-control development using coaxial propulsion, efficient motor control and renewable energy, while the company continues to advertise flight-operations roles and active high-altitude platform services.",
+      "relationship": {
+        "relatedOrganizationName": "National Research Council Canada",
+        "relationshipType": "NRC IRAP contribution recipient",
+        "publicSummary": "The Government of Canada records an NRC IRAP contribution to Lux Aérobot inc. for automatic altitude-control technology; the candidate does not infer operational defence adoption from the contribution."
+      },
+      "tier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 91,
+      "warning": "Federal records use both Lux Aérobot inc. and an earlier 9388-3387 Québec inc. operating identity; the legal lineage should be confirmed, and the company-reported Australian defence customer is excluded pending customer corroboration.",
+      "sourceKeys": {"description": "trade", "location": "grant", "capability": "trade", "technical": "history", "activity": "grant", "relationship": "grant"},
+      "sources": [
+        ["trade", "Stratospheric balloon company finds space opportunities", "https://www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html", "Trade Commissioner Service of Canada", "government_service_page", "Company, platform and Canadian-operations sections", "The Government of Canada profile describes Lux as an Alma-based designer, manufacturer and operator of high-altitude platforms at approximately eighteen to twenty-five kilometres for defence and civil remote sensing.", "government_procurement", "strong_corroboration", null],
+        ["history", "About Lux Aerobot", "https://www.luxaerobot.com/about-us/", "Lux Aerobot", "official_organization_profile", "Company history, flight and data-service sections", "Lux describes its Canadian high-altitude flight history, platform and payload development, and AI-enabled geospatial data delivery.", "official_company", "evidence_anchor", null],
+        ["defence", "Defence and space applications", "https://www.luxaerobot.com/industries/defence-and-space/", "Lux Aerobot", "official_company_product", "Persistent remote-sensing and responsible-use sections", "The company describes persistent stratospheric observation for defence, coastal and remote monitoring while publishing explicit responsible-use exclusions.", "official_company", "evidence_anchor", null],
+        ["grant", "Lux Aerobot automatic altitude-control contribution", "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent", "Government of Canada", "award_or_contract", "NRC IRAP contribution record", "The federal record identifies Lux Aérobot inc. in Alma and supports development of automatic altitude control using propulsion, control algorithms and renewable energy.", "government_procurement", "evidence_anchor", "2024-04-01T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "c-com-satellite-systems",
+      "name": "C-COM Satellite Systems",
+      "legalName": "C-COM Satellite Systems Inc.",
+      "aliases": ["C-COM", "TSXV: CMI", "OTCQB: CYSNF"],
+      "website": "https://www.c-comsat.com/",
+      "city": "Ottawa",
+      "province": "Ontario",
+      "latitude": 45.4215,
+      "longitude": -75.6972,
+      "description": "C-COM Satellite Systems is an Ottawa satellite-communications equipment company that designs auto-pointing mobile antennas and related control systems for remote, emergency, government and military connectivity.",
+      "capability": {
+        "slug": "c-com-inetvu-mobile-satcom",
+        "name": "iNetVu mobile satellite terminals",
+        "summary": "C-COM's iNetVu portfolio includes driveaway, flyaway, manpack and fixed motorized terminals that automatically acquire satellite links across Ka, Ku, C and X bands.",
+        "capabilityType": "Mobile auto-pointing satellite terminal",
+        "features": ["Automated satellite acquisition", "Driveaway, flyaway, manpack and fixed formats", "Ka, Ku, C and X-band configurations", "Portable and vehicle-mounted options"],
+        "applications": ["Remote command connectivity", "Disaster-response communications", "Military and government SATCOM", "Cellular and critical-infrastructure backhaul"],
+        "technicalTags": ["SATCOM", "VSAT", "auto-pointing antenna", "manpack", "multi-band"],
+        "technicalDomainSlugs": ["communications-and-cyber", "space-and-earth-observation", "advanced-manufacturing-and-integration"],
+        "missionMatches": [
+          ["arctic-domain-awareness", "Portable and vehicle-mounted satellite terminals could provide backhaul for northern sensing and command nodes where terrestrial coverage is limited; the mapping is derived and environment-specific qualification remains necessary.", "high"],
+          ["autonomous-patrol-and-monitoring", "Mobile satellite connectivity could relay command and sensor data for distributed platforms beyond terrestrial network coverage, subject to terminal-platform integration.", "moderate"]
+        ]
+      },
+      "currentActivity": "C-COM's July 2026 first-half release reports an installed base above eleven thousand systems in more than one hundred countries, and its current newsroom documents continuing terminal orders and development of transportable LEO-tracking and electronically steered antenna technology.",
+      "relationship": {
+        "relatedOrganizationName": "National Research Council Canada",
+        "relationshipType": "NRC IRAP contribution recipient",
+        "publicSummary": "The Government of Canada records an NRC IRAP contribution to C-COM for Ka-band beamforming integrated circuits; this R&D support is distinct from the mature installed base of mechanically pointed iNetVu terminals."
+      },
+      "tier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "warning": "The eleven-thousand-system installed-base claim applies to the commercial iNetVu portfolio; electronically steered arrays, beamformer chips and newer LEO-tracking products remain development or commercialization work and must not inherit that maturity.",
+      "sourceKeys": {"description": "profile", "location": "report", "capability": "product", "technical": "product", "activity": "news", "relationship": "grant"},
+      "sources": [
+        ["profile", "About C-COM Satellite Systems", "https://www.c-comsat.com/about/", "C-COM Satellite Systems", "official_organization_profile", "Company history and iNetVu overview", "The official profile identifies an Ottawa company established in 1997 and describes its commercial auto-pointing mobile satellite antenna portfolio.", "official_company", "evidence_anchor", null],
+        ["product", "C-COM Satellite Systems product catalogue", "https://www.c-comsat.com/product-category/", "C-COM Satellite Systems", "official_company_product", "Driveaway, flyaway, manpack and fixed terminal categories", "The official catalogue documents mobile and fixed auto-pointing terminals across multiple satellite bands and deployment formats.", "official_company", "evidence_anchor", null],
+        ["report", "C-COM first half 2026 results", "https://www.c-comsat.com/wp-content/uploads/2026/07/H1-2026-Financial-NR.pdf", "C-COM Satellite Systems", "official_report", "Company identity, Ottawa headquarters and installed-base update", "The current company report identifies the Ottawa operation and reports more than eleven thousand deployed antenna systems in over one hundred countries.", "official_company", "evidence_anchor", "2026-07-15T00:00:00.000Z"],
+        ["news", "C-COM current news", "https://www.c-comsat.com/news/", "C-COM Satellite Systems", "official_company_news", "2026 terminal orders and LEO-tracking product announcements", "The company newsroom documents current antenna orders and continued development of transportable LEO-tracking and phased-array products.", "official_company", "evidence_anchor", null],
+        ["grant", "Highly efficient beamforming ICs for SatCom antennas", "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1011327%2Ccurrent", "Government of Canada", "award_or_contract", "NRC IRAP agreement 1011327", "The federal record identifies C-COM Satellite Systems Inc. in Ottawa and an NRC IRAP project for silicon beamforming integrated circuits for Ka-band satellite antennas.", "government_procurement", "strong_corroboration", "2023-11-01T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "spacebridge",
+      "name": "SpaceBridge",
+      "legalName": "SpaceBridge Inc.",
+      "aliases": ["Advantech Wireless Inc. (former name)"],
+      "website": "https://spacebridge.com/",
+      "city": "Saint-Laurent",
+      "province": "Quebec",
+      "latitude": 45.5017,
+      "longitude": -73.5673,
+      "description": "SpaceBridge is a Montreal-area satellite-network equipment company developing VSAT hubs, terminals, modems and managed-network systems for commercial, government, defence and critical-connectivity applications.",
+      "capability": {
+        "slug": "spacebridge-multiwaveform-vsat-network",
+        "name": "Multi-waveform VSAT network platform",
+        "summary": "SpaceBridge combines compact and scalable VSAT hubs, satellite routers, network management and dynamic waveform allocation for GEO and non-geostationary broadband, mobility and tactical networks.",
+        "capabilityType": "VSAT hub, modem and satellite-network platform",
+        "features": ["Compact integrated UniHUB", "DVB-S2X and DVB-RCS2 support", "Dynamic TDMA and SCPC waveform switching", "Layer-two and layer-three networking with secure options"],
+        "applications": ["Tactical and public-safety communications", "Maritime and airborne mobility", "Remote cellular backhaul", "Disaster-recovery and field hubs"],
+        "technicalTags": ["VSAT", "DVB-S2X", "DVB-RCS2", "satellite backhaul", "multi-waveform networking"],
+        "technicalDomainSlugs": ["communications-and-cyber", "space-and-earth-observation", "mission-software-and-data"],
+        "missionMatches": [
+          ["arctic-domain-awareness", "Multi-orbit satellite hubs and mobility terminals could provide resilient connectivity for northern sensors and operations; this is a derived fit and not a documented Canadian deployment.", "high"],
+          ["edge-data-processing", "Compact field hubs, managed networking and traffic prioritization could support distributed data movement and local mission nodes, subject to integration and security validation.", "moderate"]
+        ]
+      },
+      "currentActivity": "SpaceBridge launched its compact UniHUB platform in March 2026 and received a $1.25 million Canada Economic Development contribution running through December 2027 to expand satellite-communications-system capacity for defence markets.",
+      "relationship": {
+        "relatedOrganizationName": "Canada Economic Development for Quebec Regions",
+        "relationshipType": "Defence-capacity contribution recipient",
+        "publicSummary": "The Government of Canada records a repayable contribution to SpaceBridge through December 2027 for defence-oriented satellite-communications capacity expansion; the contribution does not establish a specific operational customer."
+      },
+      "tier": "amber",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "warning": "Baylin acquired portions of the former Advantech Wireless business in 2018, while current SpaceBridge products and contracts continue under SpaceBridge Inc.; reviewers must attribute only current evidence and confirm corporate lineage and registry status.",
+      "sourceKeys": {"description": "profile", "location": "grant", "capability": "unihub", "technical": "catalogue", "activity": "grant", "relationship": "grant"},
+      "sources": [
+        ["profile", "About SpaceBridge", "https://spacebridge.com/about-us/", "SpaceBridge", "official_organization_profile", "Company history, headquarters and product-system overview", "The official profile identifies SpaceBridge Inc., formerly Advantech Wireless, as a Montreal-headquartered satellite-network technology provider.", "official_company", "evidence_anchor", null],
+        ["unihub", "SpaceBridge UniHUB", "https://spacebridge.com/product/unihub/", "SpaceBridge", "official_company_product", "Compact integrated VSAT hub architecture and field-use sections", "The product page describes a compact all-in-one VSAT hub integrating modem, gateway, scheduling, modulation and control for fixed and deployable operations.", "official_company", "evidence_anchor", null],
+        ["catalogue", "SpaceBridge systems and solutions 2026", "https://spacebridge.com/wp-content/uploads/2026/05/SpaceBridge-Systems-and-Solutions-Interactive-PDF-20260514.pdf", "SpaceBridge", "official_company_product", "VSAT hubs, terminals, waveforms and network features", "The 2026 catalogue documents current VSAT systems, satellite modems, multi-waveform operation, mobility support and security options.", "official_company", "evidence_anchor", "2026-05-14T00:00:00.000Z"],
+        ["grant", "SpaceBridge defence satellite-communications capacity contribution", "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent", "Government of Canada", "award_or_contract", "CED agreement through December 2027", "The federal record identifies SpaceBridge Inc. and a repayable contribution to expand satellite-communications-system capacity for defence.", "government_procurement", "strong_corroboration", "2026-03-01T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "qeynet",
+      "name": "QEYnet",
+      "legalName": "QEYnet Inc.",
+      "aliases": ["QEYnet"],
+      "website": "https://qeynet.com/",
+      "city": "Vaughan",
+      "province": "Ontario",
+      "latitude": 43.8561,
+      "longitude": -79.5085,
+      "description": "QEYnet is an Ontario quantum-communications company developing compact satellite quantum-key-distribution receivers and free-space Earth-to-space key exchange for secure satellite communications.",
+      "capability": {
+        "slug": "qeynet-satellite-qkd-receiver",
+        "name": "Low-cost satellite quantum-key-distribution receiver",
+        "summary": "QEYnet develops a compact quantum receiver and supporting free-space optical architecture intended to distribute and refresh encryption keys between ground sites and satellites.",
+        "capabilityType": "Satellite quantum key distribution system",
+        "features": ["Compact space-based quantum receiver", "Free-space photon key exchange", "On-orbit rekeying demonstration architecture", "Ground-to-satellite optical link"],
+        "applications": ["Satellite communications rekeying", "Post-quantum security experiments", "Long-distance quantum networking", "Government security testing"],
+        "technicalTags": ["quantum key distribution", "QKD", "free-space optics", "satellite cybersecurity", "quantum communications"],
+        "technicalDomainSlugs": ["communications-and-cyber", "space-and-earth-observation", "sensing-and-isr"],
+        "missionMatches": [
+          ["arctic-domain-awareness", "Satellite-enabled key distribution could support secure long-distance communications to remote northern sites, subject to optical-link availability and successful orbital demonstration.", "moderate"],
+          ["edge-data-processing", "On-orbit rekeying could strengthen trust for distributed satellite and ground nodes, but the operational architecture remains under test.", "moderate"]
+        ]
+      },
+      "currentActivity": "A Canadian Space Agency agreement provides approximately $1.4 million for a low-cost Earth-to-space quantum-key-distribution demonstration through December 2026, and a separate federal testing contract confirms the Ontario operating address and government-test posture.",
+      "relationship": {
+        "relatedOrganizationName": "Canadian Space Agency",
+        "relationshipType": "Orbital technology-demonstration contribution recipient",
+        "publicSummary": "The Government of Canada records a Canadian Space Agency contribution for QEYnet's orbital QKD demonstration; the candidate does not describe the proposed global network as operational or guarantee that QKD is unbreakable."
+      },
+      "tier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 89,
+      "warning": "QEYnet has delivered test hardware and secured funded government and orbital demonstrations, but it does not yet operate the proposed global QKD constellation; security claims are bounded to the cited demonstration objectives.",
+      "sourceKeys": {"description": "profile", "location": "testing", "capability": "faq", "technical": "faq", "activity": "grant", "relationship": "grant"},
+      "sources": [
+        ["profile", "QEYnet satellite quantum communications", "https://qeynet.com/", "QEYnet", "official_organization_profile", "Mission, solution and company sections", "The official site describes a Canadian company developing microsatellite-enabled quantum key distribution using free-space optical links.", "official_company", "evidence_anchor", null],
+        ["faq", "QEYnet frequently asked questions", "https://qeynet.com/faq", "QEYnet", "official_company_product", "Satellite, payload and service-architecture explanations", "The official FAQ describes the satellite bus and QKD payload, quantum transmitter and receiver roles, and prospective dedicated and shared service models.", "official_company", "evidence_anchor", null],
+        ["grant", "Low-Cost Earth-to-Space Quantum Key Distribution Demonstration", "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent", "Government of Canada", "award_or_contract", "CSA agreement 22SIMA02P2", "The federal record identifies an active 2024-2026 contribution to QEYnet for an orbital test of a compact QKD receiver, on-orbit rekeying and ground-site key distribution.", "government_procurement", "evidence_anchor", "2024-11-01T00:00:00.000Z"],
+        ["testing", "QEYnet federal testing contract", "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/ws3841869660-cw2305654-acm167768211-001", "CanadaBuys", "award_or_contract", "Federal testing contract and Vaughan business address", "CanadaBuys records a federal testing contract for QEYnet Inc. and independently confirms its Maple/Vaughan, Ontario operating address.", "government_procurement", "strong_corroboration", null]
+      ]
+    },
+    {
+      "id": "starspec-technologies",
+      "name": "StarSpec Technologies",
+      "legalName": "StarSpec Technologies Inc.",
+      "aliases": ["StarSpec", "Star Spec Technologies Inc. (government-record spacing)"],
+      "website": "https://www.starspectechnologies.com/",
+      "city": "Ayr",
+      "province": "Ontario",
+      "latitude": 43.2848,
+      "longitude": -80.4501,
+      "description": "StarSpec Technologies is an Ontario space-systems company developing high-precision attitude-determination and control hardware, rapid space-qualification methods, balloon platforms and geospatial software.",
+      "capability": {
+        "slug": "starspec-high-precision-adcs",
+        "name": "High-precision small-satellite ADCS",
+        "summary": "StarSpec integrates sub-arcsecond star cameras, cogless reaction wheels and onboard attitude-control electronics for high-precision small-satellite pointing and imaging missions.",
+        "capabilityType": "Small-satellite attitude determination and control system",
+        "features": ["Sub-arcsecond star-camera measurements", "Cogless reaction-wheel actuation", "Integrated onboard ADCS controller", "Radiation and environmental qualification workflow"],
+        "applications": ["High-resolution Earth imaging", "Synthetic-aperture radar pointing", "Space-domain awareness", "Scientific and national-security small satellites"],
+        "technicalTags": ["ADCS", "star camera", "reaction wheel", "SmallSat", "space qualification"],
+        "technicalDomainSlugs": ["space-and-earth-observation", "sensing-and-isr", "advanced-manufacturing-and-integration", "mission-software-and-data"],
+        "missionMatches": [
+          ["autonomous-patrol-and-monitoring", "High-precision autonomous pointing and control could enable persistent imaging and monitoring payloads in low Earth orbit; the InspireSAT flight status remains under review.", "moderate"],
+          ["edge-data-processing", "An integrated onboard attitude controller and operations software could support local sensor pointing and data-management decisions, subject to final orbital validation.", "moderate"]
+        ]
+      },
+      "currentActivity": "An active $2 million Canadian Space Agency contribution supports the InspireSAT 12U ADCS demonstration through December 2026, and ISED lists a December 2025 StarSpec satellite-spectrum application as under consideration.",
+      "relationship": {
+        "relatedOrganizationName": "Canadian Space Agency",
+        "relationshipType": "In-space demonstration contribution recipient",
+        "publicSummary": "The Government of Canada records an active Canadian Space Agency contribution for StarSpec's InspireSAT attitude-control demonstration; the candidate does not claim an orbital launch or operational deployment before that is verified."
+      },
+      "tier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 87,
+      "warning": "Official sources support the product specifications and active demonstration program, but current orbital status and launch timing are unresolved; Corporations Canada also renders a filing warning alongside an active status and recent returns, requiring reviewer recheck.",
+      "sourceKeys": {"description": "profile", "location": "contact", "capability": "product", "technical": "product", "activity": "grant", "relationship": "grant"},
+      "sources": [
+        ["profile", "StarSpec Technologies", "https://www.starspectechnologies.com/", "StarSpec Technologies", "official_organization_profile", "Company, product and innovation overview", "The official site describes an Ontario space-systems company providing space hardware, qualification services and data solutions.", "official_company", "evidence_anchor", null],
+        ["contact", "Contact StarSpec Technologies", "https://www.starspectechnologies.com/contact", "StarSpec Technologies", "official_organization_profile", "Ayr address and public company contact", "The official contact page identifies StarSpec Technologies Inc. at 402 Harmony Road in Ayr, Ontario.", "official_company", "evidence_anchor", null],
+        ["product", "StarSpec products and services", "https://www.starspectechnologies.com/products-services", "StarSpec Technologies", "official_company_product", "SASC, CRW, ADCS and TARDIGRADE specifications", "The official product page documents the company's star camera, reaction wheel, integrated attitude-control and space-qualification offerings.", "official_company", "evidence_anchor", null],
+        ["grant", "InspireSAT 12U ADCS demonstration contribution", "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent", "Government of Canada", "award_or_contract", "CSA agreement 22SIMA01P2", "The federal record identifies Star Spec Technologies Inc. in Ontario and an active contribution for a high-precision 12U attitude-determination and control demonstration.", "government_procurement", "evidence_anchor", "2023-12-14T00:00:00.000Z"],
+        ["nasa", "NASA EXCITE mission", "https://science.nasa.gov/mission/excite/", "NASA", "official_report", "EXCITE builders and flight-program overview", "NASA identifies StarSpec Technologies in Ontario among the organizations that built the EXCITE scientific balloon instrument, corroborating high-altitude flight-program experience.", "government_procurement", "strong_corroboration", null]
+      ]
+    },
+    {
+      "id": "sbquantum",
+      "name": "SBQuantum",
+      "legalName": "13717658 Canada Inc.",
+      "aliases": ["SB Quantum", "SBQ", "SB Technologies Inc. (former name)"],
+      "website": "https://sbquantum.com/",
+      "city": "Sherbrooke",
+      "province": "Quebec",
+      "latitude": 45.4042,
+      "longitude": -71.8929,
+      "description": "SBQuantum is a Sherbrooke quantum-sensing company developing nitrogen-vacancy diamond magnetometers and magnetic-mapping software for navigation, geophysical, defence, public-safety and space applications.",
+      "capability": {
+        "slug": "sbquantum-diamond-magnetic-intelligence",
+        "name": "Quantum diamond magnetic intelligence",
+        "summary": "SBQuantum combines compact nitrogen-vacancy diamond magnetometers with compensation, mapping and interpretation software to measure magnetic fields for navigation and object or subsurface detection.",
+        "capabilityType": "Quantum diamond magnetometer and magnetic-mapping system",
+        "features": ["Nitrogen-vacancy diamond sensing", "Room-temperature operation", "Vector magnetic-field measurement", "Mapping, compensation and interpretation software"],
+        "applications": ["GPS-denied navigation", "World Magnetic Model data collection", "Geophysical and mineral mapping", "Defence and public-safety object detection"],
+        "technicalTags": ["quantum magnetometry", "NV diamond", "magnetic navigation", "MagQuest", "geomagnetic mapping"],
+        "technicalDomainSlugs": ["sensing-and-isr", "space-and-earth-observation", "mission-software-and-data"],
+        "missionMatches": [
+          ["arctic-domain-awareness", "Magnetic navigation and improved geomagnetic mapping could support positioning in GPS-denied northern environments; orbital commissioning and operational integration remain incomplete.", "high"],
+          ["underwater-isr", "More sensitive magnetic sensing could support detection and classification of underwater objects, as described by NRC, but this is a derived application and not evidence of a deployed naval system.", "moderate"]
+        ]
+      },
+      "currentActivity": "The U.S. National Geospatial-Intelligence Agency documents deployment of an SBQuantum and Spire diamond magnetometer on a MagQuest CubeSat in 2026, while CanadaBuys records a $2.24 million MagAware contract running from April to October 2026.",
+      "relationship": {
+        "relatedOrganizationName": "National Geospatial-Intelligence Agency",
+        "relationshipType": "MagQuest orbital demonstration participant",
+        "publicSummary": "The U.S. National Geospatial-Intelligence Agency identifies SBQuantum and Spire as a MagQuest CubeSat team for orbital geomagnetic data collection; commissioning and evaluation remain underway."
+      },
+      "tier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 92,
+      "warning": "The orbital sensor is deployed but still being commissioned and evaluated for future World Magnetic Model collection; public records also show a 13717658 versus 13717674 Canada Inc. identifier discrepancy that requires reviewer confirmation.",
+      "sourceKeys": {"description": "profile", "location": "contract", "capability": "profile", "technical": "nrc", "activity": "nga", "relationship": "nga"},
+      "sources": [
+        ["profile", "SBQuantum quantum diamond sensing", "https://sbquantum.com/", "SBQuantum", "official_organization_profile", "Company, technology and application sections", "The official site identifies a Sherbrooke quantum-sensing company and describes diamond magnetometers, magnetic mapping, navigation and defence applications.", "official_company", "evidence_anchor", null],
+        ["nrc", "Diamond-based quantum sensors for Earth and space", "https://nrc.canada.ca/en/stories/diamond-based-quantum-sensors-add-sparkle-earth-space-exploration", "National Research Council Canada", "official_report", "Technology, defence and MagQuest sections", "NRC describes SBQuantum's room-temperature diamond magnetometer, research collaboration, military and navigation applications, and planned MagQuest space testing.", "government_procurement", "strong_corroboration", "2023-12-01T00:00:00.000Z"],
+        ["nga", "NGA MagQuest advances with CubeSat launch", "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html", "National Geospatial-Intelligence Agency", "official_report", "Spire Global and SBQuantum MagQuest team", "NGA identifies a diamond quantum magnetometer deployed on a CubeSat by Spire Global and SBQuantum for geomagnetic data collection and World Magnetic Model evaluation.", "government_procurement", "evidence_anchor", "2026-03-01T00:00:00.000Z"],
+        ["contract", "SBQuantum MagAware contract", "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445882-001", "CanadaBuys", "award_or_contract", "Contract CW2445882 and Sherbrooke business identity", "CanadaBuys identifies 13717658 Canada Inc. operating as SBQuantum and a 2026 MagAware contract for quantum magnetic sensing work.", "government_procurement", "evidence_anchor", "2026-04-28T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "korrai",
+      "name": "KorrAI",
+      "legalName": "KorrAI Technologies Ltd.",
+      "aliases": ["KorrAI Technologies"],
+      "website": "https://www.korrai.com/",
+      "city": "Halifax",
+      "province": "Nova Scotia",
+      "latitude": 44.6488,
+      "longitude": -63.5752,
+      "description": "KorrAI is a Halifax geospatial-risk company combining satellite interferometric radar, ground sensors and AI-assisted analysis for wide-area infrastructure, terrain and ground-motion assessment.",
+      "capability": {
+        "slug": "korrai-trail-insar-risk-intelligence",
+        "name": "TRAIL satellite-InSAR risk intelligence",
+        "summary": "KorrAI's platform combines satellite InSAR, optical imagery, GNSS observations, site records and risk models to monitor ground deformation and assemble traceable infrastructure-risk assessments.",
+        "capabilityType": "Satellite InSAR monitoring and risk-intelligence platform",
+        "features": ["Satellite InSAR time-series analysis", "GNSS and ground-sensor calibration", "Multi-source geospatial evidence layers", "Traceable AI-assisted risk assessment"],
+        "applications": ["Permafrost infrastructure monitoring", "Mine and tailings risk", "Critical-infrastructure due diligence", "Wide-area ground-deformation monitoring"],
+        "technicalTags": ["InSAR", "synthetic aperture radar", "ground deformation", "GNSS calibration", "geospatial AI"],
+        "technicalDomainSlugs": ["space-and-earth-observation", "sensing-and-isr", "mission-software-and-data"],
+        "missionMatches": [
+          ["arctic-domain-awareness", "Satellite deformation monitoring and permafrost-risk analysis could support awareness of northern infrastructure condition; the mapping is source-aligned but does not establish a defence deployment.", "high"],
+          ["autonomous-patrol-and-monitoring", "Automated time-series processing and risk alerts could support persistent monitoring of remote sites, subject to sensor availability and operational validation.", "moderate"]
+        ]
+      },
+      "currentActivity": "The Canadian Space Agency's smartEarth portfolio lists KorrAI developing a Web-based Open Ground Motion Service for near-real-time permafrost-related infrastructure monitoring, while its current platform continues to combine InSAR, GNSS and multi-source risk evidence.",
+      "relationship": {
+        "relatedOrganizationName": "Canadian Space Agency",
+        "relationshipType": "smartEarth project recipient",
+        "publicSummary": "The Canadian Space Agency lists KorrAI Technologies Ltd. for an Open Ground Motion Service focused on permafrost and northern critical-infrastructure resilience; this program evidence is distinct from commercial adoption claims."
+      },
+      "tier": "green",
+      "inclusionScore": 97,
+      "completenessScore": 91,
+      "warning": "The current TRAIL platform is broader than the cited smartEarth Open Ground Motion Service project; the candidate separates the current product description from the bounded government-funded project and excludes unverified performance marketing.",
+      "sourceKeys": {"description": "profile", "location": "privacy", "capability": "product", "technical": "product", "activity": "smartearth", "relationship": "smartearth"},
+      "sources": [
+        ["profile", "About KorrAI", "https://www.korrai.com/about-us", "KorrAI", "official_organization_profile", "Company mission, history and platform sections", "KorrAI describes a risk-intelligence company built on satellite ground-deformation monitoring and multi-source site assessment.", "official_company", "evidence_anchor", null],
+        ["privacy", "KorrAI privacy policy", "https://www.korrai.com/privacy-policy", "KorrAI", "official_organization_profile", "Legal entity, Halifax headquarters and service description", "The official policy identifies KorrAI Technologies Ltd., its Halifax headquarters and its satellite-InSAR, GNSS and AI risk-analytics service.", "official_company", "evidence_anchor", null],
+        ["product", "KorrAI ground-deformation evidence layer", "https://www.korrai.com/platform/evidence-layers/ground-deformation-layer", "KorrAI", "official_company_product", "InSAR, GNSS calibration and monitoring workflow", "The product page describes calibrated satellite InSAR, GNSS integration, ground-motion analysis and related evidence layers.", "official_company", "evidence_anchor", null],
+        ["smartearth", "Canadian Space Agency smartEarth awards", "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp", "Canadian Space Agency", "innovation_program", "KorrAI Open Ground Motion Service project", "The CSA portfolio identifies KorrAI Technologies Ltd. in Nova Scotia and an Open Ground Motion Service for near-real-time permafrost-related infrastructure monitoring.", "government_procurement", "strong_corroboration", null],
+        ["irap", "KorrAI infrastructure-risk monitoring contribution", "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q2-1019987%2Ccurrent", "Government of Canada", "award_or_contract", "NRC IRAP agreement 1019987", "The federal record identifies KorrAI Technologies Ltd. in Halifax and an IRAP project addressing limitations in satellite-InSAR monitoring for mine and infrastructure risk.", "government_procurement", "strong_corroboration", "2024-06-01T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "asl-environmental-sciences",
+      "name": "ASL Environmental Sciences",
+      "legalName": "ASL Environmental Sciences Inc.",
+      "aliases": ["ASL", "ASL Borstad Remote Sensing"],
+      "website": "https://www.aslenv.com/",
+      "city": "Saanichton",
+      "province": "British Columbia",
+      "latitude": 48.5951,
+      "longitude": -123.4167,
+      "description": "ASL Environmental Sciences is an employee-owned British Columbia science and technology company providing oceanographic instrumentation, Arctic and ice services, and optical and radar Earth-observation analytics.",
+      "capability": {
+        "slug": "asl-decaf-rapid-response-toolkit",
+        "name": "DeCAF Rapid Response Toolkit",
+        "summary": "ASL's DeCAF work applies satellite time-series, radar and optical imagery, machine learning and automated change detection to identify landscape disturbances and support wide-area monitoring.",
+        "capabilityType": "Automated satellite change-detection and rapid-response toolkit",
+        "features": ["Automated satellite time-series analysis", "Radar and optical image fusion", "Machine-learning change detection", "Wide-area alert-oriented monitoring"],
+        "applications": ["Canadian Arctic landscape monitoring", "New human-activity detection", "Salmon-habitat monitoring", "Sea-ice and environmental assessment"],
+        "technicalTags": ["Earth observation", "SAR", "optical imagery", "change detection", "Arctic monitoring"],
+        "technicalDomainSlugs": ["space-and-earth-observation", "sensing-and-isr", "mission-software-and-data"],
+        "missionMatches": [
+          ["arctic-domain-awareness", "The CSA explicitly frames DeCAF rapid-response work as wide-area situational awareness for monitoring Canadian Arctic landscapes and alerting to new human activity.", "high"],
+          ["autonomous-patrol-and-monitoring", "Automated time-series change detection and alerts could augment persistent monitoring workflows; this is a derived capability mapping and not evidence of operational CAF adoption.", "high"]
+        ]
+      },
+      "currentActivity": "A 2025-2027 Canadian Space Agency agreement provides $250,000 for DeCAF-RRT, a wide-area satellite Earth-observation monitoring tool, and the CSA smartEarth portfolio separately describes the toolkit's intended Canadian Arctic and CAF situational-awareness use.",
+      "relationship": {
+        "relatedOrganizationName": "Canadian Space Agency",
+        "relationshipType": "smartEarth and biodiversity Earth-observation project recipient",
+        "publicSummary": "The Canadian Space Agency records ASL Environmental Sciences Inc. for current DeCAF-RRT development and describes an earlier DeCAF rapid-response concept for wide-area Arctic and CAF monitoring; neither record establishes operational adoption."
+      },
+      "tier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 93,
+      "warning": "DeCAF-RRT is an active development project and must not be described as an operational CAF system; ASL's broader ice, oceanographic and remote-sensing experience is represented separately from the specific toolkit's maturity.",
+      "sourceKeys": {"description": "team", "location": "contact", "capability": "smartearth", "technical": "smartearth", "activity": "grant", "relationship": "grant"},
+      "sources": [
+        ["team", "ASL Environmental Sciences team", "https://aslenv.com/team.html", "ASL Environmental Sciences", "official_organization_profile", "Company scale, mandate and remote-sensing team", "The official team page identifies an employee-owned company with decades of oceanographic, remote-sensing, instrumentation and consulting experience.", "official_company", "evidence_anchor", null],
+        ["contact", "ASL Environmental Sciences general inquiries", "https://aslenv.com/general.html", "ASL Environmental Sciences", "official_organization_profile", "Saanichton address and organization contact", "The official contact page identifies ASL Environmental Sciences in Saanichton, British Columbia.", "official_company", "evidence_anchor", null],
+        ["ice", "ASL ice services", "https://aslenv.com/ice_services.html", "ASL Environmental Sciences", "official_company_product", "Remote-sensing, RADARSAT and sea-ice product sections", "ASL documents operational ice-study services combining remote sensing, RADARSAT imagery and acoustic instruments for Arctic and marine applications.", "official_company", "evidence_anchor", null],
+        ["smartearth", "Canadian Space Agency smartEarth awards", "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp", "Canadian Space Agency", "innovation_program", "ASL DeCAF Rapid Response Toolkit entries", "The CSA portfolio describes ASL's automated satellite time-series and machine-learning disturbance detection for wide-area Canadian Arctic and CAF situational awareness.", "government_procurement", "strong_corroboration", null],
+        ["grant", "ASL DeCAF-RRT contribution", "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent", "Government of Canada", "award_or_contract", "CSA agreement 25AO4ASL", "The federal record identifies ASL Environmental Sciences Inc. in Saanichton and a 2025-2027 contribution for a wide-area satellite Earth-observation monitoring tool.", "government_procurement", "evidence_anchor", "2025-09-04T00:00:00.000Z"]
+      ]
+    }
+  ],
+  "queued": [
+    ["Aethera Technologies", "https://aethera.com/", "technical_documentation"],
+    ["Space Engine Systems", "https://www.spaceenginesystems.com/", "company_newsroom"],
+    ["4pi Lab", "https://site.4pilab.com/", "government_program"],
+    ["Magnestar", "https://www.magnestar.space/", "corporate_registry"],
+    ["Stardust", "https://stardustinc.ca/", "broad_web"],
+    ["Arctus", "https://arctus.ca/en/", "government_program"],
+    ["H2O Geomatics", "https://h2ogeomatics.com/", "government_program"],
+    ["Hatfield Consultants", "https://hatfieldgroup.com/", "government_program"],
+    ["3v Geomatics", "https://3vgeomatics.com/", "government_program"],
+    ["Geosapiens", "https://www.geosapiens.com/", "government_program"],
+    ["Complex System", "https://complexsysteminc.com/", "government_program"],
+    ["Liquid Geomatics", "https://www.liquidgeomatics.ca/", "government_program"],
+    ["Fluvial Systems Research", "https://fluvialsystems.ca/", "government_program"],
+    ["Acden Vertex", "https://acden.com/", "government_program"],
+    ["AstroCom Associates", "https://astrocom.ca/", "government_program"],
+    ["Array Systems Computing", "https://www.array.ca/", "technical_documentation"],
+    ["PCI Geomatics", "https://catalyst.earth/", "broad_web"],
+    ["Effigis Geo-Solutions", "https://effigis.com/", "government_program"],
+    ["A.U.G. Signals", "https://augsignals.com/", "government_program"],
+    ["Nüvü Caméras", "https://www.nuvucameras.com/", "government_program"],
+    ["TransEON", "https://transeon.com/", "government_program"],
+    ["Eternal Light Photonics", "https://eternallightphotonics.com/", "government_program"],
+    ["Edgehog Advanced Technologies", "https://edgehogtech.com/", "government_program"],
+    ["Orcinus Technologies", "https://orcinus-technologies.com/", "government_program"],
+    ["Eco2Urb", "https://eco2urb.com/", "government_program"],
+    ["Korotu Technology", "https://korotu.com/", "government_program"],
+    ["Spexi Geospatial", "https://www.spexi.com/", "broad_web"],
+    ["Ecopia AI", "https://www.ecopiatech.com/", "government_program"],
+    ["BGC Engineering", "https://www.bgcengineering.ca/", "government_program"],
+    ["Vanderkooij Consult", "https://vanderkooijconsult.com/", "government_program"],
+    ["MPB Communications", "https://www.mpbcommunications.com/", "government_program"],
+    ["Blue Sky Spectroscopy", "https://blueskyspectroscopy.com/", "government_program"],
+    ["Bubble Technology Industries", "https://bubbletech.ca/", "government_program"],
+    ["Sander Geophysics", "https://www.sgl.com/", "technical_documentation"],
+    ["Sparkgeo", "https://sparkgeo.com/", "broad_web"],
+    ["Mapsted", "https://mapsted.com/", "broad_web"],
+    ["NGC Aerospace", "https://www.ngcaerospace.com/", "government_program"]
+  ],
+  "duplicates": [
+    ["TerraSense Analytics", "https://terrasense.ca/"],
+    ["NorthStar Earth & Space", "https://northstar-data.com/"],
+    ["GHGSat", "https://www.ghgsat.com/"]
+  ]
+}

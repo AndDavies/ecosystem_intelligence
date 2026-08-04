@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260804132035",
+  "runId": "tnm-manual-20260804132035",
+  "createdAt": "2026-08-04T13:21:13.834Z",
+  "scope": {
+    "description": "One named-organization refresh lead for the published YMX Innovation Centre record, based on current ADM, Espace Aéro, DND, and Mirabel evidence.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "aerospace-and-mobility",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": ["research_test_centre"],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "ymx-innovation-centre-refresh-20260804",
+      "source": {
+        "id": "adm-ymx-strategic-partnerships-2026",
+        "title": "ADM accelerates YMX Innovation's growth through new strategic partnerships",
+        "url": "https://www.newswire.ca/news-releases/adm-accelerates-ymx-innovation-s-growth-through-new-strategic-partnerships-812107331.html",
+        "publisher": "Aéroports de Montréal",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-04-14T15:00:00.000Z",
+        "accessedAt": "2026-08-04T13:21:13.834Z",
+        "locator": "ADM/CNW release sections on ARCTIC, Protospace, and YMX's current strategic programs",
+        "summary": "ADM reports that YMX Innovation has seven operational strategic programs, including the H2CanFly ARCTIC hydrogen research centre and Airbus Protospace, while current Espace Aéro, Mirabel, and DND pages add corroborating facility and UxS context."
+      },
+      "discoveryPath": [
+        "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "https://www.newswire.ca/news-releases/adm-accelerates-ymx-innovation-s-growth-through-new-strategic-partnerships-812107331.html",
+        "https://espaceaero.ca/en/les-poles/",
+        "https://mirabel.ca/actualites/26/04/15/mirabel-joue-un-role-cle-dans-la-mobilite-aerienne-avancee-maa?cat=d261e424-d002-4c14-ae76-7c3d2237c59e",
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "ADM dated strategic-partnerships release plus Espace Aéro Mirabel hub and DND UxS DISH pages",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "websiteDomain": "admtl.com",
+        "stableSlug": "ymx-innovation-centre",
+        "legalName": null,
+        "aliases": [
+          "YMX Innovation",
+          "YMX Innovation Center",
+          "YMX Innovation campus",
+          "Centre YMX Innovation",
+          "Centre d'innovation YMX"
+        ]
+      },
+      "followUpQuestions": [
+        "Should ARCTIC and Protospace be represented as nested programs under YMX or as relationships to their operating consortia and partners?",
+        "Does ADM publish a current dedicated YMX contact route or updated facility address beyond the canonical YMX page?",
+        "Which of the seven ADM strategic programs have durable pages with current delivery milestones?"
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 95,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "The refresh is additive to an already published YMX facility record; it does not create a second YMX, NEXUS, or Aéro Montréal organization.",
+        "The ADM release names several initiatives but does not by itself define their legal operator or delivery milestones."
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+        "slug": "ymx-innovation-centre",
+        "matchMethods": ["canonical_url", "website_domain", "slug", "alias", "name"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T11:50:00.493421+00:00"
+      },
+      "signalIds": [
+        "ymx-arctic-program-2026",
+        "ymx-protospace-program-2026",
+        "ymx-mobility-workshop-2026",
+        "ymx-uxs-dish-current-2026"
+      ],
+      "refreshSummary": "Current public evidence materially enriches the published YMX Innovation Centre record with ADM's ARCTIC hydrogen research and Airbus Protospace initiatives, Espace Aéro's ownership and four-sector operating model, Mirabel's advanced-air-mobility activity, and the current DND UxS DISH context. The proposed changes are additive and preserve the YMX facility, NEXUS, consortium, and partner boundaries for reviewer confirmation.",
+      "intendedChanges": [
+        "Add the ARCTIC hydrogen propulsion research centre as a dated YMX program context.",
+        "Add Airbus Protospace as an experimentation, productivity, and training program context.",
+        "Extend profile data with current ownership, strategic sectors, advanced-air-mobility activity, and public evidence boundaries.",
+        "Preserve the exact live updated_at baseline and stop at private Admin Review."
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-h2-analytics-refresh-20260727",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "published-record-refresh:h2-analytics",
+    "reason": "The published H2 Analytics profile predates an amended DND EASE contract, detailed official product evidence, NRC IRAP simulation-integration support and independently recoverable defence-sector context.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-27T10:46:14.449Z",
+  "completedAt": "2026-07-27T10:50:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "site:h2analytics.ca H2 Analytics EASE services training simulation",
+    "H2 Analytics EASE Department of National Defence CanadaBuys contract",
+    "H2 Analytics NRC IRAP integrated LVC simulation module",
+    "H2 Analytics House of Commons Defence Industrial Strategy testimony",
+    "H2 Analytics Ottawa Business Journal defence cybersecurity",
+    "H2 Analytics CAE CANSEC collective training LinkedIn"
+  ],
+  "counters": {
+    "sourcesChecked": 7,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 3,
+    "uniqueProspects": 3,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 4,
+    "sourceLanesSearched": 3,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-h2-analytics-refresh-20260727.json",
+    "signalBatch": null,
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-h2-analytics-refresh-20260727.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-h2-analytics-refresh-20260727.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-h2-analytics-refresh-20260727.md",
+    "stagingExport": "research/ingestion/staging/tnm-h2-analytics-refresh-20260727.json"
+  }
+}

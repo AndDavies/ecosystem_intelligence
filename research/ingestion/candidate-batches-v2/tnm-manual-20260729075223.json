@@ -1,0 +1,416 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260729075223",
+  "runId": "tnm-manual-20260729075223",
+  "title": "Existing-record ONE9 portfolio and CAE fighter-training enrichment",
+  "status": "candidate",
+  "createdAt": "2026-07-29T07:54:56.000Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "existing-record-enrichment:portfolio-and-training-relationships",
+    "reason": "Live ONE9 and CAE records omit current durable public evidence about portfolio relationships, defence-entrepreneur infrastructure, and next-generation fighter-training collaboration.",
+    "score": 910
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260729075223.json",
+  "guardrailNotes": [
+    "This enrichment-only batch creates two private candidate_pending refreshes and does not accept, publish, or directly change canonical records.",
+    "Every operation is additive or replaces profile_data with the complete reviewed baseline plus explicitly cited additions; stable organization IDs and slugs remain unchanged.",
+    "Newsletter content was discovery-only. Candidate field evidence comes from ONE9, Invest Ottawa, CAE-issued, and reputable independent aviation sources.",
+    "No candidate logo work is required because both targets are already-published organizations rather than new organization bundles."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-one9-portfolio-area-xo-refresh-20260729",
+      "sourceLeadIds": ["lead-one9-portfolio-and-area-xo-refresh"],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 92,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "Tomahawk Robotics is explicitly marked as an exit on ONE9's official portfolio and is proposed as a former portfolio company, not a current holding.",
+        "Portfolio and partnership relationships do not imply procurement selection, endorsement, or a current ownership percentage."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T07:54:56.000Z",
+        "methods": ["canonical_url", "website_domain", "slug", "legal_name", "alias", "fuzzy_name"],
+        "matches": [
+          {
+            "id": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+            "name": "ONE9",
+            "matchedBy": "intended published refresh target via exact slug, name, and one9.ca website domain"
+          }
+        ],
+        "note": "The sole organization match is the intended existing ONE9 target. Proposed relationship names were compared with the target's current relationship list; only North Vector Dynamics already exists and is not re-added."
+      },
+      "sources": [
+        {
+          "id": "one9-official-portfolio-source",
+          "title": "ONE9 national security investment platform and portfolio",
+          "url": "https://www.one9.ca/",
+          "publisher": "ONE9",
+          "sourceKind": "investor_portfolio",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T07:54:56.000Z",
+          "locator": "Investment Portfolio and Capability Labs sections",
+          "summary": "ONE9's official site lists seven current or former portfolio companies and describes its security and defence investment platform and Capability Labs operating model."
+        },
+        {
+          "id": "one9-capability-labs-source",
+          "title": "ONE9 Capability Labs",
+          "url": "https://www.one9.ca/capabilitylabs",
+          "publisher": "ONE9",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T07:54:56.000Z",
+          "locator": "Lines of operation and startup-support sections",
+          "summary": "ONE9 describes Capability Labs as a defence and security innovation hub spanning venture formation, problem validation, product development, operational testing, deployment support, and government go-to-market assistance."
+        },
+        {
+          "id": "invest-ottawa-one9-partnership-source",
+          "title": "ONE9 and Invest Ottawa join forces to accelerate defence entrepreneurs",
+          "url": "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/",
+          "publisher": "Invest Ottawa",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": "2025-09-03T00:00:00.000Z",
+          "accessedAt": "2026-07-29T07:54:56.000Z",
+          "locator": "Partnership scope and Area X.O support statements",
+          "summary": "Invest Ottawa announced a collaboration with ONE9 and Area X.O to help defence and security entrepreneurs test, validate, demonstrate, commercialize, and connect with end-users, customers, and investors."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-one9-portfolio-list",
+          "sourceId": "one9-official-portfolio-source",
+          "fieldPath": "operations.set-one9-profile-data.after.portfolioSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ONE9's official investment portfolio lists North Vector Dynamics, Stirling X, Slingshot Aerospace, goTenna, Hidden Level, Tomahawk Robotics as an exit, and Strider Technologies.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-one9-portfolio-relationships",
+          "sourceId": "one9-official-portfolio-source",
+          "fieldPath": "operations.add-one9-portfolio-relationships.value",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio supplies a concise public technology description for each named current or former portfolio company, including counter-UAS, tactical communications, space operations, drone detection, unmanned command and control, and technology-security intelligence.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-one9-capability-labs",
+          "sourceId": "one9-capability-labs-source",
+          "fieldPath": "operations.set-one9-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "ONE9 describes Capability Labs as supporting problem validation, capability development, venture formation, commercialization, operational testing, deployment support, and defence go-to-market pathways.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-one9-invest-ottawa-relationship",
+          "sourceId": "invest-ottawa-one9-partnership-source",
+          "fieldPath": "operations.add-one9-invest-ottawa-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "Invest Ottawa's official announcement says the ONE9 collaboration includes Area X.O and gives entrepreneurs technology-validation infrastructure, specialized support, and access to end-users, prospective customers, and investors.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+        "slug": "one9",
+        "matchMethods": ["slug", "name", "website_domain"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-22T20:10:50.204397Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "slug": "one9",
+          "name": "ONE9",
+          "legal_name": null,
+          "website_url": "https://www.one9.ca/",
+          "entity_kind": "investor_funder",
+          "organization_categories": ["venture_capital"],
+          "profile_data": {
+            "mandate": "ONE9 invests in founders, companies, and capabilities considered important to Canadian and allied security and prosperity, with themes spanning advanced manufacturing, aerospace, autonomous systems, AI, critical infrastructure, cybersecurity, secure connectivity, and quantum technology.",
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "Public inquiry and newsletter routes are available through https://www.one9.ca/.",
+            "currentActivity": "ONE9 currently presents a dedicated venture portfolio and Capability Labs model under Kensington Capital Partners, with investments across counter-UAS, tactical communications, space operations, critical-infrastructure data, unmanned command and control, and technology-security intelligence.",
+            "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand.",
+            "portfolioSummary": ["North Vector Dynamics"],
+            "reviewed_candidate_id": "06424c19-c9a7-4ffb-a00e-77b200af5d4a",
+            "research_schema_version": "organization_bundle_v2",
+            "possibleMissionAreaRelevance": ["arctic-domain-awareness", "underwater-isr", "autonomous-patrol-and-monitoring", "edge-data-processing"]
+          },
+          "publication_status": "published",
+          "updated_at": "2026-07-22T20:10:50.204397Z"
+        },
+        "relationships": [
+          {
+            "id": "24559cb7-3b8d-46a8-9de8-f1d8d6a4f4a7",
+            "related_organization_name": "North Vector Dynamics",
+            "relationship_type": "portfolio_company",
+            "public_summary": "ONE9's official investment portfolio identifies North Vector Dynamics as a portfolio company building advanced, cost-effective counter-uncrewed aerial system solutions."
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "set-one9-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "field": "profile_data",
+          "before": {
+            "mandate": "ONE9 invests in founders, companies, and capabilities considered important to Canadian and allied security and prosperity, with themes spanning advanced manufacturing, aerospace, autonomous systems, AI, critical infrastructure, cybersecurity, secure connectivity, and quantum technology.",
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "Public inquiry and newsletter routes are available through https://www.one9.ca/.",
+            "currentActivity": "ONE9 currently presents a dedicated venture portfolio and Capability Labs model under Kensington Capital Partners, with investments across counter-UAS, tactical communications, space operations, critical-infrastructure data, unmanned command and control, and technology-security intelligence.",
+            "evidenceBoundary": "Identity, mandate, location, activity, and portfolio relationship facts are source-backed. Any mission relevance is an analyst cue and is not procurement eligibility, endorsement, customer interest, or classified demand.",
+            "portfolioSummary": ["North Vector Dynamics"],
+            "reviewed_candidate_id": "06424c19-c9a7-4ffb-a00e-77b200af5d4a",
+            "research_schema_version": "organization_bundle_v2",
+            "possibleMissionAreaRelevance": ["arctic-domain-awareness", "underwater-isr", "autonomous-patrol-and-monitoring", "edge-data-processing"]
+          },
+          "after": {
+            "mandate": "ONE9 invests in founders, companies, and capabilities considered important to Canadian and allied security and prosperity, with themes spanning advanced manufacturing, aerospace, autonomous systems, AI, critical infrastructure, cybersecurity, secure connectivity, and quantum technology.",
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "Public inquiry and newsletter routes are available through https://www.one9.ca/.",
+            "currentActivity": "ONE9 operates a national-security venture portfolio and Capability Labs under Kensington Capital Partners. Its official model spans validated problem discovery, capability and product development, venture formation, field testing, deployment support, and defence-market commercialization; a public partnership with Invest Ottawa and Area X.O provides additional testing, validation, demonstration, and entrepreneur-support infrastructure.",
+            "evidenceBoundary": "Identity, mandate, Capability Labs activities, portfolio relationships, and the Invest Ottawa partnership are source-backed. Portfolio inclusion does not state a current ownership percentage, and ecosystem support does not imply procurement eligibility, endorsement, customer interest, operational selection, or classified demand.",
+            "portfolioSummary": ["North Vector Dynamics", "Stirling X", "Slingshot Aerospace", "goTenna", "Hidden Level", "Tomahawk Robotics (exit)", "Strider Technologies"],
+            "reviewed_candidate_id": "06424c19-c9a7-4ffb-a00e-77b200af5d4a",
+            "research_schema_version": "organization_bundle_v2",
+            "possibleMissionAreaRelevance": ["arctic-domain-awareness", "underwater-isr", "autonomous-patrol-and-monitoring", "edge-data-processing"]
+          },
+          "evidenceIds": ["evidence-one9-portfolio-list", "evidence-one9-capability-labs", "evidence-one9-invest-ottawa-relationship"],
+          "reviewerExplanation": "Preserve all reviewed profile fields while expanding the incomplete portfolio summary and replacing the general activity text with current first-party Capability Labs and Area X.O operating detail."
+        },
+        {
+          "operationId": "add-one9-stirling-x-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "value": {"relatedOrganizationName": "Stirling X", "relationshipType": "portfolio_company", "publicSummary": "ONE9's official investment portfolio identifies Stirling X as a portfolio company providing end-to-end data collection and analysis for critical infrastructure and other applications."},
+          "evidenceIds": ["evidence-one9-portfolio-relationships"],
+          "reviewerExplanation": "Add the missing public portfolio relationship using ONE9's own current portfolio description."
+        },
+        {
+          "operationId": "add-one9-slingshot-aerospace-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "value": {"relatedOrganizationName": "Slingshot Aerospace", "relationshipType": "portfolio_company", "publicSummary": "ONE9's official investment portfolio identifies Slingshot Aerospace as a portfolio company delivering AI, data, and insights for mission-critical space training, planning, and operations."},
+          "evidenceIds": ["evidence-one9-portfolio-relationships"],
+          "reviewerExplanation": "Add the missing public portfolio relationship using ONE9's own current portfolio description."
+        },
+        {
+          "operationId": "add-one9-gotenna-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "value": {"relatedOrganizationName": "goTenna", "relationshipType": "portfolio_company", "publicSummary": "ONE9's official investment portfolio identifies goTenna as a portfolio company providing compact, lightweight, cost-effective tactical communications systems."},
+          "evidenceIds": ["evidence-one9-portfolio-relationships"],
+          "reviewerExplanation": "Add the missing public portfolio relationship using ONE9's own current portfolio description."
+        },
+        {
+          "operationId": "add-one9-hidden-level-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "value": {"relatedOrganizationName": "Hidden Level", "relationshipType": "portfolio_company", "publicSummary": "ONE9's official investment portfolio identifies Hidden Level as a portfolio company delivering cost-effective and scalable drone-detection technology."},
+          "evidenceIds": ["evidence-one9-portfolio-relationships"],
+          "reviewerExplanation": "Add the missing public portfolio relationship using ONE9's own current portfolio description."
+        },
+        {
+          "operationId": "add-one9-tomahawk-robotics-exit-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "value": {"relatedOrganizationName": "Tomahawk Robotics", "relationshipType": "former_portfolio_company", "publicSummary": "ONE9's official investment portfolio marks Tomahawk Robotics as an exit and describes its multi-domain command-and-control solutions for uncrewed systems."},
+          "evidenceIds": ["evidence-one9-portfolio-relationships"],
+          "reviewerExplanation": "Add the historical relationship while preserving ONE9's explicit exit status so it is not presented as a current holding."
+        },
+        {
+          "operationId": "add-one9-strider-technologies-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "value": {"relatedOrganizationName": "Strider Technologies", "relationshipType": "portfolio_company", "publicSummary": "ONE9's official investment portfolio identifies Strider Technologies as a portfolio company helping companies, governments, and research institutions protect intellectual property."},
+          "evidenceIds": ["evidence-one9-portfolio-relationships"],
+          "reviewerExplanation": "Add the missing public portfolio relationship using ONE9's own current portfolio description."
+        },
+        {
+          "operationId": "add-one9-invest-ottawa-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+          "value": {"relatedOrganizationName": "Invest Ottawa and Area X.O", "relationshipType": "defence_innovation_ecosystem_partner", "publicSummary": "ONE9 and Invest Ottawa announced a partnership involving Area X.O to help defence and security entrepreneurs test, validate, demonstrate, commercialize, and connect with end-users, prospective customers, and investors."},
+          "evidenceIds": ["evidence-one9-invest-ottawa-relationship", "evidence-one9-capability-labs"],
+          "reviewerExplanation": "Add the named public ecosystem partnership as a relationship, without implying procurement selection or government endorsement."
+        }
+      ],
+      "sourceChannels": ["gmail_newsletter", "official_company", "source_book", "ecosystem_program"],
+      "signalIds": ["one9-official-portfolio-expansion-2026-07-29", "one9-invest-ottawa-area-xo-partnership-2025-09-03"],
+      "corroboration": [
+        {"claim": "ONE9's current portfolio extends beyond North Vector Dynamics.", "sourceIds": ["one9-official-portfolio-source"]},
+        {"claim": "ONE9 and Invest Ottawa operate a public defence-entrepreneur partnership involving Area X.O.", "sourceIds": ["invest-ottawa-one9-partnership-source", "one9-capability-labs-source"]}
+      ],
+      "reviewerRationale": "ONE9 is already published as an investor and funder, but its live record currently stores only North Vector Dynamics as a portfolio relationship. ONE9's official portfolio supports six additional current or former portfolio relationships, with Tomahawk Robotics explicitly labelled as an exit. ONE9 and Invest Ottawa also document an Area X.O partnership that adds concrete testing, validation, demonstration, commercialization, and end-user-access context to Capability Labs. The proposed changes preserve the reviewed identity and mandate, add only public relationships and complete profile metadata, and retain explicit boundaries against inferring procurement selection, ownership percentage, or endorsement."
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-cae-leonardo-m346-refresh-20260729",
+      "sourceLeadIds": ["lead-cae-leonardo-m346-refresh"],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 89,
+      "completenessScore": 84,
+      "reviewWarnings": ["The agreement is a collaboration and technology roadmap, not a disclosed Canadian procurement award or customer-specific implementation."],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T07:54:56.000Z",
+        "methods": ["canonical_url", "website_domain", "slug", "legal_name", "alias", "fuzzy_name"],
+        "matches": [
+          {"id": "bca4ca97-3bb9-408b-b531-e61bf0255178", "name": "CAE", "matchedBy": "intended published refresh target via exact slug, CAE Inc. legal name, and cae.com website domain"}
+        ],
+        "note": "The sole organization match is the intended existing CAE target. The live relationship list contains SkyAlyne and Aéro Montréal but no direct Leonardo M-346 collaboration relationship."
+      },
+      "sources": [
+        {
+          "id": "cae-leonardo-m346-source",
+          "title": "CAE and Leonardo expand collaboration on M-346 training",
+          "url": "https://www.newswire.ca/news-releases/cae-and-leonardo-expand-collaboration-to-advance-m-346-training-and-develop-next-generation-integrated-training-capabilities-836414999.html",
+          "publisher": "CAE Inc.",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-07-22T00:00:00.000Z",
+          "accessedAt": "2026-07-29T07:54:56.000Z",
+          "locator": "Collaboration, technology roadmap, LVC, LSI, Block 20, and AI-enabled training statements",
+          "summary": "CAE and Leonardo announced an expanded M-346 Integrated Training System collaboration spanning advanced fighter training, Block 20, LVC and LSI environments, AI-enabled systems, and increasingly autonomous missions."
+        },
+        {
+          "id": "ain-cae-leonardo-source",
+          "title": "Leonardo increases collaborations with CAE and Lockheed Martin",
+          "url": "https://www.ainonline.com/aviation-news/defense/2026-07-22/leonardo-increases-collaborations-cae-lockheed-martin",
+          "publisher": "Aviation International News",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2026-07-22T00:00:00.000Z",
+          "accessedAt": "2026-07-29T07:54:56.000Z",
+          "locator": "CAE collaboration reporting",
+          "summary": "Independent aviation-industry reporting corroborates Leonardo's expanded collaboration with CAE on fighter-pilot training and associated next-generation training capabilities."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-cae-leonardo-relationship",
+          "sourceId": "cae-leonardo-m346-source",
+          "fieldPath": "operations.add-cae-leonardo-m346-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "CAE and Leonardo announced a collaboration agreement building on their longstanding partnership around the M-346 Integrated Training System for advanced fighter-pilot training.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cae-m346-roadmap",
+          "sourceId": "cae-leonardo-m346-source",
+          "fieldPath": "operations.set-cae-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The CAE-issued release expands the collaboration into LVC and LSI environments and a technology roadmap covering M-346 ITS Block 20, AI-enabled systems, and increasingly autonomous mission environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cae-independent-corroboration",
+          "sourceId": "ain-cae-leonardo-source",
+          "fieldPath": "operations.set-cae-profile-data.after.evidencePosture",
+          "claimClass": "source_backed",
+          "excerpt": "Aviation International News independently reported Leonardo's expanded collaboration with CAE during the July 2026 Farnborough activity.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+        "slug": "cae",
+        "matchMethods": ["slug", "legal_name", "website_domain"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T10:01:42.056602Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+          "slug": "cae",
+          "name": "CAE",
+          "legal_name": "CAE Inc.",
+          "website_url": "https://www.cae.com/defense-security/who-we-are",
+          "entity_kind": "company",
+          "organization_categories": ["commercial_company", "defence_supplier", "dual_use"],
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "CAE publishes defence sales, media, investor, and site contact routes through its corporate and Defence and Security pages.",
+            "portfolioScope": "CAE's defence portfolio covers training devices and simulators, live-virtual-constructive environments, synthetic environments, training centres, courseware, instructors, mission rehearsal, cyber and space training, operational support, and long-term sustainment.",
+            "currentActivity": "Current Canadian work includes the SkyAlyne-led Future Aircrew Training program and longstanding NATO Flying Training in Canada support, alongside global multi-domain simulation and training-system delivery. CAE is also a member of the NEXUS consortium selected to operate Canada's uncrewed-systems defence innovation hub in Mirabel.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation.",
+            "canadianFootprint": "The official defence profile reports more than 5,000 employees at more than 120 sites and training locations, with Canadian headquarters and major engineering, production, and program activity in Montreal and across Canadian military training locations.",
+            "reviewed_candidate_id": "c49daa5d-0e21-426a-ac17-33bc11c4bac6",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "publication_status": "published",
+          "updated_at": "2026-07-24T10:01:42.056602Z"
+        },
+        "relationships": [
+          {"id": "92b1455a-3cb2-4298-b61f-e2f769483c88", "related_organization_name": "Aéro Montréal", "relationship_type": "consortium_participant", "public_summary": "CAE is a named member of the Aéro Montréal-led NEXUS consortium selected to operate the UxS Defence Innovation Secure Hub in Mirabel."},
+          {"id": "6befb037-e48f-4169-a433-db0c0e5d6aa1", "related_organization_name": "SkyAlyne", "relationship_type": "joint venture delivery partner", "public_summary": "CAE co-owns SkyAlyne with Leonardo and supplies training-system, simulation, integration, and operational-support expertise for Canada's Future Aircrew Training program."}
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "set-cae-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "CAE publishes defence sales, media, investor, and site contact routes through its corporate and Defence and Security pages.",
+            "portfolioScope": "CAE's defence portfolio covers training devices and simulators, live-virtual-constructive environments, synthetic environments, training centres, courseware, instructors, mission rehearsal, cyber and space training, operational support, and long-term sustainment.",
+            "currentActivity": "Current Canadian work includes the SkyAlyne-led Future Aircrew Training program and longstanding NATO Flying Training in Canada support, alongside global multi-domain simulation and training-system delivery. CAE is also a member of the NEXUS consortium selected to operate Canada's uncrewed-systems defence innovation hub in Mirabel.",
+            "evidencePosture": "Public official company, product, program, and government contract evidence. Capability names are portfolio-level abstractions for reviewer use; platform availability, performance, customer configurations, and mission fit require case-specific confirmation.",
+            "canadianFootprint": "The official defence profile reports more than 5,000 employees at more than 120 sites and training locations, with Canadian headquarters and major engineering, production, and program activity in Montreal and across Canadian military training locations.",
+            "reviewed_candidate_id": "c49daa5d-0e21-426a-ac17-33bc11c4bac6",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "CAE publishes defence sales, media, investor, and site contact routes through its corporate and Defence and Security pages.",
+            "portfolioScope": "CAE's defence portfolio covers training devices and simulators, live-virtual-constructive environments, synthetic environments, training centres, courseware, instructors, mission rehearsal, cyber and space training, operational support, and long-term sustainment.",
+            "currentActivity": "Current Canadian work includes the SkyAlyne-led Future Aircrew Training program, NATO Flying Training in Canada support, and NEXUS consortium participation. In July 2026, CAE and Leonardo also expanded their M-346 Integrated Training System collaboration through a roadmap covering Block 20, live-virtual-constructive and live-synthetic-integration environments, AI-enabled systems, and increasingly autonomous mission environments.",
+            "evidencePosture": "Public official company, product, program, government-contract, company-issued announcement, and independent aviation-publication evidence. The M-346 activity is a collaboration and technology roadmap, not a disclosed Canadian procurement award or customer-specific implementation; availability, performance, configurations, and mission fit require case-specific confirmation.",
+            "canadianFootprint": "The official defence profile reports more than 5,000 employees at more than 120 sites and training locations, with Canadian headquarters and major engineering, production, and program activity in Montreal and across Canadian military training locations.",
+            "reviewed_candidate_id": "c49daa5d-0e21-426a-ac17-33bc11c4bac6",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "evidenceIds": ["evidence-cae-m346-roadmap", "evidence-cae-independent-corroboration"],
+          "reviewerExplanation": "Preserve the reviewed CAE profile while appending the current M-346 training roadmap and an explicit evidence boundary that distinguishes collaboration from procurement."
+        },
+        {
+          "operationId": "add-cae-leonardo-m346-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+          "value": {"relatedOrganizationName": "Leonardo", "relationshipType": "M-346 integrated training collaboration partner", "publicSummary": "CAE and Leonardo announced an expanded collaboration on the M-346 Integrated Training System, including advanced fighter training, a Block 20 technology roadmap, LVC and LSI environments, AI-enabled systems, and increasingly autonomous mission environments."},
+          "evidenceIds": ["evidence-cae-leonardo-relationship", "evidence-cae-m346-roadmap"],
+          "reviewerExplanation": "Add the distinct current Leonardo collaboration without creating a new capability, procurement award, or counterparty organization record."
+        }
+      ],
+      "sourceChannels": ["gmail_newsletter", "official_company", "source_book", "industry_publication"],
+      "signalIds": ["cae-leonardo-m346-training-collaboration-2026-07-22"],
+      "corroboration": [
+        {"claim": "CAE and Leonardo expanded their M-346 fighter-training collaboration in July 2026.", "sourceIds": ["cae-leonardo-m346-source", "ain-cae-leonardo-source"]}
+      ],
+      "reviewerRationale": "CAE is already published with strong training-system, simulation, and operational-support coverage. A July 22 CAE-issued announcement, independently corroborated by Aviation International News, adds a distinct current Leonardo relationship and a specific M-346 training roadmap spanning Block 20, live-virtual-constructive and live-synthetic-integration environments, AI-enabled systems, and increasingly autonomous mission contexts. The candidate leaves CAE's stable capabilities, identity, and existing relationships intact, adds one relationship, and updates current activity with an explicit warning that the collaboration is not a disclosed Canadian procurement award or customer implementation."
+    }
+  ],
+  "deferred": []
+}

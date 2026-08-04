@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-refresh-2026-07-28",
+  "runId": "tnm-refresh-2026-07-28",
+  "createdAt": "2026-07-28T08:26:56.000Z",
+  "scope": {
+    "description": "Existing-record enrichment leads recovered from official company, government award, Source Book, newsletter-discovery and independent-publication lanes. Qualified leads change no organization identity and remain additive until private human review.",
+    "targetMissionAreaSlugs": ["underwater-isr", "arctic-domain-awareness"],
+    "targetTechnicalDomainSlugs": ["aerospace-and-mobility", "test-training-and-sustainment", "advanced-manufacturing-and-integration"],
+    "targetOrganizationKinds": ["company"],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-magellan-f414-sustainment-refresh",
+      "source": {
+        "id": "ge-magellan-f414-mou-source",
+        "title": "GE Aerospace and Magellan Aerospace Sign Memorandum of Understanding for F414 Sustainment",
+        "url": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-magellan-aerospace-sign-memorandum-understanding-f414-sustainment",
+        "publisher": "GE Aerospace",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-07-22T00:00:00.000Z",
+        "accessedAt": "2026-07-28T08:26:56.000Z",
+        "locator": "Announcement, Canadian MRO scope and Government of Canada acquisition contingency",
+        "summary": "GE Aerospace and Magellan Aerospace announced a strategic MOU to establish Canadian F414-GE-39E engine MRO capability for Gripen E aircraft, predicated on a Government of Canada acquisition decision."
+      },
+      "discoveryPath": [
+        "https://canadiandefencereview.com/",
+        "https://magellan.aero/media/press-releases/",
+        "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-magellan-aerospace-sign-memorandum-understanding-f414-sustainment"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": ["aerospace-and-mobility", "test-training-and-sustainment", "advanced-manufacturing-and-integration"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official July 22 announcement and Magellan's official press-release index",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-magellan-aerospace-sign-memorandum-understanding-f414-sustainment",
+        "websiteDomain": "magellan.aero",
+        "stableSlug": "magellan-aerospace",
+        "legalName": "Magellan Aerospace Corporation",
+        "aliases": ["Magellan", "GE Aerospace and Magellan F414 sustainment MOU"]
+      },
+      "followUpQuestions": [
+        "Does a reviewer want the MOU displayed as a partnership relationship, a current activity only, or both?",
+        "Should a future update be opened only if the Government of Canada makes the referenced Gripen acquisition decision?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 84,
+      "completenessScore": 76,
+      "reviewWarnings": ["The MOU is non-binding and conditional on a future Government of Canada acquisition decision; do not describe it as an awarded Canadian MRO contract."],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8cb88c1b-a0ce-462a-bd00-a5b4b5104156",
+        "slug": "magellan-aerospace",
+        "matchMethods": ["slug", "name", "website_domain"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T08:27:58.746479Z"
+      },
+      "signalIds": ["magellan-ge-f414-sustainment-mou-2026-07-22"],
+      "refreshSummary": "A current official MOU adds a bounded partnership and current-activity update to the published Magellan Aerospace record without changing its identity or representing conditional work as an awarded contract.",
+      "intendedChanges": ["Add the GE Aerospace F414 sustainment MOU as a public relationship.", "Add qualified current-activity and evidence-boundary text to Magellan profile data."]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-babcock-vissc-extension-refresh",
+      "source": {
+        "id": "babcock-vissc-extension-source",
+        "title": "Government of Canada Awards Victoria In-Service Support Contract Extension to Babcock Canada",
+        "url": "https://www.newswire.ca/news-releases/government-of-canada-awards-victoria-in-service-support-contract-extension-to-babcock-canada-845284121.html",
+        "publisher": "Babcock Canada",
+        "sourceKind": "award_or_contract",
+        "publishedAt": "2026-07-20T00:00:00.000Z",
+        "accessedAt": "2026-07-28T08:26:56.000Z",
+        "locator": "Company-issued announcement of the six-year Victoria In-Service Support Contract extension",
+        "summary": "Babcock Canada announced a six-year extension to continue its Victoria In-Service Support Contract role for the Royal Canadian Navy's Victoria-class fleet."
+      },
+      "discoveryPath": [
+        "https://canadiandefencereview.com/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8483-065814/001/sle-001",
+        "https://toronto.citynews.ca/2026/07/20/babcocks-in-service-contract-for-victoria-subs-extended-6-years/"
+      ],
+      "possibleMissionAreaSlugs": ["underwater-isr"],
+      "possibleTechnicalDomainSlugs": ["test-training-and-sustainment", "advanced-manufacturing-and-integration"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Babcock Canada announcement, CanadaBuys contract history and independent Canadian Press report",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.newswire.ca/news-releases/government-of-canada-awards-victoria-in-service-support-contract-extension-to-babcock-canada-845284121.html",
+        "websiteDomain": "babcockcanada.com",
+        "stableSlug": "babcock-canada",
+        "legalName": "Babcock Canada Inc.",
+        "aliases": ["Babcock", "VISSC", "Victoria In-Service Support Contract"]
+      },
+      "followUpQuestions": [
+        "Should the contract extension be represented as a nested current program/activity or only as profile metadata?",
+        "If a future authoritative award notice publishes a formal value or term, should it replace the reported independent-publication amount?"
+      ],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 91,
+      "completenessScore": 85,
+      "reviewWarnings": ["The CanadaBuys history record provides public contract context but does not itself reproduce the July 20 extension wording; the proposed extension details retain company-issued and Canadian Press provenance."],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "aeabb44e-4a90-4bf1-b075-0ac5836e6776",
+        "slug": "babcock-canada",
+        "matchMethods": ["slug", "name", "website_domain"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T14:06:58.932707Z"
+      },
+      "signalIds": ["babcock-vissc-extension-2026-07-20"],
+      "refreshSummary": "The published Babcock Canada record already covers Victoria-class sustainment. The current contract extension adds time-bounded, public activity context and a nested VISSC activity without replacing the existing stable capability.",
+      "intendedChanges": ["Add the Victoria In-Service Support Contract extension as a nested public activity.", "Update Babcock profile_data with the current six-year extension and a provenance boundary."]
+    }
+  ]
+}

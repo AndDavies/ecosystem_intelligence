@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-refresh-2026-07-28-prospects",
+  "runId": "tnm-refresh-2026-07-28",
+  "createdAt": "2026-07-28T08:26:56.000Z",
+  "scope": "Existing-record enrichment refresh using a seven-day overlap across official company news, government award and program sources, the Global Source Book, and the read-only Canadian Defence Review newsletter lane.",
+  "prospects": [
+    {
+      "id": "prospect-magellan-f414-refresh",
+      "name": "Magellan Aerospace F414 sustainment MOU",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-magellan-aerospace-sign-memorandum-understanding-f414-sustainment",
+      "discoverySourceUrl": "https://magellan.aero/media/press-releases/",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "A current public MOU between GE Aerospace and the published Magellan Aerospace record supports an additive, explicitly conditional partnership and activity refresh.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-magellan-aerospace-sign-memorandum-understanding-f414-sustainment",
+          "outcome": "Recovered the July 22 official MOU announcement, its Canadian MRO intent, named parties, F414-GE-39E scope and Government of Canada acquisition contingency."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://magellan.aero/media/press-releases/",
+          "outcome": "Confirmed Magellan's official current press-release index lists the same July 22 F414 sustainment announcement."
+        }
+      ]
+    },
+    {
+      "id": "prospect-babcock-vissc-refresh",
+      "name": "Babcock Canada Victoria In-Service Support Contract extension",
+      "proposedEntityType": "program",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.newswire.ca/news-releases/government-of-canada-awards-victoria-in-service-support-contract-extension-to-babcock-canada-845284121.html",
+      "discoverySourceUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8483-065814/001/sle-001",
+      "discoveryLane": "government_awards",
+      "countryCode": "CA",
+      "fitSummary": "A company-issued contract announcement, independently reported by Canadian Press, supports adding the current Victoria-class sustainment extension as a nested activity under the published Babcock Canada record.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_awards",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8483-065814/001/sle-001",
+          "outcome": "Recovered the public historical VISSC contract record and current amendment context for Babcock Canada."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.newswire.ca/news-releases/government-of-canada-awards-victoria-in-service-support-contract-extension-to-babcock-canada-845284121.html",
+          "outcome": "Recovered Babcock Canada's July 20 company-issued announcement of a six-year VISSC extension."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://toronto.citynews.ca/2026/07/20/babcocks-in-service-contract-for-victoria-subs-extended-6-years/",
+          "outcome": "Recovered independent Canadian Press reporting that confirms a six-year extension and reports a $1.1 billion value."
+        }
+      ]
+    },
+    {
+      "id": "prospect-pratt-whitney-canada-longueuil-investment",
+      "name": "Pratt & Whitney Canada Longueuil modernization",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/07/minister-joly-announces-engagement-with-pratt--whitney-canada-to-strengthen-canadas-aerospace-sector.html",
+      "discoverySourceUrl": "https://www.rtx.com/news/news-center/2026/07/21/rtxs-pratt-whitney-canada-to-invest-275-million-cad-in-longueuil-facility-wi",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "Official Government of Canada and RTX sources substantiate an aerospace manufacturing investment, but no live Pratt & Whitney Canada organization is available for an enrichment-only candidate.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/07/minister-joly-announces-engagement-with-pratt--whitney-canada-to-strengthen-canadas-aerospace-sector.html",
+          "outcome": "Recovered the July 21 Strategic Response Fund contribution of up to $34 million toward the Longueuil manufacturing modernization."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.rtx.com/news/news-center/2026/07/21/rtxs-pratt-whitney-canada-to-invest-275-million-cad-in-longueuil-facility-wi",
+          "outcome": "Recovered RTX's corresponding announcement of a $275 million Canadian-dollar Longueuil investment."
+        }
+      ]
+    },
+    {
+      "id": "prospect-davie-autonomous-launch",
+      "name": "Davie Autonomous Inc.",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.newswire.ca/news-releases/davie-autonomous-launched-in-ontario-834241118.html",
+      "discoverySourceUrl": "https://www.newswire.ca/news-releases/davie-autonomous-launched-in-ontario-834241118.html",
+      "discoveryLane": "broad_web",
+      "countryCode": "CA",
+      "fitSummary": "Davie's company-issued launch announcement describes a new Ontario autonomous-maritime company, but neither the new entity nor Davie itself matches a current live record for this enrichment-only run.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "broad_web",
+          "url": "https://www.newswire.ca/news-releases/davie-autonomous-launched-in-ontario-834241118.html",
+          "outcome": "Recovered the July 21 company-issued launch announcement, including Davie Autonomous Inc. and its uncrewed maritime-systems focus."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://davie.ca/",
+          "outcome": "Checked the parent company's public surface as a durable follow-up route; no existing live True North Map target was found for safe refresh staging."
+        }
+      ]
+    }
+  ]
+}

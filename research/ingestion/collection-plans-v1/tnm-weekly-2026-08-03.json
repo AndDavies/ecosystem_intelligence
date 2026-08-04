@@ -1,0 +1,366 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-weekly-2026-08-03-collection-plan",
+  "runId": "tnm-weekly-2026-08-03",
+  "createdAt": "2026-08-03T02:44:22.490Z",
+  "status": "complete",
+  "intelligenceRequirement": "Resolve Canadian organizations and concrete public capabilities that could inform the unmatched deep-strike demand gap while keeping identity, maturity, procurement, customer, relationship and contradiction uncertainty visible for private Admin Review.",
+  "targetSubjects": [
+    {
+      "subjectId": "darit-technologies",
+      "subjectType": "organization",
+      "name": "DARIT Technologies",
+      "aliases": [
+        "DARIT",
+        "DARIT Technologies Inc."
+      ],
+      "canonicalIdentifiers": [
+        "https://www.darit.tech/",
+        "darit-technologies"
+      ]
+    },
+    {
+      "subjectId": "prandtl-dynamics",
+      "subjectType": "organization",
+      "name": "Prandtl Dynamics",
+      "aliases": [
+        "Prandtl Dynamics Inc.",
+        "Prandtl"
+      ],
+      "canonicalIdentifiers": [
+        "https://prandtldynamics.com/",
+        "prandtl-dynamics"
+      ]
+    },
+    {
+      "subjectId": "objexis",
+      "subjectType": "organization",
+      "name": "OBJEXIS",
+      "aliases": [
+        "OBJEXIS Inc.",
+        "Objexis"
+      ],
+      "canonicalIdentifiers": [
+        "https://www.objexis.ai/about.html",
+        "objexis"
+      ]
+    },
+    {
+      "subjectId": "ravelin-dynamics",
+      "subjectType": "organization",
+      "name": "Ravelin Dynamics",
+      "aliases": [
+        "Ravelin Dynamics Inc.",
+        "Ravelin"
+      ],
+      "canonicalIdentifiers": [
+        "https://www.ravelindynamics.com/",
+        "ravelin-dynamics"
+      ]
+    },
+    {
+      "subjectId": "borealis-propulsion",
+      "subjectType": "organization",
+      "name": "Borealis Propulsion",
+      "aliases": [
+        "Borealis Propulsion & Manufacturing",
+        "Borealis Propulsion Inc."
+      ],
+      "canonicalIdentifiers": [
+        "https://borealispropulsion.com/",
+        "borealis-propulsion"
+      ]
+    },
+    {
+      "subjectId": "space-engine-systems",
+      "subjectType": "organization",
+      "name": "Space Engine Systems",
+      "aliases": [
+        "SES",
+        "Space Engine Systems Inc."
+      ],
+      "canonicalIdentifiers": [
+        "https://www.spaceenginesystems.com/about",
+        "space-engine-systems"
+      ]
+    },
+    {
+      "subjectId": "aerialx",
+      "subjectType": "organization",
+      "name": "AerialX",
+      "aliases": [
+        "AerialX Drone Solutions",
+        "AerialX Inc."
+      ],
+      "canonicalIdentifiers": [
+        "https://www.aerialx.com/about/",
+        "aerialx"
+      ]
+    },
+    {
+      "subjectId": "dartmouth-ocean-technologies",
+      "subjectType": "organization",
+      "name": "Dartmouth Ocean Technologies",
+      "aliases": [
+        "DOT",
+        "Dartmouth Ocean Technologies Inc."
+      ],
+      "canonicalIdentifiers": [
+        "https://www.dartmouthocean.com/about-us/",
+        "dartmouth-ocean-technologies"
+      ]
+    },
+    {
+      "subjectId": "qii-ai",
+      "subjectType": "organization",
+      "name": "Qii.AI",
+      "aliases": [
+        "Qii AI",
+        "Qii.AI Inc."
+      ],
+      "canonicalIdentifiers": [
+        "https://qii.ai/",
+        "qii-ai"
+      ]
+    },
+    {
+      "subjectId": "apis-dynamics",
+      "subjectType": "organization",
+      "name": "APIS Dynamics",
+      "aliases": [
+        "APIS",
+        "APIS Dynamics Inc."
+      ],
+      "canonicalIdentifiers": [
+        "https://apisdynamics.ca/",
+        "apis-dynamics"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What is the canonical organization identity, ownership context, aliases, and evidence of an active Canadian operating presence?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.aliases",
+        "organization.primaryLocation",
+        "organization.profileData"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "technology-detail-maturity",
+      "subjectType": "technology",
+      "question": "What concrete products, systems, specifications, applications, integration boundaries, maturity, and deployment evidence are publicly supportable?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications",
+        "organization.profileData"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "contracts-procurement-demand",
+      "subjectType": "signal",
+      "question": "Which contracts, procurement lifecycle events, public programmes, customer activity, partnerships, and official demand statements materially change the record?",
+      "targetFieldPaths": [
+        "programs.*.summary",
+        "relationships.*.publicSummary",
+        "demandSource.summary",
+        "requirements.*.problemStatement"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "conflicts-and-gaps",
+      "subjectType": "signal",
+      "question": "Which material claims conflict, remain unresolved, have been superseded, or require a visible reviewer warning rather than a canonical field?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Collect durable official company evidence for identity, location, offering and current activity.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada official_site",
+        "unmatched-demand:deep-strike Canada français official_site"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Collect technical documents, product pages or detailed releases for concrete features and boundaries.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada technical_documents",
+        "unmatched-demand:deep-strike Canada français technical_documents"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Check public registry and intellectual-property records for legal identity and continuity.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada corporate_registry",
+        "unmatched-demand:deep-strike Canada français corporate_registry"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "patent_ip",
+      "purpose": "Search public intellectual-property records for durable technical and identity corroboration.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada patent_ip",
+        "unmatched-demand:deep-strike Canada français patent_ip"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Search CanadaBuys, grants and defence disclosures for contracts, programmes and demand context.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada government_procurement",
+        "unmatched-demand:deep-strike Canada français government_procurement"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "proactive_disclosure",
+      "purpose": "Search public federal disclosures for named organizations, awards and time-bounded activity.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada proactive_disclosure",
+        "unmatched-demand:deep-strike Canada français proactive_disclosure"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Search named customer, partner and programme pages without inferring adoption from discovery-only material.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada customer_partner_program",
+        "unmatched-demand:deep-strike Canada français customer_partner_program"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Use reputable industry reporting only when it resolves to durable, attributable evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada industry_publication",
+        "unmatched-demand:deep-strike Canada français industry_publication"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Search Canadian ecosystem, accelerator and association directories for queued prospects and corroboration.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada ecosystem_directory",
+        "unmatched-demand:deep-strike Canada français ecosystem_directory"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "authenticated_discovery_feed",
+      "purpose": "Use authenticated feeds only for discovery, then resolve every material claim to durable evidence.",
+      "sourcePosture": "discovery_only",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada authenticated_discovery_feed",
+        "unmatched-demand:deep-strike Canada français authenticated_discovery_feed"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Repeat material searches in English and French and preserve the stronger canonical source.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "unmatched-demand:deep-strike Canada bilingual_public_web",
+        "unmatched-demand:deep-strike Canada français bilingual_public_web"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, programme, contract, relationship or current-activity detail"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop each subject only after every coverage dimension records covered, partial, not found or not applicable with claims or search attempts.",
+    "Treat the dossier as saturated only after two complementary lanes produce low or zero new material claims and all contradictions are dispositioned."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

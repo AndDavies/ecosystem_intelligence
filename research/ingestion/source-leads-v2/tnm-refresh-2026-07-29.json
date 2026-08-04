@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-refresh-2026-07-29",
+  "runId": "tnm-refresh-2026-07-29",
+  "createdAt": "2026-07-29T11:05:19.000Z",
+  "scope": {
+    "description": "One evidence-bounded organization refresh lead from the July 21 to July 29 overlap. BOREALIS and the existing Defence Drone Initiative remain explicitly deferred rather than becoming duplicate records.",
+    "targetMissionAreaSlugs": ["arctic-domain-awareness", "autonomous-patrol-and-monitoring"],
+    "targetTechnicalDomainSlugs": ["autonomous-systems", "sensing-and-isr"],
+    "targetOrganizationKinds": ["company", "government_innovation_office"],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-volatus-canary-dfo-refresh",
+      "source": {
+        "id": "volatus-canary-pvd-source",
+        "title": "Volatus Aerospace Advances Canada's Next Chapter in Autonomous Aviation",
+        "url": "https://volatusaerospace.com/insights/canadas-next-chapter-in-autonomous-aviation/",
+        "publisher": "Volatus Aerospace",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-07-08T00:00:00.000Z",
+        "accessedAt": "2026-07-29T11:05:19.000Z",
+        "locator": "July 8 press release, Transport Canada PVD acceptance and Canary RPAS description",
+        "summary": "Volatus Aerospace announced that Transport Canada accepted its Canary remotely piloted aircraft system under the Pre-Validated Declaration process."
+      },
+      "discoveryPath": [
+        "https://volatusaerospace.com/insights/canadas-next-chapter-in-autonomous-aviation/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2459625-000"
+      ],
+      "possibleMissionAreaSlugs": ["autonomous-patrol-and-monitoring", "arctic-domain-awareness"],
+      "possibleTechnicalDomainSlugs": ["autonomous-systems", "sensing-and-isr"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Volatus July 8 official release plus CanadaBuys July 9 award record",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://volatusaerospace.com/insights/canadas-next-chapter-in-autonomous-aviation/",
+        "websiteDomain": "volatusaerospace.com",
+        "stableSlug": "volatus-aerospace",
+        "legalName": null,
+        "aliases": ["Volatus", "Volatus Drones Canada"]
+      },
+      "followUpQuestions": [
+        "Confirm whether CanadaBuys supplier name Volatus Drones Canada is the same legal entity or a related operating name for the published Volatus Aerospace record.",
+        "Confirm the reviewer wants current activity recorded without elevating either public record into a defence award or endorsement claim."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "CanadaBuys names Volatus Drones Canada, while the published target is Volatus Aerospace; do not assert legal-entity equivalence without reviewer confirmation.",
+        "The DFO RPAS award is a civil public-procurement record and does not establish a National Defence contract, procurement eligibility, endorsement or classified demand."
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "763e3f58-0272-4522-99bf-509e343df5df",
+        "slug": "volatus-aerospace",
+        "matchMethods": ["slug", "name", "website_domain"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": ["volatus-canary-pvd-2026-07-08", "volatus-dfo-rpas-award-2026-07-09"],
+      "refreshSummary": "Add bounded, current public activity to the existing Volatus Aerospace profile: Volatus's own Canary PVD announcement and the separately named CanadaBuys DFO RPAS award, without creating a contract relationship or resolving the supplier-name question automatically.",
+      "intendedChanges": [
+        "Add current activity text that separates Volatus Aerospace's official Canary PVD announcement from the CanadaBuys supplier-name award.",
+        "Add an evidence-boundary note that prohibits treating the DFO award as legal-entity equivalence, a defence award, endorsement or classified demand."
+      ]
+    }
+  ]
+}

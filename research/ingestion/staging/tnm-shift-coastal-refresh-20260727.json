@@ -1,0 +1,546 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-27T10:41:57.944Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-shift-coastal-refresh-20260727",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "published-record-refresh:shift-coastal-technologies",
+      "reason": "The published Shift profile predates material current DND procurement, Canadian Coast Guard deployment, and recent uncrewed acoustic-monitoring evidence that supports a fuller, still evidence-bounded profile.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-27T10:36:33.157Z",
+    "completed_at": "2026-07-27T10:45:00.000Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "site:shiftcoastaltechnologies.com Shift Coastal OceanSled autonomous maritime systems",
+      "Shift Coastal Technologies Canadian Armed Forces Department of National Defence Royal Canadian Navy",
+      "Shift Coastal Technologies CanadaBuys contract procurement award",
+      "Shift Coastal Technologies Canadian Coast Guard autonomous surface vessel",
+      "Shift Coastal Technologies Ocean Supercluster PEMS acoustic monitoring",
+      "Shift Coastal Technologies LinkedIn RCN Advanced Naval Capabilities Unit"
+    ],
+    "counters": {
+      "sourcesChecked": 5,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 1,
+      "uniqueProspects": 1,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 4,
+      "sourceLanesSearched": 4,
+      "candidatesGreen": 1,
+      "candidatesAmber": 0
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": null
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-shift-coastal-deep-refresh-20260727",
+      "research_run_ref": "tnm-shift-coastal-refresh-20260727",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-shift-coastal-2026-deep-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-shift-coastal-deep-refresh-20260727",
+        "sourceLeadIds": [
+          "lead-shift-coastal-2026-deep-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Shift Coastal Technologies is already published, but the current profile understates confirmed public activity. Its own site now gives a clear end-to-end integration, deployment and sustainment model; CanadaBuys records a current DND Innovative Solutions Canada Testing Stream research-and-development contract for AS-188 OceanSled Ranger; and Canadian Coast Guard documentation describes the first autonomous surface vessel in its fleet as the result of collaboration with Shift, including design, testing and Haida Gwaii operational use. The candidate preserves existing IDs and adds only explicit, source-backed operations. A LinkedIn claim involving the RCN Advanced Naval Capabilities Unit is deliberately not promoted into a canonical fact until durable government corroboration is found.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 94,
+        "reviewWarnings": [
+          "A Shift LinkedIn post says OceanSled Ranger supported an RCN Advanced Naval Capabilities Unit evaluation, but no durable RCN or DND page corroborating that specific activity was located; it is discovery provenance only.",
+          "CanadaBuys confirms the current DND award's title, value, dates and program path, but does not disclose technical performance, operational results or a classified requirement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-27T10:45:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+              "name": "Shift Coastal Technologies",
+              "matchedBy": "intended published refresh target via exact name, legal name, slug and website domain"
+            }
+          ],
+          "note": "The sole match is the intentional live organization target. Existing capability and program checks found no conflicting OceanSled Ranger contract or Canadian Coast Guard collaboration child."
+        },
+        "sources": [
+          {
+            "id": "shift-official-systems-integration",
+            "title": "Shift Coastal autonomous systems integrator",
+            "url": "https://shiftcoastaltechnologies.com/",
+            "publisher": "Shift Coastal Technologies",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-27T10:40:00.000Z",
+            "locator": "Design, build, integrate, deploy, sustain, partner network and contact sections",
+            "summary": "Shift's official site describes its integration of surface platforms, sensors, effectors, compute, communications and command infrastructure into deployable autonomous maritime systems, with training and lifecycle support."
+          },
+          {
+            "id": "shift-dnd-oceansled-ranger-contract",
+            "title": "AS-188 OceanSled Ranger — Contract History",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445771-000",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-04-20T00:00:00.000Z",
+            "accessedAt": "2026-07-27T10:40:00.000Z",
+            "locator": "Contract number CW2445771, title, awardee, participating department, award date, value and duration",
+            "summary": "CanadaBuys records a C$1,839,770.68 Innovative Solutions Canada Testing Stream research-and-development contract awarded to Shift Coastal Technologies by the Department of National Defence for AS-188 OceanSled Ranger, running to February 2027."
+          },
+          {
+            "id": "shift-ccg-autonomous-surface-vessel",
+            "title": "Canadian Coast Guard Integrated Business and Human Resource Plan 2025-2026 update",
+            "url": "https://www.canada.ca/en/canadian-coast-guard/corporate/publications/integrated-business-human-resource-plan-2025-2026-update.html",
+            "publisher": "Canadian Coast Guard",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-27T10:40:00.000Z",
+            "locator": "Showcase Item: The CCG's First Autonomous Surface Vessel",
+            "summary": "The Canadian Coast Guard documents that its first autonomous surface vessel resulted from collaboration with Shift Coastal Technologies, including joint design and on-water testing, and is used by the Haida Gwaii Marine Environmental and Hazards Response unit."
+          },
+          {
+            "id": "shift-pems-acoustic-trial",
+            "title": "Listening to the ocean without a crew: three Canadian companies take aim at one of marine robotics' hardest problems",
+            "url": "https://www.bindt.org/News/may-2026/listening-to-the-ocean-without-a-crew-three-canadian-companies-take-aim-at-one-of-marine-robotics-hardest-problems/",
+            "publisher": "British Institute of Non-Destructive Testing",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2026-05-27T00:00:00.000Z",
+            "accessedAt": "2026-07-27T10:40:00.000Z",
+            "locator": "PEMS field-trial account and Shift Coastal profile",
+            "summary": "Independent reporting describes a 2026 field trial in which Shift Coastal, Sensor Technology and Reach Systems integrated a Canadian-made uncrewed surface vessel, towed acoustic array and powered deployment winch under Canada's Ocean Supercluster PEMS project."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-shift-official-capability",
+            "sourceId": "shift-official-systems-integration",
+            "fieldPath": "operations.update-shift-maritime-integration.after",
+            "claimClass": "source_backed",
+            "excerpt": "Shift states that it designs, builds, integrates, deploys and sustains autonomous maritime systems, combining platforms, sensing or effecting payloads, compute, communications and command interfaces with field deployment, training and lifecycle support.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-shift-dnd-contract",
+            "sourceId": "shift-dnd-oceansled-ranger-contract",
+            "fieldPath": "operations.add-shift-dnd-oceansled-ranger-contract.value",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys identifies AS-188 OceanSled Ranger as an Innovative Solutions Canada Testing Stream research-and-development contract awarded to Shift Coastal Technologies by DND on April 20, 2026, valued at C$1,839,770.68 and scheduled to end February 26, 2027.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-shift-ccg-collaboration",
+            "sourceId": "shift-ccg-autonomous-surface-vessel",
+            "fieldPath": "operations.add-shift-ccg-autonomous-surface-vessel.value",
+            "claimClass": "source_backed",
+            "excerpt": "The Canadian Coast Guard says its first autonomous surface vessel resulted from collaboration with Shift, whose personnel worked with Coast Guard staff on design and on-water testing; the vessel supports Haida Gwaii marine emergency response, environmental protection and search-and-rescue activity.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-shift-pems-acoustic-trial",
+            "sourceId": "shift-pems-acoustic-trial",
+            "fieldPath": "operations.update-shift-maritime-integration.after.applications",
+            "claimClass": "source_backed",
+            "excerpt": "Independent reporting describes Shift's 2026 PEMS field trial integrating an uncrewed surface vessel, towed acoustic array and controlled-deployment winch for uncrewed acoustic monitoring in demanding coastal environments.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-shift-current-activity",
+            "sourceId": "shift-dnd-oceansled-ranger-contract",
+            "fieldPath": "operations.set-shift-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The CanadaBuys record establishes an active, time-bounded 2026 DND research-and-development contract for AS-188 OceanSled Ranger; the Coast Guard page separately establishes prior operational collaboration and use.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+          "slug": "shift-coastal-technologies",
+          "matchMethods": [
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T14:06:58.932707Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+            "slug": "shift-coastal-technologies",
+            "name": "Shift Coastal Technologies",
+            "legal_name": "Shift Coastal Technologies Ltd.",
+            "website_url": "https://shiftcoastaltechnologies.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-24T14:06:58.932707Z",
+            "profile_data": {
+              "publicContact": "Shift publishes its Nanaimo address, public email address and telephone contacts on its official website.",
+              "portfolioScope": "Design, build, integrate, deploy and sustain autonomous maritime systems that combine hulls, propulsion, onboard compute, sensors, communications, command interfaces and mission-specific payloads.",
+              "currentActivity": "Shift describes an end-to-end process covering mission architecture, platform preparation, sensor and command integration, field deployment, training and long-term sustainment.",
+              "evidenceBoundary": "Organization identity, capability, location, contact and activity are source-backed. Containerized ASW and mission alignment are derived assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+            }
+          },
+          "capabilities": [
+            {
+              "id": "f4cc809d-d034-4601-a30f-38d91912560e",
+              "slug": "shift-mission-ready-autonomous-maritime-integration",
+              "name": "Mission-Ready Autonomous Maritime Systems Integration",
+              "summary": "Design, build, integrate, deploy and sustain autonomous maritime systems that combine hulls, propulsion, onboard compute, sensors, communications, command interfaces and mission-specific payloads.",
+              "capabilityType": "Autonomous maritime platform and payload systems integration",
+              "features": [
+                "Mission architecture and payload strategy",
+                "Platform fabrication and configuration",
+                "Sensor and effector integration",
+                "Onboard compute and communications",
+                "Field deployment, training and sustainment"
+              ],
+              "applications": [
+                "Deployable maritime sensing packages",
+                "Littoral autonomous surveillance",
+                "Rapid mission-payload integration",
+                "Field trials and operational support"
+              ],
+              "technicalTags": [
+                "maritime autonomy",
+                "payload integration",
+                "sensor fusion",
+                "onboard compute",
+                "systems integration"
+              ]
+            }
+          ],
+          "programs": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-shift-profile-data",
+            "evidenceIds": [
+              "evidence-shift-official-capability",
+              "evidence-shift-current-activity",
+              "evidence-shift-ccg-collaboration"
+            ],
+            "reviewerExplanation": "Preserve the published identity and contact context while adding distinct, current public procurement and operational-collaboration evidence plus a clear boundary around the uncorroborated RCN discovery lead.",
+            "entityType": "organization",
+            "targetId": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+            "field": "profile_data",
+            "before": {
+              "publicContact": "Shift publishes its Nanaimo address, public email address and telephone contacts on its official website.",
+              "portfolioScope": "Design, build, integrate, deploy and sustain autonomous maritime systems that combine hulls, propulsion, onboard compute, sensors, communications, command interfaces and mission-specific payloads.",
+              "currentActivity": "Shift describes an end-to-end process covering mission architecture, platform preparation, sensor and command integration, field deployment, training and long-term sustainment.",
+              "evidenceBoundary": "Organization identity, capability, location, contact and activity are source-backed. Containerized ASW and mission alignment are derived assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+            },
+            "after": {
+              "publicContact": "Shift publishes its Nanaimo address, public email address and telephone contacts on its official website.",
+              "portfolioScope": "Design, build, integrate, deploy and sustain autonomous maritime systems that combine surface platforms, payloads, onboard compute, communications and command infrastructure through field deployment, training, upgrades and lifecycle support.",
+              "currentActivity": "CanadaBuys records a current DND Innovative Solutions Canada Testing Stream research-and-development contract for AS-188 OceanSled Ranger, awarded April 2026 and scheduled through February 2027. Canadian Coast Guard documentation separately records a prior collaborative design, testing and Haida Gwaii operational deployment of its first autonomous surface vessel.",
+              "evidenceBoundary": "Organization identity, capability, Canadian Coast Guard collaboration, DND contract and public current activity are source-backed. Containerized ASW, mission alignment, and the specific RCN Advanced Naval Capabilities Unit activity remain derived or uncorroborated public discovery leads; they do not imply procurement eligibility, endorsement, customer interest or classified demand."
+            }
+          },
+          {
+            "operation": "update_child",
+            "operationId": "update-shift-maritime-integration",
+            "evidenceIds": [
+              "evidence-shift-official-capability",
+              "evidence-shift-pems-acoustic-trial",
+              "evidence-shift-ccg-collaboration"
+            ],
+            "reviewerExplanation": "Update the existing capability in place so the published record reflects the current, concrete OceanSled-family integration, deployment and sustainment scope without creating a duplicate capability.",
+            "entityType": "capability",
+            "targetId": "f4cc809d-d034-4601-a30f-38d91912560e",
+            "before": {
+              "id": "f4cc809d-d034-4601-a30f-38d91912560e",
+              "slug": "shift-mission-ready-autonomous-maritime-integration",
+              "name": "Mission-Ready Autonomous Maritime Systems Integration",
+              "summary": "Design, build, integrate, deploy and sustain autonomous maritime systems that combine hulls, propulsion, onboard compute, sensors, communications, command interfaces and mission-specific payloads.",
+              "capabilityType": "Autonomous maritime platform and payload systems integration",
+              "features": [
+                "Mission architecture and payload strategy",
+                "Platform fabrication and configuration",
+                "Sensor and effector integration",
+                "Onboard compute and communications",
+                "Field deployment, training and sustainment"
+              ],
+              "applications": [
+                "Deployable maritime sensing packages",
+                "Littoral autonomous surveillance",
+                "Rapid mission-payload integration",
+                "Field trials and operational support"
+              ],
+              "technicalTags": [
+                "maritime autonomy",
+                "payload integration",
+                "sensor fusion",
+                "onboard compute",
+                "systems integration"
+              ]
+            },
+            "after": {
+              "id": "f4cc809d-d034-4601-a30f-38d91912560e",
+              "slug": "shift-mission-ready-autonomous-maritime-integration",
+              "name": "Mission-Ready Autonomous Maritime Systems Integration",
+              "summary": "Design, build, integrate, deploy and sustain OceanSled-family autonomous maritime systems that combine surface platforms, payloads, onboard compute, communications and command infrastructure into deployable, mission-specific coastal capabilities.",
+              "capabilityType": "Autonomous maritime platform and payload systems integration",
+              "features": [
+                "Mission architecture, platform configuration and payload strategy",
+                "Hull, propulsion, onboard electronics and power-distribution preparation",
+                "Onboard compute, autonomy, communications and command-interface integration",
+                "Sensing and effecting payload integration with real-time operational-intelligence workflows",
+                "Field deployment, operator training, maintenance, upgrades and lifecycle support"
+              ],
+              "applications": [
+                "Autonomous surface-vessel operations for coastal and littoral tasking",
+                "Canadian Coast Guard marine environmental-hazards response and search-and-rescue support",
+                "Uncrewed acoustic monitoring and maritime situational-awareness field trials",
+                "Rapid mission-payload integration, field deployment and operational support"
+              ],
+              "technicalTags": [
+                "maritime autonomy",
+                "uncrewed surface vessels",
+                "oceansled",
+                "payload integration",
+                "sensor fusion",
+                "acoustic monitoring",
+                "onboard compute",
+                "systems integration"
+              ]
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-shift-dnd-oceansled-ranger-contract",
+            "evidenceIds": [
+              "evidence-shift-dnd-contract"
+            ],
+            "reviewerExplanation": "Add the active DND research-and-development contract as a separately reviewable program record, rather than leaving material procurement evidence only in narrative profile text.",
+            "entityType": "program",
+            "parentId": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+            "value": {
+              "slug": "shift-dnd-innovative-solutions-oceansled-ranger",
+              "name": "DND Innovative Solutions Canada Testing Stream: AS-188 OceanSled Ranger",
+              "programType": "Research and development testing-stream contract",
+              "operatorName": "Department of National Defence and Innovative Solutions Canada",
+              "websiteUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445771-000",
+              "summary": "A C$1,839,770.68 Innovative Solutions Canada Testing Stream research-and-development contract for AS-188 OceanSled Ranger, awarded to Shift Coastal Technologies by DND on April 20, 2026 and scheduled through February 26, 2027.",
+              "participationType": "contract recipient and technology developer",
+              "cohortLabel": "CW2445771"
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-shift-ccg-autonomous-surface-vessel",
+            "evidenceIds": [
+              "evidence-shift-ccg-collaboration"
+            ],
+            "reviewerExplanation": "Add the verified Coast Guard collaboration and operational deployment as a separately reviewable program participation, preserving the distinction between public Coast Guard use and uncorroborated RCN discovery material.",
+            "entityType": "program",
+            "parentId": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+            "value": {
+              "slug": "shift-canadian-coast-guard-autonomous-surface-vessel",
+              "name": "Canadian Coast Guard Autonomous Surface Vessel Collaboration",
+              "programType": "Operational collaboration and autonomous-vessel deployment",
+              "operatorName": "Canadian Coast Guard",
+              "websiteUrl": "https://www.canada.ca/en/canadian-coast-guard/corporate/publications/integrated-business-human-resource-plan-2025-2026-update.html",
+              "summary": "Collaboration in which Canadian Coast Guard personnel participated with Shift Coastal Technologies in design and on-water testing of the Coast Guard's first autonomous surface vessel, now used by the Haida Gwaii Marine Environmental and Hazards Response unit for marine emergencies, environmental protection and search-and-rescue support.",
+              "participationType": "collaborating system developer and deployment partner",
+              "cohortLabel": null
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement",
+          "industry_publication",
+          "other_discovery"
+        ],
+        "signalIds": [
+          "shift-dnd-oceansled-ranger-contract-2026",
+          "shift-ccg-autonomous-vessel-collaboration-2026",
+          "shift-pems-acoustic-trial-2026",
+          "shift-rcn-anc-linkedin-discovery-2026"
+        ],
+        "corroboration": [
+          {
+            "claim": "Shift's current autonomous-maritime integration scope is complemented by concrete current DND procurement and prior Canadian Coast Guard operational collaboration.",
+            "sourceIds": [
+              "shift-official-systems-integration",
+              "shift-dnd-oceansled-ranger-contract",
+              "shift-ccg-autonomous-surface-vessel"
+            ]
+          },
+          {
+            "claim": "Shift has recent public uncrewed acoustic-monitoring integration activity involving an OceanSled Explorer, a towed acoustic array and a controlled-deployment winch.",
+            "sourceIds": [
+              "shift-pems-acoustic-trial"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+          "slug": "shift-coastal-technologies",
+          "name": "Shift Coastal Technologies",
+          "legal_name": "Shift Coastal Technologies Ltd.",
+          "website_url": "https://shiftcoastaltechnologies.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-24T14:06:58.932707Z",
+          "profile_data": {
+            "publicContact": "Shift publishes its Nanaimo address, public email address and telephone contacts on its official website.",
+            "portfolioScope": "Design, build, integrate, deploy and sustain autonomous maritime systems that combine hulls, propulsion, onboard compute, sensors, communications, command interfaces and mission-specific payloads.",
+            "currentActivity": "Shift describes an end-to-end process covering mission architecture, platform preparation, sensor and command integration, field deployment, training and long-term sustainment.",
+            "evidenceBoundary": "Organization identity, capability, location, contact and activity are source-backed. Containerized ASW and mission alignment are derived assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [
+          {
+            "id": "f4cc809d-d034-4601-a30f-38d91912560e",
+            "slug": "shift-mission-ready-autonomous-maritime-integration",
+            "name": "Mission-Ready Autonomous Maritime Systems Integration",
+            "summary": "Design, build, integrate, deploy and sustain autonomous maritime systems that combine hulls, propulsion, onboard compute, sensors, communications, command interfaces and mission-specific payloads.",
+            "capabilityType": "Autonomous maritime platform and payload systems integration",
+            "features": [
+              "Mission architecture and payload strategy",
+              "Platform fabrication and configuration",
+              "Sensor and effector integration",
+              "Onboard compute and communications",
+              "Field deployment, training and sustainment"
+            ],
+            "applications": [
+              "Deployable maritime sensing packages",
+              "Littoral autonomous surveillance",
+              "Rapid mission-payload integration",
+              "Field trials and operational support"
+            ],
+            "technicalTags": [
+              "maritime autonomy",
+              "payload integration",
+              "sensor fusion",
+              "onboard compute",
+              "systems integration"
+            ]
+          }
+        ],
+        "programs": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-shift-official-capability",
+          "sourceId": "shift-official-systems-integration",
+          "fieldPath": "operations.update-shift-maritime-integration.after",
+          "claimClass": "source_backed",
+          "excerpt": "Shift states that it designs, builds, integrates, deploys and sustains autonomous maritime systems, combining platforms, sensing or effecting payloads, compute, communications and command interfaces with field deployment, training and lifecycle support.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-shift-dnd-contract",
+          "sourceId": "shift-dnd-oceansled-ranger-contract",
+          "fieldPath": "operations.add-shift-dnd-oceansled-ranger-contract.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys identifies AS-188 OceanSled Ranger as an Innovative Solutions Canada Testing Stream research-and-development contract awarded to Shift Coastal Technologies by DND on April 20, 2026, valued at C$1,839,770.68 and scheduled to end February 26, 2027.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-shift-ccg-collaboration",
+          "sourceId": "shift-ccg-autonomous-surface-vessel",
+          "fieldPath": "operations.add-shift-ccg-autonomous-surface-vessel.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Coast Guard says its first autonomous surface vessel resulted from collaboration with Shift, whose personnel worked with Coast Guard staff on design and on-water testing; the vessel supports Haida Gwaii marine emergency response, environmental protection and search-and-rescue activity.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-shift-pems-acoustic-trial",
+          "sourceId": "shift-pems-acoustic-trial",
+          "fieldPath": "operations.update-shift-maritime-integration.after.applications",
+          "claimClass": "source_backed",
+          "excerpt": "Independent reporting describes Shift's 2026 PEMS field trial integrating an uncrewed surface vessel, towed acoustic array and controlled-deployment winch for uncrewed acoustic monitoring in demanding coastal environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-shift-current-activity",
+          "sourceId": "shift-dnd-oceansled-ranger-contract",
+          "fieldPath": "operations.set-shift-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The CanadaBuys record establishes an active, time-bounded 2026 DND research-and-development contract for AS-188 OceanSled Ranger; the Coast Guard page separately establishes prior operational collaboration and use.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-27T10:45:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+            "name": "Shift Coastal Technologies",
+            "matchedBy": "intended published refresh target via exact name, legal name, slug and website domain"
+          }
+        ],
+        "note": "The sole match is the intentional live organization target. Existing capability and program checks found no conflicting OceanSled Ranger contract or Canadian Coast Guard collaboration child."
+      },
+      "reviewer_rationale": "Shift Coastal Technologies is already published, but the current profile understates confirmed public activity. Its own site now gives a clear end-to-end integration, deployment and sustainment model; CanadaBuys records a current DND Innovative Solutions Canada Testing Stream research-and-development contract for AS-188 OceanSled Ranger; and Canadian Coast Guard documentation describes the first autonomous surface vessel in its fleet as the result of collaboration with Shift, including design, testing and Haida Gwaii operational use. The candidate preserves existing IDs and adds only explicit, source-backed operations. A LinkedIn claim involving the RCN Advanced Naval Capabilities Unit is deliberately not promoted into a canonical fact until durable government corroboration is found.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-27T10:41:57.944Z"
+    }
+  ]
+}

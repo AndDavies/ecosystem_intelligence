@@ -1,0 +1,865 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260729184918",
+  "runId": "tnm-manual-20260729184918",
+  "createdAt": "2026-07-29T18:57:18.967Z",
+  "scope": {
+    "description": "Mine Counter Measures concept discovery and Canadian procurement research, separating existing-company capability refreshes from a public RCN procurement-demand candidate.",
+    "targetMissionAreaSlugs": [
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": [
+      "department",
+      "military_service",
+      "procurement_authority"
+    ]
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-kraken-remote-minehunting-disposal-system",
+      "source": {
+        "id": "source-kraken-remote-minehunting-disposal-system",
+        "title": "Kraken awarded Royal Canadian Navy minehunting contract",
+        "url": "https://www.krakenrobotics.com/news-releases/kraken-awarded-50-million-navy-contract-for-royal-canadian-navy-minehunting-program/",
+        "publisher": "Kraken Robotics",
+        "sourceKind": "official_company_product",
+        "publishedAt": "2022-12-07T00:00:00.000Z",
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Official product, capability or operational description",
+        "summary": "Kraken is the Canadian prime integrator for two RCN Remote Minehunting and Disposal System payloads combining REMUS AUVs, AquaPix synthetic-aperture sonar, SEAFOX mine-disposal vehicles and a containerized command centre."
+      },
+      "discoveryPath": [
+        "https://www.krakenrobotics.com/news-releases/kraken-awarded-50-million-navy-contract-for-royal-canadian-navy-minehunting-program/",
+        "https://www.krakenrobotics.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official MCM product or operational description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.krakenrobotics.com/",
+        "websiteDomain": "krakenrobotics.com",
+        "stableSlug": "kraken-robotics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The intended target is an existing published organization; the proposed MCM capability remains human-reviewed before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.krakenrobotics.com/news-releases/kraken-awarded-50-million-navy-contract-for-royal-canadian-navy-minehunting-program/",
+          "outcome": "Resolved the MCM claim to durable official product or operational material."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Compared the offering with Canada's public RMDS acquisition and operational requirement."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Checked the public Defence Capabilities Blueprint for the Canadian MCM problem and desired functions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000001",
+        "slug": "kraken-robotics",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-23T21:01:14.928169+00:00"
+      },
+      "signalIds": [
+        "signal-kraken-remote-minehunting-disposal-system"
+      ],
+      "refreshSummary": "Kraken is the Canadian prime integrator for two RCN Remote Minehunting and Disposal System payloads combining REMUS AUVs, AquaPix synthetic-aperture sonar, SEAFOX mine-disposal vehicles and a containerized command centre.",
+      "intendedChanges": [
+        "Add Remote Minehunting and Disposal System integration as a separately reviewable capability."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-gdms-canada-mine-warfare-systems",
+      "source": {
+        "id": "source-gdms-canada-mine-warfare-systems",
+        "title": "Mine Warfare",
+        "url": "https://gdmissionsystems.ca/mine-warfare",
+        "publisher": "General Dynamics Mission Systems-Canada",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Official product, capability or operational description",
+        "summary": "GDMS-Canada describes a fielded Mine and Obstacle Avoidance Sonar and a modular, containerized Remote Minehunting and Disposal System covering search, detection, identification, classification and neutralization."
+      },
+      "discoveryPath": [
+        "https://gdmissionsystems.ca/mine-warfare",
+        "https://gdmissionsystems.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official MCM product or operational description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://gdmissionsystems.ca/",
+        "websiteDomain": "gdmissionsystems.ca",
+        "stableSlug": "general-dynamics-mission-systems-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The intended target is an existing published organization; the proposed MCM capability remains human-reviewed before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://gdmissionsystems.ca/mine-warfare",
+          "outcome": "Resolved the MCM claim to durable official product or operational material."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Compared the offering with Canada's public RMDS acquisition and operational requirement."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Checked the public Defence Capabilities Blueprint for the Canadian MCM problem and desired functions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+        "slug": "general-dynamics-mission-systems-canada",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-gdms-canada-mine-warfare-systems"
+      ],
+      "refreshSummary": "GDMS-Canada describes a fielded Mine and Obstacle Avoidance Sonar and a modular, containerized Remote Minehunting and Disposal System covering search, detection, identification, classification and neutralization.",
+      "intendedChanges": [
+        "Add Mine warfare and remote MCM systems as a separately reviewable capability."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-ise-trailblazer-mcm-rov",
+      "source": {
+        "id": "source-ise-trailblazer-mcm-rov",
+        "title": "Mine Countermeasures",
+        "url": "https://ise.bc.ca/product/mine-countermeasures/",
+        "publisher": "International Submarine Engineering",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Official product, capability or operational description",
+        "summary": "ISE's MCM portfolio combines Explorer AUV surveillance, Dorado and Aurora sonar towing, and the Trailblazer ROV for mine identification and disposal, with prior Canadian and allied operational use."
+      },
+      "discoveryPath": [
+        "https://ise.bc.ca/product/mine-countermeasures/",
+        "https://ise.bc.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official MCM product or operational description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://ise.bc.ca/",
+        "websiteDomain": "ise.bc.ca",
+        "stableSlug": "international-submarine-engineering",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The intended target is an existing published organization; the proposed MCM capability remains human-reviewed before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://ise.bc.ca/product/mine-countermeasures/",
+          "outcome": "Resolved the MCM claim to durable official product or operational material."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Compared the offering with Canada's public RMDS acquisition and operational requirement."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Checked the public Defence Capabilities Blueprint for the Canadian MCM problem and desired functions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "65876b6e-7e7a-4b26-aabe-850296241f63",
+        "slug": "international-submarine-engineering",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-ise-trailblazer-mcm-rov"
+      ],
+      "refreshSummary": "ISE's MCM portfolio combines Explorer AUV surveillance, Dorado and Aurora sonar towing, and the Trailblazer ROV for mine identification and disposal, with prior Canadian and allied operational use.",
+      "intendedChanges": [
+        "Add Trailblazer Mine Countermeasures ROV as a separately reviewable capability."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-cellula-defence-mcm-auv-suite",
+      "source": {
+        "id": "source-cellula-defence-mcm-auv-suite",
+        "title": "Defence AUV Solutions",
+        "url": "https://cellula.com/defence-auv-solutions/",
+        "publisher": "Cellula Robotics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Official product, capability or operational description",
+        "summary": "Cellula identifies Envoy and Guardian AUVs for minefield survey, mine detection and classification, and neutralization support as part of its long-endurance defence AUV portfolio."
+      },
+      "discoveryPath": [
+        "https://cellula.com/defence-auv-solutions/",
+        "https://cellula.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official MCM product or operational description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://cellula.com/",
+        "websiteDomain": "cellula.com",
+        "stableSlug": "cellula-robotics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The intended target is an existing published organization; the proposed MCM capability remains human-reviewed before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://cellula.com/defence-auv-solutions/",
+          "outcome": "Resolved the MCM claim to durable official product or operational material."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Compared the offering with Canada's public RMDS acquisition and operational requirement."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Checked the public Defence Capabilities Blueprint for the Canadian MCM problem and desired functions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000003",
+        "slug": "cellula-robotics",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-cellula-defence-mcm-auv-suite"
+      ],
+      "refreshSummary": "Cellula identifies Envoy and Guardian AUVs for minefield survey, mine detection and classification, and neutralization support as part of its long-endurance defence AUV portfolio.",
+      "intendedChanges": [
+        "Add Defence mine-countermeasure AUV suite as a separately reviewable capability."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-deep-trekker-mcm-eod-rov-package",
+      "source": {
+        "id": "source-deep-trekker-mcm-eod-rov-package",
+        "title": "REPMUS 2025: The Future of Mine Countermeasure Operations with ROVs",
+        "url": "https://www.deeptrekker.com/news/repmus-2025-the-future-of-mine-countermeasure-operations-with-rovs",
+        "publisher": "Deep Trekker",
+        "sourceKind": "official_company_product",
+        "publishedAt": "2025-11-03T00:00:00.000Z",
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Official product, capability or operational description",
+        "summary": "Deep Trekker reports REPMUS validation of portable ROV workflows for reacquisition, classification and identification of naval mines, plus testing of an ROV-delivered Viper mine-disposal system."
+      },
+      "discoveryPath": [
+        "https://www.deeptrekker.com/news/repmus-2025-the-future-of-mine-countermeasure-operations-with-rovs",
+        "https://www.deeptrekker.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official MCM product or operational description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.deeptrekker.com/",
+        "websiteDomain": "deeptrekker.com",
+        "stableSlug": "deep-trekker",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The intended target is an existing published organization; the proposed MCM capability remains human-reviewed before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.deeptrekker.com/news/repmus-2025-the-future-of-mine-countermeasure-operations-with-rovs",
+          "outcome": "Resolved the MCM claim to durable official product or operational material."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Compared the offering with Canada's public RMDS acquisition and operational requirement."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Checked the public Defence Capabilities Blueprint for the Canadian MCM problem and desired functions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+        "slug": "deep-trekker",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-deep-trekker-mcm-eod-rov-package"
+      ],
+      "refreshSummary": "Deep Trekker reports REPMUS validation of portable ROV workflows for reacquisition, classification and identification of naval mines, plus testing of an ROV-delivered Viper mine-disposal system.",
+      "intendedChanges": [
+        "Add Mine-countermeasure and EOD ROV package as a separately reviewable capability."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-shark-marine-navigator-mcm",
+      "source": {
+        "id": "source-shark-marine-navigator-mcm",
+        "title": "Navigator",
+        "url": "https://www.sharkmarine.com/navigator",
+        "publisher": "Shark Marine Technologies",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Official product, capability or operational description",
+        "summary": "Shark Marine's Navigator integrates sonar imaging, navigation and reconnaissance for one-person MCM, explosive-ordnance-disposal, rapid environmental assessment and covert underwater missions."
+      },
+      "discoveryPath": [
+        "https://www.sharkmarine.com/navigator",
+        "https://www.sharkmarine.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official MCM product or operational description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.sharkmarine.com/",
+        "websiteDomain": "sharkmarine.com",
+        "stableSlug": "shark-marine-technologies",
+        "legalName": "Shark Marine Technologies Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The intended target is an existing published organization; the proposed MCM capability remains human-reviewed before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.sharkmarine.com/navigator",
+          "outcome": "Resolved the MCM claim to durable official product or operational material."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Compared the offering with Canada's public RMDS acquisition and operational requirement."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Checked the public Defence Capabilities Blueprint for the Canadian MCM problem and desired functions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "94058484-b4ce-463c-80ed-60cabbd7a3b4",
+        "slug": "shark-marine-technologies",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T13:35:07.314194+00:00"
+      },
+      "signalIds": [
+        "signal-shark-marine-navigator-mcm"
+      ],
+      "refreshSummary": "Shark Marine's Navigator integrates sonar imaging, navigation and reconnaissance for one-person MCM, explosive-ordnance-disposal, rapid environmental assessment and covert underwater missions.",
+      "intendedChanges": [
+        "Add Navigator MCM sonar and diver-navigation system as a separately reviewable capability."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-voyis-mcm-optical-identification",
+      "source": {
+        "id": "source-voyis-mcm-optical-identification",
+        "title": "Advancing Mine Countermeasure Operations Through Integrated Autonomous Systems",
+        "url": "https://voyis.com/advancing-mine-countermeasure-operations-through-integrated-autonomous-systems/",
+        "publisher": "Voyis",
+        "sourceKind": "official_company_product",
+        "publishedAt": "2026-05-06T00:00:00.000Z",
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Official product, capability or operational description",
+        "summary": "Voyis describes integrating laser and optical payloads into autonomous MCM workflows to improve close-range identification, localization and documentation after sonar detection and classification."
+      },
+      "discoveryPath": [
+        "https://voyis.com/advancing-mine-countermeasure-operations-through-integrated-autonomous-systems/",
+        "https://voyis.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official MCM product or operational description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://voyis.com/",
+        "websiteDomain": "voyis.com",
+        "stableSlug": "voyis",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The intended target is an existing published organization; the proposed MCM capability remains human-reviewed before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://voyis.com/advancing-mine-countermeasure-operations-through-integrated-autonomous-systems/",
+          "outcome": "Resolved the MCM claim to durable official product or operational material."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Compared the offering with Canada's public RMDS acquisition and operational requirement."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Checked the public Defence Capabilities Blueprint for the Canadian MCM problem and desired functions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "75e6c046-813c-4772-b741-9ff5b684e006",
+        "slug": "voyis",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "signalIds": [
+        "signal-voyis-mcm-optical-identification"
+      ],
+      "refreshSummary": "Voyis describes integrating laser and optical payloads into autonomous MCM workflows to improve close-range identification, localization and documentation after sonar detection and classification.",
+      "intendedChanges": [
+        "Add MCM optical identification payloads as a separately reviewable capability."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-geospectrum-jaeger-mcm-usv",
+      "source": {
+        "id": "source-geospectrum-jaeger-mcm-usv",
+        "title": "Jaeger USV",
+        "url": "https://geospectrum.ca/catalog/defence/unmanned-systems/jaeger-usv/",
+        "publisher": "GeoSpectrum Technologies",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Official product, capability or operational description",
+        "summary": "GeoSpectrum's Jaeger is a modular autonomous surface vessel that integrates MCM, ASW, maritime-security and electronic-warfare payloads with mission control and sonar systems."
+      },
+      "discoveryPath": [
+        "https://geospectrum.ca/catalog/defence/unmanned-systems/jaeger-usv/",
+        "https://geospectrum.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official MCM product or operational description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://geospectrum.ca/",
+        "websiteDomain": "geospectrum.ca",
+        "stableSlug": "geospectrum-technologies",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The intended target is an existing published organization; the proposed MCM capability remains human-reviewed before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://geospectrum.ca/catalog/defence/unmanned-systems/jaeger-usv/",
+          "outcome": "Resolved the MCM claim to durable official product or operational material."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Compared the offering with Canada's public RMDS acquisition and operational requirement."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Checked the public Defence Capabilities Blueprint for the Canadian MCM problem and desired functions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000005",
+        "slug": "geospectrum-technologies",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-geospectrum-jaeger-mcm-usv"
+      ],
+      "refreshSummary": "GeoSpectrum's Jaeger is a modular autonomous surface vessel that integrates MCM, ASW, maritime-security and electronic-warfare payloads with mission control and sonar systems.",
+      "intendedChanges": [
+        "Add Jaeger multi-mission MCM USV as a separately reviewable capability."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-d-ta-minehunting-sonar-processing",
+      "source": {
+        "id": "source-d-ta-minehunting-sonar-processing",
+        "title": "D-TA Systems technical product presentation",
+        "url": "https://www.d-ta.com/wp-content/uploads/2018/02/D-TA_Technical_Presentation_Product_ALL.pdf",
+        "publisher": "D-TA Systems",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Official product, capability or operational description",
+        "summary": "D-TA's technical portfolio documents Canadian signal-acquisition, recording and real-time processing systems for minehunting and dipping sonar applications, complementing its broader network-attached acoustic processing record."
+      },
+      "discoveryPath": [
+        "https://www.d-ta.com/wp-content/uploads/2018/02/D-TA_Technical_Presentation_Product_ALL.pdf",
+        "https://www.d-ta.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official MCM product or operational description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.d-ta.com/",
+        "websiteDomain": "d-ta.com",
+        "stableSlug": "d-ta-systems",
+        "legalName": "D-TA Systems Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The intended target is an existing published organization; the proposed MCM capability remains human-reviewed before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.d-ta.com/wp-content/uploads/2018/02/D-TA_Technical_Presentation_Product_ALL.pdf",
+          "outcome": "Resolved the MCM claim to durable official product or operational material."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Compared the offering with Canada's public RMDS acquisition and operational requirement."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Checked the public Defence Capabilities Blueprint for the Canadian MCM problem and desired functions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "57d73dec-2ce4-4d4a-8ed6-6ac27fb33665",
+        "slug": "d-ta-systems",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T14:06:58.932707+00:00"
+      },
+      "signalIds": [
+        "signal-d-ta-minehunting-sonar-processing"
+      ],
+      "refreshSummary": "D-TA's technical portfolio documents Canadian signal-acquisition, recording and real-time processing systems for minehunting and dipping sonar applications, complementing its broader network-attached acoustic processing record.",
+      "intendedChanges": [
+        "Add Minehunting sonar processing systems as a separately reviewable capability."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-rcn-remote-minehunting-disposal",
+      "source": {
+        "id": "source-rcn-rmds-blueprint",
+        "title": "Remote Minehunting and Disposal System",
+        "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+        "publisher": "National Defence",
+        "sourceKind": "government_service_page",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T18:57:18.967Z",
+        "locator": "Project description, objective, procurement approach and planned payloads",
+        "summary": "The Defence Capabilities Blueprint defines an RCN requirement for two modular Remote Minehunting and Disposal System payloads able to detect, classify, localize, reacquire, identify and dispose of sea mines and underwater improvised explosive devices."
+      },
+      "discoveryPath": [
+        "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+        "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official project objective and public contract award",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+        "websiteDomain": "forces.gc.ca",
+        "stableSlug": "rcn-remote-minehunting-disposal-system",
+        "legalName": null,
+        "aliases": [
+          "RMDS"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm whether reviewers prefer a procurement record or a broader enduring naval-mine-warfare requirement."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 99,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The acquisition was publicly awarded in 2022; this record represents the enduring capability requirement and contracted program, not an open solicitation."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "outcome": "Confirmed the official capability objective and the required modular payload architecture."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "Confirmed the public contract award and acquisition status."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.krakenrobotics.com/news-releases/kraken-awarded-50-million-navy-contract-for-royal-canadian-navy-minehunting-program/",
+          "outcome": "Corroborated the awarded system composition and Canadian prime integrator from the supplier announcement."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Royal Canadian Navy Remote Minehunting and Disposal System",
+      "issuerNames": [
+        "Royal Canadian Navy",
+        "Department of National Defence",
+        "Public Services and Procurement Canada"
+      ],
+      "demandSourceKind": "award_or_contract",
+      "commitmentLevel": "procurement",
+      "candidateRequirements": [
+        "Detect, classify, localize, reacquire, identify and dispose of sea mines and underwater improvised explosive devices using modular, portable, standoff uncrewed systems."
+      ]
+    }
+  ]
+}

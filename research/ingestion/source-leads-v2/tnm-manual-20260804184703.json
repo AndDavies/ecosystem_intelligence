@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260804184703",
+  "runId": "tnm-manual-20260804184703",
+  "createdAt": "2026-08-04T19:02:00.960Z",
+  "scope": {
+    "description": "Named-organization deep dossier on the published OceanWorks International record, prioritizing post-2011 contract history, current legal and ownership identity, and bounded current-operation evidence.",
+    "targetMissionAreaSlugs": [
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-oceanworks-contract-and-identity-refresh-20260804",
+      "source": {
+        "id": "canadabuys-oceanworks-w8483-137107",
+        "title": "OceanWorks International Corporation contract history",
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities?current_tab=c&items_per_page=50&order=field_term_label_1_1&sort=asc&words=OceanWorks+International+Corporation",
+        "publisher": "CanadaBuys",
+        "sourceKind": "award_or_contract",
+        "publishedAt": "2014-06-10T00:00:00.000Z",
+        "accessedAt": "2026-08-04T19:02:00.960Z",
+        "locator": "Supplier search result W8483-137107/001/ML",
+        "summary": "CanadaBuys records DND contract W8483-137107/001/ML, initially awarded in July 2013 and amended in June 2014, with a reported value of CAD 526,391."
+      },
+      "discoveryPath": [
+        "https://oceanworks.com/contact/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/5fb0a-11j265/001/pr-003",
+        "https://canadabuys.canada.ca/en/tender-opportunities?current_tab=c&items_per_page=50&order=field_term_label_1_1&sort=asc&words=OceanWorks+International+Corporation",
+        "https://buyandsell.gc.ca/cds/public/2013/05/29/e339a926e5fcd7c1c0e0990a98b284f5/ABES.PROD.BK__ML.B002.E23588.EBSU000.PDF",
+        "https://publications.gc.ca/collections/collection_2017/ccc/CC131-2016-eng.pdf",
+        "https://oceanworks.com/admin/news/182.pdf",
+        "https://ised-isde.canada.ca/site/loi-investissement-canada/fr/recherche/indexe-decisions-avis-investissement/tous?page=182&wbdisable=true",
+        "https://free.bcpublications.ca/civix/document/id/corpreg/corpreg/crpn0112fin0323",
+        "https://open.canada.ca/data/en/dataset/4fe645a1-ffcd-40c1-9385-2c771be956a4?res_page=1",
+        "https://oceanworks.com/our-business/military/military-project-samples/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "CanadaBuys W8483-137107 record, DND ELSS SOW, CCC 2015 completion case study, OceanWorks 2015 contract release, Investment Canada acquisition entry, and BC amalgamation notice",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://oceanworks.com/",
+        "websiteDomain": "oceanworks.com",
+        "stableSlug": "oceanworks-international",
+        "legalName": "OceanWorks Holding Co. Ltd.",
+        "aliases": [
+          "OceanWorks International",
+          "OceanWorks International Corporation",
+          "OceanWorks International Corp.",
+          "OceanWorks Holding Co. Ltd."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the 2023 amalgamated legal name before applying it while retaining OceanWorks International as the operating brand.",
+        "Confirm whether the three contract records should all publish as relationships or whether older history should remain only in reviewer context.",
+        "Recheck future CanadaBuys and foreign procurement searches using both the operating brand and legal-successor name."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The absence of a later recovered official public award is a bounded search result, not proof that no private, foreign, unindexed, or differently named contract exists.",
+        "The official site continues to use OceanWorks International while the BC registry names OceanWorks Holding Co. Ltd. as the 2023 amalgamated legal entity; reviewer confirmation is required before applying the legal-name change.",
+        "Contract values are included only when stated by CanadaBuys; the 2015 U.S. Navy completion and Safe Marine Transfer study have no public values in the reviewed sources."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://oceanworks.com/admin/news/182.pdf",
+          "outcome": "Recovered the official 2015 Safe Marine Transfer engineering-study contract and its bounded technical scope."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://buyandsell.gc.ca/cds/public/2013/05/29/e339a926e5fcd7c1c0e0990a98b284f5/ABES.PROD.BK__ML.B002.E23588.EBSU000.PDF",
+          "outcome": "Recovered the official DND ELSS pod-assembly statement of work for contract W8483-137107."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://free.bcpublications.ca/civix/document/id/corpreg/corpreg/crpn0112fin0323",
+          "outcome": "Recovered the official 2023 amalgamation and legal-successor entry."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities?current_tab=c&items_per_page=50&order=field_term_label_1_1&sort=asc&words=OceanWorks+International+Corporation",
+          "outcome": "Recovered the newer 2013 award and 2014 amendment for DND contract W8483-137107/001/ML."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://open.canada.ca/data/en/dataset/4fe645a1-ffcd-40c1-9385-2c771be956a4?res_page=1",
+          "outcome": "Checked the federal contract-history dataset and did not recover an OceanWorks-specific award later than the 2015 official records."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://publications.gc.ca/collections/collection_2017/ccc/CC131-2016-eng.pdf",
+          "outcome": "Recovered CCC's official record that OceanWorks completed a U.S. Navy submarine-rescue equipment contract during 2015."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://oceanworks.com/our-business/military/military-project-samples/",
+          "outcome": "Checked official military project material and 2018-2026 industry results; no additional later contract award was resolved to durable evidence."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ised-isde.canada.ca/site/loi-investissement-canada/fr/recherche/indexe-decisions-avis-investissement/tous?page=182&wbdisable=true",
+          "outcome": "French-language Investment Canada search recovered the 2018 Phoenix acquisition and helped resolve ownership history."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+        "slug": "oceanworks-international",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T14:06:58.932707+00:00"
+      },
+      "signalIds": [
+        "oceanworks-user-contract-baseline-2011",
+        "oceanworks-dnd-elss-contract-2014",
+        "oceanworks-us-navy-contract-completed-2015",
+        "oceanworks-smt-study-contract-2015",
+        "oceanworks-phoenix-acquisition-2018",
+        "oceanworks-bc-amalgamation-2023"
+      ],
+      "refreshSummary": "Update the published OceanWorks record with its 2023 legal successor and 2018 ownership history, then add three official post-2011 contract relationships: a 2013-14 DND ELSS award, a 2015 U.S. Navy contract completion through CCC, and a 2015 Safe Marine Transfer engineering study.",
+      "intendedChanges": [
+        "Set the legal name to OceanWorks Holding Co. Ltd. subject to reviewer confirmation of the operating-brand boundary.",
+        "Preserve the current profile and add bounded ownership and legal-identity history.",
+        "Add the DND ELSS contract relationship with identifier, award/amendment dates, published value, and technical scope.",
+        "Add the completed U.S. Navy submarine-rescue equipment relationship through CCC without inventing an identifier or value.",
+        "Add the Safe Marine Transfer subsea engineering-study relationship without inventing a value or completion status."
+      ]
+    }
+  ]
+}

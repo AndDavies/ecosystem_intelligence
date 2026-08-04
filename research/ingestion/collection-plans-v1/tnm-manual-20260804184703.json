@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260804184703-collection-plan",
+  "runId": "tnm-manual-20260804184703",
+  "createdAt": "2026-08-04T18:47:03.255Z",
+  "status": "complete",
+  "intelligenceRequirement": "Determine which durable public facts materially enrich the published OceanWorks International record, prioritizing contracts and procurement activity after CanadaBuys contract 5FB0A-11J265/001/PR, current legal and ownership identity, concrete submarine-rescue and subsea-system work, public customer relationships, and evidence of current operation without creating a duplicate organization.",
+  "targetSubjects": [
+    {
+      "subjectId": "oceanworks-international",
+      "subjectType": "organization",
+      "name": "OceanWorks International",
+      "aliases": [
+        "OceanWorks International Corporation",
+        "OceanWorks International Corp.",
+        "OceanWorks International ULC",
+        "OceanWorks International, Inc.",
+        "OceanWorks",
+        "OceanWorks Holding Co., Ltd."
+      ],
+      "canonicalIdentifiers": [
+        "slug:oceanworks-international",
+        "organization-id:02d7d445-5130-4c32-afbb-dae53d0019a6",
+        "website:https://oceanworks.com/",
+        "bc-incorporation:C1092915",
+        "bc-amalgamation:1394079",
+        "contract:5FB0A-11J265/001/PR",
+        "contract:W8483-137107/001/ML",
+        "contract:W8472-095152/001/ML"
+      ]
+    },
+    {
+      "subjectId": "oceanworks-contract-history",
+      "subjectType": "program",
+      "name": "OceanWorks public contract and procurement history",
+      "aliases": [
+        "OceanWorks CanadaBuys contract history",
+        "OceanWorks DND contracts",
+        "OceanWorks CCC U.S. Navy contracts",
+        "Historique des contrats OceanWorks"
+      ],
+      "canonicalIdentifiers": [
+        "contract:5FB0A-11J265/001/PR",
+        "contract:W8483-137107/001/ML",
+        "contract:W8472-095152/001/ML",
+        "customer:Department of National Defence",
+        "customer:Canadian Commercial Corporation",
+        "customer:U.S. Navy"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-ownership-current-status",
+      "subjectType": "organization",
+      "question": "What is OceanWorks' current operating identity, legal successor, ownership context, Canadian location, public contact path, and evidence of continued operation?",
+      "targetFieldPaths": [
+        "organization.legal_name",
+        "organization.profile_data",
+        "relationships.*.publicSummary",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "contracts-after-user-baseline",
+      "subjectType": "signal",
+      "question": "Which official contracts, amendments, completions, or customer awards post-date contract 5FB0A-11J265/001/PR~003, and what identifiers, dates, buyers, values, scope, and lifecycle states can be supported?",
+      "targetFieldPaths": [
+        "relationships.*.publicSummary",
+        "organization.profile_data",
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "technical-portfolio-maturity",
+      "subjectType": "technology",
+      "question": "What concrete submarine-rescue, launch-and-recovery, intervention, atmospheric-diving, logistics-support, and seafloor-network systems and deployments remain durably supportable?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications",
+        "organization.profile_data"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "conflicts-supersession-gaps",
+      "subjectType": "signal",
+      "question": "Which legal-name, ownership, customer, contract, current-activity, or corporate-status claims conflict, are superseded, or require reviewer warnings?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Collect OceanWorks identity, contact, current operating claims, product portfolio, customers, projects, and archived releases from the canonical company site.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:oceanworks.com OceanWorks about contact customers military projects",
+        "site:oceanworks.com/admin/news OceanWorks contract awarded delivered completed"
+      ],
+      "expectedClaims": [
+        "operating identity and public contact",
+        "contract, customer, deployment, and technical portfolio detail"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Use official white papers, system descriptions, project pages, and archived PDFs to distinguish specifications, delivery, support, and demonstrated maturity.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:oceanworks.com/admin/sitefile OceanWorks submarine rescue PRMS SEVDS LARS",
+        "OceanWorks Pressurized Rescue Module System technical publication"
+      ],
+      "expectedClaims": [
+        "system scope and technical specifications",
+        "deployment and support boundaries"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve the 2016 continuance and 2023 amalgamation, current legal-successor name, ownership history, and operating-brand boundary from official registries and Investment Canada notices.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:bclaws.gov.bc.ca C1092915 OceanWorks International",
+        "site:free.bcpublications.ca OceanWorks Holding Co Ltd 1394079",
+        "site:ised-isde.canada.ca OceanWorks Holding acquisition OceanWorks International"
+      ],
+      "expectedClaims": [
+        "legal identity and successor",
+        "ownership and acquisition history"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Enumerate CanadaBuys and CCC/DND contract records after the user-supplied 2011 amendment, preserving identifiers, values, dates, buyers, amendments, and lifecycle states.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:canadabuys.canada.ca/en/tender-opportunities/contract-history OceanWorks International Corporation",
+        "OceanWorks International Corporation contrat Défense nationale Canada",
+        "site:publications.gc.ca OceanWorks International U.S. Navy contract"
+      ],
+      "expectedClaims": [
+        "post-2011 contract identifiers and values",
+        "award, amendment, completion, and customer status"
+      ]
+    },
+    {
+      "lane": "proactive_disclosure",
+      "purpose": "Check federal proactive-disclosure and government contracting datasets for newer supplier records that may not surface in indexed CanadaBuys pages.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:search.open.canada.ca/contracts OceanWorks International",
+        "site:open.canada.ca OceanWorks International contract",
+        "OceanWorks International proactive disclosure contract Canada"
+      ],
+      "expectedClaims": [
+        "newer federal contract records or documented absence",
+        "buyer and amendment chronology"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Use official customer, prime, government, program, and partner sources to corroborate contract performance, submarine-rescue support, system delivery, and relationships.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "OceanWorks U.S. Navy submarine rescue contract official",
+        "OceanWorks Royal Canadian Navy contract official",
+        "OceanWorks Istanbul Shipyard Turkish Navy submarine rescue"
+      ],
+      "expectedClaims": [
+        "independent contract and customer corroboration",
+        "delivery, testing, support, and relationship boundaries"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Search reputable marine and defence publications for dated current-activity leads, resolving every material claim back to a durable primary source.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "OceanWorks International contract submarine rescue marine technology",
+        "OceanWorks International 2018 2019 2020 2021 2022 2023 2024 2025 2026"
+      ],
+      "expectedClaims": [
+        "current-activity leads",
+        "independent publication corroboration"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Search English and French government and procurement surfaces for identifiers and contract terminology that may differ by language.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "OceanWorks International contrat Marine royale canadienne sauvetage sous-marin",
+        "OceanWorks International Corporation historique des contrats AchatsCanada",
+        "OceanWorks Holding acquisition Loi sur Investissement Canada"
+      ],
+      "expectedClaims": [
+        "French-language contract and ownership evidence",
+        "translation and identifier reconciliation"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop only after the twelve-dimension coverage vector is complete and contract history after 5FB0A-11J265/001/PR has been checked across CanadaBuys, proactive disclosure, official company releases, and customer or CCC sources.",
+    "Treat the dossier as saturated only after two additional complementary lanes produce low or zero new material claims and every ownership, contract, and current-activity contradiction is dispositioned."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

@@ -1,0 +1,683 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260729081002",
+  "runId": "tnm-manual-20260729081002",
+  "createdAt": "2026-07-29T08:15:04.048Z",
+  "watermarkStart": "2026-07-22T08:15:04.048Z",
+  "watermarkEnd": "2026-07-29T08:15:04.048Z",
+  "sourceFamilyCounters": {
+    "official_company": 10,
+    "government_procurement": 2,
+    "source_book": 10,
+    "ecosystem_program": 2,
+    "industry_publication": 8,
+    "gmail_newsletter": 20,
+    "linkedin_chrome": 6,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Gmail newsletters, LinkedIn posts, social surfaces, and search results were used only for discovery; every changed field resolves to durable official evidence."
+  ],
+  "signals": [
+    {
+      "signalId": "allen-vanguard-refresh-2026-07-29",
+      "fingerprint": "f91d25ceb6b2fe68c9e4406c22b79fe0e2148a42d8a255b14514919b1b44f1a6",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.allenvanguard.com/news-allen-vanguard-breaks-into-south-america-with-multi-million-dollar-ecm-order/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Allen-Vanguard",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-02-05",
+        "amount": null,
+        "details": "Allen-Vanguard reported multi-million-dollar orders for its vehicle-mounted EQUINOX NG and manportable SCORPION 2 electronic-countermeasure systems, adding current commercial evidence for its counter-RCIED and counter-drone portfolio."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.allenvanguard.com/news-allen-vanguard-breaks-into-south-america-with-multi-million-dollar-ecm-order/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+          "slug": "allen-vanguard",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T08:27:58.746Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.allenvanguard.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "aml-oceanographic-refresh-2026-07-29",
+      "fingerprint": "990da3eeb1ef6550e67aaef77eed8ba4a78e744d60b8d4d79bc93c534ac4aeee",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://amloceanographic.com/blogs",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "AML Oceanographic",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "AML Oceanographic's current updates add the MVP Roam, MVP30 V2, Sailfish software improvements, and new high-accuracy conductivity-temperature measurement work to its swappable-sensor and moving-vessel-profiler portfolio."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://amloceanographic.com/blogs"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+          "slug": "aml-oceanographic",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://amloceanographic.ca/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "beauceron-security-refresh-2026-07-29",
+      "fingerprint": "d36c63d976a54c96d92f691d5e7473833f88f352a38adadf48b70eaf95724790",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.beauceronsecurity.com/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Beauceron Security",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Beauceron now presents a 2026 State of Cybersecurity Awareness report, partner delivery model, security-awareness analytics, and customer fraud-awareness offering alongside its human-centric cyber-risk platform."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.beauceronsecurity.com/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "67d97a8a-e9e0-404e-b29d-55c07e766573",
+          "slug": "beauceron-security",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.beauceronsecurity.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "bell-textron-canada-refresh-2026-07-29",
+      "fingerprint": "8ef74f3b50c73f3d4ad40651323f761f028a56f480fd97a4493b25a93a59e2d1",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.bellflight.com/global/canada",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Bell Textron Canada",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Bell reports more than 6,000 helicopters delivered from its Mirabel operation, over 1,600 employees, 550 Canadian suppliers, Canadian Armed Forces support, and repair, overhaul, modification, customization, and field-maintenance capacity."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.bellflight.com/global/canada"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+          "slug": "bell-textron-canada",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.bellflight.com/global/canada",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "cellula-robotics-refresh-2026-07-29",
+      "fingerprint": "53f41278dd968b706264b9508f0d99b17b72a8baf8c957c3c7cd12ecdcffd209",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://cellula.com/cellula-robotics-and-metron-sign-10-year-agreement-to-deliver-next-generation-undersea-capability-for-the-us-defense-market/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Cellula Robotics",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-05-19",
+        "amount": null,
+        "details": "Cellula Robotics and Metron announced a ten-year agreement combining Cellula's long-endurance commercial-off-the-shelf AUV platforms with Metron autonomy and support for United States defence customers; Cellula also reported an Envoy mission exceeding 2,000 kilometres submerged on hydrogen fuel-cell power."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://cellula.com/cellula-robotics-and-metron-sign-10-year-agreement-to-deliver-next-generation-undersea-capability-for-the-us-defense-market/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000003",
+          "slug": "cellula-robotics",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://cellula.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "deep-trekker-refresh-2026-07-29",
+      "fingerprint": "41981b3b52d255af2d1b09c4cc6b3e70b0b1cc159a235f28ab74824e5a48ce39",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.deeptrekker.com/news/deep-trekker-launches-a-new-class-of-high-performance-inspection-rov",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Deep Trekker",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-03-11",
+        "amount": null,
+        "details": "Deep Trekker launched the 1,000-metre-rated SPECTRA portable ROV with symmetrical seven-thruster propulsion, real-time 3D sonar SLAM, factory-calibrated 4K stereo vision, onboard computing, and higher payload capacity for inspection, survey, and defence users."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.deeptrekker.com/news/deep-trekker-launches-a-new-class-of-high-performance-inspection-rov"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+          "slug": "deep-trekker",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.deeptrekker.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "general-dynamics-mission-systems-canada-refresh-2026-07-29",
+      "fingerprint": "5b65d97005155b79dcfd7e529e56f64ec93f2ebfbe7d84d967fba41152134504",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://gdmissionsystems.ca/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "General Dynamics Mission Systems-Canada",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "General Dynamics Mission Systems-Canada now highlights its Ottawa Battle Lab, DIGITALspine sovereign land C4ISR integration, ENVOY multi-mission remotely piloted aircraft system, and current Canadian defence delivery across land, airborne, maritime, and public-safety applications."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://gdmissionsystems.ca/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+          "slug": "general-dynamics-mission-systems-canada",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://gdmissionsystems.ca/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "geospectrum-technologies-refresh-2026-07-29",
+      "fingerprint": "0b9a2603a8cbde30cdd22d29f524b65a3b43752deefc712aae2f4fec39aaab6a",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://geospectrum.ca/news/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "GeoSpectrum Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "GeoSpectrum's current news and product material continues to position TRAPS as a compact reelable active-passive sonar while documenting field use, product development, strategic partnerships, and deployable acoustic systems for crewed and uncrewed platforms."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://geospectrum.ca/news/"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000005",
+          "slug": "geospectrum-technologies",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://geospectrum.ca/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "international-submarine-engineering-refresh-2026-07-29",
+      "fingerprint": "0491d96a59ab8803abab15be4e5f55b5db29c1f85ba8170cb5519d0686f45e47",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://ise.bc.ca/wp-content/uploads/2024/04/ISE-Corporate-Profile_Jan_2024.pdf",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "International Submarine Engineering",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": "2024-01-01",
+        "amount": null,
+        "details": "ISE's corporate profile documents a broader portfolio of Explorer and Theseus autonomous underwater vehicles, remotely operated vehicles, semi-submersibles, subsea tooling, engineering services, and polar under-ice mission experience."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ise.bc.ca/wp-content/uploads/2024/04/ISE-Corporate-Profile_Jan_2024.pdf"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "65876b6e-7e7a-4b26-aabe-850296241f63",
+          "slug": "international-submarine-engineering",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://ise.bc.ca/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "jasco-applied-sciences-refresh-2026-07-29",
+      "fingerprint": "0338e1b6bce9c59fc1b2ba24b96aef83c4406718115aed6558a6c465eb69882f",
+      "sourceChannel": "official_company",
+      "sourceFamily": "official company product and newsroom sources",
+      "discoveryOrigin": {
+        "url": "https://www.jasco.com/news/2025/underwater-glider-swarm-demonstrates-persistent-maritime-surveillance-and-asw-barrier-operations-during-nato-exercise-repmus/dynamic-messenger-25",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "JASCO Applied Sciences",
+        "technology": null,
+        "program": null,
+        "issuer": null,
+        "eventDate": "2025-11-19",
+        "amount": null,
+        "details": "JASCO participated in NATO REPMUS and Dynamic Messenger 2025 with eleven underwater gliders carrying directional passive-acoustic monitoring, demonstrating near-real-time target detection, localization, persistent maritime surveillance, and anti-submarine-warfare barrier operations."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.jasco.com/news/2025/underwater-glider-swarm-demonstrates-persistent-maritime-surveillance-and-asw-barrier-operations-during-nato-exercise-repmus/dynamic-messenger-25"
+      ],
+      "signalType": "technology_update",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+          "slug": "jasco-applied-sciences",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.jasco.com/",
+          "outcome": "Matched the published organization and its canonical website from the live watchlist and Source Book."
+        },
+        {
+          "channel": "linkedin_chrome",
+          "url": null,
+          "outcome": "Used authenticated Chrome search to inspect current company and ecosystem activity as discovery-only corroboration."
+        },
+        {
+          "channel": "industry_publication",
+          "url": null,
+          "outcome": "Searched current secondary reporting for overlap and resolved material claims back to the durable official source."
+        }
+      ],
+      "warnings": [
+        "Newsletter, LinkedIn, social, and search-result observations remain discovery-only and are not used as field evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

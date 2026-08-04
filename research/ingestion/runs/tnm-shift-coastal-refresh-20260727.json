@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-shift-coastal-refresh-20260727",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "published-record-refresh:shift-coastal-technologies",
+    "reason": "The published Shift profile predates material current DND procurement, Canadian Coast Guard deployment, and recent uncrewed acoustic-monitoring evidence that supports a fuller, still evidence-bounded profile.",
+    "score": 1000
+  },
+  "status": "completed",
+  "startedAt": "2026-07-27T10:36:33.157Z",
+  "completedAt": "2026-07-27T10:42:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "site:shiftcoastaltechnologies.com Shift Coastal OceanSled autonomous maritime systems",
+    "Shift Coastal Technologies Canadian Armed Forces Department of National Defence Royal Canadian Navy",
+    "Shift Coastal Technologies CanadaBuys contract procurement award",
+    "Shift Coastal Technologies Canadian Coast Guard autonomous surface vessel",
+    "Shift Coastal Technologies Ocean Supercluster PEMS acoustic monitoring",
+    "Shift Coastal Technologies LinkedIn RCN Advanced Naval Capabilities Unit"
+  ],
+  "counters": {
+    "sourcesChecked": 5,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 4,
+    "sourceLanesSearched": 4,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "prospectInventory": null,
+    "signalBatch": null,
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-shift-coastal-refresh-20260727.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-shift-coastal-refresh-20260727.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-shift-coastal-refresh-20260727.md",
+    "stagingExport": "research/ingestion/staging/tnm-shift-coastal-refresh-20260727.json"
+  }
+}

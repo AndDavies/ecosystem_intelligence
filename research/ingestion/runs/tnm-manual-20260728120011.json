@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260728120011",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "investor_funder"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:investor_funder",
+    "reason": "The initially selected government-innovation-office gap was saturated when checked live. This fallback expands the still-shallow investor-funder layer with evidence-backed Canadian venture-capital profiles relevant to strategic technology coverage.",
+    "score": 790
+  },
+  "status": "completed",
+  "startedAt": "2026-07-28T12:00:11.948Z",
+  "completedAt": "2026-07-28T12:12:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Official Canadian venture-capital mandates and portfolios",
+    "Official investor portfolio research for strategic technology coverage",
+    "Government innovation-program discovery context",
+    "Investor and ecosystem source-book backlog review",
+    "Industry association and conference discovery lanes",
+    "Targeted broad-web research for Canadian venture-capital firms"
+  ],
+  "counters": {
+    "sourcesChecked": 64,
+    "leadsQualified": 8,
+    "leadsDeferred": 20,
+    "candidatesCreated": 8,
+    "duplicatesBlocked": 12,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 20,
+    "recoveryAttempts": 24,
+    "sourceLanesSearched": 10,
+    "candidatesGreen": 0,
+    "candidatesAmber": 8
+  },
+  "underTargetReason": "The batch met its required minimum of eight candidates but stopped below the target of ten after the initially selected government-innovation-office lane proved fully published. The remaining investor backlog requires separate three-lane recovery and Canadian-location confirmation rather than weakly staging two additional records.",
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "government_awards",
+      "government_program",
+      "procurement",
+      "accelerator_cohort",
+      "investor_portfolio",
+      "industry_association",
+      "conference_directory",
+      "company_newsroom",
+      "broad_web"
+    ],
+    "prospectsConsidered": 40,
+    "unresolvedTrails": [
+      "Twenty queued Canadian investor prospects still require an official mandate, current portfolio relationship, and Canadian location recovery before staging.",
+      "The live government-innovation-office lane is saturated by four published records, so additional candidates from that initial gap would duplicate current coverage."
+    ],
+    "note": "Live production inspection confirmed that DRDC, IDEaS, Innovative Solutions Canada, and NRC IRAP already cover the initially selected government-innovation-office gap. The fallback investor inventory produced eight candidates meeting the three-lane recovery standard; 12 live duplicates were blocked and the remaining 20 prospects were retained for a separate evidence-recovery pass rather than padded into this review batch."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "All eight candidates are amber because the official mandate and portfolio evidence is strong while their preferred city-level headquarters placement remains reviewer-confirmed.",
+      "The initial government-innovation-office coverage gap was saturated in production, so the run switched to a documented investor-funder fallback rather than creating duplicate records."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the minimum eight-candidate discovery batch after live confirmation that the initially selected government-innovation-office lane was already saturated.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260728120011.json",
+    "signalBatch": null,
+    "candidateLogoPacket": "research/ingestion/candidate-logo-packets-v1/tnm-manual-20260728120011.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260728120011.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260728120011.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260728120011.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260728120011.json"
+  }
+}

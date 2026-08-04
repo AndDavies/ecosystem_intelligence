@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260804184703",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "published-record-refresh:oceanworks-international",
+    "reason": "Current official procurement, corporate-registry, company, and customer evidence may materially enrich OceanWorks International's published record, with special attention to contract history after 5FB0A-11J265/001/PR and the 2023 corporate amalgamation.",
+    "score": 995
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-04T18:47:03.255Z",
+  "completedAt": "2026-08-04T19:02:00.960Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "Live production target and exact updated_at for oceanworks-international",
+    "site:oceanworks.com OceanWorks International contract press releases military customers projects",
+    "site:canadabuys.canada.ca OceanWorks International Corporation contract history",
+    "OceanWorks International Corporation contract 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026",
+    "OceanWorks International Corporation contrat gouvernement Canada Marine royale canadienne",
+    "OceanWorks International corporate registry acquisition amalgamation OceanWorks Holding Co Ltd"
+  ],
+  "counters": {
+    "sourcesChecked": 18,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 8,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "claimsCollected": 11,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1,
+    "signalsExtracted": 6,
+    "signalsDispositioned": 6,
+    "sourceFamiliesSearched": 5
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Node.js 25.8.0 is outside the repository's pinned Node 24.x runtime; validation still runs under the active workspace runtime.",
+      "The candidate remains amber pending reviewer confirmation that the 2023 amalgamated legal entity should replace the published legal_name while OceanWorks International remains the operating brand.",
+      "No later official public OceanWorks-specific award was recovered; this is a bounded search result, not proof that no later contract exists."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed one named-organization deep dossier and prepared one amber OceanWorks refresh candidate for private Admin Review.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260804184703.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260804184703.json",
+    "prospectInventory": null,
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260804184703.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260804184703.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260804184703.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260804184703.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260804184703.json"
+  }
+}

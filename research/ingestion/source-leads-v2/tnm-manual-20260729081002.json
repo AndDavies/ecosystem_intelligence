@@ -1,0 +1,614 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260729081002",
+  "runId": "tnm-manual-20260729081002",
+  "createdAt": "2026-07-29T08:15:04.048Z",
+  "scope": {
+    "description": "Ten published Canadian defence and strategic-technology organization records selected for current-activity enrichment from a live Supabase watchlist and researched across the multi-source refresh portfolio.",
+    "targetMissionAreaSlugs": [],
+    "targetTechnicalDomainSlugs": [],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-allen-vanguard-refresh",
+      "source": {
+        "id": "allen-vanguard-official-refresh-source",
+        "title": "Allen-Vanguard EQUINOX NG and SCORPION 2 order",
+        "url": "https://www.allenvanguard.com/news-allen-vanguard-breaks-into-south-america-with-multi-million-dollar-ecm-order/",
+        "publisher": "Allen-Vanguard",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-02-05T00:00:00.000Z",
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "The company reports current orders for two named electronic-countermeasure systems used to inhibit radio-frequency threats, including radio-controlled improvised explosive devices and drone command links."
+      },
+      "discoveryPath": [
+        "https://www.allenvanguard.com/",
+        "https://www.allenvanguard.com/news-allen-vanguard-breaks-into-south-america-with-multi-million-dollar-ecm-order/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.allenvanguard.com/",
+        "websiteDomain": "allenvanguard.com",
+        "stableSlug": "allen-vanguard",
+        "legalName": "Allen-Vanguard Corporation",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+        "slug": "allen-vanguard",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T08:27:58.746Z"
+      },
+      "signalIds": [
+        "allen-vanguard-refresh-2026-07-29"
+      ],
+      "refreshSummary": "The company reports current orders for two named electronic-countermeasure systems used to inhibit radio-frequency threats, including radio-controlled improvised explosive devices and drone command links.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-aml-oceanographic-refresh",
+      "source": {
+        "id": "aml-oceanographic-official-refresh-source",
+        "title": "AML Oceanographic product and company updates",
+        "url": "https://amloceanographic.com/blogs",
+        "publisher": "AML Oceanographic",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "AML's official update archive documents new profiler hardware, software releases, and high-accuracy oceanographic sensing applications beyond the record's original general swappable-sensor description."
+      },
+      "discoveryPath": [
+        "https://amloceanographic.ca/",
+        "https://amloceanographic.com/blogs"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://amloceanographic.ca/",
+        "websiteDomain": "amloceanographic.ca",
+        "stableSlug": "aml-oceanographic",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+        "slug": "aml-oceanographic",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "signalIds": [
+        "aml-oceanographic-refresh-2026-07-29"
+      ],
+      "refreshSummary": "AML's official update archive documents new profiler hardware, software releases, and high-accuracy oceanographic sensing applications beyond the record's original general swappable-sensor description.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-beauceron-security-refresh",
+      "source": {
+        "id": "beauceron-security-official-refresh-source",
+        "title": "Beauceron Security human-centric cyber-risk platform",
+        "url": "https://www.beauceronsecurity.com/",
+        "publisher": "Beauceron Security",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "The current official site expands the product context from employee awareness alone to security culture measurement, managed-service delivery, research, and customer-facing fraud awareness."
+      },
+      "discoveryPath": [
+        "https://www.beauceronsecurity.com/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.beauceronsecurity.com/",
+        "websiteDomain": "beauceronsecurity.com",
+        "stableSlug": "beauceron-security",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "67d97a8a-e9e0-404e-b29d-55c07e766573",
+        "slug": "beauceron-security",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "signalIds": [
+        "beauceron-security-refresh-2026-07-29"
+      ],
+      "refreshSummary": "The current official site expands the product context from employee awareness alone to security culture measurement, managed-service delivery, research, and customer-facing fraud awareness.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-bell-textron-canada-refresh",
+      "source": {
+        "id": "bell-textron-canada-official-refresh-source",
+        "title": "Bell Textron Canada operations and industrial footprint",
+        "url": "https://www.bellflight.com/global/canada",
+        "publisher": "Bell Textron Canada",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "Bell's Canadian operating page provides a current quantitative industrial footprint and a broader sustainment scope for the Mirabel design, manufacturing, delivery, and support operation."
+      },
+      "discoveryPath": [
+        "https://www.bellflight.com/global/canada"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.bellflight.com/global/canada",
+        "websiteDomain": "bellflight.com",
+        "stableSlug": "bell-textron-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+        "slug": "bell-textron-canada",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "signalIds": [
+        "bell-textron-canada-refresh-2026-07-29"
+      ],
+      "refreshSummary": "Bell's Canadian operating page provides a current quantitative industrial footprint and a broader sustainment scope for the Mirabel design, manufacturing, delivery, and support operation.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-cellula-robotics-refresh",
+      "source": {
+        "id": "cellula-robotics-official-refresh-source",
+        "title": "Cellula Robotics and Metron long-term undersea capability agreement",
+        "url": "https://cellula.com/cellula-robotics-and-metron-sign-10-year-agreement-to-deliver-next-generation-undersea-capability-for-the-us-defense-market/",
+        "publisher": "Cellula Robotics",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-05-19T00:00:00.000Z",
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "The official announcement adds a durable defence-market partnership and current operational-endurance evidence for Cellula's long-range autonomous underwater vehicle portfolio."
+      },
+      "discoveryPath": [
+        "https://cellula.com/",
+        "https://cellula.com/cellula-robotics-and-metron-sign-10-year-agreement-to-deliver-next-generation-undersea-capability-for-the-us-defense-market/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://cellula.com/",
+        "websiteDomain": "cellula.com",
+        "stableSlug": "cellula-robotics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000003",
+        "slug": "cellula-robotics",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "signalIds": [
+        "cellula-robotics-refresh-2026-07-29"
+      ],
+      "refreshSummary": "The official announcement adds a durable defence-market partnership and current operational-endurance evidence for Cellula's long-range autonomous underwater vehicle portfolio.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-deep-trekker-refresh",
+      "source": {
+        "id": "deep-trekker-official-refresh-source",
+        "title": "Deep Trekker launches SPECTRA inspection ROV",
+        "url": "https://www.deeptrekker.com/news/deep-trekker-launches-a-new-class-of-high-performance-inspection-rov",
+        "publisher": "Deep Trekker",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-03-11T00:00:00.000Z",
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "The SPECTRA launch materially expands the company's published portfolio beyond the existing rapid-deployment defence ROV record with deeper operation, advanced perception, mapping, and onboard processing."
+      },
+      "discoveryPath": [
+        "https://www.deeptrekker.com/",
+        "https://www.deeptrekker.com/news/deep-trekker-launches-a-new-class-of-high-performance-inspection-rov"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.deeptrekker.com/",
+        "websiteDomain": "deeptrekker.com",
+        "stableSlug": "deep-trekker",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+        "slug": "deep-trekker",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "signalIds": [
+        "deep-trekker-refresh-2026-07-29"
+      ],
+      "refreshSummary": "The SPECTRA launch materially expands the company's published portfolio beyond the existing rapid-deployment defence ROV record with deeper operation, advanced perception, mapping, and onboard processing.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-general-dynamics-mission-systems-canada-refresh",
+      "source": {
+        "id": "general-dynamics-mission-systems-canada-official-refresh-source",
+        "title": "General Dynamics Mission Systems-Canada current capability portfolio",
+        "url": "https://gdmissionsystems.ca/",
+        "publisher": "General Dynamics Mission Systems-Canada",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "The official Canadian portfolio adds named integration infrastructure and remotely piloted aircraft activity to a record previously centred on land tactical networking."
+      },
+      "discoveryPath": [
+        "https://gdmissionsystems.ca/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://gdmissionsystems.ca/",
+        "websiteDomain": "gdmissionsystems.ca",
+        "stableSlug": "general-dynamics-mission-systems-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+        "slug": "general-dynamics-mission-systems-canada",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "signalIds": [
+        "general-dynamics-mission-systems-canada-refresh-2026-07-29"
+      ],
+      "refreshSummary": "The official Canadian portfolio adds named integration infrastructure and remotely piloted aircraft activity to a record previously centred on land tactical networking.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-geospectrum-technologies-refresh",
+      "source": {
+        "id": "geospectrum-technologies-official-refresh-source",
+        "title": "GeoSpectrum Technologies product and partnership updates",
+        "url": "https://geospectrum.ca/news/",
+        "publisher": "GeoSpectrum Technologies",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "The official news archive provides current operational and partnership context for GeoSpectrum's compact towed active-passive sonar and broader underwater acoustic portfolio."
+      },
+      "discoveryPath": [
+        "https://geospectrum.ca/",
+        "https://geospectrum.ca/news/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://geospectrum.ca/",
+        "websiteDomain": "geospectrum.ca",
+        "stableSlug": "geospectrum-technologies",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000005",
+        "slug": "geospectrum-technologies",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "signalIds": [
+        "geospectrum-technologies-refresh-2026-07-29"
+      ],
+      "refreshSummary": "The official news archive provides current operational and partnership context for GeoSpectrum's compact towed active-passive sonar and broader underwater acoustic portfolio.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-international-submarine-engineering-refresh",
+      "source": {
+        "id": "international-submarine-engineering-official-refresh-source",
+        "title": "International Submarine Engineering corporate profile",
+        "url": "https://ise.bc.ca/wp-content/uploads/2024/04/ISE-Corporate-Profile_Jan_2024.pdf",
+        "publisher": "International Submarine Engineering",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2024-01-01T00:00:00.000Z",
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "The official corporate profile expands the live record from one Explorer AUV capability to the company's wider underwater vehicle, tooling, engineering, and polar-operations scope."
+      },
+      "discoveryPath": [
+        "https://ise.bc.ca/",
+        "https://ise.bc.ca/wp-content/uploads/2024/04/ISE-Corporate-Profile_Jan_2024.pdf"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://ise.bc.ca/",
+        "websiteDomain": "ise.bc.ca",
+        "stableSlug": "international-submarine-engineering",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "65876b6e-7e7a-4b26-aabe-850296241f63",
+        "slug": "international-submarine-engineering",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "signalIds": [
+        "international-submarine-engineering-refresh-2026-07-29"
+      ],
+      "refreshSummary": "The official corporate profile expands the live record from one Explorer AUV capability to the company's wider underwater vehicle, tooling, engineering, and polar-operations scope.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-jasco-applied-sciences-refresh",
+      "source": {
+        "id": "jasco-applied-sciences-official-refresh-source",
+        "title": "JASCO glider swarm at REPMUS Dynamic Messenger 2025",
+        "url": "https://www.jasco.com/news/2025/underwater-glider-swarm-demonstrates-persistent-maritime-surveillance-and-asw-barrier-operations-during-nato-exercise-repmus/dynamic-messenger-25",
+        "publisher": "JASCO Applied Sciences",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2025-11-19T00:00:00.000Z",
+        "accessedAt": "2026-07-29T08:15:04.048Z",
+        "locator": "Current product, program, contract, or portfolio details",
+        "summary": "The exercise result adds current multi-vehicle operational experimentation to JASCO's existing underwater acoustic defence systems and analytics record."
+      },
+      "discoveryPath": [
+        "https://www.jasco.com/",
+        "https://www.jasco.com/news/2025/underwater-glider-swarm-demonstrates-persistent-maritime-surveillance-and-asw-barrier-operations-during-nato-exercise-repmus/dynamic-messenger-25"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Durable official company product, newsroom, resource, or corporate-profile material",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.jasco.com/",
+        "websiteDomain": "jasco.com",
+        "stableSlug": "jasco-applied-sciences",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Does the reviewer want the activity represented only in profile metadata, or should a later run prepare a separately cited capability or relationship operation?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+        "slug": "jasco-applied-sciences",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "signalIds": [
+        "jasco-applied-sciences-refresh-2026-07-29"
+      ],
+      "refreshSummary": "The exercise result adds current multi-vehicle operational experimentation to JASCO's existing underwater acoustic defence systems and analytics record.",
+      "intendedChanges": [
+        "Add a current, source-backed activity summary while preserving existing reviewed profile fields.",
+        "Record a clear evidence boundary separating durable official evidence from newsletter, social, LinkedIn, and search discovery."
+      ]
+    }
+  ]
+}

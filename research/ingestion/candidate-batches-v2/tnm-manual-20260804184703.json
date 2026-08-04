@@ -1,0 +1,430 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260804184703",
+  "runId": "tnm-manual-20260804184703",
+  "title": "OceanWorks International contract and legal-identity refresh",
+  "status": "candidate",
+  "createdAt": "2026-08-04T19:02:00.960Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "published-record-refresh:oceanworks-international",
+    "reason": "The published OceanWorks record omits later official contract history and its documented ownership and legal-successor changes.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260804184703.json",
+  "guardrailNotes": [
+    "Private Admin Review material only; this run does not approve, publish, migrate, or write canonical organization, capability, relationship, source, or evidence tables.",
+    "Contract dates, lifecycle states, identifiers, and values remain bounded to the wording in official CanadaBuys, DND, CCC, and OceanWorks sources.",
+    "The failure to recover a later public award is retained as a review warning, not represented as proof that no later contract exists."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "oceanworks-international-refresh-20260804",
+      "sourceLeadIds": [
+        "lead-oceanworks-contract-and-identity-refresh-20260804"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "OceanWorks International is already published, so this dossier proposes one evidence-backed refresh rather than a duplicate organization. It captures contract history later than the user's January 2011 baseline: CanadaBuys records DND contract W8483-137107/001/ML, awarded in July 2013 and amended in June 2014 at CAD 526,391; DND's SOW ties it to ELSS pod assemblies for Victoria-class submarines. CCC separately reports successful completion during 2015 of a U.S. Navy submarine-rescue and breathing-equipment contract, and OceanWorks announced an August 2015 Safe Marine Transfer subsea engineering-study award. The refresh also records Phoenix International Holdings' 2018 acquisition and the 2023 BC amalgamation under OceanWorks Holding Co. Ltd. It is amber because the current site still uses OceanWorks International, the 2015 contracts disclose no public values or identifiers beyond what is stated, and a search across CanadaBuys, federal contract data, company, customer, bilingual, and industry lanes recovered no later official public award. That search result is not proof that no private, foreign, unindexed, or differently named contract exists.",
+      "reviewTier": "amber",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "This is a refresh of published organization 02d7d445-5130-4c32-afbb-dae53d0019a6, not a new organization candidate.",
+        "The absence of a later recovered official public award is a bounded search result, not proof that no private, foreign, unindexed, or differently named contract exists.",
+        "The official site continues to use OceanWorks International while the BC registry names OceanWorks Holding Co. Ltd. as the 2023 amalgamated legal entity; reviewer confirmation is required before applying the legal-name change.",
+        "Contract values are included only when stated by CanadaBuys; the 2015 U.S. Navy completion and Safe Marine Transfer study have no public values in the reviewed sources."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-04T19:02:00.960Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+            "name": "OceanWorks International",
+            "matchedBy": "intentional published refresh target via exact UUID, slug, website domain, operating name, and legal-name history"
+          }
+        ],
+        "note": "The only exact identity match is the intentional published OceanWorks target; this run creates no second organization."
+      },
+      "sources": [
+        {
+          "id": "oceanworks-contact",
+          "title": "OceanWorks International contact",
+          "url": "https://oceanworks.com/contact/",
+          "publisher": "OceanWorks International",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "Contact page and public email",
+          "summary": "OceanWorks maintains a live official contact page and public information email under the OceanWorks International operating brand."
+        },
+        {
+          "id": "canadabuys-oceanworks-5fb0a-11j265",
+          "title": "Contract history 5FB0A-11J265/001/PR",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/5fb0a-11j265/001/pr-003",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2011-01-14T00:00:00.000Z",
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "Award and amendment history",
+          "summary": "CanadaBuys records the user-supplied Canadian Commercial Corporation contract, including its 2010 award and January 2011 amendment to a total value of CAD 128,018."
+        },
+        {
+          "id": "canadabuys-oceanworks-w8483-137107",
+          "title": "OceanWorks International Corporation contract history",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities?current_tab=c&items_per_page=50&order=field_term_label_1_1&sort=asc&words=OceanWorks+International+Corporation",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2014-06-10T00:00:00.000Z",
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "Supplier search result W8483-137107/001/ML",
+          "summary": "CanadaBuys records DND contract W8483-137107/001/ML, initially awarded in July 2013 and amended in June 2014, with a reported value of CAD 526,391."
+        },
+        {
+          "id": "dnd-oceanworks-elss-sow",
+          "title": "Emergency Life Support Stores pod assemblies statement of work",
+          "url": "https://buyandsell.gc.ca/cds/public/2013/05/29/e339a926e5fcd7c1c0e0990a98b284f5/ABES.PROD.BK__ML.B002.E23588.EBSU000.PDF",
+          "publisher": "Department of National Defence",
+          "sourceKind": "procurement_notice",
+          "publishedAt": "2013-05-29T00:00:00.000Z",
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "Solicitation W8483-137107, Annex A",
+          "summary": "The DND statement of work specifies ELSS pod assemblies for Victoria-class submarine escape towers and torpedo tubes, including pressure, size, weight, and carousel-compatibility requirements."
+        },
+        {
+          "id": "ccc-oceanworks-us-navy-contract",
+          "title": "OceanWorks International Corporation and the sale of specialized equipment to the U.S. Navy",
+          "url": "https://publications.gc.ca/collections/collection_2017/ccc/CC131-2016-eng.pdf",
+          "publisher": "Canadian Commercial Corporation",
+          "sourceKind": "official_report",
+          "publishedAt": "2016-03-31T00:00:00.000Z",
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "2015-16 annual report OceanWorks case study",
+          "summary": "CCC reports that during 2015 OceanWorks successfully completed a U.S. Navy contract for specialized submarine-rescue and breathing equipment as a CCC subcontractor."
+        },
+        {
+          "id": "oceanworks-safe-marine-transfer-contract",
+          "title": "OceanWorks awarded contract to study subsea chemical injection unit",
+          "url": "https://oceanworks.com/admin/news/182.pdf",
+          "publisher": "OceanWorks International",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2015-08-10T00:00:00.000Z",
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "Official company release dated August 10, 2015",
+          "summary": "OceanWorks reports that Safe Marine Transfer awarded it an engineering study for a subsea chemical injection unit involving storage, pumps, controls, sensors, electrical systems, and batteries."
+        },
+        {
+          "id": "ised-oceanworks-phoenix-acquisition",
+          "title": "Investment Canada acquisition index entry for OceanWorks",
+          "url": "https://ised-isde.canada.ca/site/loi-investissement-canada/fr/recherche/indexe-decisions-avis-investissement/tous?page=182&wbdisable=true",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2018-03-01T00:00:00.000Z",
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "March 2018 Phoenix International Holdings entry",
+          "summary": "Investment Canada's official index records Phoenix International Holdings' acquisition of OceanWorks Holding Co. Ltd. and the submarine-rescue business of OceanWorks International Corporation in Burnaby."
+        },
+        {
+          "id": "bc-registry-oceanworks-amalgamation",
+          "title": "BC corporate registry amalgamation notice for OceanWorks",
+          "url": "https://free.bcpublications.ca/civix/document/id/corpreg/corpreg/crpn0112fin0323",
+          "publisher": "British Columbia Corporate Registry",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2023-01-12T00:00:00.000Z",
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "Amalgamation entry for companies 1087916 and C1092915",
+          "summary": "The BC registry records OceanWorks Holding Co. Ltd. and OceanWorks International Corporation as amalgamating into company 1394079 under the name OceanWorks Holding Co. Ltd."
+        },
+        {
+          "id": "oceanworks-military-project-samples",
+          "title": "OceanWorks military project samples",
+          "url": "https://oceanworks.com/our-business/military/military-project-samples/",
+          "publisher": "OceanWorks International",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "Turkish Navy and U.S. Navy project sections",
+          "summary": "OceanWorks describes submarine-rescue, intervention, diving, launch-and-recovery, controls, and acceptance-testing work for named military customers and primes."
+        },
+        {
+          "id": "open-canada-contract-history-dataset",
+          "title": "CanadaBuys contract history dataset",
+          "url": "https://open.canada.ca/data/en/dataset/4fe645a1-ffcd-40c1-9385-2c771be956a4?res_page=1",
+          "publisher": "Government of Canada Open Data",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "Current contract-history dataset description",
+          "summary": "The federal open-data catalogue provides the current CanadaBuys contract-history dataset used as an additional search lane for supplier records."
+        },
+        {
+          "id": "oceanworks-official-site",
+          "title": "OceanWorks International official site",
+          "url": "https://oceanworks.com/",
+          "publisher": "OceanWorks International",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-04T19:02:00.960Z",
+          "locator": "Current operating site and navigation",
+          "summary": "The official site remains live under the OceanWorks International operating brand and continues to present military, scientific, and commercial subsea systems."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-oceanworks-legal-name",
+          "sourceId": "bc-registry-oceanworks-amalgamation",
+          "fieldPath": "operations.set-oceanworks-legal-name.after",
+          "claimClass": "source_backed",
+          "excerpt": "The BC registry records OceanWorks Holding Co. Ltd. and OceanWorks International Corporation as amalgamating into company 1394079 under the name OceanWorks Holding Co. Ltd.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oceanworks-profile-acquisition",
+          "sourceId": "ised-oceanworks-phoenix-acquisition",
+          "fieldPath": "operations.set-oceanworks-profile-data.after",
+          "claimClass": "source_backed",
+          "excerpt": "Investment Canada's index records Phoenix International Holdings' March 2018 acquisition of OceanWorks Holding Co. Ltd. and the OceanWorks International Corporation submarine-rescue business in Burnaby.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oceanworks-profile-amalgamation",
+          "sourceId": "bc-registry-oceanworks-amalgamation",
+          "fieldPath": "operations.set-oceanworks-profile-data.after",
+          "claimClass": "source_backed",
+          "excerpt": "The provincial registry establishes the 2023 amalgamated entity and legal name while the current official site establishes the continuing OceanWorks International operating brand.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oceanworks-dnd-contract",
+          "sourceId": "canadabuys-oceanworks-w8483-137107",
+          "fieldPath": "operations.add-oceanworks-dnd-elss-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records DND contract W8483-137107/001/ML, awarded in July 2013 and amended in June 2014, at a reported value of CAD 526,391.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oceanworks-dnd-scope",
+          "sourceId": "dnd-oceanworks-elss-sow",
+          "fieldPath": "operations.add-oceanworks-dnd-elss-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND's statement of work identifies Emergency Life Support Stores pod assemblies for Victoria-class submarine escape towers and torpedo tubes and compatibility with the Royal Canadian Navy ELSS Pod Carousel.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oceanworks-ccc-contract",
+          "sourceId": "ccc-oceanworks-us-navy-contract",
+          "fieldPath": "operations.add-oceanworks-ccc-us-navy-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "CCC reports that during 2015 OceanWorks successfully completed a U.S. Navy contract for specialized submarine-rescue and breathing equipment as a CCC subcontractor.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oceanworks-smt-contract",
+          "sourceId": "oceanworks-safe-marine-transfer-contract",
+          "fieldPath": "operations.add-oceanworks-smt-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "OceanWorks reports that Safe Marine Transfer awarded it an engineering study for a subsea chemical injection unit involving storage, pumps, controls, sensors, electrical systems, and batteries.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oceanworks-award-search-boundary",
+          "sourceId": "open-canada-contract-history-dataset",
+          "fieldPath": "reviewWarnings",
+          "claimClass": "source_backed",
+          "excerpt": "The current federal contract-history dataset was searched alongside CanadaBuys, company, CCC, customer, bilingual, and industry sources without recovering a later official public OceanWorks-specific award.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+        "slug": "oceanworks-international",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T14:06:58.932707+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+          "slug": "oceanworks-international",
+          "name": "OceanWorks International",
+          "legal_name": "OceanWorks International Corporation",
+          "description": "OceanWorks International is a British Columbia subsea-engineering company that designs and manufactures manned and unmanned underwater work systems, submarine rescue equipment, launch-and-recovery systems and seafloor network infrastructure.",
+          "website_url": "https://oceanworks.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use",
+            "ocean_technology"
+          ],
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "OceanWorks publishes its Burnaby, British Columbia operating identity and a public sales contact across its official company and product material.",
+            "portfolioScope": "Engineer, manufacture, test and support modular subsea systems, transportable launch-and-recovery equipment, control systems and underwater intervention technology for military, scientific and commercial missions.",
+            "currentActivity": "OceanWorks documents modular, air-transportable and container-compatible launch-and-recovery configurations alongside military submarine-rescue and subsea intervention systems.",
+            "evidenceBoundary": "Organization identity, capability, location, contact and activity are source-backed. Containerized ASW and mission alignment are derived assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand.",
+            "reviewed_candidate_id": "0ce2b4a1-f7f6-4903-9c75-88a913396d1a",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "publication_status": "published",
+          "updated_at": "2026-07-24T14:06:58.932707+00:00"
+        },
+        "relationships": []
+      },
+      "operations": [
+        {
+          "operationId": "set-oceanworks-legal-name",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+          "field": "legal_name",
+          "before": "OceanWorks International Corporation",
+          "after": "OceanWorks Holding Co. Ltd.",
+          "evidenceIds": [
+            "evidence-oceanworks-legal-name"
+          ],
+          "reviewerExplanation": "Update the legal-name field to the official 2023 amalgamated successor while retaining OceanWorks International as the public operating name."
+        },
+        {
+          "operationId": "set-oceanworks-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "OceanWorks publishes its Burnaby, British Columbia operating identity and a public sales contact across its official company and product material.",
+            "portfolioScope": "Engineer, manufacture, test and support modular subsea systems, transportable launch-and-recovery equipment, control systems and underwater intervention technology for military, scientific and commercial missions.",
+            "currentActivity": "OceanWorks documents modular, air-transportable and container-compatible launch-and-recovery configurations alongside military submarine-rescue and subsea intervention systems.",
+            "evidenceBoundary": "Organization identity, capability, location, contact and activity are source-backed. Containerized ASW and mission alignment are derived assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand.",
+            "reviewed_candidate_id": "0ce2b4a1-f7f6-4903-9c75-88a913396d1a",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "OceanWorks publishes its Burnaby, British Columbia operating identity and a public sales contact across its official company and product material.",
+            "portfolioScope": "Engineer, manufacture, test and support modular subsea systems, transportable launch-and-recovery equipment, control systems and underwater intervention technology for military, scientific and commercial missions.",
+            "currentActivity": "OceanWorks documents modular, air-transportable and container-compatible launch-and-recovery configurations alongside military submarine-rescue and subsea intervention systems.",
+            "evidenceBoundary": "Organization identity, capability, location, contact and activity are source-backed. Containerized ASW and mission alignment are derived assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand.",
+            "reviewed_candidate_id": "0ce2b4a1-f7f6-4903-9c75-88a913396d1a",
+            "research_schema_version": "organization_bundle_v2",
+            "ownershipAndLegalIdentity": "Investment Canada records Phoenix International Holdings' March 2018 acquisition of OceanWorks Holding Co. Ltd. and OceanWorks International Corporation's submarine-rescue business. The BC registry later records OceanWorks Holding Co. Ltd. and OceanWorks International Corporation as amalgamating into company 1394079 under the legal name OceanWorks Holding Co. Ltd.; OceanWorks International remains the public operating brand on the current official site."
+          },
+          "evidenceIds": [
+            "evidence-oceanworks-profile-acquisition",
+            "evidence-oceanworks-profile-amalgamation"
+          ],
+          "reviewerExplanation": "Preserve every published profile key and add bounded ownership and legal-identity history from official federal and provincial sources."
+        },
+        {
+          "operationId": "add-oceanworks-dnd-elss-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+          "value": {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "Emergency Life Support Stores contract supplier",
+            "publicSummary": "CanadaBuys records OceanWorks International Corporation as supplier on DND contract W8483-137107/001/ML, initially awarded on July 12, 2013 and amended on June 10, 2014, with a reported value of CAD 526,391. DND's statement of work covers Emergency Life Support Stores pod assemblies for Victoria-class submarine escape towers and torpedo tubes."
+          },
+          "evidenceIds": [
+            "evidence-oceanworks-dnd-contract",
+            "evidence-oceanworks-dnd-scope"
+          ],
+          "reviewerExplanation": "Add the newer CanadaBuys contract with exact identifier, dates, published value, and DND technical scope without inferring delivery performance."
+        },
+        {
+          "operationId": "add-oceanworks-ccc-us-navy-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+          "value": {
+            "relatedOrganizationName": "Canadian Commercial Corporation and U.S. Navy",
+            "relationshipType": "completed submarine-rescue equipment contract",
+            "publicSummary": "The Canadian Commercial Corporation reports that during 2015 OceanWorks successfully completed a U.S. Navy contract for specialized submarine-rescue and breathing equipment as a CCC subcontractor. The reviewed official report does not publish a contract identifier or value."
+          },
+          "evidenceIds": [
+            "evidence-oceanworks-ccc-contract"
+          ],
+          "reviewerExplanation": "Add the official completed-contract relationship while preserving the absence of a public identifier, award date, and value."
+        },
+        {
+          "operationId": "add-oceanworks-smt-relationship",
+          "operation": "add_child",
+          "entityType": "relationship",
+          "parentId": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+          "value": {
+            "relatedOrganizationName": "Safe Marine Transfer LLC",
+            "relationshipType": "subsea engineering-study contractor",
+            "publicSummary": "OceanWorks announced on August 10, 2015 that Safe Marine Transfer awarded it an engineering study for a subsea chemical injection unit involving subsea storage, pumps, controls, sensors, electrical systems, and batteries. The release does not publish a contract value or completion milestone."
+          },
+          "evidenceIds": [
+            "evidence-oceanworks-smt-contract"
+          ],
+          "reviewerExplanation": "Add the official commercial study award with its technical scope while leaving value and completion status explicitly unknown."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "other_discovery"
+      ],
+      "signalIds": [
+        "oceanworks-user-contract-baseline-2011",
+        "oceanworks-dnd-elss-contract-2014",
+        "oceanworks-us-navy-contract-completed-2015",
+        "oceanworks-smt-study-contract-2015",
+        "oceanworks-phoenix-acquisition-2018",
+        "oceanworks-bc-amalgamation-2023"
+      ],
+      "corroboration": [
+        {
+          "claim": "DND contract W8483-137107/001/ML post-dates the user's 2011 baseline and covers ELSS pod assemblies for Victoria-class submarines.",
+          "sourceIds": [
+            "canadabuys-oceanworks-w8483-137107",
+            "dnd-oceanworks-elss-sow"
+          ]
+        },
+        {
+          "claim": "CCC records OceanWorks' successful completion during 2015 of specialized U.S. Navy submarine-rescue and breathing-equipment work.",
+          "sourceIds": [
+            "ccc-oceanworks-us-navy-contract"
+          ]
+        },
+        {
+          "claim": "OceanWorks announced a 2015 subsea chemical-injection engineering-study contract from Safe Marine Transfer.",
+          "sourceIds": [
+            "oceanworks-safe-marine-transfer-contract"
+          ]
+        },
+        {
+          "claim": "Official federal and provincial records support the 2018 acquisition history and 2023 legal successor while the operating brand remains OceanWorks International.",
+          "sourceIds": [
+            "ised-oceanworks-phoenix-acquisition",
+            "bc-registry-oceanworks-amalgamation",
+            "oceanworks-contact"
+          ]
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

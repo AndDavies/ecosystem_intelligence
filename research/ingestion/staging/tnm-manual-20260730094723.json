@@ -1,0 +1,2528 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-30T10:02:20.344Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260730094723",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "accelerator"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "organization-kind:accelerator",
+      "reason": "7 published or pending accelerator records cover only 58% of the working saturation target of 12.",
+      "score": 804
+    },
+    "status": "completed",
+    "started_at": "2026-07-30T09:47:23.618Z",
+    "completed_at": "2026-07-30T09:59:10.165Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "site:canada.ca designated business incubators Canada Start-up Visa list accelerators",
+      "Canada accelerator official FounderFuel Alacrity Propel ICT Spring Activator",
+      "site:quebec.ca incubateurs accélérateurs entreprises innovantes",
+      "site:district3.co accelerator programs Montreal",
+      "site:acet.ca accélérateur programme Sherbrooke",
+      "site:cyclemomentum.com accelerator programs Montreal",
+      "site:accelerateokanagan.com entrepreneur programs Kelowna",
+      "site:canada.ca accelerator funding Propel Alacrity Accelerate Okanagan",
+      "Canadian accelerator cohort university innovation hub",
+      "Canadian accelerator LinkedIn official program discovery resolved to durable sources"
+    ],
+    "counters": {
+      "sourcesChecked": 80,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 8,
+      "prospectsDiscovered": 50,
+      "uniqueProspects": 50,
+      "prospectsQueued": 32,
+      "recoveryAttempts": 30,
+      "sourceLanesSearched": 7,
+      "candidatesGreen": 6,
+      "candidatesAmber": 4,
+      "claimsCollected": 50,
+      "claimsConflicted": 0,
+      "coverageSubjects": 10
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Four candidates require explicit human confirmation of accelerator taxonomy or an operating-model boundary before publication."
+      ]
+    },
+    "stop_reason": "Completed the ten-candidate target after qualifying a 50-prospect multi-lane accelerator inventory; thirty-two unused prospects remain queued for later evidence-led batches."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-founderfuel",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-founderfuel"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-founderfuel",
+        "sourceLeadIds": [
+          "lead-founderfuel"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "FounderFuel fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "green",
+        "inclusionScore": 94,
+        "completenessScore": 89,
+        "reviewWarnings": [
+          "FounderFuel's latest detailed FAQ still describes its 2023 cohort terms; reviewers should confirm current intake and investment terms before adding time-sensitive details."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "founderfuel-profile",
+            "title": "About FounderFuel",
+            "url": "https://founderfuel.com/about/",
+            "publisher": "FounderFuel",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Program overview and frequently asked questions",
+            "summary": "FounderFuel describes its mentor-driven venture accelerator, four-month delivery model, Montreal in-person programming, investment approach and founder-development mandate."
+          },
+          {
+            "id": "founderfuel-program",
+            "title": "FounderFuel accelerator overview",
+            "url": "https://founderfuel.com/",
+            "publisher": "FounderFuel",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Homepage program and sponsor sections",
+            "summary": "The official homepage describes a four-month intensive accelerator, mentor network, investment-readiness focus and Demo Day outcome."
+          },
+          {
+            "id": "founderfuel-relationship",
+            "title": "FounderFuel team and Real Ventures relationship",
+            "url": "https://founderfuel.com/team/",
+            "publisher": "FounderFuel",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Team and operator section",
+            "summary": "FounderFuel identifies Real Ventures as its founding and operating venture partner and describes the shared team and mentor network."
+          },
+          {
+            "id": "founderfuel-location",
+            "title": "Real Ventures Canadian venture ecosystem",
+            "url": "https://realventures.com/ecosystem/",
+            "publisher": "Real Ventures",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "FounderFuel ecosystem section",
+            "summary": "Real Ventures describes creating FounderFuel to connect entrepreneurs and the technology ecosystem in Montreal and Canada."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-founderfuel-description",
+            "sourceId": "founderfuel-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "FounderFuel is a Montreal-based venture accelerator that provides a four-month intensive program combining mentorship, founder development, investor preparation and a public Demo Day for early-stage technology companies.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-founderfuel-mandate",
+            "sourceId": "founderfuel-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "FounderFuel supports early-stage technology founders in developing leadership, product, go-to-market and financing readiness through an intensive mentor-driven accelerator and access to Canadian startup and venture networks.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-founderfuel-location",
+            "sourceId": "founderfuel-location",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "FounderFuel has a documented Canadian operating presence in Montreal, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-founderfuel-program",
+            "sourceId": "founderfuel-program",
+            "fieldPath": "programs.founderfuel-intensive-accelerator.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The four-month FounderFuel accelerator combines mentor matching, founder development, expert seminars, networking and investment preparation, culminating in a public Demo Day for the selected cohort.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-founderfuel-relationship",
+            "sourceId": "founderfuel-relationship",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "FounderFuel states that it was founded by and is powered by Real Ventures, with the venture firm's team and network supporting accelerator operations, mentorship and investment activity.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "founderfuel",
+          "name": "FounderFuel",
+          "legalName": "FounderFuel",
+          "aliases": [
+            "FF"
+          ],
+          "description": "FounderFuel is a Montreal-based venture accelerator that provides a four-month intensive program combining mentorship, founder development, investor preparation and a public Demo Day for early-stage technology companies.",
+          "websiteUrl": "https://founderfuel.com/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "FounderFuel supports early-stage technology founders in developing leadership, product, go-to-market and financing readiness through an intensive mentor-driven accelerator and access to Canadian startup and venture networks.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "founderfuel-intensive-accelerator",
+            "name": "FounderFuel Intensive Accelerator",
+            "programType": "venture-backed founder accelerator",
+            "websiteUrl": "https://founderfuel.com/about/",
+            "summary": "The four-month FounderFuel accelerator combines mentor matching, founder development, expert seminars, networking and investment preparation, culminating in a public Demo Day for the selected cohort.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Real Ventures",
+            "relationshipType": "founding and operating partner",
+            "publicSummary": "FounderFuel states that it was founded by and is powered by Real Ventures, with the venture firm's team and network supporting accelerator operations, mentorship and investment activity."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://founderfuel.com/",
+          "sourceAssetUrl": "https://founderfuel.com/wp-content/uploads/2019/12/logo-300x111.png",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "b80a7d91453ef3617f509ebd0f225682919de182aafb8428bcebe84b852ce89b",
+          "normalizedChecksum": "4e9d876f82ec28adb9eee1ff86ce6d60b49766ac57dedaf8dda4d5d4ae2a6f88",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730094723/candidate-founderfuel/logo.source.json",
+          "note": "300x111 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-founderfuel-description",
+          "sourceId": "founderfuel-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "FounderFuel is a Montreal-based venture accelerator that provides a four-month intensive program combining mentorship, founder development, investor preparation and a public Demo Day for early-stage technology companies.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-founderfuel-mandate",
+          "sourceId": "founderfuel-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "FounderFuel supports early-stage technology founders in developing leadership, product, go-to-market and financing readiness through an intensive mentor-driven accelerator and access to Canadian startup and venture networks.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-founderfuel-location",
+          "sourceId": "founderfuel-location",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "FounderFuel has a documented Canadian operating presence in Montreal, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-founderfuel-program",
+          "sourceId": "founderfuel-program",
+          "fieldPath": "programs.founderfuel-intensive-accelerator.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The four-month FounderFuel accelerator combines mentor matching, founder development, expert seminars, networking and investment preparation, culminating in a public Demo Day for the selected cohort.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-founderfuel-relationship",
+          "sourceId": "founderfuel-relationship",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FounderFuel states that it was founded by and is powered by Real Ventures, with the venture firm's team and network supporting accelerator operations, mentorship and investment activity.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "FounderFuel fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    },
+    {
+      "client_candidate_id": "candidate-propel-ict",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-propel-ict"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-propel-ict",
+        "sourceLeadIds": [
+          "lead-propel-ict"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Propel ICT fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "green",
+        "inclusionScore": 96,
+        "completenessScore": 92,
+        "reviewWarnings": [
+          "Propel delivers programming virtually; Saint John records the documented organizational origin and federal funding dateline rather than implying a current walk-in office."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "propel-ict-profile",
+            "title": "Our Organization at Propel",
+            "url": "https://www.propelict.com/about-us/our-organization",
+            "publisher": "Propel ICT",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Organization mandate and history",
+            "summary": "Propel describes itself as an Atlantic Canadian organization offering an online accelerator to technology startups and documents its Saint John origin and regional expansion."
+          },
+          {
+            "id": "propel-ict-program",
+            "title": "Apply to the Propel accelerator",
+            "url": "https://www.propelict.com/apply",
+            "publisher": "Propel ICT",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Application and program pathway",
+            "summary": "Propel describes validation, traction and growth pathways, coaching, application criteria and the current virtual delivery model for Atlantic Canadian founders."
+          },
+          {
+            "id": "propel-ict-relationship",
+            "title": "Government of Canada investment in Propel",
+            "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/12/government-of-canada-investing-to-strengthen-atlantic-canadas-startup-ecosystem.html",
+            "publisher": "Atlantic Canada Opportunities Agency",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "December 8 2023 funding announcement",
+            "summary": "ACOA identifies Propel ICT Inc. as Atlantic Canada's virtual accelerator and describes public support for its regional accelerator programming."
+          },
+          {
+            "id": "propel-ict-location",
+            "title": "Propel virtual accelerator FAQ",
+            "url": "https://www.propelict.com/faq",
+            "publisher": "Propel ICT",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Location and delivery questions",
+            "summary": "Propel states that it is fully virtual and prioritizes startups based in Atlantic Canada rather than operating a physical client location."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-propel-ict-description",
+            "sourceId": "propel-ict-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Propel ICT is an Atlantic Canadian virtual technology accelerator that supports founders from problem validation through product-market fit, traction and scalable growth with coaching and structured online programming.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-propel-ict-mandate",
+            "sourceId": "propel-ict-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Propel ICT helps technology founders across Atlantic Canada validate customer problems, build repeatable go-to-market practices, develop leadership skills and prepare their ventures to scale through a virtual accelerator model.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-propel-ict-location",
+            "sourceId": "propel-ict-profile",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Propel ICT has a documented Canadian operating presence in Saint John, New Brunswick.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-propel-ict-program",
+            "sourceId": "propel-ict-program",
+            "fieldPath": "programs.propel-e-accelerator.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Propel's virtual accelerator routes founders through validation and growth programming with startup coaches, asynchronous learning, stage-specific milestones and an Atlantic Canada eligibility focus.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-propel-ict-relationship",
+            "sourceId": "propel-ict-relationship",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "The Atlantic Canada Opportunities Agency announced support for Propel ICT Inc. to deliver its pan-Atlantic virtual accelerator and provide regional technology founders with coaching, skills, networks and growth resources.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "propel-ict",
+          "name": "Propel ICT",
+          "legalName": "Propel ICT Inc.",
+          "aliases": [
+            "Propel"
+          ],
+          "description": "Propel ICT is an Atlantic Canadian virtual technology accelerator that supports founders from problem validation through product-market fit, traction and scalable growth with coaching and structured online programming.",
+          "websiteUrl": "https://www.propelict.com/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator"
+          ],
+          "primaryLocation": {
+            "city": "Saint John",
+            "provinceTerritory": "New Brunswick",
+            "countryCode": "CA",
+            "latitude": 45.2733,
+            "longitude": -66.0633,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Propel ICT helps technology founders across Atlantic Canada validate customer problems, build repeatable go-to-market practices, develop leadership skills and prepare their ventures to scale through a virtual accelerator model.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "propel-e-accelerator",
+            "name": "Propel E-Accelerator",
+            "programType": "virtual technology accelerator",
+            "websiteUrl": "https://www.propelict.com/apply",
+            "summary": "Propel's virtual accelerator routes founders through validation and growth programming with startup coaches, asynchronous learning, stage-specific milestones and an Atlantic Canada eligibility focus.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Atlantic Canada Opportunities Agency",
+            "relationshipType": "public funding partner",
+            "publicSummary": "The Atlantic Canada Opportunities Agency announced support for Propel ICT Inc. to deliver its pan-Atlantic virtual accelerator and provide regional technology founders with coaching, skills, networks and growth resources."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.propelict.com/",
+          "sourceAssetUrl": "https://cdn.prod.website-files.com/6123df4531d61f9778fc41c7/6123df4531d61f01cdfc4209_Propel_Logo-H.svg",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "d7ad10339236fcfd33f5c3731efec6b595f3c13574e5ffe1d4fc740d79ecfb90",
+          "normalizedChecksum": "56afb733fd8e0b0a82776184b525d88a33736bc157bbc945a37239d301bdca46",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730094723/candidate-propel-ict/logo.source.json",
+          "note": "898x212 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-propel-ict-description",
+          "sourceId": "propel-ict-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Propel ICT is an Atlantic Canadian virtual technology accelerator that supports founders from problem validation through product-market fit, traction and scalable growth with coaching and structured online programming.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-propel-ict-mandate",
+          "sourceId": "propel-ict-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Propel ICT helps technology founders across Atlantic Canada validate customer problems, build repeatable go-to-market practices, develop leadership skills and prepare their ventures to scale through a virtual accelerator model.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-propel-ict-location",
+          "sourceId": "propel-ict-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Propel ICT has a documented Canadian operating presence in Saint John, New Brunswick.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-propel-ict-program",
+          "sourceId": "propel-ict-program",
+          "fieldPath": "programs.propel-e-accelerator.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Propel's virtual accelerator routes founders through validation and growth programming with startup coaches, asynchronous learning, stage-specific milestones and an Atlantic Canada eligibility focus.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-propel-ict-relationship",
+          "sourceId": "propel-ict-relationship",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Atlantic Canada Opportunities Agency announced support for Propel ICT Inc. to deliver its pan-Atlantic virtual accelerator and provide regional technology founders with coaching, skills, networks and growth resources.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "Propel ICT fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    },
+    {
+      "client_candidate_id": "candidate-spring-activator",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-spring-activator"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-spring-activator",
+        "sourceLeadIds": [
+          "lead-spring-activator"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Spring Activator fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "amber",
+        "inclusionScore": 86,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "Spring also operates investor education and related impact-investment entities; review should keep the accelerator record bounded and avoid merging Spring Impact Capital or Propel Impact."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "spring-activator-profile",
+            "title": "Spring founder and investor platform",
+            "url": "https://spring.is/",
+            "publisher": "Spring Activator",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Official homepage mandate impact and location",
+            "summary": "Spring describes its founder and investor programs, impact mandate and public locations in Vancouver and Toronto."
+          },
+          {
+            "id": "spring-activator-program",
+            "title": "Spring Scale Ready",
+            "url": "https://spring.is/programs/scale-ready/",
+            "publisher": "Spring Activator",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Scale Ready program page",
+            "summary": "Spring presents Scale Ready as structured support for impact founders preparing to scale their organizations and financing readiness."
+          },
+          {
+            "id": "spring-activator-relationship",
+            "title": "Spring AccelerateIP support",
+            "url": "https://spring.is/programs/accelerate-ip-for-founders/",
+            "publisher": "Spring Activator",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "AccelerateIP partner and support section",
+            "summary": "Spring describes its role in the New Ventures BC-led AccelerateIP network supported by Innovate BC and ISED."
+          },
+          {
+            "id": "spring-activator-location",
+            "title": "Spring values and public locations",
+            "url": "https://spring.is/about-spring-values/",
+            "publisher": "Spring Activator",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "About and footer location",
+            "summary": "Spring's official site identifies its Canadian presence and impact-focused operating values."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-spring-activator-description",
+            "sourceId": "spring-activator-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Spring Activator is a Vancouver-rooted impact accelerator and investor-learning platform that designs programs for purpose-driven founders, investment readiness and values-aligned capital networks.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-spring-activator-mandate",
+            "sourceId": "spring-activator-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Spring Activator connects impact founders and investors through business acceleration, investment-readiness education, investor training and market-entry support intended to help purpose-driven ventures scale sustainable solutions.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-spring-activator-location",
+            "sourceId": "spring-activator-location",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Spring Activator has a documented Canadian operating presence in Vancouver, British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-spring-activator-program",
+            "sourceId": "spring-activator-program",
+            "fieldPath": "programs.spring-scale-ready.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Scale Ready supports impact founders preparing for growth with structured programming focused on leadership, market expansion, investment readiness and the operational requirements of scaling a venture.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-spring-activator-relationship",
+            "sourceId": "spring-activator-relationship",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Spring participates in the AccelerateIP delivery network led by New Ventures BC and supported by Innovate BC and Innovation, Science and Economic Development Canada for startup intellectual-property education and strategy support.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "spring-activator",
+          "name": "Spring Activator",
+          "legalName": "Spring Activator Inc.",
+          "aliases": [
+            "Spring"
+          ],
+          "description": "Spring Activator is a Vancouver-rooted impact accelerator and investor-learning platform that designs programs for purpose-driven founders, investment readiness and values-aligned capital networks.",
+          "websiteUrl": "https://spring.is/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator"
+          ],
+          "primaryLocation": {
+            "city": "Vancouver",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 49.2827,
+            "longitude": -123.1207,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Spring Activator connects impact founders and investors through business acceleration, investment-readiness education, investor training and market-entry support intended to help purpose-driven ventures scale sustainable solutions.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "spring-scale-ready",
+            "name": "Scale Ready",
+            "programType": "impact venture scale-up program",
+            "websiteUrl": "https://spring.is/programs/scale-ready/",
+            "summary": "Scale Ready supports impact founders preparing for growth with structured programming focused on leadership, market expansion, investment readiness and the operational requirements of scaling a venture.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "New Ventures BC",
+            "relationshipType": "ecosystem program partner",
+            "publicSummary": "Spring participates in the AccelerateIP delivery network led by New Ventures BC and supported by Innovate BC and Innovation, Science and Economic Development Canada for startup intellectual-property education and strategy support."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://spring.is/",
+          "sourceAssetUrl": "https://spring.is/wp-content/uploads/2023/09/358_Rebrand-logo-files_Horizontal-1.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "fffd3556224c291c5843c095c68bae188020cb5147e112fc5a1780c776cb2d40",
+          "normalizedChecksum": "e6e80ae8ed8b2aa487944a8c2961eb91b2965bda1f7d864106de15a09fd32e36",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730094723/candidate-spring-activator/logo.source.json",
+          "note": "1024x410 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-spring-activator-description",
+          "sourceId": "spring-activator-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Spring Activator is a Vancouver-rooted impact accelerator and investor-learning platform that designs programs for purpose-driven founders, investment readiness and values-aligned capital networks.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-spring-activator-mandate",
+          "sourceId": "spring-activator-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Spring Activator connects impact founders and investors through business acceleration, investment-readiness education, investor training and market-entry support intended to help purpose-driven ventures scale sustainable solutions.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-spring-activator-location",
+          "sourceId": "spring-activator-location",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Spring Activator has a documented Canadian operating presence in Vancouver, British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-spring-activator-program",
+          "sourceId": "spring-activator-program",
+          "fieldPath": "programs.spring-scale-ready.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Scale Ready supports impact founders preparing for growth with structured programming focused on leadership, market expansion, investment readiness and the operational requirements of scaling a venture.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-spring-activator-relationship",
+          "sourceId": "spring-activator-relationship",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Spring participates in the AccelerateIP delivery network led by New Ventures BC and supported by Innovate BC and Innovation, Science and Economic Development Canada for startup intellectual-property education and strategy support.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "Spring Activator fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    },
+    {
+      "client_candidate_id": "candidate-alacrity-canada",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-alacrity-canada"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-alacrity-canada",
+        "sourceLeadIds": [
+          "lead-alacrity-canada"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Alacrity Canada fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "green",
+        "inclusionScore": 95,
+        "completenessScore": 91,
+        "reviewWarnings": [
+          "The federal Start-up Visa program is currently paused; this candidate uses the active APEX program and does not imply that new visa commitments are available."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "alacrity-canada-profile",
+            "title": "About Alacrity Canada",
+            "url": "https://www.alacritycanada.com/about",
+            "publisher": "Alacrity Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "About and organization profile",
+            "summary": "Alacrity Canada describes its non-profit accelerator role, Canadian technology and business support mandate and Victoria origins."
+          },
+          {
+            "id": "alacrity-canada-program",
+            "title": "Alacrity Advanced Pathways for Export",
+            "url": "https://www.alacritycanada.com/programs/apex",
+            "publisher": "Alacrity Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "APEX program overview",
+            "summary": "Alacrity describes APEX as tailored support for high-growth businesses pursuing export markets and commercial scale."
+          },
+          {
+            "id": "alacrity-canada-relationship",
+            "title": "PacifiCan business-growth investment",
+            "url": "https://www.canada.ca/en/pacific-economic-development/news/2025/03/pacifican-invests-64-million-to-drive-business-growth-and-support-community-economic-development-initiatives-across-british-columbia.html",
+            "publisher": "Pacific Economic Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "March 7 2025 recipient announcement",
+            "summary": "PacifiCan identifies Alacrity Canada as a Business Acceleration Pilot recipient and describes the purpose of its expanded growth programming."
+          },
+          {
+            "id": "alacrity-canada-location",
+            "title": "Alacrity Canada contact",
+            "url": "https://www.alacritycanada.com/contact",
+            "publisher": "Alacrity Canada",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Public contact page",
+            "summary": "Alacrity Canada's official public contact material supports its Victoria British Columbia operating presence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-alacrity-canada-description",
+            "sourceId": "alacrity-canada-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Alacrity Canada is a Victoria-based non-profit accelerator that delivers venture-growth, export, technology commercialization and Canadian market-entry programs for entrepreneurs and growth-oriented businesses.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alacrity-canada-mandate",
+            "sourceId": "alacrity-canada-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Alacrity Canada helps technology entrepreneurs and growth-oriented businesses develop market strategy, commercial capacity, export readiness and access to expert networks through accelerator and economic-development programming.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alacrity-canada-location",
+            "sourceId": "alacrity-canada-location",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Alacrity Canada has a documented Canadian operating presence in Victoria, British Columbia.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alacrity-canada-program",
+            "sourceId": "alacrity-canada-program",
+            "fieldPath": "programs.alacrity-apex.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The Advanced Pathways for Export program provides growth-oriented British Columbia businesses with tailored mentorship, market-development support and connections intended to improve export and scale-up readiness.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alacrity-canada-relationship",
+            "sourceId": "alacrity-canada-relationship",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Pacific Economic Development Canada identifies the Alacrity Foundation of B.C. operating as Alacrity Canada and funds expanded accelerator programming for growth-oriented British Columbia businesses through the Business Acceleration Pilot.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "alacrity-canada",
+          "name": "Alacrity Canada",
+          "legalName": "The Alacrity Foundation of B.C.",
+          "aliases": [
+            "Alacrity Foundation"
+          ],
+          "description": "Alacrity Canada is a Victoria-based non-profit accelerator that delivers venture-growth, export, technology commercialization and Canadian market-entry programs for entrepreneurs and growth-oriented businesses.",
+          "websiteUrl": "https://www.alacritycanada.com/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator"
+          ],
+          "primaryLocation": {
+            "city": "Victoria",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 48.4284,
+            "longitude": -123.3656,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Alacrity Canada helps technology entrepreneurs and growth-oriented businesses develop market strategy, commercial capacity, export readiness and access to expert networks through accelerator and economic-development programming.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "alacrity-apex",
+            "name": "Advanced Pathways for Export",
+            "programType": "business acceleration and export program",
+            "websiteUrl": "https://www.alacritycanada.com/programs/apex",
+            "summary": "The Advanced Pathways for Export program provides growth-oriented British Columbia businesses with tailored mentorship, market-development support and connections intended to improve export and scale-up readiness.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Pacific Economic Development Canada",
+            "relationshipType": "public funding partner",
+            "publicSummary": "Pacific Economic Development Canada identifies the Alacrity Foundation of B.C. operating as Alacrity Canada and funds expanded accelerator programming for growth-oriented British Columbia businesses through the Business Acceleration Pilot."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.alacritycanada.com/",
+          "sourceAssetUrl": "https://cdn.prod.website-files.com/68f2f1421897843038a05058/68f3ef238abeb45efd711f6b_Alacrity_Canada_Signature_White.png",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "a2f1db4225719e43b102aefb254f1107304a6e2996f8c87ea2264ee71c2415a9",
+          "normalizedChecksum": "72944b5bf0de9a9e050b81ac99b2c699643d8e98dc9b4888b912d23474806a20",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730094723/candidate-alacrity-canada/logo.source.json",
+          "note": "1024x330 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-alacrity-canada-description",
+          "sourceId": "alacrity-canada-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Alacrity Canada is a Victoria-based non-profit accelerator that delivers venture-growth, export, technology commercialization and Canadian market-entry programs for entrepreneurs and growth-oriented businesses.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alacrity-canada-mandate",
+          "sourceId": "alacrity-canada-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Alacrity Canada helps technology entrepreneurs and growth-oriented businesses develop market strategy, commercial capacity, export readiness and access to expert networks through accelerator and economic-development programming.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alacrity-canada-location",
+          "sourceId": "alacrity-canada-location",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Alacrity Canada has a documented Canadian operating presence in Victoria, British Columbia.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alacrity-canada-program",
+          "sourceId": "alacrity-canada-program",
+          "fieldPath": "programs.alacrity-apex.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Advanced Pathways for Export program provides growth-oriented British Columbia businesses with tailored mentorship, market-development support and connections intended to improve export and scale-up readiness.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alacrity-canada-relationship",
+          "sourceId": "alacrity-canada-relationship",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Pacific Economic Development Canada identifies the Alacrity Foundation of B.C. operating as Alacrity Canada and funds expanded accelerator programming for growth-oriented British Columbia businesses through the Business Acceleration Pilot.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "Alacrity Canada fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    },
+    {
+      "client_candidate_id": "candidate-district-3",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-district-3"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-district-3",
+        "sourceLeadIds": [
+          "lead-district-3"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "District 3 fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "amber",
+        "inclusionScore": 89,
+        "completenessScore": 87,
+        "reviewWarnings": [
+          "District 3 also self-identifies as an incubator and innovation hub; reviewers should confirm accelerator as the primary taxonomy while retaining the university-affiliated category."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "district-3-profile",
+            "title": "District 3 innovation hub",
+            "url": "https://www.district3.co/",
+            "publisher": "District 3",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Official mandate sectors and Montreal address",
+            "summary": "District 3 describes its Montreal startup-support mandate, sector focus, stage-based services and public operating location."
+          },
+          {
+            "id": "district-3-program",
+            "title": "District 3 startup programs",
+            "url": "https://www.district3.co/programs",
+            "publisher": "District 3",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Launch and Grow program section",
+            "summary": "District 3 describes Launch and Grow as acceleration support for traction-stage startups pursuing product-market fit, funding and market expansion."
+          },
+          {
+            "id": "district-3-relationship",
+            "title": "Concordia D3 Innovation Hub",
+            "url": "https://www.concordia.ca/research/d3.html",
+            "publisher": "Concordia University",
+            "sourceKind": "research_centre_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "District 3 Accelerator section",
+            "summary": "Concordia identifies District 3 Accelerator within its D3 Innovation Hub and summarizes its high-tech, healthcare and biotech venture-support role."
+          },
+          {
+            "id": "district-3-location",
+            "title": "District 3 startup programs and location",
+            "url": "https://www.district3.co/programs",
+            "publisher": "District 3",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Montreal coworking and service area",
+            "summary": "The official program page identifies downtown Montreal coworking and eligibility for ventures in the greater Montreal area."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-district-3-description",
+            "sourceId": "district-3-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "District 3 is a Montreal innovation hub and accelerator associated with Concordia University that supports high-technology, health, biotechnology and social-impact ventures from validation through launch, growth and fundraising readiness.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-district-3-mandate",
+            "sourceId": "district-3-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "District 3 helps founders and research-driven teams translate ideas into ventures through sector coaching, validation, commercialization, funding preparation, intellectual-property support and access to partners and investors.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-district-3-location",
+            "sourceId": "district-3-location",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "District 3 has a documented Canadian operating presence in Montreal, Quebec.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-district-3-program",
+            "sourceId": "district-3-program",
+            "fieldPath": "programs.district-3-launch-and-grow.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Launch & Grow provides traction-stage startups with biweekly coaching, tailored workshops, non-dilutive funding and fundraising support, intellectual-property guidance and investor and partner connections.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-district-3-relationship",
+            "sourceId": "district-3-relationship",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Concordia University presents District 3 as a unit of its D3 Innovation Hub and describes the accelerator as supporting high-tech, healthcare and biotechnology startups toward product-market fit and first-round readiness.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "district-3",
+          "name": "District 3",
+          "legalName": "District 3 Innovation Hub",
+          "aliases": [
+            "D3",
+            "District 3 Accelerator"
+          ],
+          "description": "District 3 is a Montreal innovation hub and accelerator associated with Concordia University that supports high-technology, health, biotechnology and social-impact ventures from validation through launch, growth and fundraising readiness.",
+          "websiteUrl": "https://www.district3.co/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator",
+            "university_affiliated"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "District 3 helps founders and research-driven teams translate ideas into ventures through sector coaching, validation, commercialization, funding preparation, intellectual-property support and access to partners and investors.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "district-3-launch-and-grow",
+            "name": "Launch & Grow",
+            "programType": "startup growth accelerator",
+            "websiteUrl": "https://www.district3.co/programs",
+            "summary": "Launch & Grow provides traction-stage startups with biweekly coaching, tailored workshops, non-dilutive funding and fundraising support, intellectual-property guidance and investor and partner connections.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Concordia University",
+            "relationshipType": "university innovation hub",
+            "publicSummary": "Concordia University presents District 3 as a unit of its D3 Innovation Hub and describes the accelerator as supporting high-tech, healthcare and biotechnology startups toward product-market fit and first-round readiness."
+          }
+        ],
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://www.district3.co/",
+          "sourceAssetUrl": "https://cdn.prod.website-files.com/669eaf79c66ae7f2040f1444/670fda11419eadef9694ba27_d310yearlight.webp",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "981f5292869435d64ff4cd95dfb5f863b70a76b9c801fdeef24012c620df796c",
+          "normalizedChecksum": "1283c4bf8ec442fbb5026c23ffb974de1bfb1a1fb622ddddb2851f3e1c025005",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730094723/candidate-district-3/logo.source.json",
+          "note": "321x266 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-district-3-description",
+          "sourceId": "district-3-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "District 3 is a Montreal innovation hub and accelerator associated with Concordia University that supports high-technology, health, biotechnology and social-impact ventures from validation through launch, growth and fundraising readiness.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-district-3-mandate",
+          "sourceId": "district-3-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "District 3 helps founders and research-driven teams translate ideas into ventures through sector coaching, validation, commercialization, funding preparation, intellectual-property support and access to partners and investors.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-district-3-location",
+          "sourceId": "district-3-location",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "District 3 has a documented Canadian operating presence in Montreal, Quebec.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-district-3-program",
+          "sourceId": "district-3-program",
+          "fieldPath": "programs.district-3-launch-and-grow.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Launch & Grow provides traction-stage startups with biweekly coaching, tailored workshops, non-dilutive funding and fundraising support, intellectual-property guidance and investor and partner connections.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-district-3-relationship",
+          "sourceId": "district-3-relationship",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Concordia University presents District 3 as a unit of its D3 Innovation Hub and describes the accelerator as supporting high-tech, healthcare and biotechnology startups toward product-market fit and first-round readiness.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "District 3 fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    },
+    {
+      "client_candidate_id": "candidate-acet",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-acet"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-acet",
+        "sourceLeadIds": [
+          "lead-acet"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "ACET fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "green",
+        "inclusionScore": 95,
+        "completenessScore": 91,
+        "reviewWarnings": [
+          "ACET Capital and Quantacet are related investment entities and should remain separate canonical records rather than being merged into this accelerator profile."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "acet-profile",
+            "title": "About ACET",
+            "url": "https://acet.ca/en/acet/about/",
+            "publisher": "ACET",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "History and operating model",
+            "summary": "ACET describes its Sherbrooke university origins, technology-startup coaching model, market-intelligence services and linked investment history."
+          },
+          {
+            "id": "acet-program",
+            "title": "ACET services and ACET Boost",
+            "url": "https://acet.ca/en/",
+            "publisher": "ACET",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Services and ACET Boost sections",
+            "summary": "ACET describes commercialization, entrepreneur development, company-launch support and its ACET Boost university pre-incubation program."
+          },
+          {
+            "id": "acet-relationship",
+            "title": "Federal support for ACET",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2017/09/accelerateur_de_creationdentreprisestechnologiquesacetinsherbroo.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "September 15 2017 organization profile",
+            "summary": "The Government of Canada identifies ACET in Sherbrooke as a technology-business accelerator providing customized coaching for innovative businesses."
+          },
+          {
+            "id": "acet-location",
+            "title": "ACET contact",
+            "url": "https://acet.ca/en/contact/",
+            "publisher": "ACET",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Public contact page",
+            "summary": "ACET's official contact material supports its Sherbrooke Quebec operating presence and organization-level public contact path."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-acet-description",
+            "sourceId": "acet-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "ACET is a Sherbrooke technology-company accelerator that provides individual coaching, commercialization support, entrepreneur development, market intelligence and access to financing for research and technology ventures.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-acet-mandate",
+            "sourceId": "acet-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "ACET accelerates the creation and commercialization of technology businesses by helping technical founders structure their companies, validate markets, build commercialization strategies and connect with expertise and capital.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-acet-location",
+            "sourceId": "acet-location",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "ACET has a documented Canadian operating presence in Sherbrooke, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-acet-program",
+            "sourceId": "acet-program",
+            "fieldPath": "programs.acet-boost.summary",
+            "claimClass": "source_backed",
+            "excerpt": "ACET Boost is delivered with the Université de Sherbrooke to help university students transform technology ideas into structured startup projects through pre-incubation and entrepreneurial support.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-acet-relationship",
+            "sourceId": "acet-profile",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "ACET states that it grew from a joint initiative with the Université de Sherbrooke and now collaborates with the university on ACET Boost for student technology entrepreneurs.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "acet",
+          "name": "ACET",
+          "legalName": "Accélérateur de création d'entreprises technologiques",
+          "aliases": [
+            "Accelerator for the Creation of Technological Businesses"
+          ],
+          "description": "ACET is a Sherbrooke technology-company accelerator that provides individual coaching, commercialization support, entrepreneur development, market intelligence and access to financing for research and technology ventures.",
+          "websiteUrl": "https://acet.ca/en/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator",
+            "university_affiliated"
+          ],
+          "primaryLocation": {
+            "city": "Sherbrooke",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.4,
+            "longitude": -71.8833,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "ACET accelerates the creation and commercialization of technology businesses by helping technical founders structure their companies, validate markets, build commercialization strategies and connect with expertise and capital.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "acet-boost",
+            "name": "ACET Boost",
+            "programType": "university technology pre-incubation program",
+            "websiteUrl": "https://acet.ca/en/",
+            "summary": "ACET Boost is delivered with the Université de Sherbrooke to help university students transform technology ideas into structured startup projects through pre-incubation and entrepreneurial support.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Université de Sherbrooke",
+            "relationshipType": "university founding and program partner",
+            "publicSummary": "ACET states that it grew from a joint initiative with the Université de Sherbrooke and now collaborates with the university on ACET Boost for student technology entrepreneurs."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://acet.ca/en/",
+          "sourceAssetUrl": "https://acet.ca/wp-content/uploads/2022/10/ACET_logo-dark-banque-nationale.svg",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "61ec4e7696890d6ead4754f147d288baf7e20901448d0a86584a373f7768748c",
+          "normalizedChecksum": "b126961c013614169c39e6443bd05d7779a443179c6278f3f816bcc80561d163",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730094723/candidate-acet/logo.source.json",
+          "note": "500x197 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-acet-description",
+          "sourceId": "acet-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "ACET is a Sherbrooke technology-company accelerator that provides individual coaching, commercialization support, entrepreneur development, market intelligence and access to financing for research and technology ventures.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-acet-mandate",
+          "sourceId": "acet-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "ACET accelerates the creation and commercialization of technology businesses by helping technical founders structure their companies, validate markets, build commercialization strategies and connect with expertise and capital.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-acet-location",
+          "sourceId": "acet-location",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "ACET has a documented Canadian operating presence in Sherbrooke, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-acet-program",
+          "sourceId": "acet-program",
+          "fieldPath": "programs.acet-boost.summary",
+          "claimClass": "source_backed",
+          "excerpt": "ACET Boost is delivered with the Université de Sherbrooke to help university students transform technology ideas into structured startup projects through pre-incubation and entrepreneurial support.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-acet-relationship",
+          "sourceId": "acet-profile",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ACET states that it grew from a joint initiative with the Université de Sherbrooke and now collaborates with the university on ACET Boost for student technology entrepreneurs.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "ACET fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    },
+    {
+      "client_candidate_id": "candidate-le-camp",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-le-camp"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-le-camp",
+        "sourceLeadIds": [
+          "lead-le-camp"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "LE CAMP fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "green",
+        "inclusionScore": 94,
+        "completenessScore": 88,
+        "reviewWarnings": [
+          "LE CAMP's site presents a broad stage-based pathway rather than one fixed cohort; reviewers should preserve the program as an operating pathway and avoid inventing cohort dates."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "le-camp-profile",
+            "title": "LE CAMP technology accelerator",
+            "url": "https://lecampquebec.com/en/",
+            "publisher": "LE CAMP",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Official homepage description",
+            "summary": "LE CAMP describes its Quebec City technology-acceleration mandate, stage-based company support, coaching and partner network."
+          },
+          {
+            "id": "le-camp-program",
+            "title": "LE CAMP acceleration pathway",
+            "url": "https://lecampquebec.com/en/",
+            "publisher": "LE CAMP",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Programs and company-support sections",
+            "summary": "The official site describes tailored technology-company support from pre-startup through international expansion rather than one generic advisory service."
+          },
+          {
+            "id": "le-camp-relationship",
+            "title": "Quebec innovative-company incubators and accelerators",
+            "url": "https://www.quebec.ca/entreprises-et-travailleurs-autonomes/demarrer-entreprise/incubateurs-accelerateurs",
+            "publisher": "Government of Quebec",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Current recognized-organization directory",
+            "summary": "The Government of Quebec lists LE CAMP among incubators and accelerators serving innovative high-growth companies."
+          },
+          {
+            "id": "le-camp-location",
+            "title": "Contact LE CAMP",
+            "url": "https://lecampquebec.com/en/contact",
+            "publisher": "LE CAMP",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Public contact page",
+            "summary": "LE CAMP's official contact page supports its Quebec City operating presence and organization-level contact path."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-le-camp-description",
+            "sourceId": "le-camp-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "LE CAMP is a Quebec City technology accelerator that supports innovative companies from pre-startup through international expansion with tailored programs, expert coaching and a network of public and private partners.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-le-camp-mandate",
+            "sourceId": "le-camp-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "LE CAMP helps technology entrepreneurs validate, launch, grow and internationalize their businesses through stage-specific acceleration, coaching, peer learning, market access and ecosystem connections.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-le-camp-location",
+            "sourceId": "le-camp-location",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "LE CAMP has a documented Canadian operating presence in Quebec City, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-le-camp-program",
+            "sourceId": "le-camp-program",
+            "fieldPath": "programs.le-camp-technology-acceleration.summary",
+            "claimClass": "source_backed",
+            "excerpt": "LE CAMP's acceleration pathway supports innovative technology companies across development stages with tailored programs, expert coaches, business-development support and access to an extensive partner network.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-le-camp-relationship",
+            "sourceId": "le-camp-relationship",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "The Government of Quebec includes LE CAMP in its current directory of incubators and accelerators offering specialized support to innovative high-growth companies in the province.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "le-camp",
+          "name": "LE CAMP",
+          "legalName": "LE CAMP",
+          "aliases": [
+            "Le Camp Québec"
+          ],
+          "description": "LE CAMP is a Quebec City technology accelerator that supports innovative companies from pre-startup through international expansion with tailored programs, expert coaching and a network of public and private partners.",
+          "websiteUrl": "https://lecampquebec.com/en/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator"
+          ],
+          "primaryLocation": {
+            "city": "Quebec City",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 46.8139,
+            "longitude": -71.208,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "LE CAMP helps technology entrepreneurs validate, launch, grow and internationalize their businesses through stage-specific acceleration, coaching, peer learning, market access and ecosystem connections.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "le-camp-technology-acceleration",
+            "name": "LE CAMP Technology Acceleration",
+            "programType": "technology venture acceleration pathway",
+            "websiteUrl": "https://lecampquebec.com/en/",
+            "summary": "LE CAMP's acceleration pathway supports innovative technology companies across development stages with tailored programs, expert coaches, business-development support and access to an extensive partner network.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Quebec",
+            "relationshipType": "recognized accelerator and funding partner",
+            "publicSummary": "The Government of Quebec includes LE CAMP in its current directory of incubators and accelerators offering specialized support to innovative high-growth companies in the province."
+          }
+        ],
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-30T09:59:30.448Z",
+          "note": "No acceptable official-logo candidate found."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-le-camp-description",
+          "sourceId": "le-camp-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "LE CAMP is a Quebec City technology accelerator that supports innovative companies from pre-startup through international expansion with tailored programs, expert coaching and a network of public and private partners.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-le-camp-mandate",
+          "sourceId": "le-camp-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "LE CAMP helps technology entrepreneurs validate, launch, grow and internationalize their businesses through stage-specific acceleration, coaching, peer learning, market access and ecosystem connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-le-camp-location",
+          "sourceId": "le-camp-location",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "LE CAMP has a documented Canadian operating presence in Quebec City, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-le-camp-program",
+          "sourceId": "le-camp-program",
+          "fieldPath": "programs.le-camp-technology-acceleration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "LE CAMP's acceleration pathway supports innovative technology companies across development stages with tailored programs, expert coaches, business-development support and access to an extensive partner network.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-le-camp-relationship",
+          "sourceId": "le-camp-relationship",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Quebec includes LE CAMP in its current directory of incubators and accelerators offering specialized support to innovative high-growth companies in the province.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "LE CAMP fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    },
+    {
+      "client_candidate_id": "candidate-cycle-momentum",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-cycle-momentum"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-cycle-momentum",
+        "sourceLeadIds": [
+          "lead-cycle-momentum"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Cycle Momentum fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "green",
+        "inclusionScore": 96,
+        "completenessScore": 92,
+        "reviewWarnings": [
+          "Cycle Capital is a related investor and separate organization; investment claims must not be attributed to Cycle Momentum unless the official source names the accelerator's role."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "cycle-momentum-profile",
+            "title": "Cycle Momentum accelerator and innovation platform",
+            "url": "https://cyclemomentum.com/",
+            "publisher": "Cycle Momentum",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Mission impact sectors and platform",
+            "summary": "Cycle Momentum describes its Montreal accelerator mandate, climate and industrial sectors, operating impact and open-innovation model."
+          },
+          {
+            "id": "cycle-momentum-program",
+            "title": "Cycle Momentum startup programs",
+            "url": "https://cyclemomentum.com/startups/",
+            "publisher": "Cycle Momentum",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Acceleration programs and application guidance",
+            "summary": "Cycle Momentum describes stage-specific acceleration, commercialization, investment matching and sector program support for climate-technology startups."
+          },
+          {
+            "id": "cycle-momentum-relationship",
+            "title": "Cycle Momentum and Cycle Capital platform",
+            "url": "https://cyclemomentum.com/",
+            "publisher": "Cycle Momentum",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Platform relationship section",
+            "summary": "Cycle Momentum identifies Cycle Capital as its founder and distinguishes the business accelerator from the related impact fund family."
+          },
+          {
+            "id": "cycle-momentum-location",
+            "title": "Cycle Momentum Montreal accelerator profile",
+            "url": "https://cyclemomentum.com/",
+            "publisher": "Cycle Momentum",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Official page title and organization profile",
+            "summary": "Cycle Momentum's official profile identifies the organization as a Montreal startup accelerator and innovation platform."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-cycle-momentum-description",
+            "sourceId": "cycle-momentum-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Cycle Momentum is a Montreal climate-technology accelerator and open-innovation platform that supports commercialization, industry collaboration and investment connections across cleantech, advanced industry, water, agtech and urban technology.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cycle-momentum-mandate",
+            "sourceId": "cycle-momentum-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Cycle Momentum brings entrepreneurs, investors, corporations and research actors together to accelerate the development, commercialization, financing and adoption of technologies addressing major environmental and industrial challenges.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cycle-momentum-location",
+            "sourceId": "cycle-momentum-location",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Cycle Momentum has a documented Canadian operating presence in Montreal, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cycle-momentum-program",
+            "sourceId": "cycle-momentum-program",
+            "fieldPath": "programs.cycle-momentum-climate-tech-acceleration.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Cycle Momentum's climate-technology acceleration programming provides specialized commercialization coaching, sector expertise, investor access and corporate connections to help emerging technology companies deploy and scale solutions.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cycle-momentum-relationship",
+            "sourceId": "cycle-momentum-relationship",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Cycle Momentum identifies Cycle Capital as its founder and positions the accelerator alongside the related impact-fund platform while keeping accelerator programs and investment funds organizationally distinct.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "cycle-momentum",
+          "name": "Cycle Momentum",
+          "legalName": "Cycle Momentum",
+          "aliases": [
+            "Ecofuel Accelerator"
+          ],
+          "description": "Cycle Momentum is a Montreal climate-technology accelerator and open-innovation platform that supports commercialization, industry collaboration and investment connections across cleantech, advanced industry, water, agtech and urban technology.",
+          "websiteUrl": "https://cyclemomentum.com/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Cycle Momentum brings entrepreneurs, investors, corporations and research actors together to accelerate the development, commercialization, financing and adoption of technologies addressing major environmental and industrial challenges.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "cycle-momentum-climate-tech-acceleration",
+            "name": "Climate Tech Acceleration Program",
+            "programType": "specialized climate-technology accelerator",
+            "websiteUrl": "https://cyclemomentum.com/startups/",
+            "summary": "Cycle Momentum's climate-technology acceleration programming provides specialized commercialization coaching, sector expertise, investor access and corporate connections to help emerging technology companies deploy and scale solutions.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Cycle Capital",
+            "relationshipType": "founder and platform partner",
+            "publicSummary": "Cycle Momentum identifies Cycle Capital as its founder and positions the accelerator alongside the related impact-fund platform while keeping accelerator programs and investment funds organizationally distinct."
+          }
+        ],
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-30T09:59:30.448Z",
+          "note": "The only automatically resolved asset was a favicon; the candidate-logo contract forbids favicon substitution."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-cycle-momentum-description",
+          "sourceId": "cycle-momentum-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Cycle Momentum is a Montreal climate-technology accelerator and open-innovation platform that supports commercialization, industry collaboration and investment connections across cleantech, advanced industry, water, agtech and urban technology.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cycle-momentum-mandate",
+          "sourceId": "cycle-momentum-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Cycle Momentum brings entrepreneurs, investors, corporations and research actors together to accelerate the development, commercialization, financing and adoption of technologies addressing major environmental and industrial challenges.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cycle-momentum-location",
+          "sourceId": "cycle-momentum-location",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Cycle Momentum has a documented Canadian operating presence in Montreal, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cycle-momentum-program",
+          "sourceId": "cycle-momentum-program",
+          "fieldPath": "programs.cycle-momentum-climate-tech-acceleration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Cycle Momentum's climate-technology acceleration programming provides specialized commercialization coaching, sector expertise, investor access and corporate connections to help emerging technology companies deploy and scale solutions.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cycle-momentum-relationship",
+          "sourceId": "cycle-momentum-relationship",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Cycle Momentum identifies Cycle Capital as its founder and positions the accelerator alongside the related impact-fund platform while keeping accelerator programs and investment funds organizationally distinct.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "Cycle Momentum fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    },
+    {
+      "client_candidate_id": "candidate-accelerate-okanagan",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-accelerate-okanagan"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-accelerate-okanagan",
+        "sourceLeadIds": [
+          "lead-accelerate-okanagan"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Accelerate Okanagan fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "amber",
+        "inclusionScore": 89,
+        "completenessScore": 87,
+        "reviewWarnings": [
+          "Accelerate Okanagan also operates regional community and workspace services; reviewers should confirm accelerator as the primary kind rather than ecosystem_organization."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "accelerate-okanagan-profile",
+            "title": "Accelerate Okanagan mission",
+            "url": "https://accelerateokanagan.com/about/",
+            "publisher": "Accelerate Okanagan",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Mission organization and regional role",
+            "summary": "Accelerate Okanagan describes its technology-venture support mandate, mentorship, community and Okanagan operating role."
+          },
+          {
+            "id": "accelerate-okanagan-program",
+            "title": "Accelerate Okanagan ThreeSixty",
+            "url": "https://accelerateokanagan.com/entrepreneurs/threesixty/",
+            "publisher": "Accelerate Okanagan",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "ThreeSixty program overview",
+            "summary": "The official program page describes structured mentorship and growth support for technology venture leadership teams."
+          },
+          {
+            "id": "accelerate-okanagan-relationship",
+            "title": "PacifiCan and Accelerate Okanagan",
+            "url": "https://www.canada.ca/en/pacific-economic-development/campaigns/stories/accelerate-okanagan.html",
+            "publisher": "Pacific Economic Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Partner initiatives and Kelowna location",
+            "summary": "PacifiCan describes Accelerate Okanagan's entrepreneur-support role and its partnership on the Kelowna Innovation Centre and regional programs."
+          },
+          {
+            "id": "accelerate-okanagan-location",
+            "title": "Accelerate Okanagan contact",
+            "url": "https://accelerateokanagan.com/contact/",
+            "publisher": "Accelerate Okanagan",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Public contact and workspace page",
+            "summary": "Accelerate Okanagan's official contact material supports its Kelowna British Columbia operating presence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-accelerate-okanagan-description",
+            "sourceId": "accelerate-okanagan-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Accelerate Okanagan is a Kelowna-based technology accelerator and ecosystem operator that provides mentorship, structured growth programs, workspaces, investor preparation and community connections to entrepreneurs in British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-accelerate-okanagan-mandate",
+            "sourceId": "accelerate-okanagan-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Accelerate Okanagan supports technology-driven ventures by connecting founders with mentorship, growth-stage programming, capital-readiness support, workspaces and a regional network of entrepreneurs, investors and partner organizations.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-accelerate-okanagan-location",
+            "sourceId": "accelerate-okanagan-location",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Accelerate Okanagan has a documented Canadian operating presence in Kelowna, British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-accelerate-okanagan-program",
+            "sourceId": "accelerate-okanagan-program",
+            "fieldPath": "programs.accelerate-okanagan-threesixty.summary",
+            "claimClass": "source_backed",
+            "excerpt": "ThreeSixty provides eligible technology ventures with structured mentorship and growth support intended to help leadership teams clarify priorities, address business challenges and build scalable companies.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-accelerate-okanagan-relationship",
+            "sourceId": "accelerate-okanagan-relationship",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Pacific Economic Development Canada describes its long-running partnership with Accelerate Okanagan across the Kelowna Innovation Centre, RevUP, Startup Basics and regional entrepreneur-support initiatives.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "accelerate-okanagan",
+          "name": "Accelerate Okanagan",
+          "legalName": "Accelerate Okanagan Technology Association",
+          "aliases": [
+            "AO"
+          ],
+          "description": "Accelerate Okanagan is a Kelowna-based technology accelerator and ecosystem operator that provides mentorship, structured growth programs, workspaces, investor preparation and community connections to entrepreneurs in British Columbia.",
+          "websiteUrl": "https://accelerateokanagan.com/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator"
+          ],
+          "primaryLocation": {
+            "city": "Kelowna",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 49.888,
+            "longitude": -119.496,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Accelerate Okanagan supports technology-driven ventures by connecting founders with mentorship, growth-stage programming, capital-readiness support, workspaces and a regional network of entrepreneurs, investors and partner organizations.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "accelerate-okanagan-threesixty",
+            "name": "ThreeSixty",
+            "programType": "technology venture growth program",
+            "websiteUrl": "https://accelerateokanagan.com/entrepreneurs/threesixty/",
+            "summary": "ThreeSixty provides eligible technology ventures with structured mentorship and growth support intended to help leadership teams clarify priorities, address business challenges and build scalable companies.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Pacific Economic Development Canada",
+            "relationshipType": "public program partner",
+            "publicSummary": "Pacific Economic Development Canada describes its long-running partnership with Accelerate Okanagan across the Kelowna Innovation Centre, RevUP, Startup Basics and regional entrepreneur-support initiatives."
+          }
+        ],
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-30T09:59:30.446Z",
+          "note": "Could not read official website: HTTP Error 403: Forbidden"
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-accelerate-okanagan-description",
+          "sourceId": "accelerate-okanagan-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Accelerate Okanagan is a Kelowna-based technology accelerator and ecosystem operator that provides mentorship, structured growth programs, workspaces, investor preparation and community connections to entrepreneurs in British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-accelerate-okanagan-mandate",
+          "sourceId": "accelerate-okanagan-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Accelerate Okanagan supports technology-driven ventures by connecting founders with mentorship, growth-stage programming, capital-readiness support, workspaces and a regional network of entrepreneurs, investors and partner organizations.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-accelerate-okanagan-location",
+          "sourceId": "accelerate-okanagan-location",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Accelerate Okanagan has a documented Canadian operating presence in Kelowna, British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-accelerate-okanagan-program",
+          "sourceId": "accelerate-okanagan-program",
+          "fieldPath": "programs.accelerate-okanagan-threesixty.summary",
+          "claimClass": "source_backed",
+          "excerpt": "ThreeSixty provides eligible technology ventures with structured mentorship and growth support intended to help leadership teams clarify priorities, address business challenges and build scalable companies.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-accelerate-okanagan-relationship",
+          "sourceId": "accelerate-okanagan-relationship",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Pacific Economic Development Canada describes its long-running partnership with Accelerate Okanagan across the Kelowna Innovation Centre, RevUP, Startup Basics and regional entrepreneur-support initiatives.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "Accelerate Okanagan fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    },
+    {
+      "client_candidate_id": "candidate-launch-academy",
+      "research_run_ref": "tnm-manual-20260730094723",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-launch-academy"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-launch-academy",
+        "sourceLeadIds": [
+          "lead-launch-academy"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Launch Academy fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+        "reviewTier": "amber",
+        "inclusionScore": 86,
+        "completenessScore": 82,
+        "reviewWarnings": [
+          "Launch Academy self-identifies as both incubator and accelerator and the federal Start-up Visa program is paused; reviewers should confirm taxonomy and avoid implying current visa intake."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T09:59:10.165Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+        },
+        "sources": [
+          {
+            "id": "launch-academy-profile",
+            "title": "Launch Academy",
+            "url": "https://www.launchacademy.ca/",
+            "publisher": "Launch Academy",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Official mandate and impact overview",
+            "summary": "Launch Academy describes itself as a Western Canadian technology incubator and accelerator supporting startup growth through education, mentorship, metrics and networks."
+          },
+          {
+            "id": "launch-academy-program",
+            "title": "Launch Academy Maple program guide",
+            "url": "https://www.launchacademy.ca/your-complete-guide-to-canadas-startup-visa-updated-2023/",
+            "publisher": "Launch Academy",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Maple Accelerator description",
+            "summary": "Launch Academy describes Maple as an accelerator pathway for international technology founders establishing and growing companies in Canada."
+          },
+          {
+            "id": "launch-academy-relationship",
+            "title": "Federal designated startup organizations",
+            "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa/designated-organizations.html",
+            "publisher": "Immigration Refugees and Citizenship Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Business incubator directory",
+            "summary": "IRCC lists Launch Academy Vancouver among designated startup-support organizations and states the current program pause."
+          },
+          {
+            "id": "launch-academy-location",
+            "title": "Launch Academy team and history",
+            "url": "https://www.launchacademy.ca/our-team/",
+            "publisher": "Launch Academy",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T09:59:10.165Z",
+            "locator": "Founding history and Vancouver location",
+            "summary": "Launch Academy describes its founding and operating history in Vancouver and its Gastown technology hub."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-launch-academy-description",
+            "sourceId": "launch-academy-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Launch Academy is a Vancouver technology incubator and accelerator that helps Canadian and international founders build and scale startups through education, mentorship, market-entry programs, startup-community access and investor preparation.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-launch-academy-mandate",
+            "sourceId": "launch-academy-profile",
+            "fieldPath": "organization.profileData.mandate",
+            "claimClass": "source_backed",
+            "excerpt": "Launch Academy supports technology entrepreneurs with structured startup education, mentoring, lean validation, market-entry guidance, partner access and a community intended to help ventures establish and grow in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-launch-academy-location",
+            "sourceId": "launch-academy-location",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Launch Academy has a documented Canadian operating presence in Vancouver, British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-launch-academy-program",
+            "sourceId": "launch-academy-program",
+            "fieldPath": "programs.launch-academy-maple.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The Maple Accelerator Program supports international technology founders establishing ventures in Canada with startup education, community access, business guidance and market-entry preparation connected to Vancouver's technology ecosystem.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-launch-academy-relationship",
+            "sourceId": "launch-academy-relationship",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Immigration, Refugees and Citizenship Canada includes Launch Academy Vancouver in its current designated-organization directory for supported startup applicants, while noting that the broader Start-up Visa program is paused.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "launch-academy",
+          "name": "Launch Academy",
+          "legalName": "Launch Academy",
+          "aliases": [
+            "Launch"
+          ],
+          "description": "Launch Academy is a Vancouver technology incubator and accelerator that helps Canadian and international founders build and scale startups through education, mentorship, market-entry programs, startup-community access and investor preparation.",
+          "websiteUrl": "https://www.launchacademy.ca/",
+          "entityKind": "accelerator",
+          "categories": [
+            "dual_use_accelerator"
+          ],
+          "primaryLocation": {
+            "city": "Vancouver",
+            "provinceTerritory": "British Columbia",
+            "countryCode": "CA",
+            "latitude": 49.2827,
+            "longitude": -123.1207,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "mandate": "Launch Academy supports technology entrepreneurs with structured startup education, mentoring, lean validation, market-entry guidance, partner access and a community intended to help ventures establish and grow in Canada.",
+            "evidenceBoundary": "This record describes a public venture-acceleration role and cited program. Program participation does not establish defence alignment, supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "capabilities": [],
+        "programs": [
+          {
+            "slug": "launch-academy-maple",
+            "name": "Maple Accelerator Program",
+            "programType": "Canadian market-entry accelerator",
+            "websiteUrl": "https://www.launchacademy.ca/your-complete-guide-to-canadas-startup-visa-updated-2023/",
+            "summary": "The Maple Accelerator Program supports international technology founders establishing ventures in Canada with startup education, community access, business guidance and market-entry preparation connected to Vancouver's technology ecosystem.",
+            "cohortLabel": null
+          }
+        ],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Immigration, Refugees and Citizenship Canada",
+            "relationshipType": "designated startup-support organization",
+            "publicSummary": "Immigration, Refugees and Citizenship Canada includes Launch Academy Vancouver in its current designated-organization directory for supported startup applicants, while noting that the broader Start-up Visa program is paused."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.launchacademy.ca/",
+          "sourceAssetUrl": "https://www.launchacademy.ca/wp-content/uploads/2020/11/Logo_Website_Orange_Two-Versions-03.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "68f699c050b3c7d0d54d2732104fdf16a6779f3d5677e115e65ffa390ef2923e",
+          "normalizedChecksum": "ac89e322ec2bc36766e9374b67a64843c755a4e3c670982f4143ae209b5d68c0",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730094723/candidate-launch-academy/logo.source.json",
+          "note": "194x51 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-launch-academy-description",
+          "sourceId": "launch-academy-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Launch Academy is a Vancouver technology incubator and accelerator that helps Canadian and international founders build and scale startups through education, mentorship, market-entry programs, startup-community access and investor preparation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-launch-academy-mandate",
+          "sourceId": "launch-academy-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Launch Academy supports technology entrepreneurs with structured startup education, mentoring, lean validation, market-entry guidance, partner access and a community intended to help ventures establish and grow in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-launch-academy-location",
+          "sourceId": "launch-academy-location",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Launch Academy has a documented Canadian operating presence in Vancouver, British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-launch-academy-program",
+          "sourceId": "launch-academy-program",
+          "fieldPath": "programs.launch-academy-maple.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Maple Accelerator Program supports international technology founders establishing ventures in Canada with startup education, community access, business guidance and market-entry preparation connected to Vancouver's technology ecosystem.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-launch-academy-relationship",
+          "sourceId": "launch-academy-relationship",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Immigration, Refugees and Citizenship Canada includes Launch Academy Vancouver in its current designated-organization directory for supported startup applicants, while noting that the broader Start-up Visa program is paused.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:59:10.165Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names and websites plus all historical candidate records were checked before candidate construction; no exact name match was found for this batch."
+      },
+      "reviewer_rationale": "Launch Academy fills the live accelerator coverage gap with a documented Canadian operating presence and a concrete founder or technology-venture acceleration program. Official organization and program sources establish identity, mandate, location and delivery model; a government, university or named institutional source corroborates a material relationship. The candidate is deliberately bounded to the accelerator organization and its cited program. It does not imply defence alignment, procurement eligibility, endorsement or customer interest for the accelerator or any participant. Review the classification warning, current program wording, relationship and attached field evidence before deciding whether to publish.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:02:20.345Z"
+    }
+  ]
+}

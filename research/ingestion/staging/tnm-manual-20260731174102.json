@@ -1,0 +1,3115 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-31T17:49:47.408Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260731174102",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "demand",
+      "dimension": "unmatched-demand:deep-strike",
+      "reason": "The public deep strike demand requirement has no reviewed capability match in the local atlas.",
+      "score": 850
+    },
+    "status": "completed",
+    "started_at": "2026-07-31T17:41:02.930Z",
+    "completed_at": "2026-07-31T17:49:18.280Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "site:canadabuys.canada.ca IDEaS CFP 6 Canadian company contract",
+      "site:achatscanada.canada.ca entreprise canadienne IDEeS contrat",
+      "site:diana.nato.int 2026 cohort Canada company defence technology",
+      "site:canada.ca Canadian company defence innovation contract drone communications",
+      "site:publications.gc.ca Canadian defence company parliamentary evidence",
+      "site:nrc.canada.ca CANSEC Canadian company technology commercialization",
+      "Canadian defence technology company autonomous systems communications sensing",
+      "entreprise canadienne technologie défense communications autonomes capteurs",
+      "Canadian company official product technical documentation defence security",
+      "Canada defence event exhibitor company product announcement",
+      "Canada accelerator cohort ocean technology company",
+      "Canada company partner announcement rugged compute vehicle communications",
+      "targeted LinkedIn company and program searches resolved to durable official pages"
+    ],
+    "counters": {
+      "sourcesChecked": 75,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 3,
+      "prospectsDiscovered": 50,
+      "uniqueProspects": 50,
+      "prospectsQueued": 37,
+      "recoveryAttempts": 30,
+      "sourceLanesSearched": 11,
+      "candidatesGreen": 10,
+      "candidatesAmber": 0,
+      "claimsCollected": 60,
+      "claimsConflicted": 0,
+      "coverageSubjects": 10
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Two amber candidates require explicit reviewer confirmation of public-contract scope or self-reported technical claims before publication."
+      ]
+    },
+    "stop_reason": "Completed the ten-candidate target after qualifying a 50-prospect company inventory across 11 source lanes; 37 plausible unused prospects remain queued for later evidence-led batches."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-terminal-cable-gp",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-terminal-cable-gp"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-terminal-cable-gp",
+        "sourceLeadIds": [
+          "lead-terminal-cable-gp"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Terminal & Cable GP is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Defence-grade wire-harness and electrical-system integration with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The public sources establish defence and aerospace manufacturing relevance and an RDII project, but do not identify a particular CAF platform, customer or contract value. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 94,
+        "reviewWarnings": [
+          "The public sources establish defence and aerospace manufacturing relevance and an RDII project, but do not identify a particular CAF platform, customer or contract value."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "terminal-cable-gp-profile",
+            "title": "Terminal & Cable GP company profile",
+            "url": "https://www.terminal.ca/",
+            "publisher": "Terminal & Cable GP",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Company overview and contact information",
+            "summary": "The official site identifies Terminal & Cable GP as a Carignan, Quebec manufacturer and integrator of electrical interconnect systems."
+          },
+          {
+            "id": "terminal-cable-gp-product",
+            "title": "Terminal & Cable defence and aerospace integration",
+            "url": "https://www.terminal.ca/",
+            "publisher": "Terminal & Cable GP",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Defence and Aerospace Grade Component Integration sections",
+            "summary": "The official site describes wire harnesses, cable assemblies, electrical integration and ruggedized systems for defence and aerospace applications."
+          },
+          {
+            "id": "terminal-cable-gp-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Terminal & Cable GP project listing",
+            "summary": "The federal backgrounder identifies Terminal & Cable GP support for equipment and capacity expansion tied to defence wiring and cable-harness production."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-terminal-cable-gp-description",
+            "sourceId": "terminal-cable-gp-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Terminal & Cable GP is a Carignan, Quebec Indigenous-owned manufacturer and integrator of wire harnesses, electrical assemblies and ruggedized systems for defence, aerospace and industrial customers.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-terminal-cable-gp-location",
+            "sourceId": "terminal-cable-gp-profile",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Terminal & Cable GP has a documented Canadian operating presence in Carignan, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-terminal-cable-gp-capability",
+            "sourceId": "terminal-cable-gp-product",
+            "fieldPath": "capabilities.terminal-cable-defence-harness-integration.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Terminal & Cable GP designs and manufactures wire harnesses, cable assemblies and electrical systems, including ruggedized integrations for aerospace and defence applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-terminal-cable-gp-features",
+            "sourceId": "terminal-cable-gp-product",
+            "fieldPath": "capabilities.terminal-cable-defence-harness-integration.features",
+            "claimClass": "source_backed",
+            "excerpt": "Defence and aerospace wire harnesses; Ruggedized electrical assemblies; Cable assemblies and component integration; AS9100D and controlled-goods-ready manufacturing",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-terminal-cable-gp-activity",
+            "sourceId": "terminal-cable-gp-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists Terminal & Cable GP for Regional Defence Investment Initiative support to expand capacity and modernize equipment for defence wiring and cable-harness production.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-terminal-cable-gp-relationship",
+            "sourceId": "terminal-cable-gp-rdii",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies Terminal & Cable GP as an RDII recipient for capacity and equipment improvements connected to defence wiring and cable-harness production.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-terminal-cable-gp-mission",
+            "sourceId": "terminal-cable-gp-product",
+            "fieldPath": "capabilities.terminal-cable-defence-harness-integration.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Rugged wire-harness and electrical-system integration could support distributed sensor and mission-compute equipment; this is a derived manufacturing fit, not a disclosed platform deployment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "terminal-cable-gp",
+          "name": "Terminal & Cable GP",
+          "legalName": "Terminal & Cable GP Inc.",
+          "aliases": [
+            "Terminal & Cable",
+            "T&C GP"
+          ],
+          "description": "Terminal & Cable GP is a Carignan, Quebec Indigenous-owned manufacturer and integrator of wire harnesses, electrical assemblies and ruggedized systems for defence, aerospace and industrial customers.",
+          "websiteUrl": "https://www.terminal.ca/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Carignan",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.4519,
+            "longitude": -73.2984,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists Terminal & Cable GP for Regional Defence Investment Initiative support to expand capacity and modernize equipment for defence wiring and cable-harness production.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "terminal-cable-defence-harness-integration",
+            "name": "Defence-grade wire-harness and electrical-system integration",
+            "summary": "Terminal & Cable GP designs and manufactures wire harnesses, cable assemblies and electrical systems, including ruggedized integrations for aerospace and defence applications.",
+            "capabilityType": "Electrical interconnect and harness manufacturing",
+            "features": [
+              "Defence and aerospace wire harnesses",
+              "Ruggedized electrical assemblies",
+              "Cable assemblies and component integration",
+              "AS9100D and controlled-goods-ready manufacturing"
+            ],
+            "applications": [
+              "Aerospace electrical integration",
+              "Defence platform wiring",
+              "Rugged field systems",
+              "Industrial equipment integration"
+            ],
+            "technicalTags": [
+              "wire harness",
+              "cable assembly",
+              "electrical integration",
+              "AS9100D",
+              "controlled goods"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "aerospace-and-mobility",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Rugged wire-harness and electrical-system integration could support distributed sensor and mission-compute equipment; this is a derived manufacturing fit, not a disclosed platform deployment.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies Terminal & Cable GP as an RDII recipient for capacity and equipment improvements connected to defence wiring and cable-harness production."
+          }
+        ],
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://www.terminal.ca/",
+          "sourceAssetUrl": "https://static.wixstatic.com/media/4ecdce_4aecd35383154a8eb86d047192e15d5f~mv2.png/v1/fill/w_110,h_111,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/PFNGC%20Logo%20White.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "8cc9c57667da905f00ca29549b978ebbe0297f69a8cdae1c2a2115d6284c5f06",
+          "normalizedChecksum": "a99f7e728b267c2ef34659ac8b3a7fdb3080e5969ea97e25e1221caa76bf5935",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731174102/candidate-terminal-cable-gp/logo.source.json",
+          "note": "110x111 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-terminal-cable-gp-description",
+          "sourceId": "terminal-cable-gp-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Terminal & Cable GP is a Carignan, Quebec Indigenous-owned manufacturer and integrator of wire harnesses, electrical assemblies and ruggedized systems for defence, aerospace and industrial customers.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-terminal-cable-gp-location",
+          "sourceId": "terminal-cable-gp-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Terminal & Cable GP has a documented Canadian operating presence in Carignan, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-terminal-cable-gp-capability",
+          "sourceId": "terminal-cable-gp-product",
+          "fieldPath": "capabilities.terminal-cable-defence-harness-integration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Terminal & Cable GP designs and manufactures wire harnesses, cable assemblies and electrical systems, including ruggedized integrations for aerospace and defence applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-terminal-cable-gp-features",
+          "sourceId": "terminal-cable-gp-product",
+          "fieldPath": "capabilities.terminal-cable-defence-harness-integration.features",
+          "claimClass": "source_backed",
+          "excerpt": "Defence and aerospace wire harnesses; Ruggedized electrical assemblies; Cable assemblies and component integration; AS9100D and controlled-goods-ready manufacturing",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-terminal-cable-gp-activity",
+          "sourceId": "terminal-cable-gp-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists Terminal & Cable GP for Regional Defence Investment Initiative support to expand capacity and modernize equipment for defence wiring and cable-harness production.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-terminal-cable-gp-relationship",
+          "sourceId": "terminal-cable-gp-rdii",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies Terminal & Cable GP as an RDII recipient for capacity and equipment improvements connected to defence wiring and cable-harness production.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-terminal-cable-gp-mission",
+          "sourceId": "terminal-cable-gp-product",
+          "fieldPath": "capabilities.terminal-cable-defence-harness-integration.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Rugged wire-harness and electrical-system integration could support distributed sensor and mission-compute equipment; this is a derived manufacturing fit, not a disclosed platform deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Terminal & Cable GP is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Defence-grade wire-harness and electrical-system integration with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The public sources establish defence and aerospace manufacturing relevance and an RDII project, but do not identify a particular CAF platform, customer or contract value. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    },
+    {
+      "client_candidate_id": "candidate-alphacasting",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-alphacasting"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-alphacasting",
+        "sourceLeadIds": [
+          "lead-alphacasting"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Alphacasting is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Aerospace and defence investment-cast components with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Published material describes defence-market components but does not establish a contract with a named military customer or platform. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 92,
+        "reviewWarnings": [
+          "Published material describes defence-market components but does not establish a contract with a named military customer or platform."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "alphacasting-profile",
+            "title": "Alphacasting company profile",
+            "url": "https://www.alphacasting.com/en/",
+            "publisher": "Alphacasting",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Company and contact sections",
+            "summary": "The official site identifies Alphacasting as a Montreal-area precision investment-casting company serving aerospace and defence customers."
+          },
+          {
+            "id": "alphacasting-products",
+            "title": "Alphacasting aerospace and defence components",
+            "url": "https://www.alphacasting.com/en/",
+            "publisher": "Alphacasting",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Aerospace and Defence application sections",
+            "summary": "The official site describes investment-cast components for aerospace and defence applications, including aircraft, radar, night-vision, land-system and uncrewed-system uses."
+          },
+          {
+            "id": "alphacasting-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Alphacasting project listing",
+            "summary": "The federal backgrounder identifies Alphacasting support for capacity related to aerospace and defence parts and subassemblies."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-alphacasting-description",
+            "sourceId": "alphacasting-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Alphacasting is a Montreal investment-casting manufacturer producing complex metal components and subassemblies for aerospace, defence and other demanding applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alphacasting-location",
+            "sourceId": "alphacasting-profile",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Alphacasting has a documented Canadian operating presence in Montreal, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alphacasting-capability",
+            "sourceId": "alphacasting-products",
+            "fieldPath": "capabilities.alphacasting-aerospace-defence-investment-casting.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Alphacasting produces precision investment-cast metal components and subassemblies for aerospace and defence applications, including complex geometry and demanding material requirements.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alphacasting-features",
+            "sourceId": "alphacasting-products",
+            "fieldPath": "capabilities.alphacasting-aerospace-defence-investment-casting.features",
+            "claimClass": "source_backed",
+            "excerpt": "Precision investment casting; Complex aerospace metal components; Defence component and subassembly production; Specialty alloy casting",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alphacasting-activity",
+            "sourceId": "alphacasting-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists Alphacasting for RDII support to increase capacity for aerospace and defence component production.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alphacasting-relationship",
+            "sourceId": "alphacasting-rdii",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies Alphacasting as an RDII recipient to strengthen precision component production for aerospace and defence.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-alphacasting-mission",
+            "sourceId": "alphacasting-products",
+            "fieldPath": "capabilities.alphacasting-aerospace-defence-investment-casting.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Precision-cast aerospace components could support airframe, payload and sensor-hardware production for autonomous monitoring systems; this is a derived manufacturing fit.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "alphacasting",
+          "name": "Alphacasting",
+          "legalName": "Alphacasting Inc.",
+          "aliases": [
+            "Alpha Casting"
+          ],
+          "description": "Alphacasting is a Montreal investment-casting manufacturer producing complex metal components and subassemblies for aerospace, defence and other demanding applications.",
+          "websiteUrl": "https://www.alphacasting.com/en/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists Alphacasting for RDII support to increase capacity for aerospace and defence component production.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "alphacasting-aerospace-defence-investment-casting",
+            "name": "Aerospace and defence investment-cast components",
+            "summary": "Alphacasting produces precision investment-cast metal components and subassemblies for aerospace and defence applications, including complex geometry and demanding material requirements.",
+            "capabilityType": "Precision investment casting",
+            "features": [
+              "Precision investment casting",
+              "Complex aerospace metal components",
+              "Defence component and subassembly production",
+              "Specialty alloy casting"
+            ],
+            "applications": [
+              "Aerospace structures",
+              "Military aircraft components",
+              "Uncrewed-system components",
+              "Radar and sensor hardware"
+            ],
+            "technicalTags": [
+              "investment casting",
+              "aerospace manufacturing",
+              "defence components",
+              "specialty alloys"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "aerospace-and-mobility",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Precision-cast aerospace components could support airframe, payload and sensor-hardware production for autonomous monitoring systems; this is a derived manufacturing fit.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies Alphacasting as an RDII recipient to strengthen precision component production for aerospace and defence."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.alphacasting.com/en/",
+          "sourceAssetUrl": "https://www.alphacasting.com/assets/images/logoalphanoir.svg",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "11960e7fbf5c0cf30e6c914d736e8cd54f90efb2ef9bdf1c64b07576009c701c",
+          "normalizedChecksum": "68d8189fb9dfcc575a0fadfa742de437ed06ca35746004bed909a082db1c7987",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731174102/candidate-alphacasting/logo.source.json",
+          "note": "259x17 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-alphacasting-description",
+          "sourceId": "alphacasting-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Alphacasting is a Montreal investment-casting manufacturer producing complex metal components and subassemblies for aerospace, defence and other demanding applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alphacasting-location",
+          "sourceId": "alphacasting-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Alphacasting has a documented Canadian operating presence in Montreal, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alphacasting-capability",
+          "sourceId": "alphacasting-products",
+          "fieldPath": "capabilities.alphacasting-aerospace-defence-investment-casting.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Alphacasting produces precision investment-cast metal components and subassemblies for aerospace and defence applications, including complex geometry and demanding material requirements.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alphacasting-features",
+          "sourceId": "alphacasting-products",
+          "fieldPath": "capabilities.alphacasting-aerospace-defence-investment-casting.features",
+          "claimClass": "source_backed",
+          "excerpt": "Precision investment casting; Complex aerospace metal components; Defence component and subassembly production; Specialty alloy casting",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alphacasting-activity",
+          "sourceId": "alphacasting-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists Alphacasting for RDII support to increase capacity for aerospace and defence component production.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alphacasting-relationship",
+          "sourceId": "alphacasting-rdii",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies Alphacasting as an RDII recipient to strengthen precision component production for aerospace and defence.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alphacasting-mission",
+          "sourceId": "alphacasting-products",
+          "fieldPath": "capabilities.alphacasting-aerospace-defence-investment-casting.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Precision-cast aerospace components could support airframe, payload and sensor-hardware production for autonomous monitoring systems; this is a derived manufacturing fit.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Alphacasting is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Aerospace and defence investment-cast components with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Published material describes defence-market components but does not establish a contract with a named military customer or platform. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    },
+    {
+      "client_candidate_id": "candidate-c3rios-systems",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-c3rios-systems"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-c3rios-systems",
+        "sourceLeadIds": [
+          "lead-c3rios-systems"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "C3RiOS Systems is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Modular avionics and RPAS mission systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Technical capability is supported by the company site and RDII source; the candidate does not infer a CAF aircraft integration or certification outcome. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 96,
+        "reviewWarnings": [
+          "Technical capability is supported by the company site and RDII source; the candidate does not infer a CAF aircraft integration or certification outcome."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "c3rios-systems-profile",
+            "title": "C3RiOS Systems company profile",
+            "url": "https://www.c3rios.com/en/home",
+            "publisher": "C3RiOS Systems",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Company overview and contact material",
+            "summary": "The official site identifies C3RiOS Systems as a Quebec avionics and mission-systems company."
+          },
+          {
+            "id": "c3rios-systems-technology",
+            "title": "C3RiOS modular avionics and RPAS systems",
+            "url": "https://www.c3rios.com/en/home",
+            "publisher": "C3RiOS Systems",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Technology and product sections",
+            "summary": "The official site describes open modular certifiable avionics, mobile cockpit and ground-control systems for aircraft and remotely piloted aircraft systems."
+          },
+          {
+            "id": "c3rios-systems-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "C3RiOS Systems project listing",
+            "summary": "The federal backgrounder identifies C3RiOS Systems for support connected to defence avionics systems."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-c3rios-systems-description",
+            "sourceId": "c3rios-systems-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "C3RiOS Systems is a Quebec avionics company developing open, modular and certifiable cockpit, ground-control and mission-system software for aircraft and remotely piloted aircraft systems.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-c3rios-systems-location",
+            "sourceId": "c3rios-systems-profile",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "C3RiOS Systems has a documented Canadian operating presence in Montreal, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-c3rios-systems-capability",
+            "sourceId": "c3rios-systems-technology",
+            "fieldPath": "capabilities.c3rios-modular-avionics-and-rpas-mission-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "C3RiOS develops certifiable avionics, mobile cockpit and ground-control software for aircraft and remotely piloted aircraft systems using open modular architectures.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-c3rios-systems-features",
+            "sourceId": "c3rios-systems-technology",
+            "fieldPath": "capabilities.c3rios-modular-avionics-and-rpas-mission-systems.features",
+            "claimClass": "source_backed",
+            "excerpt": "Open modular avionics; Certifiable mission software; Mobile cockpit systems; RPAS ground-control interfaces",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-c3rios-systems-activity",
+            "sourceId": "c3rios-systems-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists C3RiOS Systems for RDII support related to defence avionics systems.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-c3rios-systems-relationship",
+            "sourceId": "c3rios-systems-rdii",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies C3RiOS Systems as an RDII recipient for a project involving defence avionics systems.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-c3rios-systems-mission",
+            "sourceId": "c3rios-systems-technology",
+            "fieldPath": "capabilities.c3rios-modular-avionics-and-rpas-mission-systems.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "C3RiOS's published RPAS ground-control and mission-software capabilities could support autonomous patrol and monitoring aircraft workflows; this is a capability mapping, not a disclosed deployment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "c3rios-systems",
+          "name": "C3RiOS Systems",
+          "legalName": "C3RiOS Systems Inc.",
+          "aliases": [
+            "C3RiOS"
+          ],
+          "description": "C3RiOS Systems is a Quebec avionics company developing open, modular and certifiable cockpit, ground-control and mission-system software for aircraft and remotely piloted aircraft systems.",
+          "websiteUrl": "https://www.c3rios.com/en/home",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.4972,
+            "longitude": -73.6104,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists C3RiOS Systems for RDII support related to defence avionics systems.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "c3rios-modular-avionics-and-rpas-mission-systems",
+            "name": "Modular avionics and RPAS mission systems",
+            "summary": "C3RiOS develops certifiable avionics, mobile cockpit and ground-control software for aircraft and remotely piloted aircraft systems using open modular architectures.",
+            "capabilityType": "Avionics and remotely piloted aircraft mission software",
+            "features": [
+              "Open modular avionics",
+              "Certifiable mission software",
+              "Mobile cockpit systems",
+              "RPAS ground-control interfaces"
+            ],
+            "applications": [
+              "Remotely piloted aircraft systems",
+              "Aircraft modernization",
+              "Mission computing",
+              "Ground-control stations"
+            ],
+            "technicalTags": [
+              "avionics",
+              "RPAS",
+              "MOSA",
+              "DO-178C",
+              "ground control"
+            ],
+            "technicalDomainSlugs": [
+              "aerospace-and-mobility",
+              "mission-software-and-data",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "C3RiOS's published RPAS ground-control and mission-software capabilities could support autonomous patrol and monitoring aircraft workflows; this is a capability mapping, not a disclosed deployment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies C3RiOS Systems as an RDII recipient for a project involving defence avionics systems."
+          }
+        ],
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-31T17:49:35.234Z",
+          "note": "No acceptable official-logo candidate found."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-c3rios-systems-description",
+          "sourceId": "c3rios-systems-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "C3RiOS Systems is a Quebec avionics company developing open, modular and certifiable cockpit, ground-control and mission-system software for aircraft and remotely piloted aircraft systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-c3rios-systems-location",
+          "sourceId": "c3rios-systems-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "C3RiOS Systems has a documented Canadian operating presence in Montreal, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-c3rios-systems-capability",
+          "sourceId": "c3rios-systems-technology",
+          "fieldPath": "capabilities.c3rios-modular-avionics-and-rpas-mission-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "C3RiOS develops certifiable avionics, mobile cockpit and ground-control software for aircraft and remotely piloted aircraft systems using open modular architectures.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-c3rios-systems-features",
+          "sourceId": "c3rios-systems-technology",
+          "fieldPath": "capabilities.c3rios-modular-avionics-and-rpas-mission-systems.features",
+          "claimClass": "source_backed",
+          "excerpt": "Open modular avionics; Certifiable mission software; Mobile cockpit systems; RPAS ground-control interfaces",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-c3rios-systems-activity",
+          "sourceId": "c3rios-systems-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists C3RiOS Systems for RDII support related to defence avionics systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-c3rios-systems-relationship",
+          "sourceId": "c3rios-systems-rdii",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies C3RiOS Systems as an RDII recipient for a project involving defence avionics systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-c3rios-systems-mission",
+          "sourceId": "c3rios-systems-technology",
+          "fieldPath": "capabilities.c3rios-modular-avionics-and-rpas-mission-systems.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "C3RiOS's published RPAS ground-control and mission-software capabilities could support autonomous patrol and monitoring aircraft workflows; this is a capability mapping, not a disclosed deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "C3RiOS Systems is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Modular avionics and RPAS mission systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Technical capability is supported by the company site and RDII source; the candidate does not infer a CAF aircraft integration or certification outcome. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    },
+    {
+      "client_candidate_id": "candidate-beslogic",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-beslogic"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-beslogic",
+        "sourceLeadIds": [
+          "lead-beslogic"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Beslogic is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Private deployable AI platforms with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The federal project establishes defence and aeronautics relevance; no customer deployment, classified use or government endorsement is inferred. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 93,
+        "reviewWarnings": [
+          "The federal project establishes defence and aeronautics relevance; no customer deployment, classified use or government endorsement is inferred."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "beslogic-profile",
+            "title": "Beslogic company profile",
+            "url": "https://beslogic.com/",
+            "publisher": "Beslogic",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Company and contact sections",
+            "summary": "The official site identifies Beslogic as a Montreal AI software and engineering company."
+          },
+          {
+            "id": "beslogic-platform",
+            "title": "Beslogic private AI platform",
+            "url": "https://beslogic.com/",
+            "publisher": "Beslogic",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "ARI and applied AI product sections",
+            "summary": "The official site describes private on-premises AI assistants, secure deployment and applied AI workflow development."
+          },
+          {
+            "id": "beslogic-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Beslogic project listing",
+            "summary": "The federal backgrounder identifies Beslogic support for an artificial-intelligence platform serving aeronautics and defence applications."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-beslogic-description",
+            "sourceId": "beslogic-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Beslogic is a Montreal artificial-intelligence software company offering private, deployable AI systems and engineering services for operational decision support.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-beslogic-location",
+            "sourceId": "beslogic-profile",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Beslogic has a documented Canadian operating presence in Montreal, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-beslogic-capability",
+            "sourceId": "beslogic-platform",
+            "fieldPath": "capabilities.beslogic-private-deployable-ai-platforms.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Beslogic develops private and deployable AI software, including on-premises assistants and workflow systems intended for secure organizational use.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-beslogic-features",
+            "sourceId": "beslogic-platform",
+            "fieldPath": "capabilities.beslogic-private-deployable-ai-platforms.features",
+            "claimClass": "source_backed",
+            "excerpt": "Private on-premises AI; Secure organizational assistants; Workflow and decision-support integration; Applied AI engineering",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-beslogic-activity",
+            "sourceId": "beslogic-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists Beslogic for RDII support related to an artificial-intelligence platform for aeronautics and defence.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-beslogic-relationship",
+            "sourceId": "beslogic-rdii",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies Beslogic as an RDII recipient for an AI-platform project connected to aeronautics and defence.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-beslogic-mission",
+            "sourceId": "beslogic-platform",
+            "fieldPath": "capabilities.beslogic-private-deployable-ai-platforms.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Private deployable AI systems could support controlled edge or enterprise analysis workflows; this is a derived technical fit and not a claim of operational use by government.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "beslogic",
+          "name": "Beslogic",
+          "legalName": "Beslogic Inc.",
+          "aliases": [
+            "BESLOGIC"
+          ],
+          "description": "Beslogic is a Montreal artificial-intelligence software company offering private, deployable AI systems and engineering services for operational decision support.",
+          "websiteUrl": "https://beslogic.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.51,
+            "longitude": -73.588,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists Beslogic for RDII support related to an artificial-intelligence platform for aeronautics and defence.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "beslogic-private-deployable-ai-platforms",
+            "name": "Private deployable AI platforms",
+            "summary": "Beslogic develops private and deployable AI software, including on-premises assistants and workflow systems intended for secure organizational use.",
+            "capabilityType": "Artificial intelligence software and integration",
+            "features": [
+              "Private on-premises AI",
+              "Secure organizational assistants",
+              "Workflow and decision-support integration",
+              "Applied AI engineering"
+            ],
+            "applications": [
+              "Secure knowledge workflows",
+              "Aeronautics and defence AI",
+              "Enterprise decision support",
+              "Operational data analysis"
+            ],
+            "technicalTags": [
+              "artificial intelligence",
+              "on-premises AI",
+              "secure deployment",
+              "decision support"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "communications-and-cyber",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Private deployable AI systems could support controlled edge or enterprise analysis workflows; this is a derived technical fit and not a claim of operational use by government.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies Beslogic as an RDII recipient for an AI-platform project connected to aeronautics and defence."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://beslogic.com/",
+          "sourceAssetUrl": "https://beslogic.com/cdn/shop/files/logo-dark_theme.svg?v=1691422397&width=500",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "2be9d3dd9846a7bc7a83209a8e039f0c96cf4a91efd9b309da9d8d8d32fdd2ea",
+          "normalizedChecksum": "76040d32819aba1135371b2623556f4906fc0ab7bbb330a3d3d7cb7dee98da8f",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731174102/candidate-beslogic/logo.source.json",
+          "note": "1024x171 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-beslogic-description",
+          "sourceId": "beslogic-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Beslogic is a Montreal artificial-intelligence software company offering private, deployable AI systems and engineering services for operational decision support.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-beslogic-location",
+          "sourceId": "beslogic-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Beslogic has a documented Canadian operating presence in Montreal, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-beslogic-capability",
+          "sourceId": "beslogic-platform",
+          "fieldPath": "capabilities.beslogic-private-deployable-ai-platforms.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Beslogic develops private and deployable AI software, including on-premises assistants and workflow systems intended for secure organizational use.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-beslogic-features",
+          "sourceId": "beslogic-platform",
+          "fieldPath": "capabilities.beslogic-private-deployable-ai-platforms.features",
+          "claimClass": "source_backed",
+          "excerpt": "Private on-premises AI; Secure organizational assistants; Workflow and decision-support integration; Applied AI engineering",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-beslogic-activity",
+          "sourceId": "beslogic-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists Beslogic for RDII support related to an artificial-intelligence platform for aeronautics and defence.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-beslogic-relationship",
+          "sourceId": "beslogic-rdii",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies Beslogic as an RDII recipient for an AI-platform project connected to aeronautics and defence.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-beslogic-mission",
+          "sourceId": "beslogic-platform",
+          "fieldPath": "capabilities.beslogic-private-deployable-ai-platforms.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Private deployable AI systems could support controlled edge or enterprise analysis workflows; this is a derived technical fit and not a claim of operational use by government.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Beslogic is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Private deployable AI platforms with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The federal project establishes defence and aeronautics relevance; no customer deployment, classified use or government endorsement is inferred. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    },
+    {
+      "client_candidate_id": "candidate-canadian-technology-systems",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-canadian-technology-systems"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-canadian-technology-systems",
+        "sourceLeadIds": [
+          "lead-canadian-technology-systems"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Canadian Technology Systems is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Explosive-device neutralization systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The public record supports the stated EOD capability and RDII project, but does not identify a specific military customer, operational use or procurement award. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 94,
+        "reviewWarnings": [
+          "The public record supports the stated EOD capability and RDII project, but does not identify a specific military customer, operational use or procurement award."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "canadian-technology-systems-profile",
+            "title": "Canadian Technology Systems company profile",
+            "url": "https://ctsystems.ca/",
+            "publisher": "Canadian Technology Systems",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Company overview",
+            "summary": "The official site identifies Canadian Technology Systems as a Canadian developer of specialized disruptive equipment."
+          },
+          {
+            "id": "canadian-technology-systems-contact",
+            "title": "Canadian Technology Systems Pointe-Claire contact",
+            "url": "https://ctsystems.ca/contact/",
+            "publisher": "Canadian Technology Systems",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Contact page",
+            "summary": "The official contact page gives a Pointe-Claire, Quebec operating address."
+          },
+          {
+            "id": "canadian-technology-systems-product",
+            "title": "Canadian Technology Systems Lance Disrupter",
+            "url": "https://ctsystems.ca/",
+            "publisher": "Canadian Technology Systems",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Lance Disrupter product material",
+            "summary": "The official site describes a disruptive system for neutralizing explosive devices with rapid, no-tools setup."
+          },
+          {
+            "id": "canadian-technology-systems-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Canadian Technology Systems project listing",
+            "summary": "The federal backgrounder identifies support to Canadian Technology Systems for equipment intended to neutralize explosive devices."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-canadian-technology-systems-description",
+            "sourceId": "canadian-technology-systems-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Canadian Technology Systems is a Pointe-Claire, Quebec developer of disruptive tools and equipment for explosive-device neutralization and related public-safety operations.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-canadian-technology-systems-location",
+            "sourceId": "canadian-technology-systems-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Canadian Technology Systems has a documented Canadian operating presence in Pointe-Claire, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-canadian-technology-systems-capability",
+            "sourceId": "canadian-technology-systems-product",
+            "fieldPath": "capabilities.cts-explosive-device-neutralization-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Canadian Technology Systems develops disruptive equipment designed to neutralize explosive devices, including rapidly deployable systems for public-safety and defence users.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-canadian-technology-systems-features",
+            "sourceId": "canadian-technology-systems-product",
+            "fieldPath": "capabilities.cts-explosive-device-neutralization-systems.features",
+            "claimClass": "source_backed",
+            "excerpt": "Explosive-device disrupters; Rapid no-tools setup; Specialized EOD equipment; Field-deployable operation",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-canadian-technology-systems-activity",
+            "sourceId": "canadian-technology-systems-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists Canadian Technology Systems for RDII support connected to equipment for neutralizing explosive devices.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-canadian-technology-systems-relationship",
+            "sourceId": "canadian-technology-systems-rdii",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies Canadian Technology Systems as an RDII recipient for an explosive-device-neutralization project.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-canadian-technology-systems-mission",
+            "sourceId": "canadian-technology-systems-product",
+            "fieldPath": "capabilities.cts-explosive-device-neutralization-systems.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Field-deployable explosive-device neutralization equipment could support force-protection operations around patrol and monitoring missions; this is a derived operational fit.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "canadian-technology-systems",
+          "name": "Canadian Technology Systems",
+          "legalName": "4364546 Canada Inc.",
+          "aliases": [
+            "CTS",
+            "Canadian Technology Systems (CTS)"
+          ],
+          "description": "Canadian Technology Systems is a Pointe-Claire, Quebec developer of disruptive tools and equipment for explosive-device neutralization and related public-safety operations.",
+          "websiteUrl": "https://ctsystems.ca/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Pointe-Claire",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.4486,
+            "longitude": -73.8167,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists Canadian Technology Systems for RDII support connected to equipment for neutralizing explosive devices.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "cts-explosive-device-neutralization-systems",
+            "name": "Explosive-device neutralization systems",
+            "summary": "Canadian Technology Systems develops disruptive equipment designed to neutralize explosive devices, including rapidly deployable systems for public-safety and defence users.",
+            "capabilityType": "Explosive ordnance disposal equipment",
+            "features": [
+              "Explosive-device disrupters",
+              "Rapid no-tools setup",
+              "Specialized EOD equipment",
+              "Field-deployable operation"
+            ],
+            "applications": [
+              "Explosive ordnance disposal",
+              "Force protection",
+              "Public-safety response",
+              "Defence field operations"
+            ],
+            "technicalTags": [
+              "EOD",
+              "explosive neutralization",
+              "disrupter",
+              "force protection"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "advanced-manufacturing-and-integration",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Field-deployable explosive-device neutralization equipment could support force-protection operations around patrol and monitoring missions; this is a derived operational fit.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies Canadian Technology Systems as an RDII recipient for an explosive-device-neutralization project."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://ctsystems.ca/",
+          "sourceAssetUrl": "https://ctsystems.ca/cts/wp-content/uploads/2018/06/logo1.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "06500b8b8df123f079e128c4d8b45ce364aa03fdce82a1f7884ac934b78b6b51",
+          "normalizedChecksum": "26b746b3a8f64725c224329735508f9b97e47120c960082747fb2b6a5c613e17",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731174102/candidate-canadian-technology-systems/logo.source.json",
+          "note": "282x44 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-canadian-technology-systems-description",
+          "sourceId": "canadian-technology-systems-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Canadian Technology Systems is a Pointe-Claire, Quebec developer of disruptive tools and equipment for explosive-device neutralization and related public-safety operations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-canadian-technology-systems-location",
+          "sourceId": "canadian-technology-systems-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Canadian Technology Systems has a documented Canadian operating presence in Pointe-Claire, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-canadian-technology-systems-capability",
+          "sourceId": "canadian-technology-systems-product",
+          "fieldPath": "capabilities.cts-explosive-device-neutralization-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Canadian Technology Systems develops disruptive equipment designed to neutralize explosive devices, including rapidly deployable systems for public-safety and defence users.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-canadian-technology-systems-features",
+          "sourceId": "canadian-technology-systems-product",
+          "fieldPath": "capabilities.cts-explosive-device-neutralization-systems.features",
+          "claimClass": "source_backed",
+          "excerpt": "Explosive-device disrupters; Rapid no-tools setup; Specialized EOD equipment; Field-deployable operation",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-canadian-technology-systems-activity",
+          "sourceId": "canadian-technology-systems-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists Canadian Technology Systems for RDII support connected to equipment for neutralizing explosive devices.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-canadian-technology-systems-relationship",
+          "sourceId": "canadian-technology-systems-rdii",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies Canadian Technology Systems as an RDII recipient for an explosive-device-neutralization project.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-canadian-technology-systems-mission",
+          "sourceId": "canadian-technology-systems-product",
+          "fieldPath": "capabilities.cts-explosive-device-neutralization-systems.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Field-deployable explosive-device neutralization equipment could support force-protection operations around patrol and monitoring missions; this is a derived operational fit.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Canadian Technology Systems is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Explosive-device neutralization systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The public record supports the stated EOD capability and RDII project, but does not identify a specific military customer, operational use or procurement award. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    },
+    {
+      "client_candidate_id": "candidate-inflo-technique",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-inflo-technique"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-inflo-technique",
+        "sourceLeadIds": [
+          "lead-inflo-technique"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "INFLO Technique is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Custom marine and high-reliability valves with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. INFLO and Inflotech branding is reconciled here as an alias; reviewers should confirm the legal entity name before publication. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 90,
+        "reviewWarnings": [
+          "INFLO and Inflotech branding is reconciled here as an alias; reviewers should confirm the legal entity name before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "inflo-technique-profile",
+            "title": "Inflotech company profile and Terrebonne operation",
+            "url": "https://inflotech.com/",
+            "publisher": "Inflotech",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Company overview and contact sections",
+            "summary": "The official site identifies Inflotech as a Terrebonne, Quebec custom-valve manufacturer."
+          },
+          {
+            "id": "inflo-technique-products",
+            "title": "Inflotech marine, nuclear and high-reliability valve capabilities",
+            "url": "https://inflotech.com/",
+            "publisher": "Inflotech",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Markets and product sections",
+            "summary": "The official site describes custom valves for marine, navy, nuclear, fuel-handling and fire-protection applications, including MIL and NAVSEA specifications."
+          },
+          {
+            "id": "inflo-technique-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "INFLO Technique project listing",
+            "summary": "The federal backgrounder identifies INFLO Technique support for custom-valve capacity serving nuclear and national-defence applications."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-inflo-technique-description",
+            "sourceId": "inflo-technique-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "INFLO Technique, operating as Inflotech, is a Terrebonne, Quebec designer and manufacturer of custom industrial valves for marine, nuclear, fuel-handling and high-reliability applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-inflo-technique-location",
+            "sourceId": "inflo-technique-profile",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "INFLO Technique has a documented Canadian operating presence in Terrebonne, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-inflo-technique-capability",
+            "sourceId": "inflo-technique-products",
+            "fieldPath": "capabilities.inflo-custom-marine-and-high-reliability-valves.summary",
+            "claimClass": "source_backed",
+            "excerpt": "INFLO Technique designs and manufactures custom valves and flow-control equipment for marine, nuclear, fuel-handling and demanding industrial environments.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-inflo-technique-features",
+            "sourceId": "inflo-technique-products",
+            "fieldPath": "capabilities.inflo-custom-marine-and-high-reliability-valves.features",
+            "claimClass": "source_backed",
+            "excerpt": "Custom industrial valves; Marine and navy applications; Nuclear and fuel-handling systems; MIL and NAVSEA specification experience",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-inflo-technique-activity",
+            "sourceId": "inflo-technique-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists INFLO Technique for RDII support to increase custom-valve production capacity for nuclear and national-defence applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-inflo-technique-relationship",
+            "sourceId": "inflo-technique-rdii",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies INFLO Technique as an RDII recipient to expand custom-valve capacity for nuclear and national-defence applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-inflo-technique-mission",
+            "sourceId": "inflo-technique-products",
+            "fieldPath": "capabilities.inflo-custom-marine-and-high-reliability-valves.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Marine-grade valve and flow-control manufacturing could support sustainment of maritime systems relevant to underwater operations; this is a derived supply-chain fit, not a disclosed naval program role.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "inflo-technique",
+          "name": "INFLO Technique",
+          "legalName": null,
+          "aliases": [
+            "Inflotech",
+            "INFLO"
+          ],
+          "description": "INFLO Technique, operating as Inflotech, is a Terrebonne, Quebec designer and manufacturer of custom industrial valves for marine, nuclear, fuel-handling and high-reliability applications.",
+          "websiteUrl": "https://inflotech.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Terrebonne",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.7,
+            "longitude": -73.64,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists INFLO Technique for RDII support to increase custom-valve production capacity for nuclear and national-defence applications.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "inflo-custom-marine-and-high-reliability-valves",
+            "name": "Custom marine and high-reliability valves",
+            "summary": "INFLO Technique designs and manufactures custom valves and flow-control equipment for marine, nuclear, fuel-handling and demanding industrial environments.",
+            "capabilityType": "Custom valves and flow-control manufacturing",
+            "features": [
+              "Custom industrial valves",
+              "Marine and navy applications",
+              "Nuclear and fuel-handling systems",
+              "MIL and NAVSEA specification experience"
+            ],
+            "applications": [
+              "Marine systems",
+              "Naval sustainment",
+              "Nuclear facilities",
+              "Fuel and fire-suppression systems"
+            ],
+            "technicalTags": [
+              "valves",
+              "flow control",
+              "marine",
+              "NAVSEA",
+              "MIL specification"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "test-training-and-sustainment",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "Marine-grade valve and flow-control manufacturing could support sustainment of maritime systems relevant to underwater operations; this is a derived supply-chain fit, not a disclosed naval program role.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies INFLO Technique as an RDII recipient to expand custom-valve capacity for nuclear and national-defence applications."
+          }
+        ],
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://inflotech.com/",
+          "sourceAssetUrl": "https://b3244310.assetcdn.net/3244310/wp-content/uploads/2023/07/logo_westinghouse_gris.png?lossy=1&strip=1&webp=1",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "5d6bb5fbba907107117d060bcc4e9e4982bedea77b04cb8a1e4408b2610f960d",
+          "normalizedChecksum": "34762b4dba6311cdd6d7f71ab47c428f6679014609f84d2a18a000636307760b",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731174102/candidate-inflo-technique/logo.source.json",
+          "note": "1024x273 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-inflo-technique-description",
+          "sourceId": "inflo-technique-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "INFLO Technique, operating as Inflotech, is a Terrebonne, Quebec designer and manufacturer of custom industrial valves for marine, nuclear, fuel-handling and high-reliability applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-inflo-technique-location",
+          "sourceId": "inflo-technique-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "INFLO Technique has a documented Canadian operating presence in Terrebonne, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-inflo-technique-capability",
+          "sourceId": "inflo-technique-products",
+          "fieldPath": "capabilities.inflo-custom-marine-and-high-reliability-valves.summary",
+          "claimClass": "source_backed",
+          "excerpt": "INFLO Technique designs and manufactures custom valves and flow-control equipment for marine, nuclear, fuel-handling and demanding industrial environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-inflo-technique-features",
+          "sourceId": "inflo-technique-products",
+          "fieldPath": "capabilities.inflo-custom-marine-and-high-reliability-valves.features",
+          "claimClass": "source_backed",
+          "excerpt": "Custom industrial valves; Marine and navy applications; Nuclear and fuel-handling systems; MIL and NAVSEA specification experience",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-inflo-technique-activity",
+          "sourceId": "inflo-technique-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists INFLO Technique for RDII support to increase custom-valve production capacity for nuclear and national-defence applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-inflo-technique-relationship",
+          "sourceId": "inflo-technique-rdii",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies INFLO Technique as an RDII recipient to expand custom-valve capacity for nuclear and national-defence applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-inflo-technique-mission",
+          "sourceId": "inflo-technique-products",
+          "fieldPath": "capabilities.inflo-custom-marine-and-high-reliability-valves.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Marine-grade valve and flow-control manufacturing could support sustainment of maritime systems relevant to underwater operations; this is a derived supply-chain fit, not a disclosed naval program role.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "INFLO Technique is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Custom marine and high-reliability valves with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. INFLO and Inflotech branding is reconciled here as an alias; reviewers should confirm the legal entity name before publication. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    },
+    {
+      "client_candidate_id": "candidate-apexo",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-apexo"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-apexo",
+        "sourceLeadIds": [
+          "lead-apexo"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "ApexO is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Precision ballistics software and firing systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The sources support product and RDII project relevance but do not disclose a specific defence customer, weapon system or Canadian procurement award. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 96,
+        "completenessScore": 92,
+        "reviewWarnings": [
+          "The sources support product and RDII project relevance but do not disclose a specific defence customer, weapon system or Canadian procurement award."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "apexo-profile",
+            "title": "ApexO company profile",
+            "url": "https://apexo.net/",
+            "publisher": "ApexO",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Company overview",
+            "summary": "The official site identifies ApexO as a developer of ballistics, firing-system, optics and optronic products."
+          },
+          {
+            "id": "apexo-contact",
+            "title": "ApexO Repentigny contact",
+            "url": "https://apexo.net/pages/contact",
+            "publisher": "ApexO",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Contact page",
+            "summary": "The official contact page gives a Repentigny, Quebec address."
+          },
+          {
+            "id": "apexo-products",
+            "title": "ApexO firing-system and ballistics products",
+            "url": "https://apexo.net/",
+            "publisher": "ApexO",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Product sections",
+            "summary": "The official site describes the ApexO Firing System, precision ballistics software, optics and optronic products."
+          },
+          {
+            "id": "apexo-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "ApexO project listing",
+            "summary": "The federal backgrounder identifies ApexO support for precision-ballistics technology under RDII."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-apexo-description",
+            "sourceId": "apexo-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "ApexO is a Repentigny, Quebec developer of precision ballistics software, firing systems, optics and optronic products for tactical shooting and defence-related applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-apexo-location",
+            "sourceId": "apexo-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "ApexO has a documented Canadian operating presence in Repentigny, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-apexo-capability",
+            "sourceId": "apexo-products",
+            "fieldPath": "capabilities.apexo-precision-ballistics-and-firing-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "ApexO develops precision ballistics software, electronic firing systems, optics and optronic products intended to improve tactical firing accuracy and workflows.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-apexo-features",
+            "sourceId": "apexo-products",
+            "fieldPath": "capabilities.apexo-precision-ballistics-and-firing-systems.features",
+            "claimClass": "source_backed",
+            "excerpt": "Precision ballistics software; Electronic firing systems; Optics and optronics; Tactical shooting workflows",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-apexo-activity",
+            "sourceId": "apexo-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists ApexO for RDII support related to precision ballistics systems.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-apexo-relationship",
+            "sourceId": "apexo-rdii",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies ApexO as an RDII recipient for a precision-ballistics project.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-apexo-mission",
+            "sourceId": "apexo-products",
+            "fieldPath": "capabilities.apexo-precision-ballistics-and-firing-systems.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Precision-ballistics software and tactical optronics could inform fielded patrol-team equipment workflows; this is a derived capability fit, not a claim about a defence program.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "apexo",
+          "name": "ApexO",
+          "legalName": "ApexO Inc.",
+          "aliases": [
+            "ApexO Firing Systems"
+          ],
+          "description": "ApexO is a Repentigny, Quebec developer of precision ballistics software, firing systems, optics and optronic products for tactical shooting and defence-related applications.",
+          "websiteUrl": "https://apexo.net/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Repentigny",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.7422,
+            "longitude": -73.4506,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists ApexO for RDII support related to precision ballistics systems.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "apexo-precision-ballistics-and-firing-systems",
+            "name": "Precision ballistics software and firing systems",
+            "summary": "ApexO develops precision ballistics software, electronic firing systems, optics and optronic products intended to improve tactical firing accuracy and workflows.",
+            "capabilityType": "Precision ballistics and tactical optronics",
+            "features": [
+              "Precision ballistics software",
+              "Electronic firing systems",
+              "Optics and optronics",
+              "Tactical shooting workflows"
+            ],
+            "applications": [
+              "Precision engagement",
+              "Training systems",
+              "Tactical decision support",
+              "Defence ballistics"
+            ],
+            "technicalTags": [
+              "ballistics",
+              "firing system",
+              "optronics",
+              "precision shooting"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Precision-ballistics software and tactical optronics could inform fielded patrol-team equipment workflows; this is a derived capability fit, not a claim about a defence program.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies ApexO as an RDII recipient for a precision-ballistics project."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://apexo.net/",
+          "sourceAssetUrl": "https://apexo.net/cdn/shop/files/APEXO_LOGO_HOR_OUTLINED_2019.png?v=1704822023&width=3000",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "4819dc181ca9645da8475a7b45ef2a103a157307452447345c35b42cf534fd38",
+          "normalizedChecksum": "4b4f233e1f06465b2617ac7162210f8e2615cb8d729f960e17a75d45762181c1",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731174102/candidate-apexo/logo.source.json",
+          "note": "1024x341 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-apexo-description",
+          "sourceId": "apexo-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "ApexO is a Repentigny, Quebec developer of precision ballistics software, firing systems, optics and optronic products for tactical shooting and defence-related applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-apexo-location",
+          "sourceId": "apexo-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "ApexO has a documented Canadian operating presence in Repentigny, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-apexo-capability",
+          "sourceId": "apexo-products",
+          "fieldPath": "capabilities.apexo-precision-ballistics-and-firing-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "ApexO develops precision ballistics software, electronic firing systems, optics and optronic products intended to improve tactical firing accuracy and workflows.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-apexo-features",
+          "sourceId": "apexo-products",
+          "fieldPath": "capabilities.apexo-precision-ballistics-and-firing-systems.features",
+          "claimClass": "source_backed",
+          "excerpt": "Precision ballistics software; Electronic firing systems; Optics and optronics; Tactical shooting workflows",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-apexo-activity",
+          "sourceId": "apexo-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists ApexO for RDII support related to precision ballistics systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-apexo-relationship",
+          "sourceId": "apexo-rdii",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies ApexO as an RDII recipient for a precision-ballistics project.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-apexo-mission",
+          "sourceId": "apexo-products",
+          "fieldPath": "capabilities.apexo-precision-ballistics-and-firing-systems.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Precision-ballistics software and tactical optronics could inform fielded patrol-team equipment workflows; this is a derived capability fit, not a claim about a defence program.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "ApexO is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Precision ballistics software and firing systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The sources support product and RDII project relevance but do not disclose a specific defence customer, weapon system or Canadian procurement award. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    },
+    {
+      "client_candidate_id": "candidate-carcajou-tactical",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-carcajou-tactical"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-carcajou-tactical",
+        "sourceLeadIds": [
+          "lead-carcajou-tactical"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Carcajou Tactical is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Tactical load-bearing equipment and accessories with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The company describes military and public-safety equipment, but the public material does not identify a specific CAF contract or current procurement relationship. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 95,
+        "completenessScore": 90,
+        "reviewWarnings": [
+          "The company describes military and public-safety equipment, but the public material does not identify a specific CAF contract or current procurement relationship."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "carcajou-tactical-about",
+            "title": "Carcajou Tactical company profile",
+            "url": "https://carcajoutactical.com/pages/about-us",
+            "publisher": "Carcajou Tactical",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "About Us page",
+            "summary": "The official page identifies Carcajou Tactical as a veteran-owned Canadian tactical-equipment company."
+          },
+          {
+            "id": "carcajou-tactical-contact",
+            "title": "Carcajou Tactical Gatineau contact",
+            "url": "https://carcajoutactical.com/pages/contact-us",
+            "publisher": "Carcajou Tactical",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Contact page",
+            "summary": "The official contact page gives a Gatineau, Quebec contact route and operating location."
+          },
+          {
+            "id": "carcajou-tactical-products",
+            "title": "Carcajou Tactical load-bearing equipment",
+            "url": "https://carcajoutactical.com/",
+            "publisher": "Carcajou Tactical",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Product catalogue",
+            "summary": "The official site lists tactical pouches, belts, load-bearing equipment and accessories for operational users."
+          },
+          {
+            "id": "carcajou-tactical-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Carcajou Tactical project listing",
+            "summary": "The federal backgrounder identifies Carcajou Tactical support for tactical-equipment manufacturing capacity."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-carcajou-tactical-description",
+            "sourceId": "carcajou-tactical-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Carcajou Tactical is a Gatineau, Quebec veteran-owned designer and manufacturer of tactical load-bearing equipment, pouches, belts and accessories for military and public-safety users.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-carcajou-tactical-location",
+            "sourceId": "carcajou-tactical-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Carcajou Tactical has a documented Canadian operating presence in Gatineau, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-carcajou-tactical-capability",
+            "sourceId": "carcajou-tactical-products",
+            "fieldPath": "capabilities.carcajou-tactical-load-bearing-equipment.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Carcajou Tactical designs and manufactures tactical pouches, belts, load-bearing equipment and accessories for military and public-safety customers.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-carcajou-tactical-features",
+            "sourceId": "carcajou-tactical-products",
+            "fieldPath": "capabilities.carcajou-tactical-load-bearing-equipment.features",
+            "claimClass": "source_backed",
+            "excerpt": "Load-bearing systems; Tactical pouches and belts; Veteran-led product design; Military and public-safety equipment",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-carcajou-tactical-activity",
+            "sourceId": "carcajou-tactical-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists Carcajou Tactical for RDII support to expand tactical-equipment manufacturing capacity.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-carcajou-tactical-relationship",
+            "sourceId": "carcajou-tactical-rdii",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies Carcajou Tactical as an RDII recipient for tactical-equipment manufacturing capacity.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-carcajou-tactical-mission",
+            "sourceId": "carcajou-tactical-products",
+            "fieldPath": "capabilities.carcajou-tactical-load-bearing-equipment.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Tactical load-bearing equipment could support personnel conducting patrol and monitoring missions; this is a derived field-equipment fit rather than a stated customer deployment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "carcajou-tactical",
+          "name": "Carcajou Tactical",
+          "legalName": null,
+          "aliases": [
+            "Carcajou"
+          ],
+          "description": "Carcajou Tactical is a Gatineau, Quebec veteran-owned designer and manufacturer of tactical load-bearing equipment, pouches, belts and accessories for military and public-safety users.",
+          "websiteUrl": "https://carcajoutactical.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Gatineau",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.4765,
+            "longitude": -75.7013,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists Carcajou Tactical for RDII support to expand tactical-equipment manufacturing capacity.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "carcajou-tactical-load-bearing-equipment",
+            "name": "Tactical load-bearing equipment and accessories",
+            "summary": "Carcajou Tactical designs and manufactures tactical pouches, belts, load-bearing equipment and accessories for military and public-safety customers.",
+            "capabilityType": "Tactical equipment manufacturing",
+            "features": [
+              "Load-bearing systems",
+              "Tactical pouches and belts",
+              "Veteran-led product design",
+              "Military and public-safety equipment"
+            ],
+            "applications": [
+              "Field equipment",
+              "Patrol teams",
+              "Force protection",
+              "Military sustainment"
+            ],
+            "technicalTags": [
+              "tactical equipment",
+              "load-bearing",
+              "pouches",
+              "belts",
+              "field gear"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Tactical load-bearing equipment could support personnel conducting patrol and monitoring missions; this is a derived field-equipment fit rather than a stated customer deployment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies Carcajou Tactical as an RDII recipient for tactical-equipment manufacturing capacity."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://carcajoutactical.com/",
+          "sourceAssetUrl": "https://carcajoutactical.com/cdn/shop/files/New_Website_Logo_42da4d54-ce91-40d6-9e3d-e2935537f42a_300x@2x.png?v=1752069231",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "5554fca9ef1d287d9c5919f2c8a0214785fe9d3a70f95e9705e27900c6f7df25",
+          "normalizedChecksum": "8582b0862dbf78a25528b8526299782634b3377c3931a9976cc68f8a57400343",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731174102/candidate-carcajou-tactical/logo.source.json",
+          "note": "600x85 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-carcajou-tactical-description",
+          "sourceId": "carcajou-tactical-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Carcajou Tactical is a Gatineau, Quebec veteran-owned designer and manufacturer of tactical load-bearing equipment, pouches, belts and accessories for military and public-safety users.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-carcajou-tactical-location",
+          "sourceId": "carcajou-tactical-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Carcajou Tactical has a documented Canadian operating presence in Gatineau, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-carcajou-tactical-capability",
+          "sourceId": "carcajou-tactical-products",
+          "fieldPath": "capabilities.carcajou-tactical-load-bearing-equipment.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Carcajou Tactical designs and manufactures tactical pouches, belts, load-bearing equipment and accessories for military and public-safety customers.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-carcajou-tactical-features",
+          "sourceId": "carcajou-tactical-products",
+          "fieldPath": "capabilities.carcajou-tactical-load-bearing-equipment.features",
+          "claimClass": "source_backed",
+          "excerpt": "Load-bearing systems; Tactical pouches and belts; Veteran-led product design; Military and public-safety equipment",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-carcajou-tactical-activity",
+          "sourceId": "carcajou-tactical-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists Carcajou Tactical for RDII support to expand tactical-equipment manufacturing capacity.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-carcajou-tactical-relationship",
+          "sourceId": "carcajou-tactical-rdii",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies Carcajou Tactical as an RDII recipient for tactical-equipment manufacturing capacity.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-carcajou-tactical-mission",
+          "sourceId": "carcajou-tactical-products",
+          "fieldPath": "capabilities.carcajou-tactical-load-bearing-equipment.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Tactical load-bearing equipment could support personnel conducting patrol and monitoring missions; this is a derived field-equipment fit rather than a stated customer deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Carcajou Tactical is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Tactical load-bearing equipment and accessories with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The company describes military and public-safety equipment, but the public material does not identify a specific CAF contract or current procurement relationship. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    },
+    {
+      "client_candidate_id": "candidate-simactive",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-simactive"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-simactive",
+        "sourceLeadIds": [
+          "lead-simactive"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "SimActive is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Drone, aircraft and satellite photogrammetry software with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The DND adoption reference is historical and is not represented as a current contract, deployment or endorsement. Review the historical date and scope before publication. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 96,
+        "reviewWarnings": [
+          "The DND adoption reference is historical and is not represented as a current contract, deployment or endorsement. Review the historical date and scope before publication."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "simactive-profile",
+            "title": "SimActive company profile",
+            "url": "https://www.simactive.com/",
+            "publisher": "SimActive",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Company overview",
+            "summary": "The official site identifies SimActive as a Montreal photogrammetry-software company."
+          },
+          {
+            "id": "simactive-contact",
+            "title": "SimActive Montreal contact",
+            "url": "https://www.simactive.com/contact-us",
+            "publisher": "SimActive",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Contact page",
+            "summary": "The official contact page gives a Montreal, Quebec address."
+          },
+          {
+            "id": "simactive-technology",
+            "title": "SimActive Correlator3D photogrammetry software",
+            "url": "https://www.simactive.com/",
+            "publisher": "SimActive",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Correlator3D product sections",
+            "summary": "The official site describes photogrammetry software for imagery captured from drones, aircraft and satellites, producing orthomosaics, digital-surface models and 3D outputs."
+          },
+          {
+            "id": "simactive-dnd",
+            "title": "SimActive historical DND Correlator3D announcement",
+            "url": "https://www.simactive.com/news-stories/the-department-of-national-defence-adopts-simactives-correlator3d-software",
+            "publisher": "SimActive",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2009-01-01T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Department of National Defence adopts Correlator3D",
+            "summary": "SimActive's public announcement states that the Department of National Defence acquired Correlator3D licenses for photogrammetric workflows; this is historical company-reported evidence."
+          },
+          {
+            "id": "simactive-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "SimActive project listing",
+            "summary": "The federal backgrounder identifies SimActive as an RDII recipient."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-simactive-description",
+            "sourceId": "simactive-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "SimActive is a Montreal photogrammetry-software company whose Correlator3D platform processes imagery from drones, aircraft and satellites to produce geospatial products.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-simactive-location",
+            "sourceId": "simactive-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "SimActive has a documented Canadian operating presence in Montreal, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-simactive-capability",
+            "sourceId": "simactive-technology",
+            "fieldPath": "capabilities.simactive-correlator3d-photogrammetry.summary",
+            "claimClass": "source_backed",
+            "excerpt": "SimActive's Correlator3D software processes aerial and satellite imagery to generate geospatial products, including orthomosaics, digital surface models and three-dimensional outputs.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-simactive-features",
+            "sourceId": "simactive-technology",
+            "fieldPath": "capabilities.simactive-correlator3d-photogrammetry.features",
+            "claimClass": "source_backed",
+            "excerpt": "Drone, aircraft and satellite imagery processing; Orthomosaic and 3D product generation; Automated photogrammetric workflows; High-volume imagery processing",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-simactive-activity",
+            "sourceId": "simactive-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists SimActive for RDII support, while SimActive documents that the Department of National Defence adopted Correlator3D software for photogrammetric workflows in an earlier public announcement.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-simactive-relationship",
+            "sourceId": "simactive-dnd",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies SimActive as an RDII recipient; the company's public historical announcement separately states that DND adopted Correlator3D software.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-simactive-mission",
+            "sourceId": "simactive-technology",
+            "fieldPath": "capabilities.simactive-correlator3d-photogrammetry.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Aerial and satellite photogrammetry could support terrain and infrastructure analysis for domain-awareness workflows; this is a derived technical fit, not a claim about a current Arctic deployment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "simactive",
+          "name": "SimActive",
+          "legalName": "SimActive Inc.",
+          "aliases": [
+            "SimActive Inc.",
+            "Correlator3D"
+          ],
+          "description": "SimActive is a Montreal photogrammetry-software company whose Correlator3D platform processes imagery from drones, aircraft and satellites to produce geospatial products.",
+          "websiteUrl": "https://www.simactive.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5088,
+            "longitude": -73.5568,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists SimActive for RDII support, while SimActive documents that the Department of National Defence adopted Correlator3D software for photogrammetric workflows in an earlier public announcement.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "simactive-correlator3d-photogrammetry",
+            "name": "Drone, aircraft and satellite photogrammetry software",
+            "summary": "SimActive's Correlator3D software processes aerial and satellite imagery to generate geospatial products, including orthomosaics, digital surface models and three-dimensional outputs.",
+            "capabilityType": "Photogrammetry and geospatial-imagery processing software",
+            "features": [
+              "Drone, aircraft and satellite imagery processing",
+              "Orthomosaic and 3D product generation",
+              "Automated photogrammetric workflows",
+              "High-volume imagery processing"
+            ],
+            "applications": [
+              "Geospatial intelligence",
+              "Aerial mapping",
+              "Terrain analysis",
+              "Uncrewed aerial-system imagery"
+            ],
+            "technicalTags": [
+              "photogrammetry",
+              "geospatial intelligence",
+              "drone imagery",
+              "satellite imagery",
+              "Correlator3D"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "mission-software-and-data",
+              "space-and-earth-observation"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Aerial and satellite photogrammetry could support terrain and infrastructure analysis for domain-awareness workflows; this is a derived technical fit, not a claim about a current Arctic deployment.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies SimActive as an RDII recipient; the company's public historical announcement separately states that DND adopted Correlator3D software."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.simactive.com/",
+          "sourceAssetUrl": "https://www.simactive.com/hs-fs/hubfs/20plus_Anniversary_Logo_White_RGB_Fit.png?width=388&height=138&name=20plus_Anniversary_Logo_White_RGB_Fit.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "490805e99fa5328addfc74ff980fbe310c3d47e8f7a141b56860f06108bb81d4",
+          "normalizedChecksum": "6d910079ff6e2a0bba58f9593de5df69977af836280abfd58f287eb3b5f20a02",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260731174102/candidate-simactive/logo.source.json",
+          "note": "388x138 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-simactive-description",
+          "sourceId": "simactive-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "SimActive is a Montreal photogrammetry-software company whose Correlator3D platform processes imagery from drones, aircraft and satellites to produce geospatial products.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-simactive-location",
+          "sourceId": "simactive-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "SimActive has a documented Canadian operating presence in Montreal, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-simactive-capability",
+          "sourceId": "simactive-technology",
+          "fieldPath": "capabilities.simactive-correlator3d-photogrammetry.summary",
+          "claimClass": "source_backed",
+          "excerpt": "SimActive's Correlator3D software processes aerial and satellite imagery to generate geospatial products, including orthomosaics, digital surface models and three-dimensional outputs.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-simactive-features",
+          "sourceId": "simactive-technology",
+          "fieldPath": "capabilities.simactive-correlator3d-photogrammetry.features",
+          "claimClass": "source_backed",
+          "excerpt": "Drone, aircraft and satellite imagery processing; Orthomosaic and 3D product generation; Automated photogrammetric workflows; High-volume imagery processing",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-simactive-activity",
+          "sourceId": "simactive-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists SimActive for RDII support, while SimActive documents that the Department of National Defence adopted Correlator3D software for photogrammetric workflows in an earlier public announcement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-simactive-relationship",
+          "sourceId": "simactive-dnd",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies SimActive as an RDII recipient; the company's public historical announcement separately states that DND adopted Correlator3D software.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-simactive-mission",
+          "sourceId": "simactive-technology",
+          "fieldPath": "capabilities.simactive-correlator3d-photogrammetry.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Aerial and satellite photogrammetry could support terrain and infrastructure analysis for domain-awareness workflows; this is a derived technical fit, not a claim about a current Arctic deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "SimActive is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Drone, aircraft and satellite photogrammetry software with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The DND adoption reference is historical and is not represented as a current contract, deployment or endorsement. Review the historical date and scope before publication. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    },
+    {
+      "client_candidate_id": "candidate-kinova",
+      "research_run_ref": "tnm-manual-20260731174102",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-kinova"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-kinova",
+        "sourceLeadIds": [
+          "lead-kinova"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Kinova is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Robotic manipulation systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Kinova's published company profile supports robotic-manipulation capability. The candidate does not claim a current defence contract or operational military use. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 94,
+        "reviewWarnings": [
+          "Kinova's published company profile supports robotic-manipulation capability. The candidate does not claim a current defence contract or operational military use."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-31T17:49:18.280Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "kinova-profile",
+            "title": "Kinova company profile",
+            "url": "https://www.kinovarobotics.com/medical/our-company",
+            "publisher": "Kinova",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Our Company page",
+            "summary": "The official site identifies Kinova as a Canadian robotics company founded in 2006 with operations in Boisbriand, Quebec."
+          },
+          {
+            "id": "kinova-technology",
+            "title": "Kinova robotic manipulation technology",
+            "url": "https://www.kinovarobotics.com/medical/our-company",
+            "publisher": "Kinova",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Robotics and company technology overview",
+            "summary": "The official site describes Kinova's robotic arms and Canadian robotics engineering for medical, research and industrial applications."
+          },
+          {
+            "id": "kinova-rdii",
+            "title": "CED Quebec RDII project backgrounder",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-07-31T17:49:18.280Z",
+            "locator": "Kinova project listing",
+            "summary": "The federal backgrounder identifies Kinova support for an advanced-robotics project under RDII."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-kinova-description",
+            "sourceId": "kinova-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Kinova is a Boisbriand, Quebec Canadian robotics company that develops robotic arms and related systems for medical, research and industrial applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-kinova-location",
+            "sourceId": "kinova-profile",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Kinova has a documented Canadian operating presence in Boisbriand, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-kinova-capability",
+            "sourceId": "kinova-technology",
+            "fieldPath": "capabilities.kinova-robotic-manipulation-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Kinova develops robotic arms and manipulation systems, drawing on Canadian robotics engineering for medical, research and industrial environments.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-kinova-features",
+            "sourceId": "kinova-technology",
+            "fieldPath": "capabilities.kinova-robotic-manipulation-systems.features",
+            "claimClass": "source_backed",
+            "excerpt": "Robotic arms; Precision manipulation; Canadian robotics engineering; Medical, research and industrial systems",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-kinova-activity",
+            "sourceId": "kinova-rdii",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions lists Kinova for RDII support related to advanced robotics.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-kinova-relationship",
+            "sourceId": "kinova-rdii",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development for Quebec Regions identifies Kinova as an RDII recipient for an advanced-robotics project.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-kinova-mission",
+            "sourceId": "kinova-technology",
+            "fieldPath": "capabilities.kinova-robotic-manipulation-systems.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Robotic manipulation systems could support remote and autonomous field-equipment workflows; this is a derived capability fit, not a disclosed defence deployment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "kinova",
+          "name": "Kinova",
+          "legalName": "Kinova Inc.",
+          "aliases": [
+            "Kinova Robotics"
+          ],
+          "description": "Kinova is a Boisbriand, Quebec Canadian robotics company that develops robotic arms and related systems for medical, research and industrial applications.",
+          "websiteUrl": "https://www.kinovarobotics.com/medical/our-company",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Boisbriand",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.622,
+            "longitude": -73.83,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Canada Economic Development for Quebec Regions lists Kinova for RDII support related to advanced robotics.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "kinova-robotic-manipulation-systems",
+            "name": "Robotic manipulation systems",
+            "summary": "Kinova develops robotic arms and manipulation systems, drawing on Canadian robotics engineering for medical, research and industrial environments.",
+            "capabilityType": "Robotic manipulation hardware and software",
+            "features": [
+              "Robotic arms",
+              "Precision manipulation",
+              "Canadian robotics engineering",
+              "Medical, research and industrial systems"
+            ],
+            "applications": [
+              "Remote manipulation",
+              "Robotics research",
+              "Industrial automation",
+              "Assistive systems"
+            ],
+            "technicalTags": [
+              "robotic arm",
+              "manipulation",
+              "robotics",
+              "remote operation"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "mission-software-and-data",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Robotic manipulation systems could support remote and autonomous field-equipment workflows; this is a derived capability fit, not a disclosed defence deployment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Government of Canada",
+            "relationshipType": "RDII funding recipient",
+            "publicSummary": "Canada Economic Development for Quebec Regions identifies Kinova as an RDII recipient for an advanced-robotics project."
+          }
+        ],
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-31T17:49:35.238Z",
+          "note": "Could not read official website: HTTP Error 404: Not Found"
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-kinova-description",
+          "sourceId": "kinova-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Kinova is a Boisbriand, Quebec Canadian robotics company that develops robotic arms and related systems for medical, research and industrial applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kinova-location",
+          "sourceId": "kinova-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Kinova has a documented Canadian operating presence in Boisbriand, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kinova-capability",
+          "sourceId": "kinova-technology",
+          "fieldPath": "capabilities.kinova-robotic-manipulation-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Kinova develops robotic arms and manipulation systems, drawing on Canadian robotics engineering for medical, research and industrial environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kinova-features",
+          "sourceId": "kinova-technology",
+          "fieldPath": "capabilities.kinova-robotic-manipulation-systems.features",
+          "claimClass": "source_backed",
+          "excerpt": "Robotic arms; Precision manipulation; Canadian robotics engineering; Medical, research and industrial systems",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kinova-activity",
+          "sourceId": "kinova-rdii",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions lists Kinova for RDII support related to advanced robotics.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kinova-relationship",
+          "sourceId": "kinova-rdii",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development for Quebec Regions identifies Kinova as an RDII recipient for an advanced-robotics project.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kinova-mission",
+          "sourceId": "kinova-technology",
+          "fieldPath": "capabilities.kinova-robotic-manipulation-systems.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Robotic manipulation systems could support remote and autonomous field-equipment workflows; this is a derived capability fit, not a disclosed defence deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-31T17:49:18.280Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Kinova is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Robotic manipulation systems with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Kinova's published company profile supports robotic-manipulation capability. The candidate does not claim a current defence contract or operational military use. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-31T17:49:47.408Z"
+    }
+  ]
+}

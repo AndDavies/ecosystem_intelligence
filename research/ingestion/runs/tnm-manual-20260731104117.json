@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260731104117",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "incubator"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:incubator",
+    "reason": "8 published or pending incubator records cover only 67% of the working saturation target of 12.",
+    "score": 783
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-07-31T10:41:17.102Z",
+  "completedAt": "2026-07-31T10:56:35.820Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "site:quebec.ca incubateurs accelerateurs CEIM Quantino entreprises innovantes",
+    "CEIM Montreal technology incubator official support program",
+    "site:canada.ca Spark Centre Landing-Pad Accelerator Program FedDev",
+    "Emera ideaHUB deep tech incubator Dalhousie ideaBRIDGE official",
+    "NBIF FY2025 business accelerator incubator grants Venn Innovation Planet Hatch",
+    "site:canada.ca ConnexionWorks Saint John entrepreneur incubator programs",
+    "site:canada.ca McMaster The Forge startup incubator FedDev",
+    "ICUBE UTM early-stage startup incubator official University of Toronto Mississauga",
+    "site:canada.ca Quantino INO quantum business incubator",
+    "site:canada.ca Georgian Bay Business Accelerator technology incubator FedDev"
+  ],
+  "counters": {
+    "sourcesChecked": 70,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 3,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 27,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 7,
+    "candidatesGreen": 8,
+    "candidatesAmber": 2,
+    "claimsCollected": 50,
+    "claimsConflicted": 0,
+    "coverageSubjects": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Planet Hatch and ConnexionWorks retain explicit amber taxonomy warnings because their public operating models include broader entrepreneur or ecosystem-support functions.",
+      "Program participation is not treated as evidence of defence relevance for any incubator or portfolio company.",
+      "Social, LinkedIn and newsletter discoveries were not promoted into field evidence without durable corroboration."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the 10-candidate target after qualifying a 40-prospect multi-lane incubator inventory; 27 plausible unused prospects remain queued for later evidence-led batches.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260731104117.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260731104117.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260731104117.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260731104117.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260731104117.json",
+    "reviewPacket": null,
+    "stagingExport": null,
+    "candidateLogoPacket": "research/ingestion/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260731104117.json"
+  }
+}

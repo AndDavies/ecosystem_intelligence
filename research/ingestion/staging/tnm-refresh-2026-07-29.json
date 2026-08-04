@@ -1,0 +1,341 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-29T11:10:15.459Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-refresh-2026-07-29",
+    "run_type": "targeted",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "government_innovation_office"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "organization-kind:government_innovation_office",
+      "reason": "4 published or pending government innovation office records cover only 40% of the working saturation target of 10.",
+      "score": 850
+    },
+    "status": "completed",
+    "started_at": "2026-07-29T11:02:14.300Z",
+    "completed_at": "2026-07-29T11:05:19.000Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "Gmail label:Newsletters/Defence newer_than:14d (discovery only)",
+      "Government/procurement: DND BOREALIS, Defence Drone Initiative and CanadaBuys awards during the seven-day overlap",
+      "Published-company newsroom: Volatus Aerospace July 2026 announcements",
+      "Due high-priority Source Book: BOREALIS and COVE official Canadian discovery surfaces"
+    ],
+    "counters": {
+      "sourcesChecked": 7,
+      "leadsQualified": 1,
+      "leadsDeferred": 1,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 1,
+      "prospectsDiscovered": 4,
+      "uniqueProspects": 4,
+      "prospectsQueued": 2,
+      "recoveryAttempts": 3,
+      "sourceLanesSearched": 4,
+      "candidatesGreen": 0,
+      "candidatesAmber": 1,
+      "signalsExtracted": 5,
+      "signalsDispositioned": 5,
+      "sourceFamiliesSearched": 4
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Authenticated Chrome was unavailable; the four required source families were searched without LinkedIn.",
+        "Gmail newsletter material was discovery-only and did not become field evidence.",
+        "BOREALIS remains deferred for an explicit government-office versus program versus public-demand modelling decision.",
+        "The Volatus refresh is amber because CanadaBuys uses the supplier name Volatus Drones Canada; legal or operating-name equivalence is intentionally not inferred."
+      ]
+    },
+    "stop_reason": null
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-volatus-canary-dfo-refresh-20260729",
+      "research_run_ref": "tnm-refresh-2026-07-29",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-volatus-canary-dfo-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "763e3f58-0272-4522-99bf-509e343df5df",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-volatus-canary-dfo-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-volatus-canary-dfo-refresh"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Volatus Aerospace is already a published Canadian uncrewed-systems organization. This bounded refresh adds two current public facts without changing its identity, capability model or mission mapping. Volatus's official July 8 release states that Transport Canada accepted its Canary RPAS under the Pre-Validated Declaration process. CanadaBuys separately lists Volatus Drones Canada as the July 9 recipient of a DFO Maritimes RPAS contract. The candidate deliberately preserves that supplier name and tells the reviewer not to assume legal-entity equivalence, a National Defence award, endorsement, customer interest or classified demand. Review the supplier-name relationship before accepting the DFO activity.",
+        "reviewTier": "amber",
+        "inclusionScore": 86,
+        "completenessScore": 78,
+        "reviewWarnings": [
+          "CanadaBuys names Volatus Drones Canada, while the published target is Volatus Aerospace; verify their legal or operating-name relationship before accepting this supplier-name activity.",
+          "The DFO RPAS award is a civil public-procurement record. It does not establish a National Defence contract, procurement eligibility, government endorsement, customer interest or classified demand."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T11:05:19.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "763e3f58-0272-4522-99bf-509e343df5df",
+              "name": "Volatus Aerospace",
+              "matchedBy": "intended published refresh target via exact slug, organization name and volatusaerospace.com website domain"
+            }
+          ],
+          "note": "The sole identity match is the intended published Volatus Aerospace target. The CanadaBuys supplier-name variance is retained as a reviewer warning, not an unreviewed second entity."
+        },
+        "sources": [
+          {
+            "id": "volatus-canary-pvd-source",
+            "title": "Volatus Aerospace Advances Canada's Next Chapter in Autonomous Aviation",
+            "url": "https://volatusaerospace.com/insights/canadas-next-chapter-in-autonomous-aviation/",
+            "publisher": "Volatus Aerospace",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-07-08T00:00:00.000Z",
+            "accessedAt": "2026-07-29T11:05:19.000Z",
+            "locator": "July 8 press release, Transport Canada PVD acceptance and Canary RPAS details",
+            "summary": "Volatus Aerospace announced Transport Canada acceptance of its Canary remotely piloted aircraft system under the Pre-Validated Declaration process."
+          },
+          {
+            "id": "canadabuys-volatus-dfo-award-source",
+            "title": "F5290-250442 - Remotely Piloted Unmanned Aerial Vehicle - DFO",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2459625-000",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-07-09T00:00:00.000Z",
+            "accessedAt": "2026-07-29T11:05:19.000Z",
+            "locator": "Contract CW2459625, awarded supplier, DFO Maritimes RPAS objective and award date",
+            "summary": "CanadaBuys lists Volatus Drones Canada as the recipient of a DFO Maritimes contract for three RPAS, awarded July 9, 2026."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-volatus-canary-pvd",
+            "sourceId": "volatus-canary-pvd-source",
+            "fieldPath": "operations.set-volatus-current-public-activity.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Volatus Aerospace states that Transport Canada accepted its Canary remotely piloted aircraft system under the Pre-Validated Declaration process.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-volatus-dfo-award",
+            "sourceId": "canadabuys-volatus-dfo-award-source",
+            "fieldPath": "operations.set-volatus-current-public-activity.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys identifies Volatus Drones Canada as the supplier for a DFO Maritimes contract for three remotely piloted aircraft systems, awarded July 9, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-volatus-supplier-boundary",
+            "sourceId": "canadabuys-volatus-dfo-award-source",
+            "fieldPath": "operations.set-volatus-current-public-activity.after.evidenceBoundary",
+            "claimClass": "source_backed",
+            "excerpt": "The CanadaBuys award record names Volatus Drones Canada as the supplier, so the public record does not by itself establish its legal relationship to the published Volatus Aerospace organization.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "763e3f58-0272-4522-99bf-509e343df5df",
+          "slug": "volatus-aerospace",
+          "matchMethods": [
+            "slug",
+            "name",
+            "website_domain"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "763e3f58-0272-4522-99bf-509e343df5df",
+            "slug": "volatus-aerospace",
+            "name": "Volatus Aerospace",
+            "legal_name": null,
+            "website_url": "https://volatusaerospace.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "profile_data": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "portfolioScope": "Uncrewed aerial systems and aerial intelligence",
+              "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand.",
+              "reviewed_candidate_id": "f6bc4be0-4c1b-4e16-8cb0-886210981036",
+              "research_schema_version": "organization_bundle_v2"
+            },
+            "publication_status": "published",
+            "updated_at": "2026-07-25T12:27:13.096358+00:00"
+          },
+          "relationships": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-volatus-current-public-activity",
+            "evidenceIds": [
+              "evidence-volatus-canary-pvd",
+              "evidence-volatus-dfo-award",
+              "evidence-volatus-supplier-boundary"
+            ],
+            "reviewerExplanation": "Preserve the reviewed organization profile while adding narrowly sourced current activity and an explicit boundary around the distinct CanadaBuys supplier name.",
+            "entityType": "organization",
+            "targetId": "763e3f58-0272-4522-99bf-509e343df5df",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "portfolioScope": "Uncrewed aerial systems and aerial intelligence",
+              "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand.",
+              "reviewed_candidate_id": "f6bc4be0-4c1b-4e16-8cb0-886210981036",
+              "research_schema_version": "organization_bundle_v2"
+            },
+            "after": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "portfolioScope": "Uncrewed aerial systems and aerial intelligence",
+              "evidenceBoundary": "Public records support Volatus Aerospace's Canary RPAS PVD acceptance and a DFO award listing Volatus Drones Canada. The latter does not establish legal-entity equivalence, a National Defence award, procurement eligibility, endorsement, customer interest or classified demand.",
+              "reviewed_candidate_id": "f6bc4be0-4c1b-4e16-8cb0-886210981036",
+              "research_schema_version": "organization_bundle_v2",
+              "currentActivity": "On July 8, 2026, Volatus Aerospace announced that Transport Canada accepted its Canary remotely piloted aircraft system under the Pre-Validated Declaration process. Separately, CanadaBuys lists Volatus Drones Canada as the July 9 recipient of a DFO Maritimes RPAS contract; that supplier name remains subject to reviewer confirmation against the published Volatus Aerospace identity."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement"
+        ],
+        "signalIds": [
+          "volatus-canary-pvd-2026-07-08",
+          "volatus-dfo-rpas-award-2026-07-09"
+        ],
+        "corroboration": [
+          {
+            "claim": "Volatus Aerospace announced Transport Canada PVD acceptance for its Canary RPAS.",
+            "sourceIds": [
+              "volatus-canary-pvd-source"
+            ]
+          },
+          {
+            "claim": "CanadaBuys lists Volatus Drones Canada as recipient of the DFO Maritimes RPAS contract awarded July 9, 2026.",
+            "sourceIds": [
+              "canadabuys-volatus-dfo-award-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "763e3f58-0272-4522-99bf-509e343df5df",
+          "slug": "volatus-aerospace",
+          "name": "Volatus Aerospace",
+          "legal_name": null,
+          "website_url": "https://volatusaerospace.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "portfolioScope": "Uncrewed aerial systems and aerial intelligence",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand.",
+            "reviewed_candidate_id": "f6bc4be0-4c1b-4e16-8cb0-886210981036",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:27:13.096358+00:00"
+        },
+        "relationships": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-volatus-canary-pvd",
+          "sourceId": "volatus-canary-pvd-source",
+          "fieldPath": "operations.set-volatus-current-public-activity.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Volatus Aerospace states that Transport Canada accepted its Canary remotely piloted aircraft system under the Pre-Validated Declaration process.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-volatus-dfo-award",
+          "sourceId": "canadabuys-volatus-dfo-award-source",
+          "fieldPath": "operations.set-volatus-current-public-activity.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys identifies Volatus Drones Canada as the supplier for a DFO Maritimes contract for three remotely piloted aircraft systems, awarded July 9, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-volatus-supplier-boundary",
+          "sourceId": "canadabuys-volatus-dfo-award-source",
+          "fieldPath": "operations.set-volatus-current-public-activity.after.evidenceBoundary",
+          "claimClass": "source_backed",
+          "excerpt": "The CanadaBuys award record names Volatus Drones Canada as the supplier, so the public record does not by itself establish its legal relationship to the published Volatus Aerospace organization.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T11:05:19.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "763e3f58-0272-4522-99bf-509e343df5df",
+            "name": "Volatus Aerospace",
+            "matchedBy": "intended published refresh target via exact slug, organization name and volatusaerospace.com website domain"
+          }
+        ],
+        "note": "The sole identity match is the intended published Volatus Aerospace target. The CanadaBuys supplier-name variance is retained as a reviewer warning, not an unreviewed second entity."
+      },
+      "reviewer_rationale": "Volatus Aerospace is already a published Canadian uncrewed-systems organization. This bounded refresh adds two current public facts without changing its identity, capability model or mission mapping. Volatus's official July 8 release states that Transport Canada accepted its Canary RPAS under the Pre-Validated Declaration process. CanadaBuys separately lists Volatus Drones Canada as the July 9 recipient of a DFO Maritimes RPAS contract. The candidate deliberately preserves that supplier name and tells the reviewer not to assume legal-entity equivalence, a National Defence award, endorsement, customer interest or classified demand. Review the supplier-name relationship before accepting the DFO activity.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-29T11:10:15.460Z"
+    }
+  ]
+}

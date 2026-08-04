@@ -1,0 +1,1498 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260729081049",
+  "runId": "tnm-manual-20260729081049",
+  "title": "True North Map ten-record enrichment batch 2",
+  "status": "candidate",
+  "createdAt": "2026-07-29T08:15:04.048Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "existing-record freshness",
+    "reason": "Published company records require current product, program, contract, and portfolio evidence beyond their initial ingestion snapshot.",
+    "score": 100
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260729081049.json",
+  "guardrailNotes": [
+    "All operations are additive profile-data refreshes targeting published records; no canonical write, approval, deletion, or publication is authorized."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-kognitiv-spark-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-kognitiv-spark-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Kognitiv Spark is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "929abf28-47c3-4aad-968c-6b294524f38d",
+            "name": "Kognitiv Spark",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "kognitiv-spark-official-refresh-source",
+          "title": "Kognitiv Spark RemoteSpark platform updates",
+          "url": "https://www.kognitivspark.com/press-releases",
+          "publisher": "Kognitiv Spark",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "Official product and press-release material expands the record with current device support, browser access, multiparty workflows, low-bandwidth improvements, and user-adoption tooling."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "kognitiv-spark-current-activity-evidence",
+          "sourceId": "kognitiv-spark-official-refresh-source",
+          "fieldPath": "operations.set-kognitiv-spark-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Official product and press-release material expands the record with current device support, browser access, multiparty workflows, low-bandwidth improvements, and user-adoption tooling.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "929abf28-47c3-4aad-968c-6b294524f38d",
+        "slug": "kognitiv-spark",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "929abf28-47c3-4aad-968c-6b294524f38d",
+          "slug": "kognitiv-spark",
+          "name": "Kognitiv Spark",
+          "legal_name": null,
+          "description": "Put expert guidance in front of a technician without flying the expert to the job. Kognitiv Spark builds secure hands-free remote-support tools in Fredericton for defence, marine, manufacturing, and other demanding environments.",
+          "website_url": "https://www.kognitivspark.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "2260f018-fae2-48a1-a5e2-3d624df292ef"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-18T00:04:59.076084+00:00",
+          "created_at": "2026-07-18T00:04:59.076084+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-kognitiv-spark-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "929abf28-47c3-4aad-968c-6b294524f38d",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "2260f018-fae2-48a1-a5e2-3d624df292ef"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "2260f018-fae2-48a1-a5e2-3d624df292ef",
+            "currentActivity": "Kognitiv Spark's current RemoteSpark releases add browser-based expert access, multiparty collaboration, Magic Leap 2 support, mixed-reality PDF viewing, improved low-bandwidth performance, security enhancements, and a structured adoption program through KognitivU.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "evidenceIds": [
+            "kognitiv-spark-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "kognitiv-spark-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "Official product and press-release material expands the record with current device support, browser access, multiparty workflows, low-bandwidth improvements, and user-adoption tooling.",
+          "sourceIds": [
+            "kognitiv-spark-official-refresh-source"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-kongsberg-geospatial-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-kongsberg-geospatial-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Kongsberg Geospatial is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000004",
+            "name": "Kongsberg Geospatial",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "kongsberg-geospatial-official-refresh-source",
+          "title": "Kongsberg Geospatial geospatial command and airspace portfolio",
+          "url": "https://www.kongsberggeospatial.com/",
+          "publisher": "Kongsberg Geospatial",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "The official portfolio supplies broader technology context for the company's real-time geospatial, airspace-awareness, and mission-visualization products."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "kongsberg-geospatial-current-activity-evidence",
+          "sourceId": "kongsberg-geospatial-official-refresh-source",
+          "fieldPath": "operations.set-kongsberg-geospatial-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio supplies broader technology context for the company's real-time geospatial, airspace-awareness, and mission-visualization products.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000004",
+        "slug": "kongsberg-geospatial",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000004",
+          "slug": "kongsberg-geospatial",
+          "name": "Kongsberg Geospatial",
+          "legal_name": null,
+          "description": "See aircraft, drones, sensors, and airspace constraints in one operational view. Ottawa-based Kongsberg Geospatial develops mission visualization and situational-awareness software for complex uncrewed operations.",
+          "website_url": "https://www.kongsberggeospatial.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "software_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {},
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-04-24T00:00:00+00:00",
+          "created_at": "2026-07-15T22:27:18.512726+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-kongsberg-geospatial-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000004",
+          "field": "profile_data",
+          "before": {},
+          "after": {
+            "currentActivity": "Kongsberg Geospatial's current portfolio extends beyond IRIS terminal airspace visualization to real-time geospatial command-and-control, beyond-visual-line-of-sight airspace awareness, sensor integration, and mission visualization for uncrewed and defence operations.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "evidenceIds": [
+            "kongsberg-geospatial-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "kongsberg-geospatial-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "The official portfolio supplies broader technology context for the company's real-time geospatial, airspace-awareness, and mission-visualization products.",
+          "sourceIds": [
+            "kongsberg-geospatial-official-refresh-source"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-mannarino-systems-software-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-mannarino-systems-software-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "MANNARINO Systems & Software is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "2ffcb30b-5975-4baa-ba42-1355f2c2970a",
+            "name": "MANNARINO Systems & Software",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "mannarino-systems-software-official-refresh-source",
+          "title": "MANNARINO aerospace engineering training portfolio",
+          "url": "https://www.mss.ca/content/uploads/latest/MANNARINOTrainingPortfolio.pdf",
+          "publisher": "MANNARINO Systems & Software",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-04-21T00:00:00.000Z",
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "The official training portfolio adds a current knowledge-transfer and assurance offering alongside the company's safety-critical airborne software, electronics, and certification engineering."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "mannarino-systems-software-current-activity-evidence",
+          "sourceId": "mannarino-systems-software-official-refresh-source",
+          "fieldPath": "operations.set-mannarino-systems-software-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official training portfolio adds a current knowledge-transfer and assurance offering alongside the company's safety-critical airborne software, electronics, and certification engineering.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "2ffcb30b-5975-4baa-ba42-1355f2c2970a",
+        "slug": "mannarino-systems-software",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "2ffcb30b-5975-4baa-ba42-1355f2c2970a",
+          "slug": "mannarino-systems-software",
+          "name": "MANNARINO Systems & Software",
+          "legal_name": null,
+          "description": "Bring safety-critical aircraft software and electronics to certification with Canadian engineering support. MANNARINO covers airborne software, hardware, systems engineering, simulation, and compliance from Quebec.",
+          "website_url": "https://www.mss.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "70a74b63-a37e-4f1b-b50a-fccc6105edf3"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-18T00:04:59.076084+00:00",
+          "created_at": "2026-07-18T00:04:59.076084+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-mannarino-systems-software-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "2ffcb30b-5975-4baa-ba42-1355f2c2970a",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "70a74b63-a37e-4f1b-b50a-fccc6105edf3"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "70a74b63-a37e-4f1b-b50a-fccc6105edf3",
+            "currentActivity": "MANNARINO's 2026 training portfolio documents instruction on airborne software and electronic-hardware assurance, ARINC 653 interfaces, aerospace certification, cybersecurity, and securing safety-critical embedded systems using artificial intelligence.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "evidenceIds": [
+            "mannarino-systems-software-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "mannarino-systems-software-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "The official training portfolio adds a current knowledge-transfer and assurance offering alongside the company's safety-critical airborne software, electronics, and certification engineering.",
+          "sourceIds": [
+            "mannarino-systems-software-official-refresh-source"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-mda-space-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-mda-space-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "MDA Space is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000002",
+            "name": "MDA Space",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "mda-space-official-refresh-source",
+          "title": "MDA CHORUS next-generation radar constellation",
+          "url": "https://mda.space/chorus/",
+          "publisher": "MDA Space",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "The current CHORUS page materially updates schedule, sensor configuration, coverage, resolution, analytics, and mission applications for the existing capability."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "mda-space-current-activity-evidence",
+          "sourceId": "mda-space-official-refresh-source",
+          "fieldPath": "operations.set-mda-space-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The current CHORUS page materially updates schedule, sensor configuration, coverage, resolution, analytics, and mission applications for the existing capability.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000002",
+        "slug": "mda-space",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T07:44:33.468Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000002",
+          "slug": "mda-space",
+          "name": "MDA Space",
+          "legal_name": null,
+          "description": "Observe wide areas through cloud, darkness, and difficult weather. MDA Space brings Canadian radar Earth observation together with space robotics, satellite operations, and mission systems.",
+          "website_url": "https://mda.space/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "space_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "currentActivity": "MDA Space is a strategic delivery partner for Telesat Lightspeed, which the Canadian Armed Forces selected in principle for the Mil-Ka component of its Arctic enhanced satellite communications program."
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-21T07:44:33.468601+00:00",
+          "published_at": "2026-04-24T00:00:00+00:00",
+          "created_at": "2026-07-15T22:27:18.512726+00:00",
+          "updated_at": "2026-07-21T07:44:33.468601+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-mda-space-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000002",
+          "field": "profile_data",
+          "before": {
+            "currentActivity": "MDA Space is a strategic delivery partner for Telesat Lightspeed, which the Canadian Armed Forces selected in principle for the Mil-Ka component of its Arctic enhanced satellite communications program."
+          },
+          "after": {
+            "currentActivity": "MDA Space now schedules CHORUS for late-2026 launch, combining C-band and X-band synthetic-aperture-radar satellites for 700-kilometre broad-area coverage, sub-metre spotlight imagery, faster tasking, near-real-time machine-learning exploitation, maritime surveillance, and defence applications.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "evidenceIds": [
+            "mda-space-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "mda-space-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "The current CHORUS page materially updates schedule, sensor configuration, coverage, resolution, analytics, and mission applications for the existing capability.",
+          "sourceIds": [
+            "mda-space-official-refresh-source"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-mds-aero-support-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-mds-aero-support-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "MDS Aero Support is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "115b4b5c-e0e4-45fa-9fef-31e16329be30",
+            "name": "MDS Aero Support",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "mds-aero-support-official-refresh-source",
+          "title": "MDS Aero Support gas-turbine test solutions",
+          "url": "https://mdsaero.com/",
+          "publisher": "MDS Aero Support",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "The official company material confirms the integrated lifecycle scope of MDS Aero Support's engine-test facilities and services beyond a generic turnkey-system description."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "mds-aero-support-current-activity-evidence",
+          "sourceId": "mds-aero-support-official-refresh-source",
+          "fieldPath": "operations.set-mds-aero-support-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material confirms the integrated lifecycle scope of MDS Aero Support's engine-test facilities and services beyond a generic turnkey-system description.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "115b4b5c-e0e4-45fa-9fef-31e16329be30",
+        "slug": "mds-aero-support",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "115b4b5c-e0e4-45fa-9fef-31e16329be30",
+          "slug": "mds-aero-support",
+          "name": "MDS Aero Support",
+          "legal_name": null,
+          "description": "Prove an engine or component before it enters service. MDS Aero Support delivers Canadian-designed test facilities, controls, instrumentation, data systems, environmental simulation, and lifecycle support for gas turbines.",
+          "website_url": "https://mdsaero.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "ca8541fb-5415-4d29-8b64-612fa9304344"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-18T00:04:59.076084+00:00",
+          "created_at": "2026-07-18T00:04:59.076084+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-mds-aero-support-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "115b4b5c-e0e4-45fa-9fef-31e16329be30",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "ca8541fb-5415-4d29-8b64-612fa9304344"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "ca8541fb-5415-4d29-8b64-612fa9304344",
+            "currentActivity": "MDS Aero Support continues to provide turnkey gas-turbine engine and component test facilities spanning engineering, controls, instrumentation, data acquisition, construction, commissioning, operations, and long-term support from its Canadian operating base.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "evidenceIds": [
+            "mds-aero-support-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "mds-aero-support-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "The official company material confirms the integrated lifecycle scope of MDS Aero Support's engine-test facilities and services beyond a generic turnkey-system description.",
+          "sourceIds": [
+            "mds-aero-support-official-refresh-source"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-mission-control-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-mission-control-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Mission Control is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "d7e29ee5-b9c8-4fbc-a038-3df5b4ad1899",
+            "name": "Mission Control",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "mission-control-official-refresh-source",
+          "title": "Mission Control space autonomy and Spacefarer portfolio",
+          "url": "https://missioncontrolspace.com/",
+          "publisher": "Mission Control",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "The official portfolio adds broader space-mission operations and autonomy context while retaining the specific Spacefarer AI deployment workflow already represented."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "mission-control-current-activity-evidence",
+          "sourceId": "mission-control-official-refresh-source",
+          "fieldPath": "operations.set-mission-control-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio adds broader space-mission operations and autonomy context while retaining the specific Spacefarer AI deployment workflow already represented.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d7e29ee5-b9c8-4fbc-a038-3df5b4ad1899",
+        "slug": "mission-control",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "d7e29ee5-b9c8-4fbc-a038-3df5b4ad1899",
+          "slug": "mission-control",
+          "name": "Mission Control",
+          "legal_name": null,
+          "description": "Move artificial-intelligence models from the lab onto spaceflight computers with a repeatable test and deployment path. Mission Control builds mission software and robotic-flight tools in Ottawa.",
+          "website_url": "https://missioncontrolspace.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "evidencePosture": "Public product and facility evidence; customer- and mission-specific availability requires review.",
+            "reviewed_candidate_id": "15c8e972-5a58-4d83-95cf-dfa95264a788",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-19T10:37:13.260461+00:00",
+          "created_at": "2026-07-19T10:37:13.260461+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-mission-control-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "d7e29ee5-b9c8-4fbc-a038-3df5b4ad1899",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "evidencePosture": "Public product and facility evidence; customer- and mission-specific availability requires review.",
+            "reviewed_candidate_id": "15c8e972-5a58-4d83-95cf-dfa95264a788",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking.",
+            "reviewed_candidate_id": "15c8e972-5a58-4d83-95cf-dfa95264a788",
+            "research_schema_version": "organization_bundle_v2",
+            "currentActivity": "Mission Control's current portfolio centres on Spacefarer AI for building, validating, targeting, deploying, and inspecting artificial-intelligence models on spaceflight processors, supported by mission operations, lunar and planetary robotics, and in-space autonomy expertise."
+          },
+          "evidenceIds": [
+            "mission-control-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "mission-control-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "The official portfolio adds broader space-mission operations and autonomy context while retaining the specific Spacefarer AI deployment workflow already represented.",
+          "sourceIds": [
+            "mission-control-official-refresh-source"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-nautel-sonar-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-nautel-sonar-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Nautel Sonar is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+            "name": "Nautel Sonar",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "nautel-sonar-official-refresh-source",
+          "title": "Nautel Sonar systems and current technical activity",
+          "url": "https://nautelsonar.com/",
+          "publisher": "Nautel Sonar",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "The official portfolio expands the record from a general naval sonar subsystem description to named amplifier, hull-mounted, transducer, and echo-sounder product families."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "nautel-sonar-current-activity-evidence",
+          "sourceId": "nautel-sonar-official-refresh-source",
+          "fieldPath": "operations.set-nautel-sonar-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio expands the record from a general naval sonar subsystem description to named amplifier, hull-mounted, transducer, and echo-sounder product families.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+        "slug": "nautel-sonar",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+          "slug": "nautel-sonar",
+          "name": "Nautel Sonar",
+          "legal_name": null,
+          "description": "Build the acoustic front end for naval detection and tracking in Canada. Nautel Sonar develops hull-mounted and variable-depth wet-end sonar products, subsystems, and complete systems in Nova Scotia.",
+          "website_url": "https://nautelsonar.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-16T12:00:00+00:00",
+          "created_at": "2026-07-16T09:09:28.288403+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-nautel-sonar-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "Andrew Davies",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "after": {
+            "reviewed_by": "Andrew Davies",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16",
+            "currentActivity": "Nautel Sonar's current portfolio covers compact broadband amplifiers, hull-mounted sonar subsystems, transducers, and naval echo sounders, with recent technical milestones and 2026 Navy Tech and Seabed Defence and DEFSEC West activity.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "evidenceIds": [
+            "nautel-sonar-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "nautel-sonar-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "The official portfolio expands the record from a general naval sonar subsystem description to named amplifier, hull-mounted, transducer, and echo-sounder product families.",
+          "sourceIds": [
+            "nautel-sonar-official-refresh-source"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-nordspace-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-nordspace-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "NordSpace is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "f966b0a8-eac2-4496-b4dd-249655bff773",
+            "name": "NordSpace",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "nordspace-official-refresh-source",
+          "title": "NordSpace sovereign launch and space-systems updates",
+          "url": "https://www.nordspace.com/news",
+          "publisher": "NordSpace",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "Official 2025-2026 announcements materially expand the record with funded sovereign launch, manufacturing, satellite, sensing, and resilient-connectivity programs."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "nordspace-current-activity-evidence",
+          "sourceId": "nordspace-official-refresh-source",
+          "fieldPath": "operations.set-nordspace-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Official 2025-2026 announcements materially expand the record with funded sovereign launch, manufacturing, satellite, sensing, and resilient-connectivity programs.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f966b0a8-eac2-4496-b4dd-249655bff773",
+        "slug": "nordspace",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "f966b0a8-eac2-4496-b4dd-249655bff773",
+          "slug": "nordspace",
+          "name": "NordSpace",
+          "legal_name": null,
+          "description": "Shorten the path from a Canadian payload to orbit. NordSpace is developing launch vehicles, liquid engines, satellites, Atlantic launch infrastructure, and high-speed research platforms.",
+          "website_url": "https://nordspace.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "bdc6c911-02bf-43b2-8cc5-602110ef8521"
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-18T00:04:59.076084+00:00",
+          "created_at": "2026-07-18T00:04:59.076084+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-nordspace-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "f966b0a8-eac2-4496-b4dd-249655bff773",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "bdc6c911-02bf-43b2-8cc5-602110ef8521"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "bdc6c911-02bf-43b2-8cc5-602110ef8521",
+            "currentActivity": "NordSpace received an $8.33-million DND IDEaS award for its Tundra orbital launch vehicle, opened a 60,000-square-foot Rocket Factory 1, launched a Space Systems Lab and dual-use demonstration satellite program, and received IDEaS support for very-low-Earth-orbit sensing and connectivity.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "evidenceIds": [
+            "nordspace-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "nordspace-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "Official 2025-2026 announcements materially expand the record with funded sovereign launch, manufacturing, satellite, sensing, and resilient-connectivity programs.",
+          "sourceIds": [
+            "nordspace-official-refresh-source"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-calian-advanced-technologies-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-calian-advanced-technologies-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Calian Advanced Technologies is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "334169c4-ac7e-4fca-b97d-25c11b84abfd",
+            "name": "Calian Advanced Technologies",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "calian-advanced-technologies-official-refresh-source",
+          "title": "Calian launches ATHORA sovereign interoperability platform",
+          "url": "https://www.calian.com/resources/news-media/calian-announces-athora-to-accelerate-sovereign-defence-capability-in-canada/",
+          "publisher": "Calian Advanced Technologies",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-05-25T00:00:00.000Z",
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "The official launch adds a named sovereign C5ISRT integration platform and current Canadian industrial partnership to Calian's published advanced-technology profile."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "calian-advanced-technologies-current-activity-evidence",
+          "sourceId": "calian-advanced-technologies-official-refresh-source",
+          "fieldPath": "operations.set-calian-advanced-technologies-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official launch adds a named sovereign C5ISRT integration platform and current Canadian industrial partnership to Calian's published advanced-technology profile.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "334169c4-ac7e-4fca-b97d-25c11b84abfd",
+        "slug": "calian-advanced-technologies",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T07:44:33.468Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "334169c4-ac7e-4fca-b97d-25c11b84abfd",
+          "slug": "calian-advanced-technologies",
+          "name": "Calian Advanced Technologies",
+          "legal_name": null,
+          "description": "Move mission-critical hardware from design through production and sustainment in Canada. Calian combines engineering, integration, test, advanced manufacturing, and lifecycle support across defence electronics, communications, RF, space, and vehicle systems.",
+          "website_url": "https://www.calian.com/defence/advanced-manufacturing/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "currentActivity": "Calian is leading the Canadian Arctic Maritime Security Consortium with Atlantic partners spanning naval engineering, ship repair, Arctic operations, training, secure communications, autonomy, and workforce development.",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "2b1dd860-81e0-4c86-98d9-2a7ff7f3adbe"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-21T07:44:33.468601+00:00",
+          "published_at": "2026-07-18T00:04:59.076084+00:00",
+          "created_at": "2026-07-18T00:04:59.076084+00:00",
+          "updated_at": "2026-07-21T07:44:33.468601+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-calian-advanced-technologies-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "334169c4-ac7e-4fca-b97d-25c11b84abfd",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "currentActivity": "Calian is leading the Canadian Arctic Maritime Security Consortium with Atlantic partners spanning naval engineering, ship repair, Arctic operations, training, secure communications, autonomy, and workforce development.",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "2b1dd860-81e0-4c86-98d9-2a7ff7f3adbe"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "currentActivity": "Calian launched ATHORA, a sovereign open system-of-systems interoperability and orchestration platform intended to connect platforms, communications, sensors, and mission systems across C5ISRT environments, initially with Evertz Microsystems as a foundational partner.",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "2b1dd860-81e0-4c86-98d9-2a7ff7f3adbe",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "evidenceIds": [
+            "calian-advanced-technologies-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "calian-advanced-technologies-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "The official launch adds a named sovereign C5ISRT integration platform and current Canadian industrial partnership to Calian's published advanced-technology profile.",
+          "sourceIds": [
+            "calian-advanced-technologies-official-refresh-source"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-gastops-refresh-20260729",
+      "sourceLeadIds": [
+        "lead-gastops-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Gastops is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "reviewTier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 86,
+      "reviewWarnings": [],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "03b47cff-a0ad-46cf-873a-639ca0792e9c",
+            "name": "Gastops",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "gastops-official-refresh-source",
+          "title": "Gastops 2026 product, contract, and partnership updates",
+          "url": "https://www.gastops.com/news-resources/",
+          "publisher": "Gastops",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T08:15:04.048Z",
+          "locator": "Current product, program, contract, or portfolio details",
+          "summary": "The official update archive consolidates several material 2026 technology, validation, contract, production, and partnership signals into one reviewer-ready refresh."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "gastops-current-activity-evidence",
+          "sourceId": "gastops-official-refresh-source",
+          "fieldPath": "operations.set-gastops-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official update archive consolidates several material 2026 technology, validation, contract, production, and partnership signals into one reviewer-ready refresh.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "03b47cff-a0ad-46cf-873a-639ca0792e9c",
+        "slug": "gastops",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T08:27:58.746Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "03b47cff-a0ad-46cf-873a-639ca0792e9c",
+          "slug": "gastops",
+          "name": "Gastops",
+          "legal_name": "Gastops Ltd.",
+          "description": "Gastops is an Ottawa-headquartered Canadian technology company that provides machinery condition monitoring, oil and wear-debris sensing, diagnostic and prognostic analytics, maintenance services, and component-support solutions for defence, aerospace, naval, energy, and industrial equipment.",
+          "website_url": "https://www.gastops.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "founded": 1979,
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "headquarters": "Ottawa, Ontario",
+            "currentActivity": "IDEaS FluidSIGHT Test Drives and F135 ChipCHECK validation reported in 2026.",
+            "reviewed_candidate_id": "b7de2927-54be-43cd-bad8-57f2d10a5ae0",
+            "research_schema_version": "organization_bundle_v2",
+            "additionalCanadianOffice": "Dartmouth, Nova Scotia"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-21T08:27:58.746479+00:00",
+          "published_at": "2026-07-21T08:27:58.746479+00:00",
+          "created_at": "2026-07-21T08:27:58.746479+00:00",
+          "updated_at": "2026-07-21T08:27:58.746479+00:00"
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-gastops-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "03b47cff-a0ad-46cf-873a-639ca0792e9c",
+          "field": "profile_data",
+          "before": {
+            "founded": 1979,
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "headquarters": "Ottawa, Ontario",
+            "currentActivity": "IDEaS FluidSIGHT Test Drives and F135 ChipCHECK validation reported in 2026.",
+            "reviewed_candidate_id": "b7de2927-54be-43cd-bad8-57f2d10a5ae0",
+            "research_schema_version": "organization_bundle_v2",
+            "additionalCanadianOffice": "Dartmouth, Nova Scotia"
+          },
+          "after": {
+            "founded": 1979,
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "headquarters": "Ottawa, Ontario",
+            "currentActivity": "Gastops launched FluidSIGHT real-time oil-condition monitoring, received an IDEaS Test Drives contract, validated ChipCHECK for the F135 engine, delivered its 20,000th MetalSCAN sensor, and signed a TKMS teaming agreement for a proposed Canadian submarine centre of excellence.",
+            "reviewed_candidate_id": "b7de2927-54be-43cd-bad8-57f2d10a5ae0",
+            "research_schema_version": "organization_bundle_v2",
+            "additionalCanadianOffice": "Dartmouth, Nova Scotia",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "evidenceIds": [
+            "gastops-current-activity-evidence"
+          ],
+          "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "industry_publication",
+        "linkedin_chrome",
+        "gmail_newsletter"
+      ],
+      "signalIds": [
+        "gastops-refresh-2026-07-29"
+      ],
+      "corroboration": [
+        {
+          "claim": "The official update archive consolidates several material 2026 technology, validation, contract, production, and partnership signals into one reviewer-ready refresh.",
+          "sourceIds": [
+            "gastops-official-refresh-source"
+          ]
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

@@ -1,0 +1,903 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260731164940",
+  "runId": "tnm-manual-20260731164940",
+  "createdAt": "2026-07-31T17:00:59.921Z",
+  "scope": {
+    "description": "Ten qualified Canadian company leads selected from a 50-prospect, multi-lane inventory. Each qualified lead proceeds automatically to an enriched private candidate with a concrete capability, current activity, public relationship, field evidence and explicit review boundary.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-hydrogen-in-motion",
+      "source": {
+        "id": "hydrogen-in-motion-profile",
+        "title": "Hydrogen in Motion company and storage profile",
+        "url": "https://www.hydrogeninmotion.com/",
+        "publisher": "Hydrogen in Motion",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "Mission, company location and product overview",
+        "summary": "The company identifies a British Columbia-based team developing safe, scalable solid-state hydrogen storage systems."
+      },
+      "discoveryPath": [
+        "https://www.hydrogeninmotion.com/",
+        "https://natural-resources.canada.ca/funding-partnerships/green-hydrogen-generation-low-pressure-solid-state-storage-distribution-transport",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Mission, company location and product overview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.hydrogeninmotion.com/",
+        "websiteDomain": "hydrogeninmotion.com",
+        "stableSlug": "hydrogen-in-motion",
+        "legalName": null,
+        "aliases": [
+          "H2M"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 93,
+      "completenessScore": 86,
+      "reviewWarnings": [
+        "Public materials describe the storage approach and potential applications; no operational defence deployment or performance claim is inferred."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.hydrogeninmotion.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.hydrogeninmotion.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Hydrogen in Motion",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.hydrogeninmotion.com/",
+      "aliases": [
+        "H2M"
+      ],
+      "location": {
+        "city": "Burnaby",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Solid-state hydrogen storage systems",
+      "roleSpecificEvidence": "Hydrogen in Motion is a British Columbia clean-energy company developing solid-state hydrogen storage materials and portable storage systems for mobile, stationary and off-grid applications. Hydrogen in Motion develops hydrogen-adsorbing materials and conformable storage containers intended for portable, infrastructure-independent energy applications, including extended-duration uncrewed flight and remote energy storage. NATO DIANA lists Hydrogen in Motion in its 2026 Canadian cohort under autonomy and unmanned systems for lightweight, modular hydrogen energy storage."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-sdq-solutions-canada",
+      "source": {
+        "id": "sdq-solutions-canada-profile",
+        "title": "Sanari Space and SDQ Solutions company profile",
+        "url": "https://sanari-sdq.ca/about",
+        "publisher": "Sanari Space and SDQ Solutions",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "Company, headquarters and operational-intelligence sections",
+        "summary": "The company identifies its Calgary headquarters and describes SDQ Solutions as its defence arm supporting space-dependent infrastructure and national-defence needs."
+      },
+      "discoveryPath": [
+        "https://sanari-sdq.ca/about",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "space-and-earth-observation",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, headquarters and operational-intelligence sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://sanari-sdq.ca/about",
+        "websiteDomain": "sanari-sdq.ca",
+        "stableSlug": "sdq-solutions-canada",
+        "legalName": null,
+        "aliases": [
+          "SDQ Solutions",
+          "Sanari Space and SDQ Solutions"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 94,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "The profile preserves the public distinction between environmental characterization, signals intelligence and decision support; it does not assert access to classified data or a Canadian operational contract."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://sanari-sdq.ca/about",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://sanari-sdq.ca/about",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "SDQ Solutions Canada",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://sanari-sdq.ca/about",
+      "aliases": [
+        "SDQ Solutions",
+        "Sanari Space and SDQ Solutions"
+      ],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "GNSS resilience and space-weather intelligence",
+      "roleSpecificEvidence": "SDQ Solutions Canada is the defence arm of Calgary-based Sanari Space, developing environmental characterization, signals intelligence and persistent situational-awareness products for space-dependent infrastructure and defence operations. SDQ Solutions develops sensor-network, forecasting and decision-support products that characterize space-weather conditions and aim to help operators anticipate and mitigate disruptions to navigation, communications and other space-dependent systems. NATO DIANA lists SDQ Solutions Canada in its 2026 Canadian cohort for global-navigation resilience, while the company reports an anti-spoofing qualifier validation and an Innovative Solutions Canada demonstrator pre-selection."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-globvision",
+      "source": {
+        "id": "globvision-profile",
+        "title": "GlobVision corporate profile",
+        "url": "https://www.globvision.com/corporate-profile/",
+        "publisher": "GlobVision",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "Corporate Profile",
+        "summary": "GlobVision describes its computational-intelligence, data-analytics and engineering work across Space, Aerospace & Defence, Earth Observation/GIS, and utilities and infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.globvision.com/corporate-profile/",
+        "https://www.globvision.com/contact-us/",
+        "https://www.globvision.com/projects/space-common-operating-picture-scoptm/",
+        "https://www.globvision.com/projects/cmps/",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "mission-software-and-data",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Corporate Profile",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.globvision.com/",
+        "websiteDomain": "globvision.com",
+        "stableSlug": "globvision",
+        "legalName": "GlobVision Inc.",
+        "aliases": [
+          "GlobVision Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "Public material supports software and development activity; it does not establish a public operational deployment, user endorsement or classified space-domain capability."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.globvision.com/corporate-profile/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.globvision.com/projects/space-common-operating-picture-scoptm/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "GlobVision",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.globvision.com/",
+      "aliases": [
+        "GlobVision Inc."
+      ],
+      "location": {
+        "city": "Montreal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Space Common Operating Picture (SCOP)",
+      "roleSpecificEvidence": "GlobVision is a Montreal technology company developing computational-intelligence software and engineering services for space, aerospace and defence, Earth observation and critical infrastructure. GlobVision's Space Common Operating Picture is a configurable web service with a multi-domain ontology framework that ingests heterogeneous data and provides common-operating-picture, situational-awareness and decision-support functions for space and pan-domain operations. GlobVision's public project material describes SCOP and a DRDC constellation mission-planning project; NATO DIANA also lists GlobVision in its 2026 Canadian cohort for a space common operating picture."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-grengine",
+      "source": {
+        "id": "grengine-profile",
+        "title": "Grengine secure energy for defence and remote operations",
+        "url": "https://grengine.com/",
+        "publisher": "Grengine",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "Company, market and contact sections",
+        "summary": "Grengine describes Canadian-designed cyber-secure modular energy platforms for defence, remote infrastructure and critical operations, with Edmonton contact information."
+      },
+      "discoveryPath": [
+        "https://grengine.com/",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, market and contact sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://grengine.com/",
+        "websiteDomain": "grengine.com",
+        "stableSlug": "grengine",
+        "legalName": null,
+        "aliases": [
+          "Growing Greener Innovations"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "Field-validation narrative is represented as company-reported activity; comparative performance and specific fuel-reduction figures are intentionally excluded pending independent publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://grengine.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://grengine.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Grengine",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://grengine.com/",
+      "aliases": [
+        "Growing Greener Innovations"
+      ],
+      "location": {
+        "city": "Edmonton",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Cyber-secure deployable energy platform",
+      "roleSpecificEvidence": "Grengine is an Edmonton company that designs and manufactures cyber-secure, modular energy platforms for defence, remote industrial and critical-infrastructure environments. Grengine combines power electronics, battery packs, autonomous controls, remote monitoring and containerized modular hardware to manage diesel, renewable, grid or shore-power inputs for critical mission loads. Grengine's official material describes 2026 NATO DIANA cohort selection and field validation in Canadian Armed Forces pilot and high-Arctic settings, with performance metrics intentionally omitted from this candidate."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-solarsteam",
+      "source": {
+        "id": "solarsteam-profile",
+        "title": "SolarSteam company and technology overview",
+        "url": "https://solarsteam.ca/",
+        "publisher": "SolarSteam",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "Company overview and technology sections",
+        "summary": "SolarSteam identifies its proprietary concentrated solar technology and company-level public information for industrial heat and cooling."
+      },
+      "discoveryPath": [
+        "https://solarsteam.ca/",
+        "https://solarsteam.ca/technology/",
+        "https://natural-resources.canada.ca/funding-partnerships/energy-innovation-program/solarsteam-kap-minerals",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company overview and technology sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://solarsteam.ca/",
+        "websiteDomain": "solarsteam.ca",
+        "stableSlug": "solarsteam",
+        "legalName": "SolarSteam Inc.",
+        "aliases": [
+          "SolarSteam Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 92,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "The candidate captures the public technology and funded demonstration only; energy-output, cost and broader defence-use claims remain outside the proposed record."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://solarsteam.ca/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://solarsteam.ca/technology/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://natural-resources.canada.ca/funding-partnerships/energy-innovation-program/solarsteam-kap-minerals",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "SolarSteam",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://solarsteam.ca/",
+      "aliases": [
+        "SolarSteam Inc."
+      ],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Modular concentrated solar thermal system",
+      "roleSpecificEvidence": "SolarSteam is a Calgary renewable-energy company developing modular concentrated-solar systems that provide industrial heat and cooling using proprietary mirror and enclosure technology. SolarSteam uses lightweight curved mirrors in a transparent enclosure to concentrate solar energy onto a receiver, with modular design, automated single-axis tracking and remote monitoring for industrial heating and cooling applications. Natural Resources Canada records a 2025 SolarSteam project to demonstrate a modular 2 MWth concentrating-solar system, while NATO DIANA lists the company in its 2026 Canadian cohort."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-avivo-biomedical",
+      "source": {
+        "id": "avivo-biomedical-profile",
+        "title": "Avivo company and technology profile",
+        "url": "https://avivobio.com/company/",
+        "publisher": "Avivo Biomedical",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "Company, research and operating-environment sections",
+        "summary": "Avivo describes its Canadian blood-type conversion work and its intended use in hospital, transplant, remote, emergency and trauma settings."
+      },
+      "discoveryPath": [
+        "https://avivobio.com/company/",
+        "https://avivobio.com/media/",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, research and operating-environment sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://avivobio.com/",
+        "websiteDomain": "avivobio.com",
+        "stableSlug": "avivo-biomedical",
+        "legalName": null,
+        "aliases": [
+          "Avivo"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 89,
+      "completenessScore": 85,
+      "reviewWarnings": [
+        "The clinical technology remains subject to research and regulatory development; reviewers should retain investigational and translational qualifiers and should not treat the candidate as a medical claim or current defence deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://avivobio.com/company/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://avivobio.com/company/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://avivobio.com/media/",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Avivo Biomedical",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://avivobio.com/",
+      "aliases": [
+        "Avivo"
+      ],
+      "location": {
+        "city": "Vancouver",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Universal blood-type conversion platform",
+      "roleSpecificEvidence": "Avivo Biomedical is a Canadian biotechnology company developing enzyme-enabled approaches intended to convert donated blood and organs to universal type O and improve the availability of urgent treatment options. Avivo develops enzyme-enabled methods intended to convert type-A blood cells and donor organs to universal type O, with public materials describing translational research and potential use in hospital, remote, emergency and trauma settings. Avivo's public media page records NATO DIANA 2026 cohort selection and recent translational research announcements, while its company page describes ongoing work toward blood- and organ-type conversion."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-cohesys",
+      "source": {
+        "id": "cohesys-profile",
+        "title": "Cohesys company profile",
+        "url": "https://www.cohesys.ca/home",
+        "publisher": "Cohesys",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "Company overview and Toronto address",
+        "summary": "Cohesys describes itself as a Toronto medical-device company founded in 2018 and developing a fracture-repair solution under investigational testing."
+      },
+      "discoveryPath": [
+        "https://www.cohesys.ca/home",
+        "https://www.businesswire.com/news/home/20250818000644/en/Cohesys-Announces-First-in-Human-Use-of-Investigational-BoneTape-in-Craniofacial-Fracture-Repair",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company overview and Toronto address",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.cohesys.ca/home",
+        "websiteDomain": "cohesys.ca",
+        "stableSlug": "cohesys",
+        "legalName": "Cohesys Inc.",
+        "aliases": [
+          "Cohesys Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "bilingual_web",
+      "inclusionScore": 88,
+      "completenessScore": 85,
+      "reviewWarnings": [
+        "BoneTape is investigational. The candidate deliberately preserves this qualifier and does not propose efficacy, regulatory approval or deployment claims beyond the cited public reporting."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.cohesys.ca/home",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.cohesys.ca/home",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.businesswire.com/news/home/20250818000644/en/Cohesys-Announces-First-in-Human-Use-of-Investigational-BoneTape-in-Craniofacial-Fracture-Repair",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Cohesys",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.cohesys.ca/home",
+      "aliases": [
+        "Cohesys Inc."
+      ],
+      "location": {
+        "city": "Toronto",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "BoneTape resorbable fracture fixation",
+      "roleSpecificEvidence": "Cohesys is a Toronto medical-device company developing resorbable fracture-fixation technology intended to replace conventional drill, plate and screw approaches for selected fractures. Cohesys' BoneTape is an investigational, single-piece resorbable fixation approach designed to be cut to shape and used without the conventional drilling and screw hardware associated with plate-based fracture repair. Cohesys announced first-in-human investigational use of BoneTape in craniofacial fracture repair in 2025, and NATO DIANA lists it in the 2026 Canadian cohort."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-deep-breathe",
+      "source": {
+        "id": "deep-breathe-profile",
+        "title": "Deep Breathe point-of-care diagnostics",
+        "url": "https://deepbreathe.ai/",
+        "publisher": "Deep Breathe",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "Company and contact sections",
+        "summary": "Deep Breathe describes locally run, vendor-agnostic ultrasound AI and lists its London, Ontario public address."
+      },
+      "discoveryPath": [
+        "https://deepbreathe.ai/",
+        "https://www.ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company and contact sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://deepbreathe.ai/",
+        "websiteDomain": "deepbreathe.ai",
+        "stableSlug": "deep-breathe",
+        "legalName": "Deep Breathe Inc.",
+        "aliases": [
+          "Deep Breathe Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 94,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "The candidate retains the public description of testing and diagnostic support but does not represent individual patient outcomes, medical efficacy claims or a military adoption decision."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://deepbreathe.ai/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://deepbreathe.ai/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Deep Breathe",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://deepbreathe.ai/",
+      "aliases": [
+        "Deep Breathe Inc."
+      ],
+      "location": {
+        "city": "London",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "ATLAS tactical ultrasound diagnostics",
+      "roleSpecificEvidence": "Deep Breathe is a London, Ontario medical-technology company developing locally run artificial-intelligence tools that use ultrasound to assist point-of-care diagnosis of serious lung and torso conditions. Deep Breathe's ATLAS is a vendor-agnostic, on-device AI software system for portable ultrasound that is designed to assist trauma and CBRNE-related torso-injury assessment in connected or no-connectivity settings. Innovative Solutions Canada lists Deep Breathe's ATLAS as available for testing, and the company's current material describes local on-device operation for trauma diagnostics."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-lux-bio",
+      "source": {
+        "id": "lux-bio-about",
+        "title": "Lux Bio company and bioluminescence profile",
+        "url": "https://www.luxbio.ca/about",
+        "publisher": "Lux Bio",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "About and origins sections",
+        "summary": "Lux Bio describes its bioluminescence mission, technology origins and Canadian company development."
+      },
+      "discoveryPath": [
+        "https://www.luxbio.ca/about",
+        "https://www.luxbio.ca/contactus",
+        "https://www.luxbio.ca/technology",
+        "https://search.open.canada.ca/grants/?owner_org=dnd-mdn&page=8&sort=agreement_start_date+desc&wbdisable=true"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "About and origins sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.luxbio.ca/",
+        "websiteDomain": "luxbio.ca",
+        "stableSlug": "lux-bio",
+        "legalName": null,
+        "aliases": [
+          "Lux Bio Inc.",
+          "Nyoka Design Corp."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 93,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The candidate uses only bounded public technology and funding information; user, procurement, performance and certification claims must remain outside the record unless separately corroborated."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.luxbio.ca/about",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.luxbio.ca/technology",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/grants/?owner_org=dnd-mdn&page=8&sort=agreement_start_date+desc&wbdisable=true",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Lux Bio",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.luxbio.ca/",
+      "aliases": [
+        "Lux Bio Inc.",
+        "Nyoka Design Corp."
+      ],
+      "location": {
+        "city": "Vancouver",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Bioluminescent lighting platform",
+      "roleSpecificEvidence": "Lux Bio is a Vancouver biotechnology company developing long-duration bioluminescent-enzyme technologies and biodegradable light products as alternatives to conventional chemical lighting. Lux Bio develops engineered, long-duration bioluminescent enzymes and a water-activated biodegradable lighting platform, including products intended as alternatives to chemical light sticks and marine-safety markers. The Government of Canada's grants search records 2026 National Defence DIANA funding for Lux Bio's mission-ready bioluminescence project, while the official site describes current technology and public contact information."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-alchemy-nanotechnology",
+      "source": {
+        "id": "alchemy-nanotechnology-profile",
+        "title": "Alchemy nanocoatings company profile",
+        "url": "https://www.alchemynano.com/",
+        "publisher": "Alchemy",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-07-31T17:00:59.921Z",
+        "locator": "Company and defence-solution sections",
+        "summary": "Alchemy describes its vertically integrated nanocoating work and a stated focus on automotive safety systems and next-generation military camouflage solutions."
+      },
+      "discoveryPath": [
+        "https://www.alchemynano.com/",
+        "https://www.alchemynano.com/contact",
+        "https://www.alchemynano.com/defence",
+        "https://uwaterloo.ca/news/made-by-waterloo-alchemy-nanotechnology",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company and defence-solution sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.alchemynano.com/",
+        "websiteDomain": "alchemynano.com",
+        "stableSlug": "alchemy-nanotechnology",
+        "legalName": null,
+        "aliases": [
+          "Alchemy Nano",
+          "Alchemy Nanotechnology"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "The record captures public research and development context only. Avoid treating prototype trials, reported scores or intended applications as evidence of an approved procurement or operational fielding."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.alchemynano.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.alchemynano.com/defence",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://uwaterloo.ca/news/made-by-waterloo-alchemy-nanotechnology",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Alchemy",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.alchemynano.com/",
+      "aliases": [
+        "Alchemy Nano",
+        "Alchemy Nanotechnology"
+      ],
+      "location": {
+        "city": "Kitchener",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Crypsis nanocomposite thermal camouflage",
+      "roleSpecificEvidence": "Alchemy is a Kitchener nanotechnology company developing advanced coatings for automotive safety systems and next-generation military camouflage applications. Alchemy is developing nanoparticle-based coating technology for thermal-infrared signature management that can be integrated into textiles and camouflage materials, alongside its commercial nanocoating portfolio. A University of Waterloo report describes Alchemy's collaboration with the Canadian Armed Forces on thermal-camouflage textiles and notes public government funding for next-generation coating development, while NATO DIANA lists the company in its 2026 cohort."
+    }
+  ]
+}

@@ -1,0 +1,2138 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260729184918",
+  "runId": "tnm-manual-20260729184918",
+  "title": "Canadian mine-countermeasures supply and procurement",
+  "status": "candidate",
+  "createdAt": "2026-07-29T18:57:18.967Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "concept:mine-countermeasures",
+    "reason": "The public corpus contains underwater-system suppliers but lacks consistent product-level MCM representation and a dedicated Canadian RMDS procurement-demand record.",
+    "score": 990
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260729184918.json",
+  "guardrailNotes": [
+    "Private Admin Review material only; this workflow does not approve or publish candidates.",
+    "Company capability refreshes and the Canadian procurement-demand signal remain separately typed and evidence bounded."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-kraken-remote-minehunting-disposal-system",
+      "sourceLeadIds": [
+        "lead-kraken-remote-minehunting-disposal-system"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewerRationale": "Kraken Robotics is already published, but its current record does not separately represent the MCM product or integration role documented by the cited official source. This additive refresh creates a precise mine-countermeasure capability without replacing the existing organization or its reviewed capabilities. Review the boundary between product-specific evidence and the derived mission mapping, and confirm that the new capability is distinct enough for public discovery.",
+      "reviewWarnings": [
+        "The capability is proposed for human review; no supplier eligibility, endorsement, classified demand or continuing contract status is inferred."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "name": "Kraken Robotics",
+            "matchedBy": "intended published refresh target via exact identifier, slug and website domain"
+          }
+        ],
+        "note": "The organization match is the intended target; live capability slugs were checked and do not include kraken-remote-minehunting-disposal-system."
+      },
+      "sources": [
+        {
+          "id": "source-kraken-remote-minehunting-disposal-system",
+          "title": "Kraken awarded Royal Canadian Navy minehunting contract",
+          "url": "https://www.krakenrobotics.com/news-releases/kraken-awarded-50-million-navy-contract-for-royal-canadian-navy-minehunting-program/",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2022-12-07T00:00:00.000Z",
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Official product, capability or operational description",
+          "summary": "Kraken is the Canadian prime integrator for two RCN Remote Minehunting and Disposal System payloads combining REMUS AUVs, AquaPix synthetic-aperture sonar, SEAFOX mine-disposal vehicles and a containerized command centre."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-source-kraken-remote-minehunting-disposal-system",
+          "sourceId": "source-kraken-remote-minehunting-disposal-system",
+          "fieldPath": "operations.add-kraken-remote-minehunting-disposal-system.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken is the Canadian prime integrator for two RCN Remote Minehunting and Disposal System payloads combining REMUS AUVs, AquaPix synthetic-aperture sonar, SEAFOX mine-disposal vehicles and a containerized command centre.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000001",
+        "slug": "kraken-robotics",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-23T21:01:14.928169+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000001",
+          "slug": "kraken-robotics",
+          "name": "Kraken Robotics",
+          "legal_name": null,
+          "description": "See the seabed and underwater objects in high resolution from a towable survey system. Kraken Robotics develops synthetic-aperture sonar, subsea imaging, power, and robotic technology from Canada.",
+          "website_url": "https://www.krakenrobotics.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {},
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-23T21:01:14.928169+00:00",
+          "published_at": "2026-04-24T00:00:00+00:00",
+          "created_at": "2026-07-15T22:27:18.512726+00:00",
+          "updated_at": "2026-07-23T21:01:14.928169+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "20000000-0000-4000-8000-000000000001",
+            "organization_id": "10000000-0000-4000-8000-000000000001",
+            "slug": "kraken-katfish-sas",
+            "name": "KATFISH Towed Synthetic Aperture Sonar",
+            "summary": "Tow a stabilized synthetic-aperture sonar to produce high-resolution seabed imagery and find subsea objects across wide survey areas.",
+            "capability_type": "Towed Synthetic Aperture Sonar",
+            "core_features": [
+              "High-resolution underwater survey",
+              "Seabed imaging",
+              "Subsea object detection"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Underwater ISR",
+              "Route survey",
+              "Subsea infrastructure awareness"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "hardware",
+              "underwater_sensing",
+              "synthetic_aperture_sonar",
+              "maritime"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-04-24T00:00:00+00:00",
+            "created_at": "2026-07-15T22:27:18.512726+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          },
+          {
+            "id": "57c7f489-be0b-4d17-bd87-df1ac02755b4",
+            "organization_id": "10000000-0000-4000-8000-000000000001",
+            "slug": "kraken-seapower-subsea-batteries",
+            "name": "SeaPower Subsea Batteries",
+            "summary": "Power long-endurance underwater vehicles with modular, pressure-tolerant lithium-ion battery systems designed for deep and complex subsea missions.",
+            "capability_type": "Pressure-tolerant subsea battery system",
+            "core_features": [
+              "Pressure-tolerant polymer encapsulation",
+              "Integrated battery management system",
+              "Modular and scalable architecture",
+              "Systems scalable from 1.8 kWh to 5 MWh"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Long-endurance uncrewed underwater vehicles",
+              "Extra-large uncrewed underwater vehicles",
+              "Subsea energy storage and underwater missions"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "subsea batteries",
+              "underwater power",
+              "pressure tolerant",
+              "UUV endurance"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-23T21:01:14.928169+00:00",
+            "published_at": "2026-07-23T21:01:14.928169+00:00",
+            "created_at": "2026-07-23T21:01:14.928169+00:00",
+            "updated_at": "2026-07-23T21:01:14.928169+00:00"
+          },
+          {
+            "id": "c0be4ba2-fe8f-4239-a7d9-8e14aad054c3",
+            "organization_id": "10000000-0000-4000-8000-000000000001",
+            "slug": "kraken-synthetic-aperture-sonar",
+            "name": "Kraken Synthetic Aperture Sonar",
+            "summary": "Integrate modular synthetic-aperture sonar payloads that combine high-resolution underwater imaging, bathymetric mapping and real-time processing across vehicle sizes.",
+            "capability_type": "Modular synthetic aperture sonar payload",
+            "core_features": [
+              "Simultaneous imaging and bathymetric mapping",
+              "Modular 60 cm, 120 cm and 180 cm arrays",
+              "Real-time full-swath processing",
+              "Constant resolution across the survey swath"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Mine countermeasure operations",
+              "Critical underwater infrastructure inspection",
+              "Port and harbour security",
+              "Route survey and seabed mapping"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "synthetic aperture sonar",
+              "bathymetry",
+              "underwater sensing",
+              "mine countermeasures"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-23T21:01:14.928169+00:00",
+            "published_at": "2026-07-23T21:01:14.928169+00:00",
+            "created_at": "2026-07-23T21:01:14.928169+00:00",
+            "updated_at": "2026-07-23T21:01:14.928169+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-kraken-remote-minehunting-disposal-system",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "10000000-0000-4000-8000-000000000001",
+          "value": {
+            "slug": "kraken-remote-minehunting-disposal-system",
+            "name": "Remote Minehunting and Disposal System integration",
+            "summary": "Kraken is the Canadian prime integrator for two RCN Remote Minehunting and Disposal System payloads combining REMUS AUVs, AquaPix synthetic-aperture sonar, SEAFOX mine-disposal vehicles and a containerized command centre.",
+            "capabilityType": "Naval mine-countermeasure system or subsystem",
+            "features": [
+              "Two classes of autonomous underwater vehicles",
+              "AquaPix synthetic-aperture sonar",
+              "Mine-disposal vehicles",
+              "Containerized command, launch and recovery centre"
+            ],
+            "applications": [
+              "Sea-mine detection and classification",
+              "Mine identification and neutralization",
+              "Standoff route clearance",
+              "Underwater domain awareness"
+            ],
+            "technicalTags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The official product evidence supports use in detecting, identifying, classifying, localizing or neutralizing naval mines; this mission mapping remains a derived reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          "evidenceIds": [
+            "evidence-source-kraken-remote-minehunting-disposal-system"
+          ],
+          "reviewerExplanation": "Add the source-backed MCM product or integration role as a distinct capability while preserving every published record and identifier."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-kraken-remote-minehunting-disposal-system"
+      ],
+      "corroboration": [
+        {
+          "claim": "Kraken is the Canadian prime integrator for two RCN Remote Minehunting and Disposal System payloads combining REMUS AUVs, AquaPix synthetic-aperture sonar, SEAFOX mine-disposal vehicles and a containerized command centre.",
+          "sourceIds": [
+            "source-kraken-remote-minehunting-disposal-system"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-gdms-canada-mine-warfare-systems",
+      "sourceLeadIds": [
+        "lead-gdms-canada-mine-warfare-systems"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewerRationale": "General Dynamics Mission Systems-Canada is already published, but its current record does not separately represent the MCM product or integration role documented by the cited official source. This additive refresh creates a precise mine-countermeasure capability without replacing the existing organization or its reviewed capabilities. Review the boundary between product-specific evidence and the derived mission mapping, and confirm that the new capability is distinct enough for public discovery.",
+      "reviewWarnings": [
+        "The capability is proposed for human review; no supplier eligibility, endorsement, classified demand or continuing contract status is inferred."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+            "name": "General Dynamics Mission Systems-Canada",
+            "matchedBy": "intended published refresh target via exact identifier, slug and website domain"
+          }
+        ],
+        "note": "The organization match is the intended target; live capability slugs were checked and do not include gdms-canada-mine-warfare-systems."
+      },
+      "sources": [
+        {
+          "id": "source-gdms-canada-mine-warfare-systems",
+          "title": "Mine Warfare",
+          "url": "https://gdmissionsystems.ca/mine-warfare",
+          "publisher": "General Dynamics Mission Systems-Canada",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Official product, capability or operational description",
+          "summary": "GDMS-Canada describes a fielded Mine and Obstacle Avoidance Sonar and a modular, containerized Remote Minehunting and Disposal System covering search, detection, identification, classification and neutralization."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-source-gdms-canada-mine-warfare-systems",
+          "sourceId": "source-gdms-canada-mine-warfare-systems",
+          "fieldPath": "operations.add-gdms-canada-mine-warfare-systems.value",
+          "claimClass": "source_backed",
+          "excerpt": "GDMS-Canada describes a fielded Mine and Obstacle Avoidance Sonar and a modular, containerized Remote Minehunting and Disposal System covering search, detection, identification, classification and neutralization.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+        "slug": "general-dynamics-mission-systems-canada",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+          "slug": "general-dynamics-mission-systems-canada",
+          "name": "General Dynamics Mission Systems-Canada",
+          "legal_name": null,
+          "description": "Give land forces a clearer operating picture and keep information moving across vehicles, sensors, radios, and dismounted teams. General Dynamics Mission Systems-Canada integrates tactical networks, computing, vetronics, cyber, and mission systems in Canada.",
+          "website_url": "https://gdmissionsystems.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "currentActivity": "General Dynamics Mission Systems-Canada now highlights its Ottawa Battle Lab, DIGITALspine sovereign land C4ISR integration, ENVOY multi-mission remotely piloted aircraft system, and current Canadian defence delivery across land, airborne, maritime, and public-safety applications.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking.",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "f52928d8-9bf7-41f2-9ebf-d6ceec7bdf1d"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-29T12:24:29.802794+00:00",
+          "published_at": "2026-07-18T00:04:59.076084+00:00",
+          "created_at": "2026-07-18T00:04:59.076084+00:00",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "e6fbf2df-f372-4a3c-8a13-f98ba9c3fff1",
+            "organization_id": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+            "slug": "gdms-canada-land-c4isr",
+            "name": "Land C4ISR and tactical networking",
+            "summary": "Connect radios, sensors, vehicles, aircraft, uncrewed systems, and dismounted teams so commanders receive a shared operating picture and actionable information in near real time.",
+            "capability_type": "Land command-and-control system",
+            "core_features": [
+              "Secure fleet-wide communications",
+              "Sensor, radio, and platform integration",
+              "Near-real-time operational data consolidation"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Land C4ISR",
+              "Tactical networking",
+              "Vehicle and dismounted situational awareness"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "c4isr",
+              "tactical_networks",
+              "vetronics",
+              "situational_awareness"
+            ],
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-18T00:04:59.076084+00:00",
+            "created_at": "2026-07-18T00:04:59.076084+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-gdms-canada-mine-warfare-systems",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+          "value": {
+            "slug": "gdms-canada-mine-warfare-systems",
+            "name": "Mine warfare and remote MCM systems",
+            "summary": "GDMS-Canada describes a fielded Mine and Obstacle Avoidance Sonar and a modular, containerized Remote Minehunting and Disposal System covering search, detection, identification, classification and neutralization.",
+            "capabilityType": "Naval mine-countermeasure system or subsystem",
+            "features": [
+              "Mine and Obstacle Avoidance Sonar",
+              "Automatic detection and tracking",
+              "Modular containerized RMDS",
+              "AUV and ROV integration"
+            ],
+            "applications": [
+              "Mine and obstacle avoidance",
+              "Standoff naval mine countermeasures",
+              "Route clearance",
+              "Contested underwater navigation"
+            ],
+            "technicalTags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The official product evidence supports use in detecting, identifying, classifying, localizing or neutralizing naval mines; this mission mapping remains a derived reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          "evidenceIds": [
+            "evidence-source-gdms-canada-mine-warfare-systems"
+          ],
+          "reviewerExplanation": "Add the source-backed MCM product or integration role as a distinct capability while preserving every published record and identifier."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-gdms-canada-mine-warfare-systems"
+      ],
+      "corroboration": [
+        {
+          "claim": "GDMS-Canada describes a fielded Mine and Obstacle Avoidance Sonar and a modular, containerized Remote Minehunting and Disposal System covering search, detection, identification, classification and neutralization.",
+          "sourceIds": [
+            "source-gdms-canada-mine-warfare-systems"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-ise-trailblazer-mcm-rov",
+      "sourceLeadIds": [
+        "lead-ise-trailblazer-mcm-rov"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewerRationale": "International Submarine Engineering is already published, but its current record does not separately represent the MCM product or integration role documented by the cited official source. This additive refresh creates a precise mine-countermeasure capability without replacing the existing organization or its reviewed capabilities. Review the boundary between product-specific evidence and the derived mission mapping, and confirm that the new capability is distinct enough for public discovery.",
+      "reviewWarnings": [
+        "The capability is proposed for human review; no supplier eligibility, endorsement, classified demand or continuing contract status is inferred."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "65876b6e-7e7a-4b26-aabe-850296241f63",
+            "name": "International Submarine Engineering",
+            "matchedBy": "intended published refresh target via exact identifier, slug and website domain"
+          }
+        ],
+        "note": "The organization match is the intended target; live capability slugs were checked and do not include ise-trailblazer-mcm-rov."
+      },
+      "sources": [
+        {
+          "id": "source-ise-trailblazer-mcm-rov",
+          "title": "Mine Countermeasures",
+          "url": "https://ise.bc.ca/product/mine-countermeasures/",
+          "publisher": "International Submarine Engineering",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Official product, capability or operational description",
+          "summary": "ISE's MCM portfolio combines Explorer AUV surveillance, Dorado and Aurora sonar towing, and the Trailblazer ROV for mine identification and disposal, with prior Canadian and allied operational use."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-source-ise-trailblazer-mcm-rov",
+          "sourceId": "source-ise-trailblazer-mcm-rov",
+          "fieldPath": "operations.add-ise-trailblazer-mcm-rov.value",
+          "claimClass": "source_backed",
+          "excerpt": "ISE's MCM portfolio combines Explorer AUV surveillance, Dorado and Aurora sonar towing, and the Trailblazer ROV for mine identification and disposal, with prior Canadian and allied operational use.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "65876b6e-7e7a-4b26-aabe-850296241f63",
+        "slug": "international-submarine-engineering",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "65876b6e-7e7a-4b26-aabe-850296241f63",
+          "slug": "international-submarine-engineering",
+          "name": "International Submarine Engineering",
+          "legal_name": null,
+          "description": "Send autonomous systems farther into difficult underwater environments. International Submarine Engineering designs configurable AUVs and ROVs in British Columbia for scientific, commercial, and military missions.",
+          "website_url": "https://ise.bc.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "currentActivity": "ISE's corporate profile documents a broader portfolio of Explorer and Theseus autonomous underwater vehicles, remotely operated vehicles, semi-submersibles, subsea tooling, engineering services, and polar under-ice mission experience.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking.",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-29T12:24:29.802794+00:00",
+          "published_at": "2026-07-16T12:00:00+00:00",
+          "created_at": "2026-07-16T09:09:28.288403+00:00",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "4a2c3595-091e-40bf-bf5c-b5dd85a0d753",
+            "organization_id": "65876b6e-7e7a-4b26-aabe-850296241f63",
+            "slug": "ise-explorer-auv",
+            "name": "Explorer AUV",
+            "summary": "Configure a long-range AUV for survey or reconnaissance and send it beneath ice or across extended routes where continuous human control is not practical.",
+            "capability_type": "Autonomous Underwater Vehicle",
+            "core_features": [
+              "Long-range autonomous operation",
+              "Configurable vehicle platform",
+              "Under-ice survey history"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Long-range undersea survey",
+              "Under-ice reconnaissance",
+              "Persistent underwater data collection"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "hardware",
+              "auv",
+              "autonomous_systems",
+              "under_ice"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-16T12:00:00+00:00",
+            "created_at": "2026-07-16T09:09:28.288403+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-ise-trailblazer-mcm-rov",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "65876b6e-7e7a-4b26-aabe-850296241f63",
+          "value": {
+            "slug": "ise-trailblazer-mcm-rov",
+            "name": "Trailblazer Mine Countermeasures ROV",
+            "summary": "ISE's MCM portfolio combines Explorer AUV surveillance, Dorado and Aurora sonar towing, and the Trailblazer ROV for mine identification and disposal, with prior Canadian and allied operational use.",
+            "capabilityType": "Naval mine-countermeasure system or subsystem",
+            "features": [
+              "High-current ROV propulsion",
+              "Low magnetic and acoustic signatures",
+              "Sonar and television identification",
+              "Mine-disposal charge payload"
+            ],
+            "applications": [
+              "Mine localization and identification",
+              "Mine disposal",
+              "Sea-lane survey",
+              "Rapidly deployable MCM operations"
+            ],
+            "technicalTags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The official product evidence supports use in detecting, identifying, classifying, localizing or neutralizing naval mines; this mission mapping remains a derived reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          "evidenceIds": [
+            "evidence-source-ise-trailblazer-mcm-rov"
+          ],
+          "reviewerExplanation": "Add the source-backed MCM product or integration role as a distinct capability while preserving every published record and identifier."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-ise-trailblazer-mcm-rov"
+      ],
+      "corroboration": [
+        {
+          "claim": "ISE's MCM portfolio combines Explorer AUV surveillance, Dorado and Aurora sonar towing, and the Trailblazer ROV for mine identification and disposal, with prior Canadian and allied operational use.",
+          "sourceIds": [
+            "source-ise-trailblazer-mcm-rov"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-cellula-defence-mcm-auv-suite",
+      "sourceLeadIds": [
+        "lead-cellula-defence-mcm-auv-suite"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewerRationale": "Cellula Robotics is already published, but its current record does not separately represent the MCM product or integration role documented by the cited official source. This additive refresh creates a precise mine-countermeasure capability without replacing the existing organization or its reviewed capabilities. Review the boundary between product-specific evidence and the derived mission mapping, and confirm that the new capability is distinct enough for public discovery.",
+      "reviewWarnings": [
+        "The capability is proposed for human review; no supplier eligibility, endorsement, classified demand or continuing contract status is inferred."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000003",
+            "name": "Cellula Robotics",
+            "matchedBy": "intended published refresh target via exact identifier, slug and website domain"
+          }
+        ],
+        "note": "The organization match is the intended target; live capability slugs were checked and do not include cellula-defence-mcm-auv-suite."
+      },
+      "sources": [
+        {
+          "id": "source-cellula-defence-mcm-auv-suite",
+          "title": "Defence AUV Solutions",
+          "url": "https://cellula.com/defence-auv-solutions/",
+          "publisher": "Cellula Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Official product, capability or operational description",
+          "summary": "Cellula identifies Envoy and Guardian AUVs for minefield survey, mine detection and classification, and neutralization support as part of its long-endurance defence AUV portfolio."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-source-cellula-defence-mcm-auv-suite",
+          "sourceId": "source-cellula-defence-mcm-auv-suite",
+          "fieldPath": "operations.add-cellula-defence-mcm-auv-suite.value",
+          "claimClass": "source_backed",
+          "excerpt": "Cellula identifies Envoy and Guardian AUVs for minefield survey, mine detection and classification, and neutralization support as part of its long-endurance defence AUV portfolio.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000003",
+        "slug": "cellula-robotics",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000003",
+          "slug": "cellula-robotics",
+          "name": "Cellula Robotics",
+          "legal_name": null,
+          "description": "Keep subsea missions running longer without routine recovery. Cellula Robotics develops fuel-cell autonomous underwater vehicles and related autonomy systems for persistent operations from British Columbia.",
+          "website_url": "https://cellula.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "autonomous_systems",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "currentActivity": "Cellula Robotics and Metron announced a ten-year agreement combining Cellula's long-endurance commercial-off-the-shelf AUV platforms with Metron autonomy and support for United States defence customers; Cellula also reported an Envoy mission exceeding 2,000 kilometres submerged on hydrogen fuel-cell power.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-29T12:24:29.802794+00:00",
+          "published_at": "2026-04-24T00:00:00+00:00",
+          "created_at": "2026-07-15T22:27:18.512726+00:00",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "20000000-0000-4000-8000-000000000003",
+            "organization_id": "10000000-0000-4000-8000-000000000003",
+            "slug": "cellula-envoy-auv",
+            "name": "Envoy Long-Endurance Autonomous Underwater Vehicle",
+            "summary": "Use fuel-cell endurance to keep an autonomous underwater vehicle on extended subsea missions, reducing the frequency and operational cost of recovery and redeployment.",
+            "capability_type": "Autonomous Underwater Vehicle",
+            "core_features": [
+              "Fuel-cell propulsion",
+              "Long-endurance subsea operation",
+              "Autonomous underwater vehicle"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Undersea route reconnaissance",
+              "Subsea infrastructure monitoring",
+              "Extended underwater patrol validation"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "hardware",
+              "autonomous_systems",
+              "auv",
+              "undersea"
+            ],
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-04-24T00:00:00+00:00",
+            "created_at": "2026-07-15T22:27:18.512726+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-cellula-defence-mcm-auv-suite",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "10000000-0000-4000-8000-000000000003",
+          "value": {
+            "slug": "cellula-defence-mcm-auv-suite",
+            "name": "Defence mine-countermeasure AUV suite",
+            "summary": "Cellula identifies Envoy and Guardian AUVs for minefield survey, mine detection and classification, and neutralization support as part of its long-endurance defence AUV portfolio.",
+            "capabilityType": "Naval mine-countermeasure system or subsystem",
+            "features": [
+              "Long-endurance autonomous survey",
+              "Modular sonar payload integration",
+              "Minefield mapping",
+              "Persistent discreet operations"
+            ],
+            "applications": [
+              "Mine detection and classification",
+              "Minefield survey",
+              "Mine-neutralization support",
+              "Underwater inspection"
+            ],
+            "technicalTags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The official product evidence supports use in detecting, identifying, classifying, localizing or neutralizing naval mines; this mission mapping remains a derived reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          "evidenceIds": [
+            "evidence-source-cellula-defence-mcm-auv-suite"
+          ],
+          "reviewerExplanation": "Add the source-backed MCM product or integration role as a distinct capability while preserving every published record and identifier."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-cellula-defence-mcm-auv-suite"
+      ],
+      "corroboration": [
+        {
+          "claim": "Cellula identifies Envoy and Guardian AUVs for minefield survey, mine detection and classification, and neutralization support as part of its long-endurance defence AUV portfolio.",
+          "sourceIds": [
+            "source-cellula-defence-mcm-auv-suite"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-deep-trekker-mcm-eod-rov-package",
+      "sourceLeadIds": [
+        "lead-deep-trekker-mcm-eod-rov-package"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewerRationale": "Deep Trekker is already published, but its current record does not separately represent the MCM product or integration role documented by the cited official source. This additive refresh creates a precise mine-countermeasure capability without replacing the existing organization or its reviewed capabilities. Review the boundary between product-specific evidence and the derived mission mapping, and confirm that the new capability is distinct enough for public discovery.",
+      "reviewWarnings": [
+        "The capability is proposed for human review; no supplier eligibility, endorsement, classified demand or continuing contract status is inferred."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+            "name": "Deep Trekker",
+            "matchedBy": "intended published refresh target via exact identifier, slug and website domain"
+          }
+        ],
+        "note": "The organization match is the intended target; live capability slugs were checked and do not include deep-trekker-mcm-eod-rov-package."
+      },
+      "sources": [
+        {
+          "id": "source-deep-trekker-mcm-eod-rov-package",
+          "title": "REPMUS 2025: The Future of Mine Countermeasure Operations with ROVs",
+          "url": "https://www.deeptrekker.com/news/repmus-2025-the-future-of-mine-countermeasure-operations-with-rovs",
+          "publisher": "Deep Trekker",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2025-11-03T00:00:00.000Z",
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Official product, capability or operational description",
+          "summary": "Deep Trekker reports REPMUS validation of portable ROV workflows for reacquisition, classification and identification of naval mines, plus testing of an ROV-delivered Viper mine-disposal system."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-source-deep-trekker-mcm-eod-rov-package",
+          "sourceId": "source-deep-trekker-mcm-eod-rov-package",
+          "fieldPath": "operations.add-deep-trekker-mcm-eod-rov-package.value",
+          "claimClass": "source_backed",
+          "excerpt": "Deep Trekker reports REPMUS validation of portable ROV workflows for reacquisition, classification and identification of naval mines, plus testing of an ROV-delivered Viper mine-disposal system.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+        "slug": "deep-trekker",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+          "slug": "deep-trekker",
+          "name": "Deep Trekker",
+          "legal_name": null,
+          "description": "Inspect hazardous underwater spaces while operators stay at a safer distance. Deep Trekker builds portable, battery-powered ROVs in Ontario for reconnaissance, security, inspection, and public-safety work.",
+          "website_url": "https://www.deeptrekker.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "currentActivity": "Deep Trekker launched the 1,000-metre-rated SPECTRA portable ROV with symmetrical seven-thruster propulsion, real-time 3D sonar SLAM, factory-calibrated 4K stereo vision, onboard computing, and higher payload capacity for inspection, survey, and defence users.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking.",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-29T12:24:29.802794+00:00",
+          "published_at": "2026-07-16T12:00:00+00:00",
+          "created_at": "2026-07-16T09:09:28.288403+00:00",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "7f33e609-b23f-454f-89b2-710c5f4768ea",
+            "organization_id": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+            "slug": "deep-trekker-defence-rovs",
+            "name": "Rapid-deployment defence ROV systems",
+            "summary": "Deploy a portable battery-powered ROV quickly, combine video with sonar and positioning, and inspect ports, vessels, divers, or underwater hazards while operators remain at a safer distance.",
+            "capability_type": "Remotely Operated Vehicle",
+            "core_features": [
+              "Portable battery operation",
+              "Underwater video inspection",
+              "Sonar and positioning options"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Underwater reconnaissance",
+              "Port and vessel inspection",
+              "Diver overwatch"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "hardware",
+              "rov",
+              "underwater_inspection",
+              "maritime_security"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-16T12:00:00+00:00",
+            "created_at": "2026-07-16T09:09:28.288403+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-deep-trekker-mcm-eod-rov-package",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+          "value": {
+            "slug": "deep-trekker-mcm-eod-rov-package",
+            "name": "Mine-countermeasure and EOD ROV package",
+            "summary": "Deep Trekker reports REPMUS validation of portable ROV workflows for reacquisition, classification and identification of naval mines, plus testing of an ROV-delivered Viper mine-disposal system.",
+            "capabilityType": "Naval mine-countermeasure system or subsystem",
+            "features": [
+              "Portable battery-powered ROV",
+              "Real-time visual and sonar identification",
+              "Target reacquisition and classification",
+              "ROV-delivered disposal-system integration"
+            ],
+            "applications": [
+              "Explosive ordnance disposal support",
+              "Mine reacquisition and identification",
+              "Mine-disposal planning",
+              "Route and harbour clearance"
+            ],
+            "technicalTags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The official product evidence supports use in detecting, identifying, classifying, localizing or neutralizing naval mines; this mission mapping remains a derived reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          "evidenceIds": [
+            "evidence-source-deep-trekker-mcm-eod-rov-package"
+          ],
+          "reviewerExplanation": "Add the source-backed MCM product or integration role as a distinct capability while preserving every published record and identifier."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-deep-trekker-mcm-eod-rov-package"
+      ],
+      "corroboration": [
+        {
+          "claim": "Deep Trekker reports REPMUS validation of portable ROV workflows for reacquisition, classification and identification of naval mines, plus testing of an ROV-delivered Viper mine-disposal system.",
+          "sourceIds": [
+            "source-deep-trekker-mcm-eod-rov-package"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-shark-marine-navigator-mcm",
+      "sourceLeadIds": [
+        "lead-shark-marine-navigator-mcm"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewerRationale": "Shark Marine Technologies is already published, but its current record does not separately represent the MCM product or integration role documented by the cited official source. This additive refresh creates a precise mine-countermeasure capability without replacing the existing organization or its reviewed capabilities. Review the boundary between product-specific evidence and the derived mission mapping, and confirm that the new capability is distinct enough for public discovery.",
+      "reviewWarnings": [
+        "The capability is proposed for human review; no supplier eligibility, endorsement, classified demand or continuing contract status is inferred."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "94058484-b4ce-463c-80ed-60cabbd7a3b4",
+            "name": "Shark Marine Technologies",
+            "matchedBy": "intended published refresh target via exact identifier, slug and website domain"
+          }
+        ],
+        "note": "The organization match is the intended target; live capability slugs were checked and do not include shark-marine-navigator-mcm."
+      },
+      "sources": [
+        {
+          "id": "source-shark-marine-navigator-mcm",
+          "title": "Navigator",
+          "url": "https://www.sharkmarine.com/navigator",
+          "publisher": "Shark Marine Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Official product, capability or operational description",
+          "summary": "Shark Marine's Navigator integrates sonar imaging, navigation and reconnaissance for one-person MCM, explosive-ordnance-disposal, rapid environmental assessment and covert underwater missions."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-source-shark-marine-navigator-mcm",
+          "sourceId": "source-shark-marine-navigator-mcm",
+          "fieldPath": "operations.add-shark-marine-navigator-mcm.value",
+          "claimClass": "source_backed",
+          "excerpt": "Shark Marine's Navigator integrates sonar imaging, navigation and reconnaissance for one-person MCM, explosive-ordnance-disposal, rapid environmental assessment and covert underwater missions.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "94058484-b4ce-463c-80ed-60cabbd7a3b4",
+        "slug": "shark-marine-technologies",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T13:35:07.314194+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "94058484-b4ce-463c-80ed-60cabbd7a3b4",
+          "slug": "shark-marine-technologies",
+          "name": "Shark Marine Technologies",
+          "legal_name": "Shark Marine Technologies Inc.",
+          "description": "Shark Marine Technologies is a St. Catharines underwater-technology manufacturer producing ROVs, diver navigation and delivery systems, sonar, mission software and supporting hardware for military, law-enforcement, scientific and commercial users.",
+          "website_url": "https://www.sharkmarine.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use",
+            "ocean_technology"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "23 Nihan Drive, St. Catharines, ON L2N 1L2; sales@sharkmarine.com; +1 905-687-6672.",
+            "portfolioScope": "ROVs, Navigator and E-Tac diver-navigation products, sonar, Hammerhead diver delivery, DiveLog software, displays, cameras and custom underwater systems.",
+            "currentActivity": "A 2026 CanadaBuys notice identifies Shark Marine navigation, sonar, computing, camera and mission-planning equipment for delivery to CFB Gagetown.",
+            "evidenceBoundary": "Identity, capability, location, contact and current activity are source-backed. Mission matches are derived analyst assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand.",
+            "reviewed_candidate_id": "f9b20c19-80d0-4ccd-88c6-03271626d17f",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-24T13:35:07.314194+00:00",
+          "published_at": "2026-07-24T13:35:07.314194+00:00",
+          "created_at": "2026-07-24T13:35:07.314194+00:00",
+          "updated_at": "2026-07-24T13:35:07.314194+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "d17615f5-72b8-43ec-bae4-3417681c175a",
+            "organization_id": "94058484-b4ce-463c-80ed-60cabbd7a3b4",
+            "slug": "shark-marine-integrated-underwater-systems",
+            "name": "Integrated Underwater Navigation and ROV Systems",
+            "summary": "Equip divers and remotely operated vehicles with integrated sonar, navigation, mapping, mission-planning, control and delivery systems for underwater search, survey, target reacquisition and intervention.",
+            "capability_type": "Underwater navigation, sonar and remotely operated systems",
+            "core_features": [
+              "ROV and diver-operated configurations",
+              "Navigator sonar and navigation family",
+              "DiveLog mission software",
+              "Diver delivery systems",
+              "Custom in-house system integration"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Clearance-diver navigation",
+              "Mine-countermeasure support",
+              "Port and harbour security",
+              "Search and recovery",
+              "Underwater survey and target mapping"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "diver navigation",
+              "ROV",
+              "sonar",
+              "DiveLog",
+              "underwater mission systems"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-24T13:35:07.314194+00:00",
+            "published_at": "2026-07-24T13:35:07.314194+00:00",
+            "created_at": "2026-07-24T13:35:07.314194+00:00",
+            "updated_at": "2026-07-24T13:35:07.314194+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-shark-marine-navigator-mcm",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "94058484-b4ce-463c-80ed-60cabbd7a3b4",
+          "value": {
+            "slug": "shark-marine-navigator-mcm",
+            "name": "Navigator MCM sonar and diver-navigation system",
+            "summary": "Shark Marine's Navigator integrates sonar imaging, navigation and reconnaissance for one-person MCM, explosive-ordnance-disposal, rapid environmental assessment and covert underwater missions.",
+            "capabilityType": "Naval mine-countermeasure system or subsystem",
+            "features": [
+              "Integrated sonar imaging",
+              "Underwater navigation",
+              "Modular mission sensors",
+              "One-person reconnaissance unit"
+            ],
+            "applications": [
+              "Mine countermeasures",
+              "Explosive ordnance disposal",
+              "Rapid beach profiling",
+              "Underwater search and recovery"
+            ],
+            "technicalTags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The official product evidence supports use in detecting, identifying, classifying, localizing or neutralizing naval mines; this mission mapping remains a derived reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          "evidenceIds": [
+            "evidence-source-shark-marine-navigator-mcm"
+          ],
+          "reviewerExplanation": "Add the source-backed MCM product or integration role as a distinct capability while preserving every published record and identifier."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-shark-marine-navigator-mcm"
+      ],
+      "corroboration": [
+        {
+          "claim": "Shark Marine's Navigator integrates sonar imaging, navigation and reconnaissance for one-person MCM, explosive-ordnance-disposal, rapid environmental assessment and covert underwater missions.",
+          "sourceIds": [
+            "source-shark-marine-navigator-mcm"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-voyis-mcm-optical-identification",
+      "sourceLeadIds": [
+        "lead-voyis-mcm-optical-identification"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewerRationale": "Voyis is already published, but its current record does not separately represent the MCM product or integration role documented by the cited official source. This additive refresh creates a precise mine-countermeasure capability without replacing the existing organization or its reviewed capabilities. Review the boundary between product-specific evidence and the derived mission mapping, and confirm that the new capability is distinct enough for public discovery.",
+      "reviewWarnings": [
+        "The capability is proposed for human review; no supplier eligibility, endorsement, classified demand or continuing contract status is inferred."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "75e6c046-813c-4772-b741-9ff5b684e006",
+            "name": "Voyis",
+            "matchedBy": "intended published refresh target via exact identifier, slug and website domain"
+          }
+        ],
+        "note": "The organization match is the intended target; live capability slugs were checked and do not include voyis-mcm-optical-identification."
+      },
+      "sources": [
+        {
+          "id": "source-voyis-mcm-optical-identification",
+          "title": "Advancing Mine Countermeasure Operations Through Integrated Autonomous Systems",
+          "url": "https://voyis.com/advancing-mine-countermeasure-operations-through-integrated-autonomous-systems/",
+          "publisher": "Voyis",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2026-05-06T00:00:00.000Z",
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Official product, capability or operational description",
+          "summary": "Voyis describes integrating laser and optical payloads into autonomous MCM workflows to improve close-range identification, localization and documentation after sonar detection and classification."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-source-voyis-mcm-optical-identification",
+          "sourceId": "source-voyis-mcm-optical-identification",
+          "fieldPath": "operations.add-voyis-mcm-optical-identification.value",
+          "claimClass": "source_backed",
+          "excerpt": "Voyis describes integrating laser and optical payloads into autonomous MCM workflows to improve close-range identification, localization and documentation after sonar detection and classification.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "75e6c046-813c-4772-b741-9ff5b684e006",
+        "slug": "voyis",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "75e6c046-813c-4772-b741-9ff5b684e006",
+          "slug": "voyis",
+          "name": "Voyis",
+          "legal_name": null,
+          "description": "Capture imagery detailed enough to identify, inspect, and document underwater objects. Voyis combines subsea cameras, lighting, and laser scanning for vehicle-based missions from Waterloo.",
+          "website_url": "https://voyis.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-16T12:00:00+00:00",
+          "created_at": "2026-07-16T09:09:28.288403+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "453b38f9-d588-420b-a21d-5f510369f183",
+            "organization_id": "75e6c046-813c-4772-b741-9ff5b684e006",
+            "slug": "voyis-observer-imaging-systems",
+            "name": "Observer subsea imaging systems",
+            "summary": "Capture high-resolution subsea video and still imagery with integrated lighting and optional laser scanning, making underwater inspection results easier to identify, measure, and document.",
+            "capability_type": "Subsea Imaging System",
+            "core_features": [
+              "High-resolution underwater imaging",
+              "Integrated subsea lighting",
+              "Laser-scanner compatibility"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Subsea inspection",
+              "Vehicle-based survey",
+              "Underwater object documentation"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "hardware",
+              "subsea_imaging",
+              "optical_sensing",
+              "inspection"
+            ],
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-16T12:00:00+00:00",
+            "created_at": "2026-07-16T09:09:28.288403+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-voyis-mcm-optical-identification",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "75e6c046-813c-4772-b741-9ff5b684e006",
+          "value": {
+            "slug": "voyis-mcm-optical-identification",
+            "name": "MCM optical identification payloads",
+            "summary": "Voyis describes integrating laser and optical payloads into autonomous MCM workflows to improve close-range identification, localization and documentation after sonar detection and classification.",
+            "capabilityType": "Naval mine-countermeasure system or subsystem",
+            "features": [
+              "High-resolution subsea imaging",
+              "Laser-based target measurement",
+              "Autonomous-platform integration",
+              "Multi-sensor contact identification"
+            ],
+            "applications": [
+              "Mine-like-object identification",
+              "Target localization",
+              "Autonomous MCM workflows",
+              "Neutralization planning"
+            ],
+            "technicalTags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The official product evidence supports use in detecting, identifying, classifying, localizing or neutralizing naval mines; this mission mapping remains a derived reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          "evidenceIds": [
+            "evidence-source-voyis-mcm-optical-identification"
+          ],
+          "reviewerExplanation": "Add the source-backed MCM product or integration role as a distinct capability while preserving every published record and identifier."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-voyis-mcm-optical-identification"
+      ],
+      "corroboration": [
+        {
+          "claim": "Voyis describes integrating laser and optical payloads into autonomous MCM workflows to improve close-range identification, localization and documentation after sonar detection and classification.",
+          "sourceIds": [
+            "source-voyis-mcm-optical-identification"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-geospectrum-jaeger-mcm-usv",
+      "sourceLeadIds": [
+        "lead-geospectrum-jaeger-mcm-usv"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewerRationale": "GeoSpectrum Technologies is already published, but its current record does not separately represent the MCM product or integration role documented by the cited official source. This additive refresh creates a precise mine-countermeasure capability without replacing the existing organization or its reviewed capabilities. Review the boundary between product-specific evidence and the derived mission mapping, and confirm that the new capability is distinct enough for public discovery.",
+      "reviewWarnings": [
+        "The capability is proposed for human review; no supplier eligibility, endorsement, classified demand or continuing contract status is inferred."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000005",
+            "name": "GeoSpectrum Technologies",
+            "matchedBy": "intended published refresh target via exact identifier, slug and website domain"
+          }
+        ],
+        "note": "The organization match is the intended target; live capability slugs were checked and do not include geospectrum-jaeger-mcm-usv."
+      },
+      "sources": [
+        {
+          "id": "source-geospectrum-jaeger-mcm-usv",
+          "title": "Jaeger USV",
+          "url": "https://geospectrum.ca/catalog/defence/unmanned-systems/jaeger-usv/",
+          "publisher": "GeoSpectrum Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Official product, capability or operational description",
+          "summary": "GeoSpectrum's Jaeger is a modular autonomous surface vessel that integrates MCM, ASW, maritime-security and electronic-warfare payloads with mission control and sonar systems."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-source-geospectrum-jaeger-mcm-usv",
+          "sourceId": "source-geospectrum-jaeger-mcm-usv",
+          "fieldPath": "operations.add-geospectrum-jaeger-mcm-usv.value",
+          "claimClass": "source_backed",
+          "excerpt": "GeoSpectrum's Jaeger is a modular autonomous surface vessel that integrates MCM, ASW, maritime-security and electronic-warfare payloads with mission control and sonar systems.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000005",
+        "slug": "geospectrum-technologies",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000005",
+          "slug": "geospectrum-technologies",
+          "name": "GeoSpectrum Technologies",
+          "legal_name": null,
+          "description": "Find and follow underwater targets from compact surface and subsea platforms. Nova Scotia-based GeoSpectrum Technologies builds sonar, acoustic sensors, and surveillance systems for defence and ocean operations.",
+          "website_url": "https://geospectrum.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "currentActivity": "GeoSpectrum's current news and product material continues to position TRAPS as a compact reelable active-passive sonar while documenting field use, product development, strategic partnerships, and deployable acoustic systems for crewed and uncrewed platforms.",
+            "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-29T12:24:29.802794+00:00",
+          "published_at": "2026-04-24T00:00:00+00:00",
+          "created_at": "2026-07-15T22:27:18.512726+00:00",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "20000000-0000-4000-8000-000000000005",
+            "organization_id": "10000000-0000-4000-8000-000000000005",
+            "slug": "geospectrum-traps-sonar",
+            "name": "TRAPS Towed Reelable Active Passive Sonar",
+            "summary": "Lower a compact active-passive sonar to the useful depth and detect, classify, track, and localize underwater targets from surface or uncrewed platforms.",
+            "capability_type": "Active Passive Towed Sonar",
+            "core_features": [
+              "Active-passive sonar",
+              "Variable-depth operation",
+              "Underwater target localization"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Underwater surveillance",
+              "Target detection and tracking",
+              "Surface and uncrewed platform integration"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "hardware",
+              "sonar",
+              "underwater_acoustics",
+              "maritime"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-04-24T00:00:00+00:00",
+            "created_at": "2026-07-15T22:27:18.512726+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-geospectrum-jaeger-mcm-usv",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "10000000-0000-4000-8000-000000000005",
+          "value": {
+            "slug": "geospectrum-jaeger-mcm-usv",
+            "name": "Jaeger multi-mission MCM USV",
+            "summary": "GeoSpectrum's Jaeger is a modular autonomous surface vessel that integrates MCM, ASW, maritime-security and electronic-warfare payloads with mission control and sonar systems.",
+            "capabilityType": "Naval mine-countermeasure system or subsystem",
+            "features": [
+              "Autonomous surface operation",
+              "Switchable modular payloads",
+              "Advanced sonar integration",
+              "Line-of-sight and satellite data links"
+            ],
+            "applications": [
+              "Mine countermeasures",
+              "Maritime security",
+              "Underwater surveillance",
+              "Multi-mission uncrewed operations"
+            ],
+            "technicalTags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The official product evidence supports use in detecting, identifying, classifying, localizing or neutralizing naval mines; this mission mapping remains a derived reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          "evidenceIds": [
+            "evidence-source-geospectrum-jaeger-mcm-usv"
+          ],
+          "reviewerExplanation": "Add the source-backed MCM product or integration role as a distinct capability while preserving every published record and identifier."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-geospectrum-jaeger-mcm-usv"
+      ],
+      "corroboration": [
+        {
+          "claim": "GeoSpectrum's Jaeger is a modular autonomous surface vessel that integrates MCM, ASW, maritime-security and electronic-warfare payloads with mission control and sonar systems.",
+          "sourceIds": [
+            "source-geospectrum-jaeger-mcm-usv"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-d-ta-minehunting-sonar-processing",
+      "sourceLeadIds": [
+        "lead-d-ta-minehunting-sonar-processing"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewerRationale": "D-TA Systems is already published, but its current record does not separately represent the MCM product or integration role documented by the cited official source. This additive refresh creates a precise mine-countermeasure capability without replacing the existing organization or its reviewed capabilities. Review the boundary between product-specific evidence and the derived mission mapping, and confirm that the new capability is distinct enough for public discovery.",
+      "reviewWarnings": [
+        "The capability is proposed for human review; no supplier eligibility, endorsement, classified demand or continuing contract status is inferred."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "57d73dec-2ce4-4d4a-8ed6-6ac27fb33665",
+            "name": "D-TA Systems",
+            "matchedBy": "intended published refresh target via exact identifier, slug and website domain"
+          }
+        ],
+        "note": "The organization match is the intended target; live capability slugs were checked and do not include d-ta-minehunting-sonar-processing."
+      },
+      "sources": [
+        {
+          "id": "source-d-ta-minehunting-sonar-processing",
+          "title": "D-TA Systems technical product presentation",
+          "url": "https://www.d-ta.com/wp-content/uploads/2018/02/D-TA_Technical_Presentation_Product_ALL.pdf",
+          "publisher": "D-TA Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Official product, capability or operational description",
+          "summary": "D-TA's technical portfolio documents Canadian signal-acquisition, recording and real-time processing systems for minehunting and dipping sonar applications, complementing its broader network-attached acoustic processing record."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-source-d-ta-minehunting-sonar-processing",
+          "sourceId": "source-d-ta-minehunting-sonar-processing",
+          "fieldPath": "operations.add-d-ta-minehunting-sonar-processing.value",
+          "claimClass": "source_backed",
+          "excerpt": "D-TA's technical portfolio documents Canadian signal-acquisition, recording and real-time processing systems for minehunting and dipping sonar applications, complementing its broader network-attached acoustic processing record.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "57d73dec-2ce4-4d4a-8ed6-6ac27fb33665",
+        "slug": "d-ta-systems",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T14:06:58.932707+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "57d73dec-2ce4-4d4a-8ed6-6ac27fb33665",
+          "slug": "d-ta-systems",
+          "name": "D-TA Systems",
+          "legal_name": "D-TA Systems Inc.",
+          "description": "D-TA Systems is an Ottawa defence-electronics company developing networked sensor-processing, recording, playback, SIGINT, electronic-warfare and radar systems for air, land and maritime platforms.",
+          "website_url": "https://www.d-ta.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "publicContact": "D-TA publishes its Ottawa international headquarters, sales email address and telephone contacts on the official company site.",
+            "portfolioScope": "Capture, digitize, record, replay and process multi-channel sonar, acoustic, radio and radar signals using scalable network-attached hardware and real-time software designed for deployable military sensor systems.",
+            "currentActivity": "Government of Canada material documents D-TA sensor-processing systems for sonar and acoustic inputs, including scalable capture, conversion, recording, playback and real-time processing.",
+            "evidenceBoundary": "Organization identity, capability, location, contact and activity are source-backed. Containerized ASW and mission alignment are derived assessments and do not imply procurement eligibility, endorsement, customer interest or classified demand.",
+            "reviewed_candidate_id": "bc3e3b00-abed-4f6b-a531-c41ae90704fe",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-24T14:06:58.932707+00:00",
+          "published_at": "2026-07-24T14:06:58.932707+00:00",
+          "created_at": "2026-07-24T14:06:58.932707+00:00",
+          "updated_at": "2026-07-24T14:06:58.932707+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "f1812fb5-e68d-48ae-b779-6ad18b8157a8",
+            "organization_id": "57d73dec-2ce4-4d4a-8ed6-6ac27fb33665",
+            "slug": "d-ta-networked-sonar-acoustic-processing",
+            "name": "Network-Attached Sonar and Acoustic Sensor Processing",
+            "summary": "Capture, digitize, record, replay and process multi-channel sonar, acoustic, radio and radar signals using scalable network-attached hardware and real-time software designed for deployable military sensor systems.",
+            "capability_type": "Real-time networked sensor-processing subsystem",
+            "core_features": [
+              "Multi-channel high-speed digitization",
+              "10 Gigabit network-attached processing",
+              "Real-time multi-core software",
+              "Signal recording and playback",
+              "Scalable sensor interfaces"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Containerized acoustic processing",
+              "Sonar signal exploitation",
+              "Shallow-water and mine-sonar processing",
+              "Maritime electronic-support systems"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "sonar processing",
+              "acoustic processing",
+              "network-attached sensors",
+              "record and playback",
+              "real-time signal processing"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-24T14:06:58.932707+00:00",
+            "published_at": "2026-07-24T14:06:58.932707+00:00",
+            "created_at": "2026-07-24T14:06:58.932707+00:00",
+            "updated_at": "2026-07-24T14:06:58.932707+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-d-ta-minehunting-sonar-processing",
+          "operation": "add_child",
+          "entityType": "capability",
+          "parentId": "57d73dec-2ce4-4d4a-8ed6-6ac27fb33665",
+          "value": {
+            "slug": "d-ta-minehunting-sonar-processing",
+            "name": "Minehunting sonar processing systems",
+            "summary": "D-TA's technical portfolio documents Canadian signal-acquisition, recording and real-time processing systems for minehunting and dipping sonar applications, complementing its broader network-attached acoustic processing record.",
+            "capabilityType": "Naval mine-countermeasure system or subsystem",
+            "features": [
+              "Multi-channel sonar digitization",
+              "Real-time signal processing",
+              "Recording and playback",
+              "Network-attached processing architecture"
+            ],
+            "applications": [
+              "Minehunting sonar processing",
+              "Dipping-sonar processing",
+              "Acoustic test and evaluation",
+              "Deployable maritime sensor systems"
+            ],
+            "technicalTags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "underwater-isr",
+                "alignmentSummary": "The official product evidence supports use in detecting, identifying, classifying, localizing or neutralizing naval mines; this mission mapping remains a derived reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          },
+          "evidenceIds": [
+            "evidence-source-d-ta-minehunting-sonar-processing"
+          ],
+          "reviewerExplanation": "Add the source-backed MCM product or integration role as a distinct capability while preserving every published record and identifier."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-d-ta-minehunting-sonar-processing"
+      ],
+      "corroboration": [
+        {
+          "claim": "D-TA's technical portfolio documents Canadian signal-acquisition, recording and real-time processing systems for minehunting and dipping sonar applications, complementing its broader network-attached acoustic processing record.",
+          "sourceIds": [
+            "source-d-ta-minehunting-sonar-processing"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "demand_signal_bundle_v1",
+      "candidateKind": "demand_signal_bundle",
+      "candidateId": "candidate-rcn-remote-minehunting-disposal-system",
+      "sourceLeadIds": [
+        "lead-rcn-remote-minehunting-disposal"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 95,
+      "reviewerRationale": "This is a distinct Canadian procurement demand signal, not a company record. Official National Defence sources define and confirm the contracted RCN Remote Minehunting and Disposal System requirement: modular standoff systems must find, classify, identify and dispose of sea mines and underwater improvised explosive devices while reducing risk to ships and sailors. Reviewers should retain the awarded-program caveat and can merge this candidate only if an equivalent MCM requirement already exists at the same specificity.",
+      "reviewWarnings": [
+        "The public contract award is not an open solicitation; future options, sustainment work or follow-on procurement require separate current evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T18:57:18.967Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published demand records and pending candidates contained no equivalent RMDS or naval mine-countermeasure requirement."
+      },
+      "sources": [
+        {
+          "id": "source-rcn-rmds-blueprint",
+          "title": "Remote Minehunting and Disposal System",
+          "url": "https://apps.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1808",
+          "publisher": "National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Project description, objective, procurement approach and planned payloads",
+          "summary": "The Defence Capabilities Blueprint defines an RCN requirement for two modular Remote Minehunting and Disposal System payloads able to detect, classify, localize, reacquire, identify and dispose of sea mines and underwater improvised explosive devices."
+        },
+        {
+          "id": "source-rcn-rmds-award",
+          "title": "Remote Mine-hunting and Disposal System contract award",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "publisher": "National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2022-12-07T00:00:00.000Z",
+          "accessedAt": "2026-07-29T18:57:18.967Z",
+          "locator": "Contract award, purpose and system outcomes",
+          "summary": "National Defence announced two contracts for modular minehunting and disposal systems intended to let the RCN detect and neutralize underwater mines at standoff range."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-rcn-rmds-summary",
+          "sourceId": "source-rcn-rmds-blueprint",
+          "fieldPath": "demandSource.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Defence Capabilities Blueprint defines an RCN requirement for two modular Remote Minehunting and Disposal System payloads able to detect, classify, localize, reacquire, identify and dispose of sea mines and underwater improvised explosive devices.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-rcn-rmds-problem",
+          "sourceId": "source-rcn-rmds-blueprint",
+          "fieldPath": "requirements.rcn-modular-standoff-mine-countermeasures.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "Sea mines and underwater improvised explosive devices can threaten Canadian interests and impede maritime operations, while close-in minehunting exposes ships and personnel to avoidable risk.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-rcn-rmds-end-state",
+          "sourceId": "source-rcn-rmds-award",
+          "fieldPath": "requirements.rcn-modular-standoff-mine-countermeasures.desiredEndState",
+          "claimClass": "derived",
+          "excerpt": "Reviewer synthesis: two coastal formations can deploy modular uncrewed payloads to search, classify, identify and neutralize mine threats while keeping host vessels and crews at safer standoff distances.",
+          "confidence": "moderate"
+        }
+      ],
+      "issuers": [
+        {
+          "slug": "royal-canadian-navy",
+          "name": "Royal Canadian Navy",
+          "issuerType": "military_service",
+          "jurisdiction": "Canada",
+          "parentIssuerSlug": "national-defence",
+          "role": "issuer"
+        },
+        {
+          "slug": "national-defence",
+          "name": "Department of National Defence",
+          "issuerType": "department",
+          "jurisdiction": "Canada",
+          "parentIssuerSlug": "government-of-canada",
+          "role": "co_issuer"
+        },
+        {
+          "slug": "public-services-and-procurement-canada",
+          "name": "Public Services and Procurement Canada",
+          "issuerType": "procurement_authority",
+          "jurisdiction": "Canada",
+          "parentIssuerSlug": "government-of-canada",
+          "role": "co_issuer"
+        }
+      ],
+      "demandSource": {
+        "slug": "rcn-remote-minehunting-disposal-system",
+        "title": "Royal Canadian Navy Remote Minehunting and Disposal System",
+        "sourceKind": "award_or_contract",
+        "commitmentLevel": "procurement",
+        "classificationLabel": "PUBLIC",
+        "summary": "Canada has contracted modular, portable, standoff minehunting and disposal payloads for the Royal Canadian Navy to detect, classify, localize, reacquire, identify and dispose of sea mines and underwater improvised explosive devices.",
+        "publishedOn": "2022-12-07"
+      },
+      "requirements": [
+        {
+          "slug": "rcn-modular-standoff-mine-countermeasures",
+          "title": "Modular standoff naval mine countermeasures",
+          "problemStatement": "Sea mines and underwater improvised explosive devices can threaten Canadian interests and impede maritime operations, while close-in minehunting exposes ships and personnel to avoidable risk.",
+          "desiredEndState": "The RCN can deploy two modular, transportable and interoperable uncrewed-system payloads to search, classify, identify and neutralize mine threats from ships, small craft or shore while maintaining safer standoff distance.",
+          "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+          "missionAreaSlugs": [
+            "underwater-isr",
+            "autonomous-patrol-and-monitoring"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "autonomous-systems",
+            "mission-software-and-data",
+            "advanced-manufacturing-and-integration"
+          ]
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

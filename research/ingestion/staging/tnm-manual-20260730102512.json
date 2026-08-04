@@ -1,0 +1,3202 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-30T10:42:17.322Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260730102512",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-kind:company",
+      "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-30T10:25:12.521Z",
+    "completed_at": "2026-07-30T10:41:33.476Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "site:canadabuys.canada.ca IDEaS CFP 6 Canadian company contract",
+      "site:achatscanada.canada.ca entreprise canadienne IDEeS contrat",
+      "site:diana.nato.int 2026 cohort Canada company defence technology",
+      "site:canada.ca Canadian company defence innovation contract drone communications",
+      "site:publications.gc.ca Canadian defence company parliamentary evidence",
+      "site:nrc.canada.ca CANSEC Canadian company technology commercialization",
+      "Canadian defence technology company autonomous systems communications sensing",
+      "entreprise canadienne technologie défense communications autonomes capteurs",
+      "Canadian company official product technical documentation defence security",
+      "Canada defence event exhibitor company product announcement",
+      "Canada accelerator cohort ocean technology company",
+      "Canada company partner announcement rugged compute vehicle communications",
+      "targeted LinkedIn company and program searches resolved to durable official pages"
+    ],
+    "counters": {
+      "sourcesChecked": 80,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 3,
+      "prospectsDiscovered": 50,
+      "uniqueProspects": 50,
+      "prospectsQueued": 37,
+      "recoveryAttempts": 30,
+      "sourceLanesSearched": 9,
+      "candidatesGreen": 8,
+      "candidatesAmber": 2,
+      "claimsCollected": 60,
+      "claimsConflicted": 0,
+      "coverageSubjects": 10
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Two amber candidates require explicit reviewer confirmation of public-contract scope or self-reported technical claims before publication."
+      ]
+    },
+    "stop_reason": "Completed the ten-candidate target after qualifying a 50-prospect company inventory across nine source lanes; thirty-seven plausible unused prospects remain queued for later evidence-led batches."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-photon-iv",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-photon-iv"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-photon-iv",
+        "sourceLeadIds": [
+          "lead-photon-iv"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Photon-IV is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Resilient satellite-terrestrial network orchestration with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The official site contains performance and security marketing metrics that were not independently validated and are intentionally excluded from the proposed record. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 91,
+        "completenessScore": 85,
+        "reviewWarnings": [
+          "The official site contains performance and security marketing metrics that were not independently validated and are intentionally excluded from the proposed record."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "photon-iv-profile",
+            "title": "Photon-IV defence-grade network orchestration",
+            "url": "https://photon-iv.com/",
+            "publisher": "Photon-IV",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "About, capabilities and contact sections",
+            "summary": "The official site identifies a Cambridge, Ontario company developing AI-enabled satellite-terrestrial, mesh and open-RAN communications software."
+          },
+          {
+            "id": "photon-iv-product",
+            "title": "Photon-IV products and communications capabilities",
+            "url": "https://photon-iv.com/",
+            "publisher": "Photon-IV",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Capabilities and product-line sections",
+            "summary": "The official site describes predictive satellite-terrestrial handover, secure multi-path communications, distributed mesh networking and open-RAN intelligence products."
+          },
+          {
+            "id": "photon-iv-marketplace",
+            "title": "Photon-IV CanadaBuys supplier profile",
+            "url": "https://achatscanada.canada.ca/fr/node/Apercu/1348146",
+            "publisher": "CanadaBuys",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Supplier profile and Canadian business location",
+            "summary": "The federal supplier profile identifies Photon-IV Inc. as a Cambridge, Ontario company working in AI, wireless communications and defence applications."
+          },
+          {
+            "id": "photon-iv-contract",
+            "title": "Photon-IV IDEaS contract history",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428540-001",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-12-17T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Contract CW2428540 and related CFP 6 awards",
+            "summary": "CanadaBuys records a competitive IDEaS contract awarded to Photon-IV under solicitation WS5008404104."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-photon-iv-description",
+            "sourceId": "photon-iv-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Photon-IV is a Cambridge, Ontario communications-software company developing artificial-intelligence tools for orchestrating resilient links across satellite, terrestrial, private-5G and distributed mesh networks.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-photon-iv-location",
+            "sourceId": "photon-iv-profile",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Photon-IV has a documented Canadian operating presence in Cambridge, Ontario.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-photon-iv-capability",
+            "sourceId": "photon-iv-product",
+            "fieldPath": "capabilities.photon-iv-resilient-network-orchestration.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Photon-IV develops software that predicts changing link conditions and orchestrates traffic across satellite and terrestrial paths, alongside mesh-networking and open-RAN tools for mobile and autonomous platforms.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-photon-iv-features",
+            "sourceId": "photon-iv-product",
+            "fieldPath": "capabilities.photon-iv-resilient-network-orchestration.features",
+            "claimClass": "source_backed",
+            "excerpt": "Predictive link-quality analysis; Satellite and terrestrial path orchestration; Distributed mesh networking; Open-RAN optimization tooling",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-photon-iv-activity",
+            "sourceId": "photon-iv-contract",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records an IDEaS Competitive Projects contract awarded to Photon-IV under solicitation WS5008404104, establishing current Department of National Defence innovation-program activity without identifying a specific deployed capability.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-photon-iv-relationship",
+            "sourceId": "photon-iv-contract",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records Photon-IV as the recipient of a competitive IDEaS research contract under solicitation WS5008404104; the candidate does not infer operational adoption beyond the public award record.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-photon-iv-mission",
+            "sourceId": "photon-iv-product",
+            "fieldPath": "capabilities.photon-iv-resilient-network-orchestration.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Resilient handover between satellite and terrestrial paths could support connectivity for remote Arctic sensing and operations; this is a derived fit assessment, not a documented deployment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "photon-iv",
+          "name": "Photon-IV",
+          "legalName": "Photon-IV Inc.",
+          "aliases": [
+            "Photon IV"
+          ],
+          "description": "Photon-IV is a Cambridge, Ontario communications-software company developing artificial-intelligence tools for orchestrating resilient links across satellite, terrestrial, private-5G and distributed mesh networks.",
+          "websiteUrl": "https://photon-iv.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Cambridge",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.3616,
+            "longitude": -80.3144,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "CanadaBuys records an IDEaS Competitive Projects contract awarded to Photon-IV under solicitation WS5008404104, establishing current Department of National Defence innovation-program activity without identifying a specific deployed capability.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "photon-iv-resilient-network-orchestration",
+            "name": "Resilient satellite-terrestrial network orchestration",
+            "summary": "Photon-IV develops software that predicts changing link conditions and orchestrates traffic across satellite and terrestrial paths, alongside mesh-networking and open-RAN tools for mobile and autonomous platforms.",
+            "capabilityType": "AI-enabled resilient communications orchestration",
+            "features": [
+              "Predictive link-quality analysis",
+              "Satellite and terrestrial path orchestration",
+              "Distributed mesh networking",
+              "Open-RAN optimization tooling"
+            ],
+            "applications": [
+              "Mobile command-and-control connectivity",
+              "ISR data relay",
+              "Remote-base communications",
+              "Autonomous-system networking"
+            ],
+            "technicalTags": [
+              "NTN-TN",
+              "satellite communications",
+              "mesh networking",
+              "O-RAN",
+              "artificial intelligence"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "space-and-earth-observation",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Resilient handover between satellite and terrestrial paths could support connectivity for remote Arctic sensing and operations; this is a derived fit assessment, not a documented deployment.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Mesh and multi-path connectivity could support distributed autonomous platforms that need to preserve control and data links; platform integration remains unverified.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "IDEaS contract recipient",
+            "publicSummary": "CanadaBuys records Photon-IV as the recipient of a competitive IDEaS research contract under solicitation WS5008404104; the candidate does not infer operational adoption beyond the public award record."
+          }
+        ],
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-30T10:41:48.211Z",
+          "note": "No acceptable official-logo candidate found."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-photon-iv-description",
+          "sourceId": "photon-iv-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Photon-IV is a Cambridge, Ontario communications-software company developing artificial-intelligence tools for orchestrating resilient links across satellite, terrestrial, private-5G and distributed mesh networks.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-photon-iv-location",
+          "sourceId": "photon-iv-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Photon-IV has a documented Canadian operating presence in Cambridge, Ontario.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-photon-iv-capability",
+          "sourceId": "photon-iv-product",
+          "fieldPath": "capabilities.photon-iv-resilient-network-orchestration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Photon-IV develops software that predicts changing link conditions and orchestrates traffic across satellite and terrestrial paths, alongside mesh-networking and open-RAN tools for mobile and autonomous platforms.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-photon-iv-features",
+          "sourceId": "photon-iv-product",
+          "fieldPath": "capabilities.photon-iv-resilient-network-orchestration.features",
+          "claimClass": "source_backed",
+          "excerpt": "Predictive link-quality analysis; Satellite and terrestrial path orchestration; Distributed mesh networking; Open-RAN optimization tooling",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-photon-iv-activity",
+          "sourceId": "photon-iv-contract",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records an IDEaS Competitive Projects contract awarded to Photon-IV under solicitation WS5008404104, establishing current Department of National Defence innovation-program activity without identifying a specific deployed capability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-photon-iv-relationship",
+          "sourceId": "photon-iv-contract",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records Photon-IV as the recipient of a competitive IDEaS research contract under solicitation WS5008404104; the candidate does not infer operational adoption beyond the public award record.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-photon-iv-mission",
+          "sourceId": "photon-iv-product",
+          "fieldPath": "capabilities.photon-iv-resilient-network-orchestration.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Resilient handover between satellite and terrestrial paths could support connectivity for remote Arctic sensing and operations; this is a derived fit assessment, not a documented deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Photon-IV is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Resilient satellite-terrestrial network orchestration with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The official site contains performance and security marketing metrics that were not independently validated and are intentionally excluded from the proposed record. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    },
+    {
+      "client_candidate_id": "candidate-incendia-canada",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-incendia-canada"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-incendia-canada",
+        "sourceLeadIds": [
+          "lead-incendia-canada"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Incendia Canada is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Pentagon autonomous environmental-threat network with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Product-endurance and detection-performance statements originate with Incendia; the candidate retains functional details but excludes comparative performance claims pending independent validation. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 95,
+        "completenessScore": 91,
+        "reviewWarnings": [
+          "Product-endurance and detection-performance statements originate with Incendia; the candidate retains functional details but excludes comparative performance claims pending independent validation."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "incendia-canada-profile",
+            "title": "Incendia civil-security technology",
+            "url": "https://incendia.ca/",
+            "publisher": "Incendia",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Company and Pentagon overview",
+            "summary": "Incendia describes its Canadian safety-technology mandate and use of autonomous sensing and alerting for civil and military environments."
+          },
+          {
+            "id": "incendia-canada-product",
+            "title": "Pentagon defence solution",
+            "url": "https://defense.incendia.ca/en-ca/about-the-pentagone/",
+            "publisher": "Incendia",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Detection, analysis, communication and deployment sections",
+            "summary": "The official product page describes integrated sensors, local analysis, mesh communications, infrastructure-independent operation and tactical deployment components."
+          },
+          {
+            "id": "incendia-canada-contract",
+            "title": "Incendia Canada IDEaS contract",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429611-001",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-12-24T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Contract CW2429611",
+            "summary": "CanadaBuys identifies Incendia Canada Inc., its Saint-Hippolyte address and a competitively awarded DND IDEaS military-science and research contract."
+          },
+          {
+            "id": "incendia-canada-diana",
+            "title": "NATO DIANA 2026 cohort of companies",
+            "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+            "publisher": "NATO DIANA",
+            "sourceKind": "accelerator_cohort_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Critical Infrastructure and Logistics cohort",
+            "summary": "NATO DIANA lists Incendia Canada Inc. in its 2026 Canadian cohort for an AI-powered environmental detector with wireless emergency-response coordination."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-incendia-canada-description",
+            "sourceId": "incendia-canada-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Incendia Canada is a Quebec safety-technology company developing autonomous, rapidly deployable environmental-threat detection and alerting systems for military, emergency, municipal and critical-infrastructure settings.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-incendia-canada-location",
+            "sourceId": "incendia-canada-contract",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Incendia Canada has a documented Canadian operating presence in Saint-Hippolyte, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-incendia-canada-capability",
+            "sourceId": "incendia-canada-product",
+            "fieldPath": "capabilities.incendia-pentagon-environmental-threat-network.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Pentagon combines integrated environmental sensors, embedded local analysis, wireless mesh communications and configurable local alerts in portable nodes that can operate without site power, Wi-Fi or cellular infrastructure.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-incendia-canada-features",
+            "sourceId": "incendia-canada-product",
+            "fieldPath": "capabilities.incendia-pentagon-environmental-threat-network.features",
+            "claimClass": "source_backed",
+            "excerpt": "Integrated environmental sensors; Embedded local threat analysis; Autonomous mesh communications; Portable tactical deployment kits",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-incendia-canada-activity",
+            "sourceId": "incendia-canada-diana",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Incendia appears in NATO DIANA's 2026 Canadian cohort for an AI-powered environmental detector and CanadaBuys records a current DND IDEaS contract, demonstrating active allied acceleration and federal defence-research engagement.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-incendia-canada-relationship",
+            "sourceId": "incendia-canada-contract",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records Incendia Canada Inc. as the recipient of a competitively awarded DND IDEaS military-science and research contract; no procurement outcome beyond the stated contract is inferred.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-incendia-canada-mission",
+            "sourceId": "incendia-canada-product",
+            "fieldPath": "capabilities.incendia-pentagon-environmental-threat-network.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Autonomous sensor nodes and local alerts could support persistent monitoring of temporary or remote sites; this is a derived mission mapping rather than a documented CAF deployment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "incendia-canada",
+          "name": "Incendia Canada",
+          "legalName": "Incendia Canada Inc.",
+          "aliases": [
+            "Incendia",
+            "Incendia Defense"
+          ],
+          "description": "Incendia Canada is a Quebec safety-technology company developing autonomous, rapidly deployable environmental-threat detection and alerting systems for military, emergency, municipal and critical-infrastructure settings.",
+          "websiteUrl": "https://incendia.ca/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Saint-Hippolyte",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.935,
+            "longitude": -74.013,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Incendia appears in NATO DIANA's 2026 Canadian cohort for an AI-powered environmental detector and CanadaBuys records a current DND IDEaS contract, demonstrating active allied acceleration and federal defence-research engagement.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "incendia-pentagon-environmental-threat-network",
+            "name": "Pentagon autonomous environmental-threat network",
+            "summary": "Pentagon combines integrated environmental sensors, embedded local analysis, wireless mesh communications and configurable local alerts in portable nodes that can operate without site power, Wi-Fi or cellular infrastructure.",
+            "capabilityType": "Autonomous environmental threat detection and alerting system",
+            "features": [
+              "Integrated environmental sensors",
+              "Embedded local threat analysis",
+              "Autonomous mesh communications",
+              "Portable tactical deployment kits"
+            ],
+            "applications": [
+              "Deployed-camp safety",
+              "Critical-infrastructure monitoring",
+              "Emergency warning",
+              "Fire, gas, flood and airborne-contaminant detection"
+            ],
+            "technicalTags": [
+              "environmental sensing",
+              "edge AI",
+              "mesh networking",
+              "emergency alerting",
+              "deployable systems"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "communications-and-cyber",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Autonomous sensor nodes and local alerts could support persistent monitoring of temporary or remote sites; this is a derived mission mapping rather than a documented CAF deployment.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "IDEaS contract recipient",
+            "publicSummary": "CanadaBuys records Incendia Canada Inc. as the recipient of a competitively awarded DND IDEaS military-science and research contract; no procurement outcome beyond the stated contract is inferred."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://incendia.ca/",
+          "sourceAssetUrl": "https://incendia.ca/wp-content/uploads/Layer_1.svg",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "1eca3bd7b07e286dbec3d6cd111d021d5d0cd9589e5207f1a7807676191d9f93",
+          "normalizedChecksum": "5369ed6f0477aadf7dc96d0eb808cfb09f30dc86e365f30a23cdf417f37b530e",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730102512/candidate-incendia-canada/logo.source.json",
+          "note": "270x64 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-incendia-canada-description",
+          "sourceId": "incendia-canada-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Incendia Canada is a Quebec safety-technology company developing autonomous, rapidly deployable environmental-threat detection and alerting systems for military, emergency, municipal and critical-infrastructure settings.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-incendia-canada-location",
+          "sourceId": "incendia-canada-contract",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Incendia Canada has a documented Canadian operating presence in Saint-Hippolyte, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-incendia-canada-capability",
+          "sourceId": "incendia-canada-product",
+          "fieldPath": "capabilities.incendia-pentagon-environmental-threat-network.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Pentagon combines integrated environmental sensors, embedded local analysis, wireless mesh communications and configurable local alerts in portable nodes that can operate without site power, Wi-Fi or cellular infrastructure.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-incendia-canada-features",
+          "sourceId": "incendia-canada-product",
+          "fieldPath": "capabilities.incendia-pentagon-environmental-threat-network.features",
+          "claimClass": "source_backed",
+          "excerpt": "Integrated environmental sensors; Embedded local threat analysis; Autonomous mesh communications; Portable tactical deployment kits",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-incendia-canada-activity",
+          "sourceId": "incendia-canada-diana",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Incendia appears in NATO DIANA's 2026 Canadian cohort for an AI-powered environmental detector and CanadaBuys records a current DND IDEaS contract, demonstrating active allied acceleration and federal defence-research engagement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-incendia-canada-relationship",
+          "sourceId": "incendia-canada-contract",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records Incendia Canada Inc. as the recipient of a competitively awarded DND IDEaS military-science and research contract; no procurement outcome beyond the stated contract is inferred.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-incendia-canada-mission",
+          "sourceId": "incendia-canada-product",
+          "fieldPath": "capabilities.incendia-pentagon-environmental-threat-network.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Autonomous sensor nodes and local alerts could support persistent monitoring of temporary or remote sites; this is a derived mission mapping rather than a documented CAF deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Incendia Canada is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Pentagon autonomous environmental-threat network with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Product-endurance and detection-performance statements originate with Incendia; the candidate retains functional details but excludes comparative performance claims pending independent validation. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    },
+    {
+      "client_candidate_id": "candidate-clearsky-connect",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-clearsky-connect"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-clearsky-connect",
+        "sourceLeadIds": [
+          "lead-clearsky-connect"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "ClearSky Connect is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures SafePath Aviation Network with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The CanadaBuys contract confirms current defence-program activity but the public contract page does not identify which CFP 6 challenge or product the award supports. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 93,
+        "completenessScore": 88,
+        "reviewWarnings": [
+          "The CanadaBuys contract confirms current defence-program activity but the public contract page does not identify which CFP 6 challenge or product the award supports."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "clearsky-connect-profile",
+            "title": "About ClearSky Connect",
+            "url": "https://www.clearskyconnect.com/about",
+            "publisher": "ClearSky Connect",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Who we are and founder-experience sections",
+            "summary": "ClearSky describes a Canadian autonomous-aviation connectivity company with experience in network analytics, connectivity visualization and RPAS operations."
+          },
+          {
+            "id": "clearsky-connect-product",
+            "title": "SafePath Aviation Network",
+            "url": "https://www.clearskyconnect.com/s-pagepan",
+            "publisher": "ClearSky Connect",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "SPAN overview, connectivity-as-a-service and redundancy sections",
+            "summary": "The official product page describes predictive link assessment, real-time monitoring, cellular redundancy and C2 and payload connectivity for BVLOS operations."
+          },
+          {
+            "id": "clearsky-connect-applications",
+            "title": "ClearSky autonomous aviation connectivity",
+            "url": "https://www.clearskyconnect.com/",
+            "publisher": "ClearSky Connect",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Energy and public-safety application sections",
+            "summary": "ClearSky describes cellular and satellite connectivity for autonomous aviation over infrastructure and for scalable public-safety response."
+          },
+          {
+            "id": "clearsky-connect-contract",
+            "title": "ClearSky Connect IDEaS contract",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429621-001",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-12-04T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Contract CW2429621",
+            "summary": "CanadaBuys identifies ClearSky Connect, Inc., its Ottawa business address and a DND IDEaS Competitive Projects award."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-clearsky-connect-description",
+            "sourceId": "clearsky-connect-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "ClearSky Connect is an Ottawa connectivity company developing network-assessment and communications services for scalable autonomous aviation and beyond-visual-line-of-sight operations over large infrastructure areas.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-clearsky-connect-location",
+            "sourceId": "clearsky-connect-contract",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "ClearSky Connect has a documented Canadian operating presence in Ottawa, Ontario.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-clearsky-connect-capability",
+            "sourceId": "clearsky-connect-product",
+            "fieldPath": "capabilities.clearsky-span-autonomous-aviation-network.summary",
+            "claimClass": "source_backed",
+            "excerpt": "SafePath Aviation Network combines cellular and satellite connectivity, predictive coverage assessment, operational monitoring and path redundancy to support command-and-control and payload links for beyond-visual-line-of-sight autonomous aviation.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-clearsky-connect-features",
+            "sourceId": "clearsky-connect-product",
+            "fieldPath": "capabilities.clearsky-span-autonomous-aviation-network.features",
+            "claimClass": "source_backed",
+            "excerpt": "Predictive connectivity risk assessment; Cellular and satellite path integration; Operational connectivity monitoring; Multi-radio redundancy",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-clearsky-connect-activity",
+            "sourceId": "clearsky-connect-contract",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records ClearSky Connect as a recipient under DND's IDEaS Competitive Projects CFP 6, while the company's current material describes ongoing testing and development of autonomous-aviation connectivity.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-clearsky-connect-relationship",
+            "sourceId": "clearsky-connect-contract",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records ClearSky Connect, Inc. as the recipient of a competitive DND IDEaS research contract; the public record does not identify an operational acquisition.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-clearsky-connect-mission",
+            "sourceId": "clearsky-connect-product",
+            "fieldPath": "capabilities.clearsky-span-autonomous-aviation-network.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Assured command-and-control and payload connectivity could help scale autonomous aerial monitoring over wide areas; the mapping is derived and does not assert a CAF deployment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "clearsky-connect",
+          "name": "ClearSky Connect",
+          "legalName": "ClearSky Connect, Inc.",
+          "aliases": [
+            "ClearSky"
+          ],
+          "description": "ClearSky Connect is an Ottawa connectivity company developing network-assessment and communications services for scalable autonomous aviation and beyond-visual-line-of-sight operations over large infrastructure areas.",
+          "websiteUrl": "https://www.clearskyconnect.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "CanadaBuys records ClearSky Connect as a recipient under DND's IDEaS Competitive Projects CFP 6, while the company's current material describes ongoing testing and development of autonomous-aviation connectivity.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "clearsky-span-autonomous-aviation-network",
+            "name": "SafePath Aviation Network",
+            "summary": "SafePath Aviation Network combines cellular and satellite connectivity, predictive coverage assessment, operational monitoring and path redundancy to support command-and-control and payload links for beyond-visual-line-of-sight autonomous aviation.",
+            "capabilityType": "Autonomous aviation connectivity service",
+            "features": [
+              "Predictive connectivity risk assessment",
+              "Cellular and satellite path integration",
+              "Operational connectivity monitoring",
+              "Multi-radio redundancy"
+            ],
+            "applications": [
+              "BVLOS drone operations",
+              "Infrastructure inspection",
+              "Public-safety response",
+              "Remote aerial monitoring"
+            ],
+            "technicalTags": [
+              "BVLOS",
+              "autonomous aviation",
+              "cellular connectivity",
+              "satellite connectivity",
+              "network assurance"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "autonomous-systems",
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Assured command-and-control and payload connectivity could help scale autonomous aerial monitoring over wide areas; the mapping is derived and does not assert a CAF deployment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              },
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Satellite-backed connectivity and pre-flight coverage assessment could be relevant to remote aerial monitoring, subject to northern coverage and operational validation.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "IDEaS contract recipient",
+            "publicSummary": "CanadaBuys records ClearSky Connect, Inc. as the recipient of a competitive DND IDEaS research contract; the public record does not identify an operational acquisition."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.clearskyconnect.com/",
+          "sourceAssetUrl": "https://images.squarespace-cdn.com/content/v1/6940b758e7d1595c5b101410/b6e4ec53-ccf8-4a16-b1e6-d8435cc7be53/Color+logo+-+no+background.png?format=1500w",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "bb6b577a5568e1564782f6381076c9b904cf657d9a46ad8d6e9031d073729284",
+          "normalizedChecksum": "8d83e713dd566fcda2cf9bd10492d84de06c66bb6129c22323def1797c833585",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730102512/candidate-clearsky-connect/logo.source.json",
+          "note": "814x296 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-clearsky-connect-description",
+          "sourceId": "clearsky-connect-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "ClearSky Connect is an Ottawa connectivity company developing network-assessment and communications services for scalable autonomous aviation and beyond-visual-line-of-sight operations over large infrastructure areas.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-clearsky-connect-location",
+          "sourceId": "clearsky-connect-contract",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "ClearSky Connect has a documented Canadian operating presence in Ottawa, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-clearsky-connect-capability",
+          "sourceId": "clearsky-connect-product",
+          "fieldPath": "capabilities.clearsky-span-autonomous-aviation-network.summary",
+          "claimClass": "source_backed",
+          "excerpt": "SafePath Aviation Network combines cellular and satellite connectivity, predictive coverage assessment, operational monitoring and path redundancy to support command-and-control and payload links for beyond-visual-line-of-sight autonomous aviation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-clearsky-connect-features",
+          "sourceId": "clearsky-connect-product",
+          "fieldPath": "capabilities.clearsky-span-autonomous-aviation-network.features",
+          "claimClass": "source_backed",
+          "excerpt": "Predictive connectivity risk assessment; Cellular and satellite path integration; Operational connectivity monitoring; Multi-radio redundancy",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-clearsky-connect-activity",
+          "sourceId": "clearsky-connect-contract",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records ClearSky Connect as a recipient under DND's IDEaS Competitive Projects CFP 6, while the company's current material describes ongoing testing and development of autonomous-aviation connectivity.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-clearsky-connect-relationship",
+          "sourceId": "clearsky-connect-contract",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records ClearSky Connect, Inc. as the recipient of a competitive DND IDEaS research contract; the public record does not identify an operational acquisition.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-clearsky-connect-mission",
+          "sourceId": "clearsky-connect-product",
+          "fieldPath": "capabilities.clearsky-span-autonomous-aviation-network.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Assured command-and-control and payload connectivity could help scale autonomous aerial monitoring over wide areas; the mapping is derived and does not assert a CAF deployment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "ClearSky Connect is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures SafePath Aviation Network with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The CanadaBuys contract confirms current defence-program activity but the public contract page does not identify which CFP 6 challenge or product the award supports. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    },
+    {
+      "client_candidate_id": "candidate-ambra-solutions",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-ambra-solutions"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-ambra-solutions",
+        "sourceLeadIds": [
+          "lead-ambra-solutions"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Ambra Solutions is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Private LTE and 5G critical connectivity with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The proposed profile describes publicly documented architecture and devices but does not claim that Ambra's broader commercial network portfolio has been adopted by CAF outside the cited IDEaS contract. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 93,
+        "reviewWarnings": [
+          "The proposed profile describes publicly documented architecture and devices but does not claim that Ambra's broader commercial network portfolio has been adopted by CAF outside the cited IDEaS contract."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "ambra-solutions-profile",
+            "title": "Ambra Solutions private-network engineering",
+            "url": "https://www.ambra.co/en/",
+            "publisher": "Ambra Solutions",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "About, engineering and mission-critical operations sections",
+            "summary": "Ambra identifies a Canadian telecom engineering company founded in 2007 that integrates private LTE and 5G networks and manufactures rugged communications devices."
+          },
+          {
+            "id": "ambra-solutions-product",
+            "title": "Ambra private 4G and 5G",
+            "url": "https://www.ambra.co/en/expertises/private-4g-5g",
+            "publisher": "Ambra Solutions",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Private network architecture and application sections",
+            "summary": "Ambra describes end-to-end private mobile networks for underground, outdoor and indoor operations, including connectivity for assets, equipment and workers."
+          },
+          {
+            "id": "ambra-solutions-datasheet",
+            "title": "Ambra industrial rugged 4G and 5G modem",
+            "url": "https://www.ambra.co/wp-content/uploads/2024/06/E04866_Rugged-Modem_Ambra_Datasheet_EN.pdf",
+            "publisher": "Ambra Solutions",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Industrial 4G/5G rugged modem technical datasheet",
+            "summary": "The official datasheet documents an industrial rugged modem supporting 5G NR and LTE for field connectivity."
+          },
+          {
+            "id": "ambra-solutions-contract",
+            "title": "Ambra seamless 4G and 5G interoperability contract",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2430960-000",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-03-24T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Contract CW2430960",
+            "summary": "The federal contract record identifies Solutions Ambra Inc., its Trois-Rivières address and a DND IDEaS project for seamless roaming between distinct mobile broadband networks."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-ambra-solutions-description",
+            "sourceId": "ambra-solutions-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Ambra Solutions is a Trois-Rivières telecommunications engineering and manufacturing company that designs and deploys private LTE and 5G networks, rugged devices and positioning tools for mission-critical industrial operations.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ambra-solutions-location",
+            "sourceId": "ambra-solutions-contract",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Ambra Solutions has a documented Canadian operating presence in Trois-Rivières, Quebec.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ambra-solutions-capability",
+            "sourceId": "ambra-solutions-product",
+            "fieldPath": "capabilities.ambra-private-lte-5g-critical-connectivity.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Ambra delivers end-to-end private LTE and 5G networks with distributed and redundant architecture, rugged field devices, mobility support and positioning functions for operations in remote, underground and harsh environments.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ambra-solutions-features",
+            "sourceId": "ambra-solutions-datasheet",
+            "fieldPath": "capabilities.ambra-private-lte-5g-critical-connectivity.features",
+            "claimClass": "source_backed",
+            "excerpt": "Private LTE and 5G network engineering; Distributed redundant architecture; Rugged wireless modems; Mobility and positioning support",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ambra-solutions-activity",
+            "sourceId": "ambra-solutions-contract",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records a current DND IDEaS contract for Ambra's proposed seamless roaming between distinct 4G and 5G networks for mission-critical users including first responders, military personnel and security forces.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ambra-solutions-relationship",
+            "sourceId": "ambra-solutions-contract",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records a competitive DND IDEaS contract for Ambra's seamless inter-network roaming solution, with a public contract term extending into 2027.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ambra-solutions-mission",
+            "sourceId": "ambra-solutions-product",
+            "fieldPath": "capabilities.ambra-private-lte-5g-critical-connectivity.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Private broadband and rugged edge connectivity could support local data movement and control for distributed sensors and vehicles; this mapping remains derived.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "ambra-solutions",
+          "name": "Ambra Solutions",
+          "legalName": "Solutions Ambra Inc.",
+          "aliases": [
+            "Ambra"
+          ],
+          "description": "Ambra Solutions is a Trois-Rivières telecommunications engineering and manufacturing company that designs and deploys private LTE and 5G networks, rugged devices and positioning tools for mission-critical industrial operations.",
+          "websiteUrl": "https://www.ambra.co/en/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Trois-Rivières",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 46.343,
+            "longitude": -72.543,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "CanadaBuys records a current DND IDEaS contract for Ambra's proposed seamless roaming between distinct 4G and 5G networks for mission-critical users including first responders, military personnel and security forces.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "ambra-private-lte-5g-critical-connectivity",
+            "name": "Private LTE and 5G critical connectivity",
+            "summary": "Ambra delivers end-to-end private LTE and 5G networks with distributed and redundant architecture, rugged field devices, mobility support and positioning functions for operations in remote, underground and harsh environments.",
+            "capabilityType": "Private mobile broadband network and rugged communications system",
+            "features": [
+              "Private LTE and 5G network engineering",
+              "Distributed redundant architecture",
+              "Rugged wireless modems",
+              "Mobility and positioning support"
+            ],
+            "applications": [
+              "Mission-critical communications",
+              "Remote and autonomous operations",
+              "First-responder connectivity",
+              "Industrial asset and personnel tracking"
+            ],
+            "technicalTags": [
+              "private LTE",
+              "private 5G",
+              "rugged communications",
+              "PLMN interoperability",
+              "positioning"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Private broadband and rugged edge connectivity could support local data movement and control for distributed sensors and vehicles; this mapping remains derived.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "Rugged private-network components and remote-site operation may be relevant to northern connectivity, subject to environmental and spectrum validation.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "IDEaS contract recipient",
+            "publicSummary": "CanadaBuys records a competitive DND IDEaS contract for Ambra's seamless inter-network roaming solution, with a public contract term extending into 2027."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.ambra.co/en/",
+          "sourceAssetUrl": "https://www.ambra.co/assets/img/logo-ambra-black.svg",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "58763fc1230cc49c2e5ea76bd1e129e4b3cde2bfcfa86a4bd04e2b7a136f6f77",
+          "normalizedChecksum": "5a2e00db71dc31b225ad23c86e97b931e919e3e39a5f9994c96ccc5ae1e57925",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730102512/candidate-ambra-solutions/logo.source.json",
+          "note": "350x139 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-ambra-solutions-description",
+          "sourceId": "ambra-solutions-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Ambra Solutions is a Trois-Rivières telecommunications engineering and manufacturing company that designs and deploys private LTE and 5G networks, rugged devices and positioning tools for mission-critical industrial operations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ambra-solutions-location",
+          "sourceId": "ambra-solutions-contract",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Ambra Solutions has a documented Canadian operating presence in Trois-Rivières, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ambra-solutions-capability",
+          "sourceId": "ambra-solutions-product",
+          "fieldPath": "capabilities.ambra-private-lte-5g-critical-connectivity.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Ambra delivers end-to-end private LTE and 5G networks with distributed and redundant architecture, rugged field devices, mobility support and positioning functions for operations in remote, underground and harsh environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ambra-solutions-features",
+          "sourceId": "ambra-solutions-datasheet",
+          "fieldPath": "capabilities.ambra-private-lte-5g-critical-connectivity.features",
+          "claimClass": "source_backed",
+          "excerpt": "Private LTE and 5G network engineering; Distributed redundant architecture; Rugged wireless modems; Mobility and positioning support",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ambra-solutions-activity",
+          "sourceId": "ambra-solutions-contract",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records a current DND IDEaS contract for Ambra's proposed seamless roaming between distinct 4G and 5G networks for mission-critical users including first responders, military personnel and security forces.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ambra-solutions-relationship",
+          "sourceId": "ambra-solutions-contract",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records a competitive DND IDEaS contract for Ambra's seamless inter-network roaming solution, with a public contract term extending into 2027.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ambra-solutions-mission",
+          "sourceId": "ambra-solutions-product",
+          "fieldPath": "capabilities.ambra-private-lte-5g-critical-connectivity.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Private broadband and rugged edge connectivity could support local data movement and control for distributed sensors and vehicles; this mapping remains derived.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Ambra Solutions is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Private LTE and 5G critical connectivity with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The proposed profile describes publicly documented architecture and devices but does not claim that Ambra's broader commercial network portfolio has been adopted by CAF outside the cited IDEaS contract. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    },
+    {
+      "client_candidate_id": "candidate-solana-networks",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-solana-networks"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-solana-networks",
+        "sourceLeadIds": [
+          "lead-solana-networks"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Solana Networks is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Network intelligence and anomaly detection suite with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The DND contract establishes current defence-research activity but does not disclose the supported challenge or product, so the product and award claims remain separate. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 90,
+        "completenessScore": 87,
+        "reviewWarnings": [
+          "The DND contract establishes current defence-research activity but does not disclose the supported challenge or product, so the product and award claims remain separate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "solana-networks-profile",
+            "title": "About Solana Networks",
+            "url": "https://www.solananetworks.com/about",
+            "publisher": "Solana Networks",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Company profile and contact information",
+            "summary": "Solana describes an Ottawa-area network-intelligence company serving large and mission-critical networks."
+          },
+          {
+            "id": "solana-networks-products",
+            "title": "Solana Networks products",
+            "url": "https://www.solananetworks.com/products",
+            "publisher": "Solana Networks",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "SmartHawk, TrafficWiz and SmartFlow product sections",
+            "summary": "The official catalogue describes topology discovery, encrypted-traffic classification, network monitoring and anomaly-detection products."
+          },
+          {
+            "id": "solana-networks-validation",
+            "title": "CENGN Solana SmartHawk validation",
+            "url": "https://www.cengn.ca/wp-content/uploads/2021/10/Solana-Success-Story-2019.pdf",
+            "publisher": "CENGN",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "SmartHawk virtualized monitoring validation",
+            "summary": "CENGN reports testing Solana's virtualized SmartHawk monitoring solution for large-scale deployments, providing independent evidence of product validation."
+          },
+          {
+            "id": "solana-networks-contract",
+            "title": "Solana Networks IDEaS contract",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429186-000",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-01-30T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Contract CW2429186",
+            "summary": "CanadaBuys identifies Solana Networks Inc., its Ottawa address and a current competitive DND IDEaS research contract."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-solana-networks-description",
+            "sourceId": "solana-networks-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Solana Networks is an Ottawa network-intelligence company developing topology discovery, encrypted-traffic classification, anomaly detection and performance-monitoring tools for large and mission-critical IP networks.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-solana-networks-location",
+            "sourceId": "solana-networks-contract",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Solana Networks has a documented Canadian operating presence in Ottawa, Ontario.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-solana-networks-capability",
+            "sourceId": "solana-networks-products",
+            "fieldPath": "capabilities.solana-network-intelligence-and-anomaly-detection.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Solana's product suite combines routed and switched topology discovery, encrypted-traffic classification, flow analysis and anomaly detection to improve visibility, security and performance across complex IP networks.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-solana-networks-features",
+            "sourceId": "solana-networks-validation",
+            "fieldPath": "capabilities.solana-network-intelligence-and-anomaly-detection.features",
+            "claimClass": "source_backed",
+            "excerpt": "Layer 2 and Layer 3 topology discovery; Encrypted-traffic classification; Flow-based anomaly detection; Modular APIs for integration",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-solana-networks-activity",
+            "sourceId": "solana-networks-contract",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records a current competitive DND IDEaS contract awarded to Solana Networks under CFP 6, while Solana continues to present SmartHawk, TrafficWiz and SmartFlow as supported products.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-solana-networks-relationship",
+            "sourceId": "solana-networks-contract",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records Solana Networks Inc. as the recipient of a competitive IDEaS military-science and research contract; the public contract page does not identify the specific Solana product involved.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-solana-networks-mission",
+            "sourceId": "solana-networks-products",
+            "fieldPath": "capabilities.solana-network-intelligence-and-anomaly-detection.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Network telemetry classification and anomaly detection could improve awareness and assurance for distributed mission networks; this is a derived fit assessment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "solana-networks",
+          "name": "Solana Networks",
+          "legalName": "Solana Networks Inc.",
+          "aliases": [
+            "Solana"
+          ],
+          "description": "Solana Networks is an Ottawa network-intelligence company developing topology discovery, encrypted-traffic classification, anomaly detection and performance-monitoring tools for large and mission-critical IP networks.",
+          "websiteUrl": "https://www.solananetworks.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "CanadaBuys records a current competitive DND IDEaS contract awarded to Solana Networks under CFP 6, while Solana continues to present SmartHawk, TrafficWiz and SmartFlow as supported products.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "solana-network-intelligence-and-anomaly-detection",
+            "name": "Network intelligence and anomaly detection suite",
+            "summary": "Solana's product suite combines routed and switched topology discovery, encrypted-traffic classification, flow analysis and anomaly detection to improve visibility, security and performance across complex IP networks.",
+            "capabilityType": "Network discovery, traffic analytics and security software",
+            "features": [
+              "Layer 2 and Layer 3 topology discovery",
+              "Encrypted-traffic classification",
+              "Flow-based anomaly detection",
+              "Modular APIs for integration"
+            ],
+            "applications": [
+              "Mission-network assurance",
+              "Cybersecurity monitoring",
+              "Network troubleshooting",
+              "Critical-infrastructure traffic analysis"
+            ],
+            "technicalTags": [
+              "network discovery",
+              "traffic analytics",
+              "anomaly detection",
+              "machine learning",
+              "network security"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Network telemetry classification and anomaly detection could improve awareness and assurance for distributed mission networks; this is a derived fit assessment.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "IDEaS contract recipient",
+            "publicSummary": "CanadaBuys records Solana Networks Inc. as the recipient of a competitive IDEaS military-science and research contract; the public contract page does not identify the specific Solana product involved."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.solananetworks.com/",
+          "sourceAssetUrl": "https://www.solananetworks.com/sites/all/themes/solana/images/logo-solana.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "bc8ec3b1da6f9719cbc65b43ddf7ede28ce717a56fcf7eedbf3a2b53d8542322",
+          "normalizedChecksum": "2bdae4c96dce47fd8f7f8f0af4375425f9db1c90a8441e8b5a111837b180cc47",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730102512/candidate-solana-networks/logo.source.json",
+          "note": "248x44 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-solana-networks-description",
+          "sourceId": "solana-networks-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Solana Networks is an Ottawa network-intelligence company developing topology discovery, encrypted-traffic classification, anomaly detection and performance-monitoring tools for large and mission-critical IP networks.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-solana-networks-location",
+          "sourceId": "solana-networks-contract",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Solana Networks has a documented Canadian operating presence in Ottawa, Ontario.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-solana-networks-capability",
+          "sourceId": "solana-networks-products",
+          "fieldPath": "capabilities.solana-network-intelligence-and-anomaly-detection.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Solana's product suite combines routed and switched topology discovery, encrypted-traffic classification, flow analysis and anomaly detection to improve visibility, security and performance across complex IP networks.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-solana-networks-features",
+          "sourceId": "solana-networks-validation",
+          "fieldPath": "capabilities.solana-network-intelligence-and-anomaly-detection.features",
+          "claimClass": "source_backed",
+          "excerpt": "Layer 2 and Layer 3 topology discovery; Encrypted-traffic classification; Flow-based anomaly detection; Modular APIs for integration",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-solana-networks-activity",
+          "sourceId": "solana-networks-contract",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records a current competitive DND IDEaS contract awarded to Solana Networks under CFP 6, while Solana continues to present SmartHawk, TrafficWiz and SmartFlow as supported products.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-solana-networks-relationship",
+          "sourceId": "solana-networks-contract",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records Solana Networks Inc. as the recipient of a competitive IDEaS military-science and research contract; the public contract page does not identify the specific Solana product involved.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-solana-networks-mission",
+          "sourceId": "solana-networks-products",
+          "fieldPath": "capabilities.solana-network-intelligence-and-anomaly-detection.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Network telemetry classification and anomaly detection could improve awareness and assurance for distributed mission networks; this is a derived fit assessment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Solana Networks is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Network intelligence and anomaly detection suite with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The DND contract establishes current defence-research activity but does not disclose the supported challenge or product, so the product and award claims remain separate. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    },
+    {
+      "client_candidate_id": "candidate-sentinel-r-and-d",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-sentinel-r-and-d"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-sentinel-r-and-d",
+        "sourceLeadIds": [
+          "lead-sentinel-r-and-d"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Sentinel R&D is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures ReKam modular fixed-wing UAS with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Range, cost and combat-effectiveness statements on the company site are not independently validated and are not repeated as canonical facts in this candidate. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 92,
+        "reviewWarnings": [
+          "Range, cost and combat-effectiveness statements on the company site are not independently validated and are not repeated as canonical facts in this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "sentinel-r-and-d-about",
+            "title": "About Sentinel R&D",
+            "url": "https://www.sentinelrd.com/about",
+            "publisher": "Sentinel R&D",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Company, manufacturing and Ontario-facility sections",
+            "summary": "Sentinel describes a Canadian defence and aerospace company building modular UAVs through automated composite-manufacturing methods."
+          },
+          {
+            "id": "sentinel-r-and-d-product",
+            "title": "ReKam for warfighters",
+            "url": "https://www.sentinelrd.com/warfighters",
+            "publisher": "Sentinel R&D",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "ReKam architecture, payload and field-support sections",
+            "summary": "The official product page describes a modular fixed-wing UAV with field-swappable payload architecture, multiple launch methods and ISR, electronic-warfare and counter-UAS roles."
+          },
+          {
+            "id": "sentinel-r-and-d-government",
+            "title": "Canada and Ukraine sign arrangement on drone production",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2026/05/canada-and-ukraine-sign-arrangement-on-drone-production.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-05-29T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Airlogix-Sentinel partnership announcement",
+            "summary": "DND identifies Sentinel Research and Development as a Canadian UAS manufacturer in a government-supported partnership to manufacture Ukrainian drone systems in Canada."
+          },
+          {
+            "id": "sentinel-r-and-d-parliament",
+            "title": "House of Commons industry committee evidence",
+            "url": "https://publications.gc.ca/collections/collection_2025/parl/xc80-1/XC80-1-2-451-13-eng.pdf",
+            "publisher": "Parliament of Canada",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Sentinel R&D testimony",
+            "summary": "Published parliamentary evidence identifies Sentinel Research and Development as based in Hamilton, Ontario and records company testimony about its vertically integrated fixed-wing UAS product."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-sentinel-r-and-d-description",
+            "sourceId": "sentinel-r-and-d-about",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Sentinel R&D is a Hamilton, Ontario defence and aerospace company developing modular fixed-wing uncrewed aircraft and automated composite-manufacturing methods for scalable, mission-configurable production.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-sentinel-r-and-d-location",
+            "sourceId": "sentinel-r-and-d-parliament",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Sentinel R&D has a documented Canadian operating presence in Hamilton, Ontario.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-sentinel-r-and-d-capability",
+            "sourceId": "sentinel-r-and-d-product",
+            "fieldPath": "capabilities.sentinel-rekam-modular-fixed-wing-uas.summary",
+            "claimClass": "source_backed",
+            "excerpt": "ReKam is a modular, payload-agnostic fixed-wing uncrewed-aircraft platform designed for field reconfiguration across intelligence, surveillance and reconnaissance, electronic-warfare, counter-UAS and other mission payloads.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-sentinel-r-and-d-features",
+            "sourceId": "sentinel-r-and-d-about",
+            "fieldPath": "capabilities.sentinel-rekam-modular-fixed-wing-uas.features",
+            "claimClass": "source_backed",
+            "excerpt": "Field-swappable nose and payload bay; Multiple launch methods; Field-repairable construction; Automated composite-manufacturing approach",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-sentinel-r-and-d-activity",
+            "sourceId": "sentinel-r-and-d-government",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "DND announced a Canada-Ukraine arrangement establishing the Airlogix-Sentinel partnership to manufacture Ukrainian drone systems in Canada, while Sentinel's parliamentary testimony identifies a Hamilton base and a vertically integrated fixed-wing UAS product.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-sentinel-r-and-d-relationship",
+            "sourceId": "sentinel-r-and-d-government",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "The Department of National Defence announced an Airlogix-Sentinel partnership, supported by Canada and Ukraine, to manufacture Ukrainian drone systems in Canada for the Armed Forces of Ukraine.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-sentinel-r-and-d-mission",
+            "sourceId": "sentinel-r-and-d-product",
+            "fieldPath": "capabilities.sentinel-rekam-modular-fixed-wing-uas.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "A configurable long-range fixed-wing UAS can carry ISR payloads for autonomous patrol and monitoring; payload performance and operational use remain outside the verified public record.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "sentinel-r-and-d",
+          "name": "Sentinel R&D",
+          "legalName": null,
+          "aliases": [
+            "Sentinel Research and Development"
+          ],
+          "description": "Sentinel R&D is a Hamilton, Ontario defence and aerospace company developing modular fixed-wing uncrewed aircraft and automated composite-manufacturing methods for scalable, mission-configurable production.",
+          "websiteUrl": "https://www.sentinelrd.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Hamilton",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.2557,
+            "longitude": -79.8711,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "DND announced a Canada-Ukraine arrangement establishing the Airlogix-Sentinel partnership to manufacture Ukrainian drone systems in Canada, while Sentinel's parliamentary testimony identifies a Hamilton base and a vertically integrated fixed-wing UAS product.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "sentinel-rekam-modular-fixed-wing-uas",
+            "name": "ReKam modular fixed-wing UAS",
+            "summary": "ReKam is a modular, payload-agnostic fixed-wing uncrewed-aircraft platform designed for field reconfiguration across intelligence, surveillance and reconnaissance, electronic-warfare, counter-UAS and other mission payloads.",
+            "capabilityType": "Modular fixed-wing uncrewed aircraft system",
+            "features": [
+              "Field-swappable nose and payload bay",
+              "Multiple launch methods",
+              "Field-repairable construction",
+              "Automated composite-manufacturing approach"
+            ],
+            "applications": [
+              "Long-range ISR",
+              "Electronic-warfare payload carriage",
+              "Counter-UAS missions",
+              "Attritable autonomous-air operations"
+            ],
+            "technicalTags": [
+              "fixed-wing UAS",
+              "payload agnostic",
+              "composite manufacturing",
+              "electronic warfare",
+              "counter-UAS"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "aerospace-and-mobility",
+              "advanced-manufacturing-and-integration",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "A configurable long-range fixed-wing UAS can carry ISR payloads for autonomous patrol and monitoring; payload performance and operational use remain outside the verified public record.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Airlogix",
+            "relationshipType": "drone-production partnership",
+            "publicSummary": "The Department of National Defence announced an Airlogix-Sentinel partnership, supported by Canada and Ukraine, to manufacture Ukrainian drone systems in Canada for the Armed Forces of Ukraine."
+          }
+        ],
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://www.sentinelrd.com/",
+          "sourceAssetUrl": "https://images.squarespace-cdn.com/content/v1/68b727a1125451439281ce13/25b2c332-070d-482d-8b95-9120f3fa72f3/Logotype-5.jpg",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "3a00854eee0523e5678b94d553ca5948bd8e0ec3a9716563772c191a8eb02b55",
+          "normalizedChecksum": "6c87a1b7f0c37959b68a6d4b5ac797cbccffd1a7a5d7fd379a6e8c2cc9f27687",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730102512/candidate-sentinel-r-and-d/logo.source.json",
+          "note": "1024x273 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-sentinel-r-and-d-description",
+          "sourceId": "sentinel-r-and-d-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Sentinel R&D is a Hamilton, Ontario defence and aerospace company developing modular fixed-wing uncrewed aircraft and automated composite-manufacturing methods for scalable, mission-configurable production.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sentinel-r-and-d-location",
+          "sourceId": "sentinel-r-and-d-parliament",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Sentinel R&D has a documented Canadian operating presence in Hamilton, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sentinel-r-and-d-capability",
+          "sourceId": "sentinel-r-and-d-product",
+          "fieldPath": "capabilities.sentinel-rekam-modular-fixed-wing-uas.summary",
+          "claimClass": "source_backed",
+          "excerpt": "ReKam is a modular, payload-agnostic fixed-wing uncrewed-aircraft platform designed for field reconfiguration across intelligence, surveillance and reconnaissance, electronic-warfare, counter-UAS and other mission payloads.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sentinel-r-and-d-features",
+          "sourceId": "sentinel-r-and-d-about",
+          "fieldPath": "capabilities.sentinel-rekam-modular-fixed-wing-uas.features",
+          "claimClass": "source_backed",
+          "excerpt": "Field-swappable nose and payload bay; Multiple launch methods; Field-repairable construction; Automated composite-manufacturing approach",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sentinel-r-and-d-activity",
+          "sourceId": "sentinel-r-and-d-government",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "DND announced a Canada-Ukraine arrangement establishing the Airlogix-Sentinel partnership to manufacture Ukrainian drone systems in Canada, while Sentinel's parliamentary testimony identifies a Hamilton base and a vertically integrated fixed-wing UAS product.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sentinel-r-and-d-relationship",
+          "sourceId": "sentinel-r-and-d-government",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Department of National Defence announced an Airlogix-Sentinel partnership, supported by Canada and Ukraine, to manufacture Ukrainian drone systems in Canada for the Armed Forces of Ukraine.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sentinel-r-and-d-mission",
+          "sourceId": "sentinel-r-and-d-product",
+          "fieldPath": "capabilities.sentinel-rekam-modular-fixed-wing-uas.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "A configurable long-range fixed-wing UAS can carry ISR payloads for autonomous patrol and monitoring; payload performance and operational use remain outside the verified public record.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Sentinel R&D is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures ReKam modular fixed-wing UAS with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. Range, cost and combat-effectiveness statements on the company site are not independently validated and are not repeated as canonical facts in this candidate. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    },
+    {
+      "client_candidate_id": "candidate-radiation-solutions",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-radiation-solutions"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-radiation-solutions",
+        "sourceLeadIds": [
+          "lead-radiation-solutions"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Radiation Solutions is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures SCoTSS Compton radiation imager with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The candidate separates NRC's public description of SCoTSS from Radiation Solutions' broader product catalogue and does not infer a military procurement or deployment. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 96,
+        "completenessScore": 91,
+        "reviewWarnings": [
+          "The candidate separates NRC's public description of SCoTSS from Radiation Solutions' broader product catalogue and does not infer a military procurement or deployment."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "radiation-solutions-profile",
+            "title": "Radiation Solutions instrumentation",
+            "url": "https://www.radiationsolutions.ca/",
+            "publisher": "Radiation Solutions",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Company, product and contact sections",
+            "summary": "Radiation Solutions identifies a Mississauga nuclear-instrumentation company delivering radiation detection, measurement and analysis systems across mobile, fixed and portable applications."
+          },
+          {
+            "id": "radiation-solutions-airborne",
+            "title": "RS-530 UAV-mounted spectrometer",
+            "url": "https://www.radiationsolutions.ca/brochures/1734553322243-RS-530_Brochure.pdf",
+            "publisher": "Radiation Solutions",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "RS-530 technical brochure",
+            "summary": "The official brochure documents a UAV-mounted radiation spectrometer with GPS, field analysis software and operation across a wide temperature range."
+          },
+          {
+            "id": "radiation-solutions-nrc",
+            "title": "NRC CANSEC 2026 radiation-imaging profile",
+            "url": "https://nrc.canada.ca/en/cansec",
+            "publisher": "National Research Council Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-05-11T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Metrology Research Centre and SCoTSS sections",
+            "summary": "NRC describes the Radiation Solutions commercialization role and SCoTSS capability to detect, identify, locate and map radioactive sources, including weak or moving sources."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-radiation-solutions-description",
+            "sourceId": "radiation-solutions-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Radiation Solutions is a Mississauga nuclear-instrumentation company developing stationary, mobile, airborne, portable and handheld systems for detecting, identifying, measuring and mapping ionizing radiation.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-radiation-solutions-location",
+            "sourceId": "radiation-solutions-profile",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Radiation Solutions has a documented Canadian operating presence in Mississauga, Ontario.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-radiation-solutions-capability",
+            "sourceId": "radiation-solutions-nrc",
+            "fieldPath": "capabilities.radiation-solutions-scotss-compton-imager.summary",
+            "claimClass": "source_backed",
+            "excerpt": "SCoTSS is a compact radiation-imaging system commercialized with Radiation Solutions that can detect, identify, locate and map radioactive materials, including weak or distant sources while the instrument or source is moving.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-radiation-solutions-features",
+            "sourceId": "radiation-solutions-nrc",
+            "fieldPath": "capabilities.radiation-solutions-scotss-compton-imager.features",
+            "claimClass": "source_backed",
+            "excerpt": "Compton radiation imaging; Radioisotope identification; Source localization and mapping; Operation from moving platforms",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-radiation-solutions-activity",
+            "sourceId": "radiation-solutions-nrc",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The National Research Council's CANSEC 2026 technology profile identifies Radiation Solutions as the Canadian commercialization partner for SCoTSS and describes current detection and mapping capabilities.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-radiation-solutions-relationship",
+            "sourceId": "radiation-solutions-nrc",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "NRC states that its metrology experts, Natural Resources Canada scientists and Radiation Solutions collaborated to develop and commercialize the SCoTSS radiation imager.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-radiation-solutions-mission",
+            "sourceId": "radiation-solutions-nrc",
+            "fieldPath": "capabilities.radiation-solutions-scotss-compton-imager.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "On-platform identification and mapping of radiation sources can turn sensor measurements into operationally useful location data; the mission mapping is derived.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "radiation-solutions",
+          "name": "Radiation Solutions",
+          "legalName": "Radiation Solutions Inc.",
+          "aliases": [
+            "RSI"
+          ],
+          "description": "Radiation Solutions is a Mississauga nuclear-instrumentation company developing stationary, mobile, airborne, portable and handheld systems for detecting, identifying, measuring and mapping ionizing radiation.",
+          "websiteUrl": "https://www.radiationsolutions.ca/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Mississauga",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.589,
+            "longitude": -79.6441,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "The National Research Council's CANSEC 2026 technology profile identifies Radiation Solutions as the Canadian commercialization partner for SCoTSS and describes current detection and mapping capabilities.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "radiation-solutions-scotss-compton-imager",
+            "name": "SCoTSS Compton radiation imager",
+            "summary": "SCoTSS is a compact radiation-imaging system commercialized with Radiation Solutions that can detect, identify, locate and map radioactive materials, including weak or distant sources while the instrument or source is moving.",
+            "capabilityType": "Mobile gamma-ray detection and imaging system",
+            "features": [
+              "Compton radiation imaging",
+              "Radioisotope identification",
+              "Source localization and mapping",
+              "Operation from moving platforms"
+            ],
+            "applications": [
+              "Radiological and nuclear threat search",
+              "Urban radiation-source localization",
+              "Emergency-response mapping",
+              "Mobile and airborne survey"
+            ],
+            "technicalTags": [
+              "radiation detection",
+              "Compton imaging",
+              "gamma spectroscopy",
+              "source localization",
+              "mobile sensing"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "aerospace-and-mobility",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "On-platform identification and mapping of radiation sources can turn sensor measurements into operationally useful location data; the mission mapping is derived.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "National Research Council Canada",
+            "relationshipType": "technology commercialization collaboration",
+            "publicSummary": "NRC states that its metrology experts, Natural Resources Canada scientists and Radiation Solutions collaborated to develop and commercialize the SCoTSS radiation imager."
+          }
+        ],
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-30T10:41:48.209Z",
+          "note": "No acceptable official-logo candidate found."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-radiation-solutions-description",
+          "sourceId": "radiation-solutions-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Radiation Solutions is a Mississauga nuclear-instrumentation company developing stationary, mobile, airborne, portable and handheld systems for detecting, identifying, measuring and mapping ionizing radiation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-radiation-solutions-location",
+          "sourceId": "radiation-solutions-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Radiation Solutions has a documented Canadian operating presence in Mississauga, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-radiation-solutions-capability",
+          "sourceId": "radiation-solutions-nrc",
+          "fieldPath": "capabilities.radiation-solutions-scotss-compton-imager.summary",
+          "claimClass": "source_backed",
+          "excerpt": "SCoTSS is a compact radiation-imaging system commercialized with Radiation Solutions that can detect, identify, locate and map radioactive materials, including weak or distant sources while the instrument or source is moving.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-radiation-solutions-features",
+          "sourceId": "radiation-solutions-nrc",
+          "fieldPath": "capabilities.radiation-solutions-scotss-compton-imager.features",
+          "claimClass": "source_backed",
+          "excerpt": "Compton radiation imaging; Radioisotope identification; Source localization and mapping; Operation from moving platforms",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-radiation-solutions-activity",
+          "sourceId": "radiation-solutions-nrc",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The National Research Council's CANSEC 2026 technology profile identifies Radiation Solutions as the Canadian commercialization partner for SCoTSS and describes current detection and mapping capabilities.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-radiation-solutions-relationship",
+          "sourceId": "radiation-solutions-nrc",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "NRC states that its metrology experts, Natural Resources Canada scientists and Radiation Solutions collaborated to develop and commercialize the SCoTSS radiation imager.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-radiation-solutions-mission",
+          "sourceId": "radiation-solutions-nrc",
+          "fieldPath": "capabilities.radiation-solutions-scotss-compton-imager.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "On-platform identification and mapping of radiation sources can turn sensor measurements into operationally useful location data; the mission mapping is derived.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Radiation Solutions is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures SCoTSS Compton radiation imager with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The candidate separates NRC's public description of SCoTSS from Radiation Solutions' broader product catalogue and does not infer a military procurement or deployment. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    },
+    {
+      "client_candidate_id": "candidate-convergence-design-services",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-convergence-design-services"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-convergence-design-services",
+        "sourceLeadIds": [
+          "lead-convergence-design-services"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Convergence Design Services is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures MIL-V optionally manned ground vehicle with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. MIL-V specifications and manufacturing-readiness statements come from Convergence; the candidate includes only bounded platform details and labels mission alignment as derived. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 96,
+        "completenessScore": 92,
+        "reviewWarnings": [
+          "MIL-V specifications and manufacturing-readiness statements come from Convergence; the candidate includes only bounded platform details and labels mission alignment as derived."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "convergence-design-services-profile",
+            "title": "Convergence Design Services",
+            "url": "https://www.cnvg.ca/",
+            "publisher": "Convergence Design Services",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Engineering portfolio and company contact sections",
+            "summary": "Convergence presents a Canadian engineering portfolio spanning rugged electronics, mobility, aerospace, space and defence systems."
+          },
+          {
+            "id": "convergence-design-services-contact",
+            "title": "Convergence contact and Arnprior facility",
+            "url": "https://www.cnvg.ca/about-us/contact-us",
+            "publisher": "Convergence Design Services",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Visit-us address",
+            "summary": "The official contact page identifies the company's Arnprior, Ontario operating location."
+          },
+          {
+            "id": "convergence-design-services-launch",
+            "title": "Convergence launches the MIL-V",
+            "url": "https://www.cnvg.ca/post/convergence-design-services-launches-the-mil-v-a-fully-sovereign-electrically-powered-military-vehi",
+            "publisher": "Convergence Design Services",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-06-03T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Platform overview, capabilities and manufacturing-readiness sections",
+            "summary": "The company announcement describes MIL-V's optional manning, electric powertrain, modular mission architecture, sensor integration and public CANSEC 2026 debut."
+          },
+          {
+            "id": "convergence-design-services-partner",
+            "title": "Ottawa Infotainment QNX and MIL-V integration",
+            "url": "https://ottawainfotainment.com/blogs/news/ottawa-infotainment-leverages-qnx-to-accelerate-the-deployment-of-production-ready-sdvs",
+            "publisher": "Ottawa Infotainment",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-06-08T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "CANSEC 2026 MIL-V integration section",
+            "summary": "Ottawa Infotainment identifies its DragonFire Pro and QNX integration as part of Convergence Design Services' MIL-V autonomous military vehicle demonstration."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-convergence-design-services-description",
+            "sourceId": "convergence-design-services-profile",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Convergence Design Services is an Arnprior, Ontario engineering company designing rugged electronics, mobility, aerospace, space and defence systems and developing sovereign Canadian platforms including the MIL-V ground vehicle.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-convergence-design-services-location",
+            "sourceId": "convergence-design-services-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Convergence Design Services has a documented Canadian operating presence in Arnprior, Ontario.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-convergence-design-services-capability",
+            "sourceId": "convergence-design-services-launch",
+            "fieldPath": "capabilities.convergence-mil-v-autonomous-ground-vehicle.summary",
+            "claimClass": "source_backed",
+            "excerpt": "MIL-V is an electrically powered, optionally manned or uncrewed ground-vehicle platform with open modular architecture for logistics, casualty evacuation, ISR, force protection and other configurable mission systems.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-convergence-design-services-features",
+            "sourceId": "convergence-design-services-launch",
+            "fieldPath": "capabilities.convergence-mil-v-autonomous-ground-vehicle.features",
+            "claimClass": "source_backed",
+            "excerpt": "Manned and uncrewed configurations; Open modular mission architecture; Electric powertrain; Multi-domain sensor integration",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-convergence-design-services-activity",
+            "sourceId": "convergence-design-services-launch",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Convergence publicly launched MIL-V at CANSEC 2026 and states that small-volume manufacturing is underway, while Ottawa Infotainment independently identifies its DragonFire Pro platform as part of the MIL-V vehicle integration.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-convergence-design-services-relationship",
+            "sourceId": "convergence-design-services-partner",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Ottawa Infotainment states that its QNX-based DragonFire Pro electronics platform was demonstrated as part of Convergence Design Services' MIL-V autonomous military vehicle.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-convergence-design-services-mission",
+            "sourceId": "convergence-design-services-launch",
+            "fieldPath": "capabilities.convergence-mil-v-autonomous-ground-vehicle.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "MIL-V's uncrewed configuration, sensor integration and modular payload architecture could support autonomous ground patrol and monitoring; this mapping is derived.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "convergence-design-services",
+          "name": "Convergence Design Services",
+          "legalName": null,
+          "aliases": [
+            "Convergence",
+            "Blue Systems"
+          ],
+          "description": "Convergence Design Services is an Arnprior, Ontario engineering company designing rugged electronics, mobility, aerospace, space and defence systems and developing sovereign Canadian platforms including the MIL-V ground vehicle.",
+          "websiteUrl": "https://www.cnvg.ca/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Arnprior",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4334,
+            "longitude": -76.3494,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Convergence publicly launched MIL-V at CANSEC 2026 and states that small-volume manufacturing is underway, while Ottawa Infotainment independently identifies its DragonFire Pro platform as part of the MIL-V vehicle integration.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "convergence-mil-v-autonomous-ground-vehicle",
+            "name": "MIL-V optionally manned ground vehicle",
+            "summary": "MIL-V is an electrically powered, optionally manned or uncrewed ground-vehicle platform with open modular architecture for logistics, casualty evacuation, ISR, force protection and other configurable mission systems.",
+            "capabilityType": "Modular optionally manned military ground vehicle",
+            "features": [
+              "Manned and uncrewed configurations",
+              "Open modular mission architecture",
+              "Electric powertrain",
+              "Multi-domain sensor integration"
+            ],
+            "applications": [
+              "Autonomous logistics and resupply",
+              "Casualty evacuation",
+              "ISR and situational awareness",
+              "Force-protection payload integration"
+            ],
+            "technicalTags": [
+              "UGV",
+              "electric mobility",
+              "modular architecture",
+              "sensor fusion",
+              "sovereign manufacturing"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "aerospace-and-mobility",
+              "advanced-manufacturing-and-integration",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "MIL-V's uncrewed configuration, sensor integration and modular payload architecture could support autonomous ground patrol and monitoring; this mapping is derived.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Ottawa Infotainment",
+            "relationshipType": "vehicle electronics integration partner",
+            "publicSummary": "Ottawa Infotainment states that its QNX-based DragonFire Pro electronics platform was demonstrated as part of Convergence Design Services' MIL-V autonomous military vehicle."
+          }
+        ],
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://www.cnvg.ca/",
+          "sourceAssetUrl": "https://static.wixstatic.com/media/3b838c_532b869de0d24f5198f7a45ecd955841~mv2.png/v1/fill/w_120,h_116,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/241128%20CNVG_LOGO-ONLY_LR-72.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "c5dcea71bf54f677bbaec9af5f2ae8a137595468f6e14fcdce4f0aadc29cdb24",
+          "normalizedChecksum": "ec3845e15a0ab79e1c171fa57a83dfc5433b54be4260d71b105f33938029b8c1",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730102512/candidate-convergence-design-services/logo.source.json",
+          "note": "120x116 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-convergence-design-services-description",
+          "sourceId": "convergence-design-services-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Convergence Design Services is an Arnprior, Ontario engineering company designing rugged electronics, mobility, aerospace, space and defence systems and developing sovereign Canadian platforms including the MIL-V ground vehicle.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-convergence-design-services-location",
+          "sourceId": "convergence-design-services-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Convergence Design Services has a documented Canadian operating presence in Arnprior, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-convergence-design-services-capability",
+          "sourceId": "convergence-design-services-launch",
+          "fieldPath": "capabilities.convergence-mil-v-autonomous-ground-vehicle.summary",
+          "claimClass": "source_backed",
+          "excerpt": "MIL-V is an electrically powered, optionally manned or uncrewed ground-vehicle platform with open modular architecture for logistics, casualty evacuation, ISR, force protection and other configurable mission systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-convergence-design-services-features",
+          "sourceId": "convergence-design-services-launch",
+          "fieldPath": "capabilities.convergence-mil-v-autonomous-ground-vehicle.features",
+          "claimClass": "source_backed",
+          "excerpt": "Manned and uncrewed configurations; Open modular mission architecture; Electric powertrain; Multi-domain sensor integration",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-convergence-design-services-activity",
+          "sourceId": "convergence-design-services-launch",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Convergence publicly launched MIL-V at CANSEC 2026 and states that small-volume manufacturing is underway, while Ottawa Infotainment independently identifies its DragonFire Pro platform as part of the MIL-V vehicle integration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-convergence-design-services-relationship",
+          "sourceId": "convergence-design-services-partner",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Ottawa Infotainment states that its QNX-based DragonFire Pro electronics platform was demonstrated as part of Convergence Design Services' MIL-V autonomous military vehicle.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-convergence-design-services-mission",
+          "sourceId": "convergence-design-services-launch",
+          "fieldPath": "capabilities.convergence-mil-v-autonomous-ground-vehicle.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "MIL-V's uncrewed configuration, sensor integration and modular payload architecture could support autonomous ground patrol and monitoring; this mapping is derived.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Convergence Design Services is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures MIL-V optionally manned ground vehicle with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. MIL-V specifications and manufacturing-readiness statements come from Convergence; the candidate includes only bounded platform details and labels mission alignment as derived. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    },
+    {
+      "client_candidate_id": "candidate-ottawa-infotainment",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-ottawa-infotainment"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-ottawa-infotainment",
+        "sourceLeadIds": [
+          "lead-ottawa-infotainment"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Ottawa Infotainment is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures DragonFire Pro vehicle compute platform with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The third-generation QNX-based DragonFire Pro remained on a forward product schedule in the cited June 2026 release; reviewers should distinguish demonstrated integration from general production availability. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 94,
+        "completenessScore": 91,
+        "reviewWarnings": [
+          "The third-generation QNX-based DragonFire Pro remained on a forward product schedule in the cited June 2026 release; reviewers should distinguish demonstrated integration from general production availability."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "ottawa-infotainment-company",
+            "title": "Ottawa Infotainment company history",
+            "url": "https://ottawainfotainment.com/pages/company",
+            "publisher": "Ottawa Infotainment",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Company history and platform-development milestones",
+            "summary": "The company page describes an Ottawa full-stack vehicle-electronics business and the evolution of DragonFire hardware, software and OEM integrations."
+          },
+          {
+            "id": "ottawa-infotainment-technology",
+            "title": "Ottawa Infotainment core technologies",
+            "url": "https://ottawainfotainment.com/pages/core-technologies",
+            "publisher": "Ottawa Infotainment",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "DragonFire OS and modular vehicle-platform sections",
+            "summary": "The official technology page describes DragonFire OS, hardware abstraction, middleware, safety layers and modular platform support."
+          },
+          {
+            "id": "ottawa-infotainment-defence",
+            "title": "Canadian defence initiative selects Ottawa Infotainment",
+            "url": "https://ottawainfotainment.com/blogs/news/canadian-defencetech-initiative-selects-ottawa-infotainment-to-build-next-generation-ruggedized-compute-platform",
+            "publisher": "Ottawa Infotainment",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-02-05T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Defence-focused DragonFire Pro variant",
+            "summary": "The company announcement describes selection to develop a rugged, secure and modular DragonFire Pro variant for mission-critical defence environments."
+          },
+          {
+            "id": "ottawa-infotainment-qnx",
+            "title": "Ottawa Infotainment QNX and MIL-V integration",
+            "url": "https://ottawainfotainment.com/blogs/news/ottawa-infotainment-leverages-qnx-to-accelerate-the-deployment-of-production-ready-sdvs",
+            "publisher": "Ottawa Infotainment",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-06-08T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "QNX architecture and CANSEC 2026 MIL-V demonstration",
+            "summary": "The release documents QNX and Android support, a mission-critical military-vehicle architecture and demonstration in Convergence's MIL-V platform."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-ottawa-infotainment-description",
+            "sourceId": "ottawa-infotainment-company",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Ottawa Infotainment is an Ottawa full-stack vehicle-electronics company developing embedded compute, domain-controller, cockpit and software-defined vehicle platforms for commercial and specialized mobility programs.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ottawa-infotainment-location",
+            "sourceId": "ottawa-infotainment-company",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Ottawa Infotainment has a documented Canadian operating presence in Ottawa, Ontario.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ottawa-infotainment-capability",
+            "sourceId": "ottawa-infotainment-technology",
+            "fieldPath": "capabilities.ottawa-infotainment-dragonfire-pro.summary",
+            "claimClass": "source_backed",
+            "excerpt": "DragonFire Pro combines production-intent domain-controller hardware with DragonFire OS, modular vehicle integration, mixed-criticality software support and partner technologies for digital cockpit and specialized vehicle programs.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ottawa-infotainment-features",
+            "sourceId": "ottawa-infotainment-qnx",
+            "fieldPath": "capabilities.ottawa-infotainment-dragonfire-pro.features",
+            "claimClass": "source_backed",
+            "excerpt": "Integrated hardware and software stack; QNX and Android mixed-criticality support; Modular vehicle interfaces; Safety and cybersecurity integration",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ottawa-infotainment-activity",
+            "sourceId": "ottawa-infotainment-defence",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Ottawa Infotainment announced a defence-focused rugged DragonFire Pro variant and later demonstrated its QNX-based platform within the Canadian MIL-V autonomous military vehicle at CANSEC 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ottawa-infotainment-relationship",
+            "sourceId": "ottawa-infotainment-qnx",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Ottawa Infotainment identifies Convergence as a founding hardware partner and documents DragonFire Pro integration into Convergence's MIL-V military vehicle platform.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ottawa-infotainment-mission",
+            "sourceId": "ottawa-infotainment-technology",
+            "fieldPath": "capabilities.ottawa-infotainment-dragonfire-pro.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "A rugged vehicle domain controller that consolidates displays, sensors and applications could support platform-level edge processing; this is a derived fit assessment.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "ottawa-infotainment",
+          "name": "Ottawa Infotainment",
+          "legalName": "Ottawa Infotainment, Inc.",
+          "aliases": [
+            "Oi"
+          ],
+          "description": "Ottawa Infotainment is an Ottawa full-stack vehicle-electronics company developing embedded compute, domain-controller, cockpit and software-defined vehicle platforms for commercial and specialized mobility programs.",
+          "websiteUrl": "https://ottawainfotainment.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "Ottawa Infotainment announced a defence-focused rugged DragonFire Pro variant and later demonstrated its QNX-based platform within the Canadian MIL-V autonomous military vehicle at CANSEC 2026.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "ottawa-infotainment-dragonfire-pro",
+            "name": "DragonFire Pro vehicle compute platform",
+            "summary": "DragonFire Pro combines production-intent domain-controller hardware with DragonFire OS, modular vehicle integration, mixed-criticality software support and partner technologies for digital cockpit and specialized vehicle programs.",
+            "capabilityType": "Rugged vehicle domain controller and software platform",
+            "features": [
+              "Integrated hardware and software stack",
+              "QNX and Android mixed-criticality support",
+              "Modular vehicle interfaces",
+              "Safety and cybersecurity integration"
+            ],
+            "applications": [
+              "Military vehicle electronics",
+              "Software-defined vehicle control",
+              "Digital cockpit systems",
+              "Rugged mission-compute integration"
+            ],
+            "technicalTags": [
+              "domain controller",
+              "QNX",
+              "Android",
+              "software-defined vehicle",
+              "rugged compute"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data",
+              "aerospace-and-mobility",
+              "communications-and-cyber",
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "A rugged vehicle domain controller that consolidates displays, sensors and applications could support platform-level edge processing; this is a derived fit assessment.",
+                "matchClass": "derived",
+                "confidence": "high"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Convergence Design Services",
+            "relationshipType": "defence vehicle platform partner",
+            "publicSummary": "Ottawa Infotainment identifies Convergence as a founding hardware partner and documents DragonFire Pro integration into Convergence's MIL-V military vehicle platform."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://ottawainfotainment.com/",
+          "sourceAssetUrl": "https://ottawainfotainment.com/cdn/shop/files/Logo_White.png?v=1749437231&width=604",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "0715e4ae413c8cba121950ce998b46f8c7696d36a594d680ca633ba2ff5e5a9a",
+          "normalizedChecksum": "d46ff58e98dd3f0b2d8561cc53434347d417cfc0d8bb783dc76befcb8047c5c2",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730102512/candidate-ottawa-infotainment/logo.source.json",
+          "note": "604x463 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-ottawa-infotainment-description",
+          "sourceId": "ottawa-infotainment-company",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Ottawa Infotainment is an Ottawa full-stack vehicle-electronics company developing embedded compute, domain-controller, cockpit and software-defined vehicle platforms for commercial and specialized mobility programs.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ottawa-infotainment-location",
+          "sourceId": "ottawa-infotainment-company",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Ottawa Infotainment has a documented Canadian operating presence in Ottawa, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ottawa-infotainment-capability",
+          "sourceId": "ottawa-infotainment-technology",
+          "fieldPath": "capabilities.ottawa-infotainment-dragonfire-pro.summary",
+          "claimClass": "source_backed",
+          "excerpt": "DragonFire Pro combines production-intent domain-controller hardware with DragonFire OS, modular vehicle integration, mixed-criticality software support and partner technologies for digital cockpit and specialized vehicle programs.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ottawa-infotainment-features",
+          "sourceId": "ottawa-infotainment-qnx",
+          "fieldPath": "capabilities.ottawa-infotainment-dragonfire-pro.features",
+          "claimClass": "source_backed",
+          "excerpt": "Integrated hardware and software stack; QNX and Android mixed-criticality support; Modular vehicle interfaces; Safety and cybersecurity integration",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ottawa-infotainment-activity",
+          "sourceId": "ottawa-infotainment-defence",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Ottawa Infotainment announced a defence-focused rugged DragonFire Pro variant and later demonstrated its QNX-based platform within the Canadian MIL-V autonomous military vehicle at CANSEC 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ottawa-infotainment-relationship",
+          "sourceId": "ottawa-infotainment-qnx",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Ottawa Infotainment identifies Convergence as a founding hardware partner and documents DragonFire Pro integration into Convergence's MIL-V military vehicle platform.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ottawa-infotainment-mission",
+          "sourceId": "ottawa-infotainment-technology",
+          "fieldPath": "capabilities.ottawa-infotainment-dragonfire-pro.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "A rugged vehicle domain controller that consolidates displays, sensors and applications could support platform-level edge processing; this is a derived fit assessment.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Ottawa Infotainment is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures DragonFire Pro vehicle compute platform with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The third-generation QNX-based DragonFire Pro remained on a forward product schedule in the cited June 2026 release; reviewers should distinguish demonstrated integration from general production availability. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    },
+    {
+      "client_candidate_id": "candidate-qoherent",
+      "research_run_ref": "tnm-manual-20260730102512",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-qoherent"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-qoherent",
+        "sourceLeadIds": [
+          "lead-qoherent"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Qoherent is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Radio Intelligence Applications for 5G RAN with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The NATO DIANA cohort description establishes the accelerator project theme, not operational adoption or completion; the candidate preserves that distinction. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 93,
+        "reviewWarnings": [
+          "The NATO DIANA cohort description establishes the accelerator project theme, not operational adoption or completion; the candidate preserves that distinction."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-30T10:41:33.476Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+        },
+        "sources": [
+          {
+            "id": "qoherent-company",
+            "title": "About Qoherent",
+            "url": "https://qoherent.ai/company/",
+            "publisher": "Qoherent",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Company and radio-intelligence mission sections",
+            "summary": "Qoherent describes a Canadian company specializing in machine-learning development for software-defined radio, RF sensing and communications applications."
+          },
+          {
+            "id": "qoherent-contact",
+            "title": "Qoherent contact",
+            "url": "https://qoherent.ai/contact/",
+            "publisher": "Qoherent",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Toronto and Markham contact locations",
+            "summary": "Qoherent's official contact page identifies Canadian operating locations in Toronto and Markham, Ontario."
+          },
+          {
+            "id": "qoherent-product",
+            "title": "Qoherent Radio Intelligence Applications on a gNodeB",
+            "url": "https://qoherent.ai/intelligent-5g-ran/",
+            "publisher": "Qoherent",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "RIA RAN architecture, features and applications",
+            "summary": "The official product page describes machine-learning inference integrated with a 5G gNodeB for sensing, communications, defence, satellite and automotive applications."
+          },
+          {
+            "id": "qoherent-contract",
+            "title": "Qoherent IDEaS contract",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428432-000",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-12-08T00:00:00.000Z",
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Contract CW2428432",
+            "summary": "CanadaBuys identifies Qoherent, its Toronto business address and a competitive DND IDEaS military-science and research contract."
+          },
+          {
+            "id": "qoherent-diana",
+            "title": "NATO DIANA 2026 cohort of companies",
+            "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+            "publisher": "NATO DIANA",
+            "sourceKind": "accelerator_cohort_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-30T10:41:33.476Z",
+            "locator": "Advanced Communication Technologies cohort",
+            "summary": "NATO DIANA lists Qoherent as a Canadian 2026 cohort company developing an intelligent, adaptive and resilient 5G payload for mobile ad-hoc networking."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-qoherent-description",
+            "sourceId": "qoherent-company",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "Qoherent is a Toronto radio-intelligence company developing machine-learning software, datasets, engineering services and deployment tools for software-defined radio, open 5G networks and RF sensing.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-qoherent-location",
+            "sourceId": "qoherent-contact",
+            "fieldPath": "organization.primaryLocation",
+            "claimClass": "source_backed",
+            "excerpt": "Qoherent has a documented Canadian operating presence in Toronto, Ontario.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-qoherent-capability",
+            "sourceId": "qoherent-product",
+            "fieldPath": "capabilities.qoherent-radio-intelligence-ran.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Qoherent's radio-intelligence tooling brings machine-learning model development, data management and low-latency inference into software-defined radio and open 5G radio-access-network environments.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-qoherent-features",
+            "sourceId": "qoherent-product",
+            "fieldPath": "capabilities.qoherent-radio-intelligence-ran.features",
+            "claimClass": "source_backed",
+            "excerpt": "RF dataset generation and management; Model development and testing; Low-latency inference at the radio edge; Integration with SDR and open-RAN stacks",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-qoherent-activity",
+            "sourceId": "qoherent-diana",
+            "fieldPath": "organization.profileData.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "NATO DIANA selected Qoherent for its 2026 Canadian cohort for an adaptive 5G mobile-ad-hoc-network payload, and CanadaBuys records a current competitive DND IDEaS contract.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-qoherent-relationship",
+            "sourceId": "qoherent-contract",
+            "fieldPath": "relationships.0.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records Qoherent as the recipient of a competitive DND IDEaS research contract, while NATO DIANA independently lists the company in its 2026 Canadian cohort.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-qoherent-mission",
+            "sourceId": "qoherent-product",
+            "fieldPath": "capabilities.qoherent-radio-intelligence-ran.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Deploying RF inference directly into radio-access equipment could support low-latency spectrum awareness and network adaptation at the edge; this mapping is derived.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "qoherent",
+          "name": "Qoherent",
+          "legalName": null,
+          "aliases": [
+            "Qoherent AI"
+          ],
+          "description": "Qoherent is a Toronto radio-intelligence company developing machine-learning software, datasets, engineering services and deployment tools for software-defined radio, open 5G networks and RF sensing.",
+          "websiteUrl": "https://qoherent.ai/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Toronto",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6532,
+            "longitude": -79.3832,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "currentActivity": "NATO DIANA selected Qoherent for its 2026 Canadian cohort for an adaptive 5G mobile-ad-hoc-network payload, and CanadaBuys records a current competitive DND IDEaS contract.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "qoherent-radio-intelligence-ran",
+            "name": "Radio Intelligence Applications for 5G RAN",
+            "summary": "Qoherent's radio-intelligence tooling brings machine-learning model development, data management and low-latency inference into software-defined radio and open 5G radio-access-network environments.",
+            "capabilityType": "Machine-learning platform for software-defined radio and 5G RAN",
+            "features": [
+              "RF dataset generation and management",
+              "Model development and testing",
+              "Low-latency inference at the radio edge",
+              "Integration with SDR and open-RAN stacks"
+            ],
+            "applications": [
+              "Adaptive tactical communications",
+              "Spectrum sensing and classification",
+              "Private 5G optimization",
+              "Satellite and non-terrestrial network resilience"
+            ],
+            "technicalTags": [
+              "software-defined radio",
+              "radio-frequency machine learning",
+              "open RAN",
+              "5G",
+              "spectrum intelligence"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Deploying RF inference directly into radio-access equipment could support low-latency spectrum awareness and network adaptation at the edge; this mapping is derived.",
+                "matchClass": "derived",
+                "confidence": "high"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Adaptive resilient mobile-ad-hoc communications may support connected autonomous platforms, subject to integration and operational validation.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "Department of National Defence",
+            "relationshipType": "IDEaS contract recipient",
+            "publicSummary": "CanadaBuys records Qoherent as the recipient of a competitive DND IDEaS research contract, while NATO DIANA independently lists the company in its 2026 Canadian cohort."
+          }
+        ],
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://qoherent.ai/",
+          "sourceAssetUrl": "https://qoherent.ai/images/logo-darkmode_hu1ebadc2bb1b10841ec4768c04e00268b_41397_300x0_resize_q90_h2_lanczos_3.webp",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "ad522112169b59f3a90728717e2461f24a25c06a02065ecb46fe16ae8bf46a2f",
+          "normalizedChecksum": "9db2daa37d7010b59664d5e51fceb0cfdbe72119426b85a417e45a9e5e3cbe67",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730102512/candidate-qoherent/logo.source.json",
+          "note": "300x64 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-qoherent-description",
+          "sourceId": "qoherent-company",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Qoherent is a Toronto radio-intelligence company developing machine-learning software, datasets, engineering services and deployment tools for software-defined radio, open 5G networks and RF sensing.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qoherent-location",
+          "sourceId": "qoherent-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Qoherent has a documented Canadian operating presence in Toronto, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qoherent-capability",
+          "sourceId": "qoherent-product",
+          "fieldPath": "capabilities.qoherent-radio-intelligence-ran.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Qoherent's radio-intelligence tooling brings machine-learning model development, data management and low-latency inference into software-defined radio and open 5G radio-access-network environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qoherent-features",
+          "sourceId": "qoherent-product",
+          "fieldPath": "capabilities.qoherent-radio-intelligence-ran.features",
+          "claimClass": "source_backed",
+          "excerpt": "RF dataset generation and management; Model development and testing; Low-latency inference at the radio edge; Integration with SDR and open-RAN stacks",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qoherent-activity",
+          "sourceId": "qoherent-diana",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "NATO DIANA selected Qoherent for its 2026 Canadian cohort for an adaptive 5G mobile-ad-hoc-network payload, and CanadaBuys records a current competitive DND IDEaS contract.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qoherent-relationship",
+          "sourceId": "qoherent-contract",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records Qoherent as the recipient of a competitive DND IDEaS research contract, while NATO DIANA independently lists the company in its 2026 Canadian cohort.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-qoherent-mission",
+          "sourceId": "qoherent-product",
+          "fieldPath": "capabilities.qoherent-radio-intelligence-ran.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Deploying RF inference directly into radio-access equipment could support low-latency spectrum awareness and network adaptation at the edge; this mapping is derived.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T10:41:33.476Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "reviewer_rationale": "Qoherent is recommended for inclusion as a new Canadian company because durable public evidence establishes a Canadian operating presence, a concrete technology offering and current activity in defence, security, critical infrastructure or strategic technology. The candidate captures Radio Intelligence Applications for 5G RAN with field-level citations and preserves the distinction between source-backed product facts, current contract or partnership evidence, and derived mission fit. The NATO DIANA cohort description establishes the accelerator project theme, not operational adoption or completion; the candidate preserves that distinction. Review the identity, capability boundary, current-activity wording, relationship and derived mission mapping before publication.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-30T10:42:17.322Z"
+    }
+  ]
+}

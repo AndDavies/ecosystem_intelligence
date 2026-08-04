@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260804132035-candidates",
+  "runId": "tnm-manual-20260804132035",
+  "title": "YMX Innovation Centre additive deep-dossier refresh",
+  "status": "candidate",
+  "createdAt": "2026-08-04T13:21:13.834Z",
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "published-record-refresh:ymx-innovation-centre",
+    "reason": "Current official sources add material YMX program and current-activity detail beyond the published record.",
+    "score": 995
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260804132035.json",
+  "guardrailNotes": [
+    "This is one private additive organization refresh candidate for an already published YMX Innovation Centre record; it does not create a duplicate organization.",
+    "ARCTIC and Protospace are represented as nested program proposals so the reviewer can confirm the correct facility, program, and partner boundaries.",
+    "DND funding and UxS DISH evidence are public program context only, not proof of procurement eligibility, classified access, endorsement, or customer interest."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "ymx-innovation-centre-refresh-20260804",
+      "sourceLeadIds": ["ymx-innovation-centre-refresh-20260804"],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "YMX Innovation Centre is already published, but current public evidence materially enriches the record with two dated campus initiatives and a clearer operating context. ADM reports that H2CanFly chose YMX to establish the ARCTIC hydrogen research centre and that Airbus is partnering on Protospace for experimentation, productivity, and training. Espace Aéro describes YMX as an ADM-owned and overseen facility within the Mirabel hub, while the City of Mirabel documents a 2026 advanced-air-mobility workshop at the site and DND confirms the current NEXUS UxS DISH context. The refresh is amber because the reviewer should confirm whether ARCTIC and Protospace belong as nested YMX programs or as relationships to their delivery organizations, while keeping YMX, NEXUS, Aéro Montréal, Espace Aéro, and partners distinct.",
+      "reviewTier": "amber",
+      "inclusionScore": 96,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "The candidate is an additive refresh to published YMX Innovation Centre record d80cca82-bc3d-43d8-8272-2e7137f0793d; it is not a new organization.",
+        "ADM names ARCTIC and Protospace as YMX initiatives but does not define their full legal operator or delivery milestones; confirm program-versus-relationship modeling before publication.",
+        "No dedicated YMX public email or phone route was found in the current official pages; retain the ADM website as the public contact path."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-04T13:21:13.834Z",
+        "methods": ["canonical_url", "website_domain", "slug", "alias", "fuzzy_name"],
+        "matches": [
+          {
+            "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+            "name": "YMX Innovation Centre",
+            "matchedBy": "intended published refresh target via exact slug, name, and canonical facility website"
+          }
+        ],
+        "note": "The only identity match is the intentional published refresh target; no second YMX, NEXUS, or Aéro Montréal organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "adm-ymx-strategic-partnerships-2026",
+          "title": "ADM accelerates YMX Innovation's growth through new strategic partnerships",
+          "url": "https://www.newswire.ca/news-releases/adm-accelerates-ymx-innovation-s-growth-through-new-strategic-partnerships-812107331.html",
+          "publisher": "Aéroports de Montréal",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-04-14T15:00:00.000Z",
+          "accessedAt": "2026-08-04T13:21:13.834Z",
+          "locator": "ADM/CNW release: seven strategic programs, ARCTIC, Protospace, and current YMX activity",
+          "summary": "ADM's attributable release describes YMX as a strategic aerospace hub with seven operational programs and names the ARCTIC hydrogen centre and Airbus Protospace initiatives."
+        },
+        {
+          "id": "espace-aero-mirabel-hub-2026",
+          "title": "The Hubs - Mirabel",
+          "url": "https://espaceaero.ca/en/les-poles/",
+          "publisher": "Espace Aéro",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-04T13:21:13.834Z",
+          "locator": "Mirabel hub: YMX ownership, collaborative role, strategic sectors, and functional objectives",
+          "summary": "Espace Aéro describes YMX as owned and overseen by ADM, located in the YMX International Aerocity, and active in advanced air mobility, decarbonization, advanced manufacturing, and training."
+        },
+        {
+          "id": "mirabel-advanced-air-mobility-workshop-2026",
+          "title": "Mirabel plays a key role in advanced air mobility",
+          "url": "https://mirabel.ca/actualites/26/04/15/mirabel-joue-un-role-cle-dans-la-mobilite-aerienne-avancee-maa?cat=d261e424-d002-4c14-ae76-7c3d2237c59e",
+          "publisher": "Ville de Mirabel",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": "2026-04-15T00:00:00.000Z",
+          "accessedAt": "2026-08-04T13:21:13.834Z",
+          "locator": "French city release: April 14 workshop at Centre YMX Innovation and advanced-air-mobility roadmap context",
+          "summary": "The City of Mirabel reports that a strategic advanced-air-mobility workshop was held at Centre YMX Innovation with ADM, CED, GuaMobility, Innovitech, and ecosystem participants."
+        },
+        {
+          "id": "dnd-uxs-dish-backgrounder-2026-en",
+          "title": "Uncrewed Systems Defence Innovation Secure Hub",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2026-07-14T00:00:00.000Z",
+          "accessedAt": "2026-08-04T13:21:13.834Z",
+          "locator": "NEXUS location, infrastructure, mandate, contribution, and consortium sections",
+          "summary": "DND places NEXUS primarily at YMX Innovation Centre and describes secure collaboration, specialized testing infrastructure, regulated airspace, and a $29.6 million two-year UxS DISH contribution."
+        },
+        {
+          "id": "dnd-uxs-dish-backgrounder-2026-fr",
+          "title": "Carrefour sécurisé de l'innovation pour la défense consacré aux systèmes sans pilote",
+          "url": "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html",
+          "publisher": "Ministère de la Défense nationale",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2026-07-14T00:00:00.000Z",
+          "accessedAt": "2026-08-04T13:21:13.834Z",
+          "locator": "French CNACU location, infrastructure, use cases, and consortium sections",
+          "summary": "The French DND release independently confirms the Centre d'innovation YMX location, secure collaboration and testing context, and the UxS DISH consortium and use cases."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-ymx-arctic-program",
+          "sourceId": "adm-ymx-strategic-partnerships-2026",
+          "fieldPath": "operations.add-arctic-program.value",
+          "claimClass": "source_backed",
+          "excerpt": "ADM reported on April 14, 2026 that the national H2CanFly consortium chose YMX Innovation to establish ARCTIC, a state-of-the-art centre for research on hydrogen as a clean propulsion technology.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ymx-protospace-program",
+          "sourceId": "adm-ymx-strategic-partnerships-2026",
+          "fieldPath": "operations.add-protospace-program.value",
+          "claimClass": "source_backed",
+          "excerpt": "ADM reported that Airbus is partnering with YMX Innovation to establish Protospace for experimentation, productivity, and training, alongside an automated drone-surveillance project at the Mirabel site.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ymx-profile-ownership",
+          "sourceId": "espace-aero-mirabel-hub-2026",
+          "fieldPath": "operations.set-profile-data.after",
+          "claimClass": "source_backed",
+          "excerpt": "Espace Aéro describes YMX Innovation Centre as owned and overseen by Aéroports de Montréal, located at the heart of the YMX International Aerocity, and a structuring project in the Mirabel hub.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ymx-profile-sectors",
+          "sourceId": "espace-aero-mirabel-hub-2026",
+          "fieldPath": "operations.set-profile-data.after",
+          "claimClass": "source_backed",
+          "excerpt": "Espace Aéro lists advanced air mobility, decarbonization, Industry 4.0 advanced manufacturing, and academic and professional training as YMX Innovation Centre sectors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ymx-profile-mobility",
+          "sourceId": "mirabel-advanced-air-mobility-workshop-2026",
+          "fieldPath": "operations.set-profile-data.after",
+          "claimClass": "source_backed",
+          "excerpt": "The City of Mirabel reports that the April 14, 2026 strategic advanced-air-mobility workshop was held at Centre YMX Innovation and informed a Quebec roadmap discussion.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ymx-profile-nexus-en",
+          "sourceId": "dnd-uxs-dish-backgrounder-2026-en",
+          "fieldPath": "operations.set-profile-data.after",
+          "claimClass": "source_backed",
+          "excerpt": "DND states that NEXUS operates primarily from YMX Innovation Centre in Mirabel with secure collaboration spaces, specialized testing infrastructure, and regulated airspace for advanced experimentation and demonstrations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ymx-profile-nexus-fr",
+          "sourceId": "dnd-uxs-dish-backgrounder-2026-fr",
+          "fieldPath": "operations.set-profile-data.after",
+          "claimClass": "source_backed",
+          "excerpt": "The French DND release likewise places the CNACU primarily at Centre d'innovation YMX and describes secure collaboration spaces, specialized testing infrastructure, and regulated airspace.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ymx-profile-boundary",
+          "sourceId": "dnd-uxs-dish-backgrounder-2026-en",
+          "fieldPath": "reviewWarnings",
+          "claimClass": "source_backed",
+          "excerpt": "DND identifies an Espace Aéro-led consortium and CJFC-sponsored NEXUS operating from YMX, while Espace Aéro describes YMX as the ADM-owned facility context; the record boundary remains a reviewer question.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ymx-profile-current",
+          "sourceId": "adm-ymx-strategic-partnerships-2026",
+          "fieldPath": "operations.set-profile-data.after",
+          "claimClass": "source_backed",
+          "excerpt": "ADM's April 2026 release describes seven operational strategic programs at YMX, including robotics, advanced air mobility, sustainable energy, and aerospace experimentation and training.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+        "slug": "ymx-innovation-centre",
+        "matchMethods": ["canonical_url", "website_domain", "slug", "name"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T11:50:00.493421+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+          "slug": "ymx-innovation-centre",
+          "name": "YMX Innovation Centre",
+          "updated_at": "2026-07-24T11:50:00.493421+00:00",
+          "website_url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+          "publication_status": "published",
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "priorityAreas": ["uncrewed systems", "counter-uncrewed systems", "human-machine teaming", "operations in contested environments", "sensor integration"],
+            "operatorContext": "YMX Innovation Centre is presented by Aeroports de Montreal as the facility context, while DND identifies an Aero Montreal and Espace Aero-led consortium as the selected UxS DISH delivery team.",
+            "evidenceBoundary": "Public-source alignment only. This record describes a public innovation and testing hub, not classified access, procurement eligibility, or DND endorsement of any participant.",
+            "technicalMandate": "Support aerospace and defence innovation, including NEXUS UxS DISH development, testing, validation and integration activity for uncrewed and counter-uncrewed systems in secure collaboration settings.",
+            "reviewed_candidate_id": "bb2cddd4-24c3-4480-890b-32f562529608",
+            "secureEnvironmentRole": "DND describes DISHs as secure, mission-oriented environments that enable government, industry and academia to collaborate on experimentation, testing, system integration and validation.",
+            "research_schema_version": "organization_bundle_v2"
+          }
+        },
+        "programs": [
+          {"id": "79c53251-d212-4581-a33f-de41bf092f63", "slug": "nexus-uxs-dish", "name": "NEXUS Uncrewed Systems Defence Innovation Secure Hub", "publication_status": "published"}
+        ],
+        "relationships": [
+          {"id": "820caf0d-1b3a-4b3d-8a1d-7d3329668270", "related_organization_name": "Aero Montreal and Espace Aero", "relationship_type": "consortium lead", "publication_status": "published"},
+          {"id": "abd7c24f-c749-4b31-9d9f-7189da3882ba", "related_organization_name": "National Research Council Drone Innovation Hub", "relationship_type": "complementary test and commercialization hub", "publication_status": "published"},
+          {"id": "e61f459d-bd5e-422a-8487-c3d1338bcf46", "related_organization_name": "DARIT Technologies", "relationship_type": "selected consortium participant", "publication_status": "published"}
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "add-arctic-program",
+          "operation": "add_child",
+          "entityType": "program",
+          "parentId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+          "value": {
+            "slug": "arctic-hydrogen-propulsion-centre",
+            "name": "ARCTIC Hydrogen Propulsion Research Centre",
+            "programType": "Hydrogen aviation research centre",
+            "websiteUrl": "https://www.newswire.ca/news-releases/adm-accelerates-ymx-innovation-s-growth-through-new-strategic-partnerships-812107331.html",
+            "summary": "ARCTIC is a H2CanFly consortium research centre selected for YMX Innovation to study hydrogen as a clean propulsion technology and support aviation decarbonization.",
+            "cohortLabel": "Announced 2026",
+            "operatorName": "YMX Innovation Centre",
+            "participationType": "host facility"
+          },
+          "evidenceIds": ["evidence-ymx-arctic-program"],
+          "reviewerExplanation": "Add the dated ARCTIC initiative as a nested program because ADM identifies YMX as the selected site, while leaving H2CanFly's consortium role visible for review."
+        },
+        {
+          "operationId": "add-protospace-program",
+          "operation": "add_child",
+          "entityType": "program",
+          "parentId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+          "value": {
+            "slug": "airbus-protospace-ymx",
+            "name": "Airbus Protospace at YMX Innovation",
+            "programType": "Aerospace experimentation and training facility",
+            "websiteUrl": "https://www.newswire.ca/news-releases/adm-accelerates-ymx-innovation-s-growth-through-new-strategic-partnerships-812107331.html",
+            "summary": "Airbus Protospace is a YMX Innovation partnership for experimentation, productivity, and training, with a related automated drone-surveillance project at the Mirabel site.",
+            "cohortLabel": "Announced 2026",
+            "operatorName": "YMX Innovation Centre",
+            "participationType": "host facility"
+          },
+          "evidenceIds": ["evidence-ymx-protospace-program"],
+          "reviewerExplanation": "Add Protospace as a distinct current campus initiative supported by ADM's dated announcement; the reviewer can reclassify it as a relationship if the public model requires Airbus as the program operator."
+        },
+        {
+          "operationId": "set-ymx-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "priorityAreas": ["uncrewed systems", "counter-uncrewed systems", "human-machine teaming", "operations in contested environments", "sensor integration"],
+            "operatorContext": "YMX Innovation Centre is presented by Aeroports de Montreal as the facility context, while DND identifies an Aero Montreal and Espace Aero-led consortium as the selected UxS DISH delivery team.",
+            "evidenceBoundary": "Public-source alignment only. This record describes a public innovation and testing hub, not classified access, procurement eligibility, or DND endorsement of any participant.",
+            "technicalMandate": "Support aerospace and defence innovation, including NEXUS UxS DISH development, testing, validation and integration activity for uncrewed and counter-uncrewed systems in secure collaboration settings.",
+            "reviewed_candidate_id": "bb2cddd4-24c3-4480-890b-32f562529608",
+            "secureEnvironmentRole": "DND describes DISHs as secure, mission-oriented environments that enable government, industry and academia to collaborate on experimentation, testing, system integration and validation.",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "priorityAreas": ["uncrewed systems", "counter-uncrewed systems", "human-machine teaming", "operations in contested environments", "sensor integration"],
+            "operatorContext": "YMX Innovation Centre is owned and overseen by Aéroports de Montréal within the Espace Aéro Mirabel hub. DND identifies an Espace Aéro-led consortium and CJFC-sponsored NEXUS UxS DISH operating primarily from the site; the facility, program, and consortium remain distinct public-record concepts.",
+            "evidenceBoundary": "Public-source alignment only. This record describes a public innovation and testing hub, not classified access, procurement eligibility, customer interest, or DND endorsement of any participant.",
+            "technicalMandate": "Support aerospace and defence innovation, including NEXUS UxS DISH development, testing, validation and integration activity for uncrewed and counter-uncrewed systems in secure collaboration settings.",
+            "reviewed_candidate_id": "bb2cddd4-24c3-4480-890b-32f562529608",
+            "secureEnvironmentRole": "DND describes DISHs as secure, mission-oriented environments that enable government, industry and academia to collaborate on experimentation, testing, system integration and validation.",
+            "research_schema_version": "organization_bundle_v2",
+            "strategicSectors": ["advanced air mobility", "decarbonization", "Industry 4.0 - advanced manufacturing", "academic and professional training"],
+            "currentActivity": "April 2026 public activity includes ADM's ARCTIC hydrogen research and Airbus Protospace announcements, a Mirabel advanced-air-mobility strategy workshop at Centre YMX Innovation, and the current DND NEXUS UxS DISH operating context.",
+            "currentPrograms": ["arctic-hydrogen-propulsion-centre", "airbus-protospace-ymx", "nexus-uxs-dish"],
+            "publicProgramFundingContext": "DND reports a $29.6 million two-year contribution to establish the UxS DISH; this is public program context, not a YMX procurement award."
+          },
+          "evidenceIds": ["evidence-ymx-profile-ownership", "evidence-ymx-profile-sectors", "evidence-ymx-profile-mobility", "evidence-ymx-profile-nexus-en", "evidence-ymx-profile-nexus-fr", "evidence-ymx-profile-current"],
+          "reviewerExplanation": "Replace the profile-data snapshot with a conservative merged version that preserves the published evidence boundary and adds current ownership, sector, program, and activity context from complementary public sources."
+        }
+      ],
+      "sourceChannels": ["official_company", "ecosystem_program", "industry_publication", "other_discovery"],
+      "signalIds": ["ymx-arctic-program-2026", "ymx-protospace-program-2026", "ymx-mobility-workshop-2026", "ymx-uxs-dish-current-2026"],
+      "corroboration": [
+        {"claim": "YMX is an ADM-owned and overseen facility context within the Mirabel innovation hub.", "sourceIds": ["espace-aero-mirabel-hub-2026", "mirabel-advanced-air-mobility-workshop-2026"]},
+        {"claim": "YMX has current strategic program activity beyond the existing NEXUS record, including ARCTIC and Protospace.", "sourceIds": ["adm-ymx-strategic-partnerships-2026", "espace-aero-mirabel-hub-2026"]},
+        {"claim": "NEXUS remains a distinct DND-sponsored UxS DISH program operating primarily from YMX.", "sourceIds": ["dnd-uxs-dish-backgrounder-2026-en", "dnd-uxs-dish-backgrounder-2026-fr"]},
+        {"claim": "The public evidence supports additive profile enrichment but not a new YMX organization or procurement claim.", "sourceIds": ["adm-ymx-strategic-partnerships-2026", "dnd-uxs-dish-backgrounder-2026-en", "espace-aero-mirabel-hub-2026"]}
+      ]
+    }
+  ],
+  "deferred": []
+}

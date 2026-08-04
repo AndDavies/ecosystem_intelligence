@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-refresh-2026-07-27",
+  "runId": "tnm-refresh-2026-07-27",
+  "createdAt": "2026-07-27T11:13:03.799Z",
+  "scope": {
+    "description": "Weekday refresh source-lead batch converting the current Invest Ottawa defence innovation hub signal into one live-record refresh lead while preserving duplicate-sensitive government office trails as signal/prospect backlog.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "government_innovation_office"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-invest-ottawa-national-defence-innovation-hub-refresh",
+      "source": {
+        "id": "invest-ottawa-dihub-source",
+        "title": "Canada's Defence Innovation Hub in Ottawa",
+        "url": "https://www.investottawa.ca/dihub/",
+        "publisher": "Invest Ottawa",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": "2026-07-27T00:00:00.000Z",
+        "accessedAt": "2026-07-27T11:13:03.799Z",
+        "locator": "National Defence Innovation Hub strategy, key highlights, task force and lead partner sections",
+        "summary": "Invest Ottawa presents Canada’s National Defence Innovation Hub and an Ottawa-Gatineau strategy to coordinate government, industry, academia and investors around defence innovation, testing infrastructure, procurement pathways and allied landing opportunities."
+      },
+      "discoveryPath": [
+        "https://www.investottawa.ca/dihub/",
+        "https://www.investottawa.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Strategy overview, implementation task force, key highlights and lead partner sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.investottawa.ca/dihub/",
+        "websiteDomain": "investottawa.ca",
+        "stableSlug": "invest-ottawa",
+        "legalName": "Invest Ottawa",
+        "aliases": [
+          "Canada's National Defence Innovation Hub",
+          "Ottawa-Gatineau Defence Innovation Hub"
+        ]
+      },
+      "followUpQuestions": [
+        "Should the hub be displayed as a program under Invest Ottawa or a separate ecosystem organization later?",
+        "Which task-force partners should be modeled as relationships after reviewer confirmation?",
+        "Should company-map entries from the hub page seed a separate company-refresh backlog?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 92,
+      "completenessScore": 86,
+      "reviewWarnings": [
+        "The hub page is operated by Invest Ottawa and should be modeled as an additive program refresh, not as proof of procurement eligibility or government endorsement.",
+        "The strategy page names many partners and companies; this candidate only adds the hub program and profile context."
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "74ea0730-a290-451f-91d1-804dd619bd88",
+        "slug": "invest-ottawa",
+        "matchMethods": [
+          "slug",
+          "name",
+          "website_domain"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T07:28:43.196119Z"
+      },
+      "signalIds": [
+        "invest-ottawa-national-defence-innovation-hub-2026-07-27"
+      ],
+      "refreshSummary": "Invest Ottawa’s current public defence innovation hub page adds a strategy and implementation program that materially improves the published Invest Ottawa record without changing its identity.",
+      "intendedChanges": [
+        "Add Canada’s National Defence Innovation Hub as a program under Invest Ottawa.",
+        "Update Invest Ottawa profile_data with current defence-innovation hub activity and evidence boundary."
+      ]
+    }
+  ]
+}

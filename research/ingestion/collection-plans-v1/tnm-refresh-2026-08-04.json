@@ -1,0 +1,234 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-refresh-2026-08-04-collection-plan",
+  "runId": "tnm-refresh-2026-08-04",
+  "createdAt": "2026-08-04T15:05:32.911Z",
+  "status": "complete",
+  "intelligenceRequirement": "Determine which durable public relationships and current activities materially enrich the already-published Marconi Technologies record without duplicating its established identity, tactical communications portfolio, Polish ORION contract, Enamor partnership, or Swedish Archer evaluation.",
+  "targetSubjects": [
+    {
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "name": "Marconi Technologies",
+      "aliases": [
+        "Marconi",
+        "Marconi Inc.",
+        "Marconi Technologies Canada"
+      ],
+      "canonicalIdentifiers": [
+        "a65636c7-19d2-4f42-83a7-e692780d38de",
+        "marconi-technologies",
+        "marconi-technologies.com"
+      ]
+    },
+    {
+      "subjectId": "nexus-uxs-dish",
+      "subjectType": "program",
+      "name": "NEXUS Uncrewed Systems Defence Innovation Secure Hub",
+      "aliases": [
+        "NEXUS",
+        "UxS DISH",
+        "CNACU",
+        "CSID UxS"
+      ],
+      "canonicalIdentifiers": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/carrefour-securise-de-linnovation-pour-la-defense-consacre-aux-systemes-sans-pilote.html"
+      ]
+    },
+    {
+      "subjectId": "marconi-ara-partnership",
+      "subjectType": "relationship",
+      "name": "Marconi Technologies and ARA Robotics partnership",
+      "aliases": [
+        "ARA Robotics and Marconi Technologies partnership",
+        "Marconi ARA collaboration"
+      ],
+      "canonicalIdentifiers": [
+        "https://www.ara-uas.com/latest-news",
+        "https://www.ara-uas.com/fr/latest-news"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "marconi-live-baseline",
+      "subjectType": "organization",
+      "question": "What exact published Marconi identity, capabilities, relationships, evidence, and updated_at baseline must this refresh preserve?",
+      "targetFieldPaths": [
+        "targetMatch.baselineUpdatedAt",
+        "beforeRecord.organization",
+        "beforeRecord.relationships"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "marconi-nexus-role",
+      "subjectType": "program",
+      "question": "Does durable DND evidence name Marconi as a NEXUS participant, and what role, funding, or delivery detail remains unsupported?",
+      "targetFieldPaths": [
+        "operations.add-marconi-nexus-relationship.value",
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "marconi-ara-relationship",
+      "subjectType": "relationship",
+      "question": "What relationship does ARA Robotics officially announce with Marconi, and which product, deployment, customer, or milestone details remain unproven?",
+      "targetFieldPaths": [
+        "operations.add-marconi-ara-relationship.value",
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "marconi-existing-current",
+      "subjectType": "signal",
+      "question": "Which contract, product, location, and current-activity claims are already represented and must be dispositioned without redundant operations?",
+      "targetFieldPaths": [
+        "beforeRecord.organization.profile_data",
+        "beforeRecord.relationships",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "marconi-conflicts",
+      "subjectType": "organization",
+      "question": "Which legal-name, ownership, program-role, or source-independence questions require explicit reviewer warnings?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Recheck Marconi identity, products, locations, events, contacts, and legal-name cues against the live baseline.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:marconi-technologies.com Marconi Technologies products news 2026",
+        "site:marconi-technologies.com Marconi Inc Montréal"
+      ],
+      "expectedClaims": [
+        "current identity and portfolio",
+        "current locations and public contact route",
+        "legal-name boundary"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve Marconi contracts and named public-program participation through official Canadian government sources.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:canada.ca Marconi Technologies NEXUS UxS DISH",
+        "site:pm.gc.ca Marconi Technologies ORION Poland SAFE 2026"
+      ],
+      "expectedClaims": [
+        "named NEXUS participation",
+        "existing contract and delivery context"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Find durable partner and program pages that state Marconi relationships without relying on social posts.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:ara-uas.com Marconi Technologies partnership",
+        "Marconi Technologies partner NEXUS official"
+      ],
+      "expectedClaims": [
+        "ARA partnership scope",
+        "NEXUS consortium relationship"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Use due Source Book association and cluster routes to corroborate named consortium membership and identify record-boundary issues.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:defenceandsecurity.ca Marconi NEXUS",
+        "site:aeromontreal.ca Marconi NEXUS"
+      ],
+      "expectedClaims": [
+        "industry participant listing",
+        "program operator and participant boundaries"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check French federal and Quebec terminology for distinct Marconi, CNACU, CSID, and partnership evidence.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Marconi Technologies consortium CNACU CSID UxS français",
+        "Marconi Technologies partenariat ARA Robotique"
+      ],
+      "expectedClaims": [
+        "French program participant record",
+        "French relationship wording"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Attempt to resolve the Marconi Inc. footer and operating brand to an authoritative Canadian legal entity.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:ised-isde.canada.ca Marconi Inc corporation Montréal",
+        "Marconi Technologies société fédérale Québec"
+      ],
+      "expectedClaims": [
+        "legal name or explicit unresolved identity boundary"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Inspect reputable current reporting only for trails to durable company, partner, government, or program evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Marconi Technologies NEXUS consortium 2026",
+        "Marconi Technologies ARA Robotics partnership 2026"
+      ],
+      "expectedClaims": [
+        "independent corroboration or low-yield saturation evidence"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop only after all twelve Marconi coverage dimensions have a supported status or documented attempt and every material relationship has claim-to-operation lineage.",
+    "Treat the dossier as saturated after two additional complementary lanes produce low or zero new material claims and all legal-name, role, funding, and source-independence questions are dispositioned."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

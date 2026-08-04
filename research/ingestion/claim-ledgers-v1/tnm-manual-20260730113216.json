@@ -1,0 +1,3597 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260730113216-claim-ledger",
+  "runId": "tnm-manual-20260730113216",
+  "createdAt": "2026-07-30T11:32:16.564Z",
+  "completedAt": "2026-07-30T11:44:07.035Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-tightbeam-photonics-description",
+      "subjectId": "subject-tightbeam-photonics",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Tightbeam Photonics is a Toronto photonics company developing compact, deployable optical ground stations and integrated photonic receivers for high-capacity laser communications between space and ground.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "tightbeam-photonics-profile",
+        "originalUrl": "https://tightbeam.ca/",
+        "canonicalUrl": "https://tightbeam.ca/",
+        "locator": "Company, technology and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "tightbeam.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "tightbeam.ca/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-tightbeam-photonics",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Tightbeam Photonics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-tightbeam-photonics-location",
+      "subjectId": "subject-tightbeam-photonics",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Tightbeam Photonics has a documented Canadian operating presence in Toronto, Ontario.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-03-27T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "tightbeam-photonics-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+        "locator": "NRC contribution 172-2025-2026-Q4-1040983",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-tightbeam-photonics",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Tightbeam Photonics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-tightbeam-photonics-capability",
+      "subjectId": "subject-tightbeam-photonics",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Tightbeam develops mobile and modular optical ground stations built around packaged silicon-photonic receivers, adaptive optics and single-mode-fibre coupling for space-to-ground laser communications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "tightbeam-photonics-product",
+        "originalUrl": "https://tightbeam.ca/optical-ground-stations",
+        "canonicalUrl": "https://tightbeam.ca/optical-ground-stations",
+        "locator": "Optical ground-station architecture",
+        "sourceChannel": "official_company",
+        "sourceFamily": "tightbeam.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "tightbeam.ca/optical-ground-stations"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-tightbeam-photonics",
+          "fieldPath": "capabilities.tightbeam-deployable-optical-ground-stations.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Tightbeam Photonics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-tightbeam-photonics-technical",
+      "subjectId": "subject-tightbeam-photonics",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Mobile and modular ground-station form factors; Packaged silicon-photonic receiver; Adaptive-optics integration; Single-mode-fibre optical coupling",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "tightbeam-photonics-product",
+        "originalUrl": "https://tightbeam.ca/optical-ground-stations",
+        "canonicalUrl": "https://tightbeam.ca/optical-ground-stations",
+        "locator": "Optical ground-station architecture",
+        "sourceChannel": "official_company",
+        "sourceFamily": "tightbeam.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "tightbeam.ca/optical-ground-stations"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-tightbeam-photonics",
+          "fieldPath": "capabilities.tightbeam-deployable-optical-ground-stations.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Tightbeam Photonics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-tightbeam-photonics-activity",
+      "subjectId": "subject-tightbeam-photonics",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "An NRC IRAP contribution awarded in March 2026 supports Tightbeam's Q-PHASICS quantum-photonic adaptive system-on-chip ground-station project through July 2029, while NATO DIANA lists the company in its 2026 Canadian cohort for reducing the cost of space-to-ground laser communications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-03-27T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "tightbeam-photonics-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+        "locator": "NRC contribution 172-2025-2026-Q4-1040983",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-tightbeam-photonics",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Tightbeam Photonics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-tightbeam-photonics-relationship",
+      "subjectId": "subject-tightbeam-photonics",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada's grants database records an NRC IRAP contribution to Tightbeam Photonics Inc. for the Q-PHASICS ground-station project; the candidate does not infer procurement or operational adoption.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-03-27T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "tightbeam-photonics-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+        "locator": "NRC contribution 172-2025-2026-Q4-1040983",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-tightbeam-photonics",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Tightbeam Photonics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-copsys-technologies-description",
+      "subjectId": "subject-copsys-technologies",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Copsys Technologies is a St. John's marine-technology company developing a self-sensing protective coating that detects and locates corrosion while providing antifouling and cathodic protection for ships and other marine assets.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "copsys-technologies-profile",
+        "originalUrl": "https://copsys.ca/",
+        "canonicalUrl": "https://copsys.ca/",
+        "locator": "Company and CIDS overview",
+        "sourceChannel": "official_company",
+        "sourceFamily": "copsys.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "copsys.ca/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-copsys-technologies",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Copsys Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-copsys-technologies-location",
+      "subjectId": "subject-copsys-technologies",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Copsys Technologies has a documented Canadian operating presence in St. John's, Newfoundland and Labrador.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "copsys-technologies-directory",
+        "originalUrl": "https://members.technl.ca/memberdirectory/Find?term=Copsys+Technologies",
+        "canonicalUrl": "https://members.technl.ca/memberdirectory/Find?term=Copsys+Technologies",
+        "locator": "Copsys Technologies listing",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "members.technl.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "members.technl.ca/memberdirectory/Find"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-copsys-technologies",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Copsys Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-copsys-technologies-capability",
+      "subjectId": "subject-copsys-technologies",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "CIDS integrates protective coating, corrosion sensing and location, antifouling and cathodic-protection functions into a monitored surface system for ships, offshore assets and other critical infrastructure.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "copsys-technologies-product",
+        "originalUrl": "https://copsys.ca/",
+        "canonicalUrl": "https://copsys.ca/",
+        "locator": "CIDS product and application sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "copsys.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "copsys.ca/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-copsys-technologies",
+          "fieldPath": "capabilities.copsys-cids-self-sensing-marine-coating.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Copsys Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-copsys-technologies-technical",
+      "subjectId": "subject-copsys-technologies",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Distributed corrosion detection and localization; Protective coating with cathodic action; Antifouling functionality; Condition-monitoring data output",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "copsys-technologies-product",
+        "originalUrl": "https://copsys.ca/",
+        "canonicalUrl": "https://copsys.ca/",
+        "locator": "CIDS product and application sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "copsys.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "copsys.ca/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-copsys-technologies",
+          "fieldPath": "capabilities.copsys-cids-self-sensing-marine-coating.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Copsys Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-copsys-technologies-activity",
+      "subjectId": "subject-copsys-technologies",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "Newfoundland and Labrador announced $450,000 in commercialization assistance to Copsys in January 2026, and NATO DIANA lists the company in its 2026 Canadian cohort for corrosion and biofouling mitigation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-01-22T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "copsys-technologies-province",
+        "originalUrl": "https://www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/",
+        "canonicalUrl": "https://www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/",
+        "locator": "Copsys Technologies funding entry",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "gov.nl.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-copsys-technologies",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Copsys Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-copsys-technologies-relationship",
+      "subjectId": "subject-copsys-technologies",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The provincial government announced commercialization assistance for Copsys's corrosion-detection technology for ships and marine assets; this is represented as public support, not procurement or adoption.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-01-22T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "copsys-technologies-province",
+        "originalUrl": "https://www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/",
+        "canonicalUrl": "https://www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/",
+        "locator": "Copsys Technologies funding entry",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "gov.nl.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-copsys-technologies",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Copsys Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-niricson-description",
+      "subjectId": "subject-niricson",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Niricson is a Vancouver infrastructure-intelligence company using artificial intelligence and multimodal inspection data to detect, quantify and track defects in concrete assets, airfield pavements, bridges and dams.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "niricson-profile",
+        "originalUrl": "https://www.niricson.com/",
+        "canonicalUrl": "https://www.niricson.com/",
+        "locator": "Company, platform and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "niricson.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.niricson.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-niricson",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Niricson; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-niricson-location",
+      "subjectId": "subject-niricson",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Niricson has a documented Canadian operating presence in Vancouver, British Columbia.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-02-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "niricson-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+        "locator": "NRC contribution 172-2025-2026-Q4-1040970",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-niricson",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Niricson; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-niricson-capability",
+      "subjectId": "subject-niricson",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "AUTOSPEX fuses visual, thermal and acoustic inspection data, including drone-collected imagery and impact-acoustic measurements, to map defects and compare asset condition over time.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "niricson-product",
+        "originalUrl": "https://www.niricson.com/",
+        "canonicalUrl": "https://www.niricson.com/",
+        "locator": "AUTOSPEX, DRONIC and NCX Mini sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "niricson.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.niricson.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-niricson",
+          "fieldPath": "capabilities.niricson-autospex-infrastructure-inspection.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Niricson; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-niricson-technical",
+      "subjectId": "subject-niricson",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Visual, thermal and acoustic data fusion; Automated defect detection and quantification; Geospatial condition mapping; Longitudinal change tracking",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "niricson-product",
+        "originalUrl": "https://www.niricson.com/",
+        "canonicalUrl": "https://www.niricson.com/",
+        "locator": "AUTOSPEX, DRONIC and NCX Mini sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "niricson.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.niricson.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-niricson",
+          "fieldPath": "capabilities.niricson-autospex-infrastructure-inspection.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Niricson; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-niricson-activity",
+      "subjectId": "subject-niricson",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "A current NRC IRAP contribution supports Niricson's 2026-2027 development of an AI platform for airfield pavement distress mapping for civilian airports and defence airstrips, following federal innovation testing with PSPC, Shared Services Canada and Transport Canada.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-02-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "niricson-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+        "locator": "NRC contribution 172-2025-2026-Q4-1040970",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-niricson",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Niricson; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-niricson-relationship",
+      "subjectId": "subject-niricson",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada's grants database records an NRC IRAP contribution to Niricson Software Inc. for AI-based airfield pavement distress mapping; the candidate does not infer procurement beyond that contribution.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-02-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "niricson-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+        "locator": "NRC contribution 172-2025-2026-Q4-1040970",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-niricson",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Niricson; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-exonetik-description",
+      "subjectId": "subject-exonetik",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Exonetik is a Sherbrooke advanced-motion company developing magnetorheological actuators and control systems for haptics, robotics, aerospace and space applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "exonetik-about",
+        "originalUrl": "https://www.exonetik.com/about-us",
+        "canonicalUrl": "https://www.exonetik.com/about-us",
+        "locator": "Company history and Sherbrooke location",
+        "sourceChannel": "official_company",
+        "sourceFamily": "exonetik.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.exonetik.com/about-us"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-exonetik",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Exonetik; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-exonetik-location",
+      "subjectId": "subject-exonetik",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Exonetik has a documented Canadian operating presence in Sherbrooke, Quebec.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "exonetik-about",
+        "originalUrl": "https://www.exonetik.com/about-us",
+        "canonicalUrl": "https://www.exonetik.com/about-us",
+        "locator": "Company history and Sherbrooke location",
+        "sourceChannel": "official_company",
+        "sourceFamily": "exonetik.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.exonetik.com/about-us"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-exonetik",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Exonetik; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-exonetik-capability",
+      "subjectId": "subject-exonetik",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Exonetik develops compact actuators whose output force is controlled by changing the properties of magnetorheological fluid, enabling controllable resistance, force feedback and lightweight robotic joints.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "exonetik-technology",
+        "originalUrl": "https://www.exonetik.com/technology",
+        "canonicalUrl": "https://www.exonetik.com/technology",
+        "locator": "Actuator principles and application examples",
+        "sourceChannel": "official_company",
+        "sourceFamily": "exonetik.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.exonetik.com/technology"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-exonetik",
+          "fieldPath": "capabilities.exonetik-magnetorheological-actuators.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Exonetik; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-exonetik-technical",
+      "subjectId": "subject-exonetik",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Electronically controllable resistive force; Compact direct-drive mechanical architecture; Force-feedback and haptic-control integration; Robotic and aerospace actuator configurations",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "exonetik-technology",
+        "originalUrl": "https://www.exonetik.com/technology",
+        "canonicalUrl": "https://www.exonetik.com/technology",
+        "locator": "Actuator principles and application examples",
+        "sourceChannel": "official_company",
+        "sourceFamily": "exonetik.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.exonetik.com/technology"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-exonetik",
+          "fieldPath": "capabilities.exonetik-magnetorheological-actuators.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Exonetik; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-exonetik-activity",
+      "subjectId": "subject-exonetik",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "Exonetik's official materials describe work with Bell Flight on haptic-feedback technology, while Canadian Space Agency contribution records document earlier development of lightweight magnetorheological actuators for collaborative space robots.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "exonetik-technology",
+        "originalUrl": "https://www.exonetik.com/technology",
+        "canonicalUrl": "https://www.exonetik.com/technology",
+        "locator": "Actuator principles and application examples",
+        "sourceChannel": "official_company",
+        "sourceFamily": "exonetik.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.exonetik.com/technology"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-exonetik",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Exonetik; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-exonetik-relationship",
+      "subjectId": "subject-exonetik",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "A Canadian Space Agency contribution record identifies Exonetik Inc. as the recipient of funding to develop lightweight, high-performance actuators for collaborative space robots; the record is historical and is not represented as a current procurement.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2019-06-06T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "exonetik-csa",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2019-2020-Q1-04244%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2019-2020-Q1-04244%2Ccurrent",
+        "locator": "Canadian Space Agency contribution 003-2019-2020-Q1-04244",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/csa-asc%2C003-2019-2020-Q1-04244%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-exonetik",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Exonetik; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-fireswarm-solutions-description",
+      "subjectId": "subject-fireswarm-solutions",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "FireSwarm Solutions is a Canadian autonomous-aviation company developing coordinated ultra-heavy-lift uncrewed aircraft for wildfire suppression, emergency response and dual-use logistics in hazardous environments.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "fireswarm-solutions-profile",
+        "originalUrl": "https://www.fireswarmsolutions.com/",
+        "canonicalUrl": "https://www.fireswarmsolutions.com/",
+        "locator": "Technology, applications and partner sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "fireswarmsolutions.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.fireswarmsolutions.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-fireswarm-solutions",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for FireSwarm Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-fireswarm-solutions-location",
+      "subjectId": "subject-fireswarm-solutions",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "FireSwarm Solutions has a documented Canadian operating presence in Squamish, British Columbia.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "fireswarm-solutions-contact",
+        "originalUrl": "https://www.fireswarmsolutions.com/contact",
+        "canonicalUrl": "https://www.fireswarmsolutions.com/contact",
+        "locator": "Canadian operating locations",
+        "sourceChannel": "official_company",
+        "sourceFamily": "fireswarmsolutions.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.fireswarmsolutions.com/contact"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-fireswarm-solutions",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for FireSwarm Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-fireswarm-solutions-capability",
+      "subjectId": "subject-fireswarm-solutions",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "FireSwarm is developing heavy-lift uncrewed aircraft coordinated by autonomy software to deliver suppression payloads and logistics support in smoke, low visibility and difficult terrain.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "fireswarm-solutions-profile",
+        "originalUrl": "https://www.fireswarmsolutions.com/",
+        "canonicalUrl": "https://www.fireswarmsolutions.com/",
+        "locator": "Technology, applications and partner sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "fireswarmsolutions.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.fireswarmsolutions.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-fireswarm-solutions",
+          "fieldPath": "capabilities.fireswarm-heavy-lift-autonomous-aerial-system.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for FireSwarm Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-fireswarm-solutions-technical",
+      "subjectId": "subject-fireswarm-solutions",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Ultra-heavy-lift uncrewed aircraft; Multi-aircraft coordination software; Low-visibility and terrain-aware operation; Modular suppression and logistics payloads",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "fireswarm-solutions-profile",
+        "originalUrl": "https://www.fireswarmsolutions.com/",
+        "canonicalUrl": "https://www.fireswarmsolutions.com/",
+        "locator": "Technology, applications and partner sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "fireswarmsolutions.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.fireswarmsolutions.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-fireswarm-solutions",
+          "fieldPath": "capabilities.fireswarm-heavy-lift-autonomous-aerial-system.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for FireSwarm Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-fireswarm-solutions-activity",
+      "subjectId": "subject-fireswarm-solutions",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "NATO DIANA lists FireSwarm in its 2026 Canadian cohort for DASA-controlled ultra-heavy-lift drones in extreme environments, following its selection as an XPRIZE Wildfire semifinalist and public Canadian parliamentary discussion of the technology's maturity.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "fireswarm-solutions-diana",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Extreme environments cohort",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "diana.nato.int",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-fireswarm-solutions",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for FireSwarm Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-fireswarm-solutions-relationship",
+      "subjectId": "subject-fireswarm-solutions",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "NATO DIANA lists FireSwarm Solutions as a 2026 Canadian cohort company developing DASA-controlled ultra-heavy-lift drones; cohort participation is not represented as procurement or operational endorsement.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "fireswarm-solutions-diana",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Extreme environments cohort",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "diana.nato.int",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-fireswarm-solutions",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for FireSwarm Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-gbatteries-energy-canada-description",
+      "subjectId": "subject-gbatteries-energy-canada",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "GBatteries Energy Canada is an Ottawa battery-technology company developing adaptive charging controls and lithium-metal cells for high-energy, fast-charging applications including cold-weather uncrewed systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "gbatteries-energy-canada-profile",
+        "originalUrl": "https://www.gbatteries.com/",
+        "canonicalUrl": "https://www.gbatteries.com/",
+        "locator": "Technology and platform overview",
+        "sourceChannel": "official_company",
+        "sourceFamily": "gbatteries.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.gbatteries.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-gbatteries-energy-canada",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for GBatteries Energy Canada; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-gbatteries-energy-canada-location",
+      "subjectId": "subject-gbatteries-energy-canada",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "GBatteries Energy Canada has a documented Canadian operating presence in Ottawa, Ontario.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "gbatteries-energy-canada-contact",
+        "originalUrl": "https://www.gbatteries.com/contact",
+        "canonicalUrl": "https://www.gbatteries.com/contact",
+        "locator": "Ottawa address",
+        "sourceChannel": "official_company",
+        "sourceFamily": "gbatteries.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.gbatteries.com/contact"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-gbatteries-energy-canada",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for GBatteries Energy Canada; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-gbatteries-energy-canada-capability",
+      "subjectId": "subject-gbatteries-energy-canada",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "GBatteries combines chemistry-aware charging controls with battery-cell development to adjust charge pulses in real time, with current dual-use work focused on cold-weather energy availability for uncrewed systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "gbatteries-energy-canada-profile",
+        "originalUrl": "https://www.gbatteries.com/",
+        "canonicalUrl": "https://www.gbatteries.com/",
+        "locator": "Technology and platform overview",
+        "sourceChannel": "official_company",
+        "sourceFamily": "gbatteries.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.gbatteries.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-gbatteries-energy-canada",
+          "fieldPath": "capabilities.gbatteries-adaptive-fast-charging-system.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for GBatteries Energy Canada; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-gbatteries-energy-canada-technical",
+      "subjectId": "subject-gbatteries-energy-canada",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Adaptive pulse-charging control; Chemistry-aware battery management; Lithium-metal cell development; Cold-weather uncrewed-system application",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "gbatteries-energy-canada-nrcan",
+        "originalUrl": "https://natural-resources.canada.ca/funding-partnerships/reducing-cost-lithium-ion-battery-manufacturing",
+        "canonicalUrl": "https://natural-resources.canada.ca/funding-partnerships/reducing-cost-lithium-ion-battery-manufacturing",
+        "locator": "Project description and funding",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "natural-resources.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "natural-resources.canada.ca/funding-partnerships/reducing-cost-lithium-ion-battery-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-gbatteries-energy-canada",
+          "fieldPath": "capabilities.gbatteries-adaptive-fast-charging-system.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for GBatteries Energy Canada; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-gbatteries-energy-canada-activity",
+      "subjectId": "subject-gbatteries-energy-canada",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "NATO DIANA lists GBatteries Energy Canada in its 2026 cohort for a smart pulse battery charger supporting cold-weather uncrewed-system operations, building on federally funded adaptive battery-management work documented by Natural Resources Canada.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "gbatteries-energy-canada-diana",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Energy and power cohort",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "diana.nato.int",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.diana.nato.int/about-diana/2026-cohort-of-companies.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-gbatteries-energy-canada",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for GBatteries Energy Canada; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-gbatteries-energy-canada-relationship",
+      "subjectId": "subject-gbatteries-energy-canada",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "Natural Resources Canada documents public funding for GBatteries' chemistry-agnostic adaptive charging controls; the relationship is represented as an innovation project rather than product certification or procurement.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "gbatteries-energy-canada-nrcan",
+        "originalUrl": "https://natural-resources.canada.ca/funding-partnerships/reducing-cost-lithium-ion-battery-manufacturing",
+        "canonicalUrl": "https://natural-resources.canada.ca/funding-partnerships/reducing-cost-lithium-ion-battery-manufacturing",
+        "locator": "Project description and funding",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "natural-resources.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "natural-resources.canada.ca/funding-partnerships/reducing-cost-lithium-ion-battery-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-gbatteries-energy-canada",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for GBatteries Energy Canada; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-volta-space-technologies-description",
+      "subjectId": "subject-volta-space-technologies",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Volta Space Technologies is a Montreal space-power company developing optical wireless power systems that transmit energy to compact receivers on lunar, orbital, aerial and remote terrestrial platforms.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "volta-space-technologies-registry",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=12519194&p=&wbdisable=true",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=12519194&p=&wbdisable=true",
+        "locator": "Corporate identity and registered office",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "ised-isde.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-volta-space-technologies",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Volta Space Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-volta-space-technologies-location",
+      "subjectId": "subject-volta-space-technologies",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Volta Space Technologies has a documented Canadian operating presence in Montreal, Quebec.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "volta-space-technologies-registry",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=12519194&p=&wbdisable=true",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=12519194&p=&wbdisable=true",
+        "locator": "Corporate identity and registered office",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "ised-isde.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-volta-space-technologies",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Volta Space Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-volta-space-technologies-capability",
+      "subjectId": "subject-volta-space-technologies",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Volta's system couples a directed optical power source with a compact LightPort receiver to deliver energy without a physical tether to spacecraft, drones, uncrewed vehicles and remote sensors.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "volta-space-technologies-technology",
+        "originalUrl": "https://www.voltaspace.co/technology",
+        "canonicalUrl": "https://www.voltaspace.co/technology",
+        "locator": "LightPort receiver and system applications",
+        "sourceChannel": "official_company",
+        "sourceFamily": "voltaspace.co",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.voltaspace.co/technology"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-volta-space-technologies",
+          "fieldPath": "capabilities.volta-lightport-wireless-power-receiver.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Volta Space Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-volta-space-technologies-technical",
+      "subjectId": "subject-volta-space-technologies",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Directed optical power transfer; Compact platform-mounted receiver; Wireless charging across standoff distance; Lunar, orbital and terrestrial configurations",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "volta-space-technologies-stdp",
+        "originalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+        "canonicalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+        "locator": "Volta POWERD contribution",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "asc-csa.gc.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-volta-space-technologies",
+          "fieldPath": "capabilities.volta-lightport-wireless-power-receiver.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Volta Space Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-volta-space-technologies-activity",
+      "subjectId": "subject-volta-space-technologies",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "The Canadian Space Agency awarded Volta a 2026 contract within a lunar power-architecture study and separately lists a Space Technology Development Program contribution for its POWERD optical wireless-power receiver.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-06-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "volta-space-technologies-csa",
+        "originalUrl": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp",
+        "canonicalUrl": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp",
+        "locator": "Lunar power architecture contracts",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "asc-csa.gc.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-volta-space-technologies",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Volta Space Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-volta-space-technologies-relationship",
+      "subjectId": "subject-volta-space-technologies",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Canadian Space Agency identifies Volta among Canadian companies awarded contracts to study lunar power architectures; the candidate does not infer selection for a flight mission or operational deployment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-06-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "volta-space-technologies-csa",
+        "originalUrl": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp",
+        "canonicalUrl": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp",
+        "locator": "Lunar power architecture contracts",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "asc-csa.gc.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-volta-space-technologies",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Volta Space Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-north-vector-dynamics-description",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "North Vector Dynamics is a Calgary defence company developing compact, low-cost counter-uncrewed-aircraft interceptors and related autonomous systems for rapidly deployed protection against small drone threats.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "north-vector-dynamics-about",
+        "originalUrl": "https://www.northvectordynamics.com/about-us",
+        "canonicalUrl": "https://www.northvectordynamics.com/about-us",
+        "locator": "Company identity and operating focus",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.northvectordynamics.com/about-us"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for North Vector Dynamics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-north-vector-dynamics-location",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "North Vector Dynamics has a documented Canadian operating presence in Calgary, Alberta.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-03-18T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "north-vector-dynamics-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+        "locator": "DND contribution 018-2025-2026-Q4-06-CD3002",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for North Vector Dynamics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-north-vector-dynamics-capability",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "The CM-70 is a compact guided interceptor designed for ground, vehicle or airborne deployment against small uncrewed aircraft, using a semi-active laser-guidance architecture within a wider counter-UAS concept.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "north-vector-dynamics-product",
+        "originalUrl": "https://www.northvectordynamics.com/cm-70",
+        "canonicalUrl": "https://www.northvectordynamics.com/cm-70",
+        "locator": "CM-70 architecture and deployment options",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.northvectordynamics.com/cm-70"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics",
+          "fieldPath": "capabilities.north-vector-cm-70-counter-uas-interceptor.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for North Vector Dynamics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-north-vector-dynamics-technical",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Semi-active laser guidance; Ground, vehicle and air-launch configurations; Compact interceptor form factor; Designed for Group I-III UAS threats",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "north-vector-dynamics-product",
+        "originalUrl": "https://www.northvectordynamics.com/cm-70",
+        "canonicalUrl": "https://www.northvectordynamics.com/cm-70",
+        "locator": "CM-70 architecture and deployment options",
+        "sourceChannel": "official_company",
+        "sourceFamily": "northvectordynamics.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.northvectordynamics.com/cm-70"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics",
+          "fieldPath": "capabilities.north-vector-cm-70-counter-uas-interceptor.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for North Vector Dynamics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-north-vector-dynamics-activity",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "A Department of National Defence contribution record, amended in March 2026, provides up to $2 million through the IDEaS Concept Development program for North Vector's low-cost aerial counter-UAS platform through September 2027.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-03-18T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "north-vector-dynamics-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+        "locator": "DND contribution 018-2025-2026-Q4-06-CD3002",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for North Vector Dynamics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-north-vector-dynamics-relationship",
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The federal grants database records a Department of National Defence IDEaS contribution to North Vector Dynamics Inc. for a low-cost aerial counter-UAS platform; this is not represented as procurement or operational adoption.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2026-03-18T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "north-vector-dynamics-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+        "locator": "DND contribution 018-2025-2026-Q4-06-CD3002",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-north-vector-dynamics",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for North Vector Dynamics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-pleora-technologies-description",
+      "subjectId": "subject-pleora-technologies",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Pleora Technologies is an Ottawa-area imaging-connectivity company providing hardware and software that moves, processes and integrates real-time sensor video for defence, medical and industrial systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "pleora-technologies-profile",
+        "originalUrl": "https://www.pleora.com/",
+        "canonicalUrl": "https://www.pleora.com/",
+        "locator": "Products, technology and market overview",
+        "sourceChannel": "official_company",
+        "sourceFamily": "pleora.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.pleora.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-pleora-technologies",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Pleora Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-pleora-technologies-location",
+      "subjectId": "subject-pleora-technologies",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Pleora Technologies has a documented Canadian operating presence in Ottawa, Ontario.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "pleora-technologies-contact",
+        "originalUrl": "https://www.pleora.com/contact-us/",
+        "canonicalUrl": "https://www.pleora.com/contact-us/",
+        "locator": "Kanata office and legal identity",
+        "sourceChannel": "official_company",
+        "sourceFamily": "pleora.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.pleora.com/contact-us/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-pleora-technologies",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Pleora Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-pleora-technologies-capability",
+      "subjectId": "subject-pleora-technologies",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Pleora supplies embedded interfaces, external frame grabbers and the eBUS software development kit for low-latency transport and processing of sensor imagery across vehicle, platform and command-system networks.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "pleora-technologies-military",
+        "originalUrl": "https://www.pleora.com/resources/articles/machine-vision-brings-cost-performance-advantages-military-imaging/",
+        "canonicalUrl": "https://www.pleora.com/resources/articles/machine-vision-brings-cost-performance-advantages-military-imaging/",
+        "locator": "Military vehicle imaging architecture",
+        "sourceChannel": "official_company",
+        "sourceFamily": "pleora.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.pleora.com/resources/articles/machine-vision-brings-cost-performance-advantages-military-imaging/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-pleora-technologies",
+          "fieldPath": "capabilities.pleora-real-time-military-imaging-connectivity.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Pleora Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-pleora-technologies-technical",
+      "subjectId": "subject-pleora-technologies",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "GigE Vision video transport; Embedded and external sensor interfaces; eBUS software development kit; Standards-oriented vehicle video distribution",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "pleora-technologies-military",
+        "originalUrl": "https://www.pleora.com/resources/articles/machine-vision-brings-cost-performance-advantages-military-imaging/",
+        "canonicalUrl": "https://www.pleora.com/resources/articles/machine-vision-brings-cost-performance-advantages-military-imaging/",
+        "locator": "Military vehicle imaging architecture",
+        "sourceChannel": "official_company",
+        "sourceFamily": "pleora.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.pleora.com/resources/articles/machine-vision-brings-cost-performance-advantages-military-imaging/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-pleora-technologies",
+          "fieldPath": "capabilities.pleora-real-time-military-imaging-connectivity.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Pleora Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-pleora-technologies-activity",
+      "subjectId": "subject-pleora-technologies",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "Pleora's current ISO 9001 certification covers the design and manufacture of sensor-networking products for military, medical and industrial applications; an older NRC IRAP contribution documents public support for an AI-based visual inspection platform.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "pleora-technologies-iso",
+        "originalUrl": "https://www.pleora.com/wp-content/uploads/2024/10/FM-744188-001.pdf",
+        "canonicalUrl": "https://www.pleora.com/wp-content/uploads/2024/10/FM-744188-001.pdf",
+        "locator": "Certification scope",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "pleora.com",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "www.pleora.com/wp-content/uploads/2024/10/FM-744188-001.pdf"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-pleora-technologies",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Pleora Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-pleora-technologies-relationship",
+      "subjectId": "subject-pleora-technologies",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "A federal grants record identifies Pleora Technologies Inc. as an NRC IRAP recipient for an AI visual-inspection platform; the historical contribution is not represented as a current defence contract.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "pleora-technologies-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-987160%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-987160%2Ccurrent",
+        "locator": "NRC contribution 172-2021-2022-Q4-987160",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-987160%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-pleora-technologies",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Pleora Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-marecomms-description",
+      "subjectId": "subject-marecomms",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Marecomms is a Halifax ocean-communications company developing software-defined underwater acoustic modems and networking technology for video, data and coordinated autonomous underwater systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "marecomms-profile",
+        "originalUrl": "https://www.marecomms.com/",
+        "canonicalUrl": "https://www.marecomms.com/",
+        "locator": "Company, AQUABAND, ROAM and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marecomms.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.marecomms.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marecomms",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Marecomms; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-marecomms-location",
+      "subjectId": "subject-marecomms",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Marecomms has a documented Canadian operating presence in Halifax, Nova Scotia.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2025-05-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "marecomms-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent",
+        "locator": "NRC contribution 172-2025-2026-Q1-1030291",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marecomms",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Marecomms; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-marecomms-capability",
+      "subjectId": "subject-marecomms",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Marecomms develops AQUABAND and ROAM acoustic communications technology for encrypted underwater data, video and multi-node networking in channels affected by Doppler, multipath and limited bandwidth.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "marecomms-profile",
+        "originalUrl": "https://www.marecomms.com/",
+        "canonicalUrl": "https://www.marecomms.com/",
+        "locator": "Company, AQUABAND, ROAM and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marecomms.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.marecomms.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marecomms",
+          "fieldPath": "capabilities.marecomms-underwater-acoustic-networking.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Marecomms; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-marecomms-technical",
+      "subjectId": "subject-marecomms",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Adaptive acoustic communications; Encrypted underwater links; Doppler and multipath mitigation; Multi-node and AUV-swarm networking",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "marecomms-profile",
+        "originalUrl": "https://www.marecomms.com/",
+        "canonicalUrl": "https://www.marecomms.com/",
+        "locator": "Company, AQUABAND, ROAM and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marecomms.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.marecomms.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marecomms",
+          "fieldPath": "capabilities.marecomms-underwater-acoustic-networking.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Marecomms; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-marecomms-activity",
+      "subjectId": "subject-marecomms",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "An NRC IRAP contribution running from May 2025 to March 2026 supports Marecomms' advanced source-compression work for horizontal underwater video, extending its documented commercialization of acoustic communications technology.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2025-05-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "marecomms-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent",
+        "locator": "NRC contribution 172-2025-2026-Q1-1030291",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marecomms",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Marecomms; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-marecomms-relationship",
+      "subjectId": "subject-marecomms",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada's grants database records an NRC IRAP contribution to Marecomms Inc. for advanced source compression for underwater horizontal video; the candidate does not infer defence procurement.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-30T11:44:07.035Z",
+        "publishedAt": "2025-05-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "marecomms-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent",
+        "locator": "NRC contribution 172-2025-2026-Q1-1030291",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q1-1030291%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marecomms",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Marecomms; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "subject-tightbeam-photonics",
+      "subjectType": "organization",
+      "name": "Tightbeam Photonics",
+      "candidateIds": [
+        "candidate-tightbeam-photonics"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-tightbeam-photonics-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-tightbeam-photonics-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-tightbeam-photonics-description",
+            "claim-tightbeam-photonics-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-tightbeam-photonics-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-tightbeam-photonics-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-tightbeam-photonics-activity",
+            "claim-tightbeam-photonics-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-tightbeam-photonics-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-tightbeam-photonics-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-tightbeam-photonics-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-tightbeam-photonics-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-tightbeam-photonics-description",
+            "claim-tightbeam-photonics-location",
+            "claim-tightbeam-photonics-capability",
+            "claim-tightbeam-photonics-technical",
+            "claim-tightbeam-photonics-activity",
+            "claim-tightbeam-photonics-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-copsys-technologies",
+      "subjectType": "organization",
+      "name": "Copsys Technologies",
+      "candidateIds": [
+        "candidate-copsys-technologies"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-copsys-technologies-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-copsys-technologies-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-copsys-technologies-description",
+            "claim-copsys-technologies-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-copsys-technologies-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-copsys-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-copsys-technologies-activity",
+            "claim-copsys-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-copsys-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-copsys-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-copsys-technologies-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-copsys-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-copsys-technologies-description",
+            "claim-copsys-technologies-location",
+            "claim-copsys-technologies-capability",
+            "claim-copsys-technologies-technical",
+            "claim-copsys-technologies-activity",
+            "claim-copsys-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-niricson",
+      "subjectType": "organization",
+      "name": "Niricson",
+      "candidateIds": [
+        "candidate-niricson"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-niricson-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-niricson-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-niricson-description",
+            "claim-niricson-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-niricson-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-niricson-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-niricson-activity",
+            "claim-niricson-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-niricson-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-niricson-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-niricson-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-niricson-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-niricson-description",
+            "claim-niricson-location",
+            "claim-niricson-capability",
+            "claim-niricson-technical",
+            "claim-niricson-activity",
+            "claim-niricson-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-exonetik",
+      "subjectType": "organization",
+      "name": "Exonetik",
+      "candidateIds": [
+        "candidate-exonetik"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-exonetik-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-exonetik-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-exonetik-description",
+            "claim-exonetik-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-exonetik-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-exonetik-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-exonetik-activity",
+            "claim-exonetik-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-exonetik-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-exonetik-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-exonetik-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-exonetik-description",
+            "claim-exonetik-location",
+            "claim-exonetik-capability",
+            "claim-exonetik-technical",
+            "claim-exonetik-activity",
+            "claim-exonetik-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-fireswarm-solutions",
+      "subjectType": "organization",
+      "name": "FireSwarm Solutions",
+      "candidateIds": [
+        "candidate-fireswarm-solutions"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-fireswarm-solutions-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-fireswarm-solutions-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-fireswarm-solutions-description",
+            "claim-fireswarm-solutions-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-fireswarm-solutions-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-fireswarm-solutions-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-fireswarm-solutions-activity",
+            "claim-fireswarm-solutions-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-fireswarm-solutions-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-fireswarm-solutions-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-fireswarm-solutions-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-fireswarm-solutions-description",
+            "claim-fireswarm-solutions-location",
+            "claim-fireswarm-solutions-capability",
+            "claim-fireswarm-solutions-technical",
+            "claim-fireswarm-solutions-activity",
+            "claim-fireswarm-solutions-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-gbatteries-energy-canada",
+      "subjectType": "organization",
+      "name": "GBatteries Energy Canada",
+      "candidateIds": [
+        "candidate-gbatteries-energy-canada"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-description",
+            "claim-gbatteries-energy-canada-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-activity",
+            "claim-gbatteries-energy-canada-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-gbatteries-energy-canada-description",
+            "claim-gbatteries-energy-canada-location",
+            "claim-gbatteries-energy-canada-capability",
+            "claim-gbatteries-energy-canada-technical",
+            "claim-gbatteries-energy-canada-activity",
+            "claim-gbatteries-energy-canada-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-volta-space-technologies",
+      "subjectType": "organization",
+      "name": "Volta Space Technologies",
+      "candidateIds": [
+        "candidate-volta-space-technologies"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-volta-space-technologies-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-volta-space-technologies-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-volta-space-technologies-description",
+            "claim-volta-space-technologies-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-volta-space-technologies-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-volta-space-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-volta-space-technologies-activity",
+            "claim-volta-space-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-volta-space-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-volta-space-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-volta-space-technologies-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-volta-space-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-volta-space-technologies-description",
+            "claim-volta-space-technologies-location",
+            "claim-volta-space-technologies-capability",
+            "claim-volta-space-technologies-technical",
+            "claim-volta-space-technologies-activity",
+            "claim-volta-space-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-north-vector-dynamics",
+      "subjectType": "organization",
+      "name": "North Vector Dynamics",
+      "candidateIds": [
+        "candidate-north-vector-dynamics"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-north-vector-dynamics-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-north-vector-dynamics-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-north-vector-dynamics-description",
+            "claim-north-vector-dynamics-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-north-vector-dynamics-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-north-vector-dynamics-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-north-vector-dynamics-activity",
+            "claim-north-vector-dynamics-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-north-vector-dynamics-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-north-vector-dynamics-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-north-vector-dynamics-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-north-vector-dynamics-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-north-vector-dynamics-description",
+            "claim-north-vector-dynamics-location",
+            "claim-north-vector-dynamics-capability",
+            "claim-north-vector-dynamics-technical",
+            "claim-north-vector-dynamics-activity",
+            "claim-north-vector-dynamics-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-pleora-technologies",
+      "subjectType": "organization",
+      "name": "Pleora Technologies",
+      "candidateIds": [
+        "candidate-pleora-technologies"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-pleora-technologies-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-pleora-technologies-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-pleora-technologies-description",
+            "claim-pleora-technologies-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-pleora-technologies-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-pleora-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-pleora-technologies-activity",
+            "claim-pleora-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-pleora-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-pleora-technologies-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-pleora-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-pleora-technologies-description",
+            "claim-pleora-technologies-location",
+            "claim-pleora-technologies-capability",
+            "claim-pleora-technologies-technical",
+            "claim-pleora-technologies-activity",
+            "claim-pleora-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-marecomms",
+      "subjectType": "organization",
+      "name": "Marecomms",
+      "candidateIds": [
+        "candidate-marecomms"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-marecomms-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-marecomms-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-marecomms-description",
+            "claim-marecomms-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-marecomms-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-marecomms-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-marecomms-activity",
+            "claim-marecomms-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-marecomms-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-marecomms-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-marecomms-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-marecomms-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-marecomms-description",
+            "claim-marecomms-location",
+            "claim-marecomms-capability",
+            "claim-marecomms-technical",
+            "claim-marecomms-activity",
+            "claim-marecomms-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    }
+  ],
+  "warnings": [
+    "Two candidates retain amber warnings because public award records do not disclose a supported challenge or company performance statements remain self-reported; every candidate retains an explicit evidence boundary.",
+    "Mission-area matches are derived assessments and do not establish procurement eligibility, endorsement, customer interest, classified demand or operational adoption.",
+    "Social and LinkedIn results were used only to expand search trails and were not promoted into field evidence without durable corroboration."
+  ]
+}

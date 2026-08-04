@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260731164940",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "unmatched-demand:deep-strike",
+    "reason": "The public deep strike demand requirement has no reviewed capability match in the local atlas.",
+    "score": 850
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-07-31T16:49:40.101Z",
+  "completedAt": "2026-07-31T17:00:59.921Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "site:canadabuys.canada.ca IDEaS CFP 6 Canadian company contract",
+    "site:achatscanada.canada.ca entreprise canadienne IDEeS contrat",
+    "site:diana.nato.int 2026 cohort Canada company defence technology",
+    "site:canada.ca Canadian company defence innovation contract drone communications",
+    "site:publications.gc.ca Canadian defence company parliamentary evidence",
+    "site:nrc.canada.ca CANSEC Canadian company technology commercialization",
+    "Canadian defence technology company autonomous systems communications sensing",
+    "entreprise canadienne technologie défense communications autonomes capteurs",
+    "Canadian company official product technical documentation defence security",
+    "Canada defence event exhibitor company product announcement",
+    "Canada accelerator cohort ocean technology company",
+    "Canada company partner announcement rugged compute vehicle communications",
+    "targeted LinkedIn company and program searches resolved to durable official pages"
+  ],
+  "counters": {
+    "sourcesChecked": 78,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 3,
+    "prospectsDiscovered": 50,
+    "uniqueProspects": 50,
+    "prospectsQueued": 37,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 12,
+    "candidatesGreen": 8,
+    "candidatesAmber": 2,
+    "claimsCollected": 60,
+    "claimsConflicted": 0,
+    "coverageSubjects": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Two amber candidates require explicit reviewer confirmation of public-contract scope or self-reported technical claims before publication."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the ten-candidate target after qualifying a 50-prospect company inventory across 12 source lanes; 37 plausible unused prospects remain queued for later evidence-led batches.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260731164940.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260731164940.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260731164940.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260731164940.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260731164940.json",
+    "reviewPacket": null,
+    "stagingExport": null,
+    "candidateLogoPacket": "research/ingestion/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260731164940.json"
+  }
+}

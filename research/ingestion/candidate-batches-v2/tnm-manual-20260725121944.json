@@ -1,0 +1,1548 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260725121944",
+  "runId": "tnm-manual-20260725121944",
+  "title": "Canadian company discovery batch 2",
+  "status": "candidate",
+  "createdAt": "2026-07-25T12:19:53.590Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260725121944.json",
+  "guardrailNotes": [
+    "Private review material only; no candidate is published by this workflow.",
+    "Official company pages are the field-evidence anchors. Discovery sources are not upgraded into claims without durable corroboration."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-draganfly",
+      "sourceLeadIds": [
+        "lead-draganfly"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Draganfly is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Remotely piloted aircraft systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "draganfly-official",
+          "title": "Draganfly official capability profile",
+          "url": "https://draganfly.com/",
+          "publisher": "Draganfly",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Draganfly and its public offering: Canadian drone company developing remotely piloted aircraft, sensors and associated services for public safety and industrial operations."
+        },
+        {
+          "id": "draganfly-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "draganfly-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-draganfly-description",
+          "sourceId": "draganfly-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Draganfly as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-draganfly-capability",
+          "sourceId": "draganfly-official",
+          "fieldPath": "capabilities.draganfly-remotely-piloted-aircraft-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Remotely piloted aircraft systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "draganfly",
+        "name": "Draganfly",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian drone company developing remotely piloted aircraft, sensors and associated services for public safety and industrial operations.",
+        "websiteUrl": "https://draganfly.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Saskatoon",
+          "provinceTerritory": "Saskatchewan",
+          "countryCode": "CA",
+          "latitude": 52.1332,
+          "longitude": -106.67,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Remotely piloted aircraft systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "draganfly-remotely-piloted-aircraft-systems",
+          "name": "Remotely piloted aircraft systems",
+          "summary": "Canadian drone company developing remotely piloted aircraft, sensors and associated services for public safety and industrial operations.",
+          "capabilityType": "Remotely piloted aircraft systems",
+          "features": [
+            "Remotely piloted aircraft systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Remotely piloted aircraft systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://draganfly.com/",
+        "sourceAssetUrl": "https://draganfly.com/wp-content/uploads/2020/03/new-df-logo-blue-v2.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "90fc01cb8ab7cc443f7e7231613915ea8e00df2a36d3f45d2fbda0ebd51179b1",
+        "normalizedChecksum": "f97f197f408d3baea703e2ffe001999508d03acf6e162b0a39e017dd3d2ab1b4",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121944/candidate-draganfly/logo.source.json",
+        "note": "872x250 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-indro-robotics",
+      "sourceLeadIds": [
+        "lead-indro-robotics"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "InDro Robotics is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Multi-domain robotics and autonomy. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "indro-robotics-official",
+          "title": "InDro Robotics official capability profile",
+          "url": "https://indrorobotics.ca/",
+          "publisher": "InDro Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes InDro Robotics and its public offering: Canadian robotics company building aerial, ground and marine autonomous systems and operational integration services."
+        },
+        {
+          "id": "indro-robotics-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "indro-robotics-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-indro-robotics-description",
+          "sourceId": "indro-robotics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes InDro Robotics as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-indro-robotics-capability",
+          "sourceId": "indro-robotics-official",
+          "fieldPath": "capabilities.indro-robotics-multi-domain-robotics-and-autonomy.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Multi-domain robotics and autonomy offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "indro-robotics",
+        "name": "InDro Robotics",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian robotics company building aerial, ground and marine autonomous systems and operational integration services.",
+        "websiteUrl": "https://indrorobotics.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Victoria",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 48.4284,
+          "longitude": -123.3656,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Multi-domain robotics and autonomy",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "indro-robotics-multi-domain-robotics-and-autonomy",
+          "name": "Multi-domain robotics and autonomy",
+          "summary": "Canadian robotics company building aerial, ground and marine autonomous systems and operational integration services.",
+          "capabilityType": "Multi-domain robotics and autonomy",
+          "features": [
+            "Multi-domain robotics and autonomy",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Multi-domain robotics and autonomy offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://indrorobotics.ca/",
+        "sourceAssetUrl": "https://i0.wp.com/indrorobotics.ca/wp-content/uploads/2023/03/EMV-logo-Grey.png?resize=350%2C176&ssl=1",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "5b487cfe5970a46c7eb7c1b5d688d449dca7c963cd85ba1de1529f285f20d3aa",
+        "normalizedChecksum": "16d8128d4628db63c45a03c1395edddc96d3e8aad987a6b7b3af9cd4b22d303a",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121944/candidate-indro-robotics/logo.source.json",
+        "note": "350x176 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-skygauge-robotics",
+      "sourceLeadIds": [
+        "lead-skygauge-robotics"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Skygauge Robotics is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Autonomous aerial inspection systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "skygauge-robotics-official",
+          "title": "Skygauge Robotics official capability profile",
+          "url": "https://www.skygauge.co/",
+          "publisher": "Skygauge Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Skygauge Robotics and its public offering: Toronto aerial-robotics company developing industrial inspection drones designed for contact-based inspection work."
+        },
+        {
+          "id": "skygauge-robotics-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "skygauge-robotics-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-skygauge-robotics-description",
+          "sourceId": "skygauge-robotics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Skygauge Robotics as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-skygauge-robotics-capability",
+          "sourceId": "skygauge-robotics-official",
+          "fieldPath": "capabilities.skygauge-robotics-autonomous-aerial-inspection-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Autonomous aerial inspection systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "skygauge-robotics",
+        "name": "Skygauge Robotics",
+        "legalName": null,
+        "aliases": [],
+        "description": "Toronto aerial-robotics company developing industrial inspection drones designed for contact-based inspection work.",
+        "websiteUrl": "https://www.skygauge.co/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Autonomous aerial inspection systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "skygauge-robotics-autonomous-aerial-inspection-systems",
+          "name": "Autonomous aerial inspection systems",
+          "summary": "Toronto aerial-robotics company developing industrial inspection drones designed for contact-based inspection work.",
+          "capabilityType": "Autonomous aerial inspection systems",
+          "features": [
+            "Autonomous aerial inspection systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Autonomous aerial inspection systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://www.skygauge.com/",
+        "sourceAssetUrl": "https://cdn.prod.website-files.com/6117a98e9f4a432f24d6c8e7/69eba4786c7d482494085819_Cyberhawk_Logo_2.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "20e9ad55629415f2f970173d488429ff45e4c8db0792b8415de2ac7b36df5f81",
+        "normalizedChecksum": "5a3c1853f8cb5ebedc609351c8a4f68912e963192d93d9eaa3cf138c093402be",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121944/candidate-skygauge-robotics/logo.source.json",
+        "note": "1024x301 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-airmatrix",
+      "sourceLeadIds": [
+        "lead-airmatrix"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "AirMatrix is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Drone operations and airspace software. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "airmatrix-official",
+          "title": "AirMatrix official capability profile",
+          "url": "https://airmatrix.io/",
+          "publisher": "AirMatrix",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes AirMatrix and its public offering: Canadian aviation-technology company developing drone-operations infrastructure and airspace-management software."
+        },
+        {
+          "id": "airmatrix-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "airmatrix-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-airmatrix-description",
+          "sourceId": "airmatrix-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes AirMatrix as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-airmatrix-capability",
+          "sourceId": "airmatrix-official",
+          "fieldPath": "capabilities.airmatrix-drone-operations-and-airspace-software.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Drone operations and airspace software offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "airmatrix",
+        "name": "AirMatrix",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aviation-technology company developing drone-operations infrastructure and airspace-management software.",
+        "websiteUrl": "https://airmatrix.io/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Waterloo",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4643,
+          "longitude": -80.5204,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Drone operations and airspace software",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "airmatrix-drone-operations-and-airspace-software",
+          "name": "Drone operations and airspace software",
+          "summary": "Canadian aviation-technology company developing drone-operations infrastructure and airspace-management software.",
+          "capabilityType": "Drone operations and airspace software",
+          "features": [
+            "Drone operations and airspace software",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Drone operations and airspace software offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:19:55.024Z",
+        "note": "Could not read official website: <urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081)>"
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-tyto-robotics",
+      "sourceLeadIds": [
+        "lead-tyto-robotics"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Tyto Robotics is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: UAV propulsion test systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "tyto-robotics-official",
+          "title": "Tyto Robotics official capability profile",
+          "url": "https://www.tytorobotics.com/",
+          "publisher": "Tyto Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Tyto Robotics and its public offering: Canadian aerospace test-equipment company providing thrust stands, measurement systems and analysis software for UAV propulsion development."
+        },
+        {
+          "id": "tyto-robotics-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "tyto-robotics-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-tyto-robotics-description",
+          "sourceId": "tyto-robotics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Tyto Robotics as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tyto-robotics-capability",
+          "sourceId": "tyto-robotics-official",
+          "fieldPath": "capabilities.tyto-robotics-uav-propulsion-test-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named UAV propulsion test systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "tyto-robotics",
+        "name": "Tyto Robotics",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aerospace test-equipment company providing thrust stands, measurement systems and analysis software for UAV propulsion development.",
+        "websiteUrl": "https://www.tytorobotics.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Gatineau",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.4765,
+          "longitude": -75.7013,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "UAV propulsion test systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "tyto-robotics-uav-propulsion-test-systems",
+          "name": "UAV propulsion test systems",
+          "summary": "Canadian aerospace test-equipment company providing thrust stands, measurement systems and analysis software for UAV propulsion development.",
+          "capabilityType": "UAV propulsion test systems",
+          "features": [
+            "UAV propulsion test systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described UAV propulsion test systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.tytorobotics.com/",
+        "sourceAssetUrl": "https://www.tytorobotics.com/cdn/shop/files/logo_tyto_robotics_email_signature4_190fc5d0-b46f-4e21-b535-d8c3b00341fe_2000x.webp?v=1746721882",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "19b3eae82974153a1dd53d1e9d42f4d39a2551224f3d7648402e1a99e15cd770",
+        "normalizedChecksum": "7fd10ddcb9dd2cad7e38331354c240f2f69358f61bc260e79b1f0942daaa1111",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121944/candidate-tyto-robotics/logo.source.json",
+        "note": "1024x368 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-aerial-vehicle-safety-solutions",
+      "sourceLeadIds": [
+        "lead-aerial-vehicle-safety-solutions"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Aerial Vehicle Safety Solutions is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: UAV safety and recovery systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "aerial-vehicle-safety-solutions-official",
+          "title": "Aerial Vehicle Safety Solutions official capability profile",
+          "url": "https://avss.co/",
+          "publisher": "Aerial Vehicle Safety Solutions",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Aerial Vehicle Safety Solutions and its public offering: Canadian drone-safety company developing parachute recovery and guided delivery systems for uncrewed aircraft."
+        },
+        {
+          "id": "aerial-vehicle-safety-solutions-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "aerial-vehicle-safety-solutions-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-aerial-vehicle-safety-solutions-description",
+          "sourceId": "aerial-vehicle-safety-solutions-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Aerial Vehicle Safety Solutions as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aerial-vehicle-safety-solutions-capability",
+          "sourceId": "aerial-vehicle-safety-solutions-official",
+          "fieldPath": "capabilities.aerial-vehicle-safety-solutions-uav-safety-and-recovery-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named UAV safety and recovery systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "aerial-vehicle-safety-solutions",
+        "name": "Aerial Vehicle Safety Solutions",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian drone-safety company developing parachute recovery and guided delivery systems for uncrewed aircraft.",
+        "websiteUrl": "https://avss.co/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Edmonton",
+          "provinceTerritory": "Alberta",
+          "countryCode": "CA",
+          "latitude": 53.5461,
+          "longitude": -113.4938,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "UAV safety and recovery systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "aerial-vehicle-safety-solutions-uav-safety-and-recovery-systems",
+          "name": "UAV safety and recovery systems",
+          "summary": "Canadian drone-safety company developing parachute recovery and guided delivery systems for uncrewed aircraft.",
+          "capabilityType": "UAV safety and recovery systems",
+          "features": [
+            "UAV safety and recovery systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described UAV safety and recovery systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://avss.co/",
+        "sourceAssetUrl": "https://www.avss.co/wp-content/uploads/2019/10/avss-dark.svg",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "314edb3927f8fb253c227a3247bc1220629b4a1249f5f2327ad1a008445db909",
+        "normalizedChecksum": "6f09ab9b4295022e8f4f0cba2e75cb5c3a92fc897d83305282c3578f48e89654",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121944/candidate-aerial-vehicle-safety-solutions/logo.source.json",
+        "note": "204x48 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-seamatica-aerospace",
+      "sourceLeadIds": [
+        "lead-seamatica-aerospace"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Seamatica Aerospace is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: RF sensing and detect-and-avoid systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "seamatica-aerospace-official",
+          "title": "Seamatica Aerospace official capability profile",
+          "url": "https://seamatica.com/",
+          "publisher": "Seamatica Aerospace",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Seamatica Aerospace and its public offering: Newfoundland aerospace company specializing in RF signal processing and detect-and-avoid technology for remotely piloted aircraft."
+        },
+        {
+          "id": "seamatica-aerospace-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "seamatica-aerospace-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-seamatica-aerospace-description",
+          "sourceId": "seamatica-aerospace-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Seamatica Aerospace as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-seamatica-aerospace-capability",
+          "sourceId": "seamatica-aerospace-official",
+          "fieldPath": "capabilities.seamatica-aerospace-rf-sensing-and-detect-and-avoid-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named RF sensing and detect-and-avoid systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "seamatica-aerospace",
+        "name": "Seamatica Aerospace",
+        "legalName": null,
+        "aliases": [],
+        "description": "Newfoundland aerospace company specializing in RF signal processing and detect-and-avoid technology for remotely piloted aircraft.",
+        "websiteUrl": "https://seamatica.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "St. John's",
+          "provinceTerritory": "Newfoundland and Labrador",
+          "countryCode": "CA",
+          "latitude": 47.5615,
+          "longitude": -52.7126,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "RF sensing and detect-and-avoid systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "seamatica-aerospace-rf-sensing-and-detect-and-avoid-systems",
+          "name": "RF sensing and detect-and-avoid systems",
+          "summary": "Newfoundland aerospace company specializing in RF signal processing and detect-and-avoid technology for remotely piloted aircraft.",
+          "capabilityType": "RF sensing and detect-and-avoid systems",
+          "features": [
+            "RF sensing and detect-and-avoid systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described RF sensing and detect-and-avoid systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:19:55.024Z",
+        "note": "Could not read official website: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-uncrewed-systems",
+      "sourceLeadIds": [
+        "lead-uncrewed-systems"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Uncrewed Systems is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Sovereign drone systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "uncrewed-systems-official",
+          "title": "Uncrewed Systems official capability profile",
+          "url": "https://uncrewedsystems.ca/",
+          "publisher": "Uncrewed Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Uncrewed Systems and its public offering: Canadian uncrewed-systems company focused on autonomous aircraft adapted for Arctic, maritime and electronically contested operating conditions."
+        },
+        {
+          "id": "uncrewed-systems-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "uncrewed-systems-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-uncrewed-systems-description",
+          "sourceId": "uncrewed-systems-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Uncrewed Systems as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-uncrewed-systems-capability",
+          "sourceId": "uncrewed-systems-official",
+          "fieldPath": "capabilities.uncrewed-systems-sovereign-drone-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Sovereign drone systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "uncrewed-systems",
+        "name": "Uncrewed Systems",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian uncrewed-systems company focused on autonomous aircraft adapted for Arctic, maritime and electronically contested operating conditions.",
+        "websiteUrl": "https://uncrewedsystems.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Sovereign drone systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "uncrewed-systems-sovereign-drone-systems",
+          "name": "Sovereign drone systems",
+          "summary": "Canadian uncrewed-systems company focused on autonomous aircraft adapted for Arctic, maritime and electronically contested operating conditions.",
+          "capabilityType": "Sovereign drone systems",
+          "features": [
+            "Sovereign drone systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Sovereign drone systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://uncrewedsystems.ca/",
+        "sourceAssetUrl": "https://uncrewedsystems.ca/wp-content/themes/uncrewedsystems-2/assets/logo.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "b50567f7ed358cf14b4d385492646351eb842d10272660cfea94fb6375b883c1",
+        "normalizedChecksum": "77be96fc22760f9ca4fa7cb0bbcb1dde440860e529efa9c839ce29567a252128",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725121944/candidate-uncrewed-systems/logo.source.json",
+        "note": "402x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-coastal-defence-systems",
+      "sourceLeadIds": [
+        "lead-coastal-defence-systems"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coastal Defence Systems is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Defence UAV systems and services. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "coastal-defence-systems-official",
+          "title": "Coastal Defence Systems official capability profile",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "publisher": "Coastal Defence Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Coastal Defence Systems and its public offering: Atlantic Canadian Indigenous defence-drone company developing UAV technology and operational services."
+        },
+        {
+          "id": "coastal-defence-systems-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "coastal-defence-systems-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-coastal-defence-systems-description",
+          "sourceId": "coastal-defence-systems-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Coastal Defence Systems as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-coastal-defence-systems-capability",
+          "sourceId": "coastal-defence-systems-official",
+          "fieldPath": "capabilities.coastal-defence-systems-defence-uav-systems-and-services.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Defence UAV systems and services offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "coastal-defence-systems",
+        "name": "Coastal Defence Systems",
+        "legalName": null,
+        "aliases": [],
+        "description": "Atlantic Canadian Indigenous defence-drone company developing UAV technology and operational services.",
+        "websiteUrl": "https://www.coastaldefencesystems.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Halifax",
+          "provinceTerritory": "Nova Scotia",
+          "countryCode": "CA",
+          "latitude": 44.6488,
+          "longitude": -63.5752,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Defence UAV systems and services",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "coastal-defence-systems-defence-uav-systems-and-services",
+          "name": "Defence UAV systems and services",
+          "summary": "Atlantic Canadian Indigenous defence-drone company developing UAV technology and operational services.",
+          "capabilityType": "Defence UAV systems and services",
+          "features": [
+            "Defence UAV systems and services",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Defence UAV systems and services offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:19:55.026Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-agile-electromagnetics",
+      "sourceLeadIds": [
+        "lead-agile-electromagnetics"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Agile Electromagnetics is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Electronic warfare and RF sensing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:19:53.590Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "agile-electromagnetics-official",
+          "title": "Agile Electromagnetics official capability profile",
+          "url": "https://www.agile-em.com/",
+          "publisher": "Agile Electromagnetics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Agile Electromagnetics and its public offering: Canadian defence-technology company developing electronic-warfare and remote-sensing systems, including drone payloads."
+        },
+        {
+          "id": "agile-electromagnetics-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "agile-electromagnetics-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:19:53.590Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-agile-electromagnetics-description",
+          "sourceId": "agile-electromagnetics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Agile Electromagnetics as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-agile-electromagnetics-capability",
+          "sourceId": "agile-electromagnetics-official",
+          "fieldPath": "capabilities.agile-electromagnetics-electronic-warfare-and-rf-sensing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Electronic warfare and RF sensing offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "agile-electromagnetics",
+        "name": "Agile Electromagnetics",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian defence-technology company developing electronic-warfare and remote-sensing systems, including drone payloads.",
+        "websiteUrl": "https://www.agile-em.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Electronic warfare and RF sensing",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "agile-electromagnetics-electronic-warfare-and-rf-sensing",
+          "name": "Electronic warfare and RF sensing",
+          "summary": "Canadian defence-technology company developing electronic-warfare and remote-sensing systems, including drone payloads.",
+          "capabilityType": "Electronic warfare and RF sensing",
+          "features": [
+            "Electronic warfare and RF sensing",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Electronic warfare and RF sensing offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:19:55.025Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    }
+  ],
+  "deferred": []
+}

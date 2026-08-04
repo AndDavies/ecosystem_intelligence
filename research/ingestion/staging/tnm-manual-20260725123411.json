@@ -1,0 +1,2081 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-25T12:34:29.591Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260725123411",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-kind:company",
+      "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-07-25T12:34:11.876Z",
+    "completed_at": "2026-07-25T12:34:23.007Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "Official company capability and newsroom research",
+      "Government IDEaS and CanadaBuys discovery research",
+      "CADSI, conference and Source Book discovery",
+      "Targeted LinkedIn company search via authenticated Chrome",
+      "Broad web research for Canadian strategic-technology companies"
+    ],
+    "counters": {
+      "sourcesChecked": 50,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 50,
+      "uniqueProspects": 50,
+      "prospectsQueued": 40,
+      "recoveryAttempts": 150,
+      "sourceLanesSearched": 8,
+      "candidatesGreen": 0,
+      "candidatesAmber": 10
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "All candidates are amber because their field evidence is anchored in official company materials; secondary sources remain discovery context until corroborated."
+      ]
+    },
+    "stop_reason": "Completed a bounded ten-candidate review batch; queued prospects remain for subsequent batches."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-solace",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-solace"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-solace",
+        "sourceLeadIds": [
+          "lead-solace"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Solace is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Event-driven data integration. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "solace-official",
+            "title": "Solace official capability profile",
+            "url": "https://solace.com/",
+            "publisher": "Solace",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Solace and its public offering: Canadian software company providing event-driven integration and messaging technology for distributed systems."
+          },
+          {
+            "id": "solace-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "solace-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-solace-description",
+            "sourceId": "solace-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Solace as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-solace-capability",
+            "sourceId": "solace-official",
+            "fieldPath": "capabilities.solace-event-driven-data-integration.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Event-driven data integration offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "solace",
+          "name": "Solace",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian software company providing event-driven integration and messaging technology for distributed systems.",
+          "websiteUrl": "https://solace.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Event-driven data integration",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://solace.com/",
+          "sourceAssetUrl": "https://solace.com/wp-content/uploads/2025/07/airbus-logo-400x200-1.svg",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "8de1f15ce79687b584042f629018ea2eb62d70252b550d47665df96a07a589b7",
+          "normalizedChecksum": "dd578237a556679108f2a12f21b60eb72c223d3c113a7af1d3e853af2da9d733",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123411/candidate-solace/logo.source.json",
+          "note": "400x200 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "solace-event-driven-data-integration",
+            "name": "Event-driven data integration",
+            "summary": "Canadian software company providing event-driven integration and messaging technology for distributed systems.",
+            "capabilityType": "Event-driven data integration",
+            "features": [
+              "Event-driven data integration",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Event-driven data integration offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-solace-description",
+          "sourceId": "solace-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Solace as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-solace-capability",
+          "sourceId": "solace-official",
+          "fieldPath": "capabilities.solace-event-driven-data-integration.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Event-driven data integration offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Solace is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Event-driven data integration. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    },
+    {
+      "client_candidate_id": "candidate-ranovus",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-ranovus"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-ranovus",
+        "sourceLeadIds": [
+          "lead-ranovus"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Ranovus is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Optical communications technology. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "ranovus-official",
+            "title": "Ranovus official capability profile",
+            "url": "https://ranovus.com/",
+            "publisher": "Ranovus",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Ranovus and its public offering: Canadian photonics company developing optical interconnect and communications technology for data infrastructure."
+          },
+          {
+            "id": "ranovus-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "ranovus-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-ranovus-description",
+            "sourceId": "ranovus-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Ranovus as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ranovus-capability",
+            "sourceId": "ranovus-official",
+            "fieldPath": "capabilities.ranovus-optical-communications-technology.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Optical communications technology offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "ranovus",
+          "name": "Ranovus",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian photonics company developing optical interconnect and communications technology for data infrastructure.",
+          "websiteUrl": "https://ranovus.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Optical communications technology",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://ranovus.com/",
+          "sourceAssetUrl": "https://ranovus.com/wp-content/uploads/2026/03/Logo-IEEE-SA.avif",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "5a775d2b55dc33e67c8b6a7fac76205b7cc1ca3c797a5b320648cb010fb93d4c",
+          "normalizedChecksum": "8d9e6b81f30c63ffb133071202af122f9c34fd451beed1688c0741492f0ae27a",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123411/candidate-ranovus/logo.source.json",
+          "note": "510x305 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "ranovus-optical-communications-technology",
+            "name": "Optical communications technology",
+            "summary": "Canadian photonics company developing optical interconnect and communications technology for data infrastructure.",
+            "capabilityType": "Optical communications technology",
+            "features": [
+              "Optical communications technology",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Optical communications technology offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-ranovus-description",
+          "sourceId": "ranovus-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Ranovus as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ranovus-capability",
+          "sourceId": "ranovus-official",
+          "fieldPath": "capabilities.ranovus-optical-communications-technology.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Optical communications technology offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Ranovus is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Optical communications technology. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    },
+    {
+      "client_candidate_id": "candidate-peraso",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-peraso"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-peraso",
+        "sourceLeadIds": [
+          "lead-peraso"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Peraso is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Millimetre-wave wireless systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "peraso-official",
+            "title": "Peraso official capability profile",
+            "url": "https://perasoinc.com/",
+            "publisher": "Peraso",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Peraso and its public offering: Canadian semiconductor company developing millimetre-wave wireless technology and chipsets."
+          },
+          {
+            "id": "peraso-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "peraso-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-peraso-description",
+            "sourceId": "peraso-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Peraso as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-peraso-capability",
+            "sourceId": "peraso-official",
+            "fieldPath": "capabilities.peraso-millimetre-wave-wireless-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Millimetre-wave wireless systems offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "peraso",
+          "name": "Peraso",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian semiconductor company developing millimetre-wave wireless technology and chipsets.",
+          "websiteUrl": "https://perasoinc.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Toronto",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6532,
+            "longitude": -79.3832,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Millimetre-wave wireless systems",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-25T12:34:25.292Z",
+          "note": "No acceptable official-logo candidate found."
+        },
+        "capabilities": [
+          {
+            "slug": "peraso-millimetre-wave-wireless-systems",
+            "name": "Millimetre-wave wireless systems",
+            "summary": "Canadian semiconductor company developing millimetre-wave wireless technology and chipsets.",
+            "capabilityType": "Millimetre-wave wireless systems",
+            "features": [
+              "Millimetre-wave wireless systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Millimetre-wave wireless systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-peraso-description",
+          "sourceId": "peraso-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Peraso as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-peraso-capability",
+          "sourceId": "peraso-official",
+          "fieldPath": "capabilities.peraso-millimetre-wave-wireless-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Millimetre-wave wireless systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Peraso is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Millimetre-wave wireless systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    },
+    {
+      "client_candidate_id": "candidate-thinkrf",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-thinkrf"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-thinkrf",
+        "sourceLeadIds": [
+          "lead-thinkrf"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "thinkRF is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: RF spectrum analysis and SDR. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "thinkrf-official",
+            "title": "thinkRF official capability profile",
+            "url": "https://thinkrf.com/",
+            "publisher": "thinkRF",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes thinkRF and its public offering: Canadian RF-technology company providing spectrum-analysis and software-defined radio systems."
+          },
+          {
+            "id": "thinkrf-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "thinkrf-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-thinkrf-description",
+            "sourceId": "thinkrf-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes thinkRF as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-thinkrf-capability",
+            "sourceId": "thinkrf-official",
+            "fieldPath": "capabilities.thinkrf-rf-spectrum-analysis-and-sdr.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named RF spectrum analysis and SDR offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "thinkrf",
+          "name": "thinkRF",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian RF-technology company providing spectrum-analysis and software-defined radio systems.",
+          "websiteUrl": "https://thinkrf.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "RF spectrum analysis and SDR",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-25T12:34:25.294Z",
+          "note": "Could not read official website: <urlopen error [Errno 61] Connection refused>"
+        },
+        "capabilities": [
+          {
+            "slug": "thinkrf-rf-spectrum-analysis-and-sdr",
+            "name": "RF spectrum analysis and SDR",
+            "summary": "Canadian RF-technology company providing spectrum-analysis and software-defined radio systems.",
+            "capabilityType": "RF spectrum analysis and SDR",
+            "features": [
+              "RF spectrum analysis and SDR",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described RF spectrum analysis and SDR offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-thinkrf-description",
+          "sourceId": "thinkrf-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes thinkRF as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-thinkrf-capability",
+          "sourceId": "thinkrf-official",
+          "fieldPath": "capabilities.thinkrf-rf-spectrum-analysis-and-sdr.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named RF spectrum analysis and SDR offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "thinkRF is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: RF spectrum analysis and SDR. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    },
+    {
+      "client_candidate_id": "candidate-cmc-electronics",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-cmc-electronics"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-cmc-electronics",
+        "sourceLeadIds": [
+          "lead-cmc-electronics"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "CMC Electronics is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Avionics and mission systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "cmc-electronics-official",
+            "title": "CMC Electronics official capability profile",
+            "url": "https://cmcelectronics.ca/",
+            "publisher": "CMC Electronics",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes CMC Electronics and its public offering: Canadian aerospace company providing avionics, cockpit systems, simulation and mission equipment."
+          },
+          {
+            "id": "cmc-electronics-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "cmc-electronics-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-cmc-electronics-description",
+            "sourceId": "cmc-electronics-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes CMC Electronics as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-cmc-electronics-capability",
+            "sourceId": "cmc-electronics-official",
+            "fieldPath": "capabilities.cmc-electronics-avionics-and-mission-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Avionics and mission systems offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "cmc-electronics",
+          "name": "CMC Electronics",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian aerospace company providing avionics, cockpit systems, simulation and mission equipment.",
+          "websiteUrl": "https://cmcelectronics.ca/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Montreal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Avionics and mission systems",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://cmcelectronics.ca/",
+          "sourceAssetUrl": "https://cmcelectronics.ca/wp-content/uploads/2022/08/logo-CMC_black.svg",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "b64c07b2361b55afee42020549cea96e49eda9ea3fbcd04842c1c723e7627c55",
+          "normalizedChecksum": "a89c1de0c8eb67e03a752bb869327a280594bbb08ef333be37c95d5b00c2d8c8",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123411/candidate-cmc-electronics/logo.source.json",
+          "note": "180x57 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "cmc-electronics-avionics-and-mission-systems",
+            "name": "Avionics and mission systems",
+            "summary": "Canadian aerospace company providing avionics, cockpit systems, simulation and mission equipment.",
+            "capabilityType": "Avionics and mission systems",
+            "features": [
+              "Avionics and mission systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Avionics and mission systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-cmc-electronics-description",
+          "sourceId": "cmc-electronics-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes CMC Electronics as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cmc-electronics-capability",
+          "sourceId": "cmc-electronics-official",
+          "fieldPath": "capabilities.cmc-electronics-avionics-and-mission-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Avionics and mission systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "CMC Electronics is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Avionics and mission systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    },
+    {
+      "client_candidate_id": "candidate-firan-technology-group",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-firan-technology-group"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-firan-technology-group",
+        "sourceLeadIds": [
+          "lead-firan-technology-group"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Firan Technology Group is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Aerospace electronics manufacturing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "firan-technology-group-official",
+            "title": "Firan Technology Group official capability profile",
+            "url": "https://ftgcorp.com/",
+            "publisher": "Firan Technology Group",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Firan Technology Group and its public offering: Canadian electronics manufacturer producing printed circuits and electronic subsystems for aerospace and defence markets."
+          },
+          {
+            "id": "firan-technology-group-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "firan-technology-group-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-firan-technology-group-description",
+            "sourceId": "firan-technology-group-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Firan Technology Group as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-firan-technology-group-capability",
+            "sourceId": "firan-technology-group-official",
+            "fieldPath": "capabilities.firan-technology-group-aerospace-electronics-manufacturing.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Aerospace electronics manufacturing offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "firan-technology-group",
+          "name": "Firan Technology Group",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian electronics manufacturer producing printed circuits and electronic subsystems for aerospace and defence markets.",
+          "websiteUrl": "https://ftgcorp.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Toronto",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.6532,
+            "longitude": -79.3832,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Aerospace electronics manufacturing",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://www.ftgcorp.com/",
+          "sourceAssetUrl": "https://www.ftgcorp.com/wp-content/uploads/2020/01/blacklogo-110x66.png",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "5aba838d679134165efd9559c52222463210aea2ecc3dc0386635e6973a5fb97",
+          "normalizedChecksum": "bcb3078669a372e0dced121537010ed9e983e399625924587777550489ae0a3d",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123411/candidate-firan-technology-group/logo.source.json",
+          "note": "110x66 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "firan-technology-group-aerospace-electronics-manufacturing",
+            "name": "Aerospace electronics manufacturing",
+            "summary": "Canadian electronics manufacturer producing printed circuits and electronic subsystems for aerospace and defence markets.",
+            "capabilityType": "Aerospace electronics manufacturing",
+            "features": [
+              "Aerospace electronics manufacturing",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Aerospace electronics manufacturing offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-firan-technology-group-description",
+          "sourceId": "firan-technology-group-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Firan Technology Group as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-firan-technology-group-capability",
+          "sourceId": "firan-technology-group-official",
+          "fieldPath": "capabilities.firan-technology-group-aerospace-electronics-manufacturing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Aerospace electronics manufacturing offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Firan Technology Group is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Aerospace electronics manufacturing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    },
+    {
+      "client_candidate_id": "candidate-airboss-of-america",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-airboss-of-america"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-airboss-of-america",
+        "sourceLeadIds": [
+          "lead-airboss-of-america"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "AirBoss of America is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Protective materials and manufacturing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "airboss-of-america-official",
+            "title": "AirBoss of America official capability profile",
+            "url": "https://airboss.com/",
+            "publisher": "AirBoss of America",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes AirBoss of America and its public offering: Canadian advanced-materials company providing protective products, rubber compounds and specialized manufacturing."
+          },
+          {
+            "id": "airboss-of-america-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "airboss-of-america-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-airboss-of-america-description",
+            "sourceId": "airboss-of-america-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes AirBoss of America as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-airboss-of-america-capability",
+            "sourceId": "airboss-of-america-official",
+            "fieldPath": "capabilities.airboss-of-america-protective-materials-and-manufacturing.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Protective materials and manufacturing offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "airboss-of-america",
+          "name": "AirBoss of America",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian advanced-materials company providing protective products, rubber compounds and specialized manufacturing.",
+          "websiteUrl": "https://airboss.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Newmarket",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 44.0592,
+            "longitude": -79.4613,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Protective materials and manufacturing",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://airboss.com/",
+          "sourceAssetUrl": "https://airboss.com/wp-content/uploads/2020/08/AIRBOSSCOLOUR-LOGO.png",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "6c232d7f490223f3ab878076c0c3e44357433379b38228dfef7b87cc423fcdb5",
+          "normalizedChecksum": "ab098f8817d349a529f40baa0bb7ab16b558f58a15dc9f1c65833dfb0e9cedec",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123411/candidate-airboss-of-america/logo.source.json",
+          "note": "402x160 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "airboss-of-america-protective-materials-and-manufacturing",
+            "name": "Protective materials and manufacturing",
+            "summary": "Canadian advanced-materials company providing protective products, rubber compounds and specialized manufacturing.",
+            "capabilityType": "Protective materials and manufacturing",
+            "features": [
+              "Protective materials and manufacturing",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Protective materials and manufacturing offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-airboss-of-america-description",
+          "sourceId": "airboss-of-america-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes AirBoss of America as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-airboss-of-america-capability",
+          "sourceId": "airboss-of-america-official",
+          "fieldPath": "capabilities.airboss-of-america-protective-materials-and-manufacturing.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Protective materials and manufacturing offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "AirBoss of America is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Protective materials and manufacturing. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    },
+    {
+      "client_candidate_id": "candidate-imt-defence",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-imt-defence"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-imt-defence",
+        "sourceLeadIds": [
+          "lead-imt-defence"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "IMT Defence is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Defence manufacturing and munitions systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "imt-defence-official",
+            "title": "IMT Defence official capability profile",
+            "url": "https://imtdefence.com/",
+            "publisher": "IMT Defence",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes IMT Defence and its public offering: Canadian defence manufacturer producing artillery, mortar and ammunition-related systems and components."
+          },
+          {
+            "id": "imt-defence-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "imt-defence-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-imt-defence-description",
+            "sourceId": "imt-defence-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes IMT Defence as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-imt-defence-capability",
+            "sourceId": "imt-defence-official",
+            "fieldPath": "capabilities.imt-defence-defence-manufacturing-and-munitions-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Defence manufacturing and munitions systems offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "imt-defence",
+          "name": "IMT Defence",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian defence manufacturer producing artillery, mortar and ammunition-related systems and components.",
+          "websiteUrl": "https://imtdefence.com/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ingersoll",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.0364,
+            "longitude": -80.8831,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Defence manufacturing and munitions systems",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "ready",
+          "confidence": "high",
+          "sourcePageUrl": "https://imtprecision.com/",
+          "sourceAssetUrl": "https://imtprecision.com/wp-content/uploads/2024/05/IMT_Precision-2.png#284",
+          "selectionMethod": "page_logo_image",
+          "sourceChecksum": "aec4f0e6550515982fb61adb2c4d8a5beb5021e2a3e6f42dc58b8757f7f5f916",
+          "normalizedChecksum": "d1f9e496051c794263641ec3ec99e9903b532a76f5b1a45dca0d94090cbe6d15",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123411/candidate-imt-defence/logo.source.json",
+          "note": "887x167 normalized WebP retained in the private candidate packet."
+        },
+        "capabilities": [
+          {
+            "slug": "imt-defence-defence-manufacturing-and-munitions-systems",
+            "name": "Defence manufacturing and munitions systems",
+            "summary": "Canadian defence manufacturer producing artillery, mortar and ammunition-related systems and components.",
+            "capabilityType": "Defence manufacturing and munitions systems",
+            "features": [
+              "Defence manufacturing and munitions systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Defence manufacturing and munitions systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-imt-defence-description",
+          "sourceId": "imt-defence-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes IMT Defence as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-imt-defence-capability",
+          "sourceId": "imt-defence-official",
+          "fieldPath": "capabilities.imt-defence-defence-manufacturing-and-munitions-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Defence manufacturing and munitions systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "IMT Defence is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Defence manufacturing and munitions systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    },
+    {
+      "client_candidate_id": "candidate-curtiss-wright-indal",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-curtiss-wright-indal"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-curtiss-wright-indal",
+        "sourceLeadIds": [
+          "lead-curtiss-wright-indal"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Curtiss-Wright Indal is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Naval aircraft handling systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "curtiss-wright-indal-official",
+            "title": "Curtiss-Wright Indal official capability profile",
+            "url": "https://www.curtisswright.com/company/locations/indal-technologies-canada.html",
+            "publisher": "Curtiss-Wright Indal",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Curtiss-Wright Indal and its public offering: Canadian naval-systems business providing aircraft handling, stabilization and mission-support equipment."
+          },
+          {
+            "id": "curtiss-wright-indal-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "curtiss-wright-indal-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-curtiss-wright-indal-description",
+            "sourceId": "curtiss-wright-indal-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Curtiss-Wright Indal as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-curtiss-wright-indal-capability",
+            "sourceId": "curtiss-wright-indal-official",
+            "fieldPath": "capabilities.curtiss-wright-indal-naval-aircraft-handling-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Naval aircraft handling systems offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "curtiss-wright-indal",
+          "name": "Curtiss-Wright Indal",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian naval-systems business providing aircraft handling, stabilization and mission-support equipment.",
+          "websiteUrl": "https://www.curtisswright.com/company/locations/indal-technologies-canada.html",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Mississauga",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 43.589,
+            "longitude": -79.6441,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Naval aircraft handling systems",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-25T12:34:25.287Z",
+          "note": "Could not read official website: HTTP Error 404: Not Found"
+        },
+        "capabilities": [
+          {
+            "slug": "curtiss-wright-indal-naval-aircraft-handling-systems",
+            "name": "Naval aircraft handling systems",
+            "summary": "Canadian naval-systems business providing aircraft handling, stabilization and mission-support equipment.",
+            "capabilityType": "Naval aircraft handling systems",
+            "features": [
+              "Naval aircraft handling systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Naval aircraft handling systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-curtiss-wright-indal-description",
+          "sourceId": "curtiss-wright-indal-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Curtiss-Wright Indal as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-curtiss-wright-indal-capability",
+          "sourceId": "curtiss-wright-indal-official",
+          "fieldPath": "capabilities.curtiss-wright-indal-naval-aircraft-handling-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Naval aircraft handling systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Curtiss-Wright Indal is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Naval aircraft handling systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    },
+    {
+      "client_candidate_id": "candidate-elbit-systems-canada",
+      "research_run_ref": "tnm-manual-20260725123411",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v2",
+      "source_lead_ids": [
+        "lead-elbit-systems-canada"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v2",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-elbit-systems-canada",
+        "sourceLeadIds": [
+          "lead-elbit-systems-canada"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Elbit Systems Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Defence mission systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+        "reviewTier": "amber",
+        "inclusionScore": 82,
+        "completenessScore": 72,
+        "reviewWarnings": [
+          "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-25T12:34:23.007Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+        },
+        "sources": [
+          {
+            "id": "elbit-systems-canada-official",
+            "title": "Elbit Systems Canada official capability profile",
+            "url": "https://elbitsystems.com/canada/",
+            "publisher": "Elbit Systems Canada",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Official company overview and capability material",
+            "summary": "Official company material describes Elbit Systems Canada and its public offering: Canadian defence-systems company providing airborne, land, electro-optical and training technologies."
+          },
+          {
+            "id": "elbit-systems-canada-ideas-discovery",
+            "title": "Innovation for Defence Excellence and Security",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Government innovation discovery lane",
+            "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+          },
+          {
+            "id": "elbit-systems-canada-cadsi-discovery",
+            "title": "Canadian Association of Defence and Security Industries",
+            "url": "https://defenceandsecurity.ca/",
+            "publisher": "CADSI",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-07-25T12:34:23.007Z",
+            "locator": "Industry association discovery lane",
+            "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-elbit-systems-canada-description",
+            "sourceId": "elbit-systems-canada-official",
+            "fieldPath": "organization.description",
+            "claimClass": "source_backed",
+            "excerpt": "The official company material describes Elbit Systems Canada as a Canadian technology business with the public offering summarized in this candidate.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-elbit-systems-canada-capability",
+            "sourceId": "elbit-systems-canada-official",
+            "fieldPath": "capabilities.elbit-systems-canada-defence-mission-systems.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official capability material supports the named Defence mission systems offering and the bounded operational description prepared for reviewer consideration.",
+            "confidence": "moderate"
+          }
+        ],
+        "organization": {
+          "slug": "elbit-systems-canada",
+          "name": "Elbit Systems Canada",
+          "legalName": null,
+          "aliases": [],
+          "description": "Canadian defence-systems company providing airborne, land, electro-optical and training technologies.",
+          "websiteUrl": "https://elbitsystems.com/canada/",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "primaryLocation": {
+            "city": "Ottawa",
+            "provinceTerritory": "Ontario",
+            "countryCode": "CA",
+            "latitude": 45.4215,
+            "longitude": -75.6972,
+            "geographicConfidence": "city_centroid"
+          },
+          "profileData": {
+            "portfolioScope": "Defence mission systems",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          }
+        },
+        "candidateLogo": {
+          "status": "not_found",
+          "checkedAt": "2026-07-25T12:34:25.291Z",
+          "note": "Could not read official website: HTTP Error 403: Forbidden"
+        },
+        "capabilities": [
+          {
+            "slug": "elbit-systems-canada-defence-mission-systems",
+            "name": "Defence mission systems",
+            "summary": "Canadian defence-systems company providing airborne, land, electro-optical and training technologies.",
+            "capabilityType": "Defence mission systems",
+            "features": [
+              "Defence mission systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "sensing-and-isr",
+              "mission-software-and-data"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "The publicly described Defence mission systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ]
+          }
+        ],
+        "programs": [],
+        "relationships": []
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-elbit-systems-canada-description",
+          "sourceId": "elbit-systems-canada-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Elbit Systems Canada as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-elbit-systems-canada-capability",
+          "sourceId": "elbit-systems-canada-official",
+          "fieldPath": "capabilities.elbit-systems-canada-defence-mission-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Defence mission systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:23.007Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "reviewer_rationale": "Elbit Systems Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Defence mission systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-07-25T12:34:29.591Z"
+    }
+  ]
+}

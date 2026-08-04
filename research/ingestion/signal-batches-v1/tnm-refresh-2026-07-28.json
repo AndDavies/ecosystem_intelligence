@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-refresh-2026-07-28-signals",
+  "runId": "tnm-refresh-2026-07-28",
+  "createdAt": "2026-07-28T08:26:56.000Z",
+  "watermarkStart": "2026-07-21T08:23:08.807Z",
+  "watermarkEnd": "2026-07-28T08:26:56.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 3,
+    "government_procurement": 2,
+    "source_book": 2,
+    "ecosystem_program": 0,
+    "industry_publication": 1,
+    "gmail_newsletter": 2,
+    "linkedin_chrome": 0,
+    "other_discovery": 1
+  },
+  "warnings": [
+    "The read-only Gmail newsletter was used only to discover leads; every qualified claim was recovered through durable company, government, or independent public sources.",
+    "The targeted LinkedIn lane was attempted through the available browser but presented a sign-in screen; no LinkedIn content was collected and the run remains valid through the other six source families.",
+    "This is an enrichment-only run. Strong new-record trails for Pratt & Whitney Canada and Davie Autonomous Inc. are deferred rather than staged as organization candidates."
+  ],
+  "signals": [
+    {
+      "signalId": "magellan-ge-f414-sustainment-mou-2026-07-22",
+      "fingerprint": "8e0771d70d5e7bf6e5088bab2f3b9c9fa99ee7c2ab1f23e0e76d2ebdb17eaf68",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Canadian Defence Review newsletter recovered through GE Aerospace and Magellan official news",
+      "discoveryOrigin": {
+        "url": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-magellan-aerospace-sign-memorandum-understanding-f414-sustainment",
+        "gmailMessageId": "19f8fccb4f630aa4",
+        "gmailThreadId": "19f8fccb4f630aa4",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Magellan Aerospace",
+        "technology": "F414-GE-39E engine maintenance, repair and overhaul",
+        "program": "GE Aerospace and Magellan F414 sustainment MOU",
+        "issuer": "GE Aerospace",
+        "eventDate": "2026-07-22",
+        "amount": null,
+        "details": "GE Aerospace and Magellan announced a strategic MOU to establish Canadian F414-GE-39E engine MRO capability for Gripen E aircraft, explicitly contingent on a Government of Canada Gripen acquisition decision."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-magellan-aerospace-sign-memorandum-understanding-f414-sustainment",
+        "https://magellan.aero/media/press-releases/"
+      ],
+      "signalType": "partnership_or_consortium",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8cb88c1b-a0ce-462a-bd00-a5b4b5104156",
+          "slug": "magellan-aerospace",
+          "matchMethods": ["name", "slug", "website_domain"],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T08:27:58.746479Z"
+        }
+      ],
+      "intendedOutcomes": ["organization_refresh"],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-magellan-aerospace-sign-memorandum-understanding-f414-sustainment",
+          "outcome": "Resolved the named parties, F414-GE-39E MRO intent, Canadian location and the explicit Gripen-acquisition contingency."
+        },
+        {
+          "channel": "source_book",
+          "url": "https://magellan.aero/media/press-releases/",
+          "outcome": "Confirmed the same July 22 announcement appears in Magellan's official press-release index."
+        }
+      ],
+      "warnings": ["The source describes a non-binding MOU predicated on a future Government of Canada acquisition decision; it is not an awarded Canadian MRO contract."],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "babcock-vissc-extension-2026-07-20",
+      "fingerprint": "4311e1cae652fb1ae175618e1e0720f040e3bff30c0ed499aa552c626fbda51b",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Canadian Defence Review newsletter recovered through Babcock release, CanadaBuys and Canadian Press",
+      "discoveryOrigin": {
+        "url": "https://www.newswire.ca/news-releases/government-of-canada-awards-victoria-in-service-support-contract-extension-to-babcock-canada-845284121.html",
+        "gmailMessageId": "19f8fccb4f630aa4",
+        "gmailThreadId": "19f8fccb4f630aa4",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Babcock Canada",
+        "technology": "Victoria-class submarine in-service support",
+        "program": "Victoria In-Service Support Contract extension",
+        "issuer": "Government of Canada",
+        "eventDate": "2026-07-20",
+        "amount": "$1.1 billion reported by Canadian Press",
+        "details": "Babcock Canada announced a six-year extension of the Victoria In-Service Support Contract for Royal Canadian Navy Victoria-class submarines; Canadian Press independently reported the extension and value."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.newswire.ca/news-releases/government-of-canada-awards-victoria-in-service-support-contract-extension-to-babcock-canada-845284121.html",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8483-065814/001/sle-001",
+        "https://toronto.citynews.ca/2026/07/20/babcocks-in-service-contract-for-victoria-subs-extended-6-years/"
+      ],
+      "signalType": "contract_or_award",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "aeabb44e-4a90-4bf1-b075-0ac5836e6776",
+          "slug": "babcock-canada",
+          "matchMethods": ["name", "slug", "website_domain"],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T14:06:58.932707Z"
+        }
+      ],
+      "intendedOutcomes": ["organization_refresh"],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8483-065814/001/sle-001",
+          "outcome": "Recovered the public VISSC contract history and amendment context associated with Babcock Canada."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://toronto.citynews.ca/2026/07/20/babcocks-in-service-contract-for-victoria-subs-extended-6-years/",
+          "outcome": "Recovered independent Canadian Press reporting of the six-year extension and reported $1.1 billion contract value."
+        }
+      ],
+      "warnings": ["The CanadaBuys historical record provides contract context but does not itself present the July 20 six-year extension wording; that wording is supported by the company release and Canadian Press reporting."],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "pratt-whitney-canada-longueuil-modernization-2026-07-21",
+      "fingerprint": "66d249c41a1b3960d4a306eb4f6fc002487e6b1b9d08e0320f30ae3f54ba6ca5",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Innovation, Science and Economic Development Canada and RTX official news",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/07/minister-joly-announces-engagement-with-pratt--whitney-canada-to-strengthen-canadas-aerospace-sector.html",
+        "gmailMessageId": "19f8fccb4f630aa4",
+        "gmailThreadId": "19f8fccb4f630aa4",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Pratt & Whitney Canada",
+        "technology": "aircraft engine manufacturing modernization",
+        "program": "Strategic Response Fund Longueuil modernization",
+        "issuer": "Innovation, Science and Economic Development Canada",
+        "eventDate": "2026-07-21",
+        "amount": "up to $34 million federal contribution within a $275 million project",
+        "details": "Canada announced up to $34 million through the Strategic Response Fund to support modernization of Pratt & Whitney Canada's Longueuil manufacturing centre of excellence; RTX describes a $275 million Canadian-dollar facility investment."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/innovation-science-economic-development/news/2026/07/minister-joly-announces-engagement-with-pratt--whitney-canada-to-strengthen-canadas-aerospace-sector.html",
+        "https://www.rtx.com/news/news-center/2026/07/21/rtxs-pratt-whitney-canada-to-invest-275-million-cad-in-longueuil-facility-wi"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": ["deferred"],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/07/minister-joly-announces-engagement-with-pratt--whitney-canada-to-strengthen-canadas-aerospace-sector.html",
+          "outcome": "Resolved the federal contribution, project purpose and Canadian facility context."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.rtx.com/news/news-center/2026/07/21/rtxs-pratt-whitney-canada-to-invest-275-million-cad-in-longueuil-facility-wi",
+          "outcome": "Resolved the company investment amount and Longueuil manufacturing scope."
+        }
+      ],
+      "warnings": [],
+      "disposition": "deferred",
+      "deferralRationale": "No published Pratt & Whitney Canada organization matched the live Supabase watchlist. This enrichment-only run preserves the evidence-rich new-record trail without creating an out-of-scope organization bundle."
+    },
+    {
+      "signalId": "davie-autonomous-launch-2026-07-21",
+      "fingerprint": "813782f95504593e1a34a84d882f8a9d63a61bbbf165e3b2b3275e1a7ad1939f",
+      "sourceChannel": "other_discovery",
+      "sourceFamily": "Davie company-issued launch announcement",
+      "discoveryOrigin": {
+        "url": "https://www.newswire.ca/news-releases/davie-autonomous-launched-in-ontario-834241118.html",
+        "gmailMessageId": "19f8fccb4f630aa4",
+        "gmailThreadId": "19f8fccb4f630aa4",
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Davie Autonomous Inc.",
+        "technology": "uncrewed and autonomous maritime vehicles and systems",
+        "program": "Davie Autonomous launch",
+        "issuer": "Davie",
+        "eventDate": "2026-07-21",
+        "amount": null,
+        "details": "Davie announced Davie Autonomous Inc. as an Ontario-based Canadian manufacturer and integrator of autonomous maritime vehicles and systems, with initial USVs developed with Kraken Technology Group."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": ["https://www.newswire.ca/news-releases/davie-autonomous-launched-in-ontario-834241118.html"],
+      "signalType": "technology_launch",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [],
+      "intendedOutcomes": ["deferred"],
+      "recoveryAttempts": [
+        {
+          "channel": "other_discovery",
+          "url": "https://www.newswire.ca/news-releases/davie-autonomous-launched-in-ontario-834241118.html",
+          "outcome": "Resolved the company-issued launch announcement, Ontario location, USV focus and Kraken collaboration context."
+        },
+        {
+          "channel": "source_book",
+          "url": "https://davie.ca/",
+          "outcome": "Checked the parent-company public source route; no existing live organization matched safely for enrichment staging."
+        }
+      ],
+      "warnings": [],
+      "disposition": "deferred",
+      "deferralRationale": "Neither Davie Autonomous Inc. nor a parent Davie organization matched the live watchlist. Preserve as a new-record research trail rather than expanding this existing-record enrichment batch."
+    }
+  ]
+}

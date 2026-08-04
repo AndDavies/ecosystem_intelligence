@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-2026-07-27",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "government_innovation_office"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:government_innovation_office",
+    "reason": "4 published or pending government innovation office records cover only 40% of the working saturation target of 10.",
+    "score": 850
+  },
+  "status": "completed",
+  "startedAt": "2026-07-27T11:02:06.505Z",
+  "completedAt": "2026-07-27T11:13:03.799Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 4,
+    "minimumCandidates": 1,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Gmail label Newsletters/Defence after 2026-07-17 read-only newsletter sweep",
+    "Canada.ca Defence Investment Agency official profile and DIS delivery pages",
+    "Canada.ca BOREALIS and Uncrewed Systems Defence Innovation Secure Hub pages",
+    "DND 2026-27 Departmental Plan IDEaS and innovation references",
+    "NRC defence research source-book row and drone innovation hub context",
+    "Invest Ottawa Canada National Defence Innovation Hub page and published organization match",
+    "Quebec aerospace strategy and UxS DISH Quebec ministry follow-up",
+    "Published-company and Canadian defence newsletter sweep for current UAS, MRO, sustainment and hub signals"
+  ],
+  "counters": {
+    "sourcesChecked": 32,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 3,
+    "prospectsDiscovered": 6,
+    "uniqueProspects": 6,
+    "prospectsQueued": 5,
+    "recoveryAttempts": 14,
+    "sourceLanesSearched": 4,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0,
+    "signalsExtracted": 10,
+    "signalsDispositioned": 10,
+    "sourceFamiliesSearched": 7
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Authenticated Chrome/LinkedIn unavailable; source-family contract met through Gmail, government, Source Book, ecosystem, industry, company and other discovery sources.",
+      "DIA and BOREALIS remain queued because shared Canada.ca organization modeling needs reviewer guidance before safe staging."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed weekday refresh with all extracted signals dispositioned, one qualified existing-record refresh candidate, and duplicate-sensitive government-office trails preserved as backlog.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-refresh-2026-07-27.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-2026-07-27.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-2026-07-27.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-2026-07-27.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-refresh-2026-07-27.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-2026-07-27.json"
+  }
+}

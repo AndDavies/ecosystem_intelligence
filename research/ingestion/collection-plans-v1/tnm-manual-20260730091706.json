@@ -1,0 +1,368 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260730091706-collection-plan",
+  "runId": "tnm-manual-20260730091706",
+  "createdAt": "2026-07-30T09:17:06.506Z",
+  "status": "complete",
+  "intelligenceRequirement": "Resolve the identity, Canadian relevance, concrete offerings or public needs, technical detail, maturity, current activity, relationships, and material contradictions needed to address organization-kind:government_innovation_office: 4 published or pending government innovation office records cover only 40% of the working saturation target of 10.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-ontario-centre-of-innovation",
+      "subjectType": "organization",
+      "name": "Ontario Centre of Innovation",
+      "aliases": [
+        "OCI"
+      ],
+      "canonicalIdentifiers": [
+        "https://www.oc-innovation.ca/",
+        "www.oc-innovation.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-alberta-innovates",
+      "subjectType": "organization",
+      "name": "Alberta Innovates",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "https://albertainnovates.ca/",
+        "albertainnovates.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-innovate-bc",
+      "subjectType": "organization",
+      "name": "Innovate BC",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "https://www.innovatebc.ca/",
+        "www.innovatebc.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-innovation-saskatchewan",
+      "subjectType": "organization",
+      "name": "Innovation Saskatchewan",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "https://innovationsask.ca/",
+        "innovationsask.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-research-manitoba",
+      "subjectType": "organization",
+      "name": "Research Manitoba",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "https://researchmanitoba.ca/",
+        "researchmanitoba.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-invest-nova-scotia",
+      "subjectType": "organization",
+      "name": "Invest Nova Scotia",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "https://investnovascotia.ca/",
+        "investnovascotia.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-innovation-pei",
+      "subjectType": "organization",
+      "name": "Innovation PEI",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "https://www.princeedwardisland.ca/en/topic/innovation-pei",
+        "www.princeedwardisland.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-opportunities-new-brunswick",
+      "subjectType": "organization",
+      "name": "Opportunities New Brunswick",
+      "aliases": [
+        "ONB"
+      ],
+      "canonicalIdentifiers": [
+        "https://onbcanada.ca/",
+        "onbcanada.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-investissement-quebec",
+      "subjectType": "organization",
+      "name": "Investissement Québec",
+      "aliases": [
+        "IQ"
+      ],
+      "canonicalIdentifiers": [
+        "https://www.investquebec.com/",
+        "www.investquebec.com"
+      ]
+    },
+    {
+      "subjectId": "subject-atlantic-canada-opportunities-agency",
+      "subjectType": "organization",
+      "name": "Atlantic Canada Opportunities Agency",
+      "aliases": [
+        "ACOA",
+        "Agence de promotion économique du Canada atlantique",
+        "APECA"
+      ],
+      "canonicalIdentifiers": [
+        "https://www.acoa-apeca.gc.ca/",
+        "www.acoa-apeca.gc.ca"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What is the canonical organization identity, ownership context, aliases, and evidence of an active Canadian operating presence?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.aliases",
+        "organization.primaryLocation",
+        "organization.profileData"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "technology-detail-maturity",
+      "subjectType": "technology",
+      "question": "What concrete products, systems, specifications, applications, integration boundaries, maturity, and deployment evidence are publicly supportable?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications",
+        "organization.profileData"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "contracts-procurement-demand",
+      "subjectType": "signal",
+      "question": "Which contracts, procurement lifecycle events, public programs, customer activity, partnerships, and official demand statements materially change the record?",
+      "targetFieldPaths": [
+        "programs.*.summary",
+        "relationships.*.publicSummary",
+        "demandSource.summary",
+        "requirements.*.problemStatement"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "conflicts-and-gaps",
+      "subjectType": "signal",
+      "question": "Which material claims conflict, remain unresolved, have been superseded, or require a visible reviewer warning rather than a canonical field?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Collect durable official site evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada official site",
+        "organization-kind:government_innovation_office Canada français official site",
+        "Canada provincial innovation agency official site",
+        "agence innovation provinciale Canada official site"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Collect durable technical documents evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada technical documents",
+        "organization-kind:government_innovation_office Canada français technical documents",
+        "Canada provincial innovation agency technical documents",
+        "agence innovation provinciale Canada technical documents"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Collect durable corporate registry evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada corporate registry",
+        "organization-kind:government_innovation_office Canada français corporate registry",
+        "Canada provincial innovation agency corporate registry",
+        "agence innovation provinciale Canada corporate registry"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "patent_ip",
+      "purpose": "Collect durable patent ip evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada patent ip",
+        "organization-kind:government_innovation_office Canada français patent ip",
+        "Canada provincial innovation agency patent ip",
+        "agence innovation provinciale Canada patent ip"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Collect durable government procurement evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada government procurement",
+        "organization-kind:government_innovation_office Canada français government procurement",
+        "Canada provincial innovation agency government procurement",
+        "agence innovation provinciale Canada government procurement"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "proactive_disclosure",
+      "purpose": "Collect durable proactive disclosure evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada proactive disclosure",
+        "organization-kind:government_innovation_office Canada français proactive disclosure",
+        "Canada provincial innovation agency proactive disclosure",
+        "agence innovation provinciale Canada proactive disclosure"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Collect durable customer partner program evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada customer partner program",
+        "organization-kind:government_innovation_office Canada français customer partner program",
+        "Canada provincial innovation agency customer partner program",
+        "agence innovation provinciale Canada customer partner program"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Collect durable industry publication evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada industry publication",
+        "organization-kind:government_innovation_office Canada français industry publication",
+        "Canada provincial innovation agency industry publication",
+        "agence innovation provinciale Canada industry publication"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Collect durable ecosystem directory evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada ecosystem directory",
+        "organization-kind:government_innovation_office Canada français ecosystem directory",
+        "Canada provincial innovation agency ecosystem directory",
+        "agence innovation provinciale Canada ecosystem directory"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "authenticated_discovery_feed",
+      "purpose": "Find named leads and recent activity in authenticated newsletters or targeted social pages, then resolve every material assertion to durable evidence.",
+      "sourcePosture": "discovery_only",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada authenticated discovery feed",
+        "organization-kind:government_innovation_office Canada français authenticated discovery feed",
+        "Canada provincial innovation agency authenticated discovery feed",
+        "agence innovation provinciale Canada authenticated discovery feed"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Collect durable bilingual public web evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "organization-kind:government_innovation_office Canada bilingual public web",
+        "organization-kind:government_innovation_office Canada français bilingual public web",
+        "Canada provincial innovation agency bilingual public web",
+        "agence innovation provinciale Canada bilingual public web"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "technology, demand, program, contract, relationship, or current-activity detail"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop a subject only after the coverage vector records every dimension as covered, partial, not found, or not applicable with supporting claims or search attempts.",
+    "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new material claims and all contradictions are dispositioned."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

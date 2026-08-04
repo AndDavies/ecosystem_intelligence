@@ -1,0 +1,435 @@
+{
+  "selected": [
+    {
+      "id": "aurora-rov-systems",
+      "name": "Aurora ROV Systems Ltd.",
+      "legalName": "Aurora ROV Systems Ltd.",
+      "aliases": ["Aurora ROV Systems", "Aurora Underwater Metal Detectors Limited (historical identity)"],
+      "website": "https://www.aurorarov.ca/",
+      "city": "Herring Cove",
+      "province": "Nova Scotia",
+      "latitude": 44.543,
+      "longitude": -63.600,
+      "description": "Aurora ROV Systems Ltd. is a Herring Cove, Nova Scotia distributor of advanced underwater robotic systems and remotely operated vehicle technologies for the marine industry.",
+      "capability": {
+        "slug": "aurora-rov-underwater-robotic-systems",
+        "name": "Underwater robotic-system distribution and support",
+        "summary": "Aurora ROV Systems distributes advanced underwater robotic systems and ROV technologies for marine-industry users in Canada.",
+        "capabilityType": "Underwater robotic-system distribution",
+        "features": ["ROV technology portfolio", "Underwater robotic-system distribution", "Marine-industry focus"],
+        "applications": ["Marine inspection", "Underwater equipment deployment", "ROV procurement and support"],
+        "technicalTags": ["ROV", "underwater robotics", "marine inspection", "remote operations"],
+        "technicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "test-training-and-sustainment"],
+        "missionMatches": [["underwater-isr", "Distribution and support of advanced ROV systems could enable underwater inspection and sensing missions, but this is a derived fit and does not establish a current defence deployment.", "moderate"]]
+      },
+      "currentActivity": "Aurora continues to market advanced underwater robotic systems through its current Canadian website; public disclosure records a historical 2012–15 National Defence ROV contract rather than a current procurement.",
+      "relationship": {
+        "relatedOrganizationName": "Government of Canada",
+        "relationshipType": "Historical National Defence ROV supplier",
+        "publicSummary": "A federal contract-disclosure record identifies Aurora ROV Systems Ltd. as the vendor for a historical National Defence contract for ships and boats; this is retained as past public activity, not evidence of a current contract."
+      },
+      "tier": "amber",
+      "inclusionScore": 90,
+      "completenessScore": 84,
+      "warning": "The public National Defence contract is historical and the current website is a distributor profile; confirm the current product principals, legal identity and present Canadian operating scope before publication.",
+      "sourceKeys": {"description": "profile", "location": "contract", "capability": "profile", "technical": "profile", "activity": "profile", "relationship": "contract"},
+      "sources": [
+        ["profile", "Aurora ROV Systems Canada", "https://www.aurorarov.ca/", "Aurora ROV Systems Ltd.", "official_organization_profile", "Company introduction and ROV positioning", "Aurora identifies its Herring Cove, Nova Scotia operation as a Canadian distributor of advanced underwater robotic systems and ROV technologies.", "official_company", "evidence_anchor", null],
+        ["contract", "National Defence contract disclosure for Aurora ROV Systems", "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2021-2022-Q4-01350", "Government of Canada", "award_or_contract", "Vendor, National Defence client, dates and value", "Federal disclosure identifies Aurora ROV Systems Ltd. as the vendor on a historical National Defence contract and records the Herring Cove, Nova Scotia location.", "government_procurement", "strong_corroboration", "2012-11-19T00:00:00.000Z"],
+        ["announcement", "Government announcement on remotely operated vehicle acquisition", "https://www.canada.ca/fr/nouvelles/archive/2012/06/ministres-mackay-ambrose-annoncent-soutien-sera-accorde-relativement-achat-vehicules-teleguides.html", "Government of Canada", "award_or_contract", "June 2012 announcement naming Aurora", "A Government of Canada announcement states that Aurora ROV Systems would provide small remotely operated underwater vehicles for the Royal Canadian Navy; it is historical evidence only.", "government_procurement", "strong_corroboration", "2012-06-07T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "true-depth-diving-marine-services",
+      "name": "True Depth Diving & Marine Services",
+      "legalName": "True Depth Diving and Marine Services Inc.",
+      "aliases": ["True Depth Diving", "True Depth Diving and Marine Service"],
+      "website": "https://www.tddive.com/",
+      "city": "Stony Plain",
+      "province": "Alberta",
+      "latitude": 53.529,
+      "longitude": -114.000,
+      "description": "True Depth Diving & Marine Services is an Alberta commercial-diving and marine-services company providing ROV, CCTV and pipe-crawler inspections across Western Canada.",
+      "capability": {
+        "slug": "true-depth-underwater-robotics",
+        "name": "Underwater robotics and pipe-inspection crawlers",
+        "summary": "True Depth provides remotely operated vehicle and pipe-crawler inspection services for underwater, underground and remote infrastructure in Western Canada.",
+        "capabilityType": "ROV and pipe-crawler inspection service",
+        "features": ["Canadian-made compact ROVs", "On-board battery power", "Vertical precision thruster and grabber claw", "Submersible A-200 pipe crawler"],
+        "applications": ["Water-tower inspection", "Underwater infrastructure inspection", "Pipe and structure inspection", "Remote CCTV inspection"],
+        "technicalTags": ["ROV", "pipe crawler", "CCTV", "underwater inspection", "remote infrastructure"],
+        "technicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "test-training-and-sustainment"],
+        "missionMatches": [["underwater-isr", "Portable ROV and crawler inspection could provide visual assessment of submerged or confined infrastructure, subject to task-specific sensor and deployment validation.", "moderate"]]
+      },
+      "currentActivity": "True Depth's current website continues to list CCTV, ROV and pipe-crawler inspection services for commercial, municipal and infrastructure users in Western Canada.",
+      "relationship": {
+        "relatedOrganizationName": "Diver Certification Board of Canada",
+        "relationshipType": "Company-stated certified dive-team affiliation",
+        "publicSummary": "True Depth states that its dive teams are certified by the Diver Certification Board of Canada; this is a company-reported qualification and should be confirmed before relying on it as a current credential."
+      },
+      "tier": "amber",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "warning": "The official site substantiates the Canadian location and ROV offering, but independent current deployment or contract evidence was not recovered; verify credentials and the exact current ROV platform before publication.",
+      "sourceKeys": {"description": "about", "location": "contact", "capability": "robotics", "technical": "robotics", "activity": "home", "relationship": "about"},
+      "sources": [
+        ["about", "About True Depth Diving", "https://www.tddive.com/about/", "True Depth Diving & Marine Services", "official_organization_profile", "Company, service-region and qualifications sections", "True Depth describes a Western Canadian commercial-diving service with DCBC-certified dive teams and work across Alberta, Saskatchewan, British Columbia and the Territories.", "official_company", "evidence_anchor", null],
+        ["robotics", "True Depth underwater robotics and pipe crawler", "https://www.tddive.com/our-services/underwater-robotics/", "True Depth Diving & Marine Services", "official_company_product", "DTG3 ROV and A-200 crawler sections", "The company describes Canadian-made ROVs, a vertical-precision thruster and grabber claw, and a submersible pipe crawler with a two-hundred-metre tether.", "official_company", "evidence_anchor", null],
+        ["contact", "True Depth contact information", "https://www.tddive.com/contact/", "True Depth Diving & Marine Services", "official_organization_profile", "Stony Plain contact and mailing address", "The official contact page identifies True Depth Diving and Marine Services in Stony Plain, Alberta.", "official_company", "evidence_anchor", null],
+        ["home", "True Depth Diving commercial services", "https://www.tddive.com/", "True Depth Diving & Marine Services", "official_organization_profile", "ROV services and service-category sections", "The current company website lists ROV services for visual surveillance of underwater structures, pipes and vessels alongside commercial-diving and infrastructure services.", "official_company", "evidence_anchor", null]
+      ]
+    },
+    {
+      "id": "darkwater-exploration",
+      "name": "Darkwater Exploration",
+      "legalName": "EnviroMarine Ltd.",
+      "aliases": ["Darkwater", "Enviromarine Ltd."],
+      "website": "https://www.darkwater.systems/",
+      "city": "Creston",
+      "province": "British Columbia",
+      "latitude": 49.095,
+      "longitude": -116.510,
+      "description": "Darkwater Exploration is the ROV and underwater-video-inspection division of EnviroMarine Ltd., serving Western Canada from Creston, British Columbia.",
+      "capability": {
+        "slug": "darkwater-portable-rov-inspection",
+        "name": "Portable ROV underwater inspection",
+        "summary": "Darkwater Exploration provides portable ROV video inspection, imaging-sonar and intervention services for waterlines, reservoirs, outfalls, environmental surveys and underwater searches.",
+        "capabilityType": "Portable ROV inspection and intervention",
+        "features": ["M2 Pro ROV with eight thrusters", "Up to 150-metre working depth", "4K stabilized video", "Imaging sonar and detachable robotic arm"],
+        "applications": ["Municipal reservoir inspection", "Waterline and outfall inspection", "Fisheries and environmental surveys", "Underwater search and recovery"],
+        "technicalTags": ["ROV", "imaging sonar", "4K video", "robotic arm", "underwater inspection"],
+        "technicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "test-training-and-sustainment"],
+        "missionMatches": [["underwater-isr", "Portable ROV, imaging-sonar and video-inspection services could support localized underwater assessment and recovery tasks; mission fit is derived and no defence customer is asserted.", "moderate"]]
+      },
+      "currentActivity": "Darkwater's current official site advertises 100-metre and 150-metre ROV inspection options and underwater-video services across Western Canada.",
+      "relationship": {
+        "relatedOrganizationName": "EnviroMarine Ltd.",
+        "relationshipType": "Wholly owned operating division",
+        "publicSummary": "Darkwater states that it is a division of EnviroMarine Ltd., a wholly owned Canadian company registered in British Columbia; reviewers should keep the division and legal-entity names distinct."
+      },
+      "tier": "amber",
+      "inclusionScore": 87,
+      "completenessScore": 85,
+      "warning": "This is a division-level public identity under EnviroMarine Ltd.; publish only after confirming the preferred organization name and whether the capability should sit on the parent or the Darkwater division record.",
+      "sourceKeys": {"description": "parent", "location": "darkwater", "capability": "darkwater", "technical": "darkwater", "activity": "darkwater", "relationship": "darkwater"},
+      "sources": [
+        ["parent", "EnviroMarine Ltd. marine services", "https://www.enviromarine.ca/", "EnviroMarine Ltd.", "official_organization_profile", "Company services and ROV sections", "EnviroMarine describes British Columbia marine services that include ROV underwater inspection, mooring systems and in-lake pump work in the Kootenay, Columbia and Boundary regions.", "official_company", "evidence_anchor", null],
+        ["darkwater", "Darkwater Exploration ROV services", "https://www.darkwater.systems/", "Darkwater Exploration", "official_company_product", "Company identity, applications and ROV specification sections", "Darkwater describes its Creston, British Columbia operation, its EnviroMarine corporate relationship and inspection-class ROV systems with published video, depth, lighting and manipulator details.", "official_company", "evidence_anchor", null]
+      ]
+    },
+    {
+      "id": "camcor-diving-services",
+      "name": "Camcor Diving Services",
+      "legalName": "Camcor Diving Services Inc.",
+      "aliases": ["Camcor"],
+      "website": "https://camcordiving.com/",
+      "city": "Sidney",
+      "province": "British Columbia",
+      "latitude": 48.650,
+      "longitude": -123.397,
+      "description": "Camcor Diving Services is a Sidney, British Columbia underwater-construction, aquaculture-maintenance and marine-survey company that uses a light inspection-class ROV for underwater inspections.",
+      "capability": {
+        "slug": "camcor-light-inspection-rov",
+        "name": "Light inspection-class ROV support",
+        "summary": "Camcor uses a light inspection-class remotely operated vehicle to provide live-video underwater inspections alongside commercial-diving and marine-survey work.",
+        "capabilityType": "Inspection-class ROV service",
+        "features": ["Light inspection-class ROV", "Live surface video feed", "Underwater survey support", "Commercial-diving integration"],
+        "applications": ["Aquaculture maintenance", "Vessel and barge inspection", "Marine-infrastructure survey", "Dock and cable inspection"],
+        "technicalTags": ["ROV", "live video", "aquaculture", "marine survey", "underwater construction"],
+        "technicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "test-training-and-sustainment"],
+        "missionMatches": [["underwater-isr", "Inspection-class ROV video could support condition assessment of underwater structures, but defence applicability, customers and deployments remain unverified.", "moderate"]]
+      },
+      "currentActivity": "Camcor's current service site lists a light inspection-class ROV alongside aquaculture maintenance, underwater construction, vessel work and hydrographic-survey support.",
+      "relationship": {
+        "relatedOrganizationName": "Canadian Standards Association",
+        "relationshipType": "Company-stated leadership membership",
+        "publicSummary": "Camcor states that its owner and CEO are members of the Canadian Standards Association; this is a company-reported leadership affiliation, not evidence of a company certification or procurement relationship."
+      },
+      "tier": "amber",
+      "inclusionScore": 84,
+      "completenessScore": 81,
+      "warning": "Camcor's ROV offering is clear but is presented as part of a broader diving and aquaculture service; verify the system model, operating range and any relevant strategic-infrastructure customers before publication.",
+      "sourceKeys": {"description": "home", "location": "home", "capability": "home", "technical": "home", "activity": "home", "relationship": "home"},
+      "sources": [
+        ["home", "Camcor Diving Services", "https://camcordiving.com/", "Camcor Diving Services Inc.", "official_organization_profile", "ROV, marine-service, location and contact sections", "Camcor identifies its Sidney, British Columbia operation and describes light inspection-class ROV use, aquaculture maintenance, underwater construction, survey, salvage and cable work.", "official_company", "evidence_anchor", null],
+        ["about", "About Camcor Diving Services", "https://camcordiving.com/about/", "Camcor Diving Services Inc.", "official_organization_profile", "Aquaculture experience, safety and management sections", "Camcor describes more than three decades serving aquaculture and identifies its focus on commercial-diving safety and marine-industry operations.", "official_company", "evidence_anchor", null]
+      ]
+    },
+    {
+      "id": "vodasafe-aquaeye",
+      "name": "VodaSafe Inc.",
+      "legalName": "VodaSafe Inc.",
+      "aliases": ["AquaEye", "AquaEye / VodaSafe"],
+      "website": "https://aquaeye.com/",
+      "city": "Vancouver",
+      "province": "British Columbia",
+      "latitude": 49.2827,
+      "longitude": -123.1207,
+      "description": "VodaSafe Inc., operating as AquaEye, is a Vancouver technology company developing intelligent sonar and coordination tools for water-search, rescue and recovery operations.",
+      "capability": {
+        "slug": "aquaeye-rov-mounted-intelligent-sonar",
+        "name": "ROV-mounted intelligent sonar integration",
+        "summary": "VodaSafe is integrating AquaEye sonar and AI technology with an inspection-class ROV to support remote search, rescue and recovery operations in deep or hazardous water.",
+        "capabilityType": "ROV-mounted sonar and AI search system",
+        "features": ["AI-assisted sonar", "ROV-mounted integration", "Live search-area coordination", "Subsurface target identification support"],
+        "applications": ["Water search and rescue", "Victim recovery", "Public-safety operations", "Hazardous-water inspection"],
+        "technicalTags": ["sonar", "AI", "ROV", "search and rescue", "underwater sensing"],
+        "technicalDomainSlugs": ["sensing-and-isr", "autonomous-systems", "mission-software-and-data"],
+        "missionMatches": [["underwater-isr", "ROV-mounted sonar and AI-supported subsurface search could support underwater sensing and recovery tasks; the mapping is derived and not a statement of CAF or RCN adoption.", "high"]]
+      },
+      "currentActivity": "AquaEye released its Command Hub search-coordination platform in May 2026, following the Ocean Supercluster-backed ROV-mounted-sonar project launched with SEAMOR Marine in 2025.",
+      "relationship": {
+        "relatedOrganizationName": "Canada's Ocean Supercluster",
+        "relationshipType": "ROV-mounted-sonar project lead",
+        "publicSummary": "Canada's Ocean Supercluster announced a one-million-dollar AquaEye ROV Mounted Sonar Project led by VodaSafe with SEAMOR Marine; it describes a twelve-month integration project and does not establish military procurement."
+      },
+      "tier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 92,
+      "warning": "The ROV-mounted sonar work is a collaborative development project, while AquaEye's current commercial product is primarily handheld intelligent sonar; keep the two product states distinct and do not infer Canadian defence adoption.",
+      "sourceKeys": {"description": "about", "location": "about", "capability": "supercluster", "technical": "supercluster", "activity": "command", "relationship": "supercluster"},
+      "sources": [
+        ["about", "About AquaEye and VodaSafe", "https://aquaeye.com/about/", "AquaEye / VodaSafe Inc.", "official_organization_profile", "Company history and product context", "AquaEye describes the evolution of VodaSafe and its Canadian water-rescue technology work from Vancouver.", "official_company", "evidence_anchor", null],
+        ["supercluster", "Canada's Ocean Supercluster announces AquaEye ROV Mounted Sonar Project", "https://oceansupercluster.ca/project/canadas-ocean-supercluster-announces-1m-aquaeye-rov-mounted-sonar-project/", "Canada's Ocean Supercluster", "innovation_program", "Project lead, partner, funding and intended integration", "The Ocean Supercluster states that VodaSafe leads a twelve-month project with SEAMOR Marine to integrate AquaEye sonar and AI with an ROV, with a one-million-dollar total project value.", "ecosystem_program", "evidence_anchor", "2025-07-03T00:00:00.000Z"],
+        ["command", "AquaEye launches Command Hub", "https://aquaeye.com/aquaeye-launches-command-hub-to-bring-real-time-search-coordination-to-water-rescue-operations/", "AquaEye / VodaSafe Inc.", "official_company_news", "May 2026 product release", "AquaEye announced Command Hub, a platform that maps AquaEye Pro scans and coordinates multi-device water-search operations.", "official_company", "evidence_anchor", "2026-05-20T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "groupe-ortam",
+      "name": "Groupe Ortam Inc.",
+      "legalName": "Groupe Ortam Inc.",
+      "aliases": ["ORTAM", "Ortam Groupe"],
+      "website": "https://ortam.ca/",
+      "city": "Montreal",
+      "province": "Quebec",
+      "latitude": 45.5017,
+      "longitude": -73.5673,
+      "description": "Groupe Ortam Inc. is a Montreal-headquartered environmental, engineering and construction-services company that offers aerial and underwater drone inspection services in Quebec and Ontario.",
+      "capability": {
+        "slug": "ortam-aerial-underwater-drone-inspection",
+        "name": "Aerial and underwater drone inspection",
+        "summary": "ORTAM provides aerial and underwater drone inspection services that capture imagery, measurements and three-dimensional geospatial data for infrastructure and industrial assessment.",
+        "capabilityType": "Underwater drone inspection service",
+        "features": ["Camera-equipped drone inspection", "Three-dimensional geomaps", "Image, video and measurement capture", "One-time or scheduled inspection options"],
+        "applications": ["Infrastructure inspection", "Utilities and water assets", "Industrial and energy sites", "Construction and engineering assessment"],
+        "technicalTags": ["underwater drone", "ROV", "inspection", "3D geomatics", "infrastructure"],
+        "technicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "mission-software-and-data"],
+        "missionMatches": [["underwater-isr", "Underwater drone inspection and three-dimensional data capture could contribute to submerged-infrastructure assessment; the mission fit is derived and not evidence of a defence engagement.", "moderate"]]
+      },
+      "currentActivity": "ORTAM's current service page offers one-time, monthly and scheduled aerial and underwater drone inspections to clients in Quebec and Ontario.",
+      "relationship": {
+        "relatedOrganizationName": "Transport Canada",
+        "relationshipType": "Company-stated UAV certification and training",
+        "publicSummary": "ORTAM states that its personnel are trained and certified by Transport Canada for UAV work; this statement is limited to aerial operations and does not establish an ROV certification, contract or defence relationship."
+      },
+      "tier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 80,
+      "warning": "Underwater drone service is a bounded offering within a broader environmental and construction consultancy; verify the exact underwater platform, operating depth and current project evidence before publication.",
+      "sourceKeys": {"description": "about", "location": "contact", "capability": "drone", "technical": "drone", "activity": "drone", "relationship": "drone"},
+      "sources": [
+        ["about", "About ORTAM", "https://ortam.ca/about-us/", "Groupe Ortam Inc.", "official_organization_profile", "Company mandate and Montreal head-office sections", "ORTAM describes a multidisciplinary environmental, building, energy, engineering and construction-management consultancy with a Montreal head office.", "official_company", "evidence_anchor", null],
+        ["drone", "ORTAM aerial and underwater drone inspection", "https://ortam.ca/services/drone-inspection-services/", "Groupe Ortam Inc.", "official_company_product", "Underwater service, inspection process and technology sections", "ORTAM describes aerial and underwater drone services for clients in Quebec and Ontario, including image, video, measurement and three-dimensional geospatial-data capture.", "official_company", "evidence_anchor", null],
+        ["contact", "ORTAM contact and locations", "https://ortam.ca/contact-us/", "Groupe Ortam Inc.", "official_organization_profile", "Montreal head-office contact details", "The official contact page identifies ORTAM's Montreal head office and Ontario office.", "official_company", "evidence_anchor", null]
+      ]
+    },
+    {
+      "id": "industrial-recon",
+      "name": "Industrial Recon",
+      "legalName": "Industrial Recon",
+      "aliases": ["Recon"],
+      "website": "https://www.industrialrecon.com/",
+      "city": "Edmonton",
+      "province": "Alberta",
+      "latitude": 53.5461,
+      "longitude": -113.4938,
+      "description": "Industrial Recon is an Alberta industrial-inspection company that provides UAV and ROV inspection services, including underwater-drone operators and crews for Western Canadian projects.",
+      "capability": {
+        "slug": "industrial-recon-underwater-drone-inspection",
+        "name": "Underwater drone inspection operations",
+        "summary": "Industrial Recon provides ROV operator and crew services using underwater-drone systems for industrial inspection work in Western Canada.",
+        "capabilityType": "ROV inspection and operator service",
+        "features": ["ROV operator and crew services", "CHASING M2 Pro Max underwater drone", "Industrial inspection workflows", "Western Canada field deployment"],
+        "applications": ["Underwater industrial inspection", "Oil-and-gas asset assessment", "Remote visual inspection", "Infrastructure condition assessment"],
+        "technicalTags": ["ROV", "underwater drone", "industrial inspection", "remote operations", "CHASING M2"],
+        "technicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "test-training-and-sustainment"],
+        "missionMatches": [["underwater-isr", "Commercial underwater-drone operators could provide localized inspection capability for submerged industrial assets; the mapping is derived and no government customer or defence adoption is asserted.", "moderate"]]
+      },
+      "currentActivity": "Industrial Recon's current website advertises ROV operator and crew positions based from Calgary or Vancouver and lists a CHASING M2 Pro Max underwater-drone system.",
+      "relationship": {
+        "relatedOrganizationName": "CHASING Innovation",
+        "relationshipType": "Company-stated underwater-drone technology association",
+        "publicSummary": "Industrial Recon names CHASING among the technology brands it is trusted by and lists a CHASING M2 Pro Max system; reviewers should confirm whether this represents a formal reseller, service or equipment relationship."
+      },
+      "tier": "amber",
+      "inclusionScore": 84,
+      "completenessScore": 78,
+      "warning": "Industrial Recon's ROV offering is supported by its own current site but corporate legal identity, exact system ownership and cited client work require confirmation before publication.",
+      "sourceKeys": {"description": "home", "location": "home", "capability": "home", "technical": "home", "activity": "home", "relationship": "home"},
+      "sources": [
+        ["home", "Industrial Recon ROV and industrial inspection services", "https://www.industrialrecon.com/", "Industrial Recon", "official_organization_profile", "ROV operator, systems and Canadian office sections", "Industrial Recon describes Canadian UAV and ROV inspection services, lists Edmonton, Grande Prairie and Calgary offices, and identifies ROV operator and crew work using a CHASING M2 Pro Max underwater drone.", "official_company", "evidence_anchor", null]
+      ]
+    },
+    {
+      "id": "aquavision-services",
+      "name": "Aquavision Services LTD",
+      "legalName": "Aquavision Services LTD",
+      "aliases": ["Aquavision Services"],
+      "website": "https://www.aquavisionservices.ca/",
+      "city": "Vernon",
+      "province": "British Columbia",
+      "latitude": 50.2670,
+      "longitude": -119.2720,
+      "description": "Aquavision Services LTD is a Vernon, British Columbia company that uses ROVs to inspect, clean and maintain potable-water reservoirs without taking systems offline.",
+      "capability": {
+        "slug": "aquavision-rov-reservoir-inspection",
+        "name": "ROV potable-water reservoir inspection",
+        "summary": "Aquavision uses remotely operated vehicles with underwater cameras, lighting and precision manoeuvring to provide real-time condition assessment of potable-water reservoirs.",
+        "capabilityType": "ROV reservoir-inspection service",
+        "features": ["High-definition underwater cameras", "Advanced lighting", "Precision manoeuvring", "Real-time internal-reservoir assessment"],
+        "applications": ["Potable-water reservoir inspection", "Municipal water-system maintenance", "Sediment assessment", "Water-infrastructure condition monitoring"],
+        "technicalTags": ["ROV", "potable water", "reservoir inspection", "underwater camera", "critical infrastructure"],
+        "technicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "test-training-and-sustainment"],
+        "missionMatches": [["underwater-isr", "ROV condition assessment of water infrastructure could support inspection of critical submerged assets; the mission mapping is derived and does not assert defence use.", "moderate"]]
+      },
+      "currentActivity": "Aquavision's current site advertises ROV reservoir inspection, sediment removal and cleaning for water systems, while a 2023 Village of Belcarra meeting packet records the company operating an ROV for a reservoir-related inspection.",
+      "relationship": {
+        "relatedOrganizationName": "Village of Belcarra",
+        "relationshipType": "Publicly recorded ROV service provider",
+        "publicSummary": "A Village of Belcarra council-meeting package records Aquavision Services Ltd. providing and operating an ROV in June 2023; the record supports a historical service occurrence, not an ongoing municipal contract."
+      },
+      "tier": "green",
+      "inclusionScore": 90,
+      "completenessScore": 89,
+      "warning": "The public municipal record is from 2023 and the company's market focus is potable-water infrastructure; maintain that civilian critical-infrastructure boundary and do not infer a defence customer.",
+      "sourceKeys": {"description": "about", "location": "about", "capability": "rov", "technical": "rov", "activity": "rov", "relationship": "belcarra"},
+      "sources": [
+        ["about", "About Aquavision Services LTD", "https://www.aquavisionservices.ca/about", "Aquavision Services LTD", "official_organization_profile", "Company, service and Vernon location sections", "Aquavision identifies its British Columbia potable-water reservoir-inspection business, its Vernon location and ROV-enabled non-disruptive assessment approach.", "official_company", "evidence_anchor", null],
+        ["rov", "Aquavision ROV inspections", "https://www.aquavisionservices.ca/rov-inspections", "Aquavision Services LTD", "official_company_product", "ROV technology, inspection process and applications", "The official ROV page describes high-definition cameras, lighting and precision manoeuvring for real-time assessment of potable-water reservoir components.", "official_company", "evidence_anchor", null],
+        ["belcarra", "Village of Belcarra council meeting package", "https://belcarra.ca/assets/media/2023/10/2.0-2023-10-10-Regular-Council-Meeting-Agenda-Package.pdf", "Village of Belcarra", "official_report", "October 2023 agenda item on the June ROV work", "A Village of Belcarra meeting package records Aquavision Services Ltd. providing and operating an ROV on June 29, 2023 for the referenced work item.", "government_procurement", "strong_corroboration", "2023-10-10T00:00:00.000Z"]
+      ]
+    },
+    {
+      "id": "droneboy",
+      "name": "DroneBoy",
+      "legalName": "DroneBoy",
+      "aliases": ["DRONEBOY"],
+      "website": "https://www.droneboy.com/",
+      "city": "Toronto",
+      "province": "Ontario",
+      "latitude": 43.6532,
+      "longitude": -79.3832,
+      "description": "DroneBoy is a Toronto-area commercial-drone company that includes remotely operated underwater vehicle inspection in its industrial imaging, mapping and remote-inspection service portfolio.",
+      "capability": {
+        "slug": "droneboy-underwater-drone-inspection",
+        "name": "Underwater drone inspection and imaging",
+        "summary": "DroneBoy deploys remotely operated underwater vehicles and sensor packages for underwater imagery, inspection and remote-data collection alongside its broader industrial drone services.",
+        "capabilityType": "ROV inspection and remote-imaging service",
+        "features": ["ROV fleet", "Underwater photo and video", "Remote inspection workflows", "Sensor-enabled data collection"],
+        "applications": ["Water intakes and outfalls", "Hull and dock inspection", "Hydroelectric infrastructure", "Search and rescue support"],
+        "technicalTags": ["ROV", "underwater drone", "remote inspection", "imaging", "industrial drone"],
+        "technicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "mission-software-and-data"],
+        "missionMatches": [["underwater-isr", "Underwater drone imagery and inspection could support assessment of submerged structures and waterway assets; this is a derived mission fit and not a defence-customer claim.", "moderate"]]
+      },
+      "currentActivity": "DroneBoy's current industrial-inspection page continues to list underwater ROV inspections for water assets, hulls, docks, hydropower infrastructure and search-and-rescue applications.",
+      "relationship": {
+        "relatedOrganizationName": "Transport Canada",
+        "relationshipType": "Company-stated RPAS compliance",
+        "publicSummary": "DroneBoy states that its aerial-drone operations are Transport Canada and NAV CANADA compliant; this statement concerns RPAS operations and does not certify its underwater ROV service or establish a government contract."
+      },
+      "tier": "amber",
+      "inclusionScore": 80,
+      "completenessScore": 79,
+      "warning": "DroneBoy is primarily a broader aerial and production-services business with an underwater ROV offering; verify the legal entity, current ROV fleet and industrial project portfolio before publication.",
+      "sourceKeys": {"description": "about", "location": "contact", "capability": "inspection", "technical": "inspection", "activity": "inspection", "relationship": "about"},
+      "sources": [
+        ["about", "About DroneBoy", "https://www.droneboy.com/about/", "DroneBoy", "official_organization_profile", "Toronto base, fleet and regulatory-compliance sections", "DroneBoy describes a Toronto-area commercial-drone operation with an industrial-service portfolio and company-stated Transport Canada and NAV CANADA compliance for aerial work.", "official_company", "evidence_anchor", null],
+        ["inspection", "DroneBoy drone inspections", "https://www.droneboy.com/services/drone-inspections/", "DroneBoy", "official_company_product", "Underwater ROV inspection and technology sections", "DroneBoy states that it operates remotely operated underwater vehicles for inspections of water intakes, docks, hulls, hydropower infrastructure, waterways and search-and-rescue environments.", "official_company", "evidence_anchor", null],
+        ["contact", "DroneBoy contact", "https://www.droneboy.com/contact/", "DroneBoy", "official_organization_profile", "Canadian base and contact section", "The official contact page states that DroneBoy is based in Toronto, Canada and operates across Canada.", "official_company", "evidence_anchor", null]
+      ]
+    },
+    {
+      "id": "pro-dive-marine-services",
+      "name": "Pro-Dive Marine Services",
+      "legalName": "Pro-Dive Marine Services",
+      "aliases": ["Pro-Dive"],
+      "website": "https://prodive.ca/",
+      "city": "Mount Pearl",
+      "province": "Newfoundland and Labrador",
+      "latitude": 47.5166,
+      "longitude": -52.7814,
+      "description": "Pro-Dive Marine Services is a Newfoundland and Labrador-owned marine-services company providing ROV operations, commercial diving, vessels and project support for nearshore and offshore work in Atlantic Canada.",
+      "capability": {
+        "slug": "pro-dive-marine-rov-operations",
+        "name": "Marine ROV operations and survey support",
+        "summary": "Pro-Dive provides inspection-class ROV operations for inshore and offshore marine, industrial and survey tasks, integrated with diving, vessel and project-support services.",
+        "capabilityType": "Marine ROV operations service",
+        "features": ["Inspection-class ROV systems", "Inshore and offshore support", "MarineNav Oceanus Pro listed on legacy ROV page", "Dive-vessel and logistics integration"],
+        "applications": ["Underwater survey", "Ship and offshore inspection", "Marine construction support", "North Atlantic project logistics"],
+        "technicalTags": ["ROV", "underwater survey", "offshore", "commercial diving", "marine logistics"],
+        "technicalDomainSlugs": ["autonomous-systems", "sensing-and-isr", "test-training-and-sustainment"],
+        "missionMatches": [["underwater-isr", "Inspection-class ROV operations and North Atlantic marine support could inform underwater-survey and infrastructure-assessment tasks; this is a derived fit and does not claim current government work.", "moderate"]]
+      },
+      "currentActivity": "Pro-Dive's current website continues to advertise ROV operations, inspection-class equipment, commercial diving and project support from Newfoundland and Labrador for Atlantic Canadian work.",
+      "relationship": {
+        "relatedOrganizationName": "Canadian Coast Guard",
+        "relationshipType": "Company-listed historical client",
+        "publicSummary": "Pro-Dive's public company profile lists the Canadian Coast Guard among named clients; reviewers should verify date, scope and current status before treating this as a live government relationship."
+      },
+      "tier": "amber",
+      "inclusionScore": 89,
+      "completenessScore": 85,
+      "warning": "The company has strong public ROV and Atlantic marine-service evidence, but the exact current ROV system, customer dates and formal certification scope should be confirmed before publication.",
+      "sourceKeys": {"description": "about", "location": "home", "capability": "rov", "technical": "rov", "activity": "home", "relationship": "about"},
+      "sources": [
+        ["about", "About Pro-Dive Marine Services", "https://prodive.ca/about-us/", "Pro-Dive Marine Services", "official_organization_profile", "Ownership, ROV operations, standards and client-list sections", "Pro-Dive describes a Newfoundland and Labrador-owned company providing diving and ROV operations, marine support and project management for Atlantic Canada, and lists public-sector and industry clients.", "official_company", "evidence_anchor", null],
+        ["rov", "Pro-Dive ROV services", "https://www.prodive.ca/rovservices.aspx.html", "Pro-Dive Marine Services", "official_company_product", "ROV systems section", "The official legacy ROV-services page states that Pro-Dive provides a full range of inshore and offshore ROV services and identifies a MarineNav Oceanus Pro system.", "official_company", "strong_corroboration", null],
+        ["home", "Pro-Dive Marine Services", "https://prodive.ca/", "Pro-Dive Marine Services", "official_organization_profile", "Current ROV, contact and Mount Pearl address sections", "The current company site advertises inspection-class ROVs and marine operations support and lists its Mount Pearl, Newfoundland and Labrador mailing address.", "official_company", "evidence_anchor", null]
+      ]
+    }
+  ],
+  "queued": [
+    ["Canadian Underwater Inspection Services", "https://www.cuis.ca/", "bilingual_web"],
+    ["Aquatech Diving & Marine Services", "https://www.aquatechdiving.ca/rov-services/", "technical_documentation"],
+    ["Canpac Marine Services", "https://canpacmarine.com/", "company_newsroom"],
+    ["Desolation Dive Services", "https://www.desolationdiveservices.ca/", "broad_web"],
+    ["Mako Diving & Marine Services", "https://www.makodiving.ca/pages/commercial.php", "broad_web"],
+    ["DeepReach Solutions", "https://www.deepreachsolutions.ca/", "broad_web"],
+    ["CDMS Atlantic", "https://cdmsatlantic.ca/our-services/", "broad_web"],
+    ["Advanced Subsea Services", "https://www.advancedsubsea.com/", "broad_web"],
+    ["Seaveyors", "https://www.seaveyors.ca/", "customer_partner"],
+    ["Inland Divers Underwater Service", "https://www.inlanddivers.com/", "customer_partner"],
+    ["MarineNav Ltd.", "https://marinenav.ca/", "technical_documentation"],
+    ["Drone Labs", "https://dronelabs.ca/products/chasing-m2-rov-underwater-drone", "broad_web"],
+    ["Volatus Drones", "https://volatusdrones.ca/products/chasing-m2-pro-rov-light-industrial-grade-underwater-drone-for-professionals", "broad_web"],
+    ["Canada RC", "https://www.canadarc.ca/underwater_rov/", "broad_web"],
+    ["MISTRAS Group Canada", "https://mistrasgroup.ca/solutions/access-services/uav-drones/", "technical_documentation"],
+    ["Oceaneering Canada", "https://www.oceaneering.com/", "industry_association"],
+    ["DOF Canada", "https://www.dof.com/", "industry_association"],
+    ["Fugro Canada", "https://www.fugro.com/", "industry_association"],
+    ["Subsea 7 Canada", "https://www.subsea7.com/", "industry_association"],
+    ["TechnipFMC Canada", "https://www.technipfmc.com/", "industry_association"],
+    ["Freedom Diving Systems", "https://freedomdivingsystems.com/", "broad_web"],
+    ["Allied Commercial Divers", "https://www.allieddivers.ca/services", "broad_web"],
+    ["DEEPSIX Subsea International", "https://deepsixsubsea.com/", "broad_web"],
+    ["Colmor Marine Group", "https://www.colmormarine.com/", "broad_web"],
+    ["Aker Marine", "https://www.akermarine.com/", "broad_web"],
+    ["Ultra Maritime Canada", "https://umaritime.com/", "government_program"],
+    ["OSI Maritime Systems", "https://osimaritime.com/", "technical_documentation"],
+    ["JASCO Applied Sciences", "https://www.jasco.com/", "technical_documentation"],
+    ["Xeos Technologies", "https://xeostech.com/", "technical_documentation"],
+    ["Ocean Sonics", "https://oceansonics.com/", "technical_documentation"],
+    ["RBR", "https://rbr-global.com/", "technical_documentation"],
+    ["AML Oceanographic", "https://amloceanographic.ca/", "technical_documentation"],
+    ["Sensor Technology Ltd.", "https://sensortechcanada.com/", "technical_documentation"],
+    ["Nautel Sonar", "https://nautelsonar.com/", "technical_documentation"],
+    ["Open Ocean Robotics", "https://www.openoceanrobotics.com/", "customer_partner"],
+    ["Cellula Robotics", "https://cellula.com/", "customer_partner"],
+    ["International Submarine Engineering", "https://ise.bc.ca/", "customer_partner"]
+  ],
+  "duplicates": [
+    ["Deep Trekker", "https://www.deeptrekker.com/"],
+    ["SEAMOR Marine", "https://seamor.com/"],
+    ["SubC Imaging", "https://www.subcimaging.com/home"]
+  ]
+}

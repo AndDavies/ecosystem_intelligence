@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-refresh-2026-07-27",
+  "runId": "tnm-refresh-2026-07-27",
+  "title": "Weekday defence innovation hub refresh candidates",
+  "status": "candidate",
+  "createdAt": "2026-07-27T11:13:03.799Z",
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:government_innovation_office",
+    "reason": "4 published or pending government innovation office records cover only 40% of the working saturation target of 10.",
+    "score": 850
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-refresh-2026-07-27.json",
+  "guardrailNotes": [
+    "This batch creates private candidate_pending review material only; no canonical record is accepted or published by the automation.",
+    "The only proposed live change is additive: a profile_data update and a new program child for the existing Invest Ottawa organization.",
+    "Gmail, newsletter and social-like sources were retained as discovery provenance only and were not used as field evidence.",
+    "Canada.ca government-office trails were deferred rather than forced through duplicate-sensitive organization staging."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-invest-ottawa-national-defence-innovation-hub-refresh-20260727",
+      "sourceLeadIds": [
+        "lead-invest-ottawa-national-defence-innovation-hub-refresh"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "green",
+      "inclusionScore": 92,
+      "completenessScore": 86,
+      "reviewWarnings": [
+        "The hub page is an Invest Ottawa ecosystem strategy surface; reviewers should confirm whether future releases need a separate hub organization or only a nested program.",
+        "The page lists many partner and company names, but this refresh deliberately avoids creating relationships or company claims without separate review."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-27T11:13:03.799Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "74ea0730-a290-451f-91d1-804dd619bd88",
+            "name": "Invest Ottawa",
+            "matchedBy": "intended published refresh target via slug, website domain and normalized name"
+          }
+        ],
+        "note": "The sole match is the intentional live Invest Ottawa refresh target; no new organization identity is proposed."
+      },
+      "sources": [
+        {
+          "id": "invest-ottawa-dihub-source",
+          "title": "Canada's Defence Innovation Hub in Ottawa",
+          "url": "https://www.investottawa.ca/dihub/",
+          "publisher": "Invest Ottawa",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": "2026-07-27T00:00:00.000Z",
+          "accessedAt": "2026-07-27T11:13:03.799Z",
+          "locator": "National Defence Innovation Hub strategy, key highlights, task force and defence company map sections",
+          "summary": "Invest Ottawa presents Canada’s National Defence Innovation Hub and an Ottawa-Gatineau strategy to coordinate the region’s defence, aerospace and cyber ecosystem through an implementation task force, test infrastructure, procurement pathways and allied landing opportunities."
+        },
+        {
+          "id": "invest-ottawa-root-source",
+          "title": "Invest Ottawa programs and services",
+          "url": "https://www.investottawa.ca/",
+          "publisher": "Invest Ottawa",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-27T11:13:03.799Z",
+          "locator": "Programs, services, About and Area X.O references",
+          "summary": "Invest Ottawa’s public site describes the organization’s business advisory, accelerator, scale-up, global expansion, Area X.O and economic-development services that form the baseline for the published organization profile."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-invest-ottawa-dihub-program",
+          "sourceId": "invest-ottawa-dihub-source",
+          "fieldPath": "operations.add-invest-ottawa-dihub-program.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Invest Ottawa hub page presents Canada’s National Defence Innovation Hub and a five-year Ottawa-Gatineau strategy for coordinating government, academia, industry and investors around defence innovation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-invest-ottawa-dihub-task-force",
+          "sourceId": "invest-ottawa-dihub-source",
+          "fieldPath": "operations.set-invest-ottawa-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The page states that an Ottawa-Gatineau Defence Innovation Hub Task Force will lead implementation, coordinate actions, identify funding, track progress and report annually on outcomes.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-invest-ottawa-dihub-priorities",
+          "sourceId": "invest-ottawa-dihub-source",
+          "fieldPath": "operations.set-invest-ottawa-profile-data.after.programSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The strategy highlights priorities to unite the ecosystem, expand test infrastructure, attract investment, help companies grow, build workforce capacity and position Ottawa-Gatineau for allied defence and dual-use technology firms.",
+          "confidence": "high"
+        }
+      ],
+      "reviewerRationale": "Invest Ottawa is already published, and its current public defence innovation hub page adds useful, source-backed program context without changing the organization identity. The page frames Canada’s National Defence Innovation Hub as an Ottawa-Gatineau strategy and implementation effort linking government, academia, industry and investors around defence innovation, testing infrastructure, procurement pathways, workforce capacity and allied landing opportunities. This candidate adds a nested program and updates profile metadata only. Reviewers should verify whether future modeling should introduce a separate hub or task-force organization, and should avoid treating the strategy as procurement eligibility, endorsement, customer interest or classified demand.",
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "74ea0730-a290-451f-91d1-804dd619bd88",
+        "slug": "invest-ottawa",
+        "matchMethods": [
+          "slug",
+          "name",
+          "website_domain"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T07:28:43.196119Z"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "74ea0730-a290-451f-91d1-804dd619bd88",
+          "slug": "invest-ottawa",
+          "name": "Invest Ottawa",
+          "legal_name": "Invest Ottawa",
+          "website_url": "https://www.investottawa.ca/",
+          "entity_kind": "accelerator",
+          "organization_categories": [
+            "dual_use_accelerator",
+            "cluster_operator"
+          ],
+          "profile_data": {
+            "mandate": "Ottawa economic-development and technology accelerator that operates venture programs and Area X.O, a secure R&D complex supporting testing, validation, demonstration, and commercialization of autonomy, drones, communications, defence, and security technologies.",
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "evidencePosture": "Official identity, program, location, contact, and current-activity sources support this private candidate; unresolved modeling choices are stated in the reviewer rationale.",
+            "reviewed_candidate_id": "af82f4df-66e3-4a40-83a8-5dff47db0cd8",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "publication_status": "published",
+          "updated_at": "2026-07-21T07:28:43.196119Z"
+        },
+        "programs": [
+          {
+            "id": "dd468c56-8097-4427-a893-b054e061a2dd",
+            "slug": "area-xo",
+            "name": "Area X.O",
+            "program_type": "Secure technology R&D, test, and commercialization complex",
+            "operator_name": "Invest Ottawa",
+            "website_url": "https://www.investottawa.ca/blog/ottawa-region-ovin-rtds-renewed-to-accelerate-innovation/",
+            "summary": "Invest Ottawa-operated complex supporting development, testing, validation, demonstration, and commercialization of autonomy, drones, advanced communications, defence, security, and smart-mobility technologies.",
+            "participation_type": "operator",
+            "cohort_label": null
+          },
+          {
+            "id": "8f8b6f0e-0abd-4b98-9789-d767e9ec616b",
+            "slug": "io-accelerator",
+            "name": "IO Accelerator",
+            "program_type": "Technology venture accelerator",
+            "operator_name": "Invest Ottawa",
+            "website_url": "https://www.investottawa.ca/venture-path/accelerator/",
+            "summary": "Milestone-driven growth program for qualifying National Capital Region technology firms, providing expert support on product-market fit, finance, sales, marketing, talent, market intelligence, and access to capital.",
+            "participation_type": "operator",
+            "cohort_label": null
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "set-invest-ottawa-profile-data",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "74ea0730-a290-451f-91d1-804dd619bd88",
+          "field": "profile_data",
+          "before": {
+            "mandate": "Ottawa economic-development and technology accelerator that operates venture programs and Area X.O, a secure R&D complex supporting testing, validation, demonstration, and commercialization of autonomy, drones, communications, defence, and security technologies.",
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "evidencePosture": "Official identity, program, location, contact, and current-activity sources support this private candidate; unresolved modeling choices are stated in the reviewer rationale.",
+            "reviewed_candidate_id": "af82f4df-66e3-4a40-83a8-5dff47db0cd8",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "after": {
+            "mandate": "Ottawa economic-development and technology accelerator that operates venture programs and Area X.O, a secure R&D complex supporting testing, validation, demonstration, and commercialization of autonomy, drones, communications, defence, and security technologies.",
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "evidencePosture": "Official identity, program, location, contact, and current-activity sources support this private candidate; unresolved modeling choices are stated in the reviewer rationale.",
+            "reviewed_candidate_id": "af82f4df-66e3-4a40-83a8-5dff47db0cd8",
+            "research_schema_version": "organization_bundle_v2",
+            "currentActivity": "Invest Ottawa presents Canada’s National Defence Innovation Hub and a 2025-2030 Ottawa-Gatineau strategy to coordinate government, industry, academia and investors around defence innovation, testing infrastructure, procurement pathways, workforce capacity and allied landing opportunities.",
+            "programSummary": [
+              "Area X.O",
+              "IO Accelerator",
+              "Canada's National Defence Innovation Hub"
+            ],
+            "evidenceBoundary": "Hub strategy and program details are source-backed to Invest Ottawa public pages. Mission relevance remains derived ecosystem context and is not procurement eligibility, endorsement, customer interest or classified demand."
+          },
+          "evidenceIds": [
+            "evidence-invest-ottawa-dihub-task-force",
+            "evidence-invest-ottawa-dihub-priorities"
+          ],
+          "reviewerExplanation": "Preserve the reviewed baseline metadata while adding current defence-innovation hub activity and a clear evidence boundary for the public strategy signal."
+        },
+        {
+          "operationId": "add-invest-ottawa-dihub-program",
+          "operation": "add_child",
+          "entityType": "program",
+          "parentId": "74ea0730-a290-451f-91d1-804dd619bd88",
+          "value": {
+            "slug": "canadas-national-defence-innovation-hub",
+            "name": "Canada's National Defence Innovation Hub",
+            "programType": "Regional defence innovation hub and strategy",
+            "websiteUrl": "https://www.investottawa.ca/dihub/",
+            "summary": "Ottawa-Gatineau defence innovation strategy and hub program led through Invest Ottawa’s public ecosystem surface to coordinate government, academia, industry and investors around testing infrastructure, procurement pathways, company growth, workforce capacity and allied dual-use technology landing opportunities.",
+            "cohortLabel": null,
+            "operatorName": "Invest Ottawa",
+            "participationType": "lead partner and public strategy operator"
+          },
+          "evidenceIds": [
+            "evidence-invest-ottawa-dihub-program",
+            "evidence-invest-ottawa-dihub-priorities"
+          ],
+          "reviewerExplanation": "Add the hub as a program under the existing Invest Ottawa record rather than creating a separate organization before human modeling review."
+        }
+      ],
+      "sourceChannels": [
+        "other_discovery",
+        "source_book"
+      ],
+      "signalIds": [
+        "invest-ottawa-national-defence-innovation-hub-2026-07-27"
+      ],
+      "corroboration": [
+        {
+          "claim": "Invest Ottawa publicly presents Canada’s National Defence Innovation Hub as a regional strategy and program surface.",
+          "sourceIds": [
+            "invest-ottawa-dihub-source"
+          ]
+        },
+        {
+          "claim": "The hub strategy names implementation priorities around ecosystem coordination, test infrastructure, company growth, workforce capacity and allied landing opportunities.",
+          "sourceIds": [
+            "invest-ottawa-dihub-source"
+          ]
+        }
+      ]
+    }
+  ],
+  "deferred": [
+    {
+      "leadId": "prospect-defence-investment-agency",
+      "reason": "Strong official evidence but shared Canada.ca domain collides with existing government-office records under the current duplicate validator.",
+      "followUp": "Model DIA as an organization only after reviewer guidance on Canada.ca shared-domain duplicate handling."
+    },
+    {
+      "leadId": "prospect-borealis",
+      "reason": "Strong official evidence but BOREALIS is housed at DRDC and shares Canada.ca with existing DRDC and IDEaS records.",
+      "followUp": "Decide whether BOREALIS should be a separate government innovation office, program under DRDC, or demand/innovation-program source."
+    }
+  ]
+}

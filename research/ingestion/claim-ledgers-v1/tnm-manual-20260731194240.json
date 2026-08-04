@@ -1,0 +1,3597 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260731194240-claim-ledger",
+  "runId": "tnm-manual-20260731194240",
+  "createdAt": "2026-07-31T19:42:40.048Z",
+  "completedAt": "2026-07-31T20:11:14.864Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-earthdaily-analytics-description",
+      "subjectId": "subject-earthdaily-analytics",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "EarthDaily Analytics is a Vancouver Earth-observation company developing and commissioning an integrated satellite constellation, ground processing, analysis-ready imagery and geospatial analytics for broad-area change detection.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "earthdaily-analytics-profile",
+        "originalUrl": "https://earthdaily.com/about",
+        "canonicalUrl": "https://earthdaily.com/about",
+        "locator": "Company purpose, system and history sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "earthdaily.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "earthdaily.com/about"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-earthdaily-analytics",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for EarthDaily Analytics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-earthdaily-analytics-location",
+      "subjectId": "subject-earthdaily-analytics",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "EarthDaily Analytics has a documented Canadian operating presence in Vancouver, British Columbia.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-06-05T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "earthdaily-analytics-registry",
+        "originalUrl": "https://ised-isde.canada.ca/cipo/trademark-search/2225451",
+        "canonicalUrl": "https://ised-isde.canada.ca/cipo/trademark-search/2225451",
+        "locator": "Registered owner and Vancouver address",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "ised-isde.canada.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "ised-isde.canada.ca/cipo/trademark-search/2225451"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-earthdaily-analytics",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for EarthDaily Analytics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-earthdaily-analytics-capability",
+      "subjectId": "subject-earthdaily-analytics",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "EarthDaily combines a multispectral satellite constellation, cloud-native processing and AI-ready imagery products to support repeatable broad-area change detection and geospatial analysis.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "earthdaily-analytics-product",
+        "originalUrl": "https://docs.earthdaily.com/data/edc-product-introduction/",
+        "canonicalUrl": "https://docs.earthdaily.com/data/edc-product-introduction/",
+        "locator": "Mission-at-a-glance and AI-ready data sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "docs.earthdaily.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "docs.earthdaily.com/data/edc-product-introduction/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-earthdaily-analytics",
+          "fieldPath": "capabilities.earthdaily-constellation-change-intelligence.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for EarthDaily Analytics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-earthdaily-analytics-technical",
+      "subjectId": "subject-earthdaily-analytics",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Five-metre multispectral imagery; Twenty-two spectral bands; Cloud-native analysis-ready data; Broad-area change-detection workflows",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "earthdaily-analytics-product",
+        "originalUrl": "https://docs.earthdaily.com/data/edc-product-introduction/",
+        "canonicalUrl": "https://docs.earthdaily.com/data/edc-product-introduction/",
+        "locator": "Mission-at-a-glance and AI-ready data sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "docs.earthdaily.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "docs.earthdaily.com/data/edc-product-introduction/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-earthdaily-analytics",
+          "fieldPath": "capabilities.earthdaily-constellation-change-intelligence.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for EarthDaily Analytics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-earthdaily-analytics-activity",
+      "subjectId": "subject-earthdaily-analytics",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "EarthDaily reported initial contact with EDC-08 after its July 7, 2026 launch, while EDC-02 through EDC-07 were returning initial imagery and progressing through commissioning; a separate Canadian Space Agency contribution supports an on-orbit thermal-imager demonstration through March 2027.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-07-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "earthdaily-analytics-launch",
+        "originalUrl": "https://earthdaily.com/blog/earthdaily-constellation-entering-commercial-operations-with-successful-launch-iii",
+        "canonicalUrl": "https://earthdaily.com/blog/earthdaily-constellation-entering-commercial-operations-with-successful-launch-iii",
+        "locator": "EDC-08 launch and EDC-02 through EDC-07 commissioning update",
+        "sourceChannel": "official_company",
+        "sourceFamily": "earthdaily.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "earthdaily.com/blog/earthdaily-constellation-entering-commercial-operations-with-successful-launch-iii"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-earthdaily-analytics",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for EarthDaily Analytics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-earthdaily-analytics-relationship",
+      "subjectId": "subject-earthdaily-analytics",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada records an active Canadian Space Agency contribution to EarthDaily Analytics Corp. for an on-orbit broadband multispectral thermal-imager demonstration; the candidate does not infer government adoption of the broader constellation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2025-06-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "earthdaily-analytics-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q1-00002%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q1-00002%2Ccurrent",
+        "locator": "CSA agreement 22STDPP07",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q1-00002%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-earthdaily-analytics",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for EarthDaily Analytics; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-obruta-space-solutions-description",
+      "subjectId": "subject-obruta-space-solutions",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Obruta Space Solutions is an Ottawa space-technology company developing autonomous rendezvous, proximity-operations and docking systems for on-orbit servicing and logistics.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "obruta-space-solutions-profile",
+        "originalUrl": "https://www.obruta.com/about",
+        "canonicalUrl": "https://www.obruta.com/about",
+        "locator": "Mission, team and Ottawa location sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "obruta.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.obruta.com/about"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-obruta-space-solutions",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Obruta Space Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-obruta-space-solutions-location",
+      "subjectId": "subject-obruta-space-solutions",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Obruta Space Solutions has a documented Canadian operating presence in Ottawa, Ontario.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "obruta-space-solutions-profile",
+        "originalUrl": "https://www.obruta.com/about",
+        "canonicalUrl": "https://www.obruta.com/about",
+        "locator": "Mission, team and Ottawa location sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "obruta.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.obruta.com/about"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-obruta-space-solutions",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Obruta Space Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-obruta-space-solutions-capability",
+      "subjectId": "subject-obruta-space-solutions",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Obruta's RPOD Kit combines spacecraft hardware and autonomous flight software for cooperative rendezvous, proximity operations and docking, including navigation-sensor fusion, safe-abort logic and mission optimization.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "obruta-space-solutions-product",
+        "originalUrl": "https://www.obruta.com/products",
+        "canonicalUrl": "https://www.obruta.com/products",
+        "locator": "RPOD Kit hardware, software, features and applications",
+        "sourceChannel": "official_company",
+        "sourceFamily": "obruta.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.obruta.com/products"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-obruta-space-solutions",
+          "fieldPath": "capabilities.obruta-autonomous-rpod-kit.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Obruta Space Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-obruta-space-solutions-technical",
+      "subjectId": "subject-obruta-space-solutions",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Autonomous rendezvous and docking software; Navigation-sensor data fusion; Built-in safe-abort logic; Compatibility with chemical and electric propulsion",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "obruta-space-solutions-product",
+        "originalUrl": "https://www.obruta.com/products",
+        "canonicalUrl": "https://www.obruta.com/products",
+        "locator": "RPOD Kit hardware, software, features and applications",
+        "sourceChannel": "official_company",
+        "sourceFamily": "obruta.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.obruta.com/products"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-obruta-space-solutions",
+          "fieldPath": "capabilities.obruta-autonomous-rpod-kit.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Obruta Space Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-obruta-space-solutions-activity",
+      "subjectId": "subject-obruta-space-solutions",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "NASA documentation records an autonomous docking experiment on the International Space Station in May 2025 using Obruta flight software, while Canadian Space Agency contributions support POLAR simulation work through July 2026 and modular RPOD-system validation through September 2027.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2025-06-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "obruta-space-solutions-nasa",
+        "originalUrl": "https://ntrs.nasa.gov/api/citations/20250005900/downloads/draft_astrobee_isparo_2025.pdf?attachment=true",
+        "canonicalUrl": "https://ntrs.nasa.gov/api/citations/20250005900/downloads/draft_astrobee_isparo_2025.pdf?attachment=true",
+        "locator": "Obruta autonomous docking experiment section",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "ntrs.nasa.gov",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "ntrs.nasa.gov/api/citations/20250005900/downloads/draft_astrobee_isparo_2025.pdf"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-obruta-space-solutions",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Obruta Space Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-obruta-space-solutions-relationship",
+      "subjectId": "subject-obruta-space-solutions",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada records current Canadian Space Agency contributions for Obruta's RPOD simulation, validation and testing work; these awards do not establish procurement or operational adoption.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2025-09-04T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "obruta-space-solutions-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00015%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00015%2Ccurrent",
+        "locator": "CSA agreement 25STDPX32",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00015%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-obruta-space-solutions",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Obruta Space Solutions; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-lux-aerobot-description",
+      "subjectId": "subject-lux-aerobot",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "Lux Aerobot is an Alma, Quebec high-altitude-platform company that designs, manufactures and operates stratospheric balloon systems and converts their payload data into near-real-time geospatial intelligence.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "lux-aerobot-trade",
+        "originalUrl": "https://www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html",
+        "canonicalUrl": "https://www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html",
+        "locator": "Company, platform and Canadian-operations sections",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "tradecommissioner.gc.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-lux-aerobot",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Lux Aerobot; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-lux-aerobot-location",
+      "subjectId": "subject-lux-aerobot",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "Lux Aerobot has a documented Canadian operating presence in Alma, Quebec.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2024-04-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "lux-aerobot-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent",
+        "locator": "NRC IRAP contribution record",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-lux-aerobot",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Lux Aerobot; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-lux-aerobot-capability",
+      "subjectId": "subject-lux-aerobot",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "Lux Aerobot integrates high-altitude balloon platforms, remote-sensing payloads, flight operations and geospatial analytics to collect and deliver persistent regional observations from the stratosphere.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "lux-aerobot-trade",
+        "originalUrl": "https://www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html",
+        "canonicalUrl": "https://www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html",
+        "locator": "Company, platform and Canadian-operations sections",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "tradecommissioner.gc.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "www.tradecommissioner.gc.ca/en/about-us/success-stories/stratospheric-balloon-space-opportunities.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-lux-aerobot",
+          "fieldPath": "capabilities.lux-stratospheric-earth-observation-platform.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Lux Aerobot; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-lux-aerobot-technical",
+      "subjectId": "subject-lux-aerobot",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Eighteen-to-twenty-five-kilometre operating altitude; Platform and payload integration; Near-real-time imagery delivery; AI and machine-learning geospatial analysis",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "lux-aerobot-history",
+        "originalUrl": "https://www.luxaerobot.com/about-us/",
+        "canonicalUrl": "https://www.luxaerobot.com/about-us/",
+        "locator": "Company history, flight and data-service sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "luxaerobot.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.luxaerobot.com/about-us/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-lux-aerobot",
+          "fieldPath": "capabilities.lux-stratospheric-earth-observation-platform.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Lux Aerobot; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-lux-aerobot-activity",
+      "subjectId": "subject-lux-aerobot",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "A current federal IRAP record supports automatic altitude-control development using coaxial propulsion, efficient motor control and renewable energy, while the company continues to advertise flight-operations roles and active high-altitude platform services.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2024-04-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "lux-aerobot-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent",
+        "locator": "NRC IRAP contribution record",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-lux-aerobot",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Lux Aerobot; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-lux-aerobot-relationship",
+      "subjectId": "subject-lux-aerobot",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada records an NRC IRAP contribution to Lux Aérobot inc. for automatic altitude-control technology; the candidate does not infer operational defence adoption from the contribution.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2024-04-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "lux-aerobot-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent",
+        "locator": "NRC IRAP contribution record",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019637%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-lux-aerobot",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for Lux Aerobot; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-c-com-satellite-systems-description",
+      "subjectId": "subject-c-com-satellite-systems",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "C-COM Satellite Systems is an Ottawa satellite-communications equipment company that designs auto-pointing mobile antennas and related control systems for remote, emergency, government and military connectivity.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "c-com-satellite-systems-profile",
+        "originalUrl": "https://www.c-comsat.com/about/",
+        "canonicalUrl": "https://www.c-comsat.com/about/",
+        "locator": "Company history and iNetVu overview",
+        "sourceChannel": "official_company",
+        "sourceFamily": "c-comsat.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.c-comsat.com/about/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-c-com-satellite-systems",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for C-COM Satellite Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-c-com-satellite-systems-location",
+      "subjectId": "subject-c-com-satellite-systems",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "C-COM Satellite Systems has a documented Canadian operating presence in Ottawa, Ontario.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-07-15T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "c-com-satellite-systems-report",
+        "originalUrl": "https://www.c-comsat.com/wp-content/uploads/2026/07/H1-2026-Financial-NR.pdf",
+        "canonicalUrl": "https://www.c-comsat.com/wp-content/uploads/2026/07/H1-2026-Financial-NR.pdf",
+        "locator": "Company identity, Ottawa headquarters and installed-base update",
+        "sourceChannel": "official_company",
+        "sourceFamily": "c-comsat.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.c-comsat.com/wp-content/uploads/2026/07/H1-2026-Financial-NR.pdf"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-c-com-satellite-systems",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for C-COM Satellite Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-c-com-satellite-systems-capability",
+      "subjectId": "subject-c-com-satellite-systems",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "C-COM's iNetVu portfolio includes driveaway, flyaway, manpack and fixed motorized terminals that automatically acquire satellite links across Ka, Ku, C and X bands.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "c-com-satellite-systems-product",
+        "originalUrl": "https://www.c-comsat.com/product-category/",
+        "canonicalUrl": "https://www.c-comsat.com/product-category/",
+        "locator": "Driveaway, flyaway, manpack and fixed terminal categories",
+        "sourceChannel": "official_company",
+        "sourceFamily": "c-comsat.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.c-comsat.com/product-category/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-c-com-satellite-systems",
+          "fieldPath": "capabilities.c-com-inetvu-mobile-satcom.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for C-COM Satellite Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-c-com-satellite-systems-technical",
+      "subjectId": "subject-c-com-satellite-systems",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Automated satellite acquisition; Driveaway, flyaway, manpack and fixed formats; Ka, Ku, C and X-band configurations; Portable and vehicle-mounted options",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "c-com-satellite-systems-product",
+        "originalUrl": "https://www.c-comsat.com/product-category/",
+        "canonicalUrl": "https://www.c-comsat.com/product-category/",
+        "locator": "Driveaway, flyaway, manpack and fixed terminal categories",
+        "sourceChannel": "official_company",
+        "sourceFamily": "c-comsat.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.c-comsat.com/product-category/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-c-com-satellite-systems",
+          "fieldPath": "capabilities.c-com-inetvu-mobile-satcom.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for C-COM Satellite Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-c-com-satellite-systems-activity",
+      "subjectId": "subject-c-com-satellite-systems",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "C-COM's July 2026 first-half release reports an installed base above eleven thousand systems in more than one hundred countries, and its current newsroom documents continuing terminal orders and development of transportable LEO-tracking and electronically steered antenna technology.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "c-com-satellite-systems-news",
+        "originalUrl": "https://www.c-comsat.com/news/",
+        "canonicalUrl": "https://www.c-comsat.com/news/",
+        "locator": "2026 terminal orders and LEO-tracking product announcements",
+        "sourceChannel": "official_company",
+        "sourceFamily": "c-comsat.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.c-comsat.com/news/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-c-com-satellite-systems",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for C-COM Satellite Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-c-com-satellite-systems-relationship",
+      "subjectId": "subject-c-com-satellite-systems",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada records an NRC IRAP contribution to C-COM for Ka-band beamforming integrated circuits; this R&D support is distinct from the mature installed base of mechanically pointed iNetVu terminals.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2023-11-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "c-com-satellite-systems-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1011327%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1011327%2Ccurrent",
+        "locator": "NRC IRAP agreement 1011327",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1011327%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-c-com-satellite-systems",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for C-COM Satellite Systems; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-spacebridge-description",
+      "subjectId": "subject-spacebridge",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "SpaceBridge is a Montreal-area satellite-network equipment company developing VSAT hubs, terminals, modems and managed-network systems for commercial, government, defence and critical-connectivity applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "spacebridge-profile",
+        "originalUrl": "https://spacebridge.com/about-us/",
+        "canonicalUrl": "https://spacebridge.com/about-us/",
+        "locator": "Company history, headquarters and product-system overview",
+        "sourceChannel": "official_company",
+        "sourceFamily": "spacebridge.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "spacebridge.com/about-us/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-spacebridge",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SpaceBridge; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-spacebridge-location",
+      "subjectId": "subject-spacebridge",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "SpaceBridge has a documented Canadian operating presence in Saint-Laurent, Quebec.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-03-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "spacebridge-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+        "locator": "CED agreement through December 2027",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-spacebridge",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SpaceBridge; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-spacebridge-capability",
+      "subjectId": "subject-spacebridge",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "SpaceBridge combines compact and scalable VSAT hubs, satellite routers, network management and dynamic waveform allocation for GEO and non-geostationary broadband, mobility and tactical networks.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "spacebridge-unihub",
+        "originalUrl": "https://spacebridge.com/product/unihub/",
+        "canonicalUrl": "https://spacebridge.com/product/unihub/",
+        "locator": "Compact integrated VSAT hub architecture and field-use sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "spacebridge.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "spacebridge.com/product/unihub/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-spacebridge",
+          "fieldPath": "capabilities.spacebridge-multiwaveform-vsat-network.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SpaceBridge; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-spacebridge-technical",
+      "subjectId": "subject-spacebridge",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Compact integrated UniHUB; DVB-S2X and DVB-RCS2 support; Dynamic TDMA and SCPC waveform switching; Layer-two and layer-three networking with secure options",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-05-14T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "spacebridge-catalogue",
+        "originalUrl": "https://spacebridge.com/wp-content/uploads/2026/05/SpaceBridge-Systems-and-Solutions-Interactive-PDF-20260514.pdf",
+        "canonicalUrl": "https://spacebridge.com/wp-content/uploads/2026/05/SpaceBridge-Systems-and-Solutions-Interactive-PDF-20260514.pdf",
+        "locator": "VSAT hubs, terminals, waveforms and network features",
+        "sourceChannel": "official_company",
+        "sourceFamily": "spacebridge.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "spacebridge.com/wp-content/uploads/2026/05/SpaceBridge-Systems-and-Solutions-Interactive-PDF-20260514.pdf"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-spacebridge",
+          "fieldPath": "capabilities.spacebridge-multiwaveform-vsat-network.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SpaceBridge; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-spacebridge-activity",
+      "subjectId": "subject-spacebridge",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "SpaceBridge launched its compact UniHUB platform in March 2026 and received a $1.25 million Canada Economic Development contribution running through December 2027 to expand satellite-communications-system capacity for defence markets.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-03-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "spacebridge-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+        "locator": "CED agreement through December 2027",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-spacebridge",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SpaceBridge; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-spacebridge-relationship",
+      "subjectId": "subject-spacebridge",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada records a repayable contribution to SpaceBridge through December 2027 for defence-oriented satellite-communications capacity expansion; the contribution does not establish a specific operational customer.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-03-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "spacebridge-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+        "locator": "CED agreement through December 2027",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-spacebridge",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SpaceBridge; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-qeynet-description",
+      "subjectId": "subject-qeynet",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "QEYnet is an Ontario quantum-communications company developing compact satellite quantum-key-distribution receivers and free-space Earth-to-space key exchange for secure satellite communications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "qeynet-profile",
+        "originalUrl": "https://qeynet.com/",
+        "canonicalUrl": "https://qeynet.com/",
+        "locator": "Mission, solution and company sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "qeynet.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "qeynet.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-qeynet",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for QEYnet; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-qeynet-location",
+      "subjectId": "subject-qeynet",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "QEYnet has a documented Canadian operating presence in Vaughan, Ontario.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "qeynet-testing",
+        "originalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/ws3841869660-cw2305654-acm167768211-001",
+        "canonicalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/ws3841869660-cw2305654-acm167768211-001",
+        "locator": "Federal testing contract and Vaughan business address",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canadabuys.canada.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "canadabuys.canada.ca/en/tender-opportunities/contract-history/ws3841869660-cw2305654-acm167768211-001"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-qeynet",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for QEYnet; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-qeynet-capability",
+      "subjectId": "subject-qeynet",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "QEYnet develops a compact quantum receiver and supporting free-space optical architecture intended to distribute and refresh encryption keys between ground sites and satellites.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "qeynet-faq",
+        "originalUrl": "https://qeynet.com/faq",
+        "canonicalUrl": "https://qeynet.com/faq",
+        "locator": "Satellite, payload and service-architecture explanations",
+        "sourceChannel": "official_company",
+        "sourceFamily": "qeynet.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "qeynet.com/faq"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-qeynet",
+          "fieldPath": "capabilities.qeynet-satellite-qkd-receiver.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for QEYnet; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-qeynet-technical",
+      "subjectId": "subject-qeynet",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Compact space-based quantum receiver; Free-space photon key exchange; On-orbit rekeying demonstration architecture; Ground-to-satellite optical link",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "qeynet-faq",
+        "originalUrl": "https://qeynet.com/faq",
+        "canonicalUrl": "https://qeynet.com/faq",
+        "locator": "Satellite, payload and service-architecture explanations",
+        "sourceChannel": "official_company",
+        "sourceFamily": "qeynet.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "qeynet.com/faq"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-qeynet",
+          "fieldPath": "capabilities.qeynet-satellite-qkd-receiver.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for QEYnet; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-qeynet-activity",
+      "subjectId": "subject-qeynet",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "A Canadian Space Agency agreement provides approximately $1.4 million for a low-cost Earth-to-space quantum-key-distribution demonstration through December 2026, and a separate federal testing contract confirms the Ontario operating address and government-test posture.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2024-11-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "qeynet-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent",
+        "locator": "CSA agreement 22SIMA02P2",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-qeynet",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for QEYnet; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-qeynet-relationship",
+      "subjectId": "subject-qeynet",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada records a Canadian Space Agency contribution for QEYnet's orbital QKD demonstration; the candidate does not describe the proposed global network as operational or guarantee that QKD is unbreakable.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2024-11-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "qeynet-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent",
+        "locator": "CSA agreement 22SIMA02P2",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-qeynet",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for QEYnet; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-starspec-technologies-description",
+      "subjectId": "subject-starspec-technologies",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "StarSpec Technologies is an Ontario space-systems company developing high-precision attitude-determination and control hardware, rapid space-qualification methods, balloon platforms and geospatial software.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "starspec-technologies-profile",
+        "originalUrl": "https://www.starspectechnologies.com/",
+        "canonicalUrl": "https://www.starspectechnologies.com/",
+        "locator": "Company, product and innovation overview",
+        "sourceChannel": "official_company",
+        "sourceFamily": "starspectechnologies.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.starspectechnologies.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-starspec-technologies",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for StarSpec Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-starspec-technologies-location",
+      "subjectId": "subject-starspec-technologies",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "StarSpec Technologies has a documented Canadian operating presence in Ayr, Ontario.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "starspec-technologies-contact",
+        "originalUrl": "https://www.starspectechnologies.com/contact",
+        "canonicalUrl": "https://www.starspectechnologies.com/contact",
+        "locator": "Ayr address and public company contact",
+        "sourceChannel": "official_company",
+        "sourceFamily": "starspectechnologies.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.starspectechnologies.com/contact"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-starspec-technologies",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for StarSpec Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-starspec-technologies-capability",
+      "subjectId": "subject-starspec-technologies",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "StarSpec integrates sub-arcsecond star cameras, cogless reaction wheels and onboard attitude-control electronics for high-precision small-satellite pointing and imaging missions.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "starspec-technologies-product",
+        "originalUrl": "https://www.starspectechnologies.com/products-services",
+        "canonicalUrl": "https://www.starspectechnologies.com/products-services",
+        "locator": "SASC, CRW, ADCS and TARDIGRADE specifications",
+        "sourceChannel": "official_company",
+        "sourceFamily": "starspectechnologies.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.starspectechnologies.com/products-services"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-starspec-technologies",
+          "fieldPath": "capabilities.starspec-high-precision-adcs.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for StarSpec Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-starspec-technologies-technical",
+      "subjectId": "subject-starspec-technologies",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Sub-arcsecond star-camera measurements; Cogless reaction-wheel actuation; Integrated onboard ADCS controller; Radiation and environmental qualification workflow",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "starspec-technologies-product",
+        "originalUrl": "https://www.starspectechnologies.com/products-services",
+        "canonicalUrl": "https://www.starspectechnologies.com/products-services",
+        "locator": "SASC, CRW, ADCS and TARDIGRADE specifications",
+        "sourceChannel": "official_company",
+        "sourceFamily": "starspectechnologies.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.starspectechnologies.com/products-services"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-starspec-technologies",
+          "fieldPath": "capabilities.starspec-high-precision-adcs.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for StarSpec Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-starspec-technologies-activity",
+      "subjectId": "subject-starspec-technologies",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "An active $2 million Canadian Space Agency contribution supports the InspireSAT 12U ADCS demonstration through December 2026, and ISED lists a December 2025 StarSpec satellite-spectrum application as under consideration.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2023-12-14T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "starspec-technologies-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent",
+        "locator": "CSA agreement 22SIMA01P2",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-starspec-technologies",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for StarSpec Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-starspec-technologies-relationship",
+      "subjectId": "subject-starspec-technologies",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Government of Canada records an active Canadian Space Agency contribution for StarSpec's InspireSAT attitude-control demonstration; the candidate does not claim an orbital launch or operational deployment before that is verified.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2023-12-14T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "starspec-technologies-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent",
+        "locator": "CSA agreement 22SIMA01P2",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-starspec-technologies",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for StarSpec Technologies; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-sbquantum-description",
+      "subjectId": "subject-sbquantum",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "SBQuantum is a Sherbrooke quantum-sensing company developing nitrogen-vacancy diamond magnetometers and magnetic-mapping software for navigation, geophysical, defence, public-safety and space applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "sbquantum-profile",
+        "originalUrl": "https://sbquantum.com/",
+        "canonicalUrl": "https://sbquantum.com/",
+        "locator": "Company, technology and application sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "sbquantum.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "sbquantum.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-sbquantum",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SBQuantum; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-sbquantum-location",
+      "subjectId": "subject-sbquantum",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "SBQuantum has a documented Canadian operating presence in Sherbrooke, Quebec.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-04-28T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "sbquantum-contract",
+        "originalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445882-001",
+        "canonicalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445882-001",
+        "locator": "Contract CW2445882 and Sherbrooke business identity",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canadabuys.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445882-001"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-sbquantum",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SBQuantum; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-sbquantum-capability",
+      "subjectId": "subject-sbquantum",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "SBQuantum combines compact nitrogen-vacancy diamond magnetometers with compensation, mapping and interpretation software to measure magnetic fields for navigation and object or subsurface detection.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "sbquantum-profile",
+        "originalUrl": "https://sbquantum.com/",
+        "canonicalUrl": "https://sbquantum.com/",
+        "locator": "Company, technology and application sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "sbquantum.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "sbquantum.com/"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-sbquantum",
+          "fieldPath": "capabilities.sbquantum-diamond-magnetic-intelligence.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SBQuantum; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-sbquantum-technical",
+      "subjectId": "subject-sbquantum",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Nitrogen-vacancy diamond sensing; Room-temperature operation; Vector magnetic-field measurement; Mapping, compensation and interpretation software",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2023-12-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "sbquantum-nrc",
+        "originalUrl": "https://nrc.canada.ca/en/stories/diamond-based-quantum-sensors-add-sparkle-earth-space-exploration",
+        "canonicalUrl": "https://nrc.canada.ca/en/stories/diamond-based-quantum-sensors-add-sparkle-earth-space-exploration",
+        "locator": "Technology, defence and MagQuest sections",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "nrc.canada.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "nrc.canada.ca/en/stories/diamond-based-quantum-sensors-add-sparkle-earth-space-exploration"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-sbquantum",
+          "fieldPath": "capabilities.sbquantum-diamond-magnetic-intelligence.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SBQuantum; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-sbquantum-activity",
+      "subjectId": "subject-sbquantum",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "The U.S. National Geospatial-Intelligence Agency documents deployment of an SBQuantum and Spire diamond magnetometer on a MagQuest CubeSat in 2026, while CanadaBuys records a $2.24 million MagAware contract running from April to October 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-03-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "sbquantum-nga",
+        "originalUrl": "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+        "canonicalUrl": "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+        "locator": "Spire Global and SBQuantum MagQuest team",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "nga.mil",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-sbquantum",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SBQuantum; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-sbquantum-relationship",
+      "subjectId": "subject-sbquantum",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The U.S. National Geospatial-Intelligence Agency identifies SBQuantum and Spire as a MagQuest CubeSat team for orbital geomagnetic data collection; commissioning and evaluation remain underway.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2026-03-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "sbquantum-nga",
+        "originalUrl": "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+        "canonicalUrl": "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+        "locator": "Spire Global and SBQuantum MagQuest team",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "nga.mil",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-sbquantum",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for SBQuantum; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-korrai-description",
+      "subjectId": "subject-korrai",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "KorrAI is a Halifax geospatial-risk company combining satellite interferometric radar, ground sensors and AI-assisted analysis for wide-area infrastructure, terrain and ground-motion assessment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "korrai-profile",
+        "originalUrl": "https://www.korrai.com/about-us",
+        "canonicalUrl": "https://www.korrai.com/about-us",
+        "locator": "Company mission, history and platform sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "korrai.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.korrai.com/about-us"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-korrai",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for KorrAI; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-korrai-location",
+      "subjectId": "subject-korrai",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "KorrAI has a documented Canadian operating presence in Halifax, Nova Scotia.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "korrai-privacy",
+        "originalUrl": "https://www.korrai.com/privacy-policy",
+        "canonicalUrl": "https://www.korrai.com/privacy-policy",
+        "locator": "Legal entity, Halifax headquarters and service description",
+        "sourceChannel": "official_company",
+        "sourceFamily": "korrai.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.korrai.com/privacy-policy"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-korrai",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for KorrAI; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-korrai-capability",
+      "subjectId": "subject-korrai",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "KorrAI's platform combines satellite InSAR, optical imagery, GNSS observations, site records and risk models to monitor ground deformation and assemble traceable infrastructure-risk assessments.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "korrai-product",
+        "originalUrl": "https://www.korrai.com/platform/evidence-layers/ground-deformation-layer",
+        "canonicalUrl": "https://www.korrai.com/platform/evidence-layers/ground-deformation-layer",
+        "locator": "InSAR, GNSS calibration and monitoring workflow",
+        "sourceChannel": "official_company",
+        "sourceFamily": "korrai.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.korrai.com/platform/evidence-layers/ground-deformation-layer"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-korrai",
+          "fieldPath": "capabilities.korrai-trail-insar-risk-intelligence.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for KorrAI; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-korrai-technical",
+      "subjectId": "subject-korrai",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Satellite InSAR time-series analysis; GNSS and ground-sensor calibration; Multi-source geospatial evidence layers; Traceable AI-assisted risk assessment",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "korrai-product",
+        "originalUrl": "https://www.korrai.com/platform/evidence-layers/ground-deformation-layer",
+        "canonicalUrl": "https://www.korrai.com/platform/evidence-layers/ground-deformation-layer",
+        "locator": "InSAR, GNSS calibration and monitoring workflow",
+        "sourceChannel": "official_company",
+        "sourceFamily": "korrai.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "www.korrai.com/platform/evidence-layers/ground-deformation-layer"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-korrai",
+          "fieldPath": "capabilities.korrai-trail-insar-risk-intelligence.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for KorrAI; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-korrai-activity",
+      "subjectId": "subject-korrai",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "The Canadian Space Agency's smartEarth portfolio lists KorrAI developing a Web-based Open Ground Motion Service for near-real-time permafrost-related infrastructure monitoring, while its current platform continues to combine InSAR, GNSS and multi-source risk evidence.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "korrai-smartearth",
+        "originalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "canonicalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "locator": "KorrAI Open Ground Motion Service project",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "asc-csa.gc.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-korrai",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for KorrAI; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-korrai-relationship",
+      "subjectId": "subject-korrai",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Canadian Space Agency lists KorrAI Technologies Ltd. for an Open Ground Motion Service focused on permafrost and northern critical-infrastructure resilience; this program evidence is distinct from commercial adoption claims.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "korrai-smartearth",
+        "originalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "canonicalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "locator": "KorrAI Open Ground Motion Service project",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "asc-csa.gc.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-korrai",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for KorrAI; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-asl-environmental-sciences-description",
+      "subjectId": "subject-asl-environmental-sciences",
+      "subjectType": "organization",
+      "predicate": "organization role",
+      "value": "ASL Environmental Sciences is an employee-owned British Columbia science and technology company providing oceanographic instrumentation, Arctic and ice services, and optical and radar Earth-observation analytics.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "asl-environmental-sciences-team",
+        "originalUrl": "https://aslenv.com/team.html",
+        "canonicalUrl": "https://aslenv.com/team.html",
+        "locator": "Company scale, mandate and remote-sensing team",
+        "sourceChannel": "official_company",
+        "sourceFamily": "aslenv.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "aslenv.com/team.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-asl-environmental-sciences",
+          "fieldPath": "organization.description",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for ASL Environmental Sciences; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-asl-environmental-sciences-location",
+      "subjectId": "subject-asl-environmental-sciences",
+      "subjectType": "organization",
+      "predicate": "Canadian operating presence",
+      "value": "ASL Environmental Sciences has a documented Canadian operating presence in Saanichton, British Columbia.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "asl-environmental-sciences-contact",
+        "originalUrl": "https://aslenv.com/general.html",
+        "canonicalUrl": "https://aslenv.com/general.html",
+        "locator": "Saanichton address and organization contact",
+        "sourceChannel": "official_company",
+        "sourceFamily": "aslenv.com",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "aslenv.com/general.html"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-asl-environmental-sciences",
+          "fieldPath": "organization.primaryLocation",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for ASL Environmental Sciences; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-asl-environmental-sciences-capability",
+      "subjectId": "subject-asl-environmental-sciences",
+      "subjectType": "organization",
+      "predicate": "concrete technology offering",
+      "value": "ASL's DeCAF work applies satellite time-series, radar and optical imagery, machine learning and automated change detection to identify landscape disturbances and support wide-area monitoring.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "asl-environmental-sciences-smartearth",
+        "originalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "canonicalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "locator": "ASL DeCAF Rapid Response Toolkit entries",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "asc-csa.gc.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-asl-environmental-sciences",
+          "fieldPath": "capabilities.asl-decaf-rapid-response-toolkit.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for ASL Environmental Sciences; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-asl-environmental-sciences-technical",
+      "subjectId": "subject-asl-environmental-sciences",
+      "subjectType": "organization",
+      "predicate": "technical architecture and features",
+      "value": "Automated satellite time-series analysis; Radar and optical image fusion; Machine-learning change detection; Wide-area alert-oriented monitoring",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "asl-environmental-sciences-smartearth",
+        "originalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "canonicalUrl": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "locator": "ASL DeCAF Rapid Response Toolkit entries",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "asc-csa.gc.ca",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-asl-environmental-sciences",
+          "fieldPath": "capabilities.asl-decaf-rapid-response-toolkit.features",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for ASL Environmental Sciences; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-asl-environmental-sciences-activity",
+      "subjectId": "subject-asl-environmental-sciences",
+      "subjectType": "organization",
+      "predicate": "current official activity",
+      "value": "A 2025-2027 Canadian Space Agency agreement provides $250,000 for DeCAF-RRT, a wide-area satellite Earth-observation monitoring tool, and the CSA smartEarth portfolio separately describes the toolkit's intended Canadian Arctic and CAF situational-awareness use.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2025-09-04T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "asl-environmental-sciences-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent",
+        "locator": "CSA agreement 25AO4ASL",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-asl-environmental-sciences",
+          "fieldPath": "organization.profileData.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for ASL Environmental Sciences; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    },
+    {
+      "claimId": "claim-asl-environmental-sciences-relationship",
+      "subjectId": "subject-asl-environmental-sciences",
+      "subjectType": "organization",
+      "predicate": "public institutional relationship",
+      "value": "The Canadian Space Agency records ASL Environmental Sciences Inc. for current DeCAF-RRT development and describes an earlier DeCAF rapid-response concept for wide-area Arctic and CAF monitoring; neither record establishes operational adoption.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-07-31T20:11:14.864Z",
+        "publishedAt": "2025-09-04T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "asl-environmental-sciences-grant",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent",
+        "locator": "CSA agreement 25AO4ASL",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "search.open.canada.ca",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-asl-environmental-sciences",
+          "fieldPath": "relationships.0.publicSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "The cited durable source supports this bounded field for ASL Environmental Sciences; performance marketing, discovery-only social assertions and uncited operational inferences were excluded."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "subject-earthdaily-analytics",
+      "subjectType": "organization",
+      "name": "EarthDaily Analytics",
+      "candidateIds": [
+        "candidate-earthdaily-analytics"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-earthdaily-analytics-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-earthdaily-analytics-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-earthdaily-analytics-description",
+            "claim-earthdaily-analytics-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-earthdaily-analytics-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-earthdaily-analytics-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-earthdaily-analytics-activity",
+            "claim-earthdaily-analytics-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-earthdaily-analytics-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-earthdaily-analytics-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-earthdaily-analytics-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-earthdaily-analytics-description",
+            "claim-earthdaily-analytics-location",
+            "claim-earthdaily-analytics-capability",
+            "claim-earthdaily-analytics-technical",
+            "claim-earthdaily-analytics-activity",
+            "claim-earthdaily-analytics-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-obruta-space-solutions",
+      "subjectType": "organization",
+      "name": "Obruta Space Solutions",
+      "candidateIds": [
+        "candidate-obruta-space-solutions"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-obruta-space-solutions-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-obruta-space-solutions-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-obruta-space-solutions-description",
+            "claim-obruta-space-solutions-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-obruta-space-solutions-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-obruta-space-solutions-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-obruta-space-solutions-activity",
+            "claim-obruta-space-solutions-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-obruta-space-solutions-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-obruta-space-solutions-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-obruta-space-solutions-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-obruta-space-solutions-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-obruta-space-solutions-description",
+            "claim-obruta-space-solutions-location",
+            "claim-obruta-space-solutions-capability",
+            "claim-obruta-space-solutions-technical",
+            "claim-obruta-space-solutions-activity",
+            "claim-obruta-space-solutions-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-lux-aerobot",
+      "subjectType": "organization",
+      "name": "Lux Aerobot",
+      "candidateIds": [
+        "candidate-lux-aerobot"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-lux-aerobot-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-lux-aerobot-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-lux-aerobot-description",
+            "claim-lux-aerobot-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-lux-aerobot-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-lux-aerobot-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-lux-aerobot-activity",
+            "claim-lux-aerobot-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-lux-aerobot-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-lux-aerobot-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-lux-aerobot-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-lux-aerobot-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-lux-aerobot-description",
+            "claim-lux-aerobot-location",
+            "claim-lux-aerobot-capability",
+            "claim-lux-aerobot-technical",
+            "claim-lux-aerobot-activity",
+            "claim-lux-aerobot-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-c-com-satellite-systems",
+      "subjectType": "organization",
+      "name": "C-COM Satellite Systems",
+      "candidateIds": [
+        "candidate-c-com-satellite-systems"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-c-com-satellite-systems-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-c-com-satellite-systems-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-c-com-satellite-systems-description",
+            "claim-c-com-satellite-systems-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-c-com-satellite-systems-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-c-com-satellite-systems-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-c-com-satellite-systems-activity",
+            "claim-c-com-satellite-systems-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-c-com-satellite-systems-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-c-com-satellite-systems-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-c-com-satellite-systems-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-c-com-satellite-systems-description",
+            "claim-c-com-satellite-systems-location",
+            "claim-c-com-satellite-systems-capability",
+            "claim-c-com-satellite-systems-technical",
+            "claim-c-com-satellite-systems-activity",
+            "claim-c-com-satellite-systems-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-spacebridge",
+      "subjectType": "organization",
+      "name": "SpaceBridge",
+      "candidateIds": [
+        "candidate-spacebridge"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-spacebridge-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-spacebridge-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-spacebridge-description",
+            "claim-spacebridge-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-spacebridge-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-spacebridge-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-spacebridge-activity",
+            "claim-spacebridge-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-spacebridge-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-spacebridge-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-spacebridge-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-spacebridge-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-spacebridge-description",
+            "claim-spacebridge-location",
+            "claim-spacebridge-capability",
+            "claim-spacebridge-technical",
+            "claim-spacebridge-activity",
+            "claim-spacebridge-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-qeynet",
+      "subjectType": "organization",
+      "name": "QEYnet",
+      "candidateIds": [
+        "candidate-qeynet"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-qeynet-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-qeynet-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-qeynet-description",
+            "claim-qeynet-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-qeynet-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-qeynet-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-qeynet-activity",
+            "claim-qeynet-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-qeynet-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-qeynet-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-qeynet-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-qeynet-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-qeynet-description",
+            "claim-qeynet-location",
+            "claim-qeynet-capability",
+            "claim-qeynet-technical",
+            "claim-qeynet-activity",
+            "claim-qeynet-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-starspec-technologies",
+      "subjectType": "organization",
+      "name": "StarSpec Technologies",
+      "candidateIds": [
+        "candidate-starspec-technologies"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-starspec-technologies-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-starspec-technologies-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-starspec-technologies-description",
+            "claim-starspec-technologies-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-starspec-technologies-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-starspec-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-starspec-technologies-activity",
+            "claim-starspec-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-starspec-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-starspec-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-starspec-technologies-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-starspec-technologies-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-starspec-technologies-description",
+            "claim-starspec-technologies-location",
+            "claim-starspec-technologies-capability",
+            "claim-starspec-technologies-technical",
+            "claim-starspec-technologies-activity",
+            "claim-starspec-technologies-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-sbquantum",
+      "subjectType": "organization",
+      "name": "SBQuantum",
+      "candidateIds": [
+        "candidate-sbquantum"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-sbquantum-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-sbquantum-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-sbquantum-description",
+            "claim-sbquantum-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-sbquantum-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-sbquantum-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-sbquantum-activity",
+            "claim-sbquantum-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-sbquantum-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-sbquantum-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-sbquantum-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-sbquantum-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-sbquantum-description",
+            "claim-sbquantum-location",
+            "claim-sbquantum-capability",
+            "claim-sbquantum-technical",
+            "claim-sbquantum-activity",
+            "claim-sbquantum-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-korrai",
+      "subjectType": "organization",
+      "name": "KorrAI",
+      "candidateIds": [
+        "candidate-korrai"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-korrai-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-korrai-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-korrai-description",
+            "claim-korrai-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-korrai-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-korrai-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-korrai-activity",
+            "claim-korrai-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-korrai-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-korrai-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-korrai-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-korrai-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-korrai-description",
+            "claim-korrai-location",
+            "claim-korrai-capability",
+            "claim-korrai-technical",
+            "claim-korrai-activity",
+            "claim-korrai-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    },
+    {
+      "subjectId": "subject-asl-environmental-sciences",
+      "subjectType": "organization",
+      "name": "ASL Environmental Sciences",
+      "candidateIds": [
+        "candidate-asl-environmental-sciences"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-asl-environmental-sciences-description"
+          ],
+          "attempts": [],
+          "note": "Official company material establishes the public identity and operating role; ownership details are not inferred where undisclosed."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-asl-environmental-sciences-location"
+          ],
+          "attempts": [],
+          "note": "An official company, government contract or parliamentary source establishes the Canadian operating location."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-asl-environmental-sciences-description",
+            "claim-asl-environmental-sciences-capability"
+          ],
+          "attempts": [],
+          "note": "The company role and one concrete technology offering are captured with direct evidence."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-asl-environmental-sciences-technical"
+          ],
+          "attempts": [],
+          "note": "Technical architecture or feature detail is supported by a product page, technical document or detailed official release."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-asl-environmental-sciences-activity"
+          ],
+          "attempts": [],
+          "note": "A contract, cohort, validation, partnership or public demonstration establishes activity, while broader operational maturity remains bounded."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-asl-environmental-sciences-activity",
+            "claim-asl-environmental-sciences-relationship"
+          ],
+          "attempts": [],
+          "note": "At least one public contract, program, commercialization or partner relationship is represented without inferring unstated adoption."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-asl-environmental-sciences-activity"
+          ],
+          "attempts": [],
+          "note": "Government and procurement lanes were searched; only the cited public contract or program activity is represented, and no classified or unstated demand is inferred."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-asl-environmental-sciences-relationship"
+          ],
+          "attempts": [],
+          "note": "A material public institutional, government, commercialization or integration relationship is supported."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "partial",
+          "claimIds": [
+            "claim-asl-environmental-sciences-location"
+          ],
+          "attempts": [],
+          "note": "Organization-level public location and website paths were collected; no personal contact data is proposed for publication."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-asl-environmental-sciences-activity"
+          ],
+          "attempts": [],
+          "note": "A dated or currently maintained durable source supports a material recent activity."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-asl-environmental-sciences-description",
+            "claim-asl-environmental-sciences-location",
+            "claim-asl-environmental-sciences-capability",
+            "claim-asl-environmental-sciences-technical",
+            "claim-asl-environmental-sciences-activity",
+            "claim-asl-environmental-sciences-relationship"
+          ],
+          "attempts": [],
+          "note": "Official company evidence is paired with government, NATO, parliamentary, validation or independent partner evidence."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Official-site, technical-document, government, program, partner and broad-web lanes were compared for applicability, conflicts and supersession."
+          ],
+          "note": "Official, government, program, technical and partner sources were compared; no material contradiction was found, and remaining boundaries are explicit reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "Official identity and product evidence plus government, program, parliamentary, technical-validation or partner corroboration support every proposed field; later broad-web and discovery-only lanes added no material candidate field."
+      }
+    }
+  ],
+  "warnings": [
+    "3 amber candidates retain explicit reviewer warnings for corporate lineage, technology maturity, or launch and registry status; every candidate retains an explicit evidence boundary.",
+    "Mission-area matches are derived assessments and do not establish procurement eligibility, endorsement, customer interest, classified demand or operational adoption.",
+    "Social and LinkedIn results were used only to expand search trails and were not promoted into field evidence without durable corroboration."
+  ]
+}

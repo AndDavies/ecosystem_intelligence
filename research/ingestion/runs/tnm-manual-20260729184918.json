@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260729184918",
+  "agentVersion": "tnm-research-pipeline/1.2.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": [
+      "department",
+      "military_service",
+      "procurement_authority"
+    ]
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "concept:mine-countermeasures",
+    "reason": "The public corpus contains underwater-system suppliers but lacks consistent product-level MCM representation and a dedicated Canadian RMDS procurement-demand record.",
+    "score": 990
+  },
+  "status": "completed",
+  "startedAt": "2026-07-29T18:49:18.594Z",
+  "completedAt": "2026-07-29T18:57:18.967Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Official Canadian MCM company product and capability pages",
+    "National Defence RMDS capability blueprint and contract award",
+    "CanadaBuys mine-countermeasure autonomy and contract history",
+    "RCN mine-warfare operations and clearance-diver roles",
+    "NATO and REPMUS mine-countermeasure exercises",
+    "Canadian ocean-technology associations and source-book trails",
+    "Broad web search for Canadian MCM sensors, AUVs, ROVs, USVs and integration"
+  ],
+  "counters": {
+    "sourcesChecked": 74,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 55,
+    "uniqueProspects": 55,
+    "prospectsQueued": 45,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 10,
+    "candidatesAmber": 0,
+    "signalsExtracted": 10,
+    "signalsDispositioned": 10,
+    "sourceFamiliesSearched": 6
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Nine candidates enrich existing published organizations; one candidate is a separately typed awarded-procurement demand signal."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the ten-candidate review target with a reconciled MCM prospect backlog.",
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260729184918.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260729184918.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260729184918.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260729184918.json",
+    "candidateLogoPacket": null,
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260729184918.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260729184918.json"
+  }
+}

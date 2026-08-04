@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-2026-07-29",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "government_innovation_office"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:government_innovation_office",
+    "reason": "4 published or pending government innovation office records cover only 40% of the working saturation target of 10.",
+    "score": 850
+  },
+  "status": "completed",
+  "startedAt": "2026-07-29T11:02:14.300Z",
+  "completedAt": "2026-07-29T11:05:19.000Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 4,
+    "minimumCandidates": 1,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "Gmail label:Newsletters/Defence newer_than:14d (discovery only)",
+    "Government/procurement: DND BOREALIS, Defence Drone Initiative and CanadaBuys awards during the seven-day overlap",
+    "Published-company newsroom: Volatus Aerospace July 2026 announcements",
+    "Due high-priority Source Book: BOREALIS and COVE official Canadian discovery surfaces"
+  ],
+  "counters": {
+    "sourcesChecked": 7,
+    "leadsQualified": 1,
+    "leadsDeferred": 1,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 1,
+    "prospectsDiscovered": 4,
+    "uniqueProspects": 4,
+    "prospectsQueued": 2,
+    "recoveryAttempts": 3,
+    "sourceLanesSearched": 4,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 5,
+    "signalsDispositioned": 5,
+    "sourceFamiliesSearched": 4
+  },
+  "underTargetReason": "Refresh mode created one safe, consolidated candidate after duplicate and record-boundary guards; the remaining signals were already current, duplicate discovery, or deferred for explicit modelling review.",
+  "exhaustionEvidence": {
+    "sourceLanes": ["company_newsroom", "government_program", "procurement", "official_directory"],
+    "prospectsConsidered": 4,
+    "unresolvedTrails": ["BOREALIS requires a reviewer decision on whether it is a separate government innovation office, a DRDC program, or public-demand context.", "COVE was checked as a due Source Book route but did not surface a discrete material change in the overlap."],
+    "note": "The refresh inspected seven selected source items across four families and consolidated two Volatus signals into one candidate. The DDI signal was already represented live, the newsletter only duplicated it, and BOREALIS remains a deliberate entity-boundary deferral."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Authenticated Chrome was unavailable; the four required source families were searched without LinkedIn.",
+      "Gmail newsletter material was discovery-only and did not become field evidence.",
+      "BOREALIS remains deferred for an explicit government-office versus program versus public-demand modelling decision.",
+      "The Volatus refresh is amber because CanadaBuys uses the supplier name Volatus Drones Canada; legal or operating-name equivalence is intentionally not inferred."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-refresh-2026-07-29.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-2026-07-29.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-2026-07-29.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-2026-07-29.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-refresh-2026-07-29.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-2026-07-29.json"
+  }
+}

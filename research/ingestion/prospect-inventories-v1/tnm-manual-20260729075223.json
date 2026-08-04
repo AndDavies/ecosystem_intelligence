@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-manual-20260729075223-prospects",
+  "runId": "tnm-manual-20260729075223",
+  "createdAt": "2026-07-29T07:54:56.000Z",
+  "scope": "Existing-record database enrichment using a seven-day overlap and due-source refresh across official organization, company-newsroom, government, Source Book, ecosystem-program, industry-publication, and read-only newsletter lanes.",
+  "prospects": [
+    {
+      "id": "prospect-one9-portfolio-refresh",
+      "name": "ONE9 investment portfolio expansion",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.one9.ca/",
+      "discoverySourceUrl": "https://www.one9.ca/",
+      "discoveryLane": "investor_portfolio",
+      "countryCode": "CA",
+      "fitSummary": "ONE9's current official portfolio lists six companies beyond the single portfolio relationship now present on its published True North Map record.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "investor_portfolio",
+          "url": "https://www.one9.ca/",
+          "outcome": "Recovered the current official portfolio names and public one-line descriptions for Stirling X, Slingshot Aerospace, goTenna, Hidden Level, Tomahawk Robotics, and Strider Technologies."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.one9.ca/portfolio-series",
+          "outcome": "Checked ONE9's official portfolio editorial index for additional first-party technology context and current portfolio continuity."
+        }
+      ]
+    },
+    {
+      "id": "prospect-one9-invest-ottawa-partnership",
+      "name": "ONE9 and Invest Ottawa defence-entrepreneur partnership",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/",
+      "discoverySourceUrl": "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/",
+      "discoveryLane": "official_directory",
+      "countryCode": "CA",
+      "fitSummary": "Invest Ottawa's official announcement supports a missing ecosystem relationship through Area X.O testing, validation, commercialization, and end-user access.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/",
+          "outcome": "Recovered the named parties, September 2025 partnership, Area X.O role, and stated entrepreneur-support activities from the operator's official announcement."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.one9.ca/capabilitylabs",
+          "outcome": "Confirmed ONE9 Capability Labs' first-party role in technology validation, operationalization, startup support, and public-private capability alignment."
+        }
+      ]
+    },
+    {
+      "id": "prospect-cae-leonardo-m346-refresh",
+      "name": "CAE and Leonardo M-346 training collaboration",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.newswire.ca/news-releases/cae-and-leonardo-expand-collaboration-to-advance-m-346-training-and-develop-next-generation-integrated-training-capabilities-836414999.html",
+      "discoverySourceUrl": "https://www.cae.com/defense-security/who-we-are",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "A current CAE-issued announcement adds a distinct Leonardo relationship and evidence-backed M-346 LVC, LSI, AI-enabled, and advanced fighter-training activity.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.newswire.ca/news-releases/cae-and-leonardo-expand-collaboration-to-advance-m-346-training-and-develop-next-generation-integrated-training-capabilities-836414999.html",
+          "outcome": "Recovered CAE's July 22 company-issued announcement, named partnership, M-346 ITS scope, LVC and LSI roadmap, and AI-enabled training context."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.ainonline.com/aviation-news/defense/2026-07-22/leonardo-increases-collaborations-cae-lockheed-martin",
+          "outcome": "Recovered independent aviation-industry reporting that corroborates the expanded CAE and Leonardo fighter-training collaboration."
+        }
+      ]
+    },
+    {
+      "id": "prospect-defence-drone-initiative-overlap",
+      "name": "Defence Drone Initiative overlap check",
+      "proposedEntityType": "demand_signal",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html",
+      "discoverySourceUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "The official government program was inspected to satisfy the government source lane but its demand statements are already represented in the production corpus.",
+      "disposition": "duplicate",
+      "rejectionReason": "The production database already contains the Defence Drone Initiative source and three published requirements, so this overlap item is not restaged.",
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html",
+          "outcome": "Confirmed the official program scope and compared it with the three already-published Defence Drone Initiative requirements in the live coverage report."
+        }
+      ]
+    }
+  ]
+}

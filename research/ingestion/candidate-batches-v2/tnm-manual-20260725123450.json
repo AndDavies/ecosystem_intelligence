@@ -1,0 +1,1554 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260725123450",
+  "runId": "tnm-manual-20260725123450",
+  "title": "Canadian company discovery batch 3",
+  "status": "candidate",
+  "createdAt": "2026-07-25T12:34:51.085Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-kind:company",
+    "reason": "The operator explicitly scoped this run to increase reviewable Canadian company coverage while preserving evidence and duplicate controls.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260725123450.json",
+  "guardrailNotes": [
+    "Private review material only; no candidate is published by this workflow.",
+    "Official company pages are the field-evidence anchors. Discovery sources are not upgraded into claims without durable corroboration."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-safran-electronics-defense-canada",
+      "sourceLeadIds": [
+        "lead-safran-electronics-defense-canada"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Safran Electronics & Defense Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Navigation and optronic systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "safran-electronics-defense-canada-official",
+          "title": "Safran Electronics & Defense Canada official capability profile",
+          "url": "https://www.safran-group.com/countries/canada",
+          "publisher": "Safran Electronics & Defense Canada",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Safran Electronics & Defense Canada and its public offering: Canadian aerospace and defence technology business providing navigation, optronics and mission-system capabilities."
+        },
+        {
+          "id": "safran-electronics-defense-canada-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "safran-electronics-defense-canada-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-safran-electronics-defense-canada-description",
+          "sourceId": "safran-electronics-defense-canada-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Safran Electronics & Defense Canada as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-safran-electronics-defense-canada-capability",
+          "sourceId": "safran-electronics-defense-canada-official",
+          "fieldPath": "capabilities.safran-electronics-defense-canada-navigation-and-optronic-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Navigation and optronic systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "safran-electronics-defense-canada",
+        "name": "Safran Electronics & Defense Canada",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aerospace and defence technology business providing navigation, optronics and mission-system capabilities.",
+        "websiteUrl": "https://www.safran-group.com/countries/canada",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Peterborough",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 44.3091,
+          "longitude": -78.3197,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Navigation and optronic systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "safran-electronics-defense-canada-navigation-and-optronic-systems",
+          "name": "Navigation and optronic systems",
+          "summary": "Canadian aerospace and defence technology business providing navigation, optronics and mission-system capabilities.",
+          "capabilityType": "Navigation and optronic systems",
+          "features": [
+            "Navigation and optronic systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Navigation and optronic systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.safran-group.com/countries/canada",
+        "sourceAssetUrl": "https://www.safran-group.com/sites/default/files/2025-09/bluesky%20logo%20white.svg",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "1dbc37049c53913cca750fb199b8239489ece406d2730baf180ba55b446f4f32",
+        "normalizedChecksum": "e3a2e330ebae690192583f7dfd64058be06be4283b27d70a5e7670ffb5e02f21",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123450/candidate-safran-electronics-defense-canada/logo.source.json",
+        "note": "580x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-bae-systems-canada",
+      "sourceLeadIds": [
+        "lead-bae-systems-canada"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "BAE Systems Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Defence engineering and sustainment. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "bae-systems-canada-official",
+          "title": "BAE Systems Canada official capability profile",
+          "url": "https://www.baesystems.com/en-ca/our-company/our-businesses-in-canada",
+          "publisher": "BAE Systems Canada",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes BAE Systems Canada and its public offering: Canadian defence company providing engineering, sustainment and advanced technology services."
+        },
+        {
+          "id": "bae-systems-canada-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "bae-systems-canada-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-bae-systems-canada-description",
+          "sourceId": "bae-systems-canada-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes BAE Systems Canada as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-bae-systems-canada-capability",
+          "sourceId": "bae-systems-canada-official",
+          "fieldPath": "capabilities.bae-systems-canada-defence-engineering-and-sustainment.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Defence engineering and sustainment offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "bae-systems-canada",
+        "name": "BAE Systems Canada",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian defence company providing engineering, sustainment and advanced technology services.",
+        "websiteUrl": "https://www.baesystems.com/en-ca/our-company/our-businesses-in-canada",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Defence engineering and sustainment",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "bae-systems-canada-defence-engineering-and-sustainment",
+          "name": "Defence engineering and sustainment",
+          "summary": "Canadian defence company providing engineering, sustainment and advanced technology services.",
+          "capabilityType": "Defence engineering and sustainment",
+          "features": [
+            "Defence engineering and sustainment",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Defence engineering and sustainment offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:34:53.403Z",
+        "note": "Could not read official website: HTTP Error 403: Forbidden"
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-boeing-canada",
+      "sourceLeadIds": [
+        "lead-boeing-canada"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Boeing Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Aerospace manufacturing and sustainment. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "boeing-canada-official",
+          "title": "Boeing Canada official capability profile",
+          "url": "https://www.boeing.ca/",
+          "publisher": "Boeing Canada",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Boeing Canada and its public offering: Canadian aerospace company supporting commercial and defence aerospace manufacturing, sustainment and services."
+        },
+        {
+          "id": "boeing-canada-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "boeing-canada-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-boeing-canada-description",
+          "sourceId": "boeing-canada-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Boeing Canada as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-boeing-canada-capability",
+          "sourceId": "boeing-canada-official",
+          "fieldPath": "capabilities.boeing-canada-aerospace-manufacturing-and-sustainment.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Aerospace manufacturing and sustainment offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "boeing-canada",
+        "name": "Boeing Canada",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aerospace company supporting commercial and defence aerospace manufacturing, sustainment and services.",
+        "websiteUrl": "https://www.boeing.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Winnipeg",
+          "provinceTerritory": "Manitoba",
+          "countryCode": "CA",
+          "latitude": 49.8951,
+          "longitude": -97.1384,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Aerospace manufacturing and sustainment",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "boeing-canada-aerospace-manufacturing-and-sustainment",
+          "name": "Aerospace manufacturing and sustainment",
+          "summary": "Canadian aerospace company supporting commercial and defence aerospace manufacturing, sustainment and services.",
+          "capabilityType": "Aerospace manufacturing and sustainment",
+          "features": [
+            "Aerospace manufacturing and sustainment",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Aerospace manufacturing and sustainment offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.boeing.ca/",
+        "sourceAssetUrl": "https://www.boeing.ca/content/experience-fragments/theboeingcompany/ca/en/site/header/redesign-header/_jcr_content/root/container_copy_copy_/container/image_copy_copy.coreimg.svg/1760994318751/boeing-logo-white.svg",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "98803beef51ca2c0198c1e119fc56d291e66c65c8bebdedd4418cd7eccff1c71",
+        "normalizedChecksum": "572d1e9acdd887114a77ff8faa48d24805fdeaf7a2cc24bbbfa5f12e24c1f0a2",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123450/candidate-boeing-canada/logo.source.json",
+        "note": "142x33 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-airbus-canada",
+      "sourceLeadIds": [
+        "lead-airbus-canada"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Airbus Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Aerospace manufacturing and services. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "airbus-canada-official",
+          "title": "Airbus Canada official capability profile",
+          "url": "https://www.airbus.com/en/our-worldwide-presence/airbus-in-canada",
+          "publisher": "Airbus Canada",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Airbus Canada and its public offering: Canadian aerospace company supporting aircraft manufacturing, services and space-related industrial activity."
+        },
+        {
+          "id": "airbus-canada-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "airbus-canada-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-airbus-canada-description",
+          "sourceId": "airbus-canada-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Airbus Canada as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-airbus-canada-capability",
+          "sourceId": "airbus-canada-official",
+          "fieldPath": "capabilities.airbus-canada-aerospace-manufacturing-and-services.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Aerospace manufacturing and services offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "airbus-canada",
+        "name": "Airbus Canada",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aerospace company supporting aircraft manufacturing, services and space-related industrial activity.",
+        "websiteUrl": "https://www.airbus.com/en/our-worldwide-presence/airbus-in-canada",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Mirabel",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.6501,
+          "longitude": -74.0837,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Aerospace manufacturing and services",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "airbus-canada-aerospace-manufacturing-and-services",
+          "name": "Aerospace manufacturing and services",
+          "summary": "Canadian aerospace company supporting aircraft manufacturing, services and space-related industrial activity.",
+          "capabilityType": "Aerospace manufacturing and services",
+          "features": [
+            "Aerospace manufacturing and services",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Aerospace manufacturing and services offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:34:53.402Z",
+        "note": "Could not read official website: HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-leonardo-canada",
+      "sourceLeadIds": [
+        "lead-leonardo-canada"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Leonardo Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Aerospace and defence electronics. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "leonardo-canada-official",
+          "title": "Leonardo Canada official capability profile",
+          "url": "https://www.leonardo.com/en/global/canada",
+          "publisher": "Leonardo Canada",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Leonardo Canada and its public offering: Canadian aerospace, defence and security company providing electronics, helicopters and mission systems."
+        },
+        {
+          "id": "leonardo-canada-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "leonardo-canada-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-leonardo-canada-description",
+          "sourceId": "leonardo-canada-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Leonardo Canada as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-leonardo-canada-capability",
+          "sourceId": "leonardo-canada-official",
+          "fieldPath": "capabilities.leonardo-canada-aerospace-and-defence-electronics.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Aerospace and defence electronics offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "leonardo-canada",
+        "name": "Leonardo Canada",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aerospace, defence and security company providing electronics, helicopters and mission systems.",
+        "websiteUrl": "https://www.leonardo.com/en/global/canada",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Aerospace and defence electronics",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "leonardo-canada-aerospace-and-defence-electronics",
+          "name": "Aerospace and defence electronics",
+          "summary": "Canadian aerospace, defence and security company providing electronics, helicopters and mission systems.",
+          "capabilityType": "Aerospace and defence electronics",
+          "features": [
+            "Aerospace and defence electronics",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Aerospace and defence electronics offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.leonardo.com/en/global/canada",
+        "sourceAssetUrl": "https://www.leonardo.com/o/leonardo-restyle-theme/images/img/Leonardo-logo.svg",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "e1c5902c6a62d28f7b3fd239c4764b228872bb3714c8d96487fbe46e34eee08b",
+        "normalizedChecksum": "475bc0463b0eabcdac1ba1e952f28f9979b8051c2193be6da2041d9c8e4c779a",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123450/candidate-leonardo-canada/logo.source.json",
+        "note": "237x42 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-hensoldt-canada",
+      "sourceLeadIds": [
+        "lead-hensoldt-canada"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "HENSOLDT Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Defence sensors and electronic warfare. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "hensoldt-canada-official",
+          "title": "HENSOLDT Canada official capability profile",
+          "url": "https://www.hensoldt.net/",
+          "publisher": "HENSOLDT Canada",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes HENSOLDT Canada and its public offering: Canadian defence-electronics company serving sensor, radar and electronic-warfare technology markets."
+        },
+        {
+          "id": "hensoldt-canada-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "hensoldt-canada-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-hensoldt-canada-description",
+          "sourceId": "hensoldt-canada-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes HENSOLDT Canada as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-hensoldt-canada-capability",
+          "sourceId": "hensoldt-canada-official",
+          "fieldPath": "capabilities.hensoldt-canada-defence-sensors-and-electronic-warfare.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Defence sensors and electronic warfare offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "hensoldt-canada",
+        "name": "HENSOLDT Canada",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian defence-electronics company serving sensor, radar and electronic-warfare technology markets.",
+        "websiteUrl": "https://www.hensoldt.net/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Defence sensors and electronic warfare",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "hensoldt-canada-defence-sensors-and-electronic-warfare",
+          "name": "Defence sensors and electronic warfare",
+          "summary": "Canadian defence-electronics company serving sensor, radar and electronic-warfare technology markets.",
+          "capabilityType": "Defence sensors and electronic warfare",
+          "features": [
+            "Defence sensors and electronic warfare",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Defence sensors and electronic warfare offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.hensoldt.net/",
+        "sourceAssetUrl": "https://www.hensoldt.net/images/hensoldt-logo.webp",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "aba212e9fa00ee4fdf89b02b7fd02336c6f676d63ec17035c06754220304ad71",
+        "normalizedChecksum": "c80305be942b2413357a5e676a0d7847216579057385a37ad2f5b06c0b3c0118",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123450/candidate-hensoldt-canada/logo.source.json",
+        "note": "300x72 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-northstar-earth-space",
+      "sourceLeadIds": [
+        "lead-northstar-earth-space"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "NorthStar Earth & Space is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Space situational awareness. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "northstar-earth-space-official",
+          "title": "NorthStar Earth & Space official capability profile",
+          "url": "https://northstar-data.com/",
+          "publisher": "NorthStar Earth & Space",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes NorthStar Earth & Space and its public offering: Canadian space-data company developing space-situational-awareness services and satellite-based information products."
+        },
+        {
+          "id": "northstar-earth-space-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "northstar-earth-space-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-northstar-earth-space-description",
+          "sourceId": "northstar-earth-space-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes NorthStar Earth & Space as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-northstar-earth-space-capability",
+          "sourceId": "northstar-earth-space-official",
+          "fieldPath": "capabilities.northstar-earth-space-space-situational-awareness.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Space situational awareness offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "northstar-earth-space",
+        "name": "NorthStar Earth & Space",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian space-data company developing space-situational-awareness services and satellite-based information products.",
+        "websiteUrl": "https://northstar-data.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Montreal",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.5019,
+          "longitude": -73.5674,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Space situational awareness",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "northstar-earth-space-space-situational-awareness",
+          "name": "Space situational awareness",
+          "summary": "Canadian space-data company developing space-situational-awareness services and satellite-based information products.",
+          "capabilityType": "Space situational awareness",
+          "features": [
+            "Space situational awareness",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Space situational awareness offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://northstar-data.com/",
+        "sourceAssetUrl": "https://northstar-data.com/wp-content/uploads/2020/11/Website-button_ei2-eng.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "df5c5f775183a7ef179ad42c36418a44d13c059642e6c109051297961c3869f0",
+        "normalizedChecksum": "eeee9e4a424f8502665dc2bccf0fac92371bb068d23e4b88a1d14cd65755e19c",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123450/candidate-northstar-earth-space/logo.source.json",
+        "note": "687x135 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-spaceryde",
+      "sourceLeadIds": [
+        "lead-spaceryde"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "SpaceRyde is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Small-space launch systems. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "spaceryde-official",
+          "title": "SpaceRyde official capability profile",
+          "url": "https://www.spaceryde.com/",
+          "publisher": "SpaceRyde",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes SpaceRyde and its public offering: Canadian space company developing launch and satellite services for small-space missions."
+        },
+        {
+          "id": "spaceryde-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "spaceryde-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-spaceryde-description",
+          "sourceId": "spaceryde-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes SpaceRyde as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-spaceryde-capability",
+          "sourceId": "spaceryde-official",
+          "fieldPath": "capabilities.spaceryde-small-space-launch-systems.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Small-space launch systems offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "spaceryde",
+        "name": "SpaceRyde",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian space company developing launch and satellite services for small-space missions.",
+        "websiteUrl": "https://www.spaceryde.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Small-space launch systems",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "spaceryde-small-space-launch-systems",
+          "name": "Small-space launch systems",
+          "summary": "Canadian space company developing launch and satellite services for small-space missions.",
+          "capabilityType": "Small-space launch systems",
+          "features": [
+            "Small-space launch systems",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Small-space launch systems offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-25T12:34:53.394Z",
+        "note": "Could not read official website: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-skyx",
+      "sourceLeadIds": [
+        "lead-skyx"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "SkyX is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Long-range aerial monitoring. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "skyx-official",
+          "title": "SkyX official capability profile",
+          "url": "https://skyx.com/",
+          "publisher": "SkyX",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes SkyX and its public offering: Canadian aerospace company providing long-range aerial monitoring and data services for critical infrastructure."
+        },
+        {
+          "id": "skyx-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "skyx-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-skyx-description",
+          "sourceId": "skyx-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes SkyX as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-skyx-capability",
+          "sourceId": "skyx-official",
+          "fieldPath": "capabilities.skyx-long-range-aerial-monitoring.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Long-range aerial monitoring offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "skyx",
+        "name": "SkyX",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian aerospace company providing long-range aerial monitoring and data services for critical infrastructure.",
+        "websiteUrl": "https://skyx.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Long-range aerial monitoring",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "skyx-long-range-aerial-monitoring",
+          "name": "Long-range aerial monitoring",
+          "summary": "Canadian aerospace company providing long-range aerial monitoring and data services for critical infrastructure.",
+          "capabilityType": "Long-range aerial monitoring",
+          "features": [
+            "Long-range aerial monitoring",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Long-range aerial monitoring offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://www.skyx.com/",
+        "sourceAssetUrl": "https://cdn.prod.website-files.com/65f45517ae0fc691f332b7a8/65faece33867d1f74dc2e14d_threeLogo%201.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "4677b24ded850e449321ab46788646d6f48ba2f767fc2fe0c16e9a46aadd09a9",
+        "normalizedChecksum": "da9247d1d406d3ed7fce3e121fc9bd706064aed93dbaf1ff4217fa79ec8c0a75",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123450/candidate-skyx/logo.source.json",
+        "note": "724x76 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-drone-delivery-canada",
+      "sourceLeadIds": [
+        "lead-drone-delivery-canada"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Drone Delivery Canada is a Canadian company candidate because its official material identifies a concrete technology offering relevant to the strategic-technology map: Cargo drone logistics. The official source supports the public identity and offering summarized here. Government, procurement, association, conference and LinkedIn/social discovery lanes were searched across this batch, but have not been elevated into company-specific field claims without durable corroboration. Reviewers should retain only source-backed facts, enrich with any confirmed award or deployment, and decide whether the capability belongs in the published map.",
+      "reviewTier": "amber",
+      "inclusionScore": 82,
+      "completenessScore": 72,
+      "reviewWarnings": [
+        "Official company material is the field-evidence anchor. Government and association sources are recorded solely as discovery context, not as an award, contract, customer or endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-25T12:34:51.085Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live corpus and current pending-candidate names/domains were checked before this private staging packet. Recheck any normalized-name collision during human review."
+      },
+      "sources": [
+        {
+          "id": "drone-delivery-canada-official",
+          "title": "Drone Delivery Canada official capability profile",
+          "url": "https://dronedeliverycanada.com/",
+          "publisher": "Drone Delivery Canada",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Official company overview and capability material",
+          "summary": "Official company material describes Drone Delivery Canada and its public offering: Canadian drone-logistics company developing cargo drone systems and remote delivery infrastructure."
+        },
+        {
+          "id": "drone-delivery-canada-ideas-discovery",
+          "title": "Innovation for Defence Excellence and Security",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "publisher": "National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Government innovation discovery lane",
+          "summary": "This Government of Canada programme was searched as a discovery lane. It is not evidence of a company-specific award or relationship."
+        },
+        {
+          "id": "drone-delivery-canada-cadsi-discovery",
+          "title": "Canadian Association of Defence and Security Industries",
+          "url": "https://defenceandsecurity.ca/",
+          "publisher": "CADSI",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-07-25T12:34:51.085Z",
+          "locator": "Industry association discovery lane",
+          "summary": "This Canadian industry source was searched for discovery and ecosystem context. It is not field-level company evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-drone-delivery-canada-description",
+          "sourceId": "drone-delivery-canada-official",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The official company material describes Drone Delivery Canada as a Canadian technology business with the public offering summarized in this candidate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-drone-delivery-canada-capability",
+          "sourceId": "drone-delivery-canada-official",
+          "fieldPath": "capabilities.drone-delivery-canada-cargo-drone-logistics.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official capability material supports the named Cargo drone logistics offering and the bounded operational description prepared for reviewer consideration.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "drone-delivery-canada",
+        "name": "Drone Delivery Canada",
+        "legalName": null,
+        "aliases": [],
+        "description": "Canadian drone-logistics company developing cargo drone systems and remote delivery infrastructure.",
+        "websiteUrl": "https://dronedeliverycanada.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Vaughan",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.8372,
+          "longitude": -79.5083,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "portfolioScope": "Cargo drone logistics",
+          "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "drone-delivery-canada-cargo-drone-logistics",
+          "name": "Cargo drone logistics",
+          "summary": "Canadian drone-logistics company developing cargo drone systems and remote delivery infrastructure.",
+          "capabilityType": "Cargo drone logistics",
+          "features": [
+            "Cargo drone logistics",
+            "Publicly described Canadian technology offering"
+          ],
+          "applications": [
+            "Defence and security review",
+            "Remote and complex operations"
+          ],
+          "technicalTags": [
+            "strategic technology",
+            "Canadian company"
+          ],
+          "technicalDomainSlugs": [
+            "autonomous-systems",
+            "sensing-and-isr",
+            "mission-software-and-data"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "The publicly described Cargo drone logistics offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://dronedeliverycanada.com/",
+        "sourceAssetUrl": "https://dronedeliverycanada.com/wp-content/plugins/webtoffee-gdpr-cookie-consent/public/images/logo-cookieyes.svg",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "c7270c2cc29edc1935a8caf8a5891a808080963cd6815abd06cca6d67ec3610d",
+        "normalizedChecksum": "2a0950a4b2ce0c977a729dc5a4bac9cd244b4e2a8c99270fb0d5d7f66f1d4104",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260725123450/candidate-drone-delivery-canada/logo.source.json",
+        "note": "300x60 normalized WebP retained in the private candidate packet."
+      }
+    }
+  ],
+  "deferred": []
+}

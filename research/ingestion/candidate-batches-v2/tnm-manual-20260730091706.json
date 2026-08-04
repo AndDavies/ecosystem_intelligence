@@ -1,0 +1,1634 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260730091706",
+  "runId": "tnm-manual-20260730091706",
+  "title": "Canadian government innovation offices and program operators",
+  "status": "candidate",
+  "createdAt": "2026-07-30T09:31:20.414Z",
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-kind:government_innovation_office",
+    "reason": "4 published or pending government innovation office records cover only 40% of the working saturation target of 10.",
+    "score": 850
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260730091706.json",
+  "guardrailNotes": [
+    "Private Admin Review material only; this run does not accept, publish or write any candidate into canonical organization or program tables.",
+    "Official organization, government, program, governance and contact pages are the field-evidence anchors; classification ambiguity remains explicit in reviewer warnings."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-ontario-centre-of-innovation",
+      "sourceLeadIds": [
+        "lead-ontario-centre-of-innovation"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Ontario Centre of Innovation fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "amber",
+      "inclusionScore": 88,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "OCI is an independent not-for-profit delivery organization rather than a provincial Crown corporation; confirm government_innovation_office versus ecosystem_organization during review."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-ontario-centre-of-innovation-about",
+          "title": "About the Ontario Centre of Innovation",
+          "url": "https://www.oc-innovation.ca/about/",
+          "publisher": "Ontario Centre of Innovation",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "About page",
+          "summary": "OCI describes its commercialization mandate, industry-academic collaboration role and whole-of-government program-delivery function."
+        },
+        {
+          "id": "source-ontario-centre-of-innovation-program",
+          "title": "Ontario Vehicle Innovation Network",
+          "url": "https://www.oc-innovation.ca/programs/ontario-vehicle-innovation-network-ovin/",
+          "publisher": "Ontario Centre of Innovation",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Program overview",
+          "summary": "OCI describes OVIN as Ontario's flagship initiative for connected, autonomous and electric vehicle technology development, demonstration and commercialization."
+        },
+        {
+          "id": "source-ontario-centre-of-innovation-contact",
+          "title": "Contact the Ontario Centre of Innovation",
+          "url": "https://www.oc-innovation.ca/about/contact-us/",
+          "publisher": "Ontario Centre of Innovation",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Contact page",
+          "summary": "OCI lists its public office at 325 Front Street West in Toronto, Ontario, along with public contact channels."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-ontario-centre-of-innovation-description",
+          "sourceId": "source-ontario-centre-of-innovation-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario Centre of Innovation helps commercialize Ontario research and intellectual property, connects industry with academic expertise, and delivers public innovation programs for Ontario businesses.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ontario-centre-of-innovation-mandate",
+          "sourceId": "source-ontario-centre-of-innovation-about",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "OCI's public mandate is to maximize the commercial impact of Ontario research and intellectual property by supporting companies, industry-academic collaboration, technology development, demonstration, adoption and commercialization.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ontario-centre-of-innovation-location",
+          "sourceId": "source-ontario-centre-of-innovation-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario Centre of Innovation publicly lists an operating office in Toronto, Ontario, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ontario-centre-of-innovation-program",
+          "sourceId": "source-ontario-centre-of-innovation-program",
+          "fieldPath": "programs.ontario-vehicle-innovation-network.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Ontario Vehicle Innovation Network is Ontario's flagship automotive and mobility initiative, led by OCI to support development, demonstration and commercialization of connected, autonomous and electric mobility technologies.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ontario-centre-of-innovation-relationship",
+          "sourceId": "source-ontario-centre-of-innovation-program",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "OCI leads the Government of Ontario's flagship Ontario Vehicle Innovation Network and describes itself as a delivery partner for provincial programs supporting business innovation and commercialization.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "ontario-centre-of-innovation",
+        "name": "Ontario Centre of Innovation",
+        "legalName": "Ontario Centre of Innovation",
+        "aliases": [
+          "OCI"
+        ],
+        "description": "Ontario Centre of Innovation helps commercialize Ontario research and intellectual property, connects industry with academic expertise, and delivers public innovation programs for Ontario businesses.",
+        "websiteUrl": "https://www.oc-innovation.ca/",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "OCI's public mandate is to maximize the commercial impact of Ontario research and intellectual property by supporting companies, industry-academic collaboration, technology development, demonstration, adoption and commercialization.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "ontario-vehicle-innovation-network",
+          "name": "Ontario Vehicle Innovation Network",
+          "programType": "provincial mobility innovation network",
+          "websiteUrl": "https://www.oc-innovation.ca/programs/ontario-vehicle-innovation-network-ovin/",
+          "summary": "The Ontario Vehicle Innovation Network is Ontario's flagship automotive and mobility initiative, led by OCI to support development, demonstration and commercialization of connected, autonomous and electric mobility technologies.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Ontario",
+          "relationshipType": "program delivery partner",
+          "publicSummary": "OCI leads the Government of Ontario's flagship Ontario Vehicle Innovation Network and describes itself as a delivery partner for provincial programs supporting business innovation and commercialization."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.oc-innovation.ca/",
+        "sourceAssetUrl": "https://www.oc-innovation.ca/wp-content/themes/oci/images/logo-oci-color-en.svg",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "f2382c48591f48c485d47c977ff6721e548b0b202b72748ba5b6c8e6c33d5fca",
+        "normalizedChecksum": "7377a6572e4a4ba5841709838700eb0558d112985d25dbd93b31b9a730a10531",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730091706/candidate-ontario-centre-of-innovation/logo.source.json",
+        "note": "209x86 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-alberta-innovates",
+      "sourceLeadIds": [
+        "lead-alberta-innovates"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Alberta Innovates fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "The candidate describes a public innovation mandate and active program, not a defence-specific supplier capability or procurement endorsement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-alberta-innovates-about",
+          "title": "What Alberta Innovates does",
+          "url": "https://albertainnovates.ca/about/what-we-do/",
+          "publisher": "Alberta Innovates",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "What we do",
+          "summary": "Alberta Innovates describes its provincial research-funding, technical-expertise, facilities and commercialization-support role."
+        },
+        {
+          "id": "source-alberta-innovates-program",
+          "title": "Ecosystem Development Partnerships Program",
+          "url": "https://albertainnovates.ca/funding/ecosystem-development-partnerships-program/",
+          "publisher": "Alberta Innovates",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Funding program page",
+          "summary": "The program supports collaborative initiatives intended to strengthen Alberta's research and innovation ecosystem."
+        },
+        {
+          "id": "source-alberta-innovates-governance",
+          "title": "Alberta Innovates governance",
+          "url": "https://albertainnovates.ca/about/governance/",
+          "publisher": "Alberta Innovates",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Governance page",
+          "summary": "The governance page describes a provincially appointed board and accountability to Alberta's Minister of Technology and Innovation."
+        },
+        {
+          "id": "source-alberta-innovates-contact",
+          "title": "Contact Alberta Innovates",
+          "url": "https://albertainnovates.ca/about/contact-us/",
+          "publisher": "Alberta Innovates",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Contact page",
+          "summary": "Alberta Innovates lists its Bell Tower corporate office and public contact channels in Edmonton, Alberta."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-alberta-innovates-description",
+          "sourceId": "source-alberta-innovates-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Alberta Innovates is Alberta's provincial innovation agency, funding research and providing expertise, facilities and commercialization support to researchers, entrepreneurs and industry.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alberta-innovates-mandate",
+          "sourceId": "source-alberta-innovates-about",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Alberta Innovates acts as the province's innovation engine by funding research, supplying technical and business expertise, and connecting researchers, entrepreneurs and companies with facilities, partners and commercialization support.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alberta-innovates-location",
+          "sourceId": "source-alberta-innovates-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Alberta Innovates publicly lists an operating office in Edmonton, Alberta, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alberta-innovates-program",
+          "sourceId": "source-alberta-innovates-program",
+          "fieldPath": "programs.ecosystem-development-partnerships-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Ecosystem Development Partnerships Program supports collaborations that strengthen Alberta's research and innovation ecosystem and help organizations combine expertise, infrastructure and networks around shared opportunities.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-alberta-innovates-relationship",
+          "sourceId": "source-alberta-innovates-governance",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Alberta Innovates is governed by a provincially appointed board and is accountable to Alberta's Minister of Technology and Innovation for delivery of its public innovation mandate.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "alberta-innovates",
+        "name": "Alberta Innovates",
+        "legalName": "Alberta Innovates",
+        "aliases": [],
+        "description": "Alberta Innovates is Alberta's provincial innovation agency, funding research and providing expertise, facilities and commercialization support to researchers, entrepreneurs and industry.",
+        "websiteUrl": "https://albertainnovates.ca/",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Edmonton",
+          "provinceTerritory": "Alberta",
+          "countryCode": "CA",
+          "latitude": 53.5461,
+          "longitude": -113.4938,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Alberta Innovates acts as the province's innovation engine by funding research, supplying technical and business expertise, and connecting researchers, entrepreneurs and companies with facilities, partners and commercialization support.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "ecosystem-development-partnerships-program",
+          "name": "Ecosystem Development Partnerships Program",
+          "programType": "innovation ecosystem funding program",
+          "websiteUrl": "https://albertainnovates.ca/funding/ecosystem-development-partnerships-program/",
+          "summary": "The Ecosystem Development Partnerships Program supports collaborations that strengthen Alberta's research and innovation ecosystem and help organizations combine expertise, infrastructure and networks around shared opportunities.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Alberta",
+          "relationshipType": "provincial agency",
+          "publicSummary": "Alberta Innovates is governed by a provincially appointed board and is accountable to Alberta's Minister of Technology and Innovation for delivery of its public innovation mandate."
+        }
+      ],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://albertainnovates.ca/",
+        "sourceAssetUrl": "https://albertainnovates.ca/wp-content/uploads/2026/05/header-participants-1200x990.jpg",
+        "selectionMethod": "header_image",
+        "sourceChecksum": "d44c15eb401e2bc54f89e81ba55445ef7158f56b6a756918fadce1efcf9daf38",
+        "normalizedChecksum": "8b990e5a0cfe0811f0f4da06cb4faee8a96cb1eecfd2412eccc1f524bf4685cf",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730091706/candidate-alberta-innovates/logo.source.json",
+        "note": "621x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-innovate-bc",
+      "sourceLeadIds": [
+        "lead-innovate-bc"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Innovate BC fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "Integrated Marketplace is represented as an innovation and adoption program; no specific defence procurement outcome is inferred from program participation."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-innovate-bc-about",
+          "title": "About Innovate BC",
+          "url": "https://www.innovatebc.ca/about/",
+          "publisher": "Innovate BC",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "About page",
+          "summary": "Innovate BC describes its province-wide innovation role, partnerships, programs and Vancouver public office."
+        },
+        {
+          "id": "source-innovate-bc-program",
+          "title": "Innovate BC programs",
+          "url": "https://www.innovatebc.ca/programs/",
+          "publisher": "Innovate BC",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Programs directory",
+          "summary": "The programs directory identifies the Integrated Marketplace and other technology-development, adoption and commercialization supports."
+        },
+        {
+          "id": "source-innovate-bc-crown",
+          "title": "About Innovate BC agency profile",
+          "url": "https://www.innovatebc.ca/hubfs/About%20Innovate%20BC.pdf",
+          "publisher": "Innovate BC",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Agency profile",
+          "summary": "Innovate BC's official agency profile identifies the organization as a British Columbia Crown agency supporting technology and innovation."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-innovate-bc-description",
+          "sourceId": "source-innovate-bc-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Innovate BC is British Columbia's Crown agency for technology and innovation, delivering programs and partnerships that help companies develop, demonstrate, adopt and commercialize technology.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovate-bc-mandate",
+          "sourceId": "source-innovate-bc-about",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Innovate BC's public mandate is to foster innovation across British Columbia by connecting innovators with programs, partners, capital, talent and market opportunities that support company growth and technology adoption.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovate-bc-location",
+          "sourceId": "source-innovate-bc-about",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Innovate BC publicly lists an operating office in Vancouver, British Columbia, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovate-bc-program",
+          "sourceId": "source-innovate-bc-program",
+          "fieldPath": "programs.integrated-marketplace.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Innovate BC's Integrated Marketplace helps British Columbia technology companies test, demonstrate and deploy solutions with large public and industry partners in real operating environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovate-bc-relationship",
+          "sourceId": "source-innovate-bc-crown",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Innovate BC identifies itself as a provincial Crown agency operating within British Columbia's public innovation system and delivering programs aligned with provincial economic priorities.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "innovate-bc",
+        "name": "Innovate BC",
+        "legalName": "Innovate BC",
+        "aliases": [],
+        "description": "Innovate BC is British Columbia's Crown agency for technology and innovation, delivering programs and partnerships that help companies develop, demonstrate, adopt and commercialize technology.",
+        "websiteUrl": "https://www.innovatebc.ca/",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Innovate BC's public mandate is to foster innovation across British Columbia by connecting innovators with programs, partners, capital, talent and market opportunities that support company growth and technology adoption.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "integrated-marketplace",
+          "name": "Integrated Marketplace",
+          "programType": "technology adoption and demonstration program",
+          "websiteUrl": "https://www.innovatebc.ca/programs/",
+          "summary": "Innovate BC's Integrated Marketplace helps British Columbia technology companies test, demonstrate and deploy solutions with large public and industry partners in real operating environments.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of British Columbia",
+          "relationshipType": "provincial Crown agency",
+          "publicSummary": "Innovate BC identifies itself as a provincial Crown agency operating within British Columbia's public innovation system and delivering programs aligned with provincial economic priorities."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.innovatebc.ca/",
+        "sourceAssetUrl": "https://www.innovatebc.ca/hs-fs/hubfs/Logos/InnovateBC-Logo.png?width=154&height=22&name=InnovateBC-Logo.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "a950f748cd4b1413ace0178b15de72940b0acb00833e594139c0e3040aa35774",
+        "normalizedChecksum": "de91fdd1df85aae2314750e903a75971d35c8af4140a0f5a63f5c86a342720f0",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730091706/candidate-innovate-bc/logo.source.json",
+        "note": "154x22 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-innovation-saskatchewan",
+      "sourceLeadIds": [
+        "lead-innovation-saskatchewan"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Innovation Saskatchewan fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The Innovation and Science Fund is a broad provincial program; defence relevance must be assessed through any specific funded project rather than assumed from the program itself."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-innovation-saskatchewan-mandate",
+          "title": "Growing a strong economy through innovation and technology",
+          "url": "https://www.saskatchewan.ca/government/news-and-media/2022/march/23/growing-a-strong-economy-through-innovation--technology",
+          "publisher": "Government of Saskatchewan",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Agency mandate announcement",
+          "summary": "The Government of Saskatchewan describes Innovation Saskatchewan's mandate to promote and fund research, technology development and commercialization."
+        },
+        {
+          "id": "source-innovation-saskatchewan-program",
+          "title": "Innovation and Science Fund expansion",
+          "url": "https://www.saskatchewan.ca/government/news-and-media/2026/january/20/innovation-science-fund-expansion-strengthens-saskatchewan-research-excellence",
+          "publisher": "Government of Saskatchewan",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "January 20, 2026 announcement",
+          "summary": "The government announced a four-stream expansion of the Innovation and Science Fund for research infrastructure, commercialization, partnerships and talent."
+        },
+        {
+          "id": "source-innovation-saskatchewan-report",
+          "title": "Innovation Saskatchewan annual report",
+          "url": "https://innovationsask.ca/pub/documents/publications/IS_2020-2021%20Annual%20Report.pdf",
+          "publisher": "Innovation Saskatchewan",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Agency profile and main-office section",
+          "summary": "The annual report identifies Innovation Saskatchewan as a provincial agency and lists its Saskatoon main office and public accountability context."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-innovation-saskatchewan-description",
+          "sourceId": "source-innovation-saskatchewan-mandate",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Innovation Saskatchewan is the Government of Saskatchewan agency responsible for advancing research, technology development and commercialization across the province's innovation economy.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovation-saskatchewan-mandate",
+          "sourceId": "source-innovation-saskatchewan-mandate",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Innovation Saskatchewan is mandated to encourage and coordinate research, fund technology development and commercialization, and strengthen Saskatchewan's innovation ecosystem and research infrastructure.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovation-saskatchewan-location",
+          "sourceId": "source-innovation-saskatchewan-report",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Innovation Saskatchewan publicly lists an operating office in Saskatoon, Saskatchewan, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovation-saskatchewan-program",
+          "sourceId": "source-innovation-saskatchewan-program",
+          "fieldPath": "programs.innovation-and-science-fund.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Saskatchewan's expanded Innovation and Science Fund supports research infrastructure, commercialization, institutional partnerships and research talent through four provincial funding streams administered within the innovation portfolio.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovation-saskatchewan-relationship",
+          "sourceId": "source-innovation-saskatchewan-mandate",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Saskatchewan identifies Innovation Saskatchewan as the central agency responsible for implementing the province's research and innovation priorities and administering related funding programs.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "innovation-saskatchewan",
+        "name": "Innovation Saskatchewan",
+        "legalName": "Innovation Saskatchewan",
+        "aliases": [],
+        "description": "Innovation Saskatchewan is the Government of Saskatchewan agency responsible for advancing research, technology development and commercialization across the province's innovation economy.",
+        "websiteUrl": "https://innovationsask.ca/",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Saskatoon",
+          "provinceTerritory": "Saskatchewan",
+          "countryCode": "CA",
+          "latitude": 52.1332,
+          "longitude": -106.67,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Innovation Saskatchewan is mandated to encourage and coordinate research, fund technology development and commercialization, and strengthen Saskatchewan's innovation ecosystem and research infrastructure.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "innovation-and-science-fund",
+          "name": "Innovation and Science Fund",
+          "programType": "provincial research and innovation fund",
+          "websiteUrl": "https://www.saskatchewan.ca/government/news-and-media/2026/january/20/innovation-science-fund-expansion-strengthens-saskatchewan-research-excellence",
+          "summary": "Saskatchewan's expanded Innovation and Science Fund supports research infrastructure, commercialization, institutional partnerships and research talent through four provincial funding streams administered within the innovation portfolio.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Saskatchewan",
+          "relationshipType": "central government agency",
+          "publicSummary": "The Government of Saskatchewan identifies Innovation Saskatchewan as the central agency responsible for implementing the province's research and innovation priorities and administering related funding programs."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-30T09:31:41.501Z",
+        "note": "Could not read official website: HTTP Error 403: Forbidden"
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-research-manitoba",
+      "sourceLeadIds": [
+        "lead-research-manitoba"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Research Manitoba fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 87,
+      "reviewWarnings": [
+        "The selected program supports broad proof-of-concept activity; candidate publication should not imply a defence-specific mandate or funded defence project."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-research-manitoba-about",
+          "title": "About Research Manitoba",
+          "url": "https://researchmanitoba.ca/about/about-us/",
+          "publisher": "Research Manitoba",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "About page",
+          "summary": "Research Manitoba describes its status under provincial legislation, reporting relationship, mandate and research-funding role."
+        },
+        {
+          "id": "source-research-manitoba-programs",
+          "title": "Research Manitoba funding programs",
+          "url": "https://researchmanitoba.ca/funding/programs/",
+          "publisher": "Research Manitoba",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Funding programs and office details",
+          "summary": "The funding directory lists the Innovation Proof of Concept Grant and Research Manitoba's Winnipeg office and contact details."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-research-manitoba-description",
+          "sourceId": "source-research-manitoba-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Research Manitoba is Manitoba's provincial research agency, funding and coordinating research and innovation intended to improve economic, health, social and environmental outcomes.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-research-manitoba-mandate",
+          "sourceId": "source-research-manitoba-about",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Research Manitoba's legislated public mandate is to support, fund, promote and coordinate research and innovation in Manitoba while strengthening provincial research capacity and partnerships.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-research-manitoba-location",
+          "sourceId": "source-research-manitoba-programs",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Research Manitoba publicly lists an operating office in Winnipeg, Manitoba, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-research-manitoba-program",
+          "sourceId": "source-research-manitoba-programs",
+          "fieldPath": "programs.innovation-proof-of-concept-grant.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Research Manitoba's Innovation Proof of Concept Grant supports the validation and early commercialization of Manitoba research and technology alongside the agency's other targeted research funding programs.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-research-manitoba-relationship",
+          "sourceId": "source-research-manitoba-about",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Research Manitoba operates under the Research Manitoba Act, reports through the responsible provincial department and delivers Manitoba's public research and innovation funding mandate.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "research-manitoba",
+        "name": "Research Manitoba",
+        "legalName": "Research Manitoba",
+        "aliases": [],
+        "description": "Research Manitoba is Manitoba's provincial research agency, funding and coordinating research and innovation intended to improve economic, health, social and environmental outcomes.",
+        "websiteUrl": "https://researchmanitoba.ca/",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Winnipeg",
+          "provinceTerritory": "Manitoba",
+          "countryCode": "CA",
+          "latitude": 49.8951,
+          "longitude": -97.1384,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Research Manitoba's legislated public mandate is to support, fund, promote and coordinate research and innovation in Manitoba while strengthening provincial research capacity and partnerships.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "innovation-proof-of-concept-grant",
+          "name": "Innovation Proof of Concept Grant",
+          "programType": "technology validation and commercialization grant",
+          "websiteUrl": "https://researchmanitoba.ca/funding/programs/",
+          "summary": "Research Manitoba's Innovation Proof of Concept Grant supports the validation and early commercialization of Manitoba research and technology alongside the agency's other targeted research funding programs.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Manitoba",
+          "relationshipType": "provincial research agency",
+          "publicSummary": "Research Manitoba operates under the Research Manitoba Act, reports through the responsible provincial department and delivers Manitoba's public research and innovation funding mandate."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://researchmanitoba.ca/",
+        "sourceAssetUrl": "https://researchmanitoba.ca/wp-content/uploads/2022/11/Research_Manitoba_Footer_Logo.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "a8c55667956c33b954fbafcf7f811758890a4bcc61cc9f069e252a2078662279",
+        "normalizedChecksum": "854513b849b25be1ae1d252b6051e0c882cc942d606ccb0815a7947a13190280",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730091706/candidate-research-manitoba/logo.source.json",
+        "note": "400x158 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-invest-nova-scotia",
+      "sourceLeadIds": [
+        "lead-invest-nova-scotia"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Invest Nova Scotia fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "amber",
+      "inclusionScore": 89,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Invest Nova Scotia also acts as a public investor and broad business-development agency; confirm government_innovation_office versus investor_funder during review."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-invest-nova-scotia-about",
+          "title": "About Invest Nova Scotia",
+          "url": "https://investnovascotia.ca/about",
+          "publisher": "Invest Nova Scotia",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "About page",
+          "summary": "Invest Nova Scotia describes its provincial business-development role, investment and commercialization services, and priority industry sectors."
+        },
+        {
+          "id": "source-invest-nova-scotia-program",
+          "title": "Innovation Rebate Program",
+          "url": "https://investnovascotia.ca/incentives-programs-services/innovation-rebate-program",
+          "publisher": "Invest Nova Scotia",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Program page",
+          "summary": "The program offers performance-based incentives for business capital projects involving productivity improvement and innovative technology adoption."
+        },
+        {
+          "id": "source-invest-nova-scotia-contact",
+          "title": "Contact Invest Nova Scotia",
+          "url": "https://investnovascotia.ca/contact",
+          "publisher": "Invest Nova Scotia",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Contact page",
+          "summary": "Invest Nova Scotia lists its Halifax public office and public telephone and email channels for business inquiries."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-invest-nova-scotia-description",
+          "sourceId": "source-invest-nova-scotia-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Invest Nova Scotia is Nova Scotia's business development agency, combining start-up, commercialization, investment, export and business-growth support across sectors including defence, aerospace, ocean technology and digital industries.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-invest-nova-scotia-mandate",
+          "sourceId": "source-invest-nova-scotia-about",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Invest Nova Scotia supports companies from start-up through scale-up with acceleration, venture investment, non-dilutive funding, export development and location services intended to advance provincial business and innovation growth.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-invest-nova-scotia-location",
+          "sourceId": "source-invest-nova-scotia-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Invest Nova Scotia publicly lists an operating office in Halifax, Nova Scotia, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-invest-nova-scotia-program",
+          "sourceId": "source-invest-nova-scotia-program",
+          "fieldPath": "programs.innovation-rebate-program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Innovation Rebate Program offers performance-based incentives for Nova Scotia businesses undertaking capital projects that improve productivity, build competitiveness and adopt innovative technologies or processes.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-invest-nova-scotia-relationship",
+          "sourceId": "source-invest-nova-scotia-about",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Invest Nova Scotia presents itself as the Province of Nova Scotia's business development agency and delivers provincial investment, innovation and export-support services.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "invest-nova-scotia",
+        "name": "Invest Nova Scotia",
+        "legalName": "Invest Nova Scotia",
+        "aliases": [],
+        "description": "Invest Nova Scotia is Nova Scotia's business development agency, combining start-up, commercialization, investment, export and business-growth support across sectors including defence, aerospace, ocean technology and digital industries.",
+        "websiteUrl": "https://investnovascotia.ca/",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Halifax",
+          "provinceTerritory": "Nova Scotia",
+          "countryCode": "CA",
+          "latitude": 44.6488,
+          "longitude": -63.5752,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Invest Nova Scotia supports companies from start-up through scale-up with acceleration, venture investment, non-dilutive funding, export development and location services intended to advance provincial business and innovation growth.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "innovation-rebate-program",
+          "name": "Innovation Rebate Program",
+          "programType": "business technology adoption incentive",
+          "websiteUrl": "https://investnovascotia.ca/incentives-programs-services/innovation-rebate-program",
+          "summary": "The Innovation Rebate Program offers performance-based incentives for Nova Scotia businesses undertaking capital projects that improve productivity, build competitiveness and adopt innovative technologies or processes.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Nova Scotia",
+          "relationshipType": "provincial business development agency",
+          "publicSummary": "Invest Nova Scotia presents itself as the Province of Nova Scotia's business development agency and delivers provincial investment, innovation and export-support services."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://investnovascotia.ca/",
+        "sourceAssetUrl": "https://investnovascotia.ca/sites/default/files/logo-white_0.svg",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "84427029feeb127e15856d5a3268f1ba01f211eb1d634609236f51a4a53a6b46",
+        "normalizedChecksum": "2799e53ea02eae1c59ab7445738a9cb747e758fc9747098ca5f3cc797f01aaf3",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730091706/candidate-invest-nova-scotia/logo.source.json",
+        "note": "425x155 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-innovation-pei",
+      "sourceLeadIds": [
+        "lead-innovation-pei"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Innovation PEI fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "The Innovation Fund includes aerospace and defence among eligible sectors, but eligibility does not demonstrate any particular company award or procurement relationship."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-innovation-pei-about",
+          "title": "About Innovation PEI",
+          "url": "https://www.princeedwardisland.ca/en/department/innovation-pei/about",
+          "publisher": "Government of Prince Edward Island",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Department profile",
+          "summary": "The provincial profile identifies Innovation PEI as the lead economic development agency, lists priority sectors and gives its Charlottetown office."
+        },
+        {
+          "id": "source-innovation-pei-program",
+          "title": "Innovation Fund",
+          "url": "https://www.princeedwardisland.ca/en/service/innovation-fund",
+          "publisher": "Government of Prince Edward Island",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Service and eligibility page",
+          "summary": "The Innovation Fund supports validation, refinement and commercialization projects in listed priority sectors including aerospace and defence and advanced marine technology."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-innovation-pei-description",
+          "sourceId": "source-innovation-pei-about",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Innovation PEI is Prince Edward Island's lead economic development agency, supporting business growth, research, commercialization and sector development including aerospace, defence, advanced marine and information technology.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovation-pei-mandate",
+          "sourceId": "source-innovation-pei-about",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Innovation PEI leads provincial economic development by helping companies start, grow, innovate and export, while advancing priority sectors through financing, research and commercialization programs.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovation-pei-location",
+          "sourceId": "source-innovation-pei-about",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Innovation PEI publicly lists an operating office in Charlottetown, Prince Edward Island, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovation-pei-program",
+          "sourceId": "source-innovation-pei-program",
+          "fieldPath": "programs.innovation-fund.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Innovation PEI's Innovation Fund supports Prince Edward Island companies validating, refining and commercializing new products or processes, including projects in aerospace and defence, advanced marine technology and other priority sectors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-innovation-pei-relationship",
+          "sourceId": "source-innovation-pei-about",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Prince Edward Island identifies Innovation PEI as its lead economic development agency and the operator of provincial business innovation and commercialization programs.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "innovation-pei",
+        "name": "Innovation PEI",
+        "legalName": "Innovation PEI",
+        "aliases": [],
+        "description": "Innovation PEI is Prince Edward Island's lead economic development agency, supporting business growth, research, commercialization and sector development including aerospace, defence, advanced marine and information technology.",
+        "websiteUrl": "https://www.princeedwardisland.ca/en/topic/innovation-pei",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Charlottetown",
+          "provinceTerritory": "Prince Edward Island",
+          "countryCode": "CA",
+          "latitude": 46.2382,
+          "longitude": -63.1311,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Innovation PEI leads provincial economic development by helping companies start, grow, innovate and export, while advancing priority sectors through financing, research and commercialization programs.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "innovation-fund",
+          "name": "Innovation Fund",
+          "programType": "technology commercialization funding program",
+          "websiteUrl": "https://www.princeedwardisland.ca/en/service/innovation-fund",
+          "summary": "Innovation PEI's Innovation Fund supports Prince Edward Island companies validating, refining and commercializing new products or processes, including projects in aerospace and defence, advanced marine technology and other priority sectors.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Prince Edward Island",
+          "relationshipType": "provincial economic development agency",
+          "publicSummary": "The Government of Prince Edward Island identifies Innovation PEI as its lead economic development agency and the operator of provincial business innovation and commercialization programs."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-30T09:31:41.500Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-opportunities-new-brunswick",
+      "sourceLeadIds": [
+        "lead-opportunities-new-brunswick"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Opportunities New Brunswick fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "amber",
+      "inclusionScore": 87,
+      "completenessScore": 80,
+      "reviewWarnings": [
+        "The proposed program record is a documented service bundle rather than a separately branded statutory program; reviewers should confirm whether to retain it as a program."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-opportunities-new-brunswick-profile",
+          "title": "Opportunities New Brunswick organization profile",
+          "url": "https://www.gnb.ca/en/org/opportunities-nb.html",
+          "publisher": "Government of New Brunswick",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Organization profile",
+          "summary": "The provincial profile assigns ONB responsibility for attracting investment and supporting business development in New Brunswick."
+        },
+        {
+          "id": "source-opportunities-new-brunswick-grow",
+          "title": "Grow your business with Opportunities New Brunswick",
+          "url": "https://onbcanada.ca/businesses/grow/",
+          "publisher": "Opportunities New Brunswick",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Business growth service",
+          "summary": "ONB describes funding and advisory support for job creation, productivity, market development and innovation activity."
+        },
+        {
+          "id": "source-opportunities-new-brunswick-contact",
+          "title": "Contact Opportunities New Brunswick",
+          "url": "https://onbcanada.ca/investors/contact-us/",
+          "publisher": "Opportunities New Brunswick",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Contact page",
+          "summary": "ONB lists its public office at 250 King Street in Fredericton, New Brunswick, with public contact channels."
+        },
+        {
+          "id": "source-opportunities-new-brunswick-act",
+          "title": "Opportunities New Brunswick Act",
+          "url": "https://laws.gnb.ca/en/document/cs/2015%2C%20c.2",
+          "publisher": "Government of New Brunswick",
+          "sourceKind": "official_policy",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Crown status provisions",
+          "summary": "The Act establishes Opportunities New Brunswick as a body corporate and an agent of the Crown in right of New Brunswick."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-opportunities-new-brunswick-description",
+          "sourceId": "source-opportunities-new-brunswick-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Opportunities New Brunswick is New Brunswick's Crown economic development agency, helping companies invest, grow, export, improve productivity and pursue innovation within the province.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-opportunities-new-brunswick-mandate",
+          "sourceId": "source-opportunities-new-brunswick-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "ONB's public mandate is to attract investment and support business development, growth, productivity, market expansion and innovation across New Brunswick's economy.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-opportunities-new-brunswick-location",
+          "sourceId": "source-opportunities-new-brunswick-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Opportunities New Brunswick publicly lists an operating office in Fredericton, New Brunswick, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-opportunities-new-brunswick-program",
+          "sourceId": "source-opportunities-new-brunswick-grow",
+          "fieldPath": "programs.business-growth-and-innovation-support.summary",
+          "claimClass": "source_backed",
+          "excerpt": "ONB's growth service works with New Brunswick companies on funding and advisory support for job creation, productivity, market development and innovation projects.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-opportunities-new-brunswick-relationship",
+          "sourceId": "source-opportunities-new-brunswick-act",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "New Brunswick legislation establishes Opportunities New Brunswick as a Crown agent, while the provincial organization profile assigns it responsibility for investment attraction and business development.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "opportunities-new-brunswick",
+        "name": "Opportunities New Brunswick",
+        "legalName": "Opportunities New Brunswick",
+        "aliases": [
+          "ONB"
+        ],
+        "description": "Opportunities New Brunswick is New Brunswick's Crown economic development agency, helping companies invest, grow, export, improve productivity and pursue innovation within the province.",
+        "websiteUrl": "https://onbcanada.ca/",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Fredericton",
+          "provinceTerritory": "New Brunswick",
+          "countryCode": "CA",
+          "latitude": 45.9636,
+          "longitude": -66.6431,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "ONB's public mandate is to attract investment and support business development, growth, productivity, market expansion and innovation across New Brunswick's economy.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "business-growth-and-innovation-support",
+          "name": "Business Growth and Innovation Support",
+          "programType": "business development and innovation service",
+          "websiteUrl": "https://onbcanada.ca/businesses/grow/",
+          "summary": "ONB's growth service works with New Brunswick companies on funding and advisory support for job creation, productivity, market development and innovation projects.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of New Brunswick",
+          "relationshipType": "provincial Crown agency",
+          "publicSummary": "New Brunswick legislation establishes Opportunities New Brunswick as a Crown agent, while the provincial organization profile assigns it responsibility for investment attraction and business development."
+        }
+      ],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://onbcanada.ca/",
+        "sourceAssetUrl": "https://onbcanada.ca/wp-content/uploads/onb-logo.svg",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "b1faa390f18a9c8c8eb6cf37c0681f44a15f4aa3b623ef35106e4bb7b4f7e2aa",
+        "normalizedChecksum": "a18c211bb375c82b8691e6998f37fac9f2a9747308e78fa67020aaad8096be75",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730091706/candidate-opportunities-new-brunswick/logo.source.json",
+        "note": "1024x180 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-investissement-quebec",
+      "sourceLeadIds": [
+        "lead-investissement-quebec"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Investissement Québec fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "amber",
+      "inclusionScore": 91,
+      "completenessScore": 86,
+      "reviewWarnings": [
+        "Investissement Québec is also a major public financier; confirm government_innovation_office versus investor_funder before publication."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-investissement-quebec-mission",
+          "title": "Mission d'Investissement Québec",
+          "url": "https://www.investquebec.com/fr/tout-sur-nous/mission",
+          "publisher": "Investissement Québec",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Mission page",
+          "summary": "Investissement Québec describes its economic-development, business-financing, investment-attraction and innovation-support mandate."
+        },
+        {
+          "id": "source-investissement-quebec-program",
+          "title": "Initiative Grand V",
+          "url": "https://www.investquebec.com/fr/salle-de-presse/linitiative-grand-v-pour-accelerer-le-grand-virage-vers-linnovation-et-la-productivite-durable",
+          "publisher": "Investissement Québec",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Grand V initiative announcement",
+          "summary": "Grand V combines public financing and technology support to accelerate business innovation, productivity and sustainable transformation."
+        },
+        {
+          "id": "source-investissement-quebec-contact",
+          "title": "Nous joindre Investissement Québec",
+          "url": "https://www.investquebec.com/fr/nous-joindre",
+          "publisher": "Investissement Québec",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Head-office contact page",
+          "summary": "Investissement Québec lists its head office at 1195 avenue Lavigerie in Québec City and provides public service channels."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-investissement-quebec-description",
+          "sourceId": "source-investissement-quebec-mission",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Investissement Québec is Quebec's public economic development and financing corporation, providing investment, advisory and technology-support services intended to increase business innovation, productivity and growth.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-investissement-quebec-mandate",
+          "sourceId": "source-investissement-quebec-mission",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Investissement Québec stimulates investment and innovation by financing businesses, taking investments, attracting international projects and providing advisory and technology services on behalf of Quebec's economic development mandate.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-investissement-quebec-location",
+          "sourceId": "source-investissement-quebec-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Investissement Québec publicly lists an operating office in Québec City, Quebec, Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-investissement-quebec-program",
+          "sourceId": "source-investissement-quebec-program",
+          "fieldPath": "programs.grand-v.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Grand V combines financing and technology support to accelerate business investment in innovation, productivity and sustainable transformation across Quebec, with a multi-year public investment objective.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-investissement-quebec-relationship",
+          "sourceId": "source-investissement-quebec-mission",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Investissement Québec carries out public financing, investment attraction, productivity and innovation functions within the Government of Quebec's economic development system.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "investissement-quebec",
+        "name": "Investissement Québec",
+        "legalName": "Investissement Québec",
+        "aliases": [
+          "IQ"
+        ],
+        "description": "Investissement Québec is Quebec's public economic development and financing corporation, providing investment, advisory and technology-support services intended to increase business innovation, productivity and growth.",
+        "websiteUrl": "https://www.investquebec.com/",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Québec City",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 46.8139,
+          "longitude": -71.208,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "Investissement Québec stimulates investment and innovation by financing businesses, taking investments, attracting international projects and providing advisory and technology services on behalf of Quebec's economic development mandate.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "grand-v",
+          "name": "Grand V",
+          "programType": "innovation and productivity financing initiative",
+          "websiteUrl": "https://www.investquebec.com/fr/salle-de-presse/linitiative-grand-v-pour-accelerer-le-grand-virage-vers-linnovation-et-la-productivite-durable",
+          "summary": "Grand V combines financing and technology support to accelerate business investment in innovation, productivity and sustainable transformation across Quebec, with a multi-year public investment objective.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Quebec",
+          "relationshipType": "public economic development corporation",
+          "publicSummary": "Investissement Québec carries out public financing, investment attraction, productivity and innovation functions within the Government of Quebec's economic development system."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.investquebec.com/fr",
+        "sourceAssetUrl": "https://www.investquebec.com/profiles/custom/miza_wingsuit/themes/wingsuit/dist/app-drupal/images/logo-footer.svg",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "652b8fcb6db60231b0e7069de6a9c93de1c13956b9c68132d1b66ea366f01c22",
+        "normalizedChecksum": "79e02a80c1c45207f0df32ad2390a1ac26802b6718cb1cd4a9073783fdc6ae52",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260730091706/candidate-investissement-quebec/logo.source.json",
+        "note": "293x63 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-atlantic-canada-opportunities-agency",
+      "sourceLeadIds": [
+        "lead-atlantic-canada-opportunities-agency"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Atlantic Canada Opportunities Agency fills the selected government-innovation-office coverage gap with a documented Canadian public mandate and at least one concrete innovation, commercialization or technology-adoption program. Official organization, program, governance and contact sources support the proposed identity, mandate, Canadian location, program and government relationship. The candidate is intentionally bounded to public evidence: it does not imply defence procurement, endorsement or classified demand. Review the proposed organization kind, the program wording and the explicit classification warning before deciding whether to publish.",
+      "reviewTier": "green",
+      "inclusionScore": 99,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The Regional Defence Investment Initiative is public funding support and does not establish procurement eligibility, endorsement or any classified defence requirement."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-07-30T09:31:20.414Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization names, aliases, websites and the active candidate queue were checked before this batch; no exact or normalized match was found."
+      },
+      "sources": [
+        {
+          "id": "source-atlantic-canada-opportunities-agency-profile",
+          "title": "Atlantic Canada Opportunities Agency",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities.html",
+          "publisher": "Atlantic Canada Opportunities Agency",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Departmental profile",
+          "summary": "The federal profile describes ACOA's regional economic-development, business innovation, productivity and growth role in Atlantic Canada."
+        },
+        {
+          "id": "source-atlantic-canada-opportunities-agency-program",
+          "title": "Regional Defence Investment Initiative",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/services/regional-defence-investment-initiative.html",
+          "publisher": "Atlantic Canada Opportunities Agency",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Program overview",
+          "summary": "The federal initiative supports Atlantic Canadian defence and dual-use research, demonstration, commercialization, production capacity and supply-chain integration."
+        },
+        {
+          "id": "source-atlantic-canada-opportunities-agency-contact",
+          "title": "Contact the Atlantic Canada Opportunities Agency",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/corporate/contact-us.html",
+          "publisher": "Atlantic Canada Opportunities Agency",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-07-30T09:31:20.414Z",
+          "locator": "Headquarters contact section",
+          "summary": "ACOA lists its headquarters in Moncton, New Brunswick, and provides regional and public contact channels."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-atlantic-canada-opportunities-agency-description",
+          "sourceId": "source-atlantic-canada-opportunities-agency-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "The Atlantic Canada Opportunities Agency is the federal regional development agency for Atlantic Canada, supporting business innovation, productivity, commercialization, investment and regional economic growth.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-atlantic-canada-opportunities-agency-mandate",
+          "sourceId": "source-atlantic-canada-opportunities-agency-profile",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "ACOA advances Atlantic Canada's economic growth by supporting innovative and productive businesses, community development, commercialization, investment and regional capacity across the four Atlantic provinces.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-atlantic-canada-opportunities-agency-location",
+          "sourceId": "source-atlantic-canada-opportunities-agency-contact",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Atlantic Canada Opportunities Agency publicly lists an operating office in Moncton, New Brunswick, Canada.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-atlantic-canada-opportunities-agency-program",
+          "sourceId": "source-atlantic-canada-opportunities-agency-program",
+          "fieldPath": "programs.regional-defence-investment-initiative.summary",
+          "claimClass": "source_backed",
+          "excerpt": "ACOA's Regional Defence Investment Initiative provides targeted support for Atlantic Canadian defence and dual-use research, demonstration, commercialization, production capacity, supply-chain integration and related research facilities.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-atlantic-canada-opportunities-agency-relationship",
+          "sourceId": "source-atlantic-canada-opportunities-agency-profile",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ACOA is a Government of Canada regional development agency serving Atlantic Canada and administering federal business, innovation and community economic-development programs in the region.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "atlantic-canada-opportunities-agency",
+        "name": "Atlantic Canada Opportunities Agency",
+        "legalName": "Atlantic Canada Opportunities Agency",
+        "aliases": [
+          "ACOA",
+          "Agence de promotion économique du Canada atlantique",
+          "APECA"
+        ],
+        "description": "The Atlantic Canada Opportunities Agency is the federal regional development agency for Atlantic Canada, supporting business innovation, productivity, commercialization, investment and regional economic growth.",
+        "websiteUrl": "https://www.acoa-apeca.gc.ca/",
+        "entityKind": "government_innovation_office",
+        "categories": [
+          "government_program_operator",
+          "public_funder"
+        ],
+        "primaryLocation": {
+          "city": "Moncton",
+          "provinceTerritory": "New Brunswick",
+          "countryCode": "CA",
+          "latitude": 46.0878,
+          "longitude": -64.7782,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "mandate": "ACOA advances Atlantic Canada's economic growth by supporting innovative and productive businesses, community development, commercialization, investment and regional capacity across the four Atlantic provinces.",
+          "evidenceBoundary": "This profile records a public innovation and program-delivery mandate. It does not imply supplier status, procurement eligibility, endorsement, customer interest or classified demand."
+        }
+      },
+      "capabilities": [],
+      "programs": [
+        {
+          "slug": "regional-defence-investment-initiative",
+          "name": "Regional Defence Investment Initiative",
+          "programType": "federal defence and dual-use growth initiative",
+          "websiteUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/services/regional-defence-investment-initiative.html",
+          "summary": "ACOA's Regional Defence Investment Initiative provides targeted support for Atlantic Canadian defence and dual-use research, demonstration, commercialization, production capacity, supply-chain integration and related research facilities.",
+          "cohortLabel": null
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Government of Canada",
+          "relationshipType": "federal regional development agency",
+          "publicSummary": "ACOA is a Government of Canada regional development agency serving Atlantic Canada and administering federal business, innovation and community economic-development programs in the region."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-07-30T09:31:41.503Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    }
+  ],
+  "deferred": []
+}

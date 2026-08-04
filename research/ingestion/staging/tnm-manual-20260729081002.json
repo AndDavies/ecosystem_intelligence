@@ -1,0 +1,2323 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-07-29T08:15:05.017Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260729081002",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [],
+      "technicalDomainSlugs": [],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "existing-record freshness",
+      "reason": "Published company records require current product, program, contract, and portfolio evidence beyond their initial ingestion snapshot.",
+      "score": 100
+    },
+    "status": "completed",
+    "started_at": "2026-07-29T08:10:02.946Z",
+    "completed_at": "2026-07-29T08:15:04.048Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "allen-vanguard current products contracts partnerships 2025 2026",
+      "aml-oceanographic current products contracts partnerships 2025 2026",
+      "beauceron-security current products contracts partnerships 2025 2026",
+      "bell-textron-canada current products contracts partnerships 2025 2026",
+      "cellula-robotics current products contracts partnerships 2025 2026",
+      "deep-trekker current products contracts partnerships 2025 2026",
+      "general-dynamics-mission-systems-canada current products contracts partnerships 2025 2026",
+      "geospectrum-technologies current products contracts partnerships 2025 2026",
+      "international-submarine-engineering current products contracts partnerships 2025 2026",
+      "jasco-applied-sciences current products contracts partnerships 2025 2026"
+    ],
+    "counters": {
+      "sourcesChecked": 38,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 10,
+      "uniqueProspects": 10,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 30,
+      "sourceLanesSearched": 6,
+      "candidatesGreen": 10,
+      "candidatesAmber": 0,
+      "signalsExtracted": 10,
+      "signalsDispositioned": 10,
+      "sourceFamiliesSearched": 7
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": null
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-allen-vanguard-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-allen-vanguard-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-allen-vanguard-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-allen-vanguard-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Allen-Vanguard is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+              "name": "Allen-Vanguard",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "allen-vanguard-official-refresh-source",
+            "title": "Allen-Vanguard EQUINOX NG and SCORPION 2 order",
+            "url": "https://www.allenvanguard.com/news-allen-vanguard-breaks-into-south-america-with-multi-million-dollar-ecm-order/",
+            "publisher": "Allen-Vanguard",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-02-05T00:00:00.000Z",
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "The company reports current orders for two named electronic-countermeasure systems used to inhibit radio-frequency threats, including radio-controlled improvised explosive devices and drone command links."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "allen-vanguard-current-activity-evidence",
+            "sourceId": "allen-vanguard-official-refresh-source",
+            "fieldPath": "operations.set-allen-vanguard-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The company reports current orders for two named electronic-countermeasure systems used to inhibit radio-frequency threats, including radio-controlled improvised explosive devices and drone command links.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+          "slug": "allen-vanguard",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T08:27:58.746Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+            "slug": "allen-vanguard",
+            "name": "Allen-Vanguard",
+            "legal_name": "Allen-Vanguard Corporation",
+            "description": "Allen-Vanguard is an Ottawa-headquartered Canadian electronic-warfare company providing radio-frequency electronic countermeasures, counter-RCIED and counter-UAS systems, threat-management tools, integration, training, and field support for defence and public-safety users.",
+            "website_url": "https://www.allenvanguard.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "defence_supplier",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "publicEmail": "info@allenvanguard.com",
+              "publicPhone": "+1 613-739-9646",
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "headquarters": "Ottawa, Ontario",
+              "qualityCertification": "ISO 9001:2015 certified in Canada and the United Kingdom.",
+              "reviewed_candidate_id": "5be4c15e-6d17-44cf-a081-3d82b0694406",
+              "research_schema_version": "organization_bundle_v2"
+            },
+            "publication_status": "published",
+            "source_confidence": "high",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-21T08:27:58.746479+00:00",
+            "published_at": "2026-07-21T08:27:58.746479+00:00",
+            "created_at": "2026-07-21T08:27:58.746479+00:00",
+            "updated_at": "2026-07-21T08:27:58.746479+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-allen-vanguard-profile-data",
+            "evidenceIds": [
+              "allen-vanguard-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+            "field": "profile_data",
+            "before": {
+              "publicEmail": "info@allenvanguard.com",
+              "publicPhone": "+1 613-739-9646",
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "headquarters": "Ottawa, Ontario",
+              "qualityCertification": "ISO 9001:2015 certified in Canada and the United Kingdom.",
+              "reviewed_candidate_id": "5be4c15e-6d17-44cf-a081-3d82b0694406",
+              "research_schema_version": "organization_bundle_v2"
+            },
+            "after": {
+              "publicEmail": "info@allenvanguard.com",
+              "publicPhone": "+1 613-739-9646",
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "headquarters": "Ottawa, Ontario",
+              "qualityCertification": "ISO 9001:2015 certified in Canada and the United Kingdom.",
+              "reviewed_candidate_id": "5be4c15e-6d17-44cf-a081-3d82b0694406",
+              "research_schema_version": "organization_bundle_v2",
+              "currentActivity": "Allen-Vanguard reported multi-million-dollar orders for its vehicle-mounted EQUINOX NG and manportable SCORPION 2 electronic-countermeasure systems, adding current commercial evidence for its counter-RCIED and counter-drone portfolio.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "allen-vanguard-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "The company reports current orders for two named electronic-countermeasure systems used to inhibit radio-frequency threats, including radio-controlled improvised explosive devices and drone command links.",
+            "sourceIds": [
+              "allen-vanguard-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+          "slug": "allen-vanguard",
+          "name": "Allen-Vanguard",
+          "legal_name": "Allen-Vanguard Corporation",
+          "description": "Allen-Vanguard is an Ottawa-headquartered Canadian electronic-warfare company providing radio-frequency electronic countermeasures, counter-RCIED and counter-UAS systems, threat-management tools, integration, training, and field support for defence and public-safety users.",
+          "website_url": "https://www.allenvanguard.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "publicEmail": "info@allenvanguard.com",
+            "publicPhone": "+1 613-739-9646",
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "headquarters": "Ottawa, Ontario",
+            "qualityCertification": "ISO 9001:2015 certified in Canada and the United Kingdom.",
+            "reviewed_candidate_id": "5be4c15e-6d17-44cf-a081-3d82b0694406",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-21T08:27:58.746479+00:00",
+          "published_at": "2026-07-21T08:27:58.746479+00:00",
+          "created_at": "2026-07-21T08:27:58.746479+00:00",
+          "updated_at": "2026-07-21T08:27:58.746479+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "allen-vanguard-current-activity-evidence",
+          "sourceId": "allen-vanguard-official-refresh-source",
+          "fieldPath": "operations.set-allen-vanguard-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The company reports current orders for two named electronic-countermeasure systems used to inhibit radio-frequency threats, including radio-controlled improvised explosive devices and drone command links.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+            "name": "Allen-Vanguard",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "Allen-Vanguard is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    },
+    {
+      "client_candidate_id": "candidate-aml-oceanographic-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-aml-oceanographic-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-aml-oceanographic-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-aml-oceanographic-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "AML Oceanographic is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+              "name": "AML Oceanographic",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "aml-oceanographic-official-refresh-source",
+            "title": "AML Oceanographic product and company updates",
+            "url": "https://amloceanographic.com/blogs",
+            "publisher": "AML Oceanographic",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "AML's official update archive documents new profiler hardware, software releases, and high-accuracy oceanographic sensing applications beyond the record's original general swappable-sensor description."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "aml-oceanographic-current-activity-evidence",
+            "sourceId": "aml-oceanographic-official-refresh-source",
+            "fieldPath": "operations.set-aml-oceanographic-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "AML's official update archive documents new profiler hardware, software releases, and high-accuracy oceanographic sensing applications beyond the record's original general swappable-sensor description.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+          "slug": "aml-oceanographic",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+            "slug": "aml-oceanographic",
+            "name": "AML Oceanographic",
+            "legal_name": null,
+            "description": "Measure the water column without rebuilding the instrument package. AML Oceanographic makes swappable sensors, profilers, and moving-vessel systems in Canada for hydrographic and ocean operations.",
+            "website_url": "https://amloceanographic.ca/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-16T12:00:00+00:00",
+            "created_at": "2026-07-16T09:09:28.288403+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-aml-oceanographic-profile-data",
+            "evidenceIds": [
+              "aml-oceanographic-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "after": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16",
+              "currentActivity": "AML Oceanographic's current updates add the MVP Roam, MVP30 V2, Sailfish software improvements, and new high-accuracy conductivity-temperature measurement work to its swappable-sensor and moving-vessel-profiler portfolio.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "aml-oceanographic-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "AML's official update archive documents new profiler hardware, software releases, and high-accuracy oceanographic sensing applications beyond the record's original general swappable-sensor description.",
+            "sourceIds": [
+              "aml-oceanographic-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+          "slug": "aml-oceanographic",
+          "name": "AML Oceanographic",
+          "legal_name": null,
+          "description": "Measure the water column without rebuilding the instrument package. AML Oceanographic makes swappable sensors, profilers, and moving-vessel systems in Canada for hydrographic and ocean operations.",
+          "website_url": "https://amloceanographic.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-16T12:00:00+00:00",
+          "created_at": "2026-07-16T09:09:28.288403+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "aml-oceanographic-current-activity-evidence",
+          "sourceId": "aml-oceanographic-official-refresh-source",
+          "fieldPath": "operations.set-aml-oceanographic-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "AML's official update archive documents new profiler hardware, software releases, and high-accuracy oceanographic sensing applications beyond the record's original general swappable-sensor description.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+            "name": "AML Oceanographic",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "AML Oceanographic is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    },
+    {
+      "client_candidate_id": "candidate-beauceron-security-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-beauceron-security-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "67d97a8a-e9e0-404e-b29d-55c07e766573",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-beauceron-security-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-beauceron-security-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Beauceron Security is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "67d97a8a-e9e0-404e-b29d-55c07e766573",
+              "name": "Beauceron Security",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "beauceron-security-official-refresh-source",
+            "title": "Beauceron Security human-centric cyber-risk platform",
+            "url": "https://www.beauceronsecurity.com/",
+            "publisher": "Beauceron Security",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "The current official site expands the product context from employee awareness alone to security culture measurement, managed-service delivery, research, and customer-facing fraud awareness."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "beauceron-security-current-activity-evidence",
+            "sourceId": "beauceron-security-official-refresh-source",
+            "fieldPath": "operations.set-beauceron-security-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The current official site expands the product context from employee awareness alone to security culture measurement, managed-service delivery, research, and customer-facing fraud awareness.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "67d97a8a-e9e0-404e-b29d-55c07e766573",
+          "slug": "beauceron-security",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "67d97a8a-e9e0-404e-b29d-55c07e766573",
+            "slug": "beauceron-security",
+            "name": "Beauceron Security",
+            "legal_name": null,
+            "description": "Turn workforce behaviour into a visible, manageable layer of cyber defence. Beauceron Security combines anti-phishing, security awareness, email analysis, and personal risk feedback from its Fredericton base.",
+            "website_url": "https://www.beauceronsecurity.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+              "reviewed_candidate_id": "63e9fdfc-2610-4ecd-a68c-d1acdf614390"
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-18T00:04:59.076084+00:00",
+            "created_at": "2026-07-18T00:04:59.076084+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-beauceron-security-profile-data",
+            "evidenceIds": [
+              "beauceron-security-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "67d97a8a-e9e0-404e-b29d-55c07e766573",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+              "reviewed_candidate_id": "63e9fdfc-2610-4ecd-a68c-d1acdf614390"
+            },
+            "after": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+              "reviewed_candidate_id": "63e9fdfc-2610-4ecd-a68c-d1acdf614390",
+              "currentActivity": "Beauceron now presents a 2026 State of Cybersecurity Awareness report, partner delivery model, security-awareness analytics, and customer fraud-awareness offering alongside its human-centric cyber-risk platform.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "beauceron-security-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "The current official site expands the product context from employee awareness alone to security culture measurement, managed-service delivery, research, and customer-facing fraud awareness.",
+            "sourceIds": [
+              "beauceron-security-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "67d97a8a-e9e0-404e-b29d-55c07e766573",
+          "slug": "beauceron-security",
+          "name": "Beauceron Security",
+          "legal_name": null,
+          "description": "Turn workforce behaviour into a visible, manageable layer of cyber defence. Beauceron Security combines anti-phishing, security awareness, email analysis, and personal risk feedback from its Fredericton base.",
+          "website_url": "https://www.beauceronsecurity.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "63e9fdfc-2610-4ecd-a68c-d1acdf614390"
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-18T00:04:59.076084+00:00",
+          "created_at": "2026-07-18T00:04:59.076084+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "beauceron-security-current-activity-evidence",
+          "sourceId": "beauceron-security-official-refresh-source",
+          "fieldPath": "operations.set-beauceron-security-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The current official site expands the product context from employee awareness alone to security culture measurement, managed-service delivery, research, and customer-facing fraud awareness.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "67d97a8a-e9e0-404e-b29d-55c07e766573",
+            "name": "Beauceron Security",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "Beauceron Security is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    },
+    {
+      "client_candidate_id": "candidate-bell-textron-canada-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-bell-textron-canada-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-bell-textron-canada-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-bell-textron-canada-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Bell Textron Canada is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+              "name": "Bell Textron Canada",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "bell-textron-canada-official-refresh-source",
+            "title": "Bell Textron Canada operations and industrial footprint",
+            "url": "https://www.bellflight.com/global/canada",
+            "publisher": "Bell Textron Canada",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "Bell's Canadian operating page provides a current quantitative industrial footprint and a broader sustainment scope for the Mirabel design, manufacturing, delivery, and support operation."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "bell-textron-canada-current-activity-evidence",
+            "sourceId": "bell-textron-canada-official-refresh-source",
+            "fieldPath": "operations.set-bell-textron-canada-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "Bell's Canadian operating page provides a current quantitative industrial footprint and a broader sustainment scope for the Mirabel design, manufacturing, delivery, and support operation.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+          "slug": "bell-textron-canada",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+            "slug": "bell-textron-canada",
+            "name": "Bell Textron Canada",
+            "legal_name": null,
+            "description": "Design, build, certify, deliver, and sustain rotorcraft from one Canadian industrial base. Bell Textron Canada brings engineering, composite manufacturing, flight test, customization, and long-term fleet support together in Mirabel.",
+            "website_url": "https://www.bellflight.com/global/canada",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+              "reviewed_candidate_id": "69580ba6-01ac-43fb-a03f-0d8eb8ef0775"
+            },
+            "publication_status": "published",
+            "source_confidence": "high",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-18T00:04:59.076084+00:00",
+            "created_at": "2026-07-18T00:04:59.076084+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-bell-textron-canada-profile-data",
+            "evidenceIds": [
+              "bell-textron-canada-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+              "reviewed_candidate_id": "69580ba6-01ac-43fb-a03f-0d8eb8ef0775"
+            },
+            "after": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+              "reviewed_candidate_id": "69580ba6-01ac-43fb-a03f-0d8eb8ef0775",
+              "currentActivity": "Bell reports more than 6,000 helicopters delivered from its Mirabel operation, over 1,600 employees, 550 Canadian suppliers, Canadian Armed Forces support, and repair, overhaul, modification, customization, and field-maintenance capacity.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "bell-textron-canada-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "Bell's Canadian operating page provides a current quantitative industrial footprint and a broader sustainment scope for the Mirabel design, manufacturing, delivery, and support operation.",
+            "sourceIds": [
+              "bell-textron-canada-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+          "slug": "bell-textron-canada",
+          "name": "Bell Textron Canada",
+          "legal_name": null,
+          "description": "Design, build, certify, deliver, and sustain rotorcraft from one Canadian industrial base. Bell Textron Canada brings engineering, composite manufacturing, flight test, customization, and long-term fleet support together in Mirabel.",
+          "website_url": "https://www.bellflight.com/global/canada",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "69580ba6-01ac-43fb-a03f-0d8eb8ef0775"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-18T00:04:59.076084+00:00",
+          "created_at": "2026-07-18T00:04:59.076084+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "bell-textron-canada-current-activity-evidence",
+          "sourceId": "bell-textron-canada-official-refresh-source",
+          "fieldPath": "operations.set-bell-textron-canada-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Bell's Canadian operating page provides a current quantitative industrial footprint and a broader sustainment scope for the Mirabel design, manufacturing, delivery, and support operation.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+            "name": "Bell Textron Canada",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "Bell Textron Canada is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    },
+    {
+      "client_candidate_id": "candidate-cellula-robotics-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-cellula-robotics-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "10000000-0000-4000-8000-000000000003",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-cellula-robotics-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-cellula-robotics-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Cellula Robotics is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "10000000-0000-4000-8000-000000000003",
+              "name": "Cellula Robotics",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "cellula-robotics-official-refresh-source",
+            "title": "Cellula Robotics and Metron long-term undersea capability agreement",
+            "url": "https://cellula.com/cellula-robotics-and-metron-sign-10-year-agreement-to-deliver-next-generation-undersea-capability-for-the-us-defense-market/",
+            "publisher": "Cellula Robotics",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-05-19T00:00:00.000Z",
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "The official announcement adds a durable defence-market partnership and current operational-endurance evidence for Cellula's long-range autonomous underwater vehicle portfolio."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "cellula-robotics-current-activity-evidence",
+            "sourceId": "cellula-robotics-official-refresh-source",
+            "fieldPath": "operations.set-cellula-robotics-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The official announcement adds a durable defence-market partnership and current operational-endurance evidence for Cellula's long-range autonomous underwater vehicle portfolio.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000003",
+          "slug": "cellula-robotics",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "10000000-0000-4000-8000-000000000003",
+            "slug": "cellula-robotics",
+            "name": "Cellula Robotics",
+            "legal_name": null,
+            "description": "Keep subsea missions running longer without routine recovery. Cellula Robotics develops fuel-cell autonomous underwater vehicles and related autonomy systems for persistent operations from British Columbia.",
+            "website_url": "https://cellula.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "autonomous_systems",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {},
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-04-24T00:00:00+00:00",
+            "created_at": "2026-07-15T22:27:18.512726+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-cellula-robotics-profile-data",
+            "evidenceIds": [
+              "cellula-robotics-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "10000000-0000-4000-8000-000000000003",
+            "field": "profile_data",
+            "before": {},
+            "after": {
+              "currentActivity": "Cellula Robotics and Metron announced a ten-year agreement combining Cellula's long-endurance commercial-off-the-shelf AUV platforms with Metron autonomy and support for United States defence customers; Cellula also reported an Envoy mission exceeding 2,000 kilometres submerged on hydrogen fuel-cell power.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "cellula-robotics-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "The official announcement adds a durable defence-market partnership and current operational-endurance evidence for Cellula's long-range autonomous underwater vehicle portfolio.",
+            "sourceIds": [
+              "cellula-robotics-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000003",
+          "slug": "cellula-robotics",
+          "name": "Cellula Robotics",
+          "legal_name": null,
+          "description": "Keep subsea missions running longer without routine recovery. Cellula Robotics develops fuel-cell autonomous underwater vehicles and related autonomy systems for persistent operations from British Columbia.",
+          "website_url": "https://cellula.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "autonomous_systems",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {},
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-04-24T00:00:00+00:00",
+          "created_at": "2026-07-15T22:27:18.512726+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "cellula-robotics-current-activity-evidence",
+          "sourceId": "cellula-robotics-official-refresh-source",
+          "fieldPath": "operations.set-cellula-robotics-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official announcement adds a durable defence-market partnership and current operational-endurance evidence for Cellula's long-range autonomous underwater vehicle portfolio.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000003",
+            "name": "Cellula Robotics",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "Cellula Robotics is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    },
+    {
+      "client_candidate_id": "candidate-deep-trekker-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-deep-trekker-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-deep-trekker-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-deep-trekker-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Deep Trekker is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+              "name": "Deep Trekker",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "deep-trekker-official-refresh-source",
+            "title": "Deep Trekker launches SPECTRA inspection ROV",
+            "url": "https://www.deeptrekker.com/news/deep-trekker-launches-a-new-class-of-high-performance-inspection-rov",
+            "publisher": "Deep Trekker",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-03-11T00:00:00.000Z",
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "The SPECTRA launch materially expands the company's published portfolio beyond the existing rapid-deployment defence ROV record with deeper operation, advanced perception, mapping, and onboard processing."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "deep-trekker-current-activity-evidence",
+            "sourceId": "deep-trekker-official-refresh-source",
+            "fieldPath": "operations.set-deep-trekker-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The SPECTRA launch materially expands the company's published portfolio beyond the existing rapid-deployment defence ROV record with deeper operation, advanced perception, mapping, and onboard processing.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+          "slug": "deep-trekker",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+            "slug": "deep-trekker",
+            "name": "Deep Trekker",
+            "legal_name": null,
+            "description": "Inspect hazardous underwater spaces while operators stay at a safer distance. Deep Trekker builds portable, battery-powered ROVs in Ontario for reconnaissance, security, inspection, and public-safety work.",
+            "website_url": "https://www.deeptrekker.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "publication_status": "published",
+            "source_confidence": "high",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-16T12:00:00+00:00",
+            "created_at": "2026-07-16T09:09:28.288403+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-deep-trekker-profile-data",
+            "evidenceIds": [
+              "deep-trekker-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "after": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16",
+              "currentActivity": "Deep Trekker launched the 1,000-metre-rated SPECTRA portable ROV with symmetrical seven-thruster propulsion, real-time 3D sonar SLAM, factory-calibrated 4K stereo vision, onboard computing, and higher payload capacity for inspection, survey, and defence users.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "deep-trekker-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "The SPECTRA launch materially expands the company's published portfolio beyond the existing rapid-deployment defence ROV record with deeper operation, advanced perception, mapping, and onboard processing.",
+            "sourceIds": [
+              "deep-trekker-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+          "slug": "deep-trekker",
+          "name": "Deep Trekker",
+          "legal_name": null,
+          "description": "Inspect hazardous underwater spaces while operators stay at a safer distance. Deep Trekker builds portable, battery-powered ROVs in Ontario for reconnaissance, security, inspection, and public-safety work.",
+          "website_url": "https://www.deeptrekker.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-16T12:00:00+00:00",
+          "created_at": "2026-07-16T09:09:28.288403+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "deep-trekker-current-activity-evidence",
+          "sourceId": "deep-trekker-official-refresh-source",
+          "fieldPath": "operations.set-deep-trekker-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The SPECTRA launch materially expands the company's published portfolio beyond the existing rapid-deployment defence ROV record with deeper operation, advanced perception, mapping, and onboard processing.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+            "name": "Deep Trekker",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "Deep Trekker is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    },
+    {
+      "client_candidate_id": "candidate-general-dynamics-mission-systems-canada-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-general-dynamics-mission-systems-canada-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-general-dynamics-mission-systems-canada-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-general-dynamics-mission-systems-canada-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "General Dynamics Mission Systems-Canada is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+              "name": "General Dynamics Mission Systems-Canada",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "general-dynamics-mission-systems-canada-official-refresh-source",
+            "title": "General Dynamics Mission Systems-Canada current capability portfolio",
+            "url": "https://gdmissionsystems.ca/",
+            "publisher": "General Dynamics Mission Systems-Canada",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "The official Canadian portfolio adds named integration infrastructure and remotely piloted aircraft activity to a record previously centred on land tactical networking."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "general-dynamics-mission-systems-canada-current-activity-evidence",
+            "sourceId": "general-dynamics-mission-systems-canada-official-refresh-source",
+            "fieldPath": "operations.set-general-dynamics-mission-systems-canada-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The official Canadian portfolio adds named integration infrastructure and remotely piloted aircraft activity to a record previously centred on land tactical networking.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+          "slug": "general-dynamics-mission-systems-canada",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+            "slug": "general-dynamics-mission-systems-canada",
+            "name": "General Dynamics Mission Systems-Canada",
+            "legal_name": null,
+            "description": "Give land forces a clearer operating picture and keep information moving across vehicles, sensors, radios, and dismounted teams. General Dynamics Mission Systems-Canada integrates tactical networks, computing, vetronics, cyber, and mission systems in Canada.",
+            "website_url": "https://gdmissionsystems.ca/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+              "reviewed_candidate_id": "f52928d8-9bf7-41f2-9ebf-d6ceec7bdf1d"
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-18T00:04:59.076084+00:00",
+            "created_at": "2026-07-18T00:04:59.076084+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-general-dynamics-mission-systems-canada-profile-data",
+            "evidenceIds": [
+              "general-dynamics-mission-systems-canada-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+              "reviewed_candidate_id": "f52928d8-9bf7-41f2-9ebf-d6ceec7bdf1d"
+            },
+            "after": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+              "reviewed_candidate_id": "f52928d8-9bf7-41f2-9ebf-d6ceec7bdf1d",
+              "currentActivity": "General Dynamics Mission Systems-Canada now highlights its Ottawa Battle Lab, DIGITALspine sovereign land C4ISR integration, ENVOY multi-mission remotely piloted aircraft system, and current Canadian defence delivery across land, airborne, maritime, and public-safety applications.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "general-dynamics-mission-systems-canada-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "The official Canadian portfolio adds named integration infrastructure and remotely piloted aircraft activity to a record previously centred on land tactical networking.",
+            "sourceIds": [
+              "general-dynamics-mission-systems-canada-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+          "slug": "general-dynamics-mission-systems-canada",
+          "name": "General Dynamics Mission Systems-Canada",
+          "legal_name": null,
+          "description": "Give land forces a clearer operating picture and keep information moving across vehicles, sensors, radios, and dismounted teams. General Dynamics Mission Systems-Canada integrates tactical networks, computing, vetronics, cyber, and mission systems in Canada.",
+          "website_url": "https://gdmissionsystems.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "ingestion_batch_id": "canadian-public-beta-expansion-2026-07-17",
+            "reviewed_candidate_id": "f52928d8-9bf7-41f2-9ebf-d6ceec7bdf1d"
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-18T00:04:59.076084+00:00",
+          "created_at": "2026-07-18T00:04:59.076084+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "general-dynamics-mission-systems-canada-current-activity-evidence",
+          "sourceId": "general-dynamics-mission-systems-canada-official-refresh-source",
+          "fieldPath": "operations.set-general-dynamics-mission-systems-canada-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official Canadian portfolio adds named integration infrastructure and remotely piloted aircraft activity to a record previously centred on land tactical networking.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+            "name": "General Dynamics Mission Systems-Canada",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "General Dynamics Mission Systems-Canada is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    },
+    {
+      "client_candidate_id": "candidate-geospectrum-technologies-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-geospectrum-technologies-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "10000000-0000-4000-8000-000000000005",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-geospectrum-technologies-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-geospectrum-technologies-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "GeoSpectrum Technologies is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "10000000-0000-4000-8000-000000000005",
+              "name": "GeoSpectrum Technologies",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "geospectrum-technologies-official-refresh-source",
+            "title": "GeoSpectrum Technologies product and partnership updates",
+            "url": "https://geospectrum.ca/news/",
+            "publisher": "GeoSpectrum Technologies",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "The official news archive provides current operational and partnership context for GeoSpectrum's compact towed active-passive sonar and broader underwater acoustic portfolio."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "geospectrum-technologies-current-activity-evidence",
+            "sourceId": "geospectrum-technologies-official-refresh-source",
+            "fieldPath": "operations.set-geospectrum-technologies-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The official news archive provides current operational and partnership context for GeoSpectrum's compact towed active-passive sonar and broader underwater acoustic portfolio.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000005",
+          "slug": "geospectrum-technologies",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "10000000-0000-4000-8000-000000000005",
+            "slug": "geospectrum-technologies",
+            "name": "GeoSpectrum Technologies",
+            "legal_name": null,
+            "description": "Find and follow underwater targets from compact surface and subsea platforms. Nova Scotia-based GeoSpectrum Technologies builds sonar, acoustic sensors, and surveillance systems for defence and ocean operations.",
+            "website_url": "https://geospectrum.ca/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "defence_supplier",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {},
+            "publication_status": "published",
+            "source_confidence": "high",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-04-24T00:00:00+00:00",
+            "created_at": "2026-07-15T22:27:18.512726+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-geospectrum-technologies-profile-data",
+            "evidenceIds": [
+              "geospectrum-technologies-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "10000000-0000-4000-8000-000000000005",
+            "field": "profile_data",
+            "before": {},
+            "after": {
+              "currentActivity": "GeoSpectrum's current news and product material continues to position TRAPS as a compact reelable active-passive sonar while documenting field use, product development, strategic partnerships, and deployable acoustic systems for crewed and uncrewed platforms.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "geospectrum-technologies-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "The official news archive provides current operational and partnership context for GeoSpectrum's compact towed active-passive sonar and broader underwater acoustic portfolio.",
+            "sourceIds": [
+              "geospectrum-technologies-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000005",
+          "slug": "geospectrum-technologies",
+          "name": "GeoSpectrum Technologies",
+          "legal_name": null,
+          "description": "Find and follow underwater targets from compact surface and subsea platforms. Nova Scotia-based GeoSpectrum Technologies builds sonar, acoustic sensors, and surveillance systems for defence and ocean operations.",
+          "website_url": "https://geospectrum.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {},
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-04-24T00:00:00+00:00",
+          "created_at": "2026-07-15T22:27:18.512726+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "geospectrum-technologies-current-activity-evidence",
+          "sourceId": "geospectrum-technologies-official-refresh-source",
+          "fieldPath": "operations.set-geospectrum-technologies-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official news archive provides current operational and partnership context for GeoSpectrum's compact towed active-passive sonar and broader underwater acoustic portfolio.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000005",
+            "name": "GeoSpectrum Technologies",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "GeoSpectrum Technologies is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    },
+    {
+      "client_candidate_id": "candidate-international-submarine-engineering-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-international-submarine-engineering-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "65876b6e-7e7a-4b26-aabe-850296241f63",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-international-submarine-engineering-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-international-submarine-engineering-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "International Submarine Engineering is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "65876b6e-7e7a-4b26-aabe-850296241f63",
+              "name": "International Submarine Engineering",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "international-submarine-engineering-official-refresh-source",
+            "title": "International Submarine Engineering corporate profile",
+            "url": "https://ise.bc.ca/wp-content/uploads/2024/04/ISE-Corporate-Profile_Jan_2024.pdf",
+            "publisher": "International Submarine Engineering",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2024-01-01T00:00:00.000Z",
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "The official corporate profile expands the live record from one Explorer AUV capability to the company's wider underwater vehicle, tooling, engineering, and polar-operations scope."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "international-submarine-engineering-current-activity-evidence",
+            "sourceId": "international-submarine-engineering-official-refresh-source",
+            "fieldPath": "operations.set-international-submarine-engineering-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The official corporate profile expands the live record from one Explorer AUV capability to the company's wider underwater vehicle, tooling, engineering, and polar-operations scope.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "65876b6e-7e7a-4b26-aabe-850296241f63",
+          "slug": "international-submarine-engineering",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "65876b6e-7e7a-4b26-aabe-850296241f63",
+            "slug": "international-submarine-engineering",
+            "name": "International Submarine Engineering",
+            "legal_name": null,
+            "description": "Send autonomous systems farther into difficult underwater environments. International Submarine Engineering designs configurable AUVs and ROVs in British Columbia for scientific, commercial, and military missions.",
+            "website_url": "https://ise.bc.ca/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "publication_status": "published",
+            "source_confidence": "high",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-16T12:00:00+00:00",
+            "created_at": "2026-07-16T09:09:28.288403+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-international-submarine-engineering-profile-data",
+            "evidenceIds": [
+              "international-submarine-engineering-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "65876b6e-7e7a-4b26-aabe-850296241f63",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "after": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16",
+              "currentActivity": "ISE's corporate profile documents a broader portfolio of Explorer and Theseus autonomous underwater vehicles, remotely operated vehicles, semi-submersibles, subsea tooling, engineering services, and polar under-ice mission experience.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "international-submarine-engineering-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "The official corporate profile expands the live record from one Explorer AUV capability to the company's wider underwater vehicle, tooling, engineering, and polar-operations scope.",
+            "sourceIds": [
+              "international-submarine-engineering-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "65876b6e-7e7a-4b26-aabe-850296241f63",
+          "slug": "international-submarine-engineering",
+          "name": "International Submarine Engineering",
+          "legal_name": null,
+          "description": "Send autonomous systems farther into difficult underwater environments. International Submarine Engineering designs configurable AUVs and ROVs in British Columbia for scientific, commercial, and military missions.",
+          "website_url": "https://ise.bc.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-16T12:00:00+00:00",
+          "created_at": "2026-07-16T09:09:28.288403+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "international-submarine-engineering-current-activity-evidence",
+          "sourceId": "international-submarine-engineering-official-refresh-source",
+          "fieldPath": "operations.set-international-submarine-engineering-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The official corporate profile expands the live record from one Explorer AUV capability to the company's wider underwater vehicle, tooling, engineering, and polar-operations scope.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "65876b6e-7e7a-4b26-aabe-850296241f63",
+            "name": "International Submarine Engineering",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "International Submarine Engineering is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    },
+    {
+      "client_candidate_id": "candidate-jasco-applied-sciences-refresh-20260729",
+      "research_run_ref": "tnm-manual-20260729081002",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-jasco-applied-sciences-refresh"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-jasco-applied-sciences-refresh-20260729",
+        "sourceLeadIds": [
+          "lead-jasco-applied-sciences-refresh"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "JASCO Applied Sciences is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+        "reviewTier": "green",
+        "inclusionScore": 90,
+        "completenessScore": 86,
+        "reviewWarnings": [],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-07-29T08:15:04.048Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+              "name": "JASCO Applied Sciences",
+              "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+            }
+          ],
+          "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "jasco-applied-sciences-official-refresh-source",
+            "title": "JASCO glider swarm at REPMUS Dynamic Messenger 2025",
+            "url": "https://www.jasco.com/news/2025/underwater-glider-swarm-demonstrates-persistent-maritime-surveillance-and-asw-barrier-operations-during-nato-exercise-repmus/dynamic-messenger-25",
+            "publisher": "JASCO Applied Sciences",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-11-19T00:00:00.000Z",
+            "accessedAt": "2026-07-29T08:15:04.048Z",
+            "locator": "Current product, program, contract, or portfolio details",
+            "summary": "The exercise result adds current multi-vehicle operational experimentation to JASCO's existing underwater acoustic defence systems and analytics record."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "jasco-applied-sciences-current-activity-evidence",
+            "sourceId": "jasco-applied-sciences-official-refresh-source",
+            "fieldPath": "operations.set-jasco-applied-sciences-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "The exercise result adds current multi-vehicle operational experimentation to JASCO's existing underwater acoustic defence systems and analytics record.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+          "slug": "jasco-applied-sciences",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645Z"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+            "slug": "jasco-applied-sciences",
+            "name": "JASCO Applied Sciences",
+            "legal_name": null,
+            "description": "Turn underwater sound into information teams can detect, locate, model, and act on. JASCO Applied Sciences combines acoustic instruments, real-time software, arrays, and defence-focused analysis in Canada.",
+            "website_url": "https://www.jasco.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "publication_status": "published",
+            "source_confidence": "high",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-07-16T12:00:00+00:00",
+            "created_at": "2026-07-16T09:09:28.288403+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-jasco-applied-sciences-profile-data",
+            "evidenceIds": [
+              "jasco-applied-sciences-current-activity-evidence"
+            ],
+            "reviewerExplanation": "Preserve all reviewed profile metadata and add current, source-backed activity plus a clear discovery-versus-evidence boundary for reviewer assessment.",
+            "entityType": "organization",
+            "targetId": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "after": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16",
+              "currentActivity": "JASCO participated in NATO REPMUS and Dynamic Messenger 2025 with eleven underwater gliders carrying directional passive-acoustic monitoring, demonstrating near-real-time target detection, localization, persistent maritime surveillance, and anti-submarine-warfare barrier operations.",
+              "evidencePosture": "Current activity is supported by the cited durable official source. Newsletter, search-result, social, and LinkedIn observations were used only for discovery and cross-checking."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "industry_publication",
+          "linkedin_chrome",
+          "gmail_newsletter"
+        ],
+        "signalIds": [
+          "jasco-applied-sciences-refresh-2026-07-29"
+        ],
+        "corroboration": [
+          {
+            "claim": "The exercise result adds current multi-vehicle operational experimentation to JASCO's existing underwater acoustic defence systems and analytics record.",
+            "sourceIds": [
+              "jasco-applied-sciences-official-refresh-source"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+          "slug": "jasco-applied-sciences",
+          "name": "JASCO Applied Sciences",
+          "legal_name": null,
+          "description": "Turn underwater sound into information teams can detect, locate, model, and act on. JASCO Applied Sciences combines acoustic instruments, real-time software, arrays, and defence-focused analysis in Canada.",
+          "website_url": "https://www.jasco.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+          "published_at": "2026-07-16T12:00:00+00:00",
+          "created_at": "2026-07-16T09:09:28.288403+00:00",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "jasco-applied-sciences-current-activity-evidence",
+          "sourceId": "jasco-applied-sciences-official-refresh-source",
+          "fieldPath": "operations.set-jasco-applied-sciences-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The exercise result adds current multi-vehicle operational experimentation to JASCO's existing underwater acoustic defence systems and analytics record.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-07-29T08:15:04.048Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+            "name": "JASCO Applied Sciences",
+            "matchedBy": "intended published refresh target via exact slug and live organization identifier"
+          }
+        ],
+        "note": "The sole exact organization match is the intended existing published target; no new organization is proposed."
+      },
+      "reviewer_rationale": "JASCO Applied Sciences is already published, but its live profile does not capture the current product, program, contract, or portfolio activity documented in the cited official source. This additive refresh preserves the canonical identity and every reviewed profile field while adding a concise current-activity summary and an explicit evidence boundary. The proposed change gives reviewers a clearer picture of what the organization is producing or delivering now without inferring procurement eligibility, endorsement, classified demand, or unsupported customer use.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-07-29T08:15:05.017Z"
+    }
+  ]
+}

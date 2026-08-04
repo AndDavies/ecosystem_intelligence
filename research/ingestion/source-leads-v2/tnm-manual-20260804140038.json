@@ -1,0 +1,910 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260804140038",
+  "runId": "tnm-manual-20260804140038",
+  "createdAt": "2026-08-04T14:15:02.228Z",
+  "scope": {
+    "description": "Ten qualified Canadian company leads selected from a 50-prospect, multi-lane inventory. Each qualified lead proceeds automatically to an enriched private candidate with a concrete capability, current activity, public relationship, field evidence and explicit review boundary.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-aethera-technologies",
+      "source": {
+        "id": "aethera-technologies-profile",
+        "title": "Aethera company and RF engineering profile",
+        "url": "https://aethera.com/who-we-are/",
+        "publisher": "Aethera Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "About Aethera Technologies and its RF engineering mandate",
+        "summary": "Aethera describes its RF engineering origins and products for space propulsion, fusion, wireless communications and industrial applications."
+      },
+      "discoveryPath": [
+        "https://aethera.com/who-we-are/",
+        "https://aethera.com/contact/",
+        "https://aethera.com/industries/",
+        "https://www.csa-asc.gc.ca/eng/news/articles/2023/2023-10-31-from-food-products-to-space-the-aethera-story.asp"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "advanced-manufacturing-and-integration",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "About Aethera Technologies and its RF engineering mandate",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://aethera.com/",
+        "websiteDomain": "aethera.com",
+        "stableSlug": "aethera-technologies",
+        "legalName": "Aethera Technologies Limited",
+        "aliases": [
+          "Aethera"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 95,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "The CSA profile supports successful test activity but does not establish a flight deployment or production order; the candidate keeps space qualification and operational adoption distinct."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://aethera.com/who-we-are/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://aethera.com/industries/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.csa-asc.gc.ca/eng/news/articles/2023/2023-10-31-from-food-products-to-space-the-aethera-story.asp",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Aethera Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://aethera.com/",
+      "aliases": [
+        "Aethera"
+      ],
+      "location": {
+        "city": "Halifax",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Solid-state radio-frequency power systems",
+      "roleSpecificEvidence": "Aethera Technologies is a Halifax radio-frequency engineering company developing solid-state RF power systems, custom electronics, software and engineering services for space propulsion, fusion energy, wireless communications and industrial processing. Aethera develops solid-state RF generators and power-processing electronics that can be adapted for high-power industrial processes and electric space-propulsion systems, including vacuum-qualified work associated with VASIMR. A Canadian Space Agency profile documents a $1.5 million contribution and successful testing of Aethera power-processing technology for Ad Astra's VASIMR system, while Aethera's current official site continues to present RF products and engineering activity from Halifax."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-4pi-lab",
+      "source": {
+        "id": "4pi-lab-official",
+        "title": "4pi Lab EPiC wildfire detection",
+        "url": "https://site.4pilab.com/",
+        "publisher": "4pi Lab",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "EPiC concept, technical claims and contact section",
+        "summary": "4pi Lab describes a Calgary-based satellite wildfire-detection concept, proposed constellation, detection scale and alerting purpose."
+      },
+      "discoveryPath": [
+        "https://site.4pilab.com/",
+        "https://entrepreneurs.utoronto.ca/startup/4pi-lab/",
+        "https://search.open.canada.ca/grants/?page=1755&search_text=machine%20learning&sort=score%20desc&wbdisable=true"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "EPiC concept, technical claims and contact section",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://site.4pilab.com/",
+        "websiteDomain": "site.4pilab.com",
+        "stableSlug": "4pi-lab",
+        "legalName": "4pi Lab Incorporated",
+        "aliases": [
+          "4 Pi Lab",
+          "4pi Lab Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 91,
+      "completenessScore": 80,
+      "reviewWarnings": [
+        "The official site describes a planned constellation and detection targets, but public evidence reviewed here does not confirm that the satellites have launched; maturity must remain pre-operational pending reviewer verification."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://site.4pilab.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://site.4pilab.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/grants/?page=1755&search_text=machine%20learning&sort=score%20desc&wbdisable=true",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "4pi Lab",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://site.4pilab.com/",
+      "aliases": [
+        "4 Pi Lab",
+        "4pi Lab Inc."
+      ],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "EPiC satellite wildfire-detection system",
+      "roleSpecificEvidence": "4pi Lab is a Calgary space-technology company developing thermal Earth-observation payloads and a proposed satellite constellation for early wildfire detection and real-time alerting. The proposed EPiC system combines thermal imaging payloads, a planned multi-satellite constellation and ground alerting to detect and geolocate small wildfires from space, with EPiC-lite used for ground-based subsystem validation. 4pi Lab's current official site continues to present a 16-satellite EPiC concept and Calgary contact details; an open-government record documents earlier CSA funding for EPiC-lite subsystem validation."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-magnestar",
+      "source": {
+        "id": "magnestar-product",
+        "title": "Magnestar 24/7x spectrum-management technology",
+        "url": "https://www.magnestar.space/spectrum-management-technology",
+        "publisher": "Magnestar",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "24/7x problem and product sections",
+        "summary": "Magnestar describes software combining satellite-spectrum data, interference simulations and coordination workflows."
+      },
+      "discoveryPath": [
+        "https://www.magnestar.space/spectrum-management-technology",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=13576388&lang=eng",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q2-1009187%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "24/7x problem and product sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.magnestar.space/",
+        "websiteDomain": "magnestar.space",
+        "stableSlug": "magnestar",
+        "legalName": "Magnestar Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 93,
+      "completenessScore": 86,
+      "reviewWarnings": [
+        "Corporations Canada lists the company as active but displays an annual-filing compliance warning and notice-of-intent-to-dissolve language; the reviewer must recheck corporate status immediately before any publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.magnestar.space/spectrum-management-technology",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.magnestar.space/spectrum-management-technology",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=13576388&lang=eng",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Magnestar",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.magnestar.space/",
+      "aliases": [],
+      "location": {
+        "city": "Toronto",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "24/7x spectrum-management technology",
+      "roleSpecificEvidence": "Magnestar is a Toronto space-software company developing spectrum-interference simulation, coordination workflows and monitoring tools intended to improve the resilience of satellite communications. Magnestar's 24/7x software combines satellite-spectrum data, interference simulation models and coordination workflows to identify potential communication conflicts and support interference-free satellite operations. Magnestar's official site currently presents its 24/7x product, the federal corporate registry lists Magnestar Inc. as active, and CanadaBuys records a competitively awarded DND IDEaS military-science contract."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-ashored-innovations",
+      "source": {
+        "id": "ashored-innovations-about",
+        "title": "About Ashored Innovations",
+        "url": "https://www.ashored.ca/sustainable-fishing-practices",
+        "publisher": "Ashored Innovations",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "Company history and mandate",
+        "summary": "Ashored describes its Nova Scotia roots and focus on profitable, sustainable commercial fishing technology."
+      },
+      "discoveryPath": [
+        "https://www.ashored.ca/sustainable-fishing-practices",
+        "https://www.ashored.ca/rope-on-command-ropeless-fishing-practices",
+        "https://www.ashored.ca/ropelessfishingsystem-roc-technical-resources-support",
+        "https://otcns.ca/members/ashored",
+        "https://www.canada.ca/en/fisheries-oceans/news/2020/06/canadian-small-businesses-create-innovative-solutions-to-help-reduce-plastic-pollution-in-our-oceans.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company history and mandate",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.ashored.ca/",
+        "websiteDomain": "ashored.ca",
+        "stableSlug": "ashored-innovations",
+        "legalName": "Ashored Innovations Inc.",
+        "aliases": [
+          "Ashored Inc.",
+          "Ashored"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 96,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "A company case study reports an earlier depth-related acoustic reliability limitation and later redesign; reviewers should preserve the distinction between product availability, trials and performance in specific operating conditions."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.ashored.ca/sustainable-fishing-practices",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.ashored.ca/ropelessfishingsystem-roc-technical-resources-support",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.ashored.ca/rope-on-command-ropeless-fishing-practices",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Ashored Innovations",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.ashored.ca/",
+      "aliases": [
+        "Ashored Inc.",
+        "Ashored"
+      ],
+      "location": {
+        "city": "Debert",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Rope-On-Command fishing system",
+      "roleSpecificEvidence": "Ashored Innovations is a Nova Scotia ocean-technology company developing acoustic rope-on-command fishing gear, subsea buoy-containment hardware and gear-tracking software for safer, data-backed fixed-gear fisheries. Ashored's Rope-On-Command system keeps retrieval rope contained on the seabed until an acoustic command releases a buoy, while ATLAS software and tags support gear location, ownership and inventory tracking. Ashored's current official product and resource pages document ROC, MOBI and ATLAS offerings, while Government of Canada funding records and an Ocean Technology Council directory establish Nova Scotia operations and public commercialization support."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-marimetrics-technologies",
+      "source": {
+        "id": "marimetrics-technologies-official",
+        "title": "Marimetrics real-time marine measurements",
+        "url": "https://www.marimetrics.com/",
+        "publisher": "Marimetrics Technologies",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "Company, applications, product and contact sections",
+        "summary": "Marimetrics describes a Dartmouth company and a real-time multi-compound analyzer for marine, aquaculture, science and industrial uses."
+      },
+      "discoveryPath": [
+        "https://www.marimetrics.com/",
+        "https://search.open.canada.ca/grants/record/acoa-apeca%2C276-2022-2023-Q3-00036%2Ccurrent",
+        "https://investnovascotia.ca/start-up-nova-scotia/incubation/start-up-yard-cove"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "test-training-and-sustainment",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, applications, product and contact sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.marimetrics.com/",
+        "websiteDomain": "marimetrics.com",
+        "stableSlug": "marimetrics-technologies",
+        "legalName": "Marimetrics Technologies Incorporated",
+        "aliases": [
+          "Marimetrics"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 91,
+      "completenessScore": 83,
+      "reviewWarnings": [
+        "The public product page provides functional claims but few numerical specifications or named deployments; reviewers should retain the bounded sensing description and avoid inferring platform integration."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.marimetrics.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.marimetrics.com/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://investnovascotia.ca/start-up-nova-scotia/incubation/start-up-yard-cove",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Marimetrics Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.marimetrics.com/",
+      "aliases": [
+        "Marimetrics"
+      ],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Real-time trace-gas and chemical analyzer",
+      "roleSpecificEvidence": "Marimetrics Technologies is a Dartmouth ocean-sensing company developing real-time trace-gas and chemical measurement systems for marine propulsion, aquaculture, environmental science and industrial monitoring. Marimetrics develops an in-situ analyzer intended to measure multiple chemical compounds simultaneously with high sensitivity and real-time output for water, air and vessel-exhaust monitoring. Marimetrics' official site continues to offer its real-time analyzer from Dartmouth, and Invest Nova Scotia currently lists the company among featured Start-Up Yard at COVE firms; an ACOA record documents commercialization support."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-prosaris-solutions",
+      "source": {
+        "id": "prosaris-solutions-product",
+        "title": "Prosaris smart ultrasonic leak detector",
+        "url": "https://blog.prosaris.ca/why-use-smart-ultrasonic-leak-detectors",
+        "publisher": "Prosaris Solutions",
+        "sourceKind": "official_company_product",
+        "publishedAt": "2023-06-22T00:00:00.000Z",
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "OL series detector and management-platform sections",
+        "summary": "Prosaris describes ultrasonic hardware and software for detecting, recording and managing leaks and acoustic anomalies."
+      },
+      "discoveryPath": [
+        "https://blog.prosaris.ca/why-use-smart-ultrasonic-leak-detectors",
+        "https://ised-isde.canada.ca/cipo/trademark-search/pdf/1831646?lang=eng",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/05/backgrounder-acoa-backs-rapidly-growing-tech-sector-in-nova-scotia.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "test-training-and-sustainment",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "OL series detector and management-platform sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://prosaris.ca/",
+        "websiteDomain": "prosaris.ca",
+        "stableSlug": "prosaris-solutions",
+        "legalName": "Prosaris Solutions Ltd.",
+        "aliases": [
+          "PROSARIS"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 94,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The reviewed evidence supports industrial condition monitoring, not a specific defence customer or deployment; any defence relevance remains a derived sustainment and edge-maintenance assessment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://blog.prosaris.ca/why-use-smart-ultrasonic-leak-detectors",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://blog.prosaris.ca/why-use-smart-ultrasonic-leak-detectors",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/05/backgrounder-acoa-backs-rapidly-growing-tech-sector-in-nova-scotia.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Prosaris Solutions",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://prosaris.ca/",
+      "aliases": [
+        "PROSARIS"
+      ],
+      "location": {
+        "city": "Bedford",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Prosaris ultrasonic detection and management system",
+      "roleSpecificEvidence": "Prosaris Solutions is a Nova Scotia industrial-sensing company developing handheld ultrasonic sensors and software for detecting, recording and managing compressed-air, gas, vacuum, electrical and mechanical anomalies. Prosaris pairs handheld ultrasonic sensing hardware with a mobile application and leak-management platform to locate acoustic anomalies, capture records and support resolution workflows for fluid, electrical and mechanical systems. An ACOA backgrounder documents a $500,000 contribution to expand Prosaris production and software, while current company material continues to describe the ultrasonic device and leak-management platform."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-guardian-mobility",
+      "source": {
+        "id": "guardian-mobility-home",
+        "title": "Guardian Mobility aviation satellite communications",
+        "url": "https://www.guardianmobility.com/",
+        "publisher": "Guardian Mobility",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "Company, application and contact sections",
+        "summary": "Guardian describes Ottawa operations and satellite/cellular connectivity for aviation, UAS, emergency, law-enforcement and government users."
+      },
+      "discoveryPath": [
+        "https://www.guardianmobility.com/",
+        "https://www.guardianmobility.com/products-services/hardware/",
+        "https://ifp.iridium.com/products/guardian-mobility-g6/",
+        "https://www.flightcell.com/about/news-and-events/press-release-iridium-certus-100"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "aerospace-and-mobility",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, application and contact sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.guardianmobility.com/",
+        "websiteDomain": "guardianmobility.com",
+        "stableSlug": "guardian-mobility",
+        "legalName": "Guardian Mobility Inc.",
+        "aliases": [
+          "GMI"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "bilingual_web",
+      "inclusionScore": 98,
+      "completenessScore": 95,
+      "reviewWarnings": [
+        "Product certifications and partner deployment support the G6 capability, but the candidate does not infer Canadian military adoption from general military/government product positioning."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.guardianmobility.com/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://ifp.iridium.com/products/guardian-mobility-g6/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.flightcell.com/about/news-and-events/press-release-iridium-certus-100",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Guardian Mobility",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.guardianmobility.com/",
+      "aliases": [
+        "GMI"
+      ],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "G6 Iridium Certus aviation terminal",
+      "roleSpecificEvidence": "Guardian Mobility is an Ottawa aviation-connectivity company that designs satellite and cellular tracking, communications and flight-data systems for crewed aircraft, UAS, emergency response, law enforcement and government operations. The G6 is an all-in-one Iridium Certus 100 satellite terminal providing bidirectional IP data, voice, tracking, telemetry and application interfaces for aircraft and UAS operating beyond reliable terrestrial coverage. Iridium currently lists Guardian's G6-S for autonomous systems, and Flightcell documents selection of the G6 Certus 100 terminal for Bristow search-and-rescue helicopters, providing partner corroboration beyond Guardian's own product pages."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-orthogone-technologies",
+      "source": {
+        "id": "orthogone-technologies-about",
+        "title": "About Orthogone Technologies",
+        "url": "https://orthogone.com/about-us/",
+        "publisher": "Orthogone Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "Services, industries, products and contact sections",
+        "summary": "Orthogone identifies a Saint-Laurent engineering company with FPGA, embedded, electronic-product and aerospace-and-defence work."
+      },
+      "discoveryPath": [
+        "https://orthogone.com/about-us/",
+        "https://orthogone.com/partners/altera-fpga-design-partner/",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034393%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "mission-software-and-data",
+        "communications-and-cyber",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Services, industries, products and contact sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://orthogone.com/",
+        "websiteDomain": "orthogone.com",
+        "stableSlug": "orthogone-technologies",
+        "legalName": "Orthogone Technologies Inc.",
+        "aliases": [
+          "Orthogone"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 97,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "Orthogone provides engineering services across several industries; reviewers should publish only the bounded aerospace, defence, signal-processing and embedded-system capabilities supported by the cited pages."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://orthogone.com/about-us/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://orthogone.com/partners/altera-fpga-design-partner/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034393%2Ccurrent",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Orthogone Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://orthogone.com/",
+      "aliases": [
+        "Orthogone"
+      ],
+      "location": {
+        "city": "Saint-Laurent",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "FPGA and embedded-systems engineering",
+      "roleSpecificEvidence": "Orthogone Technologies is a Quebec electronic-product engineering company providing embedded software, FPGA design, signal processing, edge computing and custom hardware development for aerospace, defence, security, telecommunications and other regulated sectors. Orthogone develops custom FPGA, embedded-computing and electronic-product solutions, including communications, radar, signal-processing and real-time systems for harsh, safety-critical and regulated environments. An Open Government record describes a 2025-2026 NRC-supported project for ultra-low-latency FPGA SmartNIC functions, while Orthogone's current Altera partner page describes aerospace and defence FPGA applications."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-edison-motors",
+      "source": {
+        "id": "edison-motors-official",
+        "title": "Edison Motors diesel-electric trucks",
+        "url": "https://edisonmotors.ca/",
+        "publisher": "Edison Motors",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "Company, truck, technology and 2026 activity sections",
+        "summary": "Edison describes its Canadian diesel-electric vocational trucks, series-hybrid architecture, Golden-area factory and current production activity."
+      },
+      "discoveryPath": [
+        "https://edisonmotors.ca/",
+        "https://ised-isde.canada.ca/cipo/trademark-search/2389497",
+        "https://search.open.canada.ca/grants/?page=11961&sort=agreement_start_date%20desc&wbdisable=false"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company, truck, technology and 2026 activity sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://edisonmotors.ca/",
+        "websiteDomain": "edisonmotors.ca",
+        "stableSlug": "edison-motors",
+        "legalName": "Edison Motors Ltd.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 92,
+      "completenessScore": 87,
+      "reviewWarnings": [
+        "Edison's defence and Arctic relevance is derived from a rugged vocational platform and remote-operating characteristics; the reviewed sources do not establish a military customer or defence deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://edisonmotors.ca/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://edisonmotors.ca/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://edisonmotors.ca/",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Edison Motors",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://edisonmotors.ca/",
+      "aliases": [],
+      "location": {
+        "city": "Golden",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Diesel-electric vocational truck platform",
+      "roleSpecificEvidence": "Edison Motors is a British Columbia vehicle manufacturer developing diesel-electric series-hybrid vocational trucks, powertrains, chassis and conversion systems for logging, hauling, plowing and other heavy-duty work. Edison combines a diesel generator, batteries and electric drive axles in a vocational-truck architecture intended to deliver high torque, regenerative energy recovery, field serviceability and reduced dependence on charging infrastructure. Edison's current official site reports 2026 environmental approval and operation of a new Golden-area factory, while an Open Government record documents a hybrid-electric snowplow pilot using the L500 platform."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-sedna-technologies",
+      "source": {
+        "id": "sedna-technologies-official",
+        "title": "Sedna digital seafood operations",
+        "url": "https://www.sednatech.io/",
+        "publisher": "Sedna Technologies",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-04T14:15:02.228Z",
+        "locator": "Services, sensor, customer and contact sections",
+        "summary": "Sedna describes a Dartmouth platform for seafood traceability, operations, reporting and water-quality sensor inputs."
+      },
+      "discoveryPath": [
+        "https://www.sednatech.io/",
+        "https://search.open.canada.ca/grants/record/acoa-apeca%2C276-2022-2023-Q1-00310%2Ccurrent",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2020/11/new-sensor-technology-supports-a-thriving-ocean-economy.html",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/campaigns/impacts/victoria-cooperative-fisheries-ltd.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "sensing-and-isr",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Services, sensor, customer and contact sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.sednatech.io/",
+        "websiteDomain": "sednatech.io",
+        "stableSlug": "sedna-technologies",
+        "legalName": "Happy Fish Technologies Inc.",
+        "aliases": [
+          "Sedna"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the bounded capability description and derived mission mapping without importing uncited performance marketing.",
+        "Confirm that the current public activity is represented as a contract, cohort, partnership or demonstration rather than operational adoption."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 94,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "Sedna's current public offering spans fisheries operations software and sensors; reviewers should avoid conflating it with the unrelated international maritime-email company using the Sedna name or with Sedna ROV Services."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.sednatech.io/",
+          "outcome": "Reviewed the canonical company profile for identity, Canadian operating presence, role and bounded public positioning."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.sednatech.io/",
+          "outcome": "Reviewed a product page, technical document or detailed official release for concrete architecture, features and applications."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/campaigns/impacts/victoria-cooperative-fisheries-ltd.html",
+          "outcome": "Reviewed an independently attributable government, program or partner source for current activity, maturity or relationship evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Sedna Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://www.sednatech.io/",
+      "aliases": [
+        "Sedna"
+      ],
+      "location": {
+        "city": "Dartmouth",
+        "provinceTerritory": "Nova Scotia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Digital seafood operations and sensor ecosystem",
+      "roleSpecificEvidence": "Sedna Technologies is a Dartmouth ocean-technology company developing seafood traceability, dockside operations, inventory and sales software alongside water-quality and sensor systems for fisheries and aquaculture. Sedna combines inventory, sales, traceability, dockside settlement, quality-control and reporting software with water-quality and other sensor inputs to digitize seafood operations from harvest through sale. Sedna's current official site describes an operating seafood software and sensor ecosystem, while ACOA records both technology-development contributions and a customer digitization project using Sedna as the implementation vendor."
+    }
+  ]
+}

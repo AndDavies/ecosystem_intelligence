@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-refresh-2026-07-27-prospects",
+  "runId": "tnm-refresh-2026-07-27",
+  "createdAt": "2026-07-27T11:13:03.799Z",
+  "scope": "Weekday signal-refresh prospect inventory for current Canadian defence innovation office, hub, source-book, newsletter, and ecosystem-directory signals inspected under a seven-day watermark overlap.",
+  "prospects": [
+    {
+      "id": "prospect-invest-ottawa-dihub-refresh",
+      "name": "Canada's National Defence Innovation Hub at Invest Ottawa",
+      "proposedEntityType": "program",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.investottawa.ca/dihub/",
+      "discoverySourceUrl": "https://www.investottawa.ca/dihub/",
+      "discoveryLane": "official_directory",
+      "countryCode": "CA",
+      "fitSummary": "Current Invest Ottawa page supports an additive refresh to the existing Invest Ottawa record with a regional defence innovation hub strategy and implementation task force.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.investottawa.ca/dihub/",
+          "outcome": "Resolved canonical hub page, strategy summary, implementation task force, lead partners and program details."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.investottawa.ca/",
+          "outcome": "Matched Invest Ottawa to the existing published organization by website domain and public identity."
+        }
+      ]
+    },
+    {
+      "id": "prospect-defence-investment-agency",
+      "name": "Defence Investment Agency",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "government_innovation_office",
+      "canonicalUrl": "https://www.canada.ca/en/defence-investment-agency.html",
+      "discoverySourceUrl": "https://www.canada.ca/en/defence-investment-agency.html",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "Official DIA pages support a government innovation/procurement office profile, but the Canada.ca shared-domain duplicate gate needs modeling resolution before staging.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/defence-investment-agency/corporate/about.html",
+          "outcome": "Recovered mandate, operating model, governance and procurement modernization evidence."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/defence-investment-agency/corporate/delivering-defence-industrial-strategy.html",
+          "outcome": "Recovered DIS delivery responsibilities and Build-Partner-Buy context."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/defence-investment-agency.html",
+          "outcome": "Confirmed canonical website but it shares canada.ca with existing published government offices."
+        }
+      ]
+    },
+    {
+      "id": "prospect-borealis",
+      "name": "BOREALIS",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "government_innovation_office",
+      "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/borealis.html",
+      "discoverySourceUrl": "https://www.canada.ca/en/department-national-defence/programs/borealis.html",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "Official BOREALIS pages support a defence innovation bureau and DISH program lane, but separate organization modeling from DRDC and IDEaS remains unresolved.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/borealis.html",
+          "outcome": "Recovered official mandate, core elements, contact and innovation-program alignment."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Recovered current UxS DISH implementation evidence."
+        }
+      ]
+    },
+    {
+      "id": "prospect-quebec-meie-defence-innovation",
+      "name": "Ministère de l'Économie, de l'Innovation et de l'Énergie",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "government_innovation_office",
+      "canonicalUrl": "https://www.quebec.ca/en/gouvernement/ministeres-organismes/economie/publications/quebec-aerospace-strategy-horizon-2026",
+      "discoverySourceUrl": "https://www.quebec.ca/en/gouvernement/ministeres-organismes/economie/publications/quebec-aerospace-strategy-horizon-2026",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "Quebec aerospace strategy and UxS DISH quotes suggest defence-innovation relevance, but ministry identity and current program-office evidence need follow-up before a profile candidate.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.quebec.ca/en/gouvernement/ministeres-organismes/economie/publications/quebec-aerospace-strategy-horizon-2026",
+          "outcome": "Recovered official strategy for aerospace innovation, defence/security sector strengthening and UAS development."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/minister-mcguinty-announces-new-drone-production-in-quebec.html",
+          "outcome": "Recovered Quebec minister quote and UxS DISH relevance, but not enough identity detail for staging."
+        }
+      ]
+    },
+    {
+      "id": "prospect-cdr-defence-update-july-23",
+      "name": "Canadian Defence Review July 23 defence update",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://canadiandefencereview.com/",
+      "discoverySourceUrl": "https://canadiandefencereview.com/",
+      "discoveryLane": "industry_association",
+      "countryCode": "CA",
+      "fitSummary": "Newsletter surfaced multiple Canadian defence activity trails, with only Invest Ottawa and DND hub evidence converted into durable current-run artifacts.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "industry_association",
+          "url": "https://canadiandefencereview.com/",
+          "outcome": "Newsletter treated as discovery context only."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Recovered durable DND corroboration for the NEXUS/BOREALIS trail."
+        }
+      ]
+    },
+    {
+      "id": "prospect-company-newsroom-sweep",
+      "name": "Canadian defence company newsroom sweep",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+      "discoverySourceUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Company newsroom and current-activity sweep inspected Canadian defence company updates but did not stage separate company refreshes within the government-office selected gap.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Official UxS DISH announcement references the NEXUS defence ecosystem and partner context; separate company refreshes remain outside this candidate."
+        }
+      ]
+    }
+  ]
+}
