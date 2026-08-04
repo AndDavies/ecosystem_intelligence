@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>True North Map: The System Behind the Map</title>
+  <meta name="author" content="Andrew Davies / True North Map" />
+  <meta name="description" content="Product intent, evidence architecture, research operations and production engineering behind True North Map." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <article class="page cover">
+    <img class="cover-image" src="assets/home-maritime-evidence.webp" alt="Canadian maritime vessel in Arctic waters with a yellow evidence path" />
+    <div class="cover-grid"></div>
+    <div class="cover-content">
+      <div style="display:flex;align-items:center;gap:14px">
+        <img src="assets/north-signal-mark-light.svg" alt="True North Map North Signal" style="width:.56in;height:.56in" />
+        <div style="font:800 15pt/1 Barlow,Arial,sans-serif;letter-spacing:.05em">TRUE NORTH<br>MAP</div>
+      </div>
+      <h1 class="cover-title">The system<br><mark>behind the map.</mark></h1>
+      <p class="cover-subtitle">Product intent, evidence architecture, research operations and production engineering behind Canadian defence and dual-use discovery.</p>
+      <div class="cover-meta">
+        <span>Independent project by Andrew Davies</span>
+        <span>28 July 2026</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="page dark" data-page="02">
+    <div class="page-header"><img src="assets/north-signal-mark-light.svg" alt="True North Map" style="width:.42in"><span class="chapter">Executive view</span></div>
+    <div class="eyebrow yellow-text">The visible product is only the surface</div>
+    <h1>The map is the interface.<br>The system is the work.</h1>
+    <p class="lede">True North Map is not a scraped list of companies. It is a live, evidence-led discovery system that connects Canadian organizations and technologies to places, missions, released public needs and reviewable sources.</p>
+    <div class="two-col mt-4">
+      <div class="yellow-card">
+        <div class="eyebrow">What a visitor sees</div>
+        <h2>Find who is building what, where it may fit and who may be worth speaking with.</h2>
+      </div>
+      <div class="card" style="color:var(--ink)">
+        <div class="eyebrow">What makes that possible</div>
+        <p class="strong">Canonical data, field evidence, typed research, human review, production controls and a constrained intelligence layer.</p>
+      </div>
+    </div>
+    <div class="quote mt-4">Make Canadian capability visible.</div>
+    <p class="small muted mt-2">This document explains the intent, judgment and operating system behind that promise.</p>
+    <div class="footer-note">True North Map | The System Behind the Map</div>
+  </article>
+
+  <article class="page" data-page="03">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Contents</span></div>
+    <h1>A product, an intelligence model and an operating discipline.</h1>
+    <p class="lede">The story begins with the national visibility problem, follows the public product, then opens the research, evidence, automation and engineering layers underneath it.</p>
+    <div class="toc">
+      <div>
+        <div class="toc-row"><span class="toc-num">01</span><span>Founder catalyst</span><span class="toc-page">04</span></div>
+        <div class="toc-row"><span class="toc-num">02</span><span>The visibility problem</span><span class="toc-page">05</span></div>
+        <div class="toc-row"><span class="toc-num">03</span><span>Product thesis and users</span><span class="toc-page">06</span></div>
+        <div class="toc-row"><span class="toc-num">04</span><span>Discovery journey</span><span class="toc-page">08</span></div>
+        <div class="toc-row"><span class="toc-num">05</span><span>Public product</span><span class="toc-page">09</span></div>
+        <div class="toc-row"><span class="toc-num">06</span><span>Intelligence layer</span><span class="toc-page">12</span></div>
+        <div class="toc-row"><span class="toc-num">07</span><span>Ask True North</span><span class="toc-page">13</span></div>
+      </div>
+      <div>
+        <div class="toc-row"><span class="toc-num">08</span><span>System architecture</span><span class="toc-page">15</span></div>
+        <div class="toc-row"><span class="toc-num">09</span><span>Evidence and research</span><span class="toc-page">17</span></div>
+        <div class="toc-row"><span class="toc-num">10</span><span>Performance and visibility</span><span class="toc-page">22</span></div>
+        <div class="toc-row"><span class="toc-num">11</span><span>Security and operations</span><span class="toc-page">24</span></div>
+        <div class="toc-row"><span class="toc-num">12</span><span>Release engineering</span><span class="toc-page">27</span></div>
+        <div class="toc-row"><span class="toc-num">13</span><span>Evolution and next horizon</span><span class="toc-page">28</span></div>
+        <div class="toc-row"><span class="toc-num">14</span><span>Source appendix</span><span class="toc-page">31</span></div>
+      </div>
+    </div>
+    <div class="wash-card mt-3">
+      <h3>Review basis</h3>
+      <p class="small">Current production routes, canonical governance, production-aligned code, typed research contracts and live public counts were reviewed on 28 July 2026. Screens are real product captures. Private operational detail is intentionally summarized.</p>
+    </div>
+    <div class="four-col mt-3">
+      <div class="card"><div class="metric">265</div><div class="metric-label">published organizations</div></div>
+      <div class="card"><div class="metric">245</div><div class="metric-label">reviewed technologies</div></div>
+      <div class="card"><div class="metric">616</div><div class="metric-label">approved public sources</div></div>
+      <div class="yellow-card"><div class="metric">LIVE</div><div class="metric-label">production snapshot</div></div>
+    </div>
+    <div class="footer-note">Counts are a dated snapshot and must be refreshed from production in future editions.</div>
+  </article>
+
+  <article class="page" data-page="04">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Founder catalyst</span></div>
+    <div class="split-40">
+      <div>
+        <div class="eyebrow">Why this exists</div>
+        <h1>A call to contribute became a visibility problem worth solving.</h1>
+        <div class="signal-line"></div>
+        <p>Andrew Davies is a veteran and former Combat Systems Engineering Officer whose work spans defence, marine technology, civilian industry, project delivery and ecosystem engagement.</p>
+        <p>Returning to defence work in a period of renewed national urgency revealed a striking contradiction: Canada had talented engineers, companies, programs and ambition, but no shared picture of what was ready to build.</p>
+      </div>
+      <div class="screenshot-frame" style="height:7.8in;border:0">
+        <img src="assets/about-canada-defence-network.jpg" alt="Canadian defence network imagery" style="filter:grayscale(1);object-position:center" />
+      </div>
+    </div>
+    <div class="dark-card" style="position:absolute;left:.52in;right:.52in;bottom:.65in">
+      <div class="eyebrow yellow-text">North Star</div>
+      <h2>Connect every company, organization and person ready to contribute to what Canada can build.</h2>
+    </div>
+    <div class="footer-note">Founder narrative is grounded in the public About story and project governance.</div>
+  </article>
+
+  <article class="page" data-page="05">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">The problem</span></div>
+    <h1>Canada’s capability is stronger than its visibility.</h1>
+    <p class="lede">The challenge is not simply missing data. It is fragmentation across company sites, regional networks, government programs, public documents, announcements and individual relationships.</p>
+    <div class="three-col mt-4">
+      <div class="card"><div class="eyebrow">Scattered</div><h2>Discovery starts in too many places.</h2><p class="small muted">The same question is repeatedly rebuilt across search engines, spreadsheets and personal networks.</p></div>
+      <div class="card"><div class="eyebrow">Disconnected</div><h2>Companies are rarely linked to mission context.</h2><p class="small muted">A list of names does not explain what a technology can do or why someone should care.</p></div>
+      <div class="card"><div class="eyebrow">Uneven</div><h2>Confidence is difficult to judge.</h2><p class="small muted">Marketing claims, public evidence, editorial interpretation and unknowns are often mixed together.</p></div>
+    </div>
+    <div class="dark-card mt-4">
+      <div class="eyebrow yellow-text">Design response</div>
+      <div class="quote">Bring the record together. Preserve the source. Show the relationship. Expose the gap.</div>
+    </div>
+    <div class="flow-row mt-4">
+      <div class="flow-node"><div class="flow-num">BEFORE</div><h3>Scattered pages</h3></div><div class="arrow">&gt;</div>
+      <div class="flow-node"><div class="flow-num">BEFORE</div><h3>Unstructured notes</h3></div><div class="arrow">&gt;</div>
+      <div class="flow-node"><div class="flow-num">BEFORE</div><h3>Hidden judgment</h3></div><div class="arrow">&gt;</div>
+      <div class="flow-node signal"><div class="flow-num">AFTER</div><h3>Shared picture</h3></div>
+    </div>
+    <div class="footer-note">The product is designed to reduce discovery friction, not to manufacture certainty.</div>
+  </article>
+
+  <article class="page dark" data-page="06">
+    <div class="page-header"><img src="assets/north-signal-mark-light.svg" alt="True North Map" style="width:.42in"><span class="chapter">Product thesis</span></div>
+    <div class="eyebrow yellow-text">Evidence-led ecosystem discovery</div>
+    <h1>Move from scattered knowledge to a shared picture.</h1>
+    <p class="lede">True North Map helps people find Canadian defence and dual-use capability, understand where it may fit and move into better-informed conversations.</p>
+    <div class="two-col mt-4">
+      <div class="yellow-card" style="color:var(--ink)"><div class="eyebrow">Promise</div><h2>Make Canadian capability visible.</h2><p class="small">Every feature should make an organization, technology, need, relationship, source or uncertainty easier to see.</p></div>
+      <div class="card" style="color:var(--ink)"><div class="eyebrow">Journey</div><h2>Follow the evidence. Find the fit. Start the right conversation.</h2></div>
+    </div>
+    <div class="rule mt-4"></div>
+    <div class="three-col">
+      <div><div class="eyebrow yellow-text">Not a directory</div><p class="small">Records are connected to technologies, regions, missions, Public Needs and evidence.</p></div>
+      <div><div class="eyebrow yellow-text">Not a marketplace</div><p class="small">It does not rank vendors, validate eligibility or imply an opportunity exists.</p></div>
+      <div><div class="eyebrow yellow-text">Not an authority claim</div><p class="small">Public evidence and human review are the source of trust.</p></div>
+    </div>
+    <div class="footer-note">Independent project. Public evidence. Human review.</div>
+  </article>
+
+  <article class="page" data-page="07">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Users and outcomes</span></div>
+    <h1>The same evidence supports different decisions.</h1>
+    <p class="lede">The product is intentionally broad enough to create a shared picture, but focused enough to help a real person decide what to inspect or who to contact next.</p>
+    <div class="two-col mt-3">
+      <div class="card"><div class="eyebrow">Business development</div><h2>Find who to engage first and why.</h2><p class="small muted">Move from a mission, capability or geography to organizations with visible evidence and possible relevance.</p></div>
+      <div class="card"><div class="eyebrow">Product and strategy</div><h2>Test a capability landscape.</h2><p class="small muted">Compare offerings, maturity, technical areas, public needs and coverage gaps.</p></div>
+      <div class="card"><div class="eyebrow">Ecosystem operators</div><h2>See strengths and missing connections.</h2><p class="small muted">Understand regional clusters, programs, research centres, accelerators and national relationships.</p></div>
+      <div class="card"><div class="eyebrow">Canadian industry</div><h2>Become easier to discover accurately.</h2><p class="small muted">Claim, correct or suggest a profile while retaining editorial review and evidence standards.</p></div>
+    </div>
+    <div class="wash-card mt-3">
+      <h3>The business value is not the number of rows.</h3>
+      <p>Value appears when someone recognizes an opportunity sooner, finds a better partner, reduces research time or brings the right Canadian capability into the room.</p>
+    </div>
+    <div class="tag-row mt-3"><span class="tag">Find</span><span class="tag">Compare</span><span class="tag">Understand</span><span class="tag">Verify</span><span class="tag">Shortlist</span><span class="tag">Connect</span></div>
+    <div class="footer-note">Primary users: BD, engagement, product, strategy and ecosystem teams.</div>
+  </article>
+
+  <article class="page" data-page="08">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Decision journey</span></div>
+    <h1>Start with a real question. End with a better conversation.</h1>
+    <p class="lede">The product’s strategic wedge is mission-led discovery, not passive browsing.</p>
+    <div class="diagram mt-4">
+      <div class="flow-row">
+        <div class="flow-node signal"><div class="flow-num">01 / START</div><h3>Mission, technology, place or public need</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><div class="flow-num">02 / FIND</div><h3>Relevant Canadian organizations</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><div class="flow-num">03 / INSPECT</div><h3>Technology, evidence and gaps</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node green-node"><div class="flow-num">04 / ACT</div><h3>Working List, export or conversation</h3></div>
+      </div>
+    </div>
+    <div class="two-col mt-4">
+      <div class="dark-card"><div class="eyebrow yellow-text">The intelligence question</div><h2>Why might this organization matter in this context?</h2></div>
+      <div class="yellow-card"><div class="eyebrow">The trust question</div><h2>What supports that conclusion, and what remains unknown?</h2></div>
+    </div>
+    <div class="stack mt-4">
+      <div class="stack-node"><h3>Explore the map</h3><p class="small muted">Build the market picture.</p></div>
+      <div class="stack-node"><h3>Open the record</h3><p class="small muted">Inspect technology, public sources and uncertainty.</p></div>
+      <div class="stack-node green-node"><h3>Carry the insight forward</h3><p class="small muted">Save, share, export, correct or request an introduction.</p></div>
+    </div>
+    <div class="footer-note">The interface supports a decision path rather than a feature inventory.</div>
+  </article>
+
+  <article class="page" data-page="09">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">National discovery</span></div>
+    <h1>One national view, with every published organization available.</h1>
+    <p class="lede">The homepage reveals the scale of the ecosystem immediately, then lets users narrow by place, organization type, technology, maturity, program or released need.</p>
+    <div class="screenshot-frame mt-2" style="height:6.55in"><img src="assets/homepage-current.png" alt="Current True North Map homepage" /></div>
+    <div class="two-col mt-2">
+      <div class="shot-caption"><span class="callout">1</span><span><strong>Immediate context.</strong> The product promise renders before the national data read completes.</span></div>
+      <div class="shot-caption"><span class="callout">2</span><span><strong>Complete discovery.</strong> The map receives the compact published set while detailed cards remain paginated.</span></div>
+    </div>
+    <div class="footer-note">Current production-aligned homepage capture, 28 July 2026.</div>
+  </article>
+
+  <article class="page" data-page="10">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Dossiers</span></div>
+    <h1>A company page is a decision record, not a marketing profile.</h1>
+    <p class="lede">Each dossier separates what is known, what the organization offers, where it may help, what supports the record and what still needs verification.</p>
+    <div class="screenshot-frame mt-2" style="height:5.05in"><img src="assets/organization-kraken.png" alt="Kraken Robotics organization dossier" /></div>
+    <div class="three-col mt-2">
+      <div class="shot-caption"><span class="callout">1</span><span><strong>Technology first.</strong> The offering is made explicit and linked to a dedicated profile.</span></div>
+      <div class="shot-caption"><span class="callout">2</span><span><strong>Evidence visible.</strong> Source support, freshness and uncertainty are not hidden.</span></div>
+      <div class="shot-caption"><span class="callout">3</span><span><strong>Action available.</strong> Save, share, export or request a human-brokered introduction.</span></div>
+    </div>
+    <div class="wash-card mt-2"><p class="small"><strong>Design principle:</strong> visual confidence must never exceed evidentiary confidence.</p></div>
+    <div class="footer-note">Published public information only. Internal reviewer rationale remains private.</div>
+  </article>
+
+  <article class="page" data-page="11">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Public Needs</span></div>
+    <h1>Public demand comes from released sources, not inference.</h1>
+    <p class="lede">A Demand Signal is admitted only when a released public source identifies the issuer, need, outcome and inspectable source passage. Technology connections are then reviewed as possible relevance, not procurement status.</p>
+    <div class="screenshot-frame mt-2" style="height:4.85in"><img src="assets/public-need.png" alt="Public Need page with source-backed demand and potentially relevant technology" /></div>
+    <div class="two-col mt-2">
+      <div class="dark-card"><div class="eyebrow yellow-text">Source-backed need</div><p class="small">A government, armed force, program or allied organization released the public record.</p></div>
+      <div class="yellow-card"><div class="eyebrow">Reviewed connection</div><p class="small">A person reviewed why a published technology may be relevant and what evidence supports that interpretation.</p></div>
+    </div>
+    <div class="wash-card mt-2"><p class="tiny">A reviewed public-source assessment is not procurement eligibility, endorsement, customer interest or classified demand.</p></div>
+    <div class="footer-note">Public Needs is the collection. A Demand Signal is one released, source-gated record.</div>
+  </article>
+
+  <article class="page dark" data-page="12">
+    <div class="page-header"><img src="assets/north-signal-mark-light.svg" alt="True North Map" style="width:.42in"><span class="chapter">The intelligence layer</span></div>
+    <h1>The value is relational.</h1>
+    <p class="lede">Organizations do not sit alone. They are connected to the technologies they offer, the places they operate, the missions they may support, the released needs they may address and the evidence behind each claim.</p>
+    <div class="network mt-4" style="color:var(--ink)">
+      <div class="network-node">Places and regions</div>
+      <div class="network-node">Missions and use cases</div>
+      <div class="network-node">Public Needs</div>
+      <div class="network-node">Organizations</div>
+      <div class="network-node central">Reviewed technology</div>
+      <div class="network-node">Programs and relationships</div>
+      <div class="network-node">Public sources</div>
+      <div class="network-node">Evidence passages</div>
+      <div class="network-node">Coverage gaps</div>
+    </div>
+    <div class="three-col mt-4">
+      <div><div class="eyebrow yellow-text">Fact</div><p class="small">What an official or released source actually says.</p></div>
+      <div><div class="eyebrow yellow-text">Assessment</div><p class="small">A reviewed interpretation of possible relevance.</p></div>
+      <div><div class="eyebrow yellow-text">Gap</div><p class="small">What remains missing, stale, thin or unverified.</p></div>
+    </div>
+    <div class="footer-note">The model preserves the difference between evidence and interpretation.</div>
+  </article>
+
+  <article class="page" data-page="13">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Ask True North</span></div>
+    <h1>AI helps explore the corpus. It does not create the corpus.</h1>
+    <p class="lede">A question such as “who can support modular containerized naval systems?” is answered by selecting from published records, ranking known candidates and returning visible evidence and uncertainty.</p>
+    <div class="diagram mt-3">
+      <div class="flow-row">
+        <div class="flow-node signal"><div class="flow-num">01</div><h3>Plain-language question</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><div class="flow-num">02</div><h3>Deterministic preselection</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><div class="flow-num">03</div><h3>Constrained model ranking</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node green-node"><div class="flow-num">04</div><h3>Known IDs and evidence</h3></div>
+      </div>
+    </div>
+    <div class="two-col mt-4">
+      <div class="card"><div class="eyebrow">The model may</div><ul class="small"><li>Rank a bounded set of current records.</li><li>Summarize visible evidence.</li><li>Expose caveats and ambiguity.</li><li>Suggest transparent filters.</li></ul></div>
+      <div class="card"><div class="eyebrow">The model may not</div><ul class="small"><li>Invent an organization or fact.</li><li>Browse a hidden second corpus.</li><li>Publish or modify records.</li><li>Make a procurement decision.</li></ul></div>
+    </div>
+    <div class="dark-card mt-3"><h3 class="yellow-text">Failure is designed.</h3><p class="small">Provider timeouts, refusals, missing access, rate limits and invalid output fall back to deterministic discovery rather than breaking the map.</p></div>
+    <div class="footer-note">OpenAI Responses API with structured output, server validation and safe fallback.</div>
+  </article>
+
+  <article class="page" data-page="14">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">From insight to action</span></div>
+    <h1>Discovery becomes useful when it travels into the next conversation.</h1>
+    <p class="lede">True North Map stops short of becoming a CRM. It supports the lightweight actions that turn research into engagement without collecting private relationship histories.</p>
+    <div class="four-col mt-4">
+      <div class="card"><div class="flow-num">01</div><h3>Working List</h3><p class="tiny muted">Save relevant organizations and technologies privately.</p></div>
+      <div class="card"><div class="flow-num">02</div><h3>Export</h3><p class="tiny muted">Carry evidence into a brief, PDF or filtered CSV.</p></div>
+      <div class="card"><div class="flow-num">03</div><h3>Correct</h3><p class="tiny muted">Claim, amend or suggest a profile for review.</p></div>
+      <div class="yellow-card"><div class="flow-num">04</div><h3>Connect</h3><p class="tiny">Request a human-brokered introduction.</p></div>
+    </div>
+    <div class="screenshot-frame mt-4" style="height:3.45in"><img src="assets/how-it-works.png" alt="True North Map How It Works page" /></div>
+    <div class="two-col mt-3">
+      <div><div class="eyebrow">Deliberate boundary</div><p class="small muted">No outbound sequencing, automated introductions, relationship scoring or sales pipeline management.</p></div>
+      <div><div class="eyebrow">Operating purpose</div><p class="small muted">Reduce uncertainty enough to make the next conversation more relevant.</p></div>
+    </div>
+    <div class="footer-note">Private user actions require authentication. Public browsing remains open.</div>
+  </article>
+
+  <article class="page dark" data-page="15">
+    <div class="page-header"><img src="assets/north-signal-mark-light.svg" alt="True North Map" style="width:.42in"><span class="chapter">System architecture</span></div>
+    <h1>One canonical runtime. Several controlled systems.</h1>
+    <p class="lede">The architecture separates public experience, canonical data, private research, editorial synthesis and operator visibility so no auxiliary workflow can silently become the public record.</p>
+    <div class="stack mt-3" style="color:var(--ink)">
+      <div class="stack-node"><div class="eyebrow">Public experience</div><h3>Next.js routes, MapLibre discovery, profiles, Public Needs, briefs and Ask True North</h3></div>
+      <div class="stack-node green-node"><div class="eyebrow">Canonical runtime</div><h3>Supabase records, taxonomy, evidence, review state, authentication, storage and audit</h3></div>
+      <div class="stack-node"><div class="eyebrow">Private operations</div><h3>Typed research lineage, operator skills, Defence Wiki and visibility intelligence</h3></div>
+      <div class="stack-node dark-node"><div class="eyebrow yellow-text">Publication authority</div><h3>Human review and explicit Publish only</h3></div>
+    </div>
+    <div class="three-col mt-3">
+      <div><div class="eyebrow yellow-text">Vercel</div><p class="small">Hosting, delivery, DNS, runtime analytics and deployments.</p></div>
+      <div><div class="eyebrow yellow-text">OpenAI</div><p class="small">Bounded discovery ranking over known published records.</p></div>
+      <div><div class="eyebrow yellow-text">MapTiler</div><p class="small">Replaceable map presentation over standard coordinates.</p></div>
+    </div>
+    <div class="footer-note">Private systems advise and stage. The canonical runtime alone serves public records.</div>
+  </article>
+
+  <article class="page" data-page="16">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Canonical model</span></div>
+    <h1>A company is one node in a larger evidence graph.</h1>
+    <p class="lede">The database separates identity, technology, demand, location, relationships, sources and review state so each can be maintained without turning a dossier into an unstructured blob.</p>
+    <div class="network mt-3">
+      <div class="network-node">Locations</div>
+      <div class="network-node">Programs</div>
+      <div class="network-node">Relationships</div>
+      <div class="network-node">Organization</div>
+      <div class="network-node central">Technology</div>
+      <div class="network-node">Demand requirement</div>
+      <div class="network-node">Media</div>
+      <div class="network-node">Evidence</div>
+      <div class="network-node">Public source</div>
+    </div>
+    <div class="two-col mt-4">
+      <div class="card"><div class="eyebrow">Organization types</div><p class="small">Companies, accelerators, incubators, research and test centres, investors and funders, ecosystem organizations and government innovation offices.</p></div>
+      <div class="card"><div class="eyebrow">Technology relationships</div><p class="small">Mission areas, technical domains, programs and released public needs are connected through reviewable mappings rather than copied prose.</p></div>
+    </div>
+    <div class="wash-card mt-3"><p class="small"><strong>Production Supabase is the sole public source of truth.</strong> Seed files, research artifacts, private wiki pages and remembered counts cannot substitute for live canonical records.</p></div>
+    <div class="footer-note">Normalized data supports consistent dossiers, edits, citations and relationship-safe updates.</div>
+  </article>
+
+  <article class="page" data-page="17">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Evidence model</span></div>
+    <h1>Trust comes from keeping three states separate.</h1>
+    <p class="lede">The platform does not hide interpretation behind a generic confidence score. It tells the reader what is sourced, what is assessed and what is still incomplete.</p>
+    <div class="three-col mt-4">
+      <div class="card" style="border-top:5px solid var(--evidence)"><div class="eyebrow green">Source-backed fact</div><h2>What the record says.</h2><p class="small muted">Supported by an official or released source, a relevant passage and a field-level citation.</p></div>
+      <div class="card" style="border-top:5px solid var(--signal)"><div class="eyebrow">Our assessment</div><h2>What the evidence may mean.</h2><p class="small muted">A reviewed interpretation of possible relevance, with visible limits.</p></div>
+      <div class="card" style="border-top:5px solid var(--warning)"><div class="eyebrow" style="color:var(--warning)">Coverage gap</div><h2>What is not yet known.</h2><p class="small muted">Missing, thin, stale or unverified information remains visible rather than being filled.</p></div>
+    </div>
+    <div class="diagram mt-4">
+      <div class="flow-row">
+        <div class="flow-node green-node"><h3>Canonical source</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><h3>Relevant passage</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><h3>Field citation</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node signal"><h3>Public claim or assessment</h3></div>
+      </div>
+    </div>
+    <div class="dark-card mt-3"><p class="small"><strong class="yellow-text">Unknown remains unknown.</strong> The system never displays placeholders such as “YTD,” invented employee counts, unsupported contacts or synthetic organizations.</p></div>
+    <div class="footer-note">Evidence quality describes public support, not the quality of an organization.</div>
+  </article>
+
+  <article class="page dark" data-page="18">
+    <div class="page-header"><img src="assets/north-signal-mark-light.svg" alt="True North Map" style="width:.42in"><span class="chapter">Research pipeline</span></div>
+    <h1>Research is automated for yield, not for publication.</h1>
+    <p class="lede">Seven project-local skills move from coverage gaps to reviewable candidates. Every stage has a narrow job, a typed output and an explicit authority boundary.</p>
+    <div class="stack mt-3" style="color:var(--ink)">
+      <div class="stack-node"><strong>1. Autonomous research</strong> <span class="small muted">- coverage, bounded run and coordination</span></div>
+      <div class="stack-node"><strong>2. Signal refresh</strong> <span class="small muted">- watchlists, atomic changes and entity matching</span></div>
+      <div class="stack-node"><strong>3. Source discovery</strong> <span class="small muted">- prospects, recovery and durable qualified leads</span></div>
+      <div class="stack-node"><strong>4. Candidate builder</strong> <span class="small muted">- supported green or amber typed bundle</span></div>
+      <div class="stack-node green-node"><strong>5. Evidence mapper</strong> <span class="small muted">- field citations and conservative relevance</span></div>
+      <div class="stack-node"><strong>6. Candidate logo</strong> <span class="small muted">- official identity-media provenance, kept private</span></div>
+      <div class="stack-node dark-node"><strong>7. Review steward</strong> <span class="small">- schema, taxonomy, duplicate and contract gates</span></div>
+    </div>
+    <div class="two-col mt-3">
+      <div><div class="eyebrow yellow-text">What the system optimizes</div><p class="small">Coverage yield, durable evidence, traceability, resumability and reviewer usefulness.</p></div>
+      <div><div class="eyebrow yellow-text">Where it stops</div><p class="small">A verified pending item in private Admin Review. It cannot accept or publish.</p></div>
+    </div>
+    <div class="footer-note">The executable schema wins when prose and code differ.</div>
+  </article>
+
+  <article class="page" data-page="19">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Signals and automation</span></div>
+    <h1>The corpus can grow and stay current without bypassing judgment.</h1>
+    <p class="lede">Broad discovery finds missing organizations. Deep dossiers improve named targets. Signal refresh monitors known records for material changes. All three paths converge on the same review and publication controls.</p>
+    <div class="three-col mt-3">
+      <div class="card"><div class="eyebrow">Discovery batch</div><h2>Expand coverage.</h2><p class="small muted">Enumerate 40-75 prospects across at least six source lanes and carry the strongest evidence-backed candidates forward.</p></div>
+      <div class="card"><div class="eyebrow">Deep dossier</div><h2>Improve depth.</h2><p class="small muted">Research one to five named organizations across complementary source lanes.</p></div>
+      <div class="card"><div class="eyebrow">Refresh batch</div><h2>Monitor change.</h2><p class="small muted">Inspect balanced sources, extract atomic signals and propose additive updates against a captured baseline.</p></div>
+    </div>
+    <div class="diagram mt-3">
+      <div class="flow-row">
+        <div class="flow-node signal"><h3>Official and durable sources</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><h3>Atomic signal or source lead</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><h3>Evidence-backed operations</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node green-node"><h3>Private review candidate</h3></div>
+      </div>
+    </div>
+    <div class="two-col mt-3">
+      <div class="wash-card"><h3>Scheduled research</h3><p class="small">A weekly broad discovery run and weekday multi-source refresh both stop at private review intake.</p></div>
+      <div class="wash-card"><h3>Additive refresh</h3><p class="small">Approved operations can update a field or add or update a child. V1 never automates deletion.</p></div>
+    </div>
+    <div class="footer-note">Social posts and newsletters remain discovery inputs until durable corroboration is resolved.</div>
+  </article>
+
+  <article class="page" data-page="20">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Human publication</span></div>
+    <h1>Review and publication are deliberately different decisions.</h1>
+    <p class="lede">A candidate can be researched, validated, staged and even accepted without changing a public record. Publication is a separate human action that applies the reviewed operations atomically.</p>
+    <div class="diagram mt-4">
+      <div class="flow-row">
+        <div class="flow-node"><div class="flow-num">PRIVATE</div><h3>Typed candidate</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node signal"><div class="flow-num">PRIVATE</div><h3>Admin Review</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><div class="flow-num">APPROVED</div><h3>Publish checkpoint</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node green-node"><div class="flow-num">PUBLIC</div><h3>Canonical record</h3></div>
+      </div>
+    </div>
+    <div class="two-col mt-4">
+      <div class="card"><div class="eyebrow">Before publication</div><ul class="small"><li>Compare proposed and current values.</li><li>Inspect sources and passages.</li><li>Resolve duplicates and taxonomy.</li><li>Edit, defer or reject.</li></ul></div>
+      <div class="card"><div class="eyebrow">At publication</div><ul class="small"><li>Recheck the target baseline.</li><li>Apply reviewed operations atomically.</li><li>Write audit history.</li><li>Invalidate affected public routes.</li></ul></div>
+    </div>
+    <div class="dark-card mt-3"><h2 class="yellow-text">Nothing reaches the public corpus because an agent decided it should.</h2></div>
+    <div class="footer-note">Research run files and pending queue rows are not public records.</div>
+  </article>
+
+  <article class="page" data-page="21">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Knowledge and editorial</span></div>
+    <h1>Private synthesis becomes public only through a reviewed editorial surface.</h1>
+    <p class="lede">The private Defence Wiki compiles durable source packets and evergreen concepts. Canadian Defence Briefs translate selected, reviewed material into readable public analysis without exposing raw packets or private notes.</p>
+    <div class="screenshot-frame mt-2" style="height:4.45in"><img src="assets/defence-brief.png" alt="Canadian Defence Brief article" /></div>
+    <div class="diagram mt-3">
+      <div class="flow-row">
+        <div class="flow-node"><h3>Source packets</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><h3>Private evergreen synthesis</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node signal"><h3>Editorial review</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node green-node"><h3>Published brief</h3></div>
+      </div>
+    </div>
+    <div class="wash-card mt-2"><p class="small"><strong>Boundary:</strong> newsletter bodies, internal notes, raw packets and compiler output never become public runtime content.</p></div>
+    <div class="footer-note">Briefs separate durable knowledge, current developments and labelled interpretation.</div>
+  </article>
+
+  <article class="page dark" data-page="22">
+    <div class="page-header"><img src="assets/north-signal-mark-light.svg" alt="True North Map" style="width:.42in"><span class="chapter">Performance engineering</span></div>
+    <h1>Load the national picture without making the user wait for every detail.</h1>
+    <p class="lede">As the corpus grew, the homepage was restructured so breadth remains complete while the first meaningful view stays fast.</p>
+    <div class="two-col mt-4" style="color:var(--ink)">
+      <div class="card"><div class="eyebrow">Earlier shape</div><div class="stack mt-2"><div class="stack-node">Full evidence graph</div><div class="stack-node">All rich cards</div><div class="stack-node">Map and first paint</div></div><p class="small muted mt-2">The page depended too heavily on complete public data hydration before becoming useful.</p></div>
+      <div class="yellow-card"><div class="eyebrow">Current shape</div><div class="stack mt-2"><div class="stack-node">Immediate static hero</div><div class="stack-node">Compact national projection</div><div class="stack-node">Paginated cards</div><div class="stack-node green-node">Evidence on selection</div></div></div>
+    </div>
+    <div class="three-col mt-4">
+      <div><div class="eyebrow yellow-text">Complete</div><p class="small">Every matching published organization remains available to map and search.</p></div>
+      <div><div class="eyebrow yellow-text">Bounded</div><p class="small">Public reads retry one transient failure and may use the last safe warm snapshot.</p></div>
+      <div><div class="eyebrow yellow-text">Cache-aware</div><p class="small">Public snapshots, record details and route invalidation use different caching strategies.</p></div>
+    </div>
+    <div class="footer-note">The performance work changed loading architecture, not the evidence or publication model.</div>
+  </article>
+
+  <article class="page" data-page="23">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">SEO, AEO and visibility</span></div>
+    <h1>Visibility is measured as a private learning system, not a content factory.</h1>
+    <p class="lede">Public pages use structured data, canonical metadata, current social cards, internal links and answer-first content. A separate private skill reads owned search evidence and returns recommendations without publishing or modifying the corpus.</p>
+    <div class="diagram mt-3">
+      <div class="flow-row">
+        <div class="flow-node"><h3>Search demand and technical health</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><h3>Coverage or content opportunity</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node signal"><h3>Human editorial decision</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node green-node"><h3>Measured public improvement</h3></div>
+      </div>
+    </div>
+    <div class="two-col mt-4">
+      <div class="card"><div class="eyebrow">Public foundation</div><ul class="small"><li>Canonical URLs and sitemap.</li><li>Organization, Product, Article and Dataset structured data.</li><li>Indexable evidence-led pages.</li><li>Current Open Graph and social previews.</li></ul></div>
+      <div class="card"><div class="eyebrow">Private visibility skill</div><ul class="small"><li>Search Console and GA4 read-only evidence.</li><li>PageSpeed and technical checks.</li><li>Explicitly capped provider validation.</li><li>SEO, GEO, AEO and earned-link recommendations.</li></ul></div>
+    </div>
+    <div class="dark-card mt-3"><p class="small"><strong class="yellow-text">No automatic publication.</strong> Raw queries, referrals, credentials and provider exports remain local and private.</p></div>
+    <div class="footer-note">Visibility recommendations re-enter the ordinary product or editorial workflow.</div>
+  </article>
+
+  <article class="page dark" data-page="24">
+    <div class="page-header"><img src="assets/north-signal-mark-light.svg" alt="True North Map" style="width:.42in"><span class="chapter">Security and privacy</span></div>
+    <h1>Public discovery is open. Private authority fails closed.</h1>
+    <p class="lede">The system uses layered controls across data, routes, authentication, forms, storage, telemetry and retention. The lookbook describes these controls without exposing operational attack surface.</p>
+    <div class="three-col mt-4" style="color:var(--ink)">
+      <div class="card"><div class="eyebrow">Data</div><h3>RLS and explicit grants</h3><p class="small muted">Published records are readable. Drafts, private actions and telemetry remain restricted.</p></div>
+      <div class="card"><div class="eyebrow">Application</div><h3>Server-side authorization</h3><p class="small muted">Admin access is not inferred from public sign-in or user-editable profile data.</p></div>
+      <div class="card"><div class="eyebrow">Forms</div><h3>Validation and abuse controls</h3><p class="small muted">Turnstile, honeypots, input limits and rate controls protect public workflows.</p></div>
+      <div class="card"><div class="eyebrow">Browser</div><h3>Provider-specific CSP</h3><p class="small muted">Only the application and required external services are permitted.</p></div>
+      <div class="card"><div class="eyebrow">Privacy</div><h3>Consent and retention</h3><p class="small muted">Raw search text and detailed events expire under published time limits.</p></div>
+      <div class="yellow-card"><div class="eyebrow">Operations</div><h3>Audit and rollback</h3><p class="small">Security checks, health tests, logs and a rollback target are part of release work.</p></div>
+    </div>
+    <div class="wash-card mt-4" style="color:var(--ink)"><p class="small"><strong>Honest assurance:</strong> these are implemented application controls. The project does not claim an independent penetration test or formal security certification.</p></div>
+    <div class="footer-note">Secrets, private evidence and user data do not enter public responses or tracked collateral.</div>
+  </article>
+
+  <article class="page" data-page="25">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Identity and communications</span></div>
+    <h1>Human, marketing and authentication email remain deliberately separate.</h1>
+    <p class="lede">Different communication functions use different providers and reputational boundaries while the production database remains the consent and identity authority.</p>
+    <div class="three-col mt-4">
+      <div class="card"><div class="eyebrow">Human correspondence</div><h2>Zoho Mail</h2><p class="small muted">Monitored True North Map mailbox and operational aliases.</p></div>
+      <div class="card"><div class="eyebrow">Updates</div><h2>MailerLite</h2><p class="small muted">Consent-backed subscriber delivery and lifecycle webhooks.</p></div>
+      <div class="card"><div class="eyebrow">Authentication</div><h2>Resend + Supabase</h2><p class="small muted">Branded passwordless and security messages on a dedicated sending domain.</p></div>
+    </div>
+    <div class="diagram mt-4">
+      <div class="flow-row">
+        <div class="flow-node signal"><h3>Google or email sign-in</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node"><h3>Private owner-scoped actions</h3></div><div class="arrow">&gt;</div>
+        <div class="flow-node green-node"><h3>Working Lists, claims and connections</h3></div>
+      </div>
+    </div>
+    <div class="two-col mt-4">
+      <div class="wash-card"><h3>Consent ledger</h3><p class="small">Supabase records affirmative update consent, time and source. MailerLite is the delivery surface, not a second authority.</p></div>
+      <div class="wash-card"><h3>Account control</h3><p class="small">Users can sign out, switch accounts and delete their private profile data after recent reauthentication.</p></div>
+    </div>
+    <div class="footer-note">Public browsing does not require an account.</div>
+  </article>
+
+  <article class="page" data-page="26">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Learning system</span></div>
+    <h1>Analytics are used to find friction and missing value, not to build advertising profiles.</h1>
+    <p class="lede">The project measures meaningful actions and recurring gaps while keeping analytics consent visible, optional and separate from private user workflows.</p>
+    <div class="four-col mt-4">
+      <div class="card"><div class="metric">1</div><div class="metric-label">Search or filter</div></div>
+      <div class="card"><div class="metric">2</div><div class="metric-label">Open a record</div></div>
+      <div class="card"><div class="metric">3</div><div class="metric-label">Inspect evidence</div></div>
+      <div class="yellow-card"><div class="metric">4</div><div class="metric-label">Save, share or connect</div></div>
+    </div>
+    <div class="two-col mt-4">
+      <div class="card"><div class="eyebrow">Measured</div><ul class="small"><li>Search and filter use.</li><li>Zero-result questions.</li><li>Dossier and source opens.</li><li>Working Lists, sharing and exports.</li><li>Subscriptions, feedback and contributions.</li></ul></div>
+      <div class="card"><div class="eyebrow">Not collected for this purpose</div><ul class="small"><li>Keystroke capture.</li><li>Advertising profiles.</li><li>Raw IP storage.</li><li>Named behavioural dossiers.</li><li>Analytics on private admin routes.</li></ul></div>
+    </div>
+    <div class="dark-card mt-3"><p class="small"><strong class="yellow-text">The learning question:</strong> what are people trying to find, where do they get stuck, and which missing records or explanations would make the product more useful?</p></div>
+    <div class="footer-note">Detailed event and raw-search retention are enforced by a scheduled private cleanup.</div>
+  </article>
+
+  <article class="page dark" data-page="27">
+    <div class="page-header"><img src="assets/north-signal-mark-light.svg" alt="True North Map" style="width:.42in"><span class="chapter">Release engineering</span></div>
+    <h1>A build is not a release result.</h1>
+    <p class="lede">Material changes are mapped across public UX, data, review, evidence, privacy, analytics, visibility, brand and launch collateral before production.</p>
+    <div class="stack mt-3" style="color:var(--ink)">
+      <div class="stack-node"><strong>1. Identify affected systems</strong> <span class="small muted">- start from the current contracts and worktree</span></div>
+      <div class="stack-node"><strong>2. Run scoped tests</strong> <span class="small muted">- unit, schema, RLS, API or browser checks</span></div>
+      <div class="stack-node"><strong>3. Run release validation</strong> <span class="small muted">- dependency audit, tests, lint and clean build</span></div>
+      <div class="stack-node green-node"><strong>4. Crawl and inspect</strong> <span class="small muted">- canonical routes, metadata, structured data and links</span></div>
+      <div class="stack-node dark-node"><strong>5. Deploy, smoke and monitor</strong> <span class="small">- health, affected routes, live state and runtime logs</span></div>
+    </div>
+    <div class="three-col mt-4">
+      <div><div class="eyebrow yellow-text">Responsive</div><p class="small">Public layout work is checked at 390, 768, 1024 and 1440 pixels.</p></div>
+      <div><div class="eyebrow yellow-text">Operational</div><p class="small">The release runbook records the deployed commit and rollback target.</p></div>
+      <div><div class="eyebrow yellow-text">Explicit</div><p class="small">Completion reports state which checks ran and which did not.</p></div>
+    </div>
+    <div class="footer-note">The cross-system regression contract keeps local changes from becoming hidden system changes.</div>
+  </article>
+
+  <article class="page" data-page="28">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Evolution and execution</span></div>
+    <h1>The visible product emerged through deliberate rounds of validation and repair.</h1>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">APR</div><div class="timeline-copy"><strong>Initial intelligence MVP.</strong> Mission-led capability model, review workflows and early BD validation.</div></div>
+      <div class="timeline-item"><div class="timeline-date">JUL 15</div><div class="timeline-copy"><strong>Public atlas foundation.</strong> Clean production schema, RLS, public mapping and normalized dossiers.</div></div>
+      <div class="timeline-item"><div class="timeline-date">JUL 18</div><div class="timeline-copy"><strong>Research operations.</strong> Typed source discovery, candidate construction, evidence mapping and private review intake.</div></div>
+      <div class="timeline-item"><div class="timeline-date">JUL 20</div><div class="timeline-copy"><strong>Ask True North.</strong> Constrained published-corpus discovery with deterministic fallback.</div></div>
+      <div class="timeline-item"><div class="timeline-date">JUL 21</div><div class="timeline-copy"><strong>Defence Briefs and private wiki foundation.</strong> Reviewed synthesis separated from raw research.</div></div>
+      <div class="timeline-item"><div class="timeline-date">JUL 22</div><div class="timeline-copy"><strong>Independent email system.</strong> Human, update and authentication delivery separated.</div></div>
+      <div class="timeline-item"><div class="timeline-date">JUL 23-25</div><div class="timeline-copy"><strong>Refresh, demand matches and identity media.</strong> Additive enrichment, publication safety and official logo provenance.</div></div>
+      <div class="timeline-item"><div class="timeline-date">JUL 26-28</div><div class="timeline-copy"><strong>Brand, security and performance hardening.</strong> North Signal system, release controls, bounded evidence loading and progressive homepage architecture.</div></div>
+    </div>
+    <div class="four-col mt-3">
+      <div class="card"><div class="metric">108</div><div class="metric-label">repository commits</div></div>
+      <div class="card"><div class="metric">43</div><div class="metric-label">SQL migrations</div></div>
+      <div class="card"><div class="metric">36</div><div class="metric-label">test files</div></div>
+      <div class="yellow-card"><div class="metric">198</div><div class="metric-label">research-lineage files</div></div>
+    </div>
+    <div class="footer-note">Repository figures are dated scope indicators, not measures of product value.</div>
+  </article>
+
+  <article class="page" data-page="29">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Current position</span></div>
+    <h1>The foundation is built. The next test is usefulness at scale.</h1>
+    <p class="lede">True North Map is operating as a professional public beta. The priority is not another foundational rewrite. It is broader use, stronger coverage and learning from real questions.</p>
+    <div class="two-col mt-4">
+      <div class="dark-card"><div class="eyebrow yellow-text">Build next</div><ul class="small"><li>Expand high-value national coverage.</li><li>Deepen technology and mission relationships.</li><li>Improve discovery from repeated user questions.</li><li>Grow reviewed editorial and Public Needs coverage.</li><li>Strengthen earned distribution and partnerships.</li></ul></div>
+      <div class="card"><div class="eyebrow">Protect</div><ul class="small"><li>Evidence and human publication boundaries.</li><li>Visible uncertainty and source quality.</li><li>Complete national map coverage.</li><li>Private research and visibility data.</li><li>A focused discovery product rather than a broad CRM.</li></ul></div>
+    </div>
+    <div class="wash-card mt-4">
+      <h2>Success is not a perfect database.</h2>
+      <p>Success is a growing public picture that helps more people discover Canadian capability, understand the evidence and begin a more relevant conversation.</p>
+    </div>
+    <div class="three-col mt-4">
+      <div><div class="eyebrow">Independent</div><p class="small muted">Not an official directory or procurement authority.</p></div>
+      <div><div class="eyebrow">Evidence-led</div><p class="small muted">Claims and assessments remain inspectable.</p></div>
+      <div><div class="eyebrow">Built to learn</div><p class="small muted">Coverage expands through questions, corrections and reviewed research.</p></div>
+    </div>
+    <div class="footer-note">Public Beta is a release posture, not an excuse for weak operating discipline.</div>
+  </article>
+
+  <article class="page yellow" data-page="30">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter" style="color:var(--ink)">Closing</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1.15in;gap:.35in;align-items:end;margin-top:.85in">
+      <div>
+        <div class="eyebrow">Independent project by Andrew Davies</div>
+        <h1 style="font-size:43pt">Make Canadian<br>capability visible.</h1>
+        <p style="max-width:5.6in;margin-top:.35in;font-size:14pt;line-height:1.45">Explore the map. Follow the evidence. Find the organizations worth speaking with next.</p>
+      </div>
+      <img class="qr" src="assets/truenorthmap-qr.png" alt="QR code linking to truenorthmap.ca" />
+    </div>
+    <div class="dark-card" style="margin-top:.55in;display:flex;align-items:center;justify-content:space-between">
+      <h2>truenorthmap.ca</h2>
+      <span class="small yellow-text strong">Evidence-led ecosystem discovery</span>
+    </div>
+    <div style="position:absolute;left:.52in;right:.52in;bottom:1.0in;border-top:2px solid var(--ink);padding-top:.22in" class="two-col">
+      <div><div class="eyebrow">The observation</div><p class="small">Canada is building more than most people can see.</p></div>
+      <div><div class="eyebrow">The work</div><p class="small">Make the organizations, technologies, needs, evidence and connections easier to find and understand.</p></div>
+    </div>
+    <div class="footer-note" style="color:var(--ink)">True North Map | 28 July 2026</div>
+  </article>
+
+  <article class="page" data-page="31">
+    <div class="page-header"><img src="assets/true-north-map-horizontal.svg" alt="True North Map"><span class="chapter">Source appendix</span></div>
+    <h1>Project and operating sources.</h1>
+    <p class="lede">Every architectural, research and governance claim in this lookbook is grounded in the current project contracts or live public product.</p>
+    <ul class="source-list mt-3">
+      <li><strong>True North Map Project Overview.</strong> Product mission, public surfaces, language map, source of truth and authority boundaries.</li>
+      <li><strong>Project Status.</strong> Dated implementation state, public product, research, visibility, email and release posture.</li>
+      <li><strong>Cross-System Change and Regression Contract.</strong> Required impact mapping, validation and production verification.</li>
+      <li><strong>Skills and Automation Map.</strong> Research skill chain, operating modes, schedules and private visibility boundary.</li>
+      <li><strong>Autonomous Ecosystem Research Pipeline.</strong> Typed artifacts, enrichment, refresh, staging and publication visibility.</li>
+      <li><strong>True North Map Brand System.</strong> North Signal identity, message roles, typography, colour and public evidence language.</li>
+      <li><strong>Security and Reliability Remediation Log.</strong> Sanitized control posture, recurring checks and accepted assurance limits.</li>
+      <li><strong>Product Requirements Document.</strong> Public routes, canonical data model, Ask True North, privacy and deferred scope.</li>
+      <li><strong>Production application and migrations.</strong> Next.js routes, Supabase migrations, server actions, contracts and tests.</li>
+      <li><strong>Live production endpoints.</strong> Public summary and non-sensitive health status captured 28 July 2026.</li>
+    </ul>
+    <div class="wash-card mt-3"><p class="small">The complete dated manifest, exact commit and disclosure rules are preserved in the editable source package at content/lookbook/project-lookbook/sources.md.</p></div>
+    <div class="footer-note">Public-safe technical depth. No credentials, user records or private evidence are included.</div>
+  </article>
+
+  <article class="page dark" data-page="32">
+    <div class="page-header"><img src="assets/north-signal-mark-light.svg" alt="True North Map" style="width:.42in"><span class="chapter">Method and limits</span></div>
+    <h1>What this document proves, and what it does not claim.</h1>
+    <div class="two-col mt-4">
+      <div>
+        <div class="eyebrow yellow-text">It demonstrates</div>
+        <ul class="small"><li>A coherent product and market thesis.</li><li>A relational intelligence model rather than a flat list.</li><li>Typed, review-first research operations.</li><li>Production architecture, performance and release discipline.</li><li>Implemented security and privacy controls.</li><li>A repeatable visibility and learning system.</li></ul>
+      </div>
+      <div>
+        <div class="eyebrow yellow-text">It does not claim</div>
+        <ul class="small"><li>Government, military or procurement authority.</li><li>Classified demand or customer interest.</li><li>Complete national coverage.</li><li>Automatic truth from AI or web discovery.</li><li>Independent security certification.</li><li>That repository size alone creates product value.</li></ul>
+      </div>
+    </div>
+    <div class="rule mt-4"></div>
+    <div class="quote">The architecture remains true. The language explains the consequence.</div>
+    <p class="lede">The project should be judged by whether it helps people see Canadian capability, inspect the evidence and make a better-informed decision about what to explore next.</p>
+    <div class="dark-card mt-4" style="border:1px solid rgba(255,255,255,.25)">
+      <div class="eyebrow yellow-text">Dated project snapshot</div>
+      <p class="small">Prepared from production-aligned commit 0edc27e and current project sources on 28 July 2026. The public corpus continues to change through human-reviewed publication.</p>
+    </div>
+    <div class="footer-note">End of report.</div>
+  </article>
+
+</body>
+</html>
