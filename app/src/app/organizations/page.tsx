@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight, Building2, Compass, FileText, Layers3, MapPin, X } from "lucide-react";
+import { ArrowRight, Building2, Compass, FileText, Layers3, MapPin, X, type LucideIcon } from "lucide-react";
 import { OrganizationCard } from "@/components/atlas/organization-card";
 import { EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { StatTile } from "@/components/ui/stat-tile";
 import { organizationKindLabel } from "@/lib/atlas/presentation";
-import { getAtlasCoverageSummary, getAtlasDiscoverySnapshot } from "@/lib/atlas/repository";
+import { getAtlasCoverageSummary, getAtlasDiscoverySnapshot, getAtlasOrganizationLogos } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import type { AtlasEntityKind, AtlasOrganization } from "@/types/atlas";
 import { socialMetadata } from "@/lib/seo/social";
@@ -19,7 +18,6 @@ import { socialMetadata } from "@/lib/seo/social";
 export const revalidate = 300;
 
 const PER_PAGE = 24;
-const SPOTLIGHT_SIZE = 3;
 
 export const metadata: Metadata = {
   title: "Canadian Defence and Dual-Use Organizations",
@@ -28,21 +26,14 @@ export const metadata: Metadata = {
   ...socialMetadata({ title: "Canadian Defence and Dual-Use Organizations", description: "Find Canadian organizations, see what they build, and inspect the public evidence behind each profile.", path: "/organizations", eyebrow: "Canadian ecosystem directory" })
 };
 
-function reviewedTime(value: string | null) {
-  if (!value) return 0;
-  const parsed = new Date(value).getTime();
-  return Number.isNaN(parsed) ? 0 : parsed;
-}
-
 type OrganizationSearchParams = Promise<{ page?: string; type?: string; region?: string }>;
 
 export default function OrganizationsPage({ searchParams }: { searchParams: OrganizationSearchParams }) {
   return (
     <PublicPageShell
-      eyebrow="Find the right Canadian team"
-      title="Organizations"
-      description="Explore reviewed Canadian organizations, see what they build, and decide who deserves a closer look. Gaps stay visible; unsupported details stay out."
-      actions={<Link href="/submit?submissionType=new_organization&targetType=organization&returnTo=%2Forganizations" className="atlas-secondary-button h-10 px-4 text-xs">Suggest an organization</Link>}
+      eyebrow="Canadian defence and dual-use directory"
+      title="Find Canadian organizations worth examining."
+      description="Explore reviewed profiles, see what each organization builds, and follow the public record into a useful next conversation. Gaps stay visible; unsupported details stay out."
     >
       <Suspense fallback={<OrganizationsDirectoryFallback />}>
         <OrganizationsDirectoryData searchParams={searchParams} />
@@ -69,19 +60,12 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
     return matchesType && matchesRegion;
   });
 
-  const recentlyReviewed = [...snapshot.organizations]
-    .filter((organization) => organization.lastReviewedAt)
-    .sort((left, right) => reviewedTime(right.lastReviewedAt) - reviewedTime(left.lastReviewedAt))
-    .slice(0, SPOTLIGHT_SIZE);
-  const spotlightActive =
-    !hasFilters && recentlyReviewed.length === SPOTLIGHT_SIZE && snapshot.organizations.length > SPOTLIGHT_SIZE * 2;
-  const spotlightIds = new Set(spotlightActive ? recentlyReviewed.map((organization) => organization.id) : []);
-
   const directory = paginate(
-    matching.filter((organization) => !spotlightIds.has(organization.id)),
+    matching,
     normalizedPage(params.page),
     PER_PAGE
   );
+  const directoryLogos = await getAtlasOrganizationLogos(directory.items.map((organization) => organization.id));
 
   const typeFacets = buildTypeFacets(snapshot.organizations);
   const regionFacets = snapshot.regions.filter((region) => region.slug !== "canada" && region.organizationCount > 0);
@@ -104,49 +88,21 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
 
   return (
     <>
-      <dl className="mt-6 grid grid-cols-2 border-y border-[var(--atlas-border)] sm:hidden">
-        <CompactDirectoryStat label="Organizations" value={publishedOrganizationCount} />
-        <CompactDirectoryStat label="Technologies" value={publishedCapabilityCount} />
-        <CompactDirectoryStat label="Covered regions" value={coveredRegions} href="/regions" />
-        <CompactDirectoryStat label="Public sources" value={summary.sources} />
+      <dl className="mt-7 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <DirectoryStat icon={Building2} label="Published organizations" value={publishedOrganizationCount} tone="blue" />
+        <DirectoryStat icon={Layers3} label="Reviewed technologies" value={publishedCapabilityCount} tone="evidence" />
+        <DirectoryStat icon={MapPin} label="Covered regions" value={coveredRegions} href="/regions" tone="signal" />
+        <DirectoryStat icon={FileText} label="Cited public sources" value={summary.sources} tone="muted" />
       </dl>
 
-      <div className="mt-7 hidden gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-4">
-        <StatTile icon={Building2} label="Reviewed organizations" value={publishedOrganizationCount} />
-        <StatTile icon={Layers3} label="Reviewed capabilities" value={publishedCapabilityCount} />
-        <StatTile
-          icon={MapPin}
-          label="Regions with published coverage"
-          value={coveredRegions}
-          href="/regions"
-          linkLabel="Browse regions"
-        />
-        <StatTile icon={FileText} label="Cited public sources" value={summary.sources} />
-      </div>
-
-      {spotlightActive && directory.page === 1 ? (
-        <section className="mt-10 sm:mt-14">
-          <SectionHeading
-            eyebrow="Latest review activity"
-            title="Recently reviewed"
-            description="Ordered only by the date each profile was last reviewed. This is not a ranking, a recommendation, or a measure of suitability."
-          />
-          <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {recentlyReviewed.map((organization) => (
-              <OrganizationCard key={organization.id} organization={organization} />
-            ))}
-          </div>
-        </section>
-      ) : null}
-
-      <section className="mt-10 sm:mt-14">
+      <section className="mt-9 sm:mt-11">
         <SectionHeading
           eyebrow="Full directory"
           title="Browse the directory"
-          description={
-            spotlightActive && directory.page === 1
-              ? "The most recently reviewed profiles appear above. Every other published organization is listed here."
-              : undefined
+          actions={
+            <Link href="/submit?submissionType=new_organization&targetType=organization&returnTo=%2Forganizations" className="atlas-secondary-button h-10 px-4 text-xs">
+              Suggest an organization
+            </Link>
           }
         />
 
@@ -194,7 +150,11 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
           <>
             <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {directory.items.map((organization) => (
-                <OrganizationCard key={organization.id} organization={organization} />
+                <OrganizationCard
+                  key={organization.id}
+                  organization={{ ...organization, logo: directoryLogos[organization.id] ?? null }}
+                  showLogo
+                />
               ))}
             </div>
             <PaginationNav
@@ -271,21 +231,16 @@ function OrganizationsDirectoryFallback() {
     <div className="mt-7" aria-live="polite" aria-busy="true">
       <p className="sr-only">Loading the current organization directory</p>
       <div aria-hidden="true" className="animate-pulse">
-        <div className="grid grid-cols-2 border-y border-[var(--atlas-border)] sm:hidden">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           {Array.from({ length: 4 }, (_, index) => (
-            <div key={index} className="h-[74px] border-[var(--atlas-border)] bg-white odd:border-r [&:nth-child(-n+2)]:border-b" />
+            <div key={index} className="h-[84px] rounded-[14px] bg-white" />
           ))}
         </div>
-        <div className="hidden gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-4">
-          {Array.from({ length: 4 }, (_, index) => (
-            <div key={index} className="h-28 rounded-[14px] border border-[var(--atlas-border)] bg-white" />
-          ))}
-        </div>
-        <div className="mt-10 h-7 w-56 rounded bg-[var(--atlas-border)] sm:mt-14" />
-        <div className="mt-6 h-24 rounded-[14px] border border-[var(--atlas-border)] bg-white" />
+        <div className="mt-9 h-7 w-56 rounded bg-[var(--atlas-border)] sm:mt-11" />
+        <div className="mt-6 h-24 rounded-[14px] bg-white" />
         <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {Array.from({ length: 6 }, (_, index) => (
-            <div key={index} className="h-64 rounded-2xl border border-[var(--atlas-border)] bg-white" />
+            <div key={index} className="h-72 rounded-[18px] bg-white" />
           ))}
         </div>
       </div>
@@ -294,27 +249,41 @@ function OrganizationsDirectoryFallback() {
   );
 }
 
-function CompactDirectoryStat({
+const directoryStatTone = {
+  blue: "bg-[var(--atlas-blue-soft)]",
+  evidence: "bg-[var(--atlas-evidence-soft)]",
+  signal: "bg-[var(--atlas-signal-soft)]",
+  muted: "bg-[var(--atlas-surface-muted)]"
+} as const;
+
+function DirectoryStat({
+  icon: Icon,
   label,
   value,
-  href
+  href,
+  tone
 }: {
+  icon: LucideIcon;
   label: string;
   value: number;
   href?: string;
+  tone: keyof typeof directoryStatTone;
 }) {
   return (
-    <div className="border-[var(--atlas-border)] px-3.5 py-3 odd:border-r [&:nth-child(-n+2)]:border-b">
-      <dt className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">{label}</dt>
-      <dd className="mt-1 text-2xl font-extrabold leading-none tracking-[-0.04em] text-[var(--atlas-ink)]">
-        {href ? (
-          <Link href={href} className="underline-offset-4 hover:underline" aria-label={`${value} ${label.toLowerCase()}; browse regions`}>
-            {value}
-          </Link>
-        ) : (
-          value
-        )}
-      </dd>
+    <div className={`rounded-[14px] px-3.5 py-3 sm:px-4 ${directoryStatTone[tone]}`}>
+      <div className="flex items-center gap-2.5">
+        <Icon className="size-4 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" />
+        <div className="flex min-w-0 flex-col">
+          <dt className="order-2 mt-1.5 text-[10px] font-bold leading-4 text-[var(--atlas-muted)] sm:text-[11px]">{label}</dt>
+          <dd className="order-1 text-xl font-extrabold leading-none tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-2xl">
+            {href ? (
+              <Link href={href} className="underline-offset-4 hover:underline" aria-label={`${value} ${label.toLowerCase()}; browse regions`}>
+                {value}
+              </Link>
+            ) : value}
+          </dd>
+        </div>
+      </div>
     </div>
   );
 }

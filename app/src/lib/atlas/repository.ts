@@ -12,6 +12,7 @@ import {
   loadAtlasDiscoverySnapshotFromSupabase,
   loadAtlasDiscoveryTablePageFromSupabase,
   loadAtlasOrganizationBySlugFromSupabase,
+  loadPublishedOrganizationLogosFromSupabase,
   loadPublishedAtlasSlugsFromSupabase,
   loadAtlasRecordSummariesFromSupabase,
   loadAtlasSnapshotFromSupabase,
@@ -190,6 +191,13 @@ const getCachedAtlasOrganizationBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
   ["ecosystem-intelligence-organization-detail-v1"],
   { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
+);
+
+const getCachedPublishedOrganizationLogos = unstable_cache(
+  (organizationIds: string) =>
+    withPublicReadRetry(() => loadPublishedOrganizationLogosFromSupabase(organizationIds.split(",").filter(Boolean))),
+  ["ecosystem-intelligence-organization-directory-logos-v1"],
+  { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
 );
 
 const getCachedAtlasCapabilityBySlug = unstable_cache(
@@ -726,6 +734,20 @@ export const getAtlasOrganizationBySlug = cache(async (slug: string) => {
   requireAtlasPublicEnvironment();
   return getCachedAtlasOrganizationBySlug(slug);
 });
+
+export async function getAtlasOrganizationLogos(organizationIds: string[]) {
+  requireAtlasPublicEnvironment();
+  const normalizedIds = Array.from(new Set(organizationIds.filter(Boolean))).sort();
+  if (!normalizedIds.length) return {};
+  try {
+    return await getCachedPublishedOrganizationLogos(normalizedIds.join(","));
+  } catch {
+    // Logos are a progressive enhancement for the directory. Keep the
+    // reviewed records available with their neutral fallback mark if the
+    // media read is temporarily unavailable.
+    return {};
+  }
+}
 
 export const getAtlasCapabilityBySlug = cache(async (slug: string) => {
   requireAtlasPublicEnvironment();

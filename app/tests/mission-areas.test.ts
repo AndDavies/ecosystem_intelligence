@@ -51,8 +51,10 @@ describe("public Mission Area journey", () => {
       readFile(path.resolve("src/components/atlas/public-beta-experience.tsx"), "utf8")
     ]);
     await access(path.resolve("src/app/missions/loading.tsx"));
-    expect(indexPage).toContain("Start with the mission.");
-    expect(indexPage).toContain("not released requirements, procurement priorities, Public Needs");
+    expect(indexPage).toContain("Start with an operational problem.");
+    expect(indexPage).toContain("These are discovery lenses, not released requirements.");
+    expect(indexPage).not.toContain("EvidenceLegend");
+    expect(indexPage).not.toContain("Mission Areas are reviewed True North Map groupings");
     expect(detailPage).toContain("Our assessment");
     expect(detailPage).toContain("The Mission Area does not create or change the released source.");
     expect(detailPage).toContain("Defence Briefs connected to this mission");

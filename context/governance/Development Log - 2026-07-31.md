@@ -1,5 +1,38 @@
 # Development Log - 2026-07-31
 
+## August 4 Organizations and Mission Areas surface reconciliation
+
+Aligned the public Organizations collection, organization dossiers, and Mission
+Areas collection with the approved Signals-era tonal surface contract. The
+Organizations route now moves directly from a compact task-led introduction and
+live summary into the full paginated directory, displays an approved official
+logo or neutral placeholder on each visible card, separates taxonomy pills,
+and removes the redundant evidence-strength badge and Recently Reviewed block.
+Logo hydration is bounded to the visible directory page and does not expand the
+national marker/search projection, exports, or dossier reads.
+
+Organization dossiers now use the shared rounded borderless editorial panels
+and contextual tonal sections while preserving every published capability,
+source, assessment, gap, match, contact path, Working List action, correction
+path, metadata field, and structured-data relationship. The repeated full-width
+reading legend was removed because the same distinctions remain visible where
+they apply.
+
+The Missions collection now uses the same compact collection-header rhythm,
+brings the operational-outcome choices forward, and states once that Mission
+Areas are discovery lenses rather than released requirements. The repeated
+reading legend and separate warning band were removed. Mission detail routes,
+taxonomy, reviewed relationships, public-data contracts, research, review, and
+publication authority were not changed.
+
+The exact staged release candidate passed `pnpm release:validate` under Node 24:
+the high-severity dependency gate, 45 test files and 243 tests, lint, the complete
+5,000-marker scale and clustering budget, and a clean production build. Signed-
+out browser review at 390, 768, 1024, and 1440 pixels covered the Organizations
+collection, Kraken Robotics dossier, and Missions collection with no horizontal
+overflow; approved logos, neutral fallbacks, tag wrapping, and the compact
+collection hierarchy rendered as intended.
+
 ## August 3 Canadian Defence Signals editorial experience
 
 Rebuilt the reusable `/signals/[slug]` presentation as a wide executive briefing without changing the autonomous content contract, source data, publication workflow, newsletter workflow, or core atlas. Each edition now uses a split editorial masthead, generated Bottom Line and table of contents, accessible anchored navigation, consistent article-entry cards, original-source actions, direct LinkedIn and X sharing, contextual continuation, related editions, North Signal signup, and a quiet full-width editorial note at the end. Existing and future source images render through the same normalized edition and item-image fields when available.

@@ -1,7 +1,7 @@
 # True North Map Project Overview
 
 Status: production soft beta and review-first data operation
-Last reviewed: 2026-08-03
+Last reviewed: 2026-08-04
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -66,8 +66,17 @@ Place, technology, or public need
   summaries, sources and navigation without implying evidence strength;
   keyword pills and pill links alone retain a quiet one-pixel neutral edge.
   Hover states refine tone, shadow or link colour without moving cards or
-  arrows. This contract now governs Signals and is the reference for the
-  planned route-by-route visual reconciliation.
+  arrows. This contract now governs Signals and the active route-by-route
+  visual reconciliation.
+- Organizations and Mission Areas now use the same compact task-led collection
+  hierarchy as Signals. The organization directory begins with the complete
+  paginated directory, loads approved logos only for the visible page, and
+  retains a neutral placeholder when no approved mark exists. Organization
+  dossiers use rounded borderless tonal panels while keeping evidence and gaps
+  visible in context. The Missions collection removes repeated explanatory
+  bands and carries its discovery-versus-requirement boundary in the header.
+  These presentation changes do not alter records, relationships, evidence,
+  review state, publication authority, exports, or the national map payload.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 

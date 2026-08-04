@@ -1241,6 +1241,34 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
   };
 }
 
+/**
+ * Load approved organization marks for one bounded public collection page.
+ * Logos stay out of the national discovery projection so the map/search
+ * payload remains compact as the corpus grows.
+ */
+export async function loadPublishedOrganizationLogosFromSupabase(organizationIds: string[]) {
+  const uniqueOrganizationIds = Array.from(new Set(organizationIds.filter(Boolean)));
+  if (!uniqueOrganizationIds.length) return {};
+
+  const supabase = createPublicClient();
+  const result = await supabase
+    .from("media_assets")
+    .select(atlasColumns.mediaAssets)
+    .eq("asset_type", "logo")
+    .eq("approval_status", "approved")
+    .eq("publication_status", "published")
+    .in("organization_id", uniqueOrganizationIds);
+  assertQuery(result, "published organization directory logos");
+
+  const rowsByOrganization = groupBy(asRows(result.data), "organization_id");
+  return Object.fromEntries(
+    uniqueOrganizationIds.flatMap((organizationId) => {
+      const logo = selectPublishedOrganizationLogo(rowsByOrganization.get(organizationId) ?? []);
+      return logo ? [[organizationId, logo]] : [];
+    })
+  );
+}
+
 export async function loadAtlasOrganizationBySlugFromSupabase(slug: string) {
   const supabase = createPublicClient();
   const organizationResult = await supabase

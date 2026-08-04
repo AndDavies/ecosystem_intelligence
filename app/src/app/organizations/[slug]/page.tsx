@@ -9,7 +9,6 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
-import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import {
   evidenceStrengthLabel,
   locationAccuracyLabel,
@@ -102,12 +101,11 @@ export default async function OrganizationDossierPage({
         { "@context": "https://schema.org", "@type": "Organization", name: organization.name, legalName: organization.legalName ?? undefined, url: absoluteUrl(`/organizations/${organization.slug}`), sameAs: organization.websiteUrl ? [organization.websiteUrl] : undefined, logo: organization.logo?.publicUrl, description: organization.description, address: organization.primaryLocation ? { "@type": "PostalAddress", addressLocality: organization.primaryLocation.city ?? undefined, addressRegion: organization.primaryLocation.provinceTerritory ?? undefined, addressCountry: "CA" } : undefined },
         { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }] }
       ]} />
-      <EvidenceLegend compact className="mb-5" />
       <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
         <aside className="space-y-5 self-start lg:sticky lg:top-24">
-          <PublicCard title={organizationSnapshotTitle(organization.entityKind)} eyebrow="What we know">
-            <div className="mb-5 flex items-center gap-3 rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-primary-soft)] p-3">
-              <span className="relative flex h-14 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#c9ccca] p-2 text-[var(--atlas-primary)] ring-1 ring-[var(--atlas-primary-border)]">
+          <PublicCard title={organizationSnapshotTitle(organization.entityKind)} eyebrow="What we know" className="atlas-tonal-surface bg-white shadow-[0_14px_36px_rgba(36,40,39,0.055)]">
+            <div className="mb-5 flex items-center gap-3 rounded-[14px] bg-[var(--atlas-blue-soft)] p-3">
+              <span className="relative flex h-14 w-24 shrink-0 items-center justify-center overflow-hidden rounded-[12px] bg-white p-2 text-[var(--atlas-evidence)]">
                 {organization.logo ? (
                   <Image
                     src={organization.logo.publicUrl}
@@ -134,9 +132,9 @@ export default async function OrganizationDossierPage({
               <ProfileItem label="Employee range" value={organization.employeeRange} />
               <ProfileItem label="Commercial status" value={organization.commercialStatus} />
             </dl>
-            <div className="mt-5 border-t border-[var(--atlas-border)] pt-5">
+            <div className="mt-5 rounded-[14px] bg-[var(--atlas-evidence-soft)] p-4">
               <div className="flex items-center gap-3">
-                <span className="flex size-9 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><ShieldCheck className="size-5" /></span>
+                <span className="flex size-9 items-center justify-center rounded-[12px] bg-white text-[var(--atlas-evidence)]"><ShieldCheck className="size-5" /></span>
                 <div>
                   <p className="text-sm font-semibold text-[var(--atlas-ink)]">{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(organization.sourceConfidence)}</p>
                   <p className="text-xs text-[var(--atlas-muted)]">{publicLanguage.lastReviewed} {formatDate(organization.lastReviewedAt)}</p>
@@ -146,7 +144,7 @@ export default async function OrganizationDossierPage({
             </div>
           </PublicCard>
 
-          <PublicCard title="Contact" eyebrow="Start a conversation">
+          <PublicCard title="Contact" eyebrow="Start a conversation" className="atlas-tonal-surface bg-[var(--atlas-blue-soft)]">
             <div className="space-y-2.5 text-sm">
               {organization.websiteUrl ? <ContactLink href={organization.websiteUrl} label="Website" icon={<ExternalLink className="size-4" />} external /> : null}
               {publicContact.contactPageUrl ? <ContactLink href={publicContact.contactPageUrl} label="Official contact page" icon={<ArrowRight className="size-4" />} external /> : null}
@@ -168,10 +166,10 @@ export default async function OrganizationDossierPage({
         </aside>
 
         <div className="space-y-5">
-          <PublicCard title={offeringTitle} eyebrow={organization.capabilities.length ? `${organization.capabilities.length} reviewed ${organization.capabilities.length === 1 ? "technology or offering" : "technologies and offerings"}` : "Coverage still growing"}>
-            {organization.capabilities.length ? <div className="divide-y divide-[var(--atlas-border)]">
+          <PublicCard title={offeringTitle} eyebrow={organization.capabilities.length ? `${organization.capabilities.length} reviewed ${organization.capabilities.length === 1 ? "technology or offering" : "technologies and offerings"}` : "Coverage still growing"} className="atlas-tonal-surface bg-white shadow-[0_14px_36px_rgba(36,40,39,0.055)]">
+            {organization.capabilities.length ? <div className="space-y-4">
               {organization.capabilities.map((capability) => (
-                <article key={capability.id} className="py-5 first:pt-0 last:pb-0">
+                <article key={capability.id} className="rounded-[16px] bg-[var(--atlas-surface-muted)] p-5">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <h3 className="text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">
@@ -179,7 +177,7 @@ export default async function OrganizationDossierPage({
                       </h3>
                       {capability.capabilityType ? <p className="mt-1 text-xs text-[var(--atlas-muted)]">{capability.capabilityType}</p> : null}
                     </div>
-                    <span className="w-fit rounded-full bg-[var(--atlas-primary-soft)] px-2.5 py-1 text-[10px] font-semibold text-[var(--atlas-primary)]">{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(capability.sourceConfidence)}</span>
+                    <span className="atlas-pill atlas-pill-tag atlas-pill-evidence w-fit px-2.5 py-1 text-[10px] font-semibold">{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(capability.sourceConfidence)}</span>
                   </div>
                   <p className="mt-3 text-sm leading-6 text-[var(--atlas-ink-soft)]">{capability.summary}</p>
                   <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -187,7 +185,7 @@ export default async function OrganizationDossierPage({
                     {capability.defenceApplications.length ? <TagList label="Defence applications" values={capability.defenceApplications} /> : null}
                   </div>
                   <div className="mt-4 flex flex-wrap gap-1.5">
-                    {capability.technicalTags.map((tag) => <span key={tag} className="rounded-[6px] bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-medium text-[var(--atlas-muted)]">{toTitleCase(tag)}</span>)}
+                    {capability.technicalTags.map((tag) => <span key={tag} className="atlas-pill atlas-pill-tag atlas-pill-blue px-2.5 py-1 text-[10px] font-medium">{toTitleCase(tag)}</span>)}
                   </div>
                   <Link href={`/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">
                     Explore this technology <ArrowRight className="size-3.5" />
@@ -195,7 +193,7 @@ export default async function OrganizationDossierPage({
                 </article>
               ))}
             </div> : (
-              <div className="rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-4">
+              <div className="rounded-[16px] bg-[var(--atlas-blue-soft)] px-4 py-4">
                 <p className="text-sm font-semibold leading-6 text-[var(--atlas-ink-soft)]">{organizationOfferingGap(organization.entityKind, organization.name)}</p>
                 <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Use the official website for current details, or help us add a source-backed summary.</p>
                 <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold">
@@ -206,7 +204,7 @@ export default async function OrganizationDossierPage({
             )}
           </PublicCard>
 
-          {hasPublishedAlignment ? <PublicCard title={publicLanguage.technologyDemand} eyebrow="See the missions and released public needs worth exploring">
+          {hasPublishedAlignment ? <PublicCard title={publicLanguage.technologyDemand} eyebrow="See the missions and released public needs worth exploring" className="atlas-tonal-surface bg-[var(--atlas-signal-soft)]">
             {hasMissionMatches ? (
               <div className="space-y-3">
                 {organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => (
@@ -218,6 +216,7 @@ export default async function OrganizationDossierPage({
                     matchType={match.matchType}
                     confidence={match.confidence}
                     citations={match.citations}
+                    className="border-0 bg-white"
                   />
                 )))}
               </div>
@@ -234,6 +233,7 @@ export default async function OrganizationDossierPage({
                     confidence={match.confidence}
                     citations={match.citations}
                     caveat="Public-source alignment only; not eligibility or endorsement."
+                    className="border-0 bg-white"
                   />
                 )))}
               </div>
@@ -241,10 +241,10 @@ export default async function OrganizationDossierPage({
             <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{publicLanguage.demandCaveat}</p>
           </PublicCard> : null}
 
-          <PublicCard id="evidence" title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
+          <PublicCard id="evidence" title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)} className="atlas-tonal-surface bg-[var(--atlas-blue-soft)]">
             <EvidenceList citations={citations} />
             {!hasPublishedAlignment && organization.capabilities.length ? (
-              <div className="mt-5 rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
+              <div className="mt-5 rounded-[14px] bg-white px-4 py-3">
                 <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">We have not connected this technology to a mission or public need yet.</p>
                 <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public needs</Link>.</p>
               </div>
@@ -260,9 +260,9 @@ export default async function OrganizationDossierPage({
 
 function ContactLink({ href, label, icon, external = false }: { href: string; label: string; icon: React.ReactNode; external?: boolean }) {
   return (
-    <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="flex items-center justify-between gap-3 rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 font-semibold text-[var(--atlas-ink-soft)] no-underline hover:border-[var(--atlas-primary-border)] hover:bg-[var(--atlas-primary-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
+    <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="flex items-center justify-between gap-3 rounded-[12px] bg-white px-3 py-2.5 font-semibold text-[var(--atlas-ink-soft)] no-underline transition-colors hover:bg-[var(--atlas-ink)] hover:text-white hover:no-underline">
       <span className="min-w-0 truncate">{label}</span>
-      <span className="shrink-0 text-[var(--atlas-primary)]">{icon}</span>
+      <span className="shrink-0 text-[var(--atlas-evidence)]">{icon}</span>
     </a>
   );
 }

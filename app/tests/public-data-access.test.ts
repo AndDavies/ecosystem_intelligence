@@ -50,20 +50,28 @@ describe("public data access", () => {
     expect(repository).not.toContain("match.rationale");
   });
 
-  it("adds logos only to organization and capability profiles and preserves the existing map and export surfaces", async () => {
+  it("adds logos to bounded organization surfaces while preserving the compact map and export surfaces", async () => {
     const publicRepository = await source("src/lib/atlas/supabase-repository.ts");
     const profile = await source("src/app/organizations/[slug]/page.tsx");
     const capabilityProfile = await source("src/app/capabilities/[slug]/page.tsx");
     const directory = await source("src/components/atlas/organization-card.tsx");
+    const directoryPage = await source("src/app/organizations/page.tsx");
     const pdf = await source("src/lib/export/atlas-pdf.tsx");
 
     expect(profile).toContain("organization.logo?.publicUrl");
     expect(profile).toContain('alt={`${organization.name} logo`}');
+    expect(profile).not.toContain("EvidenceLegend");
     expect(capabilityProfile).toContain("organization.logo");
     expect(capabilityProfile).toContain('alt={`${organization.name} logo`}');
-    expect(directory).not.toContain("organization.logo");
+    expect(directory).toContain("organization.logo");
+    expect(directory).toContain('alt={`${organization.name} logo`}');
+    expect(directory).not.toContain("evidenceStrengthLabel");
+    expect(directoryPage).toContain("getAtlasOrganizationLogos");
+    expect(directoryPage).toContain("showLogo");
+    expect(directoryPage).not.toContain("Recently reviewed");
     expect(pdf).not.toContain("organization.logo");
     expect(publicRepository).toContain("scope?.includeOrganizationLogos");
+    expect(publicRepository).toContain("loadPublishedOrganizationLogosFromSupabase");
   });
 
   it("keeps organization logo replacement and removal inside the existing administrator editor", async () => {

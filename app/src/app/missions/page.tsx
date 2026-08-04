@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Compass, Layers3, SearchCheck, ShieldAlert } from "lucide-react";
-import { EvidenceLegend } from "@/components/atlas/evidence-legend";
+import { ArrowRight, Compass, Layers3, SearchCheck, type LucideIcon } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { JsonLd } from "@/components/seo/json-ld";
-import { StatTile } from "@/components/ui/stat-tile";
 import { getAtlasMissionIndex } from "@/lib/atlas/repository";
 import { socialMetadata } from "@/lib/seo/social";
 import { absoluteUrl } from "@/lib/site";
@@ -27,10 +25,9 @@ export default async function MissionsPage() {
   const snapshot = await getAtlasMissionIndex();
   return (
     <PublicPageShell
-      eyebrow="Mission Areas and Use Cases"
-      title="Start with the mission."
-      description="Explore the operational problems and use cases True North Map uses to organize reviewed Canadian technology. Move from the outcome you need to the organizations and capabilities worth inspecting."
-      breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Mission Areas" }]}
+      eyebrow="Canadian defence and dual-use mission areas"
+      title="Start with an operational problem."
+      description="Choose a Mission Area or Use Case to compare reviewed Canadian organizations, technologies and visible gaps connected to an operational context. These are discovery lenses, not released requirements."
     >
       <JsonLd data={[
         {
@@ -60,19 +57,13 @@ export default async function MissionsPage() {
         }
       ]} />
 
-      <EvidenceLegend compact className="mb-5" />
-      <div className="mb-6 flex items-start gap-3 rounded-lg border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
-        <ShieldAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-        <p>Mission Areas are reviewed True North Map groupings. They are not released requirements, procurement priorities, Public Needs, customer interest, or classified guidance.</p>
-      </div>
+      <dl className="mt-7 grid grid-cols-3 gap-2">
+        <MissionStat icon={Compass} label="Mission areas" value={snapshot.missions.length} tone="blue" />
+        <MissionStat icon={SearchCheck} label="Connected organizations" value={snapshot.organizationCount} tone="evidence" />
+        <MissionStat icon={Layers3} label="Mapped technologies" value={snapshot.capabilityCount} tone="signal" />
+      </dl>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <StatTile icon={Compass} label="Published mission areas" value={snapshot.missions.length} />
-        <StatTile icon={SearchCheck} label="Organizations connected through review" value={snapshot.organizationCount} />
-        <StatTile icon={Layers3} label="Technologies mapped to a mission" value={snapshot.capabilityCount} />
-      </div>
-
-      <section className="mt-12" aria-labelledby="mission-directory-heading">
+      <section className="mt-9 sm:mt-11" aria-labelledby="mission-directory-heading">
         <p className="atlas-eyebrow">Choose an operational lens</p>
         <h2 id="mission-directory-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-3xl">Where are you trying to create an outcome?</h2>
         <div className="mt-7 grid gap-4 md:grid-cols-2">
@@ -97,5 +88,35 @@ export default async function MissionsPage() {
         </div>
       </section>
     </PublicPageShell>
+  );
+}
+
+const missionStatTone = {
+  blue: "bg-[var(--atlas-blue-soft)]",
+  evidence: "bg-[var(--atlas-evidence-soft)]",
+  signal: "bg-[var(--atlas-signal-soft)]"
+} as const;
+
+function MissionStat({
+  icon: Icon,
+  label,
+  value,
+  tone
+}: {
+  icon: LucideIcon;
+  label: string;
+  value: number;
+  tone: keyof typeof missionStatTone;
+}) {
+  return (
+    <div className={`rounded-[14px] px-3 py-3 sm:px-4 ${missionStatTone[tone]}`}>
+      <div className="flex items-start gap-2 sm:items-center sm:gap-2.5">
+        <Icon className="mt-0.5 size-4 shrink-0 text-[var(--atlas-evidence)] sm:mt-0" aria-hidden="true" />
+        <div className="flex min-w-0 flex-col">
+          <dt className="order-2 mt-1.5 text-[10px] font-bold leading-4 text-[var(--atlas-muted)] sm:text-[11px]">{label}</dt>
+          <dd className="order-1 text-xl font-extrabold leading-none tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-2xl">{value.toLocaleString("en-CA")}</dd>
+        </div>
+      </div>
+    </div>
   );
 }

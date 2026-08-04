@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 
-Last verified: 2026-08-03
+Last verified: 2026-08-04
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -26,14 +26,26 @@ The current product and operating system include:
   no decorative outlines, Editorial Blue for reading structure, bounded colour
   roles for tags, and thin neutral borders only where pills or links need edge
   definition. Cards remain stationary on hover while the actionable link gains
-  emphasis. The rule is documented for future route-by-route refreshes; this
-  release does not otherwise redesign every public route.
+  emphasis. Organizations and Mission Areas now apply the same hierarchy and
+  tonal system without changing their records or public-data contracts.
 - The primary navigation is Map, Organizations, Missions, Public Needs, Signals, Defence Briefs, How It Works, and About. `/demand` remains canonical; Public Needs names the collection while Demand Signal remains the precise label for one source-gated released need.
 
 - A public map, organization and capability profiles, public-demand records, reviewed capability-demand matches, exports, and Ask True North over the published corpus.
 - Published organization profiles can display an approved official logo with recorded source provenance. Missing or uncertain marks retain the neutral organization icon, and administrators can replace or remove a logo from the canonical organization editor.
 - A public organization directory and region-browsing surface at `/organizations`, `/regions`, and `/regions/[slug]`. These routes use live published counts, URL-based type and region browsing, pagination, regional context, and explicit coverage caveats without changing record-level evidence or dossier content.
+- The Organizations collection now moves directly from its compact task-led
+  introduction and live summary into the full paginated directory. Visible
+  cards show an approved official logo or neutral placeholder, use separated
+  taxonomy pills, and omit the redundant evidence-strength badge. Organization
+  dossiers retain contextual source, assessment, freshness, and gap information
+  inside rounded borderless tonal sections rather than repeating a full-page
+  reading legend.
 - A public Mission Area / Use Case directory at `/missions` and source-aware detail routes at `/missions/[slug]`. Mission pages use only published taxonomy and reviewed relationships, distinguish assessment from released Public Needs, and link visitors into organizations, technologies, Briefs, and Working Lists without creating a second corpus.
+- The Missions collection now uses the same compact collection-header rhythm as
+  Organizations and Signals, brings the operational-outcome choices forward,
+  and states the discovery-lens boundary once in the introduction instead of
+  repeating an evidence legend and separate warning band. Mission detail routes
+  and their evidence behaviour are unchanged.
 - Seven approved regional map illustrations are integrated in the public presentation layer for Canada, Atlantic Canada, Quebec, Ontario, the Prairies, British Columbia and the North. The responsive WebP assets preserve each highlighted region without cropping, use descriptive map-specific alt text, and retain the existing abstract fallback; they are illustrative and do not change geography, evidence, record counts, metadata or publication state.
 - Canadian Defence Briefs as a reviewed editorial synthesis surface with administrator-only drafting and publication.
 - Canadian Defence Signals as an isolated daily automated editorial surface running at 07:00 Atlantic. Descriptive immutable URLs, source links, visible uncertainty, correction timestamps, RLS, admin archive/correction tools, run health, and private social drafts are live. Every edition now requires one visually verified, article-specific image from a cited durable source; the publisher stores a normalized 1600 x 900 WebP under `brief-images/signals/`, and all six published editions use that consistent path without changing their content or URLs. Automatic authority is limited to dedicated `signal_*` tables and that storage prefix, and the executive field-guide, evidence, significance, and image gates must pass before publication; a no-publish day is valid.

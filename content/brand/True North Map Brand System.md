@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-03
+Last reviewed: 2026-08-04
 
 ## Brand idea
 
@@ -161,6 +161,30 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
   Editorial Blue, activity and decision tags use Signal Yellow, and technology
   tags use a soft Evidence Green treatment. These meanings should be reused on
   other public routes rather than introducing route-specific tag colours.
+
+### Collection and dossier reconciliation
+
+- Signals, Organizations, and Mission Areas use one compact public collection
+  hierarchy: category label, decision-oriented heading, one concise explanation,
+  then the first useful records or choices. Do not place a full-width evidence
+  legend or repeated activity showcase ahead of the primary collection.
+- Use compact tonal metric strips only when live counts help a visitor choose a
+  path. Editorial Blue, soft Evidence Green, Signal Wash, and quiet grey may
+  separate measures without turning them into status claims.
+- Organization directory cards show an approved official logo when available
+  and a neutral organization mark otherwise. Summary cards do not repeat an
+  evidence-strength pill; record-level evidence, assessment, freshness, and
+  gaps remain visible on the dossier.
+- Organization dossiers use the shared 18-pixel borderless editorial cards and
+  supporting tonal panels. Taxonomy pills retain their quiet neutral edge and
+  enough wrapping space to remain legible.
+- Mission Areas carry the distinction between reviewed discovery lenses and
+  released requirements once in the collection introduction. Do not repeat the
+  same boundary in stacked banners unless a later interaction creates a new
+  risk of misunderstanding.
+- This is an active route-by-route reconciliation, not permission to restyle an
+  untouched route opportunistically. Preserve existing workflows and evidence
+  semantics while applying the shared surface contract.
 
 ### Homepage hero
 

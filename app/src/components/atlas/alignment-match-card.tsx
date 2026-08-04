@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ExternalLink, FileCheck2, SearchCheck } from "lucide-react";
 import { alignmentTypeLabel, evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation";
+import { cn } from "@/lib/utils";
 import type { AtlasAlignmentType, AtlasCitation, AtlasConfidence } from "@/types/atlas";
 
 /**
@@ -27,7 +28,8 @@ export function AlignmentMatchCard({
   matchType,
   confidence,
   citations,
-  caveat
+  caveat,
+  className
 }: {
   href: string;
   title: string;
@@ -36,11 +38,12 @@ export function AlignmentMatchCard({
   confidence: AtlasConfidence;
   citations: AtlasCitation[];
   caveat?: string;
+  className?: string;
 }) {
   const isPublicSourceAlignment = matchType === "public_source_alignment";
 
   return (
-    <article className="rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)]/60 p-4">
+    <article className={cn("rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)]/60 p-4", className)}>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="inline-flex items-center gap-1.5">
           <span className={`flex size-6 shrink-0 items-center justify-center rounded-[8px] ${isPublicSourceAlignment ? "bg-[var(--atlas-evidence-soft)] text-[var(--atlas-evidence)]" : "bg-[var(--atlas-signal-soft)] text-[var(--atlas-ink)]"}`}>
