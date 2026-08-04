@@ -1,5 +1,50 @@
 # Development Log - 2026-07-31
 
+## August 4 global-refinement Phase 0 worktree reconciliation
+
+Reconciled the pre-existing operational, visibility, research-lineage, logo,
+Source Book, and lookbook work before beginning the approval-gated public UX
+programme. No public route, Supabase schema or data, API, authentication flow,
+research authority, review decision, publication state, provider setting,
+campaign, or analytics event changed.
+
+- Retained as explicit commit packages: current Daily Signals and MailerLite
+  governance; reusable private visibility tooling and sanitized fixtures;
+  portable candidate-logo preparation tooling; validated public-source research
+  lineage and its run-support scripts; versioned Source Book and North Signal
+  source registries; and the editable project lookbook source.
+- Kept ignored and local: project-local skill implementations, provider
+  credentials and responses, visibility reports and dashboard material,
+  automation configuration, raw logo images, and 26 private candidate-logo
+  provenance summaries. The logo tooling now writes those summaries only under
+  `research/ingestion/local/` and resolves its downloader from an explicit
+  environment override or the current user's local Codex skill directory rather
+  than a hardcoded workstation path.
+- Deferred from this reconciliation: reuse or distribution of the July 28
+  lookbook. Its source remains a clearly labelled dated snapshot and must be
+  refreshed from production before becoming current launch collateral. Nothing
+  was rejected or deleted.
+- Read-only production reconciliation matched every named current research run
+  to a completed live run and terminal candidate state. The current untracked
+  batches contained no pending or approved candidate left outside the ordinary
+  Admin Review and Publish workflows; one July 29 refresh candidate was already
+  rejected and the remaining reconciled candidates were published. No staging,
+  approval, publication, or database write was performed.
+
+Validation used Node 24.14.0. The private visibility contract and the complete
+304-artifact research corpus validated with zero errors; warnings were retained
+as explicit historical or reviewer cautions. Forty-seven test files and 257
+tests passed, lint passed, and the optimized Next.js 15.5.22 production build
+completed. The live launch validator checked 842 canonical pages with zero
+findings, zero recovered failures and no duplicate titles; 220 orphan candidates
+remain an intentional Phase 6 internal-linking input. The 5,000-marker scale gate
+kept every marker, bounded rich cards to 18, and remained inside projection,
+clustering, and serialized-payload budgets. The active local Daily Signals
+automation remains scheduled for 07:00 America/Halifax with its existing source,
+image, credential, idempotency, and isolated publication gates. MailerLite was
+not mutated; its tracked future-entry welcome contract and four integration
+tests remain green.
+
 ## August 4 Organizations and Mission Areas surface reconciliation
 
 Aligned the public Organizations collection, organization dossiers, and Mission

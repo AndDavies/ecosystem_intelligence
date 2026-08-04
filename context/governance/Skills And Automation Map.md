@@ -2,7 +2,7 @@
 
 Status: current architecture and integration map
 
-Last reviewed: 2026-08-03
+Last reviewed: 2026-08-04
 
 ## Current integration state
 
@@ -72,7 +72,7 @@ Its output is a private, validated issue candidate under ignored `research/north
 
 ## Daily Signals editorial skill
 
-`tnm-daily-signals` is an isolated project-local daily workflow available to every Codex task opened in this project. It resolves feed, newsletter, and search leads to original durable sources; validates a five-to-eight-item `daily_signals_packet_v1`; requires one article-specific publisher image from a cited source; and may publish only through `app/scripts/publish-daily-signals.ts` to dedicated `signal_*` tables and the `signals/` prefix of `brief-images`. The skill compares declared candidates, rejects generic backgrounds, logos, unrelated stock and undersized assets, requires visual relevance review, and stores only normalized 1600 x 900 WebP output publicly. It treats a no-publish day as valid, keeps social drafts private, and never changes the core corpus or posts externally. Published Signals may inform the weekly North Signal issue, but Andrew still reviews and sends the weekly MailerLite campaign manually. Automation `true-north-map-daily-signals` is active at 07:00 Atlantic and enforces the same image gate.
+`tnm-daily-signals` is an isolated project-local daily workflow available to every Codex task opened in this project. It resolves feed, newsletter, and search leads to original durable sources; validates a five-to-eight-item `daily_signals_packet_v1`; requires one article-specific publisher image from a cited source; and may publish only through `app/scripts/publish-daily-signals.ts` to dedicated `signal_*` tables and the `signals/` prefix of `brief-images`. The skill compares declared candidates, rejects generic backgrounds, logos, unrelated stock and undersized assets, requires visual relevance review, and stores only normalized 1600 x 900 WebP output publicly. It treats a no-publish day as valid, keeps social drafts private, and never changes the core corpus or posts externally. The approved publisher is run from the project root; its `pnpm --dir app` delegation loads the local-only service-role credential from ignored `app/.env.local`, so the workflow never depends on Vercel environment variables on the local runner. Published Signals may inform the weekly North Signal issue, but Andrew still reviews and sends the weekly MailerLite campaign manually. Automation `true-north-map-daily-signals` is active daily at 07:00 `America/Halifax` and enforces the same source, editorial, image, credential, and publication gates.
 
 ## Scheduled and manual operations
 
