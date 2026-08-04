@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { execFile } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
@@ -8,7 +9,8 @@ import sharp from "sharp";
 import { loadScriptEnv } from "./load-env";
 
 const executeFile = promisify(execFile);
-const downloader = "/Users/andrewdavies/.codex/skills/company-logo-downloader/scripts/download_company_logo.py";
+const downloader = process.env.COMPANY_LOGO_DOWNLOADER_SCRIPT
+  ?? path.join(os.homedir(), ".codex/skills/company-logo-downloader/scripts/download_company_logo.py");
 const bucket = "atlas-public-media";
 
 type Organization = { id: string; slug: string; name: string; website_url: string };

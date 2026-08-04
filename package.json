@@ -12,10 +12,22 @@
     "research:prepare": "pnpm --dir app research:prepare",
     "research:coverage": "pnpm --dir app research:coverage",
     "research:validate": "pnpm --dir app research:validate",
+    "research:logos": "pnpm --dir app research:logos",
     "research:review": "pnpm --dir app research:review",
     "research:stage": "pnpm --dir app research:stage",
     "research:import": "pnpm --dir app research:import",
     "research:smoke": "pnpm --dir app research:smoke",
+    "visibility:baseline": "pnpm --dir app visibility:baseline",
+    "visibility:opportunities": "pnpm --dir app visibility:opportunities",
+    "visibility:technical": "pnpm --dir app visibility:technical",
+    "visibility:aeo": "pnpm --dir app visibility:aeo",
+    "visibility:backlinks": "pnpm --dir app visibility:backlinks",
+    "visibility:weekly-report": "pnpm --dir app visibility:weekly-report",
+    "visibility:refresh": "pnpm --dir app visibility:refresh",
+    "visibility:preflight": "pnpm --dir app visibility:preflight",
+    "visibility:import": "pnpm --dir app visibility:import --",
+    "visibility:dashboard-sync": "pnpm --dir app visibility:dashboard-sync",
+    "visibility:validate": "pnpm --dir app visibility:validate",
     "wiki:sources:inventory": "pnpm --dir app wiki:sources:inventory",
     "wiki:sources:export": "pnpm --dir app wiki:sources:export",
     "wiki:packets:validate": "pnpm --dir app wiki:packets:validate",
@@ -29,8 +41,8 @@
     "logos:publish-reviewed": "pnpm --dir app logos:publish-reviewed",
     "scale:validate": "pnpm --dir app scale:validate",
     "launch:validate": "pnpm --dir app launch:validate",
+    "signals:publish": "pnpm --dir app signals:publish --",
     "security:validate": "pnpm --dir app audit --audit-level high",
-    "release:validate": "pnpm security:validate && pnpm test && pnpm lint && pnpm scale:validate && pnpm build",
-    "signals:publish": "pnpm --dir app signals:publish --"
+    "release:validate": "pnpm security:validate && pnpm test && pnpm lint && pnpm scale:validate && pnpm build"
   }
 }
