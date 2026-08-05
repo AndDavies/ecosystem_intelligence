@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRight, MapPin } from "lucide-react";
 import { AtlasHeroArt } from "@/components/atlas/atlas-hero-art";
-import { PublicPageShell } from "@/components/atlas/public-page-shell";
+import { CollectionContinuation, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getRegionArt, regionProvinceLabel } from "@/lib/atlas/region-presentation";
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
 export default function RegionsIndexPage() {
   return (
     <PublicPageShell
-      eyebrow="Where Canadian capability sits"
-      title="Explore the ecosystem region by region."
-      description="Every region below is built from the same reviewed public records. Counts reflect what has been published so far, so thin coverage stays visible instead of being filled in."
+      eyebrow="Regions"
+      title="Explore capability by region."
+      description="Browse published organizations and capabilities across Canada’s regions."
       breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Regions" }]}
     >
       <Suspense fallback={<RegionsDirectoryFallback />}>
@@ -137,12 +137,17 @@ async function RegionsDirectoryData() {
         </div>
       </section>
 
-      <section className="mt-12 rounded-2xl border border-dashed border-[var(--atlas-border-strong)] bg-[var(--atlas-surface-muted)] px-5 py-4">
+      <section className="mt-12 rounded-[18px] bg-[var(--atlas-surface-muted)] px-5 py-4">
         <p className="text-xs leading-5 text-[var(--atlas-muted)]">
-          Counts describe the current published dataset, not the full size of any regional ecosystem. A low count means
-          coverage is still being built, not that a region lacks capability.
+          Counts and locations reflect the current published record. Regional imagery is illustrative. A low count means coverage is still being built, not that a region lacks capability.
         </p>
       </section>
+
+      <CollectionContinuation
+        title="Carry a regional view into the national map."
+        description="Open the map with the same published coverage, then narrow by organization type, technology or Mission Area."
+        links={[{ label: "Explore the national map", href: "/map" }, { label: "Browse organizations", href: "/organizations" }]}
+      />
     </>
   );
 }
@@ -220,7 +225,7 @@ function RegionCard({ region }: { region: AtlasRegion }) {
           <RegionCount label="Clusters" value={region.clusterCount} />
         </dl>
         <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)]">
-          {region.organizationCount ? "Explore the region" : "See the coverage gap"}
+          {region.organizationCount ? "Explore this region" : "See the coverage gap"}
           <ArrowRight className="size-3.5" aria-hidden="true" />
         </span>
       </div>

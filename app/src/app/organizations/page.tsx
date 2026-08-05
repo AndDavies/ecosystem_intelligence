@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRight, Building2, Compass, FileText, Layers3, MapPin, X, type LucideIcon } from "lucide-react";
 import { OrganizationCard } from "@/components/atlas/organization-card";
-import { EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { CollectionContinuation, EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { organizationKindLabel } from "@/lib/atlas/presentation";
@@ -33,7 +33,8 @@ export default function OrganizationsPage({ searchParams }: { searchParams: Orga
     <PublicPageShell
       eyebrow="Canadian defence and dual-use directory"
       title="Find Canadian organizations worth examining."
-      description="Explore reviewed profiles, see what each organization builds, and follow the public record into a useful next conversation. Gaps stay visible; unsupported details stay out."
+      description="Search by capability, place or organization type. Open a profile to see what the organization offers and what supports the record."
+      actions={<Link href="/map?start=need" className="atlas-primary-button min-h-11 px-5 text-sm">Describe a need</Link>}
     >
       <Suspense fallback={<OrganizationsDirectoryFallback />}>
         <OrganizationsDirectoryData searchParams={searchParams} />
@@ -222,6 +223,13 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
           </ul>
         </div>
       </section>
+
+      <CollectionContinuation
+        eyebrow="Have a specific need?"
+        title="Start with the outcome you are trying to create."
+        description="Describe a mission or capability gap and search across every published organization, then carry the strongest records into a Working List."
+        links={[{ label: "Describe a need", href: "/map?start=need" }, { label: "View Working Lists", href: "/collections" }]}
+      />
     </>
   );
 }

@@ -1,5 +1,23 @@
 # Development Log - 2026-07-31
 
+## August 4 global-refinement Phase 2 functional discovery collections
+
+Refined Map, Organizations, Regions, Mission Areas, and Public Needs as one
+consistent set of task-led discovery collections. Each route now states the
+question it helps answer, puts live records before methodology, uses precise
+count labels, makes summary cards keyboard-safe whole-card destinations, and
+ends with one practical continuation into the map, organizations, released
+needs, regions, or Working Lists. Public Needs now keeps its procurement and
+endorsement boundary in a compact after-content disclosure instead of placing
+two explanatory blocks before the records.
+
+The change is presentation-only. Complete national marker coverage, map/list
+synchronization, filters, pagination, URL and return state, Ask True North,
+exports, authentication hydration, public APIs, Supabase, research, review,
+and publication authority are unchanged. Responsive browser checks at 390,
+768, 1024, and 1440 pixels covered all five collection routes with one H1 and
+no horizontal overflow.
+
 ## August 4 global-refinement Phase 1 language and trust foundation
 
 Established one shared public-language and orientation foundation before the

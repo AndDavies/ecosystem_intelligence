@@ -83,6 +83,13 @@ Place, technology, or public need
   bands and carries its discovery-versus-requirement boundary in the header.
   These presentation changes do not alter records, relationships, evidence,
   review state, publication authority, exports, or the national map payload.
+- Functional discovery collections share one decision-led sequence: concise
+  task heading, live scoped counts where useful, the first published records,
+  a compact evidence or scope disclosure, and one practical continuation.
+  Organizations, Regions, Mission Areas, and Public Needs use whole-card
+  keyboard-safe detail links while `/map` retains the existing compact
+  map-first workspace, complete national marker projection, synchronized list,
+  and accessible table.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 

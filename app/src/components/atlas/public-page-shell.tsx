@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 
@@ -122,5 +122,37 @@ export function EmptyCoverage({ title, detail }: { title: string; detail: string
       <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">{title}</p>
       <p className="mx-auto mt-1 max-w-xl text-xs leading-5 text-[var(--atlas-muted)]">{detail}</p>
     </div>
+  );
+}
+
+export function CollectionContinuation({
+  eyebrow = "Continue exploring",
+  title,
+  description,
+  links
+}: {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  links: Array<{ label: string; href: string }>;
+}) {
+  return (
+    <section className="mt-12 rounded-[18px] bg-[var(--atlas-blue-soft)] px-5 py-6 sm:px-7 sm:py-7" aria-labelledby="collection-continuation-title">
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+        <div>
+          <p className="atlas-eyebrow">{eyebrow}</p>
+          <h2 id="collection-continuation-title" className="mt-2 text-xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-2xl">{title}</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--atlas-muted)]">{description}</p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {links.map((link, index) => (
+            <Link key={link.href} href={link.href} className={`${index === 0 ? "atlas-primary-button" : "atlas-secondary-button"} min-h-11 gap-2 px-4 text-sm`}>
+              {link.label}
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

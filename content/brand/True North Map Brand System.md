@@ -181,7 +181,13 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 - Mission Areas carry the distinction between reviewed discovery lenses and
   released requirements once in the collection introduction. Do not repeat the
   same boundary in stacked banners unless a later interaction creates a new
-  risk of misunderstanding.
+  risk of misunderstanding. Do not place the full evidence method before the
+  first records.
+- Functional collection pages lead with one outcome-led question, show useful
+  published records before supporting methodology, and end with one contextual
+  continuation. Summary cards use one canonical whole-card link with a visible
+  text action and keyboard focus; counts name their published scope rather than
+  implying ecosystem size or ranking.
 - This is an active route-by-route reconciliation, not permission to restyle an
   untouched route opportunistically. Preserve existing workflows and evidence
   semantics while applying the shared surface contract.

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Compass, Layers3, SearchCheck, type LucideIcon } from "lucide-react";
-import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { CollectionContinuation, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getAtlasMissionIndex } from "@/lib/atlas/repository";
 import { socialMetadata } from "@/lib/seo/social";
@@ -25,9 +25,9 @@ export default async function MissionsPage() {
   const snapshot = await getAtlasMissionIndex();
   return (
     <PublicPageShell
-      eyebrow="Canadian defence and dual-use mission areas"
+      eyebrow="Mission Areas"
       title="Start with an operational problem."
-      description="Choose a Mission Area or Use Case to compare reviewed Canadian organizations, technologies and visible gaps connected to an operational context. These are discovery lenses, not released requirements."
+      description="Choose a Mission Area to see related organizations, technologies and public needs."
     >
       <JsonLd data={[
         {
@@ -68,7 +68,7 @@ export default async function MissionsPage() {
         <h2 id="mission-directory-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-3xl">Where are you trying to create an outcome?</h2>
         <div className="mt-7 grid gap-4 md:grid-cols-2">
           {snapshot.missions.map((item) => (
-            <PublicCard key={item.missionArea.id} className="flex h-full flex-col">
+            <PublicCard key={item.missionArea.id} className="group relative flex h-full flex-col transition-shadow duration-200 hover:shadow-[var(--atlas-shadow-soft)] focus-within:shadow-[var(--atlas-shadow-soft)]">
               <div className="flex items-start justify-between gap-4">
                 <span className="flex size-10 items-center justify-center rounded-lg bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><Compass className="size-5" aria-hidden="true" /></span>
                 <span className="rounded bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-bold text-[var(--atlas-muted)] ring-1 ring-[var(--atlas-border)]">Our assessment</span>
@@ -80,13 +80,24 @@ export default async function MissionsPage() {
                 <div><dt className="text-[10px] text-[var(--atlas-muted)]">Technologies</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.capabilityCount}</dd></div>
                 <div><dt className="text-[10px] text-[var(--atlas-muted)]">Public Needs</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.connectedPublicNeedCount}</dd></div>
               </dl>
-              <Link href={`/missions/${item.missionArea.slug}`} className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">
-                Explore the mission landscape <ArrowRight className="size-3.5" aria-hidden="true" />
+              <Link href={`/missions/${item.missionArea.slug}`} className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">
+                Explore this mission <ArrowRight className="size-3.5" aria-hidden="true" />
               </Link>
             </PublicCard>
           ))}
         </div>
       </section>
+
+      <section className="mt-10 rounded-[18px] bg-[var(--atlas-surface-muted)] px-5 py-5" aria-labelledby="mission-assessment-heading">
+        <h2 id="mission-assessment-heading" className="text-sm font-extrabold text-[var(--atlas-ink)]">How Mission Areas are assessed</h2>
+        <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Mission Areas are reviewed groupings of published capabilities. They are not released requirements or procurement direction.</p>
+      </section>
+
+      <CollectionContinuation
+        title="Continue from the mission."
+        description="Open related organizations, review released Public Needs or carry the mission into the map."
+        links={[{ label: "Open the map", href: "/map" }, { label: "Review public needs", href: "/demand" }, { label: "Browse organizations", href: "/organizations" }]}
+      />
     </PublicPageShell>
   );
 }

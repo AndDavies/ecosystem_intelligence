@@ -52,7 +52,7 @@ describe("public Mission Area journey", () => {
     ]);
     await access(path.resolve("src/app/missions/loading.tsx"));
     expect(indexPage).toContain("Start with an operational problem.");
-    expect(indexPage).toContain("These are discovery lenses, not released requirements.");
+    expect(indexPage).toContain("They are not released requirements or procurement direction.");
     expect(indexPage).not.toContain("EvidenceLegend");
     expect(indexPage).not.toContain("Mission Areas are reviewed True North Map groupings");
     expect(detailPage).toContain("Our assessment");

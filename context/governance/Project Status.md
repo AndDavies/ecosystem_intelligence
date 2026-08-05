@@ -29,6 +29,12 @@ The current product and operating system include:
   evidence legend, public routes use shared breadcrumbs, and the footer keeps
   the concise independence line. Complete explanations remain on How It Works
   and Methodology.
+- Global-refinement Phase 2 aligns Map, Organizations, Regions, Mission Areas,
+  and Public Needs around the decision a visitor is trying to make. Useful
+  records now precede supporting methodology; collection cards have one
+  keyboard-safe canonical destination; counts state their published scope;
+  and each route offers one contextual continuation without changing filters,
+  pagination, complete map coverage, URL state, or public-data contracts.
 - The Signals archive and edition template now establish the next shared public
   surface standard: wide consistent editorial frames, rounded tonal cards with
   no decorative outlines, Editorial Blue for reading structure, bounded colour
