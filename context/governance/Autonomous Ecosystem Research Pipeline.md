@@ -7,7 +7,7 @@ Canonical domain: `https://truenorthmap.ca`
 
 ## Outcome
 
-True North Map now has a bounded Codex-native research and signal-refresh system that can run manually, weekly, or on a weekday refresh schedule. It starts with a decision-led OSINT collection plan, measures saturation through a twelve-dimension dossier vector, records atomic claims and conflicts in a private ledger, ranks durable sources, builds a broad prospect inventory, monitors material changes across multiple source families, recovers durable evidence, creates typed new-record or refresh leads, produces green or amber private candidates, and sends successful candidates directly into the existing private Admin Review workflow.
+True North Map has a bounded Codex-native research and signal-refresh system that runs manually under the current operating posture. It starts with a decision-led OSINT collection plan, searches both outward from entities and inward from Mission Areas and published Public Needs, measures saturation through a twelve-dimension dossier vector plus marginal decision value, records atomic claims and conflicts in a private ledger, ranks durable sources, builds a broad prospect inventory, monitors material changes across multiple source families, recovers durable evidence, creates typed new-record or refresh leads, produces green or amber private candidates, and sends successful candidates directly into the existing private Admin Review workflow.
 
 The system never treats review intake as publication. Live corpus counts come from the canonical production database rather than this operating document. Any expansion requires a human to review and accept an organization or public-demand candidate in Review and use the explicit Publish checkpoint. `research_runs` is hidden audit metadata, not another queue or approval step. A completed run must place every validated candidate directly into `candidate_changes` with a generated reviewer rationale; file-only artifacts are not a successful terminal state.
 
@@ -30,7 +30,8 @@ flowchart TD
   ER --> H
   H -- "Hard stop" --> DFR["Defer or reject with reason and trail"]
   H -- "Yes - automatic" --> CV["Complete 12-dimension dossier coverage and contradiction checks"]
-  CV --> I["Create enriched green or amber candidate and rationale"]
+  CV --> DU["Complete capability, evidence, need, unknown, and action decision chain"]
+  DU --> I["Create enriched green or amber candidate and rationale"]
   I --> J["Map field evidence and derived alignment"]
   J --> K["Schema, taxonomy, URL, date, and duplicate gates"]
   K -- "Fail" --> DFR
@@ -132,6 +133,9 @@ Supported public-demand issuers include NATO, the Government of Canada, DND, CAF
 - English/French aliases and Canadian public-source queries where relevant.
 - Official sitemap, technical-document, registry, patent/IP, procurement, proactive-disclosure, customer/partner/program, ecosystem, and reputable secondary lanes are available; authenticated social and newsletter surfaces remain discovery-only.
 - Every candidate-linked dossier assesses identity/ownership, Canadian presence, offering/mandate, technical specifications, maturity/deployment, customers/contracts/programs, procurement/demand, partnerships/financing, public contacts, current activity, source diversity, and contradictions.
+- Discovery searches entity-outward through products, variants, subsystems, interfaces, suppliers, partners, primes, customers, programs and proof events, and problem-inward from Mission Areas and published Public Needs through outcomes, constraints, metrics, standards, procurement terms, and English/French synonyms.
+- Every selected candidate exposes a compact decision chain using the current artifact fields: specific capability or need, coverage value, evidence composition, current trigger when one exists, conservative Mission/Public Need read, consequential unknowns, and one bounded reviewer action.
+- A Public Need hypothesis in an organization candidate is a private Derived Read only. It does not create a capability-demand match; after publication, the reviewer may use the existing private matching workspace.
 - Hard-stop unresolved duplicates, unresolvable identity or Canadian presence, no concrete offering or mandate, no durable evidence, defunct status, taxonomy drift, access failures, or rate limits.
 - Keep missing legal names, direct contacts, exact addresses, and incomplete relationships as amber reviewer warnings when the core inclusion case is supported.
 - Resume an interrupted manifest instead of creating a second run for the same work.
@@ -157,7 +161,7 @@ flowchart LR
   HR --> PC["Human Publish checkpoint"]
 ```
 
-Earlier test cycles proved the typed organization and demand paths but also exposed low discovery yield. The July 21 throughput upgrade added explicit prospect, lane, recovery, backlog, green/amber, and under-target controls. The July 30 OSINT upgrade adds collection planning, deterministic URL/alias/procurement normalization, source-independence checks, claim conflicts and supersession, and dossier coverage so a passing run demonstrates granular evidence capture rather than merely producing one schema-valid record.
+Earlier test cycles proved the typed organization and demand paths but also exposed low discovery yield. The July 21 throughput upgrade added explicit prospect, lane, recovery, backlog, green/amber, and under-target controls. The July 30 OSINT upgrade added collection planning, deterministic URL/alias/procurement normalization, source-independence checks, claim conflicts and supersession, and dossier coverage. The August 5 decision-usefulness upgrade keeps the same executable schemas and Review/Publish boundary while requiring capability specificity, complementary evidence, problem-led discovery, explicit unknowns, and an actionable reviewer handoff rather than merely one schema-valid record.
 
 ## Existing-record enrichment integration
 

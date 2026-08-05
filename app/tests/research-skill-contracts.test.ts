@@ -103,4 +103,27 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(runner).toContain('status === "pending" || status === "approved"');
     expect(runner).toContain("isActiveReviewCandidateStatus(atlas.candidateStatuses[candidate.candidateId])");
   });
+
+  it("carries a decision-useful research chain from discovery into review", async () => {
+    const coordinator = await projectFile(".agents/skills/tnm-autonomous-research/SKILL.md");
+    const decisionStandard = await projectFile(".agents/skills/tnm-autonomous-research/references/decision-usefulness.md");
+    const discovery = await projectFile(".agents/skills/tnm-source-discovery/SKILL.md");
+    const refresh = await projectFile(".agents/skills/tnm-signal-refresh/SKILL.md");
+    const builder = await projectFile(".agents/skills/tnm-candidate-builder/SKILL.md");
+    const mapper = await projectFile(".agents/skills/tnm-evidence-mapper/SKILL.md");
+    const steward = await projectFile(".agents/skills/tnm-review-steward/SKILL.md");
+    const runner = await projectFile("app/scripts/autonomous-research.ts");
+
+    expect(coordinator).toContain("decision chain");
+    expect(decisionStandard).toContain("Entity outward");
+    expect(decisionStandard).toContain("Problem inward");
+    expect(discovery).toContain("Search problem-inward");
+    expect(refresh).toContain("decision delta");
+    expect(builder).toContain("Mission/Public Need read");
+    expect(mapper).toContain("two separate evidence premises");
+    expect(steward).toContain("bounded reviewer action");
+    expect(runner).toContain('questionId: "mission-public-need-read"');
+    expect(runner).toContain('questionId: "reviewer-action"');
+    expect(runner).toContain("Derived Mission Area reads");
+  });
 });

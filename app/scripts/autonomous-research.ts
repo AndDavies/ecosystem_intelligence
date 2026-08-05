@@ -597,7 +597,7 @@ async function prepareRun(args: string[]) {
     runId,
     createdAt: startedAt,
     status: "active",
-    intelligenceRequirement: `Resolve the identity, Canadian relevance, concrete offerings or public needs, technical detail, maturity, current activity, relationships, and material contradictions needed to address ${selectedGap.dimension}: ${selectedGap.reason}`,
+    intelligenceRequirement: `Resolve the specific capabilities or public needs, Canadian relevance, technical and operational detail, proof and current activity, Mission Area or Public Need connection, material unknowns, and next reviewer action needed to address ${selectedGap.dimension}: ${selectedGap.reason}`,
     targetSubjects: [],
     priorityQuestions: [
       {
@@ -608,24 +608,38 @@ async function prepareRun(args: string[]) {
         evidenceThreshold: "one_anchor"
       },
       {
-        questionId: "technology-detail-maturity",
+        questionId: "capability-definition",
         subjectType: "technology",
-        question: "What concrete products, systems, specifications, applications, integration boundaries, maturity, and deployment evidence are publicly supportable?",
+        question: "Which independently reviewable products, variants, subsystems, or operating functions exist, and what specifications, interfaces, dependencies, constraints, applications, and differentiators are publicly supportable?",
         targetFieldPaths: ["capabilities.*.summary", "capabilities.*.features", "capabilities.*.applications", "organization.profileData"],
         evidenceThreshold: "anchor_plus_independent_corroboration"
       },
       {
-        questionId: "contracts-procurement-demand",
+        questionId: "proof-and-current-state",
         subjectType: "signal",
-        question: "Which contracts, procurement lifecycle events, public programs, customer activity, partnerships, and official demand statements materially change the record?",
+        question: "Which trials, evaluations, deployments, contracts, procurement lifecycle events, public programs, customer activity, partnerships, and dated developments establish maturity or materially change the current record?",
         targetFieldPaths: ["programs.*.summary", "relationships.*.publicSummary", "demandSource.summary", "requirements.*.problemStatement"],
         evidenceThreshold: "anchor_plus_independent_corroboration"
       },
       {
-        questionId: "conflicts-and-gaps",
+        questionId: "mission-public-need-read",
+        subjectType: "demand",
+        question: "Which current Mission Area or exact published Public Need could this capability inform, what source-backed premises support each side, and what constraint prevents the relationship from being treated as proven fit?",
+        targetFieldPaths: ["capabilities.*.missionMatches", "requirements.*.problemStatement", "requirements.*.desiredEndState", "reviewerRationale"],
+        evidenceThreshold: "anchor_plus_independent_corroboration"
+      },
+      {
+        questionId: "unknowns-and-tradeoffs",
         subjectType: "signal",
-        question: "Which material claims conflict, remain unresolved, have been superseded, or require a visible reviewer warning rather than a canonical field?",
+        question: "Which material facts are not found, not publicly stated, conflicted, stale, superseded, constrained, or not applicable, and how does each gap affect the reviewer decision?",
         targetFieldPaths: ["reviewWarnings", "reviewerRationale"],
+        evidenceThreshold: "one_anchor"
+      },
+      {
+        questionId: "reviewer-action",
+        subjectType: "signal",
+        question: "What single bounded verification, comparison, review, Working List, or private demand-matching action should follow from the evidence without contacting, accepting, or publishing autonomously?",
+        targetFieldPaths: ["reviewerRationale", "reviewWarnings"],
         evidenceThreshold: "one_anchor"
       }
     ],
@@ -641,15 +655,17 @@ async function prepareRun(args: string[]) {
           : "evidence_anchor",
       queryPatterns: [
         `${selectedGap.dimension} Canada ${lane.replaceAll("_", " ")}`,
-        `${selectedGap.dimension} Canada français ${lane.replaceAll("_", " ")}`
+        `${selectedGap.dimension} Canada français ${lane.replaceAll("_", " ")}`,
+        `${selectedGap.dimension} outcome constraint specification interface trial procurement Canada ${lane.replaceAll("_", " ")}`
       ],
-      expectedClaims: ["identity or actor role", "technology, demand, program, contract, relationship, or current-activity detail"]
+      expectedClaims: ["identity or actor role", "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail", "decision-relevant unknown or verification path"]
     })),
     languagePlan: { languages: ["en", "fr"], frenchSearchRequired: true, exceptionReason: null },
     coverageDimensions: [...osintCoverageDimensionValues],
     stopConditions: [
       "Stop a subject only after the coverage vector records every dimension as covered, partial, not found, or not applicable with supporting claims or search attempts.",
-      "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new material claims and all contradictions are dispositioned."
+      "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new claims that would change the capability definition, proof or current state, Mission or Public Need read, material unknowns, or reviewer action.",
+      "Do not stop on source count alone; every selected candidate needs a specific decision use, evidence basis, visible uncertainty, and bounded next reviewer action."
     ],
     prohibitedActions: ["social_interaction", "access_control_bypass", "personal_data_collection", "canonical_database_write", "candidate_approval_or_publication"]
   });
@@ -667,7 +683,7 @@ async function prepareRun(args: string[]) {
   const run: ResearchRun = {
     schemaVersion: "research_run_v1",
     runId,
-    agentVersion: "tnm-research-pipeline/1.3.0",
+    agentVersion: "tnm-research-pipeline/1.4.0",
     trigger,
     mode: bootstrap ? "bootstrap" : deepDossier ? "deep_dossier" : refreshBatch ? "refresh_batch" : requestedMode === "gap-targeted" ? "gap_targeted" : "discovery_batch",
     scope: {
@@ -753,11 +769,11 @@ async function prepareRun(args: string[]) {
     "1. Complete the generated intelligence-requirement collection plan before broad searching; add named subjects, aliases, identifiers, and target-specific query patterns as they become known.",
     refreshBatch ? "2. Apply $tnm-signal-refresh and build live published-record and public-demand watchlists before searching." : "2. Expand and rank the Source Book within the 30-minute sub-limit.",
     refreshBatch ? "3. Search at least four source families, inspect no more than 50 source items, extract atomic signals, and disposition every signal." : `3. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} productive source lanes in a prospect inventory.`,
-    "4. Record atomic claims, canonical URLs, source-independence keys, temporal scope, conflicts, supersession, and candidate targets in the claim ledger while researching.",
-    "5. Select the strongest prospects and create typed source leads from durable public sources. Use English and French aliases and queries where relevant.",
+    "4. Search entity-outward and problem-inward. Record atomic claims, canonical URLs, source-independence keys, temporal scope, conflicts, supersession, and candidate targets in the claim ledger while researching.",
+    "5. Select prospects by coverage value, evidence recoverability, capability specificity, current trigger, Mission/Public Need relevance, actionability, and novelty. Create typed source leads from durable public sources using English and French aliases and queries where relevant.",
     "6. Use evidence recovery across at least three distinct lanes before deferring a plausible prospect for thin evidence.",
-    "7. Complete every subject's coverage vector and saturation assessment. Qualified leads continue automatically; do not pause for source-lead approval.",
-    "8. Build enriched typed candidates in green or amber review tiers. Amber candidates keep non-blocking gaps and claim conflicts as explicit reviewer warnings.",
+    "7. Complete every subject's coverage vector and decision-useful saturation assessment. Qualified leads continue automatically; do not pause for source-lead approval.",
+    "8. Build enriched typed candidates in green or amber review tiers. Every rationale uses Coverage value, Evidence, Mission/Public Need read, Unknowns, and Reviewer action; amber candidates keep non-blocking gaps and claim conflicts as explicit reviewer warnings.",
     "9. If the batch remains below its minimum, record a specific underTargetReason and exhaustionEvidence before completion.",
     "10. Run `pnpm research:smoke -- --run <run> --collection-plan <collection-plan> --claims <claim-ledger> --prospects <prospects> --leads <leads> --candidates <candidates>`; refresh batches also pass `--signals <signals>`.",
     "11. Confirm candidates appear in Admin Review, then stop. Do not approve or publish.",
@@ -1172,6 +1188,8 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2) {
     "- [ ] Confirm organization type and controlled categories.",
     "- [ ] Confirm each public claim against its field evidence and canonical source.",
     "- [ ] Keep derived mission or demand alignment separate from source-backed facts.",
+    "- [ ] Confirm the rationale makes Coverage value, Evidence, Mission/Public Need read, Unknowns, and Reviewer action explicit.",
+    "- [ ] Confirm any Public Need hypothesis identifies the exact published need and does not imply eligibility, endorsement, customer interest, or a published match.",
     "- [ ] Edit, merge, defer, reject, or accept with substantive rationale.",
     "- [ ] Use a separate explicit publication action after acceptance.",
     "",
@@ -1183,9 +1201,10 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2) {
     lines.push(`### ${candidate.candidateId}`, "", `- Kind: \`${candidate.candidateKind}\``, `- Review tier: \`${candidate.reviewTier ?? "legacy-unrated"}\``, `- Confidence: \`${candidate.confidence}\``, `- Inclusion score: ${candidate.inclusionScore ?? "not recorded"}`, `- Completeness score: ${candidate.completenessScore ?? "not recorded"}`, `- Duplicate status: \`${candidate.duplicateCheck.status}\``);
     if ((candidate.reviewWarnings ?? []).length > 0) lines.push(`- Reviewer warnings: ${candidate.reviewWarnings?.join("; ")}`);
     if (candidate.candidateKind === "organization_bundle") {
-      lines.push(`- Organization: **${candidate.organization.name}**`, `- Organization type: \`${candidate.organization.entityKind}\``, `- Categories: ${candidate.organization.categories.map((category) => `\`${category}\``).join(", ")}`, `- Capabilities: ${candidate.capabilities.map((capability) => capability.name).join(", ") || "none"}`, `- Programs: ${candidate.programs.map((program) => program.name).join(", ") || "none"}`);
+      const missionReads = [...new Set(candidate.capabilities.flatMap((capability) => capability.missionMatches.map((match) => match.missionAreaSlug)))];
+      lines.push(`- Organization: **${candidate.organization.name}**`, `- Organization type: \`${candidate.organization.entityKind}\``, `- Categories: ${candidate.organization.categories.map((category) => `\`${category}\``).join(", ")}`, `- Capabilities: ${candidate.capabilities.map((capability) => capability.name).join(", ") || "none"}`, `- Derived Mission Area reads: ${missionReads.map((slug) => `\`${slug}\``).join(", ") || "none"}`, `- Programs: ${candidate.programs.map((program) => program.name).join(", ") || "none"}`);
     } else if (candidate.candidateKind === "demand_signal_bundle") {
-      lines.push(`- Demand source: **${candidate.demandSource.title}**`, `- Issuers: ${candidate.issuers.map((issuer) => issuer.name).join(", ")}`, `- Requirements: ${candidate.requirements.length}`);
+      lines.push(`- Demand source: **${candidate.demandSource.title}**`, `- Issuers: ${candidate.issuers.map((issuer) => issuer.name).join(", ")}`, `- Requirements: ${candidate.requirements.map((requirement) => requirement.title).join("; ")}`);
     } else if (candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle") {
       lines.push(`- Refresh target: **${candidate.targetMatch.slug}**`, `- Target ID: \`${candidate.targetMatch.entityId}\``, `- Operations: ${candidate.operations.length}`, `- Source channels: ${candidate.sourceChannels.join(", ")}`);
     } else {

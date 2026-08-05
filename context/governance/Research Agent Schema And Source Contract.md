@@ -59,6 +59,8 @@ Every new run prepared by the current coordinator uses:
 - `research_claim_ledger_v1` for atomic subject-predicate-value claims, units and dates, original and canonical URLs, source independence, corroboration, contradictions, supersession, dispositions, and candidate targets;
 - a twelve-dimension dossier coverage vector for identity/ownership, Canadian presence, offering/mandate, technical specifications, maturity/deployment, customers/contracts/programs, procurement/demand, partnerships/financing, public contacts, current activity, source diversity, and contradictions.
 
+The current coordinator also enforces a decision-usefulness standard without changing these schema versions. Search proceeds in both directions: entity-outward through capabilities, variants, subsystems, interfaces, primes, partners, programs, contracts and proof events; and problem-inward from Mission Areas and published Public Needs through outcomes, constraints, metrics, standards, procurement language, and English/French terminology to candidate capabilities and enabling organizations. Every selected candidate must make the specific capability or need, coverage value, evidence composition, current trigger when present, conservative Mission/Public Need read, consequential unknowns, and one bounded reviewer action legible in the existing typed fields, warnings, and rationale.
+
 Syndicated copies of one release are one source family. Discovery-only material cannot become source-backed field evidence. Every source-backed candidate evidence item must match a ledger claim by candidate ID, field path, and source ID. Conflicting values remain visible as reviewer warnings until resolved or explicitly deferred.
 
 Reject or defer:
@@ -137,6 +139,8 @@ Every mapping candidate needs:
 - confidence
 - field-level evidence
 - review status
+
+Mapping requires two independently recorded premises: what the capability demonstrably does and what the Mission Area or published Public Need demonstrably asks for. The reasoning between them remains a Derived Read with its own confidence, constraint or tradeoff, decisive unknown, and verification action. Keyword overlap is not evidence of fit. An organization candidate may carry an exact Public Need hypothesis in its private reviewer rationale, but it does not create a capability-demand match; the existing private demand-matching workspace remains the only path after capability publication.
 
 Demand mappings must include this public caveat:
 
@@ -224,12 +228,12 @@ The intended existing target is not treated as a duplicate collision. Accidental
 5. Enumerate 40-75 unique prospects across at least six lanes and preserve unused plausible prospects as queued backlog.
 6. Create source leads before structured candidates. Qualified leads continue automatically without a separate human approval pause.
 7. Recover evidence across at least three lanes before deferring a plausible thin lead.
-8. Draft green and amber organizations, demand signals, capabilities, relationships, citations, scores, warnings, and rationales.
+8. Draft green and amber organizations, demand signals, independently reviewable capabilities, relationships, citations, scores, warnings, and rationales. Each rationale exposes coverage value, evidence, Mission/Public Need read, unknowns, and reviewer action.
 9. Validate schema, canonical URLs, duplicates, media rights, evidence completeness, taxonomy IDs, and discovery throughput.
 10. Put candidates in the review queue. Stop. Do not publish.
 11. After explicit human promotion, recalculate coverage and freshness.
 
-The weekday refresh loop additionally reads published-record and public-demand watchlists, searches at least four source families, extracts atomic signals, resolves durable evidence, and matches signals before candidate building. It may complete with no candidates only when every inspected signal has a recorded disposition.
+The refresh loop additionally reads published-record and public-demand watchlists, searches at least four source families, extracts atomic signals, resolves durable evidence, and matches signals before candidate building. A signal qualifies only when it changes a capability definition, proof/current state, Mission/Public Need read, consequential unknown, or reviewer action; recency alone is not materiality. It may complete with no candidates only when every inspected signal has a recorded disposition.
 
 Rate limits, weak sources, extraction failures, unresolved duplicates, and missing coordinates produce review notes. They never produce partially published records.
 
