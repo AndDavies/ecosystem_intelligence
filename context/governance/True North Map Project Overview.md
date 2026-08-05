@@ -1,7 +1,7 @@
 # True North Map Project Overview
 
 Status: production soft beta and review-first data operation
-Last reviewed: 2026-08-04
+Last reviewed: 2026-08-05
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -96,6 +96,12 @@ Place, technology, or public need
   capabilities and evidence into a private Working List. Dossier links preserve
   safe map-return context, while region, mission, and Public Need continuations
   use ordinary shareable `/map` filter state.
+- Signals and Defence Briefs share one editorial continuation contract.
+  Signals archive cards summarize the decision-useful bottom line and point to
+  deeper Brief context; Defence Briefs connect reviewed analysis back to
+  existing Mission Areas and published records. The presentation layer does
+  not alter article content, sources, images, automation, MailerLite, or the
+  review and publication boundary.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 

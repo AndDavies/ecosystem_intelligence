@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 
-Last verified: 2026-08-04
+Last verified: 2026-08-05
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -42,6 +42,13 @@ The current product and operating system include:
   one practical continuation into the map, related records, a correction, or a
   Working List. Legacy regional and mission filters now enter the canonical
   `/map` workspace without changing the filters themselves.
+- Global-refinement Phase 4 aligns Canadian Defence Signals and Defence Briefs
+  as complementary editorial journeys. Signals archive cards lead with one
+  decision-useful bottom line, editions point readers to deeper Defence Brief
+  context, and Briefs use the established wide editorial hierarchy, tonal
+  surfaces, and existing Mission Area and record continuations. Published
+  article bodies, source lineage, imagery, automation, editorial skills, and
+  publication authority are unchanged.
 - The Signals archive and edition template now establish the next shared public
   surface standard: wide consistent editorial frames, rounded tonal cards with
   no decorative outlines, Editorial Blue for reading structure, bounded colour

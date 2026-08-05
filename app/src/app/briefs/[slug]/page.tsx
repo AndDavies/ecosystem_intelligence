@@ -106,7 +106,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
       description={brief.standfirst}
       breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Defence Briefs", href: "/briefs" }, { label: brief.title }]}
       pageHeader={(
-        <header className="mt-6 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <header className="mt-6 overflow-hidden rounded-[var(--atlas-radius-card)] bg-white shadow-[var(--atlas-shadow-soft)]">
           <div className="grid min-w-0 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)]">
             <div className="flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:min-h-[420px] lg:p-11">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] font-extrabold uppercase tracking-[0.12em]">
@@ -133,8 +133,8 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-14">
         <article className="min-w-0">
-          <section aria-labelledby="bottom-line" className="rounded-[1.6rem] border border-[var(--atlas-border)] bg-white p-6 shadow-[var(--atlas-shadow-soft)] sm:p-8">
-            <p className="atlas-eyebrow">Bottom line</p>
+          <section aria-labelledby="bottom-line" className="rounded-[var(--atlas-radius-card)] bg-[var(--atlas-signal-soft)] p-6 sm:p-8">
+            <p className="atlas-eyebrow">At a glance</p>
             <h2 id="bottom-line" className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-3xl">{brief.thesis}</h2>
             <p className="mt-5 text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-lg sm:leading-9">{brief.bottomLine}</p>
           </section>
@@ -165,7 +165,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
           </div>
 
           {brief.implications ? (
-            <section id="implications" className="scroll-mt-28 rounded-[1.6rem] border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] p-6 sm:p-8">
+            <section id="implications" className="scroll-mt-28 rounded-[var(--atlas-radius-card)] bg-[var(--atlas-primary-soft)] p-6 sm:p-8">
               <div className="flex gap-4">
                 <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-white text-[var(--atlas-primary)]"><Lightbulb className="size-5" /></div>
                 <div>
@@ -198,11 +198,11 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <p className="atlas-eyebrow">Follow the evidence</p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">Public sources</h2>
             <ol className="mt-6 space-y-4">
-              {brief.sources.map((source, index) => <li key={source.id} className="grid gap-3 rounded-2xl border border-[var(--atlas-border)] bg-white p-5 sm:grid-cols-[34px_1fr]"><span className="flex size-8 items-center justify-center rounded-xl bg-[var(--atlas-surface-muted)] text-xs font-extrabold text-[var(--atlas-primary)]">{index + 1}</span><div><a href={source.url} target="_blank" rel="noreferrer" className="text-sm font-bold leading-6 text-[var(--atlas-primary)] no-underline hover:underline">{source.title} <ExternalLink className="ml-1 inline size-3.5" /></a><p className="mt-1 text-xs font-semibold text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${dateFormatter.format(new Date(source.publishedAt))}` : ""}</p><p className="mt-2 text-xs leading-6 text-[var(--atlas-muted)]">{source.note}</p></div></li>)}
+              {brief.sources.map((source, index) => <li key={source.id} className="grid gap-3 rounded-[var(--atlas-radius-card)] bg-white p-5 shadow-[var(--atlas-shadow-soft)] sm:grid-cols-[34px_1fr]"><span className="flex size-8 items-center justify-center rounded-xl bg-[var(--atlas-blue-soft)] text-xs font-extrabold text-[var(--atlas-primary)]">{index + 1}</span><div><a href={source.url} target="_blank" rel="noreferrer" className="text-sm font-bold leading-6 text-[var(--atlas-primary)] no-underline hover:underline">{source.title} <ExternalLink className="ml-1 inline size-3.5" /></a><p className="mt-1 text-xs font-semibold text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${dateFormatter.format(new Date(source.publishedAt))}` : ""}</p><p className="mt-2 text-xs leading-6 text-[var(--atlas-muted)]">{source.note}</p></div></li>)}
             </ol>
           </section>
 
-          <footer className="mt-10 rounded-2xl border border-[var(--atlas-border)] bg-white p-6 sm:p-7">
+          <footer className="mt-10 rounded-[var(--atlas-radius-card)] bg-[var(--atlas-surface-muted)] p-6 sm:p-7">
             <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-primary)]">About this article</p>
             <p className="mt-3 text-sm leading-7 text-[var(--atlas-ink-soft)]">Written and reviewed by <Link href="/about" className="font-bold text-[var(--atlas-primary)] underline">{brief.authorName}</Link>. Claims are bounded by the public sources above, interpretation is labelled separately, and material gaps remain visible. <Link href="/methodology" className="font-bold text-[var(--atlas-primary)] underline">Read the methodology</Link> or <Link href="/contact" className="font-bold text-[var(--atlas-primary)] underline">request a correction</Link>.</p>
           </footer>
@@ -215,7 +215,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
               <h2 id="related-analysis-heading" className="mt-3 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">Related Defence Briefs</h2>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {relatedBriefs.map((relatedBrief) => (
-                  <Link key={relatedBrief.id} href={`/briefs/${relatedBrief.slug}`} className="group rounded-2xl border border-[var(--atlas-border)] bg-white p-5 no-underline transition-colors hover:border-[var(--atlas-ink)] hover:no-underline">
+                  <Link key={relatedBrief.id} href={`/briefs/${relatedBrief.slug}`} className="group rounded-[var(--atlas-radius-card)] bg-white p-5 no-underline shadow-[var(--atlas-shadow-soft)] transition-shadow hover:shadow-[0_18px_40px_rgba(36,40,39,0.1)] hover:no-underline">
                     <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{getBriefPresentation(relatedBrief).topic}</span>
                     <span className="mt-2 block text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{relatedBrief.title}</span>
                     <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)] group-hover:underline">Read the article <ArrowRight className="size-3.5" aria-hidden="true" /></span>
@@ -227,7 +227,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
         </article>
 
         <aside className="space-y-5 lg:sticky lg:top-28">
-          <section className="rounded-2xl border border-[var(--atlas-border)] bg-white p-5">
+          <section className="rounded-[var(--atlas-radius-card)] bg-[var(--atlas-blue-soft)] p-5">
             <p className="atlas-eyebrow">In this article</p>
             <nav aria-label="On this page" className="mt-4">
               <ol className="space-y-3 text-xs font-semibold">
@@ -241,19 +241,19 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             </nav>
           </section>
 
-          <section className="rounded-2xl border border-[var(--atlas-border)] bg-white p-5">
+          <section className="rounded-[var(--atlas-radius-card)] bg-white p-5 shadow-[var(--atlas-shadow-soft)]">
             <div className="flex gap-3"><ShieldCheck className="mt-0.5 size-5 shrink-0 text-[var(--atlas-primary)]" /><div><h2 className="text-sm font-extrabold text-[var(--atlas-ink)]">Reviewed before publication</h2><p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">Every article is checked against durable public evidence. Newsletter and social material remain research leads until a source can support the public record.</p></div></div>
             <dl className="mt-5 grid gap-3 border-t border-[var(--atlas-border)] pt-4 text-xs"><div><dt className="text-[var(--atlas-muted)]">Primary reader</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{brief.audience}</dd></div><div><dt className="text-[var(--atlas-muted)]">Last reviewed</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{dateFormatter.format(new Date(brief.reviewedAt))}</dd></div><div><dt className="text-[var(--atlas-muted)]">Evidence</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{brief.sources.length} approved public {brief.sources.length === 1 ? "source" : "sources"}</dd></div></dl>
           </section>
 
           {missionConnections.length ? (
-            <section className="rounded-2xl border border-[var(--atlas-border)] bg-white p-5">
+            <section className="rounded-[var(--atlas-radius-card)] bg-[var(--atlas-signal-soft)] p-5">
               <p className="atlas-eyebrow">Mission lens</p>
               <h2 className="mt-2 text-base font-extrabold text-[var(--atlas-ink)]">Explore related use cases</h2>
               <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">These are reviewed True North Map groupings connected through the records in this article.</p>
               <div className="mt-4 space-y-2">
                 {missionConnections.slice(0, 4).map((connection) => (
-                  <Link key={connection.missionArea.id} href={`/missions/${connection.missionArea.slug}`} className="flex items-center justify-between gap-3 rounded-xl border border-[var(--atlas-border)] p-3 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:border-[var(--atlas-ink)] hover:no-underline">
+                  <Link key={connection.missionArea.id} href={`/missions/${connection.missionArea.slug}`} className="flex items-center justify-between gap-3 rounded-xl bg-white/70 p-3 text-xs font-bold text-[var(--atlas-primary)] no-underline transition-colors hover:bg-white hover:no-underline">
                     <span>{connection.missionArea.name}</span>
                     <span className="shrink-0 text-[10px] text-[var(--atlas-muted)]">{connection.capabilityCount} {connection.capabilityCount === 1 ? "technology" : "technologies"}</span>
                   </Link>
@@ -263,10 +263,10 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
           ) : null}
 
           {relatedRecords.length ? (
-            <section className="rounded-2xl border border-[var(--atlas-border)] bg-white p-5">
+            <section className="rounded-[var(--atlas-radius-card)] bg-[var(--atlas-blue-soft)] p-5">
               <p className="atlas-eyebrow">Keep exploring</p>
               <h2 className="mt-2 text-base font-extrabold text-[var(--atlas-ink)]">Move from context to action</h2>
-              <div className="mt-4 space-y-3">{relatedRecords.map((item) => <Link key={`${item.type}-${item.id}`} href={item.href} className="group block rounded-xl border border-[var(--atlas-border)] p-3 no-underline hover:border-[var(--atlas-ink)] hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.label}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.name}<ArrowRight className="size-3.5 shrink-0" /></span></Link>)}</div>
+              <div className="mt-4 space-y-3">{relatedRecords.map((item) => <Link key={`${item.type}-${item.id}`} href={item.href} className="group block rounded-xl bg-white/75 p-3 no-underline transition-colors hover:bg-white hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.label}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.name}<ArrowRight className="size-3.5 shrink-0" /></span></Link>)}</div>
             </section>
           ) : null}
         </aside>

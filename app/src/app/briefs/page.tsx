@@ -13,7 +13,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Canadian Defence Briefs",
-  description: "Source-backed analysis of Canadian defence priorities, industrial capacity, dual-use technology, and the opportunities taking shape around them.",
+  description: "Source-linked explainers connecting Canadian defence policy, released public needs, industrial capacity, and capability.",
   alternates: { canonical: "/briefs" },
   openGraph: {
     title: "Canadian Defence Briefs",
@@ -45,9 +45,9 @@ export default async function DefenceBriefsPage() {
 
   return (
     <PublicPageShell
-      eyebrow="Canadian defence, clearly explained"
-      title="See the forces shaping what Canada builds next."
-      description="Defence Briefs combine reviewed public evidence with a Canadian industrial lens. Follow important developments, understand what they change, and move directly into the companies, technologies, and public needs behind the story."
+      eyebrow="Defence Briefs"
+      title="Understand what may shape what Canada builds next."
+      description="Source-linked explainers connecting policy, released public needs and Canadian capability. Go deeper on how a system, technology or decision works, then continue into the records behind it."
     >
       <JsonLd data={{
         "@context": "https://schema.org",
@@ -84,13 +84,13 @@ export default async function DefenceBriefsPage() {
         }
       }} />
 
-      <p className="mt-6 border-y border-[var(--atlas-border)] py-3 text-xs font-semibold text-[var(--atlas-muted)]">
-        {briefs.length} reviewed {briefs.length === 1 ? "article" : "articles"}
-        {latestReviewedAt ? ` · Latest review ${dateFormatter.format(new Date(latestReviewedAt))}` : ""}
-      </p>
+      <div className="mt-6 flex flex-col gap-3 rounded-[var(--atlas-radius-card)] bg-[var(--atlas-blue-soft)] px-5 py-4 text-sm text-[var(--atlas-ink-soft)] sm:flex-row sm:items-center sm:justify-between">
+        <p className="font-semibold">{briefs.length} reviewed {briefs.length === 1 ? "article" : "articles"}{latestReviewedAt ? ` · Latest review ${dateFormatter.format(new Date(latestReviewedAt))}` : ""}</p>
+        <p>Briefs explain the system. <Link href="/signals" className="font-bold text-[var(--atlas-primary)] underline decoration-2 underline-offset-4">Signals track what changed.</Link></p>
+      </div>
 
       {featured ? (
-        <section className="mt-8 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <section className="mt-8 overflow-hidden rounded-[var(--atlas-radius-card)] bg-white shadow-[var(--atlas-shadow-soft)]">
           <div className="grid min-w-0 lg:grid-cols-[minmax(0,1.06fr)_minmax(360px,0.94fr)]">
             <BriefHero presentation={getBriefPresentation(featured)} title={featured.title} priority compact className="order-2 h-[280px] min-w-0 rounded-none sm:h-[320px] lg:order-1 lg:aspect-auto lg:h-full lg:min-h-[430px]" />
             <div className="relative z-10 order-1 flex min-w-0 flex-col justify-center bg-white p-6 sm:p-9 lg:order-2 lg:p-11">
@@ -98,7 +98,7 @@ export default async function DefenceBriefsPage() {
               <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">{featured.title}</h2>
               <p className="mt-5 text-sm leading-7 text-[var(--atlas-ink-soft)] sm:text-base sm:leading-8">{featured.standfirst}</p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={`/briefs/${featured.slug}`} className="atlas-signal-button h-11 px-5 text-sm no-underline hover:no-underline">Read the article <ArrowRight className="ml-2 size-4" /></Link>
+                <Link href={`/briefs/${featured.slug}`} className="atlas-signal-button h-11 px-5 text-sm no-underline hover:no-underline">Read the latest Brief <ArrowRight className="ml-2 size-4" /></Link>
                 <span className="text-xs font-semibold text-[var(--atlas-muted)]">{featured.sources.length} reviewed public {featured.sources.length === 1 ? "source" : "sources"}</span>
               </div>
             </div>
@@ -117,7 +117,7 @@ export default async function DefenceBriefsPage() {
           <div className="flex flex-col gap-4 border-b border-[var(--atlas-border)] pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="atlas-eyebrow">Explore the collection</p>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Analysis worth following now.</h2>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">All Defence Briefs</h2>
             </div>
             <p className="max-w-lg text-sm leading-6 text-[var(--atlas-muted)]">Evergreen explainers sit alongside clearly labelled analysis of current developments.</p>
           </div>
@@ -125,7 +125,7 @@ export default async function DefenceBriefsPage() {
             {latest.map((brief) => {
               const presentation = getBriefPresentation(brief);
               return (
-                <article key={brief.id} className="group overflow-hidden rounded-[1.6rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+                <article key={brief.id} className="group overflow-hidden rounded-[var(--atlas-radius-card)] bg-white shadow-[var(--atlas-shadow-soft)] transition-shadow hover:shadow-[0_22px_52px_rgba(36,40,39,0.1)]">
                   <BriefHero presentation={presentation} title={brief.title} compact />
                   <div className="flex min-h-[300px] flex-col p-6">
                     <BriefMeta brief={brief} />
@@ -152,7 +152,7 @@ export default async function DefenceBriefsPage() {
         </div>
       </section>
 
-      <section className="mt-8 rounded-3xl border border-[var(--atlas-border)] bg-white p-6 sm:p-8">
+      <section className="mt-8 rounded-[var(--atlas-radius-card)] bg-[var(--atlas-blue-soft)] p-6 sm:p-8">
         <div className="grid gap-6 md:grid-cols-3">
           <Value icon={SearchCheck} title="The conclusion comes first" text="Each article makes its central argument early, then develops the evidence, context, and implications." />
           <Value icon={ShieldCheck} title="Review stays visible" text="Sources, review dates, uncertainty, and interpretation remain in view as you read." />

@@ -1,5 +1,23 @@
 # Development Log - 2026-07-31
 
+## August 5 global-refinement Phase 4 editorial collections and articles
+
+Aligned Canadian Defence Signals and Defence Briefs as complementary editorial
+paths without changing their content or operating contracts. Signals now uses
+one concise, decision-useful archive summary, labels its latest publication as
+an edition, and offers a restrained path to deeper Defence Brief context.
+Defence Briefs now uses the same wide editorial hierarchy, rounded borderless
+tonal surfaces, source-linked language, and existing Mission Area and record
+continuations.
+
+The change is presentation-only. Published article bodies, sourced imagery,
+generated anchors, metadata contracts, Signals automation, editorial skills,
+Supabase, MailerLite, analytics, research, review, and publication authority
+remain unchanged. Scoped editorial tests joined the complete application suite;
+responsive signed-out checks covered both collections and representative
+articles at 390, 768, 1024, and 1440 pixels with one H1 and no horizontal
+overflow.
+
 ## August 4 global-refinement Phase 3 profiles and decision handoffs
 
 Recomposed organization, capability, Mission Area, regional, and individual
