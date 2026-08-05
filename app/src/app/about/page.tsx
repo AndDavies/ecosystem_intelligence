@@ -72,6 +72,8 @@ export default function AboutPage() {
       eyebrow="About True North Map"
       title="The capability was here. The shared picture was not."
       description="True North Map is an independent project created to make Canada’s defence and dual-use capability easier to find, understand and bring into the right conversation."
+      backHref="/"
+      backLabel="Home"
       actions={
         <Link href="/map" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">
           Explore the map <ArrowRight className="size-4" />

@@ -74,6 +74,8 @@ export default function HowItWorksPage() {
       eyebrow="How True North Map works"
       title="From question to better-informed conversation."
       description="Start with a need, mission, place, or released public need. Follow the records, evidence, and assessments into a Working List or next conversation."
+      backHref="/"
+      backLabel="Home"
       actions={<Link href="/map?start=need#ask-true-north" className="atlas-primary-button h-11 px-5 text-sm">Describe a need <ArrowRight className="size-4" /></Link>}
     >
       <JsonLd data={[

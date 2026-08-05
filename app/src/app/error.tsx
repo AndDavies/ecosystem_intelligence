@@ -13,9 +13,9 @@ export default function ErrorPage({ reset }: { error: Error & { digest?: string 
           <AlertTriangle aria-hidden="true" className="size-5" />
         </span>
         <p className="atlas-eyebrow mt-6">Something interrupted this page</p>
-        <h1 className="mt-3 text-3xl font-extrabold tracking-[-0.04em]">The page could not finish loading.</h1>
+        <h1 className="mt-3 text-3xl font-extrabold tracking-[-0.04em]">We could not load this view.</h1>
         <p className="mt-4 max-w-xl text-sm leading-6 text-[var(--atlas-muted)]">
-          Your published data has not been changed. Try the page again, or return to the map.
+          Try again, or return to the map. Your published data has not been changed.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <button type="button" onClick={reset} className="atlas-primary-button h-11 gap-2 px-4 text-sm">
@@ -23,7 +23,7 @@ export default function ErrorPage({ reset }: { error: Error & { digest?: string 
             Try again
           </button>
           <Link href="/map" className="atlas-secondary-button h-11 px-4 text-sm no-underline hover:no-underline">
-            Return to the map
+            Explore the map
           </Link>
         </div>
       </section>

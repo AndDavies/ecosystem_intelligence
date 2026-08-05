@@ -4,7 +4,7 @@ Status: canonical operating contract
 
 Effective: 2026-07-26
 
-Last reviewed: 2026-08-02
+Last reviewed: 2026-08-05
 
 Owner: Andrew Davies
 
@@ -42,6 +42,7 @@ True North Map is one product made from several connected systems. A change that
 | Authentication or account | Google and email paths, safe returns, sign-out, account switching/deletion, exact admin gate, email delivery | Access/privacy matrix and runbook | Anonymous/member/non-admin/admin matrix, fresh login, stale token, email delivery |
 | Analytics, newsletter, feedback, or contact | Consent, private-route exclusion, masking, retention, MailerLite sync, webhooks | Privacy, status, runbook | Consent states, focused-flow suppression, sync/webhook, scheduled retention |
 | SEO, AEO, structured data, or sharing | Canonicals, sitemap freshness, robots, internal links, social image crops, visible-source claims | Visibility skill/report contract, brand packet, launch package | Visibility validation, low-rate launch crawl, structured-data and share preview checks |
+| Loading, empty, error, permission, or not-found state | Route geometry, recovery links, private-data boundaries, robots, keyboard focus, and screen-reader announcements | Overview, route contract, and development log when shared language changes | Scoped state tests, one-H1 and overflow checks, affected routes at 390/768/1024/1440, clean build, and low-rate crawl |
 | Brand asset or launch collateral | Approved copy, typography, contrast, favicon, social cards, stale screenshots | Brand System, launch README, project report | Asset dimensions, responsive rendering, PDF/video inspection, metadata previews |
 | Defence Brief or editorial content | Public sources, Derived Reads, related records, hero image, Article schema, private wiki boundary | Brief/editorial contract and status | Source/link checks, Article metadata, mobile reading layout, admin edit/publish |
 | Canadian Defence Signals | Durable sources, fact/read separation, unknowns, duplicate fingerprint, immutable descriptive slug, private social drafts, no core-corpus write | Overview, status, Daily Signals skill and route contract | Packet validation, migration/RLS chain, idempotent dry run, metadata, sitemap, admin correction/archive, 390/768/1024/1440 reading layout |
@@ -121,7 +122,7 @@ Never stage a candidate kind that the deployed `/api/system/research-contract`, 
 
 ## Visibility and content regression
 
-The visibility workflow produces private evidence for decisions, not public facts or publication authority. Raw provider data stays local. Recommendations must map to an existing useful public surface or a reviewable content brief. Any resulting public change follows the normal product or editorial review path and then the public-route regression checks.
+The visibility workflow produces private evidence for decisions, not public facts or publication authority. Raw provider data stays local. A full refresh paginates every configured live provider, audits every public sitemap URL, and runs the complete approved DataForSEO seed set; it does not inspect credits, cap tasks, reuse same-day panels, or change billing. Recommendations must map to an existing useful public surface or a reviewable content brief. Any resulting public change follows the normal product or editorial review path and then the public-route regression checks.
 
 ## Completion report
 

@@ -118,7 +118,7 @@ export function PublicCard({
 
 export function EmptyCoverage({ title, detail }: { title: string; detail: string }) {
   return (
-    <div className="rounded-2xl border border-dashed border-[var(--atlas-border-strong)] bg-[var(--atlas-surface-muted)] px-5 py-8 text-center">
+    <div className="rounded-2xl bg-[var(--atlas-surface-muted)] px-5 py-8 text-center">
       <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">{title}</p>
       <p className="mx-auto mt-1 max-w-xl text-xs leading-5 text-[var(--atlas-muted)]">{detail}</p>
     </div>

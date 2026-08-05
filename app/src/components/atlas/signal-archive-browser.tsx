@@ -45,6 +45,6 @@ export function SignalArchiveBrowser({ editions, featuredId }: { editions: Signa
           <Link href={`/signals/${edition.slug}`} className="atlas-pill atlas-pill-blue atlas-pill-link min-h-11 w-fit shrink-0 gap-2 px-4 py-2 text-sm font-extrabold no-underline transition-colors hover:bg-[var(--atlas-ink)] hover:text-white hover:no-underline">Read the signal <ArrowRight className="size-4" /></Link>
         </div>
       </article>;
-    })}</div> : <div className="rounded-2xl bg-white px-6 py-12 text-center"><p className="text-sm font-extrabold">{filtering ? "No Signals match this search yet." : "Earlier Signals will appear here."}</p><p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[var(--atlas-muted)]">{filtering ? "Try a broader term or clear the selected tag." : "The archive grows only when the source and significance gates support a useful edition."}</p></div>}
+    })}</div> : <div className="rounded-2xl bg-white px-6 py-12 text-center"><p className="text-sm font-extrabold">{filtering ? "No Signals match this search." : "Earlier Signals will appear here."}</p><p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[var(--atlas-muted)]">{filtering ? "Try another topic or clear the selected tag." : "The archive grows only when the source and significance gates support a useful edition."}</p></div>}
   </section>;
 }

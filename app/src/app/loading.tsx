@@ -1,5 +1,5 @@
 import { RouteLoading } from "@/components/atlas/route-loading";
 
 export default function Loading() {
-  return <RouteLoading label="Loading True North Map" layout="atlas" />;
+  return <RouteLoading label="Loading the map…" layout="atlas" />;
 }

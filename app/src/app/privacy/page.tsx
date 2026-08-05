@@ -2,16 +2,18 @@ import Link from "next/link";
 import { BarChart3, Bot, Database, Eye, MailCheck, ShieldCheck } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { AnalyticsPreferencesButton } from "@/components/atlas/public-beta-insights";
+import { socialMetadata } from "@/lib/seo/social";
 
 export const metadata = {
   title: "Privacy",
   description: "How True North Map handles accounts, contributions, connections, messages, feedback, analytics, and retention.",
-  alternates: { canonical: "/privacy" }
+  alternates: { canonical: "/privacy" },
+  ...socialMetadata({ title: "True North Map Privacy", description: "How True North Map handles accounts, contributions, connections, messages, analytics, and retention.", path: "/privacy", eyebrow: "Privacy and participation" })
 };
 
 export default function PrivacyPage() {
   return (
-    <PublicPageShell eyebrow="Public-beta governance" title="Privacy and participation" description="True North Map collects only the information needed to operate private workflows, improve discovery, and respond to voluntary contact.">
+    <PublicPageShell eyebrow="Public-beta governance" title="Privacy and participation" description="True North Map collects only the information needed to operate private workflows, improve discovery, and respond to voluntary contact." backHref="/" backLabel="Home">
       <div className="grid gap-5 lg:grid-cols-2">
         <PublicCard title="Sign-in and private work" eyebrow="User-controlled actions"><ShieldCheck className="mb-3 size-5 text-[var(--atlas-primary)]" /><p className="text-sm leading-6 text-[var(--atlas-muted)]">You can use Google or a passwordless email link. Google provides a verified email and basic profile information; the service never receives your Google or email password. Working Lists, contributions, and connection requests are private to you and the authorized administrator.</p></PublicCard>
         <PublicCard title="North Signal and contact" eyebrow="Affirmative consent"><MailCheck className="mb-3 size-5 text-[var(--atlas-primary)]" /><p className="text-sm leading-6 text-[var(--atlas-muted)]">North Signal subscription stores your email, the exact consent language and version, signup placement, landing page, and delivery status. The weekly briefing is delivered through MailerLite using an authenticated True North Map sender and includes an unsubscribe link. Contact messages store only the details you enter and a one-way request fingerprint used for rate limiting.</p></PublicCard>

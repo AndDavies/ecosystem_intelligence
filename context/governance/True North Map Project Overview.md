@@ -102,6 +102,18 @@ Place, technology, or public need
   existing Mission Areas and published records. The presentation layer does
   not alter article content, sources, images, automation, MailerLite, or the
   review and publication boundary.
+- The supporting public journey now uses the same outcome-led language as the
+  landing and profiles. How It Works explains the path from a question to
+  capability, evidence, a private Working List, and a next conversation; About
+  uses the canonical founder story and wording; Methodology retains the full
+  evidence and review explanation; and contributions promise private human
+  review before any public change. Authentication, consent, and public-shell
+  caching are unchanged.
+- Shared public system states now use the same plain-language contract as the
+  product: literal fixed-geometry loading shells, scoped empty states, a
+  retry-or-Map error path, and a noindex 404 with Map and homepage recovery.
+  Supporting trust pages use Home breadcrumbs and current social cards, while
+  collection and dossier routes retain their canonical Map or record parent.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 

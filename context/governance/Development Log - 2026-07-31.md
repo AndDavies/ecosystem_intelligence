@@ -1,5 +1,42 @@
 # Development Log - 2026-07-31
 
+## August 5 global-refinement Phase 6 system states, SEO, and reconciliation
+
+Aligned shared loading, empty, error, and not-found language with the approved
+public copy library. Loading shells preserve route geometry, shared empty states
+use a borderless tonal surface, the global error gives retry and Map recovery,
+and the 404 provides Map and homepage actions while remaining `noindex`.
+Supporting public routes now use Home breadcrumbs and current page-specific
+Open Graph and Twitter metadata where it was missing. Canonicals, sitemap
+membership, public/private indexing, authentication, analytics, Supabase,
+research, review, publication, and provider contracts are unchanged.
+
+The active governance set was reviewed in place. No duplicate operating
+contract remained that warranted deletion; historical material remains under
+the non-operating archive. Scoped tests and lint passed, and signed-out browser
+checks at 390, 768, 1024, and 1440 pixels confirmed one H1, Home breadcrumbs,
+usable recovery actions, and no horizontal overflow.
+
+## August 5 global-refinement Phase 5 landing, trust, and supporting journeys
+
+Aligned the guided entrance and supporting public journeys around what a
+visitor can do next. About now leads with **The capability was here. The shared
+picture was not.** and uses the canonical founder wording. How It Works moves
+from a question through relevant capability, public evidence, comparison and a
+private Working List into a practical conversation. Methodology remains the
+detailed evidence and governance reference and now ends with one direct path to
+inspect a published profile. Contribution copy uses the approved **Know
+something missing? Improve the public record.** promise.
+
+The landing structure and hero remain unchanged. Its five-minute public cache,
+client-hydrated authentication, deterministic guided example, North Signal
+consent and MailerLite delivery, private-route access, public APIs, Supabase,
+analytics, research, review, and publication contracts are unchanged. Scoped
+copy and journey tests passed with the complete application suite. Signed-out
+browser checks covered the landing, About, How It Works, Methodology, Contact,
+sign-in, and private-route sign-in boundaries at 390, 768, 1024, and 1440
+pixels with one H1 and no horizontal overflow.
+
 ## August 5 global-refinement Phase 4 editorial collections and articles
 
 Aligned Canadian Defence Signals and Defence Briefs as complementary editorial

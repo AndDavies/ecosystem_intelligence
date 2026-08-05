@@ -28,3 +28,11 @@ The private defence synthesis layer is intentionally outside the repository at `
 - Keep runtime imagery in `app/public/`; keep campaign or production media in `content/`.
 - Avoid adding another top-level folder unless it represents a genuinely new operating concern.
 - Keep public wiki publication deferred until a reviewed Supabase candidate workflow is separately designed and approved.
+
+## Public route contract
+
+- `/` is the guided public entrance; `/map` is the canonical discovery workspace.
+- Collection routes lead with a visitor decision and the first useful published records. Detail routes lead from the record to evidence, unknowns, reviewed relationships, and a practical next step.
+- Supporting routes use Home as their breadcrumb parent. Collection and dossier breadcrumbs preserve the canonical Map, collection, or parent-record relationship.
+- Canonical public routes own distinct titles, descriptions, social metadata, one H1, and descriptive internal links. Authentication, accounts, collections, contribution workflows, APIs, and administrator routes remain private or `noindex` as applicable.
+- Shared loading states preserve the route's geometry. Empty, error, and not-found states use plain language and provide one clear recovery path without exposing internal errors.

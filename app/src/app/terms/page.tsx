@@ -1,14 +1,16 @@
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { socialMetadata } from "@/lib/seo/social";
 
 export const metadata = {
   title: "Terms of use",
   description: "Terms governing use of the True North Map public beta.",
-  alternates: { canonical: "/terms" }
+  alternates: { canonical: "/terms" },
+  ...socialMetadata({ title: "True North Map Terms of Use", description: "Terms governing responsible use of True North Map and its reviewed public evidence.", path: "/terms", eyebrow: "Public Beta terms" })
 };
 
 export default function TermsPage() {
   return (
-    <PublicPageShell eyebrow="Public Beta" title="Terms of use" description="Use the ecosystem map to discover possibilities, verify important decisions independently, and contribute responsibly.">
+    <PublicPageShell eyebrow="Public Beta" title="Terms of use" description="Use the ecosystem map to discover possibilities, verify important decisions independently, and contribute responsibly." backHref="/" backLabel="Home">
       <div className="space-y-5">
         <PublicCard title="Independent informational resource" eyebrow="No official status"><p className="text-sm leading-6 text-[var(--atlas-muted)]">True North Map is an independent project by Andrew Davies. It is not affiliated with or endorsed by the Government of Canada, the Canadian Armed Forces, NATO, any procurement authority, or any organization shown on the map.</p></PublicCard>
         <PublicCard title="No warranty or eligibility determination" eyebrow="Use your judgment"><p className="text-sm leading-6 text-[var(--atlas-muted)]">Records are assembled from reviewed public sources and may be incomplete, stale, or disputed. They are not legal, investment, security, procurement, or due-diligence advice. Inclusion, ranking, a technology-to-demand assessment, or connection facilitation does not establish endorsement, certification, eligibility, or suitability.</p></PublicCard>

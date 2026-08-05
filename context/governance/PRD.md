@@ -1,7 +1,7 @@
 # True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
 Status: active product requirements
-Last updated: 2026-08-03
+Last updated: 2026-08-05
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -17,7 +17,7 @@ The product combines public mapping, decision-useful organization profiles, publ
 
 ## Founder catalyst and North Star
 
-True North Map is grounded in Andrew Davies's experience as a veteran and Combat Systems Engineering Officer, his work in the civilian sector, and his decision to focus that experience on Canadian defence and sovereign capability. Defence-sector project delivery and engagement with operators, engineers, subject-matter experts, founders, and program teams revealed both extraordinary national talent and a persistent coordination problem: Canada lacked a shared, practical view of who was building, what their technology could do, where it might fit, and who should be in the next conversation.
+True North Map is grounded in Andrew Davies's experience as a veteran and former Combat Systems Engineering Officer, his work in the civilian sector, and his decision to focus that experience on Canadian defence and sovereign capability. Defence-sector project delivery and engagement with operators, engineers, subject-matter experts, founders, and program teams revealed both extraordinary national talent and a persistent coordination problem: Canada lacked a shared, practical view of who was building, what their technology could do, where it might fit, and who should be in the next conversation.
 
 The product's guiding North Star is:
 
@@ -127,7 +127,7 @@ The isolated Canadian Defence Signals editorial surface is the narrow exception:
 | `/demand/[slug]` | Public need, desired outcome, exact source passage, reviewed assessments, gaps, and caveats |
 | `/signals` | Archive of daily, source-linked Canadian Defence Signals editions |
 | `/signals/[slug]` | Descriptive immutable edition URL with public facts, automated reads, unknowns, next steps, sources, and links into published atlas records |
-| `/how-it-works` | Five-step public journey from map discovery through evidence, released needs, reviewed assessments, and conversation |
+| `/how-it-works` | Five-step public journey from a question through relevant capability, public evidence, comparison, a private Working List, and the next conversation |
 | `/account` | Authenticated identity, Working Lists, connection and contribution status, sign-out, and private-data controls |
 | `/collections` | Authenticated private Working Lists |
 | `/collections/[id]` | Saved organization and capability shortlist with lookbook export |

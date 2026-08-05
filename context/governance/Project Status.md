@@ -49,6 +49,20 @@ The current product and operating system include:
   surfaces, and existing Mission Area and record continuations. Published
   article bodies, source lineage, imagery, automation, editorial skills, and
   publication authority are unchanged.
+- Global-refinement Phase 5 aligns the guided entrance and supporting trust
+  journeys. About leads with the canonical founder story; How It Works moves
+  from a visitor question through published capability, evidence, comparison,
+  and a Working List; Methodology remains the detailed review reference and
+  sends readers into a published record; and contribution pages state clearly
+  that every change is reviewed before publication. Landing caching,
+  authentication hydration, private-route access, consent, MailerLite, and all
+  data and publication contracts remain unchanged.
+- Global-refinement Phase 6 aligns shared loading, empty, error, and not-found
+  states with the public copy system; gives supporting routes canonical Home
+  breadcrumbs and current social metadata; and keeps one H1, responsive
+  geometry, accessible recovery actions, canonical URLs, sitemap behaviour,
+  and public/private indexing boundaries intact. No schema, API, authentication,
+  analytics, provider, research, review, or publication change was introduced.
 - The Signals archive and edition template now establish the next shared public
   surface standard: wide consistent editorial frames, rounded tonal cards with
   no decorative outlines, Editorial Blue for reading structure, bounded colour

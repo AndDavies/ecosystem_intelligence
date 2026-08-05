@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-04
+Last reviewed: 2026-08-05
 
 ## Brand idea
 
@@ -191,6 +191,14 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 - This is an active route-by-route reconciliation, not permission to restyle an
   untouched route opportunistically. Preserve existing workflows and evidence
   semantics while applying the shared surface contract.
+
+### System states and recovery
+
+- Loading language stays short and literal: **Loading the map…**, **Loading published organizations…**, and **Loading published Public Needs…**.
+- Empty states name the published scope and suggest one useful adjustment. They use a quiet tonal surface rather than a decorative dashed border.
+- The shared route error leads with **We could not load this view.** and offers retry plus Map recovery. It never exposes provider or database details.
+- The not-found page leads with **We could not find that page.** and offers Map and homepage actions. It is explicitly excluded from indexing.
+- Supporting trust and governance routes use Home as their breadcrumb parent. Product collections and dossiers retain their Map or collection parent so navigation describes the visitor's actual context.
 
 ### Homepage hero
 
