@@ -1,13 +1,10 @@
 # Content
 
-This area is for outward-facing material that supports the product but is not part of the web application runtime.
+This area contains durable, source-controlled content that directly supports the current product.
 
-- `launch-video/` is the standalone launch-video project.
-- `launch/broader-public-beta-2026-08/` is the current launch package, including screenshots, the Directional N social set, walkthrough, partner material, channel copy, response guide and release checklist.
-- `launch/public-beta-launch-package.md` remains the operating source for release gates, UTM conventions, outreach order, and first-week measures. Exact corpus counts must still be read from production before use.
-- `launch/screenshots/`, `launch/demo-frames/`, and `launch/true-north-map-public-beta-demo.mp4` are July 18 legacy assets from the previous interface. They are retained for reference but are not approved for the current broader release.
-- `brand/True North Map Brand System.md` indexes the approved Directional N identity, North Signal editorial brand, colour, typography, production artwork, and brand regression checks.
-- `launch/phase-2/` is the historical July 26 launch package and must not be distributed as current.
-- `output/pdf/True_North_Map_Project_Report_2026-07-26.pdf` is the dated whole-project report. The governance Markdown remains canonical when the product changes after that snapshot.
+- `brand/True North Map Brand System.md` is the canonical brand contract.
+- `brand/source/` and `brand/exports/` contain the approved Directional N reference and reusable logo exports.
+- `email/` contains the current authentication and North Signal email copy.
+- `briefs/` contains source-controlled editorial inputs that still participate in the active briefing workflow.
 
-Add future copy drafts, demo narratives, export assets, or campaign material here rather than mixing them into `app/` or `research/`.
+Screenshots, mockups, lookbooks, decks, launch packets, reports, and campaign exports are not standing project context. Create them only when Andrew explicitly asks for a durable deliverable, keep them local by default, and do not infer that an older visual package describes production. The deployed application, live Supabase state, current governance, and runtime assets are the source of truth.

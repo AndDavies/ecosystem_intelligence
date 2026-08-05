@@ -1,8 +1,8 @@
 # Admin Workflow And Data Contract
 
-This document is the current operating contract for the private True North Map administration routes. The detailed route-by-route manual is [True North Map Admin Manual](../../output/pdf/True_North_Map_Admin_Manual.pdf).
+This document is the current operating contract for the private True North Map administration routes.
 
-Last verified: 2026-07-25
+Last verified: 2026-08-05
 
 ## Access
 
@@ -25,8 +25,12 @@ Read organization, technology, public-demand, and reviewed-match counts from the
 | `/admin/organizations/[id]/edit` | Maintain one published organization dossier and its approved official logo | Immediate transactional public update |
 | `/admin/demand-signals` | Add or maintain official public demand sources and requirements | Immediate transactional public update |
 | `/admin/demand-matches` | Stage plausible technology-to-demand suggestions | Private candidates only |
+| `/admin/signals` | List Signals editions, current social-example completeness, and recent automated run health | Read-only index |
+| `/admin/signals/[id]/edit` | Correct one edition and its article entries, inspect sources and hero provenance, and copy the edition's LinkedIn/X examples | Immediate audited editorial update and public route revalidation; social examples remain read-only |
 | `/admin/insights` | Progress bounded beta workflows and inspect discovery behaviour | Private workflow updates only |
 | `/admin/coverage` | Inspect live gaps by region, technology, mission, and public demand | Read-only |
+
+The Signals editor does not create a second publishing system. Daily automation remains responsible for source selection, the validated edition packet, image gate, and first publication. The owner editor may correct published copy or archive an edition through the existing server actions. Source lineage, atlas continuations, hero provenance, and social examples remain inspectable; copying a social example never posts externally or mutates its database status.
 
 ## Relationship Safety
 

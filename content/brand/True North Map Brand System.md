@@ -58,11 +58,7 @@ Canonical asset packet:
 | App tile | `app/public/brand/true-north-map-app-tile.svg` | App icons and square product placements |
 | Social avatar | `app/public/brand/true-north-map-social-avatar.svg` | LinkedIn and other account avatars |
 | Social avatar PNG | `app/public/brand/true-north-map-social-avatar.png` | 1024 pixel upload-ready social account avatar |
-| X profile header | `content/launch/broader-public-beta-2026-08/true-north-map-x-header.png` | Text-free companion header with a protected left avatar area |
 | Collateral PNG exports | `content/brand/exports/true-north-map-symbol.png`, `true-north-map-horizontal.png`, `true-north-map-stacked.png` | Transparent high-resolution exports for documents and presentations |
-| LinkedIn banner | `content/launch/phase-2/true-north-map-linkedin-banner.png` | Historical Phase 2 asset; rebuild with the Directional N before distribution |
-| Partner overview | `content/launch/phase-2/true-north-map-partner-overview.pdf` | Historical Phase 2 asset; rebuild with current interface and identity before distribution |
-| Partner/media deck | `content/launch/phase-2/true-north-map-partner-media-deck.pptx` | Historical Phase 2 asset; rebuild with current interface and identity before distribution |
 
 The master reference image records the approved direction, not a distributable
 logo file. The flat SVG packet above is the implementation source of truth. Do
@@ -111,7 +107,7 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 - Compare the shared header across `/`, `/map`, and at least one public detail
   route whenever landing-page typography changes; navigation must not shift
   between routes.
-- Rebuild current screenshots and launch assets when the visible product changes materially; July 18 assets remain historical only.
+- Create screenshots and launch assets only when Andrew explicitly requests a durable deliverable. Validate every requested asset against production at creation time; never maintain old screenshots as active brand guidance.
 - Treat the North Signal name as the editorial briefing. Call the visual symbol the Directional N even where legacy filenames retain `north-signal-mark`.
 - Keep evidence confidence and uncertainty visually distinct. Brand polish must never make an assessment appear more certain than its sources.
 

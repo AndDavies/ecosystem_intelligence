@@ -7,6 +7,7 @@ node_modules
 coverage
 dist
 .DS_Store
+/pnpm-lock.yaml
 __pycache__/
 *.py[cod]
 *.tsbuildinfo
@@ -17,6 +18,10 @@ tmp/
 .tmp/
 sites/
 content/launch-video/
+content/launch/
+content/lookbook/
+research/audits/
+research/Beta Release Plan/
 app/test-results/
 # Keep raw and permissioned research local. Publish only reviewed derivatives.
 research/*.pdf
@@ -33,13 +38,6 @@ research/north-signal/local/
 research/signals/local/
 # Private contact/discovery inputs are never repository content.
 research/source-book/newsletter-subscriptions.csv
-# Superseded launch packages stay available locally; the dated broader-beta
-# package is the only active source-controlled launch kit.
-content/launch/demo-frames/
-content/launch/phase-2/
-content/launch/screenshots/phase-2/
-content/launch/screenshots/true-north-map-*.png
-content/launch/phase-2-channel-copy.md
-content/launch/phase-2-response-guide.md
-content/launch/public-beta-launch-package.md
-content/launch/true-north-map-public-beta-demo.mp4
+# Screenshots, launch packets, decks, reports, and mockups are generated only
+# when Andrew explicitly requests a durable deliverable. They remain local by
+# default and never become operating project context automatically.

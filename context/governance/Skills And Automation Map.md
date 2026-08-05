@@ -2,13 +2,13 @@
 
 Status: current architecture and integration map
 
-Last reviewed: 2026-08-04
+Last reviewed: 2026-08-05
 
 ## Current integration state
 
 - The seven research skills, North Signal editorial skill, and visibility skill are canonical local operator systems under `.agents/skills/`. They are intentionally ignored and are not deployed with the public website.
 - The public repository carries only their approved interoperability surface: typed schemas, safe commands, tests, migrations, Admin Review and Publish support, and governance contracts.
-- The July 31 primary worktree contains active uncommitted research, visibility, Source Book, and lineage work. That does not change the production application until a deliberately selected compatible public contract is validated, committed separately, and deployed.
+- Validated research lineage and reusable visibility interoperability code are committed separately from application releases. Private credentials, raw provider material, generated reports, and local skill instructions remain ignored.
 - Supabase remains the only canonical queue and corpus. A local candidate, review report, issue packet, visibility report, or staging export is never evidence of a live or published state.
 
 ## Research and ingestion skill chain
@@ -53,16 +53,16 @@ Research files and private staging
 - Google Search Console and GA4 owned-property evidence;
 - PageSpeed and public-route technical checks;
 - Bing and Ahrefs imports;
-- a locally approved, explicitly capped weekly DataForSEO seed panel with 24-hour retry deduplication;
+- a complete Canada/English DataForSEO seed set collected on every scheduled refresh;
 - SEO, GEO, and AEO opportunity analysis;
 - answer quality, internal-link, and earned-link recommendations;
 - an allowlisted aggregate owner-only dashboard projection.
 
 Its local artifacts live under ignored `research/visibility/local/`. The skill does not publish content, change providers, submit indexing requests, send outreach, purchase links, or write to the public corpus. A recommended content or technical change enters the ordinary product or editorial workflow and must pass the cross-system regression contract.
 
-Visibility is an operator-only local system. Its installed skill, credentials, provider exports, query evidence, and generated reports are ignored and never form part of a public application deployment. Every reporting lens refreshes configured read-only providers and synchronizes a sanitized summary; the scheduled Monday run uses `visibility:validate`, preflight, and a strict refresh that fails closed for incomplete Search Console, GA4, PageSpeed, technical-sample, or configured-dashboard evidence while retaining a clearly labelled monitoring snapshot. Bing, Ahrefs, Trends, and DataForSEO remain optional contextual sources and must be marked available, partial, stale, or unavailable rather than zero. When visibility work changes, validate it locally and promote only an approved application, content, or editorial change through the ordinary regression workflow.
+Visibility is an operator-only local system. Its installed skill, credentials, provider exports, query evidence, and generated reports are ignored and never form part of a public application deployment. Every reporting lens refreshes configured read-only providers and synchronizes a sanitized summary; the scheduled Monday run uses `visibility:validate`, preflight, and a strict configured-provider refresh that paginates every provider response, audits every public sitemap URL, runs the complete configured DataForSEO seed set, and fails closed when a configured live provider, route audit, or dashboard acknowledgement is incomplete. Optional APIs without local configuration remain explicitly unavailable/unknown and do not fail the refresh. The collector does not inspect credits, cap tasks, reuse same-day panels, or change billing; provider-reported cost is retained locally after collection for auditability. Imported Ahrefs, Trends, and Generative AI exports remain dated local context. When visibility work changes, validate it locally and promote only an approved application, content, or editorial change through the ordinary regression workflow.
 
-The next enrichment layer keeps the same boundary: Search Console uses a three-day reporting cutoff and contributes bounded daily/device/country/search-appearance aggregates; GA4 contributes only consented public-route acquisition categories, public landing-path outcomes, and allowlisted interaction totals; CrUX History, Bing crawl/link data, a local Generative AI report import, and an optional operator-owned Search Console BigQuery aggregate bridge remain read-only inputs. Individual identities, raw referrers, raw queries, event parameters, and session trails never enter the owner-only dashboard.
+The next enrichment layer keeps the same boundary: Search Console uses a three-day reporting cutoff and contributes complete daily/device/country/search-appearance aggregates; GA4 contributes only consented public-route acquisition categories, public landing-path outcomes, and allowlisted interaction totals; CrUX History, Bing crawl/link data, and the operator-owned Search Console BigQuery aggregate bridge are collected whenever configured, while a local Generative AI report import remains dated context. A valid CrUX no-dataset response and the first 48 hours of a newly activated BigQuery export remain visible non-blocking unknown/pending states. Individual identities, raw referrers, raw queries, event parameters, and session trails never enter the owner-only dashboard.
 
 ## North Signal editorial skill
 
@@ -70,19 +70,26 @@ The next enrichment layer keeps the same boundary: Search Console uses a three-d
 
 Its output is a private, validated issue candidate under ignored `research/north-signal/local/`. It does not modify Supabase, create public records, change subscriber consent, or create and send a MailerLite campaign. Andrew reviews the issue and manually controls delivery.
 
+The separate local `newsletter-signal-brief` skill powers Andrew's 04:00
+America/Halifax Morning Brief automation in the Playground project. Its
+validated PDF, raw archive, Crashboard post, Drive copy, and link-only email
+retain a `related_links` section containing at least twelve canonical article
+links that are solid but below the full-anchor or Radar threshold. Those links
+remain compact reading-list entries and are not counted as full signals.
+
 ## Daily Signals editorial skill
 
-`tnm-daily-signals` is an isolated project-local daily workflow available to every Codex task opened in this project. It resolves feed, newsletter, and search leads to original durable sources; validates a five-to-eight-item `daily_signals_packet_v1`; requires one article-specific publisher image from a cited source; and may publish only through `app/scripts/publish-daily-signals.ts` to dedicated `signal_*` tables and the `signals/` prefix of `brief-images`. The skill compares declared candidates, rejects generic backgrounds, logos, unrelated stock and undersized assets, requires visual relevance review, and stores only normalized 1600 x 900 WebP output publicly. It treats a no-publish day as valid, keeps social drafts private, and never changes the core corpus or posts externally. The approved publisher is run from the project root; its `pnpm --dir app` delegation loads the local-only service-role credential from ignored `app/.env.local`, so the workflow never depends on Vercel environment variables on the local runner. Published Signals may inform the weekly North Signal issue, but Andrew still reviews and sends the weekly MailerLite campaign manually. Automation `true-north-map-daily-signals` is active daily at 07:00 `America/Halifax` and enforces the same source, editorial, image, credential, and publication gates.
+`tnm-daily-signals` is an isolated project-local daily workflow available to every Codex task opened in this project. It resolves feed, newsletter, and search leads to original durable sources; validates a six-to-eight-item `daily_signals_packet_v1`; requires one article-specific publisher image from a cited source plus at least one current-edition LinkedIn example and one X example; and may publish only through `app/scripts/publish-daily-signals.ts` to dedicated `signal_*` tables and the `signals/` prefix of `brief-images`. The skill compares declared image candidates, rejects generic backgrounds, logos, unrelated stock and undersized assets, requires visual relevance review, and stores only normalized 1600 x 900 WebP output publicly. The publisher verifies the two private social platforms before publication and repairs missing examples on an idempotent rerun; it never posts externally. `/admin/signals` is the edition index and run-health view. `/admin/signals/[id]/edit` is the conventional owner editor for edition and item copy, source and image provenance, atlas links, and view-and-copy-only social examples. It treats a no-publish day as valid and never changes the core corpus. The approved publisher is run from the project root; its `pnpm --dir app` delegation loads the local-only service-role credential from ignored `app/.env.local`, so the workflow never depends on Vercel environment variables on the local runner. Published Signals may inform the weekly North Signal issue, but Andrew still reviews and sends the weekly MailerLite campaign manually. Automation `true-north-map-daily-signals` is active daily at 06:30 `America/Halifax` and invokes this same source, editorial, image, social-example, credential, and publication contract.
 
 ## Scheduled and manual operations
 
 | Operation | Normal cadence | Writes | Human gate |
 | --- | --- | --- | --- |
-| Broad discovery | Weekly or manual | Collection plan, claim ledger, typed research lineage, and private candidates | Review and Publish |
-| Signal refresh | Weekday or manual | Collection plan, claim ledger, atomic signals, and private refresh candidates | Review and Publish |
+| Broad discovery | Manual only | Collection plan, claim ledger, typed research lineage, and private candidates | Review and Publish |
+| Signal refresh | Manual; the prior weekday automation remains paused | Collection plan, claim ledger, atomic signals, and private refresh candidates | Review and Publish |
 | North Signal issue preparation | Weekly or manual | Ignored private issue packet and validation report | Andrew edits and sends through MailerLite |
-| Canadian Defence Signals scan | Daily at 07:00 Atlantic | Validated edition in isolated `signal_*` tables, one normalized cited image under `brief-images/signals/`, plus private run and social-draft rows, or a valid no-publish run | Deterministic source, significance, editorial, and image contract; no core-corpus or external-post authority |
-| Visibility baseline or weekly report | Manual or scheduled private run; every report lens refreshes configured read-only providers, and Monday uses strict validation plus the locally approved nine-task DataForSEO panel when standing approval is enabled | Ignored local snapshots/reports and a synchronized sanitized owner-only summary | Product/editorial prioritization; provider spend remains capped and local |
+| Canadian Defence Signals scan | Daily at 06:30 Atlantic or Andrew-invoked | Validated six-to-eight-signal edition in isolated `signal_*` tables, one normalized cited image under `brief-images/signals/`, a verified current-edition LinkedIn example and X example, plus the private run report, or a valid no-publish run | Deterministic source, significance, editorial, image, and social-example contract; no core-corpus or external-post authority |
+| Visibility baseline or weekly report | Manual or scheduled private run; every report lens refreshes the configured read-only provider set, paginates complete responses, audits the full public sitemap, and Monday uses strict configured-provider completion while optional-unconfigured APIs remain non-fatal | Ignored local snapshots/reports and a synchronized sanitized owner-only summary | Product/editorial prioritization; provider billing remains outside the collector and no provider setting is changed |
 | Privacy retention | Daily production job | Deletes expired detailed telemetry under the published retention policy | Versioned migration and release review |
 | Public launch crawl | Before release or metadata changes | Validation output only | Release owner decides go/no-go |
 
@@ -91,5 +98,5 @@ Its output is a private, validated issue candidate under ignored `research/north
 - Research changes: skill `quick_validate.py`, focused OSINT and pipeline tests, `pnpm data:readiness`, `pnpm research:validate`, deployed research-contract compatibility, and review-card inspection.
 - Visibility changes: `pnpm visibility:validate`, then tests, lint, and build for related application work.
 - North Signal changes: skill validation, source-registry validation, issue-packet validation, link checks, and application tests for any related signup copy or interaction changes.
-- Daily Signals changes: packet validation, complete migration/RLS fixture, dry-run publisher, immutable-slug and duplicate checks, route metadata/sitemap, admin correction/archive, private social drafts, unchanged core-corpus counts, and responsive public reading QA.
+- Daily Signals changes: packet validation, complete migration/RLS fixture, dry-run publisher, immutable-slug and duplicate checks, route metadata/sitemap, admin correction/archive, current-edition LinkedIn and X examples visible in the uncached owner view, idempotent repair, unchanged core-corpus counts, and responsive public reading QA.
 - Production releases: `pnpm release:validate`, relevant browser matrix, `/api/health`, affected public routes, deployment logs, and live database state. Research and visibility checks remain separate and are required only when those local operator systems or their tracked interoperability contracts change.

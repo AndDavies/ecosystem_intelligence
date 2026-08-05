@@ -1,6 +1,6 @@
-# Phase 2 broader-release runbook
+# Production release runbook
 
-Last reviewed: 2026-07-31
+Last reviewed: 2026-08-05
 
 Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.
 
@@ -36,9 +36,9 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 
 ## Rollback
 
-- Application: promote the recorded pre-Phase 2 Vercel deployment or revert the Phase 2 merge commit.
+- Application: promote the most recent verified healthy Vercel deployment or revert the scoped release commit.
 - Database: the Phase 2 migration adds a private retention-cleanup function and a daily scheduler entry that calls it. This is necessary to honour the published 30-day detailed-event and 90-day raw-search retention limits. No action is needed during normal operation. During rollback, the acting agent uses the versioned rollback script, verifies the live `cron.job` state, removes the scheduler entry first, then removes the function, and reruns database and release regression checks. This is an agent-owned operation, not a release-owner memory task.
-- Authentication: retain the existing Supabase, Google OAuth and Resend configuration. Phase 2 does not change providers or credentials.
+- Authentication: retain the existing Supabase, Google OAuth and Resend configuration unless a separately approved provider change is part of the release.
 - Newsletter: revoke or pause MailerLite delivery without changing the production consent ledger.
 
 ## Incident priorities
@@ -54,8 +54,8 @@ For a critical issue, stop promotion, preserve logs, roll back the application i
 
 All active findings, accepted risks, repair evidence, and follow-up triggers are recorded in `Security And Reliability Remediation Log.md`.
 
-## Current broader-beta release candidate
+## Current production release
 
-- Current collateral is under `content/launch/broader-public-beta-2026-08/` and includes reviewed current-interface screenshots, a Directional N banner and avatar, a 30-second walkthrough, a one-page partner PDF, partner/media deck, response guide, channel copy, and source notes.
+- There is no standing tracked launch packet. Create screenshots, decks, reports, campaign copy, and other collateral only when explicitly requested; generate them locally by default and verify every visual, count, proof point, and outbound link against production immediately before use.
 - Discovery reads now use deterministic paging, same-snapshot collection counts, linear-time fallback grouping, and a 5,000-marker regression gate. These changes are implemented in the local release candidate; production closure requires deployment plus the health, catalogue-consistency, cache-header, crawl-warning, and field-performance checks above.
 - `REL-2026-003` and `REL-2026-004` remain open until their production verification triggers pass. Do not mark either deployed based on local tests alone.

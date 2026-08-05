@@ -1,4 +1,31 @@
-# Development Log - 2026-07-31
+# Development Log
+
+## August 5 production-first project reconciliation
+
+Reconciled the tracked repository, production Supabase state, local operator
+systems, and active governance around the production soft-beta application.
+Two complete research runs are retained as validated immutable lineage because
+their candidates already passed human review and publication; they are not
+pending database changes. Reusable visibility tooling is retained while raw
+provider data and credentials remain ignored. The former autonomous broad
+research schedule was deleted and broad research is now manual; the separate
+refresh schedule remains paused.
+
+Daily Signals now enforces current-edition LinkedIn and X examples as part of
+its validated publication packet and repairs missing rows idempotently without
+posting externally. The owner workspace now has a conventional edition index
+at `/admin/signals` and edition editor at `/admin/signals/[id]/edit`, including
+copy correction, sources, hero provenance, atlas links, and view-and-copy-only
+social examples. No core-corpus or publication authority changed.
+
+Removed obsolete tracked launch packets, lookbooks, dated audits, and beta-plan
+exports. Runtime brand and video assets remain in `app/public/`, canonical brand
+sources remain in `content/brand/`, and a repository hygiene gate prevents
+generated collateral from silently returning. Screenshots, reports, decks, and
+campaign packets are now created only on explicit request and locally by
+default. The pnpm override and ESLint plugin declarations were moved into the
+workspace-native configuration so clean installs and release validation remain
+reproducible.
 
 ## August 5 global-refinement Phase 6 system states, SEO, and reconciliation
 
@@ -16,6 +43,20 @@ contract remained that warranted deletion; historical material remains under
 the non-operating archive. Scoped tests and lint passed, and signed-out browser
 checks at 390, 768, 1024, and 1440 pixels confirmed one H1, Home breadcrumbs,
 usable recovery actions, and no horizontal overflow.
+
+## August 5 Daily Signals and Morning Brief contract alignment
+
+Aligned the ignored Daily Signals skill, executable packet contract, and local
+automation to 06:30 America/Halifax. Daily Signals now requires six to eight
+distinct source-supported items; six is the floor, and seven or eight are
+preferred when they independently clear the gates. The scheduled automation
+uses a normalized daily 06:30 RRULE and preserves the existing isolated
+publication boundary.
+
+Formalized Morning Brief `related_links` as a compact list of canonical,
+source-resolved articles that clear the executive relevance gate but do not
+earn a full anchor or Radar entry. The existing validator, PDF renderer,
+Markdown archive, and 04:00 scheduled prompt now carry that distinction.
 
 ## August 5 global-refinement Phase 5 landing, trust, and supporting journeys
 
@@ -165,7 +206,7 @@ findings, zero recovered failures and no duplicate titles; 220 orphan candidates
 remain an intentional Phase 6 internal-linking input. The 5,000-marker scale gate
 kept every marker, bounded rich cards to 18, and remained inside projection,
 clustering, and serialized-payload budgets. The active local Daily Signals
-automation remains scheduled for 07:00 America/Halifax with its existing source,
+automation remains scheduled for 06:30 America/Halifax with its existing source,
 image, credential, idempotency, and isolated publication gates. MailerLite was
 not mutated; its tracked future-entry welcome contract and four integration
 tests remain green.
@@ -213,13 +254,13 @@ Reconciled the Signals archive and article route with the shared public style co
 
 Made cited editorial imagery a required part of every repeatable Daily Signals run. The project-local skill now extracts publisher-declared images from the cited article set, reports all admissible candidates for visual comparison, rejects generic publisher share backgrounds, logos, unrelated stock and undersized assets, and records the selected image URL, cited source page, factual alt text and publisher attribution. The executable packet schema rejects image-less editions, while the publisher always normalizes the source asset to a 1600 x 900 WebP under `brief-images/signals/` before the edition can publish.
 
-Added a narrow, idempotent `--replace-hero` repair path for published editions that predate the image gate. Five July 29 to August 2 backfill editions passed the schema, editorial and image checks and were amended with sourced bucket images; the August 3 edition's existing cited Kraken image was also migrated from an application-local path into the same normalized bucket contract. All six slugs, text, items, original sources, atlas links, publication status and publication dates were unchanged. The active 07:00 Atlantic automation now enforces and verifies the same source, relevance, normalization and no-image-no-publish contract. The core atlas, research queues, review authority, MailerLite and social platforms were not modified.
+Added a narrow, idempotent `--replace-hero` repair path for published editions that predate the image gate. Five July 29 to August 2 backfill editions passed the schema, editorial and image checks and were amended with sourced bucket images; the August 3 edition's existing cited Kraken image was also migrated from an application-local path into the same normalized bucket contract. All six slugs, text, items, original sources, atlas links, publication status and publication dates were unchanged. The active 06:30 Atlantic automation now enforces and verifies the same source, relevance, normalization and no-image-no-publish contract. The core atlas, research queues, review authority, MailerLite and social platforms were not modified.
 
 ## August 3 Canadian Defence Signals foundation
 
 Implemented an isolated daily Signals publishing system without changing the canonical research or atlas publication authority. It includes descriptive immutable `/signals/[slug]` URLs, a public archive, source-fact versus automated-read separation, unknowns, next steps, evidence strength, original source links, existing-record navigation, Article and ItemList metadata, sitemap discovery, an administrator correction/archive route, private run health and social drafts, and an idempotent publisher.
 
-The ignored `tnm-daily-signals` skill requires five to eight distinct developments from at least three source families, resolves discovery feeds to durable sources, rejects unsupported repeats, accepts no-publish days, and enforces an executive field-guide narrative before dry-run or publication. Weekly North Signal remains human-reviewed and manually sent. The complete Node 24 release gate passed with 256 tests, lint, dependency audit, 5,000-marker scale validation, and the production build. The schema and follow-up foreign-key indexes are reconciled to the live migration ledger, the first approved edition is published, and the application is deployed. No schedule, social post, MailerLite send, or core-corpus write occurred.
+The ignored `tnm-daily-signals` skill requires six to eight distinct developments from at least three source families, resolves discovery feeds to durable sources, rejects unsupported repeats, accepts no-publish days, and enforces an executive field-guide narrative before dry-run or publication. Weekly North Signal remains human-reviewed and manually sent. The complete Node 24 release gate passed with 256 tests, lint, dependency audit, 5,000-marker scale validation, and the production build. The schema and follow-up foreign-key indexes are reconciled to the live migration ledger, the first approved edition is published, and the application is deployed. No schedule, social post, MailerLite send, or core-corpus write occurred.
 
 Status: soft-beta project reconciliation and current-state audit
 
@@ -304,7 +345,7 @@ The first production smoke exposed `DYNAMIC_SERVER_USAGE` on dossier routes beca
 - Public reads keep one retry and now add a short randomized delay. Middleware is restricted to the legacy root bridge and routes that actually require authentication refresh or protection.
 - The application and CI runtime is pinned to Node 24. GitHub Actions runs the complete release gate on `main`; CodeQL, complete dependency auditing, Dependabot vulnerability alerts, secret scanning, and push protection provide supply-chain checks without automated update branches.
 - Local migration and rollback filenames now match the applied production Supabase versions exactly. No SQL was executed and no database object changed.
-- Superseded launch exports, generated reports, and the private newsletter export were removed from the current tracked tree. Historical governance is isolated under `context/archive/governance/`; the current broader-beta kit remains the only active launch package.
+- Superseded launch exports, generated reports, and the private newsletter export were removed from the current tracked tree. Historical governance is isolated under `context/archive/governance/`; generated collateral is no longer an active operating contract.
 - A production-only Vercel Firewall observation rule for unusually frequent `/organizations` GET traffic is staged with a log-only action. It is not active until the owner explicitly reviews and publishes it.
 
 ## August 1 pre-release UX candidate
@@ -401,7 +442,7 @@ Supabase performance advisors reported overlapping permissive RLS policies, unus
 2. **Mission Area / Use Case discovery.** Add `/missions` and `/missions/[slug]` using only published mission areas, reviewed capability relationships, current public evidence, visible gaps, and existing organization/technology routes. Do not create a second taxonomy or infer new missions. Link from How It Works, relevant technologies, Public Needs, Briefs, and the map.
 3. **Mobile collection refinement.** Bring the first real organization higher on `/organizations`, reduce Regions introduction height, preserve streamed loading geometry, and rerun the four-width browser matrix.
 4. **Content and internal-link cadence.** Publish a consistent Defence Brief and North Signal rhythm, create source-backed links into Mission Areas and Public Needs, and refresh older high-value pages when new evidence arrives.
-5. **Current launch package and distribution.** Rebuild the LinkedIn banner, screenshots, walkthrough, partner overview, and media deck with the Directional N and current interface. Then run founder-led LinkedIn, included-organization verification, ecosystem partner, media, and builder-community waves with source-specific UTMs.
+5. **Historical launch package and distribution proposal.** This proposal produced dated collateral that was later retired from active project context. Any new campaign assets must be explicitly requested and rebuilt from current production.
 6. **Scale follow-up.** Separate the anonymous cacheable public shell from auth-state requests, watch the growing homepage/directory transfer size, and consolidate overlapping public-read/staff RLS policies without weakening authorization.
 
 ## Implementation outcome
@@ -412,7 +453,7 @@ The six-step sequence was implemented in order in the current local release cand
 2. **Mission discovery:** added `/missions` and `/missions/[slug]` over the existing published Mission Area taxonomy and reviewed relationships, with clear assessment caveats and cross-links into organizations, technologies, Briefs, and Working Lists.
 3. **Mobile and Regions:** compressed the mobile Organizations summary, preserved streamed loading geometry, and corrected regional-card imagery to fill consistent 4:3 card frames without changing the approved art or regional record content.
 4. **Content links:** connected Defence Briefs, organizations, technologies, Public Needs, and Mission Areas using existing reviewed relationships; no new public fact or relationship was inferred.
-5. **Launch package:** rebuilt the broader-beta package under `content/launch/broader-public-beta-2026-08/` with current screenshots, Directional N assets, channel copy, response guide, 30-second walkthrough, partner PDF, and partner/media deck. The earlier Phase 2 package remains historical.
+5. **Launch package:** produced a dated broader-beta asset set with screenshots, Directional N assets, channel copy, response guide, walkthrough, partner PDF, and partner/media deck. These generated assets were later retired from the active tracked tree.
 6. **Scale and operations:** added deterministic paged reads for every discovery relation, same-snapshot public counts, linear-time grid grouping for the fallback map, a 5,000-marker scale gate, direct non-sensitive health checks, and launch probes that compare summary, atlas total, complete markers, and bounded rich results while surfacing recovered retries.
 
 Steps 1 through 5 are functionally complete in the release candidate. Step 6 source work is complete locally but its production-specific cache, crawl-warning, catalogue-consistency, runtime-log, and field-performance checks remain release activities. `REL-2026-003` and `REL-2026-004` are therefore not closed in this log.

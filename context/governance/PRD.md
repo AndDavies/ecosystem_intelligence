@@ -111,7 +111,7 @@ The landing page may offer a fixed public example with visitor-adjustable **Sear
 
 Automated research can create leads and candidate changes. Only an explicit human-reviewed promotion can change canonical published records.
 
-The isolated Canadian Defence Signals editorial surface is the narrow exception: the approved daily 07:00 Atlantic automation may publish a validated `daily_signals_packet_v1` only to dedicated `signal_*` tables and one normalized cited image under `brief-images/signals/`. It cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read, links the durable public sources, and displays an article-specific image traced to one of those sources. Generic publisher backgrounds, logos, unrelated stock, generated imagery, and image-less editions fail the publication gate. A no-publish day is valid when the evidence, significance, or image gate is not met.
+The isolated Canadian Defence Signals editorial surface is the narrow exception: the approved daily 06:30 Atlantic automation and the same Andrew-invoked skill may publish a validated `daily_signals_packet_v1` with six to eight distinct signals only to dedicated `signal_*` tables and one normalized cited image under `brief-images/signals/`. It cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read, links the durable public sources, displays an article-specific image traced to one of those sources, and produces at least one private current-edition LinkedIn example and one X example for the owner workspace. The publisher verifies both platforms before success and repairs missing rows during an idempotent rerun. Generic publisher backgrounds, logos, unrelated stock, generated imagery, image-less editions, and editions without both private examples fail the publication gate. A no-publish day is valid when six admissible signals or the image gate cannot be supported.
 
 ## Public information architecture
 
@@ -208,7 +208,7 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
 ### Automated editorial Signals
 
 - `signal_editions` — descriptive immutable canonical editions and correction timestamps
-- `signal_items` — five to eight bounded developments with fact/read/gap/next-step separation
+- `signal_items` — six to eight bounded developments with fact/read/gap/next-step separation
 - `signal_sources` and `signal_item_sources` — original durable HTTPS evidence and locators
 - `signal_record_links` — optional links to already-published organizations, technologies, Public Needs, and Mission Areas
 - `signal_runs` and `signal_social_drafts` — owner-only operational status and unsent copy protected by RLS and denied to anonymous users
@@ -310,10 +310,10 @@ an explicit rationale. Publication copies the existing technology and demand
 citations, labels the connection as a reviewed assessment, and records the full
 audit trail.
 
-The autonomous research cadence is:
+The research operating sequence is:
 
-1. run broad discovery at 06:00 America/Halifax each Monday
-2. run multi-source record and demand refresh at 08:00 each weekday
+1. begin a manual broad-discovery or refresh run when Andrew requests it
+2. keep automated broad research retired and the multi-source refresh schedule paused
 3. calculate coverage and freshness from live production records
 4. search official, government, Source Book, and discovery-feed source families
 5. qualify durable evidence and build typed new-record or refresh candidates
@@ -443,10 +443,9 @@ Verified for the broader public-beta release:
   contribution, connection, feedback, subscription, and administration journeys
   pass production smoke tests
 - the full automated release suite passes from the restored repository state
-- the broader-sharing copy, source-specific UTM convention, outreach sequence,
-  release controls, screenshots, Open Graph art, and short demonstration video
-  are maintained under `content/launch/`; visual assets require a final check
-  against the current production interface before each campaign
+- broader-sharing copy, screenshots, decks, reports, Open Graph art, or a short
+  demonstration video are created only on explicit request, locally by default,
+  and checked against the current production interface before use
 - Google Search Console and Bing Webmaster Tools are verified and have received
   the canonical sitemap
 - Ask True North is live as a constrained published-corpus discovery layer with
@@ -468,9 +467,9 @@ The product is in broader-sharing posture. Remaining release work is operational
 close the July 19 release-test contribution and connection fixtures, keep update
 subscriber synchronization confirmed, work pending and approved research candidates
 through their appropriate review or Publish checkpoints,
-perform a fresh signed-out and non-admin signed-in production walkthrough, check
-launch visuals against the current UI, and execute the channel sequence in
-`content/launch/public-beta-launch-package.md`. New features and artificial
+perform a fresh signed-out and non-admin signed-in production walkthrough, and
+create any explicitly requested campaign collateral from current production.
+New features and artificial
 corpus targets are not release gates.
 
 ## Explicitly deferred

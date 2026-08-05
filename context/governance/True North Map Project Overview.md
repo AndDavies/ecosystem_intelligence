@@ -36,11 +36,11 @@ Place, technology, or public need
 | Ask True North | Ask a plain-language question and receive bounded results from the live published corpus | AI explores known records; it does not create facts or procurement decisions |
 | Guided example | Adjust a search focus and open a defensible example path | Five visitor-adjustable, allowlisted concepts carried into a deterministic, ordinary `/map` URL. The handoff reads only published records and never calls Ask True North or consumes its quota. |
 | Defence Briefs | Read reviewed, source-linked Canadian defence explainers | Editorial synthesis is distinct from raw private wiki material |
-| Canadian Defence Signals | Follow a daily, source-linked read of developments that may change what Canadian teams should inspect next | Automated interpretation is visibly separated from the public record; original durable sources remain linked; every edition image comes from one of those cited pages and is stored as a normalized public asset |
+| Canadian Defence Signals | Follow a daily 06:30 Atlantic, source-linked read of six to eight developments that may change what Canadian teams should inspect next | Automated interpretation is visibly separated from the public record; original durable sources remain linked; every edition image comes from one cited page; and private current-edition LinkedIn and X examples are verified in the owner workspace without external posting |
 | North Signal | Subscribe to a concise weekly briefing about newly mapped capability, released public needs, reviewed connections, and defence developments worth following | Supabase records consent; MailerLite delivers; Andrew reviews and sends every issue |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
 | Contribution and connection | Claim, correct, suggest, contact, or request a human-brokered introduction | Nothing public changes automatically |
-| Admin workspace | Review candidates, publish approved records, maintain dossiers, demand signals, evidence, logos, coverage, and feedback | Private, owner-only, audited |
+| Admin workspace | Review candidates, publish approved records, maintain dossiers and demand signals, and open any Signals edition in a conventional page editor with source provenance and view-and-copy social examples | Private, owner-only, audited |
 
 ## Soft-beta deployment posture
 
@@ -54,7 +54,7 @@ Place, technology, or public need
 - A daily production job purges expired raw searches after 90 days and detailed workflow events after 30 days.
 - `pnpm launch:validate` performs a deliberately low-rate crawl of every canonical public sitemap URL, checking status, metadata, canonical URLs, social metadata, structured data, image accessibility attributes, direct operational probes, and visible recovered-retry warnings without creating a load test.
 - `pnpm scale:validate` exercises a 5,000-organization compact projection and the linear-time grid fallback, confirming complete marker preservation while rich cards remain bounded.
-- The current launch kit lives under `content/launch/broader-public-beta-2026-08/`. Superseded Phase 2 screenshots and demo exports are no longer part of the tracked release surface; historical governance lives under `context/archive/governance/` and is explicitly non-operating.
+- No standing launch kit, screenshot archive, lookbook, or dated audit capture is part of the active project context. Create collateral only on explicit request and validate it against production when created. Runtime brand assets remain under `app/public/brand/`, the live walkthrough remains under `app/public/video/`, and the canonical brand source files remain under `content/brand/`.
 - Shared public navigation uses Inter. Barlow remains a deliberate display face for the logo, hero, editorial headings, and selected brand moments rather than a sitewide interface font.
 - The application runtime is pinned to Node 24. GitHub Actions runs the complete release gate on every change to `main`, CodeQL scans JavaScript and TypeScript, the release gate audits the complete dependency graph, and Dependabot vulnerability alerts, GitHub secret scanning, and push protection remain enabled. Automated dependency-update branches are disabled to preserve the main-only release workflow.
 - Middleware now runs only where it has an actual routing or authentication responsibility: the legacy root atlas bridge and private account, collection, contribution, connection, and administrator surfaces. Public catalogue and dossier reads do not pay an unnecessary middleware invocation.
@@ -127,7 +127,7 @@ Place, technology, or public need
 | `research/signals/local/` | Ignored daily Signals packets, source ledgers, and run reports | Enter Git, replace durable sources, or become a second core corpus |
 | `.agents/skills/` | Ignored local operator skills for research and visibility | Enter the public repository, replace the live schema, or gain publication authority |
 | `context/governance/` | Product decisions, operating contracts, release and workflow documentation | Store candidate records or code-generated output |
-| `content/` | Launch, campaign, and non-runtime collateral | Become a source of public record truth |
+| `content/` | Canonical brand sources, active email copy, and durable editorial inputs | Accumulate unsolicited screenshots, dated launch packets, or become a source of public record truth |
 | Private Defence Wiki | Private source packets and evergreen synthesis in Andrew's Obsidian vault | Feed raw private material directly to public routes |
 
 Production Supabase, not local seed data, CSV files, research artifacts, remembered counts, or a prior deployment, is the source of truth. Exact corpus and queue totals must always be read live.
@@ -203,7 +203,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Ask True North | Ask True North | Constrained AI-assisted discovery over the current published corpus. It exposes uncertainty and falls back to deterministic results when needed. |
 | Assistant fit level | Strong fit, plausible fit, adjacent fit | A ranking aid for known records. It is neither a source claim nor a procurement recommendation. |
 | Defence Brief | Canadian Defence Brief | A reviewed, source-linked public explainer or time-bounded analysis. |
-| Daily update / news roundup | Canadian Defence Signals | A daily source-linked edition at a descriptive, immutable `/signals/[slug]` URL. Each item labels the public fact, automated read, unknowns, and next step. Every published edition also requires one relevant image from a cited article, normalized into True North Map's public media bucket. A no-publish day is valid when the evidence, significance, or image gate is not met. |
+| Daily update / news roundup | Canadian Defence Signals | A daily 06:30 Atlantic source-linked edition with six to eight distinct items at a descriptive, immutable `/signals/[slug]` URL. Each item labels the public fact, automated read, unknowns, and next step. Every published edition also requires one relevant image from a cited article plus private current-edition LinkedIn and X examples, all verified through the isolated Signals publisher and owner workspace. A no-publish day is valid when six admissible signals or the image gate cannot be supported. |
 | `Derived Read` in a Brief | True North Map assessment / Derived Read | A labelled interpretation in editorial content. It must remain distinct from the underlying factual record. |
 | Global Source Book | Global Source Book | A maintained private inventory of durable source starting points used to find research leads. |
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |
@@ -246,7 +246,7 @@ The public message system is:
 | Zoho Mail | Monitored human correspondence | `andrew@truenorthmap.ca` and operational aliases. |
 | MailerLite | Consent-backed updates and newsletters | Supabase remains the consent ledger; campaigns are not an auth channel. |
 | Resend through Supabase SMTP | Branded sign-in and security email | Transactional authentication only. |
-| Private visibility workflow | Read-only SEO, GEO, AEO, technical-health, search-demand and earned-link intelligence | Raw providers and reports remain ignored locally; recommendations have no publication or outreach authority. |
+| Private visibility workflow | Configured-provider SEO, GEO, AEO, technical-health, search-demand and earned-link intelligence | Every configured provider response and public sitemap route is collected locally; optional-unconfigured APIs remain visible unknowns without failing refreshes, raw providers and reports remain ignored locally, and recommendations have no publication or outreach authority. |
 
 ## Navigation and security model
 
@@ -276,9 +276,9 @@ For all other changes, use the impact and validation matrix in `Cross-System Cha
 1. The architecture is coherent: runtime code, governance, research lineage, private knowledge synthesis, and public content have distinct homes and publication boundaries.
 2. The public language layer now centralizes the most sensitive distinctions: fact, assessment, coverage gap, evidence strength, and technology-to-demand relevance. New UI work should extend this presentation layer rather than reintroduce raw database language.
 3. The Demand Signal source gate is enforced in the editor, publication function, public loaders, matching logic, and RLS. This is deliberate defence in depth.
-4. The tracked production application and `origin/main` are aligned. The primary worktree also contains intentional uncommitted research, visibility, source-book, and lookbook work. Those artifacts are separate from the deployed public application and must never be swept into a release with `git add .`.
+4. Production, the tracked application, validated research lineage, and current governance are reconciled through explicit scoped commits. Private skills, credentials, raw provider material, and ignored local outputs remain outside Git; agents must still inspect the exact worktree and must never use `git add .`.
 5. Static documentation is a guide, not a counter. Read production for live corpus counts, queue state, subscriber state, and coverage before public statements or release decisions.
-6. The strategic Mission Area / Use Case entry point now has dedicated public browsing and detail routes. The next release question is operational rather than cosmetic: verify the current candidate in production, monitor field performance and count consistency, triage live queues, and establish a repeatable Brief and North Signal cadence before broad promotion.
+6. The strategic Mission Area / Use Case entry point has dedicated public browsing and detail routes. The next release work is operational: monitor performance and count consistency, triage live queues, keep Daily Signals and North Signal useful, and address the active security and reliability register before broader promotion.
 
 ## Deliberately out of scope
 

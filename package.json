@@ -42,7 +42,8 @@
     "scale:validate": "pnpm --dir app scale:validate",
     "launch:validate": "pnpm --dir app launch:validate",
     "signals:publish": "pnpm --dir app signals:publish --",
+    "repository:hygiene": "node app/scripts/validate-repository-hygiene.mjs",
     "security:validate": "pnpm --dir app audit --audit-level high",
-    "release:validate": "pnpm security:validate && pnpm test && pnpm lint && pnpm scale:validate && pnpm build"
+    "release:validate": "pnpm repository:hygiene && pnpm security:validate && pnpm test && pnpm lint && pnpm scale:validate && pnpm build"
   }
 }

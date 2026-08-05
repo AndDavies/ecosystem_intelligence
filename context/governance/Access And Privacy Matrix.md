@@ -1,6 +1,6 @@
-# Phase 2 access and privacy matrix
+# Access and privacy matrix
 
-Last reviewed: 2026-07-26
+Last reviewed: 2026-08-05
 
 ## Access matrix
 
