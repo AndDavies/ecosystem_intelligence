@@ -69,7 +69,8 @@ describe("customer-facing product language", () => {
     const combined = `${organization}\n${technology}\n${demand}`;
     expect(combined).toContain("technologyDemand");
     expect(combined).toContain("What supports this assessment");
-    expect(combined).toContain("Evidence & sources");
+    expect(combined).toContain("What supports this profile");
+    expect(demand).toContain("What supports this public need");
     expect(combined).not.toContain("Mission relevance");
     expect(combined).not.toContain("Demand relevance");
     expect(combined).not.toContain("Capability dossier");

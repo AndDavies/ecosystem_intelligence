@@ -42,14 +42,16 @@ describe("shared alignment assessment card", () => {
   it("keeps the capability profile aligned with the organization profile", async () => {
     const capability = await source("src/app/capabilities/[slug]/page.tsx");
 
-    expect(capability).toContain("EvidenceLegend");
+    expect(capability).not.toContain("EvidenceLegend");
     expect(capability).toContain("Request an introduction");
     expect(capability.indexOf("Request an introduction")).toBeLessThan(capability.indexOf("Add to Working List"));
     expect(capability).toContain("Capability profile");
-    expect(capability).toContain("Capability overview");
+    expect(capability).toContain('title="What it does"');
     expect(capability).toContain('eyebrow: "Canadian capability"');
     expect(capability).toContain("Last reviewed");
     expect(capability).toContain("Who is building it");
+    expect(capability).toContain('title="What supports this profile"');
+    expect(capability).toContain('title="What remains unknown"');
     // The onward organization link is internal, so it must not carry the
     // external-link affordance.
     expect(capability).not.toContain("ExternalLink");

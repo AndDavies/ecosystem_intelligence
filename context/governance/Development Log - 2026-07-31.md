@@ -1,5 +1,30 @@
 # Development Log - 2026-07-31
 
+## August 4 global-refinement Phase 3 profiles and decision handoffs
+
+Recomposed organization, capability, Mission Area, regional, and individual
+Public Need pages around the decision a visitor can carry forward. Organization
+and capability dossiers now use **What supports this profile** and **What
+remains unknown** at the point of use instead of placing a complete evidence
+legend before the record. Public Need pages lead with the released problem and
+desired outcome, retain the procurement and endorsement boundary after the
+record, and label their source panel **What supports this public need**.
+
+Every affected detail route now ends in a contextual continuation to the live
+map, related released needs, a correction path, or private Working Lists. The
+Working List promise is standardized as saving organizations, capabilities and
+evidence for the conversation ahead. Legacy Mission Area and regional links
+that still sent filters to the landing route now target the canonical `/map`
+workspace. Existing map-return parameters, authentication returns, evidence
+links, sharing, exports, introductions, contributions, relationships, and
+publication authority remain unchanged.
+
+Scoped contract tests and the complete 267-test suite passed, as did lint and
+the read-only 304-artifact research validation with zero errors. Signed-out
+browser checks covered representative organization, capability, Mission Area,
+regional, Public Need, and private-list sign-in boundaries at 390, 768, 1024,
+and 1440 pixels with one H1 and no horizontal overflow.
+
 ## August 4 global-refinement Phase 2 functional discovery collections
 
 Refined Map, Organizations, Regions, Mission Areas, and Public Needs as one

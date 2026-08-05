@@ -31,7 +31,7 @@ export default async function CollectionsPage({
     <PublicPageShell
       eyebrow="Private workspace"
       title="Working Lists"
-      description="Build private, reusable shortlists from published organizations and capabilities. Public records remain unchanged."
+      description="Save organizations, capabilities and evidence for the conversation ahead. Your private notes and lists never change the public record."
       actions={<span className="inline-flex h-9 items-center gap-2 rounded-md bg-[var(--atlas-surface-muted)] px-3 text-xs font-semibold text-[var(--atlas-muted)]"><FolderLock className="size-4" />Private to {user.email}</span>}
     >
       {params.error ? <div className="mb-5 rounded-md border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]">The collection action could not be completed. Check the fields and try again.</div> : null}
@@ -67,7 +67,7 @@ export default async function CollectionsPage({
                 </Link>
               ))}
             </div>
-          ) : <div className="rounded-md border border-dashed border-[var(--atlas-border-strong)] bg-[var(--atlas-surface-muted)] px-5 py-8 text-center"><FolderLock className="mx-auto size-6 text-[var(--atlas-muted)]" /><p className="mt-3 text-sm font-semibold text-[var(--atlas-ink-soft)]">No Working Lists yet</p><p className="mt-1 text-xs text-[var(--atlas-muted)]">Create one to build a private shortlist.</p></div>}
+          ) : <div className="rounded-md border border-dashed border-[var(--atlas-border-strong)] bg-[var(--atlas-surface-muted)] px-5 py-8 text-center"><FolderLock className="mx-auto size-6 text-[var(--atlas-muted)]" /><p className="mt-3 text-sm font-semibold text-[var(--atlas-ink-soft)]">Your Working List is empty.</p><p className="mt-1 text-xs text-[var(--atlas-muted)]">Create a Working List, then add organizations or capabilities as you explore.</p></div>}
         </PublicCard>
 
         <PublicCard title="Create Working List" eyebrow="Private by default">

@@ -90,6 +90,12 @@ Place, technology, or public need
   keyboard-safe detail links while `/map` retains the existing compact
   map-first workspace, complete national marker projection, synchronized list,
   and accessible table.
+- Detail routes share one decision-handoff sequence: understand the published
+  record, inspect what supports it, see what remains unknown, follow reviewed
+  Mission Area or Public Need relationships, and carry selected organizations,
+  capabilities and evidence into a private Working List. Dossier links preserve
+  safe map-return context, while region, mission, and Public Need continuations
+  use ordinary shareable `/map` filter state.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 

@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Compass, FileText, Layers3, SearchCheck, ShieldAlert } from "lucide-react";
-import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import { MissionOrganizationCard } from "@/components/atlas/mission-organization-card";
-import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { CollectionContinuation, EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PaginationNav } from "@/components/ui/pagination-nav";
@@ -73,7 +72,7 @@ export default async function MissionDetailPage({
       ]}
       actions={(
         <>
-          <Link href={`/?mission=${result.missionArea.slug}`} className="atlas-signal-button h-10 gap-2 px-4 text-xs">Explore on the map <ArrowRight className="size-3.5" aria-hidden="true" /></Link>
+          <Link href={`/map?mission=${result.missionArea.slug}`} className="atlas-signal-button h-10 gap-2 px-4 text-xs">Explore on the map <ArrowRight className="size-3.5" aria-hidden="true" /></Link>
           <PublicShare title={result.missionArea.name} description={result.missionArea.summary} path={path} />
         </>
       )}
@@ -110,17 +109,16 @@ export default async function MissionDetailPage({
         }
       ]} />
 
-      <EvidenceLegend compact className="mb-5" />
-      <div className="mb-6 flex items-start gap-3 rounded-lg border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
-        <ShieldAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-        <p>This page shows reviewed True North Map assessments. It is not a released requirement, procurement priority, endorsement, customer interest, or classified guidance.</p>
-      </div>
-
       <div className="grid gap-4 sm:grid-cols-3">
         <StatTile icon={SearchCheck} label="Organizations reviewed for this mission" value={result.organizations.length} />
         <StatTile icon={Layers3} label="Mapped technologies" value={result.capabilityCount} />
         <StatTile icon={FileText} label="Separately reviewed Public Needs" value={result.publicNeeds.length} />
       </div>
+
+      <details className="mt-5 rounded-[14px] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
+        <summary className="flex cursor-pointer list-none items-center gap-2 font-semibold"><ShieldAlert className="size-4 shrink-0" aria-hidden="true" />How to interpret this Mission Area</summary>
+        <p className="mt-2 pl-6">This page shows reviewed True North Map assessments. It is not a released requirement, procurement priority, endorsement, customer interest, or classified guidance.</p>
+      </details>
 
       {result.publicNeeds.length ? (
         <section className="mt-12" aria-labelledby="mission-public-needs-heading">
@@ -165,7 +163,7 @@ export default async function MissionDetailPage({
             <h2 id="mission-organizations-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Canadian technology mapped to this mission</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">Organizations are ordered by the strongest published assessment on this page, then alphabetically. This is not a ranking or recommendation.</p>
           </div>
-          <Link href={`/?mission=${result.missionArea.slug}`} className="atlas-secondary-button h-10 w-fit gap-2 px-4 text-xs">See every map point <Compass className="size-3.5" aria-hidden="true" /></Link>
+          <Link href={`/map?mission=${result.missionArea.slug}`} className="atlas-secondary-button h-10 w-fit gap-2 px-4 text-xs">See every map point <Compass className="size-3.5" aria-hidden="true" /></Link>
         </div>
 
         {directory.items.length ? (
@@ -179,6 +177,14 @@ export default async function MissionDetailPage({
           <div className="mt-7"><EmptyCoverage title="No reviewed connections yet" detail="The Mission Area remains visible as a coverage gap until reviewed Canadian technology can support it." /></div>
         )}
       </section>
+      <CollectionContinuation
+        title="Carry this mission landscape into the next decision."
+        description="Explore every mapped organization, compare released Public Needs, or save the strongest records to a private Working List."
+        links={[
+          { label: "Explore on the map", href: `/map?mission=${result.missionArea.slug}` },
+          { label: "View Working Lists", href: "/collections" }
+        ]}
+      />
     </PublicPageShell>
   );
 }

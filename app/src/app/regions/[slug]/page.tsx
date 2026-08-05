@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { ArrowRight, Building2, Download, Layers3, MapPin } from "lucide-react";
 import { AtlasHeroArt } from "@/components/atlas/atlas-hero-art";
 import { OrganizationCard } from "@/components/atlas/organization-card";
-import { EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { CollectionContinuation, EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -62,7 +62,7 @@ export default async function RegionPage({
               </p>
               <div className="mt-7 flex flex-wrap gap-2">
                 <Link
-                  href={`/?region=${region.slug}`}
+                  href={`/map?region=${region.slug}`}
                   className="atlas-signal-button h-11 gap-2 px-5 text-sm no-underline hover:no-underline"
                 >
                   Explore on the map
@@ -141,7 +141,7 @@ async function RegionDirectoryData({
           icon={Layers3}
           label="Reviewed technologies and offerings"
           value={region.capabilityCount}
-          href={`/?region=${region.slug}`}
+          href={`/map?region=${region.slug}`}
           linkLabel="Open on the map"
         />
         <StatTile icon={MapPin} label="Visible clusters" value={region.clusterCount} />
@@ -220,6 +220,15 @@ async function RegionDirectoryData({
           </div>
         )}
       </section>
+
+      <CollectionContinuation
+        title={`Continue exploring ${region.name}.`}
+        description="Move from the regional picture into the live map, or compare the released Public Needs that Canadian technology may help address."
+        links={[
+          { label: "Explore on the map", href: `/map?region=${region.slug}` },
+          { label: "Review public needs", href: "/demand" }
+        ]}
+      />
     </>
   );
 }

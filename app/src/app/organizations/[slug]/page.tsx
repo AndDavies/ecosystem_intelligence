@@ -6,7 +6,7 @@ import { ArrowRight, BookmarkPlus, Building2, Download, ExternalLink, FileCheck2
 import { AlignmentMatchCard } from "@/components/atlas/alignment-match-card";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
-import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { CollectionContinuation, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import {
@@ -66,6 +66,13 @@ export default async function OrganizationDossierPage({
   const hasDemandMatches = organization.capabilities.some((capability) => capability.demandMatches.length);
   const hasPublishedAlignment = hasMissionMatches || hasDemandMatches;
   const offeringTitle = organizationOfferingTitle(organization.entityKind, organization.name);
+  const unknowns = [
+    ...(!organization.capabilities.length ? [organizationOfferingGap(organization.entityKind, organization.name)] : []),
+    ...(organization.capabilities.length && !hasPublishedAlignment ? ["No reviewed Mission Area or released Public Need connection is published yet."] : []),
+    ...(!organization.primaryLocation ? ["A source-supported operating location is not yet published."] : []),
+    ...(!organization.websiteUrl && !publicContact.contactPageUrl ? ["A verified public contact path is not yet published."] : []),
+    "Public sources do not establish procurement eligibility, endorsement, or operational suitability."
+  ];
 
   return (
     <PublicPageShell
@@ -241,19 +248,28 @@ export default async function OrganizationDossierPage({
             <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{publicLanguage.demandCaveat}</p>
           </PublicCard> : null}
 
-          <PublicCard id="evidence" title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)} className="atlas-tonal-surface bg-[var(--atlas-blue-soft)]">
+          <PublicCard id="evidence" title="What supports this profile" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)} className="atlas-tonal-surface bg-[var(--atlas-blue-soft)]">
             <EvidenceList citations={citations} />
-            {!hasPublishedAlignment && organization.capabilities.length ? (
-              <div className="mt-5 rounded-[14px] bg-white px-4 py-3">
-                <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">We have not connected this technology to a mission or public need yet.</p>
-                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public needs</Link>.</p>
-              </div>
-            ) : null}
           </PublicCard>
+
+          {unknowns.length ? <PublicCard title="What remains unknown" eyebrow={publicLanguage.coverageGap} className="atlas-tonal-surface bg-[var(--atlas-signal-soft)]">
+            <ul className="space-y-2 text-xs leading-5 text-[var(--atlas-muted)]">
+              {unknowns.map((unknown) => <li key={unknown} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-signal)]" />{unknown}</li>)}
+            </ul>
+          </PublicCard> : null}
 
           <NorthSignalInline placement="newsletter_inline_profile" trigger="profile_evidence_context" />
         </div>
       </div>
+      <CollectionContinuation
+        eyebrow="Carry the record forward"
+        title="Save this organization for the conversation ahead."
+        description="Keep the organization, its capabilities and supporting evidence together in a private Working List, or improve the public record."
+        links={[
+          { label: "View Working Lists", href: "/collections" },
+          { label: "Suggest a correction", href: `/submit?submissionType=correction&targetType=organization&targetId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}` }
+        ]}
+      />
     </PublicPageShell>
   );
 }

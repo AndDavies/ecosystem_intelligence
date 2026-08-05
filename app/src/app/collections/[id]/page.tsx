@@ -41,7 +41,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ id:
     <PublicPageShell
       eyebrow="Private Working List"
       title={collection.name}
-      description={collection.description || "A private shortlist of published ecosystem records."}
+      description={collection.description || "Organizations, capabilities and evidence saved for the conversation ahead."}
       backHref="/collections"
       backLabel="All Working Lists"
       actions={<Link href={`/api/export?type=collection-lookbook&id=${collection.id}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-4 text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:no-underline"><Download className="size-4" />Export lookbook</Link>}
@@ -62,7 +62,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ id:
               </article>
             ))}
           </div>
-        ) : <EmptyCoverage title="No saved records" detail="Open any public organization or capability profile and save it to a Working List." />}
+        ) : <EmptyCoverage title="Your Working List is empty." detail="Add organizations or capabilities as you explore the public map and profiles." />}
       </PublicCard>
     </PublicPageShell>
   );

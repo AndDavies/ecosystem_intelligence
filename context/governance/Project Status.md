@@ -35,6 +35,13 @@ The current product and operating system include:
   keyboard-safe canonical destination; counts state their published scope;
   and each route offers one contextual continuation without changing filters,
   pagination, complete map coverage, URL state, or public-data contracts.
+- Global-refinement Phase 3 aligns organization, capability, Mission Area,
+  regional, Public Need, and private Working List handoffs. Detail pages lead
+  with the record, label supporting evidence and unknowns where they affect a
+  decision, preserve explicit procurement and endorsement limits, and end with
+  one practical continuation into the map, related records, a correction, or a
+  Working List. Legacy regional and mission filters now enter the canonical
+  `/map` workspace without changing the filters themselves.
 - The Signals archive and edition template now establish the next shared public
   surface standard: wide consistent editorial frames, rounded tonal cards with
   no decorative outlines, Editorial Blue for reading structure, bounded colour

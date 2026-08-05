@@ -294,8 +294,11 @@ remain available through the map, organization browsing, and footer.
 | Last reviewed | When the record was last checked |
 | What remains unknown | Information that remains missing or uncertain; Coverage gap remains the internal semantic state |
 
-Use the compact **How these records are assessed** disclosure on collection and
-dossier routes. Keep the complete definitions on How It Works and Methodology.
+Use the compact **How these records are assessed** disclosure when a collection
+first introduces reviewed records. On dossiers, place **What supports this
+profile** and **What remains unknown** beside the claims they qualify instead
+of repeating the complete legend before useful content. Keep the complete
+definitions on How It Works and Methodology.
 The footer uses the restrained line **Independent project by Andrew Davies.**;
 the brand-level trust signature appears selectively rather than repeating on
 every route.

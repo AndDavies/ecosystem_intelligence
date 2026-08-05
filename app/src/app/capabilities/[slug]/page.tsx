@@ -4,10 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookmarkPlus, Building2, Download, Handshake } from "lucide-react";
 import { AlignmentMatchCard, evidenceStrengthChipClass } from "@/components/atlas/alignment-match-card";
-import { EvidenceLegend } from "@/components/atlas/evidence-legend";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
-import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { CollectionContinuation, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { evidenceStrengthLabel, organizationKindLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
@@ -77,6 +76,14 @@ function PublicCapabilityPage({
   ];
   const hasPublishedAlignment = capability.missionMatches.length > 0 || capability.demandMatches.length > 0;
   const capabilityPath = `/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
+  const unknowns = [
+    ...(!capability.novelty.length ? ["No source-supported differentiators are published for this technology yet."] : []),
+    ...(capability.technologyReadinessLevel === null && !capability.maturity && !capability.commercialAvailability
+      ? ["Maturity and commercial availability are not established in the reviewed public record."]
+      : []),
+    ...(!hasPublishedAlignment ? ["No reviewed Mission Area or released Public Need connection is published yet."] : []),
+    "Public sources do not establish procurement eligibility, endorsement, or operational suitability."
+  ];
 
   return (
     <PublicPageShell
@@ -111,10 +118,9 @@ function PublicCapabilityPage({
         { "@context": "https://schema.org", "@type": "Product", name: capability.name, description: capability.summary, brand: { "@type": "Organization", name: organization.name, url: absoluteUrl(`/organizations/${organization.slug}`) }, url: absoluteUrl(`/capabilities/${capability.slug}`) },
         { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(`/capabilities/${capability.slug}`) }] }
       ]} />
-      <EvidenceLegend compact className="mb-5" />
       <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
         <div className="space-y-5 lg:order-2">
-          <PublicCard title="Capability overview" eyebrow={capability.capabilityType ?? "What it does"}>
+          <PublicCard title="What it does" eyebrow={capability.capabilityType ?? "Reviewed technology"}>
             <div className="grid gap-5 sm:grid-cols-2">
               <CapabilityList label="Core features" values={capability.coreFeatures} />
               <CapabilityList label="Defence and security uses" values={capability.defenceApplications} />
@@ -170,6 +176,12 @@ function PublicCapabilityPage({
             ) : null}
             <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{publicLanguage.demandCaveat}</p>
           </PublicCard> : null}
+
+          <PublicCard title="What remains unknown" eyebrow={publicLanguage.coverageGap}>
+            <ul className="space-y-2 text-xs leading-5 text-[var(--atlas-muted)]">
+              {unknowns.map((unknown) => <li key={unknown} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-signal)]" />{unknown}</li>)}
+            </ul>
+          </PublicCard>
         </div>
 
         <aside className="space-y-5 self-start lg:order-1 lg:sticky lg:top-24">
@@ -204,16 +216,10 @@ function PublicCapabilityPage({
               Explore the organization <ArrowRight className="size-4" />
             </Link>
           </PublicCard>
-          <PublicCard id="evidence" title="Evidence & sources" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
+          <PublicCard id="evidence" title="What supports this profile" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)}>
             <EvidenceList citations={citations} />
-            {!hasPublishedAlignment ? (
-              <div className="mt-5 rounded-lg border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
-                <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">We have not connected this technology to a mission or public need yet.</p>
-                <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Treat that as a research gap, not a negative signal. <Link href="/demand" className="font-semibold text-[var(--atlas-primary)]">Explore public needs</Link>.</p>
-              </div>
-            ) : null}
           </PublicCard>
-          <PublicCard title="How well this is supported" eyebrow="What supports this profile">
+          <PublicCard title="Review status" eyebrow="Record currency">
             <dl className="grid gap-3 text-xs">
               <div><dt className="text-[var(--atlas-muted)]">{publicLanguage.evidenceStrength}</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
               <div><dt className="text-[var(--atlas-muted)]">Last reviewed</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{formatDate(capability.lastReviewedAt)}</dd></div>
@@ -222,6 +228,15 @@ function PublicCapabilityPage({
           </PublicCard>
         </aside>
       </div>
+      <CollectionContinuation
+        eyebrow="Carry the record forward"
+        title="Save the evidence for the conversation ahead."
+        description="Add this capability to a private Working List, or improve the public record when you know something we have not yet verified."
+        links={[
+          { label: "View Working Lists", href: "/collections" },
+          { label: "Suggest a correction", href: `/submit?submissionType=correction&targetType=capability&targetId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}` }
+        ]}
+      />
     </PublicPageShell>
   );
 }

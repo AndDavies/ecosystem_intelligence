@@ -3,8 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
-import { EvidenceLegend } from "@/components/atlas/evidence-legend";
-import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { CollectionContinuation, EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation";
 import { getAtlasDemandBySlug } from "@/lib/atlas/repository";
@@ -36,8 +35,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
       eyebrow={`Public demand signal · ${demand.source.publisher}`}
       title={demand.title}
       description={demand.source.summary}
-      backHref="/demand"
-      backLabel="All public needs"
+      breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Public Needs", href: "/demand" }, { label: demand.title }]}
       actions={<>
         <PublicShare title={demand.title} description={demand.problemStatement} path={`/demand/${demand.slug}`} />
         <a href={demand.source.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-md bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white no-underline hover:bg-[var(--atlas-primary-hover)] hover:no-underline">
@@ -45,13 +43,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
         </a>
       </>}
     >
-      <div className="flex items-start gap-3 rounded-lg border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
-        <ShieldAlert className="mt-0.5 size-4 shrink-0" />
-        <p>{demand.publicCaveat}</p>
-      </div>
-      <EvidenceLegend compact className="mt-5" />
-
-      <div className="mt-5 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-5">
           <PublicCard title="What needs to change" eyebrow={publicLanguage.sourceFact}>
             <p className="text-sm leading-6 text-[var(--atlas-muted)]">{demand.problemStatement}</p>
@@ -106,11 +98,23 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
               <blockquote className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{demand.source.sourceExcerpt}</blockquote>
             </div>
           </PublicCard>
-          <PublicCard title="Evidence & sources" eyebrow="Read the public record">
+          <PublicCard title="What supports this public need" eyebrow="Read the public record">
             <EvidenceList citations={demand.citations} />
           </PublicCard>
         </aside>
       </div>
+      <div className="mt-5 flex items-start gap-3 rounded-[14px] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
+        <ShieldAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+        <p>{demand.publicCaveat}</p>
+      </div>
+      <CollectionContinuation
+        title="Carry the public need into a practical search."
+        description="Open the mapped view, inspect potentially relevant organizations, and save records and evidence to a private Working List."
+        links={[
+          { label: "Explore on the map", href: `/map?demand=${demand.slug}` },
+          { label: "View Working Lists", href: "/collections" }
+        ]}
+      />
     </PublicPageShell>
   );
 }
