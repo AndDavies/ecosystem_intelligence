@@ -80,6 +80,19 @@ describe("TNM visibility contract", () => {
     expect(serialized).not.toContain("/admin/");
   });
 
+  it("preserves the complete sanitized aggregate set instead of truncating display rows", () => {
+    const value = snapshot();
+    value.searchConsole.queries = Array.from({ length: 20 }, (_, index) => ({ query: `query-${index}`, page: `https://truenorthmap.ca/public-${index}`, clicks: 1, impressions: 1, ctr: 1, position: 1 }));
+    value.searchConsole.generativeAiAvailable = true;
+    value.ga4.acquisitionChannels = Array.from({ length: 20 }, (_, index) => ({ label: `channel-${index}`, sessions: index + 1 }));
+    value.technical.pages = Array.from({ length: 20 }, (_, index) => ({ url: `https://truenorthmap.ca/public-${index}`, status: 200, title: `Page ${index}`, description: "Description", canonical: `https://truenorthmap.ca/public-${index}`, jsonLdCount: 1, issues: [] }));
+    value.backlinks = [];
+    const summary = createDashboardSummary(value);
+    expect(summary.pageOpportunities).toHaveLength(20);
+    expect(summary.audience.acquisitionChannels).toHaveLength(20);
+    expect(summary.actions).toHaveLength(0);
+  });
+
   it("aggregates public pages and weights position by impressions", () => {
     const value = snapshot();
     value.searchConsole.queries.push({ query: "second private query", page: "https://truenorthmap.ca/organizations", clicks: 0, impressions: 50, ctr: 0, position: 19 });

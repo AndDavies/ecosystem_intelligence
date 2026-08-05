@@ -42,6 +42,32 @@ async function storeHeroImage(image: NonNullable<ReturnType<typeof dailySignalsP
   return { storagePath, publicUrl: data.publicUrl };
 }
 
+async function ensureSocialDrafts(packet: ReturnType<typeof dailySignalsPacketSchema.parse>, editionId: string, itemIds: Map<string, string>, supabase: SupabaseClient) {
+  const expected = packet.socialDrafts.map((draft) => {
+    const itemId = draft.itemSlug ? itemIds.get(draft.itemSlug) : null;
+    if (draft.itemSlug && !itemId) throw new Error(`Social example references an unavailable edition item: ${draft.itemSlug}`);
+    return { edition_id: editionId, item_id: itemId ?? null, platform: draft.platform, draft_text: draft.text };
+  });
+  const { data: existingRows, error: existingError } = await supabase.from("signal_social_drafts").select("id, item_id, platform, draft_text, status").eq("edition_id", editionId);
+  if (existingError) throw existingError;
+  const missing = expected.filter((draft) => !(existingRows ?? []).some((row) => row.platform === draft.platform && (row.item_id ?? null) === draft.item_id && row.draft_text === draft.draft_text));
+  if (missing.length) {
+    const { error: insertError } = await supabase.from("signal_social_drafts").insert(missing);
+    if (insertError) throw insertError;
+  }
+  const { data: verifiedRows, error: verifyError } = await supabase.from("signal_social_drafts").select("item_id, platform, draft_text, status").eq("edition_id", editionId);
+  if (verifyError) throw verifyError;
+  const verified = verifiedRows ?? [];
+  for (const draft of expected) {
+    if (!verified.some((row) => row.platform === draft.platform && (row.item_id ?? null) === draft.item_id && row.draft_text === draft.draft_text)) {
+      throw new Error(`The ${draft.platform} social example could not be verified for edition ${editionId}.`);
+    }
+  }
+  const platforms = [...new Set(verified.map((row) => String(row.platform)))].sort();
+  if (!platforms.includes("linkedin") || !platforms.includes("x")) throw new Error(`Edition ${editionId} must have verified LinkedIn and X examples.`);
+  return { count: verified.length, platforms, inserted: missing.length };
+}
+
 async function main() {
 const fileArg = process.argv.find((arg) => arg.startsWith("--file="))?.slice(7);
 const apply = process.argv.includes("--apply");
@@ -52,7 +78,7 @@ assertSignalsEditorialVoice(packet);
 const orderedItems = [...packet.items].sort((left, right) => left.storyPosition - right.storyPosition);
 
 if (!apply) {
-  console.log(JSON.stringify({ ok: true, mode: replaceHero ? "dry-run-hero-replacement" : "dry-run", editorialVoice: "passed", runId: packet.runId, slug: packet.slug, items: packet.items.length, sourceFamilies: packet.sourceFamilyCount }, null, 2));
+  console.log(JSON.stringify({ ok: true, mode: replaceHero ? "dry-run-hero-replacement" : "dry-run", editorialVoice: "passed", runId: packet.runId, slug: packet.slug, items: packet.items.length, sourceFamilies: packet.sourceFamilyCount, socialDraftCount: packet.socialDrafts.length, socialDraftPlatforms: [...new Set(packet.socialDrafts.map((draft) => draft.platform))].sort() }, null, 2));
   process.exit(0);
 }
 
@@ -62,6 +88,10 @@ if (!url || !key) throw new Error("Publication requires NEXT_PUBLIC_SUPABASE_URL
 const supabase = createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
 const { data: existing } = await supabase.from("signal_editions").select("id, slug, publication_status").eq("run_id", packet.runId).maybeSingle();
 if (existing) {
+  const { data: existingItems, error: existingItemsError } = await supabase.from("signal_items").select("id, slug").eq("edition_id", existing.id);
+  if (existingItemsError) throw existingItemsError;
+  const existingItemIds = new Map((existingItems ?? []).map((item) => [String(item.slug), String(item.id)]));
+  const socialDrafts = await ensureSocialDrafts(packet, String(existing.id), existingItemIds, supabase);
   if (replaceHero) {
     const storedHero = await storeHeroImage(packet.heroImage, packet.slug, supabase);
     const now = new Date().toISOString();
@@ -75,12 +105,13 @@ if (existing) {
     }).eq("id", existing.id);
     if (heroUpdateError) throw heroUpdateError;
     await supabase.from("signal_runs").update({
-      report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, hero_image_replaced: true, editorial_voice: "passed" }
+      report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, hero_image_replaced: true, editorial_voice: "passed", social_draft_count: socialDrafts.count, social_draft_platforms: socialDrafts.platforms }
     }).eq("run_id", packet.runId);
-    console.log(JSON.stringify({ ok: true, mode: "hero-replaced", editionId: existing.id, slug: existing.slug, publicationStatus: existing.publication_status, url: `https://truenorthmap.ca/signals/${existing.slug}` }, null, 2));
+    console.log(JSON.stringify({ ok: true, mode: "hero-replaced", editionId: existing.id, slug: existing.slug, publicationStatus: existing.publication_status, socialDraftCount: socialDrafts.count, socialDraftPlatforms: socialDrafts.platforms, socialDraftsInserted: socialDrafts.inserted, url: `https://truenorthmap.ca/signals/${existing.slug}` }, null, 2));
     process.exit(0);
   }
-  console.log(JSON.stringify({ ok: true, mode: "idempotent", editionId: existing.id, slug: existing.slug }, null, 2));
+  await supabase.from("signal_runs").update({ report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, editorial_voice: "passed", social_draft_count: socialDrafts.count, social_draft_platforms: socialDrafts.platforms, social_drafts_repaired: socialDrafts.inserted } }).eq("run_id", packet.runId);
+  console.log(JSON.stringify({ ok: true, mode: "idempotent", editionId: existing.id, slug: existing.slug, socialDraftCount: socialDrafts.count, socialDraftPlatforms: socialDrafts.platforms, socialDraftsInserted: socialDrafts.inserted }, null, 2));
   process.exit(0);
 }
 
@@ -115,14 +146,11 @@ try {
       if (linkError) throw linkError;
     }
   }
-  if (packet.socialDrafts.length) {
-    const { error } = await supabase.from("signal_social_drafts").insert(packet.socialDrafts.map((draft) => ({ edition_id: editionId, item_id: draft.itemSlug ? itemIds.get(draft.itemSlug) ?? null : null, platform: draft.platform, draft_text: draft.text })));
-    if (error) throw error;
-  }
+  const socialDrafts = await ensureSocialDrafts(packet, editionId, itemIds, supabase);
   const { error: publishError } = await supabase.from("signal_editions").update({ publication_status: "published", published_at: new Date().toISOString(), updated_at: new Date().toISOString() }).eq("id", editionId);
   if (publishError) throw publishError;
-  await supabase.from("signal_runs").update({ status: "published", edition_id: editionId, completed_at: new Date().toISOString(), report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, editorial_voice: "passed" } }).eq("run_id", packet.runId);
-  console.log(JSON.stringify({ ok: true, mode: "published", editionId, slug: packet.slug, url: `https://truenorthmap.ca/signals/${packet.slug}` }, null, 2));
+  await supabase.from("signal_runs").update({ status: "published", edition_id: editionId, completed_at: new Date().toISOString(), report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, editorial_voice: "passed", social_draft_count: socialDrafts.count, social_draft_platforms: socialDrafts.platforms } }).eq("run_id", packet.runId);
+  console.log(JSON.stringify({ ok: true, mode: "published", editionId, slug: packet.slug, socialDraftCount: socialDrafts.count, socialDraftPlatforms: socialDrafts.platforms, url: `https://truenorthmap.ca/signals/${packet.slug}` }, null, 2));
 } catch (error) {
   if (editionId) await supabase.from("signal_editions").delete().eq("id", editionId);
   if (heroStoragePath) await supabase.storage.from("brief-images").remove([heroStoragePath]);

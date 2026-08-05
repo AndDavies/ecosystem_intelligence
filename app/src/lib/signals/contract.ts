@@ -11,14 +11,19 @@ const heroImage = z.object({
   alt: z.string().trim().min(12).max(240),
   attribution: z.string().trim().min(3).max(240)
 });
+const socialDraft = z.object({
+  platform: z.enum(["linkedin", "x"]),
+  itemSlug: z.string().nullable().default(null),
+  text: z.string().trim().min(20).max(5000)
+});
 
 export const dailySignalsPacketSchema = z.object({
   schemaVersion: z.literal("daily_signals_packet_v1"), runId: z.string().trim().min(8).max(160),
   editionDate: z.string().date(), slug, title: z.string().trim().min(12).max(180), executiveSummary: z.string().trim().min(400).max(1800),
   disclosure: z.string().trim().min(40).max(500), inspectedCount: z.number().int().min(0), sourceFamilyCount: z.number().int().min(3),
   heroImage,
-  items: z.array(item).min(5).max(8),
-  socialDrafts: z.array(z.object({ platform: z.enum(["linkedin", "x"]), itemSlug: z.string().nullable().default(null), text: z.string().trim().min(20).max(5000) })).max(20).default([])
+  items: z.array(item).min(6).max(8),
+  socialDrafts: z.array(socialDraft).min(2).max(20)
 }).superRefine((packet, ctx) => {
   const fingerprints = new Set<string>();
   const positions = new Set<number>();
@@ -33,6 +38,17 @@ export const dailySignalsPacketSchema = z.object({
   if (!packet.items.some((entry) => entry.sources.some((entrySource) => entrySource.canonicalUrl === packet.heroImage.sourcePageUrl))) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["heroImage", "sourcePageUrl"], message: "The hero image must resolve to one of the edition's durable source pages." });
   }
+  for (const platform of ["linkedin", "x"] as const) {
+    if (!packet.socialDrafts.some((draft) => draft.platform === platform)) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["socialDrafts"], message: `A private ${platform === "linkedin" ? "LinkedIn" : "X"} example is required for every publishable edition.` });
+    }
+  }
+  const itemSlugs = new Set(packet.items.map((entry) => entry.slug));
+  packet.socialDrafts.forEach((draft, index) => {
+    if (draft.itemSlug && !itemSlugs.has(draft.itemSlug)) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["socialDrafts", index, "itemSlug"], message: "A social example may reference only an item in this edition." });
+    }
+  });
 });
 
 export type DailySignalsPacket = z.infer<typeof dailySignalsPacketSchema>;

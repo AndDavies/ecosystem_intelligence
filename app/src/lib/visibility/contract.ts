@@ -314,7 +314,7 @@ export function compareSnapshots(current: VisibilitySnapshotV1, prior: Visibilit
 }
 
 function pageOpportunities(snapshot: VisibilitySnapshotV1): DashboardPageOpportunity[] {
-  return aggregateSearchPages(snapshot).filter((page) => page.impressions >= 3).map((page) => {
+  return aggregateSearchPages(snapshot).map((page) => {
     let kind: DashboardPageOpportunity["kind"] = "monitor";
     let observation = "Early visibility signal; keep collecting comparable data before changing the page.";
     if (page.impressions >= 20 && page.ctr < 0.03) {
@@ -331,7 +331,7 @@ function pageOpportunities(snapshot: VisibilitySnapshotV1): DashboardPageOpportu
   }).sort((a, b) => {
     const kindWeight = { ctr: 0, position: 1, emerging: 2, monitor: 3 } as const;
     return kindWeight[a.kind] - kindWeight[b.kind] || b.impressions - a.impressions;
-  }).slice(0, 8);
+  });
 }
 
 function makeAction(action: Omit<VisibilityDashboardAction, "id"> & { idParts: string[] }): VisibilityDashboardAction {
@@ -358,9 +358,9 @@ export function createDashboardSummary(snapshot: VisibilitySnapshotV1, prior: Vi
     if (!targetPath) return [];
     const high = /non-2xx|missing title|missing canonical/i.test(issue);
     return [makeAction({ idParts: ["technical", targetPath, issue], type: "technical", priority: high ? "high" : "medium", confidence: "confirmed", title: high ? "Repair public-route indexability" : "Improve public-route discoverability", targetPath, rationale: issue, ownerType: "developer", impact: high ? "high" : "medium", effort: "small", verification: "Recheck the exact public route after deployment and confirm the issue is absent in the next technical snapshot." })];
-  }).slice(0, 4);
+  });
 
-  const searchActions = pages.filter((page) => page.kind === "ctr" || page.kind === "position").slice(0, 4).map((page) => makeAction({
+  const searchActions = pages.filter((page) => page.kind === "ctr" || page.kind === "position").map((page) => makeAction({
     idParts: [page.kind, page.path], type: page.kind === "ctr" ? "ctr" : "position", priority: page.position !== null && page.position <= 10 ? "high" : "medium", confidence: "confirmed",
     title: page.kind === "ctr" ? "Improve the search-result promise" : "Strengthen an already relevant public answer", targetPath: page.path, rationale: page.observation,
     ownerType: "editor_reviewer", impact: page.impressions >= 20 ? "high" : "medium", effort: "medium", verification: "Compare a like-for-like 28-day window after the reviewed page change is live.",
@@ -370,13 +370,13 @@ export function createDashboardSummary(snapshot: VisibilitySnapshotV1, prior: Vi
   if (coverage.unavailable || coverage.stale) monitorActions.push(makeAction({ idParts: ["monitor", "coverage"], type: "monitor", priority: "medium", confidence: "confirmed", title: "Restore incomplete visibility evidence", rationale: `${coverage.unavailable} providers are unavailable and ${coverage.stale} are stale. Missing evidence is unknown, not zero.`, ownerType: "product_owner", impact: "medium", effort: "small", verification: "The next sanitized snapshot should show a newer collection time and improved coverage score." }));
   if (!snapshot.searchConsole.generativeAiAvailable) monitorActions.push(makeAction({ idParts: ["monitor", "aeo"], type: "monitor", priority: "low", confidence: "inferred", title: "Monitor answer-engine evidence without inventing rank", rationale: "No dedicated generative-AI performance report is available. Use aggregate AI referrals and a dated manual prompt panel only as directional evidence.", ownerType: "editor_reviewer", impact: "medium", effort: "small", verification: "Record the next manual panel date and measured aggregate AI-referral count; keep raw transcripts local." }));
 
-  const linkActions = snapshot.backlinks.filter((link) => link.relevance === "high").slice(0, 2).map((link) => makeAction({ idParts: ["earned-link", link.domain], type: "earned_link", priority: "medium", confidence: "inferred", title: "Review a reader-useful earned-reference opportunity", rationale: "A credible referring-domain signal is available. Identify one source-backed TNM page that would help its readers; do not automate outreach.", ownerType: "human_outreach_owner", impact: "medium", effort: "medium", verification: "A human records whether a relevant editorial reference was earned; no automated outreach or link scheme is permitted." }));
-  const actions = [...technicalActions, ...searchActions, ...monitorActions, ...linkActions].slice(0, 12);
+  const linkActions = snapshot.backlinks.filter((link) => link.relevance === "high").map((link) => makeAction({ idParts: ["earned-link", link.domain], type: "earned_link", priority: "medium", confidence: "inferred", title: "Review a reader-useful earned-reference opportunity", rationale: "A credible referring-domain signal is available. Identify one source-backed TNM page that would help its readers; do not automate outreach.", ownerType: "human_outreach_owner", impact: "medium", effort: "medium", verification: "A human records whether a relevant editorial reference was earned; no automated outreach or link scheme is permitted." }));
+  const actions = [...technicalActions, ...searchActions, ...monitorActions, ...linkActions];
 
   const insights: DashboardInsight[] = [];
   if (comparison?.comparable && comparison.impressionsDelta !== null && comparison.impressionsDelta !== 0) insights.push({ id: stableId(["insight", "impressions", snapshot.collectedAt]), type: "change", state: comparison.impressionsDelta > 0 ? "positive" : "attention", title: comparison.impressionsDelta > 0 ? "Search exposure increased" : "Search exposure declined", whyItMatters: `Organic impressions changed by ${comparison.impressionsDelta > 0 ? "+" : ""}${comparison.impressionsDelta} versus the prior comparable snapshot.`, nextAction: "Confirm provider coverage is comparable, then inspect the page-level opportunity table before changing content.", confidence: "confirmed" });
   if (pages[0]) insights.push({ id: stableId(["insight", "page", pages[0].path]), type: "opportunity", state: pages[0].kind === "monitor" ? "monitor" : "positive", title: "A public page is earning early search visibility", whyItMatters: `${pages[0].path} has ${pages[0].impressions} aggregate impressions at position ${pages[0].position ?? "unknown"}.`, nextAction: pages[0].observation, confidence: "confirmed", targetPath: pages[0].path });
-  if (totals.technicalIssues) insights.push({ id: stableId(["insight", "technical", String(totals.technicalIssues)]), type: "risk", state: "attention", title: "Technical defects should be cleared first", whyItMatters: `${totals.technicalIssues} issues were observed across ${snapshot.technical.pages.length} sampled public routes.`, nextAction: "Resolve confirmed indexability defects before commissioning speculative content.", confidence: "confirmed" });
+  if (totals.technicalIssues) insights.push({ id: stableId(["insight", "technical", String(totals.technicalIssues)]), type: "risk", state: "attention", title: "Technical defects should be cleared first", whyItMatters: `${totals.technicalIssues} issues were observed across ${snapshot.technical.pages.length} inspected public routes.`, nextAction: "Resolve confirmed indexability defects before commissioning speculative content.", confidence: "confirmed" });
   insights.push({ id: stableId(["insight", "coverage", String(coverage.score)]), type: "coverage", state: coverage.score >= 70 ? "positive" : "attention", title: `Evidence coverage is ${coverage.score}%`, whyItMatters: "Provider freshness determines whether zeros and trends can be interpreted safely.", nextAction: coverage.score >= 70 ? "Use current data while preserving source dates and scope." : "Restore unavailable or stale read-only inputs before broad conclusions.", confidence: "confirmed" });
   if (!snapshot.searchConsole.generativeAiAvailable) insights.push({ id: stableId(["insight", "aeo", "monitor"]), type: "aeo", state: "monitor", title: "AEO evidence remains directional", whyItMatters: "Standard search data and aggregate AI referrals do not prove answer-engine citation or rank.", nextAction: "Improve answer clarity, source provenance, entity consistency, dates, and internal links on strategically important pages.", confidence: "inferred" });
 
@@ -430,21 +430,21 @@ export function createDashboardSummary(snapshot: VisibilitySnapshotV1, prior: Vi
       gscBulkExportRows: snapshot.searchConsole.bulkExport?.rows ?? 0,
     },
     audience: {
-      acquisitionChannels: (snapshot.ga4.acquisitionChannels ?? []).slice(0, 8),
-      referralCategories: (snapshot.ga4.referralCategories ?? []).slice(0, 8),
-      clickEvents: (snapshot.ga4.clickEvents ?? []).slice(0, 8),
+      acquisitionChannels: snapshot.ga4.acquisitionChannels ?? [],
+      referralCategories: snapshot.ga4.referralCategories ?? [],
+      clickEvents: snapshot.ga4.clickEvents ?? [],
       organicLandingPages: snapshot.ga4.organicLandingPages.flatMap((page) => {
         const path = dashboardPath(page.page, snapshot.siteUrl);
         return path ? [{ path, sessions: page.sessions, engagedSessions: page.engagedSessions ?? 0, keyEvents: page.keyEvents ?? 0, engagementSeconds: page.engagementSeconds ?? 0 }] : [];
-      }).sort((a, b) => b.sessions - a.sessions).slice(0, 8),
-      searchDaily: (snapshot.searchConsole.daily ?? []).slice(-90),
-      searchDevices: (snapshot.searchConsole.devices ?? []).slice(0, 8),
-      searchCountries: (snapshot.searchConsole.countries ?? []).slice(0, 8),
-      searchAppearances: (snapshot.searchConsole.searchAppearances ?? []).slice(0, 8),
+      }).sort((a, b) => b.sessions - a.sessions),
+      searchDaily: snapshot.searchConsole.daily ?? [],
+      searchDevices: snapshot.searchConsole.devices ?? [],
+      searchCountries: snapshot.searchConsole.countries ?? [],
+      searchAppearances: snapshot.searchConsole.searchAppearances ?? [],
     },
-    performanceHistory: (snapshot.technical.cruxHistory ?? []).slice(-40),
+    performanceHistory: snapshot.technical.cruxHistory ?? [],
     pageOpportunities: pages,
-    insights: insights.slice(0, 6),
+    insights,
     actions,
   };
 }
