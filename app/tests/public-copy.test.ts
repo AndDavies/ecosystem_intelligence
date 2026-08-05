@@ -103,11 +103,12 @@ describe("customer-facing product language", () => {
       readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8"),
       readFile(path.resolve("src/app/sitemap.ts"), "utf8")
     ]);
-    expect(page).toContain("Explore the map");
-    expect(page).toContain("Check the public evidence");
-    expect(page).toContain("Follow released public needs");
-    expect(page).toContain("See where technology may help");
-    expect(page).toContain("Sources create the public record. People review the interpretation.");
+    expect(page).toContain("Start with a question");
+    expect(page).toContain("Find relevant capability");
+    expect(page).toContain("Inspect the public record");
+    expect(page).toContain("Compare and save");
+    expect(page).toContain("Start the conversation");
+    expect(page).toContain("Sources establish the record. People review the assessment.");
     expect(page).toContain("<ol");
     expect(header).toContain('href: "/how-it-works"');
     expect(sitemap).toContain('"/how-it-works"');

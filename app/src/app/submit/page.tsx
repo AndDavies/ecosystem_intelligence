@@ -22,7 +22,7 @@ export default async function SubmitContributionPage({
   const title = submissionType === "profile_claim" ? "Claim an organization profile" : submissionType === "new_organization" ? "Suggest an organization" : "Suggest a correction";
 
   return (
-    <PublicPageShell eyebrow="Help improve the map" title={title} description="Share what should change and the public source that supports it. Your submission stays private until a person reviews it; it cannot change a published profile directly." backHref={returnTo} backLabel="Back to published record">
+    <PublicPageShell eyebrow="Know something missing? Improve the public record." title={title} description="Suggest an organization, correct a profile, or add a public source. Every change is reviewed before publication." backHref={returnTo} backLabel="Back to published record">
       <div className="mx-auto max-w-3xl">
         <PublicCard title="Evidence-backed submission" eyebrow="Editorial review required">
           <ContributionForm submissionType={submissionType} targetEntityType={params.targetType ?? null} targetEntityId={targetEntityId} returnTo={returnTo} />

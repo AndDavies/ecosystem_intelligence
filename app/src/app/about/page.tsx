@@ -14,11 +14,11 @@ import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { socialMetadata } from "@/lib/seo/social";
 
 export const metadata = {
-  title: "Why True North Map Exists",
+  title: "About True North Map",
   description:
-    "Veteran and Combat Systems Engineering Officer Andrew Davies created True North Map to make Canadian defence and dual-use capability easier to see, understand, and connect.",
+    "Learn why True North Map was created and how the independent project makes Canadian defence and dual-use capability easier to find, understand, and connect.",
   alternates: { canonical: "/about" },
-  ...socialMetadata({ title: "Why True North Map Exists", description: "The story behind a public map built to make Canadian defence and dual-use capability easier to see, understand, and connect.", path: "/about", eyebrow: "Built for a stronger Canadian ecosystem" })
+  ...socialMetadata({ title: "About True North Map", description: "The story behind an independent project built to make Canadian defence and dual-use capability easier to find, understand, and connect.", path: "/about", eyebrow: "Why True North Map exists" })
 };
 
 const story = [
@@ -27,7 +27,7 @@ const story = [
     eyebrow: "The call",
     title: "Experience became responsibility.",
     icon: Compass,
-    body: "I am a veteran and Combat Systems Engineering Officer whose career has spanned military service and the civilian sector. As global events sharpened the importance of security, resilience, and sovereign capability, I felt a responsibility to focus my effort in Canada, in industries where that experience could be useful."
+    body: "I am a veteran and former Combat Systems Engineering Officer whose career has spanned military service and the civilian sector. As global events sharpened the importance of security, resilience, and sovereign capability, I felt a responsibility to focus my effort in Canada, in industries where that experience could be useful."
   },
   {
     number: "02",
@@ -69,9 +69,9 @@ const outcomes = [
 export default function AboutPage() {
   return (
     <PublicPageShell
-      eyebrow="Evidence-led ecosystem discovery"
-      title="Make Canadian capability visible."
-      description="True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations."
+      eyebrow="About True North Map"
+      title="The capability was here. The shared picture was not."
+      description="True North Map is an independent project created to make Canada’s defence and dual-use capability easier to find, understand and bring into the right conversation."
       actions={
         <Link href="/map" className="atlas-primary-button h-11 px-5 text-sm no-underline hover:no-underline">
           Explore the map <ArrowRight className="size-4" />
@@ -103,7 +103,7 @@ export default function AboutPage() {
             <p className="mt-5 text-sm font-bold leading-6 text-[var(--atlas-primary)]">
               The opportunity is to make what Canada can do easier to find, easier to understand, and easier to bring together.
             </p>
-            <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Andrew Davies &middot; Founder, True North Map</p>
+            <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Created by Andrew Davies, a veteran and former Combat Systems Engineering Officer.</p>
           </div>
         </div>
       </section>

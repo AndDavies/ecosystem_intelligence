@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 };
 
 const steps = [
-  { number: "1", title: "Explore the map", detail: "Find organizations, technologies, programs, and other ecosystem contributors across Canada.", action: "Explore the map", href: "/map", icon: Map },
-  { number: "2", title: "Check the public evidence", detail: "Open the sources supporting each profile and technology.", action: "Browse organizations", href: "/organizations", icon: FileSearch },
-  { number: "3", title: "Follow released public needs", detail: "Read public needs issued by governments, armed forces, programs, and allied organizations.", action: "See public needs", href: "/demand", icon: Compass },
-  { number: "4", title: "See where technology may help", detail: "Review source-linked assessments of possible relevance and visible limits.", action: "Learn about the review", href: "/methodology", icon: Lightbulb },
-  { number: "5", title: "Start a better conversation", detail: "Build a private Working List, suggest a correction, claim a profile, or request a connection.", action: "Contribute a profile", href: "/submit", icon: Handshake }
+  { number: "1", title: "Start with a question", detail: "Describe a mission, project, capability gap, place, or released public need.", action: "Describe a need", href: "/map?start=need#ask-true-north", icon: Map },
+  { number: "2", title: "Find relevant capability", detail: "See published organizations and technologies connected to the question.", action: "Browse organizations", href: "/organizations", icon: FileSearch },
+  { number: "3", title: "Inspect the public record", detail: "Open the sources, assessment, and review date behind each record.", action: "Review public needs", href: "/demand", icon: Compass },
+  { number: "4", title: "Compare and save", detail: "Add useful organizations, capabilities, and notes to a private Working List.", action: "Build a Working List", href: "/collections", icon: Lightbulb },
+  { number: "5", title: "Start the conversation", detail: "Export a brief, suggest a correction, contribute evidence, or request an introduction.", action: "Improve the record", href: "/submit", icon: Handshake }
 ] as const;
 
 const frequentlyAskedQuestions = [
@@ -64,17 +64,17 @@ const frequentlyAskedQuestions = [
   },
   {
     question: "Who is responsible for the project?",
-    answer: "True North Map is created and stewarded by Andrew Davies, a veteran and Combat Systems Engineering Officer. The project aims to make Canadian capability visible and help the ecosystem move into better-informed conversations."
+    answer: "True North Map is created and stewarded by Andrew Davies, a veteran and former Combat Systems Engineering Officer. The project aims to make Canadian capability visible and help the ecosystem move into better-informed conversations."
   }
 ] as const;
 
 export default function HowItWorksPage() {
   return (
     <PublicPageShell
-      eyebrow="Evidence-led ecosystem discovery"
-      title="See what Canada can build, why it matters, and what to do next."
-      description="True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations."
-      actions={<Link href="/map" className="atlas-primary-button h-11 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>}
+      eyebrow="How True North Map works"
+      title="From question to better-informed conversation."
+      description="Start with a need, mission, place, or released public need. Follow the records, evidence, and assessments into a Working List or next conversation."
+      actions={<Link href="/map?start=need#ask-true-north" className="atlas-primary-button h-11 px-5 text-sm">Describe a need <ArrowRight className="size-4" /></Link>}
     >
       <JsonLd data={[
         { "@context": "https://schema.org", "@type": "WebPage", name: "How True North Map Works", description: metadata.description, url: absoluteUrl("/how-it-works") },
@@ -103,7 +103,7 @@ export default function HowItWorksPage() {
           <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-[var(--atlas-signal)]"><CheckCircle2 className="size-5" /></span>
           <div>
             <h2 className="text-lg font-extrabold">Know where the facts end and the assessment begins.</h2>
-            <p className="mt-2 text-sm leading-6 text-white/70">Sources create the public record. People review the interpretation. AI helps people explore, but it does not publish facts or make procurement decisions.</p>
+            <p className="mt-2 text-sm leading-6 text-white/70">Sources establish the record. People review the assessment. AI helps people explore, but it does not publish facts or make procurement decisions.</p>
           </div>
         </div>
       </section>
