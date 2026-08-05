@@ -18,7 +18,8 @@ export interface AtlasPublicContact {
 export const publicLanguage = {
   sourceFact: "Source-backed fact",
   assessment: "Our assessment",
-  coverageGap: "Coverage gap",
+  coverageGap: "What remains unknown",
+  coverageGapInternal: "Coverage gap",
   evidenceStrength: "Evidence strength",
   lastReviewed: "Last reviewed",
   technologyDemand: "Where this technology may help",

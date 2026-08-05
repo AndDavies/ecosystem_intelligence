@@ -21,6 +21,14 @@ The current product and operating system include:
 - Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix and rollback runbook make release validation repeatable. The current broader-beta package now lives under `content/launch/broader-public-beta-2026-08/`; the July 26 kit is historical.
 - Pre-launch security remediation updates the production runtime dependencies, bounds citation and evidence reads to the requested public records, and removes private demand-match reviewer rationale from the public data contract and Ask True North catalogue. `pnpm security:validate` is now a release gate; the durable backlog and verification record live in `Security And Reliability Remediation Log.md`.
 - Phase 1B established the charcoal, warm-white and signal-yellow system. The approved production identity uses a directional N and separated yellow north corner while retaining the same palette, typography, messaging, and product behaviour.
+- Global-refinement Phase 1 establishes one public language and orientation
+  foundation. Source-backed fact, Our assessment, Evidence strength, Last
+  reviewed, and What remains unknown are the reader-facing evidence terms;
+  Coverage gap remains the internal semantic state. Public collections and
+  dossiers use a compact accessible disclosure instead of repeating the full
+  evidence legend, public routes use shared breadcrumbs, and the footer keeps
+  the concise independence line. Complete explanations remain on How It Works
+  and Methodology.
 - The Signals archive and edition template now establish the next shared public
   surface standard: wide consistent editorial frames, rounded tonal cards with
   no decorative outlines, Editorial Blue for reading structure, bounded colour

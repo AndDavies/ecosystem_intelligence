@@ -1,5 +1,32 @@
 # Development Log - 2026-07-31
 
+## August 4 global-refinement Phase 1 language and trust foundation
+
+Established one shared public-language and orientation foundation before the
+route-specific refinement phases. The public presentation dictionary now keeps
+the internal **Coverage gap** concept separate from the reader-facing **What
+remains unknown** heading, while Source-backed fact, Our assessment, Evidence
+strength, and Last reviewed remain canonical across public surfaces.
+
+Repeated five-part evidence legends on collection and dossier routes now
+collapse into one keyboard- and touch-accessible **How these records are
+assessed** disclosure. Complete trust explanations remain available through
+How It Works and Methodology, while the footer returns to the restrained
+independence line instead of repeating a promotional trust claim. Shared public
+breadcrumbs replace generic Back to map links, Inter remains the public
+interface face, and common card, control, and loading geometry now uses the
+same 18-pixel and 12-pixel tokens. The change does not alter route state, public
+APIs, cached data, authentication hydration, analytics events, Supabase,
+research, review, or publication authority.
+
+Local validation used Node 24. Four added copy-contract tests joined the full
+261-test suite, lint passed, the optimized production build completed, and the
+read-only research validator reported zero errors across 304 artifacts. Browser
+checks at 390, 768, 1024, and 1440 pixels confirmed correct breadcrumbs,
+keyboard disclosure operation, Inter typography, footer language, and no
+horizontal overflow. A local production crawl checked 842 canonical pages with
+zero findings or recovered failures.
+
 ## August 4 global-refinement Phase 0 worktree reconciliation
 
 Reconciled the pre-existing operational, visibility, research-lineage, logo,

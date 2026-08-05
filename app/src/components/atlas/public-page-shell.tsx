@@ -8,7 +8,7 @@ export function PublicPageShell({
   title,
   description,
   backHref = "/map",
-  backLabel = "Back to map",
+  backLabel = "Map",
   breadcrumbs,
   actions,
   pageHeader,
@@ -26,14 +26,21 @@ export function PublicPageShell({
   variant?: "public" | "admin";
   children: React.ReactNode;
 }) {
+  const publicBreadcrumbs = breadcrumbs?.length
+    ? breadcrumbs
+    : [
+        { label: breadcrumbParentLabel(backLabel, backHref), href: backHref },
+        { label: eyebrow }
+      ];
+
   return (
     <main className={`atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)] ${variant === "admin" ? "atlas-admin-shell" : ""}`}>
       <PublicAtlasHeader />
       <div className="atlas-frame py-8 sm:py-12">
-        {breadcrumbs?.length ? (
+        {variant === "public" ? (
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-1.5 text-xs font-semibold">
-              {breadcrumbs.map((breadcrumb, index) => (
+              {publicBreadcrumbs.map((breadcrumb, index) => (
                 <li key={`${breadcrumb.label}-${index}`} className="flex items-center gap-1.5">
                   {index ? <ChevronRight className="size-3.5 text-[var(--atlas-muted)]" aria-hidden="true" /> : null}
                   {breadcrumb.href ? (
@@ -47,6 +54,17 @@ export function PublicPageShell({
               ))}
             </ol>
           </nav>
+        ) : breadcrumbs?.length ? (
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center gap-1.5 text-xs font-semibold">
+              {breadcrumbs.map((breadcrumb, index) => (
+                <li key={`${breadcrumb.label}-${index}`} className="flex items-center gap-1.5">
+                  {index ? <ChevronRight className="size-3.5 text-[var(--atlas-muted)]" aria-hidden="true" /> : null}
+                  {breadcrumb.href ? <Link href={breadcrumb.href} className="rounded-md px-1 py-1 text-[var(--atlas-primary)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline">{breadcrumb.label}</Link> : <span aria-current="page" className="px-1 py-1 text-[var(--atlas-muted)]">{breadcrumb.label}</span>}
+                </li>
+              ))}
+            </ol>
+          </nav>
         ) : (
           <Link href={backHref} className="inline-flex items-center gap-2 rounded-[6px] px-1 py-1 text-xs font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline">
             <ArrowLeft className="size-4" />
@@ -54,7 +72,7 @@ export function PublicPageShell({
           </Link>
         )}
         {pageHeader ?? (
-          <header className="mt-7 flex flex-col gap-7 border-b border-[var(--atlas-border)] pb-8 xl:flex-row xl:items-end xl:justify-between">
+          <header className="atlas-page-heading mt-7 flex flex-col gap-7 border-b border-[var(--atlas-border)] pb-8 xl:flex-row xl:items-end xl:justify-between">
             <div className="max-w-4xl">
               <p className="atlas-eyebrow">{eyebrow}</p>
               <h1 className="mt-3 text-3xl font-extrabold leading-[1.04] tracking-[-0.052em] text-[var(--atlas-ink)] sm:text-[46px] lg:text-[52px]">{title}</h1>
@@ -68,6 +86,12 @@ export function PublicPageShell({
       </div>
     </main>
   );
+}
+
+function breadcrumbParentLabel(label: string, href: string) {
+  const normalized = label.replace(/^Back to\s+/i, "").replace(/^All\s+/i, "").trim();
+  if (normalized) return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+  return href === "/map" ? "Map" : "Previous page";
 }
 
 export function PublicCard({

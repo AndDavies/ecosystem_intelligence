@@ -5,14 +5,16 @@ import { cn } from "@/lib/utils";
 const states = [
   { label: publicLanguage.sourceFact, detail: "A released source supports the statement.", icon: FileCheck2, tone: "evidence" },
   { label: publicLanguage.assessment, detail: "A person reviewed where the evidence may point.", icon: SearchCheck, tone: "signal" },
-  { label: "Evidence strength", detail: "The label reflects the quality and depth of public support.", icon: ShieldCheck, tone: "evidence" },
-  { label: "Last reviewed", detail: "The date shows when the record was checked most recently.", icon: TimerReset, tone: "neutral" },
+  { label: publicLanguage.evidenceStrength, detail: "The label reflects the quality and depth of public support.", icon: ShieldCheck, tone: "evidence" },
+  { label: publicLanguage.lastReviewed, detail: "The date shows when the record was checked most recently.", icon: TimerReset, tone: "neutral" },
   { label: publicLanguage.coverageGap, detail: "Missing information stays visible instead of being invented.", icon: CircleHelp, tone: "warning" }
 ] as const;
 
 export function EvidenceLegend({ compact = false, className }: { compact?: boolean; className?: string }) {
+  if (compact) return <EvidenceLegendDisclosure className={className} mode="inline" />;
+
   return (
-    <section className={cn("border-y border-[var(--atlas-border)] bg-white px-4 sm:px-5", compact ? "py-4" : "py-5", className)} aria-labelledby="evidence-legend-title">
+    <section className={cn("atlas-tonal-surface atlas-tonal-paper px-4 py-5 sm:px-5", className)} aria-labelledby="evidence-legend-title">
       <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
         <div className="shrink-0">
           <p className="atlas-eyebrow">How to read the record</p>
@@ -37,16 +39,25 @@ export function EvidenceLegend({ compact = false, className }: { compact?: boole
   );
 }
 
-export function EvidenceLegendDisclosure() {
+export function EvidenceLegendDisclosure({ className, mode = "popover" }: { className?: string; mode?: "inline" | "popover" }) {
+  const inline = mode === "inline";
   return (
-    <details className="group relative">
-      <summary className="inline-flex min-h-9 cursor-pointer list-none items-center gap-2 rounded-full border border-[var(--atlas-border)] bg-white px-3 text-xs font-bold text-[var(--atlas-ink-soft)] hover:border-[var(--atlas-ink)] hover:text-[var(--atlas-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)] [&::-webkit-details-marker]:hidden">
+    <details className={cn("group relative", inline && "atlas-tonal-surface atlas-tonal-blue", className)}>
+      <summary className={cn(
+        "inline-flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-full px-3 text-xs font-bold text-[var(--atlas-ink-soft)] hover:text-[var(--atlas-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)] [&::-webkit-details-marker]:hidden",
+        inline ? "w-full justify-between rounded-[18px] px-4 py-3 sm:px-5" : "atlas-pill atlas-pill-link bg-white"
+      )}>
         <CircleHelp className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />
-        How results are assessed
+        <span className="mr-auto">How these records are assessed</span>
+        {inline ? <span className="hidden font-medium text-[var(--atlas-muted)] group-open:hidden sm:inline">Source, assessment and unknowns</span> : null}
       </summary>
-      <div className="absolute right-0 top-11 z-[1200] w-[min(340px,calc(100vw-3rem))] rounded-[12px] border border-[var(--atlas-border)] bg-white p-4 shadow-[var(--atlas-shadow-float)]">
+      <div className={cn(
+        inline
+          ? "px-4 pb-5 pt-1 sm:px-5"
+          : "absolute right-0 top-11 z-[1200] w-[min(340px,calc(100vw-3rem))] rounded-[12px] bg-white p-4 shadow-[var(--atlas-shadow-float)]"
+      )}>
         <p className="text-sm font-extrabold text-[var(--atlas-ink)]">Read the evidence before the conclusion.</p>
-        <ul className="mt-3 space-y-3" aria-label="Evidence states">
+        <ul className={cn("mt-3", inline ? "grid gap-3 sm:grid-cols-2 xl:grid-cols-5" : "space-y-3")} aria-label="Evidence states">
           {states.map((state) => (
             <li key={state.label} className="flex items-start gap-2.5">
               <span className={cn(

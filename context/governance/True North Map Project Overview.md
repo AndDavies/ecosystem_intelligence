@@ -60,6 +60,12 @@ Place, technology, or public need
 - Middleware now runs only where it has an actual routing or authentication responsibility: the legacy root atlas bridge and private account, collection, contribution, connection, and administrator surfaces. Public catalogue and dossier reads do not pay an unnecessary middleware invocation.
 - Repository migration filenames match the applied production Supabase ledger exactly. This reconciliation changed no database object and did not reapply a migration.
 - The approved directional-N identity is deployed and indexed in `content/brand/True North Map Brand System.md`; production artwork lives under `app/public/brand/`. North Signal names the editorial briefing, not the logo symbol.
+- The shared public language layer uses Source-backed fact, Our assessment,
+  Evidence strength, Last reviewed, and What remains unknown. Coverage gap
+  remains the internal semantic state. Collection and dossier routes expose
+  those definitions through one compact accessible disclosure, public pages use
+  shared breadcrumbs, and the complete trust explanation remains centralized
+  on How It Works and Methodology.
 - The current public surface contract uses borderless tonal cards, 18-pixel
   editorial corners, smaller 12-to-16-pixel supporting corners, and full pills
   only for compact labels and actions. Editorial Blue `#E8F1F4` organizes
@@ -151,7 +157,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Source-backed fact | Source-backed fact | What an organization, issuer, or released source actually says. It is not the product's interpretation. |
 | `source_confidence` | Evidence strength | Strong, moderate, or limited. This describes the support available in public sources, not the quality of an organization. |
 | `freshness` | Last reviewed / source freshness | Whether a record is current, due for review, or stale. |
-| Coverage gap | Coverage gap / What remains unknown | A visible limit: missing, thin, stale, or unverified information. It is not negative evidence about an organization. |
+| Coverage gap | What remains unknown | The internal semantic state for a visible limit: missing, thin, stale, or unverified information. It is not negative evidence about an organization. |
 | `candidate_change` | Under review | A private proposed new record or refresh. It is not published data. |
 | Source lead | Research lead | A private discovery item that still needs qualification and evidence. |
 | `research_run` | Research run | Private audit metadata for an ingestion activity. It is not an approval step or public record. |
@@ -186,7 +192,7 @@ Every public surface should make this distinction legible:
 
 1. **Source-backed fact**: what a released source or an organization's official material says.
 2. **True North Map assessment**: a reviewed interpretation of possible relevance.
-3. **Coverage gap**: what is missing, unverified, thin, or no longer current.
+3. **What remains unknown**: what is missing, unverified, thin, or no longer current. The underlying internal state is Coverage gap.
 
 The standard caveat for Demand Signals and technology connections is: a reviewed public-source assessment is not procurement eligibility, endorsement, customer interest, or classified demand.
 

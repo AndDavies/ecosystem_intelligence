@@ -16,7 +16,7 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
           <div>
             <BrandLogo />
             <p className="mt-6 text-lg font-extrabold text-[var(--atlas-ink)]">Make Canadian capability visible.</p>
-            <p className="mt-2 max-w-sm leading-6">{generatedLabel ?? "Independent project by Andrew Davies. Reviewed public evidence, transparent gaps, human review."}</p>
+            <p className="mt-2 max-w-sm leading-6">{generatedLabel ?? "Independent project by Andrew Davies."}</p>
           </div>
           <FooterColumn title="Explore" links={[["Map", "/map"], ["Organizations", "/organizations"], ["Missions", "/missions"], ["Public Needs", "/demand"]]} />
           <FooterColumn title="Resources" links={[["Signals", "/signals"], ["Defence Briefs", "/briefs"], ["How It Works", "/how-it-works"], ["Methodology", "/methodology"], ["Regions", "/regions"]]} />
@@ -42,7 +42,7 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
         <div className="max-w-xl">
           <BrandLogo inverse />
           <p className="mt-5 text-base font-extrabold text-white">Make Canadian capability visible.</p>
-          <p className="mt-2">{generatedLabel ?? "Independent project by Andrew Davies. Reviewed public evidence, transparent gaps, human review."}</p>
+          <p className="mt-2">{generatedLabel ?? "Independent project by Andrew Davies."}</p>
         </div>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <button type="button" onClick={openBetaFeedback} className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-[var(--atlas-signal)] hover:underline"><MessageSquareText className="size-3.5" />Give feedback</button>

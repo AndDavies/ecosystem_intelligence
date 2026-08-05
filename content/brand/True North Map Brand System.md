@@ -286,7 +286,13 @@ remain available through the map, organization browsing, and footer.
 | Our assessment | A human-reviewed interpretation, not a direct source claim |
 | Evidence strength | How well the public record supports the displayed claim |
 | Last reviewed | When the record was last checked |
-| Coverage gap | Information that remains missing or uncertain |
+| What remains unknown | Information that remains missing or uncertain; Coverage gap remains the internal semantic state |
+
+Use the compact **How these records are assessed** disclosure on collection and
+dossier routes. Keep the complete definitions on How It Works and Methodology.
+The footer uses the restrained line **Independent project by Andrew Davies.**;
+the brand-level trust signature appears selectively rather than repeating on
+every route.
 
 Every public-demand connection keeps the procurement, endorsement, eligibility,
 customer-interest, and classified-information caveats. Visual confidence must

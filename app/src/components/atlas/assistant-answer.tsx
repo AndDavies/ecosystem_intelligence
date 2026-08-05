@@ -14,6 +14,7 @@ import {
   ThumbsUp
 } from "lucide-react";
 import { openBetaFeedback, trackBetaEvent } from "@/lib/product-insights/client";
+import { publicLanguage } from "@/lib/atlas/presentation";
 import { cn } from "@/lib/utils";
 import type {
   AtlasAssistantFallbackReason,
@@ -33,7 +34,7 @@ const outcomeCopy = {
     detail: "No complete match is visible yet. These organizations may cover part of the need."
   },
   coverage_gap: {
-    label: "Coverage gap",
+    label: publicLanguage.coverageGap,
     detail: "The current public records do not support a defensible match yet."
   }
 } as const;
@@ -193,7 +194,7 @@ export function AssistantAnswer({
         <div className="grid gap-5 border-t border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-5 py-5 sm:px-6 lg:grid-cols-2">
           <div>
             <h3 className="text-xs font-extrabold text-[var(--atlas-ink)]">What the current records cannot confirm</h3>
-            {answer.gaps.length ? <ul className="mt-2 space-y-1 text-xs leading-5 text-[var(--atlas-muted)]">{answer.gaps.map((gap) => <li key={gap}>• {gap}</li>)}</ul> : <p className="mt-2 text-xs text-[var(--atlas-muted)]">No additional coverage gap was identified.</p>}
+            {answer.gaps.length ? <ul className="mt-2 space-y-1 text-xs leading-5 text-[var(--atlas-muted)]">{answer.gaps.map((gap) => <li key={gap}>• {gap}</li>)}</ul> : <p className="mt-2 text-xs text-[var(--atlas-muted)]">No additional unknown was identified.</p>}
           </div>
           <div>
             <h3 className="text-xs font-extrabold text-[var(--atlas-ink)]">Refine the question</h3>

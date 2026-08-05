@@ -56,6 +56,8 @@
   --atlas-tonal-ink: #242827;
   --atlas-shadow-soft: 0 10px 30px rgba(36, 40, 39, 0.055);
   --atlas-shadow-float: 0 20px 52px rgba(36, 40, 39, 0.12);
+  --atlas-radius-card: 18px;
+  --atlas-radius-control: 12px;
   --background: #f7f7f3;
   --foreground: #242827;
   --card: rgba(255, 255, 255, 0.94);
@@ -257,14 +259,14 @@ body {
 
 .atlas-surface {
   border: 1px solid var(--atlas-border);
-  border-radius: 16px;
+  border-radius: var(--atlas-radius-card);
   background: var(--atlas-surface);
   box-shadow: 0 1px 2px rgba(36, 40, 39, 0.035);
 }
 
 .atlas-surface-elevated {
   border: 1px solid var(--atlas-border);
-  border-radius: 18px;
+  border-radius: var(--atlas-radius-card);
   background: var(--atlas-surface);
   box-shadow: var(--atlas-shadow-soft);
 }
@@ -279,7 +281,7 @@ body {
    their functional boundaries. */
 .atlas-tonal-surface {
   border: 0;
-  border-radius: 18px;
+  border-radius: var(--atlas-radius-card);
 }
 
 .atlas-tonal-paper {
@@ -379,7 +381,7 @@ body {
 .atlas-secondary-button,
 .atlas-tertiary-button {
   align-items: center;
-  border-radius: 12px;
+  border-radius: var(--atlas-radius-control);
   display: inline-flex;
   font-weight: 650;
   justify-content: center;
@@ -428,7 +430,7 @@ body {
 .atlas-signal-button {
   align-items: center;
   border: 0;
-  border-radius: 12px;
+  border-radius: var(--atlas-radius-control);
   background: var(--atlas-signal);
   color: var(--atlas-signal-ink);
   display: inline-flex;
@@ -445,7 +447,7 @@ body {
 
 .atlas-dark-panel {
   border: 0;
-  border-radius: 18px;
+  border-radius: var(--atlas-radius-card);
   background: var(--atlas-ink);
   color: white;
   box-shadow: var(--atlas-shadow-soft);
