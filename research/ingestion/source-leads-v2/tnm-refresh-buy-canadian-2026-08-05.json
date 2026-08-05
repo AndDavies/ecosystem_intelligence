@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-refresh-buy-canadian-2026-08-05",
+  "runId": "tnm-refresh-buy-canadian-2026-08-05",
+  "createdAt": "2026-08-05T11:07:30.000Z",
+  "scope": {
+    "description": "Two demand-signal leads resolved from the August 4 Buy Canadian newsletter to original Government of Canada policy and program sources; newsletter text and linked commentary are excluded from field evidence.",
+    "targetMissionAreaSlugs": [],
+    "targetTechnicalDomainSlugs": ["advanced-manufacturing-and-integration", "autonomous-systems", "communications-and-cyber", "aerospace-and-mobility", "test-training-and-sustainment"],
+    "targetOrganizationKinds": [],
+    "targetDemandIssuerTypes": ["federal_government", "department", "armed_forces", "procurement_authority"]
+  },
+  "leads": [
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-buy-canadian-procurement-policy-framework",
+      "source": {
+        "id": "canadabuys-buy-canadian-framework-2025",
+        "title": "Buy Canadian Procurement Policy Framework",
+        "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-procurement-policy-framework",
+        "publisher": "Public Services and Procurement Canada",
+        "sourceKind": "official_policy",
+        "publishedAt": "2025-12-16T00:00:00.000Z",
+        "accessedAt": "2026-08-05T11:07:30.000Z",
+        "locator": "Purpose, application, implementation policies, and exclusions",
+        "summary": "The official framework prioritizes Canadian suppliers, content, and materials and expands small-business access across applicable federal procurements while identifying exclusions and exception pathways."
+      },
+      "discoveryPath": [
+        "https://canadabuys.canada.ca/en/buy-canadian-policy",
+        "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-procurement-policy-framework",
+        "https://canadabuys.canada.ca/en/buy-canadian-policy/questions-and-answers-suppliers",
+        "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-buyers-toolkit/buy-canadian-ministerial-exceptions-process-guide"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": ["advanced-manufacturing-and-integration"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official CanadaBuys framework, policy overview, supplier questions and answers, and ministerial exceptions guide.",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-procurement-policy-framework",
+        "websiteDomain": "canadabuys.canada.ca",
+        "stableSlug": "buy-canadian-procurement-policy-framework",
+        "legalName": null,
+        "aliases": ["Buy Canadian Policy", "Buy Canadian procurement framework"]
+      },
+      "followUpQuestions": [
+        "Should the reviewer keep this government-wide operational procurement framework separate from the broader defence-specific Build-Partner-Buy demand source?",
+        "Which future official implementation reports can support observed-results measures without relying on media calculations?"
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 93,
+      "completenessScore": 86,
+      "reviewWarnings": [
+        "The policy is non-retroactive and contains sensitive-operation, overseas, intergovernmental, and delivery-location exclusions.",
+        "The newsletter's contract-ownership and award-share calculations are not field evidence and are not included in the candidate."
+      ],
+      "recoveryAttempts": [
+        {"lane": "procurement", "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-procurement-policy-framework", "outcome": "Recovered the controlling official framework and explicit exclusion boundary."},
+        {"lane": "government_program", "url": "https://canadabuys.canada.ca/en/buy-canadian-policy", "outcome": "Recovered the official overview and the three implementation policy components."},
+        {"lane": "technical_documentation", "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/questions-and-answers-suppliers", "outcome": "Recovered supplier definitions, thresholds, strategic-sector coverage, and non-retroactivity."},
+        {"lane": "government_awards", "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-buyers-toolkit/buy-canadian-ministerial-exceptions-process-guide", "outcome": "Recovered the official case-by-case exception process and approval grounds."}
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Buy Canadian Procurement Policy Framework",
+      "issuerNames": ["Public Services and Procurement Canada", "Government of Canada"],
+      "demandSourceKind": "strategic_policy",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "Applicable federal procurements should prioritize Canadian suppliers and Canadian content under the Contracting with Canadian Suppliers and Content Policy.",
+        "Applicable high-value procurements should prioritize Canadian steel, aluminum, and wood inputs under the Canadian Materials Policy.",
+        "Federal procurement should reduce barriers and expand participation for Canadian small and medium-sized businesses."
+      ]
+    },
+    {
+      "leadType": "demand_signal_lead",
+      "id": "lead-canadian-deep-precision-strike-capability",
+      "source": {
+        "id": "dnd-canadian-deep-precision-strike-capability-2026",
+        "title": "Canadian Deep Precision Strike Capability",
+        "url": "https://www.canada.ca/en/services/defence/defence-equipment-purchases-upgrades/personal-equipment/canadian-deep-precision-strike-capability.html",
+        "publisher": "Department of National Defence",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-07-30T00:00:00.000Z",
+        "accessedAt": "2026-08-05T11:07:30.000Z",
+        "locator": "Project objective, requirements, industry engagement, and next steps",
+        "summary": "The official project page defines a rapidly deployable long-range precision-strike capability, resilient employment requirements, integration and sustainment scope, and a path from closed industry engagement toward procurement and evaluation."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/services/defence/defence-equipment-purchases-upgrades/personal-equipment/canadian-deep-precision-strike-capability.html",
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": ["autonomous-systems", "communications-and-cyber", "advanced-manufacturing-and-integration", "aerospace-and-mobility"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Official DND project page with explicit operational purpose, resilience requirements, system-of-systems scope, engagement status, and procurement next steps.",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/services/defence/defence-equipment-purchases-upgrades/personal-equipment/canadian-deep-precision-strike-capability.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "canadian-deep-precision-strike-capability",
+        "legalName": null,
+        "aliases": ["CDPSC", "Deep Precision Strike Capability"]
+      },
+      "followUpQuestions": [
+        "Should the reviewer preserve this specific project as a separate demand source from the broader Defence Drone Initiative marketplace?",
+        "Which future procurement notice, demonstration, or selection should refresh the project lifecycle?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 98,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "The closed industry question-and-answer activity is not an open solicitation and does not establish supplier eligibility, selection, or award.",
+        "The public project page does not disclose budget, range, platform, payload, supplier, or delivery schedule."
+      ],
+      "recoveryAttempts": [
+        {"lane": "government_program", "url": "https://www.canada.ca/en/services/defence/defence-equipment-purchases-upgrades/personal-equipment/canadian-deep-precision-strike-capability.html", "outcome": "Recovered the official project scope, requirements, engagement status, and lifecycle next steps."},
+        {"lane": "procurement", "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html", "outcome": "Confirmed the earlier broad initiative mentioned deep precision strike as one of six areas without an acquisition decision."},
+        {"lane": "government_awards", "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html", "outcome": "Recovered official industrial-policy context without using it to infer a project award, budget, or supplier."}
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "title": "Canadian Deep Precision Strike Capability",
+      "issuerNames": ["Department of National Defence", "Canadian Armed Forces"],
+      "demandSourceKind": "capability_plan",
+      "commitmentLevel": "programmatic",
+      "candidateRequirements": [
+        "The Canadian Armed Forces need a rapidly deployable long-range precision-strike capability for deterrence, response, and joint or allied operations.",
+        "The capability must remain secure, scalable, resilient, and effective amid electronic warfare, cyber threats, GPS disruption, and air defences.",
+        "The project must integrate equipment, training, logistics, command-and-control and network interfaces, and a reliable inventory into an operational capability."
+      ]
+    }
+  ]
+}

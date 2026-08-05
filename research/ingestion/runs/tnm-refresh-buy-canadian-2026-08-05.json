@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-buy-canadian-2026-08-05",
+  "agentVersion": "tnm-research-pipeline/1.3.0",
+  "trigger": "manual",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [],
+    "technicalDomainSlugs": [
+      "autonomous-systems",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": [
+      "federal_government",
+      "department",
+      "armed_forces",
+      "procurement_authority"
+    ]
+  },
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "newsletter-resolved-government-demand-signals",
+    "reason": "The August 4 discovery newsletter exposed two specific official government demand records absent from published and pending review: the Buy Canadian operational policy framework and the Canadian Deep Precision Strike Capability project.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-05T11:00:21.528Z",
+  "completedAt": "2026-08-05T11:07:30.000Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 4,
+    "minimumCandidates": 1,
+    "targetCandidates": 2
+  },
+  "sourceQueries": [
+    "site:canadabuys.canada.ca Buy Canadian policy suppliers content exceptions",
+    "site:canada.ca Canadian Deep Precision Strike Capability",
+    "site:search.open.canada.ca contracts DND Buy Canadian",
+    "site:canada.ca ACSV 190 General Dynamics Land Systems Canada",
+    "site:canada.ca NEXUS YMX 29.6 million",
+    "site:magellan.aero M72"
+  ],
+  "counters": {
+    "sourcesChecked": 18,
+    "leadsQualified": 2,
+    "leadsDeferred": 0,
+    "candidatesCreated": 2,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 5,
+    "uniqueProspects": 5,
+    "prospectsQueued": 3,
+    "recoveryAttempts": 15,
+    "sourceLanesSearched": 5,
+    "candidatesGreen": 1,
+    "candidatesAmber": 1,
+    "signalsExtracted": 10,
+    "signalsDispositioned": 10,
+    "sourceFamiliesSearched": 5,
+    "claimsCollected": 12,
+    "claimsConflicted": 0,
+    "coverageSubjects": 2
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "The newsletter is discovery-only and is excluded from candidate field evidence.",
+      "Three material claims remain unresolved and are not candidates: award-share metrics, the asserted CSE-wide exemption, and Magellan M72 production."
+    ]
+  },
+  "errors": [],
+  "stopReason": "The bounded refresh resolved two distinct official demand records, confirmed already-current records, and stopped after complementary lanes produced no original evidence for the remaining newsletter claims.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-refresh-buy-canadian-2026-08-05.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-refresh-buy-canadian-2026-08-05.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-refresh-buy-canadian-2026-08-05.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-buy-canadian-2026-08-05.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-buy-canadian-2026-08-05.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-buy-canadian-2026-08-05.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-refresh-buy-canadian-2026-08-05.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-buy-canadian-2026-08-05.json"
+  }
+}

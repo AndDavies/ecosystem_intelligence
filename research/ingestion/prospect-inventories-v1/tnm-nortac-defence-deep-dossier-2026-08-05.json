@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-nortac-defence-deep-dossier-2026-08-05",
+  "runId": "tnm-nortac-defence-deep-dossier-2026-08-05",
+  "createdAt": "2026-08-05T14:31:00.000Z",
+  "scope": "Named-organization deep dossier on the published NORTAC Defence record and its published NORTAC WAVE and NORTAC TACTICAL capability, with current official product, partner, intellectual-property, procurement, contribution, and program evidence.",
+  "prospects": [
+    {
+      "id": "prospect-nortac-defence-refresh",
+      "name": "NORTAC Defence and NORTAC WAVE/TACTICAL refresh",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.nortacdefence.com/",
+      "discoverySourceUrl": "https://www.nortacdefence.com/solutions/",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "The live company now publishes a current Team Deployment Kit page, Iridium independently maintains a detailed WAVE product and partner listing, and federal sources expose omitted procurement and contribution history. The published True North Map capability still cites a removed 2024 PDF.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.nortacdefence.com/solutions/",
+          "outcome": "Recovered the current Team Deployment Kit composition, light/medium/heavy availability, platform and airtime inclusion, training, and support posture."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.iridium.com/products/nortac-wave",
+          "outcome": "Recovered independent current WAVE specifications, encryption, messaging, environmental limits, physical dimensions, and reporting interval."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/contracts/record/ssc-spc%2CC-2022-2023-Q2-00031",
+          "outcome": "Recovered the Shared Services Canada multidepartmental communications/network-services contract and its published value and term."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://search.open.canada.ca/grants/?page=2034&sort=agreement_start_date+desc",
+          "outcome": "Recovered the 2025-2026 CanExport SME contribution and checked the earlier 2023-2024 CanExport record."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://www.nortacdefence.com/patent/",
+          "outcome": "Recovered Nortac's current patent-marking page and corroborating Canadian trademark records for the low-bandwidth situational-awareness offering."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/fr/developpement-economique-sud-ontario/nouvelles/2025/03/un-investissement-du-gouvernement-du-canada-appuie-six-entreprises-specialisees-en-intelligence-artificielle-et-en-technologie-dans-la-region-dottawa.html",
+          "outcome": "Confirmed the same FedDev investment amount and commercialization purpose on the official French page."
+        }
+      ]
+    }
+  ]
+}

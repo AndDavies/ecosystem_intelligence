@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-nortac-defence-deep-dossier-2026-08-05",
+  "runId": "tnm-nortac-defence-deep-dossier-2026-08-05",
+  "createdAt": "2026-08-05T14:31:00.000Z",
+  "watermarkStart": "2011-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-05T14:31:00.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 4,
+    "government_procurement": 4,
+    "source_book": 2,
+    "ecosystem_program": 2,
+    "industry_publication": 2,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 3
+  },
+  "warnings": [
+    "The published Team Deployment Kit PDF now returns HTTP 404; the live Solutions page is the durable replacement candidate, but source cleanup remains a reviewer action.",
+    "Historical contracts and contributions do not imply current procurement eligibility, endorsement, operational adoption, or future demand.",
+    "The abandoned NORTAC TACTICAL trademark application is not evidence that the current NTAC product has been withdrawn."
+  ],
+  "signals": [
+    {
+      "signalId": "nortac-live-tdk-replacement-2026-08-05",
+      "fingerprint": "ef2d4b1dcf2fcd3a0996c9c697dbe81eff1b327c5ed626275745c5e1032dabd5",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Nortac current Solutions",
+      "discoveryOrigin": {"url": "https://www.nortacdefence.com/solutions/", "gmailMessageId": null, "gmailThreadId": null, "linkedinUrl": null},
+      "extracted": {
+        "organization": "NORTAC Defence", "technology": "NORTAC WAVE and NORTAC TACTICAL", "program": "Team Deployment Kits", "issuer": null, "eventDate": null, "amount": null,
+        "details": "Nortac's live Solutions page offers light, medium, and heavy Team Deployment Kits with WAVE, NTAC, ORION, WAVE 88, platform access, Iridium airtime, training, and 24/7 support.",
+        "observedAt": "2026-08-05T14:31:00.000Z", "effectiveDate": null,
+        "actors": [{"name": "NORTAC Defence", "role": "operator"}],
+        "changeSummary": "Replace the stale capability evidence surface with the current Team Deployment Kit packaging and support description."
+      },
+      "redirectUrls": [], "canonicalUrls": ["https://www.nortacdefence.com/solutions/"], "signalType": "technology_update", "sourceClusterId": "nortac-current-tdk", "supersedesSignalIds": ["nortac-tdk-pdf-stale-2026-08-05"], "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [{"entityType": "organization", "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360", "slug": "nortac-defence", "matchMethods": ["canonical_url", "website_domain", "slug", "legal_name", "name"], "confidence": "high", "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"}],
+      "intendedOutcomes": ["organization_refresh"], "recoveryAttempts": [{"channel": "official_company", "url": "https://www.nortacdefence.com/solutions/", "outcome": "Resolved current WAVE and NTAC packaging to the live canonical Nortac Solutions page."}], "warnings": ["The page provides current packaging, not named-customer deployment evidence."], "disposition": "qualified", "deferralRationale": null
+    },
+    {
+      "signalId": "nortac-iridium-wave-current-2026-08-05",
+      "fingerprint": "2522ae7cee352611f5db98d2719660786629a1204c542391a2f557cd974fcbd5",
+      "sourceChannel": "other_discovery",
+      "sourceFamily": "Iridium partner catalogue",
+      "discoveryOrigin": {"url": "https://www.iridium.com/products/nortac-wave", "gmailMessageId": null, "gmailThreadId": null, "linkedinUrl": null},
+      "extracted": {
+        "organization": "NORTAC Defence", "technology": "NORTAC WAVE", "program": null, "issuer": "Iridium Communications", "eventDate": null, "amount": null,
+        "details": "Iridium currently lists WAVE with AES-256 encryption, two-way, group, and emergency messages, reporting from 15-second intervals, IP67 protection, a 300 g mass, and -20 to +60 C operation.",
+        "observedAt": "2026-08-05T14:31:00.000Z", "effectiveDate": null,
+        "actors": [{"name": "Iridium Communications", "role": "partner"}, {"name": "NORTAC Defence", "role": "supplier"}],
+        "changeSummary": "Add partner-corroborated WAVE specifications and a bounded current Iridium relationship."
+      },
+      "redirectUrls": [], "canonicalUrls": ["https://www.iridium.com/products/nortac-wave", "https://www.iridium.com/find-partner/nortac-defence-limited"], "signalType": "technology_update", "sourceClusterId": "iridium-nortac-current", "supersedesSignalIds": [], "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [{"entityType": "organization", "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360", "slug": "nortac-defence", "matchMethods": ["website_domain", "slug", "legal_name", "name"], "confidence": "high", "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"}],
+      "intendedOutcomes": ["organization_refresh"], "recoveryAttempts": [{"channel": "other_discovery", "url": "https://www.iridium.com/products/nortac-wave", "outcome": "Resolved the partner product listing and current partner directory to durable Iridium pages."}], "warnings": ["The listing does not establish customer adoption or exclusivity."], "disposition": "qualified", "deferralRationale": null
+    },
+    {
+      "signalId": "nortac-feddev-investment-2025-03-03",
+      "fingerprint": "bccf721c3d7476a3e0ee617a2e6c4a13bb175b76ae394d9c9a760302f05b7384",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "FedDev Ontario recipient announcement",
+      "discoveryOrigin": {"url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-support-six-ai-and-tech-businesses-across-ottawa-region.html", "gmailMessageId": null, "gmailThreadId": null, "linkedinUrl": null},
+      "extracted": {
+        "organization": "NORTAC Defence", "technology": "Android satellite applications", "program": "FedDev Ontario investment", "issuer": "Federal Economic Development Agency for Southern Ontario", "eventDate": "2025-03-03", "amount": "CAD 250,000",
+        "details": "FedDev Ontario records CAD 250,000 for NORTAC Defence to accelerate commercialization of Android satellite applications for military personnel and non-military first responders in limited-network areas.",
+        "observedAt": "2026-08-05T14:31:00.000Z", "effectiveDate": "2025-03-03",
+        "actors": [{"name": "Federal Economic Development Agency for Southern Ontario", "role": "funder"}, {"name": "NORTAC Defence", "role": "recipient"}],
+        "changeSummary": "Replace generic funding context with the official amount and bounded commercialization purpose."
+      },
+      "redirectUrls": [], "canonicalUrls": ["https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-support-six-ai-and-tech-businesses-across-ottawa-region.html"], "signalType": "financing_or_ownership_event", "sourceClusterId": "feddev-nortac-2025", "supersedesSignalIds": [], "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [{"entityType": "organization", "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360", "slug": "nortac-defence", "matchMethods": ["legal_name", "name"], "confidence": "high", "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"}],
+      "intendedOutcomes": ["organization_refresh"], "recoveryAttempts": [{"channel": "ecosystem_program", "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-support-six-ai-and-tech-businesses-across-ottawa-region.html", "outcome": "Resolved the English and French official recipient tables with matching amount and purpose."}], "warnings": ["Funding does not imply procurement, deployment, endorsement, or product success."], "disposition": "qualified", "deferralRationale": null
+    },
+    {
+      "signalId": "nortac-ssc-contract-700611230",
+      "fingerprint": "eb4da1cb7709a7eab6cd89684c5851833bc61b0be80935b46b3e7a9c52d2557c",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Open Government contract disclosure",
+      "discoveryOrigin": {"url": "https://search.open.canada.ca/contracts/record/ssc-spc%2CC-2022-2023-Q2-00031", "gmailMessageId": null, "gmailThreadId": null, "linkedinUrl": null},
+      "extracted": {
+        "organization": "NORTAC Defence", "technology": null, "program": "Shared Services Canada Contract 700611230", "issuer": "Shared Services Canada", "eventDate": "2020-04-01", "amount": "CAD 4,321,486.27",
+        "details": "Shared Services Canada discloses competitive multidepartmental communications and network-services contract 700611230 with NORTAC Defence Limited from April 2020 through March 2023.",
+        "observedAt": "2026-08-05T14:31:00.000Z", "effectiveDate": "2020-04-01",
+        "actors": [{"name": "Shared Services Canada", "role": "buyer"}, {"name": "NORTAC Defence Limited", "role": "supplier"}],
+        "procurement": {"noticeId": null, "contractId": "700611230", "stage": "closed", "amendmentNumber": null, "buyer": "Shared Services Canada", "supplier": "NORTAC Defence Limited", "value": "4321486.27", "currency": "CAD", "closingAt": null},
+        "changeSummary": "Add the completed contract as bounded company-level procurement history."
+      },
+      "redirectUrls": [], "canonicalUrls": ["https://search.open.canada.ca/contracts/record/ssc-spc%2CC-2022-2023-Q2-00031"], "signalType": "contract_or_award", "sourceClusterId": "nortac-ssc-700611230", "supersedesSignalIds": [], "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [{"entityType": "organization", "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360", "slug": "nortac-defence", "matchMethods": ["legal_name", "name"], "confidence": "high", "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"}],
+      "intendedOutcomes": ["organization_refresh"], "recoveryAttempts": [{"channel": "government_procurement", "url": "https://search.open.canada.ca/contracts/record/ssc-spc%2CC-2022-2023-Q2-00031", "outcome": "Resolved vendor, buyer, value, competitive method, scope category, and contract lifecycle."}], "warnings": ["The contract ended in 2023 and does not establish current demand or a product-specific deployment."], "disposition": "qualified", "deferralRationale": null
+    },
+    {
+      "signalId": "nortac-canexport-1035233",
+      "fingerprint": "0d9444c7e4863f0b0e6cd5a172aca76b3425f8e6a7b2cb43f7c08dac57066296",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Open Government grants disclosure",
+      "discoveryOrigin": {"url": "https://search.open.canada.ca/grants/?page=2034&sort=agreement_start_date+desc", "gmailMessageId": null, "gmailThreadId": null, "linkedinUrl": null},
+      "extracted": {
+        "organization": "NORTAC Defence", "technology": null, "program": "CanExport SME agreement 1035233", "issuer": "National Research Council Canada", "eventDate": "2025-05-16", "amount": "CAD 23,650",
+        "details": "The federal grants disclosure lists NORTAC Defence Limited for a CAD 23,650 CanExport SME agreement supporting export-market development from May 2025 through February 2026.",
+        "observedAt": "2026-08-05T14:31:00.000Z", "effectiveDate": "2025-05-16",
+        "actors": [{"name": "National Research Council Canada", "role": "funder"}, {"name": "NORTAC Defence Limited", "role": "recipient"}],
+        "changeSummary": "Add the completed contribution as bounded export-development history."
+      },
+      "redirectUrls": [], "canonicalUrls": ["https://search.open.canada.ca/grants/?page=2034&sort=agreement_start_date+desc"], "signalType": "program_or_cohort_participation", "sourceClusterId": "nortac-canexport-1035233", "supersedesSignalIds": [], "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [{"entityType": "organization", "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360", "slug": "nortac-defence", "matchMethods": ["legal_name", "name"], "confidence": "high", "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"}],
+      "intendedOutcomes": ["organization_refresh"], "recoveryAttempts": [{"channel": "ecosystem_program", "url": "https://search.open.canada.ca/grants/?page=2034&sort=agreement_start_date+desc", "outcome": "Resolved the recipient, agreement number, amount, purpose, and start and end dates."}], "warnings": ["The agreement ended in February 2026 and does not prove export outcomes."], "disposition": "qualified", "deferralRationale": null
+    },
+    {
+      "signalId": "nortac-pwgsc-contract-en869-118133-002-eo",
+      "fingerprint": "89110acc730aa7ecdbaa682fbaccb111090b38e108bd9fb283aa276fa04d97b1",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys contract history",
+      "discoveryOrigin": {"url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/en869-118133/002/eo-004", "gmailMessageId": null, "gmailThreadId": null, "linkedinUrl": null},
+      "extracted": {
+        "organization": "NORTAC Defence", "technology": "Track24 standardized satellite tracking", "program": "PWGSC Contract EN869-118133/002/EO", "issuer": "Public Works and Government Services Canada", "eventDate": "2011-04-26", "amount": "CAD 800,000",
+        "details": "CanadaBuys identifies NORTAC Defence Limited under the predecessor trade name Track24 on competitive contract EN869-118133/002/EO from 2011 through 2014 with a CAD 800,000 total value.",
+        "observedAt": "2026-08-05T14:31:00.000Z", "effectiveDate": "2011-04-26",
+        "actors": [{"name": "Public Works and Government Services Canada", "role": "buyer"}, {"name": "NORTAC Defence Limited", "role": "supplier"}],
+        "procurement": {"noticeId": "EN869-118133", "contractId": "EN869-118133/002/EO", "stage": "closed", "amendmentNumber": "004", "buyer": "Public Works and Government Services Canada", "supplier": "NORTAC Defence Limited", "value": "800000", "currency": "CAD", "closingAt": null},
+        "changeSummary": "Add historical procurement with the predecessor-name and lifecycle boundary."
+      },
+      "redirectUrls": [], "canonicalUrls": ["https://canadabuys.canada.ca/en/tender-opportunities/contract-history/en869-118133/002/eo-004"], "signalType": "contract_or_award", "sourceClusterId": "nortac-pwgsc-en869", "supersedesSignalIds": [], "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [{"entityType": "organization", "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360", "slug": "nortac-defence", "matchMethods": ["legal_name", "alias", "name"], "confidence": "high", "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"}],
+      "intendedOutcomes": ["organization_refresh"], "recoveryAttempts": [{"channel": "government_procurement", "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/en869-118133/002/eo-004", "outcome": "Resolved the vendor, predecessor naming, identifier, value, competitive method, and lifecycle."}], "warnings": ["The contract ended in 2014 and does not establish current demand."], "disposition": "qualified", "deferralRationale": null
+    },
+    {
+      "signalId": "nortac-patent-portfolio-current-2026-08-05",
+      "fingerprint": "eb8534d2442c7895854709661113cbbbce279fc45fc91e74e070a20f10cdc4fa",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Nortac patent marking",
+      "discoveryOrigin": {"url": "https://www.nortacdefence.com/patent/", "gmailMessageId": null, "gmailThreadId": null, "linkedinUrl": null},
+      "extracted": {
+        "organization": "NORTAC Defence", "technology": "TITAN and WAVE", "program": null, "issuer": null, "eventDate": null, "amount": null,
+        "details": "Nortac's current patent-marking page identifies Canadian patent 3081732 and U.S. patents 11139852 and 12107620 for TITAN, WAVE, and low-bandwidth short-burst-data situational awareness.",
+        "observedAt": "2026-08-05T14:31:00.000Z", "effectiveDate": null,
+        "actors": [{"name": "NORTAC Defence", "role": "operator"}],
+        "changeSummary": "Add bounded intellectual-property context without treating patents as proof of performance or adoption."
+      },
+      "redirectUrls": [], "canonicalUrls": ["https://www.nortacdefence.com/patent/"], "signalType": "technology_update", "sourceClusterId": "nortac-patent-current", "supersedesSignalIds": [], "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [{"entityType": "organization", "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360", "slug": "nortac-defence", "matchMethods": ["canonical_url", "website_domain", "slug", "name"], "confidence": "high", "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"}],
+      "intendedOutcomes": ["organization_refresh"], "recoveryAttempts": [{"channel": "official_company", "url": "https://www.nortacdefence.com/patent/", "outcome": "Resolved the current patent-marking page and cross-checked product ownership against CIPO records."}], "warnings": ["Patent marking does not establish maturity, field performance, or customer adoption."], "disposition": "qualified", "deferralRationale": null
+    },
+    {
+      "signalId": "nortac-tdk-pdf-stale-2026-08-05",
+      "fingerprint": "3dcc069ef2986d8d9e1c7b48f5478cc358de38c31636d7218d407df5bac5e223",
+      "sourceChannel": "source_book",
+      "sourceFamily": "Published TNM capability citation",
+      "discoveryOrigin": {"url": "https://www.nortacdefence.com/wp-content/uploads/2024/12/TDK-2024-MIL.pdf", "gmailMessageId": null, "gmailThreadId": null, "linkedinUrl": null},
+      "extracted": {
+        "organization": "NORTAC Defence", "technology": "Team Deployment Kit", "program": null, "issuer": null, "eventDate": null, "amount": null,
+        "details": "The PDF currently cited by the published True North Map capability returned HTTP 404 during the August 5 refresh and was absent from Nortac's current sitemap.",
+        "observedAt": "2026-08-05T14:31:00.000Z", "effectiveDate": null,
+        "actors": [{"name": "NORTAC Defence", "role": "operator"}],
+        "changeSummary": "Flag the stale evidence source for reviewer cleanup and substitute current durable evidence in the refresh candidate."
+      },
+      "redirectUrls": [], "canonicalUrls": ["https://www.nortacdefence.com/wp-content/uploads/2024/12/TDK-2024-MIL.pdf"], "signalType": "technology_update", "sourceClusterId": "nortac-tdk-stale", "supersedesSignalIds": [], "canonicalEvidenceStatus": "unresolved",
+      "liveEntityMatches": [{"entityType": "organization", "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360", "slug": "nortac-defence", "matchMethods": ["website_domain", "slug", "name"], "confidence": "high", "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"}],
+      "intendedOutcomes": ["deferred"], "recoveryAttempts": [{"channel": "official_company", "url": "https://www.nortacdefence.com/solutions/", "outcome": "Checked the current Solutions page and sitemap and found a live replacement surface but no replacement PDF."}, {"channel": "source_book", "url": "https://www.nortacdefence.com/wp-content/uploads/2024/12/TDK-2024-MIL.pdf", "outcome": "Rechecked the published citation directly and confirmed an HTTP 404 response."}], "warnings": ["The 404 is a source-maintenance defect, not evidence that the products are withdrawn."], "disposition": "deferred", "deferralRationale": "Source deletion requires reviewer-led evidence cleanup; the refresh candidate supplies current replacement sources but cannot directly mutate the published citation."
+    },
+    {
+      "signalId": "nortac-tactical-trademark-abandoned-2026-04-13",
+      "fingerprint": "e64a94bd876ee60040dc97535910e9c9e4e25eaf8f32ac6c1ce786157a6ddd05",
+      "sourceChannel": "other_discovery",
+      "sourceFamily": "CIPO trademark registry",
+      "discoveryOrigin": {"url": "https://ised-isde.canada.ca/cipo/trademark-search/pdf/2290872?lang=eng", "gmailMessageId": null, "gmailThreadId": null, "linkedinUrl": null},
+      "extracted": {
+        "organization": "NORTAC Defence", "technology": "NORTAC TACTICAL", "program": null, "issuer": "Canadian Intellectual Property Office", "eventDate": "2026-04-13", "amount": null,
+        "details": "CIPO records NORTAC TACTICAL application 2290872 as abandoned under section 36 on April 13, 2026, while current product sources continue to describe NTAC.",
+        "observedAt": "2026-08-05T14:31:00.000Z", "effectiveDate": "2026-04-13",
+        "actors": [{"name": "Canadian Intellectual Property Office", "role": "issuer"}, {"name": "NORTAC Defence Limited", "role": "other"}],
+        "changeSummary": "Preserve the trademark-status conflict as a reviewer warning without inferring product withdrawal."
+      },
+      "redirectUrls": [], "canonicalUrls": ["https://ised-isde.canada.ca/cipo/trademark-search/pdf/2290872?lang=eng"], "signalType": "technology_update", "sourceClusterId": "nortac-tactical-trademark", "supersedesSignalIds": [], "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [{"entityType": "organization", "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360", "slug": "nortac-defence", "matchMethods": ["legal_name", "name"], "confidence": "high", "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"}],
+      "intendedOutcomes": ["deferred"], "recoveryAttempts": [{"channel": "other_discovery", "url": "https://ised-isde.canada.ca/cipo/trademark-search/pdf/2290872?lang=eng", "outcome": "Resolved the exact application status and date from the official CIPO record."}, {"channel": "official_company", "url": "https://www.nortacdefence.com/solutions/", "outcome": "Checked current product packaging and confirmed NTAC remains described despite the application status."}], "warnings": ["Trademark abandonment does not establish product withdrawal or lack of use."], "disposition": "deferred", "deferralRationale": "No canonical product-field change is justified; retain the registry conflict only as a bounded reviewer warning."
+    }
+  ]
+}

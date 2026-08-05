@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "tnm-refresh-buy-canadian-2026-08-05",
+  "runId": "tnm-refresh-buy-canadian-2026-08-05",
+  "createdAt": "2026-08-05T11:07:30.000Z",
+  "scope": "A tightly scoped refresh investigation of the August 4 Buy Canadian newsletter claims, using the newsletter only for discovery and limiting selection to distinct demand records supported by original Government of Canada policy, procurement, or program sources.",
+  "prospects": [
+    {
+      "id": "prospect-buy-canadian-policy-framework",
+      "name": "Buy Canadian Procurement Policy Framework",
+      "proposedEntityType": "demand_signal",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-procurement-policy-framework",
+      "discoverySourceUrl": "https://canadabuys.canada.ca/en/buy-canadian-policy",
+      "discoveryLane": "procurement",
+      "countryCode": "CA",
+      "fitSummary": "CanadaBuys establishes a government-wide supplier, content, materials, and small-business procurement framework that is distinct from the broader Defence Industrial Strategy already in the atlas.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {"lane": "procurement", "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-procurement-policy-framework", "outcome": "Recovered the official framework, its purpose, application, and exclusions."},
+        {"lane": "government_program", "url": "https://canadabuys.canada.ca/en/buy-canadian-policy", "outcome": "Recovered the official policy overview and three implementation components."},
+        {"lane": "bilingual_web", "url": "https://achatscanada.canada.ca/fr/politique-dachat-canadien", "outcome": "Checked the official French policy entry point as same-family bilingual corroboration."}
+      ]
+    },
+    {
+      "id": "prospect-canadian-deep-precision-strike-capability",
+      "name": "Canadian Deep Precision Strike Capability",
+      "proposedEntityType": "demand_signal",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.canada.ca/en/services/defence/defence-equipment-purchases-upgrades/personal-equipment/canadian-deep-precision-strike-capability.html",
+      "discoverySourceUrl": "https://www.canada.ca/en/services/defence/defence-equipment-purchases-upgrades/personal-equipment/canadian-deep-precision-strike-capability.html",
+      "discoveryLane": "government_program",
+      "countryCode": "CA",
+      "fitSummary": "The official July 30 project page defines a specific long-range precision-strike capability, operating constraints, integration scope, and next procurement steps beyond the broader Defence Drone Initiative mention.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {"lane": "government_program", "url": "https://www.canada.ca/en/services/defence/defence-equipment-purchases-upgrades/personal-equipment/canadian-deep-precision-strike-capability.html", "outcome": "Recovered the official project objective, requirements, engagement status, and next steps."},
+        {"lane": "procurement", "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html", "outcome": "Compared the project against the official broader Defence Drone Initiative capability list."},
+        {"lane": "government_awards", "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html", "outcome": "Checked the official industrial-policy context without treating it as project-specific procurement evidence."}
+      ]
+    },
+    {
+      "id": "prospect-buy-canadian-award-share-metrics",
+      "name": "Buy Canadian award ownership and domestic-share metrics",
+      "proposedEntityType": "demand_signal",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://search.open.canada.ca/contracts/",
+      "discoverySourceUrl": "https://thelogic.co/news/buy-canadian-contracts-procurement/",
+      "discoveryLane": "proactive_disclosure",
+      "countryCode": "CA",
+      "fitSummary": "The newsletter and linked analysis make material ownership and award-share claims, but the official proactive-disclosure dataset does not supply the ownership classifications or a reproducible aggregate methodology needed for field evidence.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {"lane": "proactive_disclosure", "url": "https://search.open.canada.ca/contracts/", "outcome": "Confirmed official contract-disclosure coverage and caveats, but not the claimed ownership classifications or aggregate totals."},
+        {"lane": "broad_web", "url": "https://thelogic.co/news/buy-canadian-contracts-procurement/", "outcome": "Retained the linked article as discovery only because its calculations were not reproduced from original records in this run."},
+        {"lane": "technical_documentation", "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/questions-and-answers-suppliers", "outcome": "Confirmed the policy's Canadian-supplier definition, which is not equivalent to the newsletter's Canadian-headquartered ownership classification."}
+      ]
+    },
+    {
+      "id": "prospect-cse-sensitive-operations-exemption",
+      "name": "CSE Buy Canadian sensitive-operations exemption claim",
+      "proposedEntityType": "demand_signal",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-buyers-toolkit/buy-canadian-ministerial-exceptions-process-guide",
+      "discoverySourceUrl": "https://thelogic.co/news/cse-buy-canadian-exemption/",
+      "discoveryLane": "broad_web",
+      "countryCode": "CA",
+      "fitSummary": "Official policy sources support sensitive-operation exclusions and case-by-case exceptions, but no original record was found supporting the newsletter's claim that CSE exempted its entire budget.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {"lane": "broad_web", "url": "https://thelogic.co/news/cse-buy-canadian-exemption/", "outcome": "Used the linked report only to identify the asserted exemption and the agency to check."},
+        {"lane": "procurement", "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-procurement-policy-framework", "outcome": "Confirmed the framework's sensitive-operation exclusion language without finding an agency-wide CSE determination."},
+        {"lane": "government_program", "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-buyers-toolkit/buy-canadian-ministerial-exceptions-process-guide", "outcome": "Confirmed that ministerial exceptions are case-specific and require documented approval grounds."}
+      ]
+    },
+    {
+      "id": "prospect-magellan-m72-production",
+      "name": "Magellan Aerospace M72 production claim",
+      "proposedEntityType": "relationship",
+      "proposedOrganizationKind": null,
+      "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html",
+      "discoverySourceUrl": "https://canadiandefencereview.com/magellan-aerospace-to-produce-m-72-anti-tank-weapon-in-canada/",
+      "discoveryLane": "industry_association",
+      "countryCode": "CA",
+      "fitSummary": "A defence publication reports future Canadian M72 production, but no original Government of Canada award, procurement notice, program page, or official Magellan announcement was recovered for the specific claim.",
+      "disposition": "queued",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {"lane": "industry_association", "url": "https://canadiandefencereview.com/magellan-aerospace-to-produce-m-72-anti-tank-weapon-in-canada/", "outcome": "Recovered the secondary report and its specific production assertion for discovery."},
+        {"lane": "government_program", "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html", "outcome": "Found only general Magellan rocket, flare, and propellant industrial context, not an M72 award or program record."},
+        {"lane": "company_newsroom", "url": "https://magellan.aero/news/", "outcome": "Checked the official company newsroom without recovering a durable M72 announcement during this run."}
+      ]
+    }
+  ]
+}

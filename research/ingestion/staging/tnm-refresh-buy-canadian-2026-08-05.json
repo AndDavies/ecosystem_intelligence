@@ -1,0 +1,581 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-08-05T11:18:46.794Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-refresh-buy-canadian-2026-08-05",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [],
+      "missionAreaSlugs": [],
+      "technicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": [
+        "federal_government",
+        "department",
+        "armed_forces",
+        "procurement_authority"
+      ]
+    },
+    "selected_gap": {
+      "coverageView": "demand",
+      "dimension": "newsletter-resolved-government-demand-signals",
+      "reason": "The August 4 discovery newsletter exposed two specific official government demand records absent from published and pending review: the Buy Canadian operational policy framework and the Canadian Deep Precision Strike Capability project.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-08-05T11:00:21.528Z",
+    "completed_at": "2026-08-05T11:07:30.000Z",
+    "agent_version": "tnm-research-pipeline/1.3.0",
+    "source_queries": [
+      "site:canadabuys.canada.ca Buy Canadian policy suppliers content exceptions",
+      "site:canada.ca Canadian Deep Precision Strike Capability",
+      "site:search.open.canada.ca contracts DND Buy Canadian",
+      "site:canada.ca ACSV 190 General Dynamics Land Systems Canada",
+      "site:canada.ca NEXUS YMX 29.6 million",
+      "site:magellan.aero M72"
+    ],
+    "counters": {
+      "sourcesChecked": 18,
+      "leadsQualified": 2,
+      "leadsDeferred": 0,
+      "candidatesCreated": 2,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 5,
+      "uniqueProspects": 5,
+      "prospectsQueued": 3,
+      "recoveryAttempts": 15,
+      "sourceLanesSearched": 5,
+      "candidatesGreen": 1,
+      "candidatesAmber": 1,
+      "signalsExtracted": 10,
+      "signalsDispositioned": 10,
+      "sourceFamiliesSearched": 5,
+      "claimsCollected": 12,
+      "claimsConflicted": 0,
+      "coverageSubjects": 2
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "The newsletter is discovery-only and is excluded from candidate field evidence.",
+        "Three material claims remain unresolved and are not candidates: award-share metrics, the asserted CSE-wide exemption, and Magellan M72 production."
+      ]
+    },
+    "stop_reason": "The bounded refresh resolved two distinct official demand records, confirmed already-current records, and stopped after complementary lanes produced no original evidence for the remaining newsletter claims."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-buy-canadian-procurement-policy",
+      "research_run_ref": "tnm-refresh-buy-canadian-2026-08-05",
+      "candidate_kind": "demand_signal_bundle",
+      "schema_version": "demand_signal_bundle_v1",
+      "source_lead_ids": [
+        "lead-buy-canadian-procurement-policy-framework"
+      ],
+      "target_entity_type": "demand_source",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "demand_signal_bundle_v1",
+        "candidateKind": "demand_signal_bundle",
+        "candidateId": "candidate-buy-canadian-procurement-policy",
+        "sourceLeadIds": [
+          "lead-buy-canadian-procurement-policy-framework"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "This candidate translates the official government-wide Buy Canadian framework into three bounded public demand requirements covering Canadian suppliers and content, designated Canadian materials, and small-business procurement access. Live published and pending checks found no exact Buy Canadian policy record, but the subject overlaps thematically with the existing defence-specific Build-Partner-Buy source, so the candidate is amber for human scope and merge review. It deliberately excludes the newsletter's ownership, award-share, and agency-exemption calculations because those claims were not reproduced from original records.",
+        "reviewTier": "amber",
+        "inclusionScore": 93,
+        "completenessScore": 86,
+        "reviewWarnings": [
+          "The framework is non-retroactive and excludes or permits exceptions for specified sensitive operations, overseas missions, foreign-government purchases, and delivery outside Canada.",
+          "The Contracting with Canadian Suppliers and Content Policy and Canadian Materials Policy use different thresholds and application rules; reviewers should preserve those distinctions.",
+          "The newsletter's contract ownership, domestic-share, and CSE budget-exemption claims are not evidence for this candidate.",
+          "The record may overlap with the published defence-specific Build-Partner-Buy demand source and should be merged only if the government-wide operational policy distinction is not useful."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-05T11:07:30.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live demand sources, public sources, and pending candidate_changes contained no exact Buy Canadian policy slug or canonical URL; thematic overlap with Defence Industrial Strategy and Build-Partner-Buy is retained as an explicit reviewer warning."
+        },
+        "sources": [
+          {
+            "id": "canadabuys-buy-canadian-framework-2025",
+            "title": "Buy Canadian Procurement Policy Framework",
+            "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-procurement-policy-framework",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "official_policy",
+            "publishedAt": "2025-12-16T00:00:00.000Z",
+            "accessedAt": "2026-08-05T11:07:30.000Z",
+            "locator": "Purpose, application, implementation policies, and exclusions",
+            "summary": "The official framework prioritizes Canadian suppliers, content, and materials and expands small-business access across applicable federal procurements while identifying exclusions and exception pathways."
+          },
+          {
+            "id": "canadabuys-buy-canadian-overview-2026",
+            "title": "Buy Canadian Policy overview",
+            "url": "https://canadabuys.canada.ca/en/buy-canadian-policy",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2025-12-16T00:00:00.000Z",
+            "accessedAt": "2026-08-05T11:07:30.000Z",
+            "locator": "Policy framework and implementation components",
+            "summary": "The official overview identifies the Canadian Materials Policy, Contracting with Canadian Suppliers and Content Policy, and Small and Medium Business Procurement Program as the framework's implementation components."
+          },
+          {
+            "id": "canadabuys-buy-canadian-supplier-qa-2026",
+            "title": "Buy Canadian questions and answers for suppliers",
+            "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/questions-and-answers-suppliers",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T11:07:30.000Z",
+            "locator": "Canadian supplier definition, thresholds, strategic sectors, non-retroactivity, and exclusions",
+            "summary": "The official supplier guidance defines Canadian suppliers, explains policy thresholds and strategic-sector scope, confirms non-retroactivity, and describes exclusions and exception pathways."
+          },
+          {
+            "id": "canadabuys-buy-canadian-exceptions-guide-2026",
+            "title": "Buy Canadian ministerial exceptions process guide",
+            "url": "https://canadabuys.canada.ca/en/buy-canadian-policy/buy-canadian-buyers-toolkit/buy-canadian-ministerial-exceptions-process-guide",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "official_policy",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T11:07:30.000Z",
+            "locator": "Case-by-case ministerial exception grounds and approval process",
+            "summary": "The official guide describes a documented, case-by-case ministerial exception process and the limited grounds on which an exception may be requested and approved."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-buy-canadian-summary",
+            "sourceId": "canadabuys-buy-canadian-framework-2025",
+            "fieldPath": "demandSource.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official framework establishes a federal procurement posture that prioritizes Canadian suppliers, content, and materials and expands small-business participation subject to stated application and exclusion rules.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-buy-canadian-supplier-content",
+            "sourceId": "canadabuys-buy-canadian-supplier-qa-2026",
+            "fieldPath": "requirements.canadian-supplier-and-content-prioritization.problemStatement",
+            "claimClass": "source_backed",
+            "excerpt": "Official supplier guidance defines Canadian suppliers and explains that the Canadian Suppliers and Content Policy applies to qualifying federal procurements, including strategic sectors such as defence.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-buy-canadian-materials",
+            "sourceId": "canadabuys-buy-canadian-supplier-qa-2026",
+            "fieldPath": "requirements.canadian-materials-in-major-procurements.problemStatement",
+            "claimClass": "source_backed",
+            "excerpt": "Official guidance states that the Canadian Materials Policy applies to qualifying high-value procurements with designated steel, aluminum, or wood content above the applicable material threshold.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-buy-canadian-small-business",
+            "sourceId": "canadabuys-buy-canadian-overview-2026",
+            "fieldPath": "requirements.small-business-federal-procurement-access.problemStatement",
+            "claimClass": "source_backed",
+            "excerpt": "The official overview identifies a Small and Medium Business Procurement Program intended to help Canadian small businesses compete for federal contracts and reduce procurement barriers.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-buy-canadian-exceptions",
+            "sourceId": "canadabuys-buy-canadian-exceptions-guide-2026",
+            "fieldPath": "reviewWarnings",
+            "claimClass": "source_backed",
+            "excerpt": "The ministerial exceptions guide requires documented case-specific approval grounds; it does not support treating an entire agency budget as automatically exempt.",
+            "confidence": "high"
+          }
+        ],
+        "issuers": [
+          {
+            "slug": "public-services-and-procurement-canada",
+            "name": "Public Services and Procurement Canada",
+            "issuerType": "procurement_authority",
+            "jurisdiction": "Canada",
+            "parentIssuerSlug": "government-of-canada",
+            "role": "issuer"
+          },
+          {
+            "slug": "government-of-canada",
+            "name": "Government of Canada",
+            "issuerType": "federal_government",
+            "jurisdiction": "Canada",
+            "parentIssuerSlug": null,
+            "role": "sponsor"
+          }
+        ],
+        "demandSource": {
+          "slug": "buy-canadian-procurement-policy-framework",
+          "title": "Buy Canadian Procurement Policy Framework",
+          "sourceKind": "strategic_policy",
+          "commitmentLevel": "programmatic",
+          "classificationLabel": "PUBLIC",
+          "summary": "Canada's operational Buy Canadian procurement framework prioritizes Canadian suppliers, content, and designated materials and expands small-business participation across applicable federal procurements, subject to explicit thresholds, exclusions, and exception processes.",
+          "publishedOn": "2025-12-16"
+        },
+        "requirements": [
+          {
+            "slug": "canadian-supplier-and-content-prioritization",
+            "title": "Canadian supplier and content prioritization",
+            "problemStatement": "Applicable federal procurements need a consistent mechanism to prioritize Canadian suppliers and Canadian content while preserving transparent definitions, thresholds, and exceptions.",
+            "desiredEndState": "Qualifying procurements apply the Canadian Suppliers and Content Policy so Canadian suppliers and content receive the intended preference under published rules.",
+            "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+            "missionAreaSlugs": [],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration"
+            ]
+          },
+          {
+            "slug": "canadian-materials-in-major-procurements",
+            "title": "Canadian materials in major procurements",
+            "problemStatement": "Qualifying major procurements need a defined way to increase use of Canadian steel, aluminum, and wood where designated material values meet the published thresholds.",
+            "desiredEndState": "Applicable procurements incorporate the Canadian Materials Policy and increase qualifying Canadian material content under the published thresholds and exclusions.",
+            "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+            "missionAreaSlugs": [],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration"
+            ]
+          },
+          {
+            "slug": "small-business-federal-procurement-access",
+            "title": "Small-business federal procurement access",
+            "problemStatement": "Canadian small and medium-sized businesses face barriers that can limit their ability to compete for federal procurement opportunities.",
+            "desiredEndState": "Federal procurement uses the dedicated small-business program to reduce participation barriers and expand Canadian SME access to contracting opportunities.",
+            "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+            "missionAreaSlugs": [],
+            "technicalDomainSlugs": []
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-buy-canadian-summary",
+          "sourceId": "canadabuys-buy-canadian-framework-2025",
+          "fieldPath": "demandSource.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official framework establishes a federal procurement posture that prioritizes Canadian suppliers, content, and materials and expands small-business participation subject to stated application and exclusion rules.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-buy-canadian-supplier-content",
+          "sourceId": "canadabuys-buy-canadian-supplier-qa-2026",
+          "fieldPath": "requirements.canadian-supplier-and-content-prioritization.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "Official supplier guidance defines Canadian suppliers and explains that the Canadian Suppliers and Content Policy applies to qualifying federal procurements, including strategic sectors such as defence.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-buy-canadian-materials",
+          "sourceId": "canadabuys-buy-canadian-supplier-qa-2026",
+          "fieldPath": "requirements.canadian-materials-in-major-procurements.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "Official guidance states that the Canadian Materials Policy applies to qualifying high-value procurements with designated steel, aluminum, or wood content above the applicable material threshold.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-buy-canadian-small-business",
+          "sourceId": "canadabuys-buy-canadian-overview-2026",
+          "fieldPath": "requirements.small-business-federal-procurement-access.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "The official overview identifies a Small and Medium Business Procurement Program intended to help Canadian small businesses compete for federal contracts and reduce procurement barriers.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-buy-canadian-exceptions",
+          "sourceId": "canadabuys-buy-canadian-exceptions-guide-2026",
+          "fieldPath": "reviewWarnings",
+          "claimClass": "source_backed",
+          "excerpt": "The ministerial exceptions guide requires documented case-specific approval grounds; it does not support treating an entire agency budget as automatically exempt.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-05T11:07:30.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live demand sources, public sources, and pending candidate_changes contained no exact Buy Canadian policy slug or canonical URL; thematic overlap with Defence Industrial Strategy and Build-Partner-Buy is retained as an explicit reviewer warning."
+      },
+      "reviewer_rationale": "This candidate translates the official government-wide Buy Canadian framework into three bounded public demand requirements covering Canadian suppliers and content, designated Canadian materials, and small-business procurement access. Live published and pending checks found no exact Buy Canadian policy record, but the subject overlaps thematically with the existing defence-specific Build-Partner-Buy source, so the candidate is amber for human scope and merge review. It deliberately excludes the newsletter's ownership, award-share, and agency-exemption calculations because those claims were not reproduced from original records.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-05T11:18:46.795Z"
+    },
+    {
+      "client_candidate_id": "candidate-canadian-deep-precision-strike-capability",
+      "research_run_ref": "tnm-refresh-buy-canadian-2026-08-05",
+      "candidate_kind": "demand_signal_bundle",
+      "schema_version": "demand_signal_bundle_v1",
+      "source_lead_ids": [
+        "lead-canadian-deep-precision-strike-capability"
+      ],
+      "target_entity_type": "demand_source",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "demand_signal_bundle_v1",
+        "candidateKind": "demand_signal_bundle",
+        "candidateId": "candidate-canadian-deep-precision-strike-capability",
+        "sourceLeadIds": [
+          "lead-canadian-deep-precision-strike-capability"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "The July 30 official project page is a distinct, later, project-specific demand record: it defines long-range precision-strike purpose, contested-environment resilience, system integration, closed industry engagement, and next procurement steps. The published Defence Drone Initiative already lists deep precision strike as one of six broad capability areas, but its official backgrounder explicitly described that stage as market engagement without an acquisition decision. This candidate therefore preserves the narrower project lifecycle for human review and does not create any supplier, platform, budget, range, payload, or award claim.",
+        "reviewTier": "green",
+        "inclusionScore": 98,
+        "completenessScore": 90,
+        "reviewWarnings": [
+          "The August 2026 industry question-and-answer activity is closed and vetted; it is not an open solicitation or supplier-qualification result.",
+          "The public project page does not disclose budget, range, platform, payload, supplier, acquisition decision, or delivery schedule.",
+          "Reviewers should keep this project distinct from the broader Defence Drone Initiative only if the project-specific lifecycle and requirements add decision value."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-05T11:07:30.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live demand sources and pending candidate_changes contained no exact Canadian Deep Precision Strike Capability slug or canonical URL. The published Defence Drone Initiative is related but broader and predates the specific project page."
+        },
+        "sources": [
+          {
+            "id": "dnd-canadian-deep-precision-strike-capability-2026",
+            "title": "Canadian Deep Precision Strike Capability",
+            "url": "https://www.canada.ca/en/services/defence/defence-equipment-purchases-upgrades/personal-equipment/canadian-deep-precision-strike-capability.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-07-30T00:00:00.000Z",
+            "accessedAt": "2026-08-05T11:07:30.000Z",
+            "locator": "Project objective, requirements, industry engagement, and next steps",
+            "summary": "The official project page defines a rapidly deployable long-range precision-strike capability, resilient employment requirements, integration and sustainment scope, and a path from closed industry engagement toward procurement and evaluation."
+          },
+          {
+            "id": "dnd-defence-drone-initiative-backgrounder-2026",
+            "title": "Defence Drone Initiative",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-07-23T00:00:00.000Z",
+            "accessedAt": "2026-08-05T11:07:30.000Z",
+            "locator": "Initial capability areas and no-acquisition-decision caveat",
+            "summary": "The official backgrounder lists deep precision strike among six broad initiative capability areas while stating that the market-engagement stage did not represent an acquisition decision."
+          },
+          {
+            "id": "dnd-defence-industrial-strategy-2026",
+            "title": "Security, Sovereignty and Prosperity: Canada's Defence Industrial Strategy",
+            "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/industrial-strategy/security-sovereignty-prosperity.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "official_policy",
+            "publishedAt": "2026-02-17T00:00:00.000Z",
+            "accessedAt": "2026-08-05T11:07:30.000Z",
+            "locator": "Sovereign capability, procurement, and domestic industrial context",
+            "summary": "The official strategy provides the public defence-industrial context for sovereign capability, domestic capacity, resilient supply, and accelerated defence procurement without establishing project-specific awards."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-cdpsc-summary",
+            "sourceId": "dnd-canadian-deep-precision-strike-capability-2026",
+            "fieldPath": "demandSource.summary",
+            "claimClass": "source_backed",
+            "excerpt": "The official project page establishes a Canadian Armed Forces long-range precision-strike project with defined operational purpose, resilience requirements, system integration scope, and procurement next steps.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cdpsc-operational-capability",
+            "sourceId": "dnd-canadian-deep-precision-strike-capability-2026",
+            "fieldPath": "requirements.deep-precision-strike-operational-capability.problemStatement",
+            "claimClass": "source_backed",
+            "excerpt": "The project aims to give the Canadian Armed Forces a long-range precision-strike capability that can deploy quickly to deter, respond, and operate with joint and allied forces.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cdpsc-resilient-employment",
+            "sourceId": "dnd-canadian-deep-precision-strike-capability-2026",
+            "fieldPath": "requirements.deep-precision-strike-resilient-employment.problemStatement",
+            "claimClass": "source_backed",
+            "excerpt": "The official requirements call for a secure, cost-effective, scalable, and resilient capability able to operate amid electronic warfare, cyber threats, GPS disruption, and air defences.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cdpsc-integration-sustainment",
+            "sourceId": "dnd-canadian-deep-precision-strike-capability-2026",
+            "fieldPath": "requirements.deep-precision-strike-integration-and-sustainment.problemStatement",
+            "claimClass": "source_backed",
+            "excerpt": "The project scope includes equipment, training, logistics, command-and-control and network integration, and a reliable inventory as parts of the operational capability.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cdpsc-ddi-boundary",
+            "sourceId": "dnd-defence-drone-initiative-backgrounder-2026",
+            "fieldPath": "reviewWarnings",
+            "claimClass": "source_backed",
+            "excerpt": "The earlier Defence Drone Initiative named deep precision strike as one broad capability area and stated that its market-engagement stage was not an acquisition decision.",
+            "confidence": "high"
+          }
+        ],
+        "issuers": [
+          {
+            "slug": "national-defence",
+            "name": "Department of National Defence",
+            "issuerType": "department",
+            "jurisdiction": "Canada",
+            "parentIssuerSlug": "government-of-canada",
+            "role": "issuer"
+          },
+          {
+            "slug": "canadian-armed-forces",
+            "name": "Canadian Armed Forces",
+            "issuerType": "armed_forces",
+            "jurisdiction": "Canada",
+            "parentIssuerSlug": "national-defence",
+            "role": "beneficiary"
+          }
+        ],
+        "demandSource": {
+          "slug": "canadian-deep-precision-strike-capability",
+          "title": "Canadian Deep Precision Strike Capability",
+          "sourceKind": "capability_plan",
+          "commitmentLevel": "programmatic",
+          "classificationLabel": "PUBLIC",
+          "summary": "The Canadian Deep Precision Strike Capability project seeks a rapidly deployable long-range precision-strike capability that remains effective in contested environments and integrates equipment, training, logistics, command-and-control, networks, and reliable inventory.",
+          "publishedOn": "2026-07-30"
+        },
+        "requirements": [
+          {
+            "slug": "deep-precision-strike-operational-capability",
+            "title": "Deep precision-strike operational capability",
+            "problemStatement": "The Canadian Armed Forces need a rapidly deployable long-range precision-strike capability for deterrence, response, and effective joint or allied operations.",
+            "desiredEndState": "The Canadian Armed Forces can deploy and employ a long-range precision-strike capability quickly in support of national, joint, and allied operational objectives.",
+            "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+            "missionAreaSlugs": [],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "aerospace-and-mobility"
+            ]
+          },
+          {
+            "slug": "deep-precision-strike-resilient-employment",
+            "title": "Resilient deep-strike employment",
+            "problemStatement": "A deep-strike capability must remain secure, scalable, cost-effective, and effective amid electronic warfare, cyber threats, GPS disruption, and modern air defences.",
+            "desiredEndState": "The fielded capability can plan, communicate, navigate, and operate resiliently across contested electromagnetic, cyber, positioning, and air-defence conditions.",
+            "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+            "missionAreaSlugs": [],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "autonomous-systems",
+              "aerospace-and-mobility"
+            ]
+          },
+          {
+            "slug": "deep-precision-strike-integration-and-sustainment",
+            "title": "Deep-strike integration and sustainment",
+            "problemStatement": "A usable operational capability requires integrated equipment, training, logistics, command-and-control and network interfaces, and a reliable inventory rather than a stand-alone platform purchase.",
+            "desiredEndState": "Equipment, people, training, logistics, command-and-control, network integration, and inventory are acquired, tested, integrated, and sustained as one operational capability.",
+            "publicCaveat": "Public-source alignment only. This is not procurement eligibility, endorsement, customer interest, or a classified requirement.",
+            "missionAreaSlugs": [],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "communications-and-cyber",
+              "test-training-and-sustainment"
+            ]
+          }
+        ]
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-cdpsc-summary",
+          "sourceId": "dnd-canadian-deep-precision-strike-capability-2026",
+          "fieldPath": "demandSource.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The official project page establishes a Canadian Armed Forces long-range precision-strike project with defined operational purpose, resilience requirements, system integration scope, and procurement next steps.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cdpsc-operational-capability",
+          "sourceId": "dnd-canadian-deep-precision-strike-capability-2026",
+          "fieldPath": "requirements.deep-precision-strike-operational-capability.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "The project aims to give the Canadian Armed Forces a long-range precision-strike capability that can deploy quickly to deter, respond, and operate with joint and allied forces.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cdpsc-resilient-employment",
+          "sourceId": "dnd-canadian-deep-precision-strike-capability-2026",
+          "fieldPath": "requirements.deep-precision-strike-resilient-employment.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "The official requirements call for a secure, cost-effective, scalable, and resilient capability able to operate amid electronic warfare, cyber threats, GPS disruption, and air defences.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cdpsc-integration-sustainment",
+          "sourceId": "dnd-canadian-deep-precision-strike-capability-2026",
+          "fieldPath": "requirements.deep-precision-strike-integration-and-sustainment.problemStatement",
+          "claimClass": "source_backed",
+          "excerpt": "The project scope includes equipment, training, logistics, command-and-control and network integration, and a reliable inventory as parts of the operational capability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cdpsc-ddi-boundary",
+          "sourceId": "dnd-defence-drone-initiative-backgrounder-2026",
+          "fieldPath": "reviewWarnings",
+          "claimClass": "source_backed",
+          "excerpt": "The earlier Defence Drone Initiative named deep precision strike as one broad capability area and stated that its market-engagement stage was not an acquisition decision.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-05T11:07:30.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live demand sources and pending candidate_changes contained no exact Canadian Deep Precision Strike Capability slug or canonical URL. The published Defence Drone Initiative is related but broader and predates the specific project page."
+      },
+      "reviewer_rationale": "The July 30 official project page is a distinct, later, project-specific demand record: it defines long-range precision-strike purpose, contested-environment resilience, system integration, closed industry engagement, and next procurement steps. The published Defence Drone Initiative already lists deep precision strike as one of six broad capability areas, but its official backgrounder explicitly described that stage as market engagement without an acquisition decision. This candidate therefore preserves the narrower project lifecycle for human review and does not create any supplier, platform, budget, range, payload, or award claim.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-08-05T11:18:46.795Z"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-nortac-defence-deep-dossier-2026-08-05",
+  "runId": "tnm-nortac-defence-deep-dossier-2026-08-05",
+  "createdAt": "2026-08-05T14:31:00.000Z",
+  "scope": {
+    "description": "Full refresh of the published NORTAC Defence organization and NORTAC WAVE and NORTAC TACTICAL capability, preserving the existing organization and capability IDs while replacing stale evidence and adding bounded public activity.",
+    "targetMissionAreaSlugs": ["arctic-domain-awareness", "autonomous-patrol-and-monitoring", "edge-data-processing"],
+    "targetTechnicalDomainSlugs": ["communications-and-cyber", "mission-software-and-data", "sensing-and-isr"],
+    "targetOrganizationKinds": ["company"],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-nortac-defence-wave-tactical-refresh-20260805",
+      "source": {
+        "id": "nortac-solutions-2026",
+        "title": "Solutions",
+        "url": "https://www.nortacdefence.com/solutions/",
+        "publisher": "NORTAC Defence",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-05T14:31:00.000Z",
+        "locator": "Team Deployment Kits section",
+        "summary": "Nortac currently offers light, medium, and heavy Team Deployment Kits containing WAVE, NTAC, ORION, WAVE 88, platform access, Iridium airtime, video services, training, and 24/7 support."
+      },
+      "discoveryPath": [
+        "https://www.nortacdefence.com/",
+        "https://www.nortacdefence.com/solutions/",
+        "https://www.nortacdefence.com/use-cases/",
+        "https://www.nortacdefence.com/patent/",
+        "https://www.iridium.com/products/nortac-wave",
+        "https://www.iridium.com/find-partner/nortac-defence-limited",
+        "https://canadiandefencereview.com/industry-focus-a-connected-battlespace/",
+        "https://canadiandefencereview.com/nortac-defence-technology-focus/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-support-six-ai-and-tech-businesses-across-ottawa-region.html",
+        "https://search.open.canada.ca/contracts/record/ssc-spc%2CC-2022-2023-Q2-00031",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/en869-118133/002/eo-004",
+        "https://search.open.canada.ca/grants/?page=2034&sort=agreement_start_date+desc",
+        "https://ised-isde.canada.ca/cipo/trademark-search/pdf/2017674?lang=eng",
+        "https://ised-isde.canada.ca/cipo/trademark-search/pdf/2290872?lang=eng"
+      ],
+      "possibleMissionAreaSlugs": ["arctic-domain-awareness", "autonomous-patrol-and-monitoring", "edge-data-processing"],
+      "possibleTechnicalDomainSlugs": ["communications-and-cyber", "mission-software-and-data", "sensing-and-isr"],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Current Nortac Solutions, Use Cases and patent pages; Iridium WAVE product and partner records; Canada.ca FedDev backgrounder; Open Government contract and grant records; CanadaBuys contract history; CIPO trademark records; CDR technical coverage.",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.nortacdefence.com/",
+        "websiteDomain": "nortacdefence.com",
+        "stableSlug": "nortac-defence",
+        "legalName": "NORTAC Defence Limited",
+        "aliases": ["NORTAC Defence", "NORTAC", "Track24 Canada", "T24 Defence"]
+      },
+      "followUpQuestions": [
+        "Confirm whether the reviewer wants the combined WAVE/TACTICAL capability retained or later split into separately maintained WAVE hardware and NTAC software records.",
+        "Decide whether the removed 2024 Team Deployment Kit PDF citation should be retired when the refreshed capability evidence is published.",
+        "Seek independent confirmation before applying the company's June 2026 claims of greater than 90 percent Canadian Content Value, security clearances, sovereign hosting, or TRL 9."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 99,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "This is a refresh of published organization 8f9c65ac-e7d2-4e40-8b44-21a845dce360 and capability 193673c2-1263-4dad-9f4d-e96c3463bc37, not a new organization or capability.",
+        "The capability's currently published 2024 TDK PDF evidence URL returned HTTP 404 on 2026-08-05; the current Solutions page and Iridium product page are proposed as durable replacements.",
+        "Nortac's greater than 90 percent Canadian Content Value, security-clearance, sovereign-hosting, and TRL 9 statements are company-authored or interview claims and are not proposed as canonical fields.",
+        "CIPO shows the NORTAC TACTICAL word-mark application was abandoned in April 2026, but current Nortac and third-party pages continue to offer and describe NTAC; trademark status is not treated as product withdrawal.",
+        "Government contract and contribution records establish bounded historical transactions, not current procurement eligibility, endorsement, deployment, or future demand."
+      ],
+      "recoveryAttempts": [
+        {"lane": "company_newsroom", "url": "https://www.nortacdefence.com/solutions/", "outcome": "Recovered the live replacement for the removed 2024 TDK PDF and current kit composition."},
+        {"lane": "technical_documentation", "url": "https://www.nortacdefence.com/wp-content/uploads/2024/12/TDK-2024-MIL.pdf", "outcome": "Confirmed the currently cited technical PDF now returns HTTP 404; no live replacement PDF appeared in the August 5 sitemap."},
+        {"lane": "customer_partner", "url": "https://www.iridium.com/products/nortac-wave", "outcome": "Recovered current independent WAVE specifications and partner-backed availability."},
+        {"lane": "procurement", "url": "https://search.open.canada.ca/contracts/record/ssc-spc%2CC-2022-2023-Q2-00031", "outcome": "Recovered Shared Services Canada contract 700611230 and its published term, method, value, and scope."},
+        {"lane": "proactive_disclosure", "url": "https://search.open.canada.ca/grants/?page=2034&sort=agreement_start_date+desc", "outcome": "Recovered the 2025-2026 CanExport SME contribution and the earlier 2023-2024 contribution."},
+        {"lane": "government_program", "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-support-six-ai-and-tech-businesses-across-ottawa-region.html", "outcome": "Recovered the exact CAD 250,000 FedDev investment and Android satellite-application commercialization purpose."},
+        {"lane": "patent_ip", "url": "https://www.nortacdefence.com/patent/", "outcome": "Recovered current Nortac patent marking and CIPO trademark evidence for company identity and low-bandwidth BLOS functionality."},
+        {"lane": "broad_web", "url": "https://canadiandefencereview.com/nortac-defence-technology-focus/", "outcome": "Recovered current founder-attributed maturity and procurement-channel claims but retained them as reviewer context unless independently corroborated."},
+        {"lane": "bilingual_web", "url": "https://www.canada.ca/fr/developpement-economique-sud-ontario/nouvelles/2025/03/un-investissement-du-gouvernement-du-canada-appuie-six-entreprises-specialisees-en-intelligence-artificielle-et-en-technologie-dans-la-region-dottawa.html", "outcome": "Confirmed the FedDev amount and purpose in French as same-family corroboration."}
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360",
+        "slug": "nortac-defence",
+        "matchMethods": ["canonical_url", "website_domain", "slug", "legal_name", "name"],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"
+      },
+      "signalIds": [
+        "nortac-live-tdk-replacement-2026-08-05",
+        "nortac-iridium-wave-current-2026-08-05",
+        "nortac-feddev-investment-2025-03-03",
+        "nortac-ssc-contract-700611230",
+        "nortac-canexport-1035233",
+        "nortac-pwgsc-contract-en869-118133-002-eo"
+        ,"nortac-patent-portfolio-current-2026-08-05"
+      ],
+      "refreshSummary": "Update the existing WAVE/TACTICAL capability in place with current partner-corroborated specifications and live Team Deployment Kit packaging, sharpen the organization activity context with the exact FedDev award, and add bounded federal procurement, export-support, and Iridium partner records.",
+      "intendedChanges": [
+        "Preserve the published NORTAC Defence and WAVE/TACTICAL IDs and slugs.",
+        "Replace the capability description and feature set with current WAVE, NTAC, and Team Deployment Kit evidence.",
+        "Add the exact CAD 250,000 FedDev amount and commercialization purpose to the organization activity context while leaving the existing relationship record unchanged.",
+        "Add Shared Services Canada contract 700611230 and historical PWGSC contract EN869-118133/002/EO as bounded program records.",
+        "Add the 2025-2026 CanExport SME contribution as a bounded export-development program record.",
+        "Add the current Iridium product and service partner relationship.",
+        "Retain uncorroborated TRL, clearance, CCV, hosting, customer, and deployment claims as explicit reviewer gaps."
+      ]
+    }
+  ]
+}
